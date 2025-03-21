@@ -7,8 +7,10 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Pango from '@girs/pango-1.0';
@@ -548,16 +550,16 @@ export namespace Vte {
      * The value of this termprop should be ignored unless the
      * %VTE_TERMPROP_PROGRESS_VALUE termprop has a value.
      *
-     * Note that this termprop cannot be set by the termprop OSC, but instead
-     * only by OSC 9 ; 4 (ConEmu progress).
+     * Note that before version 0.82, this termprop could not be set by
+     * the termprop OSC, but instead only by OSC 9 ; 4 (ConEmu progress).
      */
     const TERMPROP_PROGRESS_HINT: string;
     /**
      * A %VTE_PROPERTY_UINT termprop that stores the progress of the running
      * command as a value between 0 and 100.
      *
-     * Note that this termprop cannot be set by the termprop OSC, but instead
-     * only by OSC 9 ; 4 (ConEmu progress).
+     * Note that before version 0.82, this termprop could not be set by
+     * the termprop OSC, but instead only by OSC 9 ; 4 (ConEmu progress).
      */
     const TERMPROP_PROGRESS_VALUE: string;
     /**
@@ -648,6 +650,12 @@ export namespace Vte {
      */
     function get_termprops(): string[] | null;
     /**
+     * Returns the #VtePropertiesRegistry of the terminal's
+     *   termprops.
+     * @returns a #VtePropertiesRegistry
+     */
+    function get_termprops_registry(): PropertiesRegistry;
+    /**
      * Gets the user's shell, or %NULL. In the latter case, the
      * system default (usually "/bin/sh") should be used.
      * @returns a newly allocated string with the   user's shell, or %NULL
@@ -686,6 +694,7 @@ export namespace Vte {
      * @returns the ID for the termprop @target_name
      */
     function install_termprop_alias(name: string, target_name: string): number;
+    function properties_get_type(): GObject.GType;
     /**
      * Error domain for VTE PTY errors. Errors in this domain will be from the #VtePtyError
      * enumeration. See #GError for more information on error domains.
@@ -713,6 +722,13 @@ export namespace Vte {
      */
     function query_termprop_by_id(prop: number): [boolean, string, PropertyType | null, PropertyFlags | null];
     function regex_error_quark(): GLib.Quark;
+    /**
+     * Checks whether `str` is a valid string representation of an UUID.
+     * @param str a string
+     * @param len the length of @str, or -1 is @str is NUL terminated
+     * @param fmt a #VteUuidFormat
+     * @returns %TRUE iff @str is a valid string representation
+     */
     function uuid_validate_string(str: string, len: number, fmt: UuidFormat | null): boolean;
     interface SelectionFunc {
         (terminal: Terminal, column: number, row: number): boolean;
@@ -1044,7 +1060,7 @@ export namespace Vte {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -1087,7 +1103,7 @@ export namespace Vte {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -1227,7 +1243,21 @@ export namespace Vte {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1355,7 +1385,12 @@ export namespace Vte {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1505,11 +1540,31 @@ export namespace Vte {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Terminal {
@@ -2668,6 +2723,38 @@ export namespace Vte {
          */
         get_termprop_double_by_id(prop: number): [boolean, number];
         /**
+         * See vte_properties_get_property_enum() for more information.
+         * @param prop a property name of a %VTE_PROPERTY_STRING property
+         * @param gtype a #GType of an enum type
+         * @returns %TRUE iff the property was set and could be parsed a   a value of the enumeration type
+         */
+        get_termprop_enum(prop: string, gtype: GObject.GType): [boolean, number];
+        /**
+         * Like vte_terminal_get_termprop_enum() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID of a %VTE_PROPERTY_STRING property
+         * @param gtype a #GType of an enum type
+         * @returns %TRUE iff the property was set and could be parsed a   a value of enumeration type @type
+         */
+        get_termprop_enum_by_id(prop: number, gtype: GObject.GType): [boolean, number];
+        /**
+         * See vte_properties_get_property_flags() for more information.
+         * @param prop
+         * @param gtype a #GType of a flags type
+         * @param ignore_unknown_flags whether to ignore unknown flags
+         * @returns %TRUE iff the property was set and could be parsed a   a value of the flags type
+         */
+        get_termprop_flags(prop: string, gtype: GObject.GType, ignore_unknown_flags: boolean): [boolean, number];
+        /**
+         * Like vte_terminal_get_termprop_flags() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop
+         * @param gtype a #GType of a flags type
+         * @param ignore_unknown_flags whether to ignore unknown flags
+         * @returns %TRUE iff the property was set and could be parsed a   a value of flags type @type
+         */
+        get_termprop_flags_by_id(prop: number, gtype: GObject.GType, ignore_unknown_flags: boolean): [boolean, number];
+        /**
          * For a %VTE_PROPERTY_INT termprop, sets `value` to `prop'`s value,
          * or to 0 if `prop` is unset, or if `prop` is not a registered property.
          *
@@ -2767,6 +2854,12 @@ export namespace Vte {
          * @returns %TRUE iff the property has a value, with @gvalue containig   the property's value.
          */
         get_termprop_value_by_id(prop: number): [boolean, GObject.Value | null];
+        /**
+         * Returns the #VteProperties containing the value of the terminal's
+         *   termprops.
+         * @returns a #VteProperties
+         */
+        get_termprops(): Properties;
         /**
          * Extracts a view of the visible part of the terminal.
          *
@@ -4259,7 +4352,21 @@ export namespace Vte {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4387,7 +4494,12 @@ export namespace Vte {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4537,11 +4649,31 @@ export namespace Vte {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     class CharAttributes {
@@ -4566,6 +4698,368 @@ export namespace Vte {
         // Methods
 
         get_coordinates(x?: number | null, y?: number | null): boolean;
+    }
+
+    /**
+     * A property bag.
+     */
+    abstract class Properties {
+        static $gtype: GObject.GType<Properties>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Returns the value of a %VTE_PROPERTY_STRING property, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the property's value, or %NULL
+         */
+        dup_property_string(prop: string): [string | null, number];
+        /**
+         * Like vte_properties_dup_property_string() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value, or %NULL
+         */
+        dup_property_string_by_id(prop: number): [string | null, number];
+        /**
+         * Returns the value of a %VTE_PROPERTY_UUID property as a #VteUuid, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the property's value as a #VteUuid, or %NULL
+         */
+        dup_property_uuid(prop: string): Uuid | null;
+        /**
+         * Like vte_properties_dup_property_uuid() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value as a #VteUuid, or %NULL
+         */
+        dup_property_uuid_by_id(prop: number): Uuid | null;
+        /**
+         * For a %VTE_PROPERTY_BOOL property, sets `value` to `prop'`s value,
+         *   or to %FALSE if `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns %TRUE iff the property is set
+         */
+        get_property_bool(prop: string): [boolean, boolean];
+        /**
+         * Like vte_properties_get_property_bool() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns %TRUE iff the property is set
+         */
+        get_property_bool_by_id(prop: number): [boolean, boolean];
+        /**
+         * Returns the value of a %VTE_PROPERTY_DATA property, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the   property's value, or %NULL
+         */
+        get_property_data(prop: string): Uint8Array | null;
+        /**
+         * Like vte_properties_get_property_data() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the   property's value, or %NULL
+         */
+        get_property_data_by_id(prop: number): Uint8Array | null;
+        /**
+         * For a %VTE_PROPERTY_DOUBLE property, sets `value` to `prop'`s value,
+         *   which is finite; or to 0.0 if `prop` is unset, or `prop` is not a
+         *   registered property.
+         * @param prop a property name
+         * @returns %TRUE iff the property is set
+         */
+        get_property_double(prop: string): [boolean, number];
+        /**
+         * Like vte_properties_get_property_double() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns %TRUE iff the property is set
+         */
+        get_property_double_by_id(prop: number): [boolean, number];
+        /**
+         * For a %VTE_PROPERTY_STRING property, sets `value` to `prop'`s value,
+         * parsed as a value of the enumeration type `gtype,` or to 0 if
+         * `prop` is unset, or if its value could not be parsed as a value of
+         * the enumeration type, or if `prop` is not a registered property.
+         * @param prop a property name of a %VTE_PROPERTY_STRING property
+         * @param gtype a #GType of an enum type
+         * @returns %TRUE iff the property was set and could be parsed a   a value of the enumeration type
+         */
+        get_property_enum(prop: string, gtype: GObject.GType): [boolean, number];
+        /**
+         * Like vte_properties_get_property_enum() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID of a %VTE_PROPERTY_STRING property
+         * @param gtype a #GType of an enum type
+         * @returns %TRUE iff the property was set and could be parsed a   a value of enumeration type @type
+         */
+        get_property_enum_by_id(prop: number, gtype: GObject.GType): [boolean, number];
+        /**
+         * For a %VTE_PROPERTY_STRING property, sets `value` to `prop'`s value,
+         * parsed as a '|'-separated list of values of the flags type `gtype,`
+         * or to 0 if `prop` is unset, or if its value could not be parsed as
+         * a list of values of the flags type, if `prop` is not a registered
+         * property.
+         * If `ignore_unknown_flags` is %TRUE, flags that are unknown are
+         * ignored instead of causing this function to return %FALSE.
+         * @param prop a property name of a %VTE_PROPERTY_STRING property
+         * @param gtype a #GType of a flags type
+         * @param ignore_unknown_flags whether to ignore unknown flags
+         * @returns %TRUE iff the property was set and could be parsed a   a value of the flags type
+         */
+        get_property_flags(prop: string, gtype: GObject.GType, ignore_unknown_flags: boolean): [boolean, number];
+        /**
+         * Like vte_properties_get_property_flags() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID of a %VTE_PROPERTY_STRING property
+         * @param gtype a #GType of a flags type
+         * @param ignore_unknown_flags whether to ignore unknown flags
+         * @returns %TRUE iff the property was set and could be parsed a   a value of flags type @type
+         */
+        get_property_flags_by_id(prop: number, gtype: GObject.GType, ignore_unknown_flags: boolean): [boolean, number];
+        /**
+         * For a %VTE_PROPERTY_INT property, sets `value` to `prop'`s value,
+         * or to 0 if `prop` is unset, or if `prop` is not a registered property.
+         *
+         * If only a subset or range of values are acceptable for the given property,
+         * the caller must validate the returned value and treat any out-of-bounds
+         * value as if the property had no value; in particular it *must not* clamp
+         * the values to the expected range.
+         * @param prop a property name
+         * @returns %TRUE iff the property is set
+         */
+        get_property_int(prop: string): [boolean, number];
+        /**
+         * Like vte_properties_get_property_int() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns %TRUE iff the property is set
+         */
+        get_property_int_by_id(prop: number): [boolean, number];
+        /**
+         * Stores the value of a %VTE_PROPERTY_RGB or %VTE_PROPERTY_RGBA property in `color` and
+         * returns %TRUE if the property is set, or stores rgb(0,0,0) or rgba(0,0,0,1) in `color`
+         * and returns %FALSE if the property is unset.
+         * @param prop a property name
+         * @returns %TRUE iff the property is set
+         */
+        get_property_rgba(prop: string): [boolean, Gdk.RGBA | null];
+        /**
+         * Like vte_properties_get_property_rgba() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns %TRUE iff the property is set
+         */
+        get_property_rgba_by_id(prop: number): [boolean, Gdk.RGBA | null];
+        /**
+         * Returns the value of a %VTE_PROPERTY_STRING property, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the property's value, or %NULL
+         */
+        get_property_string(prop: string): [string | null, number];
+        /**
+         * Like vte_properties_get_property_string() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value, or %NULL
+         */
+        get_property_string_by_id(prop: number): [string | null, number];
+        /**
+         * For a %VTE_PROPERTY_UINT property, sets `value` to `prop'`s value,
+         * or to 0 if `prop` is unset, or `prop` is not a registered property.
+         *
+         * If only a subset or range of values are acceptable for the given property,
+         * the caller must validate the returned value and treat any out-of-bounds
+         * value as if the property had no value; in particular it *must not* clamp
+         * the values to the expected range.
+         * @param prop a property name
+         * @returns %TRUE iff the property is set
+         */
+        get_property_uint(prop: string): [boolean, number];
+        /**
+         * Like vte_properties_get_property_uint() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns %TRUE iff the property is set
+         */
+        get_property_uint_by_id(prop: number): [boolean, number];
+        /**
+         * Returns %TRUE with the value of `prop` stored in `value` (if not %NULL) if,
+         *   the property has a value, or %FALSE if `prop` is unset, or `prop` is not
+         *   a registered property; in that case `value` will not be set.
+         *
+         * The value type returned depends on the property type:
+         * * A %VTE_PROPERTY_VALUELESS property stores no value, and returns %FALSE
+         *   from this function.
+         * * A %VTE_PROPERTY_BOOL property stores a %G_TYPE_BOOLEAN value.
+         * * A %VTE_PROPERTY_INT property stores a %G_TYPE_INT64 value.
+         * * A %VTE_PROPERTY_UINT property stores a %G_TYPE_UINT64 value.
+         * * A %VTE_PROPERTY_DOUBLE property stores a %G_TYPE_DOUBLE value.
+         * * A %VTE_PROPERTY_RGB property stores a boxed #GdkRGBA value with alpha 1.0 on gtk3,
+         *    and nothing on gtk4.
+         * * A %VTE_PROPERTY_RGBA property stores a boxed #GdkRGBA value on gtk3,
+         *    and nothing on gtk4.
+         * * A %VTE_PROPERTY_STRING property stores a %G_TYPE_STRING value.
+         * * A %VTE_PROPERTY_DATA property stores a boxed #GBytes value.
+         * * A %VTE_PROPERTY_UUID property stores a boxed #VteUuid value.
+         * * A %VTE_PROPERTY_URI property stores a boxed #GUri value.
+         * * A %VTE_PROPERTY_IMAGE property stores a boxed #cairo_surface_t value on gtk3,
+         *     and a boxed #GdkTexture on gtk4
+         * @param prop a property name
+         * @returns %TRUE iff the property has a value, with @gvalue containig   the property's value.
+         */
+        get_property_value(prop: string): [boolean, GObject.Value | null];
+        /**
+         * Like vte_properties_get_property_value() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns %TRUE iff the property has a value, with @gvalue containig   the property's value.
+         */
+        get_property_value_by_id(prop: number): [boolean, GObject.Value | null];
+        get_registry(): PropertiesRegistry;
+        /**
+         * Returns the value of a %VTE_PROPERTY_DATA property as a #GBytes, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the property's value as a #GBytes, or %NULL
+         */
+        ref_property_data_bytes(prop: string): GLib.Bytes | null;
+        /**
+         * Like vte_properties_ref_property_data_bytes() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value as a #GBytes, or %NULL
+         */
+        ref_property_data_bytes_by_id(prop: number): GLib.Bytes | null;
+        /**
+         * Returns the value of a %VTE_PROPERTY_IMAGE property as a #cairo_surface_t,
+         *   or %NULL if `prop` is unset, or `prop` is not a registered property.
+         *
+         * The surface will be a %CAIRO_SURFACE_TYPE_IMAGE with format
+         * %CAIRO_FORMAT_ARGB32 or %CAIRO_FORMAT_RGB24.
+         *
+         * Note that the returned surface is owned by `properties` and its contents
+         * must not be modified.
+         * @param prop a property name
+         * @returns the property's value as   a #cairo_surface_t, or %NULL
+         */
+        ref_property_image_surface(prop: string): cairo.Surface | null;
+        /**
+         * Like vte_properties_ref_property_image_surface() except that it takes the
+         * property by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value as a #cairo_surface_t, or %NULL
+         */
+        ref_property_image_surface_by_id(prop: number): cairo.Surface | null;
+        /**
+         * Returns the value of a %VTE_PROPERTY_IMAGE property as a #GdkTexture, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the property's value as a #GdkTexture,   or %NULL
+         */
+        ref_property_image_texture(prop: string): Gdk.Texture | null;
+        /**
+         * Like vte_properties_ref_property_image_texture() except that it takes the
+         * property by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value as a #GdkTexture,   or %NULL
+         */
+        ref_property_image_texture_by_id(prop: number): Gdk.Texture | null;
+        /**
+         * Returns the value of a %VTE_PROPERTY_URI property as a #GUri, or %NULL if
+         *   `prop` is unset, or `prop` is not a registered property.
+         * @param prop a property name
+         * @returns the property's value as a #GUri, or %NULL
+         */
+        ref_property_uri(prop: string): GLib.Uri | null;
+        /**
+         * Like vte_properties_ref_property_uri() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns the property's value as a #GUri, or %NULL
+         */
+        ref_property_uri_by_id(prop: number): GLib.Uri | null;
+        /**
+         * Returns the value of `prop` as a #GVariant, or %NULL if
+         *   `prop` unset, or `prop` is not a registered property.
+         *
+         * The #GVariantType of the returned #GVariant depends on the property type:
+         * * A %VTE_PROPERTY_VALUELESS property returns a %G_VARIANT_TYPE_UNIT variant.
+         * * A %VTE_PROPERTY_BOOL property returns a %G_VARIANT_TYPE_BOOLEAN variant.
+         * * A %VTE_PROPERTY_INT property returns a %G_VARIANT_TYPE_INT64 variant.
+         * * A %VTE_PROPERTY_UINT property returns a %G_VARIANT_TYPE_UINT64 variant.
+         * * A %VTE_PROPERTY_DOUBLE property returns a %G_VARIANT_TYPE_DOUBLE variant.
+         * * A %VTE_PROPERTY_RGB or %VTE_PROPERTY_RGBA property returns a "(ddddv)"
+         *   tuple containing the red, green, blue, and alpha (1.0 for %VTE_PROPERTY_RGB)
+         *   components of the color and a variant of unspecified contents
+         * * A %VTE_PROPERTY_STRING property returns a %G_VARIANT_TYPE_STRING variant.
+         * * A %VTE_PROPERTY_DATA property returns a "ay" variant (which is *not* a bytestring!).
+         * * A %VTE_PROPERTY_UUID property returns a %G_VARIANT_TYPE_STRING variant
+         *   containing a string representation of the UUID in simple form.
+         * * A %VTE_PROPERTY_URI property returns a %G_VARIANT_TYPE_STRING variant
+         *   containing a string representation of the URI
+         * * A %VTE_PROPERTY_IMAGE property returns %NULL since an image has no
+         *   variant representation.
+         * @param prop a property name
+         * @returns a floating #GVariant, or %NULL
+         */
+        ref_property_variant(prop: string): GLib.Variant | null;
+        /**
+         * Like vte_properties_ref_property_variant() except that it takes the property
+         * by ID. See that function for more information.
+         * @param prop a property ID
+         * @returns a floating #GVariant, or %NULL
+         */
+        ref_property_variant_by_id(prop: number): GLib.Variant | null;
+    }
+
+    /**
+     * A property registry.
+     */
+    abstract class PropertiesRegistry {
+        static $gtype: GObject.GType<PropertiesRegistry>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Gets the names of the installed properties in an unspecified order.
+         * @returns the names of the   installed properties, or %NULL if there are no properties
+         */
+        get_properties(): string[] | null;
+        /**
+         * Gets the property type of the property. For properties installed by
+         * vte_install_property(), the name starts with "vte.ext.".
+         *
+         * For an alias property (see vte_properties_registry_install_alias()),
+         * `resolved_name` will be name of the alias' target property; otherwise
+         * it will be `name`.
+         * @param name a property name
+         * @returns %TRUE iff the property exists, and then @prop, @type and   @flags will be filled in
+         */
+        query(name: string): [boolean, string, number, PropertyType | null, PropertyFlags | null];
+        /**
+         * Like vte_properties_registry_query_by_name() except that it takes the property by ID.
+         * See that function for more information.
+         *
+         * For an alias property (see vte_properties_registry_install_alias()),
+         * `resolved_name` will be name of the alias' target property; otherwise
+         * it will be `name`.
+         * @param prop a property ID for the registry
+         * @returns %TRUE iff the property exists, and then @name, @type and   @flags will be filled in
+         */
+        query_by_id(prop: number): [boolean, string, PropertyType | null, PropertyFlags | null];
     }
 
     type PtyClass = typeof Pty;
@@ -4623,6 +5117,9 @@ export namespace Vte {
         _init(...args: any[]): void;
     }
 
+    /**
+     * An object representing an UUID.
+     */
     class Uuid {
         static $gtype: GObject.GType<Uuid>;
 
@@ -4637,16 +5134,52 @@ export namespace Vte {
 
         // Static methods
 
+        /**
+         * Checks whether `str` is a valid string representation of an UUID.
+         * @param str a string
+         * @param len the length of @str, or -1 is @str is NUL terminated
+         * @param fmt a #VteUuidFormat
+         */
         static validate_string(str: string, len: number, fmt: UuidFormat): boolean;
 
         // Methods
 
+        /**
+         * Creates a copy of `uuid`.
+         * @returns a new copy of @@uuid
+         */
         dup(): Uuid;
+        /**
+         * Compares `uuid` and `other` for equality.
+         * @param other
+         * @returns %TRUE iff @uuid and @other are equal
+         */
         equal(other: Uuid): boolean;
+        /**
+         * Frees `uuid`.
+         */
         free(): void;
+        /**
+         * Frees `uuid` and returns its string representation, see
+         * vte_uuid_to_string() for more information.
+         * @param fmt a #VteUuidFormat
+         * @param len a location to store the length of the returned string, or %NULL
+         * @returns a string representation of @uuid
+         */
         free_to_string(fmt: UuidFormat | null, len: number): string;
+        /**
+         * Creates a new UUID for `ns` and `str`.
+         * @param data string data
+         * @param len the length of @data, or -1 if @str is NUL terminated
+         * @returns a new v5 UUID
+         */
         new_v5(data: string, len: number): Uuid;
-        to_string(fmt: UuidFormat | null, len: number): string;
+        /**
+         * Returns the string representation of `uuid`.
+         * @param fmt a #VteUuidFormat
+         * @returns a string representation of @uuid
+         */
+        to_string(fmt: UuidFormat | null): [string, number];
     }
 
     /**

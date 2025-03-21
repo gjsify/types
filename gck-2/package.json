@@ -1,7 +1,7 @@
 {
     "name": "@girs/gck-2",
-    "version": "4.3.91-4.0.0-beta.21",
-    "description": "GJS TypeScript type definitions for Gck-2, generated from library version 4.3.91",
+    "version": "4.4.0-4.0.0-beta.22",
+    "description": "GJS TypeScript type definitions for Gck-2, generated from library version 4.4.0",
     "type": "module",
     "module": "gck-2.js",
     "main": "gck-2.js",

@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type xlib from '@girs/xlib-2.0';
 import type xfixes from '@girs/xfixes-4.0';
@@ -22,7 +24,7 @@ import type Cogl from '@girs/cogl-16';
 import type GL from '@girs/gl-1.0';
 import type Clutter from '@girs/clutter-16';
 import type Pango from '@girs/pango-1.0';
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
 import type Atk from '@girs/atk-1.0';

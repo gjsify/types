@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -679,11 +681,11 @@ export namespace Bamf {
 
         vfunc_get_monitor(): number;
         vfunc_get_pid(): number;
-        vfunc_get_transient(): Window | null;
+        vfunc_get_transient(): Window;
         vfunc_get_utf8_prop(prop: string): string;
         vfunc_get_window_type(): WindowType;
         vfunc_get_xid(): number;
-        vfunc_last_active(): never;
+        vfunc_last_active(): number;
         vfunc_maximized(): WindowMaximizationType;
         vfunc_maximized_changed(old_value: number, new_value: number): void;
         vfunc_monitor_changed(old_value: number, new_value: number): void;
@@ -692,15 +694,23 @@ export namespace Bamf {
 
         get_monitor(): number;
         get_pid(): number;
-        get_transient(): Window | null;
+        get_transient(): Window;
         get_utf8_prop(prop: string): string;
         get_window_type(): WindowType;
         get_xid(): number;
-        last_active(): never;
+        last_active(): number;
         maximized(): WindowMaximizationType;
     }
 
     type ApplicationClass = typeof Application;
+    abstract class ApplicationPrivate {
+        static $gtype: GObject.GType<ApplicationPrivate>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     type ControlClass = typeof Control;
     abstract class ControlPrivate {
         static $gtype: GObject.GType<ControlPrivate>;
@@ -720,8 +730,32 @@ export namespace Bamf {
     }
 
     type TabClass = typeof Tab;
+    abstract class TabPrivate {
+        static $gtype: GObject.GType<TabPrivate>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     type ViewClass = typeof View;
+    abstract class ViewPrivate {
+        static $gtype: GObject.GType<ViewPrivate>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     type WindowClass = typeof Window;
+    abstract class WindowPrivate {
+        static $gtype: GObject.GType<WindowPrivate>;
+
+        // Constructors
+
+        _init(...args: any[]): void;
+    }
+
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

@@ -1,7 +1,7 @@
 {
     "name": "@girs/gtksource-5",
-    "version": "5.15.1-4.0.0-beta.21",
-    "description": "GJS TypeScript type definitions for GtkSource-5, generated from library version 5.15.1",
+    "version": "5.16.1-4.0.0-beta.22",
+    "description": "GJS TypeScript type definitions for GtkSource-5, generated from library version 5.16.1",
     "type": "module",
     "module": "gtksource-5.js",
     "main": "gtksource-5.js",

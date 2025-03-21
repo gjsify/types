@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -1361,8 +1363,6 @@ export namespace Gegl {
          * @param value a GValue containing the value to be set in the property.
          */
         set_property(property_name: string, value: GObject.Value | any): void;
-        // Conflicted with GObject.Object.set_property
-        set_property(...args: never[]): any;
         /**
          * Returns a freshly allocated \0 terminated string containing a XML
          * serialization of the composition produced by a node (and thus also

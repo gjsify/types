@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type xlib from '@girs/xlib-2.0';
 import type Mtk from '@girs/mtk-16';
@@ -2529,7 +2531,17 @@ export namespace Cogl {
         get_refresh_rate(): number;
         get_rendering_duration_ns(): number;
         get_sequence(): number;
+        /**
+         * Gets the target presentation time for the frame. This is the time at
+         * which the frame was expected to became visible to the user.
+         *
+         * The target presentation time measured in microseconds, is based on
+         * CLOCK_MONOTONIC.
+         * @returns the presentation time for the frame if available, or 0
+         */
+        get_target_presentation_time_us(): number;
         get_time_before_buffer_swap_us(): number;
+        get_view_frame_counter(): number;
         has_valid_gpu_rendering_duration(): boolean;
         is_hw_clock(): boolean;
         is_vsync(): boolean;
@@ -4685,6 +4697,19 @@ export namespace Cogl {
         get_winsys_id(): WinsysID;
         is_dma_buf_supported(): boolean;
         is_implicit_drm_modifier(modifier: number): boolean;
+        /**
+         * Requests that Cogl should try to use a specific underlying driver
+         * for rendering.
+         *
+         * If you select an unsupported driver then cogl_renderer_connect()
+         * will fail and report an error. Most applications should not
+         * explicitly select a driver and should rely on Cogl automatically
+         * choosing the driver.
+         *
+         * This may only be called on an un-connected #CoglRenderer.
+         * @param driver
+         */
+        set_driver(driver: DriverId | null): void;
     }
 
     namespace Scanout {

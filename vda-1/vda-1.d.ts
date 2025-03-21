@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GCalc from '@girs/gcalc-2';
 import type Gio from '@girs/gio-2.0';
@@ -413,7 +415,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -541,7 +557,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -691,11 +712,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CommandDelete {
@@ -880,7 +921,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1008,7 +1063,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1158,11 +1218,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CommandInsert {
@@ -1311,7 +1391,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1439,7 +1533,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1589,11 +1688,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CommandModification {
@@ -1775,7 +1894,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1903,7 +2036,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2053,11 +2191,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CommandSelect {
@@ -2237,7 +2395,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -2365,7 +2537,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2515,11 +2692,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace CommandUpdate {
@@ -2674,7 +2871,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -2802,7 +3013,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2952,11 +3168,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ConnectionParameter {
@@ -3364,7 +3600,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3492,7 +3742,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -3642,13 +3897,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionField {
@@ -3813,7 +4088,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3941,7 +4230,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4091,13 +4385,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperator {
@@ -4340,7 +4654,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4468,7 +4796,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4618,13 +4951,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorGroup {
@@ -4767,7 +5120,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4895,7 +5262,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5045,13 +5417,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorMultiterm {
@@ -5194,7 +5586,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5322,7 +5728,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5472,13 +5883,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorAnd {
@@ -5621,7 +6052,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5749,7 +6194,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5899,13 +6349,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorOr {
@@ -6048,7 +6518,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6176,7 +6660,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6326,13 +6815,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorBinaryterm {
@@ -6475,7 +6984,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6603,7 +7126,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6753,13 +7281,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorEq {
@@ -6902,7 +7450,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7030,7 +7592,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7180,13 +7747,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotEq {
@@ -7329,7 +7916,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7457,7 +8058,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7607,13 +8213,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorDiff {
@@ -7756,7 +8382,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7884,7 +8524,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8034,13 +8679,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorGt {
@@ -8183,7 +8848,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8311,7 +8990,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8461,13 +9145,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorLt {
@@ -8610,7 +9314,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8738,7 +9456,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8888,13 +9611,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorGeq {
@@ -9037,7 +9780,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -9165,7 +9922,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9315,13 +10077,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorLeq {
@@ -9464,7 +10246,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -9592,7 +10388,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9742,13 +10543,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorRegexp {
@@ -9891,7 +10712,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10019,7 +10854,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10169,13 +11009,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorStar {
@@ -10318,7 +11178,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10446,7 +11320,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10596,13 +11475,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorDiv {
@@ -10745,7 +11644,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10873,7 +11786,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11023,13 +11941,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIn {
@@ -11172,7 +12110,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11300,7 +12252,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11450,13 +12407,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotIn {
@@ -11599,7 +12576,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11727,7 +12718,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11877,13 +12873,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorConcatenate {
@@ -12026,7 +13042,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12154,7 +13184,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12304,13 +13339,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorSimilarTo {
@@ -12453,7 +13508,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12581,7 +13650,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12731,13 +13805,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorLike {
@@ -12880,7 +13974,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13008,7 +14116,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -13158,13 +14271,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotLike {
@@ -13307,7 +14440,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13435,7 +14582,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -13585,13 +14737,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIlike {
@@ -13734,7 +14906,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13862,7 +15048,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14012,13 +15203,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotIlike {
@@ -14161,7 +15372,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14289,7 +15514,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14439,13 +15669,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorBinaryUnaryterm {
@@ -14588,7 +15838,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14716,7 +15980,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14866,13 +16135,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorMinus {
@@ -15015,7 +16304,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15143,7 +16446,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15293,13 +16601,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorPlus {
@@ -15442,7 +16770,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15570,7 +16912,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15720,13 +17067,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorInitialUnaryterm {
@@ -15869,7 +17236,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15997,7 +17378,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16147,13 +17533,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNot {
@@ -16296,7 +17702,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -16424,7 +17844,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16574,13 +17999,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorFinalUnaryterm {
@@ -16723,7 +18168,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -16851,7 +18310,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17001,13 +18465,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIs {
@@ -17150,7 +18634,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -17278,7 +18776,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17428,13 +18931,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNot {
@@ -17577,7 +19100,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -17705,7 +19242,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17855,13 +19397,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNull {
@@ -18004,7 +19566,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18132,7 +19708,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18282,13 +19863,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNotNull {
@@ -18431,7 +20032,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18559,7 +20174,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18709,13 +20329,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsTrue {
@@ -18858,7 +20498,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18986,7 +20640,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19136,13 +20795,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNotTrue {
@@ -19285,7 +20964,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -19413,7 +21106,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19563,13 +21261,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsFalse {
@@ -19712,7 +21430,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -19840,7 +21572,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19990,13 +21727,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNotFalse {
@@ -20139,7 +21896,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20267,7 +22038,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20417,13 +22193,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNotUnknown {
@@ -20566,7 +22362,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20694,7 +22504,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20844,13 +22659,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsUnknown {
@@ -20993,7 +22828,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21121,7 +22970,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21271,13 +23125,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsDistinct {
@@ -21420,7 +23294,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21548,7 +23436,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21698,13 +23591,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNotDistinct {
@@ -21847,7 +23760,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21975,7 +23902,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22125,13 +24057,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsDistinctFrom {
@@ -22274,7 +24226,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22402,7 +24368,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22552,13 +24523,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorIsNotDistinctFrom {
@@ -22701,7 +24692,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22829,7 +24834,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22979,13 +24989,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorThreeterm {
@@ -23128,7 +25158,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23256,7 +25300,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23406,13 +25455,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorBetween {
@@ -23555,7 +25624,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23683,7 +25766,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23833,13 +25921,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorBetweenAnd {
@@ -23982,7 +26090,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24110,7 +26232,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24260,13 +26387,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotBetween {
@@ -24409,7 +26556,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24537,7 +26698,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24687,13 +26853,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotBetweenAnd {
@@ -24836,7 +27022,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24964,7 +27164,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25114,13 +27319,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorBetweenSymmetric {
@@ -25263,7 +27488,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25391,7 +27630,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25541,13 +27785,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorBetweenSymmetricAnd {
@@ -25690,7 +27954,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25818,7 +28096,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25968,13 +28251,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotBetweenSymmetric {
@@ -26117,7 +28420,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26245,7 +28562,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26395,13 +28717,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionOperatorNotBetweenSymmetricAnd {
@@ -26544,7 +28886,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26672,7 +29028,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26822,13 +29183,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionValue {
@@ -26987,7 +29368,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27115,7 +29510,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27265,13 +29665,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ExpressionValueParameter {
@@ -27436,7 +29856,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27564,7 +29998,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27714,13 +30153,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace HashList {
@@ -27972,7 +30431,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28100,7 +30573,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28250,13 +30728,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace InvalidQuery {
@@ -28428,7 +30926,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28556,7 +31068,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28706,11 +31223,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace InvalidPreparedQuery {
@@ -28856,7 +31393,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28984,7 +31535,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29134,11 +31690,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace InvalidResult {
@@ -29288,7 +31864,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -29416,7 +32006,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29566,11 +32161,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Parameters {
@@ -29718,7 +32333,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -29846,7 +32475,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29996,13 +32630,33 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractMap.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Parser {
@@ -30142,7 +32796,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30270,7 +32938,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30420,11 +33093,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TableReference {
@@ -30576,7 +33269,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30704,7 +33411,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30854,11 +33566,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Value {
@@ -31028,7 +33760,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31156,7 +33902,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -31306,11 +34057,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueNull {
@@ -31448,7 +34219,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31576,7 +34361,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -31726,11 +34516,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueString {
@@ -31868,7 +34678,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31996,7 +34820,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32146,11 +34975,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueXml {
@@ -32293,7 +35142,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -32421,7 +35284,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32571,11 +35439,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueJson {
@@ -32718,7 +35606,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -32846,7 +35748,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32996,11 +35903,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueText {
@@ -33138,7 +36065,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -33266,7 +36207,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -33416,11 +36362,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueName {
@@ -33558,7 +36524,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -33686,7 +36666,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -33836,11 +36821,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueBool {
@@ -33978,7 +36983,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -34106,7 +37125,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -34256,11 +37280,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueBit {
@@ -34398,7 +37442,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -34526,7 +37584,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -34676,11 +37739,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueInteger {
@@ -34840,7 +37923,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -34968,7 +38065,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -35118,11 +38220,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueByte {
@@ -35260,7 +38382,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -35388,7 +38524,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -35538,11 +38679,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueInt2 {
@@ -35680,7 +38841,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -35808,7 +38983,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -35958,11 +39138,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueInt4 {
@@ -36100,7 +39300,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -36228,7 +39442,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -36378,11 +39597,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueInt8 {
@@ -36520,7 +39759,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -36648,7 +39901,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -36798,11 +40056,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueUnsignedInteger {
@@ -36962,7 +40240,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -37090,7 +40382,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -37240,11 +40537,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueUnsignedByte {
@@ -37384,7 +40701,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -37512,7 +40843,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -37662,11 +40998,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueUnsignedInt2 {
@@ -37806,7 +41162,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -37934,7 +41304,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -38084,11 +41459,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueUnsignedInt4 {
@@ -38228,7 +41623,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -38356,7 +41765,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -38506,11 +41920,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueUnsignedInt8 {
@@ -38650,7 +42084,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -38778,7 +42226,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -38928,11 +42381,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueOid {
@@ -39070,7 +42543,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -39198,7 +42685,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -39348,11 +42840,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueNumeric {
@@ -39514,7 +43026,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -39642,7 +43168,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -39792,11 +43323,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueFloat {
@@ -39936,7 +43487,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -40064,7 +43629,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -40214,11 +43784,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueDouble {
@@ -40356,7 +43946,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -40484,7 +44088,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -40634,11 +44243,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueMoney {
@@ -40784,7 +44413,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -40912,7 +44555,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -41062,11 +44710,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueTimestamp {
@@ -41230,7 +44898,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -41358,7 +45040,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -41508,11 +45195,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueTimestampNtz {
@@ -41650,7 +45357,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -41778,7 +45499,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -41928,11 +45654,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueTime {
@@ -42070,7 +45816,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -42198,7 +45958,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -42348,11 +46113,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueTimeNtz {
@@ -42490,7 +46275,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -42618,7 +46417,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -42768,11 +46572,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueDate {
@@ -42918,7 +46742,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -43046,7 +46884,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -43196,11 +47039,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueBinary {
@@ -43353,7 +47216,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -43481,7 +47358,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -43631,11 +47513,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ValueMathExp {
@@ -43816,7 +47718,21 @@ export namespace Vda {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -43944,7 +47860,12 @@ export namespace Vda {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -44094,11 +48015,31 @@ export namespace Vda {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     type AffectedRowsClass = typeof AffectedRows;

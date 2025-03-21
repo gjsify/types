@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type libxml2 from '@girs/libxml2-2.0';
 import type Gio from '@girs/gio-2.0';
@@ -459,7 +461,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -587,7 +603,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -737,13 +758,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace NodeList {
@@ -928,7 +969,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1056,7 +1111,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1206,11 +1266,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableDouble {
@@ -1371,7 +1451,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1499,7 +1593,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1649,11 +1748,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableFloat {
@@ -1839,7 +1958,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1967,7 +2100,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2117,11 +2255,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableInt {
@@ -2319,7 +2477,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -2447,7 +2619,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2597,11 +2774,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableObjectModel {
@@ -2813,7 +3010,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -2941,7 +3152,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -3091,11 +3307,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableTreeMap {
@@ -3319,7 +3555,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3447,7 +3697,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -3597,13 +3852,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractMap.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableHashMap {
@@ -3827,7 +4102,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3955,7 +4244,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4105,13 +4399,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractMap.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableDualKeyMap {
@@ -4405,7 +4719,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4533,7 +4861,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4683,10 +5016,26 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableArrayList {
@@ -4910,7 +5259,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5038,7 +5401,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5188,13 +5556,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SerializableContainer {
@@ -5371,7 +5759,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5499,7 +5901,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5649,11 +6056,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TComment {
@@ -5799,7 +6226,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5927,7 +6368,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6077,11 +6523,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TCDATA {
@@ -6224,7 +6690,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6352,7 +6832,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6502,11 +6987,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TDocument {
@@ -6740,7 +7245,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6868,7 +7387,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7018,11 +7542,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TElement {
@@ -7186,7 +7730,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7314,7 +7872,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7464,11 +8027,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TNamespace {
@@ -7614,7 +8197,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7742,7 +8339,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7892,11 +8494,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TNode {
@@ -8099,7 +8721,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8227,7 +8863,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8377,11 +9018,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TNodeTChildrenList {
@@ -8544,7 +9205,21 @@ export namespace GXml {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8657,7 +9332,12 @@ export namespace GXml {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8807,11 +9487,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TText {
@@ -8957,7 +9657,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -9085,7 +9799,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9235,11 +9954,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace HtmlDocument {
@@ -9453,7 +10192,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -9581,7 +10334,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9731,11 +10489,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GComment {
@@ -9902,7 +10680,21 @@ export namespace GXml {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10015,7 +10807,12 @@ export namespace GXml {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10165,11 +10962,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GCharacterData {
@@ -10333,7 +11150,21 @@ export namespace GXml {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10446,7 +11277,12 @@ export namespace GXml {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10596,11 +11432,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GChildNode {
@@ -10740,7 +11596,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10868,7 +11738,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11018,11 +11893,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GNonDocumentChildNode {
@@ -11170,7 +12065,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11298,7 +12207,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11448,11 +12362,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GCDATA {
@@ -11595,7 +12529,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11723,7 +12671,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11873,11 +12826,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDocument {
@@ -12196,7 +13169,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12324,7 +13311,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12474,11 +13466,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GImplementation {
@@ -12624,7 +13636,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12752,7 +13778,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12902,11 +13933,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDocumentType {
@@ -13067,7 +14118,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13195,7 +14260,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -13345,11 +14415,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDocumentFragment {
@@ -13490,7 +14580,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13618,7 +14722,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -13768,11 +14877,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDomNodeIterator {
@@ -13936,7 +15065,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14064,7 +15207,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14214,11 +15362,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDomTreeWalker {
@@ -14386,7 +15554,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14514,7 +15696,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14664,11 +15851,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDomTokenList {
@@ -14842,7 +16049,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14970,7 +16191,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15120,13 +16346,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDomSettableTokenList {
@@ -15339,7 +16585,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15467,7 +16727,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15617,13 +16882,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDomEvent {
@@ -15804,7 +17089,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15932,7 +17231,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16082,11 +17386,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GDomCustomEvent {
@@ -16320,7 +17644,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -16448,7 +17786,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16598,11 +17941,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GElement {
@@ -16855,7 +18218,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -16983,7 +18360,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17133,11 +18515,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GNamespace {
@@ -17287,7 +18689,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -17415,7 +18831,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17565,11 +18986,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GNode {
@@ -17877,7 +19318,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18005,7 +19460,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18155,11 +19615,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GProcessingInstruction {
@@ -18323,7 +19803,21 @@ export namespace GXml {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18436,7 +19930,12 @@ export namespace GXml {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18586,11 +20085,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GText {
@@ -18763,7 +20282,21 @@ export namespace GXml {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18876,7 +20409,12 @@ export namespace GXml {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19026,11 +20564,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GHashMapAttr {
@@ -19187,7 +20745,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -19315,7 +20887,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19465,13 +21042,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractMap.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GHashMapAttrEntry {
@@ -19655,7 +21252,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -19783,7 +21394,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19933,11 +21549,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GListChildren {
@@ -20099,7 +21735,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20227,7 +21877,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20377,13 +22032,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GListChildrenIterator {
@@ -20597,7 +22272,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20725,7 +22414,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20875,10 +22569,26 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GListNamespaces {
@@ -21095,7 +22805,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21223,7 +22947,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21373,10 +23102,26 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DomNodeFilter {
@@ -21553,7 +23298,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21681,7 +23440,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21831,13 +23595,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DomEventInit {
@@ -22190,7 +23974,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22318,7 +24116,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22468,11 +24271,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomDocument {
@@ -22721,7 +24544,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22849,7 +24686,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22999,11 +24841,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomImplementation {
@@ -23149,7 +25011,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23277,7 +25153,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23427,11 +25308,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomDocumentType {
@@ -23682,7 +25583,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23810,7 +25725,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23960,11 +25880,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomDocumentFragment {
@@ -24134,7 +26074,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24262,7 +26216,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24412,11 +26371,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomElement {
@@ -24720,7 +26699,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24848,7 +26841,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24998,11 +26996,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomElementAttributes {
@@ -25162,7 +27180,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25290,7 +27322,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25440,13 +27477,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractMap.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomAttr {
@@ -25620,7 +27677,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25748,7 +27819,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25898,11 +27974,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomNode {
@@ -26141,7 +28237,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26269,7 +28379,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26419,11 +28534,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomNodeList {
@@ -26568,7 +28703,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26696,7 +28845,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26846,13 +29000,33 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
         // Conflicted with Gee.AbstractList.set
         set(...args: never[]): any;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomCharacterData {
@@ -27021,7 +29195,21 @@ export namespace GXml {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27134,7 +29322,12 @@ export namespace GXml {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27284,11 +29477,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomText {
@@ -27669,7 +29882,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27797,7 +30024,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27947,11 +30179,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomHashMap {
@@ -28148,7 +30400,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28276,7 +30542,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28426,11 +30697,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomHashPairedMap {
@@ -28646,7 +30937,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28774,7 +31079,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28924,11 +31234,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomHashThreeMap {
@@ -29156,7 +31486,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -29284,7 +31628,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29434,11 +31783,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomBaseProperty {
@@ -29593,7 +31962,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -29721,7 +32104,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29871,11 +32259,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomString {
@@ -30337,7 +32745,21 @@ export namespace GXml {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30465,7 +32887,12 @@ export namespace GXml {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30615,11 +33042,31 @@ export namespace GXml {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GomXsdSchema {

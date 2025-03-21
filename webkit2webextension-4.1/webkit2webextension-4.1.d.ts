@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type Soup from '@girs/soup-3.0';
 import type Gio from '@girs/gio-2.0';
@@ -17,7 +19,7 @@ import type JavaScriptCore from '@girs/javascriptcore-4.1';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
@@ -927,7 +929,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1055,7 +1071,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1205,11 +1226,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMBlob {
@@ -1373,7 +1414,21 @@ export namespace WebKit2WebExtension {
         get_data(key: string): any | null;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.get_data
         get_data(...args: never[]): any;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -1503,7 +1558,12 @@ export namespace WebKit2WebExtension {
         set_data(key: string, data?: any | null): void;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.set_data
         set_data(...args: never[]): any;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -1653,11 +1713,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMCSSRule {
@@ -2014,7 +2094,21 @@ export namespace WebKit2WebExtension {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -2127,7 +2221,12 @@ export namespace WebKit2WebExtension {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2277,11 +2376,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMClientRect {
@@ -2520,7 +2639,21 @@ export namespace WebKit2WebExtension {
         get_data(key: string): any | null;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.get_data
         get_data(...args: never[]): any;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -2650,7 +2783,12 @@ export namespace WebKit2WebExtension {
         set_data(key: string, data?: any | null): void;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.set_data
         set_data(...args: never[]): any;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -2800,11 +2938,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMDOMImplementation {
@@ -3261,7 +3419,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3389,7 +3561,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -3539,11 +3716,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMDocument {
@@ -4008,7 +4205,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4136,7 +4347,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4286,11 +4502,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMDocumentFragment {
@@ -4464,7 +4700,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4592,7 +4842,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4742,11 +4997,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMDocumentType {
@@ -4923,7 +5198,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5051,7 +5340,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5201,11 +5495,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMElement {
@@ -5596,7 +5910,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5724,7 +6052,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5874,11 +6207,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMEntityReference {
@@ -6024,7 +6377,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6152,7 +6519,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6302,11 +6674,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMEvent {
@@ -6666,7 +7058,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6794,7 +7200,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6944,11 +7355,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLAppletElement {
@@ -7149,7 +7580,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7277,7 +7722,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7427,11 +7877,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLAreaElement {
@@ -7642,7 +8112,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -7770,7 +8254,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -7920,11 +8409,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLBRElement {
@@ -8072,7 +8581,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8200,7 +8723,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8350,11 +8878,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLBaseElement {
@@ -8507,7 +9055,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8635,7 +9197,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8785,11 +9352,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLBaseFontElement {
@@ -8958,7 +9545,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -9086,7 +9687,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9236,11 +9842,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLBodyElement {
@@ -9422,7 +10048,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -9550,7 +10190,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9700,11 +10345,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLButtonElement {
@@ -9880,7 +10545,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10008,7 +10687,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10158,11 +10842,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLCanvasElement {
@@ -10315,7 +11019,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10443,7 +11161,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10593,11 +11316,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLCollection {
@@ -10773,7 +11516,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10901,7 +11658,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11051,11 +11813,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLDirectoryElement {
@@ -11203,7 +11985,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11331,7 +12127,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11481,11 +12282,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLDivElement {
@@ -11633,7 +12454,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11761,7 +12596,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11911,11 +12751,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLDocument {
@@ -12119,7 +12979,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12247,7 +13121,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12397,11 +13276,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLElement {
@@ -12635,7 +13534,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12763,7 +13676,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12913,11 +13831,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLEmbedElement {
@@ -13090,7 +14028,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13218,7 +14170,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -13368,11 +14325,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLFieldSetElement {
@@ -13518,7 +14495,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -13646,7 +14637,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -13796,11 +14792,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLFontElement {
@@ -13958,7 +14974,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14086,7 +15116,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14236,11 +15271,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLFormElement {
@@ -14429,7 +15484,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14557,7 +15626,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14707,11 +15781,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLFrameElement {
@@ -14925,7 +16019,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15053,7 +16161,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15203,11 +16316,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLFrameSetElement {
@@ -15360,7 +16493,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15488,7 +16635,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15638,11 +16790,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLHRElement {
@@ -15808,7 +16980,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15936,7 +17122,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16086,11 +17277,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLHeadElement {
@@ -16238,7 +17449,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -16366,7 +17591,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16516,11 +17746,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLHeadingElement {
@@ -16668,7 +17918,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -16796,7 +18060,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -16946,11 +18215,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLHtmlElement {
@@ -17098,7 +18387,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -17226,7 +18529,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17376,11 +18684,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLIFrameElement {
@@ -17595,7 +18923,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -17723,7 +19065,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -17873,11 +19220,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLImageElement {
@@ -18113,7 +19480,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18241,7 +19622,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18391,11 +19777,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLInputElement {
@@ -18676,7 +20082,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18804,7 +20224,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18954,11 +20379,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLLIElement {
@@ -19111,7 +20556,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -19239,7 +20698,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19389,11 +20853,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLLabelElement {
@@ -19547,7 +21031,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -19675,7 +21173,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -19825,11 +21328,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLLegendElement {
@@ -19980,7 +21503,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20108,7 +21645,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20258,11 +21800,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLLinkElement {
@@ -20457,7 +22019,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20585,7 +22161,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20735,11 +22316,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLMapElement {
@@ -20890,7 +22491,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21018,7 +22633,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21168,11 +22788,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLMarqueeElement {
@@ -21313,7 +22953,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21441,7 +23095,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21591,11 +23250,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLMenuElement {
@@ -21743,7 +23422,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21871,7 +23564,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22021,11 +23719,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLMetaElement {
@@ -22191,7 +23909,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22319,7 +24051,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22469,11 +24206,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLModElement {
@@ -22629,7 +24386,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22757,7 +24528,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22907,11 +24683,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLOListElement {
@@ -23069,7 +24865,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23197,7 +25007,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23347,11 +25162,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLObjectElement {
@@ -23587,7 +25422,21 @@ export namespace WebKit2WebExtension {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23700,7 +25549,12 @@ export namespace WebKit2WebExtension {
          * This function should only be called from object system implementations.
          */
         run_dispose(): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23850,11 +25704,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLOptGroupElement {
@@ -24007,7 +25881,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24135,7 +26023,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24285,11 +26178,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLOptionElement {
@@ -24469,7 +26382,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24597,7 +26524,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24747,11 +26679,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLOptionsCollection {
@@ -24934,7 +26886,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25062,7 +27028,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25212,11 +27183,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLParamElement {
@@ -25382,7 +27373,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25510,7 +27515,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25660,11 +27670,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLPreElement {
@@ -25817,7 +27847,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25945,7 +27989,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26095,11 +28144,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLQuoteElement {
@@ -26247,7 +28316,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26375,7 +28458,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26525,11 +28613,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLScriptElement {
@@ -26710,7 +28818,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26838,7 +28960,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26988,11 +29115,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLSelectElement {
@@ -27198,7 +29345,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27326,7 +29487,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27476,11 +29642,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLStyleElement {
@@ -27641,7 +29827,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27769,7 +29969,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27919,11 +30124,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTableCaptionElement {
@@ -28071,7 +30296,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28199,7 +30438,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28349,11 +30593,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTableCellElement {
@@ -28589,7 +30853,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28717,7 +30995,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28867,11 +31150,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTableColElement {
@@ -29050,7 +31353,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -29178,7 +31495,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29328,11 +31650,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTableElement {
@@ -29556,7 +31898,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -29684,7 +32040,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -29834,11 +32195,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTableRowElement {
@@ -30030,7 +32411,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30158,7 +32553,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30308,11 +32708,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTableSectionElement {
@@ -30486,7 +32906,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30614,7 +33048,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30764,11 +33203,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTextAreaElement {
@@ -30987,7 +33446,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31115,7 +33588,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -31265,11 +33743,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLTitleElement {
@@ -31417,7 +33915,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31545,7 +34057,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -31695,11 +34212,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMHTMLUListElement {
@@ -31852,7 +34389,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31980,7 +34531,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32130,11 +34686,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMKeyboardEvent {
@@ -32642,7 +35218,21 @@ export namespace WebKit2WebExtension {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -32770,7 +35360,12 @@ export namespace WebKit2WebExtension {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32920,11 +35515,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMNodeIterator {
@@ -33182,7 +35797,21 @@ export namespace WebKit2WebExtension {
         get_data(key: string): any | null;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.get_data
         get_data(...args: never[]): any;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -33312,7 +35941,12 @@ export namespace WebKit2WebExtension {
         set_data(key: string, data?: any | null): void;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.set_data
         set_data(...args: never[]): any;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -33462,11 +36096,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMRange {
@@ -33773,7 +36427,21 @@ export namespace WebKit2WebExtension {
         get_data(key: string): any | null;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.get_data
         get_data(...args: never[]): any;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -33903,7 +36571,12 @@ export namespace WebKit2WebExtension {
         set_data(key: string, data?: any | null): void;
         // Conflicted with WebKit2WebExtension.DOMCharacterData.set_data
         set_data(...args: never[]): any;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -34053,11 +36726,31 @@ export namespace WebKit2WebExtension {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DOMTreeWalker {

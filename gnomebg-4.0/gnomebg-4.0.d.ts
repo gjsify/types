@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GnomeDesktop from '@girs/gnomedesktop-4.0';
 import type Gio from '@girs/gio-2.0';
@@ -16,7 +18,7 @@ import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type GDesktopEnums from '@girs/gdesktopenums-3.0';
 import type Gdk from '@girs/gdk-4.0';
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';

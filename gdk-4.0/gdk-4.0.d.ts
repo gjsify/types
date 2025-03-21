@@ -7,8 +7,10 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type PangoCairo from '@girs/pangocairo-1.0';
@@ -1246,6 +1248,8 @@ export namespace Gdk {
     const EVENT_STOP: boolean;
     const KEY_0: number;
     const KEY_1: number;
+    const KEY_10ChannelsDown: number;
+    const KEY_10ChannelsUp: number;
     const KEY_2: number;
     const KEY_3: number;
     const KEY_3270_AltCursor: number;
@@ -1278,6 +1282,7 @@ export namespace Gdk {
     const KEY_3270_Rule: number;
     const KEY_3270_Setup: number;
     const KEY_3270_Test: number;
+    const KEY_3DMode: number;
     const KEY_4: number;
     const KEY_5: number;
     const KEY_6: number;
@@ -1286,6 +1291,7 @@ export namespace Gdk {
     const KEY_9: number;
     const KEY_A: number;
     const KEY_AE: number;
+    const KEY_ALSToggle: number;
     const KEY_Aacute: number;
     const KEY_Abelowdot: number;
     const KEY_Abreve: number;
@@ -1296,6 +1302,7 @@ export namespace Gdk {
     const KEY_Abrevetilde: number;
     const KEY_AccessX_Enable: number;
     const KEY_AccessX_Feedback_Enable: number;
+    const KEY_Accessibility: number;
     const KEY_Acircumflex: number;
     const KEY_Acircumflexacute: number;
     const KEY_Acircumflexbelowdot: number;
@@ -1303,6 +1310,7 @@ export namespace Gdk {
     const KEY_Acircumflexhook: number;
     const KEY_Acircumflextilde: number;
     const KEY_AddFavorite: number;
+    const KEY_Addressbook: number;
     const KEY_Adiaeresis: number;
     const KEY_Agrave: number;
     const KEY_Ahook: number;
@@ -1310,6 +1318,7 @@ export namespace Gdk {
     const KEY_Alt_R: number;
     const KEY_Amacron: number;
     const KEY_Aogonek: number;
+    const KEY_AppSelect: number;
     const KEY_ApplicationLeft: number;
     const KEY_ApplicationRight: number;
     const KEY_Arabic_0: number;
@@ -1483,9 +1492,16 @@ export namespace Gdk {
     const KEY_Armenian_yentamna: number;
     const KEY_Armenian_za: number;
     const KEY_Armenian_zhe: number;
+    const KEY_AspectRatio: number;
+    const KEY_Assistant: number;
     const KEY_Atilde: number;
+    const KEY_AttendantOff: number;
+    const KEY_AttendantOn: number;
+    const KEY_AttendantToggle: number;
     const KEY_AudibleBell_Enable: number;
+    const KEY_Audio: number;
     const KEY_AudioCycleTrack: number;
+    const KEY_AudioDesc: number;
     const KEY_AudioForward: number;
     const KEY_AudioLowerVolume: number;
     const KEY_AudioMedia: number;
@@ -1502,6 +1518,7 @@ export namespace Gdk {
     const KEY_AudioRepeat: number;
     const KEY_AudioRewind: number;
     const KEY_AudioStop: number;
+    const KEY_AutopilotEngageToggle: number;
     const KEY_Away: number;
     const KEY_B: number;
     const KEY_Babovedot: number;
@@ -1516,6 +1533,10 @@ export namespace Gdk {
     const KEY_BounceKeys_Enable: number;
     const KEY_Break: number;
     const KEY_BrightnessAdjust: number;
+    const KEY_BrightnessAuto: number;
+    const KEY_BrightnessMax: number;
+    const KEY_BrightnessMin: number;
+    const KEY_Buttonconfig: number;
     const KEY_Byelorussian_SHORTU: number;
     const KEY_Byelorussian_shortu: number;
     const KEY_C: number;
@@ -1527,19 +1548,34 @@ export namespace Gdk {
     const KEY_Cacute: number;
     const KEY_Calculator: number;
     const KEY_Calendar: number;
+    const KEY_CameraAccessDisable: number;
+    const KEY_CameraAccessEnable: number;
+    const KEY_CameraAccessToggle: number;
+    const KEY_CameraDown: number;
+    const KEY_CameraFocus: number;
+    const KEY_CameraLeft: number;
+    const KEY_CameraRight: number;
+    const KEY_CameraUp: number;
+    const KEY_CameraZoomIn: number;
+    const KEY_CameraZoomOut: number;
     const KEY_Cancel: number;
     const KEY_Caps_Lock: number;
     const KEY_Ccaron: number;
     const KEY_Ccedilla: number;
     const KEY_Ccircumflex: number;
     const KEY_Ch: number;
+    const KEY_ChannelDown: number;
+    const KEY_ChannelUp: number;
     const KEY_Clear: number;
     const KEY_ClearGrab: number;
+    const KEY_ClearvuSonar: number;
     const KEY_Close: number;
     const KEY_Codeinput: number;
     const KEY_ColonSign: number;
     const KEY_Community: number;
+    const KEY_ContextMenu: number;
     const KEY_ContrastAdjust: number;
+    const KEY_ControlPanel: number;
     const KEY_Control_L: number;
     const KEY_Control_R: number;
     const KEY_Copy: number;
@@ -1652,14 +1688,22 @@ export namespace Gdk {
     const KEY_Cyrillic_zhe_descender: number;
     const KEY_D: number;
     const KEY_DOS: number;
+    const KEY_DVD: number;
     const KEY_Dabovedot: number;
+    const KEY_Data: number;
+    const KEY_Database: number;
     const KEY_Dcaron: number;
     const KEY_Delete: number;
+    const KEY_Dictate: number;
     const KEY_Display: number;
+    const KEY_DisplayOff: number;
+    const KEY_DisplayToggle: number;
+    const KEY_DoNotDisturb: number;
     const KEY_Documents: number;
     const KEY_DongSign: number;
     const KEY_Down: number;
     const KEY_Dstroke: number;
+    const KEY_DualRangeRadar: number;
     const KEY_E: number;
     const KEY_ENG: number;
     const KEY_ETH: number;
@@ -1676,12 +1720,14 @@ export namespace Gdk {
     const KEY_Ecircumflextilde: number;
     const KEY_EcuSign: number;
     const KEY_Ediaeresis: number;
+    const KEY_Editor: number;
     const KEY_Egrave: number;
     const KEY_Ehook: number;
     const KEY_Eisu_Shift: number;
     const KEY_Eisu_toggle: number;
     const KEY_Eject: number;
     const KEY_Emacron: number;
+    const KEY_EmojiPicker: number;
     const KEY_End: number;
     const KEY_Eogonek: number;
     const KEY_Escape: number;
@@ -1740,13 +1786,19 @@ export namespace Gdk {
     const KEY_Farsi_8: number;
     const KEY_Farsi_9: number;
     const KEY_Farsi_yeh: number;
+    const KEY_FastReverse: number;
     const KEY_Favorites: number;
     const KEY_Finance: number;
     const KEY_Find: number;
     const KEY_First_Virtual_Screen: number;
+    const KEY_FishingChart: number;
+    const KEY_Fn: number;
+    const KEY_FnRightShift: number;
+    const KEY_Fn_Esc: number;
     const KEY_Forward: number;
     const KEY_FrameBack: number;
     const KEY_FrameForward: number;
+    const KEY_FullScreen: number;
     const KEY_G: number;
     const KEY_Gabovedot: number;
     const KEY_Game: number;
@@ -1794,6 +1846,7 @@ export namespace Gdk {
     const KEY_Georgian_zen: number;
     const KEY_Georgian_zhar: number;
     const KEY_Go: number;
+    const KEY_GraphicsEditor: number;
     const KEY_Greek_ALPHA: number;
     const KEY_Greek_ALPHAaccent: number;
     const KEY_Greek_BETA: number;
@@ -1977,6 +2030,7 @@ export namespace Gdk {
     const KEY_Hangul_YU: number;
     const KEY_Hangul_YeorinHieuh: number;
     const KEY_Hangul_switch: number;
+    const KEY_HangupPhone: number;
     const KEY_Hankaku: number;
     const KEY_Hcircumflex: number;
     const KEY_Hebrew_switch: number;
@@ -2043,11 +2097,14 @@ export namespace Gdk {
     const KEY_Igrave: number;
     const KEY_Ihook: number;
     const KEY_Imacron: number;
+    const KEY_Images: number;
+    const KEY_Info: number;
     const KEY_Insert: number;
     const KEY_Iogonek: number;
     const KEY_Itilde: number;
     const KEY_J: number;
     const KEY_Jcircumflex: number;
+    const KEY_Journal: number;
     const KEY_K: number;
     const KEY_KP_0: number;
     const KEY_KP_1: number;
@@ -2093,6 +2150,17 @@ export namespace Gdk {
     const KEY_Katakana: number;
     const KEY_KbdBrightnessDown: number;
     const KEY_KbdBrightnessUp: number;
+    const KEY_KbdInputAssistAccept: number;
+    const KEY_KbdInputAssistCancel: number;
+    const KEY_KbdInputAssistNext: number;
+    const KEY_KbdInputAssistNextgroup: number;
+    const KEY_KbdInputAssistPrev: number;
+    const KEY_KbdInputAssistPrevgroup: number;
+    const KEY_KbdLcdMenu1: number;
+    const KEY_KbdLcdMenu2: number;
+    const KEY_KbdLcdMenu3: number;
+    const KEY_KbdLcdMenu4: number;
+    const KEY_KbdLcdMenu5: number;
     const KEY_KbdLightOnOff: number;
     const KEY_Kcedilla: number;
     const KEY_Keyboard: number;
@@ -2130,7 +2198,10 @@ export namespace Gdk {
     const KEY_Lcaron: number;
     const KEY_Lcedilla: number;
     const KEY_Left: number;
+    const KEY_LeftDown: number;
+    const KEY_LeftUp: number;
     const KEY_LightBulb: number;
+    const KEY_LightsToggle: number;
     const KEY_Linefeed: number;
     const KEY_LiraSign: number;
     const KEY_LogGrabInfo: number;
@@ -2145,11 +2216,50 @@ export namespace Gdk {
     const KEY_Macedonia_dse: number;
     const KEY_Macedonia_gje: number;
     const KEY_Macedonia_kje: number;
+    const KEY_Macro1: number;
+    const KEY_Macro10: number;
+    const KEY_Macro11: number;
+    const KEY_Macro12: number;
+    const KEY_Macro13: number;
+    const KEY_Macro14: number;
+    const KEY_Macro15: number;
+    const KEY_Macro16: number;
+    const KEY_Macro17: number;
+    const KEY_Macro18: number;
+    const KEY_Macro19: number;
+    const KEY_Macro2: number;
+    const KEY_Macro20: number;
+    const KEY_Macro21: number;
+    const KEY_Macro22: number;
+    const KEY_Macro23: number;
+    const KEY_Macro24: number;
+    const KEY_Macro25: number;
+    const KEY_Macro26: number;
+    const KEY_Macro27: number;
+    const KEY_Macro28: number;
+    const KEY_Macro29: number;
+    const KEY_Macro3: number;
+    const KEY_Macro30: number;
+    const KEY_Macro4: number;
+    const KEY_Macro5: number;
+    const KEY_Macro6: number;
+    const KEY_Macro7: number;
+    const KEY_Macro8: number;
+    const KEY_Macro9: number;
+    const KEY_MacroPreset1: number;
+    const KEY_MacroPreset2: number;
+    const KEY_MacroPreset3: number;
+    const KEY_MacroPresetCycle: number;
+    const KEY_MacroRecordStart: number;
+    const KEY_MacroRecordStop: number;
     const KEY_Mae_Koho: number;
     const KEY_Mail: number;
     const KEY_MailForward: number;
+    const KEY_MarkWaypoint: number;
     const KEY_Market: number;
     const KEY_Massyo: number;
+    const KEY_MediaRepeat: number;
+    const KEY_MediaTopMenu: number;
     const KEY_Meeting: number;
     const KEY_Memo: number;
     const KEY_Menu: number;
@@ -2161,6 +2271,7 @@ export namespace Gdk {
     const KEY_MillSign: number;
     const KEY_ModeLock: number;
     const KEY_Mode_switch: number;
+    const KEY_MonBrightnessCycle: number;
     const KEY_MonBrightnessDown: number;
     const KEY_MonBrightnessUp: number;
     const KEY_MouseKeys_Accel_Enable: number;
@@ -2174,16 +2285,39 @@ export namespace Gdk {
     const KEY_N: number;
     const KEY_Nacute: number;
     const KEY_NairaSign: number;
+    const KEY_NavChart: number;
+    const KEY_NavInfo: number;
     const KEY_Ncaron: number;
     const KEY_Ncedilla: number;
     const KEY_New: number;
     const KEY_NewSheqelSign: number;
     const KEY_News: number;
     const KEY_Next: number;
+    const KEY_NextElement: number;
+    const KEY_NextFavorite: number;
     const KEY_Next_VMode: number;
     const KEY_Next_Virtual_Screen: number;
+    const KEY_NotificationCenter: number;
     const KEY_Ntilde: number;
     const KEY_Num_Lock: number;
+    const KEY_Numeric0: number;
+    const KEY_Numeric1: number;
+    const KEY_Numeric11: number;
+    const KEY_Numeric12: number;
+    const KEY_Numeric2: number;
+    const KEY_Numeric3: number;
+    const KEY_Numeric4: number;
+    const KEY_Numeric5: number;
+    const KEY_Numeric6: number;
+    const KEY_Numeric7: number;
+    const KEY_Numeric8: number;
+    const KEY_Numeric9: number;
+    const KEY_NumericA: number;
+    const KEY_NumericB: number;
+    const KEY_NumericC: number;
+    const KEY_NumericD: number;
+    const KEY_NumericPound: number;
+    const KEY_NumericStar: number;
     const KEY_O: number;
     const KEY_OE: number;
     const KEY_Oacute: number;
@@ -2208,6 +2342,7 @@ export namespace Gdk {
     const KEY_Ohornhook: number;
     const KEY_Ohorntilde: number;
     const KEY_Omacron: number;
+    const KEY_OnScreenKeyboard: number;
     const KEY_Ooblique: number;
     const KEY_Open: number;
     const KEY_OpenURL: number;
@@ -2222,8 +2357,10 @@ export namespace Gdk {
     const KEY_Page_Up: number;
     const KEY_Paste: number;
     const KEY_Pause: number;
+    const KEY_PauseRecord: number;
     const KEY_PesetaSign: number;
     const KEY_Phone: number;
+    const KEY_PickupPhone: number;
     const KEY_Pictures: number;
     const KEY_Pointer_Accelerate: number;
     const KEY_Pointer_Button1: number;
@@ -2257,11 +2394,14 @@ export namespace Gdk {
     const KEY_Pointer_UpRight: number;
     const KEY_PowerDown: number;
     const KEY_PowerOff: number;
+    const KEY_Presentation: number;
     const KEY_Prev_VMode: number;
     const KEY_Prev_Virtual_Screen: number;
     const KEY_PreviousCandidate: number;
+    const KEY_PreviousElement: number;
     const KEY_Print: number;
     const KEY_Prior: number;
+    const KEY_PrivacyScreenToggle: number;
     const KEY_Q: number;
     const KEY_R: number;
     const KEY_R1: number;
@@ -2281,22 +2421,28 @@ export namespace Gdk {
     const KEY_R9: number;
     const KEY_RFKill: number;
     const KEY_Racute: number;
+    const KEY_RadarOverlay: number;
     const KEY_Rcaron: number;
     const KEY_Rcedilla: number;
     const KEY_Red: number;
     const KEY_Redo: number;
     const KEY_Refresh: number;
+    const KEY_RefreshRateToggle: number;
     const KEY_Reload: number;
     const KEY_RepeatKeys_Enable: number;
     const KEY_Reply: number;
     const KEY_Return: number;
     const KEY_Right: number;
+    const KEY_RightDown: number;
+    const KEY_RightUp: number;
     const KEY_RockerDown: number;
     const KEY_RockerEnter: number;
     const KEY_RockerUp: number;
     const KEY_Romaji: number;
+    const KEY_RootMenu: number;
     const KEY_RotateWindows: number;
     const KEY_RotationKB: number;
+    const KEY_RotationLockToggle: number;
     const KEY_RotationPB: number;
     const KEY_RupeeSign: number;
     const KEY_S: number;
@@ -2308,6 +2454,7 @@ export namespace Gdk {
     const KEY_Scedilla: number;
     const KEY_Scircumflex: number;
     const KEY_ScreenSaver: number;
+    const KEY_Screensaver: number;
     const KEY_ScrollClick: number;
     const KEY_ScrollDown: number;
     const KEY_ScrollUp: number;
@@ -2315,6 +2462,7 @@ export namespace Gdk {
     const KEY_Search: number;
     const KEY_Select: number;
     const KEY_SelectButton: number;
+    const KEY_SelectiveScreenshot: number;
     const KEY_Send: number;
     const KEY_Serbian_DJE: number;
     const KEY_Serbian_DZE: number;
@@ -2332,7 +2480,9 @@ export namespace Gdk {
     const KEY_Shift_Lock: number;
     const KEY_Shift_R: number;
     const KEY_Shop: number;
+    const KEY_SidevuSonar: number;
     const KEY_SingleCandidate: number;
+    const KEY_SingleRangeRadar: number;
     const KEY_Sinh_a: number;
     const KEY_Sinh_aa: number;
     const KEY_Sinh_aa2: number;
@@ -2415,12 +2565,16 @@ export namespace Gdk {
     const KEY_Sinh_ya: number;
     const KEY_Sleep: number;
     const KEY_SlowKeys_Enable: number;
+    const KEY_SlowReverse: number;
+    const KEY_Sos: number;
     const KEY_Spell: number;
+    const KEY_SpellCheck: number;
     const KEY_SplitScreen: number;
     const KEY_Standby: number;
     const KEY_Start: number;
     const KEY_StickyKeys_Enable: number;
     const KEY_Stop: number;
+    const KEY_StopRecord: number;
     const KEY_Subtitle: number;
     const KEY_Super_L: number;
     const KEY_Super_R: number;
@@ -2444,6 +2598,7 @@ export namespace Gdk {
     const KEY_Tab: number;
     const KEY_Tabovedot: number;
     const KEY_TaskPane: number;
+    const KEY_Taskmanager: number;
     const KEY_Tcaron: number;
     const KEY_Tcedilla: number;
     const KEY_Terminal: number;
@@ -2541,6 +2696,7 @@ export namespace Gdk {
     const KEY_TouchpadOn: number;
     const KEY_TouchpadToggle: number;
     const KEY_Touroku: number;
+    const KEY_TraditionalSonar: number;
     const KEY_Travel: number;
     const KEY_Tslash: number;
     const KEY_U: number;
@@ -2576,6 +2732,7 @@ export namespace Gdk {
     const KEY_Umacron: number;
     const KEY_Undo: number;
     const KEY_Ungrab: number;
+    const KEY_Unmute: number;
     const KEY_Uogonek: number;
     const KEY_Up: number;
     const KEY_Uring: number;
@@ -2584,12 +2741,17 @@ export namespace Gdk {
     const KEY_UserPB: number;
     const KEY_Utilde: number;
     const KEY_V: number;
+    const KEY_VOD: number;
     const KEY_VendorHome: number;
     const KEY_Video: number;
+    const KEY_VideoPhone: number;
     const KEY_View: number;
+    const KEY_VoiceCommand: number;
+    const KEY_Voicemail: number;
     const KEY_VoidSymbol: number;
     const KEY_W: number;
     const KEY_WLAN: number;
+    const KEY_WPSButton: number;
     const KEY_WWAN: number;
     const KEY_WWW: number;
     const KEY_Wacute: number;
@@ -2623,6 +2785,7 @@ export namespace Gdk {
     const KEY_Zenkaku_Hankaku: number;
     const KEY_ZoomIn: number;
     const KEY_ZoomOut: number;
+    const KEY_ZoomReset: number;
     const KEY_Zstroke: number;
     const KEY_a: number;
     const KEY_aacute: number;
@@ -5578,7 +5741,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -5706,7 +5883,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5856,11 +6038,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ContentProvider {
@@ -6349,7 +6551,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -6477,7 +6693,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -6627,11 +6848,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     /**
@@ -8378,7 +8619,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8506,7 +8761,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -8656,11 +8916,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DmabufTextureBuilder {
@@ -10806,7 +11086,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10934,7 +11228,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11084,11 +11383,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace GLTextureBuilder {
@@ -11962,7 +12281,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12090,7 +12423,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12240,11 +12578,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace MemoryTextureBuilder {
@@ -13982,7 +14340,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14110,7 +14482,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14260,11 +14637,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     /**
@@ -14389,7 +14786,7 @@ export namespace Gdk {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -14432,7 +14829,7 @@ export namespace Gdk {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -14572,7 +14969,21 @@ export namespace Gdk {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -14700,7 +15111,12 @@ export namespace Gdk {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -14850,11 +15266,31 @@ export namespace Gdk {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     type CicpParamsClass = typeof CicpParams;

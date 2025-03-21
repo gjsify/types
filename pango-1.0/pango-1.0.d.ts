@@ -7,8 +7,10 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
@@ -1742,9 +1744,8 @@ export namespace Pango {
      * @param length length of text in bytes (may be -1 if @text is nul-terminated)
      * @param attr_list `PangoAttrList` to apply
      * @param offset Byte offset of @text from the beginning of the paragraph
-     * @param attrs array with one `PangoLogAttr`   per character in @text, plus one extra, to be filled in
      */
-    function attr_break(text: string, length: number, attr_list: AttrList, offset: number, attrs: LogAttr[]): void;
+    function attr_break(text: string, length: number, attr_list: AttrList, offset: number): LogAttr[];
     /**
      * Create a new font fallback attribute.
      *
@@ -2071,9 +2072,8 @@ export namespace Pango {
      * @param text the text to process. Must be valid UTF-8
      * @param length length of @text in bytes (may be -1 if @text is nul-terminated)
      * @param analysis `PangoAnalysis` structure for @text
-     * @param attrs an array to store character information in
      */
-    function __break(text: string, length: number, analysis: Analysis, attrs: LogAttr[]): void;
+    function __break(text: string, length: number, analysis: Analysis): LogAttr[];
     /**
      * This is the default break algorithm.
      *
@@ -2087,16 +2087,8 @@ export namespace Pango {
      * @param text text to break. Must be valid UTF-8
      * @param length length of text in bytes (may be -1 if @text is nul-terminated)
      * @param analysis a `PangoAnalysis` structure for the @text
-     * @param attrs logical attributes to fill in
-     * @param attrs_len size of the array passed as @attrs
      */
-    function default_break(
-        text: string,
-        length: number,
-        analysis: Analysis | null,
-        attrs: LogAttr,
-        attrs_len: number,
-    ): void;
+    function default_break(text: string, length: number, analysis: Analysis | null): LogAttr[];
     /**
      * Converts extents from Pango units to device units.
      *
@@ -2185,6 +2177,7 @@ export namespace Pango {
      *
      * FEATURES is a comma-separated list of font features of the form
      * \#‍feature1=value,feature2=value,...
+     * The =value part can be ommitted if the value is 1.
      *
      * Any one of the options may be absent. If FAMILY-LIST is absent, then
      * the family_name field of the resulting font description will be
@@ -2213,18 +2206,16 @@ export namespace Pango {
      * @param length length in bytes of @text
      * @param level embedding level, or -1 if unknown
      * @param language language tag
-     * @param attrs array with one `PangoLogAttr`   per character in @text, plus one extra, to be filled in
      */
-    function get_log_attrs(text: string, length: number, level: number, language: Language, attrs: LogAttr[]): void;
+    function get_log_attrs(text: string, length: number, level: number, language: Language): LogAttr[];
     /**
      * Returns the mirrored character of a Unicode character.
      *
      * Mirror characters are determined by the Unicode mirrored property.
      * @param ch a Unicode character
-     * @param mirrored_ch location to store the mirrored character
      * @returns %TRUE if @ch has a mirrored character and @mirrored_ch is filled in, %FALSE otherwise
      */
-    function get_mirror_char(ch: number, mirrored_ch: number): boolean;
+    function get_mirror_char(ch: number): [boolean, number];
     /**
      * Finds the gravity that best matches the rotation component
      * in a `PangoMatrix`.
@@ -2431,9 +2422,13 @@ export namespace Pango {
      * @param text the text to itemize.
      * @param length the number of bytes (not characters) to process, or -1   if @text is nul-terminated and the length should be calculated.
      * @param pbase_dir input base direction, and output resolved direction.
-     * @returns a newly allocated array of embedding levels, one item per   character (not byte), that should be freed using [func@GLib.free].
+     * @returns a newly allocated array of embedding   levels, one item per character (not byte), that should be freed using   [func@GLib.free].
      */
-    function log2vis_get_embedding_levels(text: string, length: number, pbase_dir: Direction | null): number;
+    function log2vis_get_embedding_levels(
+        text: string,
+        length: number,
+        pbase_dir: Direction | null,
+    ): [Uint8Array, Direction];
     /**
      * Finishes parsing markup.
      *
@@ -2705,9 +2700,8 @@ export namespace Pango {
      * @param text the text to process
      * @param length the length (in bytes) of @text
      * @param analysis `PangoAnalysis` structure from [func@Pango.itemize]
-     * @param glyphs glyph string in which to store results
      */
-    function shape(text: string, length: number, analysis: Analysis, glyphs: GlyphString): void;
+    function shape(text: string, length: number, analysis: Analysis): GlyphString;
     /**
      * Convert the characters in `text` into glyphs.
      *
@@ -2735,7 +2729,6 @@ export namespace Pango {
      * @param paragraph_text text of the paragraph (see details).
      * @param paragraph_length the length (in bytes) of @paragraph_text. -1 means nul-terminated text.
      * @param analysis `PangoAnalysis` structure from [func@Pango.itemize].
-     * @param glyphs glyph string in which to store results.
      */
     function shape_full(
         item_text: string,
@@ -2743,8 +2736,7 @@ export namespace Pango {
         paragraph_text: string | null,
         paragraph_length: number,
         analysis: Analysis,
-        glyphs: GlyphString,
-    ): void;
+    ): GlyphString;
     /**
      * Convert the characters in `item` into glyphs.
      *
@@ -2763,7 +2755,6 @@ export namespace Pango {
      * @param paragraph_text text of the paragraph (see details).
      * @param paragraph_length the length (in bytes) of @paragraph_text.     -1 means nul-terminated text.
      * @param log_attrs array of `PangoLogAttr` for @item
-     * @param glyphs glyph string in which to store results
      * @param flags flags influencing the shaping process
      */
     function shape_item(
@@ -2771,9 +2762,8 @@ export namespace Pango {
         paragraph_text: string | null,
         paragraph_length: number,
         log_attrs: LogAttr | null,
-        glyphs: GlyphString,
         flags: ShapeFlags | null,
-    ): void;
+    ): GlyphString;
     /**
      * Convert the characters in `text` into glyphs.
      *
@@ -2798,7 +2788,6 @@ export namespace Pango {
      * @param paragraph_text text of the paragraph (see details).
      * @param paragraph_length the length (in bytes) of @paragraph_text.     -1 means nul-terminated text.
      * @param analysis `PangoAnalysis` structure from [func@Pango.itemize]
-     * @param glyphs glyph string in which to store results
      * @param flags flags influencing the shaping process
      */
     function shape_with_flags(
@@ -2807,9 +2796,8 @@ export namespace Pango {
         paragraph_text: string | null,
         paragraph_length: number,
         analysis: Analysis,
-        glyphs: GlyphString,
         flags: ShapeFlags | null,
-    ): void;
+    ): GlyphString;
     /**
      * Skips 0 or more characters of white space.
      * @param pos in/out string position
@@ -2846,9 +2834,8 @@ export namespace Pango {
      * @param length length in bytes of @text
      * @param analysis `PangoAnalysis` for @text
      * @param offset Byte offset of @text from the beginning of the   paragraph, or -1 to ignore attributes from @analysis
-     * @param attrs array with one `PangoLogAttr`   per character in @text, plus one extra, to be filled in
      */
-    function tailor_break(text: string, length: number, analysis: Analysis, offset: number, attrs: LogAttr[]): void;
+    function tailor_break(text: string, length: number, analysis: Analysis, offset: number): LogAttr[];
     /**
      * Trims leading and trailing whitespace from a string.
      * @param str a string
@@ -4111,7 +4098,21 @@ export namespace Pango {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4239,7 +4240,12 @@ export namespace Pango {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4389,11 +4395,31 @@ export namespace Pango {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace FontMap {
@@ -4585,10 +4611,14 @@ export namespace Pango {
          */
         load_fontset(context: Context, desc: FontDescription, language: Language): Fontset | null;
         /**
-         * Returns a new font that is like `font,` except that its size
-         * is multiplied by `scale,` its backend-dependent configuration
-         * (e.g. cairo font options) is replaced by the one in `context,`
-         * and its variations are replaced by `variations`.
+         * Returns a new font that is like `font,` except that it is scaled
+         * by `scale,` its backend-dependent configuration (e.g. cairo font options)
+         * is replaced by the one in `context,` and its variations are replaced
+         * by `variations`.
+         *
+         * Note that the scaling here is meant to be linear, so this
+         * scaling can be used to render a font on a hi-dpi display
+         * without changing its optical size.
          * @param font a font in @fontmap
          * @param scale the scale factor to apply
          * @param context a `PangoContext`
@@ -4809,7 +4839,21 @@ export namespace Pango {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4937,7 +4981,12 @@ export namespace Pango {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -5087,11 +5136,31 @@ export namespace Pango {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Fontset {
@@ -7155,6 +7224,7 @@ export namespace Pango {
          *
          * FEATURES is a comma-separated list of font features of the form
          * \#‍feature1=value,feature2=value,...
+         * The =value part can be ommitted if the value is 1.
          *
          * Any one of the options may be absent. If FAMILY-LIST is absent, then
          * the family_name field of the resulting font description will be
@@ -7770,9 +7840,8 @@ export namespace Pango {
          *
          * See also [method`Pango`.GlyphString.get_logical_widths].
          * @param text text that @glyph_item corresponds to   (glyph_item->item->offset is an offset from the   start of @text)
-         * @param logical_widths an array whose length is the number of   characters in glyph_item (equal to glyph_item->item->num_chars)   to be filled in with the resulting character widths.
          */
-        get_logical_widths(text: string, logical_widths: number[]): void;
+        get_logical_widths(text: string): number[];
         /**
          * Adds spacing between the graphemes of `glyph_item` to
          * give the effect of typographic letter spacing.
@@ -7979,9 +8048,8 @@ export namespace Pango {
          * @param text the text corresponding to the glyphs
          * @param length the length of @text, in bytes
          * @param embedding_level the embedding level of the string
-         * @param logical_widths an array whose length is the number of   characters in text (equal to `g_utf8_strlen (text, length)` unless   text has `NUL` bytes) to be filled in with the resulting character widths.
          */
-        get_logical_widths(text: string, length: number, embedding_level: number, logical_widths: number[]): void;
+        get_logical_widths(text: string, length: number, embedding_level: number): number[];
         /**
          * Computes the logical width of the glyph string.
          *

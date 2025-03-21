@@ -1,7 +1,7 @@
 {
     "name": "@girs/gcr-4",
-    "version": "4.3.91-4.0.0-beta.21",
-    "description": "GJS TypeScript type definitions for Gcr-4, generated from library version 4.3.91",
+    "version": "4.4.0-4.0.0-beta.22",
+    "description": "GJS TypeScript type definitions for Gcr-4, generated from library version 4.4.0",
     "type": "module",
     "module": "gcr-4.js",
     "main": "gcr-4.js",

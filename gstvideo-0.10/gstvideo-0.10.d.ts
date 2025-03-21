@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type libxml2 from '@girs/libxml2-2.0';
 import type GstBase from '@girs/gstbase-0.10';

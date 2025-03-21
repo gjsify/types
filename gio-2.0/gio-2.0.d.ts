@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -452,7 +454,7 @@ export namespace Gio {
             entries: DBusErrorEntry[],
         ): void;
         /**
-         * Does nothing if `error` is %NULL. Otherwise sets *`error` to
+         * Does nothing if `error` is %NULL. Otherwise sets `*error` to
          * a new #GError created with g_dbus_error_new_for_dbus_error()
          * with `dbus_error_message` prepend with `format` (unless %NULL).
          * @param error A pointer to a #GError or %NULL.
@@ -1616,7 +1618,7 @@ export namespace Gio {
         // Static methods
 
         /**
-         * Gets the #GResource Error Quark.
+         * Gets the [struct`Gio`.Resource] Error Quark.
          */
         static quark(): GLib.Quark;
     }
@@ -2292,12 +2294,12 @@ export namespace Gio {
     const DBUS_METHOD_INVOCATION_UNHANDLED: boolean;
     /**
      * Extension point for debug control functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const DEBUG_CONTROLLER_EXTENSION_POINT_NAME: string;
     /**
      * Extension point for default handler to URI association. See
-     * [Extending GIO][extending-gio].
+     * [Extending GIO](overview.html#extending-gio).
      */
     const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string;
     /**
@@ -3169,7 +3171,7 @@ export namespace Gio {
     const FILE_ATTRIBUTE_UNIX_UID: string;
     /**
      * Extension point for memory usage monitoring functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const MEMORY_MONITOR_EXTENSION_POINT_NAME: string;
     /**
@@ -3231,22 +3233,22 @@ export namespace Gio {
     const NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME: string;
     /**
      * Extension point for network status monitoring functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const NETWORK_MONITOR_EXTENSION_POINT_NAME: string;
     /**
      * Extension point for power profile usage monitoring functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const POWER_PROFILE_MONITOR_EXTENSION_POINT_NAME: string;
     /**
      * Extension point for proxy functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const PROXY_EXTENSION_POINT_NAME: string;
     /**
      * Extension point for proxy resolving functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const PROXY_RESOLVER_EXTENSION_POINT_NAME: string;
     /**
@@ -3255,7 +3257,7 @@ export namespace Gio {
     const SETTINGS_BACKEND_EXTENSION_POINT_NAME: string;
     /**
      * Extension point for TLS functionality via #GTlsBackend.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const TLS_BACKEND_EXTENSION_POINT_NAME: string;
     /**
@@ -3270,7 +3272,7 @@ export namespace Gio {
     const TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER: string;
     /**
      * Extension point for #GVfs functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const VFS_EXTENSION_POINT_NAME: string;
     /**
@@ -3307,7 +3309,7 @@ export namespace Gio {
     const VOLUME_IDENTIFIER_KIND_UUID: string;
     /**
      * Extension point for volume monitor functionality.
-     * See [Extending GIO][extending-gio].
+     * See [Extending GIO](overview.html#extending-gio).
      */
     const VOLUME_MONITOR_EXTENSION_POINT_NAME: string;
     /**
@@ -4796,63 +4798,59 @@ export namespace Gio {
         cancellable?: Cancellable | null,
     ): void;
     /**
-     * Creates a keyfile-backed #GSettingsBackend.
+     * Creates a keyfile-backed [class`Gio`.SettingsBackend].
      *
      * The filename of the keyfile to use is given by `filename`.
      *
      * All settings read to or written from the backend must fall under the
      * path given in `root_path` (which must start and end with a slash and
-     * not contain two consecutive slashes).  `root_path` may be "/".
+     * not contain two consecutive slashes).  `root_path` may be `"/"`.
      *
-     * If `root_group` is non-%NULL then it specifies the name of the keyfile
+     * If `root_group` is non-`NULL` then it specifies the name of the keyfile
      * group used for keys that are written directly below `root_path`.  For
-     * example, if `root_path` is "/apps/example/" and `root_group` is
-     * "toplevel", then settings the key "/apps/example/enabled" to a value
-     * of %TRUE will cause the following to appear in the keyfile:
-     *
+     * example, if `root_path` is `"/apps/example/"` and `root_group` is
+     * `"toplevel"`, then setting the key `"/apps/example/enabled"` to true will
+     * cause the following to appear in the keyfile:
      *
      * ```
-     *   [toplevel]
-     *   enabled=true
+     * [toplevel]
+     * enabled=true
      * ```
      *
-     *
-     * If `root_group` is %NULL then it is not permitted to store keys
+     * If `root_group` is `NULL` then it is not permitted to store keys
      * directly below the `root_path`.
      *
      * For keys not stored directly below `root_path` (ie: in a sub-path),
      * the name of the subpath (with the final slash stripped) is used as
      * the name of the keyfile group.  To continue the example, if
-     * "/apps/example/profiles/default/font-size" were set to
-     * 12 then the following would appear in the keyfile:
-     *
+     * `"/apps/example/profiles/default/font-size"` were set to
+     * `12` then the following would appear in the keyfile:
      *
      * ```
-     *   [profiles/default]
-     *   font-size=12
+     * [profiles/default]
+     * font-size=12
      * ```
-     *
      *
      * The backend will refuse writes (and return writability as being
-     * %FALSE) for keys outside of `root_path` and, in the event that
-     * `root_group` is %NULL, also for keys directly under `root_path`.
+     * false) for keys outside of `root_path` and, in the event that
+     * `root_group` is `NULL`, also for keys directly under `root_path`.
      * Writes will also be refused if the backend detects that it has the
      * inability to rewrite the keyfile (ie: the containing directory is not
      * writable).
      *
      * There is no checking done for your key namespace clashing with the
-     * syntax of the key file format.  For example, if you have '[' or ']'
-     * characters in your path names or '=' in your key names you may be in
+     * syntax of the key file format.  For example, if you have `[` or `]`
+     * characters in your path names or `=` in your key names you may be in
      * trouble.
      *
      * The backend reads default values from a keyfile called `defaults` in
-     * the directory specified by the #GKeyfileSettingsBackend:defaults-dir property,
-     * and a list of locked keys from a text file with the name `locks` in
+     * the directory specified by the `GKeyfileSettingsBackend:defaults-dir`
+     * property, and a list of locked keys from a text file with the name `locks` in
      * the same location.
      * @param filename the filename of the keyfile
      * @param root_path the path under which all settings keys appear
-     * @param root_group the group name corresponding to              @root_path, or %NULL
-     * @returns a keyfile-backed #GSettingsBackend
+     * @param root_group the group name corresponding to @root_path, or    `NULL` to disallow storing keys directly beneath @root_path
+     * @returns a keyfile-backed [class@Gio.SettingsBackend]
      */
     function keyfile_settings_backend_new(
         filename: string,
@@ -5017,34 +5015,35 @@ export namespace Gio {
      */
     function resolver_error_quark(): GLib.Quark;
     /**
-     * Gets the #GResource Error Quark.
-     * @returns a #GQuark
+     * Gets the [struct`Gio`.Resource] Error Quark.
+     * @returns a [type@GLib.Quark]
      */
     function resource_error_quark(): GLib.Quark;
     /**
-     * Loads a binary resource bundle and creates a #GResource representation of it, allowing
-     * you to query it for data.
+     * Loads a binary resource bundle and creates a [struct`Gio`.Resource]
+     * representation of it, allowing you to query it for data.
      *
      * If you want to use this resource in the global resource namespace you need
-     * to register it with g_resources_register().
+     * to register it with [func`Gio`.resources_register].
      *
      * If `filename` is empty or the data in it is corrupt,
      * %G_RESOURCE_ERROR_INTERNAL will be returned. If `filename` doesn’t exist, or
-     * there is an error in reading it, an error from g_mapped_file_new() will be
-     * returned.
+     * there is an error in reading it, an error from [ctor`GLib`.MappedFile.new]
+     * will be returned.
      * @param filename the path of a filename to load, in the GLib filename encoding
-     * @returns a new #GResource, or %NULL on error
+     * @returns a new [struct@Gio.Resource], or `NULL` on error
      */
     function resource_load(filename: string): Resource;
     /**
      * Returns all the names of children at the specified `path` in the set of
      * globally registered resources.
-     * The return result is a %NULL terminated list of strings which should
-     * be released with g_strfreev().
+     *
+     * The return result is a `NULL` terminated list of strings which should
+     * be released with [func`GLib`.strfreev].
      *
      * `lookup_flags` controls the behaviour of the lookup.
-     * @param path A pathname inside the resource
-     * @param lookup_flags A #GResourceLookupFlags
+     * @param path A path name inside the resource
+     * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
      * @returns an array of constant strings
      */
     function resources_enumerate_children(path: string, lookup_flags: ResourceLookupFlags | null): string[];
@@ -5053,52 +5052,61 @@ export namespace Gio {
      * globally registered resources and if found returns information about it.
      *
      * `lookup_flags` controls the behaviour of the lookup.
-     * @param path A pathname inside the resource
-     * @param lookup_flags A #GResourceLookupFlags
-     * @returns %TRUE if the file was found. %FALSE if there were errors
+     * @param path A path name inside the resource
+     * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
+     * @returns `TRUE` if the file was found, `FALSE` if there were errors
      */
     function resources_get_info(path: string, lookup_flags: ResourceLookupFlags | null): [boolean, number, number];
     /**
+     * Returns whether the specified `path` in the set of
+     * globally registered resources has children.
+     * @param path A pathname
+     * @returns %TRUE if @patch has children
+     */
+    function resources_has_children(path: string): boolean;
+    /**
      * Looks for a file at the specified `path` in the set of
-     * globally registered resources and returns a #GBytes that
+     * globally registered resources and returns a [struct`GLib`.Bytes] that
      * lets you directly access the data in memory.
      *
      * The data is always followed by a zero byte, so you
      * can safely use the data as a C string. However, that byte
-     * is not included in the size of the GBytes.
+     * is not included in the size of the [struct`GLib`.Bytes].
      *
      * For uncompressed resource files this is a pointer directly into
-     * the resource bundle, which is typically in some readonly data section
+     * the resource bundle, which is typically in some read-only data section
      * in the program binary. For compressed files we allocate memory on
      * the heap and automatically uncompress the data.
      *
      * `lookup_flags` controls the behaviour of the lookup.
-     * @param path A pathname inside the resource
-     * @param lookup_flags A #GResourceLookupFlags
-     * @returns #GBytes or %NULL on error.     Free the returned object with g_bytes_unref()
+     * @param path A path name inside the resource
+     * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
+     * @returns [struct@GLib.Bytes] or `NULL` on error
      */
     function resources_lookup_data(path: string, lookup_flags: ResourceLookupFlags | null): GLib.Bytes;
     /**
      * Looks for a file at the specified `path` in the set of
-     * globally registered resources and returns a #GInputStream
+     * globally registered resources and returns a [class`Gio`.InputStream]
      * that lets you read the data.
      *
      * `lookup_flags` controls the behaviour of the lookup.
-     * @param path A pathname inside the resource
-     * @param lookup_flags A #GResourceLookupFlags
-     * @returns #GInputStream or %NULL on error.     Free the returned object with g_object_unref()
+     * @param path A path name inside the resource
+     * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
+     * @returns [class@Gio.InputStream] or `NULL` on error
      */
     function resources_open_stream(path: string, lookup_flags: ResourceLookupFlags | null): InputStream;
     /**
      * Registers the resource with the process-global set of resources.
+     *
      * Once a resource is registered the files in it can be accessed
-     * with the global resource lookup functions like g_resources_lookup_data().
-     * @param resource A #GResource
+     * with the global resource lookup functions like
+     * [func`Gio`.resources_lookup_data].
+     * @param resource A [struct@Gio.Resource]
      */
     function resources_register(resource: Resource): void;
     /**
      * Unregisters the resource from the process-global set of resources.
-     * @param resource A #GResource
+     * @param resource A [struct@Gio.Resource]
      */
     function resources_unregister(resource: Resource): void;
     /**
@@ -5188,202 +5196,302 @@ export namespace Gio {
     ): TlsServerConnection;
     /**
      * Determines if `mount_path` is considered an implementation of the
-     * OS. This is primarily used for hiding mountable and mounted volumes
+     * OS.
+     *
+     * This is primarily used for hiding mountable and mounted volumes
      * that only are used in the OS and has little to no relevance to the
      * casual user.
      * @param mount_path a mount path, e.g. `/media/disk` or `/usr`
-     * @returns %TRUE if @mount_path is considered an implementation detail     of the OS.
+     * @returns true if @mount_path is considered an implementation detail    of the OS; false otherwise
      */
     function unix_is_mount_path_system_internal(mount_path: string): boolean;
     /**
      * Determines if `device_path` is considered a block device path which is only
-     * used in implementation of the OS. This is primarily used for hiding
-     * mounted volumes that are intended as APIs for programs to read, and system
-     * administrators at a shell; rather than something that should, for example,
-     * appear in a GUI. For example, the Linux `/proc` filesystem.
+     * used in implementation of the OS.
+     *
+     * This is primarily used for hiding mounted volumes that are intended as APIs
+     * for programs to read, and system administrators at a shell; rather than
+     * something that should, for example, appear in a GUI. For example, the Linux
+     * `/proc` filesystem.
      *
      * The list of device paths considered ‘system’ ones may change over time.
      * @param device_path a device path, e.g. `/dev/loop0` or `nfsd`
-     * @returns %TRUE if @device_path is considered an implementation detail of    the OS.
+     * @returns true if @device_path is considered an implementation detail of    the OS; false otherwise
      */
     function unix_is_system_device_path(device_path: string): boolean;
     /**
      * Determines if `fs_type` is considered a type of file system which is only
-     * used in implementation of the OS. This is primarily used for hiding
-     * mounted volumes that are intended as APIs for programs to read, and system
-     * administrators at a shell; rather than something that should, for example,
-     * appear in a GUI. For example, the Linux `/proc` filesystem.
+     * used in implementation of the OS.
+     *
+     * This is primarily used for hiding mounted volumes that are intended as APIs
+     * for programs to read, and system administrators at a shell; rather than
+     * something that should, for example, appear in a GUI. For example, the Linux
+     * `/proc` filesystem.
      *
      * The list of file system types considered ‘system’ ones may change over time.
      * @param fs_type a file system type, e.g. `procfs` or `tmpfs`
-     * @returns %TRUE if @fs_type is considered an implementation detail of the OS.
+     * @returns true if @fs_type is considered an implementation detail of the OS;    false otherwise
      */
     function unix_is_system_fs_type(fs_type: string): boolean;
     /**
-     * Gets a #GUnixMountEntry for a given mount path. If `time_read`
-     * is set, it will be filled with a unix timestamp for checking
-     * if the mounts have changed since with g_unix_mounts_changed_since().
+     * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
      *
      * If more mounts have the same mount path, the last matching mount
      * is returned.
      *
-     * This will return %NULL if there is no mount point at `mount_path`.
-     * @param mount_path path for a possible unix mount.
-     * @returns a #GUnixMountEntry.
+     * This will return `NULL` if there is no mount point at `mount_path`.
+     * @param mount_path path for a possible Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
      */
     function unix_mount_at(mount_path: string): [UnixMountEntry | null, number];
     /**
-     * Compares two unix mounts.
-     * @param mount1 first #GUnixMountEntry to compare.
-     * @param mount2 second #GUnixMountEntry to compare.
-     * @returns 1, 0 or -1 if @mount1 is greater than, equal to, or less than @mount2, respectively.
+     * Compares two Unix mounts.
+     * @param mount1 first [struct@GioUnix.MountEntry] to compare
+     * @param mount2 second [struct@GioUnix.MountEntry] to compare
+     * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
      */
     function unix_mount_compare(mount1: UnixMountEntry, mount2: UnixMountEntry): number;
     /**
      * Makes a copy of `mount_entry`.
-     * @param mount_entry a #GUnixMountEntry.
-     * @returns a new #GUnixMountEntry
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a new [struct@GioUnix.MountEntry]
      */
     function unix_mount_copy(mount_entry: UnixMountEntry): UnixMountEntry;
     /**
-     * Gets a #GUnixMountEntry for a given file path. If `time_read`
-     * is set, it will be filled with a unix timestamp for checking
-     * if the mounts have changed since with g_unix_mounts_changed_since().
+     * Checks if the Unix mounts have changed since a given Unix time.
+     *
+     * This can only work reliably if a [class`GioUnix`.MountMonitor] is running in
+     * the process, otherwise changes in the mount entries file (such as
+     * `/proc/self/mountinfo` on Linux) cannot be detected and, as a result, this
+     * function has to conservatively always return `TRUE`.
+     *
+     * It is more efficient to use [signal`GioUnix`.MountMonitor::mounts-changed] to
+     * be signalled of changes to the mount entries, rather than polling using this
+     * function. This function is more appropriate for infrequently determining
+     * cache validity.
+     * @param time a timestamp
+     * @returns true if the mounts have changed since @time; false otherwise Since 2.84
+     */
+    function unix_mount_entries_changed_since(time: number): boolean;
+    /**
+     * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
+     * mounts.
+     *
+     * If `time_read` is set, it will be filled with the mount timestamp, allowing
+     * for checking if the mounts have changed with
+     * [func`GioUnix`.mount_entries_changed_since].
+     * @returns a list of the    Unix mounts
+     */
+    function unix_mount_entries_get(): [UnixMountEntry[], number];
+    /**
+     * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
+     * listed in `table_path`.
+     *
+     * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
+     * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
+     * may parse multiple hierarchical table files, so this function is not a direct
+     * superset of its functionality.
+     *
+     * If there is an error reading or parsing the file, `NULL` will be returned
+     * and both out parameters will be set to `0`.
+     * @param table_path path to the mounts table file (for example `/proc/self/mountinfo`)
+     * @returns mount   entries, or `NULL` if there was an error loading them
+     */
+    function unix_mount_entries_get_from_file(table_path: string): [UnixMountEntry[] | null, number];
+    /**
+     * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
      *
      * If more mounts have the same mount path, the last matching mount
      * is returned.
      *
-     * This will return %NULL if looking up the mount entry fails, if
+     * This will return `NULL` if there is no mount point at `mount_path`.
+     * @param mount_path path for a possible Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
+     */
+    function unix_mount_entry_at(mount_path: string): [UnixMountEntry | null, number];
+    /**
+     * Gets a [struct`GioUnix`.MountEntry] for a given file path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
+     *
+     * If more mounts have the same mount path, the last matching mount
+     * is returned.
+     *
+     * This will return `NULL` if looking up the mount entry fails, if
      * `file_path` doesn’t exist or there is an I/O error.
-     * @param file_path file path on some unix mount.
-     * @returns a #GUnixMountEntry.
+     * @param file_path file path on some Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
+     */
+    function unix_mount_entry_for(file_path: string): [UnixMountEntry | null, number];
+    /**
+     * Gets a [struct`GioUnix`.MountEntry] for a given file path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking
+     * if the mounts have changed since with
+     * [func`GioUnix`.mount_entries_changed_since].
+     *
+     * If more mounts have the same mount path, the last matching mount
+     * is returned.
+     *
+     * This will return `NULL` if looking up the mount entry fails, if
+     * `file_path` doesn’t exist or there is an I/O error.
+     * @param file_path file path on some Unix mount
+     * @returns a [struct@GioUnix.MountEntry]
      */
     function unix_mount_for(file_path: string): [UnixMountEntry | null, number];
     /**
-     * Frees a unix mount.
-     * @param mount_entry a #GUnixMountEntry.
+     * Frees a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
      */
     function unix_mount_free(mount_entry: UnixMountEntry): void;
     /**
-     * Gets the device path for a unix mount.
-     * @param mount_entry a #GUnixMount.
-     * @returns a string containing the device path.
+     * Gets the device path for a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the device path
      */
     function unix_mount_get_device_path(mount_entry: UnixMountEntry): string;
     /**
-     * Gets the filesystem type for the unix mount.
-     * @param mount_entry a #GUnixMount.
-     * @returns a string containing the file system type.
+     * Gets the filesystem type for the Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the file system type
      */
     function unix_mount_get_fs_type(mount_entry: UnixMountEntry): string;
     /**
-     * Gets the mount path for a unix mount.
-     * @param mount_entry input #GUnixMountEntry to get the mount path for.
-     * @returns the mount path for @mount_entry.
+     * Gets the mount path for a Unix mount.
+     * @param mount_entry a [struct@GioUnix.MountEntry] to get the mount path for
+     * @returns the mount path for @mount_entry
      */
     function unix_mount_get_mount_path(mount_entry: UnixMountEntry): string;
     /**
-     * Gets a comma-separated list of mount options for the unix mount. For example,
-     * `rw,relatime,seclabel,data=ordered`.
+     * Gets a comma separated list of mount options for the Unix mount.
      *
-     * This is similar to g_unix_mount_point_get_options(), but it takes
-     * a #GUnixMountEntry as an argument.
-     * @param mount_entry a #GUnixMountEntry.
-     * @returns a string containing the options, or %NULL if not available.
+     * For example: `rw,relatime,seclabel,data=ordered`.
+     *
+     * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
+     * a [struct`GioUnix`.MountEntry] as an argument.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the options, or `NULL` if not    available.
      */
     function unix_mount_get_options(mount_entry: UnixMountEntry): string | null;
     /**
      * Gets the root of the mount within the filesystem. This is useful e.g. for
      * mounts created by bind operation, or btrfs subvolumes.
      *
-     * For example, the root path is equal to "/" for mount created by
-     * "mount /dev/sda1 /mnt/foo" and "/bar" for
-     * "mount --bind /mnt/foo/bar /mnt/bar".
-     * @param mount_entry a #GUnixMountEntry.
-     * @returns a string containing the root, or %NULL if not supported.
+     * For example, the root path is equal to `/` for a mount created by
+     * `mount /dev/sda1 /mnt/foo` and `/bar` for
+     * `mount --bind /mnt/foo/bar /mnt/bar`.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a string containing the root, or `NULL` if not supported
      */
     function unix_mount_get_root_path(mount_entry: UnixMountEntry): string | null;
     /**
-     * Guesses whether a Unix mount can be ejected.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns %TRUE if @mount_entry is deemed to be ejectable.
+     * Guesses whether a Unix mount entry can be ejected.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is deemed to be ejectable; false otherwise
      */
     function unix_mount_guess_can_eject(mount_entry: UnixMountEntry): boolean;
     /**
-     * Guesses the icon of a Unix mount.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns a #GIcon
+     * Guesses the icon of a Unix mount entry.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a [iface@Gio.Icon]
      */
     function unix_mount_guess_icon(mount_entry: UnixMountEntry): Icon;
     /**
-     * Guesses the name of a Unix mount.
+     * Guesses the name of a Unix mount entry.
+     *
      * The result is a translated string.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns A newly allocated string that must     be freed with g_free()
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a newly allocated translated string
      */
     function unix_mount_guess_name(mount_entry: UnixMountEntry): string;
     /**
-     * Guesses whether a Unix mount should be displayed in the UI.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns %TRUE if @mount_entry is deemed to be displayable.
+     * Guesses whether a Unix mount entry should be displayed in the UI.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is deemed to be displayable; false otherwise
      */
     function unix_mount_guess_should_display(mount_entry: UnixMountEntry): boolean;
     /**
-     * Guesses the symbolic icon of a Unix mount.
-     * @param mount_entry a #GUnixMountEntry
-     * @returns a #GIcon
+     * Guesses the symbolic icon of a Unix mount entry.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns a [iface@Gio.Icon]
      */
     function unix_mount_guess_symbolic_icon(mount_entry: UnixMountEntry): Icon;
     /**
-     * Checks if a unix mount is mounted read only.
-     * @param mount_entry a #GUnixMount.
-     * @returns %TRUE if @mount_entry is read only.
+     * Checks if a Unix mount is mounted read only.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if @mount_entry is read only; false otherwise
      */
     function unix_mount_is_readonly(mount_entry: UnixMountEntry): boolean;
     /**
-     * Checks if a Unix mount is a system mount. This is the Boolean OR of
-     * g_unix_is_system_fs_type(), g_unix_is_system_device_path() and
-     * g_unix_is_mount_path_system_internal() on `mount_entry’`s properties.
+     * Checks if a Unix mount is a system mount.
+     *
+     * This is the Boolean OR of
+     * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
+     * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
      *
      * The definition of what a ‘system’ mount entry is may change over time as new
      * file system types and device paths are ignored.
-     * @param mount_entry a #GUnixMount.
-     * @returns %TRUE if the unix mount is for a system path.
+     * @param mount_entry a [struct@GioUnix.MountEntry]
+     * @returns true if the Unix mount is for a system path; false otherwise
      */
     function unix_mount_is_system_internal(mount_entry: UnixMountEntry): boolean;
     /**
-     * Gets a #GUnixMountPoint for a given mount path. If `time_read` is set, it
-     * will be filled with a unix timestamp for checking if the mount points have
-     * changed since with g_unix_mount_points_changed_since().
+     * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
+     *
+     * If `time_read` is set, it will be filled with a Unix timestamp for checking if
+     * the mount points have changed since with
+     * [func`GioUnix`.mount_points_changed_since].
      *
      * If more mount points have the same mount path, the last matching mount point
      * is returned.
-     * @param mount_path path for a possible unix mount point.
-     * @returns a #GUnixMountPoint, or %NULL if no match is found.
+     * @param mount_path path for a possible Unix mount point
+     * @returns a [struct@GioUnix.MountPoint], or `NULL`    if no match is found
      */
     function unix_mount_point_at(mount_path: string): [UnixMountPoint | null, number];
     /**
-     * Checks if the unix mount points have changed since a given unix time.
-     * @param time guint64 to contain a timestamp.
-     * @returns %TRUE if the mount points have changed since @time.
+     * Checks if the Unix mount points have changed since a given Unix time.
+     *
+     * Unlike [func`GioUnix`.mount_entries_changed_since], this function can work
+     * reliably without a [class`GioUnix`.MountMonitor] running, as it accesses the
+     * static mount point information (such as `/etc/fstab` on Linux), which has a
+     * valid modification time.
+     *
+     * It is more efficient to use [signal`GioUnix`.MountMonitor::mountpoints-changed]
+     * to be signalled of changes to the mount points, rather than polling using
+     * this function. This function is more appropriate for infrequently determining
+     * cache validity.
+     * @param time a timestamp
+     * @returns true if the mount points have changed since @time; false otherwise
      */
     function unix_mount_points_changed_since(time: number): boolean;
     /**
-     * Gets a #GList of #GUnixMountPoint containing the unix mount points.
-     * If `time_read` is set, it will be filled with the mount timestamp,
-     * allowing for checking if the mounts have changed with
-     * g_unix_mount_points_changed_since().
-     * @returns a #GList of the UNIX mountpoints.
+     * Gets a list of [struct`GioUnix`.MountPoint] instances representing the Unix
+     * mount points.
+     *
+     * If `time_read` is set, it will be filled with the mount timestamp, allowing
+     * for checking if the mounts have changed with
+     * [func`GioUnix`.mount_points_changed_since].
+     * @returns a list of the Unix    mount points
      */
     function unix_mount_points_get(): [UnixMountPoint[], number];
     /**
      * Gets an array of [struct`Gio`.UnixMountPoint]s containing the Unix mount
      * points listed in `table_path`.
      *
-     * This is a generalized version of g_unix_mount_points_get(), mainly intended
-     * for internal testing use. Note that g_unix_mount_points_get() may parse
-     * multiple hierarchical table files, so this function is not a direct superset
-     * of its functionality.
+     * This is a generalized version of [func`GioUnix`.mount_points_get], mainly
+     * intended for internal testing use. Note that [func`GioUnix`.mount_points_get]
+     * may parse multiple hierarchical table files, so this function is not a direct
+     * superset of its functionality.
      *
      * If there is an error reading or parsing the file, `NULL` will be returned
      * and both out parameters will be set to `0`.
@@ -5392,27 +5500,29 @@ export namespace Gio {
      */
     function unix_mount_points_get_from_file(table_path: string): [UnixMountPoint[] | null, number];
     /**
-     * Checks if the unix mounts have changed since a given unix time.
-     * @param time guint64 to contain a timestamp.
-     * @returns %TRUE if the mounts have changed since @time.
+     * Checks if the Unix mounts have changed since a given Unix time.
+     * @param time a timestamp
+     * @returns true if the mounts have changed since @time; false otherwise
      */
     function unix_mounts_changed_since(time: number): boolean;
     /**
-     * Gets a #GList of #GUnixMountEntry containing the unix mounts.
-     * If `time_read` is set, it will be filled with the mount
-     * timestamp, allowing for checking if the mounts have changed
-     * with g_unix_mounts_changed_since().
-     * @returns a #GList of the UNIX mounts.
+     * Gets a list of [struct`GioUnix`.MountEntry] instances representing the Unix
+     * mounts.
+     *
+     * If `time_read` is set, it will be filled with the mount timestamp, allowing
+     * for checking if the mounts have changed with
+     * [func`GioUnix`.mount_entries_changed_since].
+     * @returns a list of the    Unix mounts
      */
     function unix_mounts_get(): [UnixMountEntry[], number];
     /**
      * Gets an array of [struct`Gio`.UnixMountEntry]s containing the Unix mounts
      * listed in `table_path`.
      *
-     * This is a generalized version of g_unix_mounts_get(), mainly intended for
-     * internal testing use. Note that g_unix_mounts_get() may parse multiple
-     * hierarchical table files, so this function is not a direct superset of its
-     * functionality.
+     * This is a generalized version of [func`GioUnix`.mount_entries_get], mainly
+     * intended for internal testing use. Note that [func`GioUnix`.mount_entries_get]
+     * may parse multiple hierarchical table files, so this function is not a direct
+     * superset of its functionality.
      *
      * If there is an error reading or parsing the file, `NULL` will be returned
      * and both out parameters will be set to `0`.
@@ -5444,7 +5554,7 @@ export namespace Gio {
     interface DBusInterfaceGetPropertyFunc {
         (
             connection: DBusConnection,
-            sender: string,
+            sender: string | null,
             object_path: string,
             interface_name: string,
             property_name: string,
@@ -5454,9 +5564,9 @@ export namespace Gio {
     interface DBusInterfaceMethodCallFunc {
         (
             connection: DBusConnection,
-            sender: string,
+            sender: string | null,
             object_path: string,
-            interface_name: string,
+            interface_name: string | null,
             method_name: string,
             parameters: GLib.Variant,
             invocation: DBusMethodInvocation,
@@ -5465,7 +5575,7 @@ export namespace Gio {
     interface DBusInterfaceSetPropertyFunc {
         (
             connection: DBusConnection,
-            sender: string,
+            sender: string | null,
             object_path: string,
             interface_name: string,
             property_name: string,
@@ -5538,10 +5648,10 @@ export namespace Gio {
         (value: GObject.Value | any, variant: GLib.Variant): boolean;
     }
     interface SettingsBindSetMapping {
-        (value: GObject.Value | any, expected_type: GLib.VariantType): GLib.Variant;
+        (value: GObject.Value | any, expected_type: GLib.VariantType): GLib.Variant | null;
     }
     interface SettingsGetMapping {
-        (value: GLib.Variant): boolean;
+        (value: GLib.Variant | null): boolean;
     }
     interface SimpleAsyncThreadFunc<A = GObject.Object> {
         (res: SimpleAsyncResult, object: A, cancellable?: Cancellable | null): void;
@@ -5553,7 +5663,7 @@ export namespace Gio {
         (task: Task, source_object: A, task_data?: any | null, cancellable?: Cancellable | null): void;
     }
     interface VfsFileLookupFunc {
-        (vfs: Vfs, identifier: string): File;
+        (vfs: Vfs, identifier: string): File | null;
     }
     /**
      * Flags used when creating a #GAppInfo.
@@ -5597,12 +5707,11 @@ export namespace Gio {
 
     enum ApplicationFlags {
         /**
-         * Default. Deprecated in 2.74, use
-         *   %G_APPLICATION_DEFAULT_FLAGS instead
+         * Default flags.
          */
         FLAGS_NONE,
         /**
-         * Default flags. Since: 2.74
+         * Default flags.
          */
         DEFAULT_FLAGS,
         /**
@@ -6548,15 +6657,17 @@ export namespace Gio {
         NONE,
     }
     /**
-     * Flags used when creating a binding. These flags determine in which
-     * direction the binding works. The default is to synchronize in both
-     * directions.
+     * Flags used when creating a binding.
+     *
+     * These flags determine in which direction the binding works. The default is to
+     * synchronize in both directions.
      */
 
     /**
-     * Flags used when creating a binding. These flags determine in which
-     * direction the binding works. The default is to synchronize in both
-     * directions.
+     * Flags used when creating a binding.
+     *
+     * These flags determine in which direction the binding works. The default is to
+     * synchronize in both directions.
      */
     export namespace SettingsBindFlags {
         export const $gtype: GObject.GType<SettingsBindFlags>;
@@ -6568,28 +6679,30 @@ export namespace Gio {
          */
         DEFAULT,
         /**
-         * Update the #GObject property when the setting changes.
-         *     It is an error to use this flag if the property is not writable.
+         * Update the [class`GObject`.Object] property when the setting changes.
+         *   It is an error to use this flag if the property is not writable.
          */
         GET,
         /**
-         * Update the setting when the #GObject property changes.
-         *     It is an error to use this flag if the property is not readable.
+         * Update the setting when the [class`GObject`.Object] property changes.
+         *   It is an error to use this flag if the property is not readable.
          */
         SET,
         /**
-         * Do not try to bind a "sensitivity" property to the writability of the setting
+         * Do not try to bind a ‘sensitivity’ property to the writability of the setting
          */
         NO_SENSITIVITY,
         /**
-         * When set in addition to %G_SETTINGS_BIND_GET, set the #GObject property
-         *     value initially from the setting, but do not listen for changes of the setting
+         * When set in addition to [flags`Gio`.SettingsBindFlags.GET],
+         *   set the [class`GObject`.Object] property
+         *   value initially from the setting, but do not listen for changes of the setting
          */
         GET_NO_CHANGES,
         /**
-         * When passed to g_settings_bind(), uses a pair of mapping functions that invert
-         *     the boolean value when mapping between the setting and the property.  The setting and property must both
-         *     be booleans.  You cannot pass this flag to g_settings_bind_with_mapping().
+         * When passed to [method`Gio`.Settings.bind],
+         *   uses a pair of mapping functions that invert
+         *   the boolean value when mapping between the setting and the property.  The setting and property must both
+         *   be booleans.  You cannot pass this flag to [method`Gio`.Settings.bind_with_mapping].
          */
         INVERT_BOOLEAN,
     }
@@ -8147,10 +8260,10 @@ export namespace Gio {
         /**
          * Sets (or unsets) the base resource path of `application`.
          *
-         * The path is used to automatically load various [application
-         * resources][gresource] such as menu layouts and action descriptions.
-         * The various types of resources will be found at fixed names relative
-         * to the given base path.
+         * The path is used to automatically load various
+         * [application resources][struct`Gio`.Resource] such as menu layouts and
+         * action descriptions. The various types of resources will be found at
+         * fixed names relative to the given base path.
          *
          * By default, the resource base path is determined from the application
          * ID by prefixing '/' and replacing each '.' with '/'.  This is done at
@@ -8869,7 +8982,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -8997,7 +9124,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -9147,11 +9279,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ApplicationCommandLine {
@@ -9183,7 +9335,7 @@ export namespace Gio {
      * The `GApplicationCommandLine` object can provide the `argc` and `argv`
      * parameters for use with the [struct`GLib`.OptionContext] command-line parsing API,
      * with the [method`Gio`.ApplicationCommandLine.get_arguments] function. See
-     * [gapplication-example-cmdline3.c][gapplication-example-cmdline3]
+     * [gapplication-example-cmdline3.c](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gapplication-example-cmdline3.c)
      * for an example.
      *
      * The exit status of the originally-invoked process may be set and
@@ -10084,7 +10236,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10212,7 +10378,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10362,11 +10533,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace BufferedOutputStream {
@@ -10674,7 +10865,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -10802,7 +11007,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -10952,11 +11162,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace BytesIcon {
@@ -11249,7 +11479,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -11377,7 +11621,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -11527,11 +11776,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Cancellable {
@@ -11608,9 +11877,11 @@ export namespace Gio {
          * signal. Also handles the race condition that may happen
          * if the cancellable is cancelled right before connecting.
          *
-         * `callback` is called at most once, either directly at the
-         * time of the connect if `cancellable` is already cancelled,
-         * or when `cancellable` is cancelled in some thread.
+         * `callback` is called exactly once each time `cancellable` is cancelled,
+         * either directly at the time of the connect if `cancellable` is already
+         * cancelled, or when `cancellable` is cancelled in some thread.
+         * In case the cancellable is reset via [method`Gio`.Cancellable.reset]
+         * then the callback can be called again if the `cancellable` is cancelled.
          *
          * `data_destroy_func` will be called when the handler is
          * disconnected, or immediately if the cancellable is already
@@ -12055,7 +12326,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -12098,7 +12369,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -12238,7 +12509,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -12366,7 +12651,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -12516,11 +12806,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ConverterInputStream {
@@ -12839,9 +13149,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -12854,9 +13164,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -12874,9 +13184,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -12892,7 +13202,7 @@ export namespace Gio {
         ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
-         * g_input_stream_read_all_async().
+         * [method`InputStream`.read_all_async].
          *
          * As a special exception to the normal conventions for functions that
          * use #GError, if this function returns %FALSE (and sets `error)` then
@@ -15615,7 +15925,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -15743,7 +16067,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -15893,11 +16222,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusAuthObserver {
@@ -16398,8 +16747,8 @@ export namespace Gio {
          *
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can then call
          * g_dbus_connection_call_finish() to get the result of the operation.
          * See g_dbus_connection_call_sync() for the synchronous version of this
@@ -16467,8 +16816,8 @@ export namespace Gio {
          *
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can then call
          * g_dbus_connection_call_finish() to get the result of the operation.
          * See g_dbus_connection_call_sync() for the synchronous version of this
@@ -16538,8 +16887,8 @@ export namespace Gio {
          *
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can then call
          * g_dbus_connection_call_finish() to get the result of the operation.
          * See g_dbus_connection_call_sync() for the synchronous version of this
@@ -16819,13 +17168,13 @@ export namespace Gio {
          * %G_IO_ERROR_CLOSED.
          *
          * When `connection` has been closed, the #GDBusConnection::closed
-         * signal is emitted in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * signal is emitted in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread that `connection` was constructed in.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_connection_close_finish() to get the result of the
          * operation. See g_dbus_connection_close_sync() for the synchronous
@@ -16847,13 +17196,13 @@ export namespace Gio {
          * %G_IO_ERROR_CLOSED.
          *
          * When `connection` has been closed, the #GDBusConnection::closed
-         * signal is emitted in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * signal is emitted in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread that `connection` was constructed in.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_connection_close_finish() to get the result of the
          * operation. See g_dbus_connection_close_sync() for the synchronous
@@ -16876,13 +17225,13 @@ export namespace Gio {
          * %G_IO_ERROR_CLOSED.
          *
          * When `connection` has been closed, the #GDBusConnection::closed
-         * signal is emitted in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * signal is emitted in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread that `connection` was constructed in.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_connection_close_finish() to get the result of the
          * operation. See g_dbus_connection_close_sync() for the synchronous
@@ -16979,15 +17328,15 @@ export namespace Gio {
         export_menu_model(object_path: string, menu: MenuModel): number;
         /**
          * Asynchronously flushes `connection,` that is, writes all queued
-         * outgoing message to the transport and then flushes the transport
+         * outgoing messages to the transport and then flushes the transport
          * (using g_output_stream_flush_async()). This is useful in programs
-         * that wants to emit a D-Bus signal and then exit immediately. Without
-         * flushing the connection, there is no guaranteed that the message has
+         * that want to emit a D-Bus signal and then exit immediately. Without
+         * flushing the connection, there is no guarantee that the message has
          * been sent to the networking buffers in the OS kernel.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_connection_flush_finish() to get the result of the
          * operation. See g_dbus_connection_flush_sync() for the synchronous
@@ -16997,15 +17346,15 @@ export namespace Gio {
         flush(cancellable?: Cancellable | null): Promise<boolean>;
         /**
          * Asynchronously flushes `connection,` that is, writes all queued
-         * outgoing message to the transport and then flushes the transport
+         * outgoing messages to the transport and then flushes the transport
          * (using g_output_stream_flush_async()). This is useful in programs
-         * that wants to emit a D-Bus signal and then exit immediately. Without
-         * flushing the connection, there is no guaranteed that the message has
+         * that want to emit a D-Bus signal and then exit immediately. Without
+         * flushing the connection, there is no guarantee that the message has
          * been sent to the networking buffers in the OS kernel.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_connection_flush_finish() to get the result of the
          * operation. See g_dbus_connection_flush_sync() for the synchronous
@@ -17016,15 +17365,15 @@ export namespace Gio {
         flush(cancellable: Cancellable | null, callback: AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously flushes `connection,` that is, writes all queued
-         * outgoing message to the transport and then flushes the transport
+         * outgoing messages to the transport and then flushes the transport
          * (using g_output_stream_flush_async()). This is useful in programs
-         * that wants to emit a D-Bus signal and then exit immediately. Without
-         * flushing the connection, there is no guaranteed that the message has
+         * that want to emit a D-Bus signal and then exit immediately. Without
+         * flushing the connection, there is no guarantee that the message has
          * been sent to the networking buffers in the OS kernel.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_connection_flush_finish() to get the result of the
          * operation. See g_dbus_connection_flush_sync() for the synchronous
@@ -17119,8 +17468,8 @@ export namespace Gio {
          * D-Bus interface that is described in `interface_info`.
          *
          * Calls to functions in `vtable` (and `user_data_free_func)` will happen
-         * in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from.
          *
          * Note that all #GVariant values passed to functions in `vtable` will match
@@ -17152,7 +17501,8 @@ export namespace Gio {
          * reference count is -1, see g_dbus_interface_info_ref()) for as long
          * as the object is exported. Also note that `vtable` will be copied.
          *
-         * See this [server][gdbus-server] for an example of how to use this method.
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * for an example of how to use this method.
          * @param object_path the object path to register at
          * @param interface_info introspection data for the interface
          * @param vtable a #GDBusInterfaceVTable to call into or %NULL
@@ -17188,6 +17538,33 @@ export namespace Gio {
             set_property_closure?: GObject.Closure | null,
         ): number;
         /**
+         * Version of [method`Gio`.DBusConnection.register_object] using closures instead
+         * of a [type`Gio`.DBusInterfaceVTable] for easier binding in other languages.
+         *
+         * In contrast to [method`Gio`.DBusConnection.register_object] and
+         * [method`Gio`.DBusConnection.register_object_with_closures], the reference
+         * counting semantics of the function wrapped by `method_call_closure` are *not*
+         * the same as those of [callback`Gio`.DBusInterfaceMethodCallFunc]. Ownership of
+         * a reference to the [class`Gio`.DBusMethodInvocation] is *not* transferred to
+         * the function. Bindings must ensure that they add a reference to the
+         * [class`Gio`.DBusMethodInvocation] before calling any
+         * `g_dbus_method_invocation_return_*()` methods on it. This should be automatic
+         * as a result of the introspection annotations on those methods.
+         * @param object_path The object path to register at.
+         * @param interface_info Introspection data for the interface.
+         * @param method_call_closure [type@GObject.Closure] for handling incoming method calls.
+         * @param get_property_closure [type@GObject.Closure] for getting a property.
+         * @param set_property_closure [type@GObject.Closure] for setting a property.
+         * @returns `0` if @error is set, otherwise a registration ID (never `0`) that can be used with [method@Gio.DBusConnection.unregister_object].
+         */
+        register_object_with_closures2(
+            object_path: string,
+            interface_info: DBusInterfaceInfo,
+            method_call_closure?: GObject.Closure | null,
+            get_property_closure?: GObject.Closure | null,
+            set_property_closure?: GObject.Closure | null,
+        ): number;
+        /**
          * Registers a whole subtree of dynamic objects.
          *
          * The `enumerate` and `introspection` functions in `vtable` are used to
@@ -17203,8 +17580,8 @@ export namespace Gio {
          * #gpointer will be used to call into the interface vtable for processing
          * the request.
          *
-         * All calls into user-provided code will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * All calls into user-provided code will be invoked in the thread-default
+         * main context (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from.
          *
          * If an existing subtree is already registered at `object_path` or
@@ -17220,8 +17597,8 @@ export namespace Gio {
          * Note that `vtable` will be copied so you cannot change it after
          * registration.
          *
-         * See this [server][gdbus-subtree-server] for an example of how to use
-         * this method.
+         * See this [server][class`Gio`.DBusConnection#an-example-for-exporting-a-subtree]
+         * for an example of how to use this method.
          * @param object_path the object path to register the subtree at
          * @param vtable a #GDBusSubtreeVTable to enumerate, introspect and     dispatch nodes in the subtree
          * @param flags flags used to fine tune the behavior of the subtree
@@ -17262,7 +17639,8 @@ export namespace Gio {
          * %G_IO_ERROR_CLOSED. If `message` is not well-formed,
          * the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          *
@@ -17291,8 +17669,8 @@ export namespace Gio {
          * the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
          *
          * This is an asynchronous method. When the operation is finished, `callback`
-         * will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can then call
          * g_dbus_connection_send_message_with_reply_finish() to get the result of the operation.
          * See g_dbus_connection_send_message_with_reply_sync() for the synchronous version.
@@ -17300,7 +17678,8 @@ export namespace Gio {
          * Note that `message` must be unlocked, unless `flags` contain the
          * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          * @param message a #GDBusMessage
@@ -17332,8 +17711,8 @@ export namespace Gio {
          * the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
          *
          * This is an asynchronous method. When the operation is finished, `callback`
-         * will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can then call
          * g_dbus_connection_send_message_with_reply_finish() to get the result of the operation.
          * See g_dbus_connection_send_message_with_reply_sync() for the synchronous version.
@@ -17341,7 +17720,8 @@ export namespace Gio {
          * Note that `message` must be unlocked, unless `flags` contain the
          * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          * @param message a #GDBusMessage
@@ -17375,8 +17755,8 @@ export namespace Gio {
          * the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
          *
          * This is an asynchronous method. When the operation is finished, `callback`
-         * will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can then call
          * g_dbus_connection_send_message_with_reply_finish() to get the result of the operation.
          * See g_dbus_connection_send_message_with_reply_sync() for the synchronous version.
@@ -17384,7 +17764,8 @@ export namespace Gio {
          * Note that `message` must be unlocked, unless `flags` contain the
          * %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          * @param message a #GDBusMessage
@@ -17408,7 +17789,8 @@ export namespace Gio {
          * be of type %G_DBUS_MESSAGE_TYPE_ERROR. Use
          * g_dbus_message_to_gerror() to transcode this to a #GError.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed to     g_dbus_connection_send_message_with_reply()
@@ -17440,7 +17822,8 @@ export namespace Gio {
          * be of type %G_DBUS_MESSAGE_TYPE_ERROR. Use
          * g_dbus_message_to_gerror() to transcode this to a #GError.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          *
@@ -17475,7 +17858,7 @@ export namespace Gio {
         /**
          * Subscribes to signals on `connection` and invokes `callback` whenever
          * the signal is received. Note that `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * thread-default main context (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from.
          *
          * If `connection` is not a message bus connection, `sender` must be
@@ -17831,7 +18214,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -17874,7 +18257,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -18014,7 +18397,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18142,7 +18539,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18292,11 +18694,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusInterfaceSkeleton {
@@ -18443,7 +18865,7 @@ export namespace Gio {
         get_object_path(): string | null;
         /**
          * Gets all D-Bus properties for `interface_`.
-         * @returns A #GVariant of type ['a{sv}'][G-VARIANT-TYPE-VARDICT:CAPS]. Free with g_variant_unref().
+         * @returns A #GVariant of type ['a{sv}'](../glib/gvariant-text-format.html#dictionaries-and-dictionary-entries). Free with g_variant_unref().
          */
         get_properties(): GLib.Variant;
         /**
@@ -18621,7 +19043,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -18749,7 +19185,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -18899,11 +19340,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusMenuModel {
@@ -19251,7 +19712,10 @@ export namespace Gio {
         set_sender(value?: string | null): void;
         /**
          * Sets the serial for `message`.
-         * @param serial A #guint32.
+         *
+         * The [D-Bus specification](https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-messages)
+         * does not allow the `serial` to be zero.
+         * @param serial A #guint32, which must not be zero.
          */
         set_serial(serial: number): void;
         /**
@@ -19329,20 +19793,26 @@ export namespace Gio {
         /**
          * Gets the name of the D-Bus interface the method was invoked on.
          *
+         * This can be `NULL` if it was not specified by the sender. See
+         * [callback`Gio`.DBusInterfaceMethodCallFunc] or the
+         * [D-Bus Specification](https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-types-method)
+         * for details on when this can happen and how it should be handled.
+         *
          * If this method call is a property Get, Set or GetAll call that has
          * been redirected to the method call handler then
          * "org.freedesktop.DBus.Properties" will be returned.  See
          * #GDBusInterfaceVTable for more information.
          * @returns A string. Do not free, it is owned by @invocation.
          */
-        get_interface_name(): string;
+        get_interface_name(): string | null;
         /**
          * Gets the #GDBusMessage for the method invocation. This is useful if
          * you need to use low-level protocol features, such as UNIX file
          * descriptor passing, that cannot be properly expressed in the
          * #GVariant API.
          *
-         * See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+         * See this [server][class`Gio`.DBusConnection#an-example-d-bus-server]
+         * and [client][class`Gio`.DBusConnection#an-example-for-file-descriptor-passing]
          * for an example of how to use this low-level API to send and receive
          * UNIX file descriptors.
          * @returns #GDBusMessage. Do not free, it is owned by @invocation.
@@ -19391,9 +19861,12 @@ export namespace Gio {
         get_property_info(): DBusPropertyInfo | null;
         /**
          * Gets the bus name that invoked the method.
+         *
+         * This can return %NULL if not specified by the caller, e.g. on peer-to-peer
+         * connections.
          * @returns A string. Do not free, it is owned by @invocation.
          */
-        get_sender(): string;
+        get_sender(): string | null;
         /**
          * Finishes handling a D-Bus method call by returning an error.
          *
@@ -19787,10 +20260,10 @@ export namespace Gio {
          * Asynchronously creates a new #GDBusObjectManagerClient object.
          *
          * This is an asynchronous failable constructor. When the result is
-         * ready, `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
-         * of the thread you are calling this method from. You can
-         * then call g_dbus_object_manager_client_new_finish() to get the result. See
+         * ready, `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
+         * of the thread you are calling this method from. You can then call
+         * g_dbus_object_manager_client_new_finish() to get the result. See
          * g_dbus_object_manager_client_new_sync() for the synchronous version.
          * @param connection A #GDBusConnection.
          * @param flags Zero or more flags from the #GDBusObjectManagerClientFlags enumeration.
@@ -19816,8 +20289,8 @@ export namespace Gio {
          * #GDBusConnection.
          *
          * This is an asynchronous failable constructor. When the result is
-         * ready, `callback` will be invoked in the
-         * [thread-default main loop][g-main-context-push-thread-default]
+         * ready, `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from. You can
          * then call g_dbus_object_manager_client_new_for_bus_finish() to get the result. See
          * g_dbus_object_manager_client_new_for_bus_sync() for the synchronous version.
@@ -20184,7 +20657,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -20227,7 +20700,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -20367,7 +20840,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -20495,7 +20982,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -20645,11 +21137,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusObjectManagerServer {
@@ -20948,7 +21460,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21076,7 +21602,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21226,11 +21757,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusObjectProxy {
@@ -21447,7 +21998,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -21575,7 +22140,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -21725,11 +22295,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusObjectSkeleton {
@@ -21999,7 +22589,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -22127,7 +22731,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -22277,11 +22886,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusProxy {
@@ -22368,6 +22997,8 @@ export namespace Gio {
      * context (see [method`GLib`.MainContext.push_thread_default]) of the thread
      * where the instance was constructed.
      *
+     *
+     * ## A watch proxy example
      * An example using a proxy for a well-known name can be found in
      * [`gdbus-example-watch-proxy.c`](https://gitlab.gnome.org/GNOME/glib/-/blob/HEAD/gio/tests/gdbus-example-watch-proxy.c).
      */
@@ -22621,7 +23252,7 @@ export namespace Gio {
          *
          * See g_dbus_proxy_new_sync() and for a synchronous version of this constructor.
          *
-         * #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+         * #GDBusProxy is used in this [example][class`Gio`.DBusProxy#a-watch-proxy-example].
          * @param connection A #GDBusConnection.
          * @param flags Flags used when constructing the proxy.
          * @param info A #GDBusInterfaceInfo specifying the minimal interface that @proxy conforms to or %NULL.
@@ -22644,7 +23275,7 @@ export namespace Gio {
         /**
          * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
          *
-         * #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+         * #GDBusProxy is used in this [example][class`Gio`.DBusProxy#a-watch-proxy-example].
          * @param bus_type A #GBusType.
          * @param flags Flags used when constructing the proxy.
          * @param info A #GDBusInterfaceInfo specifying the minimal interface that @proxy conforms to or %NULL.
@@ -22729,8 +23360,8 @@ export namespace Gio {
          * then the return value is checked against the return type.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from.
          * You can then call g_dbus_proxy_call_finish() to get the result of
          * the operation. See g_dbus_proxy_call_sync() for the synchronous
@@ -22787,8 +23418,8 @@ export namespace Gio {
          * then the return value is checked against the return type.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from.
          * You can then call g_dbus_proxy_call_finish() to get the result of
          * the operation. See g_dbus_proxy_call_sync() for the synchronous
@@ -22847,8 +23478,8 @@ export namespace Gio {
          * then the return value is checked against the return type.
          *
          * This is an asynchronous method. When the operation is finished,
-         * `callback` will be invoked in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * `callback` will be invoked in the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * of the thread you are calling this method from.
          * You can then call g_dbus_proxy_call_finish() to get the result of
          * the operation. See g_dbus_proxy_call_sync() for the synchronous
@@ -23396,7 +24027,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -23439,7 +24070,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -23579,7 +24210,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -23707,7 +24352,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -23857,11 +24507,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DBusServer {
@@ -24028,7 +24698,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -24071,7 +24741,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -24211,7 +24881,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -24339,7 +25023,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -24489,11 +25178,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DataInputStream {
@@ -25170,7 +25879,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25298,7 +26021,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -25448,11 +26176,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DataOutputStream {
@@ -25780,7 +26528,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -25908,7 +26670,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26058,11 +26825,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DebugControllerDBus {
@@ -26140,7 +26927,7 @@ export namespace Gio {
      *   debug_controller = G_DEBUG_CONTROLLER (g_debug_controller_dbus_new (priv->connection, NULL, &child_error));
      *   if (debug_controller == NULL)
      *     {
-     *       g_error ("Could not register debug controller on bus: %s"),
+     *       g_error ("Could not register debug controller on bus: %s",
      *                child_error->message);
      *     }
      *
@@ -26302,7 +27089,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -26345,7 +27132,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -26485,7 +27272,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -26613,7 +27414,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -26763,11 +27569,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace DesktopAppInfo {
@@ -27618,7 +28444,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -27746,7 +28586,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -27896,11 +28741,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Emblem {
@@ -28137,7 +29002,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28265,7 +29144,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28415,11 +29299,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace EmblemedIcon {
@@ -28658,7 +29562,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -28786,7 +29704,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -28936,11 +29859,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace FileEnumerator {
@@ -29933,7 +30876,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30061,7 +31018,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30211,11 +31173,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace FileIcon {
@@ -30510,7 +31492,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -30638,7 +31634,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -30788,11 +31789,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace FileInfo {
@@ -30857,8 +31878,8 @@ export namespace Gio {
          */
         clear_status(): void;
         /**
-         * First clears all of the [GFileAttribute][gio-GFileAttribute] of `dest_info,`
-         * and then copies all of the file attributes from `src_info` to `dest_info`.
+         * First clears all of the [GFileAttribute](file-attributes.html#file-attributes) of
+         * `dest_info,` and then copies all of the file attributes from `src_info` to `dest_info`.
          * @param dest_info destination to copy attributes to.
          */
         copy_into(dest_info: FileInfo): void;
@@ -30882,9 +31903,24 @@ export namespace Gio {
          */
         get_access_date_time(): GLib.DateTime | null;
         /**
-         * Gets the value of an attribute, formatted as a string.
-         * This escapes things as needed to make the string valid
-         * UTF-8.
+         * Gets the value of an attribute, formatted as a human readable string.
+         *
+         * This escapes things as needed to make the string valid UTF-8 and readable by
+         * humans. It’s not meant to be a machine readable or reversible escaping
+         * format.
+         *
+         * To format file name attributes of type
+         * [enum`Gio`.FileAttributeType.BYTE_STRING] for output as UTF-8, use
+         * [func`GLib`.filename_to_utf8] instead:
+         * ```c
+         * const char *trash_orig_path_byte_string;
+         * g_autofree char *trash_orig_path_utf8 = NULL;
+         *
+         * trash_orig_path_byte_string = g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_TRASH_ORIG_PATH);
+         * trash_orig_path_utf8 = g_filename_to_utf8 (trash_orig_path_byte_string, -1, NULL, NULL, NULL);
+         * if (trash_orig_path_utf8 != NULL)
+         *   g_message ("Some larger UTF-8 string with filename embedded as %s", trash_orig_path_utf8);
+         * ```
          * @param attribute a file attribute key.
          * @returns a UTF-8 string associated with the given @attribute, or    %NULL if the attribute wasn’t set.    When you're done with the string it must be freed with g_free().
          */
@@ -31031,7 +32067,7 @@ export namespace Gio {
          */
         get_edit_name(): string;
         /**
-         * Gets the [entity tag](iface.File.html#entity-tags) for a given
+         * Gets the [entity tag][iface`Gio`.File#entity-tags] for a given
          * #GFileInfo. See %G_FILE_ATTRIBUTE_ETAG_VALUE.
          *
          * It is an error to call this if the #GFileInfo does not contain
@@ -31282,7 +32318,7 @@ export namespace Gio {
         /**
          * Sets the content type attribute for a given #GFileInfo.
          * See %G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
-         * @param content_type a content type. See [GContentType][gio-GContentType]
+         * @param content_type a [content type](content-types.html#content-types).
          */
         set_content_type(content_type: string): void;
         /**
@@ -31727,7 +32763,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -31855,7 +32905,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32005,11 +33060,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace FileMonitor {
@@ -32105,8 +33180,8 @@ export namespace Gio {
          * implementations only.
          *
          * Implementations are responsible to call this method from the
-         * [thread-default main context][g-main-context-push-thread-default] of the
-         * thread that the monitor was created in.
+         * thread-default main context (see [method`GLib`.MainContext.push_thread_default])
+         * of the thread that the monitor was created in.
          * @param child a #GFile.
          * @param other_file a #GFile.
          * @param event_type a set of #GFileMonitorEvent flags.
@@ -32474,7 +33549,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -32602,7 +33691,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -32752,11 +33846,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace FilenameCompleter {
@@ -32911,7 +34025,13 @@ export namespace Gio {
 
         // Properties
 
+        /**
+         * The underlying base stream on which the I/O ops will be done.
+         */
         get base_stream(): OutputStream;
+        /**
+         * The underlying base stream on which the I/O ops will be done.
+         */
         get baseStream(): OutputStream;
         /**
          * Whether the base stream should be closed when the filter stream is closed.
@@ -33161,7 +34281,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -33289,7 +34423,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -33439,11 +34578,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace IOStream {
@@ -34102,7 +35261,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -34145,7 +35304,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -34285,7 +35444,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -34413,7 +35586,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -34563,11 +35741,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace InetSocketAddress {
@@ -34819,7 +36017,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -34947,7 +36159,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -35097,11 +36314,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace InputStream {
@@ -35420,9 +36657,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -35435,9 +36672,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -35455,9 +36692,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -35473,7 +36710,7 @@ export namespace Gio {
         ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
-         * g_input_stream_read_all_async().
+         * [method`InputStream`.read_all_async].
          *
          * As a special exception to the normal conventions for functions that
          * use #GError, if this function returns %FALSE (and sets `error)` then
@@ -36274,7 +37511,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -36402,7 +37653,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -36552,11 +37808,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace MemoryInputStream {
@@ -36978,9 +38254,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -36993,9 +38269,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -37013,9 +38289,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -37031,7 +38307,7 @@ export namespace Gio {
         ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
-         * g_input_stream_read_all_async().
+         * [method`InputStream`.read_all_async].
          *
          * As a special exception to the normal conventions for functions that
          * use #GError, if this function returns %FALSE (and sets `error)` then
@@ -37689,7 +38965,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -37817,7 +39107,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -37967,11 +39262,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace MemoryOutputStream {
@@ -39640,7 +40955,21 @@ export namespace Gio {
          * premature notification while the object is still being modified.
          */
         freeze_notify(): void;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -39768,7 +41097,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata() and removes the `data` from object
@@ -39911,11 +41245,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Menu {
@@ -41316,7 +42670,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -41444,7 +42812,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -41594,11 +42967,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace NativeVolumeMonitor {
@@ -41895,7 +43288,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -42023,7 +43430,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -42173,11 +43585,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace NetworkService {
@@ -42433,7 +43865,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -42561,7 +44007,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -42711,11 +44162,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Notification {
@@ -44857,7 +46328,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -44985,7 +46470,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -45135,11 +46625,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ProxyAddress {
@@ -45391,7 +46901,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -45519,7 +47043,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -45669,11 +47198,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ProxyAddressEnumerator {
@@ -46664,6 +48213,31 @@ export namespace Gio {
      * `glib-compile-schemas` expects schema files to have the extension
      * `.gschema.override`.
      *
+     * ## Delay-apply mode
+     *
+     * By default, values set on a [class`Gio`.Settings] instance immediately start
+     * to be written to the backend (although these writes may not complete by the
+     * time that [method`Gio`.Settings.set]) returns; see [func`Gio`.Settings.sync]).
+     *
+     * In order to allow groups of settings to be changed simultaneously and
+     * atomically, GSettings also supports a ‘delay-apply’ mode. In this mode,
+     * updated values are kept locally in the [class`Gio`.Settings] instance until
+     * they are explicitly applied by calling [method`Gio`.Settings.apply].
+     *
+     * For example, this could be useful for a preferences dialog where the
+     * preferences all need to be applied simultaneously when the user clicks ‘Save’.
+     *
+     * Switching a [class`Gio`.Settings] instance to ‘delay-apply’ mode is a one-time
+     * irreversible operation: from that point onwards, *all* changes made to that
+     * [class`Gio`.Settings] have to be explicitly applied by calling
+     * [method`Gio`.Settings.apply]. The ‘delay-apply’ mode is also propagated to any
+     * child settings objects subsequently created using
+     * [method`Gio`.Settings.get_child].
+     *
+     * At any point, the set of unapplied changes can be queried using
+     * [property`Gio`.Settings:has-unapplied], and discarded by calling
+     * [method`Gio`.Settings.revert].
+     *
      * ## Binding
      *
      * A very convenient feature of GSettings lets you bind [class`GObject`.Object]
@@ -46705,6 +48279,70 @@ export namespace Gio {
      *
      * ## Build system integration
      *
+     * ### Meson
+     *
+     * GSettings is natively supported by Meson’s [GNOME module](https://mesonbuild.com/Gnome-module.html).
+     *
+     * You can install the schemas as any other data file:
+     *
+     * ```
+     * install_data(
+     *   'org.foo.MyApp.gschema.xml',
+     *   install_dir: get_option('datadir') / 'glib-2.0/schemas',
+     * )
+     * ```
+     *
+     * You can use `gnome.post_install()` function to compile the schemas on
+     * installation:
+     *
+     * ```
+     * gnome = import('gnome')
+     * gnome.post_install(
+     *   glib_compile_schemas: true,
+     * )
+     * ```
+     *
+     * If an enumerated type defined in a C header file is to be used in a GSettings
+     * schema, it can either be defined manually using an `<enum>` element in the
+     * schema XML, or it can be extracted automatically from the C header. This
+     * approach is preferred, as it ensures the two representations are always
+     * synchronised. To do so, you will need to use the `gnome.mkenums()` function
+     * with the following templates:
+     *
+     * ```
+     * schemas_enums = gnome.mkenums('org.foo.MyApp.enums.xml',
+     *   comments: '<!-- `comment@` -->',
+     *   fhead: '<schemalist>',
+     *   vhead: '  <`type@` id="org.foo.MyApp.`EnumName@`">',
+     *   vprod: '    <value nick="`valuenick@`" value="`valuenum@`"/>',
+     *   vtail: '  </`type@`>',
+     *   ftail: '</schemalist>',
+     *   sources: enum_sources,
+     *   install_header: true,
+     *   install_dir: get_option('datadir') / 'glib-2.0/schemas',
+     * )
+     * ```
+     *
+     * It is recommended to validate your schemas as part of the test suite for
+     * your application:
+     *
+     * ```
+     * test('validate-schema',
+     *   find_program('glib-compile-schemas'),
+     *   args: ['--strict', '--dry-run', meson.current_source_dir()],
+     * )
+     * ```
+     *
+     * If your application allows running uninstalled, you should also use the
+     * `gnome.compile_schemas()` function to compile the schemas in the current
+     * build directory:
+     *
+     * ```
+     * gnome.compile_schemas()
+     * ```
+     *
+     * ### Autotools
+     *
      * GSettings comes with autotools integration to simplify compiling and
      * installing schemas. To add GSettings support to an application, add the
      * following to your `configure.ac`:
@@ -46720,25 +48358,6 @@ export namespace Gio {
      *
      * `GSETTINGS_RULES@`
      * ```
-     *
-     * No changes are needed to the build system to mark a schema XML file for
-     * translation. Assuming it sets the `gettext-domain` attribute, a schema may
-     * be marked for translation by adding it to `POTFILES.in`, assuming gettext
-     * 0.19 is in use (the preferred method for translation):
-     * ```
-     * data/org.foo.MyApp.gschema.xml
-     * ```
-     *
-     * Alternatively, if intltool 0.50.1 is in use:
-     * ```
-     * [type: gettext/gsettings]data/org.foo.MyApp.gschema.xml
-     * ```
-     *
-     * GSettings will use gettext to look up translations for the `<summary>` and
-     * `<description>` elements, and also any `<default>` elements which have a
-     * `l10n` attribute set. Translations must not be included in the `.gschema.xml`
-     * file by the build system, for example by using intltool XML rules with a
-     * `.gschema.xml.in` template.
      *
      * If an enumerated type defined in a C header file is to be used in a GSettings
      * schema, it can either be defined manually using an `<enum>` element in the
@@ -46756,6 +48375,28 @@ export namespace Gio {
      * automatically included in the schema compilation, install and uninstall
      * rules. It should not be committed to version control or included in
      * `EXTRA_DIST`.
+     *
+     * ## Localization
+     *
+     * No changes are needed to the build system to mark a schema XML file for
+     * translation. Assuming it sets the `gettext-domain` attribute, a schema may
+     * be marked for translation by adding it to `POTFILES.in`, assuming gettext
+     * 0.19 or newer is in use (the preferred method for translation):
+     * ```
+     * data/org.foo.MyApp.gschema.xml
+     * ```
+     *
+     * Alternatively, if intltool 0.50.1 is in use:
+     * ```
+     * [type: gettext/gsettings]data/org.foo.MyApp.gschema.xml
+     * ```
+     *
+     * GSettings will use gettext to look up translations for the `<summary>` and
+     * `<description>` elements, and also any `<default>` elements which have a
+     * `l10n` attribute set.
+     *
+     * Translations **must not** be included in the `.gschema.xml` file by the build
+     * system, for example by using a rule to generate the XML file from a template.
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
@@ -46767,23 +48408,25 @@ export namespace Gio {
          */
         get backend(): SettingsBackend;
         /**
-         * Whether the #GSettings object is in 'delay-apply' mode. See
-         * g_settings_delay() for details.
+         * Whether the [class`Gio`.Settings] object is in
+         * [‘delay-apply’ mode](class.Settings.html#delay-apply-mode).
          */
         get delay_apply(): boolean;
         /**
-         * Whether the #GSettings object is in 'delay-apply' mode. See
-         * g_settings_delay() for details.
+         * Whether the [class`Gio`.Settings] object is in
+         * [‘delay-apply’ mode](class.Settings.html#delay-apply-mode).
          */
         get delayApply(): boolean;
         /**
-         * If this property is %TRUE, the #GSettings object has outstanding
-         * changes that will be applied when g_settings_apply() is called.
+         * Whether the [class`Gio`.Settings] object has outstanding changes.
+         *
+         * These changes will be applied when [method`Gio`.Settings.apply] is called.
          */
         get has_unapplied(): boolean;
         /**
-         * If this property is %TRUE, the #GSettings object has outstanding
-         * changes that will be applied when g_settings_apply() is called.
+         * Whether the [class`Gio`.Settings] object has outstanding changes.
+         *
+         * These changes will be applied when [method`Gio`.Settings.apply] is called.
          */
         get hasUnapplied(): boolean;
         /**
@@ -46792,43 +48435,45 @@ export namespace Gio {
         get path(): string;
         /**
          * The name of the schema that describes the types of keys
-         * for this #GSettings object.
+         * for this [class`Gio`.Settings] object.
          *
-         * The type of this property is *not* #GSettingsSchema.
-         * #GSettingsSchema has only existed since version 2.32 and
+         * The type of this property is *not* [struct`Gio`.SettingsSchema].
+         * [struct`Gio`.SettingsSchema] has only existed since version 2.32 and
          * unfortunately this name was used in previous versions to refer to
          * the schema ID rather than the schema itself.  Take care to use the
-         * 'settings-schema' property if you wish to pass in a
-         * #GSettingsSchema.
+         * [property`Gio`.Settings:settings-schema] property if you wish to pass in a
+         * [struct`Gio`.SettingsSchema].
          */
         get schema(): string;
         /**
          * The name of the schema that describes the types of keys
-         * for this #GSettings object.
+         * for this [class`Gio`.Settings] object.
          */
         get schema_id(): string;
         /**
          * The name of the schema that describes the types of keys
-         * for this #GSettings object.
+         * for this [class`Gio`.Settings] object.
          */
         get schemaId(): string;
         /**
-         * The #GSettingsSchema describing the types of keys for this
-         * #GSettings object.
+         * The [struct`Gio`.SettingsSchema] describing the types of keys for this
+         * [class`Gio`.Settings] object.
          *
-         * Ideally, this property would be called 'schema'.  #GSettingsSchema
+         * Ideally, this property would be called [property`Gio`.Settings:schema].
+         * [struct`Gio`.SettingsSchema]
          * has only existed since version 2.32, however, and before then the
-         * 'schema' property was used to refer to the ID of the schema rather
+         * [property`Gio`.Settings:schema] property was used to refer to the ID of the schema rather
          * than the schema itself.  Take care.
          */
         get settings_schema(): SettingsSchema;
         /**
-         * The #GSettingsSchema describing the types of keys for this
-         * #GSettings object.
+         * The [struct`Gio`.SettingsSchema] describing the types of keys for this
+         * [class`Gio`.Settings] object.
          *
-         * Ideally, this property would be called 'schema'.  #GSettingsSchema
+         * Ideally, this property would be called [property`Gio`.Settings:schema].
+         * [struct`Gio`.SettingsSchema]
          * has only existed since version 2.32, however, and before then the
-         * 'schema' property was used to refer to the ID of the schema rather
+         * [property`Gio`.Settings:schema] property was used to refer to the ID of the schema rather
          * than the schema itself.  Take care.
          */
         get settingsSchema(): SettingsSchema;
@@ -46887,12 +48532,12 @@ export namespace Gio {
         /**
          * Ensures that all pending operations are complete for the default backend.
          *
-         * Writes made to a #GSettings are handled asynchronously.  For this
+         * Writes made to a [class`Gio`.Settings] are handled asynchronously.  For this
          * reason, it is very unlikely that the changes have it to disk by the
-         * time g_settings_set() returns.
+         * time [method`Gio`.Settings.set] returns.
          *
          * This call will block until all of the writes have made it to the
-         * backend.  Since the mainloop is not running, no change notifications
+         * backend.  Since the main loop is not running, no change notifications
          * will be dispatched during this call (but some may be queued by the
          * time the call is done).
          */
@@ -46903,7 +48548,7 @@ export namespace Gio {
          * Note that bindings are automatically removed when the
          * object is finalized, so it is rarely necessary to call this
          * function.
-         * @param object the object
+         * @param object the object with property to unbind
          * @param property the property whose binding is removed
          */
         static unbind(object: GObject.Object, property: string): void;
@@ -46918,10 +48563,11 @@ export namespace Gio {
         // Methods
 
         /**
-         * Applies any changes that have been made to the settings.  This
-         * function does nothing unless `settings` is in 'delay-apply' mode;
-         * see g_settings_delay().  In the normal case settings are always
-         * applied immediately.
+         * Applies any changes that have been made to the settings.
+         *
+         * This function does nothing unless `settings` is in
+         * [‘delay-apply’ mode](class.Settings.html#delay-apply-mode).  In the normal
+         * case settings are always applied immediately.
          */
         apply(): void;
         /**
@@ -46931,14 +48577,14 @@ export namespace Gio {
          * The binding uses the default GIO mapping functions to map
          * between the settings and property values. These functions
          * handle booleans, numeric types and string types in a
-         * straightforward way. Use g_settings_bind_with_mapping() if
+         * straightforward way. Use [method`Gio`.Settings.bind_with_mapping] if
          * you need a custom mapping, or map between types that are not
          * supported by the default mapping functions.
          *
-         * Unless the `flags` include %G_SETTINGS_BIND_NO_SENSITIVITY, this
+         * Unless the `flags` include [flags`Gio`.SettingsBindFlags.NO_SENSITIVITY], this
          * function also establishes a binding between the writability of
-         * `key` and the "sensitive" property of `object` (if `object` has
-         * a boolean property by that name). See g_settings_bind_writable()
+         * `key` and the `sensitive` property of `object` (if `object` has
+         * a boolean property by that name). See [method`Gio`.Settings.bind_writable]
          * for more details about writable bindings.
          *
          * Note that the lifecycle of the binding is tied to `object,`
@@ -46946,20 +48592,20 @@ export namespace Gio {
          * If you bind the same property twice on the same object, the second
          * binding overrides the first one.
          * @param key the key to bind
-         * @param object a #GObject
+         * @param object the object with property to bind
          * @param property the name of the property to bind
          * @param flags flags for the binding
          */
         bind(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags | null): void;
         /**
-         * Version of g_settings_bind_with_mapping() using closures instead of callbacks
-         * for easier binding in other languages.
+         * Version of [method`Gio`.Settings.bind_with_mapping] using closures instead of
+         * callbacks for easier binding in other languages.
          * @param key the key to bind
-         * @param object a #GObject
+         * @param object the object with property to bind
          * @param property the name of the property to bind
          * @param flags flags for the binding
-         * @param get_mapping a function that gets called to convert values     from @settings to @object, or %NULL to use the default GIO mapping
-         * @param set_mapping a function that gets called to convert values     from @object to @settings, or %NULL to use the default GIO mapping
+         * @param get_mapping a function that gets called to convert values   from @settings to @object, or `NULL` to use the default GIO mapping
+         * @param set_mapping a function that gets called to convert values   from @object to @settings, or `NULL` to use the default GIO mapping
          */
         bind_with_mapping(
             key: string,
@@ -46972,29 +48618,30 @@ export namespace Gio {
         /**
          * Create a binding between the writability of `key` in the
          * `settings` object and the property `property` of `object`.
-         * The property must be boolean; "sensitive" or "visible"
+         *
+         * The property must be boolean; `sensitive` or `visible`
          * properties of widgets are the most likely candidates.
          *
          * Writable bindings are always uni-directional; changes of the
          * writability of the setting will be propagated to the object
          * property, not the other way.
          *
-         * When the `inverted` argument is %TRUE, the binding inverts the
+         * When the `inverted` argument is true, the binding inverts the
          * value as it passes from the setting to the object, i.e. `property`
-         * will be set to %TRUE if the key is not writable.
+         * will be set to true if the key is not writable.
          *
          * Note that the lifecycle of the binding is tied to `object,`
          * and that you can have only one binding per object property.
          * If you bind the same property twice on the same object, the second
          * binding overrides the first one.
          * @param key the key to bind
-         * @param object a #GObject
+         * @param object the object with property to bind
          * @param property the name of a boolean property to bind
-         * @param inverted whether to 'invert' the value
+         * @param inverted whether to ‘invert’ the value
          */
         bind_writable(key: string, object: GObject.Object, property: string, inverted: boolean): void;
         /**
-         * Creates a #GAction corresponding to a given #GSettings key.
+         * Creates a [iface`Gio`.Action] corresponding to a given [class`Gio`.Settings] key.
          *
          * The action has the same name as the key.
          *
@@ -47009,61 +48656,64 @@ export namespace Gio {
          * activations take the new value for the key (which must have the
          * correct type).
          * @param key the name of a key in @settings
-         * @returns a new #GAction
+         * @returns a new [iface@Gio.Action]
          */
         create_action(key: string): Action;
         /**
-         * Changes the #GSettings object into 'delay-apply' mode. In this
+         * Changes the [class`Gio`.Settings] object into
+         * [‘delay-apply’ mode](class.Settings.html#delay-apply-mode).
+         *
+         * In this
          * mode, changes to `settings` are not immediately propagated to the
-         * backend, but kept locally until g_settings_apply() is called.
+         * backend, but kept locally until [method`Gio`.Settings.apply] is called.
          */
         delay(): void;
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for booleans.
+         * A convenience variant of [method`Gio`.Settings.get] for booleans.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a boolean type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `b` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns a boolean
          */
         get_boolean(key: string): boolean;
         /**
          * Creates a child settings object which has a base path of
-         * `base-path/`name``, where `base-path` is the base path of
-         * `settings`.
+         * `base-path/name`, where `base-path` is the base path of
+         * `settings` and `name` is as specified by the caller.
          *
          * The schema for the child settings object must have been declared
          * in the schema of `settings` using a `<child>` element.
          *
-         * The created child settings object will inherit the #GSettings:delay-apply
-         * mode from `settings`.
+         * The created child settings object will inherit the
+         * [property`Gio`.Settings:delay-apply] mode from `settings`.
          * @param name the name of the child schema
-         * @returns a 'child' settings object
+         * @returns a ‘child’ settings object
          */
         get_child(name: string): Settings;
         /**
-         * Gets the "default value" of a key.
+         * Gets the ‘default value’ of a key.
          *
-         * This is the value that would be read if g_settings_reset() were to be
+         * This is the value that would be read if [method`Gio`.Settings.reset] were to be
          * called on the key.
          *
          * Note that this may be a different value than returned by
-         * g_settings_schema_key_get_default_value() if the system administrator
+         * [method`Gio`.SettingsSchemaKey.get_default_value] if the system administrator
          * has provided a default value.
          *
-         * Comparing the return values of g_settings_get_default_value() and
-         * g_settings_get_value() is not sufficient for determining if a value
+         * Comparing the return values of [method`Gio`.Settings.get_default_value] and
+         * [method`Gio`.Settings.get_value] is not sufficient for determining if a value
          * has been set because the user may have explicitly set the value to
          * something that happens to be equal to the default.  The difference
-         * here is that if the default changes in the future, the user's key
+         * here is that if the default changes in the future, the user’s key
          * will still be set.
          *
          * This function may be useful for adding an indication to a UI of what
          * the default value was before the user set it.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings`.
          * @param key the key to get the default value for
          * @returns the default value
@@ -47072,10 +48722,10 @@ export namespace Gio {
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for doubles.
+         * A convenience variant of [method`Gio`.Settings.get] for doubles.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a 'double' type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `d` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns a double
          */
@@ -47087,7 +48737,7 @@ export namespace Gio {
          * In order to use this function the type of the value must be a string
          * and it must be marked in the schema file as an enumerated type.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings` or is not marked as an enumerated type.
          *
          * If the value stored in the configuration database is not a valid
@@ -47104,7 +48754,7 @@ export namespace Gio {
          * In order to use this function the type of the value must be an array
          * of strings and it must be marked in the schema file as a flags type.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings` or is not marked as a flags type.
          *
          * If the value stored in the configuration database is not a valid
@@ -47115,18 +48765,21 @@ export namespace Gio {
          */
         get_flags(key: string): number;
         /**
-         * Returns whether the #GSettings object has any unapplied
-         * changes.  This can only be the case if it is in 'delayed-apply' mode.
-         * @returns %TRUE if @settings has unapplied changes
+         * Returns whether the [class`Gio`.Settings] object has any unapplied
+         * changes.
+         *
+         * This can only be the case if it is in
+         * [‘delay-apply’ mode](class.Settings.html#delay-apply-mode).
+         * @returns true if @settings has unapplied changes, false otherwise
          */
         get_has_unapplied(): boolean;
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for 32-bit integers.
+         * A convenience variant of [method`Gio`.Settings.get] for 32-bit integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a int32 type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `i` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns an integer
          */
@@ -47134,10 +48787,10 @@ export namespace Gio {
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for 64-bit integers.
+         * A convenience variant of [method`Gio`.Settings.get] for 64-bit integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a int64 type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `x` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns a 64-bit integer
          */
@@ -47152,27 +48805,27 @@ export namespace Gio {
          * indicates that the processing was unsuccessful (due to a parse error,
          * for example) then the mapping is tried again with another value.
          *
-         * This allows a robust 'fall back to defaults' behaviour to be
+         * This allows a robust ‘fall back to defaults’ behaviour to be
          * implemented somewhat automatically.
          *
-         * The first value that is tried is the user's setting for the key.  If
+         * The first value that is tried is the user’s setting for the key.  If
          * the mapping function fails to map this value, other values may be
          * tried in an unspecified order (system or site defaults, translated
          * schema default values, untranslated schema default values, etc).
          *
          * If the mapping function fails for all possible values, one additional
-         * attempt is made: the mapping function is called with a %NULL value.
+         * attempt is made: the mapping function is called with a `NULL` value.
          * If the mapping function still indicates failure at this point then
          * the application will be aborted.
          *
          * The result parameter for the `mapping` function is pointed to a
-         * #gpointer which is initially set to %NULL.  The same pointer is given
-         * to each invocation of `mapping`.  The final value of that #gpointer is
-         * what is returned by this function.  %NULL is valid; it is returned
+         * `gpointer` which is initially set to `NULL`.  The same pointer is given
+         * to each invocation of `mapping`.  The final value of that `gpointer` is
+         * what is returned by this function.  `NULL` is valid; it is returned
          * just as any other value would be.
          * @param key the key to get the value for
-         * @param mapping the function to map the value in the           settings database to the value used by the application
-         * @returns the result, which may be %NULL
+         * @param mapping the function to map the value in the   settings database to the value used by the application
+         * @returns the result, which may be `NULL`
          */
         get_mapped(key: string, mapping: SettingsGetMapping): any | null;
         /**
@@ -47183,31 +48836,31 @@ export namespace Gio {
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for strings.
+         * A convenience variant of [method`Gio`.Settings.get] for strings.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a string type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `s` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns a newly-allocated string
          */
         get_string(key: string): string;
         /**
-         * A convenience variant of g_settings_get() for string arrays.
+         * A convenience variant of [method`Gio`.Settings.get] for string arrays.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having an array of strings type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `as` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
-         * @returns a newly-allocated, %NULL-terminated array of strings, the value that is stored at @key in @settings.
+         * @returns a   newly-allocated, `NULL`-terminated array of strings, the value that   is stored at @key in @settings.
          */
         get_strv(key: string): string[];
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for 32-bit unsigned
+         * A convenience variant of [method`Gio`.Settings.get] for 32-bit unsigned
          * integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a uint32 type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `u` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns an unsigned integer
          */
@@ -47215,78 +48868,78 @@ export namespace Gio {
         /**
          * Gets the value that is stored at `key` in `settings`.
          *
-         * A convenience variant of g_settings_get() for 64-bit unsigned
+         * A convenience variant of [method`Gio`.Settings.get] for 64-bit unsigned
          * integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a uint64 type in the schema for `settings`.
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `t` type in the schema for `settings` (see [struct`GLib`.VariantType]).
          * @param key the key to get the value for
          * @returns a 64-bit unsigned integer
          */
         get_uint64(key: string): number;
         /**
-         * Checks the "user value" of a key, if there is one.
+         * Checks the ‘user value’ of a key, if there is one.
          *
          * The user value of a key is the last value that was set by the user.
          *
-         * After calling g_settings_reset() this function should always return
-         * %NULL (assuming something is not wrong with the system
+         * After calling [method`Gio`.Settings.reset] this function should always return
+         * `NULL` (assuming something is not wrong with the system
          * configuration).
          *
-         * It is possible that g_settings_get_value() will return a different
+         * It is possible that [method`Gio`.Settings.get_value] will return a different
          * value than this function.  This can happen in the case that the user
          * set a value for a key that was subsequently locked down by the system
-         * administrator -- this function will return the user's old value.
+         * administrator — this function will return the user’s old value.
          *
-         * This function may be useful for adding a "reset" option to a UI or
+         * This function may be useful for adding a ‘reset’ option to a UI or
          * for providing indication that a particular value has been changed.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings`.
          * @param key the key to get the user value for
-         * @returns the user's value, if set
+         * @returns the user’s value, if set
          */
         get_user_value<T extends string = any>(key: string): GLib.Variant<T> | null;
         /**
          * Gets the value that is stored in `settings` for `key`.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings`.
          * @param key the key to get the value for
-         * @returns a new #GVariant
+         * @returns a new [struct@GLib.Variant]
          */
         get_value<T extends string = any>(key: string): GLib.Variant<T>;
         /**
-         * Finds out if a key can be written or not
+         * Finds out if a key can be written.
          * @param name the name of a key
-         * @returns %TRUE if the key @name is writable
+         * @returns true if the key @name is writable, false otherwise
          */
         is_writable(name: string): boolean;
         /**
          * Gets the list of children on `settings`.
          *
          * The list is exactly the list of strings for which it is not an error
-         * to call g_settings_get_child().
+         * to call [method`Gio`.Settings.get_child].
          *
-         * There is little reason to call this function from "normal" code, since
+         * There is little reason to call this function from ‘normal’ code, since
          * you should already know what children are in your schema. This function
          * may still be useful there for introspection reasons, however.
          *
-         * You should free the return value with g_strfreev() when you are done
+         * You should free the return value with [func`GLib`.strfreev] when you are done
          * with it.
-         * @returns a list of the children    on @settings, in no defined order
+         * @returns a list of the children   on @settings, in no defined order
          */
         list_children(): string[];
         /**
          * Introspects the list of keys on `settings`.
          *
-         * You should probably not be calling this function from "normal" code
+         * You should probably not be calling this function from ‘normal’ code
          * (since you should already know what keys are in your schema).  This
          * function is intended for introspection reasons.
          *
-         * You should free the return value with g_strfreev() when you are done
+         * You should free the return value with [func`GLib`.strfreev] when you are done
          * with it.
-         * @returns a list    of the keys on @settings, in no defined order
+         * @returns a list   of the keys on @settings, in no defined order
          */
         list_keys(): string[];
         /**
@@ -47294,7 +48947,7 @@ export namespace Gio {
          * permitted range for `key`.
          * @param key the key to check
          * @param value the value to check
-         * @returns %TRUE if @value is valid for @key
+         * @returns true if @value is valid for @key, false otherwise
          */
         range_check(key: string, value: GLib.Variant): boolean;
         /**
@@ -47307,10 +48960,11 @@ export namespace Gio {
          */
         reset(key: string): void;
         /**
-         * Reverts all non-applied changes to the settings.  This function
-         * does nothing unless `settings` is in 'delay-apply' mode; see
-         * g_settings_delay().  In the normal case settings are always applied
-         * immediately.
+         * Reverts all unapplied changes to the settings.
+         *
+         * This function does nothing unless `settings` is in
+         * [‘delay-apply’ mode](class.Settings.html#delay-apply-mode).  In the normal
+         * case settings are always applied immediately.
          *
          * Change notifications will be emitted for affected keys.
          */
@@ -47318,41 +48972,41 @@ export namespace Gio {
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for booleans.
+         * A convenience variant of [method`Gio`.Settings.set] for booleans.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a boolean type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `b` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_boolean(key: string, value: boolean): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for doubles.
+         * A convenience variant of [method`Gio`.Settings.set] for doubles.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a 'double' type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `d` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_double(key: string, value: number): boolean;
         /**
          * Looks up the enumerated type nick for `value` and writes it to `key,`
          * within `settings`.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings` or is not marked as an enumerated type, or for
          * `value` not to be a valid value for the named type.
          *
          * After performing the write, accessing `key` directly with
-         * g_settings_get_string() will return the 'nick' associated with
+         * [method`Gio`.Settings.get_string] will return the ‘nick’ associated with
          * `value`.
-         * @param key a key, within @settings
+         * @param key the key to set the value for
          * @param value an enumerated value
-         * @returns %TRUE, if the set succeeds
+         * @returns true if the set succeeds, false otherwise
          */
         set_enum(key: string, value: number): boolean;
         /**
@@ -47360,104 +49014,104 @@ export namespace Gio {
          * them in an array of strings and writes the array to `key,` within
          * `settings`.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings` or is not marked as a flags type, or for `value`
          * to contain any bits that are not value for the named type.
          *
          * After performing the write, accessing `key` directly with
-         * g_settings_get_strv() will return an array of 'nicks'; one for each
+         * [method`Gio`.Settings.get_strv] will return an array of ‘nicks’; one for each
          * bit in `value`.
-         * @param key a key, within @settings
+         * @param key the key to set the value for
          * @param value a flags value
-         * @returns %TRUE, if the set succeeds
+         * @returns true if the set succeeds, false otherwise
          */
         set_flags(key: string, value: number): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for 32-bit integers.
+         * A convenience variant of [method`Gio`.Settings.set] for 32-bit integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a int32 type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `i` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_int(key: string, value: number): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for 64-bit integers.
+         * A convenience variant of [method`Gio`.Settings.set] for 64-bit integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a int64 type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `x` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_int64(key: string, value: number): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for strings.
+         * A convenience variant of [method`Gio`.Settings.set] for strings.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a string type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `s` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_string(key: string, value: string): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for string arrays.  If
-         * `value` is %NULL, then `key` is set to be the empty array.
+         * A convenience variant of [method`Gio`.Settings.set] for string arrays.  If
+         * `value` is `NULL`, then `key` is set to be the empty array.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having an array of strings type in the schema for `settings`.
-         * @param key the name of the key to set
-         * @param value the value to set it to, or %NULL
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having an `as` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
+         * @param value the value to set it to
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_strv(key: string, value?: string[] | null): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for 32-bit unsigned
+         * A convenience variant of [method`Gio`.Settings.set] for 32-bit unsigned
          * integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a uint32 type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `u` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_uint(key: string, value: number): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * A convenience variant of g_settings_set() for 64-bit unsigned
+         * A convenience variant of [method`Gio`.Settings.set] for 64-bit unsigned
          * integers.
          *
-         * It is a programmer error to give a `key` that isn't specified as
-         * having a uint64 type in the schema for `settings`.
-         * @param key the name of the key to set
+         * It is a programmer error to give a `key` that isn’t specified as
+         * having a `t` type in the schema for `settings` (see [struct`GLib`.VariantType]).
+         * @param key the key to set the value for
          * @param value the value to set it to
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_uint64(key: string, value: number): boolean;
         /**
          * Sets `key` in `settings` to `value`.
          *
-         * It is a programmer error to give a `key` that isn't contained in the
+         * It is a programmer error to give a `key` that isn’t contained in the
          * schema for `settings` or for `value` to have the incorrect type, per
          * the schema.
          *
          * If `value` is floating then this function consumes the reference.
-         * @param key the name of the key to set
-         * @param value a #GVariant of the correct type
-         * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
+         * @param key the key to set the value for
+         * @param value a [struct@GLib.Variant] of the correct type
+         * @returns true if setting the key succeeded,   false if the key was not writable
          */
         set_value(key: string, value: GLib.Variant): boolean;
     }
@@ -48132,7 +49786,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -48260,7 +49928,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -48410,11 +50083,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SimpleActionGroup {
@@ -49114,7 +50807,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -49242,7 +50949,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -49392,11 +51104,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SimpleAsyncResult {
@@ -49629,7 +51361,7 @@ export namespace Gio {
         complete(): void;
         /**
          * Completes an asynchronous function in an idle handler in the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * thread-default main context (see [method`GLib`.MainContext.push_thread_default])
          * of the thread that `simple` was initially created in
          * (and re-pushes that context around the invocation of the callback).
          *
@@ -49865,7 +51597,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -49993,7 +51739,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -50143,11 +51894,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SimpleIOStream {
@@ -50634,7 +52405,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -50762,7 +52547,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -50912,11 +52702,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Socket {
@@ -52312,7 +54122,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -52355,7 +54165,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -52495,7 +54305,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -52623,7 +54447,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -52773,11 +54602,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SocketAddress {
@@ -53032,7 +54881,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -53160,7 +55023,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -53310,11 +55178,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SocketAddressEnumerator {
@@ -53361,7 +55249,7 @@ export namespace Gio {
          * If `enumerator` is expected to yield addresses, but for some reason
          * is unable to (eg, because of a DNS error), then the first call to
          * g_socket_address_enumerator_next() will return an appropriate error
-         * in *`error`. However, if the first call to
+         * in `*error`. However, if the first call to
          * g_socket_address_enumerator_next() succeeds, then any further
          * internal errors (other than `cancellable` being triggered) will be
          * ignored.
@@ -53399,12 +55287,12 @@ export namespace Gio {
          * If `enumerator` is expected to yield addresses, but for some reason
          * is unable to (eg, because of a DNS error), then the first call to
          * g_socket_address_enumerator_next() will return an appropriate error
-         * in *`error`. However, if the first call to
+         * in `*error`. However, if the first call to
          * g_socket_address_enumerator_next() succeeds, then any further
          * internal errors (other than `cancellable` being triggered) will be
          * ignored.
          * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #GSocketAddress (owned by the caller), or %NULL on     error (in which case *@error will be set) or if there are no     more addresses.
+         * @returns a #GSocketAddress (owned by the caller), or %NULL on     error (in which case `*error` will be set) or if there are no     more addresses.
          */
         next(cancellable?: Cancellable | null): SocketAddress | null;
         /**
@@ -53445,7 +55333,7 @@ export namespace Gio {
          * g_socket_address_enumerator_next() for more information about
          * error handling.
          * @param result a #GAsyncResult
-         * @returns a #GSocketAddress (owned by the caller), or %NULL on     error (in which case *@error will be set) or if there are no     more addresses.
+         * @returns a #GSocketAddress (owned by the caller), or %NULL on     error (in which case `*error` will be set) or if there are no     more addresses.
          */
         next_finish(result: AsyncResult): SocketAddress | null;
     }
@@ -55333,7 +57221,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -55376,7 +57264,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -55516,7 +57404,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -55644,7 +57546,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -55794,11 +57701,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace SubprocessLauncher {
@@ -56343,9 +58270,9 @@ export namespace Gio {
      *
      * You can use [method`Gio`.Task.run_in_thread] to turn a synchronous
      * operation into an asynchronous one, by running it in a thread.
-     * When it completes, the result will be dispatched to the thread-default main
-     * context (see [method`GLib`.MainContext.push_thread_default]) where the `GTask`
-     * was created.
+     * When it completes, the result will be dispatched to the thread-default
+     * main context (see [method`GLib`.MainContext.push_thread_default])
+     * where the `GTask` was created.
      *
      * Running a task in a thread:
      * ```c
@@ -56689,8 +58616,8 @@ export namespace Gio {
         get_completed(): boolean;
         /**
          * Gets the #GMainContext that `task` will return its result in (that
-         * is, the context that was the
-         * [thread-default main context][g-main-context-push-thread-default]
+         * is, the context that was the thread-default main context
+         * (see [method`GLib`.MainContext.push_thread_default])
          * at the point when `task` was created).
          *
          * This will always return a non-%NULL value, even if the task's
@@ -56938,8 +58865,7 @@ export namespace Gio {
          * name of the #GSource used for idle completion of the task.
          *
          * This function may only be called before the `task` is first used in a thread
-         * other than the one it was constructed in. It is called automatically by
-         * g_task_set_source_tag() if not called already.
+         * other than the one it was constructed in.
          * @param name a human readable name for the task, or %NULL to unset it
          */
         set_name(name?: string | null): void;
@@ -57007,6 +58933,9 @@ export namespace Gio {
          * Sets `task’`s name, used in debugging and profiling.
          *
          * This is a variant of g_task_set_name() that avoids copying `name`.
+         *
+         * This function is called automatically by [method`Gio`.Task.set_source_tag]
+         * unless a name is set.
          * @param name a human readable name for the task. Must be a string literal
          */
         set_static_name(name?: string | null): void;
@@ -57175,7 +59104,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -57303,7 +59246,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -57453,11 +59401,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace TcpConnection {
@@ -58027,7 +59995,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -58155,7 +60137,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -58305,11 +60292,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ThreadedResolver {
@@ -61530,7 +63537,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -61658,7 +63679,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -61808,11 +63834,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
         /**
          * Clears the pending flag on `stream`.
          */
@@ -61970,9 +64016,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -61985,9 +64031,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -62005,9 +64051,9 @@ export namespace Gio {
          * Request an asynchronous read of `count` bytes from the stream into the
          * buffer starting at `buffer`.
          *
-         * This is the asynchronous equivalent of g_input_stream_read_all().
+         * This is the asynchronous equivalent of [method`InputStream`.read_all].
          *
-         * Call g_input_stream_read_all_finish() to collect the result.
+         * Call [method`InputStream`.read_all_finish] to collect the result.
          *
          * Any outstanding I/O request with higher priority (lower numerical
          * value) will be executed before an outstanding request with lower
@@ -62023,7 +64069,7 @@ export namespace Gio {
         ): [Promise<number> | void, Uint8Array];
         /**
          * Finishes an asynchronous stream read operation started with
-         * g_input_stream_read_all_async().
+         * [method`InputStream`.read_all_async].
          *
          * As a special exception to the normal conventions for functions that
          * use #GError, if this function returns %FALSE (and sets `error)` then
@@ -62583,7 +64629,14 @@ export namespace Gio {
     }
 
     /**
-     * Watches #GUnixMounts for changes.
+     * Watches for changes to the set of mount entries and mount points in the
+     * system.
+     *
+     * Connect to the [signal`GioUnix`.MountMonitor::mounts-changed] signal to be
+     * notified of changes to the [struct`GioUnix`.MountEntry] list.
+     *
+     * Connect to the [signal`GioUnix`.MountMonitor::mountpoints-changed] signal to
+     * be notified of changes to the [struct`GioUnix`.MountPoint] list.
      */
     class UnixMountMonitor extends GObject.Object {
         static $gtype: GObject.GType<UnixMountMonitor>;
@@ -62611,15 +64664,15 @@ export namespace Gio {
         // Static methods
 
         /**
-         * Gets the #GUnixMountMonitor for the current thread-default main
+         * Gets the [class`GioUnix`.MountMonitor] for the current thread-default main
          * context.
          *
          * The mount monitor can be used to monitor for changes to the list of
          * mounted filesystems as well as the list of mount points (ie: fstab
          * entries).
          *
-         * You must only call g_object_unref() on the return value from under
-         * the same main context as you called this function.
+         * You must only call [method`GObject`.Object.unref] on the return value from
+         * under the same main context as you called this function.
          */
         static get(): UnixMountMonitor;
 
@@ -62633,7 +64686,7 @@ export namespace Gio {
          * circumstances.  Since `mount_monitor` is a singleton, it also meant
          * that calling this function would have side effects for other users of
          * the monitor.
-         * @param limit_msec a integer with the limit in milliseconds to     poll for changes.
+         * @param limit_msec a integer with the limit (in milliseconds) to poll for changes
          */
         set_rate_limit(limit_msec: number): void;
     }
@@ -63007,7 +65060,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -63135,7 +65202,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -63285,11 +65357,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
         /**
          * Clears the pending flag on `stream`.
          */
@@ -64751,7 +66843,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -64879,7 +66985,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -65029,11 +67140,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Vfs {
@@ -65832,7 +67963,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -65960,7 +68105,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -66110,11 +68260,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace ZlibDecompressor {
@@ -66496,7 +68666,21 @@ export namespace Gio {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -66624,7 +68808,12 @@ export namespace Gio {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -66774,11 +68963,31 @@ export namespace Gio {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     /**
@@ -68348,16 +70557,16 @@ export namespace Gio {
         // Static methods
 
         /**
-         * Loads a binary resource bundle and creates a #GResource representation of it, allowing
-         * you to query it for data.
+         * Loads a binary resource bundle and creates a [struct`Gio`.Resource]
+         * representation of it, allowing you to query it for data.
          *
          * If you want to use this resource in the global resource namespace you need
-         * to register it with g_resources_register().
+         * to register it with [func`Gio`.resources_register].
          *
          * If `filename` is empty or the data in it is corrupt,
          * %G_RESOURCE_ERROR_INTERNAL will be returned. If `filename` doesn’t exist, or
-         * there is an error in reading it, an error from g_mapped_file_new() will be
-         * returned.
+         * there is an error in reading it, an error from [ctor`GLib`.MappedFile.new]
+         * will be returned.
          * @param filename the path of a filename to load, in the GLib filename encoding
          */
         static load(filename: string): Resource;
@@ -68366,8 +70575,10 @@ export namespace Gio {
 
         /**
          * Registers the resource with the process-global set of resources.
+         *
          * Once a resource is registered the files in it can be accessed
-         * with the global resource lookup functions like g_resources_lookup_data().
+         * with the global resource lookup functions like
+         * [func`Gio`.resources_lookup_data].
          */
         _register(): void;
         /**
@@ -68376,15 +70587,16 @@ export namespace Gio {
         _unregister(): void;
         /**
          * Returns all the names of children at the specified `path` in the resource.
-         * The return result is a %NULL terminated list of strings which should
-         * be released with g_strfreev().
          *
-         * If `path` is invalid or does not exist in the #GResource,
+         * The return result is a `NULL` terminated list of strings which should
+         * be released with [func`GLib`.strfreev].
+         *
+         * If `path` is invalid or does not exist in the [struct`Gio`.Resource],
          * %G_RESOURCE_ERROR_NOT_FOUND will be returned.
          *
          * `lookup_flags` controls the behaviour of the lookup.
-         * @param path A pathname inside the resource
-         * @param lookup_flags A #GResourceLookupFlags
+         * @param path A path name inside the resource
+         * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
          * @returns an array of constant strings
          */
         enumerate_children(path: string, lookup_flags: ResourceLookupFlags | null): string[];
@@ -68393,51 +70605,70 @@ export namespace Gio {
          * if found returns information about it.
          *
          * `lookup_flags` controls the behaviour of the lookup.
-         * @param path A pathname inside the resource
-         * @param lookup_flags A #GResourceLookupFlags
-         * @returns %TRUE if the file was found. %FALSE if there were errors
+         *
+         * The only error this can return is %G_RESOURCE_ERROR_NOT_FOUND, if `path` was
+         * not found in `resource`.
+         * @param path A path name inside the resource
+         * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
+         * @returns `TRUE` if the file was found, `FALSE` if there were errors
          */
         get_info(path: string, lookup_flags: ResourceLookupFlags | null): [boolean, number, number];
         /**
+         * Returns whether the specified `path` in the resource
+         * has children.
+         * @param path A pathname inside the resource
+         * @returns %TRUE if @path has children
+         */
+        has_children(path: string): boolean;
+        /**
          * Looks for a file at the specified `path` in the resource and
-         * returns a #GBytes that lets you directly access the data in
+         * returns a [struct`GLib`.Bytes] that lets you directly access the data in
          * memory.
          *
          * The data is always followed by a zero byte, so you
          * can safely use the data as a C string. However, that byte
-         * is not included in the size of the GBytes.
+         * is not included in the size of the [struct`GLib`.Bytes].
          *
          * For uncompressed resource files this is a pointer directly into
-         * the resource bundle, which is typically in some readonly data section
-         * in the program binary. For compressed files we allocate memory on
-         * the heap and automatically uncompress the data.
+         * the resource bundle, which is typically in some read-only data section
+         * in the program binary. For compressed files, memory is allocated on
+         * the heap and the data is automatically uncompressed.
          *
          * `lookup_flags` controls the behaviour of the lookup.
-         * @param path A pathname inside the resource
-         * @param lookup_flags A #GResourceLookupFlags
-         * @returns #GBytes or %NULL on error.     Free the returned object with g_bytes_unref()
+         *
+         * This can return error %G_RESOURCE_ERROR_NOT_FOUND if `path` was not found in
+         * `resource,` or %G_RESOURCE_ERROR_INTERNAL if decompression of a compressed
+         * resource failed.
+         * @param path A path name inside the resource
+         * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
+         * @returns [struct@GLib.Bytes] or `NULL` on error
          */
         lookup_data(path: string, lookup_flags: ResourceLookupFlags | null): GLib.Bytes;
         /**
          * Looks for a file at the specified `path` in the resource and
-         * returns a #GInputStream that lets you read the data.
+         * returns a [class`Gio`.InputStream] that lets you read the data.
          *
          * `lookup_flags` controls the behaviour of the lookup.
-         * @param path A pathname inside the resource
-         * @param lookup_flags A #GResourceLookupFlags
-         * @returns #GInputStream or %NULL on error.     Free the returned object with g_object_unref()
+         *
+         * The only error this can return is %G_RESOURCE_ERROR_NOT_FOUND, if `path` was
+         * not found in `resource`.
+         * @param path A path name inside the resource
+         * @param lookup_flags A [flags@Gio.ResourceLookupFlags]
+         * @returns [class@Gio.InputStream] or `NULL` on error
          */
         open_stream(path: string, lookup_flags: ResourceLookupFlags | null): InputStream;
         /**
-         * Atomically increments the reference count of `resource` by one. This
-         * function is MT-safe and may be called from any thread.
-         * @returns The passed in #GResource
+         * Atomically increments the reference count of `resource` by one.
+         *
+         * This function is threadsafe and may be called from any thread.
+         * @returns The passed in [struct@Gio.Resource]
          */
         ref(): Resource;
         /**
-         * Atomically decrements the reference count of `resource` by one. If the
-         * reference count drops to 0, all memory allocated by the resource is
-         * released. This function is MT-safe and may be called from any
+         * Atomically decrements the reference count of `resource` by one.
+         *
+         * If the reference count drops to 0, all memory allocated by the resource is
+         * released. This function is threadsafe and may be called from any
          * thread.
          */
         unref(): void;
@@ -68981,7 +71212,7 @@ export namespace Gio {
     }
 
     /**
-     * #GStaticResource is an opaque data structure and can only be accessed
+     * `GStaticResource` is an opaque data structure and can only be accessed
      * using the following functions.
      */
     class StaticResource {
@@ -68994,28 +71225,30 @@ export namespace Gio {
         // Methods
 
         /**
-         * Finalized a GResource initialized by g_static_resource_init().
+         * Finalizes a [struct`Gio`.Resource] initialized by
+         * [method`Gio`.StaticResource.init].
          *
          * This is normally used by code generated by
-         * [glib-compile-resources][glib-compile-resources]
+         * [`glib-compile-resources`](glib-compile-resources.html)
          * and is not typically used by other code.
          */
         fini(): void;
         /**
-         * Gets the GResource that was registered by a call to g_static_resource_init().
+         * Gets the [struct`Gio`.Resource] that was registered by a call to
+         * [method`Gio`.StaticResource.init].
          *
          * This is normally used by code generated by
-         * [glib-compile-resources][glib-compile-resources]
+         * [`glib-compile-resources`](glib-compile-resources.html)
          * and is not typically used by other code.
-         * @returns a #GResource
+         * @returns a [struct@Gio.Resource]
          */
         get_resource(): Resource;
         /**
-         * Initializes a GResource from static data using a
-         * GStaticResource.
+         * Initializes a [struct`Gio`.Resource] from static data using a
+         * [struct`Gio`.StaticResource].
          *
          * This is normally used by code generated by
-         * [glib-compile-resources][glib-compile-resources]
+         * [`glib-compile-resources`](glib-compile-resources.html)
          * and is not typically used by other code.
          */
         init(): void;
@@ -69155,6 +71388,135 @@ export namespace Gio {
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Gets a [struct`GioUnix`.MountEntry] for a given mount path.
+         *
+         * If `time_read` is set, it will be filled with a Unix timestamp for checking
+         * if the mounts have changed since with
+         * [func`GioUnix`.mount_entries_changed_since].
+         *
+         * If more mounts have the same mount path, the last matching mount
+         * is returned.
+         *
+         * This will return `NULL` if there is no mount point at `mount_path`.
+         * @param mount_path path for a possible Unix mount
+         */
+        static at(mount_path: string): [UnixMountEntry | null, number];
+        /**
+         * Gets a [struct`GioUnix`.MountEntry] for a given file path.
+         *
+         * If `time_read` is set, it will be filled with a Unix timestamp for checking
+         * if the mounts have changed since with
+         * [func`GioUnix`.mount_entries_changed_since].
+         *
+         * If more mounts have the same mount path, the last matching mount
+         * is returned.
+         *
+         * This will return `NULL` if looking up the mount entry fails, if
+         * `file_path` doesn’t exist or there is an I/O error.
+         * @param file_path file path on some Unix mount
+         */
+        static ['for'](file_path: string): [UnixMountEntry | null, number];
+
+        // Methods
+
+        /**
+         * Compares two Unix mounts.
+         * @param mount2 second [struct@GioUnix.MountEntry] to compare
+         * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
+         */
+        compare(mount2: UnixMountEntry): number;
+        /**
+         * Makes a copy of `mount_entry`.
+         * @returns a new [struct@GioUnix.MountEntry]
+         */
+        copy(): UnixMountEntry;
+        /**
+         * Frees a Unix mount.
+         */
+        free(): void;
+        /**
+         * Gets the device path for a Unix mount.
+         * @returns a string containing the device path
+         */
+        get_device_path(): string;
+        /**
+         * Gets the filesystem type for the Unix mount.
+         * @returns a string containing the file system type
+         */
+        get_fs_type(): string;
+        /**
+         * Gets the mount path for a Unix mount.
+         * @returns the mount path for @mount_entry
+         */
+        get_mount_path(): string;
+        /**
+         * Gets a comma separated list of mount options for the Unix mount.
+         *
+         * For example: `rw,relatime,seclabel,data=ordered`.
+         *
+         * This is similar to [func`GioUnix`.MountPoint.get_options], but it takes
+         * a [struct`GioUnix`.MountEntry] as an argument.
+         * @returns a string containing the options, or `NULL` if not    available.
+         */
+        get_options(): string | null;
+        /**
+         * Gets the root of the mount within the filesystem. This is useful e.g. for
+         * mounts created by bind operation, or btrfs subvolumes.
+         *
+         * For example, the root path is equal to `/` for a mount created by
+         * `mount /dev/sda1 /mnt/foo` and `/bar` for
+         * `mount --bind /mnt/foo/bar /mnt/bar`.
+         * @returns a string containing the root, or `NULL` if not supported
+         */
+        get_root_path(): string | null;
+        /**
+         * Guesses whether a Unix mount entry can be ejected.
+         * @returns true if @mount_entry is deemed to be ejectable; false otherwise
+         */
+        guess_can_eject(): boolean;
+        /**
+         * Guesses the icon of a Unix mount entry.
+         * @returns a [iface@Gio.Icon]
+         */
+        guess_icon(): Icon;
+        /**
+         * Guesses the name of a Unix mount entry.
+         *
+         * The result is a translated string.
+         * @returns a newly allocated translated string
+         */
+        guess_name(): string;
+        /**
+         * Guesses whether a Unix mount entry should be displayed in the UI.
+         * @returns true if @mount_entry is deemed to be displayable; false otherwise
+         */
+        guess_should_display(): boolean;
+        /**
+         * Guesses the symbolic icon of a Unix mount entry.
+         * @returns a [iface@Gio.Icon]
+         */
+        guess_symbolic_icon(): Icon;
+        /**
+         * Checks if a Unix mount is mounted read only.
+         * @returns true if @mount_entry is read only; false otherwise
+         */
+        is_readonly(): boolean;
+        /**
+         * Checks if a Unix mount is a system mount.
+         *
+         * This is the Boolean OR of
+         * [func`GioUnix`.is_system_fs_type], [func`GioUnix`.is_system_device_path] and
+         * [func`GioUnix`.is_mount_path_system_internal] on `mount_entry’`s properties.
+         *
+         * The definition of what a ‘system’ mount entry is may change over time as new
+         * file system types and device paths are ignored.
+         * @returns true if the Unix mount is for a system path; false otherwise
+         */
+        is_system_internal(): boolean;
     }
 
     type UnixMountMonitorClass = typeof UnixMountMonitor;
@@ -69172,87 +71534,90 @@ export namespace Gio {
         // Static methods
 
         /**
-         * Gets a #GUnixMountPoint for a given mount path. If `time_read` is set, it
-         * will be filled with a unix timestamp for checking if the mount points have
-         * changed since with g_unix_mount_points_changed_since().
+         * Gets a [struct`GioUnix`.MountPoint] for a given mount path.
+         *
+         * If `time_read` is set, it will be filled with a Unix timestamp for checking if
+         * the mount points have changed since with
+         * [func`GioUnix`.mount_points_changed_since].
          *
          * If more mount points have the same mount path, the last matching mount point
          * is returned.
-         * @param mount_path path for a possible unix mount point.
+         * @param mount_path path for a possible Unix mount point
          */
         static at(mount_path: string): [UnixMountPoint | null, number];
 
         // Methods
 
         /**
-         * Compares two unix mount points.
-         * @param mount2 a #GUnixMount.
-         * @returns 1, 0 or -1 if @mount1 is greater than, equal to, or less than @mount2, respectively.
+         * Compares two Unix mount points.
+         * @param mount2 a [struct@GioUnix.MountPoint]
+         * @returns `1`, `0` or `-1` if @mount1 is greater than, equal to,    or less than @mount2, respectively
          */
         compare(mount2: UnixMountPoint): number;
         /**
          * Makes a copy of `mount_point`.
-         * @returns a new #GUnixMountPoint
+         * @returns a new [struct@GioUnix.MountPoint]
          */
         copy(): UnixMountPoint;
         /**
-         * Frees a unix mount point.
+         * Frees a Unix mount point.
          */
         free(): void;
         /**
-         * Gets the device path for a unix mount point.
-         * @returns a string containing the device path.
+         * Gets the device path for a Unix mount point.
+         * @returns a string containing the device path
          */
         get_device_path(): string;
         /**
          * Gets the file system type for the mount point.
-         * @returns a string containing the file system type.
+         * @returns a string containing the file system type
          */
         get_fs_type(): string;
         /**
-         * Gets the mount path for a unix mount point.
-         * @returns a string containing the mount path.
+         * Gets the mount path for a Unix mount point.
+         * @returns a string containing the mount path
          */
         get_mount_path(): string;
         /**
          * Gets the options for the mount point.
-         * @returns a string containing the options.
+         * @returns a string containing the options
          */
         get_options(): string | null;
         /**
          * Guesses whether a Unix mount point can be ejected.
-         * @returns %TRUE if @mount_point is deemed to be ejectable.
+         * @returns true if @mount_point is deemed to be ejectable; false otherwise
          */
         guess_can_eject(): boolean;
         /**
          * Guesses the icon of a Unix mount point.
-         * @returns a #GIcon
+         * @returns a [iface@Gio.Icon]
          */
         guess_icon(): Icon;
         /**
          * Guesses the name of a Unix mount point.
+         *
          * The result is a translated string.
-         * @returns A newly allocated string that must     be freed with g_free()
+         * @returns a newly allocated translated string
          */
         guess_name(): string;
         /**
          * Guesses the symbolic icon of a Unix mount point.
-         * @returns a #GIcon
+         * @returns a [iface@Gio.Icon]
          */
         guess_symbolic_icon(): Icon;
         /**
-         * Checks if a unix mount point is a loopback device.
-         * @returns %TRUE if the mount point is a loopback. %FALSE otherwise.
+         * Checks if a Unix mount point is a loopback device.
+         * @returns true if the mount point is a loopback device; false otherwise
          */
         is_loopback(): boolean;
         /**
-         * Checks if a unix mount point is read only.
-         * @returns %TRUE if a mount point is read only.
+         * Checks if a Unix mount point is read only.
+         * @returns true if a mount point is read only; false otherwise
          */
         is_readonly(): boolean;
         /**
-         * Checks if a unix mount point is mountable by the user.
-         * @returns %TRUE if the mount point is user mountable.
+         * Checks if a Unix mount point is mountable by the user.
+         * @returns true if the mount point is user mountable; false otherwise
          */
         is_user_mountable(): boolean;
     }
@@ -75601,8 +77966,11 @@ export namespace Gio {
          */
         query_default_handler_finish(result: AsyncResult): AppInfo;
         /**
-         * Utility function to check if a particular file exists. This is
-         * implemented using g_file_query_info() and as such does blocking I/O.
+         * Utility function to check if a particular file exists.
+         *
+         * The fallback implementation of this API is using [method`Gio`.File.query_info]
+         * and therefore may do blocking I/O. To asynchronously query the existence
+         * of a file, use [method`Gio`.File.query_info_async].
          *
          * Note that in many cases it is [racy to first check for file existence](https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use)
          * and then execute something based on the outcome of that, because the
@@ -76834,8 +79202,8 @@ export namespace Gio {
          */
         stop_mountable_finish(result: AsyncResult): boolean;
         /**
-         * Checks if `file` supports
-         * [thread-default contexts][g-main-context-push-thread-default-context].
+         * Checks if `file` supports thread-default main contexts
+         * (see [method`GLib`.MainContext.push_thread_default])
          * If this returns %FALSE, you cannot perform asynchronous operations on
          * `file` in a thread that has a thread-default context.
          * @returns Whether or not @file supports thread-default contexts.
@@ -76845,7 +79213,7 @@ export namespace Gio {
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
          * Trashing is disabled for system mounts by default (see
-         * g_unix_mount_is_system_internal()), so this call can return the
+         * g_unix_mount_entry_is_system_internal()), so this call can return the
          * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
          * mount option can be used to disable g_file_trash() support for particular
          * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
@@ -77967,6 +80335,35 @@ export namespace Gio {
          */
         vfunc_prefix_matches(file: File): boolean;
         /**
+         * Utility function to check if a particular file exists.
+         *
+         * The fallback implementation of this API is using [method`Gio`.File.query_info]
+         * and therefore may do blocking I/O. To asynchronously query the existence
+         * of a file, use [method`Gio`.File.query_info_async].
+         *
+         * Note that in many cases it is [racy to first check for file existence](https://en.wikipedia.org/wiki/Time_of_check_to_time_of_use)
+         * and then execute something based on the outcome of that, because the
+         * file might have been created or removed in between the operations. The
+         * general approach to handling that is to not check, but just do the
+         * operation and handle the errors as they come.
+         *
+         * As an example of race-free checking, take the case of reading a file,
+         * and if it doesn't exist, creating it. There are two racy versions: read
+         * it, and on error create it; and: check if it exists, if not create it.
+         * These can both result in two processes creating the file (with perhaps
+         * a partially written file as the result). The correct approach is to
+         * always try to create the file with g_file_create() which will either
+         * atomically create the file or fail with a %G_IO_ERROR_EXISTS error.
+         *
+         * However, in many cases an existence check is useful in a user interface,
+         * for instance to make a menu item sensitive/insensitive, so that you don't
+         * have to fool users that something is possible and then just show an error
+         * dialog. If you do this, you should make sure to also handle the errors
+         * that can happen due to races when you execute the operation.
+         * @param cancellable optional #GCancellable object,   %NULL to ignore
+         */
+        vfunc_query_exists(cancellable?: Cancellable | null): boolean;
+        /**
          * Similar to g_file_query_info(), but obtains information
          * about the filesystem the `file` is on, rather than the file itself.
          * For instance the amount of space available and the type of
@@ -78483,7 +80880,7 @@ export namespace Gio {
          * Sends `file` to the "Trashcan", if possible. This is similar to
          * deleting it, but the user can recover it before emptying the trashcan.
          * Trashing is disabled for system mounts by default (see
-         * g_unix_mount_is_system_internal()), so this call can return the
+         * g_unix_mount_entry_is_system_internal()), so this call can return the
          * %G_IO_ERROR_NOT_SUPPORTED error. Since GLib 2.66, the `x-gvfs-notrash` unix
          * mount option can be used to disable g_file_trash() support for particular
          * mounts, the %G_IO_ERROR_NOT_SUPPORTED error will be returned in that case.
@@ -78754,7 +81151,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as
@@ -78800,7 +81197,7 @@ export namespace Gio {
          * If the object is not initialized, or initialization returns with an
          * error, then all operations on the object except g_object_ref() and
          * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [introduction][ginitable] for more details.
+         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
          *
          * Callers should not assume that a class which implements #GInitable can be
          * initialized multiple times, unless the class explicitly documents itself as

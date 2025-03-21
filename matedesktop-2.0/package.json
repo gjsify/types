@@ -1,6 +1,6 @@
 {
     "name": "@girs/matedesktop-2.0",
-    "version": "2.0.0-4.0.0-beta.21",
+    "version": "2.0.0-4.0.0-beta.22",
     "description": "GJS TypeScript type definitions for MateDesktop-2.0, generated from library version 2.0.0",
     "type": "module",
     "module": "matedesktop-2.0.js",

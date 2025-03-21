@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Gio from '@girs/gio-2.0';
@@ -441,14 +443,6 @@ export namespace Notify {
     }
 
     type NotificationClass = typeof Notification;
-    abstract class NotificationPrivate {
-        static $gtype: GObject.GType<NotificationPrivate>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-    }
-
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

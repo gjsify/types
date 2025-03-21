@@ -1,6 +1,6 @@
 {
     "name": "@girs/wnck-1.0",
-    "version": "2.31.0-4.0.0-beta.21",
+    "version": "2.31.0-4.0.0-beta.22",
     "description": "GJS TypeScript type definitions for Wnck-1.0, generated from library version 2.31.0",
     "type": "module",
     "module": "wnck-1.0.js",

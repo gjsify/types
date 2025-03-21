@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GLib from '@girs/glib-2.0';
 
@@ -2750,20 +2752,23 @@ export namespace GObject {
          */
         NO_HOOKS,
         /**
-         * Varargs signal emission will always collect the
-         *   arguments, even if there are no signal handlers connected.  Since 2.30.
+         * Varargs signal emission will always collect the arguments, even if there
+         * are no signal handlers connected.
          */
         MUST_COLLECT,
         /**
-         * The signal is deprecated and will be removed
-         *   in a future version. A warning will be generated if it is connected while
-         *   running with G_ENABLE_DIAGNOSTIC=1.  Since 2.32.
+         * The signal is deprecated and will be removed in a future version.
+         *
+         * A warning will be generated if it is connected while running with
+         * `G_ENABLE_DIAGNOSTIC=1`.
          */
         DEPRECATED,
         /**
-         * Only used in #GSignalAccumulator accumulator
-         *   functions for the #GSignalInvocationHint::run_type field to mark the first
-         *   call to the accumulator function for a signal emission.  Since 2.68.
+         * The signal accumulator was invoked for the first time.
+         *
+         * This flag is only used in [callback`GObject`.SignalAccumulator][accumulator functions]
+         * for the `run_type` field of the [struct`GObject`.SignalInvocationHint], to
+         * mark the first call to the accumulator function for a signal emission.
          */
         ACCUMULATOR_FIRST_RUN,
     }
@@ -3594,7 +3599,21 @@ export namespace GObject {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3722,7 +3741,12 @@ export namespace GObject {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -3807,11 +3831,31 @@ export namespace GObject {
          * @param closure #GClosure to watch
          */
         watch_closure(closure: Closure): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     /**
@@ -4096,11 +4140,19 @@ export namespace GObject {
             flags: ParamFlags | number,
             boxedType: GType<T> | { $gtype: GType<T> },
         ): ParamSpec<T>;
+        /**
+         * Creates a new GParamSpecObject instance specifying a property holding object references.
+         * @param name The name of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
+         * @param flags The flags for this property (e.g. READABLE, WRITABLE)
+         * @param objectType The GType of the object
+         */
         static object<T>(
             name: string,
             nick: string | null,
             blurb: string | null,
-            flags: string,
+            flags: ParamFlags | number,
             objectType: GType<T> | { $gtype: GType<T> },
         ): ParamSpec<T>;
         /**
@@ -4118,7 +4170,19 @@ export namespace GObject {
             flags: ParamFlags | number,
             paramType: any,
         ): ParamSpec;
-        static jsobject<T>(name: string, nick: string | null, blurb: string | null, flags: any): ParamSpec<T>;
+        /**
+         * Creates a new ParamSpec instance for JavaScript object properties.
+         * @param name The name of the property
+         * @param nick A human readable name for the property (can be null)
+         * @param blurb A longer description of the property (can be null)
+         * @param flags The flags for this property (e.g. READABLE, WRITABLE)
+         */
+        static jsobject<T>(
+            name: string,
+            nick: string | null,
+            blurb: string | null,
+            flags: ParamFlags | number,
+        ): ParamSpec<T>;
 
         // Virtual methods
 
@@ -4235,6 +4299,11 @@ export namespace GObject {
          * @returns the user data pointer set, or %NULL
          */
         steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Registers a property override for a property introduced in a parent class or inherited interface.
+         * @param name The name of the property to override
+         * @param oclass The object class or type that contains the property to override
+         */
         override(name: string, oclass: Object | Function | GType): void;
     }
 
@@ -4687,7 +4756,21 @@ export namespace GObject {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -4815,7 +4898,12 @@ export namespace GObject {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4965,11 +5053,31 @@ export namespace GObject {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: Value | any, pspec: ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     /**

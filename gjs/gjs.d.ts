@@ -40,24 +40,54 @@ declare namespace package {
         datadir?: string;
     }
 
-    /** The base name of the entry point (eg. org.foo.Bar.App) */
-    export const name: string | undefined;
-    /** The version of the package */
-    export const version: string | undefined;
-    /** The prefix of the package */
-    export const prefix: string | undefined;
-    /** The final datadir when installed; usually, these would be prefix + '/share' */
-    export const datadir: string | undefined;
-    /** The final libdir when installed; usually, these would be prefix + '/lib' (or '/lib64') */
-    export const libdir: string | undefined;
-    /** The final pkgdatadir when installed; usually, this would be prefix + '/share' */
-    export const pkgdatadir: string | undefined;
-    /** The final pkglibdir when installed; usually, this would be prefix + '/lib' (or '/lib64') */
-    export const pkglibdir: string | undefined;
-    /** The final moduledir when installed; usually, this would be prefix + '/lib' (or '/lib64') */
-    export const moduledir: string | undefined;
-    /** The directory containing gettext translation files; this will be datadir + '/locale' when installed and './po' in the source tree */
-    export const localedir: string | undefined;
+    /**
+     * The base name of the entry point (eg. org.foo.Bar.App)
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const name: string;
+    /**
+     * The version of the package
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const version: string;
+    /**
+     * The prefix of the package
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const prefix: string;
+    /**
+     * The final datadir when installed; usually, these would be prefix + '/share'
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const datadir: string;
+    /**
+     * The final libdir when installed; usually, these would be prefix + '/lib' (or '/lib64')
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const libdir: string;
+    /**
+     * The final pkglibdir when installed; usually, this would be prefix + '/lib' (or '/lib64')
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const pkglibdir: string;
+    /**
+     * The final moduledir when installed; usually, this would be prefix + '/lib' (or '/lib64')
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const moduledir: string;
+    /**
+     * The directory containing gettext translation files; this will be datadir + '/locale' when installed and './po' in the source tree
+     *
+     * Note: Run `pkg.init()` before accessing this property.
+     */
+    export const localedir: string;
 
     /**
      * Initialize directories and global variables. Must be called
@@ -165,7 +195,31 @@ declare namespace package {
      */
     export function initGettext(): void;
     /**
-     * @deprecated Use JS string interpolation
+     * Initializes string formatting capabilities by adding a format() method to String.prototype.
+     *
+     * After calling this method, you can use a printf-style string formatting by calling
+     * the format() method on any string:
+     *
+     * @example
+     * ```ts
+     * pkg.initFormat();
+     *
+     * // Now you can use format() on any string
+     * const name = "User";
+     * const count = 5;
+     * const formatted = "Hello %s, you have %d items".format(name, count);
+     * // formatted = "Hello User, you have 5 items"
+     *
+     * // Format numbers with precision
+     * const price = 10.5;
+     * const priceStr = "Price: $%.2f".format(price);
+     * // priceStr = "Price: $10.50"
+     *
+     * // Pad with zeros
+     * const id = 42;
+     * const idStr = "ID: %05d".format(id);
+     * // idStr = "ID: 00042"
+     * ```
      */
     export function initFormat(): void;
     /**
@@ -220,21 +274,49 @@ declare namespace lang {
 }
 
 declare namespace format {
-    export function vprintf(str: string, args: string[]): string;
-    export function printf(fmt: string, ...args: any[]): void;
-    // Following docs from gjs/modules/format.js
     /**
-     * This function is intended to extend the String object and provide
-     * an String.format API for string formatting.
-     * It has to be set up using String.prototype.format = Format.format;
-     * Usage:
-     * "somestring %s %d".format('hello', 5);
-     * It supports %s, %d, %x and %f, for %f it also support precisions like
-     * "%.2f".format(1.526). All specifiers can be prefixed with a minimum
-     * field width, e.g. "%5s".format("foo"). Unless the width is prefixed
-     * with '0', the formatted string will be padded with spaces.
+     * Formats a string using printf-style format specifiers.
+     *
+     * @param str The format string
+     * @param args The arguments to be formatted
+     * @returns The formatted string
      */
-    export function format(fmt: string, ...args: any[]): string;
+    export function vprintf(str: string, args: (string | number | boolean | null | undefined)[]): string;
+
+    /**
+     * Prints a formatted string to the console.
+     * Similar to C's printf function.
+     *
+     * @param fmt The format string
+     * @param args The arguments to be formatted
+     */
+    export function printf(fmt: string, ...args: (string | number | boolean | null | undefined)[]): void;
+
+    /**
+     * Formats a string with the given arguments.
+     * This is the implementation that backs String.prototype.format
+     * when pkg.initFormat() is called.
+     *
+     * Supported format specifiers:
+     * - %s: Formats as a string
+     * - %d: Formats as an integer
+     * - %x: Formats as a hexadecimal number
+     * - %f: Formats as a floating point number, optionally with precision (e.g. %.2f)
+     *
+     * All specifiers can be prefixed with a minimum field width, e.g. "%5s" will pad with spaces.
+     * If the width is prefixed with '0', it will pad with zeroes instead of spaces.
+     *
+     * @example
+     * ```ts
+     * format.format("Hello %s, you have %d items", "User", 5);
+     * // Returns: "Hello User, you have 5 items"
+     * ```
+     *
+     * @param fmt The format string
+     * @param args The arguments to format the string with
+     * @returns The formatted string
+     */
+    export function format(fmt: string, ...args: (string | number | boolean | null | undefined)[]): string;
 }
 
 declare namespace mainloop {
@@ -566,17 +648,17 @@ declare global {
      * Run `pkg.initGettext()` before using this.
      * See {@link gettext.gettext}
      */
-    const _: undefined | typeof gettext.gettext;
+    const _: typeof gettext.gettext;
     /**
      * Run `pkg.initGettext()` before using this.
      * See {@link gettext.pgettext}
      */
-    const C_: undefined | typeof gettext.pgettext;
+    const C_: typeof gettext.pgettext;
     /**
      * Run `pkg.initGettext()` before using this.
      * Currently not implemented.
      */
-    const N_: undefined | ((x: string) => string);
+    const N_: (x: string) => string;
 
     function print(...args: any[]): void;
     function printerr(...args: any[]): void;
@@ -610,6 +692,39 @@ declare global {
     const imports: GjsImports;
 
     const ARGV: string[];
+
+    interface String {
+        /**
+         * Formats a string with the given arguments.
+         * This method is made available by calling `pkg.initFormat()`.
+         *
+         * Supported format specifiers:
+         * - %s: Formats as a string
+         * - %d: Formats as an integer
+         * - %x: Formats as a hexadecimal number
+         * - %f: Formats as a floating point number, optionally with precision (e.g. %.2f)
+         *
+         * All specifiers can be prefixed with a minimum field width, e.g. "%5s" will pad with spaces.
+         * If the width is prefixed with '0', it will pad with zeroes instead of spaces.
+         *
+         * @example
+         * ```ts
+         * // After calling pkg.initFormat()
+         * "Hello %s, you have %d items".format("User", 5);
+         * // Returns: "Hello User, you have 5 items"
+         *
+         * "Price: $%.2f".format(10.5);
+         * // Returns: "Price: $10.50"
+         *
+         * "ID: %05d".format(42);
+         * // Returns: "ID: 00042"
+         * ```
+         *
+         * @param args The arguments to format the string with
+         * @returns The formatted string
+         */
+        format(...args: (string | number | boolean | null | undefined)[]): string;
+    }
 }
 
 declare const _imports: GjsImports;

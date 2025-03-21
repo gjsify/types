@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
@@ -1986,6 +1988,7 @@ export namespace Atspi {
     const DBUS_INTERFACE_HYPERLINK: string;
     const DBUS_INTERFACE_HYPERTEXT: string;
     const DBUS_INTERFACE_IMAGE: string;
+    const DBUS_INTERFACE_KEYBOARD_MONITOR: string;
     const DBUS_INTERFACE_REGISTRY: string;
     const DBUS_INTERFACE_SELECTION: string;
     const DBUS_INTERFACE_SOCKET: string;
@@ -1993,12 +1996,16 @@ export namespace Atspi {
     const DBUS_INTERFACE_TABLE_CELL: string;
     const DBUS_INTERFACE_TEXT: string;
     const DBUS_INTERFACE_VALUE: string;
+    const DBUS_NAME_A11Y_MANAGER: string;
     const DBUS_NAME_REGISTRY: string;
+    const DBUS_PATH_A11Y_MANAGER: string;
     const DBUS_PATH_DEC: string;
     const DBUS_PATH_NULL: string;
     const DBUS_PATH_REGISTRY: string;
     const DBUS_PATH_ROOT: string;
     const DBUS_PATH_SCREEN_READER: string;
+    const DEVICE_A11Y_MANAGER_VIRTUAL_MOD_END: number;
+    const DEVICE_A11Y_MANAGER_VIRTUAL_MOD_START: number;
     /**
      * One higher than the highest valid value of #AtspiEventType.
      */
@@ -3839,7 +3846,21 @@ export namespace Atspi {
          * @returns the data if found,          or %NULL if no such data exists.
          */
         get_data(key: string): any | null;
-        get_property(property_name: string): any;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
          * g_object_set_qdata().
@@ -3967,7 +3988,12 @@ export namespace Atspi {
          * @param data data to associate with that key
          */
         set_data(key: string, data?: any | null): void;
-        set_property(property_name: string, value: any): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
@@ -4117,11 +4143,31 @@ export namespace Atspi {
          * @param pspec
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
         disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
         set(properties: { [key: string]: any }): void;
-        block_signal_handler(id: number): any;
-        unblock_signal_handler(id: number): any;
-        stop_emission_by_name(detailedName: string): any;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
     }
 
     namespace Application {
@@ -4160,11 +4206,29 @@ export namespace Atspi {
     namespace Device {
         // Constructor properties interface
 
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            app_id: string;
+            appId: string;
+        }
     }
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+
+        // Properties
+
+        /**
+         * The application ID of the application that created this device.
+         * The ID might be used for access control purposes
+         * by some device backends.
+         */
+        get app_id(): string;
+        /**
+         * The application ID of the application that created this device.
+         * The ID might be used for access control purposes
+         * by some device backends.
+         */
+        get appId(): string;
 
         // Constructors
 
@@ -4173,6 +4237,8 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): Device;
+
+        static new_full(app_id?: string | null): Device;
 
         // Virtual methods
 
@@ -4283,6 +4349,10 @@ export namespace Atspi {
          * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
          */
         generate_mouse_event(obj: Accessible, x: number, y: number, name: string): void;
+        /**
+         * Returns the application ID of the device.
+         */
+        get_app_id(): string;
         get_grab_by_id(id: number): KeyDefinition;
         /**
          * Gets the modifier for a given keysym, if one exists. Does not create a new
@@ -4348,6 +4418,11 @@ export namespace Atspi {
          */
         remove_key_grab(id: number): void;
         /**
+         * Sets the application ID of the device.
+         * @param app_id the application ID.
+         */
+        set_app_id(app_id: string): void;
+        /**
          * Removes a keyboard grab added via a call to atspi_device_add_keyboard.
          */
         ungrab_keyboard(): void;
@@ -4361,6 +4436,26 @@ export namespace Atspi {
          * @param keycode the keycode to unmap.
          */
         unmap_modifier(keycode: number): void;
+    }
+
+    namespace DeviceA11yManager {
+        // Constructor properties interface
+
+        interface ConstructorProps extends Device.ConstructorProps {}
+    }
+
+    class DeviceA11yManager extends Device {
+        static $gtype: GObject.GType<DeviceA11yManager>;
+
+        // Constructors
+
+        constructor(properties?: Partial<DeviceA11yManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static try_new(): DeviceA11yManager;
+
+        static try_new_full(app_id?: string | null): DeviceA11yManager;
     }
 
     namespace DeviceLegacy {
@@ -4379,6 +4474,8 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceLegacy;
+
+        static new_full(app_id?: string | null): DeviceLegacy;
     }
 
     namespace DeviceListener {
@@ -4438,6 +4535,8 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceX11;
+
+        static new_full(app_id?: string | null): DeviceX11;
     }
 
     namespace EventListener {
@@ -4892,6 +4991,7 @@ export namespace Atspi {
     }
 
     type ApplicationClass = typeof Application;
+    type DeviceA11yManagerClass = typeof DeviceA11yManager;
     type DeviceClass = typeof Device;
     class DeviceEvent {
         static $gtype: GObject.GType<DeviceEvent>;

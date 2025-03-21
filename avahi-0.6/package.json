@@ -1,6 +1,6 @@
 {
     "name": "@girs/avahi-0.6",
-    "version": "0.6.0-4.0.0-beta.21",
+    "version": "0.6.0-4.0.0-beta.22",
     "description": "GJS TypeScript type definitions for Avahi-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "avahi-0.6.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/imsettings-1.8",
-    "version": "1.8.0-4.0.0-beta.21",
+    "version": "1.8.0-4.0.0-beta.22",
     "description": "GJS TypeScript type definitions for IMSettings-1.8, generated from library version 1.8.0",
     "type": "module",
     "module": "imsettings-1.8.js",

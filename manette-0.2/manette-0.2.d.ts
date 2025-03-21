@@ -7,6 +7,8 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
@@ -20,13 +22,13 @@ export namespace Manette {
      */
 
     /**
-     * Describes available types of a #ManetteDevice.
+     * Describes available types of a [class`Device]`.
      *
      * More values may be added to this enumeration over time.
      */
 
     /**
-     * Describes available types of a #ManetteDevice.
+     * Describes available types of a [class`Device]`.
      *
      * More values may be added to this enumeration over time.
      */
@@ -77,6 +79,59 @@ export namespace Manette {
          */
         EVENT_HAT,
     }
+    /**
+     * libmanette major version component (e.g. 1 if the version is 1.2.3).
+     */
+    const MAJOR_VERSION: number;
+    /**
+     * libmanette micro version component (e.g. 3 if the version is 1.2.3).
+     */
+    const MICRO_VERSION: number;
+    /**
+     * libmanette minor version component (e.g. 2 if the version is 1.2.3).
+     */
+    const MINOR_VERSION: number;
+    /**
+     * libmanette version, encoded as a string, useful for printing and
+     * concatenation.
+     */
+    const VERSION_S: string;
+    /**
+     * Returns the major version number of the libmanette library.
+     *
+     * For example, in libmanette version 1.2.3 this is 1.
+     *
+     * This function is in the library, so it represents the libmanette library your
+     * code is running against. Contrast with the [const`MAJOR_VERSION]` constant,
+     * which represents the major version of the libmanette headers you have
+     * included when compiling your code.
+     * @returns the major version number of the libmanette library
+     */
+    function get_major_version(): number;
+    /**
+     * Returns the micro version number of the libmanette library.
+     *
+     * For example, in libmanette version 1.2.3 this is 3.
+     *
+     * This function is in the library, so it represents the libmanette library your
+     * code is running against. Contrast with the [const`MAJOR_VERSION]` constant,
+     * which represents the micro version of the libmanette headers you have
+     * included when compiling your code.
+     * @returns the micro version number of the libmanette library
+     */
+    function get_micro_version(): number;
+    /**
+     * Returns the minor version number of the libmanette library.
+     *
+     * For example, in libmanette version 1.2.3 this is 2.
+     *
+     * This function is in the library, so it represents the libmanette library your
+     * code is running against. Contrast with the [const`MAJOR_VERSION]` constant,
+     * which represents the minor version of the libmanette headers you have
+     * included when compiling your code.
+     * @returns the minor version number of the libmanette library
+     */
+    function get_minor_version(): number;
     function get_resource(): Gio.Resource;
     namespace Device {
         // Signal callback interfaces
@@ -110,6 +165,11 @@ export namespace Manette {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * An object representing a physical gamepad.
+     *
+     * See also: [class`Monitor]`.
+     */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
 
@@ -157,20 +217,22 @@ export namespace Manette {
          */
         get_guid(): string;
         /**
-         * Gets the user mapping for `self,` or default mapping if there isn't any. Can
-         * return %NULL if there's no mapping or `self` doesn't support mappings.
+         * Gets the user mapping for `self,` or default mapping if there isn't any.
+         *
+         * Can return `NULL` if there's no mapping or `self` doesn't support mappings.
          * @returns the mapping for @self
          */
         get_mapping(): string | null;
         /**
          * Gets the device's name.
-         * @returns the name of @self, do not modify it or free it
+         * @returns the name of @self
          */
         get_name(): string;
         /**
-         * Gets whether the device has the given input. If the input is present it means
-         * that the device can send events for it regardless of whether the device is
-         * mapped or not.
+         * Gets whether the device has the given input.
+         *
+         * If the input is present, it means that the device can send events for it
+         * regardless of whether the device is mapped or not.
          * @param type the input type
          * @param code the input code
          * @returns whether the device has the given input
@@ -191,8 +253,10 @@ export namespace Manette {
          */
         remove_user_mapping(): void;
         /**
-         * Make `self` rumble during `milliseconds` milliseconds, with the heavy and light
-         * motors rumbling at their respectively defined magnitudes.
+         * Make `self` rumble during `milliseconds` milliseconds.
+         *
+         * The heavy and light motors will rumble at their respectively defined
+         * magnitudes.
          *
          * The duration cannot exceed 32767 milliseconds.
          * @param strong_magnitude the magnitude for the heavy motor
@@ -229,6 +293,11 @@ export namespace Manette {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * An object monitoring the availability of devices.
+     *
+     * See also: [class`Device]`.
+     */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
 
@@ -255,14 +324,17 @@ export namespace Manette {
         // Methods
 
         /**
-         * Creates a new #ManetteMonitorIter iterating on `self`.
-         * @returns a new #ManetteMonitorIter iterating on @self
+         * Creates a new `ManetterMonitorIter` iterating on `self`.
+         * @returns a new iterator for @self
          */
         iterate(): MonitorIter;
     }
 
     type DeviceClass = typeof Device;
     type MonitorClass = typeof Monitor;
+    /**
+     * An object iterating over the available devices in [class`Monitor]`.
+     */
     abstract class MonitorIter {
         static $gtype: GObject.GType<MonitorIter>;
 
@@ -273,12 +345,15 @@ export namespace Manette {
         // Methods
 
         /**
-         * Gets the next device from the device monitor iterator.
+         * Gets the next device from `self`.
          * @returns whether the next device was retrieved, if not, the end was reached
          */
         next(): [boolean, Device | null];
     }
 
+    /**
+     * An event emitted by a [class`Device]`.
+     */
     class Event {
         static $gtype: GObject.GType<Event>;
 
@@ -299,8 +374,8 @@ export namespace Manette {
          */
         get_button(): [boolean, number];
         /**
-         * Gets the #ManetteDevice associated with the `self`.
-         * @returns the #ManetteDevice associated with the @self
+         * Gets the [class`Device]` associated with the `self`.
+         * @returns the device associated with the @self
          */
         get_device(): Device;
         /**
@@ -335,8 +410,10 @@ export namespace Manette {
         get_hat(): [boolean, number, number];
         /**
          * Gets the timestamp of when `self` was received by the input driver that takes
-         * care of its device. Use this timestamp to ensure external factors such as
-         * synchronous disk writes don't influence your timing computations.
+         * care of its device.
+         *
+         * Use this timestamp to ensure external factors such as synchronous disk writes
+         * don't influence your timing computations.
          * @returns the timestamp of when @self was received by the input driver
          */
         get_time(): number;

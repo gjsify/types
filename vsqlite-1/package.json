@@ -1,6 +1,6 @@
 {
     "name": "@girs/vsqlite-1",
-    "version": "1.0.0-4.0.0-beta.21",
+    "version": "1.0.0-4.0.0-beta.22",
     "description": "GJS TypeScript type definitions for Vsqlite-1, generated from library version 1.0.0",
     "type": "module",
     "module": "vsqlite-1.js",

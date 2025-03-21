@@ -7,12 +7,14 @@
  * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
  */
 
+import '@girs/gjs';
+
 // Module dependencies
 import type Graphene from '@girs/graphene-1.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type Gdk from '@girs/gdk-4.0';
-import type cairo from '@girs/cairo-1.0';
+import type cairo from 'cairo';
 import type PangoCairo from '@girs/pangocairo-1.0';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
@@ -1035,7 +1037,7 @@ export namespace Gsk {
     }
 
     /**
-     * A GSK renderer that is using cairo.
+     * Renders a GSK rendernode tree with cairo.
      *
      * Since it is using cairo, this renderer cannot support
      * 3D transformations.
@@ -1309,7 +1311,7 @@ export namespace Gsk {
     }
 
     /**
-     * A GL based renderer.
+     * Renders a GSK rendernode tree with OpenGL.
      *
      * See [class`Gsk`.Renderer].
      */
@@ -1335,8 +1337,7 @@ export namespace Gsk {
     }
 
     /**
-     * A `GskGLShader` is a snippet of GLSL that is meant to run in the
-     * fragment shader of the rendering pipeline.
+     * Implements a fragment shader using GLSL.
      *
      * A fragment shader gets the coordinates being rendered as input and
      * produces the pixel values for that particular pixel. Additionally,
@@ -1950,8 +1951,7 @@ export namespace Gsk {
     }
 
     /**
-     * `GskRenderNode` is the basic block in a scene graph to be
-     * rendered using [class`Gsk`.Renderer].
+     * The basic block in a scene graph to be rendered using [class`Gsk`.Renderer].
      *
      * Each node has a parent, except the top-level node; each node may have
      * children nodes.
@@ -2068,8 +2068,7 @@ export namespace Gsk {
     }
 
     /**
-     * A class that renders a scene graph defined via a tree of
-     * [class`Gsk`.RenderNode] instances.
+     * Renders a scene graph defined via a tree of [class`Gsk`.RenderNode] instances.
      *
      * Typically you will use a `GskRenderer` instance to repeatedly call
      * [method`Gsk`.Renderer.render] to update the contents of its associated
@@ -2480,7 +2479,7 @@ export namespace Gsk {
     }
 
     /**
-     * A GSK renderer that is using Vulkan.
+     * Renders a GSK rendernode tree with Vulkan.
      *
      * This renderer will fail to realize if Vulkan is not supported.
      */
@@ -2754,7 +2753,6 @@ export namespace Gsk {
      *
      * A path is constructed like this:
      *
-     *
      * ```c
      * GskPath *
      * construct_path (void)
@@ -2767,7 +2765,6 @@ export namespace Gsk {
      *
      *   return gsk_path_builder_free_to_path (builder);
      * ```
-     *
      *
      * Adding contours to the path can be done in two ways.
      * The easiest option is to use the `gsk_path_builder_add_*` group
@@ -3235,7 +3232,7 @@ export namespace Gsk {
     }
 
     /**
-     * An opaque type representing a point on a path.
+     * Represents a point on a path.
      *
      * It can be queried for properties of the path at that point,
      * such as its tangent or its curvature.
