@@ -1,6 +1,6 @@
 {
     "name": "@girs/liferea-3.0",
-    "version": "3.0.0-4.0.0-beta.22",
+    "version": "3.0.0-4.0.0-beta.23",
     "description": "GJS TypeScript type definitions for Liferea-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "liferea-3.0.js",
