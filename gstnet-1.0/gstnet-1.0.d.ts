@@ -896,7 +896,7 @@ export namespace GstNet {
 
         _init(...args: any[]): void;
 
-        static ['new'](name: string, domain: number): PtpClock;
+        static ['new'](name: string | null, domain: number): PtpClock;
     }
 
     /**

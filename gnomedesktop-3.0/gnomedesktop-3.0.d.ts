@@ -93,7 +93,7 @@ export namespace GnomeDesktop {
      * @param mtime the mtime
      * @returns TRUE if the thumbnail has the right @uri and @mtime
      */
-    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean;
+    function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: never): boolean;
     /**
      * Returns the filename that a thumbnail of size `size` for `uri` would have.
      * This function is threadsafe and does no blocking I/O.
@@ -123,6 +123,38 @@ export namespace GnomeDesktop {
      * @returns the country description. Caller takes ownership.
      */
     function get_country_from_locale(locale: string, translation?: string | null): string;
+    /**
+     * Asynchronously fetches a list of of default input sources based on locale and system
+     * configuration. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param cancellable a #GCancellable
+     */
+    function get_default_input_sources(
+        cancellable?: Gio.Cancellable | null,
+    ): Promise<[string[], string[], string[], string]>;
+    /**
+     * Asynchronously fetches a list of of default input sources based on locale and system
+     * configuration. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
+     */
+    function get_default_input_sources(
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+    ): void;
+    /**
+     * Asynchronously fetches a list of of default input sources based on locale and system
+     * configuration. This is for when a user has no input sources configured
+     * in GSettings.
+     * @param cancellable a #GCancellable
+     * @param callback a #GAsyncReadyCallback
+     */
+    function get_default_input_sources(
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<Gio.Cancellable | null> | null,
+    ): Promise<[string[], string[], string[], string]> | void;
+    function get_default_input_sources_finish(result: Gio.AsyncResult): [boolean, string[], string[], string[], string];
     /**
      * Gets the default input source's type and identifier for a given
      * locale.
@@ -163,6 +195,13 @@ export namespace GnomeDesktop {
      * @returns the translated modifier string. Caller takes ownership.
      */
     function get_translated_modifier(modifier: string, translation?: string | null): string;
+    /**
+     * Returns whether or not the input source has the ability to enter latin characters.
+     * @param type an input source type (e.g., "xkb" or "ibus")
+     * @param id an input source id (e.g., "us+dvorak" or "anthy")
+     * @returns %TRUE if it can't enter latin characters
+     */
+    function input_source_is_non_latin(type: string, id: string): boolean;
     /**
      * Returns %TRUE if there are translations for language `code`.
      * @param code an ISO 639 code string
@@ -632,7 +671,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
          */
-        can_thumbnail(uri: string, mime_type: string, mtime: number): boolean;
+        can_thumbnail(uri: string, mime_type: string, mtime: never): boolean;
         /**
          * Creates a failed thumbnail for the file so that we don't try
          * to re-thumbnail the file later.
@@ -643,7 +682,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          */
-        create_failed_thumbnail(uri: string, mtime: number, cancellable?: Gio.Cancellable | null): boolean;
+        create_failed_thumbnail(uri: string, mtime: never, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
          *
@@ -654,7 +693,7 @@ export namespace GnomeDesktop {
          */
         create_failed_thumbnail_async(
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -668,7 +707,7 @@ export namespace GnomeDesktop {
          */
         create_failed_thumbnail_async(
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -683,7 +722,7 @@ export namespace GnomeDesktop {
          */
         create_failed_thumbnail_async(
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;
@@ -753,7 +792,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
          */
-        has_valid_failed_thumbnail(uri: string, mtime: number): boolean;
+        has_valid_failed_thumbnail(uri: string, mtime: never): boolean;
         /**
          * Tries to locate an existing thumbnail for the file specified.
          *
@@ -762,7 +801,7 @@ export namespace GnomeDesktop {
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or %NULL if none exist.
          */
-        lookup(uri: string, mtime: number): string;
+        lookup(uri: string, mtime: never): string;
         /**
          * Saves `thumbnail` at the right place. If the save fails a
          * failed thumbnail is written.
@@ -777,7 +816,7 @@ export namespace GnomeDesktop {
         save_thumbnail(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
         /**
@@ -792,7 +831,7 @@ export namespace GnomeDesktop {
         save_thumbnail_async(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable?: Gio.Cancellable | null,
         ): Promise<boolean>;
         /**
@@ -808,7 +847,7 @@ export namespace GnomeDesktop {
         save_thumbnail_async(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
@@ -825,7 +864,7 @@ export namespace GnomeDesktop {
         save_thumbnail_async(
             thumbnail: GdkPixbuf.Pixbuf,
             uri: string,
-            original_mtime: number,
+            original_mtime: never,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): Promise<boolean> | void;

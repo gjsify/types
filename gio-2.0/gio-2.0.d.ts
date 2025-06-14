@@ -3756,15 +3756,15 @@ export namespace Gio {
      */
     function bus_get_sync(bus_type: BusType | null, cancellable?: Cancellable | null): DBusConnection;
     /**
-     * Version of g_bus_own_name() using closures instead of callbacks for
+     * Version of [func`Gio`.bus_own_name using closures instead of callbacks for
      * easier binding in other languages.
      * @param bus_type the type of bus to own a name on
      * @param name the well-known name to own
-     * @param flags a set of flags from the #GBusNameOwnerFlags enumeration
-     * @param bus_acquired_closure #GClosure to invoke when connected to     the bus of type @bus_type or %NULL
-     * @param name_acquired_closure #GClosure to invoke when @name is     acquired or %NULL
-     * @param name_lost_closure #GClosure to invoke when @name is lost or     %NULL
-     * @returns an identifier (never 0) that can be used with     g_bus_unown_name() to stop owning the name.
+     * @param flags a set of flags with ownership options
+     * @param bus_acquired_closure closure to invoke when connected to   the bus of type @bus_type, or `NULL` to ignore
+     * @param name_acquired_closure closure to invoke when @name is   acquired, or `NULL` to ignore
+     * @param name_lost_closure closure to invoke when @name is lost, or   `NULL` to ignore
+     * @returns an identifier (never 0) that can be used with   [func@Gio.bus_unown_name] to stop owning the name.
      */
     function bus_own_name(
         bus_type: BusType | null,
@@ -3775,14 +3775,14 @@ export namespace Gio {
         name_lost_closure?: GObject.Closure | null,
     ): number;
     /**
-     * Version of g_bus_own_name_on_connection() using closures instead of
+     * Version of [func`Gio`.bus_own_name_on_connection] using closures instead of
      * callbacks for easier binding in other languages.
-     * @param connection a #GDBusConnection
+     * @param connection a bus connection
      * @param name the well-known name to own
-     * @param flags a set of flags from the #GBusNameOwnerFlags enumeration
-     * @param name_acquired_closure #GClosure to invoke when @name is     acquired or %NULL
-     * @param name_lost_closure #GClosure to invoke when @name is lost     or %NULL
-     * @returns an identifier (never 0) that can be used with     g_bus_unown_name() to stop owning the name.
+     * @param flags a set of flags with ownership options
+     * @param name_acquired_closure closure to invoke when @name is   acquired, or `NULL` to ignore
+     * @param name_lost_closure closure to invoke when @name is lost,   or `NULL` to ignore
+     * @returns an identifier (never 0) that can be used with   [func@Gio.bus_unown_name] to stop owning the name.
      */
     function bus_own_name_on_connection(
         connection: DBusConnection,
@@ -3795,12 +3795,13 @@ export namespace Gio {
      * Stops owning a name.
      *
      * Note that there may still be D-Bus traffic to process (relating to owning
-     * and unowning the name) in the current thread-default #GMainContext after
-     * this function has returned. You should continue to iterate the #GMainContext
-     * until the #GDestroyNotify function passed to g_bus_own_name() is called, in
-     * order to avoid memory leaks through callbacks queued on the #GMainContext
-     * after it’s stopped being iterated.
-     * @param owner_id an identifier obtained from g_bus_own_name()
+     * and unowning the name) in the current thread-default
+     * [struct`GLib`.MainContext] after this function has returned. You should
+     * continue to iterate the [struct`GLib`.MainContext] until the
+     * [callback`GLib`.DestroyNotify] function passed to [func`Gio`.bus_own_name] is
+     * called, in order to avoid memory leaks through callbacks queued on the
+     * [struct`GLib`.MainContext] after it’s stopped being iterated.
+     * @param owner_id an identifier obtained from [func@Gio.bus_own_name]
      */
     function bus_unown_name(owner_id: number): void;
     /**
@@ -11870,6 +11871,9 @@ export namespace Gio {
          * cancel the operation from the same thread in which it is running,
          * then the operation's #GAsyncReadyCallback will not be invoked until
          * the application returns to the main loop.
+         *
+         * It is safe (although useless, since it will be a no-op) to call
+         * this function from a [signal`Gio`.Cancellable::cancelled] signal handler.
          */
         cancel(): void;
         /**
@@ -11881,7 +11885,10 @@ export namespace Gio {
          * either directly at the time of the connect if `cancellable` is already
          * cancelled, or when `cancellable` is cancelled in some thread.
          * In case the cancellable is reset via [method`Gio`.Cancellable.reset]
-         * then the callback can be called again if the `cancellable` is cancelled.
+         * then the callback can be called again if the `cancellable` is cancelled and
+         * if it had not been previously cancelled at the time
+         * [method`Gio`.Cancellable.connect] was called (e.g. if the connection actually
+         * took place, returning a non-zero value).
          *
          * `data_destroy_func` will be called when the handler is
          * disconnected, or immediately if the cancellable is already
@@ -11890,9 +11897,21 @@ export namespace Gio {
          * See #GCancellable::cancelled for details on how to use this.
          *
          * Since GLib 2.40, the lock protecting `cancellable` is not held when
-         * `callback` is invoked.  This lifts a restriction in place for
+         * `callback` is invoked. This lifts a restriction in place for
          * earlier GLib versions which now makes it easier to write cleanup
-         * code that unconditionally invokes e.g. g_cancellable_cancel().
+         * code that unconditionally invokes e.g. [method`Gio`.Cancellable.cancel].
+         * Note that since 2.82 GLib still holds a lock during the callback but it’s
+         * designed in a way that most of the [class`Gio`.Cancellable] methods can be
+         * called, including [method`Gio`.Cancellable.cancel] or
+         * [method`GObject`.Object.unref].
+         *
+         * There are still some methods that will deadlock (by design) when
+         * called from the [signal`Gio`.Cancellable::cancelled] callbacks:
+         *  - [method`Gio`.Cancellable.connect]
+         *  - [method`Gio`.Cancellable.disconnect]
+         *  - [method`Gio`.Cancellable.reset]
+         *  - [method`Gio`.Cancellable.make_pollfd]
+         *  - [method`Gio`.Cancellable.release_fd]
          * @param callback The #GCallback to connect.
          * @param data_destroy_func Free function for @data or %NULL.
          * @returns The id of the signal handler or 0 if @cancellable has already          been cancelled.
@@ -11958,6 +11977,11 @@ export namespace Gio {
          * You are not supposed to read from the fd yourself, just check for
          * readable status. Reading to unset the readable status is done
          * with g_cancellable_reset().
+         *
+         * Note that in the event that a [signal`Gio`.Cancellable::cancelled] signal handler is
+         * currently running, this call will block until the handler has finished.
+         * Calling this function from a signal handler will therefore result in a
+         * deadlock.
          * @param pollfd a pointer to a #GPollFD
          * @returns %TRUE if @pollfd was successfully initialized, %FALSE on          failure to prepare the cancellable.
          */
@@ -11988,6 +12012,11 @@ export namespace Gio {
          * block scarce file descriptors until it is finalized if this function
          * is not called. This can cause the application to run out of file
          * descriptors when many #GCancellables are used at the same time.
+         *
+         * Note that in the event that a [signal`Gio`.Cancellable::cancelled] signal handler is
+         * currently running, this call will block until the handler has finished.
+         * Calling this function from a signal handler will therefore result in a
+         * deadlock.
          */
         release_fd(): void;
         /**
@@ -12002,6 +12031,11 @@ export namespace Gio {
          * is to drop the reference to a cancellable after cancelling it,
          * and let it die with the outstanding async operations. You should
          * create a fresh cancellable for further async operations.
+         *
+         * In the event that a [signal`Gio`.Cancellable::cancelled] signal handler is currently
+         * running, this call will block until the handler has finished.
+         * Calling this function from a signal handler will therefore result in a
+         * deadlock.
          */
         reset(): void;
         /**
@@ -77272,13 +77306,17 @@ export namespace Gio {
          */
         load_partial_contents_finish(res: AsyncResult): [boolean, Uint8Array, string];
         /**
-         * Creates a directory. Note that this will only create a child directory
+         * Creates a directory.
+         *
+         * Note that this will only create a child directory
          * of the immediate parent directory of the path or URI given by the #GFile.
          * To recursively create directories, see g_file_make_directory_with_parents().
+         *
          * This function will fail if the parent directory does not exist, setting
          * `error` to %G_IO_ERROR_NOT_FOUND. If the file system doesn't support
          * creating directories, this function will fail, setting `error` to
-         * %G_IO_ERROR_NOT_SUPPORTED.
+         * %G_IO_ERROR_NOT_SUPPORTED. If the directory already exists,
+         * [error`Gio`.IOErrorEnum.EXISTS] will be returned.
          *
          * For a local #GFile the newly created directory will have the default
          * (current) ownership and permissions of the current process.
@@ -79980,13 +80018,17 @@ export namespace Gio {
          */
         vfunc_is_native(): boolean;
         /**
-         * Creates a directory. Note that this will only create a child directory
+         * Creates a directory.
+         *
+         * Note that this will only create a child directory
          * of the immediate parent directory of the path or URI given by the #GFile.
          * To recursively create directories, see g_file_make_directory_with_parents().
+         *
          * This function will fail if the parent directory does not exist, setting
          * `error` to %G_IO_ERROR_NOT_FOUND. If the file system doesn't support
          * creating directories, this function will fail, setting `error` to
-         * %G_IO_ERROR_NOT_SUPPORTED.
+         * %G_IO_ERROR_NOT_SUPPORTED. If the directory already exists,
+         * [error`Gio`.IOErrorEnum.EXISTS] will be returned.
          *
          * For a local #GFile the newly created directory will have the default
          * (current) ownership and permissions of the current process.
@@ -84331,14 +84373,14 @@ export namespace Gio {
          */
         get_sync(bus_type: BusType | null, cancellable?: Cancellable | null): DBusConnection;
         /**
-         * Version of g_bus_own_name() using closures instead of callbacks for
+         * Version of [func`Gio`.bus_own_name using closures instead of callbacks for
          * easier binding in other languages.
          * @param bus_type the type of bus to own a name on
          * @param name the well-known name to own
-         * @param flags a set of flags from the #GBusNameOwnerFlags enumeration
-         * @param bus_acquired_closure #GClosure to invoke when connected to     the bus of type @bus_type or %NULL
-         * @param name_acquired_closure #GClosure to invoke when @name is     acquired or %NULL
-         * @param name_lost_closure #GClosure to invoke when @name is lost or     %NULL
+         * @param flags a set of flags with ownership options
+         * @param bus_acquired_closure closure to invoke when connected to   the bus of type @bus_type, or `NULL` to ignore
+         * @param name_acquired_closure closure to invoke when @name is   acquired, or `NULL` to ignore
+         * @param name_lost_closure closure to invoke when @name is lost, or   `NULL` to ignore
          */
         own_name(
             bus_type: BusType | null,
@@ -84349,13 +84391,13 @@ export namespace Gio {
             name_lost_closure?: GObject.Closure | null,
         ): number;
         /**
-         * Version of g_bus_own_name_on_connection() using closures instead of
+         * Version of [func`Gio`.bus_own_name_on_connection] using closures instead of
          * callbacks for easier binding in other languages.
-         * @param connection a #GDBusConnection
+         * @param connection a bus connection
          * @param name the well-known name to own
-         * @param flags a set of flags from the #GBusNameOwnerFlags enumeration
-         * @param name_acquired_closure #GClosure to invoke when @name is     acquired or %NULL
-         * @param name_lost_closure #GClosure to invoke when @name is lost     or %NULL
+         * @param flags a set of flags with ownership options
+         * @param name_acquired_closure closure to invoke when @name is   acquired, or `NULL` to ignore
+         * @param name_lost_closure closure to invoke when @name is lost,   or `NULL` to ignore
          */
         own_name_on_connection(
             connection: DBusConnection,
@@ -84368,12 +84410,13 @@ export namespace Gio {
          * Stops owning a name.
          *
          * Note that there may still be D-Bus traffic to process (relating to owning
-         * and unowning the name) in the current thread-default #GMainContext after
-         * this function has returned. You should continue to iterate the #GMainContext
-         * until the #GDestroyNotify function passed to g_bus_own_name() is called, in
-         * order to avoid memory leaks through callbacks queued on the #GMainContext
-         * after it’s stopped being iterated.
-         * @param owner_id an identifier obtained from g_bus_own_name()
+         * and unowning the name) in the current thread-default
+         * [struct`GLib`.MainContext] after this function has returned. You should
+         * continue to iterate the [struct`GLib`.MainContext] until the
+         * [callback`GLib`.DestroyNotify] function passed to [func`Gio`.bus_own_name] is
+         * called, in order to avoid memory leaks through callbacks queued on the
+         * [struct`GLib`.MainContext] after it’s stopped being iterated.
+         * @param owner_id an identifier obtained from [func@Gio.bus_own_name]
          */
         unown_name(owner_id: number): void;
         /**

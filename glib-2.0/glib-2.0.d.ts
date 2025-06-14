@@ -9075,15 +9075,26 @@ export namespace GLib {
      * If you are using #GApplication the program name is set in
      * g_application_run(). In case of GDK or GTK it is set in
      * gdk_init(), which is called by gtk_init() and the
-     * #GtkApplication::startup handler. The program name is found by
-     * taking the last component of `argv[`0].
+     * #GtkApplication::startup handler. By default, the program name is
+     * found by taking the last component of `argv[`0].
      *
      * Since GLib 2.72, this function can be called multiple times
      * and is fully thread safe. Prior to GLib 2.72, this function
      * could only be called once per process.
+     *
+     * See the [GTK documentation](https://docs.gtk.org/gtk4/migrating-3to4.html#set-a-proper-application-id)
+     * for requirements on integrating g_set_prgname() with GTK applications.
      * @param prgname the name of the program.
      */
     function set_prgname(prgname: string): void;
+    /**
+     * If g_get_prgname() is not set, this is the same as setting
+     * the name via g_set_prgname() and %TRUE is returned. Otherwise,
+     * does nothing and returns %FALSE. This is thread-safe.
+     * @param prgname the name of the program.
+     * @returns whether g_prgname was initialized by the call.
+     */
+    function set_prgname_once(prgname: string): boolean;
     /**
      * Sets an environment variable. On UNIX, both the variable's name and
      * value can be arbitrary byte strings, except that the variable's name
@@ -17431,85 +17442,24 @@ export namespace GLib {
         steal(): void;
     }
 
-    /**
-     * HMACs should be used when producing a cookie or hash based on data
-     * and a key. Simple mechanisms for using SHA1 and other algorithms to
-     * digest a key and data together are vulnerable to various security
-     * issues.
-     * [HMAC](http://en.wikipedia.org/wiki/HMAC)
-     * uses algorithms like SHA1 in a secure way to produce a digest of a
-     * key and data.
-     *
-     * Both the key and data are arbitrary byte arrays of bytes or characters.
-     *
-     * Support for HMAC Digests has been added in GLib 2.30, and support for SHA-512
-     * in GLib 2.42. Support for SHA-384 was added in GLib 2.52.
-     *
-     * To create a new `GHmac`, use [ctor`GLib`.Hmac.new]. To free a `GHmac`, use
-     * [method`GLib`.Hmac.unref].
-     */
     class Hmac {
         static $gtype: GObject.GType<Hmac>;
 
         // Constructors
 
-        constructor(digest_type: ChecksumType, key: Uint8Array | string);
+        constructor(digest_type: ChecksumType, key: number, key_len: number);
         _init(...args: any[]): void;
 
-        static ['new'](digest_type: ChecksumType, key: Uint8Array | string): Hmac;
+        static ['new'](digest_type: ChecksumType, key: number, key_len: number): Hmac;
 
         // Methods
 
-        /**
-         * Copies a #GHmac. If `hmac` has been closed, by calling
-         * g_hmac_get_string() or g_hmac_get_digest(), the copied
-         * HMAC will be closed as well.
-         * @returns the copy of the passed #GHmac. Use g_hmac_unref()   when finished using it.
-         */
         copy(): Hmac;
-        /**
-         * Gets the digest from `checksum` as a raw binary array and places it
-         * into `buffer`. The size of the digest depends on the type of checksum.
-         *
-         * Once this function has been called, the #GHmac is closed and can
-         * no longer be updated with g_checksum_update().
-         * @param buffer output buffer
-         */
-        get_digest(buffer: Uint8Array | string): void;
-        /**
-         * Gets the HMAC as a hexadecimal string.
-         *
-         * Once this function has been called the #GHmac can no longer be
-         * updated with g_hmac_update().
-         *
-         * The hexadecimal characters will be lower case.
-         * @returns the hexadecimal representation of the HMAC. The   returned string is owned by the HMAC and should not be modified   or freed.
-         */
+        get_digest(buffer: number, digest_len: number): void;
         get_string(): string;
-        /**
-         * Atomically increments the reference count of `hmac` by one.
-         *
-         * This function is MT-safe and may be called from any thread.
-         * @returns the passed in #GHmac.
-         */
         ref(): Hmac;
-        /**
-         * Atomically decrements the reference count of `hmac` by one.
-         *
-         * If the reference count drops to 0, all keys and values will be
-         * destroyed, and all memory allocated by the hash table is released.
-         * This function is MT-safe and may be called from any thread.
-         * Frees the memory allocated for `hmac`.
-         */
         unref(): void;
-        /**
-         * Feeds `data` into an existing #GHmac.
-         *
-         * The HMAC must still be open, that is g_hmac_get_string() or
-         * g_hmac_get_digest() must not have been called on `hmac`.
-         * @param data buffer used to compute the checksum
-         */
-        update(data: Uint8Array | string): void;
+        update(data: number, length: number): void;
     }
 
     /**
@@ -18401,8 +18351,10 @@ export namespace GLib {
         load_from_data(data: string, length: number, flags: KeyFileFlags | null): boolean;
         /**
          * Looks for a key file named `file` in the paths returned from
-         * [func`GLib`.get_user_data_dir] and [func`GLib`.get_system_data_dirs],
-         * loads the file into `key_file` and returns the file’s full path in
+         * [func`GLib`.get_user_data_dir] and [func`GLib`.get_system_data_dirs].
+         *
+         * The search algorithm from [method`GLib`.KeyFile.load_from_dirs] is used. If
+         * `file` is found, it’s loaded into `key_file` and its full path is returned in
          * `full_path`.
          *
          * If the file could not be loaded then either a [error`GLib`.FileError] or
@@ -18415,6 +18367,13 @@ export namespace GLib {
         /**
          * Looks for a key file named `file` in the paths specified in `search_dirs,`
          * loads the file into `key_file` and returns the file’s full path in `full_path`.
+         *
+         * `search_dirs` are checked in the order listed in the array, with the highest
+         * priority directory listed first. Within each directory, `file` is looked for.
+         * If it’s not found, `-` characters in `file` are progressively replaced with
+         * directory separators to search subdirectories of the search directory. If the
+         * file has not been found after all `-` characters have been replaced, the next
+         * search directory in `search_dirs` is checked.
          *
          * If the file could not be found in any of the `search_dirs,`
          * [error`GLib`.KeyFileError.NOT_FOUND] is returned. If
@@ -26836,6 +26795,19 @@ export namespace GLib {
 
     /**
      * A type in the [type`GLib`.Variant] type system.
+     *
+     * [type`GLib`.Variant] types are represented as strings, but have a strict
+     * syntax described below. All [type`GLib`.VariantType]s passed to GLib must be
+     * valid, and they are typically expected to be static (i.e. not provided by
+     * user input) as they determine how binary [type`GLib`.Variant] data is
+     * interpreted.
+     *
+     * To convert a static string to a [type`GLib`.VariantType] in C, use the
+     * [func`GLib`.VARIANT_TYPE] casting macro. When GLib is compiled with checks
+     * enabled, it will validate the type. To check if an arbitrary string is a
+     * valid [type`GLib`.VariantType], use [func`GLib`.VariantType.string_is_valid].
+     *
+     * ## GVariant Type System
      *
      * This section introduces the [type`GLib`.Variant] type system. It is based, in
      * large part, on the D-Bus type system, with two major changes and

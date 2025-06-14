@@ -2727,9 +2727,6 @@ export namespace Shell {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
-        /**
-         * close a prompt
-         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.

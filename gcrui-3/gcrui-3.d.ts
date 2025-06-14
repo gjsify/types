@@ -404,16 +404,7 @@ export namespace GcrUi {
          * @param attrs attributes to set
          */
         set_attributes(attrs?: Gck.Attributes | null): void;
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.
@@ -7048,16 +7039,7 @@ export namespace GcrUi {
          * @param attrs attributes to set
          */
         set_attributes(attrs?: Gck.Attributes | null): void;
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.
@@ -7570,16 +7552,7 @@ export namespace GcrUi {
 
         // Virtual methods
 
-        /**
-         * Emitted when the import completes, or fails.
-         * @param importer
-         * @param error
-         */
         vfunc_imported(importer: Gcr.Importer, error: GLib.Error): void;
-        /**
-         * Emitted when the import begins.
-         * @param importer
-         */
         vfunc_importing(importer: Gcr.Importer): void;
 
         // Methods
@@ -12182,16 +12155,7 @@ export namespace GcrUi {
          * @param viewer The viewer to render to.
          */
         render_view(viewer: Viewer): void;
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.
@@ -14296,9 +14260,6 @@ export namespace GcrUi {
          * @param warning the warning or %NULL
          */
         set_warning(warning?: string | null): void;
-        /**
-         * close a prompt
-         */
         vfunc_prompt_close(): void;
         /**
          * Prompts for confirmation asking a cancel/continue style question.
@@ -16755,16 +16716,7 @@ export namespace GcrUi {
 
         // Virtual methods
 
-        /**
-         * signal emitted when data being rendered changes
-         */
         vfunc_data_changed(): void;
-        /**
-         * method invoked to populate a popup menu with additional
-         *                  renderer options
-         * @param viewer
-         * @param menu
-         */
         vfunc_populate_popup(viewer: Viewer, menu: Gtk.Menu): void;
         /**
          * Render the contents of the renderer to the given viewer.

@@ -8777,6 +8777,8 @@ export namespace WebKit2 {
             serifFontFamily: string;
             user_agent: string;
             userAgent: string;
+            webrtc_udp_ports_range: string;
+            webrtcUdpPortsRange: string;
             zoom_text_only: boolean;
             zoomTextOnly: boolean;
         }
@@ -9668,6 +9670,28 @@ export namespace WebKit2 {
         get userAgent(): string;
         set userAgent(val: string);
         /**
+         * Allow customization of the WebRTC UDP ports range.
+         *
+         * In some constrained environments where a firewall blocks UDP network traffic excepted on a
+         * specific port range, this settings can be used to give hints to the WebRTC backend regarding
+         * which ports to allocate. The format is min-port:max-port, so for instance 20000:30000. The
+         * default empty string value means the OS will use no hints from the WebRTC backend. Using 0
+         * for one of the values is allowed and means the value is unspecified.
+         */
+        get webrtc_udp_ports_range(): string;
+        set webrtc_udp_ports_range(val: string);
+        /**
+         * Allow customization of the WebRTC UDP ports range.
+         *
+         * In some constrained environments where a firewall blocks UDP network traffic excepted on a
+         * specific port range, this settings can be used to give hints to the WebRTC backend regarding
+         * which ports to allocate. The format is min-port:max-port, so for instance 20000:30000. The
+         * default empty string value means the OS will use no hints from the WebRTC backend. Using 0
+         * for one of the values is allowed and means the value is unspecified.
+         */
+        get webrtcUdpPortsRange(): string;
+        set webrtcUdpPortsRange(val: string);
+        /**
          * Whether #WebKitWebView:zoom-level affects only the
          * text of the page or all the contents. Other contents containing text
          * like form controls will be also affected by zoom factor when
@@ -10074,6 +10098,11 @@ export namespace WebKit2 {
          */
         get_user_agent(): string;
         /**
+         * Get the [property`Settings:`webrtc-udp-ports-range] property.
+         * @returns The WebRTC UDP ports range, or %NULL if un-set.
+         */
+        get_webrtc_udp_ports_range(): string;
+        /**
          * Get the #WebKitSettings:zoom-text-only property.
          * @returns %TRUE If zoom level of the view should only affect the text    or %FALSE if all view contents should be scaled.
          */
@@ -10411,6 +10440,11 @@ export namespace WebKit2 {
             application_name?: string | null,
             application_version?: string | null,
         ): void;
+        /**
+         * Set the [property`Settings:`webrtc-udp-ports-range] property.
+         * @param udp_port_range Value to be set
+         */
+        set_webrtc_udp_ports_range(udp_port_range: string): void;
         /**
          * Set the #WebKitSettings:zoom-text-only property.
          * @param zoom_text_only Value to be set
@@ -13263,15 +13297,29 @@ export namespace WebKit2 {
          */
         get favicon(): any;
         /**
-         * Whether the #WebKitWebView is controlled by automation. This should only be used when
-         * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-         * signal request.
+         * Whether the #WebKitWebView is controlled by automation tools (e.g. WebDriver, Selenium). This is
+         * required for views returned as a response to #WebKitAutomationSession::create-web-view signal,
+         * alongside any view you want to control during an automation session.
+         *
+         * As a %G_PARAM_CONSTRUCT_ONLY, you need to set it during construction and it can't be modified.
+         *
+         * If #WebKitWebView:related-view is also passed during construction, #WebKitWebView:is-controlled-by-automation
+         * ignores its own parameter and inherits directly from the related view #WebKitWebView:is-controlled-by-automation
+         * property. This is the recommended way when creating new views as a response to the #WebKitWebView::create
+         * signal. For example, as response to JavaScript `window.open()` calls during an automation session.
          */
         get is_controlled_by_automation(): boolean;
         /**
-         * Whether the #WebKitWebView is controlled by automation. This should only be used when
-         * creating a new #WebKitWebView as a response to #WebKitAutomationSession::create-web-view
-         * signal request.
+         * Whether the #WebKitWebView is controlled by automation tools (e.g. WebDriver, Selenium). This is
+         * required for views returned as a response to #WebKitAutomationSession::create-web-view signal,
+         * alongside any view you want to control during an automation session.
+         *
+         * As a %G_PARAM_CONSTRUCT_ONLY, you need to set it during construction and it can't be modified.
+         *
+         * If #WebKitWebView:related-view is also passed during construction, #WebKitWebView:is-controlled-by-automation
+         * ignores its own parameter and inherits directly from the related view #WebKitWebView:is-controlled-by-automation
+         * property. This is the recommended way when creating new views as a response to the #WebKitWebView::create
+         * signal. For example, as response to JavaScript `window.open()` calls during an automation session.
          */
         get isControlledByAutomation(): boolean;
         /**

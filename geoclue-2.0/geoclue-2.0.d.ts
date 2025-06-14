@@ -460,21 +460,8 @@ export namespace Geoclue {
          * @param arg_new Argument to pass with the signal.
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
-        /**
-         * Handler for the #GClueClient::handle-start signal.
-         * @param invocation
-         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueClient::handle-stop signal.
-         * @param invocation
-         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueClient::location-updated signal.
-         * @param arg_old
-         * @param arg_new
-         */
         vfunc_location_updated(arg_old: string, arg_new: string): void;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -1445,21 +1432,8 @@ export namespace Geoclue {
          * @param arg_new Argument to pass with the signal.
          */
         emit_location_updated(arg_old: string, arg_new: string): void;
-        /**
-         * Handler for the #GClueClient::handle-start signal.
-         * @param invocation
-         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueClient::handle-stop signal.
-         * @param invocation
-         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueClient::location-updated signal.
-         * @param arg_old
-         * @param arg_new
-         */
         vfunc_location_updated(arg_old: string, arg_new: string): void;
         /**
          * Gets the #GDBusObject that `interface_` belongs to, if any.
@@ -3788,27 +3762,9 @@ export namespace Geoclue {
          * @param client Parameter to return.
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
-        /**
-         * Handler for the #GClueManager::handle-add-agent signal.
-         * @param invocation
-         * @param arg_id
-         */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
-        /**
-         * Handler for the #GClueManager::handle-create-client signal.
-         * @param invocation
-         */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueManager::handle-delete-client signal.
-         * @param invocation
-         * @param arg_client
-         */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
-        /**
-         * Handler for the #GClueManager::handle-get-client signal.
-         * @param invocation
-         */
         vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Starts asynchronous initialization of the object implementing the
@@ -4857,27 +4813,9 @@ export namespace Geoclue {
          * @param client Parameter to return.
          */
         complete_get_client(invocation: Gio.DBusMethodInvocation, client: string): void;
-        /**
-         * Handler for the #GClueManager::handle-add-agent signal.
-         * @param invocation
-         * @param arg_id
-         */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
-        /**
-         * Handler for the #GClueManager::handle-create-client signal.
-         * @param invocation
-         */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueManager::handle-delete-client signal.
-         * @param invocation
-         * @param arg_client
-         */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
-        /**
-         * Handler for the #GClueManager::handle-get-client signal.
-         * @param invocation
-         */
         vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
         /**
          * Gets the #GDBusObject that `interface_` belongs to, if any.
@@ -5509,12 +5447,12 @@ export namespace Geoclue {
          * when inside the Flatpak sandbox).
          * @returns The client object.
          */
-        get_client(): ClientProxy | null;
+        get_client(): ClientProxy;
         /**
          * Gets the current location.
          * @returns The last known location as #GClueLocation.
          */
-        get_location(): Location | null;
+        get_location(): Location;
 
         // Inherited methods
         /**
@@ -6447,21 +6385,8 @@ export namespace Geoclue {
 
         // Virtual methods
 
-        /**
-         * Handler for the #GClueClient::handle-start signal.
-         * @param invocation
-         */
         vfunc_handle_start(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueClient::handle-stop signal.
-         * @param invocation
-         */
         vfunc_handle_stop(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueClient::location-updated signal.
-         * @param arg_old
-         * @param arg_new
-         */
         vfunc_location_updated(arg_old: string, arg_new: string): void;
     }
 
@@ -6861,27 +6786,9 @@ export namespace Geoclue {
 
         // Virtual methods
 
-        /**
-         * Handler for the #GClueManager::handle-add-agent signal.
-         * @param invocation
-         * @param arg_id
-         */
         vfunc_handle_add_agent(invocation: Gio.DBusMethodInvocation, arg_id: string): boolean;
-        /**
-         * Handler for the #GClueManager::handle-create-client signal.
-         * @param invocation
-         */
         vfunc_handle_create_client(invocation: Gio.DBusMethodInvocation): boolean;
-        /**
-         * Handler for the #GClueManager::handle-delete-client signal.
-         * @param invocation
-         * @param arg_client
-         */
         vfunc_handle_delete_client(invocation: Gio.DBusMethodInvocation, arg_client: string): boolean;
-        /**
-         * Handler for the #GClueManager::handle-get-client signal.
-         * @param invocation
-         */
         vfunc_handle_get_client(invocation: Gio.DBusMethodInvocation): boolean;
     }
 

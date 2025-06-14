@@ -197,12 +197,12 @@ export namespace GstPlay {
     function play_error_quark(): GLib.Quark;
     function play_message_get_name(message_type: PlayMessage | null): string;
     /**
-     * Parse the given buffering `msg` and extract the corresponding value
+     * Parse the given buffering-percent `msg` and extract the corresponding value
      * @param msg A #GstMessage
      */
     function play_message_parse_buffering_percent(msg: Gst.Message): number;
     /**
-     * Parse the given duration-changed `msg` and extract the corresponding #GstClockTime
+     * Parse the given duration `msg` and extract the corresponding #GstClockTime
      * @param msg A #GstMessage
      */
     function play_message_parse_duration_updated(msg: Gst.Message): Gst.ClockTime | null;
@@ -212,22 +212,22 @@ export namespace GstPlay {
      */
     function play_message_parse_error(msg: Gst.Message): [GLib.Error | null, Gst.Structure | null];
     /**
-     * Parse the given media-info-updated `msg` and extract the corresponding media information
+     * Parse the given `msg` and extract the corresponding media information
      * @param msg A #GstMessage
      */
     function play_message_parse_media_info_updated(msg: Gst.Message): PlayMediaInfo | null;
     /**
-     * Parse the given mute-changed `msg` and extract the corresponding audio muted state
+     * Parse the given `msg` and extract the corresponding audio muted state
      * @param msg A #GstMessage
      */
     function play_message_parse_muted_changed(msg: Gst.Message): boolean;
     /**
-     * Parse the given position-updated `msg` and extract the corresponding #GstClockTime
+     * Parse the given position `msg` and extract the corresponding #GstClockTime
      * @param msg A #GstMessage
      */
     function play_message_parse_position_updated(msg: Gst.Message): Gst.ClockTime | null;
     /**
-     * Parse the given state-changed `msg` and extract the corresponding #GstPlayState
+     * Parse the given state `msg` and extract the corresponding #GstPlayState
      * @param msg A #GstMessage
      */
     function play_message_parse_state_changed(msg: Gst.Message): PlayState | null;
@@ -237,17 +237,17 @@ export namespace GstPlay {
      */
     function play_message_parse_type(msg: Gst.Message): PlayMessage | null;
     /**
-     * Parse the given video-dimensions-changed `msg` and extract the corresponding video dimensions
+     * Parse the given `msg` and extract the corresponding video dimensions
      * @param msg A #GstMessage
      */
     function play_message_parse_video_dimensions_changed(msg: Gst.Message): [number, number];
     /**
-     * Parse the given volume-changed `msg` and extract the corresponding audio volume
+     * Parse the given `msg` and extract the corresponding audio volume
      * @param msg A #GstMessage
      */
     function play_message_parse_volume_changed(msg: Gst.Message): number;
     /**
-     * Parse the given warning `msg` and extract the corresponding #GError
+     * Parse the given error `msg` and extract the corresponding #GError warning
      * @param msg A #GstMessage
      */
     function play_message_parse_warning(msg: Gst.Message): [GLib.Error | null, Gst.Structure | null];
@@ -290,41 +290,6 @@ export namespace GstPlay {
         }
     }
 
-    /**
-     * The goal of the GstPlay library is to ease the integration of multimedia
-     * playback features in applications. Thus, if you need to build a media player
-     * from the ground-up, GstPlay provides the features you will most likely need.
-     *
-     * An example player is available in gst-examples/playback/player/gst-play/.
-     *
-     * Internally the GstPlay makes use of the `playbin3` element. The legacy
-     * `playbin2` can be selected if the `GST_PLAY_USE_PLAYBIN3=0` environment
-     * variable has been set.
-     *
-     * **Important note**: If your application relies on the GstBus to get
-     * notifications from GstPlay, you need to add some explicit clean-up code in
-     * order to prevent the GstPlay object from leaking. See below for the details.
-     * If you use the GstPlaySignalAdapter, no special clean-up is required.
-     *
-     * When the GstPlaySignalAdapter is not used, the GstBus owned by GstPlay should
-     * be set to flushing state before any attempt to drop the last reference of the
-     * GstPlay object. An example in C:
-     *
-     * ```c
-     * ...
-     * GstBus *bus = gst_play_get_message_bus (player);
-     * gst_bus_set_flushing (bus, TRUE);
-     * gst_object_unref (bus);
-     * gst_object_unref (player);
-     * ```
-     *
-     * The messages managed by the player contain a reference to itself, and if the
-     * bus watch is just removed together with dropping the player then the bus will
-     * simply keep them around forever (and the bus never goes away because the
-     * player has a strong reference to it, so there's a reference cycle as long as
-     * there are messages). Setting the bus to flushing state forces it to get rid
-     * of its queued messages, thus breaking any possible reference cycle.
-     */
     class Play extends Gst.Object {
         static $gtype: GObject.GType<Play>;
 
@@ -382,7 +347,6 @@ export namespace GstPlay {
 
         // Static methods
 
-        static config_get_pipeline_dump_in_error_details(config: Gst.Structure): boolean;
         static config_get_position_update_interval(config: Gst.Structure): number;
         static config_get_seek_accurate(config: Gst.Structure): boolean;
         /**
@@ -392,18 +356,8 @@ export namespace GstPlay {
          */
         static config_get_user_agent(config: Gst.Structure): string | null;
         /**
-         * When enabled, the error message emitted by #GstPlay will include a pipeline
-         * dump (in Graphviz DOT format) in the error details #GstStructure. The field
-         * name is `pipeline-dump`.
-         *
-         * This option is disabled by default.
-         * @param config a #GstPlay configuration
-         * @param value Include pipeline dumps in error details, or not.
-         */
-        static config_set_pipeline_dump_in_error_details(config: Gst.Structure, value: boolean): void;
-        /**
-         * Set desired interval in milliseconds between two position-updated messages.
-         * Pass 0 to stop updating the position.
+         * set desired interval in milliseconds between two position-updated messages.
+         * pass 0 to stop updating the position.
          * @param config a #GstPlay configuration
          * @param interval interval in ms
          */
@@ -518,7 +472,7 @@ export namespace GstPlay {
         get_position(): Gst.ClockTime;
         get_rate(): number;
         /**
-         * Current subtitle URI
+         * current subtitle URI
          * @returns URI of the current external subtitle.   g_free() after usage.
          */
         get_subtitle_uri(): string | null;
@@ -534,7 +488,7 @@ export namespace GstPlay {
         get_uri(): string | null;
         /**
          * Get a snapshot of the currently selected video stream, if any. The format can be
-         * selected with `format` and optional configuration is possible with `config`.
+         * selected with `format` and optional configuration is possible with `config`
          * Currently supported settings are:
          * - width, height of type G_TYPE_INT
          * - pixel-aspect-ratio of type GST_TYPE_FRACTION
@@ -588,7 +542,7 @@ export namespace GstPlay {
         set_color_balance(type: PlayColorBalanceType | null, value: number): void;
         /**
          * Set the configuration of the play. If the play is already configured, and
-         * the configuration hasn't changed, this function will return %TRUE. If the
+         * the configuration haven't change, this function will return %TRUE. If the
          * play is not in the GST_PLAY_STATE_STOPPED, this method will return %FALSE
          * and active configuration will remain.
          *

@@ -3165,6 +3165,29 @@ export namespace Gst {
         message_string: string,
     ): void;
     /**
+     * Returns a string that represents `ptr`. This is safe to call with
+     * %GstStructure, %GstCapsFeatures, %GstMiniObject s (e.g. %GstCaps,
+     * %GstBuffer or %GstMessage), and %GObjects (e.g. %GstElement or %GstPad).
+     *
+     * The string representation is meant to be used for debugging purposes and
+     * might change between GStreamer versions.
+     *
+     * Passing other kind of pointers might or might not work and is generally
+     * unsafe to do.
+     * @param ptr the object
+     * @returns a string containing a string     representation of the object
+     */
+    function debug_print_object(ptr?: any | null): string;
+    /**
+     * Returns a string that represents `segments`.
+     *
+     * The string representation is meant to be used for debugging purposes and
+     * might change between GStreamer versions.
+     * @param segment the %GstSegment
+     * @returns a string containing a string     representation of the segment
+     */
+    function debug_print_segment(segment?: Segment | null): string;
+    /**
      * If libunwind, glibc backtrace or DbgHelp are present
      * a stack trace is printed.
      */
@@ -3435,6 +3458,24 @@ export namespace Gst {
      * @returns the quark associated with the message type
      */
     function message_type_to_quark(type: MessageType | null): GLib.Quark;
+    /**
+     * When a element like `tee` decides the allocation, each downstream element may
+     * fill different parameters and pass them to gst_query_add_allocation_meta().
+     * In order to keep these parameters, a merge operation is needed. This
+     * aggregate function can combine the parameters from `params0` and `param1`, and
+     * write the result back into `aggregated_params`.
+     * @param api the GType of the API for which the parameters are being aggregated.
+     * @param aggregated_params This structure will be updated with the                     combined parameters from both @params0 and @params1.
+     * @param params0 a #GstStructure containing the new parameters to be aggregated.
+     * @param params1 a #GstStructure containing the new parameters to be aggregated.
+     * @returns %TRUE if the parameters were successfully aggregated, %FALSE otherwise.
+     */
+    function meta_api_type_aggregate_params(
+        api: GObject.GType,
+        aggregated_params: Structure,
+        params0: Structure,
+        params1: Structure,
+    ): boolean;
     function meta_api_type_get_tags(api: GObject.GType): string[];
     /**
      * Check if `api` was registered with `tag`.
@@ -3451,6 +3492,12 @@ export namespace Gst {
      * @returns a unique GType for @api.
      */
     function meta_api_type_register(api: string, tags: string[]): GObject.GType;
+    /**
+     * This function sets the aggregator function for a specific API type.
+     * @param api the #GType of the API for which the aggregator function is being set.
+     * @param aggregator the aggregator function to be associated with the given API              type.
+     */
+    function meta_api_type_set_params_aggregator(api: GObject.GType, aggregator: AllocationMetaParamsAggregator): void;
     /**
      * Recreate a #GstMeta from serialized data returned by
      * gst_meta_serialize() and add it to `buffer`.
@@ -4033,7 +4080,7 @@ export namespace Gst {
      * @param array the sorted input array
      * @param num_elements number of elements in the array
      * @param element_size size of every element in bytes
-     * @param search_func function to compare two elements, @search_data will always be passed as second argument
+     * @param search_func function to compare two    elements, @search_data will always be passed as second argument
      * @param mode search mode that should be used
      * @param search_data element that should be found
      * @returns The address of the found element or %NULL if nothing was found
@@ -4075,6 +4122,12 @@ export namespace Gst {
      */
     function util_filename_compare(a: string, b: string): number;
     /**
+     * Returns smallest integral value not bigger than log2(v).
+     * @param v a #guint32 value.
+     * @returns a computed #guint val.
+     */
+    function util_floor_log2(v: number): number;
+    /**
      * Adds the fractions `a_n/``a_d` and `b_n/``b_d` and stores
      * the result in `res_n` and `res_d`.
      * @param a_n Numerator of first value
@@ -4104,6 +4157,21 @@ export namespace Gst {
      * @returns %FALSE on overflow, %TRUE otherwise.
      */
     function util_fraction_multiply(a_n: number, a_d: number, b_n: number, b_d: number): [boolean, number, number];
+    /**
+     * Multiplies the fractions `a_n/``a_d` and `b_n/``b_d` and stores
+     * the result in `res_n` and `res_d`.
+     * @param a_n Numerator of first value
+     * @param a_d Denominator of first value
+     * @param b_n Numerator of second value
+     * @param b_d Denominator of second value
+     * @returns %FALSE on overflow, %TRUE otherwise.
+     */
+    function util_fraction_multiply_int64(
+        a_n: number,
+        a_d: number,
+        b_n: number,
+        b_d: number,
+    ): [boolean, number, number];
     /**
      * Transforms a fraction to a #gdouble.
      * @param src_n Fraction numerator as #gint
@@ -4674,6 +4742,9 @@ export namespace Gst {
      * @returns a newly allocated string describing this version     of GStreamer.
      */
     function version_string(): string;
+    interface AllocationMetaParamsAggregator {
+        (aggregated_params: Structure, params0: Structure, params1: Structure): boolean;
+    }
     interface BufferForeachMetaFunc {
         (buffer: Buffer): boolean;
     }
@@ -4862,11 +4933,20 @@ export namespace Gst {
     interface StructureFilterMapFunc {
         (field_id: GLib.Quark, value: GObject.Value | any): boolean;
     }
+    interface StructureFilterMapIdStrFunc {
+        (fieldname: IdStr, value: GObject.Value | any): boolean;
+    }
     interface StructureForeachFunc {
         (field_id: GLib.Quark, value: GObject.Value | any): boolean;
     }
+    interface StructureForeachIdStrFunc {
+        (fieldname: IdStr, value: GObject.Value | any): boolean;
+    }
     interface StructureMapFunc {
         (field_id: GLib.Quark, value: GObject.Value | any): boolean;
+    }
+    interface StructureMapIdStrFunc {
+        (fieldname: IdStr, value: GObject.Value | any): boolean;
     }
     interface TagForeachFunc {
         (list: TagList, tag: string): void;
@@ -8045,6 +8125,9 @@ export namespace Gst {
         /**
          * Start the bufferpool. The default implementation will preallocate
          * min-buffers buffers and put them in the queue.
+         *
+         * Subclasses do not need to chain up to the parent's default implementation
+         * if they don't want min-buffers based preallocation.
          */
         vfunc_start(): boolean;
         /**
@@ -8766,35 +8849,35 @@ export namespace Gst {
         // Methods
 
         /**
-         * The time `master` of the master clock and the time `slave` of the slave
-         * clock are added to the list of observations. If enough observations
-         * are available, a linear regression algorithm is run on the
-         * observations and `clock` is recalibrated.
+         * The time `observation_external` of the external or master clock and the time
+         * `observation_internal` of the internal or slave clock are added to the list of
+         * observations. If enough observations are available, a linear regression
+         * algorithm is run on the observations and `clock` is recalibrated.
          *
          * If this functions returns %TRUE, `r_squared` will contain the
          * correlation coefficient of the interpolation. A value of 1.0
          * means a perfect regression was performed. This value can
          * be used to control the sampling frequency of the master and slave
          * clocks.
-         * @param slave a time on the slave
-         * @param master a time on the master
+         * @param observation_internal a time on the internal clock
+         * @param observation_external a time on the external clock
          * @returns %TRUE if enough observations were added to run the regression algorithm.
          */
-        add_observation(slave: ClockTime, master: ClockTime): [boolean, number];
+        add_observation(observation_internal: ClockTime, observation_external: ClockTime): [boolean, number];
         /**
          * Add a clock observation to the internal slaving algorithm the same as
-         * gst_clock_add_observation(), and return the result of the master clock
-         * estimation, without updating the internal calibration.
+         * gst_clock_add_observation(), and return the result of the external or master
+         * clock estimation, without updating the internal calibration.
          *
          * The caller can then take the results and call gst_clock_set_calibration()
          * with the values, or some modified version of them.
-         * @param slave a time on the slave
-         * @param master a time on the master
+         * @param observation_internal a time on the internal clock
+         * @param observation_external a time on the external clock
          * @returns %TRUE if enough observations were added to run the regression algorithm.
          */
         add_observation_unapplied(
-            slave: ClockTime,
-            master: ClockTime,
+            observation_internal: ClockTime,
+            observation_external: ClockTime,
         ): [boolean, number, ClockTime | null, ClockTime | null, ClockTime | null, ClockTime | null];
         /**
          * Converts the given `internal` clock time to the external time, adjusting for the
@@ -11809,7 +11892,7 @@ export namespace Gst {
          * In each of the groups, probes are called in the order in which they were
          * added.
          * @param mask the probe mask
-         * @param callback #GstPadProbeCallback that will be called with notifications of           the pad state
+         * @param callback #GstPadProbeCallback that will be called with           notifications of the pad state
          * @returns an id or 0 if no probe is pending. The id can be used to remove the probe with gst_pad_remove_probe(). When using GST_PAD_PROBE_TYPE_IDLE it can happen that the probe can be run immediately and if the probe returns GST_PAD_PROBE_REMOVE this functions returns 0. MT safe.
          */
         add_probe(mask: PadProbeType | null, callback: PadProbeCallback): number;
@@ -12504,7 +12587,10 @@ export namespace Gst {
          */
         set_link_function_full(link: PadLinkFunction): void;
         /**
-         * Set the offset that will be applied to the running time of `pad`.
+         * Set the offset that will be applied to the running time of `pad`. Upon next
+         * buffer, every sticky events (notably segment) will be pushed again with
+         * their running time adjusted. For that reason this is only reliable on
+         * source pads.
          * @param offset the offset
          */
         set_offset(offset: number): void;
@@ -12535,7 +12621,7 @@ export namespace Gst {
         /**
          * Iterates all sticky events on `pad` and calls `foreach_func` for every
          * event. If `foreach_func` returns %FALSE the iteration is immediately stopped.
-         * @param foreach_func the #GstPadStickyEventsForeachFunction that                should be called for every event.
+         * @param foreach_func the    #GstPadStickyEventsForeachFunction that should be called for every event.
          */
         sticky_events_foreach(foreach_func: PadStickyEventsForeachFunction): void;
         /**
@@ -14841,6 +14927,8 @@ export namespace Gst {
          * @param type GType of tracer to register
          */
         static register(plugin: Plugin | null, name: string, type: GObject.GType): boolean;
+        static set_use_structure_params(use_structure_params: boolean): void;
+        static uses_structure_params(): boolean;
     }
 
     namespace TracerFactory {
@@ -15872,18 +15960,18 @@ export namespace Gst {
          * You must make sure that `idx` does not exceed the number of
          * buffers available.
          * @param idx the index
-         * @returns the buffer at @idx in @group     or %NULL when there is no buffer. The buffer remains valid as     long as @list is valid and buffer is not removed from the list.
+         * @returns the buffer at @idx in @group.     The returned buffer remains valid as long as @list is valid and     buffer is not removed from the list.
          */
-        get(idx: number): Buffer | null;
+        get(idx: number): Buffer;
         /**
          * Gets the buffer at `idx,` ensuring it is a writable buffer.
          *
          * You must make sure that `idx` does not exceed the number of
          * buffers available.
          * @param idx the index
-         * @returns the buffer at @idx in @group.     The returned  buffer remains valid as long as @list is valid and     the buffer is not removed from the list.
+         * @returns the buffer at @idx in @group.     The returned buffer remains valid as long as @list is valid and     the buffer is not removed from the list.
          */
-        get_writable(idx: number): Buffer | null;
+        get_writable(idx: number): Buffer;
         /**
          * Inserts `buffer` at `idx` in `list`. Other buffers are moved to make room for
          * this new buffer.
@@ -16031,6 +16119,10 @@ export namespace Gst {
 
         static new_empty_simple(media_type: string): Caps;
 
+        static new_id_str_empty_simple(media_type: IdStr): Caps;
+
+        static new_static_str_empty_simple(media_type: string): Caps;
+
         // Static methods
 
         /**
@@ -16157,6 +16249,14 @@ export namespace Gst {
          * @returns a pointer to the #GstStructure corresponding     to @index
          */
         get_structure(index: number): Structure;
+        /**
+         * Sets the given `field` on all structures of `caps` to the given `value`.
+         * This is a convenience function for calling gst_structure_set_value() on
+         * all structures of `caps`.
+         * @param field name of the field to set
+         * @param value value to set the field to
+         */
+        id_str_set_value(field: IdStr, value: GObject.Value | any): void;
         /**
          * Creates a new #GstCaps that contains all the formats that are common
          * to both `caps1` and `caps2`. Defaults to %GST_CAPS_INTERSECT_ZIG_ZAG mode.
@@ -16319,6 +16419,17 @@ export namespace Gst {
          */
         set_value(field: string, value: GObject.Value | any): void;
         /**
+         * Sets the given `field` on all structures of `caps` to the given `value`.
+         * This is a convenience function for calling gst_structure_set_value() on
+         * all structures of `caps`.
+         *
+         * `field` needs to be valid for the remaining lifetime of the process, e.g.
+         * has to be a static string.
+         * @param field name of the field to set
+         * @param value value to set the field to
+         */
+        set_value_static_str(field: string, value: GObject.Value | any): void;
+        /**
          * Converts the given `caps` into a representation that represents the
          * same set of formats, but in a simpler form.  Component structures that are
          * identical are merged.  Component structures that have values that can be
@@ -16414,6 +16525,8 @@ export namespace Gst {
 
         static new_single(feature: string): CapsFeatures;
 
+        static new_single_static_str(feature: string): CapsFeatures;
+
         // Static methods
 
         /**
@@ -16435,6 +16548,19 @@ export namespace Gst {
          */
         add_id(feature: GLib.Quark): void;
         /**
+         * Adds `feature` to `features`.
+         * @param feature a feature.
+         */
+        add_id_str(feature: IdStr): void;
+        /**
+         * Adds `feature` to `features`.
+         *
+         * `feature` needs to be valid for the remaining lifetime of the process, e.g. has
+         * to be a static string.
+         * @param feature a feature.
+         */
+        add_static_str(feature: string): void;
+        /**
          * Checks if `features` contains `feature`.
          * @param feature a feature
          * @returns %TRUE if @features contains @feature.
@@ -16446,6 +16572,12 @@ export namespace Gst {
          * @returns %TRUE if @features contains @feature.
          */
         contains_id(feature: GLib.Quark): boolean;
+        /**
+         * Checks if `features` contains `feature`.
+         * @param feature a feature
+         * @returns %TRUE if @features contains @feature.
+         */
+        contains_id_str(feature: IdStr): boolean;
         /**
          * Duplicates a #GstCapsFeatures and all its values.
          * @returns a new #GstCapsFeatures.
@@ -16468,6 +16600,12 @@ export namespace Gst {
          * @returns The @i-th feature of @features.
          */
         get_nth_id(i: number): GLib.Quark;
+        /**
+         * Returns the `i-th` feature of `features`.
+         * @param i index of the feature
+         * @returns The @i-th feature of @features.
+         */
+        get_nth_id_str(i: number): IdStr;
         /**
          * Returns the number of features in `features`.
          * @returns The number of features in @features.
@@ -16494,6 +16632,11 @@ export namespace Gst {
          * @param feature a feature.
          */
         remove_id(feature: GLib.Quark): void;
+        /**
+         * Removes `feature` from `features`.
+         * @param feature a feature.
+         */
+        remove_id_str(feature: IdStr): void;
         /**
          * Sets the parent_refcount field of #GstCapsFeatures. This field is used to
          * determine whether a caps features is mutable or not. This function should only be
@@ -17294,6 +17437,121 @@ export namespace Gst {
     }
 
     /**
+     * A #GstIdStr is string type optimized for short strings and used for structure
+     * names, structure field names and in other places.
+     *
+     * Strings up to 16 bytes (including NUL terminator) are stored inline, other
+     * strings are stored on the heap.
+     *
+     * ```cpp
+     * GstIdStr s = GST_ID_STR_INIT;
+     *
+     * gst_id_str_set (&s, "Hello, World!");
+     * g_print ("%s\n", gst_id_str_as_str (&s));
+     *
+     * gst_id_str_clear (&s);
+     * ```
+     */
+    class IdStr {
+        static $gtype: GObject.GType<IdStr>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+        _init(...args: any[]): void;
+
+        static ['new'](): IdStr;
+
+        // Methods
+
+        as_str(): string;
+        /**
+         * Clears `s` and sets it to the empty string.
+         */
+        clear(): void;
+        /**
+         * Copies `s` into newly allocated heap memory.
+         * @returns A heap-allocated copy of @s.
+         */
+        copy(): IdStr;
+        /**
+         * Copies `s` into `d`.
+         * @param s The source %GstIdStr
+         */
+        copy_into(s: IdStr): void;
+        /**
+         * Frees `s`. This should only be called for heap-allocated #GstIdStr.
+         */
+        free(): void;
+        /**
+         * Returns the length of `s,` exluding the NUL-terminator. This is equivalent to
+         * calling `strcmp()` but potentially faster.
+         */
+        get_len(): number;
+        /**
+         * Initializes a (usually stack-allocated) id string `s`. The newly-initialized
+         * id string will contain an empty string by default as value.
+         */
+        init(): void;
+        /**
+         * Compares `s1` and `s2` for equality.
+         * @param s2 A %GstIdStr
+         * @returns %TRUE if @s1 and @s2 are equal.
+         */
+        is_equal(s2: IdStr): boolean;
+        /**
+         * Compares `s1` and `s2` for equality.
+         * @param s2 A string
+         * @returns %TRUE if @s1 and @s2 are equal.
+         */
+        is_equal_to_str(s2: string): boolean;
+        /**
+         * Compares `s1` and `s2` with length `len` for equality. `s2` does not have to be
+         * NUL-terminated and `len` should not include the NUL-terminator.
+         *
+         * This is generally faster than gst_id_str_is_equal_to_str() if the length is
+         * already known.
+         * @param s2 A string
+         * @param len Length of @s2.
+         * @returns %TRUE if @s1 and @s2 are equal.
+         */
+        is_equal_to_str_with_len(s2: string, len: number): boolean;
+        /**
+         * Moves `s` into `d` and resets `s`.
+         * @param s The source %GstIdStr
+         */
+        move(s: IdStr): void;
+        /**
+         * Sets `s` to the string `value`.
+         * @param value A NUL-terminated string
+         */
+        set(value: string): void;
+        /**
+         * Sets `s` to the string `value`. `value` needs to be valid for the remaining
+         * lifetime of the process, e.g. has to be a static string.
+         * @param value A NUL-terminated string
+         */
+        set_static_str(value: string): void;
+        /**
+         * Sets `s` to the string `value` of length `len`. `value` needs to be valid for the
+         * remaining lifetime of the process, e.g. has to be a static string.
+         *
+         * `value` must be NUL-terminated and `len` should not include the
+         * NUL-terminator.
+         * @param value A string
+         * @param len Length of the string
+         */
+        set_static_str_with_len(value: string, len: number): void;
+        /**
+         * Sets `s` to the string `value` of length `len`. `value` does not have to be
+         * NUL-terminated and `len` should not include the NUL-terminator.
+         * @param value A string
+         * @param len Length of the string
+         */
+        set_with_len(value: string, len: number): void;
+    }
+
+    /**
      * A GstIterator is used to retrieve multiple objects from another object in
      * a threadsafe way.
      *
@@ -17840,6 +18098,13 @@ export namespace Gst {
          * @param entry_struct structure for the new entry
          */
         add_redirect_entry(location: string, tag_list?: TagList | null, entry_struct?: Structure | null): void;
+        /**
+         * Returns the optional details structure of the message. May be NULL if none.
+         *
+         * The returned structure must not be freed.
+         * @returns The details, or NULL if none.
+         */
+        get_details(): Structure | null;
         get_num_redirect_entries(): number;
         /**
          * Retrieve the sequence number of a message.
@@ -17965,6 +18230,11 @@ export namespace Gst {
          */
         parse_error_details(): Structure | null;
         /**
+         * Returns the details structure if present or will create one if not present.
+         * The returned structure must not be freed.
+         */
+        parse_error_writable_details(): Structure | null;
+        /**
          * Extract the group from the STREAM_START message.
          * @returns %TRUE if the message had a group id set, %FALSE otherwise MT safe.
          */
@@ -17987,6 +18257,11 @@ export namespace Gst {
          * The returned structure must not be freed.
          */
         parse_info_details(): Structure | null;
+        /**
+         * Returns the details structure if present or will create one if not present.
+         * The returned structure must not be freed.
+         */
+        parse_info_writable_details(): Structure | null;
         /**
          * Parses the rate_multiplier from the instant-rate-request message.
          */
@@ -18174,6 +18449,11 @@ export namespace Gst {
          */
         parse_warning_details(): Structure | null;
         /**
+         * Returns the details structure if present or will create one if not present.
+         * The returned structure must not be freed.
+         */
+        parse_warning_writable_details(): Structure | null;
+        /**
          * Configures the buffering stats values in `message`.
          * @param mode a buffering mode
          * @param avg_in the average input rate
@@ -18181,6 +18461,12 @@ export namespace Gst {
          * @param buffering_left amount of buffering time left in milliseconds
          */
         set_buffering_stats(mode: BufferingMode | null, avg_in: number, avg_out: number, buffering_left: number): void;
+        /**
+         * Add `details` to `message`. Will fail if the message already has details set on
+         * it or if it is not writable.
+         * @param details A GstStructure with details
+         */
+        set_details(details?: Structure | null): void;
         /**
          * Sets the group id on the stream-start message.
          *
@@ -18250,6 +18536,15 @@ export namespace Gst {
          */
         streams_selected_get_stream(idx: number): Stream | null;
         /**
+         * Returns the details structure of the `message`. If not present it will be
+         * created. Use this function (instead of gst_message_get_details()) if you
+         * want to write to the `details` structure.
+         *
+         * The returned structure must not be freed.
+         * @returns The details
+         */
+        writable_details(): Structure;
+        /**
          * Get a writable version of the structure.
          * @returns The structure of the message. The structure is still owned by the message, which means that you should not free it and that the pointer becomes invalid when you free the message. This function ensures that @message is writable, and if so, will never return %NULL. MT safe.
          */
@@ -18290,6 +18585,23 @@ export namespace Gst {
 
         // Static methods
 
+        /**
+         * When a element like `tee` decides the allocation, each downstream element may
+         * fill different parameters and pass them to gst_query_add_allocation_meta().
+         * In order to keep these parameters, a merge operation is needed. This
+         * aggregate function can combine the parameters from `params0` and `param1`, and
+         * write the result back into `aggregated_params`.
+         * @param api the GType of the API for which the parameters are being aggregated.
+         * @param aggregated_params This structure will be updated with the                     combined parameters from both @params0 and @params1.
+         * @param params0 a #GstStructure containing the new parameters to be aggregated.
+         * @param params1 a #GstStructure containing the new parameters to be aggregated.
+         */
+        static api_type_aggregate_params(
+            api: GObject.GType,
+            aggregated_params: Structure,
+            params0: Structure,
+            params1: Structure,
+        ): boolean;
         static api_type_get_tags(api: GObject.GType): string[];
         /**
          * Check if `api` was registered with `tag`.
@@ -18304,6 +18616,12 @@ export namespace Gst {
          * @param tags tags for @api
          */
         static api_type_register(api: string, tags: string[]): GObject.GType;
+        /**
+         * This function sets the aggregator function for a specific API type.
+         * @param api the #GType of the API for which the aggregator function is being set.
+         * @param aggregator the aggregator function to be associated with the given API              type.
+         */
+        static api_type_set_params_aggregator(api: GObject.GType, aggregator: AllocationMetaParamsAggregator): void;
         /**
          * Recreate a #GstMeta from serialized data returned by
          * gst_meta_serialize() and add it to `buffer`.
@@ -20283,14 +20601,17 @@ export namespace Gst {
      *
      * Some types have special delimiters:
      *
-     * - [GstValueArray](GST_TYPE_ARRAY) are inside curly brackets (`{` and `}`).
-     *   For example `a-structure, array={1, 2, 3}`
+     * - [GstValueArray](GST_TYPE_ARRAY) are inside "less and greater than" (`<` and
+     *   `>`). For example `a-structure, array=<1, 2, 3>
      * - Ranges are inside brackets (`[` and `]`). For example `a-structure,
      *   range=[1, 6, 2]` 1 being the min value, 6 the maximum and 2 the step. To
      *   specify a #GST_TYPE_INT64_RANGE you need to explicitly specify it like:
      *   `a-structure, a-int64-range=(gint64) [1, 5]`
-     * - [GstValueList](GST_TYPE_LIST) are inside "less and greater than" (`<` and
-     *   `>`). For example `a-structure, list=<1, 2, 3>
+     * - [GstValueList](GST_TYPE_LIST) are inside curly brackets (`{` and `}`).
+     *   For example `a-structure, list={1, 2, 3}`
+     * - [GStrv](G_TYPE_STRV) are inside "less and greater than" (`<` and
+     *   `>`) and each string is double-quoted.
+     *   For example `a-structure, strv=(GStrv)<"foo", "bar">`. Since 1.26.0.
      *
      * Structures are delimited either by a null character `\0` or a semicolon `;`
      * the latter allowing to store multiple structures in the same string (see
@@ -20343,6 +20664,10 @@ export namespace Gst {
 
         static new_id_empty(quark: GLib.Quark): Structure;
 
+        static new_id_str_empty(name: IdStr): Structure;
+
+        static new_static_str_empty(name: string): Structure;
+
         // Static methods
 
         /**
@@ -20384,6 +20709,15 @@ export namespace Gst {
          * @param func a function to call for each field
          */
         filter_and_map_in_place(func: StructureFilterMapFunc): void;
+        /**
+         * Calls the provided function once for each field in the #GstStructure. In
+         * contrast to gst_structure_foreach_id_str(), the function may modify the fields.
+         * In contrast to gst_structure_map_in_place_id_str(), the field is removed from
+         * the structure if %FALSE is returned from the function.
+         * The structure must be mutable.
+         * @param func a function to call for each field
+         */
+        filter_and_map_in_place_id_str(func: StructureFilterMapIdStrFunc): void;
         /**
          * Fixate all values in `structure` using gst_value_fixate().
          * `structure` will be modified in-place and should be writable.
@@ -20449,6 +20783,14 @@ export namespace Gst {
          * @returns %TRUE if the supplied function returns %TRUE For each of the fields, %FALSE otherwise.
          */
         foreach(func: StructureForeachFunc): boolean;
+        /**
+         * Calls the provided function once for each field in the #GstStructure. The
+         * function must not modify the fields. Also see gst_structure_map_in_place_id_str()
+         * and gst_structure_filter_and_map_in_place_id_str().
+         * @param func a function to call for each field
+         * @returns %TRUE if the supplied function returns %TRUE For each of the fields, %FALSE otherwise.
+         */
+        foreach_id_str(func: StructureForeachIdStrFunc): boolean;
         /**
          * Frees a #GstStructure and all its fields and values. The structure must not
          * have a parent when this function is called.
@@ -20590,6 +20932,11 @@ export namespace Gst {
          */
         get_name_id(): GLib.Quark;
         /**
+         * Get the name of `structure` as a GstIdStr.
+         * @returns the name of the structure.
+         */
+        get_name_id_str(): IdStr;
+        /**
          * Finds the field corresponding to `fieldname,` and returns the string
          * contained in the field's value.  Caller is responsible for making
          * sure the field exists and has the correct type.
@@ -20669,6 +21016,62 @@ export namespace Gst {
          */
         id_set_value(field: GLib.Quark, value: GObject.Value | any): void;
         /**
+         * Finds the field with the given name, and returns the type of the
+         * value it contains.  If the field is not found, G_TYPE_INVALID is
+         * returned.
+         * @param fieldname the name of the field
+         * @returns the #GValue of the field
+         */
+        id_str_get_field_type(fieldname: IdStr): GObject.GType;
+        /**
+         * Get the value of the field with name `fieldname`.
+         * @param fieldname the name of the field to get
+         * @returns the #GValue corresponding to the field with the given name.
+         */
+        id_str_get_value(fieldname: IdStr): GObject.Value | null;
+        /**
+         * Check if `structure` contains a field named `fieldname`.
+         * @param fieldname the name of a field
+         * @returns %TRUE if the structure contains a field with the given name
+         */
+        id_str_has_field(fieldname: IdStr): boolean;
+        /**
+         * Check if `structure` contains a field named `fieldname` and with GType `type`.
+         * @param fieldname the name of a field
+         * @param type the type of a value
+         * @returns %TRUE if the structure contains a field with the given name and type
+         */
+        id_str_has_field_typed(fieldname: IdStr, type: GObject.GType): boolean;
+        /**
+         * Get the name (as a GstIdStr) of the given field number,
+         * counting from 0 onwards.
+         * @param index the index to get the name of
+         * @returns the name of the given field number
+         */
+        id_str_nth_field_name(index: number): IdStr;
+        /**
+         * Removes the field with the given name.  If the field with the given
+         * name does not exist, the structure is unchanged.
+         * @param fieldname the name of the field to remove
+         */
+        id_str_remove_field(fieldname: IdStr): void;
+        /**
+         * Sets the field with the given name `field` to `value`.  If the field
+         * does not exist, it is created.  If the field exists, the previous
+         * value is replaced and freed.
+         * @param fieldname the name of the field to set
+         * @param value the new value of the field
+         */
+        id_str_set_value(fieldname: IdStr, value: GObject.Value | any): void;
+        /**
+         * Sets the field with the given GstIdStr `field` to `value`.  If the field
+         * does not exist, it is created.  If the field exists, the previous
+         * value is replaced and freed.
+         * @param fieldname the name of the field to set
+         * @param value the new value of the field
+         */
+        id_str_take_value(fieldname: IdStr, value: GObject.Value | any): void;
+        /**
          * Sets the field with the given GQuark `field` to `value`.  If the field
          * does not exist, it is created.  If the field exists, the previous
          * value is replaced and freed.
@@ -20697,6 +21100,12 @@ export namespace Gst {
          */
         is_subset(superset: Structure): boolean;
         /**
+         * Checks if the structure is writable. %TRUE if parent
+         * is not set or its refcount is 1, %FALSE otherwise.
+         * @returns %TRUE if the structure is writable.
+         */
+        is_writable(): boolean;
+        /**
          * Calls the provided function once for each field in the #GstStructure. In
          * contrast to gst_structure_foreach(), the function may modify but not delete the
          * fields. The structure must be mutable.
@@ -20704,6 +21113,14 @@ export namespace Gst {
          * @returns %TRUE if the supplied function returns %TRUE For each of the fields, %FALSE otherwise.
          */
         map_in_place(func: StructureMapFunc): boolean;
+        /**
+         * Calls the provided function once for each field in the #GstStructure. In
+         * contrast to gst_structure_foreach_id_str(), the function may modify but not delete the
+         * fields. The structure must be mutable.
+         * @param func a function to call for each field
+         * @returns %TRUE if the supplied function returns %TRUE For each of the fields, %FALSE otherwise.
+         */
+        map_in_place_id_str(func: StructureMapIdStrFunc): boolean;
         /**
          * Get the number of fields in the structure.
          * @returns the number of fields in the structure
@@ -20775,6 +21192,23 @@ export namespace Gst {
          */
         set_name(name: string): void;
         /**
+         * Sets the name of the structure to the given `name`.  The string
+         * provided is copied before being used. It must not be empty, start with a
+         * letter and can be followed by letters, numbers and any of "/-_.:".
+         * @param name the new name of the structure
+         */
+        set_name_id_str(name: IdStr): void;
+        /**
+         * Sets the name of the structure to the given `name`.  The string
+         * provided is copied before being used. It must not be empty, start with a
+         * letter and can be followed by letters, numbers and any of "/-_.:".
+         *
+         * `name` needs to be valid for the remaining lifetime of the process, e.g. has
+         * to be a static string.
+         * @param name the new name of the structure
+         */
+        set_name_static_str(name: string): void;
+        /**
          * Sets the parent_refcount field of #GstStructure. This field is used to
          * determine whether a structure is mutable or not. This function should only be
          * called by code implementing parent objects of #GstStructure, as described in
@@ -20794,11 +21228,33 @@ export namespace Gst {
         /**
          * Sets the field with the given name `field` to `value`.  If the field
          * does not exist, it is created.  If the field exists, the previous
+         * value is replaced and freed.
+         *
+         * `fieldname` needs to be valid for the remaining lifetime of the process, e.g.
+         * has to be a static string.
+         * @param fieldname the name of the field to set
+         * @param value the new value of the field
+         */
+        set_value_static_str(fieldname: string, value: GObject.Value | any): void;
+        /**
+         * Sets the field with the given name `field` to `value`.  If the field
+         * does not exist, it is created.  If the field exists, the previous
          * value is replaced and freed. The function will take ownership of `value`.
          * @param fieldname the name of the field to set
          * @param value the new value of the field
          */
         take_value(fieldname: string, value: GObject.Value | any): void;
+        /**
+         * Sets the field with the given name `field` to `value`.  If the field
+         * does not exist, it is created.  If the field exists, the previous
+         * value is replaced and freed. The function will take ownership of `value`.
+         *
+         * `fieldname` needs to be valid for the remaining lifetime of the process, e.g.
+         * has to be a static string.
+         * @param fieldname the name of the field to set
+         * @param value the new value of the field
+         */
+        take_value_static_str(fieldname: string, value: GObject.Value | any): void;
         /**
          * Converts `structure` to a human-readable string representation.
          *

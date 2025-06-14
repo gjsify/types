@@ -903,36 +903,8 @@ export namespace GstTag {
 
         // Virtual methods
 
-        /**
-         * identify tag and determine the size required to parse the
-         * tag. Buffer may be larger than the specified minimum size.
-         * Subclassed MUST override this vfunc in their class_init function.
-         * @param buffer
-         * @param start_tag
-         * @param tag_size
-         */
         vfunc_identify_tag(buffer: Gst.Buffer, start_tag: boolean, tag_size: number): boolean;
-        /**
-         * merge start and end tags. Subclasses may want to override this
-         * vfunc to allow prioritising of start or end tag according to user
-         * preference.  Note that both start_tags and end_tags may be NULL. By default
-         * start tags are preferred over end tags.
-         * @param start_tags
-         * @param end_tags
-         */
         vfunc_merge_tags(start_tags: Gst.TagList, end_tags: Gst.TagList): Gst.TagList;
-        /**
-         * parse the tag. Buffer will be exactly of the size determined by
-         * the identify_tag vfunc before. The parse_tag vfunc may change the size
-         * stored in *tag_size and return GST_TAG_DEMUX_RESULT_AGAIN to request a
-         * larger or smaller buffer. It is also permitted to adjust the tag_size to a
-         * smaller value and then return GST_TAG_DEMUX_RESULT_OK in one go.
-         * Subclassed MUST override the parse_tag vfunc in their class_init function.
-         * @param buffer
-         * @param start_tag
-         * @param tag_size
-         * @param tags
-         */
         vfunc_parse_tag(buffer: Gst.Buffer, start_tag: boolean, tag_size: number, tags: Gst.TagList): TagDemuxResult;
     }
 
@@ -973,17 +945,7 @@ export namespace GstTag {
 
         // Virtual methods
 
-        /**
-         * create a tag buffer to add to the end of the
-         *     input stream given a tag list, or NULL
-         * @param tag_list
-         */
         vfunc_render_end_tag(tag_list: Gst.TagList): Gst.Buffer;
-        /**
-         * create a tag buffer to add to the beginning of the
-         *     input stream given a tag list, or NULL
-         * @param tag_list
-         */
         vfunc_render_start_tag(tag_list: Gst.TagList): Gst.Buffer;
 
         // Inherited methods

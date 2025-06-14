@@ -4793,8 +4793,16 @@ export namespace Shumate {
     namespace MapLayer {
         // Signal callback interfaces
 
+        interface MapLoaded {
+            (errors: boolean): void;
+        }
+
         interface SymbolClicked {
             (event: SymbolEvent): void;
+        }
+
+        interface TileError {
+            (tile: Tile, error: GLib.Error): void;
         }
 
         // Constructor properties interface
@@ -4834,9 +4842,15 @@ export namespace Shumate {
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
+        connect(signal: 'map-loaded', callback: (_source: this, errors: boolean) => void): number;
+        connect_after(signal: 'map-loaded', callback: (_source: this, errors: boolean) => void): number;
+        emit(signal: 'map-loaded', errors: boolean): void;
         connect(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
         connect_after(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
         emit(signal: 'symbol-clicked', event: SymbolEvent): void;
+        connect(signal: 'tile-error', callback: (_source: this, tile: Tile, error: GLib.Error) => void): number;
+        connect_after(signal: 'tile-error', callback: (_source: this, tile: Tile, error: GLib.Error) => void): number;
+        emit(signal: 'tile-error', tile: Tile, error: GLib.Error): void;
 
         // Inherited methods
         /**
@@ -9699,6 +9713,8 @@ export namespace Shumate {
                 Gtk.Accessible.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.ConstraintTarget.ConstructorProps {
+            base_map_layer: MapLayer;
+            baseMapLayer: MapLayer;
             compass: Compass;
             license: License;
             map: Map | any;
@@ -9723,6 +9739,20 @@ export namespace Shumate {
 
         // Properties
 
+        /**
+         * The [class`MapLayer]` that displays the map source.
+         *
+         * This is a read-only property. To change the basemap, set the
+         * [property`SimpleMap:`map-source] property.
+         */
+        get base_map_layer(): MapLayer;
+        /**
+         * The [class`MapLayer]` that displays the map source.
+         *
+         * This is a read-only property. To change the basemap, set the
+         * [property`SimpleMap:`map-source] property.
+         */
+        get baseMapLayer(): MapLayer;
         get compass(): Compass;
         get license(): License;
         // This accessor conflicts with a property or field in a parent class or interface.
@@ -9762,6 +9792,11 @@ export namespace Shumate {
          * @param layer a [class@Layer] to add
          */
         add_overlay_layer(layer: Layer): void;
+        /**
+         * Gets the [class`MapLayer]` that displays the base map.
+         * @returns the base map layer
+         */
+        get_base_map_layer(): MapLayer;
         /**
          * Gets the compass widget for the map.
          * @returns a [class@Compass]
