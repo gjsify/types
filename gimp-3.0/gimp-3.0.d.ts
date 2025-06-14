@@ -26,11 +26,26 @@ export namespace Gimp {
     // WORKAROUND: As long as ParamObject is not generated
     export class ParamObject extends GObject.ParamSpec {}
 
-    // WORKAROUND: As long as ParamObject is not generated
+    export namespace ParamObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.ParamSpec.SignalSignatures {}
+    }
+
+    // WORKAROUND: As long as ParamItem is not generated
     export class ParamItem extends GObject.ParamSpec {}
 
-    // WORKAROUND: As long as ParamObject is not generated
+    export namespace ParamItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.ParamSpec.SignalSignatures {}
+    }
+
+    // WORKAROUND: As long as ParamArray is not generated
     export class ParamArray extends GObject.ParamSpec {}
+
+    export namespace ParamArray {
+        // Signal signatures
+        interface SignalSignatures extends GObject.ParamSpec.SignalSignatures {}
+    }
     /**
      * Gimp-3.0
      */
@@ -17261,7 +17276,7 @@ export namespace Gimp {
 
     namespace ParamColor {
         // Signal signatures
-        interface SignalSignatures extends ParamObject.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamColor extends ParamObject {
@@ -17289,7 +17304,7 @@ export namespace Gimp {
 
     namespace ParamDrawable {
         // Signal signatures
-        interface SignalSignatures extends ParamItem.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamDrawable extends ParamItem {
@@ -17317,7 +17332,7 @@ export namespace Gimp {
 
     namespace ParamFloatArray {
         // Signal signatures
-        interface SignalSignatures extends ParamArray.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamFloatArray extends ParamArray {
@@ -17426,7 +17441,7 @@ export namespace Gimp {
 
     namespace ParamInt32Array {
         // Signal signatures
-        interface SignalSignatures extends ParamArray.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamInt32Array extends ParamArray {
@@ -17538,7 +17553,7 @@ export namespace Gimp {
 
     namespace ParamPath {
         // Signal signatures
-        interface SignalSignatures extends ParamItem.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamPath extends ParamItem {
@@ -17591,7 +17606,7 @@ export namespace Gimp {
 
     namespace ParamResource {
         // Signal signatures
-        interface SignalSignatures extends ParamObject.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamResource extends ParamObject {
@@ -17675,7 +17690,7 @@ export namespace Gimp {
 
     namespace ParamUnit {
         // Signal signatures
-        interface SignalSignatures extends ParamObject.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ParamUnit extends ParamObject {
