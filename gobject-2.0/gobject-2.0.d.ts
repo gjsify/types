@@ -231,6 +231,29 @@ export namespace GObject {
 
     export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
 
+    // Helper types for type-safe signal handling
+    export type SignalSignatures = { [signal: string]: (...args: any[]) => any };
+
+    /**
+     * Extract signal names from a SignalSignatures type
+     */
+    export type SignalName<T extends SignalSignatures> = keyof T;
+
+    /**
+     * Extract callback type for a specific signal
+     */
+    export type SignalCallback<T extends SignalSignatures, K extends keyof T> = T[K];
+
+    /**
+     * Extract parameters for a specific signal callback
+     */
+    export type SignalParameters<T extends SignalSignatures, K extends keyof T> = Parameters<T[K]>;
+
+    /**
+     * Extract return type for a specific signal callback
+     */
+    export type SignalReturnType<T extends SignalSignatures, K extends keyof T> = ReturnType<T[K]>;
+
     // TODO: What about the generated class Closure
     export type TClosure<R = any, P = any> = (...args: P[]) => R;
 
@@ -3294,6 +3317,11 @@ export namespace GObject {
             (pspec: ParamSpec): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures {
+            notify: Notify;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps {}
@@ -3325,6 +3353,7 @@ export namespace GObject {
      */
     class Object {
         static $gtype: GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
@@ -3334,6 +3363,9 @@ export namespace GObject {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4318,6 +4350,12 @@ export namespace GObject {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            bind: Bind;
+            unbind: Unbind;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4350,6 +4388,7 @@ export namespace GObject {
      */
     class SignalGroup extends Object {
         static $gtype: GType<SignalGroup>;
+        declare static readonly __signalSignatures: SignalGroup.SignalSignatures;
 
         // Properties
 
@@ -4377,6 +4416,18 @@ export namespace GObject {
 
         // Signals
 
+        connect<K extends keyof SignalGroup.SignalSignatures>(
+            signal: K,
+            callback: SignalGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignalGroup.SignalSignatures>(
+            signal: K,
+            callback: SignalGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignalGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignalGroup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

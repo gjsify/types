@@ -2246,6 +2246,14 @@ export namespace GdkPixbuf {
             (width: number, height: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'area-prepared': AreaPrepared;
+            'area-updated': AreaUpdated;
+            closed: Closed;
+            'size-prepared': SizePrepared;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2300,6 +2308,7 @@ export namespace GdkPixbuf {
      */
     class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
+        declare static readonly __signalSignatures: PixbufLoader.SignalSignatures;
 
         // Constructors
 
@@ -2315,6 +2324,18 @@ export namespace GdkPixbuf {
 
         // Signals
 
+        connect<K extends keyof PixbufLoader.SignalSignatures>(
+            signal: K,
+            callback: PixbufLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PixbufLoader.SignalSignatures>(
+            signal: K,
+            callback: PixbufLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PixbufLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PixbufLoader.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
