@@ -10869,10 +10869,6 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof OfflineStore.SignalSignatures>(
-            signal: K,
-            callback: OfflineStore.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof OfflineStore.SignalSignatures>(
             signal: K,
             callback: OfflineStore.SignalSignatures[K],
@@ -11474,6 +11470,7 @@ export namespace Camel {
 
         // Signals
 
+        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: Operation.SignalSignatures[K],
@@ -14418,7 +14415,6 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
         connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
         emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: Parameters<Store.SignalSignatures[K]>): void;
 
@@ -20511,7 +20507,6 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof Transport.SignalSignatures>(signal: K, callback: Transport.SignalSignatures[K]): number;
         connect_after<K extends keyof Transport.SignalSignatures>(
             signal: K,
             callback: Transport.SignalSignatures[K],
@@ -21608,7 +21603,6 @@ export namespace Camel {
 
         // Signals
 
-        connect<K extends keyof VeeStore.SignalSignatures>(signal: K, callback: VeeStore.SignalSignatures[K]): number;
         connect_after<K extends keyof VeeStore.SignalSignatures>(
             signal: K,
             callback: VeeStore.SignalSignatures[K],

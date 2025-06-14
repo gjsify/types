@@ -2347,10 +2347,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof ApplicationContext.SignalSignatures>(
-            signal: K,
-            callback: ApplicationContext.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof ApplicationContext.SignalSignatures>(
             signal: K,
             callback: ApplicationContext.SignalSignatures[K],
@@ -3630,10 +3626,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof DestroyWorker.SignalSignatures>(
-            signal: K,
-            callback: DestroyWorker.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof DestroyWorker.SignalSignatures>(
             signal: K,
             callback: DestroyWorker.SignalSignatures[K],
@@ -5576,10 +5568,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof GenericMainLoop.SignalSignatures>(
-            signal: K,
-            callback: GenericMainLoop.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof GenericMainLoop.SignalSignatures>(
             signal: K,
             callback: GenericMainLoop.SignalSignatures[K],
@@ -6921,10 +6909,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof ReturnableThread.SignalSignatures>(
-            signal: K,
-            callback: ReturnableThread.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof ReturnableThread.SignalSignatures>(
             signal: K,
             callback: ReturnableThread.SignalSignatures[K],
@@ -7834,10 +7818,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof ServerApplicationContext.SignalSignatures>(
-            signal: K,
-            callback: ServerApplicationContext.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof ServerApplicationContext.SignalSignatures>(
             signal: K,
             callback: ServerApplicationContext.SignalSignatures[K],
@@ -8535,10 +8515,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof ServerStatus.SignalSignatures>(
-            signal: K,
-            callback: ServerStatus.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof ServerStatus.SignalSignatures>(
             signal: K,
             callback: ServerStatus.SignalSignatures[K],
@@ -9676,10 +9652,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof TaskCompletion.SignalSignatures>(
-            signal: K,
-            callback: TaskCompletion.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof TaskCompletion.SignalSignatures>(
             signal: K,
             callback: TaskCompletion.SignalSignatures[K],
@@ -10312,10 +10284,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof TaskLauncher.SignalSignatures>(
-            signal: K,
-            callback: TaskLauncher.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof TaskLauncher.SignalSignatures>(
             signal: K,
             callback: TaskLauncher.SignalSignatures[K],
@@ -11009,7 +10977,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof Thread.SignalSignatures>(signal: K, callback: Thread.SignalSignatures[K]): number;
         connect_after<K extends keyof Thread.SignalSignatures>(signal: K, callback: Thread.SignalSignatures[K]): number;
         emit<K extends keyof Thread.SignalSignatures>(signal: K, ...args: Parameters<Thread.SignalSignatures[K]>): void;
 
@@ -11854,10 +11821,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof ThreadApplicationContext.SignalSignatures>(
-            signal: K,
-            callback: ThreadApplicationContext.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof ThreadApplicationContext.SignalSignatures>(
             signal: K,
             callback: ThreadApplicationContext.SignalSignatures[K],
@@ -13183,10 +13146,6 @@ export namespace Ags {
 
         // Signals
 
-        connect<K extends keyof WorkerThread.SignalSignatures>(
-            signal: K,
-            callback: WorkerThread.SignalSignatures[K],
-        ): number;
         connect_after<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
             callback: WorkerThread.SignalSignatures[K],
