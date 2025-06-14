@@ -130,7 +130,6 @@ export namespace Guestfs {
      */
     class AddDomain extends GObject.Object {
         static $gtype: GObject.GType<AddDomain>;
-        declare static readonly __signalSignatures: AddDomain.SignalSignatures;
 
         // Properties
 
@@ -187,6 +186,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): AddDomain;
+
+        // Signals
+
+        connect<K extends keyof AddDomain.SignalSignatures>(signal: K, callback: AddDomain.SignalSignatures[K]): number;
+        connect_after<K extends keyof AddDomain.SignalSignatures>(
+            signal: K,
+            callback: AddDomain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AddDomain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AddDomain.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AddDrive {
@@ -215,7 +226,6 @@ export namespace Guestfs {
      */
     class AddDrive extends GObject.Object {
         static $gtype: GObject.GType<AddDrive>;
-        declare static readonly __signalSignatures: AddDrive.SignalSignatures;
 
         // Properties
 
@@ -282,6 +292,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): AddDrive;
+
+        // Signals
+
+        connect<K extends keyof AddDrive.SignalSignatures>(signal: K, callback: AddDrive.SignalSignatures[K]): number;
+        connect_after<K extends keyof AddDrive.SignalSignatures>(
+            signal: K,
+            callback: AddDrive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AddDrive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AddDrive.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AddDriveScratch {
@@ -301,7 +323,6 @@ export namespace Guestfs {
      */
     class AddDriveScratch extends GObject.Object {
         static $gtype: GObject.GType<AddDriveScratch>;
-        declare static readonly __signalSignatures: AddDriveScratch.SignalSignatures;
 
         // Properties
 
@@ -323,6 +344,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): AddDriveScratch;
+
+        // Signals
+
+        connect<K extends keyof AddDriveScratch.SignalSignatures>(
+            signal: K,
+            callback: AddDriveScratch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AddDriveScratch.SignalSignatures>(
+            signal: K,
+            callback: AddDriveScratch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AddDriveScratch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AddDriveScratch.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AddLibvirtDom {
@@ -347,7 +383,6 @@ export namespace Guestfs {
      */
     class AddLibvirtDom extends GObject.Object {
         static $gtype: GObject.GType<AddLibvirtDom>;
-        declare static readonly __signalSignatures: AddLibvirtDom.SignalSignatures;
 
         // Properties
 
@@ -394,6 +429,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): AddLibvirtDom;
+
+        // Signals
+
+        connect<K extends keyof AddLibvirtDom.SignalSignatures>(
+            signal: K,
+            callback: AddLibvirtDom.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AddLibvirtDom.SignalSignatures>(
+            signal: K,
+            callback: AddLibvirtDom.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AddLibvirtDom.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AddLibvirtDom.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AugTransform {
@@ -412,7 +462,6 @@ export namespace Guestfs {
      */
     class AugTransform extends GObject.Object {
         static $gtype: GObject.GType<AugTransform>;
-        declare static readonly __signalSignatures: AugTransform.SignalSignatures;
 
         // Properties
 
@@ -429,6 +478,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): AugTransform;
+
+        // Signals
+
+        connect<K extends keyof AugTransform.SignalSignatures>(
+            signal: K,
+            callback: AugTransform.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AugTransform.SignalSignatures>(
+            signal: K,
+            callback: AugTransform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AugTransform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AugTransform.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BTRFSFilesystemDefragment {
@@ -448,7 +512,6 @@ export namespace Guestfs {
      */
     class BTRFSFilesystemDefragment extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemDefragment>;
-        declare static readonly __signalSignatures: BTRFSFilesystemDefragment.SignalSignatures;
 
         // Properties
 
@@ -470,6 +533,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): BTRFSFilesystemDefragment;
+
+        // Signals
+
+        connect<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
+            signal: K,
+            callback: BTRFSFilesystemDefragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
+            signal: K,
+            callback: BTRFSFilesystemDefragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BTRFSFilesystemDefragment.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BTRFSFilesystemResize {
@@ -488,7 +566,6 @@ export namespace Guestfs {
      */
     class BTRFSFilesystemResize extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemResize>;
-        declare static readonly __signalSignatures: BTRFSFilesystemResize.SignalSignatures;
 
         // Properties
 
@@ -505,6 +582,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): BTRFSFilesystemResize;
+
+        // Signals
+
+        connect<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
+            signal: K,
+            callback: BTRFSFilesystemResize.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
+            signal: K,
+            callback: BTRFSFilesystemResize.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BTRFSFilesystemResize.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BTRFSImage {
@@ -523,7 +615,6 @@ export namespace Guestfs {
      */
     class BTRFSImage extends GObject.Object {
         static $gtype: GObject.GType<BTRFSImage>;
-        declare static readonly __signalSignatures: BTRFSImage.SignalSignatures;
 
         // Properties
 
@@ -540,6 +631,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): BTRFSImage;
+
+        // Signals
+
+        connect<K extends keyof BTRFSImage.SignalSignatures>(
+            signal: K,
+            callback: BTRFSImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BTRFSImage.SignalSignatures>(
+            signal: K,
+            callback: BTRFSImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BTRFSImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BTRFSImage.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BTRFSSubvolumeCreate {
@@ -558,7 +664,6 @@ export namespace Guestfs {
      */
     class BTRFSSubvolumeCreate extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeCreate>;
-        declare static readonly __signalSignatures: BTRFSSubvolumeCreate.SignalSignatures;
 
         // Properties
 
@@ -575,6 +680,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): BTRFSSubvolumeCreate;
+
+        // Signals
+
+        connect<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
+            signal: K,
+            callback: BTRFSSubvolumeCreate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
+            signal: K,
+            callback: BTRFSSubvolumeCreate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BTRFSSubvolumeCreate.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BTRFSSubvolumeSnapshot {
@@ -594,7 +714,6 @@ export namespace Guestfs {
      */
     class BTRFSSubvolumeSnapshot extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshot>;
-        declare static readonly __signalSignatures: BTRFSSubvolumeSnapshot.SignalSignatures;
 
         // Properties
 
@@ -616,6 +735,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): BTRFSSubvolumeSnapshot;
+
+        // Signals
+
+        connect<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
+            signal: K,
+            callback: BTRFSSubvolumeSnapshot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
+            signal: K,
+            callback: BTRFSSubvolumeSnapshot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BtrfsFsck {
@@ -635,7 +769,6 @@ export namespace Guestfs {
      */
     class BtrfsFsck extends GObject.Object {
         static $gtype: GObject.GType<BtrfsFsck>;
-        declare static readonly __signalSignatures: BtrfsFsck.SignalSignatures;
 
         // Properties
 
@@ -657,6 +790,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): BtrfsFsck;
+
+        // Signals
+
+        connect<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, callback: BtrfsFsck.SignalSignatures[K]): number;
+        connect_after<K extends keyof BtrfsFsck.SignalSignatures>(
+            signal: K,
+            callback: BtrfsFsck.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BtrfsFsck.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BtrfsFsck.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CompressDeviceOut {
@@ -675,7 +820,6 @@ export namespace Guestfs {
      */
     class CompressDeviceOut extends GObject.Object {
         static $gtype: GObject.GType<CompressDeviceOut>;
-        declare static readonly __signalSignatures: CompressDeviceOut.SignalSignatures;
 
         // Properties
 
@@ -692,6 +836,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CompressDeviceOut;
+
+        // Signals
+
+        connect<K extends keyof CompressDeviceOut.SignalSignatures>(
+            signal: K,
+            callback: CompressDeviceOut.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompressDeviceOut.SignalSignatures>(
+            signal: K,
+            callback: CompressDeviceOut.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompressDeviceOut.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompressDeviceOut.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CompressOut {
@@ -710,7 +869,6 @@ export namespace Guestfs {
      */
     class CompressOut extends GObject.Object {
         static $gtype: GObject.GType<CompressOut>;
-        declare static readonly __signalSignatures: CompressOut.SignalSignatures;
 
         // Properties
 
@@ -727,6 +885,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CompressOut;
+
+        // Signals
+
+        connect<K extends keyof CompressOut.SignalSignatures>(
+            signal: K,
+            callback: CompressOut.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompressOut.SignalSignatures>(
+            signal: K,
+            callback: CompressOut.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompressOut.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompressOut.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CopyAttributes {
@@ -748,7 +921,6 @@ export namespace Guestfs {
      */
     class CopyAttributes extends GObject.Object {
         static $gtype: GObject.GType<CopyAttributes>;
-        declare static readonly __signalSignatures: CopyAttributes.SignalSignatures;
 
         // Properties
 
@@ -780,6 +952,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CopyAttributes;
+
+        // Signals
+
+        connect<K extends keyof CopyAttributes.SignalSignatures>(
+            signal: K,
+            callback: CopyAttributes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CopyAttributes.SignalSignatures>(
+            signal: K,
+            callback: CopyAttributes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CopyAttributes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CopyAttributes.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CopyDeviceToDevice {
@@ -802,7 +989,6 @@ export namespace Guestfs {
      */
     class CopyDeviceToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToDevice>;
-        declare static readonly __signalSignatures: CopyDeviceToDevice.SignalSignatures;
 
         // Properties
 
@@ -839,6 +1025,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CopyDeviceToDevice;
+
+        // Signals
+
+        connect<K extends keyof CopyDeviceToDevice.SignalSignatures>(
+            signal: K,
+            callback: CopyDeviceToDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CopyDeviceToDevice.SignalSignatures>(
+            signal: K,
+            callback: CopyDeviceToDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CopyDeviceToDevice.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CopyDeviceToFile {
@@ -861,7 +1062,6 @@ export namespace Guestfs {
      */
     class CopyDeviceToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToFile>;
-        declare static readonly __signalSignatures: CopyDeviceToFile.SignalSignatures;
 
         // Properties
 
@@ -898,6 +1098,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CopyDeviceToFile;
+
+        // Signals
+
+        connect<K extends keyof CopyDeviceToFile.SignalSignatures>(
+            signal: K,
+            callback: CopyDeviceToFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CopyDeviceToFile.SignalSignatures>(
+            signal: K,
+            callback: CopyDeviceToFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CopyDeviceToFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CopyDeviceToFile.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CopyFileToDevice {
@@ -920,7 +1135,6 @@ export namespace Guestfs {
      */
     class CopyFileToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToDevice>;
-        declare static readonly __signalSignatures: CopyFileToDevice.SignalSignatures;
 
         // Properties
 
@@ -957,6 +1171,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CopyFileToDevice;
+
+        // Signals
+
+        connect<K extends keyof CopyFileToDevice.SignalSignatures>(
+            signal: K,
+            callback: CopyFileToDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CopyFileToDevice.SignalSignatures>(
+            signal: K,
+            callback: CopyFileToDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CopyFileToDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CopyFileToDevice.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CopyFileToFile {
@@ -979,7 +1208,6 @@ export namespace Guestfs {
      */
     class CopyFileToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToFile>;
-        declare static readonly __signalSignatures: CopyFileToFile.SignalSignatures;
 
         // Properties
 
@@ -1016,6 +1244,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CopyFileToFile;
+
+        // Signals
+
+        connect<K extends keyof CopyFileToFile.SignalSignatures>(
+            signal: K,
+            callback: CopyFileToFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CopyFileToFile.SignalSignatures>(
+            signal: K,
+            callback: CopyFileToFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CopyFileToFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CopyFileToFile.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CpioOut {
@@ -1034,7 +1277,6 @@ export namespace Guestfs {
      */
     class CpioOut extends GObject.Object {
         static $gtype: GObject.GType<CpioOut>;
-        declare static readonly __signalSignatures: CpioOut.SignalSignatures;
 
         // Properties
 
@@ -1051,6 +1293,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): CpioOut;
+
+        // Signals
+
+        connect<K extends keyof CpioOut.SignalSignatures>(signal: K, callback: CpioOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof CpioOut.SignalSignatures>(
+            signal: K,
+            callback: CpioOut.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CpioOut.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CpioOut.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DiskCreate {
@@ -1073,7 +1327,6 @@ export namespace Guestfs {
      */
     class DiskCreate extends GObject.Object {
         static $gtype: GObject.GType<DiskCreate>;
-        declare static readonly __signalSignatures: DiskCreate.SignalSignatures;
 
         // Properties
 
@@ -1110,6 +1363,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): DiskCreate;
+
+        // Signals
+
+        connect<K extends keyof DiskCreate.SignalSignatures>(
+            signal: K,
+            callback: DiskCreate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiskCreate.SignalSignatures>(
+            signal: K,
+            callback: DiskCreate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiskCreate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiskCreate.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DownloadBlocks {
@@ -1128,7 +1396,6 @@ export namespace Guestfs {
      */
     class DownloadBlocks extends GObject.Object {
         static $gtype: GObject.GType<DownloadBlocks>;
-        declare static readonly __signalSignatures: DownloadBlocks.SignalSignatures;
 
         // Properties
 
@@ -1145,6 +1412,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): DownloadBlocks;
+
+        // Signals
+
+        connect<K extends keyof DownloadBlocks.SignalSignatures>(
+            signal: K,
+            callback: DownloadBlocks.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DownloadBlocks.SignalSignatures>(
+            signal: K,
+            callback: DownloadBlocks.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DownloadBlocks.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DownloadBlocks.SignalSignatures[K]>
+        ): void;
     }
 
     namespace E2fsck {
@@ -1164,7 +1446,6 @@ export namespace Guestfs {
      */
     class E2fsck extends GObject.Object {
         static $gtype: GObject.GType<E2fsck>;
-        declare static readonly __signalSignatures: E2fsck.SignalSignatures;
 
         // Properties
 
@@ -1186,6 +1467,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): E2fsck;
+
+        // Signals
+
+        connect<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
+        connect_after<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
+        emit<K extends keyof E2fsck.SignalSignatures>(signal: K, ...args: Parameters<E2fsck.SignalSignatures[K]>): void;
     }
 
     namespace Fstrim {
@@ -1206,7 +1493,6 @@ export namespace Guestfs {
      */
     class Fstrim extends GObject.Object {
         static $gtype: GObject.GType<Fstrim>;
-        declare static readonly __signalSignatures: Fstrim.SignalSignatures;
 
         // Properties
 
@@ -1233,6 +1519,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Fstrim;
+
+        // Signals
+
+        connect<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
+        emit<K extends keyof Fstrim.SignalSignatures>(signal: K, ...args: Parameters<Fstrim.SignalSignatures[K]>): void;
     }
 
     namespace GlobExpand {
@@ -1251,7 +1543,6 @@ export namespace Guestfs {
      */
     class GlobExpand extends GObject.Object {
         static $gtype: GObject.GType<GlobExpand>;
-        declare static readonly __signalSignatures: GlobExpand.SignalSignatures;
 
         // Properties
 
@@ -1268,6 +1559,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): GlobExpand;
+
+        // Signals
+
+        connect<K extends keyof GlobExpand.SignalSignatures>(
+            signal: K,
+            callback: GlobExpand.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GlobExpand.SignalSignatures>(
+            signal: K,
+            callback: GlobExpand.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GlobExpand.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GlobExpand.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Grep {
@@ -1289,7 +1595,6 @@ export namespace Guestfs {
      */
     class Grep extends GObject.Object {
         static $gtype: GObject.GType<Grep>;
-        declare static readonly __signalSignatures: Grep.SignalSignatures;
 
         // Properties
 
@@ -1321,6 +1626,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Grep;
+
+        // Signals
+
+        connect<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
+        connect_after<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
+        emit<K extends keyof Grep.SignalSignatures>(signal: K, ...args: Parameters<Grep.SignalSignatures[K]>): void;
     }
 
     namespace HivexOpen {
@@ -1342,7 +1653,6 @@ export namespace Guestfs {
      */
     class HivexOpen extends GObject.Object {
         static $gtype: GObject.GType<HivexOpen>;
-        declare static readonly __signalSignatures: HivexOpen.SignalSignatures;
 
         // Properties
 
@@ -1374,6 +1684,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): HivexOpen;
+
+        // Signals
+
+        connect<K extends keyof HivexOpen.SignalSignatures>(signal: K, callback: HivexOpen.SignalSignatures[K]): number;
+        connect_after<K extends keyof HivexOpen.SignalSignatures>(
+            signal: K,
+            callback: HivexOpen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HivexOpen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HivexOpen.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InspectGetIcon {
@@ -1393,7 +1715,6 @@ export namespace Guestfs {
      */
     class InspectGetIcon extends GObject.Object {
         static $gtype: GObject.GType<InspectGetIcon>;
-        declare static readonly __signalSignatures: InspectGetIcon.SignalSignatures;
 
         // Properties
 
@@ -1415,6 +1736,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): InspectGetIcon;
+
+        // Signals
+
+        connect<K extends keyof InspectGetIcon.SignalSignatures>(
+            signal: K,
+            callback: InspectGetIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InspectGetIcon.SignalSignatures>(
+            signal: K,
+            callback: InspectGetIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InspectGetIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InspectGetIcon.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InternalTest {
@@ -1436,7 +1772,6 @@ export namespace Guestfs {
      */
     class InternalTest extends GObject.Object {
         static $gtype: GObject.GType<InternalTest>;
-        declare static readonly __signalSignatures: InternalTest.SignalSignatures;
 
         // Properties
 
@@ -1468,6 +1803,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): InternalTest;
+
+        // Signals
+
+        connect<K extends keyof InternalTest.SignalSignatures>(
+            signal: K,
+            callback: InternalTest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternalTest.SignalSignatures>(
+            signal: K,
+            callback: InternalTest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternalTest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternalTest.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InternalTest63Optargs {
@@ -1548,7 +1898,6 @@ export namespace Guestfs {
      */
     class InternalTest63Optargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTest63Optargs>;
-        declare static readonly __signalSignatures: InternalTest63Optargs.SignalSignatures;
 
         // Properties
 
@@ -1875,6 +2224,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): InternalTest63Optargs;
+
+        // Signals
+
+        connect<K extends keyof InternalTest63Optargs.SignalSignatures>(
+            signal: K,
+            callback: InternalTest63Optargs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternalTest63Optargs.SignalSignatures>(
+            signal: K,
+            callback: InternalTest63Optargs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternalTest63Optargs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternalTest63Optargs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InternalTestOnlyOptargs {
@@ -1893,7 +2257,6 @@ export namespace Guestfs {
      */
     class InternalTestOnlyOptargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTestOnlyOptargs>;
-        declare static readonly __signalSignatures: InternalTestOnlyOptargs.SignalSignatures;
 
         // Properties
 
@@ -1910,6 +2273,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): InternalTestOnlyOptargs;
+
+        // Signals
+
+        connect<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
+            signal: K,
+            callback: InternalTestOnlyOptargs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
+            signal: K,
+            callback: InternalTestOnlyOptargs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternalTestOnlyOptargs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IsBlockdev {
@@ -1928,7 +2306,6 @@ export namespace Guestfs {
      */
     class IsBlockdev extends GObject.Object {
         static $gtype: GObject.GType<IsBlockdev>;
-        declare static readonly __signalSignatures: IsBlockdev.SignalSignatures;
 
         // Properties
 
@@ -1945,6 +2322,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): IsBlockdev;
+
+        // Signals
+
+        connect<K extends keyof IsBlockdev.SignalSignatures>(
+            signal: K,
+            callback: IsBlockdev.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IsBlockdev.SignalSignatures>(
+            signal: K,
+            callback: IsBlockdev.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IsBlockdev.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IsBlockdev.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IsChardev {
@@ -1963,7 +2355,6 @@ export namespace Guestfs {
      */
     class IsChardev extends GObject.Object {
         static $gtype: GObject.GType<IsChardev>;
-        declare static readonly __signalSignatures: IsChardev.SignalSignatures;
 
         // Properties
 
@@ -1980,6 +2371,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): IsChardev;
+
+        // Signals
+
+        connect<K extends keyof IsChardev.SignalSignatures>(signal: K, callback: IsChardev.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsChardev.SignalSignatures>(
+            signal: K,
+            callback: IsChardev.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IsChardev.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IsChardev.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IsDir {
@@ -1998,7 +2401,6 @@ export namespace Guestfs {
      */
     class IsDir extends GObject.Object {
         static $gtype: GObject.GType<IsDir>;
-        declare static readonly __signalSignatures: IsDir.SignalSignatures;
 
         // Properties
 
@@ -2015,6 +2417,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): IsDir;
+
+        // Signals
+
+        connect<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
+        emit<K extends keyof IsDir.SignalSignatures>(signal: K, ...args: Parameters<IsDir.SignalSignatures[K]>): void;
     }
 
     namespace IsFifo {
@@ -2033,7 +2441,6 @@ export namespace Guestfs {
      */
     class IsFifo extends GObject.Object {
         static $gtype: GObject.GType<IsFifo>;
-        declare static readonly __signalSignatures: IsFifo.SignalSignatures;
 
         // Properties
 
@@ -2050,6 +2457,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): IsFifo;
+
+        // Signals
+
+        connect<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
+        emit<K extends keyof IsFifo.SignalSignatures>(signal: K, ...args: Parameters<IsFifo.SignalSignatures[K]>): void;
     }
 
     namespace IsFile {
@@ -2068,7 +2481,6 @@ export namespace Guestfs {
      */
     class IsFile extends GObject.Object {
         static $gtype: GObject.GType<IsFile>;
-        declare static readonly __signalSignatures: IsFile.SignalSignatures;
 
         // Properties
 
@@ -2085,6 +2497,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): IsFile;
+
+        // Signals
+
+        connect<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
+        emit<K extends keyof IsFile.SignalSignatures>(signal: K, ...args: Parameters<IsFile.SignalSignatures[K]>): void;
     }
 
     namespace IsSocket {
@@ -2103,7 +2521,6 @@ export namespace Guestfs {
      */
     class IsSocket extends GObject.Object {
         static $gtype: GObject.GType<IsSocket>;
-        declare static readonly __signalSignatures: IsSocket.SignalSignatures;
 
         // Properties
 
@@ -2120,6 +2537,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): IsSocket;
+
+        // Signals
+
+        connect<K extends keyof IsSocket.SignalSignatures>(signal: K, callback: IsSocket.SignalSignatures[K]): number;
+        connect_after<K extends keyof IsSocket.SignalSignatures>(
+            signal: K,
+            callback: IsSocket.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IsSocket.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IsSocket.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MDCreate {
@@ -2142,7 +2571,6 @@ export namespace Guestfs {
      */
     class MDCreate extends GObject.Object {
         static $gtype: GObject.GType<MDCreate>;
-        declare static readonly __signalSignatures: MDCreate.SignalSignatures;
 
         // Properties
 
@@ -2179,6 +2607,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): MDCreate;
+
+        // Signals
+
+        connect<K extends keyof MDCreate.SignalSignatures>(signal: K, callback: MDCreate.SignalSignatures[K]): number;
+        connect_after<K extends keyof MDCreate.SignalSignatures>(
+            signal: K,
+            callback: MDCreate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MDCreate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MDCreate.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Mke2fs {
@@ -2234,7 +2674,6 @@ export namespace Guestfs {
      */
     class Mke2fs extends GObject.Object {
         static $gtype: GObject.GType<Mke2fs>;
-        declare static readonly __signalSignatures: Mke2fs.SignalSignatures;
 
         // Properties
 
@@ -2436,6 +2875,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Mke2fs;
+
+        // Signals
+
+        connect<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
+        emit<K extends keyof Mke2fs.SignalSignatures>(signal: K, ...args: Parameters<Mke2fs.SignalSignatures[K]>): void;
     }
 
     namespace Mkfs {
@@ -2458,7 +2903,6 @@ export namespace Guestfs {
      */
     class Mkfs extends GObject.Object {
         static $gtype: GObject.GType<Mkfs>;
-        declare static readonly __signalSignatures: Mkfs.SignalSignatures;
 
         // Properties
 
@@ -2495,6 +2939,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Mkfs;
+
+        // Signals
+
+        connect<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
+        emit<K extends keyof Mkfs.SignalSignatures>(signal: K, ...args: Parameters<Mkfs.SignalSignatures[K]>): void;
     }
 
     namespace MkfsBtrfs {
@@ -2520,7 +2970,6 @@ export namespace Guestfs {
      */
     class MkfsBtrfs extends GObject.Object {
         static $gtype: GObject.GType<MkfsBtrfs>;
-        declare static readonly __signalSignatures: MkfsBtrfs.SignalSignatures;
 
         // Properties
 
@@ -2572,6 +3021,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): MkfsBtrfs;
+
+        // Signals
+
+        connect<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, callback: MkfsBtrfs.SignalSignatures[K]): number;
+        connect_after<K extends keyof MkfsBtrfs.SignalSignatures>(
+            signal: K,
+            callback: MkfsBtrfs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MkfsBtrfs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MkfsBtrfs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Mksquashfs {
@@ -2590,7 +3051,6 @@ export namespace Guestfs {
      */
     class Mksquashfs extends GObject.Object {
         static $gtype: GObject.GType<Mksquashfs>;
-        declare static readonly __signalSignatures: Mksquashfs.SignalSignatures;
 
         // Properties
 
@@ -2607,6 +3067,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Mksquashfs;
+
+        // Signals
+
+        connect<K extends keyof Mksquashfs.SignalSignatures>(
+            signal: K,
+            callback: Mksquashfs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Mksquashfs.SignalSignatures>(
+            signal: K,
+            callback: Mksquashfs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Mksquashfs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Mksquashfs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Mkswap {
@@ -2626,7 +3101,6 @@ export namespace Guestfs {
      */
     class Mkswap extends GObject.Object {
         static $gtype: GObject.GType<Mkswap>;
-        declare static readonly __signalSignatures: Mkswap.SignalSignatures;
 
         // Properties
 
@@ -2648,6 +3122,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Mkswap;
+
+        // Signals
+
+        connect<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
+        emit<K extends keyof Mkswap.SignalSignatures>(signal: K, ...args: Parameters<Mkswap.SignalSignatures[K]>): void;
     }
 
     namespace Mktemp {
@@ -2666,7 +3146,6 @@ export namespace Guestfs {
      */
     class Mktemp extends GObject.Object {
         static $gtype: GObject.GType<Mktemp>;
-        declare static readonly __signalSignatures: Mktemp.SignalSignatures;
 
         // Properties
 
@@ -2683,6 +3162,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Mktemp;
+
+        // Signals
+
+        connect<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
+        emit<K extends keyof Mktemp.SignalSignatures>(signal: K, ...args: Parameters<Mktemp.SignalSignatures[K]>): void;
     }
 
     namespace Mount9P {
@@ -2701,7 +3186,6 @@ export namespace Guestfs {
      */
     class Mount9P extends GObject.Object {
         static $gtype: GObject.GType<Mount9P>;
-        declare static readonly __signalSignatures: Mount9P.SignalSignatures;
 
         // Properties
 
@@ -2718,6 +3202,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Mount9P;
+
+        // Signals
+
+        connect<K extends keyof Mount9P.SignalSignatures>(signal: K, callback: Mount9P.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mount9P.SignalSignatures>(
+            signal: K,
+            callback: Mount9P.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Mount9P.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Mount9P.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MountLocal {
@@ -2739,7 +3235,6 @@ export namespace Guestfs {
      */
     class MountLocal extends GObject.Object {
         static $gtype: GObject.GType<MountLocal>;
-        declare static readonly __signalSignatures: MountLocal.SignalSignatures;
 
         // Properties
 
@@ -2771,6 +3266,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): MountLocal;
+
+        // Signals
+
+        connect<K extends keyof MountLocal.SignalSignatures>(
+            signal: K,
+            callback: MountLocal.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MountLocal.SignalSignatures>(
+            signal: K,
+            callback: MountLocal.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MountLocal.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MountLocal.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NTFSResizeOpts {
@@ -2790,7 +3300,6 @@ export namespace Guestfs {
      */
     class NTFSResizeOpts extends GObject.Object {
         static $gtype: GObject.GType<NTFSResizeOpts>;
-        declare static readonly __signalSignatures: NTFSResizeOpts.SignalSignatures;
 
         // Properties
 
@@ -2812,6 +3321,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): NTFSResizeOpts;
+
+        // Signals
+
+        connect<K extends keyof NTFSResizeOpts.SignalSignatures>(
+            signal: K,
+            callback: NTFSResizeOpts.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NTFSResizeOpts.SignalSignatures>(
+            signal: K,
+            callback: NTFSResizeOpts.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NTFSResizeOpts.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NTFSResizeOpts.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NtfscloneOut {
@@ -2834,7 +3358,6 @@ export namespace Guestfs {
      */
     class NtfscloneOut extends GObject.Object {
         static $gtype: GObject.GType<NtfscloneOut>;
-        declare static readonly __signalSignatures: NtfscloneOut.SignalSignatures;
 
         // Properties
 
@@ -2871,6 +3394,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): NtfscloneOut;
+
+        // Signals
+
+        connect<K extends keyof NtfscloneOut.SignalSignatures>(
+            signal: K,
+            callback: NtfscloneOut.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NtfscloneOut.SignalSignatures>(
+            signal: K,
+            callback: NtfscloneOut.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NtfscloneOut.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NtfscloneOut.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Ntfsfix {
@@ -2889,7 +3427,6 @@ export namespace Guestfs {
      */
     class Ntfsfix extends GObject.Object {
         static $gtype: GObject.GType<Ntfsfix>;
-        declare static readonly __signalSignatures: Ntfsfix.SignalSignatures;
 
         // Properties
 
@@ -2906,6 +3443,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Ntfsfix;
+
+        // Signals
+
+        connect<K extends keyof Ntfsfix.SignalSignatures>(signal: K, callback: Ntfsfix.SignalSignatures[K]): number;
+        connect_after<K extends keyof Ntfsfix.SignalSignatures>(
+            signal: K,
+            callback: Ntfsfix.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Ntfsfix.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Ntfsfix.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Remount {
@@ -2924,7 +3473,6 @@ export namespace Guestfs {
      */
     class Remount extends GObject.Object {
         static $gtype: GObject.GType<Remount>;
-        declare static readonly __signalSignatures: Remount.SignalSignatures;
 
         // Properties
 
@@ -2941,6 +3489,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Remount;
+
+        // Signals
+
+        connect<K extends keyof Remount.SignalSignatures>(signal: K, callback: Remount.SignalSignatures[K]): number;
+        connect_after<K extends keyof Remount.SignalSignatures>(
+            signal: K,
+            callback: Remount.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Remount.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Remount.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Rsync {
@@ -2960,7 +3520,6 @@ export namespace Guestfs {
      */
     class Rsync extends GObject.Object {
         static $gtype: GObject.GType<Rsync>;
-        declare static readonly __signalSignatures: Rsync.SignalSignatures;
 
         // Properties
 
@@ -2982,6 +3541,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Rsync;
+
+        // Signals
+
+        connect<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
+        emit<K extends keyof Rsync.SignalSignatures>(signal: K, ...args: Parameters<Rsync.SignalSignatures[K]>): void;
     }
 
     namespace RsyncIn {
@@ -3001,7 +3566,6 @@ export namespace Guestfs {
      */
     class RsyncIn extends GObject.Object {
         static $gtype: GObject.GType<RsyncIn>;
-        declare static readonly __signalSignatures: RsyncIn.SignalSignatures;
 
         // Properties
 
@@ -3023,6 +3587,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): RsyncIn;
+
+        // Signals
+
+        connect<K extends keyof RsyncIn.SignalSignatures>(signal: K, callback: RsyncIn.SignalSignatures[K]): number;
+        connect_after<K extends keyof RsyncIn.SignalSignatures>(
+            signal: K,
+            callback: RsyncIn.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RsyncIn.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RsyncIn.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RsyncOut {
@@ -3042,7 +3618,6 @@ export namespace Guestfs {
      */
     class RsyncOut extends GObject.Object {
         static $gtype: GObject.GType<RsyncOut>;
-        declare static readonly __signalSignatures: RsyncOut.SignalSignatures;
 
         // Properties
 
@@ -3064,6 +3639,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): RsyncOut;
+
+        // Signals
+
+        connect<K extends keyof RsyncOut.SignalSignatures>(signal: K, callback: RsyncOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof RsyncOut.SignalSignatures>(
+            signal: K,
+            callback: RsyncOut.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RsyncOut.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RsyncOut.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SelinuxRelabel {
@@ -3082,7 +3669,6 @@ export namespace Guestfs {
      */
     class SelinuxRelabel extends GObject.Object {
         static $gtype: GObject.GType<SelinuxRelabel>;
-        declare static readonly __signalSignatures: SelinuxRelabel.SignalSignatures;
 
         // Properties
 
@@ -3099,49 +3685,64 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): SelinuxRelabel;
+
+        // Signals
+
+        connect<K extends keyof SelinuxRelabel.SignalSignatures>(
+            signal: K,
+            callback: SelinuxRelabel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SelinuxRelabel.SignalSignatures>(
+            signal: K,
+            callback: SelinuxRelabel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SelinuxRelabel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SelinuxRelabel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Session {
         // Signal callback interfaces
 
         interface Appliance {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         interface Close {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         interface Enter {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         interface LaunchDone {
-            (object: SessionEventParams): void;
+            (_source: Session, object: SessionEventParams): void;
         }
 
         interface Library {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         interface LibvirtAuth {
-            (object: SessionEventParams): void;
+            (_source: Session, object: SessionEventParams): void;
         }
 
         interface Progress {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         interface SubprocessQuit {
-            (object: SessionEventParams): void;
+            (_source: Session, object: SessionEventParams): void;
         }
 
         interface Trace {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         interface Warning {
-            (params: SessionEventParams): void;
+            (_source: Session, params: SessionEventParams): void;
         }
 
         // Signal signatures
@@ -3168,7 +3769,6 @@ export namespace Guestfs {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -3189,39 +3789,6 @@ export namespace Guestfs {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'appliance', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'appliance', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'appliance', params: SessionEventParams): void;
-        connect(signal: 'close', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'close', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'close', params: SessionEventParams): void;
-        connect(signal: 'enter', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'enter', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'enter', params: SessionEventParams): void;
-        connect(signal: 'launch-done', callback: (_source: this, object: SessionEventParams) => void): number;
-        connect_after(signal: 'launch-done', callback: (_source: this, object: SessionEventParams) => void): number;
-        emit(signal: 'launch-done', object: SessionEventParams): void;
-        connect(signal: 'library', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'library', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'library', params: SessionEventParams): void;
-        connect(signal: 'libvirt-auth', callback: (_source: this, object: SessionEventParams) => void): number;
-        connect_after(signal: 'libvirt-auth', callback: (_source: this, object: SessionEventParams) => void): number;
-        emit(signal: 'libvirt-auth', object: SessionEventParams): void;
-        connect(signal: 'progress', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'progress', params: SessionEventParams): void;
-        connect(signal: 'subprocess-quit', callback: (_source: this, object: SessionEventParams) => void): number;
-        connect_after(signal: 'subprocess-quit', callback: (_source: this, object: SessionEventParams) => void): number;
-        emit(signal: 'subprocess-quit', object: SessionEventParams): void;
-        connect(signal: 'trace', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'trace', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'trace', params: SessionEventParams): void;
-        connect(signal: 'warning', callback: (_source: this, params: SessionEventParams) => void): number;
-        connect_after(signal: 'warning', callback: (_source: this, params: SessionEventParams) => void): number;
-        emit(signal: 'warning', params: SessionEventParams): void;
 
         // Methods
 
@@ -13736,7 +14303,6 @@ export namespace Guestfs {
      */
     class SetE2attrs extends GObject.Object {
         static $gtype: GObject.GType<SetE2attrs>;
-        declare static readonly __signalSignatures: SetE2attrs.SignalSignatures;
 
         // Properties
 
@@ -13753,6 +14319,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): SetE2attrs;
+
+        // Signals
+
+        connect<K extends keyof SetE2attrs.SignalSignatures>(
+            signal: K,
+            callback: SetE2attrs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SetE2attrs.SignalSignatures>(
+            signal: K,
+            callback: SetE2attrs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SetE2attrs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SetE2attrs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Syslinux {
@@ -13771,7 +14352,6 @@ export namespace Guestfs {
      */
     class Syslinux extends GObject.Object {
         static $gtype: GObject.GType<Syslinux>;
-        declare static readonly __signalSignatures: Syslinux.SignalSignatures;
 
         // Properties
 
@@ -13788,6 +14368,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Syslinux;
+
+        // Signals
+
+        connect<K extends keyof Syslinux.SignalSignatures>(signal: K, callback: Syslinux.SignalSignatures[K]): number;
+        connect_after<K extends keyof Syslinux.SignalSignatures>(
+            signal: K,
+            callback: Syslinux.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Syslinux.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Syslinux.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TarIn {
@@ -13809,7 +14401,6 @@ export namespace Guestfs {
      */
     class TarIn extends GObject.Object {
         static $gtype: GObject.GType<TarIn>;
-        declare static readonly __signalSignatures: TarIn.SignalSignatures;
 
         // Properties
 
@@ -13841,6 +14432,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): TarIn;
+
+        // Signals
+
+        connect<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
+        connect_after<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
+        emit<K extends keyof TarIn.SignalSignatures>(signal: K, ...args: Parameters<TarIn.SignalSignatures[K]>): void;
     }
 
     namespace TarOut {
@@ -13863,7 +14460,6 @@ export namespace Guestfs {
      */
     class TarOut extends GObject.Object {
         static $gtype: GObject.GType<TarOut>;
-        declare static readonly __signalSignatures: TarOut.SignalSignatures;
 
         // Properties
 
@@ -13900,6 +14496,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): TarOut;
+
+        // Signals
+
+        connect<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
+        emit<K extends keyof TarOut.SignalSignatures>(signal: K, ...args: Parameters<TarOut.SignalSignatures[K]>): void;
     }
 
     namespace Tune2FS {
@@ -13927,7 +14529,6 @@ export namespace Guestfs {
      */
     class Tune2FS extends GObject.Object {
         static $gtype: GObject.GType<Tune2FS>;
-        declare static readonly __signalSignatures: Tune2FS.SignalSignatures;
 
         // Properties
 
@@ -13989,6 +14590,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Tune2FS;
+
+        // Signals
+
+        connect<K extends keyof Tune2FS.SignalSignatures>(signal: K, callback: Tune2FS.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tune2FS.SignalSignatures>(
+            signal: K,
+            callback: Tune2FS.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Tune2FS.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Tune2FS.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Umount {
@@ -14008,7 +14621,6 @@ export namespace Guestfs {
      */
     class Umount extends GObject.Object {
         static $gtype: GObject.GType<Umount>;
-        declare static readonly __signalSignatures: Umount.SignalSignatures;
 
         // Properties
 
@@ -14030,6 +14642,12 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): Umount;
+
+        // Signals
+
+        connect<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
+        connect_after<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
+        emit<K extends keyof Umount.SignalSignatures>(signal: K, ...args: Parameters<Umount.SignalSignatures[K]>): void;
     }
 
     namespace UmountLocal {
@@ -14048,7 +14666,6 @@ export namespace Guestfs {
      */
     class UmountLocal extends GObject.Object {
         static $gtype: GObject.GType<UmountLocal>;
-        declare static readonly __signalSignatures: UmountLocal.SignalSignatures;
 
         // Properties
 
@@ -14065,6 +14682,21 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): UmountLocal;
+
+        // Signals
+
+        connect<K extends keyof UmountLocal.SignalSignatures>(
+            signal: K,
+            callback: UmountLocal.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UmountLocal.SignalSignatures>(
+            signal: K,
+            callback: UmountLocal.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UmountLocal.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UmountLocal.SignalSignatures[K]>
+        ): void;
     }
 
     namespace XfsAdmin {
@@ -14089,7 +14721,6 @@ export namespace Guestfs {
      */
     class XfsAdmin extends GObject.Object {
         static $gtype: GObject.GType<XfsAdmin>;
-        declare static readonly __signalSignatures: XfsAdmin.SignalSignatures;
 
         // Properties
 
@@ -14136,6 +14767,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): XfsAdmin;
+
+        // Signals
+
+        connect<K extends keyof XfsAdmin.SignalSignatures>(signal: K, callback: XfsAdmin.SignalSignatures[K]): number;
+        connect_after<K extends keyof XfsAdmin.SignalSignatures>(
+            signal: K,
+            callback: XfsAdmin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XfsAdmin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XfsAdmin.SignalSignatures[K]>
+        ): void;
     }
 
     namespace XfsGrowfs {
@@ -14161,7 +14804,6 @@ export namespace Guestfs {
      */
     class XfsGrowfs extends GObject.Object {
         static $gtype: GObject.GType<XfsGrowfs>;
-        declare static readonly __signalSignatures: XfsGrowfs.SignalSignatures;
 
         // Properties
 
@@ -14213,6 +14855,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): XfsGrowfs;
+
+        // Signals
+
+        connect<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, callback: XfsGrowfs.SignalSignatures[K]): number;
+        connect_after<K extends keyof XfsGrowfs.SignalSignatures>(
+            signal: K,
+            callback: XfsGrowfs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XfsGrowfs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XfsGrowfs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace XfsRepair {
@@ -14240,7 +14894,6 @@ export namespace Guestfs {
      */
     class XfsRepair extends GObject.Object {
         static $gtype: GObject.GType<XfsRepair>;
-        declare static readonly __signalSignatures: XfsRepair.SignalSignatures;
 
         // Properties
 
@@ -14302,6 +14955,18 @@ export namespace Guestfs {
         _init(...args: any[]): void;
 
         static ['new'](): XfsRepair;
+
+        // Signals
+
+        connect<K extends keyof XfsRepair.SignalSignatures>(signal: K, callback: XfsRepair.SignalSignatures[K]): number;
+        connect_after<K extends keyof XfsRepair.SignalSignatures>(
+            signal: K,
+            callback: XfsRepair.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XfsRepair.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XfsRepair.SignalSignatures[K]>
+        ): void;
     }
 
     type AddDomainClass = typeof AddDomain;

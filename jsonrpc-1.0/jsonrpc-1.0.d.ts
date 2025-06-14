@@ -55,15 +55,15 @@ export namespace Jsonrpc {
         // Signal callback interfaces
 
         interface Failed {
-            (): void;
+            (_source: Client): void;
         }
 
         interface HandleCall {
-            (method: string, id: GLib.Variant, params?: GLib.Variant | null): boolean;
+            (_source: Client, method: string, id: GLib.Variant, params?: GLib.Variant | null): boolean;
         }
 
         interface Notification {
-            (method: string, params?: GLib.Variant | null): void;
+            (_source: Client, method: string, params?: GLib.Variant | null): void;
         }
 
         // Signal signatures
@@ -113,7 +113,6 @@ export namespace Jsonrpc {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -165,30 +164,6 @@ export namespace Jsonrpc {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'failed', callback: (_source: this) => void): number;
-        connect_after(signal: 'failed', callback: (_source: this) => void): number;
-        emit(signal: 'failed'): void;
-        connect(
-            signal: 'handle-call',
-            callback: (_source: this, method: string, id: GLib.Variant, params: GLib.Variant | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'handle-call',
-            callback: (_source: this, method: string, id: GLib.Variant, params: GLib.Variant | null) => boolean,
-        ): number;
-        emit(signal: 'handle-call', method: string, id: GLib.Variant, params?: GLib.Variant | null): void;
-        connect(
-            signal: 'notification',
-            callback: (_source: this, method: string, params: GLib.Variant | null) => void,
-        ): number;
-        connect_after(
-            signal: 'notification',
-            callback: (_source: this, method: string, params: GLib.Variant | null) => void,
-        ): number;
-        emit(signal: 'notification', method: string, params?: GLib.Variant | null): void;
 
         // Static methods
 
@@ -555,7 +530,6 @@ export namespace Jsonrpc {
 
     class InputStream extends Gio.DataInputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
-        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -564,6 +538,21 @@ export namespace Jsonrpc {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: Gio.InputStream): InputStream;
+
+        // Signals
+
+        connect<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1032,7 +1021,6 @@ export namespace Jsonrpc {
 
     class OutputStream extends Gio.DataOutputStream implements Gio.Seekable {
         static $gtype: GObject.GType<OutputStream>;
-        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Properties
 
@@ -1048,6 +1036,21 @@ export namespace Jsonrpc {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: Gio.OutputStream): OutputStream;
+
+        // Signals
+
+        connect<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1646,19 +1649,19 @@ export namespace Jsonrpc {
         // Signal callback interfaces
 
         interface ClientAccepted {
-            (client: Client): void;
+            (_source: Server, client: Client): void;
         }
 
         interface ClientClosed {
-            (client: Client): void;
+            (_source: Server, client: Client): void;
         }
 
         interface HandleCall {
-            (client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean;
+            (_source: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean;
         }
 
         interface Notification {
-            (client: Client, method: string, id: GLib.Variant): void;
+            (_source: Server, client: Client, method: string, id: GLib.Variant): void;
         }
 
         // Signal signatures
@@ -1683,7 +1686,6 @@ export namespace Jsonrpc {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
-        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Constructors
 
@@ -1698,45 +1700,6 @@ export namespace Jsonrpc {
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'client-accepted', callback: (_source: this, client: Client) => void): number;
-        connect_after(signal: 'client-accepted', callback: (_source: this, client: Client) => void): number;
-        emit(signal: 'client-accepted', client: Client): void;
-        connect(signal: 'client-closed', callback: (_source: this, client: Client) => void): number;
-        connect_after(signal: 'client-closed', callback: (_source: this, client: Client) => void): number;
-        emit(signal: 'client-closed', client: Client): void;
-        connect(
-            signal: 'handle-call',
-            callback: (
-                _source: this,
-                client: Client,
-                method: string,
-                id: GLib.Variant,
-                params: GLib.Variant,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'handle-call',
-            callback: (
-                _source: this,
-                client: Client,
-                method: string,
-                id: GLib.Variant,
-                params: GLib.Variant,
-            ) => boolean,
-        ): number;
-        emit(signal: 'handle-call', client: Client, method: string, id: GLib.Variant, params: GLib.Variant): void;
-        connect(
-            signal: 'notification',
-            callback: (_source: this, client: Client, method: string, id: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'notification',
-            callback: (_source: this, client: Client, method: string, id: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'notification', client: Client, method: string, id: GLib.Variant): void;
 
         // Virtual methods
 

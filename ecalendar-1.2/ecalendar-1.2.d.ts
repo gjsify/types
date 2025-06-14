@@ -383,23 +383,23 @@ export namespace ECalendar {
         // Signal callback interfaces
 
         interface BackendDied {
-            (): void;
+            (_source: Cal): void;
         }
 
         interface BackendError {
-            (object: string): void;
+            (_source: Cal, object: string): void;
         }
 
         interface CalOpened {
-            (object: number): void;
+            (_source: Cal, object: number): void;
         }
 
         interface CalOpenedEx {
-            (error: number): void;
+            (_source: Cal, error: number): void;
         }
 
         interface CalSetMode {
-            (object: CalSetModeStatusEnum, p0: unknown): void;
+            (_source: Cal, object: CalSetModeStatusEnum, p0: unknown): void;
         }
 
         // Signal signatures
@@ -418,7 +418,6 @@ export namespace ECalendar {
 
     class Cal extends GObject.Object {
         static $gtype: GObject.GType<Cal>;
-        declare static readonly __signalSignatures: Cal.SignalSignatures;
 
         // Fields
 
@@ -437,30 +436,6 @@ export namespace ECalendar {
         connect<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
         connect_after<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
         emit<K extends keyof Cal.SignalSignatures>(signal: K, ...args: Parameters<Cal.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'backend-died', callback: (_source: this) => void): number;
-        connect_after(signal: 'backend-died', callback: (_source: this) => void): number;
-        emit(signal: 'backend-died'): void;
-        connect(signal: 'backend-error', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'backend-error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'backend-error', object: string): void;
-        connect(signal: 'cal-opened', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'cal-opened', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'cal-opened', object: number): void;
-        connect(signal: 'cal-opened-ex', callback: (_source: this, error: number) => void): number;
-        connect_after(signal: 'cal-opened-ex', callback: (_source: this, error: number) => void): number;
-        emit(signal: 'cal-opened-ex', error: number): void;
-        connect(
-            signal: 'cal-set-mode',
-            callback: (_source: this, object: CalSetModeStatusEnum, p0: unknown) => void,
-        ): number;
-        connect_after(
-            signal: 'cal-set-mode',
-            callback: (_source: this, object: CalSetModeStatusEnum, p0: unknown) => void,
-        ): number;
-        emit(signal: 'cal-set-mode', object: CalSetModeStatusEnum, p0: unknown): void;
 
         // Static methods
 
@@ -696,7 +671,7 @@ export namespace ECalendar {
         // Signal callback interfaces
 
         interface FreeBusyData {
-            (object: any): void;
+            (_source: CalClient, object: any): void;
         }
 
         // Signal signatures
@@ -715,7 +690,6 @@ export namespace ECalendar {
      */
     class CalClient extends EDataServer.Client {
         static $gtype: GObject.GType<CalClient>;
-        declare static readonly __signalSignatures: CalClient.SignalSignatures;
 
         // Constructors
 
@@ -736,12 +710,6 @@ export namespace ECalendar {
             signal: K,
             ...args: Parameters<CalClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'free-busy-data', callback: (_source: this, object: any) => void): number;
-        connect_after(signal: 'free-busy-data', callback: (_source: this, object: any) => void): number;
-        emit(signal: 'free-busy-data', object: any): void;
 
         // Static methods
 
@@ -1274,23 +1242,23 @@ export namespace ECalendar {
         // Signal callback interfaces
 
         interface Complete {
-            (object: GLib.Error): void;
+            (_source: CalClientView, object: GLib.Error): void;
         }
 
         interface ObjectsAdded {
-            (objects: number[]): void;
+            (_source: CalClientView, objects: number[]): void;
         }
 
         interface ObjectsModified {
-            (objects: number[]): void;
+            (_source: CalClientView, objects: number[]): void;
         }
 
         interface ObjectsRemoved {
-            (objects: CalComponentId[]): void;
+            (_source: CalClientView, objects: CalComponentId[]): void;
         }
 
         interface Progress {
-            (object: number, p0: string): void;
+            (_source: CalClientView, object: number, p0: string): void;
         }
 
         // Signal signatures
@@ -1316,7 +1284,6 @@ export namespace ECalendar {
      */
     class CalClientView extends GObject.Object {
         static $gtype: GObject.GType<CalClientView>;
-        declare static readonly __signalSignatures: CalClientView.SignalSignatures;
 
         // Properties
 
@@ -1347,24 +1314,6 @@ export namespace ECalendar {
             signal: K,
             ...args: Parameters<CalClientView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'complete', callback: (_source: this, object: GLib.Error) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this, object: GLib.Error) => void): number;
-        emit(signal: 'complete', object: GLib.Error): void;
-        connect(signal: 'objects-added', callback: (_source: this, objects: number[]) => void): number;
-        connect_after(signal: 'objects-added', callback: (_source: this, objects: number[]) => void): number;
-        emit(signal: 'objects-added', objects: number[]): void;
-        connect(signal: 'objects-modified', callback: (_source: this, objects: number[]) => void): number;
-        connect_after(signal: 'objects-modified', callback: (_source: this, objects: number[]) => void): number;
-        emit(signal: 'objects-modified', objects: number[]): void;
-        connect(signal: 'objects-removed', callback: (_source: this, objects: CalComponentId[]) => void): number;
-        connect_after(signal: 'objects-removed', callback: (_source: this, objects: CalComponentId[]) => void): number;
-        emit(signal: 'objects-removed', objects: CalComponentId[]): void;
-        connect(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
-        emit(signal: 'progress', object: number, p0: string): void;
 
         // Virtual methods
 
@@ -1423,7 +1372,6 @@ export namespace ECalendar {
 
     class CalComponent extends GObject.Object {
         static $gtype: GObject.GType<CalComponent>;
-        declare static readonly __signalSignatures: CalComponent.SignalSignatures;
 
         // Fields
 
@@ -1438,6 +1386,21 @@ export namespace ECalendar {
         static ['new'](): CalComponent;
 
         static new_from_string(calobj: string): CalComponent;
+
+        // Signals
+
+        connect<K extends keyof CalComponent.SignalSignatures>(
+            signal: K,
+            callback: CalComponent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalComponent.SignalSignatures>(
+            signal: K,
+            callback: CalComponent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalComponent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalComponent.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2004,27 +1967,27 @@ export namespace ECalendar {
         // Signal callback interfaces
 
         interface ObjectsAdded {
-            (objects: number[]): void;
+            (_source: CalView, objects: number[]): void;
         }
 
         interface ObjectsModified {
-            (objects: number[]): void;
+            (_source: CalView, objects: number[]): void;
         }
 
         interface ObjectsRemoved {
-            (objects: CalComponentId[]): void;
+            (_source: CalView, objects: CalComponentId[]): void;
         }
 
         interface ViewComplete {
-            (object: number, p0: string): void;
+            (_source: CalView, object: number, p0: string): void;
         }
 
         interface ViewDone {
-            (object: number): void;
+            (_source: CalView, object: number): void;
         }
 
         interface ViewProgress {
-            (object: string, p0: number): void;
+            (_source: CalView, object: string, p0: number): void;
         }
 
         // Signal signatures
@@ -2047,7 +2010,6 @@ export namespace ECalendar {
 
     class CalView extends GObject.Object {
         static $gtype: GObject.GType<CalView>;
-        declare static readonly __signalSignatures: CalView.SignalSignatures;
 
         // Properties
 
@@ -2075,27 +2037,6 @@ export namespace ECalendar {
             signal: K,
             ...args: Parameters<CalView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'objects-added', callback: (_source: this, objects: number[]) => void): number;
-        connect_after(signal: 'objects-added', callback: (_source: this, objects: number[]) => void): number;
-        emit(signal: 'objects-added', objects: number[]): void;
-        connect(signal: 'objects-modified', callback: (_source: this, objects: number[]) => void): number;
-        connect_after(signal: 'objects-modified', callback: (_source: this, objects: number[]) => void): number;
-        emit(signal: 'objects-modified', objects: number[]): void;
-        connect(signal: 'objects-removed', callback: (_source: this, objects: CalComponentId[]) => void): number;
-        connect_after(signal: 'objects-removed', callback: (_source: this, objects: CalComponentId[]) => void): number;
-        emit(signal: 'objects-removed', objects: CalComponentId[]): void;
-        connect(signal: 'view-complete', callback: (_source: this, object: number, p0: string) => void): number;
-        connect_after(signal: 'view-complete', callback: (_source: this, object: number, p0: string) => void): number;
-        emit(signal: 'view-complete', object: number, p0: string): void;
-        connect(signal: 'view-done', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'view-done', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'view-done', object: number): void;
-        connect(signal: 'view-progress', callback: (_source: this, object: string, p0: number) => void): number;
-        connect_after(signal: 'view-progress', callback: (_source: this, object: string, p0: number) => void): number;
-        emit(signal: 'view-progress', object: string, p0: number): void;
 
         // Virtual methods
 

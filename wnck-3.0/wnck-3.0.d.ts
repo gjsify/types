@@ -601,7 +601,6 @@ export namespace Wnck {
      */
     class ActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ActionMenu>;
-        declare static readonly __signalSignatures: ActionMenu.SignalSignatures;
 
         // Properties
 
@@ -618,6 +617,21 @@ export namespace Wnck {
         // Conflicted with Gtk.Menu.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ActionMenu.SignalSignatures>(
+            signal: K,
+            callback: ActionMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActionMenu.SignalSignatures>(
+            signal: K,
+            callback: ActionMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionMenu.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -1065,11 +1079,11 @@ export namespace Wnck {
         // Signal callback interfaces
 
         interface IconChanged {
-            (): void;
+            (_source: Application): void;
         }
 
         interface NameChanged {
-            (): void;
+            (_source: Application): void;
         }
 
         // Signal signatures
@@ -1089,7 +1103,6 @@ export namespace Wnck {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -1111,15 +1124,6 @@ export namespace Wnck {
             signal: K,
             ...args: Parameters<Application.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'icon-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-changed'): void;
-        connect(signal: 'name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'name-changed'): void;
 
         // Static methods
 
@@ -1205,11 +1209,11 @@ export namespace Wnck {
         // Signal callback interfaces
 
         interface IconChanged {
-            (): void;
+            (_source: ClassGroup): void;
         }
 
         interface NameChanged {
-            (): void;
+            (_source: ClassGroup): void;
         }
 
         // Signal signatures
@@ -1229,7 +1233,6 @@ export namespace Wnck {
      */
     class ClassGroup extends GObject.Object {
         static $gtype: GObject.GType<ClassGroup>;
-        declare static readonly __signalSignatures: ClassGroup.SignalSignatures;
 
         // Constructors
 
@@ -1251,15 +1254,6 @@ export namespace Wnck {
             signal: K,
             ...args: Parameters<ClassGroup.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'icon-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-changed'): void;
-        connect(signal: 'name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'name-changed'): void;
 
         // Static methods
 
@@ -1335,7 +1329,6 @@ export namespace Wnck {
 
     class Handle extends GObject.Object {
         static $gtype: GObject.GType<Handle>;
-        declare static readonly __signalSignatures: Handle.SignalSignatures;
 
         // Properties
 
@@ -1351,6 +1344,12 @@ export namespace Wnck {
         _init(...args: any[]): void;
 
         static ['new'](client_type: ClientType): Handle;
+
+        // Signals
+
+        connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: Parameters<Handle.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1429,7 +1428,6 @@ export namespace Wnck {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ImageMenuItem>;
-        declare static readonly __signalSignatures: ImageMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -1440,6 +1438,21 @@ export namespace Wnck {
         static ['new'](): ImageMenuItem;
 
         static new_with_label(label: string): ImageMenuItem;
+
+        // Signals
+
+        connect<K extends keyof ImageMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ImageMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ImageMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5993,7 +6006,6 @@ export namespace Wnck {
      */
     class Pager extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Pager>;
-        declare static readonly __signalSignatures: Pager.SignalSignatures;
 
         // Properties
 
@@ -6008,6 +6020,12 @@ export namespace Wnck {
         static ['new'](): Pager;
 
         static new_with_handle(handle: Handle): Pager;
+
+        // Signals
+
+        connect<K extends keyof Pager.SignalSignatures>(signal: K, callback: Pager.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pager.SignalSignatures>(signal: K, callback: Pager.SignalSignatures[K]): number;
+        emit<K extends keyof Pager.SignalSignatures>(signal: K, ...args: Parameters<Pager.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6705,63 +6723,63 @@ export namespace Wnck {
         // Signal callback interfaces
 
         interface ActiveWindowChanged {
-            (previously_active_window: Window): void;
+            (_source: Screen, previously_active_window: Window): void;
         }
 
         interface ActiveWorkspaceChanged {
-            (previously_active_space: Workspace): void;
+            (_source: Screen, previously_active_space: Workspace): void;
         }
 
         interface ApplicationClosed {
-            (app: Application): void;
+            (_source: Screen, app: Application): void;
         }
 
         interface ApplicationOpened {
-            (app: Application): void;
+            (_source: Screen, app: Application): void;
         }
 
         interface BackgroundChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface ClassGroupClosed {
-            (class_group: ClassGroup): void;
+            (_source: Screen, class_group: ClassGroup): void;
         }
 
         interface ClassGroupOpened {
-            (class_group: ClassGroup): void;
+            (_source: Screen, class_group: ClassGroup): void;
         }
 
         interface ShowingDesktopChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface ViewportsChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface WindowClosed {
-            (window: Window): void;
+            (_source: Screen, window: Window): void;
         }
 
         interface WindowManagerChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface WindowOpened {
-            (window: Window): void;
+            (_source: Screen, window: Window): void;
         }
 
         interface WindowStackingChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface WorkspaceCreated {
-            (space: Workspace): void;
+            (_source: Screen, space: Workspace): void;
         }
 
         interface WorkspaceDestroyed {
-            (space: Workspace): void;
+            (_source: Screen, space: Workspace): void;
         }
 
         // Signal signatures
@@ -6794,7 +6812,6 @@ export namespace Wnck {
      */
     class Screen extends GObject.Object {
         static $gtype: GObject.GType<Screen>;
-        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Constructors
 
@@ -6807,66 +6824,6 @@ export namespace Wnck {
         connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'active-window-changed',
-            callback: (_source: this, previously_active_window: Window) => void,
-        ): number;
-        connect_after(
-            signal: 'active-window-changed',
-            callback: (_source: this, previously_active_window: Window) => void,
-        ): number;
-        emit(signal: 'active-window-changed', previously_active_window: Window): void;
-        connect(
-            signal: 'active-workspace-changed',
-            callback: (_source: this, previously_active_space: Workspace) => void,
-        ): number;
-        connect_after(
-            signal: 'active-workspace-changed',
-            callback: (_source: this, previously_active_space: Workspace) => void,
-        ): number;
-        emit(signal: 'active-workspace-changed', previously_active_space: Workspace): void;
-        connect(signal: 'application-closed', callback: (_source: this, app: Application) => void): number;
-        connect_after(signal: 'application-closed', callback: (_source: this, app: Application) => void): number;
-        emit(signal: 'application-closed', app: Application): void;
-        connect(signal: 'application-opened', callback: (_source: this, app: Application) => void): number;
-        connect_after(signal: 'application-opened', callback: (_source: this, app: Application) => void): number;
-        emit(signal: 'application-opened', app: Application): void;
-        connect(signal: 'background-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'background-changed', callback: (_source: this) => void): number;
-        emit(signal: 'background-changed'): void;
-        connect(signal: 'class-group-closed', callback: (_source: this, class_group: ClassGroup) => void): number;
-        connect_after(signal: 'class-group-closed', callback: (_source: this, class_group: ClassGroup) => void): number;
-        emit(signal: 'class-group-closed', class_group: ClassGroup): void;
-        connect(signal: 'class-group-opened', callback: (_source: this, class_group: ClassGroup) => void): number;
-        connect_after(signal: 'class-group-opened', callback: (_source: this, class_group: ClassGroup) => void): number;
-        emit(signal: 'class-group-opened', class_group: ClassGroup): void;
-        connect(signal: 'showing-desktop-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'showing-desktop-changed', callback: (_source: this) => void): number;
-        emit(signal: 'showing-desktop-changed'): void;
-        connect(signal: 'viewports-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'viewports-changed', callback: (_source: this) => void): number;
-        emit(signal: 'viewports-changed'): void;
-        connect(signal: 'window-closed', callback: (_source: this, window: Window) => void): number;
-        connect_after(signal: 'window-closed', callback: (_source: this, window: Window) => void): number;
-        emit(signal: 'window-closed', window: Window): void;
-        connect(signal: 'window-manager-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'window-manager-changed', callback: (_source: this) => void): number;
-        emit(signal: 'window-manager-changed'): void;
-        connect(signal: 'window-opened', callback: (_source: this, window: Window) => void): number;
-        connect_after(signal: 'window-opened', callback: (_source: this, window: Window) => void): number;
-        emit(signal: 'window-opened', window: Window): void;
-        connect(signal: 'window-stacking-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'window-stacking-changed', callback: (_source: this) => void): number;
-        emit(signal: 'window-stacking-changed'): void;
-        connect(signal: 'workspace-created', callback: (_source: this, space: Workspace) => void): number;
-        connect_after(signal: 'workspace-created', callback: (_source: this, space: Workspace) => void): number;
-        emit(signal: 'workspace-created', space: Workspace): void;
-        connect(signal: 'workspace-destroyed', callback: (_source: this, space: Workspace) => void): number;
-        connect_after(signal: 'workspace-destroyed', callback: (_source: this, space: Workspace) => void): number;
-        emit(signal: 'workspace-destroyed', space: Workspace): void;
 
         // Static methods
 
@@ -7107,7 +7064,6 @@ export namespace Wnck {
      */
     class Selector extends Gtk.MenuBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Selector>;
-        declare static readonly __signalSignatures: Selector.SignalSignatures;
 
         // Properties
 
@@ -7122,6 +7078,18 @@ export namespace Wnck {
         static ['new'](): Selector;
 
         static new_with_handle(handle: Handle): Selector;
+
+        // Signals
+
+        connect<K extends keyof Selector.SignalSignatures>(signal: K, callback: Selector.SignalSignatures[K]): number;
+        connect_after<K extends keyof Selector.SignalSignatures>(
+            signal: K,
+            callback: Selector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Selector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Selector.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7569,11 +7537,11 @@ export namespace Wnck {
         // Signal callback interfaces
 
         interface TaskEnterNotify {
-            (windows?: any | null): void;
+            (_source: Tasklist, windows?: any | null): void;
         }
 
         interface TaskLeaveNotify {
-            (windows?: any | null): void;
+            (_source: Tasklist, windows?: any | null): void;
         }
 
         // Signal signatures
@@ -7600,7 +7568,6 @@ export namespace Wnck {
      */
     class Tasklist extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tasklist>;
-        declare static readonly __signalSignatures: Tasklist.SignalSignatures;
 
         // Properties
 
@@ -7631,15 +7598,6 @@ export namespace Wnck {
             signal: K,
             ...args: Parameters<Tasklist.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'task-enter-notify', callback: (_source: this, windows: any | null) => void): number;
-        connect_after(signal: 'task-enter-notify', callback: (_source: this, windows: any | null) => void): number;
-        emit(signal: 'task-enter-notify', windows?: any | null): void;
-        connect(signal: 'task-leave-notify', callback: (_source: this, windows: any | null) => void): number;
-        connect_after(signal: 'task-leave-notify', callback: (_source: this, windows: any | null) => void): number;
-        emit(signal: 'task-leave-notify', windows?: any | null): void;
 
         // Methods
 
@@ -8174,39 +8132,39 @@ export namespace Wnck {
         // Signal callback interfaces
 
         interface ActionsChanged {
-            (changed_mask: WindowActions, new_state: WindowActions): void;
+            (_source: Window, changed_mask: WindowActions, new_state: WindowActions): void;
         }
 
         interface ClassChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface GeometryChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface IconChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface NameChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface RoleChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface StateChanged {
-            (changed_mask: WindowState, new_state: WindowState): void;
+            (_source: Window, changed_mask: WindowState, new_state: WindowState): void;
         }
 
         interface TypeChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface WorkspaceChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         // Signal signatures
@@ -8233,7 +8191,6 @@ export namespace Wnck {
      */
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 
@@ -8246,48 +8203,6 @@ export namespace Wnck {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'actions-changed',
-            callback: (_source: this, changed_mask: WindowActions, new_state: WindowActions) => void,
-        ): number;
-        connect_after(
-            signal: 'actions-changed',
-            callback: (_source: this, changed_mask: WindowActions, new_state: WindowActions) => void,
-        ): number;
-        emit(signal: 'actions-changed', changed_mask: WindowActions, new_state: WindowActions): void;
-        connect(signal: 'class-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'class-changed', callback: (_source: this) => void): number;
-        emit(signal: 'class-changed'): void;
-        connect(signal: 'geometry-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'geometry-changed', callback: (_source: this) => void): number;
-        emit(signal: 'geometry-changed'): void;
-        connect(signal: 'icon-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-changed'): void;
-        connect(signal: 'name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'name-changed'): void;
-        connect(signal: 'role-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'role-changed', callback: (_source: this) => void): number;
-        emit(signal: 'role-changed'): void;
-        connect(
-            signal: 'state-changed',
-            callback: (_source: this, changed_mask: WindowState, new_state: WindowState) => void,
-        ): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, changed_mask: WindowState, new_state: WindowState) => void,
-        ): number;
-        emit(signal: 'state-changed', changed_mask: WindowState, new_state: WindowState): void;
-        connect(signal: 'type-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'type-changed', callback: (_source: this) => void): number;
-        emit(signal: 'type-changed'): void;
-        connect(signal: 'workspace-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'workspace-changed', callback: (_source: this) => void): number;
-        emit(signal: 'workspace-changed'): void;
 
         // Static methods
 
@@ -8855,7 +8770,7 @@ export namespace Wnck {
         // Signal callback interfaces
 
         interface NameChanged {
-            (): void;
+            (_source: Workspace): void;
         }
 
         // Signal signatures
@@ -8874,7 +8789,6 @@ export namespace Wnck {
      */
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
-        declare static readonly __signalSignatures: Workspace.SignalSignatures;
 
         // Constructors
 
@@ -8893,12 +8807,6 @@ export namespace Wnck {
             signal: K,
             ...args: Parameters<Workspace.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'name-changed'): void;
 
         // Virtual methods
 

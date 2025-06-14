@@ -2708,7 +2708,7 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface Changed {
-            (changed_stmt: GObject.Object): void;
+            (_source: Batch, changed_stmt: GObject.Object): void;
         }
 
         // Signal signatures
@@ -2723,7 +2723,6 @@ export namespace Gda {
 
     class Batch extends GObject.Object {
         static $gtype: GObject.GType<Batch>;
-        declare static readonly __signalSignatures: Batch.SignalSignatures;
 
         // Constructors
 
@@ -2738,12 +2737,6 @@ export namespace Gda {
         connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
         connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
         emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: Parameters<Batch.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, changed_stmt: GObject.Object) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, changed_stmt: GObject.Object) => void): number;
-        emit(signal: 'changed', changed_stmt: GObject.Object): void;
 
         // Static methods
 
@@ -2807,7 +2800,6 @@ export namespace Gda {
 
     class BlobOp extends GObject.Object {
         static $gtype: GObject.GType<BlobOp>;
-        declare static readonly __signalSignatures: BlobOp.SignalSignatures;
 
         // Properties
 
@@ -2818,6 +2810,12 @@ export namespace Gda {
         constructor(properties?: Partial<BlobOp.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BlobOp.SignalSignatures>(signal: K, callback: BlobOp.SignalSignatures[K]): number;
+        connect_after<K extends keyof BlobOp.SignalSignatures>(signal: K, callback: BlobOp.SignalSignatures[K]): number;
+        emit<K extends keyof BlobOp.SignalSignatures>(signal: K, ...args: Parameters<BlobOp.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2860,11 +2858,11 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface GTypeChanged {
-            (old_type: GObject.GType, new_type: GObject.GType): void;
+            (_source: Column, old_type: GObject.GType, new_type: GObject.GType): void;
         }
 
         interface NameChanged {
-            (old_name: string): void;
+            (_source: Column, old_name: string): void;
         }
 
         // Signal signatures
@@ -2884,7 +2882,6 @@ export namespace Gda {
 
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
-        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -2908,21 +2905,6 @@ export namespace Gda {
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
         emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'g-type-changed',
-            callback: (_source: this, old_type: GObject.GType, new_type: GObject.GType) => void,
-        ): number;
-        connect_after(
-            signal: 'g-type-changed',
-            callback: (_source: this, old_type: GObject.GType, new_type: GObject.GType) => void,
-        ): number;
-        emit(signal: 'g-type-changed', old_type: GObject.GType, new_type: GObject.GType): void;
-        connect(signal: 'name-changed', callback: (_source: this, old_name: string) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this, old_name: string) => void): number;
-        emit(signal: 'name-changed', old_name: string): void;
 
         // Virtual methods
 
@@ -2995,19 +2977,19 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface DsnAdded {
-            (new_dsn?: any | null): void;
+            (_source: Config, new_dsn?: any | null): void;
         }
 
         interface DsnChanged {
-            (dsn?: any | null): void;
+            (_source: Config, dsn?: any | null): void;
         }
 
         interface DsnRemoved {
-            (old_dsn?: any | null): void;
+            (_source: Config, old_dsn?: any | null): void;
         }
 
         interface DsnToBeRemoved {
-            (old_dsn?: any | null): void;
+            (_source: Config, old_dsn?: any | null): void;
         }
 
         // Signal signatures
@@ -3030,7 +3012,6 @@ export namespace Gda {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -3066,21 +3047,6 @@ export namespace Gda {
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'dsn-added', callback: (_source: this, new_dsn: any | null) => void): number;
-        connect_after(signal: 'dsn-added', callback: (_source: this, new_dsn: any | null) => void): number;
-        emit(signal: 'dsn-added', new_dsn?: any | null): void;
-        connect(signal: 'dsn-changed', callback: (_source: this, dsn: any | null) => void): number;
-        connect_after(signal: 'dsn-changed', callback: (_source: this, dsn: any | null) => void): number;
-        emit(signal: 'dsn-changed', dsn?: any | null): void;
-        connect(signal: 'dsn-removed', callback: (_source: this, old_dsn: any | null) => void): number;
-        connect_after(signal: 'dsn-removed', callback: (_source: this, old_dsn: any | null) => void): number;
-        emit(signal: 'dsn-removed', old_dsn?: any | null): void;
-        connect(signal: 'dsn-to-be-removed', callback: (_source: this, old_dsn: any | null) => void): number;
-        connect_after(signal: 'dsn-to-be-removed', callback: (_source: this, old_dsn: any | null) => void): number;
-        emit(signal: 'dsn-to-be-removed', old_dsn?: any | null): void;
 
         // Static methods
 
@@ -3192,27 +3158,27 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface DsnChanged {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface Error {
-            (event: ConnectionEvent): void;
+            (_source: Connection, event: ConnectionEvent): void;
         }
 
         interface Opened {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface StatusChanged {
-            (status: ConnectionStatus): void;
+            (_source: Connection, status: ConnectionStatus): void;
         }
 
         interface TransactionStatusChanged {
-            (): void;
+            (_source: Connection): void;
         }
 
         // Signal signatures
@@ -3247,7 +3213,6 @@ export namespace Gda {
 
     class Connection extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -3339,27 +3304,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'dsn-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'dsn-changed', callback: (_source: this) => void): number;
-        emit(signal: 'dsn-changed'): void;
-        connect(signal: 'error', callback: (_source: this, event: ConnectionEvent) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, event: ConnectionEvent) => void): number;
-        emit(signal: 'error', event: ConnectionEvent): void;
-        connect(signal: 'opened', callback: (_source: this) => void): number;
-        connect_after(signal: 'opened', callback: (_source: this) => void): number;
-        emit(signal: 'opened'): void;
-        connect(signal: 'status-changed', callback: (_source: this, status: ConnectionStatus) => void): number;
-        connect_after(signal: 'status-changed', callback: (_source: this, status: ConnectionStatus) => void): number;
-        emit(signal: 'status-changed', status: ConnectionStatus): void;
-        connect(signal: 'transaction-status-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'transaction-status-changed', callback: (_source: this) => void): number;
-        emit(signal: 'transaction-status-changed'): void;
 
         // Static methods
 
@@ -4724,7 +4668,6 @@ export namespace Gda {
 
     class ConnectionEvent extends GObject.Object {
         static $gtype: GObject.GType<ConnectionEvent>;
-        declare static readonly __signalSignatures: ConnectionEvent.SignalSignatures;
 
         // Properties
 
@@ -4736,6 +4679,21 @@ export namespace Gda {
         constructor(properties?: Partial<ConnectionEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ConnectionEvent.SignalSignatures>(
+            signal: K,
+            callback: ConnectionEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionEvent.SignalSignatures>(
+            signal: K,
+            callback: ConnectionEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4823,7 +4781,6 @@ export namespace Gda {
 
     class ConnectionModelParams extends GObject.Object {
         static $gtype: GObject.GType<ConnectionModelParams>;
-        declare static readonly __signalSignatures: ConnectionModelParams.SignalSignatures;
 
         // Properties
 
@@ -4843,6 +4800,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionModelParams;
+
+        // Signals
+
+        connect<K extends keyof ConnectionModelParams.SignalSignatures>(
+            signal: K,
+            callback: ConnectionModelParams.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionModelParams.SignalSignatures>(
+            signal: K,
+            callback: ConnectionModelParams.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionModelParams.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionModelParams.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4867,7 +4839,6 @@ export namespace Gda {
 
     class DataAccessWrapper extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataAccessWrapper>;
-        declare static readonly __signalSignatures: DataAccessWrapper.SignalSignatures;
 
         // Properties
 
@@ -4878,6 +4849,21 @@ export namespace Gda {
         constructor(properties?: Partial<DataAccessWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataAccessWrapper.SignalSignatures>(
+            signal: K,
+            callback: DataAccessWrapper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataAccessWrapper.SignalSignatures>(
+            signal: K,
+            callback: DataAccessWrapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataAccessWrapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataAccessWrapper.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5802,7 +5788,7 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface DiffComputed {
-            (object?: any | null): boolean;
+            (_source: DataComparator, object?: any | null): boolean;
         }
 
         // Signal signatures
@@ -5822,7 +5808,6 @@ export namespace Gda {
 
     class DataComparator extends GObject.Object {
         static $gtype: GObject.GType<DataComparator>;
-        declare static readonly __signalSignatures: DataComparator.SignalSignatures;
 
         // Properties
 
@@ -5857,12 +5842,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<DataComparator.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'diff-computed', callback: (_source: this, object: any | null) => boolean): number;
-        connect_after(signal: 'diff-computed', callback: (_source: this, object: any | null) => boolean): number;
-        emit(signal: 'diff-computed', object?: any | null): void;
 
         // Static methods
 
@@ -5918,7 +5897,6 @@ export namespace Gda {
 
     class DataModelArray extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelArray>;
-        declare static readonly __signalSignatures: DataModelArray.SignalSignatures;
 
         // Properties
 
@@ -5936,6 +5914,21 @@ export namespace Gda {
         constructor(properties?: Partial<DataModelArray.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataModelArray.SignalSignatures>(
+            signal: K,
+            callback: DataModelArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataModelArray.SignalSignatures>(
+            signal: K,
+            callback: DataModelArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataModelArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataModelArray.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6873,7 +6866,6 @@ export namespace Gda {
 
     class DataModelDir extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelDir>;
-        declare static readonly __signalSignatures: DataModelDir.SignalSignatures;
 
         // Properties
 
@@ -6884,6 +6876,21 @@ export namespace Gda {
         constructor(properties?: Partial<DataModelDir.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataModelDir.SignalSignatures>(
+            signal: K,
+            callback: DataModelDir.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataModelDir.SignalSignatures>(
+            signal: K,
+            callback: DataModelDir.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataModelDir.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataModelDir.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7812,7 +7819,6 @@ export namespace Gda {
 
     class DataModelImport extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelImport>;
-        declare static readonly __signalSignatures: DataModelImport.SignalSignatures;
 
         // Properties
 
@@ -7863,6 +7869,21 @@ export namespace Gda {
         constructor(properties?: Partial<DataModelImport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataModelImport.SignalSignatures>(
+            signal: K,
+            callback: DataModelImport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataModelImport.SignalSignatures>(
+            signal: K,
+            callback: DataModelImport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataModelImport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataModelImport.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8816,24 +8837,38 @@ export namespace Gda {
 
     class DataModelImportIter extends DataModelIter {
         static $gtype: GObject.GType<DataModelImportIter>;
-        declare static readonly __signalSignatures: DataModelImportIter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DataModelImportIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataModelImportIter.SignalSignatures>(
+            signal: K,
+            callback: DataModelImportIter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataModelImportIter.SignalSignatures>(
+            signal: K,
+            callback: DataModelImportIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataModelImportIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataModelImportIter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DataModelIter {
         // Signal callback interfaces
 
         interface EndOfData {
-            (): void;
+            (_source: DataModelIter): void;
         }
 
         interface RowChanged {
-            (row: number): void;
+            (_source: DataModelIter, row: number): void;
         }
 
         // Signal signatures
@@ -8856,7 +8891,6 @@ export namespace Gda {
 
     class DataModelIter extends Set {
         static $gtype: GObject.GType<DataModelIter>;
-        declare static readonly __signalSignatures: DataModelIter.SignalSignatures;
 
         // Properties
 
@@ -8893,15 +8927,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<DataModelIter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'end-of-data', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-of-data', callback: (_source: this) => void): number;
-        emit(signal: 'end-of-data'): void;
-        connect(signal: 'row-changed', callback: (_source: this, row: number) => void): number;
-        connect_after(signal: 'row-changed', callback: (_source: this, row: number) => void): number;
-        emit(signal: 'row-changed', row: number): void;
 
         // Static methods
 
@@ -9074,7 +9099,7 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface Updated {
-            (): void;
+            (_source: DataModelSelect): void;
         }
 
         // Signal signatures
@@ -9091,7 +9116,6 @@ export namespace Gda {
 
     class DataModelSelect extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelSelect>;
-        declare static readonly __signalSignatures: DataModelSelect.SignalSignatures;
 
         // Properties
 
@@ -9121,12 +9145,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<DataModelSelect.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this) => void): number;
-        emit(signal: 'updated'): void;
 
         // Virtual methods
 
@@ -10042,7 +10060,6 @@ export namespace Gda {
 
     class DataPivot extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataPivot>;
-        declare static readonly __signalSignatures: DataPivot.SignalSignatures;
 
         // Properties
 
@@ -10054,6 +10071,18 @@ export namespace Gda {
         constructor(properties?: Partial<DataPivot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataPivot.SignalSignatures>(signal: K, callback: DataPivot.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataPivot.SignalSignatures>(
+            signal: K,
+            callback: DataPivot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataPivot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataPivot.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11004,27 +11033,27 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface FilterChanged {
-            (): void;
+            (_source: DataProxy): void;
         }
 
         interface RowChangesApplied {
-            (row: number, proxied_row: number): void;
+            (_source: DataProxy, row: number, proxied_row: number): void;
         }
 
         interface RowDeleteChanged {
-            (row: number, to_be_deleted: boolean): void;
+            (_source: DataProxy, row: number, to_be_deleted: boolean): void;
         }
 
         interface SampleChanged {
-            (sample_start: number, sample_end: number): void;
+            (_source: DataProxy, sample_start: number, sample_end: number): void;
         }
 
         interface SampleSizeChanged {
-            (sample_size: number): void;
+            (_source: DataProxy, sample_size: number): void;
         }
 
         interface ValidateRowChanges {
-            (row: number, proxied_row: number): GLib.Error;
+            (_source: DataProxy, row: number, proxied_row: number): GLib.Error;
         }
 
         // Signal signatures
@@ -11054,7 +11083,6 @@ export namespace Gda {
 
     class DataProxy extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataProxy>;
-        declare static readonly __signalSignatures: DataProxy.SignalSignatures;
 
         // Properties
 
@@ -11122,51 +11150,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<DataProxy.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'filter-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'filter-changed', callback: (_source: this) => void): number;
-        emit(signal: 'filter-changed'): void;
-        connect(
-            signal: 'row-changes-applied',
-            callback: (_source: this, row: number, proxied_row: number) => void,
-        ): number;
-        connect_after(
-            signal: 'row-changes-applied',
-            callback: (_source: this, row: number, proxied_row: number) => void,
-        ): number;
-        emit(signal: 'row-changes-applied', row: number, proxied_row: number): void;
-        connect(
-            signal: 'row-delete-changed',
-            callback: (_source: this, row: number, to_be_deleted: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'row-delete-changed',
-            callback: (_source: this, row: number, to_be_deleted: boolean) => void,
-        ): number;
-        emit(signal: 'row-delete-changed', row: number, to_be_deleted: boolean): void;
-        connect(
-            signal: 'sample-changed',
-            callback: (_source: this, sample_start: number, sample_end: number) => void,
-        ): number;
-        connect_after(
-            signal: 'sample-changed',
-            callback: (_source: this, sample_start: number, sample_end: number) => void,
-        ): number;
-        emit(signal: 'sample-changed', sample_start: number, sample_end: number): void;
-        connect(signal: 'sample-size-changed', callback: (_source: this, sample_size: number) => void): number;
-        connect_after(signal: 'sample-size-changed', callback: (_source: this, sample_size: number) => void): number;
-        emit(signal: 'sample-size-changed', sample_size: number): void;
-        connect(
-            signal: 'validate-row-changes',
-            callback: (_source: this, row: number, proxied_row: number) => GLib.Error,
-        ): number;
-        connect_after(
-            signal: 'validate-row-changes',
-            callback: (_source: this, row: number, proxied_row: number) => GLib.Error,
-        ): number;
-        emit(signal: 'validate-row-changes', row: number, proxied_row: number): void;
 
         // Static methods
 
@@ -12293,7 +12276,6 @@ export namespace Gda {
 
     class DataSelect extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataSelect>;
-        declare static readonly __signalSignatures: DataSelect.SignalSignatures;
 
         // Properties
 
@@ -12340,6 +12322,21 @@ export namespace Gda {
         constructor(properties?: Partial<DataSelect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataSelect.SignalSignatures>(
+            signal: K,
+            callback: DataSelect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataSelect.SignalSignatures>(
+            signal: K,
+            callback: DataSelect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataSelect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataSelect.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -13400,13 +13397,27 @@ export namespace Gda {
 
     class DataSelectIter extends DataModelIter {
         static $gtype: GObject.GType<DataSelectIter>;
-        declare static readonly __signalSignatures: DataSelectIter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DataSelectIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataSelectIter.SignalSignatures>(
+            signal: K,
+            callback: DataSelectIter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataSelectIter.SignalSignatures>(
+            signal: K,
+            callback: DataSelectIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataSelectIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataSelectIter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DbBase {
@@ -13420,7 +13431,6 @@ export namespace Gda {
 
     class DbBase extends GObject.Object {
         static $gtype: GObject.GType<DbBase>;
-        declare static readonly __signalSignatures: DbBase.SignalSignatures;
 
         // Constructors
 
@@ -13429,6 +13439,12 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbBase;
+
+        // Signals
+
+        connect<K extends keyof DbBase.SignalSignatures>(signal: K, callback: DbBase.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbBase.SignalSignatures>(signal: K, callback: DbBase.SignalSignatures[K]): number;
+        emit<K extends keyof DbBase.SignalSignatures>(signal: K, ...args: Parameters<DbBase.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -13503,7 +13519,6 @@ export namespace Gda {
 
     class DbCatalog extends GObject.Object {
         static $gtype: GObject.GType<DbCatalog>;
-        declare static readonly __signalSignatures: DbCatalog.SignalSignatures;
 
         // Properties
 
@@ -13521,6 +13536,18 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbCatalog;
+
+        // Signals
+
+        connect<K extends keyof DbCatalog.SignalSignatures>(signal: K, callback: DbCatalog.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbCatalog.SignalSignatures>(
+            signal: K,
+            callback: DbCatalog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbCatalog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbCatalog.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -13682,7 +13709,6 @@ export namespace Gda {
 
     class DbColumn extends GObject.Object implements DbBuildable, DdlModifiable {
         static $gtype: GObject.GType<DbColumn>;
-        declare static readonly __signalSignatures: DbColumn.SignalSignatures;
 
         // Properties
 
@@ -13716,6 +13742,18 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbColumn;
+
+        // Signals
+
+        connect<K extends keyof DbColumn.SignalSignatures>(signal: K, callback: DbColumn.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbColumn.SignalSignatures>(
+            signal: K,
+            callback: DbColumn.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbColumn.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbColumn.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -14358,7 +14396,6 @@ export namespace Gda {
 
     class DbFkey extends GObject.Object implements DbBuildable {
         static $gtype: GObject.GType<DbFkey>;
-        declare static readonly __signalSignatures: DbFkey.SignalSignatures;
 
         // Constructors
 
@@ -14367,6 +14404,12 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbFkey;
+
+        // Signals
+
+        connect<K extends keyof DbFkey.SignalSignatures>(signal: K, callback: DbFkey.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbFkey.SignalSignatures>(signal: K, callback: DbFkey.SignalSignatures[K]): number;
+        emit<K extends keyof DbFkey.SignalSignatures>(signal: K, ...args: Parameters<DbFkey.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -14887,7 +14930,6 @@ export namespace Gda {
 
     class DbIndex extends DbBase implements DdlModifiable {
         static $gtype: GObject.GType<DbIndex>;
-        declare static readonly __signalSignatures: DbIndex.SignalSignatures;
 
         // Properties
 
@@ -14901,6 +14943,18 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbIndex;
+
+        // Signals
+
+        connect<K extends keyof DbIndex.SignalSignatures>(signal: K, callback: DbIndex.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbIndex.SignalSignatures>(
+            signal: K,
+            callback: DbIndex.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbIndex.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbIndex.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -15421,7 +15475,6 @@ export namespace Gda {
 
     class DbIndexField extends GObject.Object {
         static $gtype: GObject.GType<DbIndexField>;
-        declare static readonly __signalSignatures: DbIndexField.SignalSignatures;
 
         // Constructors
 
@@ -15430,6 +15483,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbIndexField;
+
+        // Signals
+
+        connect<K extends keyof DbIndexField.SignalSignatures>(
+            signal: K,
+            callback: DbIndexField.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbIndexField.SignalSignatures>(
+            signal: K,
+            callback: DbIndexField.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbIndexField.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbIndexField.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15476,7 +15544,6 @@ export namespace Gda {
 
     class DbTable extends DbBase implements DbBuildable, DdlModifiable {
         static $gtype: GObject.GType<DbTable>;
-        declare static readonly __signalSignatures: DbTable.SignalSignatures;
 
         // Properties
 
@@ -15492,6 +15559,18 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbTable;
+
+        // Signals
+
+        connect<K extends keyof DbTable.SignalSignatures>(signal: K, callback: DbTable.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbTable.SignalSignatures>(
+            signal: K,
+            callback: DbTable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbTable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbTable.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -16080,7 +16159,6 @@ export namespace Gda {
 
     class DbView extends DbBase implements DbBuildable, DdlModifiable {
         static $gtype: GObject.GType<DbView>;
-        declare static readonly __signalSignatures: DbView.SignalSignatures;
 
         // Properties
 
@@ -16100,6 +16178,12 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): DbView;
+
+        // Signals
+
+        connect<K extends keyof DbView.SignalSignatures>(signal: K, callback: DbView.SignalSignatures[K]): number;
+        connect_after<K extends keyof DbView.SignalSignatures>(signal: K, callback: DbView.SignalSignatures[K]): number;
+        emit<K extends keyof DbView.SignalSignatures>(signal: K, ...args: Parameters<DbView.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -16633,7 +16717,6 @@ export namespace Gda {
 
     class HandlerBin extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerBin>;
-        declare static readonly __signalSignatures: HandlerBin.SignalSignatures;
 
         // Constructors
 
@@ -16642,6 +16725,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): HandlerBin;
+
+        // Signals
+
+        connect<K extends keyof HandlerBin.SignalSignatures>(
+            signal: K,
+            callback: HandlerBin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerBin.SignalSignatures>(
+            signal: K,
+            callback: HandlerBin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerBin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerBin.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -17227,7 +17325,6 @@ export namespace Gda {
 
     class HandlerBoolean extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerBoolean>;
-        declare static readonly __signalSignatures: HandlerBoolean.SignalSignatures;
 
         // Constructors
 
@@ -17236,6 +17333,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): HandlerBoolean;
+
+        // Signals
+
+        connect<K extends keyof HandlerBoolean.SignalSignatures>(
+            signal: K,
+            callback: HandlerBoolean.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerBoolean.SignalSignatures>(
+            signal: K,
+            callback: HandlerBoolean.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerBoolean.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerBoolean.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -17821,7 +17933,6 @@ export namespace Gda {
 
     class HandlerNumerical extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerNumerical>;
-        declare static readonly __signalSignatures: HandlerNumerical.SignalSignatures;
 
         // Constructors
 
@@ -17830,6 +17941,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): HandlerNumerical;
+
+        // Signals
+
+        connect<K extends keyof HandlerNumerical.SignalSignatures>(
+            signal: K,
+            callback: HandlerNumerical.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerNumerical.SignalSignatures>(
+            signal: K,
+            callback: HandlerNumerical.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerNumerical.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerNumerical.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -18415,7 +18541,6 @@ export namespace Gda {
 
     class HandlerString extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerString>;
-        declare static readonly __signalSignatures: HandlerString.SignalSignatures;
 
         // Constructors
 
@@ -18426,6 +18551,21 @@ export namespace Gda {
         static ['new'](): HandlerString;
 
         static new_with_provider(prov: ServerProvider, cnc?: Connection | null): HandlerString;
+
+        // Signals
+
+        connect<K extends keyof HandlerString.SignalSignatures>(
+            signal: K,
+            callback: HandlerString.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerString.SignalSignatures>(
+            signal: K,
+            callback: HandlerString.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerString.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerString.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -19011,7 +19151,6 @@ export namespace Gda {
 
     class HandlerText extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerText>;
-        declare static readonly __signalSignatures: HandlerText.SignalSignatures;
 
         // Constructors
 
@@ -19020,6 +19159,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static new_with_connection(cnc?: Connection | null): HandlerText;
+
+        // Signals
+
+        connect<K extends keyof HandlerText.SignalSignatures>(
+            signal: K,
+            callback: HandlerText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerText.SignalSignatures>(
+            signal: K,
+            callback: HandlerText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerText.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -19612,7 +19766,6 @@ export namespace Gda {
 
     class HandlerTime extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerTime>;
-        declare static readonly __signalSignatures: HandlerTime.SignalSignatures;
 
         // Constructors
 
@@ -19623,6 +19776,21 @@ export namespace Gda {
         static ['new'](): HandlerTime;
 
         static new_no_locale(): HandlerTime;
+
+        // Signals
+
+        connect<K extends keyof HandlerTime.SignalSignatures>(
+            signal: K,
+            callback: HandlerTime.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerTime.SignalSignatures>(
+            signal: K,
+            callback: HandlerTime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerTime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerTime.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20266,7 +20434,6 @@ export namespace Gda {
 
     class HandlerType extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerType>;
-        declare static readonly __signalSignatures: HandlerType.SignalSignatures;
 
         // Constructors
 
@@ -20275,6 +20442,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): HandlerType;
+
+        // Signals
+
+        connect<K extends keyof HandlerType.SignalSignatures>(
+            signal: K,
+            callback: HandlerType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandlerType.SignalSignatures>(
+            signal: K,
+            callback: HandlerType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandlerType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandlerType.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -20853,19 +21035,19 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Holder): void;
         }
 
         interface SourceChanged {
-            (): void;
+            (_source: Holder): void;
         }
 
         interface ToDefault {
-            (): void;
+            (_source: Holder): void;
         }
 
         interface ValidateChange {
-            (new_value: GObject.Value | any): GLib.Error;
+            (_source: Holder, new_value: GObject.Value | any): GLib.Error;
         }
 
         // Signal signatures
@@ -20902,7 +21084,6 @@ export namespace Gda {
 
     class Holder extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<Holder>;
-        declare static readonly __signalSignatures: Holder.SignalSignatures;
 
         // Properties
 
@@ -20964,24 +21145,6 @@ export namespace Gda {
         connect<K extends keyof Holder.SignalSignatures>(signal: K, callback: Holder.SignalSignatures[K]): number;
         connect_after<K extends keyof Holder.SignalSignatures>(signal: K, callback: Holder.SignalSignatures[K]): number;
         emit<K extends keyof Holder.SignalSignatures>(signal: K, ...args: Parameters<Holder.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'source-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'source-changed', callback: (_source: this) => void): number;
-        emit(signal: 'source-changed'): void;
-        connect(signal: 'to-default', callback: (_source: this) => void): number;
-        connect_after(signal: 'to-default', callback: (_source: this) => void): number;
-        emit(signal: 'to-default'): void;
-        connect(signal: 'validate-change', callback: (_source: this, new_value: GObject.Value) => GLib.Error): number;
-        connect_after(
-            signal: 'validate-change',
-            callback: (_source: this, new_value: GObject.Value) => GLib.Error,
-        ): number;
-        emit(signal: 'validate-change', new_value: GObject.Value | any): void;
 
         // Static methods
 
@@ -21712,15 +21875,15 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface MetaChanged {
-            (changes: MetaStoreChange[]): void;
+            (_source: MetaStore, changes: MetaStoreChange[]): void;
         }
 
         interface MetaReset {
-            (): void;
+            (_source: MetaStore): void;
         }
 
         interface SuggestUpdate {
-            (suggest: MetaContext): GLib.Error;
+            (_source: MetaStore, suggest: MetaContext): GLib.Error;
         }
 
         // Signal signatures
@@ -21743,7 +21906,6 @@ export namespace Gda {
 
     class MetaStore extends GObject.Object {
         static $gtype: GObject.GType<MetaStore>;
-        declare static readonly __signalSignatures: MetaStore.SignalSignatures;
 
         // Properties
 
@@ -21774,18 +21936,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<MetaStore.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'meta-changed', callback: (_source: this, changes: MetaStoreChange[]) => void): number;
-        connect_after(signal: 'meta-changed', callback: (_source: this, changes: MetaStoreChange[]) => void): number;
-        emit(signal: 'meta-changed', changes: MetaStoreChange[]): void;
-        connect(signal: 'meta-reset', callback: (_source: this) => void): number;
-        connect_after(signal: 'meta-reset', callback: (_source: this) => void): number;
-        emit(signal: 'meta-reset'): void;
-        connect(signal: 'suggest-update', callback: (_source: this, suggest: MetaContext) => GLib.Error): number;
-        connect_after(signal: 'suggest-update', callback: (_source: this, suggest: MetaContext) => GLib.Error): number;
-        emit(signal: 'suggest-update', suggest: MetaContext): void;
 
         // Static methods
 
@@ -22079,7 +22229,6 @@ export namespace Gda {
 
     class MetaStruct extends GObject.Object {
         static $gtype: GObject.GType<MetaStruct>;
-        declare static readonly __signalSignatures: MetaStruct.SignalSignatures;
 
         // Properties
 
@@ -22092,6 +22241,21 @@ export namespace Gda {
         constructor(properties?: Partial<MetaStruct.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MetaStruct.SignalSignatures>(
+            signal: K,
+            callback: MetaStruct.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetaStruct.SignalSignatures>(
+            signal: K,
+            callback: MetaStruct.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetaStruct.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetaStruct.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -22233,13 +22397,18 @@ export namespace Gda {
 
     class PStmt extends GObject.Object {
         static $gtype: GObject.GType<PStmt>;
-        declare static readonly __signalSignatures: PStmt.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PStmt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PStmt.SignalSignatures>(signal: K, callback: PStmt.SignalSignatures[K]): number;
+        connect_after<K extends keyof PStmt.SignalSignatures>(signal: K, callback: PStmt.SignalSignatures[K]): number;
+        emit<K extends keyof PStmt.SignalSignatures>(signal: K, ...args: Parameters<PStmt.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -22322,7 +22491,6 @@ export namespace Gda {
 
     class RepetitiveStatement extends GObject.Object {
         static $gtype: GObject.GType<RepetitiveStatement>;
-        declare static readonly __signalSignatures: RepetitiveStatement.SignalSignatures;
 
         // Properties
 
@@ -22335,6 +22503,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](stmt: Statement): RepetitiveStatement;
+
+        // Signals
+
+        connect<K extends keyof RepetitiveStatement.SignalSignatures>(
+            signal: K,
+            callback: RepetitiveStatement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepetitiveStatement.SignalSignatures>(
+            signal: K,
+            callback: RepetitiveStatement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepetitiveStatement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepetitiveStatement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22381,7 +22564,6 @@ export namespace Gda {
 
     class Row extends GObject.Object {
         static $gtype: GObject.GType<Row>;
-        declare static readonly __signalSignatures: Row.SignalSignatures;
 
         // Properties
 
@@ -22400,6 +22582,12 @@ export namespace Gda {
         static ['new'](count: number): Row;
 
         static new_from_data_model(model: DataModel, row: number): Row;
+
+        // Signals
+
+        connect<K extends keyof Row.SignalSignatures>(signal: K, callback: Row.SignalSignatures[K]): number;
+        connect_after<K extends keyof Row.SignalSignatures>(signal: K, callback: Row.SignalSignatures[K]): number;
+        emit<K extends keyof Row.SignalSignatures>(signal: K, ...args: Parameters<Row.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -22448,11 +22636,11 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface SequenceItemAdded {
-            (seq_path: string, item_index: number): void;
+            (_source: ServerOperation, seq_path: string, item_index: number): void;
         }
 
         interface SequenceItemRemove {
-            (seq_path: string, item_index: number): void;
+            (_source: ServerOperation, seq_path: string, item_index: number): void;
         }
 
         // Signal signatures
@@ -22477,7 +22665,6 @@ export namespace Gda {
 
     class ServerOperation extends GObject.Object {
         static $gtype: GObject.GType<ServerOperation>;
-        declare static readonly __signalSignatures: ServerOperation.SignalSignatures;
 
         // Properties
 
@@ -22512,27 +22699,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<ServerOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'sequence-item-added',
-            callback: (_source: this, seq_path: string, item_index: number) => void,
-        ): number;
-        connect_after(
-            signal: 'sequence-item-added',
-            callback: (_source: this, seq_path: string, item_index: number) => void,
-        ): number;
-        emit(signal: 'sequence-item-added', seq_path: string, item_index: number): void;
-        connect(
-            signal: 'sequence-item-remove',
-            callback: (_source: this, seq_path: string, item_index: number) => void,
-        ): number;
-        connect_after(
-            signal: 'sequence-item-remove',
-            callback: (_source: this, seq_path: string, item_index: number) => void,
-        ): number;
-        emit(signal: 'sequence-item-remove', seq_path: string, item_index: number): void;
 
         // Static methods
 
@@ -22723,13 +22889,27 @@ export namespace Gda {
 
     abstract class ServerProvider extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<ServerProvider>;
-        declare static readonly __signalSignatures: ServerProvider.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ServerProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ServerProvider.SignalSignatures>(
+            signal: K,
+            callback: ServerProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerProvider.SignalSignatures>(
+            signal: K,
+            callback: ServerProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerProvider.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -23448,31 +23628,31 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface HolderAttrChanged {
-            (holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
+            (_source: Set, holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
         }
 
         interface HolderChanged {
-            (object: Holder): void;
+            (_source: Set, object: Holder): void;
         }
 
         interface HolderTypeSet {
-            (holder: Holder): void;
+            (_source: Set, holder: Holder): void;
         }
 
         interface PublicDataChanged {
-            (): void;
+            (_source: Set): void;
         }
 
         interface SourceModelChanged {
-            (source?: any | null): void;
+            (_source: Set, source?: any | null): void;
         }
 
         interface ValidateHolderChange {
-            (holder: Holder, new_value: GObject.Value | any): GLib.Error;
+            (_source: Set, holder: Holder, new_value: GObject.Value | any): GLib.Error;
         }
 
         interface ValidateSet {
-            (): GLib.Error;
+            (_source: Set): GLib.Error;
         }
 
         // Signal signatures
@@ -23500,7 +23680,6 @@ export namespace Gda {
 
     class Set extends GObject.Object {
         static $gtype: GObject.GType<Set>;
-        declare static readonly __signalSignatures: Set.SignalSignatures;
 
         // Properties
 
@@ -23545,42 +23724,6 @@ export namespace Gda {
         connect<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
         connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
         emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: Parameters<Set.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'holder-attr-changed',
-            callback: (_source: this, holder: Holder, attr_name: string, attr_value: GObject.Value) => void,
-        ): number;
-        connect_after(
-            signal: 'holder-attr-changed',
-            callback: (_source: this, holder: Holder, attr_name: string, attr_value: GObject.Value) => void,
-        ): number;
-        emit(signal: 'holder-attr-changed', holder: Holder, attr_name: string, attr_value: GObject.Value | any): void;
-        connect(signal: 'holder-changed', callback: (_source: this, object: Holder) => void): number;
-        connect_after(signal: 'holder-changed', callback: (_source: this, object: Holder) => void): number;
-        emit(signal: 'holder-changed', object: Holder): void;
-        connect(signal: 'holder-type-set', callback: (_source: this, holder: Holder) => void): number;
-        connect_after(signal: 'holder-type-set', callback: (_source: this, holder: Holder) => void): number;
-        emit(signal: 'holder-type-set', holder: Holder): void;
-        connect(signal: 'public-data-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'public-data-changed', callback: (_source: this) => void): number;
-        emit(signal: 'public-data-changed'): void;
-        connect(signal: 'source-model-changed', callback: (_source: this, source: any | null) => void): number;
-        connect_after(signal: 'source-model-changed', callback: (_source: this, source: any | null) => void): number;
-        emit(signal: 'source-model-changed', source?: any | null): void;
-        connect(
-            signal: 'validate-holder-change',
-            callback: (_source: this, holder: Holder, new_value: GObject.Value) => GLib.Error,
-        ): number;
-        connect_after(
-            signal: 'validate-holder-change',
-            callback: (_source: this, holder: Holder, new_value: GObject.Value) => GLib.Error,
-        ): number;
-        emit(signal: 'validate-holder-change', holder: Holder, new_value: GObject.Value | any): void;
-        connect(signal: 'validate-set', callback: (_source: this) => GLib.Error): number;
-        connect_after(signal: 'validate-set', callback: (_source: this) => GLib.Error): number;
-        emit(signal: 'validate-set'): void;
 
         // Static methods
 
@@ -23703,11 +23846,16 @@ export namespace Gda {
 
     class Short {
         static $gtype: GObject.GType<Short>;
-        declare static readonly __signalSignatures: Short.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Short.SignalSignatures>(signal: K, callback: Short.SignalSignatures[K]): number;
+        connect_after<K extends keyof Short.SignalSignatures>(signal: K, callback: Short.SignalSignatures[K]): number;
+        emit<K extends keyof Short.SignalSignatures>(signal: K, ...args: Parameters<Short.SignalSignatures[K]>): void;
     }
 
     namespace SqlBuilder {
@@ -23721,7 +23869,6 @@ export namespace Gda {
 
     class SqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SqlBuilder>;
-        declare static readonly __signalSignatures: SqlBuilder.SignalSignatures;
 
         // Constructors
 
@@ -23730,6 +23877,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](stmt_type: SqlStatementType): SqlBuilder;
+
+        // Signals
+
+        connect<K extends keyof SqlBuilder.SignalSignatures>(
+            signal: K,
+            callback: SqlBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SqlBuilder.SignalSignatures>(
+            signal: K,
+            callback: SqlBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SqlBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SqlBuilder.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -24067,7 +24229,6 @@ export namespace Gda {
 
     class SqlParser extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<SqlParser>;
-        declare static readonly __signalSignatures: SqlParser.SignalSignatures;
 
         // Properties
 
@@ -24089,6 +24250,18 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](): SqlParser;
+
+        // Signals
+
+        connect<K extends keyof SqlParser.SignalSignatures>(signal: K, callback: SqlParser.SignalSignatures[K]): number;
+        connect_after<K extends keyof SqlParser.SignalSignatures>(
+            signal: K,
+            callback: SqlParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SqlParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SqlParser.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -24627,11 +24800,11 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface Checked {
-            (cnc: Connection, checked: boolean): void;
+            (_source: Statement, cnc: Connection, checked: boolean): void;
         }
 
         interface Reset {
-            (): void;
+            (_source: Statement): void;
         }
 
         // Signal signatures
@@ -24649,7 +24822,6 @@ export namespace Gda {
 
     class Statement extends GObject.Object {
         static $gtype: GObject.GType<Statement>;
-        declare static readonly __signalSignatures: Statement.SignalSignatures;
 
         // Properties
 
@@ -24675,15 +24847,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<Statement.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'checked', callback: (_source: this, cnc: Connection, checked: boolean) => void): number;
-        connect_after(signal: 'checked', callback: (_source: this, cnc: Connection, checked: boolean) => void): number;
-        emit(signal: 'checked', cnc: Connection, checked: boolean): void;
-        connect(signal: 'reset', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset', callback: (_source: this) => void): number;
-        emit(signal: 'reset'): void;
 
         // Static methods
 
@@ -24796,7 +24959,6 @@ export namespace Gda {
 
     class TransactionStatus extends GObject.Object {
         static $gtype: GObject.GType<TransactionStatus>;
-        declare static readonly __signalSignatures: TransactionStatus.SignalSignatures;
 
         // Constructors
 
@@ -24805,6 +24967,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](name: string): TransactionStatus;
+
+        // Signals
+
+        connect<K extends keyof TransactionStatus.SignalSignatures>(
+            signal: K,
+            callback: TransactionStatus.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransactionStatus.SignalSignatures>(
+            signal: K,
+            callback: TransactionStatus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransactionStatus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransactionStatus.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24830,19 +25007,19 @@ export namespace Gda {
         // Signal callback interfaces
 
         interface NodeChanged {
-            (node: TreeNode): void;
+            (_source: Tree, node: TreeNode): void;
         }
 
         interface NodeDeleted {
-            (node_path: string): void;
+            (_source: Tree, node_path: string): void;
         }
 
         interface NodeHasChildToggled {
-            (node: TreeNode): void;
+            (_source: Tree, node: TreeNode): void;
         }
 
         interface NodeInserted {
-            (node: TreeNode): void;
+            (_source: Tree, node: TreeNode): void;
         }
 
         // Signal signatures
@@ -24863,7 +25040,6 @@ export namespace Gda {
 
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
-        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -24889,21 +25065,6 @@ export namespace Gda {
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'node-changed', callback: (_source: this, node: TreeNode) => void): number;
-        connect_after(signal: 'node-changed', callback: (_source: this, node: TreeNode) => void): number;
-        emit(signal: 'node-changed', node: TreeNode): void;
-        connect(signal: 'node-deleted', callback: (_source: this, node_path: string) => void): number;
-        connect_after(signal: 'node-deleted', callback: (_source: this, node_path: string) => void): number;
-        emit(signal: 'node-deleted', node_path: string): void;
-        connect(signal: 'node-has-child-toggled', callback: (_source: this, node: TreeNode) => void): number;
-        connect_after(signal: 'node-has-child-toggled', callback: (_source: this, node: TreeNode) => void): number;
-        emit(signal: 'node-has-child-toggled', node: TreeNode): void;
-        connect(signal: 'node-inserted', callback: (_source: this, node: TreeNode) => void): number;
-        connect_after(signal: 'node-inserted', callback: (_source: this, node: TreeNode) => void): number;
-        emit(signal: 'node-inserted', node: TreeNode): void;
 
         // Static methods
 
@@ -25003,7 +25164,6 @@ export namespace Gda {
 
     class TreeManager extends GObject.Object {
         static $gtype: GObject.GType<TreeManager>;
-        declare static readonly __signalSignatures: TreeManager.SignalSignatures;
 
         // Properties
 
@@ -25031,6 +25191,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static new_with_func(update_func: TreeManagerNodesFunc): TreeManager;
+
+        // Signals
+
+        connect<K extends keyof TreeManager.SignalSignatures>(
+            signal: K,
+            callback: TreeManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeManager.SignalSignatures>(
+            signal: K,
+            callback: TreeManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeManager.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -25103,7 +25278,6 @@ export namespace Gda {
 
     class TreeMgrColumns extends TreeManager {
         static $gtype: GObject.GType<TreeMgrColumns>;
-        declare static readonly __signalSignatures: TreeMgrColumns.SignalSignatures;
 
         // Properties
 
@@ -25144,6 +25318,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection, schema: string, table_name: string): TreeMgrColumns;
+
+        // Signals
+
+        connect<K extends keyof TreeMgrColumns.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrColumns.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMgrColumns.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrColumns.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMgrColumns.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMgrColumns.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMgrLabel {
@@ -25159,7 +25348,6 @@ export namespace Gda {
 
     class TreeMgrLabel extends TreeManager {
         static $gtype: GObject.GType<TreeMgrLabel>;
-        declare static readonly __signalSignatures: TreeMgrLabel.SignalSignatures;
 
         // Properties
 
@@ -25172,6 +25360,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](label: string): TreeMgrLabel;
+
+        // Signals
+
+        connect<K extends keyof TreeMgrLabel.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrLabel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMgrLabel.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrLabel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMgrLabel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMgrLabel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMgrSchemas {
@@ -25189,7 +25392,6 @@ export namespace Gda {
 
     class TreeMgrSchemas extends TreeManager {
         static $gtype: GObject.GType<TreeMgrSchemas>;
-        declare static readonly __signalSignatures: TreeMgrSchemas.SignalSignatures;
 
         // Properties
 
@@ -25218,6 +25420,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection): TreeMgrSchemas;
+
+        // Signals
+
+        connect<K extends keyof TreeMgrSchemas.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrSchemas.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMgrSchemas.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrSchemas.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMgrSchemas.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMgrSchemas.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMgrSelect {
@@ -25235,7 +25452,6 @@ export namespace Gda {
 
     class TreeMgrSelect extends TreeManager {
         static $gtype: GObject.GType<TreeMgrSelect>;
-        declare static readonly __signalSignatures: TreeMgrSelect.SignalSignatures;
 
         // Properties
 
@@ -25250,6 +25466,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection, stmt: Statement, params: Set): TreeMgrSelect;
+
+        // Signals
+
+        connect<K extends keyof TreeMgrSelect.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrSelect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMgrSelect.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrSelect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMgrSelect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMgrSelect.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMgrTables {
@@ -25268,7 +25499,6 @@ export namespace Gda {
 
     class TreeMgrTables extends TreeManager {
         static $gtype: GObject.GType<TreeMgrTables>;
-        declare static readonly __signalSignatures: TreeMgrTables.SignalSignatures;
 
         // Properties
 
@@ -25303,25 +25533,40 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection, schema?: string | null): TreeMgrTables;
+
+        // Signals
+
+        connect<K extends keyof TreeMgrTables.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrTables.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMgrTables.SignalSignatures>(
+            signal: K,
+            callback: TreeMgrTables.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMgrTables.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMgrTables.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeNode {
         // Signal callback interfaces
 
         interface NodeChanged {
-            (node: TreeNode): void;
+            (_source: TreeNode, node: TreeNode): void;
         }
 
         interface NodeDeleted {
-            (relative_path: string): void;
+            (_source: TreeNode, relative_path: string): void;
         }
 
         interface NodeHasChildToggled {
-            (node: TreeNode): void;
+            (_source: TreeNode, node: TreeNode): void;
         }
 
         interface NodeInserted {
-            (node: TreeNode): void;
+            (_source: TreeNode, node: TreeNode): void;
         }
 
         // Signal signatures
@@ -25341,7 +25586,6 @@ export namespace Gda {
 
     class TreeNode extends GObject.Object {
         static $gtype: GObject.GType<TreeNode>;
-        declare static readonly __signalSignatures: TreeNode.SignalSignatures;
 
         // Properties
 
@@ -25367,21 +25611,6 @@ export namespace Gda {
             signal: K,
             ...args: Parameters<TreeNode.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'node-changed', callback: (_source: this, node: TreeNode) => void): number;
-        connect_after(signal: 'node-changed', callback: (_source: this, node: TreeNode) => void): number;
-        emit(signal: 'node-changed', node: TreeNode): void;
-        connect(signal: 'node-deleted', callback: (_source: this, relative_path: string) => void): number;
-        connect_after(signal: 'node-deleted', callback: (_source: this, relative_path: string) => void): number;
-        emit(signal: 'node-deleted', relative_path: string): void;
-        connect(signal: 'node-has-child-toggled', callback: (_source: this, node: TreeNode) => void): number;
-        connect_after(signal: 'node-has-child-toggled', callback: (_source: this, node: TreeNode) => void): number;
-        emit(signal: 'node-has-child-toggled', node: TreeNode): void;
-        connect(signal: 'node-inserted', callback: (_source: this, node: TreeNode) => void): number;
-        connect_after(signal: 'node-inserted', callback: (_source: this, node: TreeNode) => void): number;
-        emit(signal: 'node-inserted', node: TreeNode): void;
 
         // Static methods
 
@@ -25473,11 +25702,16 @@ export namespace Gda {
 
     class UShort {
         static $gtype: GObject.GType<UShort>;
-        declare static readonly __signalSignatures: UShort.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UShort.SignalSignatures>(signal: K, callback: UShort.SignalSignatures[K]): number;
+        connect_after<K extends keyof UShort.SignalSignatures>(signal: K, callback: UShort.SignalSignatures[K]): number;
+        emit<K extends keyof UShort.SignalSignatures>(signal: K, ...args: Parameters<UShort.SignalSignatures[K]>): void;
     }
 
     namespace XaTransaction {
@@ -25496,7 +25730,6 @@ export namespace Gda {
 
     class XaTransaction extends GObject.Object {
         static $gtype: GObject.GType<XaTransaction>;
-        declare static readonly __signalSignatures: XaTransaction.SignalSignatures;
 
         // Properties
 
@@ -25512,6 +25745,21 @@ export namespace Gda {
         _init(...args: any[]): void;
 
         static ['new'](format: number, global_transaction_id: string): XaTransaction;
+
+        // Signals
+
+        connect<K extends keyof XaTransaction.SignalSignatures>(
+            signal: K,
+            callback: XaTransaction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof XaTransaction.SignalSignatures>(
+            signal: K,
+            callback: XaTransaction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XaTransaction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XaTransaction.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

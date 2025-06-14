@@ -518,13 +518,18 @@ export namespace Wp {
      */
     class Client extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -789,13 +794,27 @@ export namespace Wp {
      */
     abstract class ComponentLoader extends Plugin {
         static $gtype: GObject.GType<ComponentLoader>;
-        declare static readonly __signalSignatures: ComponentLoader.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ComponentLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ComponentLoader.SignalSignatures>(
+            signal: K,
+            callback: ComponentLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ComponentLoader.SignalSignatures>(
+            signal: K,
+            callback: ComponentLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ComponentLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ComponentLoader.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -807,11 +826,11 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface Connected {
-            (): void;
+            (_source: Core): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Core): void;
         }
 
         // Signal signatures
@@ -844,7 +863,6 @@ export namespace Wp {
      */
     class Core extends GObject.Object {
         static $gtype: GObject.GType<Core>;
-        declare static readonly __signalSignatures: Core.SignalSignatures;
 
         // Properties
 
@@ -866,14 +884,9 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
         connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
         emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'connected', callback: (_source: this) => void): number;
-        emit(signal: 'connected'): void;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
 
         // Methods
 
@@ -1102,7 +1115,6 @@ export namespace Wp {
 
     class Dbus extends Object {
         static $gtype: GObject.GType<Dbus>;
-        declare static readonly __signalSignatures: Dbus.SignalSignatures;
 
         // Properties
 
@@ -1115,6 +1127,12 @@ export namespace Wp {
         constructor(properties?: Partial<Dbus.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Dbus.SignalSignatures>(signal: K, callback: Dbus.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dbus.SignalSignatures>(signal: K, callback: Dbus.SignalSignatures[K]): number;
+        emit<K extends keyof Dbus.SignalSignatures>(signal: K, ...args: Parameters<Dbus.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1137,7 +1155,6 @@ export namespace Wp {
      */
     class Device extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -1146,6 +1163,12 @@ export namespace Wp {
         _init(...args: any[]): void;
 
         static new_from_factory(core: Core, factory_name: string, properties?: Properties | null): Device;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Inherited properties
         get native_info(): any;
@@ -1399,7 +1422,6 @@ export namespace Wp {
      */
     class Endpoint extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Endpoint>;
-        declare static readonly __signalSignatures: Endpoint.SignalSignatures;
 
         // Properties
 
@@ -1413,6 +1435,18 @@ export namespace Wp {
         constructor(properties?: Partial<Endpoint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect_after<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            callback: Endpoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Endpoint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1688,13 +1722,24 @@ export namespace Wp {
      */
     class Factory extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Factory>;
-        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect_after<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            callback: Factory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Factory.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get native_info(): any;
@@ -1942,13 +1987,27 @@ export namespace Wp {
      */
     class FeatureActivationTransition extends Transition implements Gio.AsyncResult {
         static $gtype: GObject.GType<FeatureActivationTransition>;
-        declare static readonly __signalSignatures: FeatureActivationTransition.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FeatureActivationTransition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FeatureActivationTransition.SignalSignatures>(
+            signal: K,
+            callback: FeatureActivationTransition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeatureActivationTransition.SignalSignatures>(
+            signal: K,
+            callback: FeatureActivationTransition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeatureActivationTransition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeatureActivationTransition.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2469,7 +2528,6 @@ export namespace Wp {
      */
     class GlobalProxy extends Proxy {
         static $gtype: GObject.GType<GlobalProxy>;
-        declare static readonly __signalSignatures: GlobalProxy.SignalSignatures;
 
         // Properties
 
@@ -2484,6 +2542,21 @@ export namespace Wp {
         constructor(properties?: Partial<GlobalProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GlobalProxy.SignalSignatures>(
+            signal: K,
+            callback: GlobalProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GlobalProxy.SignalSignatures>(
+            signal: K,
+            callback: GlobalProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GlobalProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GlobalProxy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2529,7 +2602,6 @@ export namespace Wp {
 
     class ImplEndpoint extends Endpoint implements PipewireObject {
         static $gtype: GObject.GType<ImplEndpoint>;
-        declare static readonly __signalSignatures: ImplEndpoint.SignalSignatures;
 
         // Properties
 
@@ -2542,6 +2614,21 @@ export namespace Wp {
         _init(...args: any[]): void;
 
         static ['new'](core: Core, item: SiEndpoint): ImplEndpoint;
+
+        // Signals
+
+        connect<K extends keyof ImplEndpoint.SignalSignatures>(
+            signal: K,
+            callback: ImplEndpoint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImplEndpoint.SignalSignatures>(
+            signal: K,
+            callback: ImplEndpoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImplEndpoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImplEndpoint.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get native_info(): any;
@@ -2793,7 +2880,6 @@ export namespace Wp {
      */
     class ImplMetadata extends Metadata {
         static $gtype: GObject.GType<ImplMetadata>;
-        declare static readonly __signalSignatures: ImplMetadata.SignalSignatures;
 
         // Properties
 
@@ -2809,6 +2895,21 @@ export namespace Wp {
         static ['new'](core: Core): ImplMetadata;
 
         static new_full(core: Core, name?: string | null, properties?: Properties | null): ImplMetadata;
+
+        // Signals
+
+        connect<K extends keyof ImplMetadata.SignalSignatures>(
+            signal: K,
+            callback: ImplMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImplMetadata.SignalSignatures>(
+            signal: K,
+            callback: ImplMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImplMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImplMetadata.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ImplModule {
@@ -2832,7 +2933,6 @@ export namespace Wp {
      */
     class ImplModule extends GObject.Object {
         static $gtype: GObject.GType<ImplModule>;
-        declare static readonly __signalSignatures: ImplModule.SignalSignatures;
 
         // Properties
 
@@ -2849,6 +2949,21 @@ export namespace Wp {
         constructor(properties?: Partial<ImplModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ImplModule.SignalSignatures>(
+            signal: K,
+            callback: ImplModule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImplModule.SignalSignatures>(
+            signal: K,
+            callback: ImplModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImplModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImplModule.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2892,7 +3007,6 @@ export namespace Wp {
      */
     class ImplNode extends Proxy implements PipewireObject {
         static $gtype: GObject.GType<ImplNode>;
-        declare static readonly __signalSignatures: ImplNode.SignalSignatures;
 
         // Properties
 
@@ -2908,6 +3022,18 @@ export namespace Wp {
         static new_from_pw_factory(core: Core, factory_name: string, properties?: Properties | null): ImplNode;
 
         static new_wrap(core: Core, node?: any | null): ImplNode;
+
+        // Signals
+
+        connect<K extends keyof ImplNode.SignalSignatures>(signal: K, callback: ImplNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof ImplNode.SignalSignatures>(
+            signal: K,
+            callback: ImplNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImplNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImplNode.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get native_info(): any;
@@ -3145,7 +3271,7 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface StateChanged {
-            (object: LinkState, p0: LinkState): void;
+            (_source: Link, object: LinkState, p0: LinkState): void;
         }
 
         // Signal signatures
@@ -3166,7 +3292,6 @@ export namespace Wp {
      */
     class Link extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Link>;
-        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -3185,15 +3310,6 @@ export namespace Wp {
         connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
         connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
         emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'state-changed', callback: (_source: this, object: LinkState, p0: LinkState) => void): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, object: LinkState, p0: LinkState) => void,
-        ): number;
-        emit(signal: 'state-changed', object: LinkState, p0: LinkState): void;
 
         // Methods
 
@@ -3446,7 +3562,7 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface Changed {
-            (object: number, p0: string, p1: string, p2: string): void;
+            (_source: Metadata, object: number, p0: string, p1: string, p2: string): void;
         }
 
         // Signal signatures
@@ -3465,7 +3581,6 @@ export namespace Wp {
      */
     class Metadata extends GlobalProxy {
         static $gtype: GObject.GType<Metadata>;
-        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -3484,18 +3599,6 @@ export namespace Wp {
             signal: K,
             ...args: Parameters<Metadata.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'changed',
-            callback: (_source: this, object: number, p0: string, p1: string, p2: string) => void,
-        ): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, object: number, p0: string, p1: string, p2: string) => void,
-        ): number;
-        emit(signal: 'changed', object: number, p0: string, p1: string, p2: string): void;
 
         // Static methods
 
@@ -3544,11 +3647,11 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface PortsChanged {
-            (): void;
+            (_source: Node): void;
         }
 
         interface StateChanged {
-            (object: NodeState, p0: NodeState): void;
+            (_source: Node, object: NodeState, p0: NodeState): void;
         }
 
         // Signal signatures
@@ -3578,7 +3681,6 @@ export namespace Wp {
      */
     class Node extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Node>;
-        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -3605,18 +3707,6 @@ export namespace Wp {
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'ports-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'ports-changed', callback: (_source: this) => void): number;
-        emit(signal: 'ports-changed'): void;
-        connect(signal: 'state-changed', callback: (_source: this, object: NodeState, p0: NodeState) => void): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, object: NodeState, p0: NodeState) => void,
-        ): number;
-        emit(signal: 'state-changed', object: NodeState, p0: NodeState): void;
 
         // Methods
 
@@ -3937,7 +4027,6 @@ export namespace Wp {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -3952,6 +4041,12 @@ export namespace Wp {
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -4072,19 +4167,19 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface Installed {
-            (): void;
+            (_source: ObjectManager): void;
         }
 
         interface ObjectAdded {
-            (object: GObject.Object): void;
+            (_source: ObjectManager, object: GObject.Object): void;
         }
 
         interface ObjectRemoved {
-            (object: GObject.Object): void;
+            (_source: ObjectManager, object: GObject.Object): void;
         }
 
         interface ObjectsChanged {
-            (): void;
+            (_source: ObjectManager): void;
         }
 
         // Signal signatures
@@ -4115,7 +4210,6 @@ export namespace Wp {
      */
     class ObjectManager extends GObject.Object {
         static $gtype: GObject.GType<ObjectManager>;
-        declare static readonly __signalSignatures: ObjectManager.SignalSignatures;
 
         // Properties
 
@@ -4143,21 +4237,6 @@ export namespace Wp {
             signal: K,
             ...args: Parameters<ObjectManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'installed', callback: (_source: this) => void): number;
-        connect_after(signal: 'installed', callback: (_source: this) => void): number;
-        emit(signal: 'installed'): void;
-        connect(signal: 'object-added', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'object-added', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'object-added', object: GObject.Object): void;
-        connect(signal: 'object-removed', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'object-removed', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'object-removed', object: GObject.Object): void;
-        connect(signal: 'objects-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'objects-changed', callback: (_source: this) => void): number;
-        emit(signal: 'objects-changed'): void;
 
         // Methods
 
@@ -4228,7 +4307,6 @@ export namespace Wp {
      */
     abstract class Plugin extends Object {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -4239,6 +4317,12 @@ export namespace Wp {
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4282,13 +4366,18 @@ export namespace Wp {
      */
     class Port extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Port>;
-        declare static readonly __signalSignatures: Port.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Port.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Port.SignalSignatures>(signal: K, callback: Port.SignalSignatures[K]): number;
+        connect_after<K extends keyof Port.SignalSignatures>(signal: K, callback: Port.SignalSignatures[K]): number;
+        emit<K extends keyof Port.SignalSignatures>(signal: K, ...args: Parameters<Port.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4537,19 +4626,19 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface Bound {
-            (object: number): void;
+            (_source: Proxy, object: number): void;
         }
 
         interface Error {
-            (object: number, p0: number, p1: string): void;
+            (_source: Proxy, object: number, p0: number, p1: string): void;
         }
 
         interface PwProxyCreated {
-            (object?: any | null): void;
+            (_source: Proxy, object?: any | null): void;
         }
 
         interface PwProxyDestroyed {
-            (): void;
+            (_source: Proxy): void;
         }
 
         // Signal signatures
@@ -4576,7 +4665,6 @@ export namespace Wp {
      */
     abstract class Proxy extends Object {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -4596,24 +4684,6 @@ export namespace Wp {
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'bound', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'bound', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'bound', object: number): void;
-        connect(signal: 'error', callback: (_source: this, object: number, p0: number, p1: string) => void): number;
-        connect_after(
-            signal: 'error',
-            callback: (_source: this, object: number, p0: number, p1: string) => void,
-        ): number;
-        emit(signal: 'error', object: number, p0: number, p1: string): void;
-        connect(signal: 'pw-proxy-created', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'pw-proxy-created', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'pw-proxy-created', object?: any | null): void;
-        connect(signal: 'pw-proxy-destroyed', callback: (_source: this) => void): number;
-        connect_after(signal: 'pw-proxy-destroyed', callback: (_source: this) => void): number;
-        emit(signal: 'pw-proxy-destroyed'): void;
 
         // Virtual methods
 
@@ -4667,7 +4737,6 @@ export namespace Wp {
 
     abstract class SessionItem extends Object {
         static $gtype: GObject.GType<SessionItem>;
-        declare static readonly __signalSignatures: SessionItem.SignalSignatures;
 
         // Properties
 
@@ -4679,6 +4748,21 @@ export namespace Wp {
         constructor(properties?: Partial<SessionItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SessionItem.SignalSignatures>(
+            signal: K,
+            callback: SessionItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionItem.SignalSignatures>(
+            signal: K,
+            callback: SessionItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionItem.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4822,7 +4906,6 @@ export namespace Wp {
      */
     abstract class SiFactory extends GObject.Object {
         static $gtype: GObject.GType<SiFactory>;
-        declare static readonly __signalSignatures: SiFactory.SignalSignatures;
 
         // Properties
 
@@ -4835,6 +4918,18 @@ export namespace Wp {
         _init(...args: any[]): void;
 
         static new_simple(factory_name: string, si_type: GObject.GType): SiFactory;
+
+        // Signals
+
+        connect<K extends keyof SiFactory.SignalSignatures>(signal: K, callback: SiFactory.SignalSignatures[K]): number;
+        connect_after<K extends keyof SiFactory.SignalSignatures>(
+            signal: K,
+            callback: SiFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SiFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SiFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4878,11 +4973,11 @@ export namespace Wp {
         // Signal callback interfaces
 
         interface CreateObject {
-            (object: number, p0: string, p1: string, p2: Properties): void;
+            (_source: SpaDevice, object: number, p0: string, p1: string, p2: Properties): void;
         }
 
         interface ObjectRemoved {
-            (object: number): void;
+            (_source: SpaDevice, object: number): void;
         }
 
         // Signal signatures
@@ -4907,7 +5002,6 @@ export namespace Wp {
      */
     class SpaDevice extends Proxy {
         static $gtype: GObject.GType<SpaDevice>;
-        declare static readonly __signalSignatures: SpaDevice.SignalSignatures;
 
         // Properties
 
@@ -4936,21 +5030,6 @@ export namespace Wp {
             signal: K,
             ...args: Parameters<SpaDevice.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'create-object',
-            callback: (_source: this, object: number, p0: string, p1: string, p2: Properties) => void,
-        ): number;
-        connect_after(
-            signal: 'create-object',
-            callback: (_source: this, object: number, p0: string, p1: string, p2: Properties) => void,
-        ): number;
-        emit(signal: 'create-object', object: number, p0: string, p1: string, p2: Properties): void;
-        connect(signal: 'object-removed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'object-removed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'object-removed', object: number): void;
 
         // Methods
 
@@ -4985,11 +5064,22 @@ export namespace Wp {
 
     class SpaType {
         static $gtype: GObject.GType<SpaType>;
-        declare static readonly __signalSignatures: SpaType.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SpaType.SignalSignatures>(signal: K, callback: SpaType.SignalSignatures[K]): number;
+        connect_after<K extends keyof SpaType.SignalSignatures>(
+            signal: K,
+            callback: SpaType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpaType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpaType.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5057,7 +5147,6 @@ export namespace Wp {
      */
     class State extends GObject.Object {
         static $gtype: GObject.GType<State>;
-        declare static readonly __signalSignatures: State.SignalSignatures;
 
         // Properties
 
@@ -5070,6 +5159,12 @@ export namespace Wp {
         _init(...args: any[]): void;
 
         static ['new'](name: string): State;
+
+        // Signals
+
+        connect<K extends keyof State.SignalSignatures>(signal: K, callback: State.SignalSignatures[K]): number;
+        connect_after<K extends keyof State.SignalSignatures>(signal: K, callback: State.SignalSignatures[K]): number;
+        emit<K extends keyof State.SignalSignatures>(signal: K, ...args: Parameters<State.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5121,7 +5216,6 @@ export namespace Wp {
      */
     abstract class Transition extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<Transition>;
-        declare static readonly __signalSignatures: Transition.SignalSignatures;
 
         // Properties
 
@@ -5146,6 +5240,21 @@ export namespace Wp {
             cancellable?: Gio.Cancellable | null,
             closure?: GObject.Closure | null,
         ): Transition;
+
+        // Signals
+
+        connect<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            callback: Transition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            callback: Transition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transition.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

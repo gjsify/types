@@ -76,7 +76,6 @@ export namespace Gandiva {
 
     class AndNode extends BooleanNode {
         static $gtype: GObject.GType<AndNode>;
-        declare static readonly __signalSignatures: AndNode.SignalSignatures;
 
         // Constructors
 
@@ -85,6 +84,18 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](children: Node[]): AndNode;
+
+        // Signals
+
+        connect<K extends keyof AndNode.SignalSignatures>(signal: K, callback: AndNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof AndNode.SignalSignatures>(
+            signal: K,
+            callback: AndNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AndNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AndNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BinaryLiteralNode {
@@ -98,7 +109,6 @@ export namespace Gandiva {
 
     class BinaryLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BinaryLiteralNode>;
-        declare static readonly __signalSignatures: BinaryLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -109,6 +119,21 @@ export namespace Gandiva {
         static ['new'](value: Uint8Array | string): BinaryLiteralNode;
 
         static new_bytes(value: GLib.Bytes | Uint8Array): BinaryLiteralNode;
+
+        // Signals
+
+        connect<K extends keyof BinaryLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: BinaryLiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinaryLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: BinaryLiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinaryLiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinaryLiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -126,7 +151,6 @@ export namespace Gandiva {
 
     class BooleanLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BooleanLiteralNode>;
-        declare static readonly __signalSignatures: BooleanLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -135,6 +159,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: boolean): BooleanLiteralNode;
+
+        // Signals
+
+        connect<K extends keyof BooleanLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: BooleanLiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BooleanLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: BooleanLiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BooleanLiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BooleanLiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -152,13 +191,27 @@ export namespace Gandiva {
 
     class BooleanNode extends Node {
         static $gtype: GObject.GType<BooleanNode>;
-        declare static readonly __signalSignatures: BooleanNode.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BooleanNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BooleanNode.SignalSignatures>(
+            signal: K,
+            callback: BooleanNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BooleanNode.SignalSignatures>(
+            signal: K,
+            callback: BooleanNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BooleanNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BooleanNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -176,7 +229,6 @@ export namespace Gandiva {
 
     class DoubleLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<DoubleLiteralNode>;
-        declare static readonly __signalSignatures: DoubleLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -185,6 +237,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): DoubleLiteralNode;
+
+        // Signals
+
+        connect<K extends keyof DoubleLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: DoubleLiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DoubleLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: DoubleLiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DoubleLiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DoubleLiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -208,7 +275,6 @@ export namespace Gandiva {
 
     class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
-        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Properties
 
@@ -225,6 +291,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](root_node: Node, result_field: Arrow.Field): Expression;
+
+        // Signals
+
+        connect<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Expression.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -244,7 +325,6 @@ export namespace Gandiva {
 
     class FieldNode extends Node {
         static $gtype: GObject.GType<FieldNode>;
-        declare static readonly __signalSignatures: FieldNode.SignalSignatures;
 
         // Properties
 
@@ -257,6 +337,18 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](field: Arrow.Field): FieldNode;
+
+        // Signals
+
+        connect<K extends keyof FieldNode.SignalSignatures>(signal: K, callback: FieldNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof FieldNode.SignalSignatures>(
+            signal: K,
+            callback: FieldNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FieldNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FieldNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FloatLiteralNode {
@@ -270,7 +362,6 @@ export namespace Gandiva {
 
     class FloatLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<FloatLiteralNode>;
-        declare static readonly __signalSignatures: FloatLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -279,6 +370,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): FloatLiteralNode;
+
+        // Signals
+
+        connect<K extends keyof FloatLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: FloatLiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FloatLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: FloatLiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FloatLiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FloatLiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -298,7 +404,6 @@ export namespace Gandiva {
 
     class FunctionNode extends Node {
         static $gtype: GObject.GType<FunctionNode>;
-        declare static readonly __signalSignatures: FunctionNode.SignalSignatures;
 
         // Properties
 
@@ -311,6 +416,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](name: string, parameters: Node[], return_type: Arrow.DataType): FunctionNode;
+
+        // Signals
+
+        connect<K extends keyof FunctionNode.SignalSignatures>(
+            signal: K,
+            callback: FunctionNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionNode.SignalSignatures>(
+            signal: K,
+            callback: FunctionNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -328,7 +448,6 @@ export namespace Gandiva {
 
     class FunctionRegistry extends GObject.Object {
         static $gtype: GObject.GType<FunctionRegistry>;
-        declare static readonly __signalSignatures: FunctionRegistry.SignalSignatures;
 
         // Constructors
 
@@ -337,6 +456,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionRegistry;
+
+        // Signals
+
+        connect<K extends keyof FunctionRegistry.SignalSignatures>(
+            signal: K,
+            callback: FunctionRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionRegistry.SignalSignatures>(
+            signal: K,
+            callback: FunctionRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionRegistry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -358,7 +492,6 @@ export namespace Gandiva {
 
     class FunctionSignature extends GObject.Object {
         static $gtype: GObject.GType<FunctionSignature>;
-        declare static readonly __signalSignatures: FunctionSignature.SignalSignatures;
 
         // Properties
 
@@ -376,6 +509,21 @@ export namespace Gandiva {
             parameter_types: Arrow.DataType[],
             return_type: Arrow.DataType,
         ): FunctionSignature;
+
+        // Signals
+
+        connect<K extends keyof FunctionSignature.SignalSignatures>(
+            signal: K,
+            callback: FunctionSignature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionSignature.SignalSignatures>(
+            signal: K,
+            callback: FunctionSignature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionSignature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionSignature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -404,7 +552,6 @@ export namespace Gandiva {
 
     class IfNode extends Node {
         static $gtype: GObject.GType<IfNode>;
-        declare static readonly __signalSignatures: IfNode.SignalSignatures;
 
         // Properties
 
@@ -422,6 +569,12 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](condition_node: Node, then_node: Node, else_node: Node, return_type: Arrow.DataType): IfNode;
+
+        // Signals
+
+        connect<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
+        emit<K extends keyof IfNode.SignalSignatures>(signal: K, ...args: Parameters<IfNode.SignalSignatures[K]>): void;
     }
 
     namespace Int16LiteralNode {
@@ -435,7 +588,6 @@ export namespace Gandiva {
 
     class Int16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int16LiteralNode>;
-        declare static readonly __signalSignatures: Int16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -444,6 +596,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int16LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof Int16LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int16LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int16LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int16LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int16LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int16LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -461,7 +628,6 @@ export namespace Gandiva {
 
     class Int32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int32LiteralNode>;
-        declare static readonly __signalSignatures: Int32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -470,6 +636,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int32LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof Int32LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int32LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int32LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int32LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int32LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int32LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -487,7 +668,6 @@ export namespace Gandiva {
 
     class Int64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int64LiteralNode>;
-        declare static readonly __signalSignatures: Int64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -496,6 +676,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int64LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof Int64LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int64LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int64LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int64LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int64LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int64LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -513,7 +708,6 @@ export namespace Gandiva {
 
     class Int8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int8LiteralNode>;
-        declare static readonly __signalSignatures: Int8LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -522,6 +716,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int8LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof Int8LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int8LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int8LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: Int8LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int8LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int8LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -539,13 +748,27 @@ export namespace Gandiva {
 
     class LiteralNode extends Node {
         static $gtype: GObject.GType<LiteralNode>;
-        declare static readonly __signalSignatures: LiteralNode.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LiteralNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LiteralNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NativeFunction {
@@ -562,7 +785,6 @@ export namespace Gandiva {
 
     class NativeFunction extends GObject.Object {
         static $gtype: GObject.GType<NativeFunction>;
-        declare static readonly __signalSignatures: NativeFunction.SignalSignatures;
 
         // Properties
 
@@ -574,6 +796,21 @@ export namespace Gandiva {
         constructor(properties?: Partial<NativeFunction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NativeFunction.SignalSignatures>(
+            signal: K,
+            callback: NativeFunction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NativeFunction.SignalSignatures>(
+            signal: K,
+            callback: NativeFunction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NativeFunction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NativeFunction.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -601,7 +838,6 @@ export namespace Gandiva {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
-        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -614,6 +850,12 @@ export namespace Gandiva {
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -631,7 +873,6 @@ export namespace Gandiva {
 
     class NullLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<NullLiteralNode>;
-        declare static readonly __signalSignatures: NullLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -640,6 +881,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](return_type: Arrow.DataType): NullLiteralNode;
+
+        // Signals
+
+        connect<K extends keyof NullLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: NullLiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NullLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: NullLiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullLiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullLiteralNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OrNode {
@@ -653,7 +909,6 @@ export namespace Gandiva {
 
     class OrNode extends BooleanNode {
         static $gtype: GObject.GType<OrNode>;
-        declare static readonly __signalSignatures: OrNode.SignalSignatures;
 
         // Constructors
 
@@ -662,6 +917,12 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](children: Node[]): OrNode;
+
+        // Signals
+
+        connect<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
+        emit<K extends keyof OrNode.SignalSignatures>(signal: K, ...args: Parameters<OrNode.SignalSignatures[K]>): void;
     }
 
     namespace Projector {
@@ -677,7 +938,6 @@ export namespace Gandiva {
 
     class Projector extends GObject.Object {
         static $gtype: GObject.GType<Projector>;
-        declare static readonly __signalSignatures: Projector.SignalSignatures;
 
         // Properties
 
@@ -690,6 +950,18 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](schema: Arrow.Schema, expressions: Expression[]): Projector;
+
+        // Signals
+
+        connect<K extends keyof Projector.SignalSignatures>(signal: K, callback: Projector.SignalSignatures[K]): number;
+        connect_after<K extends keyof Projector.SignalSignatures>(
+            signal: K,
+            callback: Projector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Projector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Projector.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -707,7 +979,6 @@ export namespace Gandiva {
 
     class StringLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<StringLiteralNode>;
-        declare static readonly __signalSignatures: StringLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -716,6 +987,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: string): StringLiteralNode;
+
+        // Signals
+
+        connect<K extends keyof StringLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: StringLiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringLiteralNode.SignalSignatures>(
+            signal: K,
+            callback: StringLiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringLiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringLiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -733,7 +1019,6 @@ export namespace Gandiva {
 
     class UInt16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt16LiteralNode>;
-        declare static readonly __signalSignatures: UInt16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -742,6 +1027,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt16LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof UInt16LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt16LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt16LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt16LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt16LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt16LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -759,7 +1059,6 @@ export namespace Gandiva {
 
     class UInt32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt32LiteralNode>;
-        declare static readonly __signalSignatures: UInt32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -768,6 +1067,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt32LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof UInt32LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt32LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt32LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt32LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt32LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt32LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -785,7 +1099,6 @@ export namespace Gandiva {
 
     class UInt64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt64LiteralNode>;
-        declare static readonly __signalSignatures: UInt64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -794,6 +1107,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt64LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof UInt64LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt64LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt64LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt64LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt64LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt64LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -811,7 +1139,6 @@ export namespace Gandiva {
 
     class UInt8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt8LiteralNode>;
-        declare static readonly __signalSignatures: UInt8LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -820,6 +1147,21 @@ export namespace Gandiva {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt8LiteralNode;
+
+        // Signals
+
+        connect<K extends keyof UInt8LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt8LiteralNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt8LiteralNode.SignalSignatures>(
+            signal: K,
+            callback: UInt8LiteralNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt8LiteralNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt8LiteralNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

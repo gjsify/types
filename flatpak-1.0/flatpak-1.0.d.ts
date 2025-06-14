@@ -570,7 +570,6 @@ export namespace Flatpak {
 
     class BundleRef extends Ref {
         static $gtype: GObject.GType<BundleRef>;
-        declare static readonly __signalSignatures: BundleRef.SignalSignatures;
 
         // Properties
 
@@ -586,6 +585,18 @@ export namespace Flatpak {
         _init(...args: any[]): void;
 
         static ['new'](file: Gio.File): BundleRef;
+
+        // Signals
+
+        connect<K extends keyof BundleRef.SignalSignatures>(signal: K, callback: BundleRef.SignalSignatures[K]): number;
+        connect_after<K extends keyof BundleRef.SignalSignatures>(
+            signal: K,
+            callback: BundleRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BundleRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BundleRef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -638,7 +649,6 @@ export namespace Flatpak {
 
     class Installation extends GObject.Object {
         static $gtype: GObject.GType<Installation>;
-        declare static readonly __signalSignatures: Installation.SignalSignatures;
 
         // Constructors
 
@@ -653,6 +663,21 @@ export namespace Flatpak {
         static new_system_with_id(id?: string | null, cancellable?: Gio.Cancellable | null): Installation;
 
         static new_user(cancellable?: Gio.Cancellable | null): Installation;
+
+        // Signals
+
+        connect<K extends keyof Installation.SignalSignatures>(
+            signal: K,
+            callback: Installation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Installation.SignalSignatures>(
+            signal: K,
+            callback: Installation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Installation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Installation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1490,7 +1515,6 @@ export namespace Flatpak {
 
     class InstalledRef extends Ref {
         static $gtype: GObject.GType<InstalledRef>;
-        declare static readonly __signalSignatures: InstalledRef.SignalSignatures;
 
         // Properties
 
@@ -1536,6 +1560,21 @@ export namespace Flatpak {
         constructor(properties?: Partial<InstalledRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InstalledRef.SignalSignatures>(
+            signal: K,
+            callback: InstalledRef.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstalledRef.SignalSignatures>(
+            signal: K,
+            callback: InstalledRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstalledRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstalledRef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1644,13 +1683,24 @@ export namespace Flatpak {
 
     class Instance extends GObject.Object {
         static $gtype: GObject.GType<Instance>;
-        declare static readonly __signalSignatures: Instance.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Instance.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Instance.SignalSignatures>(signal: K, callback: Instance.SignalSignatures[K]): number;
+        connect_after<K extends keyof Instance.SignalSignatures>(
+            signal: K,
+            callback: Instance.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Instance.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Instance.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1753,7 +1803,6 @@ export namespace Flatpak {
 
     class Ref extends GObject.Object {
         static $gtype: GObject.GType<Ref>;
-        declare static readonly __signalSignatures: Ref.SignalSignatures;
 
         // Properties
 
@@ -1770,6 +1819,12 @@ export namespace Flatpak {
         constructor(properties?: Partial<Ref.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
+        connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
+        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: Parameters<Ref.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1845,7 +1900,6 @@ export namespace Flatpak {
 
     class RelatedRef extends Ref {
         static $gtype: GObject.GType<RelatedRef>;
-        declare static readonly __signalSignatures: RelatedRef.SignalSignatures;
 
         // Properties
 
@@ -1862,6 +1916,21 @@ export namespace Flatpak {
         constructor(properties?: Partial<RelatedRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RelatedRef.SignalSignatures>(
+            signal: K,
+            callback: RelatedRef.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RelatedRef.SignalSignatures>(
+            signal: K,
+            callback: RelatedRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RelatedRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RelatedRef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1887,7 +1956,6 @@ export namespace Flatpak {
 
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
-        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Properties
 
@@ -1917,6 +1985,12 @@ export namespace Flatpak {
         static ['new'](name: string): Remote;
 
         static new_from_file(name: string, data: GLib.Bytes | Uint8Array): Remote;
+
+        // Signals
+
+        connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2190,7 +2264,6 @@ export namespace Flatpak {
 
     class RemoteRef extends Ref {
         static $gtype: GObject.GType<RemoteRef>;
-        declare static readonly __signalSignatures: RemoteRef.SignalSignatures;
 
         // Properties
 
@@ -2211,6 +2284,18 @@ export namespace Flatpak {
         constructor(properties?: Partial<RemoteRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RemoteRef.SignalSignatures>(signal: K, callback: RemoteRef.SignalSignatures[K]): number;
+        connect_after<K extends keyof RemoteRef.SignalSignatures>(
+            signal: K,
+            callback: RemoteRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteRef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2252,55 +2337,78 @@ export namespace Flatpak {
         // Signal callback interfaces
 
         interface AddNewRemote {
-            (reason: TransactionRemoteReason, from_id: string, suggested_remote_name: string, url: string): boolean;
+            (
+                _source: Transaction,
+                reason: TransactionRemoteReason,
+                from_id: string,
+                suggested_remote_name: string,
+                url: string,
+            ): boolean;
         }
 
         interface BasicAuthStart {
-            (remote: string, realm: string, options: GLib.Variant, id: number): boolean;
+            (_source: Transaction, remote: string, realm: string, options: GLib.Variant, id: number): boolean;
         }
 
         interface ChooseRemoteForRef {
-            (for_ref: string, runtime_ref: string, remotes: string[]): number;
+            (_source: Transaction, for_ref: string, runtime_ref: string, remotes: string[]): number;
         }
 
         interface EndOfLifed {
-            (ref: string, reason: string, rebase: string): void;
+            (_source: Transaction, ref: string, reason: string, rebase: string): void;
         }
 
         interface EndOfLifedWithRebase {
-            (remote: string, ref: string, reason: string, rebased_to_ref: string, previous_ids: string[]): boolean;
+            (
+                _source: Transaction,
+                remote: string,
+                ref: string,
+                reason: string,
+                rebased_to_ref: string,
+                previous_ids: string[],
+            ): boolean;
         }
 
         interface InstallAuthenticator {
-            (remote: string, authenticator_ref: string): void;
+            (_source: Transaction, remote: string, authenticator_ref: string): void;
         }
 
         interface NewOperation {
-            (operation: TransactionOperation, progress: TransactionProgress): void;
+            (_source: Transaction, operation: TransactionOperation, progress: TransactionProgress): void;
         }
 
         interface OperationDone {
-            (operation: TransactionOperation, commit: string | null, result: TransactionResult): void;
+            (
+                _source: Transaction,
+                operation: TransactionOperation,
+                commit: string | null,
+                result: TransactionResult,
+            ): void;
         }
 
         interface OperationError {
-            (operation: TransactionOperation, error: GLib.Error, details: TransactionErrorDetails): boolean;
+            (
+                _source: Transaction,
+                operation: TransactionOperation,
+                error: GLib.Error,
+                details: TransactionErrorDetails,
+            ): boolean;
         }
 
         interface Ready {
-            (): boolean;
+            (_source: Transaction): boolean;
         }
 
         interface ReadyPreAuth {
-            (): boolean;
+            (_source: Transaction): boolean;
         }
 
         interface WebflowDone {
-            (options: GLib.Variant, id: number): void;
+            (_source: Transaction, options: GLib.Variant, id: number): void;
         }
 
         interface WebflowStart {
-            (remote: string, url: string, options: GLib.Variant, id: number): boolean;
+            (_source: Transaction, remote: string, url: string, options: GLib.Variant, id: number): boolean;
         }
 
         // Signal signatures
@@ -2331,7 +2439,6 @@ export namespace Flatpak {
 
     class Transaction extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Transaction>;
-        declare static readonly __signalSignatures: Transaction.SignalSignatures;
 
         // Properties
 
@@ -2376,180 +2483,6 @@ export namespace Flatpak {
             signal: K,
             ...args: Parameters<Transaction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'add-new-remote',
-            callback: (
-                _source: this,
-                reason: TransactionRemoteReason,
-                from_id: string,
-                suggested_remote_name: string,
-                url: string,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'add-new-remote',
-            callback: (
-                _source: this,
-                reason: TransactionRemoteReason,
-                from_id: string,
-                suggested_remote_name: string,
-                url: string,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'add-new-remote',
-            reason: TransactionRemoteReason,
-            from_id: string,
-            suggested_remote_name: string,
-            url: string,
-        ): void;
-        connect(
-            signal: 'basic-auth-start',
-            callback: (_source: this, remote: string, realm: string, options: GLib.Variant, id: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'basic-auth-start',
-            callback: (_source: this, remote: string, realm: string, options: GLib.Variant, id: number) => boolean,
-        ): number;
-        emit(signal: 'basic-auth-start', remote: string, realm: string, options: GLib.Variant, id: number): void;
-        connect(
-            signal: 'choose-remote-for-ref',
-            callback: (_source: this, for_ref: string, runtime_ref: string, remotes: string[]) => number,
-        ): number;
-        connect_after(
-            signal: 'choose-remote-for-ref',
-            callback: (_source: this, for_ref: string, runtime_ref: string, remotes: string[]) => number,
-        ): number;
-        emit(signal: 'choose-remote-for-ref', for_ref: string, runtime_ref: string, remotes: string[]): void;
-        connect(
-            signal: 'end-of-lifed',
-            callback: (_source: this, ref: string, reason: string, rebase: string) => void,
-        ): number;
-        connect_after(
-            signal: 'end-of-lifed',
-            callback: (_source: this, ref: string, reason: string, rebase: string) => void,
-        ): number;
-        emit(signal: 'end-of-lifed', ref: string, reason: string, rebase: string): void;
-        connect(
-            signal: 'end-of-lifed-with-rebase',
-            callback: (
-                _source: this,
-                remote: string,
-                ref: string,
-                reason: string,
-                rebased_to_ref: string,
-                previous_ids: string[],
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'end-of-lifed-with-rebase',
-            callback: (
-                _source: this,
-                remote: string,
-                ref: string,
-                reason: string,
-                rebased_to_ref: string,
-                previous_ids: string[],
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'end-of-lifed-with-rebase',
-            remote: string,
-            ref: string,
-            reason: string,
-            rebased_to_ref: string,
-            previous_ids: string[],
-        ): void;
-        connect(
-            signal: 'install-authenticator',
-            callback: (_source: this, remote: string, authenticator_ref: string) => void,
-        ): number;
-        connect_after(
-            signal: 'install-authenticator',
-            callback: (_source: this, remote: string, authenticator_ref: string) => void,
-        ): number;
-        emit(signal: 'install-authenticator', remote: string, authenticator_ref: string): void;
-        connect(
-            signal: 'new-operation',
-            callback: (_source: this, operation: TransactionOperation, progress: TransactionProgress) => void,
-        ): number;
-        connect_after(
-            signal: 'new-operation',
-            callback: (_source: this, operation: TransactionOperation, progress: TransactionProgress) => void,
-        ): number;
-        emit(signal: 'new-operation', operation: TransactionOperation, progress: TransactionProgress): void;
-        connect(
-            signal: 'operation-done',
-            callback: (
-                _source: this,
-                operation: TransactionOperation,
-                commit: string | null,
-                result: TransactionResult,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'operation-done',
-            callback: (
-                _source: this,
-                operation: TransactionOperation,
-                commit: string | null,
-                result: TransactionResult,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'operation-done',
-            operation: TransactionOperation,
-            commit: string | null,
-            result: TransactionResult,
-        ): void;
-        connect(
-            signal: 'operation-error',
-            callback: (
-                _source: this,
-                operation: TransactionOperation,
-                error: GLib.Error,
-                details: TransactionErrorDetails,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'operation-error',
-            callback: (
-                _source: this,
-                operation: TransactionOperation,
-                error: GLib.Error,
-                details: TransactionErrorDetails,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'operation-error',
-            operation: TransactionOperation,
-            error: GLib.Error,
-            details: TransactionErrorDetails,
-        ): void;
-        connect(signal: 'ready', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'ready', callback: (_source: this) => boolean): number;
-        emit(signal: 'ready'): void;
-        connect(signal: 'ready-pre-auth', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'ready-pre-auth', callback: (_source: this) => boolean): number;
-        emit(signal: 'ready-pre-auth'): void;
-        connect(signal: 'webflow-done', callback: (_source: this, options: GLib.Variant, id: number) => void): number;
-        connect_after(
-            signal: 'webflow-done',
-            callback: (_source: this, options: GLib.Variant, id: number) => void,
-        ): number;
-        emit(signal: 'webflow-done', options: GLib.Variant, id: number): void;
-        connect(
-            signal: 'webflow-start',
-            callback: (_source: this, remote: string, url: string, options: GLib.Variant, id: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'webflow-start',
-            callback: (_source: this, remote: string, url: string, options: GLib.Variant, id: number) => boolean,
-        ): number;
-        emit(signal: 'webflow-start', remote: string, url: string, options: GLib.Variant, id: number): void;
 
         // Virtual methods
 
@@ -3473,13 +3406,27 @@ export namespace Flatpak {
 
     class TransactionOperation extends GObject.Object {
         static $gtype: GObject.GType<TransactionOperation>;
-        declare static readonly __signalSignatures: TransactionOperation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TransactionOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TransactionOperation.SignalSignatures>(
+            signal: K,
+            callback: TransactionOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransactionOperation.SignalSignatures>(
+            signal: K,
+            callback: TransactionOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransactionOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransactionOperation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3621,7 +3568,7 @@ export namespace Flatpak {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: TransactionProgress): void;
         }
 
         // Signal signatures
@@ -3636,7 +3583,6 @@ export namespace Flatpak {
 
     class TransactionProgress extends GObject.Object {
         static $gtype: GObject.GType<TransactionProgress>;
-        declare static readonly __signalSignatures: TransactionProgress.SignalSignatures;
 
         // Constructors
 
@@ -3658,12 +3604,6 @@ export namespace Flatpak {
             signal: K,
             ...args: Parameters<TransactionProgress.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 

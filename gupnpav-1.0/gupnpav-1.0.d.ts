@@ -400,7 +400,6 @@ export namespace GUPnPAV {
 
     class CDSLastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<CDSLastChangeParser>;
-        declare static readonly __signalSignatures: CDSLastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -409,6 +408,21 @@ export namespace GUPnPAV {
         _init(...args: any[]): void;
 
         static ['new'](): CDSLastChangeParser;
+
+        // Signals
+
+        connect<K extends keyof CDSLastChangeParser.SignalSignatures>(
+            signal: K,
+            callback: CDSLastChangeParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CDSLastChangeParser.SignalSignatures>(
+            signal: K,
+            callback: CDSLastChangeParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CDSLastChangeParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CDSLastChangeParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -442,7 +456,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteContainer extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteContainer>;
-        declare static readonly __signalSignatures: DIDLLiteContainer.SignalSignatures;
 
         // Properties
 
@@ -497,6 +510,21 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<DIDLLiteContainer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteContainer.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteContainer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteContainer.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteContainer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteContainer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteContainer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -625,7 +653,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteContributor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteContributor>;
-        declare static readonly __signalSignatures: DIDLLiteContributor.SignalSignatures;
 
         // Properties
 
@@ -653,6 +680,21 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<DIDLLiteContributor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteContributor.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteContributor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteContributor.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteContributor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteContributor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteContributor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -702,7 +744,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteCreateClass extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteCreateClass>;
-        declare static readonly __signalSignatures: DIDLLiteCreateClass.SignalSignatures;
 
         // Properties
 
@@ -745,6 +786,21 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<DIDLLiteCreateClass.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteCreateClass.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteCreateClass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteCreateClass.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -805,7 +861,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteDescriptor>;
-        declare static readonly __signalSignatures: DIDLLiteDescriptor.SignalSignatures;
 
         // Properties
 
@@ -855,6 +910,21 @@ export namespace GUPnPAV {
         _init(...args: any[]): void;
 
         static ['new'](): DIDLLiteDescriptor;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -920,7 +990,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteItem extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteItem>;
-        declare static readonly __signalSignatures: DIDLLiteItem.SignalSignatures;
 
         // Properties
 
@@ -945,6 +1014,21 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<DIDLLiteItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteItem.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteItem.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1008,7 +1092,6 @@ export namespace GUPnPAV {
 
     abstract class DIDLLiteObject extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteObject>;
-        declare static readonly __signalSignatures: DIDLLiteObject.SignalSignatures;
 
         // Properties
 
@@ -1186,6 +1269,21 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<DIDLLiteObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteObject.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteObject.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteObject.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1536,15 +1634,15 @@ export namespace GUPnPAV {
         // Signal callback interfaces
 
         interface ContainerAvailable {
-            (container: DIDLLiteContainer): void;
+            (_source: DIDLLiteParser, container: DIDLLiteContainer): void;
         }
 
         interface ItemAvailable {
-            (item: DIDLLiteItem): void;
+            (_source: DIDLLiteParser, item: DIDLLiteItem): void;
         }
 
         interface ObjectAvailable {
-            (object: DIDLLiteObject): void;
+            (_source: DIDLLiteParser, object: DIDLLiteObject): void;
         }
 
         // Signal signatures
@@ -1561,7 +1659,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteParser extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteParser>;
-        declare static readonly __signalSignatures: DIDLLiteParser.SignalSignatures;
 
         // Constructors
 
@@ -1585,21 +1682,6 @@ export namespace GUPnPAV {
             signal: K,
             ...args: Parameters<DIDLLiteParser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'container-available', callback: (_source: this, container: DIDLLiteContainer) => void): number;
-        connect_after(
-            signal: 'container-available',
-            callback: (_source: this, container: DIDLLiteContainer) => void,
-        ): number;
-        emit(signal: 'container-available', container: DIDLLiteContainer): void;
-        connect(signal: 'item-available', callback: (_source: this, item: DIDLLiteItem) => void): number;
-        connect_after(signal: 'item-available', callback: (_source: this, item: DIDLLiteItem) => void): number;
-        emit(signal: 'item-available', item: DIDLLiteItem): void;
-        connect(signal: 'object-available', callback: (_source: this, object: DIDLLiteObject) => void): number;
-        connect_after(signal: 'object-available', callback: (_source: this, object: DIDLLiteObject) => void): number;
-        emit(signal: 'object-available', object: DIDLLiteObject): void;
 
         // Virtual methods
 
@@ -1667,7 +1749,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteResource extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteResource>;
-        declare static readonly __signalSignatures: DIDLLiteResource.SignalSignatures;
 
         // Properties
 
@@ -1843,6 +1924,21 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<DIDLLiteResource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteResource.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteResource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteResource.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteResource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteResource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteResource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2096,7 +2192,6 @@ export namespace GUPnPAV {
 
     class DIDLLiteWriter extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteWriter>;
-        declare static readonly __signalSignatures: DIDLLiteWriter.SignalSignatures;
 
         // Properties
 
@@ -2120,6 +2215,21 @@ export namespace GUPnPAV {
         _init(...args: any[]): void;
 
         static ['new'](language?: string | null): DIDLLiteWriter;
+
+        // Signals
+
+        connect<K extends keyof DIDLLiteWriter.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteWriter.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteWriter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2180,7 +2290,6 @@ export namespace GUPnPAV {
 
     class Feature extends GObject.Object {
         static $gtype: GObject.GType<Feature>;
-        declare static readonly __signalSignatures: Feature.SignalSignatures;
 
         // Properties
 
@@ -2206,6 +2315,18 @@ export namespace GUPnPAV {
         constructor(properties?: Partial<Feature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Feature.SignalSignatures>(signal: K, callback: Feature.SignalSignatures[K]): number;
+        connect_after<K extends keyof Feature.SignalSignatures>(
+            signal: K,
+            callback: Feature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Feature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Feature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2237,7 +2358,6 @@ export namespace GUPnPAV {
 
     class FeatureListParser extends GObject.Object {
         static $gtype: GObject.GType<FeatureListParser>;
-        declare static readonly __signalSignatures: FeatureListParser.SignalSignatures;
 
         // Constructors
 
@@ -2246,6 +2366,21 @@ export namespace GUPnPAV {
         _init(...args: any[]): void;
 
         static ['new'](): FeatureListParser;
+
+        // Signals
+
+        connect<K extends keyof FeatureListParser.SignalSignatures>(
+            signal: K,
+            callback: FeatureListParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeatureListParser.SignalSignatures>(
+            signal: K,
+            callback: FeatureListParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeatureListParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeatureListParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2269,7 +2404,6 @@ export namespace GUPnPAV {
 
     class LastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<LastChangeParser>;
-        declare static readonly __signalSignatures: LastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -2278,6 +2412,21 @@ export namespace GUPnPAV {
         _init(...args: any[]): void;
 
         static ['new'](): LastChangeParser;
+
+        // Signals
+
+        connect<K extends keyof LastChangeParser.SignalSignatures>(
+            signal: K,
+            callback: LastChangeParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LastChangeParser.SignalSignatures>(
+            signal: K,
+            callback: LastChangeParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LastChangeParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LastChangeParser.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MediaCollection {
@@ -2296,7 +2445,6 @@ export namespace GUPnPAV {
 
     class MediaCollection extends GObject.Object {
         static $gtype: GObject.GType<MediaCollection>;
-        declare static readonly __signalSignatures: MediaCollection.SignalSignatures;
 
         // Properties
 
@@ -2330,6 +2478,21 @@ export namespace GUPnPAV {
         static ['new'](): MediaCollection;
 
         static new_from_string(data: string): MediaCollection;
+
+        // Signals
+
+        connect<K extends keyof MediaCollection.SignalSignatures>(
+            signal: K,
+            callback: MediaCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaCollection.SignalSignatures>(
+            signal: K,
+            callback: MediaCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaCollection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2377,7 +2540,6 @@ export namespace GUPnPAV {
 
     class ProtocolInfo extends GObject.Object {
         static $gtype: GObject.GType<ProtocolInfo>;
-        declare static readonly __signalSignatures: ProtocolInfo.SignalSignatures;
 
         // Properties
 
@@ -2463,6 +2625,21 @@ export namespace GUPnPAV {
         static ['new'](): ProtocolInfo;
 
         static new_from_string(protocol_info: string): ProtocolInfo;
+
+        // Signals
+
+        connect<K extends keyof ProtocolInfo.SignalSignatures>(
+            signal: K,
+            callback: ProtocolInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProtocolInfo.SignalSignatures>(
+            signal: K,
+            callback: ProtocolInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProtocolInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProtocolInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2563,23 +2740,29 @@ export namespace GUPnPAV {
         // Signal callback interfaces
 
         interface BeginParens {
-            (): void;
+            (_source: SearchCriteriaParser): void;
         }
 
         interface Conjunction {
-            (): void;
+            (_source: SearchCriteriaParser): void;
         }
 
         interface Disjunction {
-            (): void;
+            (_source: SearchCriteriaParser): void;
         }
 
         interface EndParens {
-            (): void;
+            (_source: SearchCriteriaParser): void;
         }
 
         interface Expression {
-            (property: string, op: SearchCriteriaOp, value: string, error?: any | null): boolean;
+            (
+                _source: SearchCriteriaParser,
+                property: string,
+                op: SearchCriteriaOp,
+                value: string,
+                error?: any | null,
+            ): boolean;
         }
 
         // Signal signatures
@@ -2598,7 +2781,6 @@ export namespace GUPnPAV {
 
     class SearchCriteriaParser extends GObject.Object {
         static $gtype: GObject.GType<SearchCriteriaParser>;
-        declare static readonly __signalSignatures: SearchCriteriaParser.SignalSignatures;
 
         // Constructors
 
@@ -2622,42 +2804,6 @@ export namespace GUPnPAV {
             signal: K,
             ...args: Parameters<SearchCriteriaParser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'begin-parens', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-parens', callback: (_source: this) => void): number;
-        emit(signal: 'begin-parens'): void;
-        connect(signal: 'conjunction', callback: (_source: this) => void): number;
-        connect_after(signal: 'conjunction', callback: (_source: this) => void): number;
-        emit(signal: 'conjunction'): void;
-        connect(signal: 'disjunction', callback: (_source: this) => void): number;
-        connect_after(signal: 'disjunction', callback: (_source: this) => void): number;
-        emit(signal: 'disjunction'): void;
-        connect(signal: 'end-parens', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-parens', callback: (_source: this) => void): number;
-        emit(signal: 'end-parens'): void;
-        connect(
-            signal: 'expression',
-            callback: (
-                _source: this,
-                property: string,
-                op: SearchCriteriaOp,
-                value: string,
-                error: any | null,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'expression',
-            callback: (
-                _source: this,
-                property: string,
-                op: SearchCriteriaOp,
-                value: string,
-                error: any | null,
-            ) => boolean,
-        ): number;
-        emit(signal: 'expression', property: string, op: SearchCriteriaOp, value: string, error?: any | null): void;
 
         // Static methods
 

@@ -511,7 +511,7 @@ export namespace Libxfce4windowing {
         // Signal callback interfaces
 
         interface IconChanged {
-            (): void;
+            (_source: Application): void;
         }
 
         // Signal signatures
@@ -533,7 +533,6 @@ export namespace Libxfce4windowing {
 
     abstract class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -582,12 +581,6 @@ export namespace Libxfce4windowing {
             signal: K,
             ...args: Parameters<Application.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'icon-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-changed'): void;
 
         // Methods
 
@@ -660,7 +653,6 @@ export namespace Libxfce4windowing {
 
     class ApplicationWayland extends Application {
         static $gtype: GObject.GType<ApplicationWayland>;
-        declare static readonly __signalSignatures: ApplicationWayland.SignalSignatures;
 
         // Properties
 
@@ -672,6 +664,21 @@ export namespace Libxfce4windowing {
         constructor(properties?: Partial<ApplicationWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ApplicationWayland.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWayland.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationWayland.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWayland.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationWayland.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationWayland.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ApplicationX11 {
@@ -685,13 +692,27 @@ export namespace Libxfce4windowing {
 
     class ApplicationX11 extends Application {
         static $gtype: GObject.GType<ApplicationX11>;
-        declare static readonly __signalSignatures: ApplicationX11.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ApplicationX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ApplicationX11.SignalSignatures>(
+            signal: K,
+            callback: ApplicationX11.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationX11.SignalSignatures>(
+            signal: K,
+            callback: ApplicationX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationX11.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ScreenWayland {
@@ -705,13 +726,27 @@ export namespace Libxfce4windowing {
 
     class ScreenWayland extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenWayland>;
-        declare static readonly __signalSignatures: ScreenWayland.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScreenWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScreenWayland.SignalSignatures>(
+            signal: K,
+            callback: ScreenWayland.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScreenWayland.SignalSignatures>(
+            signal: K,
+            callback: ScreenWayland.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScreenWayland.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScreenWayland.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -1238,13 +1273,24 @@ export namespace Libxfce4windowing {
 
     class ScreenX11 extends GObject.Object implements Screen {
         static $gtype: GObject.GType<ScreenX11>;
-        declare static readonly __signalSignatures: ScreenX11.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScreenX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScreenX11.SignalSignatures>(signal: K, callback: ScreenX11.SignalSignatures[K]): number;
+        connect_after<K extends keyof ScreenX11.SignalSignatures>(
+            signal: K,
+            callback: ScreenX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScreenX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScreenX11.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -1764,39 +1810,39 @@ export namespace Libxfce4windowing {
         // Signal callback interfaces
 
         interface CapabilitiesChanged {
-            (changed_mask: WindowCapabilities, new_state: WindowCapabilities): void;
+            (_source: Window, changed_mask: WindowCapabilities, new_state: WindowCapabilities): void;
         }
 
         interface ClassChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface Closed {
-            (): void;
+            (_source: Window): void;
         }
 
         interface GeometryChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface IconChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface NameChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface StateChanged {
-            (changed_mask: WindowState, new_state: WindowState): void;
+            (_source: Window, changed_mask: WindowState, new_state: WindowState): void;
         }
 
         interface TypeChanged {
-            (old_type: WindowType): void;
+            (_source: Window, old_type: WindowType): void;
         }
 
         interface WorkspaceChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         // Signal signatures
@@ -1831,7 +1877,6 @@ export namespace Libxfce4windowing {
 
     abstract class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -1888,48 +1933,6 @@ export namespace Libxfce4windowing {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'capabilities-changed',
-            callback: (_source: this, changed_mask: WindowCapabilities, new_state: WindowCapabilities) => void,
-        ): number;
-        connect_after(
-            signal: 'capabilities-changed',
-            callback: (_source: this, changed_mask: WindowCapabilities, new_state: WindowCapabilities) => void,
-        ): number;
-        emit(signal: 'capabilities-changed', changed_mask: WindowCapabilities, new_state: WindowCapabilities): void;
-        connect(signal: 'class-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'class-changed', callback: (_source: this) => void): number;
-        emit(signal: 'class-changed'): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'geometry-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'geometry-changed', callback: (_source: this) => void): number;
-        emit(signal: 'geometry-changed'): void;
-        connect(signal: 'icon-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-changed'): void;
-        connect(signal: 'name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'name-changed'): void;
-        connect(
-            signal: 'state-changed',
-            callback: (_source: this, changed_mask: WindowState, new_state: WindowState) => void,
-        ): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, changed_mask: WindowState, new_state: WindowState) => void,
-        ): number;
-        emit(signal: 'state-changed', changed_mask: WindowState, new_state: WindowState): void;
-        connect(signal: 'type-changed', callback: (_source: this, old_type: WindowType) => void): number;
-        connect_after(signal: 'type-changed', callback: (_source: this, old_type: WindowType) => void): number;
-        emit(signal: 'type-changed', old_type: WindowType): void;
-        connect(signal: 'workspace-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'workspace-changed', callback: (_source: this) => void): number;
-        emit(signal: 'workspace-changed'): void;
 
         // Methods
 
@@ -2059,7 +2062,6 @@ export namespace Libxfce4windowing {
 
     class WindowWayland extends Window {
         static $gtype: GObject.GType<WindowWayland>;
-        declare static readonly __signalSignatures: WindowWayland.SignalSignatures;
 
         // Properties
 
@@ -2070,6 +2072,21 @@ export namespace Libxfce4windowing {
         constructor(properties?: Partial<WindowWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WindowWayland.SignalSignatures>(
+            signal: K,
+            callback: WindowWayland.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowWayland.SignalSignatures>(
+            signal: K,
+            callback: WindowWayland.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowWayland.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowWayland.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WindowX11 {
@@ -2083,13 +2100,24 @@ export namespace Libxfce4windowing {
 
     class WindowX11 extends Window {
         static $gtype: GObject.GType<WindowX11>;
-        declare static readonly __signalSignatures: WindowX11.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WindowX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WindowX11.SignalSignatures>(signal: K, callback: WindowX11.SignalSignatures[K]): number;
+        connect_after<K extends keyof WindowX11.SignalSignatures>(
+            signal: K,
+            callback: WindowX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowX11.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WnckIcon {
@@ -2110,7 +2138,6 @@ export namespace Libxfce4windowing {
 
     class WnckIcon extends GObject.Object implements Gio.Icon, Gio.Initable, Gio.LoadableIcon {
         static $gtype: GObject.GType<WnckIcon>;
-        declare static readonly __signalSignatures: WnckIcon.SignalSignatures;
 
         // Properties
 
@@ -2122,6 +2149,18 @@ export namespace Libxfce4windowing {
         constructor(properties?: Partial<WnckIcon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WnckIcon.SignalSignatures>(signal: K, callback: WnckIcon.SignalSignatures[K]): number;
+        connect_after<K extends keyof WnckIcon.SignalSignatures>(
+            signal: K,
+            callback: WnckIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WnckIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WnckIcon.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2796,13 +2835,27 @@ export namespace Libxfce4windowing {
 
     class WorkspaceDummy extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceDummy>;
-        declare static readonly __signalSignatures: WorkspaceDummy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WorkspaceDummy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceDummy.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceDummy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceDummy.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceDummy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceDummy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceDummy.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -3405,7 +3458,6 @@ export namespace Libxfce4windowing {
 
     class WorkspaceGroupDummy extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupDummy>;
-        declare static readonly __signalSignatures: WorkspaceGroupDummy.SignalSignatures;
 
         // Properties
 
@@ -3427,6 +3479,21 @@ export namespace Libxfce4windowing {
         constructor(properties?: Partial<WorkspaceGroupDummy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceGroupDummy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceGroupDummy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceGroupDummy.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -3968,7 +4035,7 @@ export namespace Libxfce4windowing {
         // Signal callback interfaces
 
         interface Destroyed {
-            (): void;
+            (_source: WorkspaceGroupWayland): void;
         }
 
         // Signal signatures
@@ -3983,7 +4050,6 @@ export namespace Libxfce4windowing {
 
     class WorkspaceGroupWayland extends GObject.Object implements WorkspaceGroup {
         static $gtype: GObject.GType<WorkspaceGroupWayland>;
-        declare static readonly __signalSignatures: WorkspaceGroupWayland.SignalSignatures;
 
         // Constructors
 
@@ -4005,12 +4071,6 @@ export namespace Libxfce4windowing {
             signal: K,
             ...args: Parameters<WorkspaceGroupWayland.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroyed', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroyed', callback: (_source: this) => void): number;
-        emit(signal: 'destroyed'): void;
 
         // Inherited properties
         /**
@@ -4559,13 +4619,27 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerDummy extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerDummy>;
-        declare static readonly __signalSignatures: WorkspaceManagerDummy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WorkspaceManagerDummy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManagerDummy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManagerDummy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceManagerDummy.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5042,7 +5116,6 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerWayland extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerWayland>;
-        declare static readonly __signalSignatures: WorkspaceManagerWayland.SignalSignatures;
 
         // Properties
 
@@ -5056,6 +5129,21 @@ export namespace Libxfce4windowing {
         constructor(properties?: Partial<WorkspaceManagerWayland.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManagerWayland.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManagerWayland.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceManagerWayland.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5527,13 +5615,27 @@ export namespace Libxfce4windowing {
 
     class WorkspaceManagerX11 extends GObject.Object implements WorkspaceManager {
         static $gtype: GObject.GType<WorkspaceManagerX11>;
-        declare static readonly __signalSignatures: WorkspaceManagerX11.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WorkspaceManagerX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceManagerX11.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManagerX11.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceManagerX11.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManagerX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceManagerX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceManagerX11.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5998,7 +6100,7 @@ export namespace Libxfce4windowing {
         // Signal callback interfaces
 
         interface Destroyed {
-            (): void;
+            (_source: WorkspaceWayland): void;
         }
 
         // Signal signatures
@@ -6015,7 +6117,6 @@ export namespace Libxfce4windowing {
 
     class WorkspaceWayland extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceWayland>;
-        declare static readonly __signalSignatures: WorkspaceWayland.SignalSignatures;
 
         // Properties
 
@@ -6041,12 +6142,6 @@ export namespace Libxfce4windowing {
             signal: K,
             ...args: Parameters<WorkspaceWayland.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroyed', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroyed', callback: (_source: this) => void): number;
-        emit(signal: 'destroyed'): void;
 
         // Inherited properties
         /**
@@ -6642,13 +6737,27 @@ export namespace Libxfce4windowing {
 
     class WorkspaceX11 extends GObject.Object implements Workspace {
         static $gtype: GObject.GType<WorkspaceX11>;
-        declare static readonly __signalSignatures: WorkspaceX11.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WorkspaceX11.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceX11.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceX11.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceX11.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceX11.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**

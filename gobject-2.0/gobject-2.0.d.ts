@@ -13,10 +13,6 @@ import '@girs/gjs';
 import type GLib from '@girs/glib-2.0';
 
 export namespace GObject {
-    // A few things here are inspired by gi.ts
-    // See https://gitlab.gnome.org/ewlsh/gi.ts/-/blob/master/packages/lib/src/generators/dts/gobject.ts
-    // Copyright Evan Welsh
-
     // __type__ forces all GTypes to not match structurally.
     export type GType<T = unknown> = {
         __type__(arg: never): T;
@@ -233,6 +229,17 @@ export namespace GObject {
 
     // Helper types for type-safe signal handling
     export type SignalSignatures = { [signal: string]: (...args: any[]) => any };
+
+    /**
+     * Unique symbol for storing signal signatures on constructors
+     * This allows TypeScript to infer signal types from constructor instances
+     */
+    export const signalSignaturesSymbol: unique symbol;
+
+    /**
+     * Extract signal signatures from a constructor type
+     */
+    export type SignalsOf<T> = T extends { [signalSignaturesSymbol]: infer S } ? S : never;
 
     /**
      * Extract signal names from a SignalSignatures type
@@ -3043,7 +3050,6 @@ export namespace GObject {
      */
     class Binding extends Object {
         static $gtype: GType<Binding>;
-        declare static readonly __signalSignatures: Binding.SignalSignatures;
 
         // Properties
 
@@ -3097,6 +3103,18 @@ export namespace GObject {
         constructor(properties?: Partial<Binding.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Binding.SignalSignatures>(signal: K, callback: Binding.SignalSignatures[K]): number;
+        connect_after<K extends keyof Binding.SignalSignatures>(
+            signal: K,
+            callback: Binding.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Binding.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Binding.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3199,7 +3217,6 @@ export namespace GObject {
      */
     class BindingGroup extends Object {
         static $gtype: GType<BindingGroup>;
-        declare static readonly __signalSignatures: BindingGroup.SignalSignatures;
 
         // Properties
 
@@ -3216,6 +3233,21 @@ export namespace GObject {
         _init(...args: any[]): void;
 
         static ['new'](): BindingGroup;
+
+        // Signals
+
+        connect<K extends keyof BindingGroup.SignalSignatures>(
+            signal: K,
+            callback: BindingGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BindingGroup.SignalSignatures>(
+            signal: K,
+            callback: BindingGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BindingGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BindingGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3313,20 +3345,34 @@ export namespace GObject {
      */
     class InitiallyUnowned extends Object {
         static $gtype: GType<InitiallyUnowned>;
-        declare static readonly __signalSignatures: InitiallyUnowned.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<InitiallyUnowned.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InitiallyUnowned.SignalSignatures>(
+            signal: K,
+            callback: InitiallyUnowned.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InitiallyUnowned.SignalSignatures>(
+            signal: K,
+            callback: InitiallyUnowned.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InitiallyUnowned.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InitiallyUnowned.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
         // Signal callback interfaces
 
         interface Notify {
-            (pspec: ParamSpec): void;
+            (_source: Object, pspec: ParamSpec): void;
         }
 
         // Signal signatures
@@ -3365,7 +3411,6 @@ export namespace GObject {
      */
     class Object {
         static $gtype: GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
@@ -3378,12 +3423,6 @@ export namespace GObject {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'notify', callback: (_source: this, pspec: ParamSpec) => void): number;
-        connect_after(signal: 'notify', callback: (_source: this, pspec: ParamSpec) => void): number;
-        emit(signal: 'notify', pspec: ParamSpec): void;
 
         // Static methods
 
@@ -3913,7 +3952,6 @@ export namespace GObject {
      */
     abstract class ParamSpec<A = unknown> {
         static $gtype: GType<ParamSpec>;
-        declare static readonly __signalSignatures: ParamSpec.SignalSignatures;
 
         // Fields
 
@@ -3925,6 +3963,18 @@ export namespace GObject {
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamSpec.SignalSignatures>(signal: K, callback: ParamSpec.SignalSignatures[K]): number;
+        connect_after<K extends keyof ParamSpec.SignalSignatures>(
+            signal: K,
+            callback: ParamSpec.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamSpec.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamSpec.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4361,11 +4411,11 @@ export namespace GObject {
         // Signal callback interfaces
 
         interface Bind {
-            (instance: Object): void;
+            (_source: SignalGroup, instance: Object): void;
         }
 
         interface Unbind {
-            (): void;
+            (_source: SignalGroup): void;
         }
 
         // Signal signatures
@@ -4406,7 +4456,6 @@ export namespace GObject {
      */
     class SignalGroup extends Object {
         static $gtype: GType<SignalGroup>;
-        declare static readonly __signalSignatures: SignalGroup.SignalSignatures;
 
         // Properties
 
@@ -4446,15 +4495,6 @@ export namespace GObject {
             signal: K,
             ...args: Parameters<SignalGroup.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'bind', callback: (_source: this, instance: Object) => void): number;
-        connect_after(signal: 'bind', callback: (_source: this, instance: Object) => void): number;
-        emit(signal: 'bind', instance: Object): void;
-        connect(signal: 'unbind', callback: (_source: this) => void): number;
-        connect_after(signal: 'unbind', callback: (_source: this) => void): number;
-        emit(signal: 'unbind'): void;
 
         // Methods
 
@@ -4571,7 +4611,6 @@ export namespace GObject {
      */
     abstract class TypeModule extends Object implements TypePlugin {
         static $gtype: GType<TypeModule>;
-        declare static readonly __signalSignatures: TypeModule.SignalSignatures;
 
         // Fields
 
@@ -4585,6 +4624,21 @@ export namespace GObject {
         constructor(properties?: Partial<TypeModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TypeModule.SignalSignatures>(
+            signal: K,
+            callback: TypeModule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TypeModule.SignalSignatures>(
+            signal: K,
+            callback: TypeModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TypeModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TypeModule.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

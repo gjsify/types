@@ -1082,23 +1082,23 @@ export namespace Fwupd {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Client): void;
         }
 
         interface DeviceAdded {
-            (result: Device): void;
+            (_source: Client, result: Device): void;
         }
 
         interface DeviceChanged {
-            (result: Device): void;
+            (_source: Client, result: Device): void;
         }
 
         interface DeviceRemoved {
-            (result: Device): void;
+            (_source: Client, result: Device): void;
         }
 
         interface StatusChanged {
-            (object: number): void;
+            (_source: Client, object: number): void;
         }
 
         // Signal signatures
@@ -1132,7 +1132,6 @@ export namespace Fwupd {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -1205,20 +1204,9 @@ export namespace Fwupd {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect_after(signal: 'device-added', callback: (_source: this, result: Device) => void): number;
-        emit(signal: 'device-added', result: Device): void;
-        connect_after(signal: 'device-changed', callback: (_source: this, result: Device) => void): number;
-        emit(signal: 'device-changed', result: Device): void;
-        connect_after(signal: 'device-removed', callback: (_source: this, result: Device) => void): number;
-        emit(signal: 'device-removed', result: Device): void;
-        connect_after(signal: 'status-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'status-changed', object: number): void;
 
         // Virtual methods
 
@@ -3320,7 +3308,6 @@ export namespace Fwupd {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -3348,6 +3335,12 @@ export namespace Fwupd {
         _init(...args: any[]): void;
 
         static ['new'](): Device;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3841,7 +3834,6 @@ export namespace Fwupd {
 
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -3857,6 +3849,12 @@ export namespace Fwupd {
         _init(...args: any[]): void;
 
         static ['new'](): Plugin;
+
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3942,7 +3940,6 @@ export namespace Fwupd {
 
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
-        declare static readonly __signalSignatures: Release.SignalSignatures;
 
         // Constructors
 
@@ -3951,6 +3948,18 @@ export namespace Fwupd {
         _init(...args: any[]): void;
 
         static ['new'](): Release;
+
+        // Signals
+
+        connect<K extends keyof Release.SignalSignatures>(signal: K, callback: Release.SignalSignatures[K]): number;
+        connect_after<K extends keyof Release.SignalSignatures>(
+            signal: K,
+            callback: Release.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Release.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Release.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4372,7 +4381,6 @@ export namespace Fwupd {
 
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
-        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Properties
 
@@ -4426,6 +4434,12 @@ export namespace Fwupd {
         _init(...args: any[]): void;
 
         static ['new'](): Remote;
+
+        // Signals
+
+        connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4652,7 +4666,6 @@ export namespace Fwupd {
 
     class SecurityAttr extends GObject.Object {
         static $gtype: GObject.GType<SecurityAttr>;
-        declare static readonly __signalSignatures: SecurityAttr.SignalSignatures;
 
         // Constructors
 
@@ -4661,6 +4674,21 @@ export namespace Fwupd {
         _init(...args: any[]): void;
 
         static ['new'](appstream_id?: string | null): SecurityAttr;
+
+        // Signals
+
+        connect<K extends keyof SecurityAttr.SignalSignatures>(
+            signal: K,
+            callback: SecurityAttr.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecurityAttr.SignalSignatures>(
+            signal: K,
+            callback: SecurityAttr.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecurityAttr.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecurityAttr.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

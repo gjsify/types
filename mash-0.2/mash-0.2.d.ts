@@ -117,7 +117,6 @@ export namespace Mash {
      */
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
-        declare static readonly __signalSignatures: Data.SignalSignatures;
 
         // Constructors
 
@@ -126,6 +125,12 @@ export namespace Mash {
         _init(...args: any[]): void;
 
         static ['new'](): Data;
+
+        // Signals
+
+        connect<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: Parameters<Data.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -179,13 +184,27 @@ export namespace Mash {
      */
     abstract class DataLoader extends GObject.Object {
         static $gtype: GObject.GType<DataLoader>;
-        declare static readonly __signalSignatures: DataLoader.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DataLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataLoader.SignalSignatures>(
+            signal: K,
+            callback: DataLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataLoader.SignalSignatures>(
+            signal: K,
+            callback: DataLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataLoader.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -234,7 +253,6 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<DirectionalLight>;
-        declare static readonly __signalSignatures: DirectionalLight.SignalSignatures;
 
         // Constructors
 
@@ -243,6 +261,21 @@ export namespace Mash {
         _init(...args: any[]): void;
 
         static ['new'](): DirectionalLight;
+
+        // Signals
+
+        connect<K extends keyof DirectionalLight.SignalSignatures>(
+            signal: K,
+            callback: DirectionalLight.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectionalLight.SignalSignatures>(
+            signal: K,
+            callback: DirectionalLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectionalLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectionalLight.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -712,7 +745,6 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Light>;
-        declare static readonly __signalSignatures: Light.SignalSignatures;
 
         // Properties
 
@@ -728,6 +760,12 @@ export namespace Mash {
         constructor(properties?: Partial<Light.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        connect_after<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        emit<K extends keyof Light.SignalSignatures>(signal: K, ...args: Parameters<Light.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -1940,7 +1978,6 @@ export namespace Mash {
      */
     class LightSet extends GObject.Object {
         static $gtype: GObject.GType<LightSet>;
-        declare static readonly __signalSignatures: LightSet.SignalSignatures;
 
         // Constructors
 
@@ -1949,6 +1986,18 @@ export namespace Mash {
         _init(...args: any[]): void;
 
         static ['new'](): LightSet;
+
+        // Signals
+
+        connect<K extends keyof LightSet.SignalSignatures>(signal: K, callback: LightSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof LightSet.SignalSignatures>(
+            signal: K,
+            callback: LightSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LightSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LightSet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1994,7 +2043,6 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Model>;
-        declare static readonly __signalSignatures: Model.SignalSignatures;
 
         // Properties
 
@@ -2018,6 +2066,12 @@ export namespace Mash {
         static ['new'](): Model;
 
         static new_from_file(flags: DataFlags, filename: string): Model;
+
+        // Signals
+
+        connect<K extends keyof Model.SignalSignatures>(signal: K, callback: Model.SignalSignatures[K]): number;
+        connect_after<K extends keyof Model.SignalSignatures>(signal: K, callback: Model.SignalSignatures[K]): number;
+        emit<K extends keyof Model.SignalSignatures>(signal: K, ...args: Parameters<Model.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2965,13 +3019,24 @@ export namespace Mash {
 
     class PlyLoader extends Data {
         static $gtype: GObject.GType<PlyLoader>;
-        declare static readonly __signalSignatures: PlyLoader.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PlyLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlyLoader.SignalSignatures>(signal: K, callback: PlyLoader.SignalSignatures[K]): number;
+        connect_after<K extends keyof PlyLoader.SignalSignatures>(
+            signal: K,
+            callback: PlyLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlyLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlyLoader.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PointLight {
@@ -3003,7 +3068,6 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<PointLight>;
-        declare static readonly __signalSignatures: PointLight.SignalSignatures;
 
         // Properties
 
@@ -3027,6 +3091,21 @@ export namespace Mash {
         _init(...args: any[]): void;
 
         static ['new'](): PointLight;
+
+        // Signals
+
+        connect<K extends keyof PointLight.SignalSignatures>(
+            signal: K,
+            callback: PointLight.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PointLight.SignalSignatures>(
+            signal: K,
+            callback: PointLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PointLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PointLight.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3526,7 +3605,6 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<SpotLight>;
-        declare static readonly __signalSignatures: SpotLight.SignalSignatures;
 
         // Properties
 
@@ -3546,6 +3624,18 @@ export namespace Mash {
         _init(...args: any[]): void;
 
         static ['new'](): SpotLight;
+
+        // Signals
+
+        connect<K extends keyof SpotLight.SignalSignatures>(signal: K, callback: SpotLight.SignalSignatures[K]): number;
+        connect_after<K extends keyof SpotLight.SignalSignatures>(
+            signal: K,
+            callback: SpotLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpotLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpotLight.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

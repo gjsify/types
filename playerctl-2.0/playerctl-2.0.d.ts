@@ -103,43 +103,43 @@ export namespace Playerctl {
         // Signal callback interfaces
 
         interface Exit {
-            (): void;
+            (_source: Player): void;
         }
 
         interface LoopStatus {
-            (loop_status: LoopStatus): void;
+            (_source: Player, loop_status: LoopStatus): void;
         }
 
         interface Metadata {
-            (metadata: GLib.Variant): void;
+            (_source: Player, metadata: GLib.Variant): void;
         }
 
         interface Pause {
-            (): void;
+            (_source: Player): void;
         }
 
         interface Play {
-            (): void;
+            (_source: Player): void;
         }
 
         interface PlaybackStatus {
-            (playback_status: PlaybackStatus): void;
+            (_source: Player, playback_status: PlaybackStatus): void;
         }
 
         interface Seeked {
-            (position: number): void;
+            (_source: Player, position: number): void;
         }
 
         interface Shuffle {
-            (shuffle_status: boolean): void;
+            (_source: Player, shuffle_status: boolean): void;
         }
 
         interface Stop {
-            (): void;
+            (_source: Player): void;
         }
 
         interface Volume {
-            (volume: number): void;
+            (_source: Player, volume: number): void;
         }
 
         // Signal signatures
@@ -190,7 +190,6 @@ export namespace Playerctl {
 
     class Player extends GObject.Object {
         static $gtype: GObject.GType<Player>;
-        declare static readonly __signalSignatures: Player.SignalSignatures;
 
         // Properties
 
@@ -242,42 +241,6 @@ export namespace Playerctl {
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'exit', callback: (_source: this) => void): number;
-        connect_after(signal: 'exit', callback: (_source: this) => void): number;
-        emit(signal: 'exit'): void;
-        connect(signal: 'loop-status', callback: (_source: this, loop_status: LoopStatus) => void): number;
-        connect_after(signal: 'loop-status', callback: (_source: this, loop_status: LoopStatus) => void): number;
-        emit(signal: 'loop-status', loop_status: LoopStatus): void;
-        connect(signal: 'metadata', callback: (_source: this, metadata: GLib.Variant) => void): number;
-        connect_after(signal: 'metadata', callback: (_source: this, metadata: GLib.Variant) => void): number;
-        emit(signal: 'metadata', metadata: GLib.Variant): void;
-        connect(signal: 'pause', callback: (_source: this) => void): number;
-        connect_after(signal: 'pause', callback: (_source: this) => void): number;
-        emit(signal: 'pause'): void;
-        connect(signal: 'play', callback: (_source: this) => void): number;
-        connect_after(signal: 'play', callback: (_source: this) => void): number;
-        emit(signal: 'play'): void;
-        connect(signal: 'playback-status', callback: (_source: this, playback_status: PlaybackStatus) => void): number;
-        connect_after(
-            signal: 'playback-status',
-            callback: (_source: this, playback_status: PlaybackStatus) => void,
-        ): number;
-        emit(signal: 'playback-status', playback_status: PlaybackStatus): void;
-        connect(signal: 'seeked', callback: (_source: this, position: number) => void): number;
-        connect_after(signal: 'seeked', callback: (_source: this, position: number) => void): number;
-        emit(signal: 'seeked', position: number): void;
-        connect(signal: 'shuffle', callback: (_source: this, shuffle_status: boolean) => void): number;
-        connect_after(signal: 'shuffle', callback: (_source: this, shuffle_status: boolean) => void): number;
-        emit(signal: 'shuffle', shuffle_status: boolean): void;
-        connect(signal: 'stop', callback: (_source: this) => void): number;
-        connect_after(signal: 'stop', callback: (_source: this) => void): number;
-        emit(signal: 'stop'): void;
-        connect(signal: 'volume', callback: (_source: this, volume: number) => void): number;
-        connect_after(signal: 'volume', callback: (_source: this, volume: number) => void): number;
-        emit(signal: 'volume', volume: number): void;
 
         // Methods
 
@@ -379,19 +342,19 @@ export namespace Playerctl {
         // Signal callback interfaces
 
         interface NameAppeared {
-            (name: PlayerName): void;
+            (_source: PlayerManager, name: PlayerName): void;
         }
 
         interface NameVanished {
-            (name: PlayerName): void;
+            (_source: PlayerManager, name: PlayerName): void;
         }
 
         interface PlayerAppeared {
-            (player: Player): void;
+            (_source: PlayerManager, player: Player): void;
         }
 
         interface PlayerVanished {
-            (player: Player): void;
+            (_source: PlayerManager, player: Player): void;
         }
 
         // Signal signatures
@@ -413,7 +376,6 @@ export namespace Playerctl {
 
     class PlayerManager extends GObject.Object {
         static $gtype: GObject.GType<PlayerManager>;
-        declare static readonly __signalSignatures: PlayerManager.SignalSignatures;
 
         // Properties
 
@@ -452,21 +414,6 @@ export namespace Playerctl {
             signal: K,
             ...args: Parameters<PlayerManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'name-appeared', callback: (_source: this, name: PlayerName) => void): number;
-        connect_after(signal: 'name-appeared', callback: (_source: this, name: PlayerName) => void): number;
-        emit(signal: 'name-appeared', name: PlayerName): void;
-        connect(signal: 'name-vanished', callback: (_source: this, name: PlayerName) => void): number;
-        connect_after(signal: 'name-vanished', callback: (_source: this, name: PlayerName) => void): number;
-        emit(signal: 'name-vanished', name: PlayerName): void;
-        connect(signal: 'player-appeared', callback: (_source: this, player: Player) => void): number;
-        connect_after(signal: 'player-appeared', callback: (_source: this, player: Player) => void): number;
-        emit(signal: 'player-appeared', player: Player): void;
-        connect(signal: 'player-vanished', callback: (_source: this, player: Player) => void): number;
-        connect_after(signal: 'player-vanished', callback: (_source: this, player: Player) => void): number;
-        emit(signal: 'player-vanished', player: Player): void;
 
         // Methods
 

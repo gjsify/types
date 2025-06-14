@@ -93,7 +93,6 @@ export namespace GoVirt {
 
     class Proxy extends Rest.Proxy {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -111,6 +110,12 @@ export namespace GoVirt {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): Proxy;
+
+        // Signals
+
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -163,7 +168,6 @@ export namespace GoVirt {
 
     class Vm extends GObject.Object {
         static $gtype: GObject.GType<Vm>;
-        declare static readonly __signalSignatures: Vm.SignalSignatures;
 
         // Properties
 
@@ -185,6 +189,12 @@ export namespace GoVirt {
         _init(...args: any[]): void;
 
         static ['new'](): Vm;
+
+        // Signals
+
+        connect<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
+        connect_after<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
+        emit<K extends keyof Vm.SignalSignatures>(signal: K, ...args: Parameters<Vm.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -238,7 +248,6 @@ export namespace GoVirt {
 
     class VmDisplay extends GObject.Object {
         static $gtype: GObject.GType<VmDisplay>;
-        declare static readonly __signalSignatures: VmDisplay.SignalSignatures;
 
         // Properties
 
@@ -268,6 +277,18 @@ export namespace GoVirt {
         _init(...args: any[]): void;
 
         static ['new'](): VmDisplay;
+
+        // Signals
+
+        connect<K extends keyof VmDisplay.SignalSignatures>(signal: K, callback: VmDisplay.SignalSignatures[K]): number;
+        connect_after<K extends keyof VmDisplay.SignalSignatures>(
+            signal: K,
+            callback: VmDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VmDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VmDisplay.SignalSignatures[K]>
+        ): void;
     }
 
     type ProxyClass = typeof Proxy;

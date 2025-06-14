@@ -244,7 +244,6 @@ export namespace Jcat {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
-        declare static readonly __signalSignatures: Blob.SignalSignatures;
 
         // Constructors
 
@@ -257,6 +256,12 @@ export namespace Jcat {
         static new_full(kind: BlobKind, data: GLib.Bytes | Uint8Array, flags: BlobFlags): Blob;
 
         static new_utf8(kind: BlobKind, data: string): Blob;
+
+        // Signals
+
+        connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -343,7 +348,6 @@ export namespace Jcat {
 
     class BtCheckpoint extends GObject.Object {
         static $gtype: GObject.GType<BtCheckpoint>;
-        declare static readonly __signalSignatures: BtCheckpoint.SignalSignatures;
 
         // Constructors
 
@@ -352,6 +356,21 @@ export namespace Jcat {
         _init(...args: any[]): void;
 
         static ['new'](blob: GLib.Bytes | Uint8Array): BtCheckpoint;
+
+        // Signals
+
+        connect<K extends keyof BtCheckpoint.SignalSignatures>(
+            signal: K,
+            callback: BtCheckpoint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BtCheckpoint.SignalSignatures>(
+            signal: K,
+            callback: BtCheckpoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BtCheckpoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BtCheckpoint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -409,7 +428,6 @@ export namespace Jcat {
 
     class BtVerifier extends GObject.Object {
         static $gtype: GObject.GType<BtVerifier>;
-        declare static readonly __signalSignatures: BtVerifier.SignalSignatures;
 
         // Constructors
 
@@ -418,6 +436,21 @@ export namespace Jcat {
         _init(...args: any[]): void;
 
         static ['new'](blob: GLib.Bytes | Uint8Array): BtVerifier;
+
+        // Signals
+
+        connect<K extends keyof BtVerifier.SignalSignatures>(
+            signal: K,
+            callback: BtVerifier.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BtVerifier.SignalSignatures>(
+            signal: K,
+            callback: BtVerifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BtVerifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BtVerifier.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -459,7 +492,6 @@ export namespace Jcat {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -468,6 +500,18 @@ export namespace Jcat {
         _init(...args: any[]): void;
 
         static ['new'](): Context;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -558,7 +602,6 @@ export namespace Jcat {
 
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
-        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -573,6 +616,12 @@ export namespace Jcat {
         constructor(properties?: Partial<Engine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -701,7 +750,6 @@ export namespace Jcat {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
-        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Constructors
 
@@ -710,6 +758,12 @@ export namespace Jcat {
         _init(...args: any[]): void;
 
         static ['new'](): File;
+
+        // Signals
+
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -816,7 +870,6 @@ export namespace Jcat {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
-        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Constructors
 
@@ -825,6 +878,12 @@ export namespace Jcat {
         _init(...args: any[]): void;
 
         static ['new'](id: string): Item;
+
+        // Signals
+
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -900,7 +959,6 @@ export namespace Jcat {
 
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
-        declare static readonly __signalSignatures: Result.SignalSignatures;
 
         // Properties
 
@@ -915,6 +973,12 @@ export namespace Jcat {
         constructor(properties?: Partial<Result.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: Parameters<Result.SignalSignatures[K]>): void;
 
         // Methods
 

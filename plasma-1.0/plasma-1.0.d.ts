@@ -35,7 +35,6 @@ export namespace Plasma {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -48,6 +47,12 @@ export namespace Plasma {
         _init(...args: any[]): void;
 
         static ['new'](store_socket_name: string, options?: ClientOptions | null): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -72,7 +77,6 @@ export namespace Plasma {
 
     class ClientCreateOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientCreateOptions>;
-        declare static readonly __signalSignatures: ClientCreateOptions.SignalSignatures;
 
         // Properties
 
@@ -88,6 +92,21 @@ export namespace Plasma {
         _init(...args: any[]): void;
 
         static ['new'](): ClientCreateOptions;
+
+        // Signals
+
+        connect<K extends keyof ClientCreateOptions.SignalSignatures>(
+            signal: K,
+            callback: ClientCreateOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientCreateOptions.SignalSignatures>(
+            signal: K,
+            callback: ClientCreateOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientCreateOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientCreateOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -109,7 +128,6 @@ export namespace Plasma {
 
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
-        declare static readonly __signalSignatures: ClientOptions.SignalSignatures;
 
         // Properties
 
@@ -125,6 +143,21 @@ export namespace Plasma {
         _init(...args: any[]): void;
 
         static ['new'](): ClientOptions;
+
+        // Signals
+
+        connect<K extends keyof ClientOptions.SignalSignatures>(
+            signal: K,
+            callback: ClientOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientOptions.SignalSignatures>(
+            signal: K,
+            callback: ClientOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -143,13 +176,27 @@ export namespace Plasma {
 
     class CreatedObject extends Object {
         static $gtype: GObject.GType<CreatedObject>;
-        declare static readonly __signalSignatures: CreatedObject.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CreatedObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CreatedObject.SignalSignatures>(
+            signal: K,
+            callback: CreatedObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CreatedObject.SignalSignatures>(
+            signal: K,
+            callback: CreatedObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CreatedObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CreatedObject.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -189,7 +236,6 @@ export namespace Plasma {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -209,6 +255,12 @@ export namespace Plasma {
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
     }
 
     namespace ObjectID {
@@ -222,7 +274,6 @@ export namespace Plasma {
 
     class ObjectID extends GObject.Object {
         static $gtype: GObject.GType<ObjectID>;
-        declare static readonly __signalSignatures: ObjectID.SignalSignatures;
 
         // Constructors
 
@@ -231,6 +282,18 @@ export namespace Plasma {
         _init(...args: any[]): void;
 
         static ['new'](id: Uint8Array | string): ObjectID;
+
+        // Signals
+
+        connect<K extends keyof ObjectID.SignalSignatures>(signal: K, callback: ObjectID.SignalSignatures[K]): number;
+        connect_after<K extends keyof ObjectID.SignalSignatures>(
+            signal: K,
+            callback: ObjectID.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectID.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectID.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -249,13 +312,27 @@ export namespace Plasma {
 
     class ReferredObject extends Object {
         static $gtype: GObject.GType<ReferredObject>;
-        declare static readonly __signalSignatures: ReferredObject.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ReferredObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ReferredObject.SignalSignatures>(
+            signal: K,
+            callback: ReferredObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ReferredObject.SignalSignatures>(
+            signal: K,
+            callback: ReferredObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReferredObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReferredObject.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

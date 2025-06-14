@@ -1349,7 +1349,6 @@ export namespace GES {
      */
     class Asset extends GObject.Object implements MetaContainer, Gio.AsyncInitable<Asset>, Gio.Initable {
         static $gtype: GObject.GType<Asset>;
-        declare static readonly __signalSignatures: Asset.SignalSignatures;
 
         // Properties
 
@@ -1419,6 +1418,12 @@ export namespace GES {
         constructor(properties?: Partial<Asset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
+        connect_after<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
+        emit<K extends keyof Asset.SignalSignatures>(signal: K, ...args: Parameters<Asset.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2763,13 +2768,27 @@ export namespace GES {
      */
     abstract class AudioSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioSource>;
-        declare static readonly __signalSignatures: AudioSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AudioSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioSource.SignalSignatures>(
+            signal: K,
+            callback: AudioSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioSource.SignalSignatures>(
+            signal: K,
+            callback: AudioSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioSource.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3232,13 +3251,27 @@ export namespace GES {
      */
     class AudioTestSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTestSource>;
-        declare static readonly __signalSignatures: AudioTestSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AudioTestSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioTestSource.SignalSignatures>(
+            signal: K,
+            callback: AudioTestSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioTestSource.SignalSignatures>(
+            signal: K,
+            callback: AudioTestSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioTestSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioTestSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3739,7 +3772,6 @@ export namespace GES {
      */
     class AudioTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<AudioTrack>;
-        declare static readonly __signalSignatures: AudioTrack.SignalSignatures;
 
         // Constructors
 
@@ -3748,6 +3780,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): AudioTrack;
+
+        // Signals
+
+        connect<K extends keyof AudioTrack.SignalSignatures>(
+            signal: K,
+            callback: AudioTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioTrack.SignalSignatures>(
+            signal: K,
+            callback: AudioTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioTrack.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -4580,7 +4627,6 @@ export namespace GES {
 
     class AudioTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTransition>;
-        declare static readonly __signalSignatures: AudioTransition.SignalSignatures;
 
         // Constructors
 
@@ -4589,6 +4635,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): AudioTransition;
+
+        // Signals
+
+        connect<K extends keyof AudioTransition.SignalSignatures>(
+            signal: K,
+            callback: AudioTransition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioTransition.SignalSignatures>(
+            signal: K,
+            callback: AudioTransition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioTransition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioTransition.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5053,7 +5114,6 @@ export namespace GES {
      */
     class AudioUriSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioUriSource>;
-        declare static readonly __signalSignatures: AudioUriSource.SignalSignatures;
 
         // Properties
 
@@ -5067,6 +5127,21 @@ export namespace GES {
         constructor(properties?: Partial<AudioUriSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioUriSource.SignalSignatures>(
+            signal: K,
+            callback: AudioUriSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioUriSource.SignalSignatures>(
+            signal: K,
+            callback: AudioUriSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioUriSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioUriSource.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5575,13 +5650,27 @@ export namespace GES {
      */
     abstract class BaseEffect extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffect>;
-        declare static readonly __signalSignatures: BaseEffect.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BaseEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseEffect.SignalSignatures>(
+            signal: K,
+            callback: BaseEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseEffect.SignalSignatures>(
+            signal: K,
+            callback: BaseEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseEffect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6107,13 +6196,27 @@ export namespace GES {
      */
     abstract class BaseEffectClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffectClip>;
-        declare static readonly __signalSignatures: BaseEffectClip.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BaseEffectClip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseEffectClip.SignalSignatures>(
+            signal: K,
+            callback: BaseEffectClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseEffectClip.SignalSignatures>(
+            signal: K,
+            callback: BaseEffectClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseEffectClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseEffectClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6571,13 +6674,27 @@ export namespace GES {
 
     abstract class BaseTransitionClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseTransitionClip>;
-        declare static readonly __signalSignatures: BaseTransitionClip.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BaseTransitionClip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseTransitionClip.SignalSignatures>(
+            signal: K,
+            callback: BaseTransitionClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseTransitionClip.SignalSignatures>(
+            signal: K,
+            callback: BaseTransitionClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseTransitionClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseTransitionClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7032,13 +7149,27 @@ export namespace GES {
 
     abstract class BaseXmlFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<BaseXmlFormatter>;
-        declare static readonly __signalSignatures: BaseXmlFormatter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BaseXmlFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseXmlFormatter.SignalSignatures>(
+            signal: K,
+            callback: BaseXmlFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseXmlFormatter.SignalSignatures>(
+            signal: K,
+            callback: BaseXmlFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseXmlFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseXmlFormatter.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7300,7 +7431,6 @@ export namespace GES {
      */
     abstract class Clip extends Container implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Clip>;
-        declare static readonly __signalSignatures: Clip.SignalSignatures;
 
         // Properties
 
@@ -7368,6 +7498,12 @@ export namespace GES {
         constructor(properties?: Partial<Clip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
+        emit<K extends keyof Clip.SignalSignatures>(signal: K, ...args: Parameters<Clip.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -8181,7 +8317,6 @@ export namespace GES {
      */
     class ClipAsset extends Asset implements MetaContainer, Gio.AsyncInitable<ClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<ClipAsset>;
-        declare static readonly __signalSignatures: ClipAsset.SignalSignatures;
 
         // Properties
 
@@ -8201,6 +8336,18 @@ export namespace GES {
         constructor(properties?: Partial<ClipAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClipAsset.SignalSignatures>(signal: K, callback: ClipAsset.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClipAsset.SignalSignatures>(
+            signal: K,
+            callback: ClipAsset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClipAsset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClipAsset.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9344,13 +9491,27 @@ export namespace GES {
 
     class CommandLineFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<CommandLineFormatter>;
-        declare static readonly __signalSignatures: CommandLineFormatter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CommandLineFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CommandLineFormatter.SignalSignatures>(
+            signal: K,
+            callback: CommandLineFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandLineFormatter.SignalSignatures>(
+            signal: K,
+            callback: CommandLineFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandLineFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandLineFormatter.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9428,11 +9589,11 @@ export namespace GES {
         // Signal callback interfaces
 
         interface ChildAdded {
-            (element: TimelineElement): void;
+            (_source: Container, element: TimelineElement): void;
         }
 
         interface ChildRemoved {
-            (element: TimelineElement): void;
+            (_source: Container, element: TimelineElement): void;
         }
 
         // Signal signatures
@@ -9463,7 +9624,6 @@ export namespace GES {
      */
     abstract class Container extends TimelineElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Container>;
-        declare static readonly __signalSignatures: Container.SignalSignatures;
 
         // Properties
 
@@ -9498,15 +9658,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<Container.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'child-added', callback: (_source: this, element: TimelineElement) => void): number;
-        connect_after(signal: 'child-added', callback: (_source: this, element: TimelineElement) => void): number;
-        emit(signal: 'child-added', element: TimelineElement): void;
-        connect(signal: 'child-removed', callback: (_source: this, element: TimelineElement) => void): number;
-        connect_after(signal: 'child-removed', callback: (_source: this, element: TimelineElement) => void): number;
-        emit(signal: 'child-removed', element: TimelineElement): void;
 
         // Static methods
 
@@ -10519,15 +10670,15 @@ export namespace GES {
         // Signal callback interfaces
 
         interface Discovered {
-            (info: GstPbutils.DiscovererInfo, error?: GLib.Error | null): void;
+            (_source: DiscovererManager, info: GstPbutils.DiscovererInfo, error?: GLib.Error | null): void;
         }
 
         interface LoadSerializedInfo {
-            (uri: string): GstPbutils.DiscovererInfo | null;
+            (_source: DiscovererManager, uri: string): GstPbutils.DiscovererInfo | null;
         }
 
         interface SourceSetup {
-            (source: Gst.Element): void;
+            (_source: DiscovererManager, source: Gst.Element): void;
         }
 
         // Signal signatures
@@ -10548,7 +10699,6 @@ export namespace GES {
 
     class DiscovererManager extends GObject.Object {
         static $gtype: GObject.GType<DiscovererManager>;
-        declare static readonly __signalSignatures: DiscovererManager.SignalSignatures;
 
         // Properties
 
@@ -10582,30 +10732,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<DiscovererManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'discovered',
-            callback: (_source: this, info: GstPbutils.DiscovererInfo, error: GLib.Error | null) => void,
-        ): number;
-        connect_after(
-            signal: 'discovered',
-            callback: (_source: this, info: GstPbutils.DiscovererInfo, error: GLib.Error | null) => void,
-        ): number;
-        emit(signal: 'discovered', info: GstPbutils.DiscovererInfo, error?: GLib.Error | null): void;
-        connect(
-            signal: 'load-serialized-info',
-            callback: (_source: this, uri: string) => GstPbutils.DiscovererInfo | null,
-        ): number;
-        connect_after(
-            signal: 'load-serialized-info',
-            callback: (_source: this, uri: string) => GstPbutils.DiscovererInfo | null,
-        ): number;
-        emit(signal: 'load-serialized-info', uri: string): void;
-        connect(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
-        connect_after(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
-        emit(signal: 'source-setup', source: Gst.Element): void;
 
         // Static methods
 
@@ -10667,7 +10793,6 @@ export namespace GES {
      */
     class Effect extends BaseEffect implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Effect>;
-        declare static readonly __signalSignatures: Effect.SignalSignatures;
 
         // Properties
 
@@ -10693,6 +10818,12 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](bin_description: string): Effect;
+
+        // Signals
+
+        connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -11159,13 +11290,27 @@ export namespace GES {
      */
     class EffectAsset extends TrackElementAsset implements MetaContainer, Gio.AsyncInitable<EffectAsset>, Gio.Initable {
         static $gtype: GObject.GType<EffectAsset>;
-        declare static readonly __signalSignatures: EffectAsset.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<EffectAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EffectAsset.SignalSignatures>(
+            signal: K,
+            callback: EffectAsset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EffectAsset.SignalSignatures>(
+            signal: K,
+            callback: EffectAsset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EffectAsset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EffectAsset.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -11837,7 +11982,6 @@ export namespace GES {
      */
     class EffectClip extends BaseEffectClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<EffectClip>;
-        declare static readonly __signalSignatures: EffectClip.SignalSignatures;
 
         // Properties
 
@@ -11877,6 +12021,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](video_bin_description?: string | null, audio_bin_description?: string | null): EffectClip;
+
+        // Signals
+
+        connect<K extends keyof EffectClip.SignalSignatures>(
+            signal: K,
+            callback: EffectClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EffectClip.SignalSignatures>(
+            signal: K,
+            callback: EffectClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EffectClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EffectClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -12334,13 +12493,24 @@ export namespace GES {
      */
     abstract class Formatter extends GObject.InitiallyUnowned implements Extractable {
         static $gtype: GObject.GType<Formatter>;
-        declare static readonly __signalSignatures: Formatter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Formatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Formatter.SignalSignatures>(signal: K, callback: Formatter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Formatter.SignalSignatures>(
+            signal: K,
+            callback: Formatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Formatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Formatter.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12528,7 +12698,6 @@ export namespace GES {
      */
     class Group extends Container implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Group>;
-        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Properties
 
@@ -12587,6 +12756,12 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): Group;
+
+        // Signals
+
+        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -13051,7 +13226,6 @@ export namespace GES {
      */
     class ImageSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<ImageSource>;
-        declare static readonly __signalSignatures: ImageSource.SignalSignatures;
 
         // Properties
 
@@ -13065,6 +13239,21 @@ export namespace GES {
         constructor(properties?: Partial<ImageSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ImageSource.SignalSignatures>(
+            signal: K,
+            callback: ImageSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageSource.SignalSignatures>(
+            signal: K,
+            callback: ImageSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageSource.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -13512,15 +13701,15 @@ export namespace GES {
         // Signal callback interfaces
 
         interface ActiveChanged {
-            (active: boolean, tracks: Track[]): void;
+            (_source: Layer, active: boolean, tracks: Track[]): void;
         }
 
         interface ClipAdded {
-            (clip: Clip): void;
+            (_source: Layer, clip: Clip): void;
         }
 
         interface ClipRemoved {
-            (clip: Clip): void;
+            (_source: Layer, clip: Clip): void;
         }
 
         // Signal signatures
@@ -13564,7 +13753,6 @@ export namespace GES {
      */
     class Layer extends GObject.InitiallyUnowned implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Layer>;
-        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Properties
 
@@ -13621,21 +13809,6 @@ export namespace GES {
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-changed', callback: (_source: this, active: boolean, tracks: Track[]) => void): number;
-        connect_after(
-            signal: 'active-changed',
-            callback: (_source: this, active: boolean, tracks: Track[]) => void,
-        ): number;
-        emit(signal: 'active-changed', active: boolean, tracks: Track[]): void;
-        connect(signal: 'clip-added', callback: (_source: this, clip: Clip) => void): number;
-        connect_after(signal: 'clip-added', callback: (_source: this, clip: Clip) => void): number;
-        emit(signal: 'clip-added', clip: Clip): void;
-        connect(signal: 'clip-removed', callback: (_source: this, clip: Clip) => void): number;
-        connect_after(signal: 'clip-removed', callback: (_source: this, clip: Clip) => void): number;
-        emit(signal: 'clip-removed', clip: Clip): void;
 
         // Virtual methods
 
@@ -14668,7 +14841,6 @@ export namespace GES {
      */
     class Marker extends GObject.Object implements MetaContainer {
         static $gtype: GObject.GType<Marker>;
-        declare static readonly __signalSignatures: Marker.SignalSignatures;
 
         // Properties
 
@@ -14682,6 +14854,12 @@ export namespace GES {
         constructor(properties?: Partial<Marker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -15500,15 +15678,15 @@ export namespace GES {
         // Signal callback interfaces
 
         interface MarkerAdded {
-            (position: number, marker: Marker): void;
+            (_source: MarkerList, position: number, marker: Marker): void;
         }
 
         interface MarkerMoved {
-            (previous_position: number, new_position: number, marker: Marker): void;
+            (_source: MarkerList, previous_position: number, new_position: number, marker: Marker): void;
         }
 
         interface MarkerRemoved {
-            (marker: Marker): void;
+            (_source: MarkerList, marker: Marker): void;
         }
 
         // Signal signatures
@@ -15530,7 +15708,6 @@ export namespace GES {
      */
     class MarkerList extends GObject.Object {
         static $gtype: GObject.GType<MarkerList>;
-        declare static readonly __signalSignatures: MarkerList.SignalSignatures;
 
         // Properties
 
@@ -15562,27 +15739,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<MarkerList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'marker-added', callback: (_source: this, position: number, marker: Marker) => void): number;
-        connect_after(
-            signal: 'marker-added',
-            callback: (_source: this, position: number, marker: Marker) => void,
-        ): number;
-        emit(signal: 'marker-added', position: number, marker: Marker): void;
-        connect(
-            signal: 'marker-moved',
-            callback: (_source: this, previous_position: number, new_position: number, marker: Marker) => void,
-        ): number;
-        connect_after(
-            signal: 'marker-moved',
-            callback: (_source: this, previous_position: number, new_position: number, marker: Marker) => void,
-        ): number;
-        emit(signal: 'marker-moved', previous_position: number, new_position: number, marker: Marker): void;
-        connect(signal: 'marker-removed', callback: (_source: this, marker: Marker) => void): number;
-        connect_after(signal: 'marker-removed', callback: (_source: this, marker: Marker) => void): number;
-        emit(signal: 'marker-removed', marker: Marker): void;
 
         // Methods
 
@@ -15629,7 +15785,6 @@ export namespace GES {
      */
     class MultiFileSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<MultiFileSource>;
-        declare static readonly __signalSignatures: MultiFileSource.SignalSignatures;
 
         // Properties
 
@@ -15654,6 +15809,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): MultiFileSource;
+
+        // Signals
+
+        connect<K extends keyof MultiFileSource.SignalSignatures>(
+            signal: K,
+            callback: MultiFileSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultiFileSource.SignalSignatures>(
+            signal: K,
+            callback: MultiFileSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultiFileSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultiFileSource.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -16114,13 +16284,24 @@ export namespace GES {
      */
     abstract class Operation extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Operation>;
-        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: Operation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Operation.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -16581,13 +16762,27 @@ export namespace GES {
      */
     abstract class OperationClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OperationClip>;
-        declare static readonly __signalSignatures: OperationClip.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OperationClip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OperationClip.SignalSignatures>(
+            signal: K,
+            callback: OperationClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OperationClip.SignalSignatures>(
+            signal: K,
+            callback: OperationClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OperationClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OperationClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -17053,13 +17248,27 @@ export namespace GES {
      */
     abstract class OverlayClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OverlayClip>;
-        declare static readonly __signalSignatures: OverlayClip.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OverlayClip.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OverlayClip.SignalSignatures>(
+            signal: K,
+            callback: OverlayClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OverlayClip.SignalSignatures>(
+            signal: K,
+            callback: OverlayClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OverlayClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OverlayClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -17541,7 +17750,6 @@ export namespace GES {
      */
     class Pipeline extends Gst.Pipeline implements Gst.ChildProxy, GstVideo.VideoOverlay {
         static $gtype: GObject.GType<Pipeline>;
-        declare static readonly __signalSignatures: Pipeline.SignalSignatures;
 
         // Properties
 
@@ -17622,6 +17830,18 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): Pipeline;
+
+        // Signals
+
+        connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            callback: Pipeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Pipeline.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18267,7 +18487,6 @@ export namespace GES {
      */
     class PitiviFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<PitiviFormatter>;
-        declare static readonly __signalSignatures: PitiviFormatter.SignalSignatures;
 
         // Constructors
 
@@ -18276,6 +18495,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): PitiviFormatter;
+
+        // Signals
+
+        connect<K extends keyof PitiviFormatter.SignalSignatures>(
+            signal: K,
+            callback: PitiviFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PitiviFormatter.SignalSignatures>(
+            signal: K,
+            callback: PitiviFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PitiviFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PitiviFormatter.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -18342,35 +18576,35 @@ export namespace GES {
         // Signal callback interfaces
 
         interface AssetAdded {
-            (asset: Asset): void;
+            (_source: Project, asset: Asset): void;
         }
 
         interface AssetLoading {
-            (asset: Asset): void;
+            (_source: Project, asset: Asset): void;
         }
 
         interface AssetRemoved {
-            (asset: Asset): void;
+            (_source: Project, asset: Asset): void;
         }
 
         interface ErrorLoading {
-            (timeline: Timeline, error: GLib.Error): void;
+            (_source: Project, timeline: Timeline, error: GLib.Error): void;
         }
 
         interface ErrorLoadingAsset {
-            (error: GLib.Error, id: string, extractable_type: GObject.GType): void;
+            (_source: Project, error: GLib.Error, id: string, extractable_type: GObject.GType): void;
         }
 
         interface Loaded {
-            (timeline: Timeline): void;
+            (_source: Project, timeline: Timeline): void;
         }
 
         interface Loading {
-            (timeline: Timeline): void;
+            (_source: Project, timeline: Timeline): void;
         }
 
         interface MissingUri {
-            (error: GLib.Error, wrong_asset: Asset): string | null;
+            (_source: Project, error: GLib.Error, wrong_asset: Asset): string | null;
         }
 
         // Signal signatures
@@ -18439,7 +18673,6 @@ export namespace GES {
      */
     class Project extends Asset implements MetaContainer, Gio.AsyncInitable<Project>, Gio.Initable {
         static $gtype: GObject.GType<Project>;
-        declare static readonly __signalSignatures: Project.SignalSignatures;
 
         // Properties
 
@@ -18464,51 +18697,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<Project.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'asset-added', callback: (_source: this, asset: Asset) => void): number;
-        connect_after(signal: 'asset-added', callback: (_source: this, asset: Asset) => void): number;
-        emit(signal: 'asset-added', asset: Asset): void;
-        connect(signal: 'asset-loading', callback: (_source: this, asset: Asset) => void): number;
-        connect_after(signal: 'asset-loading', callback: (_source: this, asset: Asset) => void): number;
-        emit(signal: 'asset-loading', asset: Asset): void;
-        connect(signal: 'asset-removed', callback: (_source: this, asset: Asset) => void): number;
-        connect_after(signal: 'asset-removed', callback: (_source: this, asset: Asset) => void): number;
-        emit(signal: 'asset-removed', asset: Asset): void;
-        connect(
-            signal: 'error-loading',
-            callback: (_source: this, timeline: Timeline, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'error-loading',
-            callback: (_source: this, timeline: Timeline, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'error-loading', timeline: Timeline, error: GLib.Error): void;
-        connect(
-            signal: 'error-loading-asset',
-            callback: (_source: this, error: GLib.Error, id: string, extractable_type: GObject.GType) => void,
-        ): number;
-        connect_after(
-            signal: 'error-loading-asset',
-            callback: (_source: this, error: GLib.Error, id: string, extractable_type: GObject.GType) => void,
-        ): number;
-        emit(signal: 'error-loading-asset', error: GLib.Error, id: string, extractable_type: GObject.GType): void;
-        connect(signal: 'loaded', callback: (_source: this, timeline: Timeline) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this, timeline: Timeline) => void): number;
-        emit(signal: 'loaded', timeline: Timeline): void;
-        connect(signal: 'loading', callback: (_source: this, timeline: Timeline) => void): number;
-        connect_after(signal: 'loading', callback: (_source: this, timeline: Timeline) => void): number;
-        emit(signal: 'loading', timeline: Timeline): void;
-        connect(
-            signal: 'missing-uri',
-            callback: (_source: this, error: GLib.Error, wrong_asset: Asset) => string | null,
-        ): number;
-        connect_after(
-            signal: 'missing-uri',
-            callback: (_source: this, error: GLib.Error, wrong_asset: Asset) => string | null,
-        ): number;
-        emit(signal: 'missing-uri', error: GLib.Error, wrong_asset: Asset): void;
 
         // Virtual methods
 
@@ -19723,13 +19911,18 @@ export namespace GES {
      */
     class Source extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Source>;
-        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Source.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -20211,7 +20404,6 @@ export namespace GES {
      */
     class SourceClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<SourceClip>;
-        declare static readonly __signalSignatures: SourceClip.SignalSignatures;
 
         // Constructors
 
@@ -20220,6 +20412,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static new_time_overlay(): SourceClip;
+
+        // Signals
+
+        connect<K extends keyof SourceClip.SignalSignatures>(
+            signal: K,
+            callback: SourceClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceClip.SignalSignatures>(
+            signal: K,
+            callback: SourceClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -20681,13 +20888,27 @@ export namespace GES {
      */
     class SourceClipAsset extends ClipAsset implements MetaContainer, Gio.AsyncInitable<SourceClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<SourceClipAsset>;
-        declare static readonly __signalSignatures: SourceClipAsset.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceClipAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceClipAsset.SignalSignatures>(
+            signal: K,
+            callback: SourceClipAsset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceClipAsset.SignalSignatures>(
+            signal: K,
+            callback: SourceClipAsset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceClipAsset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceClipAsset.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -21363,7 +21584,6 @@ export namespace GES {
      */
     class TestClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TestClip>;
-        declare static readonly __signalSignatures: TestClip.SignalSignatures;
 
         // Properties
 
@@ -21397,6 +21617,18 @@ export namespace GES {
         static ['new'](): TestClip;
 
         static new_for_nick(nick: string): TestClip;
+
+        // Signals
+
+        connect<K extends keyof TestClip.SignalSignatures>(signal: K, callback: TestClip.SignalSignatures[K]): number;
+        connect_after<K extends keyof TestClip.SignalSignatures>(
+            signal: K,
+            callback: TestClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TestClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TestClip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21897,7 +22129,6 @@ export namespace GES {
 
     class TextOverlay extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlay>;
-        declare static readonly __signalSignatures: TextOverlay.SignalSignatures;
 
         // Constructors
 
@@ -21906,6 +22137,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): TextOverlay;
+
+        // Signals
+
+        connect<K extends keyof TextOverlay.SignalSignatures>(
+            signal: K,
+            callback: TextOverlay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextOverlay.SignalSignatures>(
+            signal: K,
+            callback: TextOverlay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextOverlay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextOverlay.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22449,7 +22695,6 @@ export namespace GES {
      */
     class TextOverlayClip extends OverlayClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlayClip>;
-        declare static readonly __signalSignatures: TextOverlayClip.SignalSignatures;
 
         // Properties
 
@@ -22501,6 +22746,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): TextOverlayClip;
+
+        // Signals
+
+        connect<K extends keyof TextOverlayClip.SignalSignatures>(
+            signal: K,
+            callback: TextOverlayClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextOverlayClip.SignalSignatures>(
+            signal: K,
+            callback: TextOverlayClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextOverlayClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextOverlayClip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23021,47 +23281,47 @@ export namespace GES {
         // Signal callback interfaces
 
         interface Commited {
-            (): void;
+            (_source: Timeline): void;
         }
 
         interface GroupAdded {
-            (group: Group): void;
+            (_source: Timeline, group: Group): void;
         }
 
         interface GroupRemoved {
-            (group: Group, children: Container[]): void;
+            (_source: Timeline, group: Group, children: Container[]): void;
         }
 
         interface LayerAdded {
-            (layer: Layer): void;
+            (_source: Timeline, layer: Layer): void;
         }
 
         interface LayerRemoved {
-            (layer: Layer): void;
+            (_source: Timeline, layer: Layer): void;
         }
 
         interface SelectElementTrack {
-            (clip: Clip, track_element: TrackElement): Track | null;
+            (_source: Timeline, clip: Clip, track_element: TrackElement): Track | null;
         }
 
         interface SelectTracksForObject {
-            (clip: Clip, track_element: TrackElement): Track[];
+            (_source: Timeline, clip: Clip, track_element: TrackElement): Track[];
         }
 
         interface SnappingEnded {
-            (obj1: TrackElement, obj2: TrackElement, position: number): void;
+            (_source: Timeline, obj1: TrackElement, obj2: TrackElement, position: number): void;
         }
 
         interface SnappingStarted {
-            (obj1: TrackElement, obj2: TrackElement, position: number): void;
+            (_source: Timeline, obj1: TrackElement, obj2: TrackElement, position: number): void;
         }
 
         interface TrackAdded {
-            (track: Track): void;
+            (_source: Timeline, track: Track): void;
         }
 
         interface TrackRemoved {
-            (track: Track): void;
+            (_source: Timeline, track: Track): void;
         }
 
         // Signal signatures
@@ -23203,7 +23463,6 @@ export namespace GES {
      */
     class Timeline extends Gst.Bin implements Extractable, MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<Timeline>;
-        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -23274,72 +23533,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<Timeline.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'commited', callback: (_source: this) => void): number;
-        connect_after(signal: 'commited', callback: (_source: this) => void): number;
-        emit(signal: 'commited'): void;
-        connect(signal: 'group-added', callback: (_source: this, group: Group) => void): number;
-        connect_after(signal: 'group-added', callback: (_source: this, group: Group) => void): number;
-        emit(signal: 'group-added', group: Group): void;
-        connect(
-            signal: 'group-removed',
-            callback: (_source: this, group: Group, children: Container[]) => void,
-        ): number;
-        connect_after(
-            signal: 'group-removed',
-            callback: (_source: this, group: Group, children: Container[]) => void,
-        ): number;
-        emit(signal: 'group-removed', group: Group, children: Container[]): void;
-        connect(signal: 'layer-added', callback: (_source: this, layer: Layer) => void): number;
-        connect_after(signal: 'layer-added', callback: (_source: this, layer: Layer) => void): number;
-        emit(signal: 'layer-added', layer: Layer): void;
-        connect(signal: 'layer-removed', callback: (_source: this, layer: Layer) => void): number;
-        connect_after(signal: 'layer-removed', callback: (_source: this, layer: Layer) => void): number;
-        emit(signal: 'layer-removed', layer: Layer): void;
-        connect(
-            signal: 'select-element-track',
-            callback: (_source: this, clip: Clip, track_element: TrackElement) => Track | null,
-        ): number;
-        connect_after(
-            signal: 'select-element-track',
-            callback: (_source: this, clip: Clip, track_element: TrackElement) => Track | null,
-        ): number;
-        emit(signal: 'select-element-track', clip: Clip, track_element: TrackElement): void;
-        connect(
-            signal: 'select-tracks-for-object',
-            callback: (_source: this, clip: Clip, track_element: TrackElement) => Track[],
-        ): number;
-        connect_after(
-            signal: 'select-tracks-for-object',
-            callback: (_source: this, clip: Clip, track_element: TrackElement) => Track[],
-        ): number;
-        emit(signal: 'select-tracks-for-object', clip: Clip, track_element: TrackElement): void;
-        connect(
-            signal: 'snapping-ended',
-            callback: (_source: this, obj1: TrackElement, obj2: TrackElement, position: number) => void,
-        ): number;
-        connect_after(
-            signal: 'snapping-ended',
-            callback: (_source: this, obj1: TrackElement, obj2: TrackElement, position: number) => void,
-        ): number;
-        emit(signal: 'snapping-ended', obj1: TrackElement, obj2: TrackElement, position: number): void;
-        connect(
-            signal: 'snapping-started',
-            callback: (_source: this, obj1: TrackElement, obj2: TrackElement, position: number) => void,
-        ): number;
-        connect_after(
-            signal: 'snapping-started',
-            callback: (_source: this, obj1: TrackElement, obj2: TrackElement, position: number) => void,
-        ): number;
-        emit(signal: 'snapping-started', obj1: TrackElement, obj2: TrackElement, position: number): void;
-        connect(signal: 'track-added', callback: (_source: this, track: Track) => void): number;
-        connect_after(signal: 'track-added', callback: (_source: this, track: Track) => void): number;
-        emit(signal: 'track-added', track: Track): void;
-        connect(signal: 'track-removed', callback: (_source: this, track: Track) => void): number;
-        connect_after(signal: 'track-removed', callback: (_source: this, track: Track) => void): number;
-        emit(signal: 'track-removed', track: Track): void;
 
         // Virtual methods
 
@@ -24561,15 +24754,15 @@ export namespace GES {
         // Signal callback interfaces
 
         interface ChildPropertyAdded {
-            (prop_object: GObject.Object, prop: GObject.ParamSpec): void;
+            (_source: TimelineElement, prop_object: GObject.Object, prop: GObject.ParamSpec): void;
         }
 
         interface ChildPropertyRemoved {
-            (prop_object: GObject.Object, prop: GObject.ParamSpec): void;
+            (_source: TimelineElement, prop_object: GObject.Object, prop: GObject.ParamSpec): void;
         }
 
         interface DeepNotify {
-            (prop_object: GObject.Object, prop: GObject.ParamSpec): void;
+            (_source: TimelineElement, prop_object: GObject.Object, prop: GObject.ParamSpec): void;
         }
 
         // Signal signatures
@@ -24684,7 +24877,6 @@ export namespace GES {
      */
     abstract class TimelineElement extends GObject.InitiallyUnowned implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TimelineElement>;
-        declare static readonly __signalSignatures: TimelineElement.SignalSignatures;
 
         // Properties
 
@@ -24830,36 +25022,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<TimelineElement.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'child-property-added',
-            callback: (_source: this, prop_object: GObject.Object, prop: GObject.ParamSpec) => void,
-        ): number;
-        connect_after(
-            signal: 'child-property-added',
-            callback: (_source: this, prop_object: GObject.Object, prop: GObject.ParamSpec) => void,
-        ): number;
-        emit(signal: 'child-property-added', prop_object: GObject.Object, prop: GObject.ParamSpec): void;
-        connect(
-            signal: 'child-property-removed',
-            callback: (_source: this, prop_object: GObject.Object, prop: GObject.ParamSpec) => void,
-        ): number;
-        connect_after(
-            signal: 'child-property-removed',
-            callback: (_source: this, prop_object: GObject.Object, prop: GObject.ParamSpec) => void,
-        ): number;
-        emit(signal: 'child-property-removed', prop_object: GObject.Object, prop: GObject.ParamSpec): void;
-        connect(
-            signal: 'deep-notify',
-            callback: (_source: this, prop_object: GObject.Object, prop: GObject.ParamSpec) => void,
-        ): number;
-        connect_after(
-            signal: 'deep-notify',
-            callback: (_source: this, prop_object: GObject.Object, prop: GObject.ParamSpec) => void,
-        ): number;
-        emit(signal: 'deep-notify', prop_object: GObject.Object, prop: GObject.ParamSpec): void;
 
         // Virtual methods
 
@@ -26356,7 +26518,6 @@ export namespace GES {
      */
     class TitleClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleClip>;
-        declare static readonly __signalSignatures: TitleClip.SignalSignatures;
 
         // Properties
 
@@ -26413,6 +26574,18 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): TitleClip;
+
+        // Signals
+
+        connect<K extends keyof TitleClip.SignalSignatures>(signal: K, callback: TitleClip.SignalSignatures[K]): number;
+        connect_after<K extends keyof TitleClip.SignalSignatures>(
+            signal: K,
+            callback: TitleClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TitleClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TitleClip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26957,13 +27130,27 @@ export namespace GES {
      */
     class TitleSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleSource>;
-        declare static readonly __signalSignatures: TitleSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TitleSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TitleSource.SignalSignatures>(
+            signal: K,
+            callback: TitleSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TitleSource.SignalSignatures>(
+            signal: K,
+            callback: TitleSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TitleSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TitleSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27495,15 +27682,15 @@ export namespace GES {
         // Signal callback interfaces
 
         interface Commited {
-            (): void;
+            (_source: Track): void;
         }
 
         interface TrackElementAdded {
-            (effect: TrackElement): void;
+            (_source: Track, effect: TrackElement): void;
         }
 
         interface TrackElementRemoved {
-            (effect: TrackElement): void;
+            (_source: Track, effect: TrackElement): void;
         }
 
         // Signal signatures
@@ -27553,7 +27740,6 @@ export namespace GES {
      */
     class Track extends Gst.Bin implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<Track>;
-        declare static readonly __signalSignatures: Track.SignalSignatures;
 
         // Properties
 
@@ -27662,18 +27848,6 @@ export namespace GES {
         connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
         connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
         emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'commited', callback: (_source: this) => void): number;
-        connect_after(signal: 'commited', callback: (_source: this) => void): number;
-        emit(signal: 'commited'): void;
-        connect(signal: 'track-element-added', callback: (_source: this, effect: TrackElement) => void): number;
-        connect_after(signal: 'track-element-added', callback: (_source: this, effect: TrackElement) => void): number;
-        emit(signal: 'track-element-added', effect: TrackElement): void;
-        connect(signal: 'track-element-removed', callback: (_source: this, effect: TrackElement) => void): number;
-        connect_after(signal: 'track-element-removed', callback: (_source: this, effect: TrackElement) => void): number;
-        emit(signal: 'track-element-removed', effect: TrackElement): void;
 
         // Methods
 
@@ -28689,11 +28863,11 @@ export namespace GES {
         // Signal callback interfaces
 
         interface ControlBindingAdded {
-            (control_binding: Gst.ControlBinding): void;
+            (_source: TrackElement, control_binding: Gst.ControlBinding): void;
         }
 
         interface ControlBindingRemoved {
-            (control_binding: Gst.ControlBinding): void;
+            (_source: TrackElement, control_binding: Gst.ControlBinding): void;
         }
 
         // Signal signatures
@@ -28750,7 +28924,6 @@ export namespace GES {
      */
     abstract class TrackElement extends TimelineElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TrackElement>;
-        declare static readonly __signalSignatures: TrackElement.SignalSignatures;
 
         // Properties
 
@@ -28905,27 +29078,6 @@ export namespace GES {
             signal: K,
             ...args: Parameters<TrackElement.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'control-binding-added',
-            callback: (_source: this, control_binding: Gst.ControlBinding) => void,
-        ): number;
-        connect_after(
-            signal: 'control-binding-added',
-            callback: (_source: this, control_binding: Gst.ControlBinding) => void,
-        ): number;
-        emit(signal: 'control-binding-added', control_binding: Gst.ControlBinding): void;
-        connect(
-            signal: 'control-binding-removed',
-            callback: (_source: this, control_binding: Gst.ControlBinding) => void,
-        ): number;
-        connect_after(
-            signal: 'control-binding-removed',
-            callback: (_source: this, control_binding: Gst.ControlBinding) => void,
-        ): number;
-        emit(signal: 'control-binding-removed', control_binding: Gst.ControlBinding): void;
 
         // Virtual methods
 
@@ -30025,7 +30177,6 @@ export namespace GES {
 
     class TrackElementAsset extends Asset implements MetaContainer, Gio.AsyncInitable<TrackElementAsset>, Gio.Initable {
         static $gtype: GObject.GType<TrackElementAsset>;
-        declare static readonly __signalSignatures: TrackElementAsset.SignalSignatures;
 
         // Properties
 
@@ -30039,6 +30190,21 @@ export namespace GES {
         constructor(properties?: Partial<TrackElementAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TrackElementAsset.SignalSignatures>(
+            signal: K,
+            callback: TrackElementAsset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackElementAsset.SignalSignatures>(
+            signal: K,
+            callback: TrackElementAsset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackElementAsset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackElementAsset.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -31180,13 +31346,27 @@ export namespace GES {
      */
     abstract class Transition extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Transition>;
-        declare static readonly __signalSignatures: Transition.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Transition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            callback: Transition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            callback: Transition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transition.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -31660,7 +31840,6 @@ export namespace GES {
      */
     class TransitionClip extends BaseTransitionClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TransitionClip>;
-        declare static readonly __signalSignatures: TransitionClip.SignalSignatures;
 
         // Properties
 
@@ -31679,6 +31858,21 @@ export namespace GES {
         static ['new'](vtype: VideoStandardTransitionType): TransitionClip;
 
         static new_for_nick(nick: string): TransitionClip;
+
+        // Signals
+
+        connect<K extends keyof TransitionClip.SignalSignatures>(
+            signal: K,
+            callback: TransitionClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransitionClip.SignalSignatures>(
+            signal: K,
+            callback: TransitionClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransitionClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransitionClip.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -32147,7 +32341,6 @@ export namespace GES {
      */
     class UriClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<UriClip>;
-        declare static readonly __signalSignatures: UriClip.SignalSignatures;
 
         // Properties
 
@@ -32184,6 +32377,18 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): UriClip;
+
+        // Signals
+
+        connect<K extends keyof UriClip.SignalSignatures>(signal: K, callback: UriClip.SignalSignatures[K]): number;
+        connect_after<K extends keyof UriClip.SignalSignatures>(
+            signal: K,
+            callback: UriClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UriClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UriClip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32669,7 +32874,6 @@ export namespace GES {
 
     class UriClipAsset extends SourceClipAsset implements MetaContainer, Gio.AsyncInitable<UriClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<UriClipAsset>;
-        declare static readonly __signalSignatures: UriClipAsset.SignalSignatures;
 
         // Properties
 
@@ -32692,6 +32896,21 @@ export namespace GES {
         constructor(properties?: Partial<UriClipAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UriClipAsset.SignalSignatures>(
+            signal: K,
+            callback: UriClipAsset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UriClipAsset.SignalSignatures>(
+            signal: K,
+            callback: UriClipAsset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UriClipAsset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UriClipAsset.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -33444,13 +33663,27 @@ export namespace GES {
         implements MetaContainer, Gio.AsyncInitable<UriSourceAsset>, Gio.Initable
     {
         static $gtype: GObject.GType<UriSourceAsset>;
-        declare static readonly __signalSignatures: UriSourceAsset.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UriSourceAsset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UriSourceAsset.SignalSignatures>(
+            signal: K,
+            callback: UriSourceAsset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UriSourceAsset.SignalSignatures>(
+            signal: K,
+            callback: UriSourceAsset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UriSourceAsset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UriSourceAsset.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34129,13 +34362,27 @@ export namespace GES {
      */
     abstract class VideoSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoSource>;
-        declare static readonly __signalSignatures: VideoSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VideoSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoSource.SignalSignatures>(
+            signal: K,
+            callback: VideoSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoSource.SignalSignatures>(
+            signal: K,
+            callback: VideoSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34612,13 +34859,27 @@ export namespace GES {
      */
     class VideoTestSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTestSource>;
-        declare static readonly __signalSignatures: VideoTestSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VideoTestSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoTestSource.SignalSignatures>(
+            signal: K,
+            callback: VideoTestSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoTestSource.SignalSignatures>(
+            signal: K,
+            callback: VideoTestSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoTestSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoTestSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35108,7 +35369,6 @@ export namespace GES {
      */
     class VideoTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<VideoTrack>;
-        declare static readonly __signalSignatures: VideoTrack.SignalSignatures;
 
         // Constructors
 
@@ -35117,6 +35377,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): VideoTrack;
+
+        // Signals
+
+        connect<K extends keyof VideoTrack.SignalSignatures>(
+            signal: K,
+            callback: VideoTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoTrack.SignalSignatures>(
+            signal: K,
+            callback: VideoTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoTrack.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -35954,7 +36229,6 @@ export namespace GES {
 
     class VideoTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTransition>;
-        declare static readonly __signalSignatures: VideoTransition.SignalSignatures;
 
         // Properties
 
@@ -35980,6 +36254,21 @@ export namespace GES {
         _init(...args: any[]): void;
 
         static ['new'](): VideoTransition;
+
+        // Signals
+
+        connect<K extends keyof VideoTransition.SignalSignatures>(
+            signal: K,
+            callback: VideoTransition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoTransition.SignalSignatures>(
+            signal: K,
+            callback: VideoTransition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoTransition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoTransition.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36486,7 +36775,6 @@ export namespace GES {
      */
     class VideoUriSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoUriSource>;
-        declare static readonly __signalSignatures: VideoUriSource.SignalSignatures;
 
         // Properties
 
@@ -36500,6 +36788,21 @@ export namespace GES {
         constructor(properties?: Partial<VideoUriSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoUriSource.SignalSignatures>(
+            signal: K,
+            callback: VideoUriSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoUriSource.SignalSignatures>(
+            signal: K,
+            callback: VideoUriSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoUriSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoUriSource.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -36954,13 +37257,27 @@ export namespace GES {
 
     class XmlFormatter extends BaseXmlFormatter implements Extractable {
         static $gtype: GObject.GType<XmlFormatter>;
-        declare static readonly __signalSignatures: XmlFormatter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<XmlFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof XmlFormatter.SignalSignatures>(
+            signal: K,
+            callback: XmlFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof XmlFormatter.SignalSignatures>(
+            signal: K,
+            callback: XmlFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XmlFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XmlFormatter.SignalSignatures[K]>
+        ): void;
     }
 
     type AssetClass = typeof Asset;

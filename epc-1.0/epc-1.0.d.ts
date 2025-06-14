@@ -124,11 +124,11 @@ export namespace Epc {
         // Signal callback interfaces
 
         interface Authenticate {
-            (object: string): boolean;
+            (_source: Consumer, object: string): boolean;
         }
 
         interface PublisherResolved {
-            (object: Protocol, p0: string, p1: number): void;
+            (_source: Consumer, object: Protocol, p0: string, p1: number): void;
         }
 
         // Signal signatures
@@ -157,7 +157,6 @@ export namespace Epc {
      */
     class Consumer extends GObject.Object {
         static $gtype: GObject.GType<Consumer>;
-        declare static readonly __signalSignatures: Consumer.SignalSignatures;
 
         // Properties
 
@@ -197,21 +196,6 @@ export namespace Epc {
             signal: K,
             ...args: Parameters<Consumer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authenticate', callback: (_source: this, object: string) => boolean): number;
-        connect_after(signal: 'authenticate', callback: (_source: this, object: string) => boolean): number;
-        emit(signal: 'authenticate', object: string): void;
-        connect(
-            signal: 'publisher-resolved',
-            callback: (_source: this, object: Protocol, p0: string, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'publisher-resolved',
-            callback: (_source: this, object: Protocol, p0: string, p1: number) => void,
-        ): number;
-        emit(signal: 'publisher-resolved', object: Protocol, p0: string, p1: number): void;
 
         // Virtual methods
 
@@ -249,7 +233,6 @@ export namespace Epc {
      */
     class Dispatcher extends GObject.Object {
         static $gtype: GObject.GType<Dispatcher>;
-        declare static readonly __signalSignatures: Dispatcher.SignalSignatures;
 
         // Properties
 
@@ -269,6 +252,21 @@ export namespace Epc {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Dispatcher;
+
+        // Signals
+
+        connect<K extends keyof Dispatcher.SignalSignatures>(
+            signal: K,
+            callback: Dispatcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Dispatcher.SignalSignatures>(
+            signal: K,
+            callback: Dispatcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Dispatcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Dispatcher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -316,7 +314,6 @@ export namespace Epc {
      */
     class Publisher extends GObject.Object {
         static $gtype: GObject.GType<Publisher>;
-        declare static readonly __signalSignatures: Publisher.SignalSignatures;
 
         // Properties
 
@@ -365,6 +362,18 @@ export namespace Epc {
 
         static ['new'](name: string, application: string, domain: string): Publisher;
 
+        // Signals
+
+        connect<K extends keyof Publisher.SignalSignatures>(signal: K, callback: Publisher.SignalSignatures[K]): number;
+        connect_after<K extends keyof Publisher.SignalSignatures>(
+            signal: K,
+            callback: Publisher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Publisher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Publisher.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static expand_name(name: string): string;
@@ -405,15 +414,15 @@ export namespace Epc {
         // Signal callback interfaces
 
         interface ScanningDone {
-            (object: string): void;
+            (_source: ServiceMonitor, object: string): void;
         }
 
         interface ServiceFound {
-            (object: string, p0: ServiceInfo): void;
+            (_source: ServiceMonitor, object: string, p0: ServiceInfo): void;
         }
 
         interface ServiceRemoved {
-            (object: string, p0: string): void;
+            (_source: ServiceMonitor, object: string, p0: string): void;
         }
 
         // Signal signatures
@@ -440,7 +449,6 @@ export namespace Epc {
      */
     class ServiceMonitor extends GObject.Object {
         static $gtype: GObject.GType<ServiceMonitor>;
-        declare static readonly __signalSignatures: ServiceMonitor.SignalSignatures;
 
         // Properties
 
@@ -475,21 +483,6 @@ export namespace Epc {
             signal: K,
             ...args: Parameters<ServiceMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'scanning-done', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'scanning-done', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'scanning-done', object: string): void;
-        connect(signal: 'service-found', callback: (_source: this, object: string, p0: ServiceInfo) => void): number;
-        connect_after(
-            signal: 'service-found',
-            callback: (_source: this, object: string, p0: ServiceInfo) => void,
-        ): number;
-        emit(signal: 'service-found', object: string, p0: ServiceInfo): void;
-        connect(signal: 'service-removed', callback: (_source: this, object: string, p0: string) => void): number;
-        connect_after(signal: 'service-removed', callback: (_source: this, object: string, p0: string) => void): number;
-        emit(signal: 'service-removed', object: string, p0: string): void;
 
         // Virtual methods
 

@@ -806,7 +806,6 @@ export namespace Arrow {
 
     class AggregateNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<AggregateNodeOptions>;
-        declare static readonly __signalSignatures: AggregateNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -815,6 +814,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](aggregations: Aggregation[], keys?: string[] | null): AggregateNodeOptions;
+
+        // Signals
+
+        connect<K extends keyof AggregateNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: AggregateNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AggregateNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: AggregateNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AggregateNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AggregateNodeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Aggregation {
@@ -833,7 +847,6 @@ export namespace Arrow {
 
     class Aggregation extends GObject.Object {
         static $gtype: GObject.GType<Aggregation>;
-        declare static readonly __signalSignatures: Aggregation.SignalSignatures;
 
         // Properties
 
@@ -861,6 +874,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](_function: string, options: FunctionOptions | null, input: string, output: string): Aggregation;
+
+        // Signals
+
+        connect<K extends keyof Aggregation.SignalSignatures>(
+            signal: K,
+            callback: Aggregation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Aggregation.SignalSignatures>(
+            signal: K,
+            callback: Aggregation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Aggregation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Aggregation.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Array {
@@ -883,7 +911,6 @@ export namespace Arrow {
 
     abstract class Array extends GObject.Object {
         static $gtype: GObject.GType<Array>;
-        declare static readonly __signalSignatures: Array.SignalSignatures;
 
         // Properties
 
@@ -901,6 +928,12 @@ export namespace Arrow {
         constructor(properties?: Partial<Array.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        emit<K extends keyof Array.SignalSignatures>(signal: K, ...args: Parameters<Array.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -961,7 +994,6 @@ export namespace Arrow {
 
     abstract class ArrayBuilder extends GObject.Object {
         static $gtype: GObject.GType<ArrayBuilder>;
-        declare static readonly __signalSignatures: ArrayBuilder.SignalSignatures;
 
         // Properties
 
@@ -973,6 +1005,21 @@ export namespace Arrow {
         constructor(properties?: Partial<ArrayBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1018,7 +1065,6 @@ export namespace Arrow {
 
     class ArrayDatum extends Datum {
         static $gtype: GObject.GType<ArrayDatum>;
-        declare static readonly __signalSignatures: ArrayDatum.SignalSignatures;
 
         // Properties
 
@@ -1031,6 +1077,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Array): ArrayDatum;
+
+        // Signals
+
+        connect<K extends keyof ArrayDatum.SignalSignatures>(
+            signal: K,
+            callback: ArrayDatum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArrayDatum.SignalSignatures>(
+            signal: K,
+            callback: ArrayDatum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArrayDatum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArrayDatum.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ArraySortOptions {
@@ -1046,7 +1107,6 @@ export namespace Arrow {
 
     class ArraySortOptions extends FunctionOptions {
         static $gtype: GObject.GType<ArraySortOptions>;
-        declare static readonly __signalSignatures: ArraySortOptions.SignalSignatures;
 
         // Properties
 
@@ -1063,6 +1123,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](order: SortOrder): ArraySortOptions;
+
+        // Signals
+
+        connect<K extends keyof ArraySortOptions.SignalSignatures>(
+            signal: K,
+            callback: ArraySortOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArraySortOptions.SignalSignatures>(
+            signal: K,
+            callback: ArraySortOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArraySortOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArraySortOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1084,7 +1159,6 @@ export namespace Arrow {
 
     abstract class BaseBinaryScalar extends Scalar {
         static $gtype: GObject.GType<BaseBinaryScalar>;
-        declare static readonly __signalSignatures: BaseBinaryScalar.SignalSignatures;
 
         // Properties
 
@@ -1098,6 +1172,21 @@ export namespace Arrow {
         constructor(properties?: Partial<BaseBinaryScalar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseBinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: BaseBinaryScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseBinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: BaseBinaryScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseBinaryScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseBinaryScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1117,7 +1206,6 @@ export namespace Arrow {
 
     abstract class BaseListScalar extends Scalar {
         static $gtype: GObject.GType<BaseListScalar>;
-        declare static readonly __signalSignatures: BaseListScalar.SignalSignatures;
 
         // Properties
 
@@ -1131,6 +1219,21 @@ export namespace Arrow {
         constructor(properties?: Partial<BaseListScalar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseListScalar.SignalSignatures>(
+            signal: K,
+            callback: BaseListScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseListScalar.SignalSignatures>(
+            signal: K,
+            callback: BaseListScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseListScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseListScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1148,7 +1251,6 @@ export namespace Arrow {
 
     class BinaryArray extends Array {
         static $gtype: GObject.GType<BinaryArray>;
-        declare static readonly __signalSignatures: BinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -1163,6 +1265,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): BinaryArray;
+
+        // Signals
+
+        connect<K extends keyof BinaryArray.SignalSignatures>(
+            signal: K,
+            callback: BinaryArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinaryArray.SignalSignatures>(
+            signal: K,
+            callback: BinaryArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinaryArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinaryArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1183,7 +1300,6 @@ export namespace Arrow {
 
     class BinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryArrayBuilder>;
-        declare static readonly __signalSignatures: BinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1192,6 +1308,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): BinaryArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof BinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: BinaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: BinaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinaryArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1219,7 +1350,6 @@ export namespace Arrow {
 
     class BinaryDataType extends DataType {
         static $gtype: GObject.GType<BinaryDataType>;
-        declare static readonly __signalSignatures: BinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -1228,6 +1358,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): BinaryDataType;
+
+        // Signals
+
+        connect<K extends keyof BinaryDataType.SignalSignatures>(
+            signal: K,
+            callback: BinaryDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinaryDataType.SignalSignatures>(
+            signal: K,
+            callback: BinaryDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinaryDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinaryDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BinaryDictionaryArrayBuilder {
@@ -1241,7 +1386,6 @@ export namespace Arrow {
 
     class BinaryDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryDictionaryArrayBuilder>;
-        declare static readonly __signalSignatures: BinaryDictionaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1250,6 +1394,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): BinaryDictionaryArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: BinaryDictionaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: BinaryDictionaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinaryDictionaryArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1283,7 +1442,6 @@ export namespace Arrow {
 
     class BinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<BinaryScalar>;
-        declare static readonly __signalSignatures: BinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -1292,6 +1450,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Buffer): BinaryScalar;
+
+        // Signals
+
+        connect<K extends keyof BinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: BinaryScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: BinaryScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinaryScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinaryScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BooleanArray {
@@ -1305,7 +1478,6 @@ export namespace Arrow {
 
     class BooleanArray extends PrimitiveArray {
         static $gtype: GObject.GType<BooleanArray>;
-        declare static readonly __signalSignatures: BooleanArray.SignalSignatures;
 
         // Constructors
 
@@ -1314,6 +1486,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): BooleanArray;
+
+        // Signals
+
+        connect<K extends keyof BooleanArray.SignalSignatures>(
+            signal: K,
+            callback: BooleanArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BooleanArray.SignalSignatures>(
+            signal: K,
+            callback: BooleanArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BooleanArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BooleanArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1336,7 +1523,6 @@ export namespace Arrow {
 
     class BooleanArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BooleanArrayBuilder>;
-        declare static readonly __signalSignatures: BooleanArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1345,6 +1531,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): BooleanArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof BooleanArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: BooleanArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BooleanArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: BooleanArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BooleanArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BooleanArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1371,7 +1572,6 @@ export namespace Arrow {
 
     class BooleanDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<BooleanDataType>;
-        declare static readonly __signalSignatures: BooleanDataType.SignalSignatures;
 
         // Constructors
 
@@ -1380,6 +1580,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): BooleanDataType;
+
+        // Signals
+
+        connect<K extends keyof BooleanDataType.SignalSignatures>(
+            signal: K,
+            callback: BooleanDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BooleanDataType.SignalSignatures>(
+            signal: K,
+            callback: BooleanDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BooleanDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BooleanDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BooleanScalar {
@@ -1393,7 +1608,6 @@ export namespace Arrow {
 
     class BooleanScalar extends Scalar {
         static $gtype: GObject.GType<BooleanScalar>;
-        declare static readonly __signalSignatures: BooleanScalar.SignalSignatures;
 
         // Constructors
 
@@ -1402,6 +1616,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: boolean): BooleanScalar;
+
+        // Signals
+
+        connect<K extends keyof BooleanScalar.SignalSignatures>(
+            signal: K,
+            callback: BooleanScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BooleanScalar.SignalSignatures>(
+            signal: K,
+            callback: BooleanScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BooleanScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BooleanScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1423,7 +1652,6 @@ export namespace Arrow {
 
     class Buffer extends GObject.Object {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -1440,6 +1668,12 @@ export namespace Arrow {
         static ['new'](data: Uint8Array | string): Buffer;
 
         static new_bytes(data: GLib.Bytes | Uint8Array): Buffer;
+
+        // Signals
+
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1473,7 +1707,6 @@ export namespace Arrow {
 
     class BufferInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<BufferInputStream>;
-        declare static readonly __signalSignatures: BufferInputStream.SignalSignatures;
 
         // Properties
 
@@ -1486,6 +1719,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Buffer): BufferInputStream;
+
+        // Signals
+
+        connect<K extends keyof BufferInputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferInputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1947,7 +2195,6 @@ export namespace Arrow {
 
     class BufferOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
-        declare static readonly __signalSignatures: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -1956,6 +2203,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](buffer: ResizableBuffer): BufferOutputStream;
+
+        // Signals
+
+        connect<K extends keyof BufferOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         close(): boolean;
@@ -2448,7 +2710,6 @@ export namespace Arrow {
 
     class CSVReadOptions extends GObject.Object {
         static $gtype: GObject.GType<CSVReadOptions>;
-        declare static readonly __signalSignatures: CSVReadOptions.SignalSignatures;
 
         // Properties
 
@@ -2604,6 +2865,21 @@ export namespace Arrow {
 
         static ['new'](): CSVReadOptions;
 
+        // Signals
+
+        connect<K extends keyof CSVReadOptions.SignalSignatures>(
+            signal: K,
+            callback: CSVReadOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CSVReadOptions.SignalSignatures>(
+            signal: K,
+            callback: CSVReadOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CSVReadOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CSVReadOptions.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         add_column_name(column_name: string): void;
@@ -2650,7 +2926,6 @@ export namespace Arrow {
 
     class CSVReader extends GObject.Object {
         static $gtype: GObject.GType<CSVReader>;
-        declare static readonly __signalSignatures: CSVReader.SignalSignatures;
 
         // Properties
 
@@ -2665,6 +2940,18 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](input: InputStream, options?: CSVReadOptions | null): CSVReader;
+
+        // Signals
+
+        connect<K extends keyof CSVReader.SignalSignatures>(signal: K, callback: CSVReader.SignalSignatures[K]): number;
+        connect_after<K extends keyof CSVReader.SignalSignatures>(
+            signal: K,
+            callback: CSVReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CSVReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CSVReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2682,7 +2969,6 @@ export namespace Arrow {
 
     class CallExpression extends Expression {
         static $gtype: GObject.GType<CallExpression>;
-        declare static readonly __signalSignatures: CallExpression.SignalSignatures;
 
         // Constructors
 
@@ -2691,6 +2977,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](_function: string, _arguments: Expression[], options?: FunctionOptions | null): CallExpression;
+
+        // Signals
+
+        connect<K extends keyof CallExpression.SignalSignatures>(
+            signal: K,
+            callback: CallExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallExpression.SignalSignatures>(
+            signal: K,
+            callback: CallExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallExpression.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CastOptions {
@@ -2719,7 +3020,6 @@ export namespace Arrow {
 
     class CastOptions extends FunctionOptions {
         static $gtype: GObject.GType<CastOptions>;
-        declare static readonly __signalSignatures: CastOptions.SignalSignatures;
 
         // Properties
 
@@ -2801,6 +3101,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): CastOptions;
+
+        // Signals
+
+        connect<K extends keyof CastOptions.SignalSignatures>(
+            signal: K,
+            callback: CastOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CastOptions.SignalSignatures>(
+            signal: K,
+            callback: CastOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CastOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CastOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ChunkedArray {
@@ -2819,7 +3134,6 @@ export namespace Arrow {
 
     class ChunkedArray extends GObject.Object {
         static $gtype: GObject.GType<ChunkedArray>;
-        declare static readonly __signalSignatures: ChunkedArray.SignalSignatures;
 
         // Properties
 
@@ -2837,6 +3151,21 @@ export namespace Arrow {
         static ['new'](chunks: Array[]): ChunkedArray;
 
         static new_empty(data_type: DataType): ChunkedArray;
+
+        // Signals
+
+        connect<K extends keyof ChunkedArray.SignalSignatures>(
+            signal: K,
+            callback: ChunkedArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChunkedArray.SignalSignatures>(
+            signal: K,
+            callback: ChunkedArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChunkedArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChunkedArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2872,7 +3201,6 @@ export namespace Arrow {
 
     class ChunkedArrayDatum extends Datum {
         static $gtype: GObject.GType<ChunkedArrayDatum>;
-        declare static readonly __signalSignatures: ChunkedArrayDatum.SignalSignatures;
 
         // Properties
 
@@ -2885,6 +3213,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: ChunkedArray): ChunkedArrayDatum;
+
+        // Signals
+
+        connect<K extends keyof ChunkedArrayDatum.SignalSignatures>(
+            signal: K,
+            callback: ChunkedArrayDatum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChunkedArrayDatum.SignalSignatures>(
+            signal: K,
+            callback: ChunkedArrayDatum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChunkedArrayDatum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChunkedArrayDatum.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Codec {
@@ -2900,7 +3243,6 @@ export namespace Arrow {
 
     class Codec extends GObject.Object {
         static $gtype: GObject.GType<Codec>;
-        declare static readonly __signalSignatures: Codec.SignalSignatures;
 
         // Properties
 
@@ -2913,6 +3255,12 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](type: CompressionType): Codec;
+
+        // Signals
+
+        connect<K extends keyof Codec.SignalSignatures>(signal: K, callback: Codec.SignalSignatures[K]): number;
+        connect_after<K extends keyof Codec.SignalSignatures>(signal: K, callback: Codec.SignalSignatures[K]): number;
+        emit<K extends keyof Codec.SignalSignatures>(signal: K, ...args: Parameters<Codec.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2938,7 +3286,6 @@ export namespace Arrow {
 
     class CompressedInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<CompressedInputStream>;
-        declare static readonly __signalSignatures: CompressedInputStream.SignalSignatures;
 
         // Properties
 
@@ -2952,6 +3299,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](codec: Codec, raw: InputStream): CompressedInputStream;
+
+        // Signals
+
+        connect<K extends keyof CompressedInputStream.SignalSignatures>(
+            signal: K,
+            callback: CompressedInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompressedInputStream.SignalSignatures>(
+            signal: K,
+            callback: CompressedInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompressedInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompressedInputStream.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         close(): boolean;
@@ -3422,7 +3784,6 @@ export namespace Arrow {
 
     class CompressedOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<CompressedOutputStream>;
-        declare static readonly __signalSignatures: CompressedOutputStream.SignalSignatures;
 
         // Properties
 
@@ -3436,6 +3797,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](codec: Codec, raw: OutputStream): CompressedOutputStream;
+
+        // Signals
+
+        connect<K extends keyof CompressedOutputStream.SignalSignatures>(
+            signal: K,
+            callback: CompressedOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompressedOutputStream.SignalSignatures>(
+            signal: K,
+            callback: CompressedOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompressedOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompressedOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         close(): boolean;
@@ -3902,7 +4278,6 @@ export namespace Arrow {
 
     class CountOptions extends FunctionOptions {
         static $gtype: GObject.GType<CountOptions>;
-        declare static readonly __signalSignatures: CountOptions.SignalSignatures;
 
         // Properties
 
@@ -3916,6 +4291,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): CountOptions;
+
+        // Signals
+
+        connect<K extends keyof CountOptions.SignalSignatures>(
+            signal: K,
+            callback: CountOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CountOptions.SignalSignatures>(
+            signal: K,
+            callback: CountOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CountOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CountOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DataType {
@@ -3932,7 +4322,6 @@ export namespace Arrow {
 
     abstract class DataType extends GObject.Object {
         static $gtype: GObject.GType<DataType>;
-        declare static readonly __signalSignatures: DataType.SignalSignatures;
 
         // Properties
 
@@ -3944,6 +4333,18 @@ export namespace Arrow {
         constructor(properties?: Partial<DataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataType.SignalSignatures>(signal: K, callback: DataType.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataType.SignalSignatures>(
+            signal: K,
+            callback: DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataType.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3969,7 +4370,6 @@ export namespace Arrow {
 
     class Date32Array extends NumericArray {
         static $gtype: GObject.GType<Date32Array>;
-        declare static readonly __signalSignatures: Date32Array.SignalSignatures;
 
         // Constructors
 
@@ -3978,6 +4378,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Date32Array;
+
+        // Signals
+
+        connect<K extends keyof Date32Array.SignalSignatures>(
+            signal: K,
+            callback: Date32Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date32Array.SignalSignatures>(
+            signal: K,
+            callback: Date32Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date32Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date32Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3996,7 +4411,6 @@ export namespace Arrow {
 
     class Date32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date32ArrayBuilder>;
-        declare static readonly __signalSignatures: Date32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4005,6 +4419,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Date32ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Date32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Date32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Date32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date32ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4031,7 +4460,6 @@ export namespace Arrow {
 
     class Date32DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date32DataType>;
-        declare static readonly __signalSignatures: Date32DataType.SignalSignatures;
 
         // Constructors
 
@@ -4040,6 +4468,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Date32DataType;
+
+        // Signals
+
+        connect<K extends keyof Date32DataType.SignalSignatures>(
+            signal: K,
+            callback: Date32DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date32DataType.SignalSignatures>(
+            signal: K,
+            callback: Date32DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date32DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date32DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Date32Scalar {
@@ -4053,7 +4496,6 @@ export namespace Arrow {
 
     class Date32Scalar extends Scalar {
         static $gtype: GObject.GType<Date32Scalar>;
-        declare static readonly __signalSignatures: Date32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -4062,6 +4504,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Date32Scalar;
+
+        // Signals
+
+        connect<K extends keyof Date32Scalar.SignalSignatures>(
+            signal: K,
+            callback: Date32Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date32Scalar.SignalSignatures>(
+            signal: K,
+            callback: Date32Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date32Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date32Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4079,7 +4536,6 @@ export namespace Arrow {
 
     class Date64Array extends NumericArray {
         static $gtype: GObject.GType<Date64Array>;
-        declare static readonly __signalSignatures: Date64Array.SignalSignatures;
 
         // Constructors
 
@@ -4088,6 +4544,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Date64Array;
+
+        // Signals
+
+        connect<K extends keyof Date64Array.SignalSignatures>(
+            signal: K,
+            callback: Date64Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date64Array.SignalSignatures>(
+            signal: K,
+            callback: Date64Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date64Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date64Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4106,7 +4577,6 @@ export namespace Arrow {
 
     class Date64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date64ArrayBuilder>;
-        declare static readonly __signalSignatures: Date64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4115,6 +4585,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Date64ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Date64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Date64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Date64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date64ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4141,7 +4626,6 @@ export namespace Arrow {
 
     class Date64DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date64DataType>;
-        declare static readonly __signalSignatures: Date64DataType.SignalSignatures;
 
         // Constructors
 
@@ -4150,6 +4634,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Date64DataType;
+
+        // Signals
+
+        connect<K extends keyof Date64DataType.SignalSignatures>(
+            signal: K,
+            callback: Date64DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date64DataType.SignalSignatures>(
+            signal: K,
+            callback: Date64DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date64DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date64DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Date64Scalar {
@@ -4163,7 +4662,6 @@ export namespace Arrow {
 
     class Date64Scalar extends Scalar {
         static $gtype: GObject.GType<Date64Scalar>;
-        declare static readonly __signalSignatures: Date64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -4172,6 +4670,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Date64Scalar;
+
+        // Signals
+
+        connect<K extends keyof Date64Scalar.SignalSignatures>(
+            signal: K,
+            callback: Date64Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Date64Scalar.SignalSignatures>(
+            signal: K,
+            callback: Date64Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Date64Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Date64Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4191,7 +4704,6 @@ export namespace Arrow {
 
     abstract class Datum extends GObject.Object {
         static $gtype: GObject.GType<Datum>;
-        declare static readonly __signalSignatures: Datum.SignalSignatures;
 
         // Properties
 
@@ -4202,6 +4714,12 @@ export namespace Arrow {
         constructor(properties?: Partial<Datum.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Datum.SignalSignatures>(signal: K, callback: Datum.SignalSignatures[K]): number;
+        connect_after<K extends keyof Datum.SignalSignatures>(signal: K, callback: Datum.SignalSignatures[K]): number;
+        emit<K extends keyof Datum.SignalSignatures>(signal: K, ...args: Parameters<Datum.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4227,7 +4745,6 @@ export namespace Arrow {
 
     class DayMillisecond extends GObject.Object {
         static $gtype: GObject.GType<DayMillisecond>;
-        declare static readonly __signalSignatures: DayMillisecond.SignalSignatures;
 
         // Properties
 
@@ -4250,6 +4767,21 @@ export namespace Arrow {
 
         static ['new'](day: number, millisecond: number): DayMillisecond;
 
+        // Signals
+
+        connect<K extends keyof DayMillisecond.SignalSignatures>(
+            signal: K,
+            callback: DayMillisecond.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DayMillisecond.SignalSignatures>(
+            signal: K,
+            callback: DayMillisecond.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DayMillisecond.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DayMillisecond.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         equal(other_day_millisecond: DayMillisecond): boolean;
@@ -4267,7 +4799,6 @@ export namespace Arrow {
 
     class DayTimeIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<DayTimeIntervalArray>;
-        declare static readonly __signalSignatures: DayTimeIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -4276,6 +4807,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DayTimeIntervalArray;
+
+        // Signals
+
+        connect<K extends keyof DayTimeIntervalArray.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DayTimeIntervalArray.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DayTimeIntervalArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DayTimeIntervalArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4294,7 +4840,6 @@ export namespace Arrow {
 
     class DayTimeIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DayTimeIntervalArrayBuilder>;
-        declare static readonly __signalSignatures: DayTimeIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4303,6 +4848,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): DayTimeIntervalArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DayTimeIntervalArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4328,7 +4888,6 @@ export namespace Arrow {
 
     class DayTimeIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<DayTimeIntervalDataType>;
-        declare static readonly __signalSignatures: DayTimeIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -4337,6 +4896,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): DayTimeIntervalDataType;
+
+        // Signals
+
+        connect<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DayTimeIntervalDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DayTimeIntervalScalar {
@@ -4350,7 +4924,6 @@ export namespace Arrow {
 
     class DayTimeIntervalScalar extends Scalar {
         static $gtype: GObject.GType<DayTimeIntervalScalar>;
-        declare static readonly __signalSignatures: DayTimeIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -4359,6 +4932,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: DayMillisecond): DayTimeIntervalScalar;
+
+        // Signals
+
+        connect<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
+            signal: K,
+            callback: DayTimeIntervalScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DayTimeIntervalScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4378,7 +4966,6 @@ export namespace Arrow {
 
     class Decimal128 extends GObject.Object {
         static $gtype: GObject.GType<Decimal128>;
-        declare static readonly __signalSignatures: Decimal128.SignalSignatures;
 
         // Properties
 
@@ -4393,6 +4980,21 @@ export namespace Arrow {
         static new_integer(data: number): Decimal128;
 
         static new_string(data: string): Decimal128;
+
+        // Signals
+
+        connect<K extends keyof Decimal128.SignalSignatures>(
+            signal: K,
+            callback: Decimal128.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal128.SignalSignatures>(
+            signal: K,
+            callback: Decimal128.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal128.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal128.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4433,13 +5035,27 @@ export namespace Arrow {
 
     class Decimal128Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal128Array>;
-        declare static readonly __signalSignatures: Decimal128Array.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Decimal128Array.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Decimal128Array.SignalSignatures>(
+            signal: K,
+            callback: Decimal128Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal128Array.SignalSignatures>(
+            signal: K,
+            callback: Decimal128Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal128Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal128Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4460,7 +5076,6 @@ export namespace Arrow {
 
     class Decimal128ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal128ArrayBuilder>;
-        declare static readonly __signalSignatures: Decimal128ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4469,6 +5084,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Decimal128DataType): Decimal128ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Decimal128ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Decimal128ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal128ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4499,7 +5129,6 @@ export namespace Arrow {
 
     class Decimal128DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal128DataType>;
-        declare static readonly __signalSignatures: Decimal128DataType.SignalSignatures;
 
         // Constructors
 
@@ -4511,6 +5140,21 @@ export namespace Arrow {
         // Conflicted with Arrow.FixedSizeBinaryDataType.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Decimal128DataType.SignalSignatures>(
+            signal: K,
+            callback: Decimal128DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal128DataType.SignalSignatures>(
+            signal: K,
+            callback: Decimal128DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal128DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal128DataType.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4530,7 +5174,6 @@ export namespace Arrow {
 
     class Decimal128Scalar extends Scalar {
         static $gtype: GObject.GType<Decimal128Scalar>;
-        declare static readonly __signalSignatures: Decimal128Scalar.SignalSignatures;
 
         // Properties
 
@@ -4546,6 +5189,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Decimal128DataType, value: Decimal128): Decimal128Scalar;
+
+        // Signals
+
+        connect<K extends keyof Decimal128Scalar.SignalSignatures>(
+            signal: K,
+            callback: Decimal128Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal128Scalar.SignalSignatures>(
+            signal: K,
+            callback: Decimal128Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal128Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal128Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4565,7 +5223,6 @@ export namespace Arrow {
 
     class Decimal256 extends GObject.Object {
         static $gtype: GObject.GType<Decimal256>;
-        declare static readonly __signalSignatures: Decimal256.SignalSignatures;
 
         // Properties
 
@@ -4580,6 +5237,21 @@ export namespace Arrow {
         static new_integer(data: number): Decimal256;
 
         static new_string(data: string): Decimal256;
+
+        // Signals
+
+        connect<K extends keyof Decimal256.SignalSignatures>(
+            signal: K,
+            callback: Decimal256.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal256.SignalSignatures>(
+            signal: K,
+            callback: Decimal256.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal256.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal256.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4618,13 +5290,27 @@ export namespace Arrow {
 
     class Decimal256Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal256Array>;
-        declare static readonly __signalSignatures: Decimal256Array.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Decimal256Array.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Decimal256Array.SignalSignatures>(
+            signal: K,
+            callback: Decimal256Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal256Array.SignalSignatures>(
+            signal: K,
+            callback: Decimal256Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal256Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal256Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4645,7 +5331,6 @@ export namespace Arrow {
 
     class Decimal256ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal256ArrayBuilder>;
-        declare static readonly __signalSignatures: Decimal256ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4654,6 +5339,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Decimal256DataType): Decimal256ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Decimal256ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Decimal256ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal256ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4683,7 +5383,6 @@ export namespace Arrow {
 
     class Decimal256DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal256DataType>;
-        declare static readonly __signalSignatures: Decimal256DataType.SignalSignatures;
 
         // Constructors
 
@@ -4695,6 +5394,21 @@ export namespace Arrow {
         // Conflicted with Arrow.FixedSizeBinaryDataType.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Decimal256DataType.SignalSignatures>(
+            signal: K,
+            callback: Decimal256DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal256DataType.SignalSignatures>(
+            signal: K,
+            callback: Decimal256DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal256DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal256DataType.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4714,7 +5428,6 @@ export namespace Arrow {
 
     class Decimal256Scalar extends Scalar {
         static $gtype: GObject.GType<Decimal256Scalar>;
-        declare static readonly __signalSignatures: Decimal256Scalar.SignalSignatures;
 
         // Properties
 
@@ -4730,6 +5443,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Decimal256DataType, value: Decimal256): Decimal256Scalar;
+
+        // Signals
+
+        connect<K extends keyof Decimal256Scalar.SignalSignatures>(
+            signal: K,
+            callback: Decimal256Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Decimal256Scalar.SignalSignatures>(
+            signal: K,
+            callback: Decimal256Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decimal256Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decimal256Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4747,7 +5475,6 @@ export namespace Arrow {
 
     abstract class DecimalDataType extends FixedSizeBinaryDataType {
         static $gtype: GObject.GType<DecimalDataType>;
-        declare static readonly __signalSignatures: DecimalDataType.SignalSignatures;
 
         // Constructors
 
@@ -4759,6 +5486,21 @@ export namespace Arrow {
         // Conflicted with Arrow.FixedSizeBinaryDataType.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DecimalDataType.SignalSignatures>(
+            signal: K,
+            callback: DecimalDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DecimalDataType.SignalSignatures>(
+            signal: K,
+            callback: DecimalDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DecimalDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DecimalDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4780,7 +5522,6 @@ export namespace Arrow {
 
     class DenseUnionArray extends UnionArray {
         static $gtype: GObject.GType<DenseUnionArray>;
-        declare static readonly __signalSignatures: DenseUnionArray.SignalSignatures;
 
         // Properties
 
@@ -4802,6 +5543,21 @@ export namespace Arrow {
             fields: Array[],
         ): DenseUnionArray;
 
+        // Signals
+
+        connect<K extends keyof DenseUnionArray.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DenseUnionArray.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DenseUnionArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DenseUnionArray.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_value_offset(i: number): number;
@@ -4818,7 +5574,6 @@ export namespace Arrow {
 
     class DenseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<DenseUnionArrayBuilder>;
-        declare static readonly __signalSignatures: DenseUnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4827,6 +5582,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type?: DenseUnionDataType | null): DenseUnionArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DenseUnionArrayBuilder.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DenseUnionDataType {
@@ -4840,7 +5610,6 @@ export namespace Arrow {
 
     class DenseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<DenseUnionDataType>;
-        declare static readonly __signalSignatures: DenseUnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -4849,6 +5618,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](fields: Field[], type_codes: Uint8Array | string): DenseUnionDataType;
+
+        // Signals
+
+        connect<K extends keyof DenseUnionDataType.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DenseUnionDataType.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DenseUnionDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DenseUnionDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DenseUnionScalar {
@@ -4862,7 +5646,6 @@ export namespace Arrow {
 
     class DenseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<DenseUnionScalar>;
-        declare static readonly __signalSignatures: DenseUnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -4871,6 +5654,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: DenseUnionDataType, type_code: number, value: Scalar): DenseUnionScalar;
+
+        // Signals
+
+        connect<K extends keyof DenseUnionScalar.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DenseUnionScalar.SignalSignatures>(
+            signal: K,
+            callback: DenseUnionScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DenseUnionScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DenseUnionScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DictionaryArray {
@@ -4887,7 +5685,6 @@ export namespace Arrow {
 
     class DictionaryArray extends Array {
         static $gtype: GObject.GType<DictionaryArray>;
-        declare static readonly __signalSignatures: DictionaryArray.SignalSignatures;
 
         // Properties
 
@@ -4901,6 +5698,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: DataType, indices: Array, dictionary: Array): DictionaryArray;
+
+        // Signals
+
+        connect<K extends keyof DictionaryArray.SignalSignatures>(
+            signal: K,
+            callback: DictionaryArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DictionaryArray.SignalSignatures>(
+            signal: K,
+            callback: DictionaryArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DictionaryArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DictionaryArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4920,7 +5732,6 @@ export namespace Arrow {
 
     class DictionaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<DictionaryDataType>;
-        declare static readonly __signalSignatures: DictionaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -4929,6 +5740,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](index_data_type: DataType, value_data_type: DataType, ordered: boolean): DictionaryDataType;
+
+        // Signals
+
+        connect<K extends keyof DictionaryDataType.SignalSignatures>(
+            signal: K,
+            callback: DictionaryDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DictionaryDataType.SignalSignatures>(
+            signal: K,
+            callback: DictionaryDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DictionaryDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DictionaryDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4948,7 +5774,6 @@ export namespace Arrow {
 
     class DoubleArray extends NumericArray {
         static $gtype: GObject.GType<DoubleArray>;
-        declare static readonly __signalSignatures: DoubleArray.SignalSignatures;
 
         // Constructors
 
@@ -4957,6 +5782,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): DoubleArray;
+
+        // Signals
+
+        connect<K extends keyof DoubleArray.SignalSignatures>(
+            signal: K,
+            callback: DoubleArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DoubleArray.SignalSignatures>(
+            signal: K,
+            callback: DoubleArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DoubleArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DoubleArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4976,7 +5816,6 @@ export namespace Arrow {
 
     class DoubleArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DoubleArrayBuilder>;
-        declare static readonly __signalSignatures: DoubleArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4985,6 +5824,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): DoubleArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof DoubleArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: DoubleArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DoubleArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: DoubleArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DoubleArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DoubleArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5011,7 +5865,6 @@ export namespace Arrow {
 
     class DoubleDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<DoubleDataType>;
-        declare static readonly __signalSignatures: DoubleDataType.SignalSignatures;
 
         // Constructors
 
@@ -5020,6 +5873,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): DoubleDataType;
+
+        // Signals
+
+        connect<K extends keyof DoubleDataType.SignalSignatures>(
+            signal: K,
+            callback: DoubleDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DoubleDataType.SignalSignatures>(
+            signal: K,
+            callback: DoubleDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DoubleDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DoubleDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DoubleScalar {
@@ -5033,7 +5901,6 @@ export namespace Arrow {
 
     class DoubleScalar extends Scalar {
         static $gtype: GObject.GType<DoubleScalar>;
-        declare static readonly __signalSignatures: DoubleScalar.SignalSignatures;
 
         // Constructors
 
@@ -5042,6 +5909,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): DoubleScalar;
+
+        // Signals
+
+        connect<K extends keyof DoubleScalar.SignalSignatures>(
+            signal: K,
+            callback: DoubleScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DoubleScalar.SignalSignatures>(
+            signal: K,
+            callback: DoubleScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DoubleScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DoubleScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5065,7 +5947,6 @@ export namespace Arrow {
 
     class EqualOptions extends GObject.Object {
         static $gtype: GObject.GType<EqualOptions>;
-        declare static readonly __signalSignatures: EqualOptions.SignalSignatures;
 
         // Properties
 
@@ -5105,6 +5986,21 @@ export namespace Arrow {
 
         static ['new'](): EqualOptions;
 
+        // Signals
+
+        connect<K extends keyof EqualOptions.SignalSignatures>(
+            signal: K,
+            callback: EqualOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EqualOptions.SignalSignatures>(
+            signal: K,
+            callback: EqualOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EqualOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EqualOptions.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         is_approx(): boolean;
@@ -5121,7 +6017,6 @@ export namespace Arrow {
 
     class ExecuteContext extends GObject.Object {
         static $gtype: GObject.GType<ExecuteContext>;
-        declare static readonly __signalSignatures: ExecuteContext.SignalSignatures;
 
         // Constructors
 
@@ -5130,6 +6025,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): ExecuteContext;
+
+        // Signals
+
+        connect<K extends keyof ExecuteContext.SignalSignatures>(
+            signal: K,
+            callback: ExecuteContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExecuteContext.SignalSignatures>(
+            signal: K,
+            callback: ExecuteContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExecuteContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExecuteContext.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ExecuteNode {
@@ -5146,7 +6056,6 @@ export namespace Arrow {
 
     class ExecuteNode extends GObject.Object {
         static $gtype: GObject.GType<ExecuteNode>;
-        declare static readonly __signalSignatures: ExecuteNode.SignalSignatures;
 
         // Properties
 
@@ -5158,6 +6067,21 @@ export namespace Arrow {
         constructor(properties?: Partial<ExecuteNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExecuteNode.SignalSignatures>(
+            signal: K,
+            callback: ExecuteNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExecuteNode.SignalSignatures>(
+            signal: K,
+            callback: ExecuteNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExecuteNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExecuteNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5178,7 +6102,6 @@ export namespace Arrow {
 
     class ExecuteNodeOptions extends GObject.Object {
         static $gtype: GObject.GType<ExecuteNodeOptions>;
-        declare static readonly __signalSignatures: ExecuteNodeOptions.SignalSignatures;
 
         // Properties
 
@@ -5189,6 +6112,21 @@ export namespace Arrow {
         constructor(properties?: Partial<ExecuteNodeOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExecuteNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: ExecuteNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExecuteNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: ExecuteNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExecuteNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExecuteNodeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ExecutePlan {
@@ -5204,7 +6142,6 @@ export namespace Arrow {
 
     class ExecutePlan extends GObject.Object {
         static $gtype: GObject.GType<ExecutePlan>;
-        declare static readonly __signalSignatures: ExecutePlan.SignalSignatures;
 
         // Properties
 
@@ -5217,6 +6154,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): ExecutePlan;
+
+        // Signals
+
+        connect<K extends keyof ExecutePlan.SignalSignatures>(
+            signal: K,
+            callback: ExecutePlan.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExecutePlan.SignalSignatures>(
+            signal: K,
+            callback: ExecutePlan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExecutePlan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExecutePlan.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5297,13 +6249,27 @@ export namespace Arrow {
 
     abstract class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
-        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Expression.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Expression.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5324,7 +6290,6 @@ export namespace Arrow {
 
     class ExtensionArray extends Array {
         static $gtype: GObject.GType<ExtensionArray>;
-        declare static readonly __signalSignatures: ExtensionArray.SignalSignatures;
 
         // Properties
 
@@ -5335,6 +6300,21 @@ export namespace Arrow {
         constructor(properties?: Partial<ExtensionArray.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExtensionArray.SignalSignatures>(
+            signal: K,
+            callback: ExtensionArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionArray.SignalSignatures>(
+            signal: K,
+            callback: ExtensionArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5355,7 +6335,6 @@ export namespace Arrow {
 
     class ExtensionDataType extends DataType {
         static $gtype: GObject.GType<ExtensionDataType>;
-        declare static readonly __signalSignatures: ExtensionDataType.SignalSignatures;
 
         // Properties
 
@@ -5367,6 +6346,21 @@ export namespace Arrow {
         constructor(properties?: Partial<ExtensionDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExtensionDataType.SignalSignatures>(
+            signal: K,
+            callback: ExtensionDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionDataType.SignalSignatures>(
+            signal: K,
+            callback: ExtensionDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionDataType.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5411,7 +6405,6 @@ export namespace Arrow {
 
     class ExtensionDataTypeRegistry extends GObject.Object {
         static $gtype: GObject.GType<ExtensionDataTypeRegistry>;
-        declare static readonly __signalSignatures: ExtensionDataTypeRegistry.SignalSignatures;
 
         // Properties
 
@@ -5422,6 +6415,21 @@ export namespace Arrow {
         constructor(properties?: Partial<ExtensionDataTypeRegistry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
+            signal: K,
+            callback: ExtensionDataTypeRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
+            signal: K,
+            callback: ExtensionDataTypeRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionDataTypeRegistry.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5456,13 +6464,27 @@ export namespace Arrow {
 
     class ExtensionScalar extends Scalar {
         static $gtype: GObject.GType<ExtensionScalar>;
-        declare static readonly __signalSignatures: ExtensionScalar.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ExtensionScalar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExtensionScalar.SignalSignatures>(
+            signal: K,
+            callback: ExtensionScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionScalar.SignalSignatures>(
+            signal: K,
+            callback: ExtensionScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FeatherFileReader {
@@ -5479,7 +6501,6 @@ export namespace Arrow {
 
     class FeatherFileReader extends GObject.Object {
         static $gtype: GObject.GType<FeatherFileReader>;
-        declare static readonly __signalSignatures: FeatherFileReader.SignalSignatures;
 
         // Properties
 
@@ -5493,6 +6514,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](file: SeekableInputStream): FeatherFileReader;
+
+        // Signals
+
+        connect<K extends keyof FeatherFileReader.SignalSignatures>(
+            signal: K,
+            callback: FeatherFileReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeatherFileReader.SignalSignatures>(
+            signal: K,
+            callback: FeatherFileReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeatherFileReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeatherFileReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5515,7 +6551,6 @@ export namespace Arrow {
 
     class FeatherWriteProperties extends GObject.Object {
         static $gtype: GObject.GType<FeatherWriteProperties>;
-        declare static readonly __signalSignatures: FeatherWriteProperties.SignalSignatures;
 
         // Properties
 
@@ -5539,6 +6574,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): FeatherWriteProperties;
+
+        // Signals
+
+        connect<K extends keyof FeatherWriteProperties.SignalSignatures>(
+            signal: K,
+            callback: FeatherWriteProperties.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeatherWriteProperties.SignalSignatures>(
+            signal: K,
+            callback: FeatherWriteProperties.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeatherWriteProperties.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeatherWriteProperties.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Field {
@@ -5556,7 +6606,6 @@ export namespace Arrow {
 
     class Field extends GObject.Object {
         static $gtype: GObject.GType<Field>;
-        declare static readonly __signalSignatures: Field.SignalSignatures;
 
         // Properties
 
@@ -5573,6 +6622,12 @@ export namespace Arrow {
         static ['new'](name: string, data_type: DataType): Field;
 
         static new_full(name: string, data_type: DataType, nullable: boolean): Field;
+
+        // Signals
+
+        connect<K extends keyof Field.SignalSignatures>(signal: K, callback: Field.SignalSignatures[K]): number;
+        connect_after<K extends keyof Field.SignalSignatures>(signal: K, callback: Field.SignalSignatures[K]): number;
+        emit<K extends keyof Field.SignalSignatures>(signal: K, ...args: Parameters<Field.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -5605,7 +6660,6 @@ export namespace Arrow {
 
     class FieldExpression extends Expression {
         static $gtype: GObject.GType<FieldExpression>;
-        declare static readonly __signalSignatures: FieldExpression.SignalSignatures;
 
         // Constructors
 
@@ -5614,6 +6668,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](reference: string): FieldExpression;
+
+        // Signals
+
+        connect<K extends keyof FieldExpression.SignalSignatures>(
+            signal: K,
+            callback: FieldExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FieldExpression.SignalSignatures>(
+            signal: K,
+            callback: FieldExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FieldExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FieldExpression.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileInfo {
@@ -5637,7 +6706,6 @@ export namespace Arrow {
 
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
-        declare static readonly __signalSignatures: FileInfo.SignalSignatures;
 
         // Properties
 
@@ -5691,6 +6759,18 @@ export namespace Arrow {
 
         static ['new'](): FileInfo;
 
+        // Signals
+
+        connect<K extends keyof FileInfo.SignalSignatures>(signal: K, callback: FileInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileInfo.SignalSignatures>(
+            signal: K,
+            callback: FileInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileInfo.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         equal(other_file_info: FileInfo): boolean;
@@ -5713,7 +6793,6 @@ export namespace Arrow {
 
     class FileInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<FileInputStream>;
-        declare static readonly __signalSignatures: FileInputStream.SignalSignatures;
 
         // Constructors
 
@@ -5724,6 +6803,21 @@ export namespace Arrow {
         static ['new'](path: string): FileInputStream;
 
         static new_file_descriptor(file_descriptor: number): FileInputStream;
+
+        // Signals
+
+        connect<K extends keyof FileInputStream.SignalSignatures>(
+            signal: K,
+            callback: FileInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileInputStream.SignalSignatures>(
+            signal: K,
+            callback: FileInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6185,7 +7279,6 @@ export namespace Arrow {
 
     class FileOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<FileOutputStream>;
-        declare static readonly __signalSignatures: FileOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -6194,6 +7287,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](path: string, append: boolean): FileOutputStream;
+
+        // Signals
+
+        connect<K extends keyof FileOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FileOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FileOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         close(): boolean;
@@ -6666,7 +7774,6 @@ export namespace Arrow {
 
     class FileSelector extends GObject.Object {
         static $gtype: GObject.GType<FileSelector>;
-        declare static readonly __signalSignatures: FileSelector.SignalSignatures;
 
         // Properties
 
@@ -6717,6 +7824,21 @@ export namespace Arrow {
         constructor(properties?: Partial<FileSelector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileSelector.SignalSignatures>(
+            signal: K,
+            callback: FileSelector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSelector.SignalSignatures>(
+            signal: K,
+            callback: FileSelector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSelector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSelector.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileSystem {
@@ -6733,7 +7855,6 @@ export namespace Arrow {
 
     abstract class FileSystem extends GObject.Object {
         static $gtype: GObject.GType<FileSystem>;
-        declare static readonly __signalSignatures: FileSystem.SignalSignatures;
 
         // Properties
 
@@ -6745,6 +7866,21 @@ export namespace Arrow {
         constructor(properties?: Partial<FileSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileSystem.SignalSignatures>(
+            signal: K,
+            callback: FileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSystem.SignalSignatures>(
+            signal: K,
+            callback: FileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSystem.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6881,7 +8017,6 @@ export namespace Arrow {
 
     class FilterNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<FilterNodeOptions>;
-        declare static readonly __signalSignatures: FilterNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -6890,6 +8025,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](expression: Expression): FilterNodeOptions;
+
+        // Signals
+
+        connect<K extends keyof FilterNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: FilterNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: FilterNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterNodeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterOptions {
@@ -6906,7 +8056,6 @@ export namespace Arrow {
 
     class FilterOptions extends FunctionOptions {
         static $gtype: GObject.GType<FilterOptions>;
-        declare static readonly __signalSignatures: FilterOptions.SignalSignatures;
 
         // Properties
 
@@ -6928,6 +8077,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): FilterOptions;
+
+        // Signals
+
+        connect<K extends keyof FilterOptions.SignalSignatures>(
+            signal: K,
+            callback: FilterOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterOptions.SignalSignatures>(
+            signal: K,
+            callback: FilterOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FixedSizeBinaryArray {
@@ -6941,7 +8105,6 @@ export namespace Arrow {
 
     class FixedSizeBinaryArray extends PrimitiveArray {
         static $gtype: GObject.GType<FixedSizeBinaryArray>;
-        declare static readonly __signalSignatures: FixedSizeBinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -6956,6 +8119,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): FixedSizeBinaryArray;
+
+        // Signals
+
+        connect<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FixedSizeBinaryArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6975,7 +8153,6 @@ export namespace Arrow {
 
     class FixedSizeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FixedSizeBinaryArrayBuilder>;
-        declare static readonly __signalSignatures: FixedSizeBinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -6984,6 +8161,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: FixedSizeBinaryDataType): FixedSizeBinaryArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FixedSizeBinaryArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7021,7 +8213,6 @@ export namespace Arrow {
 
     class FixedSizeBinaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<FixedSizeBinaryDataType>;
-        declare static readonly __signalSignatures: FixedSizeBinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -7030,6 +8221,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](byte_width: number): FixedSizeBinaryDataType;
+
+        // Signals
+
+        connect<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FixedSizeBinaryDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7047,7 +8253,6 @@ export namespace Arrow {
 
     class FixedSizeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<FixedSizeBinaryScalar>;
-        declare static readonly __signalSignatures: FixedSizeBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -7056,6 +8261,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: FixedSizeBinaryDataType, value: Buffer): FixedSizeBinaryScalar;
+
+        // Signals
+
+        connect<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: FixedSizeBinaryScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FixedSizeBinaryScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FixedWidthDataType {
@@ -7069,13 +8289,27 @@ export namespace Arrow {
 
     abstract class FixedWidthDataType extends DataType {
         static $gtype: GObject.GType<FixedWidthDataType>;
-        declare static readonly __signalSignatures: FixedWidthDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FixedWidthDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FixedWidthDataType.SignalSignatures>(
+            signal: K,
+            callback: FixedWidthDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FixedWidthDataType.SignalSignatures>(
+            signal: K,
+            callback: FixedWidthDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FixedWidthDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FixedWidthDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7093,7 +8327,6 @@ export namespace Arrow {
 
     class FloatArray extends NumericArray {
         static $gtype: GObject.GType<FloatArray>;
-        declare static readonly __signalSignatures: FloatArray.SignalSignatures;
 
         // Constructors
 
@@ -7102,6 +8335,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): FloatArray;
+
+        // Signals
+
+        connect<K extends keyof FloatArray.SignalSignatures>(
+            signal: K,
+            callback: FloatArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FloatArray.SignalSignatures>(
+            signal: K,
+            callback: FloatArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FloatArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FloatArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7121,7 +8369,6 @@ export namespace Arrow {
 
     class FloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FloatArrayBuilder>;
-        declare static readonly __signalSignatures: FloatArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -7130,6 +8377,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): FloatArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof FloatArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: FloatArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FloatArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: FloatArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FloatArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FloatArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7156,7 +8418,6 @@ export namespace Arrow {
 
     class FloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<FloatDataType>;
-        declare static readonly __signalSignatures: FloatDataType.SignalSignatures;
 
         // Constructors
 
@@ -7165,6 +8426,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): FloatDataType;
+
+        // Signals
+
+        connect<K extends keyof FloatDataType.SignalSignatures>(
+            signal: K,
+            callback: FloatDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FloatDataType.SignalSignatures>(
+            signal: K,
+            callback: FloatDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FloatDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FloatDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FloatScalar {
@@ -7178,7 +8454,6 @@ export namespace Arrow {
 
     class FloatScalar extends Scalar {
         static $gtype: GObject.GType<FloatScalar>;
-        declare static readonly __signalSignatures: FloatScalar.SignalSignatures;
 
         // Constructors
 
@@ -7187,6 +8462,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): FloatScalar;
+
+        // Signals
+
+        connect<K extends keyof FloatScalar.SignalSignatures>(
+            signal: K,
+            callback: FloatScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FloatScalar.SignalSignatures>(
+            signal: K,
+            callback: FloatScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FloatScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FloatScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7204,13 +8494,27 @@ export namespace Arrow {
 
     abstract class FloatingPointDataType extends NumericDataType {
         static $gtype: GObject.GType<FloatingPointDataType>;
-        declare static readonly __signalSignatures: FloatingPointDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FloatingPointDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FloatingPointDataType.SignalSignatures>(
+            signal: K,
+            callback: FloatingPointDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FloatingPointDataType.SignalSignatures>(
+            signal: K,
+            callback: FloatingPointDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FloatingPointDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FloatingPointDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Function {
@@ -7226,7 +8530,6 @@ export namespace Arrow {
 
     class Function extends GObject.Object {
         static $gtype: GObject.GType<Function>;
-        declare static readonly __signalSignatures: Function.SignalSignatures;
 
         // Properties
 
@@ -7237,6 +8540,18 @@ export namespace Arrow {
         constructor(properties?: Partial<Function.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Function.SignalSignatures>(signal: K, callback: Function.SignalSignatures[K]): number;
+        connect_after<K extends keyof Function.SignalSignatures>(
+            signal: K,
+            callback: Function.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Function.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Function.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7267,7 +8582,6 @@ export namespace Arrow {
 
     class FunctionDoc extends GObject.Object {
         static $gtype: GObject.GType<FunctionDoc>;
-        declare static readonly __signalSignatures: FunctionDoc.SignalSignatures;
 
         // Properties
 
@@ -7278,6 +8592,21 @@ export namespace Arrow {
         constructor(properties?: Partial<FunctionDoc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FunctionDoc.SignalSignatures>(
+            signal: K,
+            callback: FunctionDoc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionDoc.SignalSignatures>(
+            signal: K,
+            callback: FunctionDoc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionDoc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionDoc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7298,13 +8627,27 @@ export namespace Arrow {
 
     class FunctionOptions extends GObject.Object {
         static $gtype: GObject.GType<FunctionOptions>;
-        declare static readonly __signalSignatures: FunctionOptions.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FunctionOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FunctionOptions.SignalSignatures>(
+            signal: K,
+            callback: FunctionOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionOptions.SignalSignatures>(
+            signal: K,
+            callback: FunctionOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7323,13 +8666,27 @@ export namespace Arrow {
 
     class GCSFileSystem extends FileSystem {
         static $gtype: GObject.GType<GCSFileSystem>;
-        declare static readonly __signalSignatures: GCSFileSystem.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GCSFileSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GCSFileSystem.SignalSignatures>(
+            signal: K,
+            callback: GCSFileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GCSFileSystem.SignalSignatures>(
+            signal: K,
+            callback: GCSFileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GCSFileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GCSFileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GIOInputStream {
@@ -7348,7 +8705,6 @@ export namespace Arrow {
 
     class GIOInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<GIOInputStream>;
-        declare static readonly __signalSignatures: GIOInputStream.SignalSignatures;
 
         // Properties
 
@@ -7361,6 +8717,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](gio_input_stream: Gio.InputStream): GIOInputStream;
+
+        // Signals
+
+        connect<K extends keyof GIOInputStream.SignalSignatures>(
+            signal: K,
+            callback: GIOInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GIOInputStream.SignalSignatures>(
+            signal: K,
+            callback: GIOInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GIOInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GIOInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7824,7 +9195,6 @@ export namespace Arrow {
 
     class GIOOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<GIOOutputStream>;
-        declare static readonly __signalSignatures: GIOOutputStream.SignalSignatures;
 
         // Properties
 
@@ -7837,6 +9207,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](gio_output_stream: Gio.OutputStream): GIOOutputStream;
+
+        // Signals
+
+        connect<K extends keyof GIOOutputStream.SignalSignatures>(
+            signal: K,
+            callback: GIOOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GIOOutputStream.SignalSignatures>(
+            signal: K,
+            callback: GIOOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GIOOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GIOOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8305,13 +9690,27 @@ export namespace Arrow {
 
     class HDFSFileSystem extends FileSystem {
         static $gtype: GObject.GType<HDFSFileSystem>;
-        declare static readonly __signalSignatures: HDFSFileSystem.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<HDFSFileSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HDFSFileSystem.SignalSignatures>(
+            signal: K,
+            callback: HDFSFileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HDFSFileSystem.SignalSignatures>(
+            signal: K,
+            callback: HDFSFileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HDFSFileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HDFSFileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HalfFloatArray {
@@ -8325,7 +9724,6 @@ export namespace Arrow {
 
     class HalfFloatArray extends NumericArray {
         static $gtype: GObject.GType<HalfFloatArray>;
-        declare static readonly __signalSignatures: HalfFloatArray.SignalSignatures;
 
         // Constructors
 
@@ -8334,6 +9732,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): HalfFloatArray;
+
+        // Signals
+
+        connect<K extends keyof HalfFloatArray.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HalfFloatArray.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HalfFloatArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HalfFloatArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8352,7 +9765,6 @@ export namespace Arrow {
 
     class HalfFloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<HalfFloatArrayBuilder>;
-        declare static readonly __signalSignatures: HalfFloatArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -8361,6 +9773,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): HalfFloatArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HalfFloatArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8386,7 +9813,6 @@ export namespace Arrow {
 
     class HalfFloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<HalfFloatDataType>;
-        declare static readonly __signalSignatures: HalfFloatDataType.SignalSignatures;
 
         // Constructors
 
@@ -8395,6 +9821,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): HalfFloatDataType;
+
+        // Signals
+
+        connect<K extends keyof HalfFloatDataType.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HalfFloatDataType.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HalfFloatDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HalfFloatDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HalfFloatScalar {
@@ -8408,7 +9849,6 @@ export namespace Arrow {
 
     class HalfFloatScalar extends Scalar {
         static $gtype: GObject.GType<HalfFloatScalar>;
-        declare static readonly __signalSignatures: HalfFloatScalar.SignalSignatures;
 
         // Constructors
 
@@ -8417,6 +9857,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): HalfFloatScalar;
+
+        // Signals
+
+        connect<K extends keyof HalfFloatScalar.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HalfFloatScalar.SignalSignatures>(
+            signal: K,
+            callback: HalfFloatScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HalfFloatScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HalfFloatScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8434,7 +9889,6 @@ export namespace Arrow {
 
     class HashJoinNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<HashJoinNodeOptions>;
-        declare static readonly __signalSignatures: HashJoinNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -8443,6 +9897,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](type: JoinType, left_keys: string[], right_keys: string[]): HashJoinNodeOptions;
+
+        // Signals
+
+        connect<K extends keyof HashJoinNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: HashJoinNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HashJoinNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: HashJoinNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashJoinNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashJoinNodeOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8461,7 +9930,6 @@ export namespace Arrow {
 
     class ISO8601TimestampParser extends TimestampParser {
         static $gtype: GObject.GType<ISO8601TimestampParser>;
-        declare static readonly __signalSignatures: ISO8601TimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -8470,6 +9938,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): ISO8601TimestampParser;
+
+        // Signals
+
+        connect<K extends keyof ISO8601TimestampParser.SignalSignatures>(
+            signal: K,
+            callback: ISO8601TimestampParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ISO8601TimestampParser.SignalSignatures>(
+            signal: K,
+            callback: ISO8601TimestampParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ISO8601TimestampParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ISO8601TimestampParser.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IndexOptions {
@@ -8485,7 +9968,6 @@ export namespace Arrow {
 
     class IndexOptions extends FunctionOptions {
         static $gtype: GObject.GType<IndexOptions>;
-        declare static readonly __signalSignatures: IndexOptions.SignalSignatures;
 
         // Properties
 
@@ -8502,6 +9984,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): IndexOptions;
+
+        // Signals
+
+        connect<K extends keyof IndexOptions.SignalSignatures>(
+            signal: K,
+            callback: IndexOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IndexOptions.SignalSignatures>(
+            signal: K,
+            callback: IndexOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IndexOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IndexOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InputStream {
@@ -8521,7 +10018,6 @@ export namespace Arrow {
 
     class InputStream extends Gio.InputStream implements File, Readable {
         static $gtype: GObject.GType<InputStream>;
-        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Properties
 
@@ -8533,6 +10029,21 @@ export namespace Arrow {
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9004,7 +10515,6 @@ export namespace Arrow {
 
     class Int16Array extends NumericArray {
         static $gtype: GObject.GType<Int16Array>;
-        declare static readonly __signalSignatures: Int16Array.SignalSignatures;
 
         // Constructors
 
@@ -9013,6 +10523,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int16Array;
+
+        // Signals
+
+        connect<K extends keyof Int16Array.SignalSignatures>(
+            signal: K,
+            callback: Int16Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int16Array.SignalSignatures>(
+            signal: K,
+            callback: Int16Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int16Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int16Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9032,7 +10557,6 @@ export namespace Arrow {
 
     class Int16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int16ArrayBuilder>;
-        declare static readonly __signalSignatures: Int16ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9041,6 +10565,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int16ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Int16ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int16ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int16ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int16ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int16ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int16ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9067,7 +10606,6 @@ export namespace Arrow {
 
     class Int16DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int16DataType>;
-        declare static readonly __signalSignatures: Int16DataType.SignalSignatures;
 
         // Constructors
 
@@ -9076,6 +10614,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int16DataType;
+
+        // Signals
+
+        connect<K extends keyof Int16DataType.SignalSignatures>(
+            signal: K,
+            callback: Int16DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int16DataType.SignalSignatures>(
+            signal: K,
+            callback: Int16DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int16DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int16DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Int16Scalar {
@@ -9089,7 +10642,6 @@ export namespace Arrow {
 
     class Int16Scalar extends Scalar {
         static $gtype: GObject.GType<Int16Scalar>;
-        declare static readonly __signalSignatures: Int16Scalar.SignalSignatures;
 
         // Constructors
 
@@ -9098,6 +10650,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int16Scalar;
+
+        // Signals
+
+        connect<K extends keyof Int16Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int16Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int16Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int16Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int16Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int16Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9115,7 +10682,6 @@ export namespace Arrow {
 
     class Int32Array extends NumericArray {
         static $gtype: GObject.GType<Int32Array>;
-        declare static readonly __signalSignatures: Int32Array.SignalSignatures;
 
         // Constructors
 
@@ -9124,6 +10690,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int32Array;
+
+        // Signals
+
+        connect<K extends keyof Int32Array.SignalSignatures>(
+            signal: K,
+            callback: Int32Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int32Array.SignalSignatures>(
+            signal: K,
+            callback: Int32Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int32Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int32Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9143,7 +10724,6 @@ export namespace Arrow {
 
     class Int32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int32ArrayBuilder>;
-        declare static readonly __signalSignatures: Int32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9152,6 +10732,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int32ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Int32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int32ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9178,7 +10773,6 @@ export namespace Arrow {
 
     class Int32DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int32DataType>;
-        declare static readonly __signalSignatures: Int32DataType.SignalSignatures;
 
         // Constructors
 
@@ -9187,6 +10781,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int32DataType;
+
+        // Signals
+
+        connect<K extends keyof Int32DataType.SignalSignatures>(
+            signal: K,
+            callback: Int32DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int32DataType.SignalSignatures>(
+            signal: K,
+            callback: Int32DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int32DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int32DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Int32Scalar {
@@ -9200,7 +10809,6 @@ export namespace Arrow {
 
     class Int32Scalar extends Scalar {
         static $gtype: GObject.GType<Int32Scalar>;
-        declare static readonly __signalSignatures: Int32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -9209,6 +10817,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int32Scalar;
+
+        // Signals
+
+        connect<K extends keyof Int32Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int32Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int32Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int32Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int32Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int32Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9226,7 +10849,6 @@ export namespace Arrow {
 
     class Int64Array extends NumericArray {
         static $gtype: GObject.GType<Int64Array>;
-        declare static readonly __signalSignatures: Int64Array.SignalSignatures;
 
         // Constructors
 
@@ -9235,6 +10857,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int64Array;
+
+        // Signals
+
+        connect<K extends keyof Int64Array.SignalSignatures>(
+            signal: K,
+            callback: Int64Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int64Array.SignalSignatures>(
+            signal: K,
+            callback: Int64Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int64Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int64Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9254,7 +10891,6 @@ export namespace Arrow {
 
     class Int64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int64ArrayBuilder>;
-        declare static readonly __signalSignatures: Int64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9263,6 +10899,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int64ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Int64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int64ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9289,7 +10940,6 @@ export namespace Arrow {
 
     class Int64DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int64DataType>;
-        declare static readonly __signalSignatures: Int64DataType.SignalSignatures;
 
         // Constructors
 
@@ -9298,6 +10948,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int64DataType;
+
+        // Signals
+
+        connect<K extends keyof Int64DataType.SignalSignatures>(
+            signal: K,
+            callback: Int64DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int64DataType.SignalSignatures>(
+            signal: K,
+            callback: Int64DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int64DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int64DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Int64Scalar {
@@ -9311,7 +10976,6 @@ export namespace Arrow {
 
     class Int64Scalar extends Scalar {
         static $gtype: GObject.GType<Int64Scalar>;
-        declare static readonly __signalSignatures: Int64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -9320,6 +10984,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int64Scalar;
+
+        // Signals
+
+        connect<K extends keyof Int64Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int64Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int64Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int64Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int64Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int64Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9337,7 +11016,6 @@ export namespace Arrow {
 
     class Int8Array extends NumericArray {
         static $gtype: GObject.GType<Int8Array>;
-        declare static readonly __signalSignatures: Int8Array.SignalSignatures;
 
         // Constructors
 
@@ -9346,6 +11024,18 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): Int8Array;
+
+        // Signals
+
+        connect<K extends keyof Int8Array.SignalSignatures>(signal: K, callback: Int8Array.SignalSignatures[K]): number;
+        connect_after<K extends keyof Int8Array.SignalSignatures>(
+            signal: K,
+            callback: Int8Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int8Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int8Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9365,7 +11055,6 @@ export namespace Arrow {
 
     class Int8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int8ArrayBuilder>;
-        declare static readonly __signalSignatures: Int8ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9374,6 +11063,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int8ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Int8ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int8ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int8ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Int8ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int8ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int8ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9400,7 +11104,6 @@ export namespace Arrow {
 
     class Int8DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int8DataType>;
-        declare static readonly __signalSignatures: Int8DataType.SignalSignatures;
 
         // Constructors
 
@@ -9409,6 +11112,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): Int8DataType;
+
+        // Signals
+
+        connect<K extends keyof Int8DataType.SignalSignatures>(
+            signal: K,
+            callback: Int8DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int8DataType.SignalSignatures>(
+            signal: K,
+            callback: Int8DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int8DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int8DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Int8Scalar {
@@ -9422,7 +11140,6 @@ export namespace Arrow {
 
     class Int8Scalar extends Scalar {
         static $gtype: GObject.GType<Int8Scalar>;
-        declare static readonly __signalSignatures: Int8Scalar.SignalSignatures;
 
         // Constructors
 
@@ -9431,6 +11148,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): Int8Scalar;
+
+        // Signals
+
+        connect<K extends keyof Int8Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int8Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Int8Scalar.SignalSignatures>(
+            signal: K,
+            callback: Int8Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Int8Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Int8Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9448,7 +11180,6 @@ export namespace Arrow {
 
     class IntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<IntArrayBuilder>;
-        declare static readonly __signalSignatures: IntArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9457,6 +11188,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): IntArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof IntArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: IntArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IntArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: IntArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IntArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IntArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9483,13 +11229,27 @@ export namespace Arrow {
 
     abstract class IntegerDataType extends NumericDataType {
         static $gtype: GObject.GType<IntegerDataType>;
-        declare static readonly __signalSignatures: IntegerDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<IntegerDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IntegerDataType.SignalSignatures>(
+            signal: K,
+            callback: IntegerDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IntegerDataType.SignalSignatures>(
+            signal: K,
+            callback: IntegerDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IntegerDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IntegerDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9507,13 +11267,27 @@ export namespace Arrow {
 
     abstract class IntervalDataType extends TemporalDataType {
         static $gtype: GObject.GType<IntervalDataType>;
-        declare static readonly __signalSignatures: IntervalDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<IntervalDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: IntervalDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: IntervalDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IntervalDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IntervalDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9541,7 +11315,6 @@ export namespace Arrow {
 
     class JSONReadOptions extends GObject.Object {
         static $gtype: GObject.GType<JSONReadOptions>;
-        declare static readonly __signalSignatures: JSONReadOptions.SignalSignatures;
 
         // Properties
 
@@ -9602,6 +11375,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): JSONReadOptions;
+
+        // Signals
+
+        connect<K extends keyof JSONReadOptions.SignalSignatures>(
+            signal: K,
+            callback: JSONReadOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JSONReadOptions.SignalSignatures>(
+            signal: K,
+            callback: JSONReadOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JSONReadOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JSONReadOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JSONReader {
@@ -9619,7 +11407,6 @@ export namespace Arrow {
 
     class JSONReader extends GObject.Object {
         static $gtype: GObject.GType<JSONReader>;
-        declare static readonly __signalSignatures: JSONReader.SignalSignatures;
 
         // Properties
 
@@ -9634,6 +11421,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](input: InputStream, options?: JSONReadOptions | null): JSONReader;
+
+        // Signals
+
+        connect<K extends keyof JSONReader.SignalSignatures>(
+            signal: K,
+            callback: JSONReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JSONReader.SignalSignatures>(
+            signal: K,
+            callback: JSONReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JSONReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JSONReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9651,7 +11453,6 @@ export namespace Arrow {
 
     class LargeBinaryArray extends Array {
         static $gtype: GObject.GType<LargeBinaryArray>;
-        declare static readonly __signalSignatures: LargeBinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -9666,6 +11467,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): LargeBinaryArray;
+
+        // Signals
+
+        connect<K extends keyof LargeBinaryArray.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeBinaryArray.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeBinaryArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeBinaryArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9686,7 +11502,6 @@ export namespace Arrow {
 
     class LargeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeBinaryArrayBuilder>;
-        declare static readonly __signalSignatures: LargeBinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9695,6 +11510,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): LargeBinaryArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeBinaryArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9721,7 +11551,6 @@ export namespace Arrow {
 
     class LargeBinaryDataType extends DataType {
         static $gtype: GObject.GType<LargeBinaryDataType>;
-        declare static readonly __signalSignatures: LargeBinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -9730,6 +11559,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): LargeBinaryDataType;
+
+        // Signals
+
+        connect<K extends keyof LargeBinaryDataType.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeBinaryDataType.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeBinaryDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeBinaryDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LargeBinaryScalar {
@@ -9743,7 +11587,6 @@ export namespace Arrow {
 
     class LargeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeBinaryScalar>;
-        declare static readonly __signalSignatures: LargeBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -9752,6 +11595,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Buffer): LargeBinaryScalar;
+
+        // Signals
+
+        connect<K extends keyof LargeBinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeBinaryScalar.SignalSignatures>(
+            signal: K,
+            callback: LargeBinaryScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeBinaryScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeBinaryScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LargeListArray {
@@ -9768,7 +11626,6 @@ export namespace Arrow {
 
     class LargeListArray extends Array {
         static $gtype: GObject.GType<LargeListArray>;
-        declare static readonly __signalSignatures: LargeListArray.SignalSignatures;
 
         // Properties
 
@@ -9789,6 +11646,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): LargeListArray;
+
+        // Signals
+
+        connect<K extends keyof LargeListArray.SignalSignatures>(
+            signal: K,
+            callback: LargeListArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeListArray.SignalSignatures>(
+            signal: K,
+            callback: LargeListArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeListArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeListArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9813,7 +11685,6 @@ export namespace Arrow {
 
     class LargeListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeListArrayBuilder>;
-        declare static readonly __signalSignatures: LargeListArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9822,6 +11693,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: LargeListDataType): LargeListArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof LargeListArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: LargeListArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeListArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: LargeListArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeListArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeListArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9840,7 +11726,6 @@ export namespace Arrow {
 
     class LargeListDataType extends DataType {
         static $gtype: GObject.GType<LargeListDataType>;
-        declare static readonly __signalSignatures: LargeListDataType.SignalSignatures;
 
         // Constructors
 
@@ -9849,6 +11734,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](field: Field): LargeListDataType;
+
+        // Signals
+
+        connect<K extends keyof LargeListDataType.SignalSignatures>(
+            signal: K,
+            callback: LargeListDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeListDataType.SignalSignatures>(
+            signal: K,
+            callback: LargeListDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeListDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeListDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9866,7 +11766,6 @@ export namespace Arrow {
 
     class LargeListScalar extends BaseListScalar {
         static $gtype: GObject.GType<LargeListScalar>;
-        declare static readonly __signalSignatures: LargeListScalar.SignalSignatures;
 
         // Constructors
 
@@ -9875,6 +11774,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: LargeListArray): LargeListScalar;
+
+        // Signals
+
+        connect<K extends keyof LargeListScalar.SignalSignatures>(
+            signal: K,
+            callback: LargeListScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeListScalar.SignalSignatures>(
+            signal: K,
+            callback: LargeListScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeListScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeListScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LargeStringArray {
@@ -9888,7 +11802,6 @@ export namespace Arrow {
 
     class LargeStringArray extends LargeBinaryArray {
         static $gtype: GObject.GType<LargeStringArray>;
-        declare static readonly __signalSignatures: LargeStringArray.SignalSignatures;
 
         // Constructors
 
@@ -9903,6 +11816,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): LargeStringArray;
+
+        // Signals
+
+        connect<K extends keyof LargeStringArray.SignalSignatures>(
+            signal: K,
+            callback: LargeStringArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeStringArray.SignalSignatures>(
+            signal: K,
+            callback: LargeStringArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeStringArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeStringArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9920,7 +11848,6 @@ export namespace Arrow {
 
     class LargeStringArrayBuilder extends LargeBinaryArrayBuilder {
         static $gtype: GObject.GType<LargeStringArrayBuilder>;
-        declare static readonly __signalSignatures: LargeStringArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9929,6 +11856,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): LargeStringArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: LargeStringArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: LargeStringArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeStringArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9955,7 +11897,6 @@ export namespace Arrow {
 
     class LargeStringDataType extends DataType {
         static $gtype: GObject.GType<LargeStringDataType>;
-        declare static readonly __signalSignatures: LargeStringDataType.SignalSignatures;
 
         // Constructors
 
@@ -9964,6 +11905,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): LargeStringDataType;
+
+        // Signals
+
+        connect<K extends keyof LargeStringDataType.SignalSignatures>(
+            signal: K,
+            callback: LargeStringDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeStringDataType.SignalSignatures>(
+            signal: K,
+            callback: LargeStringDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeStringDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeStringDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LargeStringScalar {
@@ -9977,7 +11933,6 @@ export namespace Arrow {
 
     class LargeStringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeStringScalar>;
-        declare static readonly __signalSignatures: LargeStringScalar.SignalSignatures;
 
         // Constructors
 
@@ -9986,6 +11941,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Buffer): LargeStringScalar;
+
+        // Signals
+
+        connect<K extends keyof LargeStringScalar.SignalSignatures>(
+            signal: K,
+            callback: LargeStringScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LargeStringScalar.SignalSignatures>(
+            signal: K,
+            callback: LargeStringScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LargeStringScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LargeStringScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ListArray {
@@ -10002,7 +11972,6 @@ export namespace Arrow {
 
     class ListArray extends Array {
         static $gtype: GObject.GType<ListArray>;
-        declare static readonly __signalSignatures: ListArray.SignalSignatures;
 
         // Properties
 
@@ -10023,6 +11992,18 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): ListArray;
+
+        // Signals
+
+        connect<K extends keyof ListArray.SignalSignatures>(signal: K, callback: ListArray.SignalSignatures[K]): number;
+        connect_after<K extends keyof ListArray.SignalSignatures>(
+            signal: K,
+            callback: ListArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10047,7 +12028,6 @@ export namespace Arrow {
 
     class ListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<ListArrayBuilder>;
-        declare static readonly __signalSignatures: ListArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -10056,6 +12036,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: ListDataType): ListArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof ListArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: ListArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ListArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: ListArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10075,7 +12070,6 @@ export namespace Arrow {
 
     class ListDataType extends DataType {
         static $gtype: GObject.GType<ListDataType>;
-        declare static readonly __signalSignatures: ListDataType.SignalSignatures;
 
         // Constructors
 
@@ -10084,6 +12078,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](field: Field): ListDataType;
+
+        // Signals
+
+        connect<K extends keyof ListDataType.SignalSignatures>(
+            signal: K,
+            callback: ListDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ListDataType.SignalSignatures>(
+            signal: K,
+            callback: ListDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10102,7 +12111,6 @@ export namespace Arrow {
 
     class ListScalar extends BaseListScalar {
         static $gtype: GObject.GType<ListScalar>;
-        declare static readonly __signalSignatures: ListScalar.SignalSignatures;
 
         // Constructors
 
@@ -10111,6 +12119,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: ListArray): ListScalar;
+
+        // Signals
+
+        connect<K extends keyof ListScalar.SignalSignatures>(
+            signal: K,
+            callback: ListScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ListScalar.SignalSignatures>(
+            signal: K,
+            callback: ListScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LiteralExpression {
@@ -10124,7 +12147,6 @@ export namespace Arrow {
 
     class LiteralExpression extends Expression {
         static $gtype: GObject.GType<LiteralExpression>;
-        declare static readonly __signalSignatures: LiteralExpression.SignalSignatures;
 
         // Constructors
 
@@ -10133,6 +12155,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](datum: Datum): LiteralExpression;
+
+        // Signals
+
+        connect<K extends keyof LiteralExpression.SignalSignatures>(
+            signal: K,
+            callback: LiteralExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LiteralExpression.SignalSignatures>(
+            signal: K,
+            callback: LiteralExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LiteralExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LiteralExpression.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LocalFileSystem {
@@ -10146,7 +12183,6 @@ export namespace Arrow {
 
     class LocalFileSystem extends FileSystem {
         static $gtype: GObject.GType<LocalFileSystem>;
-        declare static readonly __signalSignatures: LocalFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -10155,6 +12191,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](options?: LocalFileSystemOptions | null): LocalFileSystem;
+
+        // Signals
+
+        connect<K extends keyof LocalFileSystem.SignalSignatures>(
+            signal: K,
+            callback: LocalFileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocalFileSystem.SignalSignatures>(
+            signal: K,
+            callback: LocalFileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocalFileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocalFileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LocalFileSystemOptions {
@@ -10171,7 +12222,6 @@ export namespace Arrow {
 
     class LocalFileSystemOptions extends GObject.Object {
         static $gtype: GObject.GType<LocalFileSystemOptions>;
-        declare static readonly __signalSignatures: LocalFileSystemOptions.SignalSignatures;
 
         // Properties
 
@@ -10195,6 +12245,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): LocalFileSystemOptions;
+
+        // Signals
+
+        connect<K extends keyof LocalFileSystemOptions.SignalSignatures>(
+            signal: K,
+            callback: LocalFileSystemOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocalFileSystemOptions.SignalSignatures>(
+            signal: K,
+            callback: LocalFileSystemOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocalFileSystemOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocalFileSystemOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MapArray {
@@ -10212,7 +12277,6 @@ export namespace Arrow {
 
     class MapArray extends ListArray {
         static $gtype: GObject.GType<MapArray>;
-        declare static readonly __signalSignatures: MapArray.SignalSignatures;
 
         // Properties
 
@@ -10231,6 +12295,18 @@ export namespace Arrow {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof MapArray.SignalSignatures>(signal: K, callback: MapArray.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapArray.SignalSignatures>(
+            signal: K,
+            callback: MapArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapArray.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_items(): Array;
@@ -10248,7 +12324,6 @@ export namespace Arrow {
 
     class MapArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MapArrayBuilder>;
-        declare static readonly __signalSignatures: MapArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -10257,6 +12332,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: MapDataType): MapArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof MapArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: MapArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MapArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: MapArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10285,7 +12375,6 @@ export namespace Arrow {
 
     class MapDataType extends ListDataType {
         static $gtype: GObject.GType<MapDataType>;
-        declare static readonly __signalSignatures: MapDataType.SignalSignatures;
 
         // Constructors
 
@@ -10297,6 +12386,21 @@ export namespace Arrow {
         // Conflicted with Arrow.ListDataType.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MapDataType.SignalSignatures>(
+            signal: K,
+            callback: MapDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MapDataType.SignalSignatures>(
+            signal: K,
+            callback: MapDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10315,7 +12419,6 @@ export namespace Arrow {
 
     class MapScalar extends BaseListScalar {
         static $gtype: GObject.GType<MapScalar>;
-        declare static readonly __signalSignatures: MapScalar.SignalSignatures;
 
         // Constructors
 
@@ -10324,6 +12427,18 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: StructArray): MapScalar;
+
+        // Signals
+
+        connect<K extends keyof MapScalar.SignalSignatures>(signal: K, callback: MapScalar.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapScalar.SignalSignatures>(
+            signal: K,
+            callback: MapScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MatchSubstringOptions {
@@ -10341,7 +12456,6 @@ export namespace Arrow {
 
     class MatchSubstringOptions extends FunctionOptions {
         static $gtype: GObject.GType<MatchSubstringOptions>;
-        declare static readonly __signalSignatures: MatchSubstringOptions.SignalSignatures;
 
         // Properties
 
@@ -10369,6 +12483,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): MatchSubstringOptions;
+
+        // Signals
+
+        connect<K extends keyof MatchSubstringOptions.SignalSignatures>(
+            signal: K,
+            callback: MatchSubstringOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MatchSubstringOptions.SignalSignatures>(
+            signal: K,
+            callback: MatchSubstringOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MatchSubstringOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MatchSubstringOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MemoryMappedInputStream {
@@ -10385,7 +12514,6 @@ export namespace Arrow {
 
     class MemoryMappedInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<MemoryMappedInputStream>;
-        declare static readonly __signalSignatures: MemoryMappedInputStream.SignalSignatures;
 
         // Constructors
 
@@ -10394,6 +12522,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](path: string): MemoryMappedInputStream;
+
+        // Signals
+
+        connect<K extends keyof MemoryMappedInputStream.SignalSignatures>(
+            signal: K,
+            callback: MemoryMappedInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MemoryMappedInputStream.SignalSignatures>(
+            signal: K,
+            callback: MemoryMappedInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MemoryMappedInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MemoryMappedInputStream.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -10851,7 +12994,6 @@ export namespace Arrow {
 
     class MemoryPool extends GObject.Object {
         static $gtype: GObject.GType<MemoryPool>;
-        declare static readonly __signalSignatures: MemoryPool.SignalSignatures;
 
         // Properties
 
@@ -10863,6 +13005,21 @@ export namespace Arrow {
         constructor(properties?: Partial<MemoryPool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MemoryPool.SignalSignatures>(
+            signal: K,
+            callback: MemoryPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MemoryPool.SignalSignatures>(
+            signal: K,
+            callback: MemoryPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MemoryPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MemoryPool.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -10890,13 +13047,27 @@ export namespace Arrow {
 
     class MockFileSystem extends FileSystem {
         static $gtype: GObject.GType<MockFileSystem>;
-        declare static readonly __signalSignatures: MockFileSystem.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MockFileSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MockFileSystem.SignalSignatures>(
+            signal: K,
+            callback: MockFileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MockFileSystem.SignalSignatures>(
+            signal: K,
+            callback: MockFileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MockFileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MockFileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MonthDayNano {
@@ -10914,7 +13085,6 @@ export namespace Arrow {
 
     class MonthDayNano extends GObject.Object {
         static $gtype: GObject.GType<MonthDayNano>;
-        declare static readonly __signalSignatures: MonthDayNano.SignalSignatures;
 
         // Properties
 
@@ -10942,6 +13112,21 @@ export namespace Arrow {
 
         static ['new'](month: number, day: number, nanosecond: number): MonthDayNano;
 
+        // Signals
+
+        connect<K extends keyof MonthDayNano.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNano.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthDayNano.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNano.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthDayNano.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthDayNano.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         equal(other_month_nano_day: MonthDayNano): boolean;
@@ -10958,7 +13143,6 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<MonthDayNanoIntervalArray>;
-        declare static readonly __signalSignatures: MonthDayNanoIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -10972,6 +13156,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): MonthDayNanoIntervalArray;
+
+        // Signals
+
+        connect<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthDayNanoIntervalArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10990,7 +13189,6 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthDayNanoIntervalArrayBuilder>;
-        declare static readonly __signalSignatures: MonthDayNanoIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -10999,6 +13197,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): MonthDayNanoIntervalArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthDayNanoIntervalArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11024,7 +13237,6 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthDayNanoIntervalDataType>;
-        declare static readonly __signalSignatures: MonthDayNanoIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -11033,6 +13245,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): MonthDayNanoIntervalDataType;
+
+        // Signals
+
+        connect<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthDayNanoIntervalDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MonthDayNanoIntervalScalar {
@@ -11046,7 +13273,6 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthDayNanoIntervalScalar>;
-        declare static readonly __signalSignatures: MonthDayNanoIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -11055,6 +13281,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: MonthDayNano): MonthDayNanoIntervalScalar;
+
+        // Signals
+
+        connect<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
+            signal: K,
+            callback: MonthDayNanoIntervalScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthDayNanoIntervalScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11072,7 +13313,6 @@ export namespace Arrow {
 
     class MonthIntervalArray extends NumericArray {
         static $gtype: GObject.GType<MonthIntervalArray>;
-        declare static readonly __signalSignatures: MonthIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -11081,6 +13321,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): MonthIntervalArray;
+
+        // Signals
+
+        connect<K extends keyof MonthIntervalArray.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthIntervalArray.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthIntervalArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthIntervalArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11099,7 +13354,6 @@ export namespace Arrow {
 
     class MonthIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthIntervalArrayBuilder>;
-        declare static readonly __signalSignatures: MonthIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -11108,6 +13362,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): MonthIntervalArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthIntervalArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11133,7 +13402,6 @@ export namespace Arrow {
 
     class MonthIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthIntervalDataType>;
-        declare static readonly __signalSignatures: MonthIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -11142,6 +13410,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): MonthIntervalDataType;
+
+        // Signals
+
+        connect<K extends keyof MonthIntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthIntervalDataType.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthIntervalDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthIntervalDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MonthIntervalScalar {
@@ -11155,7 +13438,6 @@ export namespace Arrow {
 
     class MonthIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthIntervalScalar>;
-        declare static readonly __signalSignatures: MonthIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -11164,6 +13446,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): MonthIntervalScalar;
+
+        // Signals
+
+        connect<K extends keyof MonthIntervalScalar.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonthIntervalScalar.SignalSignatures>(
+            signal: K,
+            callback: MonthIntervalScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonthIntervalScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonthIntervalScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11181,7 +13478,6 @@ export namespace Arrow {
 
     class MutableBuffer extends Buffer {
         static $gtype: GObject.GType<MutableBuffer>;
-        declare static readonly __signalSignatures: MutableBuffer.SignalSignatures;
 
         // Constructors
 
@@ -11192,6 +13488,21 @@ export namespace Arrow {
         static ['new'](data: Uint8Array | string): MutableBuffer;
 
         static new_bytes(data: GLib.Bytes | Uint8Array): MutableBuffer;
+
+        // Signals
+
+        connect<K extends keyof MutableBuffer.SignalSignatures>(
+            signal: K,
+            callback: MutableBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MutableBuffer.SignalSignatures>(
+            signal: K,
+            callback: MutableBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MutableBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MutableBuffer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11212,7 +13523,6 @@ export namespace Arrow {
 
     class NullArray extends Array {
         static $gtype: GObject.GType<NullArray>;
-        declare static readonly __signalSignatures: NullArray.SignalSignatures;
 
         // Constructors
 
@@ -11221,6 +13531,18 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number): NullArray;
+
+        // Signals
+
+        connect<K extends keyof NullArray.SignalSignatures>(signal: K, callback: NullArray.SignalSignatures[K]): number;
+        connect_after<K extends keyof NullArray.SignalSignatures>(
+            signal: K,
+            callback: NullArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullArray.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NullArrayBuilder {
@@ -11234,7 +13556,6 @@ export namespace Arrow {
 
     class NullArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<NullArrayBuilder>;
-        declare static readonly __signalSignatures: NullArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -11243,6 +13564,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): NullArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof NullArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: NullArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NullArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: NullArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullArrayBuilder.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NullDataType {
@@ -11256,7 +13592,6 @@ export namespace Arrow {
 
     class NullDataType extends DataType {
         static $gtype: GObject.GType<NullDataType>;
-        declare static readonly __signalSignatures: NullDataType.SignalSignatures;
 
         // Constructors
 
@@ -11265,6 +13600,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): NullDataType;
+
+        // Signals
+
+        connect<K extends keyof NullDataType.SignalSignatures>(
+            signal: K,
+            callback: NullDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NullDataType.SignalSignatures>(
+            signal: K,
+            callback: NullDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NullScalar {
@@ -11278,7 +13628,6 @@ export namespace Arrow {
 
     class NullScalar extends Scalar {
         static $gtype: GObject.GType<NullScalar>;
-        declare static readonly __signalSignatures: NullScalar.SignalSignatures;
 
         // Constructors
 
@@ -11287,6 +13636,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): NullScalar;
+
+        // Signals
+
+        connect<K extends keyof NullScalar.SignalSignatures>(
+            signal: K,
+            callback: NullScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NullScalar.SignalSignatures>(
+            signal: K,
+            callback: NullScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NumericArray {
@@ -11300,13 +13664,27 @@ export namespace Arrow {
 
     class NumericArray extends PrimitiveArray {
         static $gtype: GObject.GType<NumericArray>;
-        declare static readonly __signalSignatures: NumericArray.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<NumericArray.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NumericArray.SignalSignatures>(
+            signal: K,
+            callback: NumericArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NumericArray.SignalSignatures>(
+            signal: K,
+            callback: NumericArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NumericArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NumericArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11324,13 +13702,27 @@ export namespace Arrow {
 
     abstract class NumericDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<NumericDataType>;
-        declare static readonly __signalSignatures: NumericDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<NumericDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NumericDataType.SignalSignatures>(
+            signal: K,
+            callback: NumericDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NumericDataType.SignalSignatures>(
+            signal: K,
+            callback: NumericDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NumericDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NumericDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ORCFileReader {
@@ -11348,7 +13740,6 @@ export namespace Arrow {
 
     class ORCFileReader extends GObject.Object {
         static $gtype: GObject.GType<ORCFileReader>;
-        declare static readonly __signalSignatures: ORCFileReader.SignalSignatures;
 
         // Properties
 
@@ -11363,6 +13754,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](file: SeekableInputStream): ORCFileReader;
+
+        // Signals
+
+        connect<K extends keyof ORCFileReader.SignalSignatures>(
+            signal: K,
+            callback: ORCFileReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ORCFileReader.SignalSignatures>(
+            signal: K,
+            callback: ORCFileReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ORCFileReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ORCFileReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11394,7 +13800,6 @@ export namespace Arrow {
 
     class OutputStream extends GObject.Object implements File, Writable {
         static $gtype: GObject.GType<OutputStream>;
-        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Properties
 
@@ -11406,6 +13811,21 @@ export namespace Arrow {
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11876,13 +14296,27 @@ export namespace Arrow {
 
     class PrimitiveArray extends Array {
         static $gtype: GObject.GType<PrimitiveArray>;
-        declare static readonly __signalSignatures: PrimitiveArray.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PrimitiveArray.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PrimitiveArray.SignalSignatures>(
+            signal: K,
+            callback: PrimitiveArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrimitiveArray.SignalSignatures>(
+            signal: K,
+            callback: PrimitiveArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrimitiveArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrimitiveArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11901,7 +14335,6 @@ export namespace Arrow {
 
     class ProjectNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<ProjectNodeOptions>;
-        declare static readonly __signalSignatures: ProjectNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -11910,6 +14343,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](expressions: Expression[], names?: string[] | null): ProjectNodeOptions;
+
+        // Signals
+
+        connect<K extends keyof ProjectNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: ProjectNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: ProjectNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectNodeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace QuantileOptions {
@@ -11929,7 +14377,6 @@ export namespace Arrow {
 
     class QuantileOptions extends FunctionOptions {
         static $gtype: GObject.GType<QuantileOptions>;
-        declare static readonly __signalSignatures: QuantileOptions.SignalSignatures;
 
         // Properties
 
@@ -11970,6 +14417,21 @@ export namespace Arrow {
 
         static ['new'](): QuantileOptions;
 
+        // Signals
+
+        connect<K extends keyof QuantileOptions.SignalSignatures>(
+            signal: K,
+            callback: QuantileOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof QuantileOptions.SignalSignatures>(
+            signal: K,
+            callback: QuantileOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof QuantileOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<QuantileOptions.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_qs(): number[];
@@ -11992,7 +14454,6 @@ export namespace Arrow {
 
     class RankOptions extends FunctionOptions {
         static $gtype: GObject.GType<RankOptions>;
-        declare static readonly __signalSignatures: RankOptions.SignalSignatures;
 
         // Properties
 
@@ -12019,6 +14480,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): RankOptions;
+
+        // Signals
+
+        connect<K extends keyof RankOptions.SignalSignatures>(
+            signal: K,
+            callback: RankOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RankOptions.SignalSignatures>(
+            signal: K,
+            callback: RankOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RankOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RankOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12054,7 +14530,6 @@ export namespace Arrow {
 
     class ReadOptions extends GObject.Object {
         static $gtype: GObject.GType<ReadOptions>;
-        declare static readonly __signalSignatures: ReadOptions.SignalSignatures;
 
         // Properties
 
@@ -12087,6 +14562,21 @@ export namespace Arrow {
 
         static ['new'](): ReadOptions;
 
+        // Signals
+
+        connect<K extends keyof ReadOptions.SignalSignatures>(
+            signal: K,
+            callback: ReadOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ReadOptions.SignalSignatures>(
+            signal: K,
+            callback: ReadOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReadOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReadOptions.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_included_fields(): number[];
@@ -12107,7 +14597,6 @@ export namespace Arrow {
 
     class RecordBatch extends GObject.Object {
         static $gtype: GObject.GType<RecordBatch>;
-        declare static readonly __signalSignatures: RecordBatch.SignalSignatures;
 
         // Properties
 
@@ -12121,6 +14610,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](schema: Schema, n_rows: number, columns: Array[]): RecordBatch;
+
+        // Signals
+
+        connect<K extends keyof RecordBatch.SignalSignatures>(
+            signal: K,
+            callback: RecordBatch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatch.SignalSignatures>(
+            signal: K,
+            callback: RecordBatch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatch.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12160,7 +14664,6 @@ export namespace Arrow {
 
     class RecordBatchBuilder extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchBuilder>;
-        declare static readonly __signalSignatures: RecordBatchBuilder.SignalSignatures;
 
         // Properties
 
@@ -12174,6 +14677,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](schema: Schema): RecordBatchBuilder;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchBuilder.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchBuilder.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12200,7 +14718,6 @@ export namespace Arrow {
 
     class RecordBatchDatum extends Datum {
         static $gtype: GObject.GType<RecordBatchDatum>;
-        declare static readonly __signalSignatures: RecordBatchDatum.SignalSignatures;
 
         // Properties
 
@@ -12213,6 +14730,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: RecordBatch): RecordBatchDatum;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchDatum.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchDatum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchDatum.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchDatum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchDatum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchDatum.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RecordBatchFileReader {
@@ -12229,7 +14761,6 @@ export namespace Arrow {
 
     class RecordBatchFileReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchFileReader>;
-        declare static readonly __signalSignatures: RecordBatchFileReader.SignalSignatures;
 
         // Properties
 
@@ -12243,6 +14774,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](file: SeekableInputStream): RecordBatchFileReader;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchFileReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchFileReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchFileReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchFileReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchFileReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchFileReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12264,7 +14810,6 @@ export namespace Arrow {
 
     class RecordBatchFileWriter extends RecordBatchStreamWriter {
         static $gtype: GObject.GType<RecordBatchFileWriter>;
-        declare static readonly __signalSignatures: RecordBatchFileWriter.SignalSignatures;
 
         // Constructors
 
@@ -12273,6 +14818,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](sink: OutputStream, schema: Schema): RecordBatchFileWriter;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchFileWriter.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchFileWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchFileWriter.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchFileWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchFileWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchFileWriter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RecordBatchIterator {
@@ -12288,7 +14848,6 @@ export namespace Arrow {
 
     class RecordBatchIterator extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchIterator>;
-        declare static readonly __signalSignatures: RecordBatchIterator.SignalSignatures;
 
         // Properties
 
@@ -12301,6 +14860,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](record_batches: RecordBatch[]): RecordBatchIterator;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchIterator.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchIterator.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12324,7 +14898,6 @@ export namespace Arrow {
 
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
-        declare static readonly __signalSignatures: RecordBatchReader.SignalSignatures;
 
         // Properties
 
@@ -12339,6 +14912,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](record_batches: RecordBatch[], schema?: Schema | null): RecordBatchReader;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchReader.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12366,7 +14954,6 @@ export namespace Arrow {
 
     class RecordBatchStreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<RecordBatchStreamReader>;
-        declare static readonly __signalSignatures: RecordBatchStreamReader.SignalSignatures;
 
         // Constructors
 
@@ -12378,6 +14965,21 @@ export namespace Arrow {
         // Conflicted with Arrow.RecordBatchReader.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchStreamReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchStreamReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchStreamReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchStreamReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchStreamReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchStreamReader.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RecordBatchStreamWriter {
@@ -12391,7 +14993,6 @@ export namespace Arrow {
 
     class RecordBatchStreamWriter extends RecordBatchWriter {
         static $gtype: GObject.GType<RecordBatchStreamWriter>;
-        declare static readonly __signalSignatures: RecordBatchStreamWriter.SignalSignatures;
 
         // Constructors
 
@@ -12400,6 +15001,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](sink: OutputStream, schema: Schema): RecordBatchStreamWriter;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchStreamWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchStreamWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchStreamWriter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RecordBatchWriter {
@@ -12416,7 +15032,6 @@ export namespace Arrow {
 
     class RecordBatchWriter extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchWriter>;
-        declare static readonly __signalSignatures: RecordBatchWriter.SignalSignatures;
 
         // Properties
 
@@ -12428,6 +15043,21 @@ export namespace Arrow {
         constructor(properties?: Partial<RecordBatchWriter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchWriter.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchWriter.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchWriter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12447,7 +15077,6 @@ export namespace Arrow {
 
     class ResizableBuffer extends MutableBuffer {
         static $gtype: GObject.GType<ResizableBuffer>;
-        declare static readonly __signalSignatures: ResizableBuffer.SignalSignatures;
 
         // Constructors
 
@@ -12459,6 +15088,21 @@ export namespace Arrow {
         // Conflicted with Arrow.MutableBuffer.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ResizableBuffer.SignalSignatures>(
+            signal: K,
+            callback: ResizableBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResizableBuffer.SignalSignatures>(
+            signal: K,
+            callback: ResizableBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResizableBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResizableBuffer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12481,7 +15125,6 @@ export namespace Arrow {
 
     class RoundOptions extends FunctionOptions {
         static $gtype: GObject.GType<RoundOptions>;
-        declare static readonly __signalSignatures: RoundOptions.SignalSignatures;
 
         // Properties
 
@@ -12508,6 +15151,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): RoundOptions;
+
+        // Signals
+
+        connect<K extends keyof RoundOptions.SignalSignatures>(
+            signal: K,
+            callback: RoundOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RoundOptions.SignalSignatures>(
+            signal: K,
+            callback: RoundOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RoundOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RoundOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RoundToMultipleOptions {
@@ -12524,7 +15182,6 @@ export namespace Arrow {
 
     class RoundToMultipleOptions extends FunctionOptions {
         static $gtype: GObject.GType<RoundToMultipleOptions>;
-        declare static readonly __signalSignatures: RoundToMultipleOptions.SignalSignatures;
 
         // Properties
 
@@ -12551,6 +15208,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): RoundToMultipleOptions;
+
+        // Signals
+
+        connect<K extends keyof RoundToMultipleOptions.SignalSignatures>(
+            signal: K,
+            callback: RoundToMultipleOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RoundToMultipleOptions.SignalSignatures>(
+            signal: K,
+            callback: RoundToMultipleOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RoundToMultipleOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RoundToMultipleOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RunEndEncodeOptions {
@@ -12567,7 +15239,6 @@ export namespace Arrow {
 
     class RunEndEncodeOptions extends FunctionOptions {
         static $gtype: GObject.GType<RunEndEncodeOptions>;
-        declare static readonly __signalSignatures: RunEndEncodeOptions.SignalSignatures;
 
         // Properties
 
@@ -12589,6 +15260,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](run_end_data_type?: DataType | null): RunEndEncodeOptions;
+
+        // Signals
+
+        connect<K extends keyof RunEndEncodeOptions.SignalSignatures>(
+            signal: K,
+            callback: RunEndEncodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RunEndEncodeOptions.SignalSignatures>(
+            signal: K,
+            callback: RunEndEncodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RunEndEncodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RunEndEncodeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RunEndEncodedArray {
@@ -12606,7 +15292,6 @@ export namespace Arrow {
 
     class RunEndEncodedArray extends Array {
         static $gtype: GObject.GType<RunEndEncodedArray>;
-        declare static readonly __signalSignatures: RunEndEncodedArray.SignalSignatures;
 
         // Properties
 
@@ -12627,6 +15312,21 @@ export namespace Arrow {
             values: Array,
             logical_offset: number,
         ): RunEndEncodedArray;
+
+        // Signals
+
+        connect<K extends keyof RunEndEncodedArray.SignalSignatures>(
+            signal: K,
+            callback: RunEndEncodedArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RunEndEncodedArray.SignalSignatures>(
+            signal: K,
+            callback: RunEndEncodedArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RunEndEncodedArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RunEndEncodedArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12650,7 +15350,6 @@ export namespace Arrow {
 
     class RunEndEncodedDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<RunEndEncodedDataType>;
-        declare static readonly __signalSignatures: RunEndEncodedDataType.SignalSignatures;
 
         // Constructors
 
@@ -12659,6 +15358,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](run_end_data_type: DataType, value_data_type: DataType): RunEndEncodedDataType;
+
+        // Signals
+
+        connect<K extends keyof RunEndEncodedDataType.SignalSignatures>(
+            signal: K,
+            callback: RunEndEncodedDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RunEndEncodedDataType.SignalSignatures>(
+            signal: K,
+            callback: RunEndEncodedDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RunEndEncodedDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RunEndEncodedDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12677,13 +15391,27 @@ export namespace Arrow {
 
     class S3FileSystem extends FileSystem {
         static $gtype: GObject.GType<S3FileSystem>;
-        declare static readonly __signalSignatures: S3FileSystem.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<S3FileSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof S3FileSystem.SignalSignatures>(
+            signal: K,
+            callback: S3FileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof S3FileSystem.SignalSignatures>(
+            signal: K,
+            callback: S3FileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof S3FileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<S3FileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace S3GlobalOptions {
@@ -12700,7 +15428,6 @@ export namespace Arrow {
 
     class S3GlobalOptions extends GObject.Object {
         static $gtype: GObject.GType<S3GlobalOptions>;
-        declare static readonly __signalSignatures: S3GlobalOptions.SignalSignatures;
 
         // Properties
 
@@ -12722,6 +15449,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): S3GlobalOptions;
+
+        // Signals
+
+        connect<K extends keyof S3GlobalOptions.SignalSignatures>(
+            signal: K,
+            callback: S3GlobalOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof S3GlobalOptions.SignalSignatures>(
+            signal: K,
+            callback: S3GlobalOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof S3GlobalOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<S3GlobalOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Scalar {
@@ -12739,7 +15481,6 @@ export namespace Arrow {
 
     abstract class Scalar extends GObject.Object {
         static $gtype: GObject.GType<Scalar>;
-        declare static readonly __signalSignatures: Scalar.SignalSignatures;
 
         // Properties
 
@@ -12758,6 +15499,12 @@ export namespace Arrow {
         constructor(properties?: Partial<Scalar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Scalar.SignalSignatures>(signal: K, callback: Scalar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scalar.SignalSignatures>(signal: K, callback: Scalar.SignalSignatures[K]): number;
+        emit<K extends keyof Scalar.SignalSignatures>(signal: K, ...args: Parameters<Scalar.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -12789,7 +15536,6 @@ export namespace Arrow {
 
     class ScalarAggregateOptions extends FunctionOptions {
         static $gtype: GObject.GType<ScalarAggregateOptions>;
-        declare static readonly __signalSignatures: ScalarAggregateOptions.SignalSignatures;
 
         // Properties
 
@@ -12821,6 +15567,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): ScalarAggregateOptions;
+
+        // Signals
+
+        connect<K extends keyof ScalarAggregateOptions.SignalSignatures>(
+            signal: K,
+            callback: ScalarAggregateOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScalarAggregateOptions.SignalSignatures>(
+            signal: K,
+            callback: ScalarAggregateOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScalarAggregateOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScalarAggregateOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ScalarDatum {
@@ -12836,7 +15597,6 @@ export namespace Arrow {
 
     class ScalarDatum extends Datum {
         static $gtype: GObject.GType<ScalarDatum>;
-        declare static readonly __signalSignatures: ScalarDatum.SignalSignatures;
 
         // Properties
 
@@ -12849,6 +15609,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Scalar): ScalarDatum;
+
+        // Signals
+
+        connect<K extends keyof ScalarDatum.SignalSignatures>(
+            signal: K,
+            callback: ScalarDatum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScalarDatum.SignalSignatures>(
+            signal: K,
+            callback: ScalarDatum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScalarDatum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScalarDatum.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Schema {
@@ -12864,7 +15639,6 @@ export namespace Arrow {
 
     class Schema extends GObject.Object {
         static $gtype: GObject.GType<Schema>;
-        declare static readonly __signalSignatures: Schema.SignalSignatures;
 
         // Properties
 
@@ -12877,6 +15651,12 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](fields: Field[]): Schema;
+
+        // Signals
+
+        connect<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
+        connect_after<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
+        emit<K extends keyof Schema.SignalSignatures>(signal: K, ...args: Parameters<Schema.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -12915,13 +15695,27 @@ export namespace Arrow {
 
     class SeekableInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<SeekableInputStream>;
-        declare static readonly __signalSignatures: SeekableInputStream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SeekableInputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SeekableInputStream.SignalSignatures>(
+            signal: K,
+            callback: SeekableInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SeekableInputStream.SignalSignatures>(
+            signal: K,
+            callback: SeekableInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SeekableInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SeekableInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13399,7 +16193,6 @@ export namespace Arrow {
 
     class SetLookupOptions extends FunctionOptions {
         static $gtype: GObject.GType<SetLookupOptions>;
-        declare static readonly __signalSignatures: SetLookupOptions.SignalSignatures;
 
         // Properties
 
@@ -13431,6 +16224,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value_set?: Datum | null): SetLookupOptions;
+
+        // Signals
+
+        connect<K extends keyof SetLookupOptions.SignalSignatures>(
+            signal: K,
+            callback: SetLookupOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SetLookupOptions.SignalSignatures>(
+            signal: K,
+            callback: SetLookupOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SetLookupOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SetLookupOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SinkNodeOptions {
@@ -13444,7 +16252,6 @@ export namespace Arrow {
 
     class SinkNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SinkNodeOptions>;
-        declare static readonly __signalSignatures: SinkNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -13453,6 +16260,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): SinkNodeOptions;
+
+        // Signals
+
+        connect<K extends keyof SinkNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: SinkNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SinkNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: SinkNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SinkNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SinkNodeOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13473,7 +16295,6 @@ export namespace Arrow {
 
     class SlowFileSystem extends FileSystem {
         static $gtype: GObject.GType<SlowFileSystem>;
-        declare static readonly __signalSignatures: SlowFileSystem.SignalSignatures;
 
         // Properties
 
@@ -13493,6 +16314,21 @@ export namespace Arrow {
             average_latency: number,
             seed: number,
         ): SlowFileSystem;
+
+        // Signals
+
+        connect<K extends keyof SlowFileSystem.SignalSignatures>(
+            signal: K,
+            callback: SlowFileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SlowFileSystem.SignalSignatures>(
+            signal: K,
+            callback: SlowFileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SlowFileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SlowFileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SortKey {
@@ -13509,7 +16345,6 @@ export namespace Arrow {
 
     class SortKey extends GObject.Object {
         static $gtype: GObject.GType<SortKey>;
-        declare static readonly __signalSignatures: SortKey.SignalSignatures;
 
         // Properties
 
@@ -13534,6 +16369,18 @@ export namespace Arrow {
 
         static ['new'](target: string, order: SortOrder): SortKey;
 
+        // Signals
+
+        connect<K extends keyof SortKey.SignalSignatures>(signal: K, callback: SortKey.SignalSignatures[K]): number;
+        connect_after<K extends keyof SortKey.SignalSignatures>(
+            signal: K,
+            callback: SortKey.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SortKey.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SortKey.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         equal(other_sort_key: SortKey): boolean;
@@ -13550,7 +16397,6 @@ export namespace Arrow {
 
     class SortOptions extends FunctionOptions {
         static $gtype: GObject.GType<SortOptions>;
-        declare static readonly __signalSignatures: SortOptions.SignalSignatures;
 
         // Constructors
 
@@ -13559,6 +16405,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](sort_keys?: SortKey[] | null): SortOptions;
+
+        // Signals
+
+        connect<K extends keyof SortOptions.SignalSignatures>(
+            signal: K,
+            callback: SortOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SortOptions.SignalSignatures>(
+            signal: K,
+            callback: SortOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SortOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SortOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13593,7 +16454,6 @@ export namespace Arrow {
 
     class SourceNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SourceNodeOptions>;
-        declare static readonly __signalSignatures: SourceNodeOptions.SignalSignatures;
 
         // Properties
 
@@ -13612,6 +16472,21 @@ export namespace Arrow {
         static new_record_batch_reader(reader: RecordBatchReader): SourceNodeOptions;
 
         static new_table(table: Table): SourceNodeOptions;
+
+        // Signals
+
+        connect<K extends keyof SourceNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: SourceNodeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceNodeOptions.SignalSignatures>(
+            signal: K,
+            callback: SourceNodeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceNodeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceNodeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SparseUnionArray {
@@ -13625,7 +16500,6 @@ export namespace Arrow {
 
     class SparseUnionArray extends UnionArray {
         static $gtype: GObject.GType<SparseUnionArray>;
-        declare static readonly __signalSignatures: SparseUnionArray.SignalSignatures;
 
         // Constructors
 
@@ -13636,6 +16510,21 @@ export namespace Arrow {
         static ['new'](type_ids: Int8Array, fields: Array[]): SparseUnionArray;
 
         static new_data_type(data_type: SparseUnionDataType, type_ids: Int8Array, fields: Array[]): SparseUnionArray;
+
+        // Signals
+
+        connect<K extends keyof SparseUnionArray.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparseUnionArray.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparseUnionArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparseUnionArray.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SparseUnionArrayBuilder {
@@ -13649,7 +16538,6 @@ export namespace Arrow {
 
     class SparseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<SparseUnionArrayBuilder>;
-        declare static readonly __signalSignatures: SparseUnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13658,6 +16546,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type?: SparseUnionDataType | null): SparseUnionArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparseUnionArrayBuilder.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SparseUnionDataType {
@@ -13671,7 +16574,6 @@ export namespace Arrow {
 
     class SparseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<SparseUnionDataType>;
-        declare static readonly __signalSignatures: SparseUnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -13680,6 +16582,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](fields: Field[], type_codes: Uint8Array | string): SparseUnionDataType;
+
+        // Signals
+
+        connect<K extends keyof SparseUnionDataType.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparseUnionDataType.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparseUnionDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparseUnionDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SparseUnionScalar {
@@ -13693,7 +16610,6 @@ export namespace Arrow {
 
     class SparseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<SparseUnionScalar>;
-        declare static readonly __signalSignatures: SparseUnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -13702,6 +16618,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: SparseUnionDataType, type_code: number, value: Scalar): SparseUnionScalar;
+
+        // Signals
+
+        connect<K extends keyof SparseUnionScalar.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparseUnionScalar.SignalSignatures>(
+            signal: K,
+            callback: SparseUnionScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparseUnionScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparseUnionScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SplitPatternOptions {
@@ -13720,7 +16651,6 @@ export namespace Arrow {
 
     class SplitPatternOptions extends FunctionOptions {
         static $gtype: GObject.GType<SplitPatternOptions>;
-        declare static readonly __signalSignatures: SplitPatternOptions.SignalSignatures;
 
         // Properties
 
@@ -13747,6 +16677,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): SplitPatternOptions;
+
+        // Signals
+
+        connect<K extends keyof SplitPatternOptions.SignalSignatures>(
+            signal: K,
+            callback: SplitPatternOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SplitPatternOptions.SignalSignatures>(
+            signal: K,
+            callback: SplitPatternOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SplitPatternOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SplitPatternOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StrftimeOptions {
@@ -13763,7 +16708,6 @@ export namespace Arrow {
 
     class StrftimeOptions extends FunctionOptions {
         static $gtype: GObject.GType<StrftimeOptions>;
-        declare static readonly __signalSignatures: StrftimeOptions.SignalSignatures;
 
         // Properties
 
@@ -13785,6 +16729,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): StrftimeOptions;
+
+        // Signals
+
+        connect<K extends keyof StrftimeOptions.SignalSignatures>(
+            signal: K,
+            callback: StrftimeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StrftimeOptions.SignalSignatures>(
+            signal: K,
+            callback: StrftimeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StrftimeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StrftimeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StringArray {
@@ -13798,7 +16757,6 @@ export namespace Arrow {
 
     class StringArray extends BinaryArray {
         static $gtype: GObject.GType<StringArray>;
-        declare static readonly __signalSignatures: StringArray.SignalSignatures;
 
         // Constructors
 
@@ -13813,6 +16771,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): StringArray;
+
+        // Signals
+
+        connect<K extends keyof StringArray.SignalSignatures>(
+            signal: K,
+            callback: StringArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringArray.SignalSignatures>(
+            signal: K,
+            callback: StringArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13830,7 +16803,6 @@ export namespace Arrow {
 
     class StringArrayBuilder extends BinaryArrayBuilder {
         static $gtype: GObject.GType<StringArrayBuilder>;
-        declare static readonly __signalSignatures: StringArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13839,6 +16811,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): StringArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof StringArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: StringArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: StringArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13868,7 +16855,6 @@ export namespace Arrow {
 
     class StringDataType extends DataType {
         static $gtype: GObject.GType<StringDataType>;
-        declare static readonly __signalSignatures: StringDataType.SignalSignatures;
 
         // Constructors
 
@@ -13877,6 +16863,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): StringDataType;
+
+        // Signals
+
+        connect<K extends keyof StringDataType.SignalSignatures>(
+            signal: K,
+            callback: StringDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringDataType.SignalSignatures>(
+            signal: K,
+            callback: StringDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StringDictionaryArrayBuilder {
@@ -13890,7 +16891,6 @@ export namespace Arrow {
 
     class StringDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StringDictionaryArrayBuilder>;
-        declare static readonly __signalSignatures: StringDictionaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13899,6 +16899,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): StringDictionaryArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: StringDictionaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: StringDictionaryArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringDictionaryArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13931,7 +16946,6 @@ export namespace Arrow {
 
     class StringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<StringScalar>;
-        declare static readonly __signalSignatures: StringScalar.SignalSignatures;
 
         // Constructors
 
@@ -13940,6 +16954,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Buffer): StringScalar;
+
+        // Signals
+
+        connect<K extends keyof StringScalar.SignalSignatures>(
+            signal: K,
+            callback: StringScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringScalar.SignalSignatures>(
+            signal: K,
+            callback: StringScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringScalar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StrptimeOptions {
@@ -13958,7 +16987,6 @@ export namespace Arrow {
 
     class StrptimeOptions extends FunctionOptions {
         static $gtype: GObject.GType<StrptimeOptions>;
-        declare static readonly __signalSignatures: StrptimeOptions.SignalSignatures;
 
         // Properties
 
@@ -13990,6 +17018,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): StrptimeOptions;
+
+        // Signals
+
+        connect<K extends keyof StrptimeOptions.SignalSignatures>(
+            signal: K,
+            callback: StrptimeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StrptimeOptions.SignalSignatures>(
+            signal: K,
+            callback: StrptimeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StrptimeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StrptimeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StrptimeTimestampParser {
@@ -14003,7 +17046,6 @@ export namespace Arrow {
 
     class StrptimeTimestampParser extends TimestampParser {
         static $gtype: GObject.GType<StrptimeTimestampParser>;
-        declare static readonly __signalSignatures: StrptimeTimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -14012,6 +17054,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](format: string): StrptimeTimestampParser;
+
+        // Signals
+
+        connect<K extends keyof StrptimeTimestampParser.SignalSignatures>(
+            signal: K,
+            callback: StrptimeTimestampParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StrptimeTimestampParser.SignalSignatures>(
+            signal: K,
+            callback: StrptimeTimestampParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StrptimeTimestampParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StrptimeTimestampParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14029,7 +17086,6 @@ export namespace Arrow {
 
     class StructArray extends Array {
         static $gtype: GObject.GType<StructArray>;
-        declare static readonly __signalSignatures: StructArray.SignalSignatures;
 
         // Constructors
 
@@ -14044,6 +17100,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): StructArray;
+
+        // Signals
+
+        connect<K extends keyof StructArray.SignalSignatures>(
+            signal: K,
+            callback: StructArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructArray.SignalSignatures>(
+            signal: K,
+            callback: StructArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14063,7 +17134,6 @@ export namespace Arrow {
 
     class StructArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StructArrayBuilder>;
-        declare static readonly __signalSignatures: StructArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14072,6 +17142,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: StructDataType): StructArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof StructArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: StructArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: StructArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14092,7 +17177,6 @@ export namespace Arrow {
 
     class StructDataType extends DataType {
         static $gtype: GObject.GType<StructDataType>;
-        declare static readonly __signalSignatures: StructDataType.SignalSignatures;
 
         // Constructors
 
@@ -14101,6 +17185,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](fields: Field[]): StructDataType;
+
+        // Signals
+
+        connect<K extends keyof StructDataType.SignalSignatures>(
+            signal: K,
+            callback: StructDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructDataType.SignalSignatures>(
+            signal: K,
+            callback: StructDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14125,7 +17224,6 @@ export namespace Arrow {
 
     class StructFieldOptions extends FunctionOptions {
         static $gtype: GObject.GType<StructFieldOptions>;
-        declare static readonly __signalSignatures: StructFieldOptions.SignalSignatures;
 
         // Properties
 
@@ -14139,6 +17237,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): StructFieldOptions;
+
+        // Signals
+
+        connect<K extends keyof StructFieldOptions.SignalSignatures>(
+            signal: K,
+            callback: StructFieldOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructFieldOptions.SignalSignatures>(
+            signal: K,
+            callback: StructFieldOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructFieldOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructFieldOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14156,7 +17269,6 @@ export namespace Arrow {
 
     class StructScalar extends Scalar {
         static $gtype: GObject.GType<StructScalar>;
-        declare static readonly __signalSignatures: StructScalar.SignalSignatures;
 
         // Constructors
 
@@ -14165,6 +17277,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: StructDataType, value: Scalar[]): StructScalar;
+
+        // Signals
+
+        connect<K extends keyof StructScalar.SignalSignatures>(
+            signal: K,
+            callback: StructScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructScalar.SignalSignatures>(
+            signal: K,
+            callback: StructScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14185,7 +17312,6 @@ export namespace Arrow {
 
     class SubTreeFileSystem extends FileSystem {
         static $gtype: GObject.GType<SubTreeFileSystem>;
-        declare static readonly __signalSignatures: SubTreeFileSystem.SignalSignatures;
 
         // Properties
 
@@ -14199,6 +17325,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](base_path: string, base_file_system: FileSystem): SubTreeFileSystem;
+
+        // Signals
+
+        connect<K extends keyof SubTreeFileSystem.SignalSignatures>(
+            signal: K,
+            callback: SubTreeFileSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubTreeFileSystem.SignalSignatures>(
+            signal: K,
+            callback: SubTreeFileSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubTreeFileSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubTreeFileSystem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Table {
@@ -14214,7 +17355,6 @@ export namespace Arrow {
 
     class Table extends GObject.Object {
         static $gtype: GObject.GType<Table>;
-        declare static readonly __signalSignatures: Table.SignalSignatures;
 
         // Properties
 
@@ -14231,6 +17371,12 @@ export namespace Arrow {
         static new_chunked_arrays(schema: Schema, chunked_arrays: ChunkedArray[]): Table;
 
         static new_record_batches(schema: Schema, record_batches: RecordBatch[]): Table;
+
+        // Signals
+
+        connect<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
+        connect_after<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
+        emit<K extends keyof Table.SignalSignatures>(signal: K, ...args: Parameters<Table.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -14272,7 +17418,6 @@ export namespace Arrow {
 
     class TableBatchReader extends RecordBatchReader {
         static $gtype: GObject.GType<TableBatchReader>;
-        declare static readonly __signalSignatures: TableBatchReader.SignalSignatures;
 
         // Constructors
 
@@ -14284,6 +17429,21 @@ export namespace Arrow {
         // Conflicted with Arrow.RecordBatchReader.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TableBatchReader.SignalSignatures>(
+            signal: K,
+            callback: TableBatchReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TableBatchReader.SignalSignatures>(
+            signal: K,
+            callback: TableBatchReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TableBatchReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TableBatchReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14313,7 +17473,6 @@ export namespace Arrow {
 
     class TableConcatenateOptions extends GObject.Object {
         static $gtype: GObject.GType<TableConcatenateOptions>;
-        declare static readonly __signalSignatures: TableConcatenateOptions.SignalSignatures;
 
         // Properties
 
@@ -14367,6 +17526,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): TableConcatenateOptions;
+
+        // Signals
+
+        connect<K extends keyof TableConcatenateOptions.SignalSignatures>(
+            signal: K,
+            callback: TableConcatenateOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TableConcatenateOptions.SignalSignatures>(
+            signal: K,
+            callback: TableConcatenateOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TableConcatenateOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TableConcatenateOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TableDatum {
@@ -14382,7 +17556,6 @@ export namespace Arrow {
 
     class TableDatum extends Datum {
         static $gtype: GObject.GType<TableDatum>;
-        declare static readonly __signalSignatures: TableDatum.SignalSignatures;
 
         // Properties
 
@@ -14395,6 +17568,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: Table): TableDatum;
+
+        // Signals
+
+        connect<K extends keyof TableDatum.SignalSignatures>(
+            signal: K,
+            callback: TableDatum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TableDatum.SignalSignatures>(
+            signal: K,
+            callback: TableDatum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TableDatum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TableDatum.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TakeOptions {
@@ -14408,7 +17596,6 @@ export namespace Arrow {
 
     class TakeOptions extends FunctionOptions {
         static $gtype: GObject.GType<TakeOptions>;
-        declare static readonly __signalSignatures: TakeOptions.SignalSignatures;
 
         // Constructors
 
@@ -14417,6 +17604,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): TakeOptions;
+
+        // Signals
+
+        connect<K extends keyof TakeOptions.SignalSignatures>(
+            signal: K,
+            callback: TakeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TakeOptions.SignalSignatures>(
+            signal: K,
+            callback: TakeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TakeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TakeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TemporalDataType {
@@ -14430,13 +17632,27 @@ export namespace Arrow {
 
     abstract class TemporalDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<TemporalDataType>;
-        declare static readonly __signalSignatures: TemporalDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TemporalDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TemporalDataType.SignalSignatures>(
+            signal: K,
+            callback: TemporalDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TemporalDataType.SignalSignatures>(
+            signal: K,
+            callback: TemporalDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TemporalDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TemporalDataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Tensor {
@@ -14453,7 +17669,6 @@ export namespace Arrow {
 
     class Tensor extends GObject.Object {
         static $gtype: GObject.GType<Tensor>;
-        declare static readonly __signalSignatures: Tensor.SignalSignatures;
 
         // Properties
 
@@ -14473,6 +17688,12 @@ export namespace Arrow {
             strides?: number[] | null,
             dimension_names?: string[] | null,
         ): Tensor;
+
+        // Signals
+
+        connect<K extends keyof Tensor.SignalSignatures>(signal: K, callback: Tensor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tensor.SignalSignatures>(signal: K, callback: Tensor.SignalSignatures[K]): number;
+        emit<K extends keyof Tensor.SignalSignatures>(signal: K, ...args: Parameters<Tensor.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -14502,7 +17723,6 @@ export namespace Arrow {
 
     class Time32Array extends NumericArray {
         static $gtype: GObject.GType<Time32Array>;
-        declare static readonly __signalSignatures: Time32Array.SignalSignatures;
 
         // Constructors
 
@@ -14517,6 +17737,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): Time32Array;
+
+        // Signals
+
+        connect<K extends keyof Time32Array.SignalSignatures>(
+            signal: K,
+            callback: Time32Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time32Array.SignalSignatures>(
+            signal: K,
+            callback: Time32Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time32Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time32Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14535,7 +17770,6 @@ export namespace Arrow {
 
     class Time32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time32ArrayBuilder>;
-        declare static readonly __signalSignatures: Time32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14544,6 +17778,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Time32DataType): Time32ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Time32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Time32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Time32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time32ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14570,7 +17819,6 @@ export namespace Arrow {
 
     class Time32DataType extends TimeDataType {
         static $gtype: GObject.GType<Time32DataType>;
-        declare static readonly __signalSignatures: Time32DataType.SignalSignatures;
 
         // Constructors
 
@@ -14579,6 +17827,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](unit: TimeUnit): Time32DataType;
+
+        // Signals
+
+        connect<K extends keyof Time32DataType.SignalSignatures>(
+            signal: K,
+            callback: Time32DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time32DataType.SignalSignatures>(
+            signal: K,
+            callback: Time32DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time32DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time32DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Time32Scalar {
@@ -14592,7 +17855,6 @@ export namespace Arrow {
 
     class Time32Scalar extends Scalar {
         static $gtype: GObject.GType<Time32Scalar>;
-        declare static readonly __signalSignatures: Time32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -14601,6 +17863,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Time32DataType, value: number): Time32Scalar;
+
+        // Signals
+
+        connect<K extends keyof Time32Scalar.SignalSignatures>(
+            signal: K,
+            callback: Time32Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time32Scalar.SignalSignatures>(
+            signal: K,
+            callback: Time32Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time32Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time32Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14618,7 +17895,6 @@ export namespace Arrow {
 
     class Time64Array extends NumericArray {
         static $gtype: GObject.GType<Time64Array>;
-        declare static readonly __signalSignatures: Time64Array.SignalSignatures;
 
         // Constructors
 
@@ -14633,6 +17909,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): Time64Array;
+
+        // Signals
+
+        connect<K extends keyof Time64Array.SignalSignatures>(
+            signal: K,
+            callback: Time64Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time64Array.SignalSignatures>(
+            signal: K,
+            callback: Time64Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time64Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time64Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14651,7 +17942,6 @@ export namespace Arrow {
 
     class Time64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time64ArrayBuilder>;
-        declare static readonly __signalSignatures: Time64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14660,6 +17950,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Time64DataType): Time64ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof Time64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Time64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: Time64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time64ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14686,7 +17991,6 @@ export namespace Arrow {
 
     class Time64DataType extends TimeDataType {
         static $gtype: GObject.GType<Time64DataType>;
-        declare static readonly __signalSignatures: Time64DataType.SignalSignatures;
 
         // Constructors
 
@@ -14695,6 +17999,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](unit: TimeUnit): Time64DataType;
+
+        // Signals
+
+        connect<K extends keyof Time64DataType.SignalSignatures>(
+            signal: K,
+            callback: Time64DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time64DataType.SignalSignatures>(
+            signal: K,
+            callback: Time64DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time64DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time64DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Time64Scalar {
@@ -14708,7 +18027,6 @@ export namespace Arrow {
 
     class Time64Scalar extends Scalar {
         static $gtype: GObject.GType<Time64Scalar>;
-        declare static readonly __signalSignatures: Time64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -14717,6 +18035,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: Time64DataType, value: number): Time64Scalar;
+
+        // Signals
+
+        connect<K extends keyof Time64Scalar.SignalSignatures>(
+            signal: K,
+            callback: Time64Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Time64Scalar.SignalSignatures>(
+            signal: K,
+            callback: Time64Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Time64Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Time64Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14734,13 +18067,27 @@ export namespace Arrow {
 
     abstract class TimeDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimeDataType>;
-        declare static readonly __signalSignatures: TimeDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TimeDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TimeDataType.SignalSignatures>(
+            signal: K,
+            callback: TimeDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimeDataType.SignalSignatures>(
+            signal: K,
+            callback: TimeDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimeDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimeDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14758,7 +18105,6 @@ export namespace Arrow {
 
     class TimestampArray extends NumericArray {
         static $gtype: GObject.GType<TimestampArray>;
-        declare static readonly __signalSignatures: TimestampArray.SignalSignatures;
 
         // Constructors
 
@@ -14773,6 +18119,21 @@ export namespace Arrow {
             null_bitmap: Buffer | null,
             n_nulls: number,
         ): TimestampArray;
+
+        // Signals
+
+        connect<K extends keyof TimestampArray.SignalSignatures>(
+            signal: K,
+            callback: TimestampArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimestampArray.SignalSignatures>(
+            signal: K,
+            callback: TimestampArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimestampArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimestampArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14791,7 +18152,6 @@ export namespace Arrow {
 
     class TimestampArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<TimestampArrayBuilder>;
-        declare static readonly __signalSignatures: TimestampArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14800,6 +18160,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: TimestampDataType): TimestampArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof TimestampArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: TimestampArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimestampArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: TimestampArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimestampArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimestampArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14829,7 +18204,6 @@ export namespace Arrow {
 
     class TimestampDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimestampDataType>;
-        declare static readonly __signalSignatures: TimestampDataType.SignalSignatures;
 
         // Properties
 
@@ -14850,6 +18224,21 @@ export namespace Arrow {
 
         static ['new'](unit: TimeUnit, time_zone?: GLib.TimeZone | null): TimestampDataType;
 
+        // Signals
+
+        connect<K extends keyof TimestampDataType.SignalSignatures>(
+            signal: K,
+            callback: TimestampDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimestampDataType.SignalSignatures>(
+            signal: K,
+            callback: TimestampDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimestampDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimestampDataType.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_unit(): TimeUnit;
@@ -14868,7 +18257,6 @@ export namespace Arrow {
 
     abstract class TimestampParser extends GObject.Object {
         static $gtype: GObject.GType<TimestampParser>;
-        declare static readonly __signalSignatures: TimestampParser.SignalSignatures;
 
         // Properties
 
@@ -14879,6 +18267,21 @@ export namespace Arrow {
         constructor(properties?: Partial<TimestampParser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TimestampParser.SignalSignatures>(
+            signal: K,
+            callback: TimestampParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimestampParser.SignalSignatures>(
+            signal: K,
+            callback: TimestampParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimestampParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimestampParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14896,7 +18299,6 @@ export namespace Arrow {
 
     class TimestampScalar extends Scalar {
         static $gtype: GObject.GType<TimestampScalar>;
-        declare static readonly __signalSignatures: TimestampScalar.SignalSignatures;
 
         // Constructors
 
@@ -14905,6 +18307,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](data_type: TimestampDataType, value: number): TimestampScalar;
+
+        // Signals
+
+        connect<K extends keyof TimestampScalar.SignalSignatures>(
+            signal: K,
+            callback: TimestampScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimestampScalar.SignalSignatures>(
+            signal: K,
+            callback: TimestampScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimestampScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimestampScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14922,7 +18339,6 @@ export namespace Arrow {
 
     class UInt16Array extends NumericArray {
         static $gtype: GObject.GType<UInt16Array>;
-        declare static readonly __signalSignatures: UInt16Array.SignalSignatures;
 
         // Constructors
 
@@ -14931,6 +18347,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt16Array;
+
+        // Signals
+
+        connect<K extends keyof UInt16Array.SignalSignatures>(
+            signal: K,
+            callback: UInt16Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt16Array.SignalSignatures>(
+            signal: K,
+            callback: UInt16Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt16Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt16Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14950,7 +18381,6 @@ export namespace Arrow {
 
     class UInt16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt16ArrayBuilder>;
-        declare static readonly __signalSignatures: UInt16ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14959,6 +18389,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt16ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt16ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt16ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt16ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14985,7 +18430,6 @@ export namespace Arrow {
 
     class UInt16DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt16DataType>;
-        declare static readonly __signalSignatures: UInt16DataType.SignalSignatures;
 
         // Constructors
 
@@ -14994,6 +18438,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt16DataType;
+
+        // Signals
+
+        connect<K extends keyof UInt16DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt16DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt16DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt16DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt16DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt16DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UInt16Scalar {
@@ -15007,7 +18466,6 @@ export namespace Arrow {
 
     class UInt16Scalar extends Scalar {
         static $gtype: GObject.GType<UInt16Scalar>;
-        declare static readonly __signalSignatures: UInt16Scalar.SignalSignatures;
 
         // Constructors
 
@@ -15016,6 +18474,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt16Scalar;
+
+        // Signals
+
+        connect<K extends keyof UInt16Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt16Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt16Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt16Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt16Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt16Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15033,7 +18506,6 @@ export namespace Arrow {
 
     class UInt32Array extends NumericArray {
         static $gtype: GObject.GType<UInt32Array>;
-        declare static readonly __signalSignatures: UInt32Array.SignalSignatures;
 
         // Constructors
 
@@ -15042,6 +18514,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt32Array;
+
+        // Signals
+
+        connect<K extends keyof UInt32Array.SignalSignatures>(
+            signal: K,
+            callback: UInt32Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt32Array.SignalSignatures>(
+            signal: K,
+            callback: UInt32Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt32Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt32Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15061,7 +18548,6 @@ export namespace Arrow {
 
     class UInt32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt32ArrayBuilder>;
-        declare static readonly __signalSignatures: UInt32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -15070,6 +18556,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt32ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt32ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt32ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15096,7 +18597,6 @@ export namespace Arrow {
 
     class UInt32DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt32DataType>;
-        declare static readonly __signalSignatures: UInt32DataType.SignalSignatures;
 
         // Constructors
 
@@ -15105,6 +18605,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt32DataType;
+
+        // Signals
+
+        connect<K extends keyof UInt32DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt32DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt32DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt32DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt32DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt32DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UInt32Scalar {
@@ -15118,7 +18633,6 @@ export namespace Arrow {
 
     class UInt32Scalar extends Scalar {
         static $gtype: GObject.GType<UInt32Scalar>;
-        declare static readonly __signalSignatures: UInt32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -15127,6 +18641,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt32Scalar;
+
+        // Signals
+
+        connect<K extends keyof UInt32Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt32Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt32Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt32Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt32Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt32Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15144,7 +18673,6 @@ export namespace Arrow {
 
     class UInt64Array extends NumericArray {
         static $gtype: GObject.GType<UInt64Array>;
-        declare static readonly __signalSignatures: UInt64Array.SignalSignatures;
 
         // Constructors
 
@@ -15153,6 +18681,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt64Array;
+
+        // Signals
+
+        connect<K extends keyof UInt64Array.SignalSignatures>(
+            signal: K,
+            callback: UInt64Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt64Array.SignalSignatures>(
+            signal: K,
+            callback: UInt64Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt64Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt64Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15172,7 +18715,6 @@ export namespace Arrow {
 
     class UInt64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt64ArrayBuilder>;
-        declare static readonly __signalSignatures: UInt64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -15181,6 +18723,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt64ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt64ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt64ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15207,7 +18764,6 @@ export namespace Arrow {
 
     class UInt64DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt64DataType>;
-        declare static readonly __signalSignatures: UInt64DataType.SignalSignatures;
 
         // Constructors
 
@@ -15216,6 +18772,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt64DataType;
+
+        // Signals
+
+        connect<K extends keyof UInt64DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt64DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt64DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt64DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt64DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt64DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UInt64Scalar {
@@ -15229,7 +18800,6 @@ export namespace Arrow {
 
     class UInt64Scalar extends Scalar {
         static $gtype: GObject.GType<UInt64Scalar>;
-        declare static readonly __signalSignatures: UInt64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -15238,6 +18808,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt64Scalar;
+
+        // Signals
+
+        connect<K extends keyof UInt64Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt64Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt64Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt64Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt64Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt64Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15255,7 +18840,6 @@ export namespace Arrow {
 
     class UInt8Array extends NumericArray {
         static $gtype: GObject.GType<UInt8Array>;
-        declare static readonly __signalSignatures: UInt8Array.SignalSignatures;
 
         // Constructors
 
@@ -15264,6 +18848,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](length: number, data: Buffer, null_bitmap: Buffer | null, n_nulls: number): UInt8Array;
+
+        // Signals
+
+        connect<K extends keyof UInt8Array.SignalSignatures>(
+            signal: K,
+            callback: UInt8Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt8Array.SignalSignatures>(
+            signal: K,
+            callback: UInt8Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt8Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt8Array.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15283,7 +18882,6 @@ export namespace Arrow {
 
     class UInt8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt8ArrayBuilder>;
-        declare static readonly __signalSignatures: UInt8ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -15292,6 +18890,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt8ArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt8ArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UInt8ArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt8ArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15318,7 +18931,6 @@ export namespace Arrow {
 
     class UInt8DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt8DataType>;
-        declare static readonly __signalSignatures: UInt8DataType.SignalSignatures;
 
         // Constructors
 
@@ -15327,6 +18939,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UInt8DataType;
+
+        // Signals
+
+        connect<K extends keyof UInt8DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt8DataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt8DataType.SignalSignatures>(
+            signal: K,
+            callback: UInt8DataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt8DataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt8DataType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UInt8Scalar {
@@ -15340,7 +18967,6 @@ export namespace Arrow {
 
     class UInt8Scalar extends Scalar {
         static $gtype: GObject.GType<UInt8Scalar>;
-        declare static readonly __signalSignatures: UInt8Scalar.SignalSignatures;
 
         // Constructors
 
@@ -15349,6 +18975,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](value: number): UInt8Scalar;
+
+        // Signals
+
+        connect<K extends keyof UInt8Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt8Scalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UInt8Scalar.SignalSignatures>(
+            signal: K,
+            callback: UInt8Scalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UInt8Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UInt8Scalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15366,7 +19007,6 @@ export namespace Arrow {
 
     class UIntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UIntArrayBuilder>;
-        declare static readonly __signalSignatures: UIntArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -15375,6 +19015,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UIntArrayBuilder;
+
+        // Signals
+
+        connect<K extends keyof UIntArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UIntArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UIntArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UIntArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UIntArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UIntArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15403,7 +19058,6 @@ export namespace Arrow {
 
     class UTF8NormalizeOptions extends FunctionOptions {
         static $gtype: GObject.GType<UTF8NormalizeOptions>;
-        declare static readonly __signalSignatures: UTF8NormalizeOptions.SignalSignatures;
 
         // Properties
 
@@ -15420,6 +19074,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): UTF8NormalizeOptions;
+
+        // Signals
+
+        connect<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
+            signal: K,
+            callback: UTF8NormalizeOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
+            signal: K,
+            callback: UTF8NormalizeOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UTF8NormalizeOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UnionArray {
@@ -15436,7 +19105,6 @@ export namespace Arrow {
 
     class UnionArray extends Array {
         static $gtype: GObject.GType<UnionArray>;
-        declare static readonly __signalSignatures: UnionArray.SignalSignatures;
 
         // Properties
 
@@ -15448,6 +19116,21 @@ export namespace Arrow {
         constructor(properties?: Partial<UnionArray.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnionArray.SignalSignatures>(
+            signal: K,
+            callback: UnionArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnionArray.SignalSignatures>(
+            signal: K,
+            callback: UnionArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnionArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnionArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15467,13 +19150,27 @@ export namespace Arrow {
 
     abstract class UnionArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UnionArrayBuilder>;
-        declare static readonly __signalSignatures: UnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UnionArrayBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UnionArrayBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            callback: UnionArrayBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnionArrayBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnionArrayBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15506,13 +19203,27 @@ export namespace Arrow {
 
     abstract class UnionDataType extends DataType {
         static $gtype: GObject.GType<UnionDataType>;
-        declare static readonly __signalSignatures: UnionDataType.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UnionDataType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnionDataType.SignalSignatures>(
+            signal: K,
+            callback: UnionDataType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnionDataType.SignalSignatures>(
+            signal: K,
+            callback: UnionDataType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnionDataType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnionDataType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15535,7 +19246,6 @@ export namespace Arrow {
 
     abstract class UnionScalar extends Scalar {
         static $gtype: GObject.GType<UnionScalar>;
-        declare static readonly __signalSignatures: UnionScalar.SignalSignatures;
 
         // Properties
 
@@ -15549,6 +19259,21 @@ export namespace Arrow {
         constructor(properties?: Partial<UnionScalar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnionScalar.SignalSignatures>(
+            signal: K,
+            callback: UnionScalar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnionScalar.SignalSignatures>(
+            signal: K,
+            callback: UnionScalar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnionScalar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnionScalar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15573,7 +19298,6 @@ export namespace Arrow {
 
     class VarianceOptions extends FunctionOptions {
         static $gtype: GObject.GType<VarianceOptions>;
-        declare static readonly __signalSignatures: VarianceOptions.SignalSignatures;
 
         // Properties
 
@@ -15610,6 +19334,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): VarianceOptions;
+
+        // Signals
+
+        connect<K extends keyof VarianceOptions.SignalSignatures>(
+            signal: K,
+            callback: VarianceOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VarianceOptions.SignalSignatures>(
+            signal: K,
+            callback: VarianceOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VarianceOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VarianceOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WriteOptions {
@@ -15634,7 +19373,6 @@ export namespace Arrow {
 
     class WriteOptions extends GObject.Object {
         static $gtype: GObject.GType<WriteOptions>;
-        declare static readonly __signalSignatures: WriteOptions.SignalSignatures;
 
         // Properties
 
@@ -15705,6 +19443,21 @@ export namespace Arrow {
         _init(...args: any[]): void;
 
         static ['new'](): WriteOptions;
+
+        // Signals
+
+        connect<K extends keyof WriteOptions.SignalSignatures>(
+            signal: K,
+            callback: WriteOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WriteOptions.SignalSignatures>(
+            signal: K,
+            callback: WriteOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WriteOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WriteOptions.SignalSignatures[K]>
+        ): void;
     }
 
     type AggregateNodeOptionsClass = typeof AggregateNodeOptions;

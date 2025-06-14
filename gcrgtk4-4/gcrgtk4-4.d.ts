@@ -49,7 +49,6 @@ export namespace GcrGtk4 {
 
     class CertificateWidget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<CertificateWidget>;
-        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Properties
 
@@ -63,6 +62,21 @@ export namespace GcrGtk4 {
         _init(...args: any[]): void;
 
         static ['new'](certificate?: Gcr.Certificate | null): CertificateWidget;
+
+        // Signals
+
+        connect<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

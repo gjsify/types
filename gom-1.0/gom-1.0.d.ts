@@ -93,7 +93,6 @@ export namespace Gom {
 
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
-        declare static readonly __signalSignatures: Adapter.SignalSignatures;
 
         // Constructors
 
@@ -102,6 +101,18 @@ export namespace Gom {
         _init(...args: any[]): void;
 
         static ['new'](): Adapter;
+
+        // Signals
+
+        connect<K extends keyof Adapter.SignalSignatures>(signal: K, callback: Adapter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Adapter.SignalSignatures>(
+            signal: K,
+            callback: Adapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Adapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Adapter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -178,7 +189,6 @@ export namespace Gom {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
-        declare static readonly __signalSignatures: Command.SignalSignatures;
 
         // Properties
 
@@ -190,6 +200,18 @@ export namespace Gom {
         constructor(properties?: Partial<Command.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Command.SignalSignatures>(signal: K, callback: Command.SignalSignatures[K]): number;
+        connect_after<K extends keyof Command.SignalSignatures>(
+            signal: K,
+            callback: Command.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Command.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Command.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -231,7 +253,6 @@ export namespace Gom {
 
     class CommandBuilder extends GObject.Object {
         static $gtype: GObject.GType<CommandBuilder>;
-        declare static readonly __signalSignatures: CommandBuilder.SignalSignatures;
 
         // Properties
 
@@ -258,6 +279,21 @@ export namespace Gom {
         constructor(properties?: Partial<CommandBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CommandBuilder.SignalSignatures>(
+            signal: K,
+            callback: CommandBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandBuilder.SignalSignatures>(
+            signal: K,
+            callback: CommandBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -315,7 +351,6 @@ export namespace Gom {
 
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
-        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -326,6 +361,12 @@ export namespace Gom {
         constructor(properties?: Partial<Cursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -357,7 +398,6 @@ export namespace Gom {
 
     class Filter extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Filter>;
-        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Properties
 
@@ -400,6 +440,12 @@ export namespace Gom {
 
         static new_sql(sql: string, values: (GObject.Value | any)[]): Filter;
 
+        // Signals
+
+        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+
         // Methods
 
         get_sql(table_map: { [key: string]: any } | GLib.HashTable<any, any>): string;
@@ -424,7 +470,6 @@ export namespace Gom {
 
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
-        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Properties
 
@@ -437,6 +482,21 @@ export namespace Gom {
         _init(...args: any[]): void;
 
         static ['new'](adapter: Adapter): Repository;
+
+        // Signals
+
+        connect<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Repository.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -623,7 +683,6 @@ export namespace Gom {
 
     abstract class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
-        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -635,6 +694,18 @@ export namespace Gom {
         constructor(properties?: Partial<Resource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: Resource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resource.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -719,7 +790,6 @@ export namespace Gom {
 
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
-        declare static readonly __signalSignatures: ResourceGroup.SignalSignatures;
 
         // Properties
 
@@ -743,6 +813,21 @@ export namespace Gom {
         _init(...args: any[]): void;
 
         static ['new'](repository: Repository): ResourceGroup;
+
+        // Signals
+
+        connect<K extends keyof ResourceGroup.SignalSignatures>(
+            signal: K,
+            callback: ResourceGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourceGroup.SignalSignatures>(
+            signal: K,
+            callback: ResourceGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourceGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourceGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -796,13 +881,24 @@ export namespace Gom {
 
     class Sorting extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Sorting>;
-        declare static readonly __signalSignatures: Sorting.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Sorting.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Sorting.SignalSignatures>(signal: K, callback: Sorting.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sorting.SignalSignatures>(
+            signal: K,
+            callback: Sorting.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Sorting.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Sorting.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

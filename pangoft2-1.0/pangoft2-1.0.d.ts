@@ -158,7 +158,6 @@ export namespace PangoFT2 {
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
-        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Constructors
 
@@ -167,6 +166,18 @@ export namespace PangoFT2 {
         _init(...args: any[]): void;
 
         static ['new'](): FontMap;
+
+        // Signals
+
+        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            callback: FontMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

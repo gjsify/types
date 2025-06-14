@@ -68,7 +68,6 @@ export namespace Deviced {
 
     class AppInfo extends GObject.Object {
         static $gtype: GObject.GType<AppInfo>;
-        declare static readonly __signalSignatures: AppInfo.SignalSignatures;
 
         // Properties
 
@@ -92,17 +91,29 @@ export namespace Deviced {
         constructor(properties?: Partial<AppInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AppInfo.SignalSignatures>(signal: K, callback: AppInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof AppInfo.SignalSignatures>(
+            signal: K,
+            callback: AppInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AppInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AppInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Browser {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (device: Device): void;
+            (_source: Browser, device: Device): void;
         }
 
         interface DeviceRemoved {
-            (device: Device): void;
+            (_source: Browser, device: Device): void;
         }
 
         // Signal signatures
@@ -124,7 +135,6 @@ export namespace Deviced {
 
     class Browser extends GObject.Object {
         static $gtype: GObject.GType<Browser>;
-        declare static readonly __signalSignatures: Browser.SignalSignatures;
 
         // Properties
 
@@ -161,15 +171,6 @@ export namespace Deviced {
             signal: K,
             ...args: Parameters<Browser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-added', device: Device): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-removed', device: Device): void;
 
         // Virtual methods
 
@@ -267,11 +268,11 @@ export namespace Deviced {
         // Signal callback interfaces
 
         interface Notification {
-            (method: string, params: GLib.Variant): void;
+            (_source: Client, method: string, params: GLib.Variant): void;
         }
 
         interface ServiceAdded {
-            (service: string): void;
+            (_source: Client, service: string): void;
         }
 
         // Signal signatures
@@ -294,7 +295,6 @@ export namespace Deviced {
 
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -317,21 +317,6 @@ export namespace Deviced {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'notification',
-            callback: (_source: this, method: string, params: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'notification',
-            callback: (_source: this, method: string, params: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'notification', method: string, params: GLib.Variant): void;
-        connect(signal: 'service-added', callback: (_source: this, service: string) => void): number;
-        connect_after(signal: 'service-added', callback: (_source: this, service: string) => void): number;
-        emit(signal: 'service-added', service: string): void;
 
         // Virtual methods
 
@@ -888,7 +873,6 @@ export namespace Deviced {
 
     abstract class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -911,6 +895,12 @@ export namespace Deviced {
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -998,7 +988,6 @@ export namespace Deviced {
 
     class FlatpakService extends Service {
         static $gtype: GObject.GType<FlatpakService>;
-        declare static readonly __signalSignatures: FlatpakService.SignalSignatures;
 
         // Constructors
 
@@ -1010,6 +999,21 @@ export namespace Deviced {
         // Conflicted with Deviced.Service.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof FlatpakService.SignalSignatures>(
+            signal: K,
+            callback: FlatpakService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FlatpakService.SignalSignatures>(
+            signal: K,
+            callback: FlatpakService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FlatpakService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FlatpakService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1041,7 +1045,6 @@ export namespace Deviced {
 
     class NetworkClient extends Client {
         static $gtype: GObject.GType<NetworkClient>;
-        declare static readonly __signalSignatures: NetworkClient.SignalSignatures;
 
         // Properties
 
@@ -1059,6 +1062,21 @@ export namespace Deviced {
         _init(...args: any[]): void;
 
         static ['new'](address: Gio.InetSocketAddress, certificate?: Gio.TlsCertificate | null): NetworkClient;
+
+        // Signals
+
+        connect<K extends keyof NetworkClient.SignalSignatures>(
+            signal: K,
+            callback: NetworkClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkClient.SignalSignatures>(
+            signal: K,
+            callback: NetworkClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkClient.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1088,7 +1106,6 @@ export namespace Deviced {
 
     class NetworkDevice extends Device {
         static $gtype: GObject.GType<NetworkDevice>;
-        declare static readonly __signalSignatures: NetworkDevice.SignalSignatures;
 
         // Properties
 
@@ -1100,6 +1117,21 @@ export namespace Deviced {
         constructor(properties?: Partial<NetworkDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NetworkDevice.SignalSignatures>(
+            signal: K,
+            callback: NetworkDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkDevice.SignalSignatures>(
+            signal: K,
+            callback: NetworkDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1121,11 +1153,11 @@ export namespace Deviced {
         // Signal callback interfaces
 
         interface ProcessExited {
-            (identifier: string, exit_code: number): void;
+            (_source: ProcessService, identifier: string, exit_code: number): void;
         }
 
         interface ProcessSignaled {
-            (identifier: string, term_sig: number): void;
+            (_source: ProcessService, identifier: string, term_sig: number): void;
         }
 
         // Signal signatures
@@ -1141,7 +1173,6 @@ export namespace Deviced {
 
     class ProcessService extends Service {
         static $gtype: GObject.GType<ProcessService>;
-        declare static readonly __signalSignatures: ProcessService.SignalSignatures;
 
         // Constructors
 
@@ -1168,27 +1199,6 @@ export namespace Deviced {
             signal: K,
             ...args: Parameters<ProcessService.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'process-exited',
-            callback: (_source: this, identifier: string, exit_code: number) => void,
-        ): number;
-        connect_after(
-            signal: 'process-exited',
-            callback: (_source: this, identifier: string, exit_code: number) => void,
-        ): number;
-        emit(signal: 'process-exited', identifier: string, exit_code: number): void;
-        connect(
-            signal: 'process-signaled',
-            callback: (_source: this, identifier: string, term_sig: number) => void,
-        ): number;
-        connect_after(
-            signal: 'process-signaled',
-            callback: (_source: this, identifier: string, term_sig: number) => void,
-        ): number;
-        emit(signal: 'process-signaled', identifier: string, term_sig: number): void;
 
         // Methods
 
@@ -1341,7 +1351,7 @@ export namespace Deviced {
         // Signal callback interfaces
 
         interface Notification {
-            (object: string, p0: GLib.Variant): void;
+            (_source: Service, object: string, p0: GLib.Variant): void;
         }
 
         // Signal signatures
@@ -1358,7 +1368,6 @@ export namespace Deviced {
 
     abstract class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
-        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -1383,15 +1392,6 @@ export namespace Deviced {
             signal: K,
             ...args: Parameters<Service.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'notification', callback: (_source: this, object: string, p0: GLib.Variant) => void): number;
-        connect_after(
-            signal: 'notification',
-            callback: (_source: this, object: string, p0: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'notification', object: string, p0: GLib.Variant): void;
 
         // Virtual methods
 
@@ -1472,7 +1472,6 @@ export namespace Deviced {
 
     class TransferService extends Service {
         static $gtype: GObject.GType<TransferService>;
-        declare static readonly __signalSignatures: TransferService.SignalSignatures;
 
         // Constructors
 
@@ -1484,6 +1483,21 @@ export namespace Deviced {
         // Conflicted with Deviced.Service.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TransferService.SignalSignatures>(
+            signal: K,
+            callback: TransferService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransferService.SignalSignatures>(
+            signal: K,
+            callback: TransferService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransferService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransferService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

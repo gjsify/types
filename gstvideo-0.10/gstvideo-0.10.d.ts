@@ -163,7 +163,6 @@ export namespace GstVideo {
 
     abstract class Filter extends GstBase.Transform {
         static $gtype: GObject.GType<Filter>;
-        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Fields
 
@@ -175,6 +174,12 @@ export namespace GstVideo {
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
     }
 
     namespace Sink {
@@ -194,7 +199,6 @@ export namespace GstVideo {
      */
     class Sink extends GstBase.Sink {
         static $gtype: GObject.GType<Sink>;
-        declare static readonly __signalSignatures: Sink.SignalSignatures;
 
         // Properties
 
@@ -214,6 +218,12 @@ export namespace GstVideo {
         constructor(properties?: Partial<Sink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
+        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: Parameters<Sink.SignalSignatures[K]>): void;
 
         // Static methods
 

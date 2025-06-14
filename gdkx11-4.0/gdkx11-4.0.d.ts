@@ -113,13 +113,27 @@ export namespace GdkX11 {
 
     class X11AppLaunchContext extends Gdk.AppLaunchContext {
         static $gtype: GObject.GType<X11AppLaunchContext>;
-        declare static readonly __signalSignatures: X11AppLaunchContext.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<X11AppLaunchContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11AppLaunchContext.SignalSignatures>(
+            signal: K,
+            callback: X11AppLaunchContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof X11AppLaunchContext.SignalSignatures>(
+            signal: K,
+            callback: X11AppLaunchContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11AppLaunchContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11AppLaunchContext.SignalSignatures[K]>
+        ): void;
     }
 
     namespace X11DeviceManagerXI2 {
@@ -138,7 +152,6 @@ export namespace GdkX11 {
 
     class X11DeviceManagerXI2 extends GObject.Object {
         static $gtype: GObject.GType<X11DeviceManagerXI2>;
-        declare static readonly __signalSignatures: X11DeviceManagerXI2.SignalSignatures;
 
         // Properties
 
@@ -152,6 +165,21 @@ export namespace GdkX11 {
         constructor(properties?: Partial<X11DeviceManagerXI2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
+            signal: K,
+            callback: X11DeviceManagerXI2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
+            signal: K,
+            callback: X11DeviceManagerXI2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11DeviceManagerXI2.SignalSignatures[K]>
+        ): void;
     }
 
     namespace X11DeviceXI2 {
@@ -168,7 +196,6 @@ export namespace GdkX11 {
 
     class X11DeviceXI2 extends Gdk.Device {
         static $gtype: GObject.GType<X11DeviceXI2>;
-        declare static readonly __signalSignatures: X11DeviceXI2.SignalSignatures;
 
         // Properties
 
@@ -180,13 +207,28 @@ export namespace GdkX11 {
         constructor(properties?: Partial<X11DeviceXI2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11DeviceXI2.SignalSignatures>(
+            signal: K,
+            callback: X11DeviceXI2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof X11DeviceXI2.SignalSignatures>(
+            signal: K,
+            callback: X11DeviceXI2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11DeviceXI2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11DeviceXI2.SignalSignatures[K]>
+        ): void;
     }
 
     namespace X11Display {
         // Signal callback interfaces
 
         interface Xevent {
-            (xevent?: any | null): boolean;
+            (_source: X11Display, xevent?: any | null): boolean;
         }
 
         // Signal signatures
@@ -201,7 +243,6 @@ export namespace GdkX11 {
 
     class X11Display extends Gdk.Display {
         static $gtype: GObject.GType<X11Display>;
-        declare static readonly __signalSignatures: X11Display.SignalSignatures;
 
         // Constructors
 
@@ -223,12 +264,6 @@ export namespace GdkX11 {
             signal: K,
             ...args: Parameters<X11Display.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'xevent', callback: (_source: this, xevent: any | null) => boolean): number;
-        connect_after(signal: 'xevent', callback: (_source: this, xevent: any | null) => boolean): number;
-        emit(signal: 'xevent', xevent?: any | null): void;
 
         // Static methods
 
@@ -461,13 +496,24 @@ export namespace GdkX11 {
 
     class X11Drag extends Gdk.Drag {
         static $gtype: GObject.GType<X11Drag>;
-        declare static readonly __signalSignatures: X11Drag.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<X11Drag.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11Drag.SignalSignatures>(signal: K, callback: X11Drag.SignalSignatures[K]): number;
+        connect_after<K extends keyof X11Drag.SignalSignatures>(
+            signal: K,
+            callback: X11Drag.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11Drag.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11Drag.SignalSignatures[K]>
+        ): void;
     }
 
     namespace X11GLContext {
@@ -481,13 +527,27 @@ export namespace GdkX11 {
 
     abstract class X11GLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<X11GLContext>;
-        declare static readonly __signalSignatures: X11GLContext.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<X11GLContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11GLContext.SignalSignatures>(
+            signal: K,
+            callback: X11GLContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof X11GLContext.SignalSignatures>(
+            signal: K,
+            callback: X11GLContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11GLContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11GLContext.SignalSignatures[K]>
+        ): void;
     }
 
     namespace X11Monitor {
@@ -501,13 +561,27 @@ export namespace GdkX11 {
 
     class X11Monitor extends Gdk.Monitor {
         static $gtype: GObject.GType<X11Monitor>;
-        declare static readonly __signalSignatures: X11Monitor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<X11Monitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11Monitor.SignalSignatures>(
+            signal: K,
+            callback: X11Monitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof X11Monitor.SignalSignatures>(
+            signal: K,
+            callback: X11Monitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11Monitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11Monitor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -530,7 +604,7 @@ export namespace GdkX11 {
         // Signal callback interfaces
 
         interface WindowManagerChanged {
-            (): void;
+            (_source: X11Screen): void;
         }
 
         // Signal signatures
@@ -545,7 +619,6 @@ export namespace GdkX11 {
 
     class X11Screen extends GObject.Object {
         static $gtype: GObject.GType<X11Screen>;
-        declare static readonly __signalSignatures: X11Screen.SignalSignatures;
 
         // Constructors
 
@@ -564,12 +637,6 @@ export namespace GdkX11 {
             signal: K,
             ...args: Parameters<X11Screen.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'window-manager-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'window-manager-changed', callback: (_source: this) => void): number;
-        emit(signal: 'window-manager-changed'): void;
 
         // Methods
 
@@ -642,13 +709,27 @@ export namespace GdkX11 {
 
     class X11Surface extends Gdk.Surface {
         static $gtype: GObject.GType<X11Surface>;
-        declare static readonly __signalSignatures: X11Surface.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<X11Surface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof X11Surface.SignalSignatures>(
+            signal: K,
+            callback: X11Surface.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof X11Surface.SignalSignatures>(
+            signal: K,
+            callback: X11Surface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11Surface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11Surface.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

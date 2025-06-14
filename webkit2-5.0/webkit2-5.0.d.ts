@@ -1799,11 +1799,11 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Authenticated {
-            (credential: Credential): void;
+            (_source: AuthenticationRequest, credential: Credential): void;
         }
 
         interface Cancelled {
-            (): void;
+            (_source: AuthenticationRequest): void;
         }
 
         // Signal signatures
@@ -1835,7 +1835,6 @@ export namespace WebKit2 {
      */
     class AuthenticationRequest extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationRequest>;
-        declare static readonly __signalSignatures: AuthenticationRequest.SignalSignatures;
 
         // Constructors
 
@@ -1857,15 +1856,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<AuthenticationRequest.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authenticated', callback: (_source: this, credential: Credential) => void): number;
-        connect_after(signal: 'authenticated', callback: (_source: this, credential: Credential) => void): number;
-        emit(signal: 'authenticated', credential: Credential): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
 
         // Methods
 
@@ -1979,7 +1969,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface CreateWebView {
-            (): WebView;
+            (_source: AutomationSession): WebView;
         }
 
         // Signal signatures
@@ -2006,7 +1996,6 @@ export namespace WebKit2 {
      */
     class AutomationSession extends GObject.Object {
         static $gtype: GObject.GType<AutomationSession>;
-        declare static readonly __signalSignatures: AutomationSession.SignalSignatures;
 
         // Properties
 
@@ -2035,12 +2024,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<AutomationSession.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-web-view', callback: (_source: this) => WebView): number;
-        connect_after(signal: 'create-web-view', callback: (_source: this) => WebView): number;
-        emit(signal: 'create-web-view'): void;
 
         // Methods
 
@@ -2074,7 +2057,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Changed {
-            (item_added?: BackForwardListItem | null, items_removed?: any | null): void;
+            (_source: BackForwardList, item_added?: BackForwardListItem | null, items_removed?: any | null): void;
         }
 
         // Signal signatures
@@ -2106,7 +2089,6 @@ export namespace WebKit2 {
      */
     class BackForwardList extends GObject.Object {
         static $gtype: GObject.GType<BackForwardList>;
-        declare static readonly __signalSignatures: BackForwardList.SignalSignatures;
 
         // Constructors
 
@@ -2128,18 +2110,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<BackForwardList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'changed',
-            callback: (_source: this, item_added: BackForwardListItem | null, items_removed: any | null) => void,
-        ): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, item_added: BackForwardListItem | null, items_removed: any | null) => void,
-        ): number;
-        emit(signal: 'changed', item_added?: BackForwardListItem | null, items_removed?: any | null): void;
 
         // Methods
 
@@ -2210,13 +2180,27 @@ export namespace WebKit2 {
      */
     class BackForwardListItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<BackForwardListItem>;
-        declare static readonly __signalSignatures: BackForwardListItem.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BackForwardListItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BackForwardListItem.SignalSignatures>(
+            signal: K,
+            callback: BackForwardListItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackForwardListItem.SignalSignatures>(
+            signal: K,
+            callback: BackForwardListItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackForwardListItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackForwardListItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2247,7 +2231,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: ColorChooserRequest): void;
         }
 
         // Signal signatures
@@ -2281,7 +2265,6 @@ export namespace WebKit2 {
      */
     class ColorChooserRequest extends GObject.Object {
         static $gtype: GObject.GType<ColorChooserRequest>;
-        declare static readonly __signalSignatures: ColorChooserRequest.SignalSignatures;
 
         // Properties
 
@@ -2311,12 +2294,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<ColorChooserRequest.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Methods
 
@@ -2380,7 +2357,6 @@ export namespace WebKit2 {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
-        declare static readonly __signalSignatures: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -2391,6 +2367,21 @@ export namespace WebKit2 {
         static ['new'](): ContextMenu;
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
+
+        // Signals
+
+        connect<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            callback: ContextMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            callback: ContextMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2501,7 +2492,6 @@ export namespace WebKit2 {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
-        declare static readonly __signalSignatures: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -2518,6 +2508,21 @@ export namespace WebKit2 {
         static new_separator(): ContextMenuItem;
 
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
+
+        // Signals
+
+        connect<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ContextMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ContextMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2560,7 +2565,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: CookieManager): void;
         }
 
         // Signal signatures
@@ -2584,7 +2589,6 @@ export namespace WebKit2 {
      */
     class CookieManager extends GObject.Object {
         static $gtype: GObject.GType<CookieManager>;
-        declare static readonly __signalSignatures: CookieManager.SignalSignatures;
 
         // Constructors
 
@@ -2606,12 +2610,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<CookieManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 
@@ -2902,13 +2900,27 @@ export namespace WebKit2 {
      */
     class DeviceInfoPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<DeviceInfoPermissionRequest>;
-        declare static readonly __signalSignatures: DeviceInfoPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DeviceInfoPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: DeviceInfoPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: DeviceInfoPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceInfoPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3372,23 +3384,23 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface CreatedDestination {
-            (destination: string): void;
+            (_source: Download, destination: string): void;
         }
 
         interface DecideDestination {
-            (suggested_filename: string): boolean;
+            (_source: Download, suggested_filename: string): boolean;
         }
 
         interface Failed {
-            (error: GLib.Error): void;
+            (_source: Download, error: GLib.Error): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: Download): void;
         }
 
         interface ReceivedData {
-            (data_length: number): void;
+            (_source: Download, data_length: number): void;
         }
 
         // Signal signatures
@@ -3423,7 +3435,6 @@ export namespace WebKit2 {
      */
     class Download extends GObject.Object {
         static $gtype: GObject.GType<Download>;
-        declare static readonly __signalSignatures: Download.SignalSignatures;
 
         // Properties
 
@@ -3485,27 +3496,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<Download.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'created-destination', callback: (_source: this, destination: string) => void): number;
-        connect_after(signal: 'created-destination', callback: (_source: this, destination: string) => void): number;
-        emit(signal: 'created-destination', destination: string): void;
-        connect(signal: 'decide-destination', callback: (_source: this, suggested_filename: string) => boolean): number;
-        connect_after(
-            signal: 'decide-destination',
-            callback: (_source: this, suggested_filename: string) => boolean,
-        ): number;
-        emit(signal: 'decide-destination', suggested_filename: string): void;
-        connect(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'failed', error: GLib.Error): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'received-data', callback: (_source: this, data_length: number) => void): number;
-        connect_after(signal: 'received-data', callback: (_source: this, data_length: number) => void): number;
-        emit(signal: 'received-data', data_length: number): void;
 
         // Virtual methods
 
@@ -3635,7 +3625,6 @@ export namespace WebKit2 {
      */
     class EditorState extends GObject.Object {
         static $gtype: GObject.GType<EditorState>;
-        declare static readonly __signalSignatures: EditorState.SignalSignatures;
 
         // Properties
 
@@ -3655,6 +3644,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<EditorState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EditorState.SignalSignatures>(
+            signal: K,
+            callback: EditorState.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EditorState.SignalSignatures>(
+            signal: K,
+            callback: EditorState.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EditorState.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EditorState.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3699,7 +3703,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface FaviconChanged {
-            (page_uri: string, favicon_uri: string): void;
+            (_source: FaviconDatabase, page_uri: string, favicon_uri: string): void;
         }
 
         // Signal signatures
@@ -3727,7 +3731,6 @@ export namespace WebKit2 {
      */
     class FaviconDatabase extends GObject.Object {
         static $gtype: GObject.GType<FaviconDatabase>;
-        declare static readonly __signalSignatures: FaviconDatabase.SignalSignatures;
 
         // Constructors
 
@@ -3749,18 +3752,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<FaviconDatabase.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'favicon-changed',
-            callback: (_source: this, page_uri: string, favicon_uri: string) => void,
-        ): number;
-        connect_after(
-            signal: 'favicon-changed',
-            callback: (_source: this, page_uri: string, favicon_uri: string) => void,
-        ): number;
-        emit(signal: 'favicon-changed', page_uri: string, favicon_uri: string): void;
 
         // Methods
 
@@ -3891,7 +3882,6 @@ export namespace WebKit2 {
      */
     class FileChooserRequest extends GObject.Object {
         static $gtype: GObject.GType<FileChooserRequest>;
-        declare static readonly __signalSignatures: FileChooserRequest.SignalSignatures;
 
         // Properties
 
@@ -3945,6 +3935,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<FileChooserRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileChooserRequest.SignalSignatures>(
+            signal: K,
+            callback: FileChooserRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileChooserRequest.SignalSignatures>(
+            signal: K,
+            callback: FileChooserRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileChooserRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileChooserRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4020,15 +4025,15 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface CountedMatches {
-            (match_count: number): void;
+            (_source: FindController, match_count: number): void;
         }
 
         interface FailedToFindText {
-            (): void;
+            (_source: FindController): void;
         }
 
         interface FoundText {
-            (match_count: number): void;
+            (_source: FindController, match_count: number): void;
         }
 
         // Signal signatures
@@ -4065,7 +4070,6 @@ export namespace WebKit2 {
      */
     class FindController extends GObject.Object {
         static $gtype: GObject.GType<FindController>;
-        declare static readonly __signalSignatures: FindController.SignalSignatures;
 
         // Properties
 
@@ -4114,18 +4118,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<FindController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'counted-matches', callback: (_source: this, match_count: number) => void): number;
-        connect_after(signal: 'counted-matches', callback: (_source: this, match_count: number) => void): number;
-        emit(signal: 'counted-matches', match_count: number): void;
-        connect(signal: 'failed-to-find-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'failed-to-find-text', callback: (_source: this) => void): number;
-        emit(signal: 'failed-to-find-text'): void;
-        connect(signal: 'found-text', callback: (_source: this, match_count: number) => void): number;
-        connect_after(signal: 'found-text', callback: (_source: this, match_count: number) => void): number;
-        emit(signal: 'found-text', match_count: number): void;
 
         // Methods
 
@@ -4253,13 +4245,27 @@ export namespace WebKit2 {
      */
     class FormSubmissionRequest extends GObject.Object {
         static $gtype: GObject.GType<FormSubmissionRequest>;
-        declare static readonly __signalSignatures: FormSubmissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FormSubmissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FormSubmissionRequest.SignalSignatures>(
+            signal: K,
+            callback: FormSubmissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormSubmissionRequest.SignalSignatures>(
+            signal: K,
+            callback: FormSubmissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormSubmissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormSubmissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4295,11 +4301,11 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Start {
-            (): boolean;
+            (_source: GeolocationManager): boolean;
         }
 
         interface Stop {
-            (): void;
+            (_source: GeolocationManager): void;
         }
 
         // Signal signatures
@@ -4328,7 +4334,6 @@ export namespace WebKit2 {
      */
     class GeolocationManager extends GObject.Object {
         static $gtype: GObject.GType<GeolocationManager>;
-        declare static readonly __signalSignatures: GeolocationManager.SignalSignatures;
 
         // Properties
 
@@ -4365,15 +4370,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<GeolocationManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'start', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'start', callback: (_source: this) => boolean): number;
-        emit(signal: 'start'): void;
-        connect(signal: 'stop', callback: (_source: this) => void): number;
-        connect_after(signal: 'stop', callback: (_source: this) => void): number;
-        emit(signal: 'stop'): void;
 
         // Methods
 
@@ -4431,13 +4427,27 @@ export namespace WebKit2 {
      */
     class GeolocationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<GeolocationPermissionRequest>;
-        declare static readonly __signalSignatures: GeolocationPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GeolocationPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: GeolocationPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: GeolocationPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GeolocationPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -4942,7 +4952,6 @@ export namespace WebKit2 {
      */
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
-        declare static readonly __signalSignatures: HitTestResult.SignalSignatures;
 
         // Properties
 
@@ -5007,6 +5016,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            callback: HitTestResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            callback: HitTestResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5082,23 +5106,23 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Committed {
-            (text: string): void;
+            (_source: InputMethodContext, text: string): void;
         }
 
         interface DeleteSurrounding {
-            (offset: number, n_chars: number): void;
+            (_source: InputMethodContext, offset: number, n_chars: number): void;
         }
 
         interface PreeditChanged {
-            (): void;
+            (_source: InputMethodContext): void;
         }
 
         interface PreeditFinished {
-            (): void;
+            (_source: InputMethodContext): void;
         }
 
         interface PreeditStarted {
-            (): void;
+            (_source: InputMethodContext): void;
         }
 
         // Signal signatures
@@ -5134,7 +5158,6 @@ export namespace WebKit2 {
      */
     abstract class InputMethodContext extends GObject.Object {
         static $gtype: GObject.GType<InputMethodContext>;
-        declare static readonly __signalSignatures: InputMethodContext.SignalSignatures;
 
         // Properties
 
@@ -5179,30 +5202,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<InputMethodContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'committed', callback: (_source: this, text: string) => void): number;
-        connect_after(signal: 'committed', callback: (_source: this, text: string) => void): number;
-        emit(signal: 'committed', text: string): void;
-        connect(
-            signal: 'delete-surrounding',
-            callback: (_source: this, offset: number, n_chars: number) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-surrounding',
-            callback: (_source: this, offset: number, n_chars: number) => void,
-        ): number;
-        emit(signal: 'delete-surrounding', offset: number, n_chars: number): void;
-        connect(signal: 'preedit-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'preedit-changed', callback: (_source: this) => void): number;
-        emit(signal: 'preedit-changed'): void;
-        connect(signal: 'preedit-finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'preedit-finished', callback: (_source: this) => void): number;
-        emit(signal: 'preedit-finished'): void;
-        connect(signal: 'preedit-started', callback: (_source: this) => void): number;
-        connect_after(signal: 'preedit-started', callback: (_source: this) => void): number;
-        emit(signal: 'preedit-started'): void;
 
         // Virtual methods
 
@@ -5363,13 +5362,27 @@ export namespace WebKit2 {
      */
     class InstallMissingMediaPluginsPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequest>;
-        declare static readonly __signalSignatures: InstallMissingMediaPluginsPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<InstallMissingMediaPluginsPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5863,13 +5876,27 @@ export namespace WebKit2 {
      */
     class MediaKeySystemPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequest>;
-        declare static readonly __signalSignatures: MediaKeySystemPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MediaKeySystemPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: MediaKeySystemPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: MediaKeySystemPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaKeySystemPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6358,7 +6385,6 @@ export namespace WebKit2 {
      */
     class NavigationPolicyDecision extends PolicyDecision {
         static $gtype: GObject.GType<NavigationPolicyDecision>;
-        declare static readonly __signalSignatures: NavigationPolicyDecision.SignalSignatures;
 
         // Properties
 
@@ -6432,6 +6458,21 @@ export namespace WebKit2 {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof NavigationPolicyDecision.SignalSignatures>(
+            signal: K,
+            callback: NavigationPolicyDecision.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NavigationPolicyDecision.SignalSignatures>(
+            signal: K,
+            callback: NavigationPolicyDecision.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NavigationPolicyDecision.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NavigationPolicyDecision.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -6470,11 +6511,11 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Clicked {
-            (): void;
+            (_source: Notification): void;
         }
 
         interface Closed {
-            (): void;
+            (_source: Notification): void;
         }
 
         // Signal signatures
@@ -6498,7 +6539,6 @@ export namespace WebKit2 {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
-        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Properties
 
@@ -6539,15 +6579,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<Notification.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'clicked', callback: (_source: this) => void): number;
-        connect_after(signal: 'clicked', callback: (_source: this) => void): number;
-        emit(signal: 'clicked'): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
 
         // Methods
 
@@ -6605,13 +6636,27 @@ export namespace WebKit2 {
      */
     class NotificationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<NotificationPermissionRequest>;
-        declare static readonly __signalSignatures: NotificationPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<NotificationPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NotificationPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: NotificationPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NotificationPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: NotificationPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NotificationPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NotificationPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7075,7 +7120,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Close {
-            (): void;
+            (_source: OptionMenu): void;
         }
 
         // Signal signatures
@@ -7097,7 +7142,6 @@ export namespace WebKit2 {
      */
     class OptionMenu extends GObject.Object {
         static $gtype: GObject.GType<OptionMenu>;
-        declare static readonly __signalSignatures: OptionMenu.SignalSignatures;
 
         // Constructors
 
@@ -7119,12 +7163,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<OptionMenu.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
 
         // Methods
 
@@ -7192,13 +7230,18 @@ export namespace WebKit2 {
      */
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -7248,13 +7291,27 @@ export namespace WebKit2 {
      */
     class PointerLockPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<PointerLockPermissionRequest>;
-        declare static readonly __signalSignatures: PointerLockPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PointerLockPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: PointerLockPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: PointerLockPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PointerLockPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7738,13 +7795,27 @@ export namespace WebKit2 {
      */
     abstract class PolicyDecision extends GObject.Object {
         static $gtype: GObject.GType<PolicyDecision>;
-        declare static readonly __signalSignatures: PolicyDecision.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PolicyDecision.SignalSignatures>(
+            signal: K,
+            callback: PolicyDecision.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PolicyDecision.SignalSignatures>(
+            signal: K,
+            callback: PolicyDecision.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PolicyDecision.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PolicyDecision.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7782,11 +7853,11 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Apply {
-            (): void;
+            (_source: PrintCustomWidget): void;
         }
 
         interface Update {
-            (page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
+            (_source: PrintCustomWidget, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
         }
 
         // Signal signatures
@@ -7814,7 +7885,6 @@ export namespace WebKit2 {
      */
     class PrintCustomWidget extends GObject.Object {
         static $gtype: GObject.GType<PrintCustomWidget>;
-        declare static readonly __signalSignatures: PrintCustomWidget.SignalSignatures;
 
         // Properties
 
@@ -7849,21 +7919,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<PrintCustomWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'apply', callback: (_source: this) => void): number;
-        connect_after(signal: 'apply', callback: (_source: this) => void): number;
-        emit(signal: 'apply'): void;
-        connect(
-            signal: 'update',
-            callback: (_source: this, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void,
-        ): number;
-        connect_after(
-            signal: 'update',
-            callback: (_source: this, page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void,
-        ): number;
-        emit(signal: 'update', page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
 
         // Virtual methods
 
@@ -7897,15 +7952,15 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface CreateCustomWidget {
-            (): PrintCustomWidget;
+            (_source: PrintOperation): PrintCustomWidget;
         }
 
         interface Failed {
-            (error: GLib.Error): void;
+            (_source: PrintOperation, error: GLib.Error): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: PrintOperation): void;
         }
 
         // Signal signatures
@@ -7937,7 +7992,6 @@ export namespace WebKit2 {
      */
     class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
-        declare static readonly __signalSignatures: PrintOperation.SignalSignatures;
 
         // Properties
 
@@ -7992,18 +8046,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<PrintOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-custom-widget', callback: (_source: this) => PrintCustomWidget): number;
-        connect_after(signal: 'create-custom-widget', callback: (_source: this) => PrintCustomWidget): number;
-        emit(signal: 'create-custom-widget'): void;
-        connect(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'failed', error: GLib.Error): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Methods
 
@@ -8098,7 +8140,6 @@ export namespace WebKit2 {
      */
     class ResponsePolicyDecision extends PolicyDecision {
         static $gtype: GObject.GType<ResponsePolicyDecision>;
-        declare static readonly __signalSignatures: ResponsePolicyDecision.SignalSignatures;
 
         // Properties
 
@@ -8118,6 +8159,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<ResponsePolicyDecision.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ResponsePolicyDecision.SignalSignatures>(
+            signal: K,
+            callback: ResponsePolicyDecision.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResponsePolicyDecision.SignalSignatures>(
+            signal: K,
+            callback: ResponsePolicyDecision.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResponsePolicyDecision.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResponsePolicyDecision.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8167,13 +8223,27 @@ export namespace WebKit2 {
      */
     class SecurityManager extends GObject.Object {
         static $gtype: GObject.GType<SecurityManager>;
-        declare static readonly __signalSignatures: SecurityManager.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SecurityManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SecurityManager.SignalSignatures>(
+            signal: K,
+            callback: SecurityManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecurityManager.SignalSignatures>(
+            signal: K,
+            callback: SecurityManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecurityManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecurityManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8422,7 +8492,6 @@ export namespace WebKit2 {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -9305,6 +9374,18 @@ export namespace WebKit2 {
 
         static ['new'](): Settings;
 
+        // Signals
+
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         /**
@@ -9969,7 +10050,6 @@ export namespace WebKit2 {
      */
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
-        declare static readonly __signalSignatures: URIRequest.SignalSignatures;
 
         // Properties
 
@@ -9986,6 +10066,21 @@ export namespace WebKit2 {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): URIRequest;
+
+        // Signals
+
+        connect<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            callback: URIRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            callback: URIRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10041,7 +10136,6 @@ export namespace WebKit2 {
      */
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
-        declare static readonly __signalSignatures: URIResponse.SignalSignatures;
 
         // Properties
 
@@ -10095,6 +10189,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            callback: URIResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            callback: URIResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10164,13 +10273,27 @@ export namespace WebKit2 {
      */
     class URISchemeRequest extends GObject.Object {
         static $gtype: GObject.GType<URISchemeRequest>;
-        declare static readonly __signalSignatures: URISchemeRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<URISchemeRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof URISchemeRequest.SignalSignatures>(
+            signal: K,
+            callback: URISchemeRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URISchemeRequest.SignalSignatures>(
+            signal: K,
+            callback: URISchemeRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URISchemeRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URISchemeRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10252,7 +10375,6 @@ export namespace WebKit2 {
      */
     class URISchemeResponse extends GObject.Object {
         static $gtype: GObject.GType<URISchemeResponse>;
-        declare static readonly __signalSignatures: URISchemeResponse.SignalSignatures;
 
         // Properties
 
@@ -10276,6 +10398,21 @@ export namespace WebKit2 {
         _init(...args: any[]): void;
 
         static ['new'](input_stream: Gio.InputStream, stream_length: number): URISchemeResponse;
+
+        // Signals
+
+        connect<K extends keyof URISchemeResponse.SignalSignatures>(
+            signal: K,
+            callback: URISchemeResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URISchemeResponse.SignalSignatures>(
+            signal: K,
+            callback: URISchemeResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URISchemeResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URISchemeResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10331,7 +10468,6 @@ export namespace WebKit2 {
      */
     class UserContentFilterStore extends GObject.Object {
         static $gtype: GObject.GType<UserContentFilterStore>;
-        declare static readonly __signalSignatures: UserContentFilterStore.SignalSignatures;
 
         // Properties
 
@@ -10348,6 +10484,21 @@ export namespace WebKit2 {
         _init(...args: any[]): void;
 
         static ['new'](storage_path: string): UserContentFilterStore;
+
+        // Signals
+
+        connect<K extends keyof UserContentFilterStore.SignalSignatures>(
+            signal: K,
+            callback: UserContentFilterStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserContentFilterStore.SignalSignatures>(
+            signal: K,
+            callback: UserContentFilterStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserContentFilterStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserContentFilterStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10645,7 +10796,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface ScriptMessageReceived {
-            (js_result: JavascriptResult): void;
+            (_source: UserContentManager, js_result: JavascriptResult): void;
         }
 
         // Signal signatures
@@ -10675,7 +10826,6 @@ export namespace WebKit2 {
      */
     class UserContentManager extends GObject.Object {
         static $gtype: GObject.GType<UserContentManager>;
-        declare static readonly __signalSignatures: UserContentManager.SignalSignatures;
 
         // Constructors
 
@@ -10699,18 +10849,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<UserContentManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'script-message-received',
-            callback: (_source: this, js_result: JavascriptResult) => void,
-        ): number;
-        connect_after(
-            signal: 'script-message-received',
-            callback: (_source: this, js_result: JavascriptResult) => void,
-        ): number;
-        emit(signal: 'script-message-received', js_result: JavascriptResult): void;
 
         // Methods
 
@@ -10876,7 +11014,6 @@ export namespace WebKit2 {
      */
     class UserMediaPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<UserMediaPermissionRequest>;
-        declare static readonly __signalSignatures: UserMediaPermissionRequest.SignalSignatures;
 
         // Properties
 
@@ -10902,6 +11039,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<UserMediaPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: UserMediaPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: UserMediaPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserMediaPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -11387,7 +11539,6 @@ export namespace WebKit2 {
      */
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
-        declare static readonly __signalSignatures: UserMessage.SignalSignatures;
 
         // Properties
 
@@ -11424,6 +11575,21 @@ export namespace WebKit2 {
             fd_list?: Gio.UnixFDList | null,
         ): UserMessage;
 
+        // Signals
+
+        connect<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            callback: UserMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            callback: UserMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserMessage.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -11456,23 +11622,23 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface AutomationStarted {
-            (session: AutomationSession): void;
+            (_source: WebContext, session: AutomationSession): void;
         }
 
         interface DownloadStarted {
-            (download: Download): void;
+            (_source: WebContext, download: Download): void;
         }
 
         interface InitializeNotificationPermissions {
-            (): void;
+            (_source: WebContext): void;
         }
 
         interface InitializeWebExtensions {
-            (): void;
+            (_source: WebContext): void;
         }
 
         interface UserMessageReceived {
-            (message: UserMessage): boolean;
+            (_source: WebContext, message: UserMessage): boolean;
         }
 
         // Signal signatures
@@ -11530,7 +11696,6 @@ export namespace WebKit2 {
      */
     class WebContext extends GObject.Object {
         static $gtype: GObject.GType<WebContext>;
-        declare static readonly __signalSignatures: WebContext.SignalSignatures;
 
         // Properties
 
@@ -11627,30 +11792,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<WebContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'automation-started', callback: (_source: this, session: AutomationSession) => void): number;
-        connect_after(
-            signal: 'automation-started',
-            callback: (_source: this, session: AutomationSession) => void,
-        ): number;
-        emit(signal: 'automation-started', session: AutomationSession): void;
-        connect(signal: 'download-started', callback: (_source: this, download: Download) => void): number;
-        connect_after(signal: 'download-started', callback: (_source: this, download: Download) => void): number;
-        emit(signal: 'download-started', download: Download): void;
-        connect(signal: 'initialize-notification-permissions', callback: (_source: this) => void): number;
-        connect_after(signal: 'initialize-notification-permissions', callback: (_source: this) => void): number;
-        emit(signal: 'initialize-notification-permissions'): void;
-        connect(signal: 'initialize-web-extensions', callback: (_source: this) => void): number;
-        connect_after(signal: 'initialize-web-extensions', callback: (_source: this) => void): number;
-        emit(signal: 'initialize-web-extensions'): void;
-        connect(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => boolean): number;
-        connect_after(
-            signal: 'user-message-received',
-            callback: (_source: this, message: UserMessage) => boolean,
-        ): number;
-        emit(signal: 'user-message-received', message: UserMessage): void;
 
         // Static methods
 
@@ -12137,23 +12278,23 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Attach {
-            (): boolean;
+            (_source: WebInspector): boolean;
         }
 
         interface BringToFront {
-            (): boolean;
+            (_source: WebInspector): boolean;
         }
 
         interface Closed {
-            (): void;
+            (_source: WebInspector): void;
         }
 
         interface Detach {
-            (): boolean;
+            (_source: WebInspector): boolean;
         }
 
         interface OpenWindow {
-            (): boolean;
+            (_source: WebInspector): boolean;
         }
 
         // Signal signatures
@@ -12204,7 +12345,6 @@ export namespace WebKit2 {
      */
     class WebInspector extends GObject.Object {
         static $gtype: GObject.GType<WebInspector>;
-        declare static readonly __signalSignatures: WebInspector.SignalSignatures;
 
         // Properties
 
@@ -12255,24 +12395,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<WebInspector.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'attach', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'attach', callback: (_source: this) => boolean): number;
-        emit(signal: 'attach'): void;
-        connect(signal: 'bring-to-front', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'bring-to-front', callback: (_source: this) => boolean): number;
-        emit(signal: 'bring-to-front'): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'detach', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'detach', callback: (_source: this) => boolean): number;
-        emit(signal: 'detach'): void;
-        connect(signal: 'open-window', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'open-window', callback: (_source: this) => boolean): number;
-        emit(signal: 'open-window'): void;
 
         // Methods
 
@@ -12343,23 +12465,23 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Failed {
-            (error: GLib.Error): void;
+            (_source: WebResource, error: GLib.Error): void;
         }
 
         interface FailedWithTlsErrors {
-            (certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): void;
+            (_source: WebResource, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: WebResource): void;
         }
 
         interface ReceivedData {
-            (data_length: number): void;
+            (_source: WebResource, data_length: number): void;
         }
 
         interface SentRequest {
-            (request: URIRequest, redirected_response: URIResponse): void;
+            (_source: WebResource, request: URIRequest, redirected_response: URIResponse): void;
         }
 
         // Signal signatures
@@ -12394,7 +12516,6 @@ export namespace WebKit2 {
      */
     class WebResource extends GObject.Object {
         static $gtype: GObject.GType<WebResource>;
-        declare static readonly __signalSignatures: WebResource.SignalSignatures;
 
         // Properties
 
@@ -12428,36 +12549,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<WebResource.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'failed', error: GLib.Error): void;
-        connect(
-            signal: 'failed-with-tls-errors',
-            callback: (_source: this, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void,
-        ): number;
-        connect_after(
-            signal: 'failed-with-tls-errors',
-            callback: (_source: this, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void,
-        ): number;
-        emit(signal: 'failed-with-tls-errors', certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'received-data', callback: (_source: this, data_length: number) => void): number;
-        connect_after(signal: 'received-data', callback: (_source: this, data_length: number) => void): number;
-        emit(signal: 'received-data', data_length: number): void;
-        connect(
-            signal: 'sent-request',
-            callback: (_source: this, request: URIRequest, redirected_response: URIResponse) => void,
-        ): number;
-        connect_after(
-            signal: 'sent-request',
-            callback: (_source: this, request: URIRequest, redirected_response: URIResponse) => void,
-        ): number;
-        emit(signal: 'sent-request', request: URIRequest, redirected_response: URIResponse): void;
 
         // Methods
 
@@ -12544,111 +12635,116 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Authenticate {
-            (request: AuthenticationRequest): boolean;
+            (_source: WebView, request: AuthenticationRequest): boolean;
         }
 
         interface Close {
-            (): void;
+            (_source: WebView): void;
         }
 
         interface ContextMenu {
-            (context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult): boolean;
+            (_source: WebView, context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult): boolean;
         }
 
         interface ContextMenuDismissed {
-            (): void;
+            (_source: WebView): void;
         }
 
         interface Create {
-            (navigation_action: NavigationAction): Gtk.Widget;
+            (_source: WebView, navigation_action: NavigationAction): Gtk.Widget;
         }
 
         interface DecidePolicy {
-            (decision: PolicyDecision, decision_type: PolicyDecisionType): boolean;
+            (_source: WebView, decision: PolicyDecision, decision_type: PolicyDecisionType): boolean;
         }
 
         interface EnterFullscreen {
-            (): boolean;
+            (_source: WebView): boolean;
         }
 
         interface InsecureContentDetected {
-            (event: InsecureContentEvent): void;
+            (_source: WebView, event: InsecureContentEvent): void;
         }
 
         interface LeaveFullscreen {
-            (): boolean;
+            (_source: WebView): boolean;
         }
 
         interface LoadChanged {
-            (load_event: LoadEvent): void;
+            (_source: WebView, load_event: LoadEvent): void;
         }
 
         interface LoadFailed {
-            (load_event: LoadEvent, failing_uri: string, error: GLib.Error): boolean;
+            (_source: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error): boolean;
         }
 
         interface LoadFailedWithTlsErrors {
-            (failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
+            (
+                _source: WebView,
+                failing_uri: string,
+                certificate: Gio.TlsCertificate,
+                errors: Gio.TlsCertificateFlags,
+            ): boolean;
         }
 
         interface MouseTargetChanged {
-            (hit_test_result: HitTestResult, modifiers: number): void;
+            (_source: WebView, hit_test_result: HitTestResult, modifiers: number): void;
         }
 
         interface PermissionRequest {
-            (request: PermissionRequest): boolean;
+            (_source: WebView, request: PermissionRequest): boolean;
         }
 
         interface Print {
-            (print_operation: PrintOperation): boolean;
+            (_source: WebView, print_operation: PrintOperation): boolean;
         }
 
         interface ReadyToShow {
-            (): void;
+            (_source: WebView): void;
         }
 
         interface ResourceLoadStarted {
-            (resource: WebResource, request: URIRequest): void;
+            (_source: WebView, resource: WebResource, request: URIRequest): void;
         }
 
         interface RunAsModal {
-            (): void;
+            (_source: WebView): void;
         }
 
         interface RunColorChooser {
-            (request: ColorChooserRequest): boolean;
+            (_source: WebView, request: ColorChooserRequest): boolean;
         }
 
         interface RunFileChooser {
-            (request: FileChooserRequest): boolean;
+            (_source: WebView, request: FileChooserRequest): boolean;
         }
 
         interface ScriptDialog {
-            (dialog: ScriptDialog): boolean;
+            (_source: WebView, dialog: ScriptDialog): boolean;
         }
 
         interface ShowNotification {
-            (notification: Notification): boolean;
+            (_source: WebView, notification: Notification): boolean;
         }
 
         interface ShowOptionMenu {
-            (menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): boolean;
+            (_source: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): boolean;
         }
 
         interface SubmitForm {
-            (request: FormSubmissionRequest): void;
+            (_source: WebView, request: FormSubmissionRequest): void;
         }
 
         interface UserMessageReceived {
-            (message: UserMessage): boolean;
+            (_source: WebView, message: UserMessage): boolean;
         }
 
         interface WebProcessCrashed {
-            (): boolean;
+            (_source: WebView): boolean;
         }
 
         interface WebProcessTerminated {
-            (reason: WebProcessTerminationReason): void;
+            (_source: WebView, reason: WebProcessTerminationReason): void;
         }
 
         // Signal signatures
@@ -12749,7 +12845,6 @@ export namespace WebKit2 {
      */
     class WebView extends WebViewBase implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<WebView>;
-        declare static readonly __signalSignatures: WebView.SignalSignatures;
 
         // Properties
 
@@ -13126,193 +13221,6 @@ export namespace WebKit2 {
             signal: K,
             ...args: Parameters<WebView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authenticate', callback: (_source: this, request: AuthenticationRequest) => boolean): number;
-        connect_after(
-            signal: 'authenticate',
-            callback: (_source: this, request: AuthenticationRequest) => boolean,
-        ): number;
-        emit(signal: 'authenticate', request: AuthenticationRequest): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
-        connect(
-            signal: 'context-menu',
-            callback: (
-                _source: this,
-                context_menu: ContextMenu,
-                event: Gdk.Event,
-                hit_test_result: HitTestResult,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'context-menu',
-            callback: (
-                _source: this,
-                context_menu: ContextMenu,
-                event: Gdk.Event,
-                hit_test_result: HitTestResult,
-            ) => boolean,
-        ): number;
-        emit(signal: 'context-menu', context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult): void;
-        connect(signal: 'context-menu-dismissed', callback: (_source: this) => void): number;
-        connect_after(signal: 'context-menu-dismissed', callback: (_source: this) => void): number;
-        emit(signal: 'context-menu-dismissed'): void;
-        connect(signal: 'create', callback: (_source: this, navigation_action: NavigationAction) => Gtk.Widget): number;
-        connect_after(
-            signal: 'create',
-            callback: (_source: this, navigation_action: NavigationAction) => Gtk.Widget,
-        ): number;
-        emit(signal: 'create', navigation_action: NavigationAction): void;
-        connect(
-            signal: 'decide-policy',
-            callback: (_source: this, decision: PolicyDecision, decision_type: PolicyDecisionType) => boolean,
-        ): number;
-        connect_after(
-            signal: 'decide-policy',
-            callback: (_source: this, decision: PolicyDecision, decision_type: PolicyDecisionType) => boolean,
-        ): number;
-        emit(signal: 'decide-policy', decision: PolicyDecision, decision_type: PolicyDecisionType): void;
-        connect(signal: 'enter-fullscreen', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'enter-fullscreen', callback: (_source: this) => boolean): number;
-        emit(signal: 'enter-fullscreen'): void;
-        connect(
-            signal: 'insecure-content-detected',
-            callback: (_source: this, event: InsecureContentEvent) => void,
-        ): number;
-        connect_after(
-            signal: 'insecure-content-detected',
-            callback: (_source: this, event: InsecureContentEvent) => void,
-        ): number;
-        emit(signal: 'insecure-content-detected', event: InsecureContentEvent): void;
-        connect(signal: 'leave-fullscreen', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'leave-fullscreen', callback: (_source: this) => boolean): number;
-        emit(signal: 'leave-fullscreen'): void;
-        connect(signal: 'load-changed', callback: (_source: this, load_event: LoadEvent) => void): number;
-        connect_after(signal: 'load-changed', callback: (_source: this, load_event: LoadEvent) => void): number;
-        emit(signal: 'load-changed', load_event: LoadEvent): void;
-        connect(
-            signal: 'load-failed',
-            callback: (_source: this, load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean,
-        ): number;
-        connect_after(
-            signal: 'load-failed',
-            callback: (_source: this, load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean,
-        ): number;
-        emit(signal: 'load-failed', load_event: LoadEvent, failing_uri: string, error: GLib.Error): void;
-        connect(
-            signal: 'load-failed-with-tls-errors',
-            callback: (
-                _source: this,
-                failing_uri: string,
-                certificate: Gio.TlsCertificate,
-                errors: Gio.TlsCertificateFlags,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'load-failed-with-tls-errors',
-            callback: (
-                _source: this,
-                failing_uri: string,
-                certificate: Gio.TlsCertificate,
-                errors: Gio.TlsCertificateFlags,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'load-failed-with-tls-errors',
-            failing_uri: string,
-            certificate: Gio.TlsCertificate,
-            errors: Gio.TlsCertificateFlags,
-        ): void;
-        connect(
-            signal: 'mouse-target-changed',
-            callback: (_source: this, hit_test_result: HitTestResult, modifiers: number) => void,
-        ): number;
-        connect_after(
-            signal: 'mouse-target-changed',
-            callback: (_source: this, hit_test_result: HitTestResult, modifiers: number) => void,
-        ): number;
-        emit(signal: 'mouse-target-changed', hit_test_result: HitTestResult, modifiers: number): void;
-        connect(signal: 'permission-request', callback: (_source: this, request: PermissionRequest) => boolean): number;
-        connect_after(
-            signal: 'permission-request',
-            callback: (_source: this, request: PermissionRequest) => boolean,
-        ): number;
-        emit(signal: 'permission-request', request: PermissionRequest): void;
-        connect(signal: 'print', callback: (_source: this, print_operation: PrintOperation) => boolean): number;
-        connect_after(signal: 'print', callback: (_source: this, print_operation: PrintOperation) => boolean): number;
-        emit(signal: 'print', print_operation: PrintOperation): void;
-        connect(signal: 'ready-to-show', callback: (_source: this) => void): number;
-        connect_after(signal: 'ready-to-show', callback: (_source: this) => void): number;
-        emit(signal: 'ready-to-show'): void;
-        connect(
-            signal: 'resource-load-started',
-            callback: (_source: this, resource: WebResource, request: URIRequest) => void,
-        ): number;
-        connect_after(
-            signal: 'resource-load-started',
-            callback: (_source: this, resource: WebResource, request: URIRequest) => void,
-        ): number;
-        emit(signal: 'resource-load-started', resource: WebResource, request: URIRequest): void;
-        connect(signal: 'run-as-modal', callback: (_source: this) => void): number;
-        connect_after(signal: 'run-as-modal', callback: (_source: this) => void): number;
-        emit(signal: 'run-as-modal'): void;
-        connect(
-            signal: 'run-color-chooser',
-            callback: (_source: this, request: ColorChooserRequest) => boolean,
-        ): number;
-        connect_after(
-            signal: 'run-color-chooser',
-            callback: (_source: this, request: ColorChooserRequest) => boolean,
-        ): number;
-        emit(signal: 'run-color-chooser', request: ColorChooserRequest): void;
-        connect(signal: 'run-file-chooser', callback: (_source: this, request: FileChooserRequest) => boolean): number;
-        connect_after(
-            signal: 'run-file-chooser',
-            callback: (_source: this, request: FileChooserRequest) => boolean,
-        ): number;
-        emit(signal: 'run-file-chooser', request: FileChooserRequest): void;
-        connect(signal: 'script-dialog', callback: (_source: this, dialog: ScriptDialog) => boolean): number;
-        connect_after(signal: 'script-dialog', callback: (_source: this, dialog: ScriptDialog) => boolean): number;
-        emit(signal: 'script-dialog', dialog: ScriptDialog): void;
-        connect(signal: 'show-notification', callback: (_source: this, notification: Notification) => boolean): number;
-        connect_after(
-            signal: 'show-notification',
-            callback: (_source: this, notification: Notification) => boolean,
-        ): number;
-        emit(signal: 'show-notification', notification: Notification): void;
-        connect(
-            signal: 'show-option-menu',
-            callback: (_source: this, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean,
-        ): number;
-        connect_after(
-            signal: 'show-option-menu',
-            callback: (_source: this, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean,
-        ): number;
-        emit(signal: 'show-option-menu', menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): void;
-        connect(signal: 'submit-form', callback: (_source: this, request: FormSubmissionRequest) => void): number;
-        connect_after(signal: 'submit-form', callback: (_source: this, request: FormSubmissionRequest) => void): number;
-        emit(signal: 'submit-form', request: FormSubmissionRequest): void;
-        connect(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => boolean): number;
-        connect_after(
-            signal: 'user-message-received',
-            callback: (_source: this, message: UserMessage) => boolean,
-        ): number;
-        emit(signal: 'user-message-received', message: UserMessage): void;
-        connect(signal: 'web-process-crashed', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'web-process-crashed', callback: (_source: this) => boolean): number;
-        emit(signal: 'web-process-crashed'): void;
-        connect(
-            signal: 'web-process-terminated',
-            callback: (_source: this, reason: WebProcessTerminationReason) => void,
-        ): number;
-        connect_after(
-            signal: 'web-process-terminated',
-            callback: (_source: this, reason: WebProcessTerminationReason) => void,
-        ): number;
-        emit(signal: 'web-process-terminated', reason: WebProcessTerminationReason): void;
 
         // Virtual methods
 
@@ -14897,7 +14805,6 @@ export namespace WebKit2 {
      */
     class WebViewBase extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<WebViewBase>;
-        declare static readonly __signalSignatures: WebViewBase.SignalSignatures;
 
         // Fields
 
@@ -14908,6 +14815,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<WebViewBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebViewBase.SignalSignatures>(
+            signal: K,
+            callback: WebViewBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebViewBase.SignalSignatures>(
+            signal: K,
+            callback: WebViewBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebViewBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebViewBase.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -15654,13 +15576,27 @@ export namespace WebKit2 {
      */
     class WebsiteDataAccessPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequest>;
-        declare static readonly __signalSignatures: WebsiteDataAccessPermissionRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebsiteDataAccessPermissionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: WebsiteDataAccessPermissionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
+            signal: K,
+            callback: WebsiteDataAccessPermissionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsiteDataAccessPermissionRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16202,7 +16138,6 @@ export namespace WebKit2 {
      */
     class WebsiteDataManager extends GObject.Object {
         static $gtype: GObject.GType<WebsiteDataManager>;
-        declare static readonly __signalSignatures: WebsiteDataManager.SignalSignatures;
 
         // Properties
 
@@ -16320,6 +16255,21 @@ export namespace WebKit2 {
         _init(...args: any[]): void;
 
         static new_ephemeral(): WebsiteDataManager;
+
+        // Signals
+
+        connect<K extends keyof WebsiteDataManager.SignalSignatures>(
+            signal: K,
+            callback: WebsiteDataManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsiteDataManager.SignalSignatures>(
+            signal: K,
+            callback: WebsiteDataManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsiteDataManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsiteDataManager.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -16700,7 +16650,6 @@ export namespace WebKit2 {
      */
     class WebsitePolicies extends GObject.Object {
         static $gtype: GObject.GType<WebsitePolicies>;
-        declare static readonly __signalSignatures: WebsitePolicies.SignalSignatures;
 
         // Properties
 
@@ -16716,6 +16665,21 @@ export namespace WebKit2 {
         _init(...args: any[]): void;
 
         static ['new'](): WebsitePolicies;
+
+        // Signals
+
+        connect<K extends keyof WebsitePolicies.SignalSignatures>(
+            signal: K,
+            callback: WebsitePolicies.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsitePolicies.SignalSignatures>(
+            signal: K,
+            callback: WebsitePolicies.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsitePolicies.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsitePolicies.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16807,7 +16771,6 @@ export namespace WebKit2 {
      */
     class WindowProperties extends GObject.Object {
         static $gtype: GObject.GType<WindowProperties>;
-        declare static readonly __signalSignatures: WindowProperties.SignalSignatures;
 
         // Properties
 
@@ -16869,6 +16832,21 @@ export namespace WebKit2 {
         constructor(properties?: Partial<WindowProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WindowProperties.SignalSignatures>(
+            signal: K,
+            callback: WindowProperties.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowProperties.SignalSignatures>(
+            signal: K,
+            callback: WindowProperties.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowProperties.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowProperties.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -344,7 +344,7 @@ export namespace Gdl {
         // Signal callback interfaces
 
         interface LayoutChanged {
-            (): void;
+            (_source: Dock): void;
         }
 
         // Signal signatures
@@ -372,7 +372,6 @@ export namespace Gdl {
 
     class Dock extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dock>;
-        declare static readonly __signalSignatures: Dock.SignalSignatures;
 
         // Properties
 
@@ -423,12 +422,6 @@ export namespace Gdl {
         connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
         connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
         emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: Parameters<Dock.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'layout-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layout-changed'): void;
 
         // Virtual methods
 
@@ -971,7 +964,6 @@ export namespace Gdl {
 
     class DockBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DockBar>;
-        declare static readonly __signalSignatures: DockBar.SignalSignatures;
 
         // Properties
 
@@ -995,6 +987,18 @@ export namespace Gdl {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DockBar.SignalSignatures>(signal: K, callback: DockBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof DockBar.SignalSignatures>(
+            signal: K,
+            callback: DockBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1476,27 +1480,27 @@ export namespace Gdl {
         // Signal callback interfaces
 
         interface Deselected {
-            (): void;
+            (_source: DockItem): void;
         }
 
         interface DockDragBegin {
-            (): void;
+            (_source: DockItem): void;
         }
 
         interface DockDragEnd {
-            (cancel: boolean): void;
+            (_source: DockItem, cancel: boolean): void;
         }
 
         interface DockDragMotion {
-            (device: Gdk.Device, x: number, y: number): void;
+            (_source: DockItem, device: Gdk.Device, x: number, y: number): void;
         }
 
         interface MoveFocusChild {
-            (dir: Gtk.DirectionType): void;
+            (_source: DockItem, dir: Gtk.DirectionType): void;
         }
 
         interface Selected {
-            (): void;
+            (_source: DockItem): void;
         }
 
         // Signal signatures
@@ -1530,7 +1534,6 @@ export namespace Gdl {
 
     class DockItem extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItem>;
-        declare static readonly __signalSignatures: DockItem.SignalSignatures;
 
         // Properties
 
@@ -1602,33 +1605,6 @@ export namespace Gdl {
             signal: K,
             ...args: Parameters<DockItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deselected', callback: (_source: this) => void): number;
-        connect_after(signal: 'deselected', callback: (_source: this) => void): number;
-        emit(signal: 'deselected'): void;
-        connect(signal: 'dock-drag-begin', callback: (_source: this) => void): number;
-        connect_after(signal: 'dock-drag-begin', callback: (_source: this) => void): number;
-        emit(signal: 'dock-drag-begin'): void;
-        connect(signal: 'dock-drag-end', callback: (_source: this, cancel: boolean) => void): number;
-        connect_after(signal: 'dock-drag-end', callback: (_source: this, cancel: boolean) => void): number;
-        emit(signal: 'dock-drag-end', cancel: boolean): void;
-        connect(
-            signal: 'dock-drag-motion',
-            callback: (_source: this, device: Gdk.Device, x: number, y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'dock-drag-motion',
-            callback: (_source: this, device: Gdk.Device, x: number, y: number) => void,
-        ): number;
-        emit(signal: 'dock-drag-motion', device: Gdk.Device, x: number, y: number): void;
-        connect(signal: 'move-focus-child', callback: (_source: this, dir: Gtk.DirectionType) => void): number;
-        connect_after(signal: 'move-focus-child', callback: (_source: this, dir: Gtk.DirectionType) => void): number;
-        emit(signal: 'move-focus-child', dir: Gtk.DirectionType): void;
-        connect(signal: 'selected', callback: (_source: this) => void): number;
-        connect_after(signal: 'selected', callback: (_source: this) => void): number;
-        emit(signal: 'selected'): void;
 
         // Static methods
 
@@ -2272,7 +2248,6 @@ export namespace Gdl {
 
     class DockItemButtonImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItemButtonImage>;
-        declare static readonly __signalSignatures: DockItemButtonImage.SignalSignatures;
 
         // Fields
 
@@ -2285,6 +2260,21 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](image_type: DockItemButtonImageType): DockItemButtonImage;
+
+        // Signals
+
+        connect<K extends keyof DockItemButtonImage.SignalSignatures>(
+            signal: K,
+            callback: DockItemButtonImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockItemButtonImage.SignalSignatures>(
+            signal: K,
+            callback: DockItemButtonImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockItemButtonImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockItemButtonImage.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2920,7 +2910,6 @@ export namespace Gdl {
 
     class DockItemGrip extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockItemGrip>;
-        declare static readonly __signalSignatures: DockItemGrip.SignalSignatures;
 
         // Properties
 
@@ -2933,6 +2922,21 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](item: DockItem): DockItemGrip;
+
+        // Signals
+
+        connect<K extends keyof DockItemGrip.SignalSignatures>(
+            signal: K,
+            callback: DockItemGrip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockItemGrip.SignalSignatures>(
+            signal: K,
+            callback: DockItemGrip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockItemGrip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockItemGrip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3421,7 +3425,6 @@ export namespace Gdl {
      */
     class DockLayout extends GObject.Object {
         static $gtype: GObject.GType<DockLayout>;
-        declare static readonly __signalSignatures: DockLayout.SignalSignatures;
 
         // Properties
 
@@ -3440,6 +3443,21 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](master: GObject.Object): DockLayout;
+
+        // Signals
+
+        connect<K extends keyof DockLayout.SignalSignatures>(
+            signal: K,
+            callback: DockLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockLayout.SignalSignatures>(
+            signal: K,
+            callback: DockLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3519,7 +3537,7 @@ export namespace Gdl {
         // Signal callback interfaces
 
         interface LayoutChanged {
-            (): void;
+            (_source: DockMaster): void;
         }
 
         // Signal signatures
@@ -3544,7 +3562,6 @@ export namespace Gdl {
 
     class DockMaster extends GObject.Object {
         static $gtype: GObject.GType<DockMaster>;
-        declare static readonly __signalSignatures: DockMaster.SignalSignatures;
 
         // Properties
 
@@ -3591,12 +3608,6 @@ export namespace Gdl {
             signal: K,
             ...args: Parameters<DockMaster.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'layout-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layout-changed'): void;
 
         // Virtual methods
 
@@ -3665,7 +3676,6 @@ export namespace Gdl {
 
     class DockNotebook extends DockItem implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockNotebook>;
-        declare static readonly __signalSignatures: DockNotebook.SignalSignatures;
 
         // Properties
 
@@ -3683,6 +3693,21 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](): DockNotebook;
+
+        // Signals
+
+        connect<K extends keyof DockNotebook.SignalSignatures>(
+            signal: K,
+            callback: DockNotebook.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockNotebook.SignalSignatures>(
+            signal: K,
+            callback: DockNotebook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockNotebook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockNotebook.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -4130,11 +4155,16 @@ export namespace Gdl {
         // Signal callback interfaces
 
         interface Detach {
-            (recursive: boolean): void;
+            (_source: DockObject, recursive: boolean): void;
         }
 
         interface Dock {
-            (requestor: DockObject, position: DockPlacement, other_data?: GObject.Value | null): void;
+            (
+                _source: DockObject,
+                requestor: DockObject,
+                position: DockPlacement,
+                other_data?: GObject.Value | null,
+            ): void;
         }
 
         // Signal signatures
@@ -4162,7 +4192,6 @@ export namespace Gdl {
 
     class DockObject extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockObject>;
-        declare static readonly __signalSignatures: DockObject.SignalSignatures;
 
         // Properties
 
@@ -4233,31 +4262,6 @@ export namespace Gdl {
             signal: K,
             ...args: Parameters<DockObject.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'detach', callback: (_source: this, recursive: boolean) => void): number;
-        connect_after(signal: 'detach', callback: (_source: this, recursive: boolean) => void): number;
-        emit(signal: 'detach', recursive: boolean): void;
-        connect(
-            signal: 'dock',
-            callback: (
-                _source: this,
-                requestor: DockObject,
-                position: DockPlacement,
-                other_data: GObject.Value | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'dock',
-            callback: (
-                _source: this,
-                requestor: DockObject,
-                position: DockPlacement,
-                other_data: GObject.Value | null,
-            ) => void,
-        ): number;
-        emit(signal: 'dock', requestor: DockObject, position: DockPlacement, other_data?: GObject.Value | null): void;
 
         // Static methods
 
@@ -4978,7 +4982,6 @@ export namespace Gdl {
 
     class DockPaned extends DockItem implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockPaned>;
-        declare static readonly __signalSignatures: DockPaned.SignalSignatures;
 
         // Properties
 
@@ -4999,6 +5002,18 @@ export namespace Gdl {
         // Conflicted with Gdl.DockItem.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DockPaned.SignalSignatures>(signal: K, callback: DockPaned.SignalSignatures[K]): number;
+        connect_after<K extends keyof DockPaned.SignalSignatures>(
+            signal: K,
+            callback: DockPaned.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockPaned.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockPaned.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5449,11 +5464,22 @@ export namespace Gdl {
 
     class DockParam {
         static $gtype: GObject.GType<DockParam>;
-        declare static readonly __signalSignatures: DockParam.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DockParam.SignalSignatures>(signal: K, callback: DockParam.SignalSignatures[K]): number;
+        connect_after<K extends keyof DockParam.SignalSignatures>(
+            signal: K,
+            callback: DockParam.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockParam.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockParam.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DockPlaceholder {
@@ -5480,7 +5506,6 @@ export namespace Gdl {
 
     class DockPlaceholder extends DockObject implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockPlaceholder>;
-        declare static readonly __signalSignatures: DockPlaceholder.SignalSignatures;
 
         // Properties
 
@@ -5510,6 +5535,21 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](name: string, object: DockObject, position: DockPlacement, sticky: boolean): DockPlaceholder;
+
+        // Signals
+
+        connect<K extends keyof DockPlaceholder.SignalSignatures>(
+            signal: K,
+            callback: DockPlaceholder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockPlaceholder.SignalSignatures>(
+            signal: K,
+            callback: DockPlaceholder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockPlaceholder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockPlaceholder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5965,7 +6005,7 @@ export namespace Gdl {
         // Signal callback interfaces
 
         interface ButtonPressedHandle {
-            (event: Gdk.Event): void;
+            (_source: DockTablabel, event: Gdk.Event): void;
         }
 
         // Signal signatures
@@ -5985,7 +6025,6 @@ export namespace Gdl {
 
     class DockTablabel extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockTablabel>;
-        declare static readonly __signalSignatures: DockTablabel.SignalSignatures;
 
         // Properties
 
@@ -6021,12 +6060,6 @@ export namespace Gdl {
             signal: K,
             ...args: Parameters<DockTablabel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'button-pressed-handle', callback: (_source: this, event: Gdk.Event) => void): number;
-        connect_after(signal: 'button-pressed-handle', callback: (_source: this, event: Gdk.Event) => void): number;
-        emit(signal: 'button-pressed-handle', event: Gdk.Event): void;
 
         // Virtual methods
 
@@ -6505,7 +6538,6 @@ export namespace Gdl {
      */
     class PreviewWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreviewWindow>;
-        declare static readonly __signalSignatures: PreviewWindow.SignalSignatures;
 
         // Constructors
 
@@ -6514,6 +6546,21 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](): PreviewWindow;
+
+        // Signals
+
+        connect<K extends keyof PreviewWindow.SignalSignatures>(
+            signal: K,
+            callback: PreviewWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreviewWindow.SignalSignatures>(
+            signal: K,
+            callback: PreviewWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreviewWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreviewWindow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6988,7 +7035,6 @@ export namespace Gdl {
 
     class Switcher extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Switcher>;
-        declare static readonly __signalSignatures: Switcher.SignalSignatures;
 
         // Properties
 
@@ -7012,6 +7058,18 @@ export namespace Gdl {
         _init(...args: any[]): void;
 
         static ['new'](): Switcher;
+
+        // Signals
+
+        connect<K extends keyof Switcher.SignalSignatures>(signal: K, callback: Switcher.SignalSignatures[K]): number;
+        connect_after<K extends keyof Switcher.SignalSignatures>(
+            signal: K,
+            callback: Switcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Switcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Switcher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

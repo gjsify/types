@@ -68,27 +68,28 @@ export namespace GtkFrdp {
         // Signal callback interfaces
 
         interface RdpAuthFailure {
-            (object: string): void;
+            (_source: Display, object: string): void;
         }
 
         interface RdpConnected {
-            (): void;
+            (_source: Display): void;
         }
 
         interface RdpDisconnected {
-            (): void;
+            (_source: Display): void;
         }
 
         interface RdpError {
-            (object: string): void;
+            (_source: Display, object: string): void;
         }
 
         interface RdpNeedsAuthentication {
-            (): void;
+            (_source: Display): void;
         }
 
         interface RdpNeedsCertificateChangeVerification {
             (
+                _source: Display,
                 object: string,
                 p0: number,
                 p1: string,
@@ -103,7 +104,16 @@ export namespace GtkFrdp {
         }
 
         interface RdpNeedsCertificateVerification {
-            (object: string, p0: number, p1: string, p2: string, p3: string, p4: string, p5: number): void;
+            (
+                _source: Display,
+                object: string,
+                p0: number,
+                p1: string,
+                p2: string,
+                p3: string,
+                p4: string,
+                p5: number,
+            ): void;
         }
 
         // Signal signatures
@@ -136,7 +146,6 @@ export namespace GtkFrdp {
 
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
-        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -175,105 +184,6 @@ export namespace GtkFrdp {
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: Parameters<Display.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'rdp-auth-failure', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'rdp-auth-failure', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'rdp-auth-failure', object: string): void;
-        connect(signal: 'rdp-connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'rdp-connected', callback: (_source: this) => void): number;
-        emit(signal: 'rdp-connected'): void;
-        connect(signal: 'rdp-disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'rdp-disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'rdp-disconnected'): void;
-        connect(signal: 'rdp-error', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'rdp-error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'rdp-error', object: string): void;
-        connect(signal: 'rdp-needs-authentication', callback: (_source: this) => void): number;
-        connect_after(signal: 'rdp-needs-authentication', callback: (_source: this) => void): number;
-        emit(signal: 'rdp-needs-authentication'): void;
-        connect(
-            signal: 'rdp-needs-certificate-change-verification',
-            callback: (
-                _source: this,
-                object: string,
-                p0: number,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: string,
-                p6: string,
-                p7: string,
-                p8: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'rdp-needs-certificate-change-verification',
-            callback: (
-                _source: this,
-                object: string,
-                p0: number,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: string,
-                p6: string,
-                p7: string,
-                p8: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'rdp-needs-certificate-change-verification',
-            object: string,
-            p0: number,
-            p1: string,
-            p2: string,
-            p3: string,
-            p4: string,
-            p5: string,
-            p6: string,
-            p7: string,
-            p8: number,
-        ): void;
-        connect(
-            signal: 'rdp-needs-certificate-verification',
-            callback: (
-                _source: this,
-                object: string,
-                p0: number,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'rdp-needs-certificate-verification',
-            callback: (
-                _source: this,
-                object: string,
-                p0: number,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'rdp-needs-certificate-verification',
-            object: string,
-            p0: number,
-            p1: string,
-            p2: string,
-            p3: string,
-            p4: string,
-            p5: number,
         ): void;
 
         // Virtual methods
@@ -782,19 +692,19 @@ export namespace GtkFrdp {
         // Signal callback interfaces
 
         interface RdpAuthFailure {
-            (object: string): void;
+            (_source: Session, object: string): void;
         }
 
         interface RdpConnected {
-            (): void;
+            (_source: Session): void;
         }
 
         interface RdpDisconnected {
-            (): void;
+            (_source: Session): void;
         }
 
         interface RdpError {
-            (object: string): void;
+            (_source: Session, object: string): void;
         }
 
         // Signal signatures
@@ -822,7 +732,6 @@ export namespace GtkFrdp {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -855,6 +764,7 @@ export namespace GtkFrdp {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
@@ -863,16 +773,6 @@ export namespace GtkFrdp {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'rdp-auth-failure', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'rdp-auth-failure', object: string): void;
-        connect_after(signal: 'rdp-connected', callback: (_source: this) => void): number;
-        emit(signal: 'rdp-connected'): void;
-        connect_after(signal: 'rdp-disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'rdp-disconnected'): void;
-        connect_after(signal: 'rdp-error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'rdp-error', object: string): void;
 
         // Methods
 

@@ -51,7 +51,6 @@ export namespace TimezoneMap {
 
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
         static $gtype: GObject.GType<TimezoneCompletion>;
-        declare static readonly __signalSignatures: TimezoneCompletion.SignalSignatures;
 
         // Constructors
 
@@ -60,6 +59,21 @@ export namespace TimezoneMap {
         _init(...args: any[]): void;
 
         static ['new'](): TimezoneCompletion;
+
+        // Signals
+
+        connect<K extends keyof TimezoneCompletion.SignalSignatures>(
+            signal: K,
+            callback: TimezoneCompletion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimezoneCompletion.SignalSignatures>(
+            signal: K,
+            callback: TimezoneCompletion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimezoneCompletion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimezoneCompletion.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -851,7 +865,6 @@ export namespace TimezoneMap {
 
     class TimezoneLocation extends GObject.Object {
         static $gtype: GObject.GType<TimezoneLocation>;
-        declare static readonly __signalSignatures: TimezoneLocation.SignalSignatures;
 
         // Properties
 
@@ -875,13 +888,28 @@ export namespace TimezoneMap {
         _init(...args: any[]): void;
 
         static ['new'](): TimezoneLocation;
+
+        // Signals
+
+        connect<K extends keyof TimezoneLocation.SignalSignatures>(
+            signal: K,
+            callback: TimezoneLocation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimezoneLocation.SignalSignatures>(
+            signal: K,
+            callback: TimezoneLocation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimezoneLocation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimezoneLocation.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TimezoneMap {
         // Signal callback interfaces
 
         interface LocationChanged {
-            (object: TimezoneLocation): void;
+            (_source: TimezoneMap, object: TimezoneLocation): void;
         }
 
         // Signal signatures
@@ -899,7 +927,6 @@ export namespace TimezoneMap {
 
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
-        declare static readonly __signalSignatures: TimezoneMap.SignalSignatures;
 
         // Constructors
 
@@ -923,12 +950,6 @@ export namespace TimezoneMap {
             signal: K,
             ...args: Parameters<TimezoneMap.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'location-changed', callback: (_source: this, object: TimezoneLocation) => void): number;
-        connect_after(signal: 'location-changed', callback: (_source: this, object: TimezoneLocation) => void): number;
-        emit(signal: 'location-changed', object: TimezoneLocation): void;
 
         // Methods
 

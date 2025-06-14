@@ -33,11 +33,11 @@ export namespace GnomeBG {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: BG): void;
         }
 
         interface Transitioned {
-            (): void;
+            (_source: BG): void;
         }
 
         // Signal signatures
@@ -53,7 +53,6 @@ export namespace GnomeBG {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
-        declare static readonly __signalSignatures: BG.SignalSignatures;
 
         // Constructors
 
@@ -68,15 +67,6 @@ export namespace GnomeBG {
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'transitioned', callback: (_source: this) => void): number;
-        connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
-        emit(signal: 'transitioned'): void;
 
         // Methods
 
@@ -152,7 +142,6 @@ export namespace GnomeBG {
 
     class BGSlideShow extends GObject.Object {
         static $gtype: GObject.GType<BGSlideShow>;
-        declare static readonly __signalSignatures: BGSlideShow.SignalSignatures;
 
         // Properties
 
@@ -175,6 +164,21 @@ export namespace GnomeBG {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): BGSlideShow;
+
+        // Signals
+
+        connect<K extends keyof BGSlideShow.SignalSignatures>(
+            signal: K,
+            callback: BGSlideShow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BGSlideShow.SignalSignatures>(
+            signal: K,
+            callback: BGSlideShow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BGSlideShow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BGSlideShow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

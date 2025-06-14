@@ -290,11 +290,11 @@ export namespace CinnamonDesktop {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: BG): void;
         }
 
         interface Transitioned {
-            (): void;
+            (_source: BG): void;
         }
 
         // Signal signatures
@@ -310,7 +310,6 @@ export namespace CinnamonDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
-        declare static readonly __signalSignatures: BG.SignalSignatures;
 
         // Constructors
 
@@ -325,15 +324,6 @@ export namespace CinnamonDesktop {
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'transitioned', callback: (_source: this) => void): number;
-        connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
-        emit(signal: 'transitioned'): void;
 
         // Static methods
 
@@ -433,7 +423,7 @@ export namespace CinnamonDesktop {
         // Signal callback interfaces
 
         interface Finished {
-            (window: GObject.Object): void;
+            (_source: BGCrossfade, window: GObject.Object): void;
         }
 
         // Signal signatures
@@ -451,7 +441,6 @@ export namespace CinnamonDesktop {
 
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
-        declare static readonly __signalSignatures: BGCrossfade.SignalSignatures;
 
         // Properties
 
@@ -492,12 +481,6 @@ export namespace CinnamonDesktop {
             signal: K,
             ...args: Parameters<BGCrossfade.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
-        emit(signal: 'finished', window: GObject.Object): void;
 
         // Virtual methods
 
@@ -556,7 +539,6 @@ export namespace CinnamonDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
-        declare static readonly __signalSignatures: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -565,6 +547,21 @@ export namespace CinnamonDesktop {
         _init(...args: any[]): void;
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
+
+        // Signals
+
+        connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            callback: DesktopThumbnailFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            callback: DesktopThumbnailFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -641,7 +638,6 @@ export namespace CinnamonDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
-        declare static readonly __signalSignatures: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -650,6 +646,21 @@ export namespace CinnamonDesktop {
         _init(...args: any[]): void;
 
         static ['new'](): IdleMonitor;
+
+        // Signals
+
+        connect<K extends keyof IdleMonitor.SignalSignatures>(
+            signal: K,
+            callback: IdleMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IdleMonitor.SignalSignatures>(
+            signal: K,
+            callback: IdleMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IdleMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1202,7 +1213,6 @@ export namespace CinnamonDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
-        declare static readonly __signalSignatures: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1211,6 +1221,12 @@ export namespace CinnamonDesktop {
         _init(...args: any[]): void;
 
         static ['new'](): PnpIds;
+
+        // Signals
+
+        connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: Parameters<PnpIds.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1235,7 +1251,6 @@ export namespace CinnamonDesktop {
 
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
-        declare static readonly __signalSignatures: RRConfig.SignalSignatures;
 
         // Properties
 
@@ -1250,6 +1265,18 @@ export namespace CinnamonDesktop {
         static new_current(screen: RRScreen): RRConfig;
 
         static new_stored(screen: RRScreen): RRConfig;
+
+        // Signals
+
+        connect<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: RRConfig.SignalSignatures[K]): number;
+        connect_after<K extends keyof RRConfig.SignalSignatures>(
+            signal: K,
+            callback: RRConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RRConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RRConfig.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1291,7 +1318,6 @@ export namespace CinnamonDesktop {
 
     class RRLabeler extends GObject.Object {
         static $gtype: GObject.GType<RRLabeler>;
-        declare static readonly __signalSignatures: RRLabeler.SignalSignatures;
 
         // Properties
 
@@ -1304,6 +1330,18 @@ export namespace CinnamonDesktop {
         _init(...args: any[]): void;
 
         static ['new'](config: RRConfig): RRLabeler;
+
+        // Signals
+
+        connect<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: RRLabeler.SignalSignatures[K]): number;
+        connect_after<K extends keyof RRLabeler.SignalSignatures>(
+            signal: K,
+            callback: RRLabeler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RRLabeler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RRLabeler.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1333,13 +1371,27 @@ export namespace CinnamonDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
-        declare static readonly __signalSignatures: RROutputInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RROutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RROutputInfo.SignalSignatures>(
+            signal: K,
+            callback: RROutputInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RROutputInfo.SignalSignatures>(
+            signal: K,
+            callback: RROutputInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RROutputInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RROutputInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1374,15 +1426,15 @@ export namespace CinnamonDesktop {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: RRScreen): void;
         }
 
         interface OutputConnected {
-            (output?: any | null): void;
+            (_source: RRScreen, output?: any | null): void;
         }
 
         interface OutputDisconnected {
-            (output?: any | null): void;
+            (_source: RRScreen, output?: any | null): void;
         }
 
         // Signal signatures
@@ -1402,7 +1454,6 @@ export namespace CinnamonDesktop {
 
     class RRScreen extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
-        declare static readonly __signalSignatures: RRScreen.SignalSignatures;
 
         // Properties
 
@@ -1428,18 +1479,6 @@ export namespace CinnamonDesktop {
             signal: K,
             ...args: Parameters<RRScreen.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'output-connected', callback: (_source: this, output: any | null) => void): number;
-        connect_after(signal: 'output-connected', callback: (_source: this, output: any | null) => void): number;
-        emit(signal: 'output-connected', output?: any | null): void;
-        connect(signal: 'output-disconnected', callback: (_source: this, output: any | null) => void): number;
-        connect_after(signal: 'output-disconnected', callback: (_source: this, output: any | null) => void): number;
-        emit(signal: 'output-disconnected', output?: any | null): void;
 
         // Methods
 
@@ -2038,7 +2077,6 @@ export namespace CinnamonDesktop {
 
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
-        declare static readonly __signalSignatures: WallClock.SignalSignatures;
 
         // Properties
 
@@ -2072,6 +2110,18 @@ export namespace CinnamonDesktop {
         _init(...args: any[]): void;
 
         static ['new'](): WallClock;
+
+        // Signals
+
+        connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: WallClock.SignalSignatures[K]): number;
+        connect_after<K extends keyof WallClock.SignalSignatures>(
+            signal: K,
+            callback: WallClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WallClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WallClock.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2136,7 +2186,6 @@ export namespace CinnamonDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
-        declare static readonly __signalSignatures: XkbInfo.SignalSignatures;
 
         // Fields
 
@@ -2149,6 +2198,18 @@ export namespace CinnamonDesktop {
         _init(...args: any[]): void;
 
         static ['new'](): XkbInfo;
+
+        // Signals
+
+        connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: XkbInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof XkbInfo.SignalSignatures>(
+            signal: K,
+            callback: XkbInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XkbInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XkbInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

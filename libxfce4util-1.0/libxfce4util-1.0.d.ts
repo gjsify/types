@@ -532,7 +532,6 @@ export namespace Libxfce4util {
 
     class Kiosk extends GObject.Object {
         static $gtype: GObject.GType<Kiosk>;
-        declare static readonly __signalSignatures: Kiosk.SignalSignatures;
 
         // Constructors
 
@@ -541,6 +540,12 @@ export namespace Libxfce4util {
         _init(...args: any[]): void;
 
         static ['new'](module: string): Kiosk;
+
+        // Signals
+
+        connect<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: Kiosk.SignalSignatures[K]): number;
+        connect_after<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: Kiosk.SignalSignatures[K]): number;
+        emit<K extends keyof Kiosk.SignalSignatures>(signal: K, ...args: Parameters<Kiosk.SignalSignatures[K]>): void;
 
         // Methods
 

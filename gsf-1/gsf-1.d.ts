@@ -726,7 +726,6 @@ export namespace Gsf {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
-        declare static readonly __signalSignatures: Blob.SignalSignatures;
 
         // Fields
 
@@ -739,6 +738,12 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](data_to_copy: Uint8Array | string): Blob;
+
+        // Signals
+
+        connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -768,7 +773,6 @@ export namespace Gsf {
 
     class ClipData extends GObject.Object {
         static $gtype: GObject.GType<ClipData>;
-        declare static readonly __signalSignatures: ClipData.SignalSignatures;
 
         // Fields
 
@@ -781,6 +785,18 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](format: ClipFormat, data_blob: Blob): ClipData;
+
+        // Signals
+
+        connect<K extends keyof ClipData.SignalSignatures>(signal: K, callback: ClipData.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClipData.SignalSignatures>(
+            signal: K,
+            callback: ClipData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClipData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClipData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -829,7 +845,6 @@ export namespace Gsf {
      */
     class DocMetaData extends GObject.Object {
         static $gtype: GObject.GType<DocMetaData>;
-        declare static readonly __signalSignatures: DocMetaData.SignalSignatures;
 
         // Constructors
 
@@ -838,6 +853,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](): DocMetaData;
+
+        // Signals
+
+        connect<K extends keyof DocMetaData.SignalSignatures>(
+            signal: K,
+            callback: DocMetaData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocMetaData.SignalSignatures>(
+            signal: K,
+            callback: DocMetaData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocMetaData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocMetaData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -897,7 +927,6 @@ export namespace Gsf {
 
     class DocPropVector extends GObject.Object {
         static $gtype: GObject.GType<DocPropVector>;
-        declare static readonly __signalSignatures: DocPropVector.SignalSignatures;
 
         // Constructors
 
@@ -906,6 +935,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](): DocPropVector;
+
+        // Signals
+
+        connect<K extends keyof DocPropVector.SignalSignatures>(
+            signal: K,
+            callback: DocPropVector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocPropVector.SignalSignatures>(
+            signal: K,
+            callback: DocPropVector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocPropVector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocPropVector.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -937,13 +981,18 @@ export namespace Gsf {
      */
     abstract class Infile extends Input {
         static $gtype: GObject.GType<Infile>;
-        declare static readonly __signalSignatures: Infile.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Infile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
+        emit<K extends keyof Infile.SignalSignatures>(signal: K, ...args: Parameters<Infile.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -996,7 +1045,6 @@ export namespace Gsf {
 
     class InfileMSOle extends Infile {
         static $gtype: GObject.GType<InfileMSOle>;
-        declare static readonly __signalSignatures: InfileMSOle.SignalSignatures;
 
         // Constructors
 
@@ -1005,6 +1053,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](source: Input): InfileMSOle;
+
+        // Signals
+
+        connect<K extends keyof InfileMSOle.SignalSignatures>(
+            signal: K,
+            callback: InfileMSOle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InfileMSOle.SignalSignatures>(
+            signal: K,
+            callback: InfileMSOle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfileMSOle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfileMSOle.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1028,7 +1091,6 @@ export namespace Gsf {
 
     class InfileMSVBA extends Infile {
         static $gtype: GObject.GType<InfileMSVBA>;
-        declare static readonly __signalSignatures: InfileMSVBA.SignalSignatures;
 
         // Constructors
 
@@ -1037,6 +1099,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](source: Infile): InfileMSVBA;
+
+        // Signals
+
+        connect<K extends keyof InfileMSVBA.SignalSignatures>(
+            signal: K,
+            callback: InfileMSVBA.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InfileMSVBA.SignalSignatures>(
+            signal: K,
+            callback: InfileMSVBA.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfileMSVBA.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfileMSVBA.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1063,7 +1140,6 @@ export namespace Gsf {
 
     class InfileStdio extends Infile {
         static $gtype: GObject.GType<InfileStdio>;
-        declare static readonly __signalSignatures: InfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -1072,6 +1148,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](root: string): InfileStdio;
+
+        // Signals
+
+        connect<K extends keyof InfileStdio.SignalSignatures>(
+            signal: K,
+            callback: InfileStdio.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InfileStdio.SignalSignatures>(
+            signal: K,
+            callback: InfileStdio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfileStdio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfileStdio.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InfileTar {
@@ -1087,7 +1178,6 @@ export namespace Gsf {
 
     class InfileTar extends Infile {
         static $gtype: GObject.GType<InfileTar>;
-        declare static readonly __signalSignatures: InfileTar.SignalSignatures;
 
         // Properties
 
@@ -1100,6 +1190,18 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](source: Input): InfileTar;
+
+        // Signals
+
+        connect<K extends keyof InfileTar.SignalSignatures>(signal: K, callback: InfileTar.SignalSignatures[K]): number;
+        connect_after<K extends keyof InfileTar.SignalSignatures>(
+            signal: K,
+            callback: InfileTar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfileTar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfileTar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InfileZip {
@@ -1120,7 +1222,6 @@ export namespace Gsf {
 
     class InfileZip extends Infile {
         static $gtype: GObject.GType<InfileZip>;
-        declare static readonly __signalSignatures: InfileZip.SignalSignatures;
 
         // Properties
 
@@ -1144,6 +1245,18 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](source: Input): InfileZip;
+
+        // Signals
+
+        connect<K extends keyof InfileZip.SignalSignatures>(signal: K, callback: InfileZip.SignalSignatures[K]): number;
+        connect_after<K extends keyof InfileZip.SignalSignatures>(
+            signal: K,
+            callback: InfileZip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfileZip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfileZip.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Input {
@@ -1168,7 +1281,6 @@ export namespace Gsf {
      */
     abstract class Input extends GObject.Object {
         static $gtype: GObject.GType<Input>;
-        declare static readonly __signalSignatures: Input.SignalSignatures;
 
         // Properties
 
@@ -1212,6 +1324,12 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static mmap_new(filename: string): Input;
+
+        // Signals
+
+        connect<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
+        connect_after<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
+        emit<K extends keyof Input.SignalSignatures>(signal: K, ...args: Parameters<Input.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1344,7 +1462,6 @@ export namespace Gsf {
 
     class InputGZip extends Input {
         static $gtype: GObject.GType<InputGZip>;
-        declare static readonly __signalSignatures: InputGZip.SignalSignatures;
 
         // Properties
 
@@ -1360,6 +1477,18 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](source: Input): InputGZip;
+
+        // Signals
+
+        connect<K extends keyof InputGZip.SignalSignatures>(signal: K, callback: InputGZip.SignalSignatures[K]): number;
+        connect_after<K extends keyof InputGZip.SignalSignatures>(
+            signal: K,
+            callback: InputGZip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputGZip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputGZip.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InputGio {
@@ -1373,7 +1502,6 @@ export namespace Gsf {
 
     class InputGio extends Input {
         static $gtype: GObject.GType<InputGio>;
-        declare static readonly __signalSignatures: InputGio.SignalSignatures;
 
         // Constructors
 
@@ -1386,6 +1514,18 @@ export namespace Gsf {
         static new_for_path(path: string): InputGio;
 
         static new_for_uri(uri: string): InputGio;
+
+        // Signals
+
+        connect<K extends keyof InputGio.SignalSignatures>(signal: K, callback: InputGio.SignalSignatures[K]): number;
+        connect_after<K extends keyof InputGio.SignalSignatures>(
+            signal: K,
+            callback: InputGio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputGio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputGio.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InputHTTP {
@@ -1403,7 +1543,6 @@ export namespace Gsf {
 
     class InputHTTP extends Input {
         static $gtype: GObject.GType<InputHTTP>;
-        declare static readonly __signalSignatures: InputHTTP.SignalSignatures;
 
         // Properties
 
@@ -1418,6 +1557,18 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](url: string): InputHTTP;
+
+        // Signals
+
+        connect<K extends keyof InputHTTP.SignalSignatures>(signal: K, callback: InputHTTP.SignalSignatures[K]): number;
+        connect_after<K extends keyof InputHTTP.SignalSignatures>(
+            signal: K,
+            callback: InputHTTP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputHTTP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputHTTP.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1436,7 +1587,6 @@ export namespace Gsf {
 
     class InputMemory extends Input {
         static $gtype: GObject.GType<InputMemory>;
-        declare static readonly __signalSignatures: InputMemory.SignalSignatures;
 
         // Constructors
 
@@ -1451,6 +1601,21 @@ export namespace Gsf {
         static new_from_bzip(source: Input): InputMemory;
 
         static new_from_iochannel(channel: GLib.IOChannel): InputMemory;
+
+        // Signals
+
+        connect<K extends keyof InputMemory.SignalSignatures>(
+            signal: K,
+            callback: InputMemory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputMemory.SignalSignatures>(
+            signal: K,
+            callback: InputMemory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputMemory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputMemory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InputProxy {
@@ -1464,7 +1629,6 @@ export namespace Gsf {
 
     class InputProxy extends Input {
         static $gtype: GObject.GType<InputProxy>;
-        declare static readonly __signalSignatures: InputProxy.SignalSignatures;
 
         // Constructors
 
@@ -1475,6 +1639,21 @@ export namespace Gsf {
         static ['new'](source: Input): InputProxy;
 
         static new_section(source: Input, offset: gsf_off_t, size: gsf_off_t): InputProxy;
+
+        // Signals
+
+        connect<K extends keyof InputProxy.SignalSignatures>(
+            signal: K,
+            callback: InputProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputProxy.SignalSignatures>(
+            signal: K,
+            callback: InputProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputProxy.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InputStdio {
@@ -1488,7 +1667,6 @@ export namespace Gsf {
 
     class InputStdio extends Input {
         static $gtype: GObject.GType<InputStdio>;
-        declare static readonly __signalSignatures: InputStdio.SignalSignatures;
 
         // Constructors
 
@@ -1499,6 +1677,21 @@ export namespace Gsf {
         static ['new'](filename: string): InputStdio;
 
         static new_FILE(filename: string, file: any | null, keep_open: boolean): InputStdio;
+
+        // Signals
+
+        connect<K extends keyof InputStdio.SignalSignatures>(
+            signal: K,
+            callback: InputStdio.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputStdio.SignalSignatures>(
+            signal: K,
+            callback: InputStdio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputStdio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputStdio.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InputTextline {
@@ -1512,7 +1705,6 @@ export namespace Gsf {
 
     class InputTextline extends Input {
         static $gtype: GObject.GType<InputTextline>;
-        declare static readonly __signalSignatures: InputTextline.SignalSignatures;
 
         // Constructors
 
@@ -1521,6 +1713,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](source: Input): InputTextline;
+
+        // Signals
+
+        connect<K extends keyof InputTextline.SignalSignatures>(
+            signal: K,
+            callback: InputTextline.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputTextline.SignalSignatures>(
+            signal: K,
+            callback: InputTextline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputTextline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputTextline.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1554,7 +1761,6 @@ export namespace Gsf {
 
     class ODFOut extends XMLOut {
         static $gtype: GObject.GType<ODFOut>;
-        declare static readonly __signalSignatures: ODFOut.SignalSignatures;
 
         // Properties
 
@@ -1571,6 +1777,12 @@ export namespace Gsf {
         constructor(properties?: Partial<ODFOut.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
+        emit<K extends keyof ODFOut.SignalSignatures>(signal: K, ...args: Parameters<ODFOut.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1592,13 +1804,24 @@ export namespace Gsf {
      */
     abstract class Outfile extends Output {
         static $gtype: GObject.GType<Outfile>;
-        declare static readonly __signalSignatures: Outfile.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Outfile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Outfile.SignalSignatures>(signal: K, callback: Outfile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Outfile.SignalSignatures>(
+            signal: K,
+            callback: Outfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Outfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Outfile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1632,7 +1855,6 @@ export namespace Gsf {
 
     class OutfileMSOle extends Outfile {
         static $gtype: GObject.GType<OutfileMSOle>;
-        declare static readonly __signalSignatures: OutfileMSOle.SignalSignatures;
 
         // Properties
 
@@ -1651,6 +1873,21 @@ export namespace Gsf {
         static ['new'](sink: Output): OutfileMSOle;
 
         static new_full(sink: Output, bb_size: number, sb_size: number): OutfileMSOle;
+
+        // Signals
+
+        connect<K extends keyof OutfileMSOle.SignalSignatures>(
+            signal: K,
+            callback: OutfileMSOle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutfileMSOle.SignalSignatures>(
+            signal: K,
+            callback: OutfileMSOle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutfileMSOle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutfileMSOle.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1679,7 +1916,6 @@ export namespace Gsf {
 
     class OutfileOpenPkg extends Outfile {
         static $gtype: GObject.GType<OutfileOpenPkg>;
-        declare static readonly __signalSignatures: OutfileOpenPkg.SignalSignatures;
 
         // Properties
 
@@ -1696,6 +1932,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](sink: Outfile): OutfileOpenPkg;
+
+        // Signals
+
+        connect<K extends keyof OutfileOpenPkg.SignalSignatures>(
+            signal: K,
+            callback: OutfileOpenPkg.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutfileOpenPkg.SignalSignatures>(
+            signal: K,
+            callback: OutfileOpenPkg.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutfileOpenPkg.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutfileOpenPkg.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1732,7 +1983,6 @@ export namespace Gsf {
 
     class OutfileStdio extends Outfile {
         static $gtype: GObject.GType<OutfileStdio>;
-        declare static readonly __signalSignatures: OutfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -1741,6 +1991,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](root: string): OutfileStdio;
+
+        // Signals
+
+        connect<K extends keyof OutfileStdio.SignalSignatures>(
+            signal: K,
+            callback: OutfileStdio.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutfileStdio.SignalSignatures>(
+            signal: K,
+            callback: OutfileStdio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutfileStdio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutfileStdio.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OutfileZip {
@@ -1763,7 +2028,6 @@ export namespace Gsf {
 
     class OutfileZip extends Outfile {
         static $gtype: GObject.GType<OutfileZip>;
-        declare static readonly __signalSignatures: OutfileZip.SignalSignatures;
 
         // Properties
 
@@ -1783,6 +2047,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](sink: Output): OutfileZip;
+
+        // Signals
+
+        connect<K extends keyof OutfileZip.SignalSignatures>(
+            signal: K,
+            callback: OutfileZip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutfileZip.SignalSignatures>(
+            signal: K,
+            callback: OutfileZip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutfileZip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutfileZip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1811,7 +2090,6 @@ export namespace Gsf {
      */
     abstract class Output extends GObject.Object {
         static $gtype: GObject.GType<Output>;
-        declare static readonly __signalSignatures: Output.SignalSignatures;
 
         // Properties
 
@@ -1861,6 +2139,12 @@ export namespace Gsf {
         constructor(properties?: Partial<Output.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
+        connect_after<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
+        emit<K extends keyof Output.SignalSignatures>(signal: K, ...args: Parameters<Output.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1966,7 +2250,6 @@ export namespace Gsf {
 
     class OutputBzip extends Output {
         static $gtype: GObject.GType<OutputBzip>;
-        declare static readonly __signalSignatures: OutputBzip.SignalSignatures;
 
         // Constructors
 
@@ -1975,6 +2258,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](sink: Output): OutputBzip;
+
+        // Signals
+
+        connect<K extends keyof OutputBzip.SignalSignatures>(
+            signal: K,
+            callback: OutputBzip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputBzip.SignalSignatures>(
+            signal: K,
+            callback: OutputBzip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputBzip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputBzip.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OutputCsv {
@@ -1999,7 +2297,6 @@ export namespace Gsf {
 
     class OutputCsv extends Output {
         static $gtype: GObject.GType<OutputCsv>;
-        declare static readonly __signalSignatures: OutputCsv.SignalSignatures;
 
         // Properties
 
@@ -2039,6 +2336,18 @@ export namespace Gsf {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof OutputCsv.SignalSignatures>(signal: K, callback: OutputCsv.SignalSignatures[K]): number;
+        connect_after<K extends keyof OutputCsv.SignalSignatures>(
+            signal: K,
+            callback: OutputCsv.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputCsv.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputCsv.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         write_eol(): boolean;
@@ -2061,7 +2370,6 @@ export namespace Gsf {
 
     class OutputGZip extends Output {
         static $gtype: GObject.GType<OutputGZip>;
-        declare static readonly __signalSignatures: OutputGZip.SignalSignatures;
 
         // Properties
 
@@ -2079,6 +2387,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](sink: Output): OutputGZip;
+
+        // Signals
+
+        connect<K extends keyof OutputGZip.SignalSignatures>(
+            signal: K,
+            callback: OutputGZip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputGZip.SignalSignatures>(
+            signal: K,
+            callback: OutputGZip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputGZip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputGZip.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OutputGio {
@@ -2092,7 +2415,6 @@ export namespace Gsf {
 
     class OutputGio extends Output {
         static $gtype: GObject.GType<OutputGio>;
-        declare static readonly __signalSignatures: OutputGio.SignalSignatures;
 
         // Constructors
 
@@ -2105,6 +2427,18 @@ export namespace Gsf {
         static new_for_path(path: string): OutputGio;
 
         static new_for_uri(uri: string): OutputGio;
+
+        // Signals
+
+        connect<K extends keyof OutputGio.SignalSignatures>(signal: K, callback: OutputGio.SignalSignatures[K]): number;
+        connect_after<K extends keyof OutputGio.SignalSignatures>(
+            signal: K,
+            callback: OutputGio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputGio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputGio.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OutputIOChannel {
@@ -2118,7 +2452,6 @@ export namespace Gsf {
 
     class OutputIOChannel extends Output {
         static $gtype: GObject.GType<OutputIOChannel>;
-        declare static readonly __signalSignatures: OutputIOChannel.SignalSignatures;
 
         // Constructors
 
@@ -2127,6 +2460,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](channel: GLib.IOChannel): OutputIOChannel;
+
+        // Signals
+
+        connect<K extends keyof OutputIOChannel.SignalSignatures>(
+            signal: K,
+            callback: OutputIOChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputIOChannel.SignalSignatures>(
+            signal: K,
+            callback: OutputIOChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputIOChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputIOChannel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OutputIconv {
@@ -2147,7 +2495,6 @@ export namespace Gsf {
 
     class OutputIconv extends Output {
         static $gtype: GObject.GType<OutputIconv>;
-        declare static readonly __signalSignatures: OutputIconv.SignalSignatures;
 
         // Properties
 
@@ -2171,6 +2518,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](sink: Output, dst: string, src: string): OutputIconv;
+
+        // Signals
+
+        connect<K extends keyof OutputIconv.SignalSignatures>(
+            signal: K,
+            callback: OutputIconv.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputIconv.SignalSignatures>(
+            signal: K,
+            callback: OutputIconv.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputIconv.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputIconv.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OutputMemory {
@@ -2184,7 +2546,6 @@ export namespace Gsf {
 
     class OutputMemory extends Output {
         static $gtype: GObject.GType<OutputMemory>;
-        declare static readonly __signalSignatures: OutputMemory.SignalSignatures;
 
         // Constructors
 
@@ -2193,6 +2554,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](): OutputMemory;
+
+        // Signals
+
+        connect<K extends keyof OutputMemory.SignalSignatures>(
+            signal: K,
+            callback: OutputMemory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputMemory.SignalSignatures>(
+            signal: K,
+            callback: OutputMemory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputMemory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputMemory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2211,7 +2587,6 @@ export namespace Gsf {
 
     class OutputStdio extends Output {
         static $gtype: GObject.GType<OutputStdio>;
-        declare static readonly __signalSignatures: OutputStdio.SignalSignatures;
 
         // Constructors
 
@@ -2220,6 +2595,21 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): OutputStdio;
+
+        // Signals
+
+        connect<K extends keyof OutputStdio.SignalSignatures>(
+            signal: K,
+            callback: OutputStdio.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputStdio.SignalSignatures>(
+            signal: K,
+            callback: OutputStdio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputStdio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputStdio.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SharedMemory {
@@ -2233,7 +2623,6 @@ export namespace Gsf {
 
     class SharedMemory extends GObject.Object {
         static $gtype: GObject.GType<SharedMemory>;
-        declare static readonly __signalSignatures: SharedMemory.SignalSignatures;
 
         // Fields
 
@@ -2252,6 +2641,21 @@ export namespace Gsf {
         static mmapped_new(buf: any | null, size: gsf_off_t): SharedMemory;
 
         static ['new'](buf: any | null, size: gsf_off_t, needs_free: boolean): SharedMemory;
+
+        // Signals
+
+        connect<K extends keyof SharedMemory.SignalSignatures>(
+            signal: K,
+            callback: SharedMemory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SharedMemory.SignalSignatures>(
+            signal: K,
+            callback: SharedMemory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SharedMemory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SharedMemory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StructuredBlob {
@@ -2265,13 +2669,27 @@ export namespace Gsf {
 
     class StructuredBlob extends Infile {
         static $gtype: GObject.GType<StructuredBlob>;
-        declare static readonly __signalSignatures: StructuredBlob.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<StructuredBlob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StructuredBlob.SignalSignatures>(
+            signal: K,
+            callback: StructuredBlob.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructuredBlob.SignalSignatures>(
+            signal: K,
+            callback: StructuredBlob.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructuredBlob.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructuredBlob.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2308,7 +2726,6 @@ export namespace Gsf {
 
     class XMLOut extends GObject.Object {
         static $gtype: GObject.GType<XMLOut>;
-        declare static readonly __signalSignatures: XMLOut.SignalSignatures;
 
         // Properties
 
@@ -2331,6 +2748,12 @@ export namespace Gsf {
         _init(...args: any[]): void;
 
         static ['new'](output: Output): XMLOut;
+
+        // Signals
+
+        connect<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
+        connect_after<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
+        emit<K extends keyof XMLOut.SignalSignatures>(signal: K, ...args: Parameters<XMLOut.SignalSignatures[K]>): void;
 
         // Methods
 

@@ -150,7 +150,6 @@ export namespace Xkl {
 
     class ConfigItem extends GObject.Object {
         static $gtype: GObject.GType<ConfigItem>;
-        declare static readonly __signalSignatures: ConfigItem.SignalSignatures;
 
         // Fields
 
@@ -165,6 +164,21 @@ export namespace Xkl {
         _init(...args: any[]): void;
 
         static ['new'](): ConfigItem;
+
+        // Signals
+
+        connect<K extends keyof ConfigItem.SignalSignatures>(
+            signal: K,
+            callback: ConfigItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConfigItem.SignalSignatures>(
+            signal: K,
+            callback: ConfigItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConfigItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConfigItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -202,7 +216,6 @@ export namespace Xkl {
 
     class ConfigRec extends GObject.Object {
         static $gtype: GObject.GType<ConfigRec>;
-        declare static readonly __signalSignatures: ConfigRec.SignalSignatures;
 
         // Fields
 
@@ -218,6 +231,18 @@ export namespace Xkl {
         _init(...args: any[]): void;
 
         static ['new'](): ConfigRec;
+
+        // Signals
+
+        connect<K extends keyof ConfigRec.SignalSignatures>(signal: K, callback: ConfigRec.SignalSignatures[K]): number;
+        connect_after<K extends keyof ConfigRec.SignalSignatures>(
+            signal: K,
+            callback: ConfigRec.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConfigRec.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConfigRec.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -324,7 +349,6 @@ export namespace Xkl {
 
     class ConfigRegistry extends GObject.Object {
         static $gtype: GObject.GType<ConfigRegistry>;
-        declare static readonly __signalSignatures: ConfigRegistry.SignalSignatures;
 
         // Properties
 
@@ -335,6 +359,21 @@ export namespace Xkl {
         constructor(properties?: Partial<ConfigRegistry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ConfigRegistry.SignalSignatures>(
+            signal: K,
+            callback: ConfigRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConfigRegistry.SignalSignatures>(
+            signal: K,
+            callback: ConfigRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConfigRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConfigRegistry.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -457,19 +496,19 @@ export namespace Xkl {
         // Signal callback interfaces
 
         interface XConfigChanged {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface XNewDevice {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface XStateChanged {
-            (object: EngineStateChange, p0: number, p1: boolean): void;
+            (_source: Engine, object: EngineStateChange, p0: number, p1: boolean): void;
         }
 
         interface NewToplevelWindow {
-            (object: number, p0: number): number;
+            (_source: Engine, object: number, p0: number): number;
         }
 
         // Signal signatures
@@ -501,7 +540,6 @@ export namespace Xkl {
 
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
-        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -530,30 +568,6 @@ export namespace Xkl {
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'X-config-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'X-config-changed', callback: (_source: this) => void): number;
-        emit(signal: 'X-config-changed'): void;
-        connect(signal: 'X-new-device', callback: (_source: this) => void): number;
-        connect_after(signal: 'X-new-device', callback: (_source: this) => void): number;
-        emit(signal: 'X-new-device'): void;
-        connect(
-            signal: 'X-state-changed',
-            callback: (_source: this, object: EngineStateChange, p0: number, p1: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'X-state-changed',
-            callback: (_source: this, object: EngineStateChange, p0: number, p1: boolean) => void,
-        ): number;
-        emit(signal: 'X-state-changed', object: EngineStateChange, p0: number, p1: boolean): void;
-        connect(signal: 'new-toplevel-window', callback: (_source: this, object: number, p0: number) => number): number;
-        connect_after(
-            signal: 'new-toplevel-window',
-            callback: (_source: this, object: number, p0: number) => number,
-        ): number;
-        emit(signal: 'new-toplevel-window', object: number, p0: number): void;
 
         // Static methods
 

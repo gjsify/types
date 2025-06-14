@@ -97,7 +97,6 @@ export namespace CoglPango {
 
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
-        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 
@@ -108,6 +107,18 @@ export namespace CoglPango {
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: Renderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Renderer.SignalSignatures[K]>
+        ): void;
     }
 
     type RendererClass = typeof Renderer;

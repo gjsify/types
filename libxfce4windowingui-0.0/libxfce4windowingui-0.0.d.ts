@@ -86,7 +86,6 @@ export namespace Libxfce4windowingui {
 
     class WindowActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WindowActionMenu>;
-        declare static readonly __signalSignatures: WindowActionMenu.SignalSignatures;
 
         // Properties
 
@@ -106,6 +105,21 @@ export namespace Libxfce4windowingui {
         // Conflicted with Gtk.Menu.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof WindowActionMenu.SignalSignatures>(
+            signal: K,
+            callback: WindowActionMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowActionMenu.SignalSignatures>(
+            signal: K,
+            callback: WindowActionMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowActionMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowActionMenu.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

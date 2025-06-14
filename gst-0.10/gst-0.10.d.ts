@@ -2116,7 +2116,6 @@ export namespace Gst {
      */
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
-        declare static readonly __signalSignatures: Adapter.SignalSignatures;
 
         // Fields
 
@@ -2136,6 +2135,18 @@ export namespace Gst {
         _init(...args: any[]): void;
 
         static ['new'](): Adapter;
+
+        // Signals
+
+        connect<K extends keyof Adapter.SignalSignatures>(signal: K, callback: Adapter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Adapter.SignalSignatures>(
+            signal: K,
+            callback: Adapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Adapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Adapter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2184,7 +2195,6 @@ export namespace Gst {
      */
     abstract class BaseSink extends Element {
         static $gtype: GObject.GType<BaseSink>;
-        declare static readonly __signalSignatures: BaseSink.SignalSignatures;
 
         // Properties
 
@@ -2247,6 +2257,18 @@ export namespace Gst {
         constructor(properties?: Partial<BaseSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseSink.SignalSignatures>(signal: K, callback: BaseSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseSink.SignalSignatures>(
+            signal: K,
+            callback: BaseSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseSink.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2314,7 +2336,6 @@ export namespace Gst {
      */
     abstract class BaseSrc extends Element {
         static $gtype: GObject.GType<BaseSrc>;
-        declare static readonly __signalSignatures: BaseSrc.SignalSignatures;
 
         // Properties
 
@@ -2352,6 +2373,18 @@ export namespace Gst {
         constructor(properties?: Partial<BaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseSrc.SignalSignatures>(signal: K, callback: BaseSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseSrc.SignalSignatures>(
+            signal: K,
+            callback: BaseSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2404,7 +2437,6 @@ export namespace Gst {
      */
     abstract class BaseTransform extends Element {
         static $gtype: GObject.GType<BaseTransform>;
-        declare static readonly __signalSignatures: BaseTransform.SignalSignatures;
 
         // Properties
 
@@ -2431,6 +2463,21 @@ export namespace Gst {
         constructor(properties?: Partial<BaseTransform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseTransform.SignalSignatures>(
+            signal: K,
+            callback: BaseTransform.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseTransform.SignalSignatures>(
+            signal: K,
+            callback: BaseTransform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseTransform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseTransform.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2467,15 +2514,15 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface DoLatency {
-            (): boolean;
+            (_source: Bin): boolean;
         }
 
         interface ElementAdded {
-            (object: Element): void;
+            (_source: Bin, object: Element): void;
         }
 
         interface ElementRemoved {
-            (object: Element): void;
+            (_source: Bin, object: Element): void;
         }
 
         // Signal signatures
@@ -2499,7 +2546,6 @@ export namespace Gst {
      */
     class Bin extends Element implements ChildProxy {
         static $gtype: GObject.GType<Bin>;
-        declare static readonly __signalSignatures: Bin.SignalSignatures;
 
         // Properties
 
@@ -2535,18 +2581,6 @@ export namespace Gst {
         connect<K extends keyof Bin.SignalSignatures>(signal: K, callback: Bin.SignalSignatures[K]): number;
         connect_after<K extends keyof Bin.SignalSignatures>(signal: K, callback: Bin.SignalSignatures[K]): number;
         emit<K extends keyof Bin.SignalSignatures>(signal: K, ...args: Parameters<Bin.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'do-latency', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'do-latency', callback: (_source: this) => boolean): number;
-        emit(signal: 'do-latency'): void;
-        connect(signal: 'element-added', callback: (_source: this, object: Element) => void): number;
-        connect_after(signal: 'element-added', callback: (_source: this, object: Element) => void): number;
-        emit(signal: 'element-added', object: Element): void;
-        connect(signal: 'element-removed', callback: (_source: this, object: Element) => void): number;
-        connect_after(signal: 'element-removed', callback: (_source: this, object: Element) => void): number;
-        emit(signal: 'element-removed', object: Element): void;
 
         // Virtual methods
 
@@ -2609,7 +2643,6 @@ export namespace Gst {
      */
     class Buffer extends MiniObject {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Fields
 
@@ -2630,6 +2663,12 @@ export namespace Gst {
         static ['new'](): Buffer;
 
         static new_and_alloc(size: number): Buffer;
+
+        // Signals
+
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2657,13 +2696,27 @@ export namespace Gst {
 
     class BufferList extends MiniObject {
         static $gtype: GObject.GType<BufferList>;
-        declare static readonly __signalSignatures: BufferList.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): BufferList;
+
+        // Signals
+
+        connect<K extends keyof BufferList.SignalSignatures>(
+            signal: K,
+            callback: BufferList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferList.SignalSignatures>(
+            signal: K,
+            callback: BufferList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2677,11 +2730,11 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface Message {
-            (object: Message): void;
+            (_source: Bus, object: Message): void;
         }
 
         interface SyncMessage {
-            (object: Message): void;
+            (_source: Bus, object: Message): void;
         }
 
         // Signal signatures
@@ -2700,7 +2753,6 @@ export namespace Gst {
      */
     class Bus extends Object {
         static $gtype: GObject.GType<Bus>;
-        declare static readonly __signalSignatures: Bus.SignalSignatures;
 
         // Fields
 
@@ -2724,15 +2776,6 @@ export namespace Gst {
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'message', callback: (_source: this, object: Message) => void): number;
-        connect_after(signal: 'message', callback: (_source: this, object: Message) => void): number;
-        emit(signal: 'message', object: Message): void;
-        connect(signal: 'sync-message', callback: (_source: this, object: Message) => void): number;
-        connect_after(signal: 'sync-message', callback: (_source: this, object: Message) => void): number;
-        emit(signal: 'sync-message', object: Message): void;
 
         // Methods
 
@@ -2780,7 +2823,6 @@ export namespace Gst {
      */
     class Clock extends Object {
         static $gtype: GObject.GType<Clock>;
-        declare static readonly __signalSignatures: Clock.SignalSignatures;
 
         // Properties
 
@@ -2818,6 +2860,12 @@ export namespace Gst {
         constructor(properties?: Partial<Clock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
+        emit<K extends keyof Clock.SignalSignatures>(signal: K, ...args: Parameters<Clock.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2873,7 +2921,6 @@ export namespace Gst {
      */
     class CollectPads extends Object {
         static $gtype: GObject.GType<CollectPads>;
-        declare static readonly __signalSignatures: CollectPads.SignalSignatures;
 
         // Fields
 
@@ -2894,6 +2941,21 @@ export namespace Gst {
         _init(...args: any[]): void;
 
         static ['new'](): CollectPads;
+
+        // Signals
+
+        connect<K extends keyof CollectPads.SignalSignatures>(
+            signal: K,
+            callback: CollectPads.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CollectPads.SignalSignatures>(
+            signal: K,
+            callback: CollectPads.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CollectPads.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CollectPads.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2921,11 +2983,11 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface Empty {
-            (): void;
+            (_source: DataQueue): void;
         }
 
         interface Full {
-            (): void;
+            (_source: DataQueue): void;
         }
 
         // Signal signatures
@@ -2951,7 +3013,6 @@ export namespace Gst {
      */
     class DataQueue extends GObject.Object {
         static $gtype: GObject.GType<DataQueue>;
-        declare static readonly __signalSignatures: DataQueue.SignalSignatures;
 
         // Properties
 
@@ -2998,15 +3059,6 @@ export namespace Gst {
             signal: K,
             ...args: Parameters<DataQueue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'empty', callback: (_source: this) => void): number;
-        connect_after(signal: 'empty', callback: (_source: this) => void): number;
-        emit(signal: 'empty'): void;
-        connect(signal: 'full', callback: (_source: this) => void): number;
-        connect_after(signal: 'full', callback: (_source: this) => void): number;
-        emit(signal: 'full'): void;
 
         // Methods
 
@@ -3025,15 +3077,15 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface NoMorePads {
-            (): void;
+            (_source: Element): void;
         }
 
         interface PadAdded {
-            (object: Pad): void;
+            (_source: Element, object: Pad): void;
         }
 
         interface PadRemoved {
-            (object: Pad): void;
+            (_source: Element, object: Pad): void;
         }
 
         // Signal signatures
@@ -3053,7 +3105,6 @@ export namespace Gst {
      */
     abstract class Element extends Object {
         static $gtype: GObject.GType<Element>;
-        declare static readonly __signalSignatures: Element.SignalSignatures;
 
         // Fields
 
@@ -3092,18 +3143,6 @@ export namespace Gst {
             signal: K,
             ...args: Parameters<Element.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'no-more-pads', callback: (_source: this) => void): number;
-        connect_after(signal: 'no-more-pads', callback: (_source: this) => void): number;
-        emit(signal: 'no-more-pads'): void;
-        connect(signal: 'pad-added', callback: (_source: this, object: Pad) => void): number;
-        connect_after(signal: 'pad-added', callback: (_source: this, object: Pad) => void): number;
-        emit(signal: 'pad-added', object: Pad): void;
-        connect(signal: 'pad-removed', callback: (_source: this, object: Pad) => void): number;
-        connect_after(signal: 'pad-removed', callback: (_source: this, object: Pad) => void): number;
-        emit(signal: 'pad-removed', object: Pad): void;
 
         // Static methods
 
@@ -3225,7 +3264,6 @@ export namespace Gst {
      */
     class ElementFactory extends PluginFeature {
         static $gtype: GObject.GType<ElementFactory>;
-        declare static readonly __signalSignatures: ElementFactory.SignalSignatures;
 
         // Fields
 
@@ -3242,6 +3280,21 @@ export namespace Gst {
         constructor(properties?: Partial<ElementFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ElementFactory.SignalSignatures>(
+            signal: K,
+            callback: ElementFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ElementFactory.SignalSignatures>(
+            signal: K,
+            callback: ElementFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ElementFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ElementFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3274,7 +3327,6 @@ export namespace Gst {
      */
     class Event extends MiniObject {
         static $gtype: GObject.GType<Event>;
-        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Fields
 
@@ -3338,6 +3390,12 @@ export namespace Gst {
 
         static new_sink_message(msg: Message): Event;
 
+        // Signals
+
+        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+
         // Static methods
 
         static type_get_name(type: EventType): string;
@@ -3377,13 +3435,27 @@ export namespace Gst {
 
     class GParamSpecMiniObject extends GObject.Object {
         static $gtype: GObject.GType<GParamSpecMiniObject>;
-        declare static readonly __signalSignatures: GParamSpecMiniObject.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GParamSpecMiniObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GParamSpecMiniObject.SignalSignatures>(
+            signal: K,
+            callback: GParamSpecMiniObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GParamSpecMiniObject.SignalSignatures>(
+            signal: K,
+            callback: GParamSpecMiniObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GParamSpecMiniObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GParamSpecMiniObject.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GhostPad {
@@ -3400,7 +3472,6 @@ export namespace Gst {
      */
     class GhostPad extends ProxyPad {
         static $gtype: GObject.GType<GhostPad>;
-        declare static readonly __signalSignatures: GhostPad.SignalSignatures;
 
         // Fields
 
@@ -3426,6 +3497,18 @@ export namespace Gst {
 
         static new_no_target_from_template(name: string, templ: PadTemplate): GhostPad;
 
+        // Signals
+
+        connect<K extends keyof GhostPad.SignalSignatures>(signal: K, callback: GhostPad.SignalSignatures[K]): number;
+        connect_after<K extends keyof GhostPad.SignalSignatures>(
+            signal: K,
+            callback: GhostPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GhostPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GhostPad.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_target(): Pad;
@@ -3437,7 +3520,7 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface EntryAdded {
-            (object: IndexEntry): void;
+            (_source: Index, object: IndexEntry): void;
         }
 
         // Signal signatures
@@ -3457,7 +3540,6 @@ export namespace Gst {
      */
     class Index extends Object {
         static $gtype: GObject.GType<Index>;
-        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Properties
 
@@ -3490,12 +3572,6 @@ export namespace Gst {
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
         emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'entry-added', callback: (_source: this, object: IndexEntry) => void): number;
-        connect_after(signal: 'entry-added', callback: (_source: this, object: IndexEntry) => void): number;
-        emit(signal: 'entry-added', object: IndexEntry): void;
 
         // Virtual methods
 
@@ -3561,7 +3637,6 @@ export namespace Gst {
      */
     class IndexFactory extends PluginFeature {
         static $gtype: GObject.GType<IndexFactory>;
-        declare static readonly __signalSignatures: IndexFactory.SignalSignatures;
 
         // Fields
 
@@ -3576,6 +3651,21 @@ export namespace Gst {
         _init(...args: any[]): void;
 
         static ['new'](name: string, longdesc: string, type: GObject.GType): IndexFactory;
+
+        // Signals
+
+        connect<K extends keyof IndexFactory.SignalSignatures>(
+            signal: K,
+            callback: IndexFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IndexFactory.SignalSignatures>(
+            signal: K,
+            callback: IndexFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IndexFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IndexFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3598,7 +3688,6 @@ export namespace Gst {
      */
     class Message extends MiniObject {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Fields
 
@@ -3689,6 +3778,18 @@ export namespace Gst {
 
         static new_custom(type: MessageType, src: Object, structure: Structure): Message;
 
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static type_get_name(type: MessageType): string;
@@ -3739,7 +3840,6 @@ export namespace Gst {
      */
     abstract class MiniObject {
         static $gtype: GObject.GType<MiniObject>;
-        declare static readonly __signalSignatures: MiniObject.SignalSignatures;
 
         // Fields
 
@@ -3751,6 +3851,21 @@ export namespace Gst {
         _init(...args: any[]): void;
 
         static ['new'](type: GObject.GType): MiniObject;
+
+        // Signals
+
+        connect<K extends keyof MiniObject.SignalSignatures>(
+            signal: K,
+            callback: MiniObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MiniObject.SignalSignatures>(
+            signal: K,
+            callback: MiniObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MiniObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MiniObject.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3766,19 +3881,19 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface DeepNotify {
-            (object: Object, p0: GObject.ParamSpec): void;
+            (_source: Object, object: Object, p0: GObject.ParamSpec): void;
         }
 
         interface ObjectSaved {
-            (object: any): void;
+            (_source: Object, object: any): void;
         }
 
         interface ParentSet {
-            (object: Object): void;
+            (_source: Object, object: Object): void;
         }
 
         interface ParentUnset {
-            (object: Object): void;
+            (_source: Object, object: Object): void;
         }
 
         // Signal signatures
@@ -3801,7 +3916,6 @@ export namespace Gst {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -3826,27 +3940,6 @@ export namespace Gst {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'deep-notify',
-            callback: (_source: this, object: Object, p0: GObject.ParamSpec) => void,
-        ): number;
-        connect_after(
-            signal: 'deep-notify',
-            callback: (_source: this, object: Object, p0: GObject.ParamSpec) => void,
-        ): number;
-        emit(signal: 'deep-notify', object: Object, p0: GObject.ParamSpec): void;
-        connect(signal: 'object-saved', callback: (_source: this, object: any) => void): number;
-        connect_after(signal: 'object-saved', callback: (_source: this, object: any) => void): number;
-        emit(signal: 'object-saved', object: any): void;
-        connect(signal: 'parent-set', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'parent-set', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'parent-set', object: Object): void;
-        connect(signal: 'parent-unset', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'parent-unset', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'parent-unset', object: Object): void;
 
         // Static methods
 
@@ -3887,19 +3980,19 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface HaveData {
-            (object: MiniObject): boolean;
+            (_source: Pad, object: MiniObject): boolean;
         }
 
         interface Linked {
-            (object: Pad): void;
+            (_source: Pad, object: Pad): void;
         }
 
         interface RequestLink {
-            (): void;
+            (_source: Pad): void;
         }
 
         interface Unlinked {
-            (object: Pad): void;
+            (_source: Pad, object: Pad): void;
         }
 
         // Signal signatures
@@ -3924,7 +4017,6 @@ export namespace Gst {
      */
     class Pad extends Object {
         static $gtype: GObject.GType<Pad>;
-        declare static readonly __signalSignatures: Pad.SignalSignatures;
 
         // Properties
 
@@ -3984,21 +4076,6 @@ export namespace Gst {
         connect<K extends keyof Pad.SignalSignatures>(signal: K, callback: Pad.SignalSignatures[K]): number;
         connect_after<K extends keyof Pad.SignalSignatures>(signal: K, callback: Pad.SignalSignatures[K]): number;
         emit<K extends keyof Pad.SignalSignatures>(signal: K, ...args: Parameters<Pad.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'have-data', callback: (_source: this, object: MiniObject) => boolean): number;
-        connect_after(signal: 'have-data', callback: (_source: this, object: MiniObject) => boolean): number;
-        emit(signal: 'have-data', object: MiniObject): void;
-        connect(signal: 'linked', callback: (_source: this, object: Pad) => void): number;
-        connect_after(signal: 'linked', callback: (_source: this, object: Pad) => void): number;
-        emit(signal: 'linked', object: Pad): void;
-        connect(signal: 'request-link', callback: (_source: this) => void): number;
-        connect_after(signal: 'request-link', callback: (_source: this) => void): number;
-        emit(signal: 'request-link'): void;
-        connect(signal: 'unlinked', callback: (_source: this, object: Pad) => void): number;
-        connect_after(signal: 'unlinked', callback: (_source: this, object: Pad) => void): number;
-        emit(signal: 'unlinked', object: Pad): void;
 
         // Static methods
 
@@ -4104,7 +4181,7 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface PadCreated {
-            (object: Pad): void;
+            (_source: PadTemplate, object: Pad): void;
         }
 
         // Signal signatures
@@ -4128,7 +4205,6 @@ export namespace Gst {
      */
     class PadTemplate extends Object {
         static $gtype: GObject.GType<PadTemplate>;
-        declare static readonly __signalSignatures: PadTemplate.SignalSignatures;
 
         // Properties
 
@@ -4164,12 +4240,6 @@ export namespace Gst {
             signal: K,
             ...args: Parameters<PadTemplate.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pad-created', callback: (_source: this, object: Pad) => void): number;
-        connect_after(signal: 'pad-created', callback: (_source: this, object: Pad) => void): number;
-        emit(signal: 'pad-created', object: Pad): void;
 
         // Methods
 
@@ -4188,13 +4258,27 @@ export namespace Gst {
 
     class ParamFraction extends GObject.Object {
         static $gtype: GObject.GType<ParamFraction>;
-        declare static readonly __signalSignatures: ParamFraction.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ParamFraction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamFraction.SignalSignatures>(
+            signal: K,
+            callback: ParamFraction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamFraction.SignalSignatures>(
+            signal: K,
+            callback: ParamFraction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamFraction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamFraction.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Pipeline {
@@ -4215,7 +4299,6 @@ export namespace Gst {
      */
     class Pipeline extends Bin implements ChildProxy {
         static $gtype: GObject.GType<Pipeline>;
-        declare static readonly __signalSignatures: Pipeline.SignalSignatures;
 
         // Properties
 
@@ -4239,6 +4322,18 @@ export namespace Gst {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Pipeline;
+
+        // Signals
+
+        connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            callback: Pipeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Pipeline.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4295,7 +4390,6 @@ export namespace Gst {
      */
     class Plugin extends Object {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Fields
 
@@ -4312,6 +4406,12 @@ export namespace Gst {
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4382,7 +4482,6 @@ export namespace Gst {
      */
     abstract class PluginFeature extends Object {
         static $gtype: GObject.GType<PluginFeature>;
-        declare static readonly __signalSignatures: PluginFeature.SignalSignatures;
 
         // Fields
 
@@ -4399,6 +4498,21 @@ export namespace Gst {
         constructor(properties?: Partial<PluginFeature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PluginFeature.SignalSignatures>(
+            signal: K,
+            callback: PluginFeature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginFeature.SignalSignatures>(
+            signal: K,
+            callback: PluginFeature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginFeature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginFeature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4424,7 +4538,6 @@ export namespace Gst {
 
     class ProxyPad extends Pad {
         static $gtype: GObject.GType<ProxyPad>;
-        declare static readonly __signalSignatures: ProxyPad.SignalSignatures;
 
         // Fields
 
@@ -4435,6 +4548,18 @@ export namespace Gst {
         constructor(properties?: Partial<ProxyPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyPad.SignalSignatures>(signal: K, callback: ProxyPad.SignalSignatures[K]): number;
+        connect_after<K extends keyof ProxyPad.SignalSignatures>(
+            signal: K,
+            callback: ProxyPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyPad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PushSrc {
@@ -4451,13 +4576,24 @@ export namespace Gst {
      */
     class PushSrc extends BaseSrc {
         static $gtype: GObject.GType<PushSrc>;
-        declare static readonly __signalSignatures: PushSrc.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PushSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PushSrc.SignalSignatures>(signal: K, callback: PushSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof PushSrc.SignalSignatures>(
+            signal: K,
+            callback: PushSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PushSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PushSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4476,7 +4612,6 @@ export namespace Gst {
      */
     class Query extends MiniObject {
         static $gtype: GObject.GType<Query>;
-        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Fields
 
@@ -4506,6 +4641,12 @@ export namespace Gst {
         static new_buffering(format: Format): Query;
 
         static new_uri(): Query;
+
+        // Signals
+
+        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4549,11 +4690,11 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface FeatureAdded {
-            (object: any): void;
+            (_source: Registry, object: any): void;
         }
 
         interface PluginAdded {
-            (object: any): void;
+            (_source: Registry, object: any): void;
         }
 
         // Signal signatures
@@ -4572,7 +4713,6 @@ export namespace Gst {
      */
     class Registry extends Object {
         static $gtype: GObject.GType<Registry>;
-        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Fields
 
@@ -4599,15 +4739,6 @@ export namespace Gst {
             signal: K,
             ...args: Parameters<Registry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'feature-added', callback: (_source: this, object: any) => void): number;
-        connect_after(signal: 'feature-added', callback: (_source: this, object: any) => void): number;
-        emit(signal: 'feature-added', object: any): void;
-        connect(signal: 'plugin-added', callback: (_source: this, object: any) => void): number;
-        connect_after(signal: 'plugin-added', callback: (_source: this, object: any) => void): number;
-        emit(signal: 'plugin-added', object: any): void;
 
         // Static methods
 
@@ -4649,7 +4780,6 @@ export namespace Gst {
      */
     class SystemClock extends Clock {
         static $gtype: GObject.GType<SystemClock>;
-        declare static readonly __signalSignatures: SystemClock.SignalSignatures;
 
         // Properties
 
@@ -4668,6 +4798,21 @@ export namespace Gst {
         constructor(properties?: Partial<SystemClock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SystemClock.SignalSignatures>(
+            signal: K,
+            callback: SystemClock.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemClock.SignalSignatures>(
+            signal: K,
+            callback: SystemClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemClock.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4688,7 +4833,6 @@ export namespace Gst {
      */
     class Task extends Object {
         static $gtype: GObject.GType<Task>;
-        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Fields
 
@@ -4704,6 +4848,12 @@ export namespace Gst {
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4739,7 +4889,6 @@ export namespace Gst {
      */
     class TaskPool extends Object {
         static $gtype: GObject.GType<TaskPool>;
-        declare static readonly __signalSignatures: TaskPool.SignalSignatures;
 
         // Fields
 
@@ -4752,6 +4901,18 @@ export namespace Gst {
         _init(...args: any[]): void;
 
         static ['new'](): TaskPool;
+
+        // Signals
+
+        connect<K extends keyof TaskPool.SignalSignatures>(signal: K, callback: TaskPool.SignalSignatures[K]): number;
+        connect_after<K extends keyof TaskPool.SignalSignatures>(
+            signal: K,
+            callback: TaskPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskPool.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4782,7 +4943,6 @@ export namespace Gst {
      */
     class TypeFindFactory extends PluginFeature {
         static $gtype: GObject.GType<TypeFindFactory>;
-        declare static readonly __signalSignatures: TypeFindFactory.SignalSignatures;
 
         // Fields
 
@@ -4798,6 +4958,21 @@ export namespace Gst {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof TypeFindFactory.SignalSignatures>(
+            signal: K,
+            callback: TypeFindFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TypeFindFactory.SignalSignatures>(
+            signal: K,
+            callback: TypeFindFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TypeFindFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TypeFindFactory.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_extensions(): string[];
@@ -4809,7 +4984,7 @@ export namespace Gst {
         // Signal callback interfaces
 
         interface ObjectLoaded {
-            (object: Object, p0: any): void;
+            (_source: XML, object: Object, p0: any): void;
         }
 
         // Signal signatures
@@ -4827,7 +5002,6 @@ export namespace Gst {
      */
     class XML extends Object {
         static $gtype: GObject.GType<XML>;
-        declare static readonly __signalSignatures: XML.SignalSignatures;
 
         // Fields
 
@@ -4847,12 +5021,6 @@ export namespace Gst {
         connect<K extends keyof XML.SignalSignatures>(signal: K, callback: XML.SignalSignatures[K]): number;
         connect_after<K extends keyof XML.SignalSignatures>(signal: K, callback: XML.SignalSignatures[K]): number;
         emit<K extends keyof XML.SignalSignatures>(signal: K, ...args: Parameters<XML.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'object-loaded', callback: (_source: this, object: Object, p0: any) => void): number;
-        connect_after(signal: 'object-loaded', callback: (_source: this, object: Object, p0: any) => void): number;
-        emit(signal: 'object-loaded', object: Object, p0: any): void;
 
         // Static methods
 

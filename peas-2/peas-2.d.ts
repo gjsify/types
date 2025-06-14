@@ -61,11 +61,11 @@ export namespace Peas {
         // Signal callback interfaces
 
         interface LoadPlugin {
-            (info: PluginInfo): void;
+            (_source: Engine, info: PluginInfo): void;
         }
 
         interface UnloadPlugin {
-            (info: PluginInfo): void;
+            (_source: Engine, info: PluginInfo): void;
         }
 
         // Signal signatures
@@ -98,7 +98,6 @@ export namespace Peas {
      */
     class Engine<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Engine>;
-        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -172,15 +171,6 @@ export namespace Peas {
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'load-plugin', callback: (_source: this, info: PluginInfo) => void): number;
-        connect_after(signal: 'load-plugin', callback: (_source: this, info: PluginInfo) => void): number;
-        emit(signal: 'load-plugin', info: PluginInfo): void;
-        connect(signal: 'unload-plugin', callback: (_source: this, info: PluginInfo) => void): number;
-        connect_after(signal: 'unload-plugin', callback: (_source: this, info: PluginInfo) => void): number;
-        emit(signal: 'unload-plugin', info: PluginInfo): void;
 
         // Static methods
 
@@ -892,7 +882,6 @@ export namespace Peas {
      */
     abstract class ExtensionBase extends GObject.Object {
         static $gtype: GObject.GType<ExtensionBase>;
-        declare static readonly __signalSignatures: ExtensionBase.SignalSignatures;
 
         // Properties
 
@@ -927,6 +916,21 @@ export namespace Peas {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof ExtensionBase.SignalSignatures>(
+            signal: K,
+            callback: ExtensionBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionBase.SignalSignatures>(
+            signal: K,
+            callback: ExtensionBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionBase.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -946,11 +950,11 @@ export namespace Peas {
         // Signal callback interfaces
 
         interface ExtensionAdded {
-            (info: PluginInfo, extension: GObject.Object): void;
+            (_source: ExtensionSet, info: PluginInfo, extension: GObject.Object): void;
         }
 
         interface ExtensionRemoved {
-            (info: PluginInfo, extension: GObject.Object): void;
+            (_source: ExtensionSet, info: PluginInfo, extension: GObject.Object): void;
         }
 
         // Signal signatures
@@ -1027,7 +1031,6 @@ export namespace Peas {
      */
     class ExtensionSet<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ExtensionSet>;
-        declare static readonly __signalSignatures: ExtensionSet.SignalSignatures;
 
         // Properties
 
@@ -1064,27 +1067,6 @@ export namespace Peas {
             signal: K,
             ...args: Parameters<ExtensionSet.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'extension-added',
-            callback: (_source: this, info: PluginInfo, extension: GObject.Object) => void,
-        ): number;
-        connect_after(
-            signal: 'extension-added',
-            callback: (_source: this, info: PluginInfo, extension: GObject.Object) => void,
-        ): number;
-        emit(signal: 'extension-added', info: PluginInfo, extension: GObject.Object): void;
-        connect(
-            signal: 'extension-removed',
-            callback: (_source: this, info: PluginInfo, extension: GObject.Object) => void,
-        ): number;
-        connect_after(
-            signal: 'extension-removed',
-            callback: (_source: this, info: PluginInfo, extension: GObject.Object) => void,
-        ): number;
-        emit(signal: 'extension-removed', info: PluginInfo, extension: GObject.Object): void;
 
         // Methods
 
@@ -1665,7 +1647,6 @@ export namespace Peas {
      */
     class ObjectModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<ObjectModule>;
-        declare static readonly __signalSignatures: ObjectModule.SignalSignatures;
 
         // Properties
 
@@ -1688,6 +1669,21 @@ export namespace Peas {
         constructor(properties?: Partial<ObjectModule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObjectModule.SignalSignatures>(
+            signal: K,
+            callback: ObjectModule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectModule.SignalSignatures>(
+            signal: K,
+            callback: ObjectModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectModule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2240,7 +2236,6 @@ export namespace Peas {
      */
     class PluginInfo extends GObject.Object {
         static $gtype: GObject.GType<PluginInfo>;
-        declare static readonly __signalSignatures: PluginInfo.SignalSignatures;
 
         // Properties
 
@@ -2268,6 +2263,21 @@ export namespace Peas {
         constructor(properties?: Partial<PluginInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PluginInfo.SignalSignatures>(
+            signal: K,
+            callback: PluginInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginInfo.SignalSignatures>(
+            signal: K,
+            callback: PluginInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginInfo.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

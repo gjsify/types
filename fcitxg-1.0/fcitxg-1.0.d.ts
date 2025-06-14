@@ -24,31 +24,32 @@ export namespace FcitxG {
         // Signal callback interfaces
 
         interface CommitString {
-            (string: string): void;
+            (_source: Client, string: string): void;
         }
 
         interface Connected {
-            (): void;
+            (_source: Client): void;
         }
 
         interface CurrentIm {
-            (name: string, unique_name: string, lang_code: string): void;
+            (_source: Client, name: string, unique_name: string, lang_code: string): void;
         }
 
         interface DeleteSurroundingText {
-            (cursor: number, len: number): void;
+            (_source: Client, cursor: number, len: number): void;
         }
 
         interface ForwardKey {
-            (keyval: number, state: number, type: number): void;
+            (_source: Client, keyval: number, state: number, type: number): void;
         }
 
         interface NotifyFocusOut {
-            (): void;
+            (_source: Client): void;
         }
 
         interface UpdateClientSideUi {
             (
+                _source: Client,
                 preedit: PreeditItem[],
                 preedit_cursor: number,
                 aux_up: PreeditItem[],
@@ -62,7 +63,7 @@ export namespace FcitxG {
         }
 
         interface UpdateFormattedPreedit {
-            (preedit: PreeditItem[], cursor: number): void;
+            (_source: Client, preedit: PreeditItem[], cursor: number): void;
         }
 
         // Signal signatures
@@ -89,7 +90,6 @@ export namespace FcitxG {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -110,96 +110,6 @@ export namespace FcitxG {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'commit-string', callback: (_source: this, string: string) => void): number;
-        connect_after(signal: 'commit-string', callback: (_source: this, string: string) => void): number;
-        emit(signal: 'commit-string', string: string): void;
-        connect(signal: 'connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'connected', callback: (_source: this) => void): number;
-        emit(signal: 'connected'): void;
-        connect(
-            signal: 'current-im',
-            callback: (_source: this, name: string, unique_name: string, lang_code: string) => void,
-        ): number;
-        connect_after(
-            signal: 'current-im',
-            callback: (_source: this, name: string, unique_name: string, lang_code: string) => void,
-        ): number;
-        emit(signal: 'current-im', name: string, unique_name: string, lang_code: string): void;
-        connect(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, cursor: number, len: number) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, cursor: number, len: number) => void,
-        ): number;
-        emit(signal: 'delete-surrounding-text', cursor: number, len: number): void;
-        connect(
-            signal: 'forward-key',
-            callback: (_source: this, keyval: number, state: number, type: number) => void,
-        ): number;
-        connect_after(
-            signal: 'forward-key',
-            callback: (_source: this, keyval: number, state: number, type: number) => void,
-        ): number;
-        emit(signal: 'forward-key', keyval: number, state: number, type: number): void;
-        connect(signal: 'notify-focus-out', callback: (_source: this) => void): number;
-        connect_after(signal: 'notify-focus-out', callback: (_source: this) => void): number;
-        emit(signal: 'notify-focus-out'): void;
-        connect(
-            signal: 'update-client-side-ui',
-            callback: (
-                _source: this,
-                preedit: PreeditItem[],
-                preedit_cursor: number,
-                aux_up: PreeditItem[],
-                aux_down: PreeditItem[],
-                candidate_list: CandidateItem[],
-                candidate_cursor: number,
-                candidate_layout_hint: number,
-                has_prev: boolean,
-                has_next: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'update-client-side-ui',
-            callback: (
-                _source: this,
-                preedit: PreeditItem[],
-                preedit_cursor: number,
-                aux_up: PreeditItem[],
-                aux_down: PreeditItem[],
-                candidate_list: CandidateItem[],
-                candidate_cursor: number,
-                candidate_layout_hint: number,
-                has_prev: boolean,
-                has_next: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'update-client-side-ui',
-            preedit: PreeditItem[],
-            preedit_cursor: number,
-            aux_up: PreeditItem[],
-            aux_down: PreeditItem[],
-            candidate_list: CandidateItem[],
-            candidate_cursor: number,
-            candidate_layout_hint: number,
-            has_prev: boolean,
-            has_next: boolean,
-        ): void;
-        connect(
-            signal: 'update-formatted-preedit',
-            callback: (_source: this, preedit: PreeditItem[], cursor: number) => void,
-        ): number;
-        connect_after(
-            signal: 'update-formatted-preedit',
-            callback: (_source: this, preedit: PreeditItem[], cursor: number) => void,
-        ): number;
-        emit(signal: 'update-formatted-preedit', preedit: PreeditItem[], cursor: number): void;
 
         // Methods
 
@@ -349,7 +259,7 @@ export namespace FcitxG {
         // Signal callback interfaces
 
         interface AvailabilityChanged {
-            (available: boolean): void;
+            (_source: Watcher, available: boolean): void;
         }
 
         // Signal signatures
@@ -367,7 +277,6 @@ export namespace FcitxG {
      */
     class Watcher extends GObject.Object {
         static $gtype: GObject.GType<Watcher>;
-        declare static readonly __signalSignatures: Watcher.SignalSignatures;
 
         // Constructors
 
@@ -388,12 +297,6 @@ export namespace FcitxG {
             signal: K,
             ...args: Parameters<Watcher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'availability-changed', callback: (_source: this, available: boolean) => void): number;
-        connect_after(signal: 'availability-changed', callback: (_source: this, available: boolean) => void): number;
-        emit(signal: 'availability-changed', available: boolean): void;
 
         // Methods
 

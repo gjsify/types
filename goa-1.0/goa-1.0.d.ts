@@ -399,7 +399,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<AccountProxy>, Gio.DBusInterface, Gio.Initable, Account
     {
         static $gtype: GObject.GType<AccountProxy>;
-        declare static readonly __signalSignatures: AccountProxy.SignalSignatures;
 
         // Constructors
 
@@ -435,6 +434,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof AccountProxy.SignalSignatures>(
+            signal: K,
+            callback: AccountProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountProxy.SignalSignatures>(
+            signal: K,
+            callback: AccountProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1682,7 +1696,6 @@ export namespace Goa {
      */
     class AccountSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Account {
         static $gtype: GObject.GType<AccountSkeleton>;
-        declare static readonly __signalSignatures: AccountSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1691,6 +1704,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): AccountSkeleton;
+
+        // Signals
+
+        connect<K extends keyof AccountSkeleton.SignalSignatures>(
+            signal: K,
+            callback: AccountSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountSkeleton.SignalSignatures>(
+            signal: K,
+            callback: AccountSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -2606,7 +2634,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<CalendarProxy>, Gio.DBusInterface, Gio.Initable, Calendar
     {
         static $gtype: GObject.GType<CalendarProxy>;
-        declare static readonly __signalSignatures: CalendarProxy.SignalSignatures;
 
         // Constructors
 
@@ -2642,6 +2669,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CalendarProxy.SignalSignatures>(
+            signal: K,
+            callback: CalendarProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarProxy.SignalSignatures>(
+            signal: K,
+            callback: CalendarProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3496,7 +3538,6 @@ export namespace Goa {
      */
     class CalendarSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Calendar {
         static $gtype: GObject.GType<CalendarSkeleton>;
-        declare static readonly __signalSignatures: CalendarSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3505,6 +3546,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): CalendarSkeleton;
+
+        // Signals
+
+        connect<K extends keyof CalendarSkeleton.SignalSignatures>(
+            signal: K,
+            callback: CalendarSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarSkeleton.SignalSignatures>(
+            signal: K,
+            callback: CalendarSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -4027,7 +4083,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<ChatProxy>, Gio.DBusInterface, Gio.Initable, Chat
     {
         static $gtype: GObject.GType<ChatProxy>;
-        declare static readonly __signalSignatures: ChatProxy.SignalSignatures;
 
         // Constructors
 
@@ -4063,6 +4118,18 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ChatProxy.SignalSignatures>(signal: K, callback: ChatProxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof ChatProxy.SignalSignatures>(
+            signal: K,
+            callback: ChatProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChatProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChatProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4894,7 +4961,6 @@ export namespace Goa {
      */
     class ChatSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Chat {
         static $gtype: GObject.GType<ChatSkeleton>;
-        declare static readonly __signalSignatures: ChatSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4903,6 +4969,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): ChatSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ChatSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ChatSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChatSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ChatSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChatSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChatSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5384,15 +5465,15 @@ export namespace Goa {
         // Signal callback interfaces
 
         interface AccountAdded {
-            (object: Object): void;
+            (_source: Client, object: Object): void;
         }
 
         interface AccountChanged {
-            (object: Object): void;
+            (_source: Client, object: Object): void;
         }
 
         interface AccountRemoved {
-            (object: Object): void;
+            (_source: Client, object: Object): void;
         }
 
         // Signal signatures
@@ -5419,7 +5500,6 @@ export namespace Goa {
      */
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -5450,18 +5530,6 @@ export namespace Goa {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'account-added', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'account-added', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'account-added', object: Object): void;
-        connect(signal: 'account-changed', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'account-changed', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'account-changed', object: Object): void;
-        connect(signal: 'account-removed', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'account-removed', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'account-removed', object: Object): void;
 
         // Static methods
 
@@ -6254,7 +6322,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<ContactsProxy>, Gio.DBusInterface, Gio.Initable, Contacts
     {
         static $gtype: GObject.GType<ContactsProxy>;
-        declare static readonly __signalSignatures: ContactsProxy.SignalSignatures;
 
         // Constructors
 
@@ -6290,6 +6357,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ContactsProxy.SignalSignatures>(
+            signal: K,
+            callback: ContactsProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContactsProxy.SignalSignatures>(
+            signal: K,
+            callback: ContactsProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContactsProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContactsProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7144,7 +7226,6 @@ export namespace Goa {
      */
     class ContactsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Contacts {
         static $gtype: GObject.GType<ContactsSkeleton>;
-        declare static readonly __signalSignatures: ContactsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7153,6 +7234,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): ContactsSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ContactsSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ContactsSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContactsSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ContactsSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContactsSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContactsSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -7675,7 +7771,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<DocumentsProxy>, Gio.DBusInterface, Gio.Initable, Documents
     {
         static $gtype: GObject.GType<DocumentsProxy>;
-        declare static readonly __signalSignatures: DocumentsProxy.SignalSignatures;
 
         // Constructors
 
@@ -7711,6 +7806,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DocumentsProxy.SignalSignatures>(
+            signal: K,
+            callback: DocumentsProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsProxy.SignalSignatures>(
+            signal: K,
+            callback: DocumentsProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8542,7 +8652,6 @@ export namespace Goa {
      */
     class DocumentsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Documents {
         static $gtype: GObject.GType<DocumentsSkeleton>;
-        declare static readonly __signalSignatures: DocumentsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -8551,6 +8660,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): DocumentsSkeleton;
+
+        // Signals
+
+        connect<K extends keyof DocumentsSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DocumentsSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DocumentsSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -9050,7 +9174,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<ExchangeProxy>, Gio.DBusInterface, Gio.Initable, Exchange
     {
         static $gtype: GObject.GType<ExchangeProxy>;
-        declare static readonly __signalSignatures: ExchangeProxy.SignalSignatures;
 
         // Constructors
 
@@ -9086,6 +9209,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ExchangeProxy.SignalSignatures>(
+            signal: K,
+            callback: ExchangeProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExchangeProxy.SignalSignatures>(
+            signal: K,
+            callback: ExchangeProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExchangeProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExchangeProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9940,7 +10078,6 @@ export namespace Goa {
      */
     class ExchangeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Exchange {
         static $gtype: GObject.GType<ExchangeSkeleton>;
-        declare static readonly __signalSignatures: ExchangeSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -9949,6 +10086,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): ExchangeSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ExchangeSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ExchangeSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExchangeSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ExchangeSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExchangeSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExchangeSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -10471,7 +10623,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<FilesProxy>, Gio.DBusInterface, Gio.Initable, Files
     {
         static $gtype: GObject.GType<FilesProxy>;
-        declare static readonly __signalSignatures: FilesProxy.SignalSignatures;
 
         // Constructors
 
@@ -10507,6 +10658,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof FilesProxy.SignalSignatures>(
+            signal: K,
+            callback: FilesProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilesProxy.SignalSignatures>(
+            signal: K,
+            callback: FilesProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilesProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilesProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11361,7 +11527,6 @@ export namespace Goa {
      */
     class FilesSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Files {
         static $gtype: GObject.GType<FilesSkeleton>;
-        declare static readonly __signalSignatures: FilesSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -11370,6 +11535,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): FilesSkeleton;
+
+        // Signals
+
+        connect<K extends keyof FilesSkeleton.SignalSignatures>(
+            signal: K,
+            callback: FilesSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilesSkeleton.SignalSignatures>(
+            signal: K,
+            callback: FilesSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilesSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilesSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -11892,7 +12072,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<MailProxy>, Gio.DBusInterface, Gio.Initable, Mail
     {
         static $gtype: GObject.GType<MailProxy>;
-        declare static readonly __signalSignatures: MailProxy.SignalSignatures;
 
         // Constructors
 
@@ -11928,6 +12107,18 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MailProxy.SignalSignatures>(signal: K, callback: MailProxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof MailProxy.SignalSignatures>(
+            signal: K,
+            callback: MailProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MailProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MailProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -13006,7 +13197,6 @@ export namespace Goa {
      */
     class MailSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Mail {
         static $gtype: GObject.GType<MailSkeleton>;
-        declare static readonly __signalSignatures: MailSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -13015,6 +13205,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): MailSkeleton;
+
+        // Signals
+
+        connect<K extends keyof MailSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MailSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MailSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MailSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MailSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MailSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -13761,7 +13966,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable, Manager
     {
         static $gtype: GObject.GType<ManagerProxy>;
-        declare static readonly __signalSignatures: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -13797,6 +14001,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: ManagerProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: ManagerProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -14818,7 +15037,6 @@ export namespace Goa {
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
         static $gtype: GObject.GType<ManagerSkeleton>;
-        declare static readonly __signalSignatures: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -14827,6 +15045,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): ManagerSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ManagerSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ManagerSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -15516,7 +15749,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<MapsProxy>, Gio.DBusInterface, Gio.Initable, Maps
     {
         static $gtype: GObject.GType<MapsProxy>;
-        declare static readonly __signalSignatures: MapsProxy.SignalSignatures;
 
         // Constructors
 
@@ -15552,6 +15784,18 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MapsProxy.SignalSignatures>(signal: K, callback: MapsProxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapsProxy.SignalSignatures>(
+            signal: K,
+            callback: MapsProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapsProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapsProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -16383,7 +16627,6 @@ export namespace Goa {
      */
     class MapsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Maps {
         static $gtype: GObject.GType<MapsSkeleton>;
-        declare static readonly __signalSignatures: MapsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -16392,6 +16635,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): MapsSkeleton;
+
+        // Signals
+
+        connect<K extends keyof MapsSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MapsSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MapsSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MapsSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapsSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapsSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -16891,7 +17149,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<MediaServerProxy>, Gio.DBusInterface, Gio.Initable, MediaServer
     {
         static $gtype: GObject.GType<MediaServerProxy>;
-        declare static readonly __signalSignatures: MediaServerProxy.SignalSignatures;
 
         // Constructors
 
@@ -16927,6 +17184,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MediaServerProxy.SignalSignatures>(
+            signal: K,
+            callback: MediaServerProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaServerProxy.SignalSignatures>(
+            signal: K,
+            callback: MediaServerProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaServerProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaServerProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -17781,7 +18053,6 @@ export namespace Goa {
      */
     class MediaServerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MediaServer {
         static $gtype: GObject.GType<MediaServerSkeleton>;
-        declare static readonly __signalSignatures: MediaServerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -17790,6 +18061,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): MediaServerSkeleton;
+
+        // Signals
+
+        connect<K extends keyof MediaServerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MediaServerSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaServerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MediaServerSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaServerSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaServerSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -18312,7 +18598,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<MusicProxy>, Gio.DBusInterface, Gio.Initable, Music
     {
         static $gtype: GObject.GType<MusicProxy>;
-        declare static readonly __signalSignatures: MusicProxy.SignalSignatures;
 
         // Constructors
 
@@ -18348,6 +18633,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MusicProxy.SignalSignatures>(
+            signal: K,
+            callback: MusicProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MusicProxy.SignalSignatures>(
+            signal: K,
+            callback: MusicProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MusicProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MusicProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -19179,7 +19479,6 @@ export namespace Goa {
      */
     class MusicSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Music {
         static $gtype: GObject.GType<MusicSkeleton>;
-        declare static readonly __signalSignatures: MusicSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -19188,6 +19487,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): MusicSkeleton;
+
+        // Signals
+
+        connect<K extends keyof MusicSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MusicSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MusicSkeleton.SignalSignatures>(
+            signal: K,
+            callback: MusicSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MusicSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MusicSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -19687,7 +20001,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<OAuth2BasedProxy>, Gio.DBusInterface, Gio.Initable, OAuth2Based
     {
         static $gtype: GObject.GType<OAuth2BasedProxy>;
-        declare static readonly __signalSignatures: OAuth2BasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -19723,6 +20036,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof OAuth2BasedProxy.SignalSignatures>(
+            signal: K,
+            callback: OAuth2BasedProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2BasedProxy.SignalSignatures>(
+            signal: K,
+            callback: OAuth2BasedProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2BasedProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2BasedProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -20644,7 +20972,6 @@ export namespace Goa {
      */
     class OAuth2BasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuth2Based {
         static $gtype: GObject.GType<OAuth2BasedSkeleton>;
-        declare static readonly __signalSignatures: OAuth2BasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -20653,6 +20980,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): OAuth2BasedSkeleton;
+
+        // Signals
+
+        connect<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(
+            signal: K,
+            callback: OAuth2BasedSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(
+            signal: K,
+            callback: OAuth2BasedSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2BasedSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -21242,7 +21584,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<OAuthBasedProxy>, Gio.DBusInterface, Gio.Initable, OAuthBased
     {
         static $gtype: GObject.GType<OAuthBasedProxy>;
-        declare static readonly __signalSignatures: OAuthBasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -21278,6 +21619,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof OAuthBasedProxy.SignalSignatures>(
+            signal: K,
+            callback: OAuthBasedProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuthBasedProxy.SignalSignatures>(
+            signal: K,
+            callback: OAuthBasedProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuthBasedProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuthBasedProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -22205,7 +22561,6 @@ export namespace Goa {
      */
     class OAuthBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuthBased {
         static $gtype: GObject.GType<OAuthBasedSkeleton>;
-        declare static readonly __signalSignatures: OAuthBasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -22214,6 +22569,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): OAuthBasedSkeleton;
+
+        // Signals
+
+        connect<K extends keyof OAuthBasedSkeleton.SignalSignatures>(
+            signal: K,
+            callback: OAuthBasedSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuthBasedSkeleton.SignalSignatures>(
+            signal: K,
+            callback: OAuthBasedSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuthBasedSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuthBasedSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -22808,7 +23178,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
-        declare static readonly __signalSignatures: ObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -22844,6 +23213,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ObjectManagerClient.SignalSignatures>(
+            signal: K,
+            callback: ObjectManagerClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectManagerClient.SignalSignatures>(
+            signal: K,
+            callback: ObjectManagerClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectManagerClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectManagerClient.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -23720,7 +24104,6 @@ export namespace Goa {
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
-        declare static readonly __signalSignatures: ObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -23729,6 +24112,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](connection: Gio.DBusConnection, object_path: string): ObjectProxy;
+
+        // Signals
+
+        connect<K extends keyof ObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: ObjectProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: ObjectProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectProxy.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -24507,7 +24905,6 @@ export namespace Goa {
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
-        declare static readonly __signalSignatures: ObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -24516,6 +24913,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](object_path: string): ObjectSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ObjectSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ObjectSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ObjectSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -25402,7 +25814,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<PasswordBasedProxy>, Gio.DBusInterface, Gio.Initable, PasswordBased
     {
         static $gtype: GObject.GType<PasswordBasedProxy>;
-        declare static readonly __signalSignatures: PasswordBasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -25438,6 +25849,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PasswordBasedProxy.SignalSignatures>(
+            signal: K,
+            callback: PasswordBasedProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PasswordBasedProxy.SignalSignatures>(
+            signal: K,
+            callback: PasswordBasedProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PasswordBasedProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PasswordBasedProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -26338,7 +26764,6 @@ export namespace Goa {
      */
     class PasswordBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PasswordBased {
         static $gtype: GObject.GType<PasswordBasedSkeleton>;
-        declare static readonly __signalSignatures: PasswordBasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -26347,6 +26772,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): PasswordBasedSkeleton;
+
+        // Signals
+
+        connect<K extends keyof PasswordBasedSkeleton.SignalSignatures>(
+            signal: K,
+            callback: PasswordBasedSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PasswordBasedSkeleton.SignalSignatures>(
+            signal: K,
+            callback: PasswordBasedSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PasswordBasedSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PasswordBasedSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -26915,7 +27355,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<PhotosProxy>, Gio.DBusInterface, Gio.Initable, Photos
     {
         static $gtype: GObject.GType<PhotosProxy>;
-        declare static readonly __signalSignatures: PhotosProxy.SignalSignatures;
 
         // Constructors
 
@@ -26951,6 +27390,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PhotosProxy.SignalSignatures>(
+            signal: K,
+            callback: PhotosProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PhotosProxy.SignalSignatures>(
+            signal: K,
+            callback: PhotosProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PhotosProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PhotosProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -27782,7 +28236,6 @@ export namespace Goa {
      */
     class PhotosSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Photos {
         static $gtype: GObject.GType<PhotosSkeleton>;
-        declare static readonly __signalSignatures: PhotosSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -27791,6 +28244,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): PhotosSkeleton;
+
+        // Signals
+
+        connect<K extends keyof PhotosSkeleton.SignalSignatures>(
+            signal: K,
+            callback: PhotosSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PhotosSkeleton.SignalSignatures>(
+            signal: K,
+            callback: PhotosSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PhotosSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PhotosSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -28290,7 +28758,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<PrintersProxy>, Gio.DBusInterface, Gio.Initable, Printers
     {
         static $gtype: GObject.GType<PrintersProxy>;
-        declare static readonly __signalSignatures: PrintersProxy.SignalSignatures;
 
         // Constructors
 
@@ -28326,6 +28793,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PrintersProxy.SignalSignatures>(
+            signal: K,
+            callback: PrintersProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintersProxy.SignalSignatures>(
+            signal: K,
+            callback: PrintersProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintersProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintersProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -29157,7 +29639,6 @@ export namespace Goa {
      */
     class PrintersSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Printers {
         static $gtype: GObject.GType<PrintersSkeleton>;
-        declare static readonly __signalSignatures: PrintersSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -29166,6 +29647,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): PrintersSkeleton;
+
+        // Signals
+
+        connect<K extends keyof PrintersSkeleton.SignalSignatures>(
+            signal: K,
+            callback: PrintersSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintersSkeleton.SignalSignatures>(
+            signal: K,
+            callback: PrintersSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintersSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintersSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -29665,7 +30161,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<ReadLaterProxy>, Gio.DBusInterface, Gio.Initable, ReadLater
     {
         static $gtype: GObject.GType<ReadLaterProxy>;
-        declare static readonly __signalSignatures: ReadLaterProxy.SignalSignatures;
 
         // Constructors
 
@@ -29701,6 +30196,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ReadLaterProxy.SignalSignatures>(
+            signal: K,
+            callback: ReadLaterProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ReadLaterProxy.SignalSignatures>(
+            signal: K,
+            callback: ReadLaterProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReadLaterProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReadLaterProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -30532,7 +31042,6 @@ export namespace Goa {
      */
     class ReadLaterSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ReadLater {
         static $gtype: GObject.GType<ReadLaterSkeleton>;
-        declare static readonly __signalSignatures: ReadLaterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -30541,6 +31050,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): ReadLaterSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ReadLaterSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ReadLaterSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ReadLaterSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ReadLaterSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReadLaterSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReadLaterSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -31040,7 +31564,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<TicketingProxy>, Gio.DBusInterface, Gio.Initable, Ticketing
     {
         static $gtype: GObject.GType<TicketingProxy>;
-        declare static readonly __signalSignatures: TicketingProxy.SignalSignatures;
 
         // Constructors
 
@@ -31076,6 +31599,21 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TicketingProxy.SignalSignatures>(
+            signal: K,
+            callback: TicketingProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TicketingProxy.SignalSignatures>(
+            signal: K,
+            callback: TicketingProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TicketingProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TicketingProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -31974,7 +32512,6 @@ export namespace Goa {
      */
     class TicketingSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Ticketing {
         static $gtype: GObject.GType<TicketingSkeleton>;
-        declare static readonly __signalSignatures: TicketingSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -31983,6 +32520,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): TicketingSkeleton;
+
+        // Signals
+
+        connect<K extends keyof TicketingSkeleton.SignalSignatures>(
+            signal: K,
+            callback: TicketingSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TicketingSkeleton.SignalSignatures>(
+            signal: K,
+            callback: TicketingSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TicketingSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TicketingSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -32549,7 +33101,6 @@ export namespace Goa {
         implements Gio.AsyncInitable<TodoProxy>, Gio.DBusInterface, Gio.Initable, Todo
     {
         static $gtype: GObject.GType<TodoProxy>;
-        declare static readonly __signalSignatures: TodoProxy.SignalSignatures;
 
         // Constructors
 
@@ -32585,6 +33136,18 @@ export namespace Goa {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TodoProxy.SignalSignatures>(signal: K, callback: TodoProxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof TodoProxy.SignalSignatures>(
+            signal: K,
+            callback: TodoProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TodoProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TodoProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -33416,7 +33979,6 @@ export namespace Goa {
      */
     class TodoSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Todo {
         static $gtype: GObject.GType<TodoSkeleton>;
-        declare static readonly __signalSignatures: TodoSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -33425,6 +33987,21 @@ export namespace Goa {
         _init(...args: any[]): void;
 
         static ['new'](): TodoSkeleton;
+
+        // Signals
+
+        connect<K extends keyof TodoSkeleton.SignalSignatures>(
+            signal: K,
+            callback: TodoSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TodoSkeleton.SignalSignatures>(
+            signal: K,
+            callback: TodoSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TodoSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TodoSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

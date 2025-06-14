@@ -38,7 +38,6 @@ export namespace GstGLWayland {
      */
     class GLDisplayWayland extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayWayland>;
-        declare static readonly __signalSignatures: GLDisplayWayland.SignalSignatures;
 
         // Fields
 
@@ -60,6 +59,21 @@ export namespace GstGLWayland {
         static ['new'](...args: never[]): any;
 
         static new_with_display(display?: any | null): GLDisplayWayland;
+
+        // Signals
+
+        connect<K extends keyof GLDisplayWayland.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayWayland.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLDisplayWayland.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayWayland.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLDisplayWayland.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLDisplayWayland.SignalSignatures[K]>
+        ): void;
     }
 
     type GLDisplayWaylandClass = typeof GLDisplayWayland;

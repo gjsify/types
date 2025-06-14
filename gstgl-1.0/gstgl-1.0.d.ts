@@ -1060,7 +1060,6 @@ export namespace GstGL {
      */
     class GLBaseFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<GLBaseFilter>;
-        declare static readonly __signalSignatures: GLBaseFilter.SignalSignatures;
 
         // Properties
 
@@ -1075,6 +1074,21 @@ export namespace GstGL {
         constructor(properties?: Partial<GLBaseFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLBaseFilter.SignalSignatures>(
+            signal: K,
+            callback: GLBaseFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLBaseFilter.SignalSignatures>(
+            signal: K,
+            callback: GLBaseFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBaseFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBaseFilter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1102,13 +1116,27 @@ export namespace GstGL {
      */
     abstract class GLBaseMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<GLBaseMemoryAllocator>;
-        declare static readonly __signalSignatures: GLBaseMemoryAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLBaseMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLBaseMemoryAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLBaseMemoryAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBaseMemoryAllocator.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1135,7 +1163,6 @@ export namespace GstGL {
      */
     abstract class GLBaseMixer extends GstVideo.VideoAggregator {
         static $gtype: GObject.GType<GLBaseMixer>;
-        declare static readonly __signalSignatures: GLBaseMixer.SignalSignatures;
 
         // Properties
 
@@ -1153,6 +1180,21 @@ export namespace GstGL {
         constructor(properties?: Partial<GLBaseMixer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLBaseMixer.SignalSignatures>(
+            signal: K,
+            callback: GLBaseMixer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLBaseMixer.SignalSignatures>(
+            signal: K,
+            callback: GLBaseMixer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBaseMixer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBaseMixer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1181,13 +1223,27 @@ export namespace GstGL {
 
     class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
         static $gtype: GObject.GType<GLBaseMixerPad>;
-        declare static readonly __signalSignatures: GLBaseMixerPad.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLBaseMixerPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLBaseMixerPad.SignalSignatures>(
+            signal: K,
+            callback: GLBaseMixerPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLBaseMixerPad.SignalSignatures>(
+            signal: K,
+            callback: GLBaseMixerPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBaseMixerPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBaseMixerPad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLBaseSrc {
@@ -1210,7 +1266,6 @@ export namespace GstGL {
      */
     abstract class GLBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<GLBaseSrc>;
-        declare static readonly __signalSignatures: GLBaseSrc.SignalSignatures;
 
         // Properties
 
@@ -1230,6 +1285,18 @@ export namespace GstGL {
         constructor(properties?: Partial<GLBaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLBaseSrc.SignalSignatures>(signal: K, callback: GLBaseSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLBaseSrc.SignalSignatures>(
+            signal: K,
+            callback: GLBaseSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBaseSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBaseSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1252,13 +1319,27 @@ export namespace GstGL {
      */
     class GLBufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLBufferAllocator>;
-        declare static readonly __signalSignatures: GLBufferAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLBufferAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLBufferAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLBufferAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLBufferAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLBufferAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBufferAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBufferAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLBufferPool {
@@ -1282,7 +1363,6 @@ export namespace GstGL {
      */
     class GLBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<GLBufferPool>;
-        declare static readonly __signalSignatures: GLBufferPool.SignalSignatures;
 
         // Fields
 
@@ -1299,6 +1379,21 @@ export namespace GstGL {
         // Conflicted with Gst.BufferPool.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GLBufferPool.SignalSignatures>(
+            signal: K,
+            callback: GLBufferPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLBufferPool.SignalSignatures>(
+            signal: K,
+            callback: GLBufferPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLBufferPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLBufferPool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1334,7 +1429,6 @@ export namespace GstGL {
      */
     class GLColorConvert extends Gst.Object {
         static $gtype: GObject.GType<GLColorConvert>;
-        declare static readonly __signalSignatures: GLColorConvert.SignalSignatures;
 
         // Constructors
 
@@ -1343,6 +1437,21 @@ export namespace GstGL {
         _init(...args: any[]): void;
 
         static ['new'](context: GLContext): GLColorConvert;
+
+        // Signals
+
+        connect<K extends keyof GLColorConvert.SignalSignatures>(
+            signal: K,
+            callback: GLColorConvert.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLColorConvert.SignalSignatures>(
+            signal: K,
+            callback: GLColorConvert.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLColorConvert.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLColorConvert.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1423,7 +1532,6 @@ export namespace GstGL {
      */
     abstract class GLContext extends Gst.Object {
         static $gtype: GObject.GType<GLContext>;
-        declare static readonly __signalSignatures: GLContext.SignalSignatures;
 
         // Constructors
 
@@ -1439,6 +1547,18 @@ export namespace GstGL {
             context_type: GLPlatform,
             available_apis: GLAPI,
         ): GLContext;
+
+        // Signals
+
+        connect<K extends keyof GLContext.SignalSignatures>(signal: K, callback: GLContext.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLContext.SignalSignatures>(
+            signal: K,
+            callback: GLContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLContext.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1745,7 +1865,7 @@ export namespace GstGL {
         // Signal callback interfaces
 
         interface CreateContext {
-            (context: GLContext): GLContext | null;
+            (_source: GLDisplay, context: GLContext): GLContext | null;
         }
 
         // Signal signatures
@@ -1782,7 +1902,6 @@ export namespace GstGL {
      */
     class GLDisplay extends Gst.Object {
         static $gtype: GObject.GType<GLDisplay>;
-        declare static readonly __signalSignatures: GLDisplay.SignalSignatures;
 
         // Constructors
 
@@ -1805,15 +1924,6 @@ export namespace GstGL {
             signal: K,
             ...args: Parameters<GLDisplay.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-context', callback: (_source: this, context: GLContext) => GLContext | null): number;
-        connect_after(
-            signal: 'create-context',
-            callback: (_source: this, context: GLContext) => GLContext | null,
-        ): number;
-        emit(signal: 'create-context', context: GLContext): void;
 
         // Virtual methods
 
@@ -1896,7 +2006,6 @@ export namespace GstGL {
      */
     class GLFilter extends GLBaseFilter {
         static $gtype: GObject.GType<GLFilter>;
-        declare static readonly __signalSignatures: GLFilter.SignalSignatures;
 
         // Fields
 
@@ -1909,6 +2018,18 @@ export namespace GstGL {
         constructor(properties?: Partial<GLFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLFilter.SignalSignatures>(signal: K, callback: GLFilter.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLFilter.SignalSignatures>(
+            signal: K,
+            callback: GLFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLFilter.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1985,7 +2106,6 @@ export namespace GstGL {
      */
     class GLFramebuffer extends Gst.Object {
         static $gtype: GObject.GType<GLFramebuffer>;
-        declare static readonly __signalSignatures: GLFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -1996,6 +2116,21 @@ export namespace GstGL {
         static ['new'](context: GLContext): GLFramebuffer;
 
         static new_with_default_depth(context: GLContext, width: number, height: number): GLFramebuffer;
+
+        // Signals
+
+        connect<K extends keyof GLFramebuffer.SignalSignatures>(
+            signal: K,
+            callback: GLFramebuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLFramebuffer.SignalSignatures>(
+            signal: K,
+            callback: GLFramebuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLFramebuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLFramebuffer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2052,13 +2187,27 @@ export namespace GstGL {
      */
     class GLMemoryAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryAllocator>;
-        declare static readonly __signalSignatures: GLMemoryAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLMemoryAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLMemoryAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLMemoryAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLMemoryAllocator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2079,13 +2228,27 @@ export namespace GstGL {
      */
     class GLMemoryPBOAllocator extends GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryPBOAllocator>;
-        declare static readonly __signalSignatures: GLMemoryPBOAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLMemoryPBOAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLMemoryPBOAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLMemoryPBOAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLMemoryPBOAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLMixer {
@@ -2102,13 +2265,24 @@ export namespace GstGL {
      */
     abstract class GLMixer extends GLBaseMixer {
         static $gtype: GObject.GType<GLMixer>;
-        declare static readonly __signalSignatures: GLMixer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLMixer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLMixer.SignalSignatures>(signal: K, callback: GLMixer.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLMixer.SignalSignatures>(
+            signal: K,
+            callback: GLMixer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLMixer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLMixer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2154,7 +2328,6 @@ export namespace GstGL {
 
     class GLMixerPad extends GLBaseMixerPad {
         static $gtype: GObject.GType<GLMixerPad>;
-        declare static readonly __signalSignatures: GLMixerPad.SignalSignatures;
 
         // Fields
 
@@ -2165,6 +2338,21 @@ export namespace GstGL {
         constructor(properties?: Partial<GLMixerPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLMixerPad.SignalSignatures>(
+            signal: K,
+            callback: GLMixerPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLMixerPad.SignalSignatures>(
+            signal: K,
+            callback: GLMixerPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLMixerPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLMixerPad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLOverlayCompositor {
@@ -2183,7 +2371,6 @@ export namespace GstGL {
      */
     class GLOverlayCompositor extends Gst.Object {
         static $gtype: GObject.GType<GLOverlayCompositor>;
-        declare static readonly __signalSignatures: GLOverlayCompositor.SignalSignatures;
 
         // Properties
 
@@ -2197,6 +2384,21 @@ export namespace GstGL {
         _init(...args: any[]): void;
 
         static ['new'](context: GLContext): GLOverlayCompositor;
+
+        // Signals
+
+        connect<K extends keyof GLOverlayCompositor.SignalSignatures>(
+            signal: K,
+            callback: GLOverlayCompositor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLOverlayCompositor.SignalSignatures>(
+            signal: K,
+            callback: GLOverlayCompositor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLOverlayCompositor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLOverlayCompositor.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2223,13 +2425,27 @@ export namespace GstGL {
      */
     class GLRenderbufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLRenderbufferAllocator>;
-        declare static readonly __signalSignatures: GLRenderbufferAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLRenderbufferAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLRenderbufferAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLRenderbufferAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLRenderbufferAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLSLStage {
@@ -2246,7 +2462,6 @@ export namespace GstGL {
      */
     class GLSLStage extends Gst.Object {
         static $gtype: GObject.GType<GLSLStage>;
-        declare static readonly __signalSignatures: GLSLStage.SignalSignatures;
 
         // Constructors
 
@@ -2275,6 +2490,18 @@ export namespace GstGL {
             profile: GLSLProfile,
             str: string[],
         ): GLSLStage;
+
+        // Signals
+
+        connect<K extends keyof GLSLStage.SignalSignatures>(signal: K, callback: GLSLStage.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLSLStage.SignalSignatures>(
+            signal: K,
+            callback: GLSLStage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLSLStage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLSLStage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2305,7 +2532,6 @@ export namespace GstGL {
 
     class GLShader extends Gst.Object {
         static $gtype: GObject.GType<GLShader>;
-        declare static readonly __signalSignatures: GLShader.SignalSignatures;
 
         // Properties
 
@@ -2324,6 +2550,18 @@ export namespace GstGL {
         static ['new'](context: GLContext): GLShader;
 
         static new_default(context: GLContext): GLShader;
+
+        // Signals
+
+        connect<K extends keyof GLShader.SignalSignatures>(signal: K, callback: GLShader.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLShader.SignalSignatures>(
+            signal: K,
+            callback: GLShader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLShader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLShader.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2635,7 +2873,6 @@ export namespace GstGL {
      */
     class GLUpload extends Gst.Object {
         static $gtype: GObject.GType<GLUpload>;
-        declare static readonly __signalSignatures: GLUpload.SignalSignatures;
 
         // Fields
 
@@ -2648,6 +2885,18 @@ export namespace GstGL {
         _init(...args: any[]): void;
 
         static ['new'](context: GLContext): GLUpload;
+
+        // Signals
+
+        connect<K extends keyof GLUpload.SignalSignatures>(signal: K, callback: GLUpload.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLUpload.SignalSignatures>(
+            signal: K,
+            callback: GLUpload.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLUpload.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLUpload.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2710,7 +2959,6 @@ export namespace GstGL {
      */
     class GLViewConvert extends Gst.Object {
         static $gtype: GObject.GType<GLViewConvert>;
-        declare static readonly __signalSignatures: GLViewConvert.SignalSignatures;
 
         // Properties
 
@@ -2754,6 +3002,21 @@ export namespace GstGL {
         _init(...args: any[]): void;
 
         static ['new'](): GLViewConvert;
+
+        // Signals
+
+        connect<K extends keyof GLViewConvert.SignalSignatures>(
+            signal: K,
+            callback: GLViewConvert.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLViewConvert.SignalSignatures>(
+            signal: K,
+            callback: GLViewConvert.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLViewConvert.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLViewConvert.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2814,19 +3077,19 @@ export namespace GstGL {
         // Signal callback interfaces
 
         interface KeyEvent {
-            (id: string, key: string): void;
+            (_source: GLWindow, id: string, key: string): void;
         }
 
         interface MouseEvent {
-            (id: string, button: number, x: number, y: number): void;
+            (_source: GLWindow, id: string, button: number, x: number, y: number): void;
         }
 
         interface ScrollEvent {
-            (x: number, y: number, delta_x: number, delta_y: number): void;
+            (_source: GLWindow, x: number, y: number, delta_x: number, delta_y: number): void;
         }
 
         interface WindowHandleChanged {
-            (): void;
+            (_source: GLWindow): void;
         }
 
         // Signal signatures
@@ -2848,7 +3111,6 @@ export namespace GstGL {
      */
     abstract class GLWindow extends Gst.Object {
         static $gtype: GObject.GType<GLWindow>;
-        declare static readonly __signalSignatures: GLWindow.SignalSignatures;
 
         // Constructors
 
@@ -2869,33 +3131,6 @@ export namespace GstGL {
             signal: K,
             ...args: Parameters<GLWindow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'key-event', callback: (_source: this, id: string, key: string) => void): number;
-        connect_after(signal: 'key-event', callback: (_source: this, id: string, key: string) => void): number;
-        emit(signal: 'key-event', id: string, key: string): void;
-        connect(
-            signal: 'mouse-event',
-            callback: (_source: this, id: string, button: number, x: number, y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'mouse-event',
-            callback: (_source: this, id: string, button: number, x: number, y: number) => void,
-        ): number;
-        emit(signal: 'mouse-event', id: string, button: number, x: number, y: number): void;
-        connect(
-            signal: 'scroll-event',
-            callback: (_source: this, x: number, y: number, delta_x: number, delta_y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'scroll-event',
-            callback: (_source: this, x: number, y: number, delta_x: number, delta_y: number) => void,
-        ): number;
-        emit(signal: 'scroll-event', x: number, y: number, delta_x: number, delta_y: number): void;
-        connect(signal: 'window-handle-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'window-handle-changed', callback: (_source: this) => void): number;
-        emit(signal: 'window-handle-changed'): void;
 
         // Virtual methods
 

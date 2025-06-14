@@ -784,7 +784,7 @@ export namespace OSTree {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: AsyncProgress): void;
         }
 
         // Signal signatures
@@ -799,7 +799,6 @@ export namespace OSTree {
 
     class AsyncProgress extends GObject.Object {
         static $gtype: GObject.GType<AsyncProgress>;
-        declare static readonly __signalSignatures: AsyncProgress.SignalSignatures;
 
         // Constructors
 
@@ -825,12 +824,6 @@ export namespace OSTree {
             signal: K,
             ...args: Parameters<AsyncProgress.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -863,7 +856,6 @@ export namespace OSTree {
 
     class BootconfigParser extends GObject.Object {
         static $gtype: GObject.GType<BootconfigParser>;
-        declare static readonly __signalSignatures: BootconfigParser.SignalSignatures;
 
         // Constructors
 
@@ -872,6 +864,21 @@ export namespace OSTree {
         _init(...args: any[]): void;
 
         static ['new'](): BootconfigParser;
+
+        // Signals
+
+        connect<K extends keyof BootconfigParser.SignalSignatures>(
+            signal: K,
+            callback: BootconfigParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BootconfigParser.SignalSignatures>(
+            signal: K,
+            callback: BootconfigParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BootconfigParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BootconfigParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -905,7 +912,6 @@ export namespace OSTree {
 
     class ChecksumInputStream extends Gio.FilterInputStream {
         static $gtype: GObject.GType<ChecksumInputStream>;
-        declare static readonly __signalSignatures: ChecksumInputStream.SignalSignatures;
 
         // Properties
 
@@ -918,6 +924,21 @@ export namespace OSTree {
         _init(...args: any[]): void;
 
         static ['new'](stream: Gio.InputStream, checksum: GLib.Checksum): ChecksumInputStream;
+
+        // Signals
+
+        connect<K extends keyof ChecksumInputStream.SignalSignatures>(
+            signal: K,
+            callback: ChecksumInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChecksumInputStream.SignalSignatures>(
+            signal: K,
+            callback: ChecksumInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChecksumInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChecksumInputStream.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Deployment {
@@ -931,7 +952,6 @@ export namespace OSTree {
 
     class Deployment extends GObject.Object {
         static $gtype: GObject.GType<Deployment>;
-        declare static readonly __signalSignatures: Deployment.SignalSignatures;
 
         // Constructors
 
@@ -947,6 +967,21 @@ export namespace OSTree {
             bootcsum: string,
             bootserial: number,
         ): Deployment;
+
+        // Signals
+
+        connect<K extends keyof Deployment.SignalSignatures>(
+            signal: K,
+            callback: Deployment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Deployment.SignalSignatures>(
+            signal: K,
+            callback: Deployment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Deployment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Deployment.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -990,13 +1025,27 @@ export namespace OSTree {
 
     class GpgVerifyResult extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GpgVerifyResult>;
-        declare static readonly __signalSignatures: GpgVerifyResult.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GpgVerifyResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GpgVerifyResult.SignalSignatures>(
+            signal: K,
+            callback: GpgVerifyResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GpgVerifyResult.SignalSignatures>(
+            signal: K,
+            callback: GpgVerifyResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GpgVerifyResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GpgVerifyResult.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1655,7 +1704,6 @@ export namespace OSTree {
      */
     class MutableTree extends GObject.Object {
         static $gtype: GObject.GType<MutableTree>;
-        declare static readonly __signalSignatures: MutableTree.SignalSignatures;
 
         // Constructors
 
@@ -1664,6 +1712,21 @@ export namespace OSTree {
         _init(...args: any[]): void;
 
         static ['new'](): MutableTree;
+
+        // Signals
+
+        connect<K extends keyof MutableTree.SignalSignatures>(
+            signal: K,
+            callback: MutableTree.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MutableTree.SignalSignatures>(
+            signal: K,
+            callback: MutableTree.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MutableTree.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MutableTree.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1696,7 +1759,7 @@ export namespace OSTree {
         // Signal callback interfaces
 
         interface GpgVerifyResult {
-            (checksum: string, result: GpgVerifyResult): void;
+            (_source: Repo, checksum: string, result: GpgVerifyResult): void;
         }
 
         // Signal signatures
@@ -1717,7 +1780,6 @@ export namespace OSTree {
 
     class Repo extends GObject.Object {
         static $gtype: GObject.GType<Repo>;
-        declare static readonly __signalSignatures: Repo.SignalSignatures;
 
         // Properties
 
@@ -1744,18 +1806,6 @@ export namespace OSTree {
         connect<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
         connect_after<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
         emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: Parameters<Repo.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'gpg-verify-result',
-            callback: (_source: this, checksum: string, result: GpgVerifyResult) => void,
-        ): number;
-        connect_after(
-            signal: 'gpg-verify-result',
-            callback: (_source: this, checksum: string, result: GpgVerifyResult) => void,
-        ): number;
-        emit(signal: 'gpg-verify-result', checksum: string, result: GpgVerifyResult): void;
 
         // Static methods
 
@@ -2949,13 +2999,24 @@ export namespace OSTree {
 
     class RepoFile extends GObject.Object implements Gio.File {
         static $gtype: GObject.GType<RepoFile>;
-        declare static readonly __signalSignatures: RepoFile.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RepoFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RepoFile.SignalSignatures>(signal: K, callback: RepoFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof RepoFile.SignalSignatures>(
+            signal: K,
+            callback: RepoFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepoFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepoFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8304,7 +8365,6 @@ export namespace OSTree {
 
     class SePolicy extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SePolicy>;
-        declare static readonly __signalSignatures: SePolicy.SignalSignatures;
 
         // Properties
 
@@ -8317,6 +8377,18 @@ export namespace OSTree {
         _init(...args: any[]): void;
 
         static ['new'](path: Gio.File, cancellable?: Gio.Cancellable | null): SePolicy;
+
+        // Signals
+
+        connect<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: SePolicy.SignalSignatures[K]): number;
+        connect_after<K extends keyof SePolicy.SignalSignatures>(
+            signal: K,
+            callback: SePolicy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SePolicy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SePolicy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8897,7 +8969,6 @@ export namespace OSTree {
 
     class Sysroot extends GObject.Object {
         static $gtype: GObject.GType<Sysroot>;
-        declare static readonly __signalSignatures: Sysroot.SignalSignatures;
 
         // Properties
 
@@ -8912,6 +8983,18 @@ export namespace OSTree {
         static ['new'](path?: Gio.File | null): Sysroot;
 
         static new_default(): Sysroot;
+
+        // Signals
+
+        connect<K extends keyof Sysroot.SignalSignatures>(signal: K, callback: Sysroot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sysroot.SignalSignatures>(
+            signal: K,
+            callback: Sysroot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Sysroot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Sysroot.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9166,7 +9249,6 @@ export namespace OSTree {
 
     class SysrootUpgrader extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SysrootUpgrader>;
-        declare static readonly __signalSignatures: SysrootUpgrader.SignalSignatures;
 
         // Properties
 
@@ -9194,6 +9276,21 @@ export namespace OSTree {
             flags: SysrootUpgraderFlags,
             cancellable?: Gio.Cancellable | null,
         ): SysrootUpgrader;
+
+        // Signals
+
+        connect<K extends keyof SysrootUpgrader.SignalSignatures>(
+            signal: K,
+            callback: SysrootUpgrader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SysrootUpgrader.SignalSignatures>(
+            signal: K,
+            callback: SysrootUpgrader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SysrootUpgrader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SysrootUpgrader.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

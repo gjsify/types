@@ -996,7 +996,6 @@ export namespace Ide {
 
     class Application extends Dazzle.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -1005,6 +1004,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): Application;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1553,7 +1567,6 @@ export namespace Ide {
 
     class BackForwardItem extends Object {
         static $gtype: GObject.GType<BackForwardItem>;
-        declare static readonly __signalSignatures: BackForwardItem.SignalSignatures;
 
         // Properties
 
@@ -1578,6 +1591,21 @@ export namespace Ide {
 
         static ['new'](context: Context, uri: Uri, mark: Gtk.TextMark): BackForwardItem;
 
+        // Signals
+
+        connect<K extends keyof BackForwardItem.SignalSignatures>(
+            signal: K,
+            callback: BackForwardItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackForwardItem.SignalSignatures>(
+            signal: K,
+            callback: BackForwardItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackForwardItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackForwardItem.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         chain(other: BackForwardItem): boolean;
@@ -1597,7 +1625,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface NavigateTo {
-            (object: BackForwardItem): void;
+            (_source: BackForwardList, object: BackForwardItem): void;
         }
 
         // Signal signatures
@@ -1619,7 +1647,6 @@ export namespace Ide {
 
     class BackForwardList extends Object {
         static $gtype: GObject.GType<BackForwardList>;
-        declare static readonly __signalSignatures: BackForwardList.SignalSignatures;
 
         // Properties
 
@@ -1650,12 +1677,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<BackForwardList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'navigate-to', callback: (_source: this, object: BackForwardItem) => void): number;
-        connect_after(signal: 'navigate-to', callback: (_source: this, object: BackForwardItem) => void): number;
-        emit(signal: 'navigate-to', object: BackForwardItem): void;
 
         // Methods
 
@@ -1686,27 +1707,27 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface CursorMoved {
-            (location: Gtk.TextIter): void;
+            (_source: Buffer, location: Gtk.TextIter): void;
         }
 
         interface Destroy {
-            (): void;
+            (_source: Buffer): void;
         }
 
         interface LineFlagsChanged {
-            (): void;
+            (_source: Buffer): void;
         }
 
         interface Loaded {
-            (): void;
+            (_source: Buffer): void;
         }
 
         interface Saved {
-            (): void;
+            (_source: Buffer): void;
         }
 
         interface SymbolResolverLoaded {
-            (): void;
+            (_source: Buffer): void;
         }
 
         // Signal signatures
@@ -1741,7 +1762,6 @@ export namespace Ide {
 
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -1777,27 +1797,6 @@ export namespace Ide {
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cursor-moved', callback: (_source: this, location: Gtk.TextIter) => void): number;
-        connect_after(signal: 'cursor-moved', callback: (_source: this, location: Gtk.TextIter) => void): number;
-        emit(signal: 'cursor-moved', location: Gtk.TextIter): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
-        connect(signal: 'line-flags-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'line-flags-changed', callback: (_source: this) => void): number;
-        emit(signal: 'line-flags-changed'): void;
-        connect(signal: 'loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this) => void): number;
-        emit(signal: 'loaded'): void;
-        connect(signal: 'saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'saved', callback: (_source: this) => void): number;
-        emit(signal: 'saved'): void;
-        connect(signal: 'symbol-resolver-loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'symbol-resolver-loaded', callback: (_source: this) => void): number;
-        emit(signal: 'symbol-resolver-loaded'): void;
 
         // Virtual methods
 
@@ -2007,7 +2006,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: BufferChangeMonitor): void;
         }
 
         // Signal signatures
@@ -2024,7 +2023,6 @@ export namespace Ide {
 
     class BufferChangeMonitor extends Object {
         static $gtype: GObject.GType<BufferChangeMonitor>;
-        declare static readonly __signalSignatures: BufferChangeMonitor.SignalSignatures;
 
         // Properties
 
@@ -2050,12 +2048,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<BufferChangeMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -2074,35 +2066,35 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface BufferFocusEnter {
-            (buffer: Buffer): void;
+            (_source: BufferManager, buffer: Buffer): void;
         }
 
         interface BufferFocusLeave {
-            (buffer: Buffer): void;
+            (_source: BufferManager, buffer: Buffer): void;
         }
 
         interface BufferLoaded {
-            (buffer: Buffer): void;
+            (_source: BufferManager, buffer: Buffer): void;
         }
 
         interface BufferSaved {
-            (buffer: Buffer): void;
+            (_source: BufferManager, buffer: Buffer): void;
         }
 
         interface BufferUnloaded {
-            (buffer: Buffer): void;
+            (_source: BufferManager, buffer: Buffer): void;
         }
 
         interface CreateBuffer {
-            (file: File): Buffer | null;
+            (_source: BufferManager, file: File): Buffer | null;
         }
 
         interface LoadBuffer {
-            (buffer: Buffer, create_new_view: boolean): void;
+            (_source: BufferManager, buffer: Buffer, create_new_view: boolean): void;
         }
 
         interface SaveBuffer {
-            (buffer: Buffer): void;
+            (_source: BufferManager, buffer: Buffer): void;
         }
 
         // Signal signatures
@@ -2135,7 +2127,6 @@ export namespace Ide {
 
     class BufferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<BufferManager>;
-        declare static readonly __signalSignatures: BufferManager.SignalSignatures;
 
         // Properties
 
@@ -2176,39 +2167,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<BufferManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'buffer-focus-enter', callback: (_source: this, buffer: Buffer) => void): number;
-        connect_after(signal: 'buffer-focus-enter', callback: (_source: this, buffer: Buffer) => void): number;
-        emit(signal: 'buffer-focus-enter', buffer: Buffer): void;
-        connect(signal: 'buffer-focus-leave', callback: (_source: this, buffer: Buffer) => void): number;
-        connect_after(signal: 'buffer-focus-leave', callback: (_source: this, buffer: Buffer) => void): number;
-        emit(signal: 'buffer-focus-leave', buffer: Buffer): void;
-        connect(signal: 'buffer-loaded', callback: (_source: this, buffer: Buffer) => void): number;
-        connect_after(signal: 'buffer-loaded', callback: (_source: this, buffer: Buffer) => void): number;
-        emit(signal: 'buffer-loaded', buffer: Buffer): void;
-        connect(signal: 'buffer-saved', callback: (_source: this, buffer: Buffer) => void): number;
-        connect_after(signal: 'buffer-saved', callback: (_source: this, buffer: Buffer) => void): number;
-        emit(signal: 'buffer-saved', buffer: Buffer): void;
-        connect(signal: 'buffer-unloaded', callback: (_source: this, buffer: Buffer) => void): number;
-        connect_after(signal: 'buffer-unloaded', callback: (_source: this, buffer: Buffer) => void): number;
-        emit(signal: 'buffer-unloaded', buffer: Buffer): void;
-        connect(signal: 'create-buffer', callback: (_source: this, file: File) => Buffer | null): number;
-        connect_after(signal: 'create-buffer', callback: (_source: this, file: File) => Buffer | null): number;
-        emit(signal: 'create-buffer', file: File): void;
-        connect(
-            signal: 'load-buffer',
-            callback: (_source: this, buffer: Buffer, create_new_view: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'load-buffer',
-            callback: (_source: this, buffer: Buffer, create_new_view: boolean) => void,
-        ): number;
-        emit(signal: 'load-buffer', buffer: Buffer, create_new_view: boolean): void;
-        connect(signal: 'save-buffer', callback: (_source: this, buffer: Buffer) => void): number;
-        connect_after(signal: 'save-buffer', callback: (_source: this, buffer: Buffer) => void): number;
-        emit(signal: 'save-buffer', buffer: Buffer): void;
 
         // Methods
 
@@ -2985,15 +2943,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface BuildFailed {
-            (pipeline: BuildPipeline): void;
+            (_source: BuildManager, pipeline: BuildPipeline): void;
         }
 
         interface BuildFinished {
-            (pipeline: BuildPipeline): void;
+            (_source: BuildManager, pipeline: BuildPipeline): void;
         }
 
         interface BuildStarted {
-            (pipeline: BuildPipeline): void;
+            (_source: BuildManager, pipeline: BuildPipeline): void;
         }
 
         // Signal signatures
@@ -3025,7 +2983,6 @@ export namespace Ide {
 
     class BuildManager extends Object implements Gio.ActionGroup, Gio.Initable {
         static $gtype: GObject.GType<BuildManager>;
-        declare static readonly __signalSignatures: BuildManager.SignalSignatures;
 
         // Properties
 
@@ -3120,18 +3077,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<BuildManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'build-failed', callback: (_source: this, pipeline: BuildPipeline) => void): number;
-        connect_after(signal: 'build-failed', callback: (_source: this, pipeline: BuildPipeline) => void): number;
-        emit(signal: 'build-failed', pipeline: BuildPipeline): void;
-        connect(signal: 'build-finished', callback: (_source: this, pipeline: BuildPipeline) => void): number;
-        connect_after(signal: 'build-finished', callback: (_source: this, pipeline: BuildPipeline) => void): number;
-        emit(signal: 'build-finished', pipeline: BuildPipeline): void;
-        connect(signal: 'build-started', callback: (_source: this, pipeline: BuildPipeline) => void): number;
-        connect_after(signal: 'build-started', callback: (_source: this, pipeline: BuildPipeline) => void): number;
-        emit(signal: 'build-started', pipeline: BuildPipeline): void;
 
         // Methods
 
@@ -4214,15 +4159,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Diagnostic {
-            (diagnostic: Diagnostic): void;
+            (_source: BuildPipeline, diagnostic: Diagnostic): void;
         }
 
         interface Finished {
-            (failed: boolean): void;
+            (_source: BuildPipeline, failed: boolean): void;
         }
 
         interface Started {
-            (phase: BuildPhase): void;
+            (_source: BuildPipeline, phase: BuildPhase): void;
         }
 
         // Signal signatures
@@ -4278,7 +4223,6 @@ export namespace Ide {
      */
     class BuildPipeline extends Object implements Gio.Initable {
         static $gtype: GObject.GType<BuildPipeline>;
-        declare static readonly __signalSignatures: BuildPipeline.SignalSignatures;
 
         // Properties
 
@@ -4305,6 +4249,10 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof BuildPipeline.SignalSignatures>(
+            signal: K,
+            callback: BuildPipeline.SignalSignatures[K],
+        ): number;
         connect_after<K extends keyof BuildPipeline.SignalSignatures>(
             signal: K,
             callback: BuildPipeline.SignalSignatures[K],
@@ -4313,14 +4261,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<BuildPipeline.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'diagnostic', callback: (_source: this, diagnostic: Diagnostic) => void): number;
-        emit(signal: 'diagnostic', diagnostic: Diagnostic): void;
-        connect_after(signal: 'finished', callback: (_source: this, failed: boolean) => void): number;
-        emit(signal: 'finished', failed: boolean): void;
-        connect_after(signal: 'started', callback: (_source: this, phase: BuildPhase) => void): number;
-        emit(signal: 'started', phase: BuildPhase): void;
 
         // Methods
 
@@ -5059,15 +4999,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Chain {
-            (object: BuildStage): boolean;
+            (_source: BuildStage, object: BuildStage): boolean;
         }
 
         interface Query {
-            (pipeline: BuildPipeline, cancellable?: Gio.Cancellable | null): void;
+            (_source: BuildStage, pipeline: BuildPipeline, cancellable?: Gio.Cancellable | null): void;
         }
 
         interface Reap {
-            (reaper: Dazzle.DirectoryReaper): void;
+            (_source: BuildStage, reaper: Dazzle.DirectoryReaper): void;
         }
 
         // Signal signatures
@@ -5093,7 +5033,6 @@ export namespace Ide {
 
     class BuildStage extends Object {
         static $gtype: GObject.GType<BuildStage>;
-        declare static readonly __signalSignatures: BuildStage.SignalSignatures;
 
         // Properties
 
@@ -5194,24 +5133,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<BuildStage.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'chain', callback: (_source: this, object: BuildStage) => boolean): number;
-        connect_after(signal: 'chain', callback: (_source: this, object: BuildStage) => boolean): number;
-        emit(signal: 'chain', object: BuildStage): void;
-        connect(
-            signal: 'query',
-            callback: (_source: this, pipeline: BuildPipeline, cancellable: Gio.Cancellable | null) => void,
-        ): number;
-        connect_after(
-            signal: 'query',
-            callback: (_source: this, pipeline: BuildPipeline, cancellable: Gio.Cancellable | null) => void,
-        ): number;
-        emit(signal: 'query', pipeline: BuildPipeline, cancellable?: Gio.Cancellable | null): void;
-        connect(signal: 'reap', callback: (_source: this, reaper: Dazzle.DirectoryReaper) => void): number;
-        connect_after(signal: 'reap', callback: (_source: this, reaper: Dazzle.DirectoryReaper) => void): number;
-        emit(signal: 'reap', reaper: Dazzle.DirectoryReaper): void;
 
         // Virtual methods
 
@@ -5313,7 +5234,6 @@ export namespace Ide {
 
     class BuildStageLauncher extends BuildStage {
         static $gtype: GObject.GType<BuildStageLauncher>;
-        declare static readonly __signalSignatures: BuildStageLauncher.SignalSignatures;
 
         // Properties
 
@@ -5335,6 +5255,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](context: Context, launcher?: SubprocessLauncher | null): BuildStageLauncher;
+
+        // Signals
+
+        connect<K extends keyof BuildStageLauncher.SignalSignatures>(
+            signal: K,
+            callback: BuildStageLauncher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildStageLauncher.SignalSignatures>(
+            signal: K,
+            callback: BuildStageLauncher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildStageLauncher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildStageLauncher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5370,7 +5305,6 @@ export namespace Ide {
 
     class BuildStageMkdirs extends BuildStage {
         static $gtype: GObject.GType<BuildStageMkdirs>;
-        declare static readonly __signalSignatures: BuildStageMkdirs.SignalSignatures;
 
         // Constructors
 
@@ -5379,6 +5313,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](context: Context): BuildStageMkdirs;
+
+        // Signals
+
+        connect<K extends keyof BuildStageMkdirs.SignalSignatures>(
+            signal: K,
+            callback: BuildStageMkdirs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildStageMkdirs.SignalSignatures>(
+            signal: K,
+            callback: BuildStageMkdirs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildStageMkdirs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildStageMkdirs.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5400,7 +5349,6 @@ export namespace Ide {
 
     class BuildStageTransfer extends BuildStage {
         static $gtype: GObject.GType<BuildStageTransfer>;
-        declare static readonly __signalSignatures: BuildStageTransfer.SignalSignatures;
 
         // Properties
 
@@ -5417,6 +5365,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](context: Context, transfer: Transfer): BuildStageTransfer;
+
+        // Signals
+
+        connect<K extends keyof BuildStageTransfer.SignalSignatures>(
+            signal: K,
+            callback: BuildStageTransfer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildStageTransfer.SignalSignatures>(
+            signal: K,
+            callback: BuildStageTransfer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildStageTransfer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildStageTransfer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BuildconfigConfiguration {
@@ -5433,7 +5396,6 @@ export namespace Ide {
 
     class BuildconfigConfiguration extends Configuration {
         static $gtype: GObject.GType<BuildconfigConfiguration>;
-        declare static readonly __signalSignatures: BuildconfigConfiguration.SignalSignatures;
 
         // Properties
 
@@ -5447,6 +5409,21 @@ export namespace Ide {
         constructor(properties?: Partial<BuildconfigConfiguration.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BuildconfigConfiguration.SignalSignatures>(
+            signal: K,
+            callback: BuildconfigConfiguration.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildconfigConfiguration.SignalSignatures>(
+            signal: K,
+            callback: BuildconfigConfiguration.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildconfigConfiguration.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildconfigConfiguration.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5467,13 +5444,27 @@ export namespace Ide {
 
     class BuildconfigConfigurationProvider extends GObject.Object implements ConfigurationProvider {
         static $gtype: GObject.GType<BuildconfigConfigurationProvider>;
-        declare static readonly __signalSignatures: BuildconfigConfigurationProvider.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BuildconfigConfigurationProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BuildconfigConfigurationProvider.SignalSignatures>(
+            signal: K,
+            callback: BuildconfigConfigurationProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildconfigConfigurationProvider.SignalSignatures>(
+            signal: K,
+            callback: BuildconfigConfigurationProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildconfigConfigurationProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildconfigConfigurationProvider.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5961,7 +5952,6 @@ export namespace Ide {
 
     abstract class CompletionItem extends GObject.Object {
         static $gtype: GObject.GType<CompletionItem>;
-        declare static readonly __signalSignatures: CompletionItem.SignalSignatures;
 
         // Constructors
 
@@ -5970,6 +5960,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): CompletionItem;
+
+        // Signals
+
+        connect<K extends keyof CompletionItem.SignalSignatures>(
+            signal: K,
+            callback: CompletionItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionItem.SignalSignatures>(
+            signal: K,
+            callback: CompletionItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6009,7 +6014,6 @@ export namespace Ide {
 
     class CompletionResults extends GObject.Object {
         static $gtype: GObject.GType<CompletionResults>;
-        declare static readonly __signalSignatures: CompletionResults.SignalSignatures;
 
         // Properties
 
@@ -6022,6 +6026,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](query: string): CompletionResults;
+
+        // Signals
+
+        connect<K extends keyof CompletionResults.SignalSignatures>(
+            signal: K,
+            callback: CompletionResults.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionResults.SignalSignatures>(
+            signal: K,
+            callback: CompletionResults.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionResults.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionResults.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -6050,13 +6069,27 @@ export namespace Ide {
 
     class CompletionWords extends GtkSource.CompletionWords implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionWords>;
-        declare static readonly __signalSignatures: CompletionWords.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CompletionWords.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CompletionWords.SignalSignatures>(
+            signal: K,
+            callback: CompletionWords.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionWords.SignalSignatures>(
+            signal: K,
+            callback: CompletionWords.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionWords.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionWords.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6741,7 +6774,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Configuration): void;
         }
 
         // Signal signatures
@@ -6780,7 +6813,6 @@ export namespace Ide {
 
     class Configuration extends Object {
         static $gtype: GObject.GType<Configuration>;
-        declare static readonly __signalSignatures: Configuration.SignalSignatures;
 
         // Properties
 
@@ -6850,12 +6882,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<Configuration.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -6981,7 +7007,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Invalidate {
-            (): void;
+            (_source: ConfigurationManager): void;
         }
 
         // Signal signatures
@@ -7006,7 +7032,6 @@ export namespace Ide {
         implements Gio.AsyncInitable<ConfigurationManager>, Gio.ListModel<A>
     {
         static $gtype: GObject.GType<ConfigurationManager>;
-        declare static readonly __signalSignatures: ConfigurationManager.SignalSignatures;
 
         // Properties
 
@@ -7035,12 +7060,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<ConfigurationManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'invalidate', callback: (_source: this) => void): number;
-        connect_after(signal: 'invalidate', callback: (_source: this) => void): number;
-        emit(signal: 'invalidate'): void;
 
         // Methods
 
@@ -7812,7 +7831,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Loaded {
-            (): void;
+            (_source: Context): void;
         }
 
         // Signal signatures
@@ -7852,7 +7871,6 @@ export namespace Ide {
 
     class Context extends GObject.Object implements Gio.AsyncInitable<Context> {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -7907,12 +7925,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<Context.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this) => void): number;
-        emit(signal: 'loaded'): void;
 
         // Static methods
 
@@ -8789,7 +8801,6 @@ export namespace Ide {
 
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
-        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -8803,6 +8814,12 @@ export namespace Ide {
         constructor(properties?: Partial<Cursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -8829,7 +8846,6 @@ export namespace Ide {
 
     abstract class Device extends Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -8847,6 +8863,12 @@ export namespace Ide {
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -8895,11 +8917,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (object: DeviceProvider, p0: Device): void;
+            (_source: DeviceManager, object: DeviceProvider, p0: Device): void;
         }
 
         interface DeviceRemoved {
-            (object: DeviceProvider, p0: Device): void;
+            (_source: DeviceManager, object: DeviceProvider, p0: Device): void;
         }
 
         // Signal signatures
@@ -8919,7 +8941,6 @@ export namespace Ide {
 
     class DeviceManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<DeviceManager>;
-        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Properties
 
@@ -8945,24 +8966,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<DeviceManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, object: DeviceProvider, p0: Device) => void): number;
-        connect_after(
-            signal: 'device-added',
-            callback: (_source: this, object: DeviceProvider, p0: Device) => void,
-        ): number;
-        emit(signal: 'device-added', object: DeviceProvider, p0: Device): void;
-        connect(
-            signal: 'device-removed',
-            callback: (_source: this, object: DeviceProvider, p0: Device) => void,
-        ): number;
-        connect_after(
-            signal: 'device-removed',
-            callback: (_source: this, object: DeviceProvider, p0: Device) => void,
-        ): number;
-        emit(signal: 'device-removed', object: DeviceProvider, p0: Device): void;
 
         // Methods
 
@@ -9521,7 +9524,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: DiagnosticsManager): void;
         }
 
         // Signal signatures
@@ -9538,7 +9541,6 @@ export namespace Ide {
 
     class DiagnosticsManager extends Object implements Gio.Initable {
         static $gtype: GObject.GType<DiagnosticsManager>;
-        declare static readonly __signalSignatures: DiagnosticsManager.SignalSignatures;
 
         // Properties
 
@@ -9564,12 +9566,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<DiagnosticsManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 
@@ -10136,7 +10132,6 @@ export namespace Ide {
 
     class DirectoryBuildSystem extends Object implements Gio.AsyncInitable<DirectoryBuildSystem>, BuildSystem {
         static $gtype: GObject.GType<DirectoryBuildSystem>;
-        declare static readonly __signalSignatures: DirectoryBuildSystem.SignalSignatures;
 
         // Properties
 
@@ -10148,6 +10143,21 @@ export namespace Ide {
         constructor(properties?: Partial<DirectoryBuildSystem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DirectoryBuildSystem.SignalSignatures>(
+            signal: K,
+            callback: DirectoryBuildSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectoryBuildSystem.SignalSignatures>(
+            signal: K,
+            callback: DirectoryBuildSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectoryBuildSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectoryBuildSystem.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get context(): Context;
@@ -10880,13 +10890,27 @@ export namespace Ide {
 
     class DirectoryVcs extends Object implements Gio.AsyncInitable<DirectoryVcs>, Vcs {
         static $gtype: GObject.GType<DirectoryVcs>;
-        declare static readonly __signalSignatures: DirectoryVcs.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DirectoryVcs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DirectoryVcs.SignalSignatures>(
+            signal: K,
+            callback: DirectoryVcs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectoryVcs.SignalSignatures>(
+            signal: K,
+            callback: DirectoryVcs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectoryVcs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectoryVcs.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get branch_name(): string;
@@ -11640,7 +11664,6 @@ export namespace Ide {
 
     class Doap extends GObject.Object {
         static $gtype: GObject.GType<Doap>;
-        declare static readonly __signalSignatures: Doap.SignalSignatures;
 
         // Properties
 
@@ -11673,6 +11696,12 @@ export namespace Ide {
 
         static ['new'](): Doap;
 
+        // Signals
+
+        connect<K extends keyof Doap.SignalSignatures>(signal: K, callback: Doap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Doap.SignalSignatures>(signal: K, callback: Doap.SignalSignatures[K]): number;
+        emit<K extends keyof Doap.SignalSignatures>(signal: K, ...args: Parameters<Doap.SignalSignatures[K]>): void;
+
         // Methods
 
         get_bug_database(): string;
@@ -11702,7 +11731,6 @@ export namespace Ide {
 
     class DoapPerson extends GObject.Object {
         static $gtype: GObject.GType<DoapPerson>;
-        declare static readonly __signalSignatures: DoapPerson.SignalSignatures;
 
         // Properties
 
@@ -11719,6 +11747,21 @@ export namespace Ide {
 
         static ['new'](): DoapPerson;
 
+        // Signals
+
+        connect<K extends keyof DoapPerson.SignalSignatures>(
+            signal: K,
+            callback: DoapPerson.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DoapPerson.SignalSignatures>(
+            signal: K,
+            callback: DoapPerson.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DoapPerson.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DoapPerson.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_email(): string;
@@ -11731,11 +11774,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface ViewAdded {
-            (object: Gtk.Widget): void;
+            (_source: EditorPerspective, object: Gtk.Widget): void;
         }
 
         interface ViewRemoved {
-            (object: Gtk.Widget): void;
+            (_source: EditorPerspective, object: Gtk.Widget): void;
         }
 
         // Signal signatures
@@ -11763,7 +11806,6 @@ export namespace Ide {
         implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable, Perspective
     {
         static $gtype: GObject.GType<EditorPerspective>;
-        declare static readonly __signalSignatures: EditorPerspective.SignalSignatures;
 
         // Properties
 
@@ -11790,15 +11832,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<EditorPerspective.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'view-added', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'view-added', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'view-added', object: Gtk.Widget): void;
-        connect(signal: 'view-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'view-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'view-removed', object: Gtk.Widget): void;
 
         // Methods
 
@@ -16750,7 +16783,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface RequestDocumentation {
-            (object: string): void;
+            (_source: EditorView, object: string): void;
         }
 
         // Signal signatures
@@ -16771,7 +16804,6 @@ export namespace Ide {
 
     class EditorView extends LayoutView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
-        declare static readonly __signalSignatures: EditorView.SignalSignatures;
 
         // Properties
 
@@ -16797,12 +16829,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<EditorView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'request-documentation', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'request-documentation', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'request-documentation', object: string): void;
 
         // Methods
 
@@ -17255,7 +17281,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Environment): void;
         }
 
         // Signal signatures
@@ -17272,7 +17298,6 @@ export namespace Ide {
 
     class Environment<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Environment>;
-        declare static readonly __signalSignatures: Environment.SignalSignatures;
 
         // Constructors
 
@@ -17296,12 +17321,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<Environment.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 
@@ -17871,7 +17890,6 @@ export namespace Ide {
 
     class EnvironmentVariable extends GObject.Object {
         static $gtype: GObject.GType<EnvironmentVariable>;
-        declare static readonly __signalSignatures: EnvironmentVariable.SignalSignatures;
 
         // Properties
 
@@ -17887,6 +17905,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](key: string, value: string): EnvironmentVariable;
+
+        // Signals
+
+        connect<K extends keyof EnvironmentVariable.SignalSignatures>(
+            signal: K,
+            callback: EnvironmentVariable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EnvironmentVariable.SignalSignatures>(
+            signal: K,
+            callback: EnvironmentVariable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EnvironmentVariable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EnvironmentVariable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17914,7 +17947,6 @@ export namespace Ide {
 
     class ExtensionAdapter extends Object {
         static $gtype: GObject.GType<ExtensionAdapter>;
-        declare static readonly __signalSignatures: ExtensionAdapter.SignalSignatures;
 
         // Properties
 
@@ -17941,6 +17973,21 @@ export namespace Ide {
             value?: string | null,
         ): ExtensionAdapter;
 
+        // Signals
+
+        connect<K extends keyof ExtensionAdapter.SignalSignatures>(
+            signal: K,
+            callback: ExtensionAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionAdapter.SignalSignatures>(
+            signal: K,
+            callback: ExtensionAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionAdapter.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -17964,11 +18011,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface ExtensionAdded {
-            (object: Peas.PluginInfo, p0: GObject.Object): void;
+            (_source: ExtensionSetAdapter, object: Peas.PluginInfo, p0: GObject.Object): void;
         }
 
         interface ExtensionRemoved {
-            (object: Peas.PluginInfo, p0: GObject.Object): void;
+            (_source: ExtensionSetAdapter, object: Peas.PluginInfo, p0: GObject.Object): void;
         }
 
         // Signal signatures
@@ -17990,7 +18037,6 @@ export namespace Ide {
 
     class ExtensionSetAdapter extends Object {
         static $gtype: GObject.GType<ExtensionSetAdapter>;
-        declare static readonly __signalSignatures: ExtensionSetAdapter.SignalSignatures;
 
         // Properties
 
@@ -18030,27 +18076,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<ExtensionSetAdapter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'extension-added',
-            callback: (_source: this, object: Peas.PluginInfo, p0: GObject.Object) => void,
-        ): number;
-        connect_after(
-            signal: 'extension-added',
-            callback: (_source: this, object: Peas.PluginInfo, p0: GObject.Object) => void,
-        ): number;
-        emit(signal: 'extension-added', object: Peas.PluginInfo, p0: GObject.Object): void;
-        connect(
-            signal: 'extension-removed',
-            callback: (_source: this, object: Peas.PluginInfo, p0: GObject.Object) => void,
-        ): number;
-        connect_after(
-            signal: 'extension-removed',
-            callback: (_source: this, object: Peas.PluginInfo, p0: GObject.Object) => void,
-        ): number;
-        emit(signal: 'extension-removed', object: Peas.PluginInfo, p0: GObject.Object): void;
 
         // Methods
 
@@ -18091,7 +18116,6 @@ export namespace Ide {
 
     class File extends Object {
         static $gtype: GObject.GType<File>;
-        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -18112,6 +18136,12 @@ export namespace Ide {
         static ['new'](context: Context | null, file: Gio.File): File;
 
         static new_for_path(context: Context, path: string): File;
+
+        // Signals
+
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -18221,7 +18251,6 @@ export namespace Ide {
 
     class FileSettings extends Object {
         static $gtype: GObject.GType<FileSettings>;
-        declare static readonly __signalSignatures: FileSettings.SignalSignatures;
 
         // Properties
 
@@ -18315,6 +18344,21 @@ export namespace Ide {
 
         static ['new'](file: File): FileSettings;
 
+        // Signals
+
+        connect<K extends keyof FileSettings.SignalSignatures>(
+            signal: K,
+            callback: FileSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSettings.SignalSignatures>(
+            signal: K,
+            callback: FileSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSettings.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -18361,7 +18405,6 @@ export namespace Ide {
 
     class FormatterOptions extends GObject.Object {
         static $gtype: GObject.GType<FormatterOptions>;
-        declare static readonly __signalSignatures: FormatterOptions.SignalSignatures;
 
         // Properties
 
@@ -18381,6 +18424,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): FormatterOptions;
+
+        // Signals
+
+        connect<K extends keyof FormatterOptions.SignalSignatures>(
+            signal: K,
+            callback: FormatterOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormatterOptions.SignalSignatures>(
+            signal: K,
+            callback: FormatterOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormatterOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormatterOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18404,7 +18462,6 @@ export namespace Ide {
 
     class HighlightEngine extends Object {
         static $gtype: GObject.GType<HighlightEngine>;
-        declare static readonly __signalSignatures: HighlightEngine.SignalSignatures;
 
         // Properties
 
@@ -18418,6 +18475,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Buffer): HighlightEngine;
+
+        // Signals
+
+        connect<K extends keyof HighlightEngine.SignalSignatures>(
+            signal: K,
+            callback: HighlightEngine.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HighlightEngine.SignalSignatures>(
+            signal: K,
+            callback: HighlightEngine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HighlightEngine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HighlightEngine.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18459,15 +18531,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Notification {
-            (object: string, p0: GLib.Variant): void;
+            (_source: LangservClient, object: string, p0: GLib.Variant): void;
         }
 
         interface PublishedDiagnostics {
-            (object: Gio.File, p0: Diagnostics): void;
+            (_source: LangservClient, object: Gio.File, p0: Diagnostics): void;
         }
 
         interface SupportsLanguage {
-            (object: string): boolean;
+            (_source: LangservClient, object: string): boolean;
         }
 
         // Signal signatures
@@ -18487,7 +18559,6 @@ export namespace Ide {
 
     class LangservClient extends Object {
         static $gtype: GObject.GType<LangservClient>;
-        declare static readonly __signalSignatures: LangservClient.SignalSignatures;
 
         // Properties
 
@@ -18516,27 +18587,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<LangservClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'notification', callback: (_source: this, object: string, p0: GLib.Variant) => void): number;
-        connect_after(
-            signal: 'notification',
-            callback: (_source: this, object: string, p0: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'notification', object: string, p0: GLib.Variant): void;
-        connect(
-            signal: 'published-diagnostics',
-            callback: (_source: this, object: Gio.File, p0: Diagnostics) => void,
-        ): number;
-        connect_after(
-            signal: 'published-diagnostics',
-            callback: (_source: this, object: Gio.File, p0: Diagnostics) => void,
-        ): number;
-        emit(signal: 'published-diagnostics', object: Gio.File, p0: Diagnostics): void;
-        connect(signal: 'supports-language', callback: (_source: this, object: string) => boolean): number;
-        connect_after(signal: 'supports-language', callback: (_source: this, object: string) => boolean): number;
-        emit(signal: 'supports-language', object: string): void;
 
         // Virtual methods
 
@@ -18663,7 +18713,6 @@ export namespace Ide {
         implements GtkSource.CompletionProvider, CompletionProvider
     {
         static $gtype: GObject.GType<LangservCompletionProvider>;
-        declare static readonly __signalSignatures: LangservCompletionProvider.SignalSignatures;
 
         // Properties
 
@@ -18675,6 +18724,21 @@ export namespace Ide {
         constructor(properties?: Partial<LangservCompletionProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LangservCompletionProvider.SignalSignatures>(
+            signal: K,
+            callback: LangservCompletionProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservCompletionProvider.SignalSignatures>(
+            signal: K,
+            callback: LangservCompletionProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservCompletionProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservCompletionProvider.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19379,7 +19443,6 @@ export namespace Ide {
 
     abstract class LangservDiagnosticProvider extends Object implements DiagnosticProvider {
         static $gtype: GObject.GType<LangservDiagnosticProvider>;
-        declare static readonly __signalSignatures: LangservDiagnosticProvider.SignalSignatures;
 
         // Properties
 
@@ -19391,6 +19454,21 @@ export namespace Ide {
         constructor(properties?: Partial<LangservDiagnosticProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LangservDiagnosticProvider.SignalSignatures>(
+            signal: K,
+            callback: LangservDiagnosticProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservDiagnosticProvider.SignalSignatures>(
+            signal: K,
+            callback: LangservDiagnosticProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservDiagnosticProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservDiagnosticProvider.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19483,7 +19561,6 @@ export namespace Ide {
 
     class LangservFormatter extends Object implements Formatter {
         static $gtype: GObject.GType<LangservFormatter>;
-        declare static readonly __signalSignatures: LangservFormatter.SignalSignatures;
 
         // Properties
 
@@ -19495,6 +19572,21 @@ export namespace Ide {
         constructor(properties?: Partial<LangservFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LangservFormatter.SignalSignatures>(
+            signal: K,
+            callback: LangservFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservFormatter.SignalSignatures>(
+            signal: K,
+            callback: LangservFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservFormatter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20016,7 +20108,6 @@ export namespace Ide {
 
     class LangservHighlighter extends Object implements Highlighter {
         static $gtype: GObject.GType<LangservHighlighter>;
-        declare static readonly __signalSignatures: LangservHighlighter.SignalSignatures;
 
         // Properties
 
@@ -20028,6 +20119,21 @@ export namespace Ide {
         constructor(properties?: Partial<LangservHighlighter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LangservHighlighter.SignalSignatures>(
+            signal: K,
+            callback: LangservHighlighter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservHighlighter.SignalSignatures>(
+            signal: K,
+            callback: LangservHighlighter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservHighlighter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservHighlighter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20111,7 +20217,6 @@ export namespace Ide {
 
     abstract class LangservRenameProvider extends Object implements RenameProvider {
         static $gtype: GObject.GType<LangservRenameProvider>;
-        declare static readonly __signalSignatures: LangservRenameProvider.SignalSignatures;
 
         // Properties
 
@@ -20124,6 +20229,21 @@ export namespace Ide {
         constructor(properties?: Partial<LangservRenameProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LangservRenameProvider.SignalSignatures>(
+            signal: K,
+            callback: LangservRenameProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservRenameProvider.SignalSignatures>(
+            signal: K,
+            callback: LangservRenameProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservRenameProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservRenameProvider.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20258,7 +20378,6 @@ export namespace Ide {
 
     class LangservSymbolNode extends SymbolNode {
         static $gtype: GObject.GType<LangservSymbolNode>;
-        declare static readonly __signalSignatures: LangservSymbolNode.SignalSignatures;
 
         // Constructors
 
@@ -20276,6 +20395,21 @@ export namespace Ide {
             end_line: number,
             end_column: number,
         ): LangservSymbolNode;
+
+        // Signals
+
+        connect<K extends keyof LangservSymbolNode.SignalSignatures>(
+            signal: K,
+            callback: LangservSymbolNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservSymbolNode.SignalSignatures>(
+            signal: K,
+            callback: LangservSymbolNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservSymbolNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservSymbolNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20296,7 +20430,6 @@ export namespace Ide {
 
     abstract class LangservSymbolResolver extends Object implements SymbolResolver {
         static $gtype: GObject.GType<LangservSymbolResolver>;
-        declare static readonly __signalSignatures: LangservSymbolResolver.SignalSignatures;
 
         // Properties
 
@@ -20308,6 +20441,21 @@ export namespace Ide {
         constructor(properties?: Partial<LangservSymbolResolver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LangservSymbolResolver.SignalSignatures>(
+            signal: K,
+            callback: LangservSymbolResolver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservSymbolResolver.SignalSignatures>(
+            signal: K,
+            callback: LangservSymbolResolver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservSymbolResolver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservSymbolResolver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20515,7 +20663,6 @@ export namespace Ide {
 
     class LangservSymbolTree extends GObject.Object implements SymbolTree {
         static $gtype: GObject.GType<LangservSymbolTree>;
-        declare static readonly __signalSignatures: LangservSymbolTree.SignalSignatures;
 
         // Constructors
 
@@ -20524,6 +20671,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](symbols: LangservSymbolNode[]): LangservSymbolTree;
+
+        // Signals
+
+        connect<K extends keyof LangservSymbolTree.SignalSignatures>(
+            signal: K,
+            callback: LangservSymbolTree.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservSymbolTree.SignalSignatures>(
+            signal: K,
+            callback: LangservSymbolTree.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservSymbolTree.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservSymbolTree.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -21012,7 +21174,6 @@ export namespace Ide {
 
     class Layout extends Dazzle.DockBin implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<Layout>;
-        declare static readonly __signalSignatures: Layout.SignalSignatures;
 
         // Properties
 
@@ -21024,6 +21185,12 @@ export namespace Ide {
         constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -25813,7 +25980,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Empty {
-            (): void;
+            (_source: LayoutGrid): void;
         }
 
         // Signal signatures
@@ -25831,7 +25998,6 @@ export namespace Ide {
 
     class LayoutGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutGrid>;
-        declare static readonly __signalSignatures: LayoutGrid.SignalSignatures;
 
         // Constructors
 
@@ -25855,12 +26021,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<LayoutGrid.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'empty', callback: (_source: this) => void): number;
-        connect_after(signal: 'empty', callback: (_source: this) => void): number;
-        emit(signal: 'empty'): void;
 
         // Methods
 
@@ -26342,13 +26502,27 @@ export namespace Ide {
 
     class LayoutPane extends Dazzle.DockBinEdge implements Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutPane>;
-        declare static readonly __signalSignatures: LayoutPane.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LayoutPane.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LayoutPane.SignalSignatures>(
+            signal: K,
+            callback: LayoutPane.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayoutPane.SignalSignatures>(
+            signal: K,
+            callback: LayoutPane.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayoutPane.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayoutPane.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -30772,11 +30946,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Empty {
-            (): void;
+            (_source: LayoutStack): void;
         }
 
         interface Split {
-            (view: LayoutView, split_type: number, file: Gio.File): void;
+            (_source: LayoutStack, view: LayoutView, split_type: number, file: Gio.File): void;
         }
 
         // Signal signatures
@@ -30798,7 +30972,6 @@ export namespace Ide {
 
     class LayoutStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutStack>;
-        declare static readonly __signalSignatures: LayoutStack.SignalSignatures;
 
         // Properties
 
@@ -30829,21 +31002,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<LayoutStack.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'empty', callback: (_source: this) => void): number;
-        connect_after(signal: 'empty', callback: (_source: this) => void): number;
-        emit(signal: 'empty'): void;
-        connect(
-            signal: 'split',
-            callback: (_source: this, view: LayoutView, split_type: number, file: Gio.File) => void,
-        ): number;
-        connect_after(
-            signal: 'split',
-            callback: (_source: this, view: LayoutView, split_type: number, file: Gio.File) => void,
-        ): number;
-        emit(signal: 'split', view: LayoutView, split_type: number, file: Gio.File): void;
 
         // Methods
 
@@ -31317,7 +31475,6 @@ export namespace Ide {
 
     class LayoutView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<LayoutView>;
-        declare static readonly __signalSignatures: LayoutView.SignalSignatures;
 
         // Properties
 
@@ -31333,6 +31490,21 @@ export namespace Ide {
         constructor(properties?: Partial<LayoutView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LayoutView.SignalSignatures>(
+            signal: K,
+            callback: LayoutView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayoutView.SignalSignatures>(
+            signal: K,
+            callback: LayoutView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayoutView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayoutView.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -31871,20 +32043,34 @@ export namespace Ide {
 
     class LocalDevice extends Device {
         static $gtype: GObject.GType<LocalDevice>;
-        declare static readonly __signalSignatures: LocalDevice.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LocalDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LocalDevice.SignalSignatures>(
+            signal: K,
+            callback: LocalDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocalDevice.SignalSignatures>(
+            signal: K,
+            callback: LocalDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocalDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocalDevice.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
         // Signal callback interfaces
 
         interface Destroy {
-            (): void;
+            (_source: Object): void;
         }
 
         // Signal signatures
@@ -31901,7 +32087,6 @@ export namespace Ide {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -31920,12 +32105,6 @@ export namespace Ide {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
 
         // Static methods
 
@@ -31983,7 +32162,6 @@ export namespace Ide {
 
     class OmniBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniBar>;
-        declare static readonly __signalSignatures: OmniBar.SignalSignatures;
 
         // Constructors
 
@@ -31992,6 +32170,18 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): OmniBar;
+
+        // Signals
+
+        connect<K extends keyof OmniBar.SignalSignatures>(signal: K, callback: OmniBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof OmniBar.SignalSignatures>(
+            signal: K,
+            callback: OmniBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OmniBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OmniBar.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -32456,11 +32646,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: OmniSearchDisplay): void;
         }
 
         interface ResultActivated {
-            (object: SearchResult): void;
+            (_source: OmniSearchDisplay, object: SearchResult): void;
         }
 
         // Signal signatures
@@ -32482,7 +32672,6 @@ export namespace Ide {
 
     class OmniSearchDisplay extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniSearchDisplay>;
-        declare static readonly __signalSignatures: OmniSearchDisplay.SignalSignatures;
 
         // Properties
 
@@ -32509,15 +32698,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<OmniSearchDisplay.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
-        connect(signal: 'result-activated', callback: (_source: this, object: SearchResult) => void): number;
-        connect_after(signal: 'result-activated', callback: (_source: this, object: SearchResult) => void): number;
-        emit(signal: 'result-activated', object: SearchResult): void;
 
         // Methods
 
@@ -32990,15 +33170,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface ClearSearch {
-            (): void;
+            (_source: OmniSearchEntry): void;
         }
 
         interface MoveNextResult {
-            (): void;
+            (_source: OmniSearchEntry): void;
         }
 
         interface MovePreviousResult {
-            (): void;
+            (_source: OmniSearchEntry): void;
         }
 
         // Signal signatures
@@ -33023,7 +33203,6 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<OmniSearchEntry>;
-        declare static readonly __signalSignatures: OmniSearchEntry.SignalSignatures;
 
         // Constructors
 
@@ -33047,18 +33226,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<OmniSearchEntry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'clear-search', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-search', callback: (_source: this) => void): number;
-        emit(signal: 'clear-search'): void;
-        connect(signal: 'move-next-result', callback: (_source: this) => void): number;
-        connect_after(signal: 'move-next-result', callback: (_source: this) => void): number;
-        emit(signal: 'move-next-result'): void;
-        connect(signal: 'move-previous-result', callback: (_source: this) => void): number;
-        connect_after(signal: 'move-previous-result', callback: (_source: this) => void): number;
-        emit(signal: 'move-previous-result'): void;
 
         // Methods
 
@@ -37601,11 +37768,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface ResultActivated {
-            (object: Gtk.Widget, p0: SearchResult): void;
+            (_source: OmniSearchGroup, object: Gtk.Widget, p0: SearchResult): void;
         }
 
         interface ResultSelected {
-            (object: SearchResult): void;
+            (_source: OmniSearchGroup, object: SearchResult): void;
         }
 
         // Signal signatures
@@ -37627,7 +37794,6 @@ export namespace Ide {
 
     class OmniSearchGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniSearchGroup>;
-        declare static readonly __signalSignatures: OmniSearchGroup.SignalSignatures;
 
         // Properties
 
@@ -37653,21 +37819,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<OmniSearchGroup.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'result-activated',
-            callback: (_source: this, object: Gtk.Widget, p0: SearchResult) => void,
-        ): number;
-        connect_after(
-            signal: 'result-activated',
-            callback: (_source: this, object: Gtk.Widget, p0: SearchResult) => void,
-        ): number;
-        emit(signal: 'result-activated', object: Gtk.Widget, p0: SearchResult): void;
-        connect(signal: 'result-selected', callback: (_source: this, object: SearchResult) => void): number;
-        connect_after(signal: 'result-selected', callback: (_source: this, object: SearchResult) => void): number;
-        emit(signal: 'result-selected', object: SearchResult): void;
 
         // Methods
 
@@ -38162,7 +38313,6 @@ export namespace Ide {
 
     class OmniSearchRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<OmniSearchRow>;
-        declare static readonly __signalSignatures: OmniSearchRow.SignalSignatures;
 
         // Properties
 
@@ -38176,6 +38326,21 @@ export namespace Ide {
         constructor(properties?: Partial<OmniSearchRow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OmniSearchRow.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchRow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OmniSearchRow.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OmniSearchRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OmniSearchRow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -38637,7 +38802,6 @@ export namespace Ide {
 
     class PkconTransfer extends Transfer {
         static $gtype: GObject.GType<PkconTransfer>;
-        declare static readonly __signalSignatures: PkconTransfer.SignalSignatures;
 
         // Properties
 
@@ -38650,6 +38814,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](packages: string): PkconTransfer;
+
+        // Signals
+
+        connect<K extends keyof PkconTransfer.SignalSignatures>(
+            signal: K,
+            callback: PkconTransfer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PkconTransfer.SignalSignatures>(
+            signal: K,
+            callback: PkconTransfer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PkconTransfer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PkconTransfer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PreferencesPerspective {
@@ -38671,13 +38850,27 @@ export namespace Ide {
         implements Atk.ImplementorIface, Dazzle.Preferences, Gtk.Buildable, Perspective
     {
         static $gtype: GObject.GType<PreferencesPerspective>;
-        declare static readonly __signalSignatures: PreferencesPerspective.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PreferencesPerspective.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PreferencesPerspective.SignalSignatures>(
+            signal: K,
+            callback: PreferencesPerspective.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesPerspective.SignalSignatures>(
+            signal: K,
+            callback: PreferencesPerspective.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesPerspective.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesPerspective.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         add_custom(
@@ -39446,7 +39639,6 @@ export namespace Ide {
 
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
-        declare static readonly __signalSignatures: Progress.SignalSignatures;
 
         // Properties
 
@@ -39463,6 +39655,18 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): Progress;
+
+        // Signals
+
+        connect<K extends keyof Progress.SignalSignatures>(signal: K, callback: Progress.SignalSignatures[K]): number;
+        connect_after<K extends keyof Progress.SignalSignatures>(
+            signal: K,
+            callback: Progress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Progress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Progress.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -39496,11 +39700,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface FileRenamed {
-            (object: Gio.File, p0: Gio.File): void;
+            (_source: Project, object: Gio.File, p0: Gio.File): void;
         }
 
         interface FileTrashed {
-            (object: Gio.File): void;
+            (_source: Project, object: Gio.File): void;
         }
 
         // Signal signatures
@@ -39520,7 +39724,6 @@ export namespace Ide {
 
     class Project extends Object {
         static $gtype: GObject.GType<Project>;
-        declare static readonly __signalSignatures: Project.SignalSignatures;
 
         // Properties
 
@@ -39545,18 +39748,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<Project.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'file-renamed', callback: (_source: this, object: Gio.File, p0: Gio.File) => void): number;
-        connect_after(
-            signal: 'file-renamed',
-            callback: (_source: this, object: Gio.File, p0: Gio.File) => void,
-        ): number;
-        emit(signal: 'file-renamed', object: Gio.File, p0: Gio.File): void;
-        connect(signal: 'file-trashed', callback: (_source: this, object: Gio.File) => void): number;
-        connect_after(signal: 'file-trashed', callback: (_source: this, object: Gio.File) => void): number;
-        emit(signal: 'file-trashed', object: Gio.File): void;
 
         // Methods
 
@@ -39650,7 +39841,6 @@ export namespace Ide {
 
     class ProjectEdit extends GObject.Object {
         static $gtype: GObject.GType<ProjectEdit>;
-        declare static readonly __signalSignatures: ProjectEdit.SignalSignatures;
 
         // Properties
 
@@ -39666,6 +39856,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): ProjectEdit;
+
+        // Signals
+
+        connect<K extends keyof ProjectEdit.SignalSignatures>(
+            signal: K,
+            callback: ProjectEdit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectEdit.SignalSignatures>(
+            signal: K,
+            callback: ProjectEdit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectEdit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectEdit.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -39698,7 +39903,6 @@ export namespace Ide {
 
     class ProjectFile extends ProjectItem {
         static $gtype: GObject.GType<ProjectFile>;
-        declare static readonly __signalSignatures: ProjectFile.SignalSignatures;
 
         // Properties
 
@@ -39719,6 +39923,21 @@ export namespace Ide {
         constructor(properties?: Partial<ProjectFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProjectFile.SignalSignatures>(
+            signal: K,
+            callback: ProjectFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectFile.SignalSignatures>(
+            signal: K,
+            callback: ProjectFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -39749,13 +39968,27 @@ export namespace Ide {
 
     class ProjectFiles extends ProjectItem {
         static $gtype: GObject.GType<ProjectFiles>;
-        declare static readonly __signalSignatures: ProjectFiles.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ProjectFiles.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProjectFiles.SignalSignatures>(
+            signal: K,
+            callback: ProjectFiles.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectFiles.SignalSignatures>(
+            signal: K,
+            callback: ProjectFiles.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectFiles.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectFiles.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -39805,7 +40038,6 @@ export namespace Ide {
      */
     class ProjectInfo extends GObject.Object {
         static $gtype: GObject.GType<ProjectInfo>;
-        declare static readonly __signalSignatures: ProjectInfo.SignalSignatures;
 
         // Properties
 
@@ -39841,6 +40073,21 @@ export namespace Ide {
         constructor(properties?: Partial<ProjectInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProjectInfo.SignalSignatures>(
+            signal: K,
+            callback: ProjectInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectInfo.SignalSignatures>(
+            signal: K,
+            callback: ProjectInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -39888,7 +40135,6 @@ export namespace Ide {
 
     class ProjectItem extends Object {
         static $gtype: GObject.GType<ProjectItem>;
-        declare static readonly __signalSignatures: ProjectItem.SignalSignatures;
 
         // Properties
 
@@ -39900,6 +40146,21 @@ export namespace Ide {
         constructor(properties?: Partial<ProjectItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProjectItem.SignalSignatures>(
+            signal: K,
+            callback: ProjectItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectItem.SignalSignatures>(
+            signal: K,
+            callback: ProjectItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -39931,7 +40192,6 @@ export namespace Ide {
 
     class RecentProjects<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<RecentProjects>;
-        declare static readonly __signalSignatures: RecentProjects.SignalSignatures;
 
         // Constructors
 
@@ -39940,6 +40200,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): RecentProjects;
+
+        // Signals
+
+        connect<K extends keyof RecentProjects.SignalSignatures>(
+            signal: K,
+            callback: RecentProjects.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecentProjects.SignalSignatures>(
+            signal: K,
+            callback: RecentProjects.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecentProjects.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecentProjects.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -40518,7 +40793,6 @@ export namespace Ide {
 
     class RunButton extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<RunButton>;
-        declare static readonly __signalSignatures: RunButton.SignalSignatures;
 
         // Constructors
 
@@ -40527,6 +40801,18 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): RunButton;
+
+        // Signals
+
+        connect<K extends keyof RunButton.SignalSignatures>(signal: K, callback: RunButton.SignalSignatures[K]): number;
+        connect_after<K extends keyof RunButton.SignalSignatures>(
+            signal: K,
+            callback: RunButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RunButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RunButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -40991,11 +41277,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Run {
-            (runner: Runner): void;
+            (_source: RunManager, runner: Runner): void;
         }
 
         interface Stopped {
-            (): void;
+            (_source: RunManager): void;
         }
 
         // Signal signatures
@@ -41019,7 +41305,6 @@ export namespace Ide {
 
     class RunManager extends Object implements Gio.ActionGroup, Gio.Initable {
         static $gtype: GObject.GType<RunManager>;
-        declare static readonly __signalSignatures: RunManager.SignalSignatures;
 
         // Properties
 
@@ -41050,15 +41335,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<RunManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'run', callback: (_source: this, runner: Runner) => void): number;
-        connect_after(signal: 'run', callback: (_source: this, runner: Runner) => void): number;
-        emit(signal: 'run', runner: Runner): void;
-        connect(signal: 'stopped', callback: (_source: this) => void): number;
-        connect_after(signal: 'stopped', callback: (_source: this) => void): number;
-        emit(signal: 'stopped'): void;
 
         // Methods
 
@@ -42068,11 +42344,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Exited {
-            (): void;
+            (_source: Runner): void;
         }
 
         interface Spawned {
-            (object: string): void;
+            (_source: Runner, object: string): void;
         }
 
         // Signal signatures
@@ -42096,7 +42372,6 @@ export namespace Ide {
 
     class Runner extends Object {
         static $gtype: GObject.GType<Runner>;
-        declare static readonly __signalSignatures: Runner.SignalSignatures;
 
         // Properties
 
@@ -42141,15 +42416,6 @@ export namespace Ide {
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
         emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'exited', callback: (_source: this) => void): number;
-        connect_after(signal: 'exited', callback: (_source: this) => void): number;
-        emit(signal: 'exited'): void;
-        connect(signal: 'spawned', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'spawned', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'spawned', object: string): void;
 
         // Virtual methods
 
@@ -42233,7 +42499,6 @@ export namespace Ide {
 
     class Runtime extends Object {
         static $gtype: GObject.GType<Runtime>;
-        declare static readonly __signalSignatures: Runtime.SignalSignatures;
 
         // Properties
 
@@ -42251,6 +42516,18 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](context: Context, id: string, title: string): Runtime;
+
+        // Signals
+
+        connect<K extends keyof Runtime.SignalSignatures>(signal: K, callback: Runtime.SignalSignatures[K]): number;
+        connect_after<K extends keyof Runtime.SignalSignatures>(
+            signal: K,
+            callback: Runtime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Runtime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Runtime.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -42331,13 +42608,27 @@ export namespace Ide {
         implements Gio.Initable, Gio.ListModel<A>
     {
         static $gtype: GObject.GType<RuntimeManager>;
-        declare static readonly __signalSignatures: RuntimeManager.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RuntimeManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RuntimeManager.SignalSignatures>(
+            signal: K,
+            callback: RuntimeManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RuntimeManager.SignalSignatures>(
+            signal: K,
+            callback: RuntimeManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RuntimeManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RuntimeManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -43025,19 +43316,19 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Completed {
-            (): void;
+            (_source: SearchContext): void;
         }
 
         interface CountSet {
-            (object: SearchProvider, p0: number): void;
+            (_source: SearchContext, object: SearchProvider, p0: number): void;
         }
 
         interface ResultAdded {
-            (object: SearchProvider, p0: SearchResult): void;
+            (_source: SearchContext, object: SearchProvider, p0: SearchResult): void;
         }
 
         interface ResultRemoved {
-            (object: SearchProvider, p0: SearchResult): void;
+            (_source: SearchContext, object: SearchProvider, p0: SearchResult): void;
         }
 
         // Signal signatures
@@ -43055,7 +43346,6 @@ export namespace Ide {
 
     class SearchContext extends Object {
         static $gtype: GObject.GType<SearchContext>;
-        declare static readonly __signalSignatures: SearchContext.SignalSignatures;
 
         // Constructors
 
@@ -43077,36 +43367,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<SearchContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
-        connect(signal: 'count-set', callback: (_source: this, object: SearchProvider, p0: number) => void): number;
-        connect_after(
-            signal: 'count-set',
-            callback: (_source: this, object: SearchProvider, p0: number) => void,
-        ): number;
-        emit(signal: 'count-set', object: SearchProvider, p0: number): void;
-        connect(
-            signal: 'result-added',
-            callback: (_source: this, object: SearchProvider, p0: SearchResult) => void,
-        ): number;
-        connect_after(
-            signal: 'result-added',
-            callback: (_source: this, object: SearchProvider, p0: SearchResult) => void,
-        ): number;
-        emit(signal: 'result-added', object: SearchProvider, p0: SearchResult): void;
-        connect(
-            signal: 'result-removed',
-            callback: (_source: this, object: SearchProvider, p0: SearchResult) => void,
-        ): number;
-        connect_after(
-            signal: 'result-removed',
-            callback: (_source: this, object: SearchProvider, p0: SearchResult) => void,
-        ): number;
-        emit(signal: 'result-removed', object: SearchProvider, p0: SearchResult): void;
 
         // Methods
 
@@ -43135,13 +43395,27 @@ export namespace Ide {
 
     class SearchEngine extends Object {
         static $gtype: GObject.GType<SearchEngine>;
-        declare static readonly __signalSignatures: SearchEngine.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SearchEngine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SearchEngine.SignalSignatures>(
+            signal: K,
+            callback: SearchEngine.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchEngine.SignalSignatures>(
+            signal: K,
+            callback: SearchEngine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchEngine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchEngine.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -43171,7 +43445,6 @@ export namespace Ide {
 
     class SearchResult extends Object {
         static $gtype: GObject.GType<SearchResult>;
-        declare static readonly __signalSignatures: SearchResult.SignalSignatures;
 
         // Properties
 
@@ -43188,6 +43461,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](provider: SearchProvider, title: string, subtitle: string, score: number): SearchResult;
+
+        // Signals
+
+        connect<K extends keyof SearchResult.SignalSignatures>(
+            signal: K,
+            callback: SearchResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchResult.SignalSignatures>(
+            signal: K,
+            callback: SearchResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchResult.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -43211,7 +43499,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string): void;
+            (_source: Settings, object: string): void;
         }
 
         // Signal signatures
@@ -43242,7 +43530,6 @@ export namespace Ide {
      */
     class Settings extends Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -43270,12 +43557,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<Settings.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'changed', object: string): void;
 
         // Methods
 
@@ -43324,11 +43605,11 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface HideMap {
-            (): void;
+            (_source: SourceMap): void;
         }
 
         interface ShowMap {
-            (): void;
+            (_source: SourceMap): void;
         }
 
         // Signal signatures
@@ -43348,7 +43629,6 @@ export namespace Ide {
 
     class SourceMap extends GtkSource.Map implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceMap>;
-        declare static readonly __signalSignatures: SourceMap.SignalSignatures;
 
         // Constructors
 
@@ -43367,15 +43647,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<SourceMap.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'hide-map', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-map', callback: (_source: this) => void): number;
-        emit(signal: 'hide-map'): void;
-        connect(signal: 'show-map', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-map', callback: (_source: this) => void): number;
-        emit(signal: 'show-map'): void;
 
         // Inherited methods
         /**
@@ -43843,7 +44114,6 @@ export namespace Ide {
 
     class SourceSnippet extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippet>;
-        declare static readonly __signalSignatures: SourceSnippet.SignalSignatures;
 
         // Properties
 
@@ -43872,6 +44142,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](trigger: string, language: string): SourceSnippet;
+
+        // Signals
+
+        connect<K extends keyof SourceSnippet.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSnippet.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSnippet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSnippet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -43913,7 +44198,6 @@ export namespace Ide {
 
     class SourceSnippetChunk extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetChunk>;
-        declare static readonly __signalSignatures: SourceSnippetChunk.SignalSignatures;
 
         // Properties
 
@@ -43939,6 +44223,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): SourceSnippetChunk;
+
+        // Signals
+
+        connect<K extends keyof SourceSnippetChunk.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippetChunk.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSnippetChunk.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippetChunk.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSnippetChunk.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSnippetChunk.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -43967,7 +44266,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: SourceSnippetContext): void;
         }
 
         // Signal signatures
@@ -43991,7 +44290,6 @@ export namespace Ide {
      */
     class SourceSnippetContext extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetContext>;
-        declare static readonly __signalSignatures: SourceSnippetContext.SignalSignatures;
 
         // Constructors
 
@@ -44015,12 +44313,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<SourceSnippetContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 
@@ -44047,7 +44339,6 @@ export namespace Ide {
 
     class SourceSnippets extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippets>;
-        declare static readonly __signalSignatures: SourceSnippets.SignalSignatures;
 
         // Constructors
 
@@ -44056,6 +44347,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): SourceSnippets;
+
+        // Signals
+
+        connect<K extends keyof SourceSnippets.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippets.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSnippets.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippets.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSnippets.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSnippets.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44077,13 +44383,27 @@ export namespace Ide {
 
     class SourceSnippetsManager extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetsManager>;
-        declare static readonly __signalSignatures: SourceSnippetsManager.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceSnippetsManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceSnippetsManager.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippetsManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSnippetsManager.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippetsManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSnippetsManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSnippetsManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44112,215 +44432,223 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Action {
-            (object: string, p0: string, p1: string): void;
+            (_source: SourceView, object: string, p0: string, p1: string): void;
         }
 
         interface AddCursor {
-            (object: CursorType): void;
+            (_source: SourceView, object: CursorType): void;
         }
 
         interface AppendToCount {
-            (object: number): void;
+            (_source: SourceView, object: number): void;
         }
 
         interface BeginMacro {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface BeginRename {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface BeginUserAction {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface CaptureModifier {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ClearCount {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ClearModifier {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ClearSearch {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ClearSelection {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ClearSnippets {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface CycleCompletion {
-            (object: Gtk.DirectionType): void;
+            (_source: SourceView, object: Gtk.DirectionType): void;
         }
 
         interface DecreaseFontSize {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface DeleteSelection {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface DuplicateEntireLine {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface EndMacro {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface EndUserAction {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface FindReferences {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface FocusLocation {
-            (object: SourceLocation): void;
+            (_source: SourceView, object: SourceLocation): void;
         }
 
         interface FormatSelection {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface GotoDefinition {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface HideCompletion {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface IncreaseFontSize {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface IndentSelection {
-            (object: number): void;
+            (_source: SourceView, object: number): void;
         }
 
         interface InsertModifier {
-            (use_count: boolean): void;
+            (_source: SourceView, use_count: boolean): void;
         }
 
         interface Jump {
-            (object: Gtk.TextIter): void;
+            (_source: SourceView, object: Gtk.TextIter): void;
         }
 
         interface MoveError {
-            (dir: Gtk.DirectionType): void;
+            (_source: SourceView, dir: Gtk.DirectionType): void;
         }
 
         interface MoveSearch {
-            (object: Gtk.DirectionType, p0: boolean, p1: boolean, p2: boolean, p3: boolean, p4: number): void;
+            (
+                _source: SourceView,
+                object: Gtk.DirectionType,
+                p0: boolean,
+                p1: boolean,
+                p2: boolean,
+                p3: boolean,
+                p4: number,
+            ): void;
         }
 
         interface Movement {
-            (object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean): void;
+            (_source: SourceView, object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean): void;
         }
 
         interface PasteClipboardExtended {
-            (object: boolean, p0: boolean, p1: boolean): void;
+            (_source: SourceView, object: boolean, p0: boolean, p1: boolean): void;
         }
 
         interface PopSelection {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface PopSnippet {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface PushSelection {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface PushSnippet {
-            (snippet: SourceSnippet, iter?: Gtk.TextIter | null): void;
+            (_source: SourceView, snippet: SourceSnippet, iter?: Gtk.TextIter | null): void;
         }
 
         interface RebuildHighlight {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface Reindent {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface RemoveCursors {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ReplayMacro {
-            (object: boolean): void;
+            (_source: SourceView, object: boolean): void;
         }
 
         interface RequestDocumentation {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface ResetFontSize {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface RestoreInsertMark {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface SaveCommand {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface SaveInsertMark {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface SaveSearchChar {
-            (): void;
+            (_source: SourceView): void;
         }
 
         interface SelectInner {
-            (object: string, p0: string, p1: boolean, p2: boolean): void;
+            (_source: SourceView, object: string, p0: string, p1: boolean, p2: boolean): void;
         }
 
         interface SelectTag {
-            (object: boolean): void;
+            (_source: SourceView, object: boolean): void;
         }
 
         interface SelectionTheatric {
-            (object: SourceViewTheatric): void;
+            (_source: SourceView, object: SourceViewTheatric): void;
         }
 
         interface SetMode {
-            (object: string, p0: SourceViewModeType): void;
+            (_source: SourceView, object: string, p0: SourceViewModeType): void;
         }
 
         interface SetOverwrite {
-            (object: boolean): void;
+            (_source: SourceView, object: boolean): void;
         }
 
         interface SetSearchText {
-            (object: string, p0: boolean): void;
+            (_source: SourceView, object: string, p0: boolean): void;
         }
 
         interface Sort {
-            (ignore_case: boolean, reverse: boolean): void;
+            (_source: SourceView, ignore_case: boolean, reverse: boolean): void;
         }
 
         interface SwapSelectionBounds {
-            (): void;
+            (_source: SourceView): void;
         }
 
         // Signal signatures
@@ -44435,7 +44763,6 @@ export namespace Ide {
 
     class SourceView extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceView>;
-        declare static readonly __signalSignatures: SourceView.SignalSignatures;
 
         // Properties
 
@@ -44547,237 +44874,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<SourceView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action', callback: (_source: this, object: string, p0: string, p1: string) => void): number;
-        connect_after(
-            signal: 'action',
-            callback: (_source: this, object: string, p0: string, p1: string) => void,
-        ): number;
-        emit(signal: 'action', object: string, p0: string, p1: string): void;
-        connect(signal: 'add-cursor', callback: (_source: this, object: CursorType) => void): number;
-        connect_after(signal: 'add-cursor', callback: (_source: this, object: CursorType) => void): number;
-        emit(signal: 'add-cursor', object: CursorType): void;
-        connect(signal: 'append-to-count', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'append-to-count', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'append-to-count', object: number): void;
-        connect(signal: 'begin-macro', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-macro', callback: (_source: this) => void): number;
-        emit(signal: 'begin-macro'): void;
-        connect(signal: 'begin-rename', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-rename', callback: (_source: this) => void): number;
-        emit(signal: 'begin-rename'): void;
-        connect(signal: 'begin-user-action', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-user-action', callback: (_source: this) => void): number;
-        emit(signal: 'begin-user-action'): void;
-        connect(signal: 'capture-modifier', callback: (_source: this) => void): number;
-        connect_after(signal: 'capture-modifier', callback: (_source: this) => void): number;
-        emit(signal: 'capture-modifier'): void;
-        connect(signal: 'clear-count', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-count', callback: (_source: this) => void): number;
-        emit(signal: 'clear-count'): void;
-        connect(signal: 'clear-modifier', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-modifier', callback: (_source: this) => void): number;
-        emit(signal: 'clear-modifier'): void;
-        connect(signal: 'clear-search', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-search', callback: (_source: this) => void): number;
-        emit(signal: 'clear-search'): void;
-        connect(signal: 'clear-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-selection', callback: (_source: this) => void): number;
-        emit(signal: 'clear-selection'): void;
-        connect(signal: 'clear-snippets', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-snippets', callback: (_source: this) => void): number;
-        emit(signal: 'clear-snippets'): void;
-        connect(signal: 'cycle-completion', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        connect_after(signal: 'cycle-completion', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        emit(signal: 'cycle-completion', object: Gtk.DirectionType): void;
-        connect(signal: 'decrease-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'decrease-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'decrease-font-size'): void;
-        connect(signal: 'delete-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'delete-selection', callback: (_source: this) => void): number;
-        emit(signal: 'delete-selection'): void;
-        connect(signal: 'duplicate-entire-line', callback: (_source: this) => void): number;
-        connect_after(signal: 'duplicate-entire-line', callback: (_source: this) => void): number;
-        emit(signal: 'duplicate-entire-line'): void;
-        connect(signal: 'end-macro', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-macro', callback: (_source: this) => void): number;
-        emit(signal: 'end-macro'): void;
-        connect(signal: 'end-user-action', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-user-action', callback: (_source: this) => void): number;
-        emit(signal: 'end-user-action'): void;
-        connect(signal: 'find-references', callback: (_source: this) => void): number;
-        connect_after(signal: 'find-references', callback: (_source: this) => void): number;
-        emit(signal: 'find-references'): void;
-        connect(signal: 'focus-location', callback: (_source: this, object: SourceLocation) => void): number;
-        connect_after(signal: 'focus-location', callback: (_source: this, object: SourceLocation) => void): number;
-        emit(signal: 'focus-location', object: SourceLocation): void;
-        connect(signal: 'format-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'format-selection', callback: (_source: this) => void): number;
-        emit(signal: 'format-selection'): void;
-        connect(signal: 'goto-definition', callback: (_source: this) => void): number;
-        connect_after(signal: 'goto-definition', callback: (_source: this) => void): number;
-        emit(signal: 'goto-definition'): void;
-        connect(signal: 'hide-completion', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-completion', callback: (_source: this) => void): number;
-        emit(signal: 'hide-completion'): void;
-        connect(signal: 'increase-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'increase-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'increase-font-size'): void;
-        connect(signal: 'indent-selection', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'indent-selection', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'indent-selection', object: number): void;
-        connect(signal: 'insert-modifier', callback: (_source: this, use_count: boolean) => void): number;
-        connect_after(signal: 'insert-modifier', callback: (_source: this, use_count: boolean) => void): number;
-        emit(signal: 'insert-modifier', use_count: boolean): void;
-        connect(signal: 'jump', callback: (_source: this, object: Gtk.TextIter) => void): number;
-        connect_after(signal: 'jump', callback: (_source: this, object: Gtk.TextIter) => void): number;
-        emit(signal: 'jump', object: Gtk.TextIter): void;
-        connect(signal: 'move-error', callback: (_source: this, dir: Gtk.DirectionType) => void): number;
-        connect_after(signal: 'move-error', callback: (_source: this, dir: Gtk.DirectionType) => void): number;
-        emit(signal: 'move-error', dir: Gtk.DirectionType): void;
-        connect(
-            signal: 'move-search',
-            callback: (
-                _source: this,
-                object: Gtk.DirectionType,
-                p0: boolean,
-                p1: boolean,
-                p2: boolean,
-                p3: boolean,
-                p4: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'move-search',
-            callback: (
-                _source: this,
-                object: Gtk.DirectionType,
-                p0: boolean,
-                p1: boolean,
-                p2: boolean,
-                p3: boolean,
-                p4: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'move-search',
-            object: Gtk.DirectionType,
-            p0: boolean,
-            p1: boolean,
-            p2: boolean,
-            p3: boolean,
-            p4: number,
-        ): void;
-        connect(
-            signal: 'movement',
-            callback: (_source: this, object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'movement',
-            callback: (_source: this, object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean) => void,
-        ): number;
-        emit(signal: 'movement', object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean): void;
-        connect(
-            signal: 'paste-clipboard-extended',
-            callback: (_source: this, object: boolean, p0: boolean, p1: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'paste-clipboard-extended',
-            callback: (_source: this, object: boolean, p0: boolean, p1: boolean) => void,
-        ): number;
-        emit(signal: 'paste-clipboard-extended', object: boolean, p0: boolean, p1: boolean): void;
-        connect(signal: 'pop-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'pop-selection', callback: (_source: this) => void): number;
-        emit(signal: 'pop-selection'): void;
-        connect(signal: 'pop-snippet', callback: (_source: this) => void): number;
-        connect_after(signal: 'pop-snippet', callback: (_source: this) => void): number;
-        emit(signal: 'pop-snippet'): void;
-        connect(signal: 'push-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'push-selection', callback: (_source: this) => void): number;
-        emit(signal: 'push-selection'): void;
-        connect(
-            signal: 'push-snippet',
-            callback: (_source: this, snippet: SourceSnippet, iter: Gtk.TextIter | null) => void,
-        ): number;
-        connect_after(
-            signal: 'push-snippet',
-            callback: (_source: this, snippet: SourceSnippet, iter: Gtk.TextIter | null) => void,
-        ): number;
-        emit(signal: 'push-snippet', snippet: SourceSnippet, iter?: Gtk.TextIter | null): void;
-        connect(signal: 'rebuild-highlight', callback: (_source: this) => void): number;
-        connect_after(signal: 'rebuild-highlight', callback: (_source: this) => void): number;
-        emit(signal: 'rebuild-highlight'): void;
-        connect(signal: 'reindent', callback: (_source: this) => void): number;
-        connect_after(signal: 'reindent', callback: (_source: this) => void): number;
-        emit(signal: 'reindent'): void;
-        connect(signal: 'remove-cursors', callback: (_source: this) => void): number;
-        connect_after(signal: 'remove-cursors', callback: (_source: this) => void): number;
-        emit(signal: 'remove-cursors'): void;
-        connect(signal: 'replay-macro', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'replay-macro', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'replay-macro', object: boolean): void;
-        connect(signal: 'request-documentation', callback: (_source: this) => void): number;
-        connect_after(signal: 'request-documentation', callback: (_source: this) => void): number;
-        emit(signal: 'request-documentation'): void;
-        connect(signal: 'reset-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'reset-font-size'): void;
-        connect(signal: 'restore-insert-mark', callback: (_source: this) => void): number;
-        connect_after(signal: 'restore-insert-mark', callback: (_source: this) => void): number;
-        emit(signal: 'restore-insert-mark'): void;
-        connect(signal: 'save-command', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-command', callback: (_source: this) => void): number;
-        emit(signal: 'save-command'): void;
-        connect(signal: 'save-insert-mark', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-insert-mark', callback: (_source: this) => void): number;
-        emit(signal: 'save-insert-mark'): void;
-        connect(signal: 'save-search-char', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-search-char', callback: (_source: this) => void): number;
-        emit(signal: 'save-search-char'): void;
-        connect(
-            signal: 'select-inner',
-            callback: (_source: this, object: string, p0: string, p1: boolean, p2: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'select-inner',
-            callback: (_source: this, object: string, p0: string, p1: boolean, p2: boolean) => void,
-        ): number;
-        emit(signal: 'select-inner', object: string, p0: string, p1: boolean, p2: boolean): void;
-        connect(signal: 'select-tag', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'select-tag', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'select-tag', object: boolean): void;
-        connect(signal: 'selection-theatric', callback: (_source: this, object: SourceViewTheatric) => void): number;
-        connect_after(
-            signal: 'selection-theatric',
-            callback: (_source: this, object: SourceViewTheatric) => void,
-        ): number;
-        emit(signal: 'selection-theatric', object: SourceViewTheatric): void;
-        connect(signal: 'set-mode', callback: (_source: this, object: string, p0: SourceViewModeType) => void): number;
-        connect_after(
-            signal: 'set-mode',
-            callback: (_source: this, object: string, p0: SourceViewModeType) => void,
-        ): number;
-        emit(signal: 'set-mode', object: string, p0: SourceViewModeType): void;
-        connect(signal: 'set-overwrite', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'set-overwrite', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'set-overwrite', object: boolean): void;
-        connect(signal: 'set-search-text', callback: (_source: this, object: string, p0: boolean) => void): number;
-        connect_after(
-            signal: 'set-search-text',
-            callback: (_source: this, object: string, p0: boolean) => void,
-        ): number;
-        emit(signal: 'set-search-text', object: string, p0: boolean): void;
-        connect(signal: 'sort', callback: (_source: this, ignore_case: boolean, reverse: boolean) => void): number;
-        connect_after(
-            signal: 'sort',
-            callback: (_source: this, ignore_case: boolean, reverse: boolean) => void,
-        ): number;
-        emit(signal: 'sort', ignore_case: boolean, reverse: boolean): void;
-        connect(signal: 'swap-selection-bounds', callback: (_source: this) => void): number;
-        connect_after(signal: 'swap-selection-bounds', callback: (_source: this) => void): number;
-        emit(signal: 'swap-selection-bounds'): void;
 
         // Virtual methods
 
@@ -45451,287 +45547,295 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Action {
-            (object: string, p0: string, p1: string): void;
+            (_source: SourceViewMode, object: string, p0: string, p1: string): void;
         }
 
         interface AddCursor {
-            (object: CursorType): void;
+            (_source: SourceViewMode, object: CursorType): void;
         }
 
         interface AppendToCount {
-            (object: number): void;
+            (_source: SourceViewMode, object: number): void;
         }
 
         interface Backspace {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface BeginMacro {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface BeginRename {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface BeginUserAction {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface CaptureModifier {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ChangeCase {
-            (object: GtkSource.ChangeCaseType): void;
+            (_source: SourceViewMode, object: GtkSource.ChangeCaseType): void;
         }
 
         interface ChangeNumber {
-            (object: number): void;
+            (_source: SourceViewMode, object: number): void;
         }
 
         interface ClearCount {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ClearModifier {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ClearSearch {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ClearSelection {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ClearSnippets {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface CopyClipboard {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface CutClipboard {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface CycleCompletion {
-            (object: Gtk.DirectionType): void;
+            (_source: SourceViewMode, object: Gtk.DirectionType): void;
         }
 
         interface DecreaseFontSize {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface DeleteFromCursor {
-            (object: Gtk.DeleteType, p0: number): void;
+            (_source: SourceViewMode, object: Gtk.DeleteType, p0: number): void;
         }
 
         interface DeleteSelection {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface DuplicateEntireLine {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface EndMacro {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface EndUserAction {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface FindReferences {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface FormatSelection {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface GotoDefinition {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface HideCompletion {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface IncreaseFontSize {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface IndentSelection {
-            (object: number): void;
+            (_source: SourceViewMode, object: number): void;
         }
 
         interface InsertAtCursor {
-            (object: string): void;
+            (_source: SourceViewMode, object: string): void;
         }
 
         interface InsertModifier {
-            (object: boolean): void;
+            (_source: SourceViewMode, object: boolean): void;
         }
 
         interface JoinLines {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface MoveCursor {
-            (object: Gtk.MovementStep, p0: number, p1: boolean): void;
+            (_source: SourceViewMode, object: Gtk.MovementStep, p0: number, p1: boolean): void;
         }
 
         interface MoveError {
-            (object: Gtk.DirectionType): void;
+            (_source: SourceViewMode, object: Gtk.DirectionType): void;
         }
 
         interface MoveLines {
-            (object: boolean, p0: number): void;
+            (_source: SourceViewMode, object: boolean, p0: number): void;
         }
 
         interface MoveSearch {
-            (object: Gtk.DirectionType, p0: boolean, p1: boolean, p2: boolean, p3: boolean, p4: number): void;
+            (
+                _source: SourceViewMode,
+                object: Gtk.DirectionType,
+                p0: boolean,
+                p1: boolean,
+                p2: boolean,
+                p3: boolean,
+                p4: number,
+            ): void;
         }
 
         interface MoveToMatchingBracket {
-            (object: boolean): void;
+            (_source: SourceViewMode, object: boolean): void;
         }
 
         interface MoveViewport {
-            (object: Gtk.ScrollStep, p0: number): void;
+            (_source: SourceViewMode, object: Gtk.ScrollStep, p0: number): void;
         }
 
         interface MoveWords {
-            (object: number): void;
+            (_source: SourceViewMode, object: number): void;
         }
 
         interface Movement {
-            (object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean): void;
+            (_source: SourceViewMode, object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean): void;
         }
 
         interface PasteClipboard {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface PasteClipboardExtended {
-            (object: boolean, p0: boolean, p1: boolean): void;
+            (_source: SourceViewMode, object: boolean, p0: boolean, p1: boolean): void;
         }
 
         interface PopSelection {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface PreeditChanged {
-            (object: string): void;
+            (_source: SourceViewMode, object: string): void;
         }
 
         interface PushSelection {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface RebuildHighlight {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface Redo {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface Reindent {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface RemoveCursors {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ReplayMacro {
-            (object: boolean): void;
+            (_source: SourceViewMode, object: boolean): void;
         }
 
         interface RequestDocumentation {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ResetFontSize {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface RestoreInsertMark {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface SaveCommand {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface SaveInsertMark {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface SaveSearchChar {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface SelectAll {
-            (object: boolean): void;
+            (_source: SourceViewMode, object: boolean): void;
         }
 
         interface SelectInner {
-            (object: string, p0: string, p1: boolean, p2: boolean): void;
+            (_source: SourceViewMode, object: string, p0: string, p1: boolean, p2: boolean): void;
         }
 
         interface SelectTag {
-            (object: boolean): void;
+            (_source: SourceViewMode, object: boolean): void;
         }
 
         interface SelectionTheatric {
-            (object: SourceViewTheatric): void;
+            (_source: SourceViewMode, object: SourceViewTheatric): void;
         }
 
         interface SetAnchor {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface SetMode {
-            (object: string, p0: SourceViewModeType): void;
+            (_source: SourceViewMode, object: string, p0: SourceViewModeType): void;
         }
 
         interface SetOverwrite {
-            (object: boolean): void;
+            (_source: SourceViewMode, object: boolean): void;
         }
 
         interface SetSearchText {
-            (object: string, p0: boolean): void;
+            (_source: SourceViewMode, object: string, p0: boolean): void;
         }
 
         interface ShowCompletion {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface Sort {
-            (object: boolean, p0: boolean): void;
+            (_source: SourceViewMode, object: boolean, p0: boolean): void;
         }
 
         interface SwapSelectionBounds {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ToggleCursorVisible {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface ToggleOverwrite {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         interface Undo {
-            (): void;
+            (_source: SourceViewMode): void;
         }
 
         // Signal signatures
@@ -45821,7 +45925,6 @@ export namespace Ide {
 
     class SourceViewMode extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SourceViewMode>;
-        declare static readonly __signalSignatures: SourceViewMode.SignalSignatures;
 
         // Properties
 
@@ -45847,300 +45950,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<SourceViewMode.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action', callback: (_source: this, object: string, p0: string, p1: string) => void): number;
-        connect_after(
-            signal: 'action',
-            callback: (_source: this, object: string, p0: string, p1: string) => void,
-        ): number;
-        emit(signal: 'action', object: string, p0: string, p1: string): void;
-        connect(signal: 'add-cursor', callback: (_source: this, object: CursorType) => void): number;
-        connect_after(signal: 'add-cursor', callback: (_source: this, object: CursorType) => void): number;
-        emit(signal: 'add-cursor', object: CursorType): void;
-        connect(signal: 'append-to-count', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'append-to-count', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'append-to-count', object: number): void;
-        connect(signal: 'backspace', callback: (_source: this) => void): number;
-        connect_after(signal: 'backspace', callback: (_source: this) => void): number;
-        emit(signal: 'backspace'): void;
-        connect(signal: 'begin-macro', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-macro', callback: (_source: this) => void): number;
-        emit(signal: 'begin-macro'): void;
-        connect(signal: 'begin-rename', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-rename', callback: (_source: this) => void): number;
-        emit(signal: 'begin-rename'): void;
-        connect(signal: 'begin-user-action', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-user-action', callback: (_source: this) => void): number;
-        emit(signal: 'begin-user-action'): void;
-        connect(signal: 'capture-modifier', callback: (_source: this) => void): number;
-        connect_after(signal: 'capture-modifier', callback: (_source: this) => void): number;
-        emit(signal: 'capture-modifier'): void;
-        connect(signal: 'change-case', callback: (_source: this, object: GtkSource.ChangeCaseType) => void): number;
-        connect_after(
-            signal: 'change-case',
-            callback: (_source: this, object: GtkSource.ChangeCaseType) => void,
-        ): number;
-        emit(signal: 'change-case', object: GtkSource.ChangeCaseType): void;
-        connect(signal: 'change-number', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'change-number', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'change-number', object: number): void;
-        connect(signal: 'clear-count', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-count', callback: (_source: this) => void): number;
-        emit(signal: 'clear-count'): void;
-        connect(signal: 'clear-modifier', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-modifier', callback: (_source: this) => void): number;
-        emit(signal: 'clear-modifier'): void;
-        connect(signal: 'clear-search', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-search', callback: (_source: this) => void): number;
-        emit(signal: 'clear-search'): void;
-        connect(signal: 'clear-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-selection', callback: (_source: this) => void): number;
-        emit(signal: 'clear-selection'): void;
-        connect(signal: 'clear-snippets', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-snippets', callback: (_source: this) => void): number;
-        emit(signal: 'clear-snippets'): void;
-        connect(signal: 'copy-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'copy-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'copy-clipboard'): void;
-        connect(signal: 'cut-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'cut-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'cut-clipboard'): void;
-        connect(signal: 'cycle-completion', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        connect_after(signal: 'cycle-completion', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        emit(signal: 'cycle-completion', object: Gtk.DirectionType): void;
-        connect(signal: 'decrease-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'decrease-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'decrease-font-size'): void;
-        connect(
-            signal: 'delete-from-cursor',
-            callback: (_source: this, object: Gtk.DeleteType, p0: number) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-from-cursor',
-            callback: (_source: this, object: Gtk.DeleteType, p0: number) => void,
-        ): number;
-        emit(signal: 'delete-from-cursor', object: Gtk.DeleteType, p0: number): void;
-        connect(signal: 'delete-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'delete-selection', callback: (_source: this) => void): number;
-        emit(signal: 'delete-selection'): void;
-        connect(signal: 'duplicate-entire-line', callback: (_source: this) => void): number;
-        connect_after(signal: 'duplicate-entire-line', callback: (_source: this) => void): number;
-        emit(signal: 'duplicate-entire-line'): void;
-        connect(signal: 'end-macro', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-macro', callback: (_source: this) => void): number;
-        emit(signal: 'end-macro'): void;
-        connect(signal: 'end-user-action', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-user-action', callback: (_source: this) => void): number;
-        emit(signal: 'end-user-action'): void;
-        connect(signal: 'find-references', callback: (_source: this) => void): number;
-        connect_after(signal: 'find-references', callback: (_source: this) => void): number;
-        emit(signal: 'find-references'): void;
-        connect(signal: 'format-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'format-selection', callback: (_source: this) => void): number;
-        emit(signal: 'format-selection'): void;
-        connect(signal: 'goto-definition', callback: (_source: this) => void): number;
-        connect_after(signal: 'goto-definition', callback: (_source: this) => void): number;
-        emit(signal: 'goto-definition'): void;
-        connect(signal: 'hide-completion', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-completion', callback: (_source: this) => void): number;
-        emit(signal: 'hide-completion'): void;
-        connect(signal: 'increase-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'increase-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'increase-font-size'): void;
-        connect(signal: 'indent-selection', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'indent-selection', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'indent-selection', object: number): void;
-        connect(signal: 'insert-at-cursor', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'insert-at-cursor', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'insert-at-cursor', object: string): void;
-        connect(signal: 'insert-modifier', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'insert-modifier', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'insert-modifier', object: boolean): void;
-        connect(signal: 'join-lines', callback: (_source: this) => void): number;
-        connect_after(signal: 'join-lines', callback: (_source: this) => void): number;
-        emit(signal: 'join-lines'): void;
-        connect(
-            signal: 'move-cursor',
-            callback: (_source: this, object: Gtk.MovementStep, p0: number, p1: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'move-cursor',
-            callback: (_source: this, object: Gtk.MovementStep, p0: number, p1: boolean) => void,
-        ): number;
-        emit(signal: 'move-cursor', object: Gtk.MovementStep, p0: number, p1: boolean): void;
-        connect(signal: 'move-error', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        connect_after(signal: 'move-error', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        emit(signal: 'move-error', object: Gtk.DirectionType): void;
-        connect(signal: 'move-lines', callback: (_source: this, object: boolean, p0: number) => void): number;
-        connect_after(signal: 'move-lines', callback: (_source: this, object: boolean, p0: number) => void): number;
-        emit(signal: 'move-lines', object: boolean, p0: number): void;
-        connect(
-            signal: 'move-search',
-            callback: (
-                _source: this,
-                object: Gtk.DirectionType,
-                p0: boolean,
-                p1: boolean,
-                p2: boolean,
-                p3: boolean,
-                p4: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'move-search',
-            callback: (
-                _source: this,
-                object: Gtk.DirectionType,
-                p0: boolean,
-                p1: boolean,
-                p2: boolean,
-                p3: boolean,
-                p4: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'move-search',
-            object: Gtk.DirectionType,
-            p0: boolean,
-            p1: boolean,
-            p2: boolean,
-            p3: boolean,
-            p4: number,
-        ): void;
-        connect(signal: 'move-to-matching-bracket', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'move-to-matching-bracket', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'move-to-matching-bracket', object: boolean): void;
-        connect(signal: 'move-viewport', callback: (_source: this, object: Gtk.ScrollStep, p0: number) => void): number;
-        connect_after(
-            signal: 'move-viewport',
-            callback: (_source: this, object: Gtk.ScrollStep, p0: number) => void,
-        ): number;
-        emit(signal: 'move-viewport', object: Gtk.ScrollStep, p0: number): void;
-        connect(signal: 'move-words', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'move-words', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'move-words', object: number): void;
-        connect(
-            signal: 'movement',
-            callback: (_source: this, object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'movement',
-            callback: (_source: this, object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean) => void,
-        ): number;
-        emit(signal: 'movement', object: SourceViewMovement, p0: boolean, p1: boolean, p2: boolean): void;
-        connect(signal: 'paste-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'paste-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'paste-clipboard'): void;
-        connect(
-            signal: 'paste-clipboard-extended',
-            callback: (_source: this, object: boolean, p0: boolean, p1: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'paste-clipboard-extended',
-            callback: (_source: this, object: boolean, p0: boolean, p1: boolean) => void,
-        ): number;
-        emit(signal: 'paste-clipboard-extended', object: boolean, p0: boolean, p1: boolean): void;
-        connect(signal: 'pop-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'pop-selection', callback: (_source: this) => void): number;
-        emit(signal: 'pop-selection'): void;
-        connect(signal: 'preedit-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'preedit-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'preedit-changed', object: string): void;
-        connect(signal: 'push-selection', callback: (_source: this) => void): number;
-        connect_after(signal: 'push-selection', callback: (_source: this) => void): number;
-        emit(signal: 'push-selection'): void;
-        connect(signal: 'rebuild-highlight', callback: (_source: this) => void): number;
-        connect_after(signal: 'rebuild-highlight', callback: (_source: this) => void): number;
-        emit(signal: 'rebuild-highlight'): void;
-        connect(signal: 'redo', callback: (_source: this) => void): number;
-        connect_after(signal: 'redo', callback: (_source: this) => void): number;
-        emit(signal: 'redo'): void;
-        connect(signal: 'reindent', callback: (_source: this) => void): number;
-        connect_after(signal: 'reindent', callback: (_source: this) => void): number;
-        emit(signal: 'reindent'): void;
-        connect(signal: 'remove-cursors', callback: (_source: this) => void): number;
-        connect_after(signal: 'remove-cursors', callback: (_source: this) => void): number;
-        emit(signal: 'remove-cursors'): void;
-        connect(signal: 'replay-macro', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'replay-macro', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'replay-macro', object: boolean): void;
-        connect(signal: 'request-documentation', callback: (_source: this) => void): number;
-        connect_after(signal: 'request-documentation', callback: (_source: this) => void): number;
-        emit(signal: 'request-documentation'): void;
-        connect(signal: 'reset-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'reset-font-size'): void;
-        connect(signal: 'restore-insert-mark', callback: (_source: this) => void): number;
-        connect_after(signal: 'restore-insert-mark', callback: (_source: this) => void): number;
-        emit(signal: 'restore-insert-mark'): void;
-        connect(signal: 'save-command', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-command', callback: (_source: this) => void): number;
-        emit(signal: 'save-command'): void;
-        connect(signal: 'save-insert-mark', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-insert-mark', callback: (_source: this) => void): number;
-        emit(signal: 'save-insert-mark'): void;
-        connect(signal: 'save-search-char', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-search-char', callback: (_source: this) => void): number;
-        emit(signal: 'save-search-char'): void;
-        connect(signal: 'select-all', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'select-all', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'select-all', object: boolean): void;
-        connect(
-            signal: 'select-inner',
-            callback: (_source: this, object: string, p0: string, p1: boolean, p2: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'select-inner',
-            callback: (_source: this, object: string, p0: string, p1: boolean, p2: boolean) => void,
-        ): number;
-        emit(signal: 'select-inner', object: string, p0: string, p1: boolean, p2: boolean): void;
-        connect(signal: 'select-tag', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'select-tag', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'select-tag', object: boolean): void;
-        connect(signal: 'selection-theatric', callback: (_source: this, object: SourceViewTheatric) => void): number;
-        connect_after(
-            signal: 'selection-theatric',
-            callback: (_source: this, object: SourceViewTheatric) => void,
-        ): number;
-        emit(signal: 'selection-theatric', object: SourceViewTheatric): void;
-        connect(signal: 'set-anchor', callback: (_source: this) => void): number;
-        connect_after(signal: 'set-anchor', callback: (_source: this) => void): number;
-        emit(signal: 'set-anchor'): void;
-        connect(signal: 'set-mode', callback: (_source: this, object: string, p0: SourceViewModeType) => void): number;
-        connect_after(
-            signal: 'set-mode',
-            callback: (_source: this, object: string, p0: SourceViewModeType) => void,
-        ): number;
-        emit(signal: 'set-mode', object: string, p0: SourceViewModeType): void;
-        connect(signal: 'set-overwrite', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'set-overwrite', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'set-overwrite', object: boolean): void;
-        connect(signal: 'set-search-text', callback: (_source: this, object: string, p0: boolean) => void): number;
-        connect_after(
-            signal: 'set-search-text',
-            callback: (_source: this, object: string, p0: boolean) => void,
-        ): number;
-        emit(signal: 'set-search-text', object: string, p0: boolean): void;
-        connect(signal: 'show-completion', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-completion', callback: (_source: this) => void): number;
-        emit(signal: 'show-completion'): void;
-        connect(signal: 'sort', callback: (_source: this, object: boolean, p0: boolean) => void): number;
-        connect_after(signal: 'sort', callback: (_source: this, object: boolean, p0: boolean) => void): number;
-        emit(signal: 'sort', object: boolean, p0: boolean): void;
-        connect(signal: 'swap-selection-bounds', callback: (_source: this) => void): number;
-        connect_after(signal: 'swap-selection-bounds', callback: (_source: this) => void): number;
-        emit(signal: 'swap-selection-bounds'): void;
-        connect(signal: 'toggle-cursor-visible', callback: (_source: this) => void): number;
-        connect_after(signal: 'toggle-cursor-visible', callback: (_source: this) => void): number;
-        emit(signal: 'toggle-cursor-visible'): void;
-        connect(signal: 'toggle-overwrite', callback: (_source: this) => void): number;
-        connect_after(signal: 'toggle-overwrite', callback: (_source: this) => void): number;
-        emit(signal: 'toggle-overwrite'): void;
-        connect(signal: 'undo', callback: (_source: this) => void): number;
-        connect_after(signal: 'undo', callback: (_source: this) => void): number;
-        emit(signal: 'undo'): void;
 
         // Methods
 
@@ -46782,7 +46591,6 @@ export namespace Ide {
 
     class SubprocessLauncher extends GObject.Object {
         static $gtype: GObject.GType<SubprocessLauncher>;
-        declare static readonly __signalSignatures: SubprocessLauncher.SignalSignatures;
 
         // Properties
 
@@ -46808,6 +46616,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](flags: Gio.SubprocessFlags): SubprocessLauncher;
+
+        // Signals
+
+        connect<K extends keyof SubprocessLauncher.SignalSignatures>(
+            signal: K,
+            callback: SubprocessLauncher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessLauncher.SignalSignatures>(
+            signal: K,
+            callback: SubprocessLauncher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessLauncher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessLauncher.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -46876,15 +46699,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Spawned {
-            (object: Subprocess): void;
+            (_source: SubprocessSupervisor, object: Subprocess): void;
         }
 
         interface Supervise {
-            (object: SubprocessLauncher): boolean;
+            (_source: SubprocessSupervisor, object: SubprocessLauncher): boolean;
         }
 
         interface Unsupervise {
-            (object: SubprocessLauncher): boolean;
+            (_source: SubprocessSupervisor, object: SubprocessLauncher): boolean;
         }
 
         // Signal signatures
@@ -46901,7 +46724,6 @@ export namespace Ide {
 
     class SubprocessSupervisor extends GObject.Object {
         static $gtype: GObject.GType<SubprocessSupervisor>;
-        declare static readonly __signalSignatures: SubprocessSupervisor.SignalSignatures;
 
         // Constructors
 
@@ -46925,18 +46747,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<SubprocessSupervisor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'spawned', callback: (_source: this, object: Subprocess) => void): number;
-        connect_after(signal: 'spawned', callback: (_source: this, object: Subprocess) => void): number;
-        emit(signal: 'spawned', object: Subprocess): void;
-        connect(signal: 'supervise', callback: (_source: this, object: SubprocessLauncher) => boolean): number;
-        connect_after(signal: 'supervise', callback: (_source: this, object: SubprocessLauncher) => boolean): number;
-        emit(signal: 'supervise', object: SubprocessLauncher): void;
-        connect(signal: 'unsupervise', callback: (_source: this, object: SubprocessLauncher) => boolean): number;
-        connect_after(signal: 'unsupervise', callback: (_source: this, object: SubprocessLauncher) => boolean): number;
-        emit(signal: 'unsupervise', object: SubprocessLauncher): void;
 
         // Virtual methods
 
@@ -46975,7 +46785,6 @@ export namespace Ide {
 
     class SymbolNode extends Object {
         static $gtype: GObject.GType<SymbolNode>;
-        declare static readonly __signalSignatures: SymbolNode.SignalSignatures;
 
         // Properties
 
@@ -46995,6 +46804,21 @@ export namespace Ide {
         constructor(properties?: Partial<SymbolNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SymbolNode.SignalSignatures>(
+            signal: K,
+            callback: SymbolNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SymbolNode.SignalSignatures>(
+            signal: K,
+            callback: SymbolNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SymbolNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SymbolNode.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -47041,7 +46865,6 @@ export namespace Ide {
 
     abstract class TemplateBase extends GObject.Object {
         static $gtype: GObject.GType<TemplateBase>;
-        declare static readonly __signalSignatures: TemplateBase.SignalSignatures;
 
         // Properties
 
@@ -47059,6 +46882,21 @@ export namespace Ide {
         constructor(properties?: Partial<TemplateBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TemplateBase.SignalSignatures>(
+            signal: K,
+            callback: TemplateBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TemplateBase.SignalSignatures>(
+            signal: K,
+            callback: TemplateBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TemplateBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TemplateBase.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -47099,7 +46937,6 @@ export namespace Ide {
 
     class Transfer extends GObject.Object {
         static $gtype: GObject.GType<Transfer>;
-        declare static readonly __signalSignatures: Transfer.SignalSignatures;
 
         // Properties
 
@@ -47121,6 +46958,18 @@ export namespace Ide {
         constructor(properties?: Partial<Transfer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Transfer.SignalSignatures>(signal: K, callback: Transfer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Transfer.SignalSignatures>(
+            signal: K,
+            callback: Transfer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transfer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transfer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -47174,7 +47023,6 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<TransferButton>;
-        declare static readonly __signalSignatures: TransferButton.SignalSignatures;
 
         // Properties
 
@@ -47190,6 +47038,21 @@ export namespace Ide {
         // Conflicted with Dazzle.ProgressButton.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TransferButton.SignalSignatures>(
+            signal: K,
+            callback: TransferButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransferButton.SignalSignatures>(
+            signal: K,
+            callback: TransferButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransferButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransferButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -51471,15 +51334,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface AllTransfersCompleted {
-            (): void;
+            (_source: TransferManager): void;
         }
 
         interface TransferCompleted {
-            (transfer: Transfer): void;
+            (_source: TransferManager, transfer: Transfer): void;
         }
 
         interface TransferFailed {
-            (transfer: Transfer, reason: GLib.Error): void;
+            (_source: TransferManager, transfer: Transfer, reason: GLib.Error): void;
         }
 
         // Signal signatures
@@ -51502,7 +51365,6 @@ export namespace Ide {
 
     class TransferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<TransferManager>;
-        declare static readonly __signalSignatures: TransferManager.SignalSignatures;
 
         // Properties
 
@@ -51540,24 +51402,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<TransferManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'all-transfers-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'all-transfers-completed', callback: (_source: this) => void): number;
-        emit(signal: 'all-transfers-completed'): void;
-        connect(signal: 'transfer-completed', callback: (_source: this, transfer: Transfer) => void): number;
-        connect_after(signal: 'transfer-completed', callback: (_source: this, transfer: Transfer) => void): number;
-        emit(signal: 'transfer-completed', transfer: Transfer): void;
-        connect(
-            signal: 'transfer-failed',
-            callback: (_source: this, transfer: Transfer, reason: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'transfer-failed',
-            callback: (_source: this, transfer: Transfer, reason: GLib.Error) => void,
-        ): number;
-        emit(signal: 'transfer-failed', transfer: Transfer, reason: GLib.Error): void;
 
         // Methods
 
@@ -52151,7 +51995,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: TransferRow): void;
         }
 
         // Signal signatures
@@ -52171,7 +52015,6 @@ export namespace Ide {
 
     class TransferRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TransferRow>;
-        declare static readonly __signalSignatures: TransferRow.SignalSignatures;
 
         // Properties
 
@@ -52198,12 +52041,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<TransferRow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
 
         // Methods
 
@@ -52671,7 +52508,6 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<TransfersButton>;
-        declare static readonly __signalSignatures: TransfersButton.SignalSignatures;
 
         // Constructors
 
@@ -52680,6 +52516,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): TransfersButton;
+
+        // Signals
+
+        connect<K extends keyof TransfersButton.SignalSignatures>(
+            signal: K,
+            callback: TransfersButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransfersButton.SignalSignatures>(
+            signal: K,
+            callback: TransfersButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransfersButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransfersButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -56977,7 +56828,6 @@ export namespace Ide {
 
     class TransfersProgressIcon extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TransfersProgressIcon>;
-        declare static readonly __signalSignatures: TransfersProgressIcon.SignalSignatures;
 
         // Properties
 
@@ -56991,6 +56841,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): TransfersProgressIcon;
+
+        // Signals
+
+        connect<K extends keyof TransfersProgressIcon.SignalSignatures>(
+            signal: K,
+            callback: TransfersProgressIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransfersProgressIcon.SignalSignatures>(
+            signal: K,
+            callback: TransfersProgressIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransfersProgressIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransfersProgressIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -57450,13 +57315,27 @@ export namespace Ide {
 
     class UnsavedFiles extends Object {
         static $gtype: GObject.GType<UnsavedFiles>;
-        declare static readonly __signalSignatures: UnsavedFiles.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UnsavedFiles.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnsavedFiles.SignalSignatures>(
+            signal: K,
+            callback: UnsavedFiles.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnsavedFiles.SignalSignatures>(
+            signal: K,
+            callback: UnsavedFiles.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnsavedFiles.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnsavedFiles.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -57504,15 +57383,15 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Action {
-            (object: string, p0: string, p1: string): void;
+            (_source: Workbench, object: string, p0: string, p1: string): void;
         }
 
         interface SetPerspective {
-            (name: string): void;
+            (_source: Workbench, name: string): void;
         }
 
         interface Unload {
-            (object: Context): void;
+            (_source: Workbench, object: Context): void;
         }
 
         // Signal signatures
@@ -57545,7 +57424,6 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Workbench>;
-        declare static readonly __signalSignatures: Workbench.SignalSignatures;
 
         // Properties
 
@@ -57623,21 +57501,6 @@ export namespace Ide {
             signal: K,
             ...args: Parameters<Workbench.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action', callback: (_source: this, object: string, p0: string, p1: string) => void): number;
-        connect_after(
-            signal: 'action',
-            callback: (_source: this, object: string, p0: string, p1: string) => void,
-        ): number;
-        emit(signal: 'action', object: string, p0: string, p1: string): void;
-        connect(signal: 'set-perspective', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'set-perspective', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'set-perspective', name: string): void;
-        connect(signal: 'unload', callback: (_source: this, object: Context) => void): number;
-        connect_after(signal: 'unload', callback: (_source: this, object: Context) => void): number;
-        emit(signal: 'unload', object: Context): void;
 
         // Methods
 
@@ -58749,7 +58612,6 @@ export namespace Ide {
 
     class WorkbenchHeaderBar extends Gtk.HeaderBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WorkbenchHeaderBar>;
-        declare static readonly __signalSignatures: WorkbenchHeaderBar.SignalSignatures;
 
         // Constructors
 
@@ -58758,6 +58620,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): WorkbenchHeaderBar;
+
+        // Signals
+
+        connect<K extends keyof WorkbenchHeaderBar.SignalSignatures>(
+            signal: K,
+            callback: WorkbenchHeaderBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkbenchHeaderBar.SignalSignatures>(
+            signal: K,
+            callback: WorkbenchHeaderBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkbenchHeaderBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkbenchHeaderBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -59227,7 +59104,6 @@ export namespace Ide {
 
     class WorkbenchMessage extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<WorkbenchMessage>;
-        declare static readonly __signalSignatures: WorkbenchMessage.SignalSignatures;
 
         // Properties
 
@@ -59245,6 +59121,21 @@ export namespace Ide {
         _init(...args: any[]): void;
 
         static ['new'](): WorkbenchMessage;
+
+        // Signals
+
+        connect<K extends keyof WorkbenchMessage.SignalSignatures>(
+            signal: K,
+            callback: WorkbenchMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkbenchMessage.SignalSignatures>(
+            signal: K,
+            callback: WorkbenchMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkbenchMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkbenchMessage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

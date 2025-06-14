@@ -93,7 +93,6 @@ export namespace Nautilus {
      */
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
-        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -150,6 +149,12 @@ export namespace Nautilus {
         _init(...args: any[]): void;
 
         static ['new'](name: string, attribute: string, label: string, description: string): Column;
+
+        // Signals
+
+        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
     }
 
     namespace Menu {
@@ -163,7 +168,6 @@ export namespace Nautilus {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
-        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -172,6 +176,12 @@ export namespace Nautilus {
         _init(...args: any[]): void;
 
         static ['new'](): Menu;
+
+        // Signals
+
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -183,7 +193,7 @@ export namespace Nautilus {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: MenuItem): void;
         }
 
         // Signal signatures
@@ -206,7 +216,6 @@ export namespace Nautilus {
 
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
-        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -243,12 +252,6 @@ export namespace Nautilus {
             signal: K,
             ...args: Parameters<MenuItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
 
         // Static methods
 
@@ -288,7 +291,6 @@ export namespace Nautilus {
 
     class PropertiesItem extends GObject.Object {
         static $gtype: GObject.GType<PropertiesItem>;
-        declare static readonly __signalSignatures: PropertiesItem.SignalSignatures;
 
         // Properties
 
@@ -302,6 +304,21 @@ export namespace Nautilus {
         _init(...args: any[]): void;
 
         static ['new'](name: string, value: string): PropertiesItem;
+
+        // Signals
+
+        connect<K extends keyof PropertiesItem.SignalSignatures>(
+            signal: K,
+            callback: PropertiesItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertiesItem.SignalSignatures>(
+            signal: K,
+            callback: PropertiesItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertiesItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertiesItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -323,7 +340,6 @@ export namespace Nautilus {
 
     class PropertiesModel extends GObject.Object {
         static $gtype: GObject.GType<PropertiesModel>;
-        declare static readonly __signalSignatures: PropertiesModel.SignalSignatures;
 
         // Properties
 
@@ -338,6 +354,21 @@ export namespace Nautilus {
         _init(...args: any[]): void;
 
         static ['new'](title: string, model: Gio.ListModel): PropertiesModel;
+
+        // Signals
+
+        connect<K extends keyof PropertiesModel.SignalSignatures>(
+            signal: K,
+            callback: PropertiesModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertiesModel.SignalSignatures>(
+            signal: K,
+            callback: PropertiesModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertiesModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertiesModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

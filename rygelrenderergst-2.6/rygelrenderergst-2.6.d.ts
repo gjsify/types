@@ -57,7 +57,6 @@ export namespace RygelRendererGst {
 
     class PlaybinPlayer extends GObject.Object implements RygelRenderer.MediaPlayer {
         static $gtype: GObject.GType<PlaybinPlayer>;
-        declare static readonly __signalSignatures: PlaybinPlayer.SignalSignatures;
 
         // Properties
 
@@ -71,6 +70,21 @@ export namespace RygelRendererGst {
         constructor(properties?: Partial<PlaybinPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlaybinPlayer.SignalSignatures>(
+            signal: K,
+            callback: PlaybinPlayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaybinPlayer.SignalSignatures>(
+            signal: K,
+            callback: PlaybinPlayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaybinPlayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaybinPlayer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -631,7 +645,6 @@ export namespace RygelRendererGst {
 
     class PlaybinRenderer extends RygelRenderer.MediaRenderer {
         static $gtype: GObject.GType<PlaybinRenderer>;
-        declare static readonly __signalSignatures: PlaybinRenderer.SignalSignatures;
 
         // Constructors
 
@@ -640,6 +653,21 @@ export namespace RygelRendererGst {
         _init(...args: any[]): void;
 
         static ['new'](title: string): PlaybinRenderer;
+
+        // Signals
+
+        connect<K extends keyof PlaybinRenderer.SignalSignatures>(
+            signal: K,
+            callback: PlaybinRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaybinRenderer.SignalSignatures>(
+            signal: K,
+            callback: PlaybinRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaybinRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaybinRenderer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

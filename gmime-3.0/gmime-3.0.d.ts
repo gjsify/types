@@ -1712,7 +1712,6 @@ export namespace GMime {
      */
     class ApplicationPkcs7Mime extends Part {
         static $gtype: GObject.GType<ApplicationPkcs7Mime>;
-        declare static readonly __signalSignatures: ApplicationPkcs7Mime.SignalSignatures;
 
         // Fields
 
@@ -1729,6 +1728,21 @@ export namespace GMime {
         // Conflicted with GMime.Part.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
+            signal: K,
+            callback: ApplicationPkcs7Mime.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
+            signal: K,
+            callback: ApplicationPkcs7Mime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationPkcs7Mime.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1799,7 +1813,6 @@ export namespace GMime {
      */
     class AutocryptHeader extends GObject.Object {
         static $gtype: GObject.GType<AutocryptHeader>;
-        declare static readonly __signalSignatures: AutocryptHeader.SignalSignatures;
 
         // Fields
 
@@ -1816,6 +1829,21 @@ export namespace GMime {
         static ['new'](): AutocryptHeader;
 
         static new_from_string(string: string): AutocryptHeader;
+
+        // Signals
+
+        connect<K extends keyof AutocryptHeader.SignalSignatures>(
+            signal: K,
+            callback: AutocryptHeader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AutocryptHeader.SignalSignatures>(
+            signal: K,
+            callback: AutocryptHeader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AutocryptHeader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AutocryptHeader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1925,7 +1953,6 @@ export namespace GMime {
      */
     class AutocryptHeaderList extends GObject.Object {
         static $gtype: GObject.GType<AutocryptHeaderList>;
-        declare static readonly __signalSignatures: AutocryptHeaderList.SignalSignatures;
 
         // Fields
 
@@ -1938,6 +1965,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): AutocryptHeaderList;
+
+        // Signals
+
+        connect<K extends keyof AutocryptHeaderList.SignalSignatures>(
+            signal: K,
+            callback: AutocryptHeaderList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AutocryptHeaderList.SignalSignatures>(
+            signal: K,
+            callback: AutocryptHeaderList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AutocryptHeaderList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AutocryptHeaderList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1990,7 +2032,6 @@ export namespace GMime {
      */
     class Certificate extends GObject.Object {
         static $gtype: GObject.GType<Certificate>;
-        declare static readonly __signalSignatures: Certificate.SignalSignatures;
 
         // Fields
 
@@ -2016,6 +2057,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): Certificate;
+
+        // Signals
+
+        connect<K extends keyof Certificate.SignalSignatures>(
+            signal: K,
+            callback: Certificate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Certificate.SignalSignatures>(
+            signal: K,
+            callback: Certificate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Certificate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Certificate.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2200,7 +2256,6 @@ export namespace GMime {
      */
     class CertificateList extends GObject.Object {
         static $gtype: GObject.GType<CertificateList>;
-        declare static readonly __signalSignatures: CertificateList.SignalSignatures;
 
         // Fields
 
@@ -2214,6 +2269,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): CertificateList;
+
+        // Signals
+
+        connect<K extends keyof CertificateList.SignalSignatures>(
+            signal: K,
+            callback: CertificateList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateList.SignalSignatures>(
+            signal: K,
+            callback: CertificateList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2294,7 +2364,6 @@ export namespace GMime {
      */
     class ContentDisposition extends GObject.Object {
         static $gtype: GObject.GType<ContentDisposition>;
-        declare static readonly __signalSignatures: ContentDisposition.SignalSignatures;
 
         // Fields
 
@@ -2309,6 +2378,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): ContentDisposition;
+
+        // Signals
+
+        connect<K extends keyof ContentDisposition.SignalSignatures>(
+            signal: K,
+            callback: ContentDisposition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContentDisposition.SignalSignatures>(
+            signal: K,
+            callback: ContentDisposition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContentDisposition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContentDisposition.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2381,7 +2465,6 @@ export namespace GMime {
      */
     class ContentType extends GObject.Object {
         static $gtype: GObject.GType<ContentType>;
-        declare static readonly __signalSignatures: ContentType.SignalSignatures;
 
         // Fields
 
@@ -2397,6 +2480,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](type: string, subtype: string): ContentType;
+
+        // Signals
+
+        connect<K extends keyof ContentType.SignalSignatures>(
+            signal: K,
+            callback: ContentType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContentType.SignalSignatures>(
+            signal: K,
+            callback: ContentType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContentType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContentType.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2485,7 +2583,6 @@ export namespace GMime {
      */
     class CryptoContext extends GObject.Object {
         static $gtype: GObject.GType<CryptoContext>;
-        declare static readonly __signalSignatures: CryptoContext.SignalSignatures;
 
         // Fields
 
@@ -2499,6 +2596,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](protocol: string): CryptoContext;
+
+        // Signals
+
+        connect<K extends keyof CryptoContext.SignalSignatures>(
+            signal: K,
+            callback: CryptoContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CryptoContext.SignalSignatures>(
+            signal: K,
+            callback: CryptoContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CryptoContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CryptoContext.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2751,7 +2863,6 @@ export namespace GMime {
      */
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
-        declare static readonly __signalSignatures: DataWrapper.SignalSignatures;
 
         // Fields
 
@@ -2768,6 +2879,21 @@ export namespace GMime {
         static ['new'](): DataWrapper;
 
         static new_with_stream(stream: Stream, encoding: ContentEncoding): DataWrapper;
+
+        // Signals
+
+        connect<K extends keyof DataWrapper.SignalSignatures>(
+            signal: K,
+            callback: DataWrapper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataWrapper.SignalSignatures>(
+            signal: K,
+            callback: DataWrapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataWrapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataWrapper.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2826,7 +2952,6 @@ export namespace GMime {
      */
     class DecryptResult extends GObject.Object {
         static $gtype: GObject.GType<DecryptResult>;
-        declare static readonly __signalSignatures: DecryptResult.SignalSignatures;
 
         // Fields
 
@@ -2844,6 +2969,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): DecryptResult;
+
+        // Signals
+
+        connect<K extends keyof DecryptResult.SignalSignatures>(
+            signal: K,
+            callback: DecryptResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DecryptResult.SignalSignatures>(
+            signal: K,
+            callback: DecryptResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DecryptResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DecryptResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2913,7 +3053,6 @@ export namespace GMime {
      */
     abstract class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
-        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Fields
 
@@ -2933,6 +3072,12 @@ export namespace GMime {
         constructor(properties?: Partial<Filter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -3008,7 +3153,6 @@ export namespace GMime {
      */
     class FilterBasic extends Filter {
         static $gtype: GObject.GType<FilterBasic>;
-        declare static readonly __signalSignatures: FilterBasic.SignalSignatures;
 
         // Fields
 
@@ -3021,6 +3165,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](encoding: ContentEncoding, encode: boolean): FilterBasic;
+
+        // Signals
+
+        connect<K extends keyof FilterBasic.SignalSignatures>(
+            signal: K,
+            callback: FilterBasic.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterBasic.SignalSignatures>(
+            signal: K,
+            callback: FilterBasic.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterBasic.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterBasic.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterBest {
@@ -3038,7 +3197,6 @@ export namespace GMime {
      */
     class FilterBest extends Filter {
         static $gtype: GObject.GType<FilterBest>;
-        declare static readonly __signalSignatures: FilterBest.SignalSignatures;
 
         // Fields
 
@@ -3062,6 +3220,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](flags: FilterBestFlags): FilterBest;
+
+        // Signals
+
+        connect<K extends keyof FilterBest.SignalSignatures>(
+            signal: K,
+            callback: FilterBest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterBest.SignalSignatures>(
+            signal: K,
+            callback: FilterBest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterBest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterBest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3095,7 +3268,6 @@ export namespace GMime {
      */
     class FilterCharset extends Filter {
         static $gtype: GObject.GType<FilterCharset>;
-        declare static readonly __signalSignatures: FilterCharset.SignalSignatures;
 
         // Fields
 
@@ -3111,6 +3283,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](from_charset: string, to_charset: string): FilterCharset;
+
+        // Signals
+
+        connect<K extends keyof FilterCharset.SignalSignatures>(
+            signal: K,
+            callback: FilterCharset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterCharset.SignalSignatures>(
+            signal: K,
+            callback: FilterCharset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterCharset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterCharset.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterChecksum {
@@ -3127,7 +3314,6 @@ export namespace GMime {
      */
     class FilterChecksum extends Filter {
         static $gtype: GObject.GType<FilterChecksum>;
-        declare static readonly __signalSignatures: FilterChecksum.SignalSignatures;
 
         // Fields
 
@@ -3140,6 +3326,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](type: GLib.ChecksumType): FilterChecksum;
+
+        // Signals
+
+        connect<K extends keyof FilterChecksum.SignalSignatures>(
+            signal: K,
+            callback: FilterChecksum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterChecksum.SignalSignatures>(
+            signal: K,
+            callback: FilterChecksum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterChecksum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterChecksum.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3170,7 +3371,6 @@ export namespace GMime {
      */
     class FilterDos2Unix extends Filter {
         static $gtype: GObject.GType<FilterDos2Unix>;
-        declare static readonly __signalSignatures: FilterDos2Unix.SignalSignatures;
 
         // Fields
 
@@ -3185,6 +3385,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](ensure_newline: boolean): FilterDos2Unix;
+
+        // Signals
+
+        connect<K extends keyof FilterDos2Unix.SignalSignatures>(
+            signal: K,
+            callback: FilterDos2Unix.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterDos2Unix.SignalSignatures>(
+            signal: K,
+            callback: FilterDos2Unix.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterDos2Unix.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterDos2Unix.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterEnriched {
@@ -3202,7 +3417,6 @@ export namespace GMime {
      */
     class FilterEnriched extends Filter {
         static $gtype: GObject.GType<FilterEnriched>;
-        declare static readonly __signalSignatures: FilterEnriched.SignalSignatures;
 
         // Fields
 
@@ -3217,6 +3431,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](flags: number): FilterEnriched;
+
+        // Signals
+
+        connect<K extends keyof FilterEnriched.SignalSignatures>(
+            signal: K,
+            callback: FilterEnriched.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterEnriched.SignalSignatures>(
+            signal: K,
+            callback: FilterEnriched.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterEnriched.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterEnriched.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterFrom {
@@ -3233,7 +3462,6 @@ export namespace GMime {
      */
     class FilterFrom extends Filter {
         static $gtype: GObject.GType<FilterFrom>;
-        declare static readonly __signalSignatures: FilterFrom.SignalSignatures;
 
         // Fields
 
@@ -3248,6 +3476,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](mode: FilterFromMode): FilterFrom;
+
+        // Signals
+
+        connect<K extends keyof FilterFrom.SignalSignatures>(
+            signal: K,
+            callback: FilterFrom.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterFrom.SignalSignatures>(
+            signal: K,
+            callback: FilterFrom.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterFrom.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterFrom.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterGZip {
@@ -3264,7 +3507,6 @@ export namespace GMime {
      */
     class FilterGZip extends Filter {
         static $gtype: GObject.GType<FilterGZip>;
-        declare static readonly __signalSignatures: FilterGZip.SignalSignatures;
 
         // Fields
 
@@ -3280,6 +3522,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](mode: FilterGZipMode, level: number): FilterGZip;
+
+        // Signals
+
+        connect<K extends keyof FilterGZip.SignalSignatures>(
+            signal: K,
+            callback: FilterGZip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterGZip.SignalSignatures>(
+            signal: K,
+            callback: FilterGZip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterGZip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterGZip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3319,7 +3576,6 @@ export namespace GMime {
      */
     class FilterHTML extends Filter {
         static $gtype: GObject.GType<FilterHTML>;
-        declare static readonly __signalSignatures: FilterHTML.SignalSignatures;
 
         // Fields
 
@@ -3338,6 +3594,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](flags: number, colour: number): FilterHTML;
+
+        // Signals
+
+        connect<K extends keyof FilterHTML.SignalSignatures>(
+            signal: K,
+            callback: FilterHTML.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterHTML.SignalSignatures>(
+            signal: K,
+            callback: FilterHTML.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterHTML.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterHTML.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterOpenPGP {
@@ -3354,7 +3625,6 @@ export namespace GMime {
      */
     class FilterOpenPGP extends Filter {
         static $gtype: GObject.GType<FilterOpenPGP>;
-        declare static readonly __signalSignatures: FilterOpenPGP.SignalSignatures;
 
         // Fields
 
@@ -3367,6 +3637,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): FilterOpenPGP;
+
+        // Signals
+
+        connect<K extends keyof FilterOpenPGP.SignalSignatures>(
+            signal: K,
+            callback: FilterOpenPGP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterOpenPGP.SignalSignatures>(
+            signal: K,
+            callback: FilterOpenPGP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterOpenPGP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterOpenPGP.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3401,7 +3686,6 @@ export namespace GMime {
      */
     class FilterSmtpData extends Filter {
         static $gtype: GObject.GType<FilterSmtpData>;
-        declare static readonly __signalSignatures: FilterSmtpData.SignalSignatures;
 
         // Fields
 
@@ -3415,6 +3699,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): FilterSmtpData;
+
+        // Signals
+
+        connect<K extends keyof FilterSmtpData.SignalSignatures>(
+            signal: K,
+            callback: FilterSmtpData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterSmtpData.SignalSignatures>(
+            signal: K,
+            callback: FilterSmtpData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterSmtpData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterSmtpData.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterStrip {
@@ -3431,7 +3730,6 @@ export namespace GMime {
      */
     class FilterStrip extends Filter {
         static $gtype: GObject.GType<FilterStrip>;
-        declare static readonly __signalSignatures: FilterStrip.SignalSignatures;
 
         // Fields
 
@@ -3444,6 +3742,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): FilterStrip;
+
+        // Signals
+
+        connect<K extends keyof FilterStrip.SignalSignatures>(
+            signal: K,
+            callback: FilterStrip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterStrip.SignalSignatures>(
+            signal: K,
+            callback: FilterStrip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterStrip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterStrip.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterUnix2Dos {
@@ -3460,7 +3773,6 @@ export namespace GMime {
      */
     class FilterUnix2Dos extends Filter {
         static $gtype: GObject.GType<FilterUnix2Dos>;
-        declare static readonly __signalSignatures: FilterUnix2Dos.SignalSignatures;
 
         // Fields
 
@@ -3475,6 +3787,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](ensure_newline: boolean): FilterUnix2Dos;
+
+        // Signals
+
+        connect<K extends keyof FilterUnix2Dos.SignalSignatures>(
+            signal: K,
+            callback: FilterUnix2Dos.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterUnix2Dos.SignalSignatures>(
+            signal: K,
+            callback: FilterUnix2Dos.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterUnix2Dos.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterUnix2Dos.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FilterWindows {
@@ -3493,7 +3820,6 @@ export namespace GMime {
      */
     class FilterWindows extends Filter {
         static $gtype: GObject.GType<FilterWindows>;
-        declare static readonly __signalSignatures: FilterWindows.SignalSignatures;
 
         // Fields
 
@@ -3508,6 +3834,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](claimed_charset: string): FilterWindows;
+
+        // Signals
+
+        connect<K extends keyof FilterWindows.SignalSignatures>(
+            signal: K,
+            callback: FilterWindows.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterWindows.SignalSignatures>(
+            signal: K,
+            callback: FilterWindows.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterWindows.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterWindows.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3538,7 +3879,6 @@ export namespace GMime {
      */
     class FilterYenc extends Filter {
         static $gtype: GObject.GType<FilterYenc>;
-        declare static readonly __signalSignatures: FilterYenc.SignalSignatures;
 
         // Fields
 
@@ -3556,6 +3896,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](encode: boolean): FilterYenc;
+
+        // Signals
+
+        connect<K extends keyof FilterYenc.SignalSignatures>(
+            signal: K,
+            callback: FilterYenc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterYenc.SignalSignatures>(
+            signal: K,
+            callback: FilterYenc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterYenc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterYenc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3595,7 +3950,6 @@ export namespace GMime {
      */
     class GpgContext extends CryptoContext {
         static $gtype: GObject.GType<GpgContext>;
-        declare static readonly __signalSignatures: GpgContext.SignalSignatures;
 
         // Constructors
 
@@ -3604,6 +3958,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): GpgContext;
+
+        // Signals
+
+        connect<K extends keyof GpgContext.SignalSignatures>(
+            signal: K,
+            callback: GpgContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GpgContext.SignalSignatures>(
+            signal: K,
+            callback: GpgContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GpgContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GpgContext.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Header {
@@ -3620,13 +3989,18 @@ export namespace GMime {
      */
     class Header extends GObject.Object {
         static $gtype: GObject.GType<Header>;
-        declare static readonly __signalSignatures: Header.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Header.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Header.SignalSignatures>(signal: K, callback: Header.SignalSignatures[K]): number;
+        connect_after<K extends keyof Header.SignalSignatures>(signal: K, callback: Header.SignalSignatures[K]): number;
+        emit<K extends keyof Header.SignalSignatures>(signal: K, ...args: Parameters<Header.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3757,7 +4131,6 @@ export namespace GMime {
      */
     class HeaderList extends GObject.Object {
         static $gtype: GObject.GType<HeaderList>;
-        declare static readonly __signalSignatures: HeaderList.SignalSignatures;
 
         // Fields
 
@@ -3770,6 +4143,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](options?: ParserOptions | null): HeaderList;
+
+        // Signals
+
+        connect<K extends keyof HeaderList.SignalSignatures>(
+            signal: K,
+            callback: HeaderList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderList.SignalSignatures>(
+            signal: K,
+            callback: HeaderList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3875,7 +4263,6 @@ export namespace GMime {
      */
     abstract class InternetAddress extends GObject.Object {
         static $gtype: GObject.GType<InternetAddress>;
-        declare static readonly __signalSignatures: InternetAddress.SignalSignatures;
 
         // Fields
 
@@ -3888,6 +4275,21 @@ export namespace GMime {
         constructor(properties?: Partial<InternetAddress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InternetAddress.SignalSignatures>(
+            signal: K,
+            callback: InternetAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternetAddress.SignalSignatures>(
+            signal: K,
+            callback: InternetAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternetAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternetAddress.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3941,7 +4343,6 @@ export namespace GMime {
      */
     class InternetAddressGroup extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressGroup>;
-        declare static readonly __signalSignatures: InternetAddressGroup.SignalSignatures;
 
         // Fields
 
@@ -3955,6 +4356,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](name: string): InternetAddressGroup;
+
+        // Signals
+
+        connect<K extends keyof InternetAddressGroup.SignalSignatures>(
+            signal: K,
+            callback: InternetAddressGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternetAddressGroup.SignalSignatures>(
+            signal: K,
+            callback: InternetAddressGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternetAddressGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternetAddressGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3991,7 +4407,6 @@ export namespace GMime {
      */
     class InternetAddressList extends GObject.Object {
         static $gtype: GObject.GType<InternetAddressList>;
-        declare static readonly __signalSignatures: InternetAddressList.SignalSignatures;
 
         // Fields
 
@@ -4005,6 +4420,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): InternetAddressList;
+
+        // Signals
+
+        connect<K extends keyof InternetAddressList.SignalSignatures>(
+            signal: K,
+            callback: InternetAddressList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternetAddressList.SignalSignatures>(
+            signal: K,
+            callback: InternetAddressList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternetAddressList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternetAddressList.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4125,7 +4555,6 @@ export namespace GMime {
      */
     class InternetAddressMailbox extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressMailbox>;
-        declare static readonly __signalSignatures: InternetAddressMailbox.SignalSignatures;
 
         // Fields
 
@@ -4141,6 +4570,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](name: string, addr: string): InternetAddressMailbox;
+
+        // Signals
+
+        connect<K extends keyof InternetAddressMailbox.SignalSignatures>(
+            signal: K,
+            callback: InternetAddressMailbox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternetAddressMailbox.SignalSignatures>(
+            signal: K,
+            callback: InternetAddressMailbox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternetAddressMailbox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternetAddressMailbox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4175,7 +4619,6 @@ export namespace GMime {
      */
     class Message extends Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Fields
 
@@ -4195,6 +4638,18 @@ export namespace GMime {
         // Conflicted with GMime.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4431,7 +4886,6 @@ export namespace GMime {
      */
     class MessagePart extends Object {
         static $gtype: GObject.GType<MessagePart>;
-        declare static readonly __signalSignatures: MessagePart.SignalSignatures;
 
         // Fields
 
@@ -4450,6 +4904,21 @@ export namespace GMime {
         static ['new'](...args: never[]): any;
 
         static new_with_message(subtype: string, message: Message): MessagePart;
+
+        // Signals
+
+        connect<K extends keyof MessagePart.SignalSignatures>(
+            signal: K,
+            callback: MessagePart.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MessagePart.SignalSignatures>(
+            signal: K,
+            callback: MessagePart.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessagePart.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessagePart.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4479,7 +4948,6 @@ export namespace GMime {
      */
     class MessagePartial extends Part {
         static $gtype: GObject.GType<MessagePartial>;
-        declare static readonly __signalSignatures: MessagePartial.SignalSignatures;
 
         // Fields
 
@@ -4498,6 +4966,21 @@ export namespace GMime {
         // Conflicted with GMime.Part.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MessagePartial.SignalSignatures>(
+            signal: K,
+            callback: MessagePartial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MessagePartial.SignalSignatures>(
+            signal: K,
+            callback: MessagePartial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessagePartial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessagePartial.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4542,7 +5025,6 @@ export namespace GMime {
      */
     class Multipart extends Object {
         static $gtype: GObject.GType<Multipart>;
-        declare static readonly __signalSignatures: Multipart.SignalSignatures;
 
         // Fields
 
@@ -4561,6 +5043,18 @@ export namespace GMime {
         static ['new'](): Multipart;
 
         static new_with_subtype(subtype: string): Multipart;
+
+        // Signals
+
+        connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: Multipart.SignalSignatures[K]): number;
+        connect_after<K extends keyof Multipart.SignalSignatures>(
+            signal: K,
+            callback: Multipart.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Multipart.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Multipart.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4742,7 +5236,6 @@ export namespace GMime {
      */
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
-        declare static readonly __signalSignatures: MultipartEncrypted.SignalSignatures;
 
         // Fields
 
@@ -4755,6 +5248,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): MultipartEncrypted;
+
+        // Signals
+
+        connect<K extends keyof MultipartEncrypted.SignalSignatures>(
+            signal: K,
+            callback: MultipartEncrypted.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
+            signal: K,
+            callback: MultipartEncrypted.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultipartEncrypted.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultipartEncrypted.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4814,7 +5322,6 @@ export namespace GMime {
      */
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
-        declare static readonly __signalSignatures: MultipartSigned.SignalSignatures;
 
         // Fields
 
@@ -4827,6 +5334,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): MultipartSigned;
+
+        // Signals
+
+        connect<K extends keyof MultipartSigned.SignalSignatures>(
+            signal: K,
+            callback: MultipartSigned.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultipartSigned.SignalSignatures>(
+            signal: K,
+            callback: MultipartSigned.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultipartSigned.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultipartSigned.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4865,7 +5387,6 @@ export namespace GMime {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Fields
 
@@ -4884,6 +5405,12 @@ export namespace GMime {
         static ['new'](options: ParserOptions | null, content_type: ContentType): Object;
 
         static new_type(options: ParserOptions | null, type: string, subtype: string): Object;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -5138,7 +5665,6 @@ export namespace GMime {
      */
     class Param extends GObject.Object {
         static $gtype: GObject.GType<Param>;
-        declare static readonly __signalSignatures: Param.SignalSignatures;
 
         // Fields
 
@@ -5154,6 +5680,12 @@ export namespace GMime {
         constructor(properties?: Partial<Param.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Param.SignalSignatures>(signal: K, callback: Param.SignalSignatures[K]): number;
+        connect_after<K extends keyof Param.SignalSignatures>(signal: K, callback: Param.SignalSignatures[K]): number;
+        emit<K extends keyof Param.SignalSignatures>(signal: K, ...args: Parameters<Param.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5218,7 +5750,6 @@ export namespace GMime {
      */
     class ParamList extends GObject.Object {
         static $gtype: GObject.GType<ParamList>;
-        declare static readonly __signalSignatures: ParamList.SignalSignatures;
 
         // Constructors
 
@@ -5227,6 +5758,18 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): ParamList;
+
+        // Signals
+
+        connect<K extends keyof ParamList.SignalSignatures>(signal: K, callback: ParamList.SignalSignatures[K]): number;
+        connect_after<K extends keyof ParamList.SignalSignatures>(
+            signal: K,
+            callback: ParamList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamList.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5300,7 +5843,6 @@ export namespace GMime {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Fields
 
@@ -5316,6 +5858,12 @@ export namespace GMime {
         static ['new'](): Parser;
 
         static new_with_stream(stream: Stream): Parser;
+
+        // Signals
+
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5451,7 +5999,6 @@ export namespace GMime {
      */
     class Part extends Object {
         static $gtype: GObject.GType<Part>;
-        declare static readonly __signalSignatures: Part.SignalSignatures;
 
         // Fields
 
@@ -5472,6 +6019,12 @@ export namespace GMime {
         static ['new'](): Part;
 
         static new_with_type(type: string, subtype: string): Part;
+
+        // Signals
+
+        connect<K extends keyof Part.SignalSignatures>(signal: K, callback: Part.SignalSignatures[K]): number;
+        connect_after<K extends keyof Part.SignalSignatures>(signal: K, callback: Part.SignalSignatures[K]): number;
+        emit<K extends keyof Part.SignalSignatures>(signal: K, ...args: Parameters<Part.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -5645,7 +6198,6 @@ export namespace GMime {
      */
     class Pkcs7Context extends CryptoContext {
         static $gtype: GObject.GType<Pkcs7Context>;
-        declare static readonly __signalSignatures: Pkcs7Context.SignalSignatures;
 
         // Constructors
 
@@ -5654,6 +6206,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): Pkcs7Context;
+
+        // Signals
+
+        connect<K extends keyof Pkcs7Context.SignalSignatures>(
+            signal: K,
+            callback: Pkcs7Context.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Pkcs7Context.SignalSignatures>(
+            signal: K,
+            callback: Pkcs7Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Pkcs7Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Pkcs7Context.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Signature {
@@ -5670,7 +6237,6 @@ export namespace GMime {
      */
     class Signature extends GObject.Object {
         static $gtype: GObject.GType<Signature>;
-        declare static readonly __signalSignatures: Signature.SignalSignatures;
 
         // Fields
 
@@ -5687,6 +6253,18 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): Signature;
+
+        // Signals
+
+        connect<K extends keyof Signature.SignalSignatures>(signal: K, callback: Signature.SignalSignatures[K]): number;
+        connect_after<K extends keyof Signature.SignalSignatures>(
+            signal: K,
+            callback: Signature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Signature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Signature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5759,7 +6337,6 @@ export namespace GMime {
      */
     class SignatureList extends GObject.Object {
         static $gtype: GObject.GType<SignatureList>;
-        declare static readonly __signalSignatures: SignatureList.SignalSignatures;
 
         // Fields
 
@@ -5772,6 +6349,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): SignatureList;
+
+        // Signals
+
+        connect<K extends keyof SignatureList.SignalSignatures>(
+            signal: K,
+            callback: SignatureList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignatureList.SignalSignatures>(
+            signal: K,
+            callback: SignatureList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignatureList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignatureList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5852,13 +6444,18 @@ export namespace GMime {
      */
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
-        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -6050,7 +6647,6 @@ export namespace GMime {
      */
     class StreamBuffer extends Stream {
         static $gtype: GObject.GType<StreamBuffer>;
-        declare static readonly __signalSignatures: StreamBuffer.SignalSignatures;
 
         // Fields
 
@@ -6069,6 +6665,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](source: Stream, mode: StreamBufferMode): StreamBuffer;
+
+        // Signals
+
+        connect<K extends keyof StreamBuffer.SignalSignatures>(
+            signal: K,
+            callback: StreamBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamBuffer.SignalSignatures>(
+            signal: K,
+            callback: StreamBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamBuffer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StreamCat {
@@ -6085,7 +6696,6 @@ export namespace GMime {
      */
     class StreamCat extends Stream {
         static $gtype: GObject.GType<StreamCat>;
-        declare static readonly __signalSignatures: StreamCat.SignalSignatures;
 
         // Fields
 
@@ -6100,6 +6710,18 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): StreamCat;
+
+        // Signals
+
+        connect<K extends keyof StreamCat.SignalSignatures>(signal: K, callback: StreamCat.SignalSignatures[K]): number;
+        connect_after<K extends keyof StreamCat.SignalSignatures>(
+            signal: K,
+            callback: StreamCat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamCat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamCat.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6125,7 +6747,6 @@ export namespace GMime {
      */
     class StreamFile extends Stream {
         static $gtype: GObject.GType<StreamFile>;
-        declare static readonly __signalSignatures: StreamFile.SignalSignatures;
 
         // Fields
 
@@ -6142,6 +6763,21 @@ export namespace GMime {
         static ['new'](fp?: any | null): StreamFile;
 
         static new_with_bounds(fp: any | null, start: number, end: number): StreamFile;
+
+        // Signals
+
+        connect<K extends keyof StreamFile.SignalSignatures>(
+            signal: K,
+            callback: StreamFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamFile.SignalSignatures>(
+            signal: K,
+            callback: StreamFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamFile.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6183,7 +6819,6 @@ export namespace GMime {
      */
     class StreamFilter extends Stream {
         static $gtype: GObject.GType<StreamFilter>;
-        declare static readonly __signalSignatures: StreamFilter.SignalSignatures;
 
         // Fields
 
@@ -6199,6 +6834,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](stream: Stream): StreamFilter;
+
+        // Signals
+
+        connect<K extends keyof StreamFilter.SignalSignatures>(
+            signal: K,
+            callback: StreamFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamFilter.SignalSignatures>(
+            signal: K,
+            callback: StreamFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6244,7 +6894,6 @@ export namespace GMime {
      */
     class StreamFs extends Stream {
         static $gtype: GObject.GType<StreamFs>;
-        declare static readonly __signalSignatures: StreamFs.SignalSignatures;
 
         // Fields
 
@@ -6264,6 +6913,18 @@ export namespace GMime {
         static ['new'](fd: number): StreamFs;
 
         static new_with_bounds(fd: number, start: number, end: number): StreamFs;
+
+        // Signals
+
+        connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: StreamFs.SignalSignatures[K]): number;
+        connect_after<K extends keyof StreamFs.SignalSignatures>(
+            signal: K,
+            callback: StreamFs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamFs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamFs.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6306,7 +6967,6 @@ export namespace GMime {
      */
     class StreamGIO extends Stream {
         static $gtype: GObject.GType<StreamGIO>;
-        declare static readonly __signalSignatures: StreamGIO.SignalSignatures;
 
         // Fields
 
@@ -6328,6 +6988,18 @@ export namespace GMime {
         static ['new'](file: Gio.File): StreamGIO;
 
         static new_with_bounds(file: Gio.File, start: number, end: number): StreamGIO;
+
+        // Signals
+
+        connect<K extends keyof StreamGIO.SignalSignatures>(signal: K, callback: StreamGIO.SignalSignatures[K]): number;
+        connect_after<K extends keyof StreamGIO.SignalSignatures>(
+            signal: K,
+            callback: StreamGIO.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamGIO.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamGIO.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6360,7 +7032,6 @@ export namespace GMime {
      */
     class StreamMem extends Stream {
         static $gtype: GObject.GType<StreamMem>;
-        declare static readonly __signalSignatures: StreamMem.SignalSignatures;
 
         // Fields
 
@@ -6379,6 +7050,18 @@ export namespace GMime {
         static new_with_buffer(buffer: Uint8Array | string): StreamMem;
 
         static new_with_byte_array(array: Uint8Array | string): StreamMem;
+
+        // Signals
+
+        connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: StreamMem.SignalSignatures[K]): number;
+        connect_after<K extends keyof StreamMem.SignalSignatures>(
+            signal: K,
+            callback: StreamMem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamMem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamMem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6424,7 +7107,6 @@ export namespace GMime {
      */
     class StreamMmap extends Stream {
         static $gtype: GObject.GType<StreamMmap>;
-        declare static readonly __signalSignatures: StreamMmap.SignalSignatures;
 
         // Fields
 
@@ -6446,6 +7128,21 @@ export namespace GMime {
         static ['new'](fd: number, prot: number, flags: number): StreamMmap;
 
         static new_with_bounds(fd: number, prot: number, flags: number, start: number, end: number): StreamMmap;
+
+        // Signals
+
+        connect<K extends keyof StreamMmap.SignalSignatures>(
+            signal: K,
+            callback: StreamMmap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamMmap.SignalSignatures>(
+            signal: K,
+            callback: StreamMmap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamMmap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamMmap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6478,7 +7175,6 @@ export namespace GMime {
      */
     class StreamNull extends Stream {
         static $gtype: GObject.GType<StreamNull>;
-        declare static readonly __signalSignatures: StreamNull.SignalSignatures;
 
         // Fields
 
@@ -6494,6 +7190,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](): StreamNull;
+
+        // Signals
+
+        connect<K extends keyof StreamNull.SignalSignatures>(
+            signal: K,
+            callback: StreamNull.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamNull.SignalSignatures>(
+            signal: K,
+            callback: StreamNull.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamNull.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamNull.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6525,7 +7236,6 @@ export namespace GMime {
      */
     class StreamPipe extends Stream {
         static $gtype: GObject.GType<StreamPipe>;
-        declare static readonly __signalSignatures: StreamPipe.SignalSignatures;
 
         // Fields
 
@@ -6543,6 +7253,21 @@ export namespace GMime {
         _init(...args: any[]): void;
 
         static ['new'](fd: number): StreamPipe;
+
+        // Signals
+
+        connect<K extends keyof StreamPipe.SignalSignatures>(
+            signal: K,
+            callback: StreamPipe.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamPipe.SignalSignatures>(
+            signal: K,
+            callback: StreamPipe.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamPipe.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamPipe.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6575,7 +7300,6 @@ export namespace GMime {
      */
     class TextPart extends Part {
         static $gtype: GObject.GType<TextPart>;
-        declare static readonly __signalSignatures: TextPart.SignalSignatures;
 
         // Fields
 
@@ -6590,6 +7314,18 @@ export namespace GMime {
         static ['new'](): TextPart;
 
         static new_with_subtype(subtype: string): TextPart;
+
+        // Signals
+
+        connect<K extends keyof TextPart.SignalSignatures>(signal: K, callback: TextPart.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextPart.SignalSignatures>(
+            signal: K,
+            callback: TextPart.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextPart.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextPart.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

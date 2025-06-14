@@ -38,7 +38,6 @@ export namespace GstGLX11 {
      */
     class GLDisplayX11 extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayX11>;
-        declare static readonly __signalSignatures: GLDisplayX11.SignalSignatures;
 
         // Constructors
 
@@ -50,6 +49,21 @@ export namespace GstGLX11 {
         // Conflicted with GstGL.GLDisplay.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GLDisplayX11.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayX11.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLDisplayX11.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLDisplayX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLDisplayX11.SignalSignatures[K]>
+        ): void;
     }
 
     type GLDisplayX11Class = typeof GLDisplayX11;

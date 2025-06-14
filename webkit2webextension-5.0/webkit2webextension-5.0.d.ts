@@ -556,7 +556,6 @@ export namespace WebKit2WebExtension {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
-        declare static readonly __signalSignatures: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -567,6 +566,21 @@ export namespace WebKit2WebExtension {
         static ['new'](): ContextMenu;
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
+
+        // Signals
+
+        connect<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            callback: ContextMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            callback: ContextMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -677,7 +691,6 @@ export namespace WebKit2WebExtension {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
-        declare static readonly __signalSignatures: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -694,6 +707,21 @@ export namespace WebKit2WebExtension {
         static new_separator(): ContextMenuItem;
 
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
+
+        // Signals
+
+        connect<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ContextMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ContextMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -754,7 +782,6 @@ export namespace WebKit2WebExtension {
 
     class DOMAttr extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMAttr>;
-        declare static readonly __signalSignatures: DOMAttr.SignalSignatures;
 
         // Properties
 
@@ -775,6 +802,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMAttr.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMAttr.SignalSignatures>(signal: K, callback: DOMAttr.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMAttr.SignalSignatures>(
+            signal: K,
+            callback: DOMAttr.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMAttr.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMAttr.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1252,7 +1291,6 @@ export namespace WebKit2WebExtension {
 
     class DOMBlob extends DOMObject {
         static $gtype: GObject.GType<DOMBlob>;
-        declare static readonly __signalSignatures: DOMBlob.SignalSignatures;
 
         // Properties
 
@@ -1263,6 +1301,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMBlob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMBlob.SignalSignatures>(signal: K, callback: DOMBlob.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMBlob.SignalSignatures>(
+            signal: K,
+            callback: DOMBlob.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMBlob.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMBlob.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1280,13 +1330,27 @@ export namespace WebKit2WebExtension {
 
     class DOMCDATASection extends DOMText implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCDATASection>;
-        declare static readonly __signalSignatures: DOMCDATASection.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMCDATASection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCDATASection.SignalSignatures>(
+            signal: K,
+            callback: DOMCDATASection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCDATASection.SignalSignatures>(
+            signal: K,
+            callback: DOMCDATASection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCDATASection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCDATASection.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -1753,7 +1817,6 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSRule extends DOMObject {
         static $gtype: GObject.GType<DOMCSSRule>;
-        declare static readonly __signalSignatures: DOMCSSRule.SignalSignatures;
 
         // Properties
 
@@ -1772,6 +1835,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMCSSRule.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCSSRule.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSRule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCSSRule.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSRule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCSSRule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCSSRule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1795,7 +1873,6 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSRuleList extends DOMObject {
         static $gtype: GObject.GType<DOMCSSRuleList>;
-        declare static readonly __signalSignatures: DOMCSSRuleList.SignalSignatures;
 
         // Properties
 
@@ -1806,6 +1883,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMCSSRuleList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCSSRuleList.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSRuleList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCSSRuleList.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSRuleList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCSSRuleList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCSSRuleList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1830,7 +1922,6 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSStyleDeclaration extends DOMObject {
         static $gtype: GObject.GType<DOMCSSStyleDeclaration>;
-        declare static readonly __signalSignatures: DOMCSSStyleDeclaration.SignalSignatures;
 
         // Properties
 
@@ -1847,6 +1938,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMCSSStyleDeclaration.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSStyleDeclaration.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSStyleDeclaration.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCSSStyleDeclaration.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1882,7 +1988,6 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSStyleSheet extends DOMStyleSheet {
         static $gtype: GObject.GType<DOMCSSStyleSheet>;
-        declare static readonly __signalSignatures: DOMCSSStyleSheet.SignalSignatures;
 
         // Properties
 
@@ -1897,6 +2002,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMCSSStyleSheet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCSSStyleSheet.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSStyleSheet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCSSStyleSheet.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSStyleSheet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCSSStyleSheet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCSSStyleSheet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1925,7 +2045,6 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSValue extends DOMObject {
         static $gtype: GObject.GType<DOMCSSValue>;
-        declare static readonly __signalSignatures: DOMCSSValue.SignalSignatures;
 
         // Properties
 
@@ -1941,6 +2060,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMCSSValue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCSSValue.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSValue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCSSValue.SignalSignatures>(
+            signal: K,
+            callback: DOMCSSValue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCSSValue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCSSValue.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1963,7 +2097,6 @@ export namespace WebKit2WebExtension {
 
     class DOMCharacterData extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCharacterData>;
-        declare static readonly __signalSignatures: DOMCharacterData.SignalSignatures;
 
         // Properties
 
@@ -1976,6 +2109,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMCharacterData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMCharacterData.SignalSignatures>(
+            signal: K,
+            callback: DOMCharacterData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMCharacterData.SignalSignatures>(
+            signal: K,
+            callback: DOMCharacterData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMCharacterData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMCharacterData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2439,7 +2587,6 @@ export namespace WebKit2WebExtension {
 
     class DOMClientRect extends DOMObject {
         static $gtype: GObject.GType<DOMClientRect>;
-        declare static readonly __signalSignatures: DOMClientRect.SignalSignatures;
 
         // Properties
 
@@ -2455,6 +2602,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMClientRect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMClientRect.SignalSignatures>(
+            signal: K,
+            callback: DOMClientRect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMClientRect.SignalSignatures>(
+            signal: K,
+            callback: DOMClientRect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMClientRect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMClientRect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2503,7 +2665,6 @@ export namespace WebKit2WebExtension {
 
     class DOMClientRectList extends DOMObject {
         static $gtype: GObject.GType<DOMClientRectList>;
-        declare static readonly __signalSignatures: DOMClientRectList.SignalSignatures;
 
         // Properties
 
@@ -2514,6 +2675,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMClientRectList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMClientRectList.SignalSignatures>(
+            signal: K,
+            callback: DOMClientRectList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMClientRectList.SignalSignatures>(
+            signal: K,
+            callback: DOMClientRectList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMClientRectList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMClientRectList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2541,13 +2717,27 @@ export namespace WebKit2WebExtension {
 
     class DOMComment extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMComment>;
-        declare static readonly __signalSignatures: DOMComment.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMComment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMComment.SignalSignatures>(
+            signal: K,
+            callback: DOMComment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMComment.SignalSignatures>(
+            signal: K,
+            callback: DOMComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMComment.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3006,13 +3196,27 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMImplementation extends DOMObject {
         static $gtype: GObject.GType<DOMDOMImplementation>;
-        declare static readonly __signalSignatures: DOMDOMImplementation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMDOMImplementation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDOMImplementation.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMImplementation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDOMImplementation.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMImplementation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDOMImplementation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDOMImplementation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3060,7 +3264,6 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMSelection extends DOMObject {
         static $gtype: GObject.GType<DOMDOMSelection>;
-        declare static readonly __signalSignatures: DOMDOMSelection.SignalSignatures;
 
         // Properties
 
@@ -3091,6 +3294,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMDOMSelection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDOMSelection.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMSelection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDOMSelection.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMSelection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDOMSelection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDOMSelection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3135,7 +3353,6 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMTokenList extends DOMObject {
         static $gtype: GObject.GType<DOMDOMTokenList>;
-        declare static readonly __signalSignatures: DOMDOMTokenList.SignalSignatures;
 
         // Properties
 
@@ -3148,6 +3365,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMDOMTokenList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDOMTokenList.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMTokenList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDOMTokenList.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMTokenList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDOMTokenList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDOMTokenList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3216,7 +3448,6 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMWindow extends DOMObject implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDOMWindow>;
-        declare static readonly __signalSignatures: DOMDOMWindow.SignalSignatures;
 
         // Properties
 
@@ -3274,6 +3505,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMDOMWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDOMWindow.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDOMWindow.SignalSignatures>(
+            signal: K,
+            callback: DOMDOMWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDOMWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDOMWindow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3881,7 +4127,6 @@ export namespace WebKit2WebExtension {
 
     class DOMDocument extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocument>;
-        declare static readonly __signalSignatures: DOMDocument.SignalSignatures;
 
         // Properties
 
@@ -3985,6 +4230,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMDocument.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDocument.SignalSignatures>(
+            signal: K,
+            callback: DOMDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDocument.SignalSignatures>(
+            signal: K,
+            callback: DOMDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDocument.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4598,7 +4858,6 @@ export namespace WebKit2WebExtension {
 
     class DOMDocumentFragment extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocumentFragment>;
-        declare static readonly __signalSignatures: DOMDocumentFragment.SignalSignatures;
 
         // Properties
 
@@ -4615,6 +4874,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMDocumentFragment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: DOMDocumentFragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: DOMDocumentFragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDocumentFragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDocumentFragment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5099,7 +5373,6 @@ export namespace WebKit2WebExtension {
 
     class DOMDocumentType extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocumentType>;
-        declare static readonly __signalSignatures: DOMDocumentType.SignalSignatures;
 
         // Properties
 
@@ -5118,6 +5391,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMDocumentType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMDocumentType.SignalSignatures>(
+            signal: K,
+            callback: DOMDocumentType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMDocumentType.SignalSignatures>(
+            signal: K,
+            callback: DOMDocumentType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMDocumentType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMDocumentType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5649,7 +5937,6 @@ export namespace WebKit2WebExtension {
 
     class DOMElement extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMElement>;
-        declare static readonly __signalSignatures: DOMElement.SignalSignatures;
 
         // Properties
 
@@ -5727,6 +6014,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMElement.SignalSignatures>(
+            signal: K,
+            callback: DOMElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMElement.SignalSignatures>(
+            signal: K,
+            callback: DOMElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6303,13 +6605,27 @@ export namespace WebKit2WebExtension {
 
     class DOMEntityReference extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMEntityReference>;
-        declare static readonly __signalSignatures: DOMEntityReference.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMEntityReference.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMEntityReference.SignalSignatures>(
+            signal: K,
+            callback: DOMEntityReference.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMEntityReference.SignalSignatures>(
+            signal: K,
+            callback: DOMEntityReference.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMEntityReference.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMEntityReference.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
@@ -6791,7 +7107,6 @@ export namespace WebKit2WebExtension {
 
     class DOMEvent extends DOMObject {
         static $gtype: GObject.GType<DOMEvent>;
-        declare static readonly __signalSignatures: DOMEvent.SignalSignatures;
 
         // Properties
 
@@ -6821,6 +7136,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMEvent.SignalSignatures>(signal: K, callback: DOMEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6854,7 +7181,6 @@ export namespace WebKit2WebExtension {
 
     class DOMFile extends DOMBlob {
         static $gtype: GObject.GType<DOMFile>;
-        declare static readonly __signalSignatures: DOMFile.SignalSignatures;
 
         // Properties
 
@@ -6865,6 +7191,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMFile.SignalSignatures>(signal: K, callback: DOMFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMFile.SignalSignatures>(
+            signal: K,
+            callback: DOMFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6884,7 +7222,6 @@ export namespace WebKit2WebExtension {
 
     class DOMFileList extends DOMObject {
         static $gtype: GObject.GType<DOMFileList>;
-        declare static readonly __signalSignatures: DOMFileList.SignalSignatures;
 
         // Properties
 
@@ -6895,6 +7232,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMFileList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMFileList.SignalSignatures>(
+            signal: K,
+            callback: DOMFileList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMFileList.SignalSignatures>(
+            signal: K,
+            callback: DOMFileList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMFileList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMFileList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6932,7 +7284,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLAnchorElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAnchorElement>;
-        declare static readonly __signalSignatures: DOMHTMLAnchorElement.SignalSignatures;
 
         // Properties
 
@@ -6978,6 +7329,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLAnchorElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLAnchorElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLAnchorElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLAnchorElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7484,7 +7850,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLAppletElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAppletElement>;
-        declare static readonly __signalSignatures: DOMHTMLAppletElement.SignalSignatures;
 
         // Properties
 
@@ -7518,6 +7883,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLAppletElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLAppletElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLAppletElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLAppletElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLAppletElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLAppletElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLAppletElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8012,7 +8392,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLAreaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAreaElement>;
-        declare static readonly __signalSignatures: DOMHTMLAreaElement.SignalSignatures;
 
         // Properties
 
@@ -8050,6 +8429,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLAreaElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLAreaElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLAreaElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLAreaElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLAreaElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLAreaElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLAreaElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8535,7 +8929,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBRElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBRElement>;
-        declare static readonly __signalSignatures: DOMHTMLBRElement.SignalSignatures;
 
         // Properties
 
@@ -8547,6 +8940,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLBRElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLBRElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBRElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLBRElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBRElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLBRElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLBRElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9009,7 +9417,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBaseElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseElement>;
-        declare static readonly __signalSignatures: DOMHTMLBaseElement.SignalSignatures;
 
         // Properties
 
@@ -9023,6 +9430,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLBaseElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLBaseElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBaseElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLBaseElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBaseElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLBaseElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLBaseElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9484,13 +9906,27 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBaseFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseFontElement>;
-        declare static readonly __signalSignatures: DOMHTMLBaseFontElement.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMHTMLBaseFontElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBaseFontElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBaseFontElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLBaseFontElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9988,7 +10424,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBodyElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBodyElement>;
-        declare static readonly __signalSignatures: DOMHTMLBodyElement.SignalSignatures;
 
         // Properties
 
@@ -10016,6 +10451,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLBodyElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLBodyElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBodyElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLBodyElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLBodyElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLBodyElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLBodyElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10494,7 +10944,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLButtonElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLButtonElement>;
-        declare static readonly __signalSignatures: DOMHTMLButtonElement.SignalSignatures;
 
         // Properties
 
@@ -10517,6 +10966,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLButtonElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLButtonElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLButtonElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLButtonElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLButtonElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLButtonElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLButtonElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10989,7 +11453,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLCanvasElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLCanvasElement>;
-        declare static readonly __signalSignatures: DOMHTMLCanvasElement.SignalSignatures;
 
         // Properties
 
@@ -11003,6 +11466,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLCanvasElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLCanvasElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLCanvasElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLCanvasElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11466,7 +11944,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLCollection extends DOMObject {
         static $gtype: GObject.GType<DOMHTMLCollection>;
-        declare static readonly __signalSignatures: DOMHTMLCollection.SignalSignatures;
 
         // Properties
 
@@ -11477,6 +11954,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLCollection.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLCollection.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLCollection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11498,7 +11990,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDListElement>;
-        declare static readonly __signalSignatures: DOMHTMLDListElement.SignalSignatures;
 
         // Properties
 
@@ -11510,6 +12001,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLDListElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLDListElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDListElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLDListElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDListElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLDListElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLDListElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11971,7 +12477,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDirectoryElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDirectoryElement>;
-        declare static readonly __signalSignatures: DOMHTMLDirectoryElement.SignalSignatures;
 
         // Properties
 
@@ -11983,6 +12488,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLDirectoryElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDirectoryElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDirectoryElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLDirectoryElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12444,7 +12964,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDivElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDivElement>;
-        declare static readonly __signalSignatures: DOMHTMLDivElement.SignalSignatures;
 
         // Properties
 
@@ -12456,6 +12975,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLDivElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLDivElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDivElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLDivElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDivElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLDivElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLDivElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12929,7 +13463,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDocument extends DOMDocument implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDocument>;
-        declare static readonly __signalSignatures: DOMHTMLDocument.SignalSignatures;
 
         // Properties
 
@@ -12963,6 +13496,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLDocument.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLDocument.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLDocument.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLDocument.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13465,7 +14013,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLElement extends DOMElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLElement>;
-        declare static readonly __signalSignatures: DOMHTMLElement.SignalSignatures;
 
         // Properties
 
@@ -13513,6 +14060,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14010,7 +14572,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLEmbedElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLEmbedElement>;
-        declare static readonly __signalSignatures: DOMHTMLEmbedElement.SignalSignatures;
 
         // Properties
 
@@ -14032,6 +14593,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLEmbedElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLEmbedElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLEmbedElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLEmbedElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14503,7 +15079,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFieldSetElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFieldSetElement>;
-        declare static readonly __signalSignatures: DOMHTMLFieldSetElement.SignalSignatures;
 
         // Properties
 
@@ -14514,6 +15089,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLFieldSetElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFieldSetElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFieldSetElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLFieldSetElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14976,7 +15566,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFontElement>;
-        declare static readonly __signalSignatures: DOMHTMLFontElement.SignalSignatures;
 
         // Properties
 
@@ -14992,6 +15581,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLFontElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLFontElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFontElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLFontElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFontElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLFontElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLFontElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15466,7 +16070,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFormElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFormElement>;
-        declare static readonly __signalSignatures: DOMHTMLFormElement.SignalSignatures;
 
         // Properties
 
@@ -15494,6 +16097,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLFormElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLFormElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFormElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLFormElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFormElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLFormElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLFormElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15989,7 +16607,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFrameElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFrameElement>;
-        declare static readonly __signalSignatures: DOMHTMLFrameElement.SignalSignatures;
 
         // Properties
 
@@ -16031,6 +16648,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLFrameElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLFrameElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFrameElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLFrameElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFrameElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLFrameElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLFrameElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16511,7 +17143,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFrameSetElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFrameSetElement>;
-        declare static readonly __signalSignatures: DOMHTMLFrameSetElement.SignalSignatures;
 
         // Properties
 
@@ -16525,6 +17156,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLFrameSetElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFrameSetElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLFrameSetElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLFrameSetElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16992,7 +17638,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHRElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHRElement>;
-        declare static readonly __signalSignatures: DOMHTMLHRElement.SignalSignatures;
 
         // Properties
 
@@ -17012,6 +17657,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLHRElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLHRElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHRElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLHRElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHRElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLHRElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLHRElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17479,7 +18139,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHeadElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHeadElement>;
-        declare static readonly __signalSignatures: DOMHTMLHeadElement.SignalSignatures;
 
         // Properties
 
@@ -17491,6 +18150,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLHeadElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLHeadElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHeadElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLHeadElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHeadElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLHeadElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLHeadElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17952,7 +18626,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHeadingElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHeadingElement>;
-        declare static readonly __signalSignatures: DOMHTMLHeadingElement.SignalSignatures;
 
         // Properties
 
@@ -17964,6 +18637,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLHeadingElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHeadingElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHeadingElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLHeadingElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18425,7 +19113,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHtmlElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHtmlElement>;
-        declare static readonly __signalSignatures: DOMHTMLHtmlElement.SignalSignatures;
 
         // Properties
 
@@ -18437,6 +19124,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLHtmlElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHtmlElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLHtmlElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLHtmlElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18915,7 +19617,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLIFrameElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLIFrameElement>;
-        declare static readonly __signalSignatures: DOMHTMLIFrameElement.SignalSignatures;
 
         // Properties
 
@@ -18957,6 +19658,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLIFrameElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLIFrameElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLIFrameElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLIFrameElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19460,7 +20176,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLImageElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLImageElement>;
-        declare static readonly __signalSignatures: DOMHTMLImageElement.SignalSignatures;
 
         // Properties
 
@@ -19509,6 +20224,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLImageElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLImageElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLImageElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLImageElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLImageElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLImageElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLImageElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20028,7 +20758,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLInputElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLInputElement>;
-        declare static readonly __signalSignatures: DOMHTMLInputElement.SignalSignatures;
 
         // Properties
 
@@ -20094,6 +20823,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLInputElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLInputElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLInputElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLInputElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLInputElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLInputElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLInputElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20606,7 +21350,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLIElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLIElement>;
-        declare static readonly __signalSignatures: DOMHTMLLIElement.SignalSignatures;
 
         // Properties
 
@@ -20620,6 +21363,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLLIElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLLIElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLIElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLLIElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLIElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLLIElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLLIElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21085,7 +21843,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLabelElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLabelElement>;
-        declare static readonly __signalSignatures: DOMHTMLLabelElement.SignalSignatures;
 
         // Properties
 
@@ -21100,6 +21857,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLLabelElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLLabelElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLabelElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLLabelElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLabelElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLLabelElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLLabelElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21563,7 +22335,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLegendElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLegendElement>;
-        declare static readonly __signalSignatures: DOMHTMLLegendElement.SignalSignatures;
 
         // Properties
 
@@ -21576,6 +22347,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLLegendElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLLegendElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLegendElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLLegendElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLegendElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLLegendElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLLegendElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22048,7 +22834,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLinkElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLinkElement>;
-        declare static readonly __signalSignatures: DOMHTMLLinkElement.SignalSignatures;
 
         // Properties
 
@@ -22078,6 +22863,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLLinkElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLLinkElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLinkElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLLinkElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLLinkElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLLinkElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLLinkElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22559,7 +23359,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMapElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMapElement>;
-        declare static readonly __signalSignatures: DOMHTMLMapElement.SignalSignatures;
 
         // Properties
 
@@ -22572,6 +23371,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLMapElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLMapElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMapElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLMapElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMapElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLMapElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLMapElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23032,13 +23846,27 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMarqueeElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMarqueeElement>;
-        declare static readonly __signalSignatures: DOMHTMLMarqueeElement.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMHTMLMarqueeElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMarqueeElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMarqueeElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLMarqueeElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23500,7 +24328,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMenuElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMenuElement>;
-        declare static readonly __signalSignatures: DOMHTMLMenuElement.SignalSignatures;
 
         // Properties
 
@@ -23512,6 +24339,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLMenuElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLMenuElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMenuElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLMenuElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMenuElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLMenuElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLMenuElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23977,7 +24819,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMetaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMetaElement>;
-        declare static readonly __signalSignatures: DOMHTMLMetaElement.SignalSignatures;
 
         // Properties
 
@@ -23997,6 +24838,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLMetaElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLMetaElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMetaElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLMetaElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLMetaElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLMetaElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLMetaElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24466,7 +25322,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLModElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLModElement>;
-        declare static readonly __signalSignatures: DOMHTMLModElement.SignalSignatures;
 
         // Properties
 
@@ -24482,6 +25337,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLModElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLModElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLModElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLModElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLModElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLModElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLModElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24947,7 +25817,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOListElement>;
-        declare static readonly __signalSignatures: DOMHTMLOListElement.SignalSignatures;
 
         // Properties
 
@@ -24963,6 +25832,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLOListElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLOListElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOListElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLOListElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOListElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLOListElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLOListElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -25449,7 +26333,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLObjectElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLObjectElement>;
-        declare static readonly __signalSignatures: DOMHTMLObjectElement.SignalSignatures;
 
         // Properties
 
@@ -25500,6 +26383,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLObjectElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLObjectElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLObjectElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLObjectElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLObjectElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLObjectElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLObjectElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -25975,7 +26873,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOptGroupElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOptGroupElement>;
-        declare static readonly __signalSignatures: DOMHTMLOptGroupElement.SignalSignatures;
 
         // Properties
 
@@ -25989,6 +26886,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLOptGroupElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOptGroupElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOptGroupElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLOptGroupElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26460,7 +27372,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOptionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOptionElement>;
-        declare static readonly __signalSignatures: DOMHTMLOptionElement.SignalSignatures;
 
         // Properties
 
@@ -26485,6 +27396,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLOptionElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLOptionElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOptionElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLOptionElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOptionElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLOptionElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLOptionElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26959,7 +27885,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOptionsCollection extends DOMHTMLCollection {
         static $gtype: GObject.GType<DOMHTMLOptionsCollection>;
-        declare static readonly __signalSignatures: DOMHTMLOptionsCollection.SignalSignatures;
 
         // Properties
 
@@ -26974,6 +27899,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLOptionsCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOptionsCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLOptionsCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLOptionsCollection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26996,7 +27936,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLParagraphElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLParagraphElement>;
-        declare static readonly __signalSignatures: DOMHTMLParagraphElement.SignalSignatures;
 
         // Properties
 
@@ -27008,6 +27947,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLParagraphElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLParagraphElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLParagraphElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLParagraphElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27473,7 +28427,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLParamElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLParamElement>;
-        declare static readonly __signalSignatures: DOMHTMLParamElement.SignalSignatures;
 
         // Properties
 
@@ -27493,6 +28446,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLParamElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLParamElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLParamElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLParamElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLParamElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLParamElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLParamElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27961,7 +28929,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLPreElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLPreElement>;
-        declare static readonly __signalSignatures: DOMHTMLPreElement.SignalSignatures;
 
         // Properties
 
@@ -27975,6 +28942,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLPreElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLPreElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLPreElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLPreElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLPreElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLPreElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLPreElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -28438,7 +29420,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLQuoteElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLQuoteElement>;
-        declare static readonly __signalSignatures: DOMHTMLQuoteElement.SignalSignatures;
 
         // Properties
 
@@ -28450,6 +29431,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLQuoteElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLQuoteElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLQuoteElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLQuoteElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -28918,7 +29914,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLScriptElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLScriptElement>;
-        declare static readonly __signalSignatures: DOMHTMLScriptElement.SignalSignatures;
 
         // Properties
 
@@ -28944,6 +29939,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLScriptElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLScriptElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLScriptElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLScriptElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLScriptElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLScriptElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLScriptElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -29430,7 +30440,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLSelectElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLSelectElement>;
-        declare static readonly __signalSignatures: DOMHTMLSelectElement.SignalSignatures;
 
         // Properties
 
@@ -29463,6 +30472,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLSelectElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLSelectElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLSelectElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLSelectElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLSelectElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLSelectElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLSelectElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -29951,7 +30975,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLStyleElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLStyleElement>;
-        declare static readonly __signalSignatures: DOMHTMLStyleElement.SignalSignatures;
 
         // Properties
 
@@ -29968,6 +30991,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLStyleElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLStyleElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLStyleElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLStyleElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLStyleElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLStyleElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLStyleElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -30434,7 +31472,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableCaptionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableCaptionElement>;
-        declare static readonly __signalSignatures: DOMHTMLTableCaptionElement.SignalSignatures;
 
         // Properties
 
@@ -30446,6 +31483,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTableCaptionElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableCaptionElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableCaptionElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTableCaptionElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -30928,7 +31980,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableCellElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableCellElement>;
-        declare static readonly __signalSignatures: DOMHTMLTableCellElement.SignalSignatures;
 
         // Properties
 
@@ -30980,6 +32031,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTableCellElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableCellElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableCellElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTableCellElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -31475,7 +32541,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableColElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableColElement>;
-        declare static readonly __signalSignatures: DOMHTMLTableColElement.SignalSignatures;
 
         // Properties
 
@@ -31501,6 +32566,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTableColElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTableColElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableColElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTableColElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableColElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTableColElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTableColElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -31990,7 +33070,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableElement>;
-        declare static readonly __signalSignatures: DOMHTMLTableElement.SignalSignatures;
 
         // Properties
 
@@ -32030,6 +33109,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTableElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTableElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTableElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTableElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTableElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32533,7 +33627,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableRowElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableRowElement>;
-        declare static readonly __signalSignatures: DOMHTMLTableRowElement.SignalSignatures;
 
         // Properties
 
@@ -32564,6 +33657,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTableRowElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableRowElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableRowElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTableRowElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -33044,7 +34152,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableSectionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableSectionElement>;
-        declare static readonly __signalSignatures: DOMHTMLTableSectionElement.SignalSignatures;
 
         // Properties
 
@@ -33067,6 +34174,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTableSectionElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableSectionElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTableSectionElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTableSectionElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -33554,7 +34676,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTextAreaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTextAreaElement>;
-        declare static readonly __signalSignatures: DOMHTMLTextAreaElement.SignalSignatures;
 
         // Properties
 
@@ -33596,6 +34717,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTextAreaElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTextAreaElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTextAreaElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTextAreaElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34081,7 +35217,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTitleElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTitleElement>;
-        declare static readonly __signalSignatures: DOMHTMLTitleElement.SignalSignatures;
 
         // Properties
 
@@ -34093,6 +35228,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLTitleElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLTitleElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTitleElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLTitleElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLTitleElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLTitleElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLTitleElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34555,7 +35705,6 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLUListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLUListElement>;
-        declare static readonly __signalSignatures: DOMHTMLUListElement.SignalSignatures;
 
         // Properties
 
@@ -34569,6 +35718,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMHTMLUListElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMHTMLUListElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLUListElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMHTMLUListElement.SignalSignatures>(
+            signal: K,
+            callback: DOMHTMLUListElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMHTMLUListElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMHTMLUListElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35045,7 +36209,6 @@ export namespace WebKit2WebExtension {
 
     class DOMKeyboardEvent extends DOMUIEvent {
         static $gtype: GObject.GType<DOMKeyboardEvent>;
-        declare static readonly __signalSignatures: DOMKeyboardEvent.SignalSignatures;
 
         // Properties
 
@@ -35069,6 +36232,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMKeyboardEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMKeyboardEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMKeyboardEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMKeyboardEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMKeyboardEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMKeyboardEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMKeyboardEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35110,7 +36288,6 @@ export namespace WebKit2WebExtension {
 
     class DOMMediaList extends DOMObject {
         static $gtype: GObject.GType<DOMMediaList>;
-        declare static readonly __signalSignatures: DOMMediaList.SignalSignatures;
 
         // Properties
 
@@ -35125,6 +36302,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMMediaList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMMediaList.SignalSignatures>(
+            signal: K,
+            callback: DOMMediaList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMMediaList.SignalSignatures>(
+            signal: K,
+            callback: DOMMediaList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMMediaList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMMediaList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35177,7 +36369,6 @@ export namespace WebKit2WebExtension {
 
     class DOMMouseEvent extends DOMUIEvent {
         static $gtype: GObject.GType<DOMMouseEvent>;
-        declare static readonly __signalSignatures: DOMMouseEvent.SignalSignatures;
 
         // Properties
 
@@ -35216,6 +36407,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMMouseEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMMouseEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMMouseEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMMouseEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMMouseEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMMouseEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMMouseEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35267,7 +36473,6 @@ export namespace WebKit2WebExtension {
 
     class DOMNamedNodeMap extends DOMObject {
         static $gtype: GObject.GType<DOMNamedNodeMap>;
-        declare static readonly __signalSignatures: DOMNamedNodeMap.SignalSignatures;
 
         // Properties
 
@@ -35278,6 +36483,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMNamedNodeMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMNamedNodeMap.SignalSignatures>(
+            signal: K,
+            callback: DOMNamedNodeMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMNamedNodeMap.SignalSignatures>(
+            signal: K,
+            callback: DOMNamedNodeMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMNamedNodeMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMNamedNodeMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35329,7 +36549,6 @@ export namespace WebKit2WebExtension {
 
     class DOMNode extends DOMObject implements DOMEventTarget {
         static $gtype: GObject.GType<DOMNode>;
-        declare static readonly __signalSignatures: DOMNode.SignalSignatures;
 
         // Properties
 
@@ -35369,6 +36588,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMNode.SignalSignatures>(signal: K, callback: DOMNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMNode.SignalSignatures>(
+            signal: K,
+            callback: DOMNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMNode.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -35888,7 +37119,6 @@ export namespace WebKit2WebExtension {
 
     class DOMNodeIterator extends DOMObject {
         static $gtype: GObject.GType<DOMNodeIterator>;
-        declare static readonly __signalSignatures: DOMNodeIterator.SignalSignatures;
 
         // Properties
 
@@ -35906,6 +37136,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMNodeIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMNodeIterator.SignalSignatures>(
+            signal: K,
+            callback: DOMNodeIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMNodeIterator.SignalSignatures>(
+            signal: K,
+            callback: DOMNodeIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMNodeIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMNodeIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35937,7 +37182,6 @@ export namespace WebKit2WebExtension {
 
     class DOMNodeList extends DOMObject {
         static $gtype: GObject.GType<DOMNodeList>;
-        declare static readonly __signalSignatures: DOMNodeList.SignalSignatures;
 
         // Properties
 
@@ -35948,6 +37192,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMNodeList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMNodeList.SignalSignatures>(
+            signal: K,
+            callback: DOMNodeList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMNodeList.SignalSignatures>(
+            signal: K,
+            callback: DOMNodeList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMNodeList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMNodeList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -35969,7 +37228,6 @@ export namespace WebKit2WebExtension {
 
     class DOMObject extends GObject.Object {
         static $gtype: GObject.GType<DOMObject>;
-        declare static readonly __signalSignatures: DOMObject.SignalSignatures;
 
         // Properties
 
@@ -35985,6 +37243,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMObject.SignalSignatures>(signal: K, callback: DOMObject.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMObject.SignalSignatures>(
+            signal: K,
+            callback: DOMObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMObject.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DOMProcessingInstruction {
@@ -36001,7 +37271,6 @@ export namespace WebKit2WebExtension {
 
     class DOMProcessingInstruction extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMProcessingInstruction>;
-        declare static readonly __signalSignatures: DOMProcessingInstruction.SignalSignatures;
 
         // Properties
 
@@ -36013,6 +37282,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMProcessingInstruction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: DOMProcessingInstruction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: DOMProcessingInstruction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMProcessingInstruction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMProcessingInstruction.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36489,7 +37773,6 @@ export namespace WebKit2WebExtension {
 
     class DOMRange extends DOMObject {
         static $gtype: GObject.GType<DOMRange>;
-        declare static readonly __signalSignatures: DOMRange.SignalSignatures;
 
         // Properties
 
@@ -36511,6 +37794,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMRange.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMRange.SignalSignatures>(signal: K, callback: DOMRange.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMRange.SignalSignatures>(
+            signal: K,
+            callback: DOMRange.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMRange.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMRange.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36568,7 +37863,6 @@ export namespace WebKit2WebExtension {
 
     class DOMStyleSheet extends DOMObject {
         static $gtype: GObject.GType<DOMStyleSheet>;
-        declare static readonly __signalSignatures: DOMStyleSheet.SignalSignatures;
 
         // Properties
 
@@ -36588,6 +37882,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMStyleSheet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMStyleSheet.SignalSignatures>(
+            signal: K,
+            callback: DOMStyleSheet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMStyleSheet.SignalSignatures>(
+            signal: K,
+            callback: DOMStyleSheet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMStyleSheet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMStyleSheet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36614,7 +37923,6 @@ export namespace WebKit2WebExtension {
 
     class DOMStyleSheetList extends DOMObject {
         static $gtype: GObject.GType<DOMStyleSheetList>;
-        declare static readonly __signalSignatures: DOMStyleSheetList.SignalSignatures;
 
         // Properties
 
@@ -36625,6 +37933,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMStyleSheetList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMStyleSheetList.SignalSignatures>(
+            signal: K,
+            callback: DOMStyleSheetList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMStyleSheetList.SignalSignatures>(
+            signal: K,
+            callback: DOMStyleSheetList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMStyleSheetList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMStyleSheetList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36646,7 +37969,6 @@ export namespace WebKit2WebExtension {
 
     class DOMText extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMText>;
-        declare static readonly __signalSignatures: DOMText.SignalSignatures;
 
         // Properties
 
@@ -36658,6 +37980,18 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMText.SignalSignatures>(signal: K, callback: DOMText.SignalSignatures[K]): number;
+        connect_after<K extends keyof DOMText.SignalSignatures>(
+            signal: K,
+            callback: DOMText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMText.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37129,7 +38463,6 @@ export namespace WebKit2WebExtension {
 
     class DOMTreeWalker extends DOMObject {
         static $gtype: GObject.GType<DOMTreeWalker>;
-        declare static readonly __signalSignatures: DOMTreeWalker.SignalSignatures;
 
         // Properties
 
@@ -37145,6 +38478,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMTreeWalker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMTreeWalker.SignalSignatures>(
+            signal: K,
+            callback: DOMTreeWalker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMTreeWalker.SignalSignatures>(
+            signal: K,
+            callback: DOMTreeWalker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMTreeWalker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMTreeWalker.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37193,7 +38541,6 @@ export namespace WebKit2WebExtension {
 
     class DOMUIEvent extends DOMEvent {
         static $gtype: GObject.GType<DOMUIEvent>;
-        declare static readonly __signalSignatures: DOMUIEvent.SignalSignatures;
 
         // Properties
 
@@ -37217,6 +38564,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMUIEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMUIEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMUIEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMUIEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMUIEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMUIEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMUIEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37249,7 +38611,6 @@ export namespace WebKit2WebExtension {
 
     class DOMWheelEvent extends DOMMouseEvent {
         static $gtype: GObject.GType<DOMWheelEvent>;
-        declare static readonly __signalSignatures: DOMWheelEvent.SignalSignatures;
 
         // Properties
 
@@ -37265,6 +38626,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMWheelEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMWheelEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMWheelEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMWheelEvent.SignalSignatures>(
+            signal: K,
+            callback: DOMWheelEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMWheelEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMWheelEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37297,13 +38673,27 @@ export namespace WebKit2WebExtension {
 
     class DOMXPathExpression extends DOMObject {
         static $gtype: GObject.GType<DOMXPathExpression>;
-        declare static readonly __signalSignatures: DOMXPathExpression.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DOMXPathExpression.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMXPathExpression.SignalSignatures>(
+            signal: K,
+            callback: DOMXPathExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMXPathExpression.SignalSignatures>(
+            signal: K,
+            callback: DOMXPathExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMXPathExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMXPathExpression.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37336,7 +38726,6 @@ export namespace WebKit2WebExtension {
 
     class DOMXPathResult extends DOMObject {
         static $gtype: GObject.GType<DOMXPathResult>;
-        declare static readonly __signalSignatures: DOMXPathResult.SignalSignatures;
 
         // Properties
 
@@ -37360,6 +38749,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<DOMXPathResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DOMXPathResult.SignalSignatures>(
+            signal: K,
+            callback: DOMXPathResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DOMXPathResult.SignalSignatures>(
+            signal: K,
+            callback: DOMXPathResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DOMXPathResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DOMXPathResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37391,13 +38795,18 @@ export namespace WebKit2WebExtension {
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
-        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -37492,7 +38901,6 @@ export namespace WebKit2WebExtension {
      */
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
-        declare static readonly __signalSignatures: HitTestResult.SignalSignatures;
 
         // Properties
 
@@ -37557,6 +38965,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            callback: HitTestResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            callback: HitTestResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37632,7 +39055,7 @@ export namespace WebKit2WebExtension {
         // Signal callback interfaces
 
         interface WindowObjectCleared {
-            (page: WebPage, frame: Frame): void;
+            (_source: ScriptWorld, page: WebPage, frame: Frame): void;
         }
 
         // Signal signatures
@@ -37647,7 +39070,6 @@ export namespace WebKit2WebExtension {
 
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
-        declare static readonly __signalSignatures: ScriptWorld.SignalSignatures;
 
         // Constructors
 
@@ -37673,18 +39095,6 @@ export namespace WebKit2WebExtension {
             signal: K,
             ...args: Parameters<ScriptWorld.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'window-object-cleared',
-            callback: (_source: this, page: WebPage, frame: Frame) => void,
-        ): number;
-        connect_after(
-            signal: 'window-object-cleared',
-            callback: (_source: this, page: WebPage, frame: Frame) => void,
-        ): number;
-        emit(signal: 'window-object-cleared', page: WebPage, frame: Frame): void;
 
         // Static methods
 
@@ -37725,7 +39135,6 @@ export namespace WebKit2WebExtension {
      */
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
-        declare static readonly __signalSignatures: URIRequest.SignalSignatures;
 
         // Properties
 
@@ -37742,6 +39151,21 @@ export namespace WebKit2WebExtension {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): URIRequest;
+
+        // Signals
+
+        connect<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            callback: URIRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            callback: URIRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37797,7 +39221,6 @@ export namespace WebKit2WebExtension {
      */
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
-        declare static readonly __signalSignatures: URIResponse.SignalSignatures;
 
         // Properties
 
@@ -37851,6 +39274,21 @@ export namespace WebKit2WebExtension {
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            callback: URIResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            callback: URIResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37923,7 +39361,6 @@ export namespace WebKit2WebExtension {
      */
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
-        declare static readonly __signalSignatures: UserMessage.SignalSignatures;
 
         // Properties
 
@@ -37959,6 +39396,21 @@ export namespace WebKit2WebExtension {
             parameters?: GLib.Variant | null,
             fd_list?: Gio.UnixFDList | null,
         ): UserMessage;
+
+        // Signals
+
+        connect<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            callback: UserMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            callback: UserMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -37999,7 +39451,7 @@ export namespace WebKit2WebExtension {
         // Signal callback interfaces
 
         interface SelectionChanged {
-            (): void;
+            (_source: WebEditor): void;
         }
 
         // Signal signatures
@@ -38021,7 +39473,6 @@ export namespace WebKit2WebExtension {
      */
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
-        declare static readonly __signalSignatures: WebEditor.SignalSignatures;
 
         // Constructors
 
@@ -38040,12 +39491,6 @@ export namespace WebKit2WebExtension {
             signal: K,
             ...args: Parameters<WebEditor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
 
         // Methods
 
@@ -38061,11 +39506,11 @@ export namespace WebKit2WebExtension {
         // Signal callback interfaces
 
         interface PageCreated {
-            (web_page: WebPage): void;
+            (_source: WebExtension, web_page: WebPage): void;
         }
 
         interface UserMessageReceived {
-            (message: UserMessage): void;
+            (_source: WebExtension, message: UserMessage): void;
         }
 
         // Signal signatures
@@ -38154,7 +39599,6 @@ export namespace WebKit2WebExtension {
      */
     class WebExtension extends GObject.Object {
         static $gtype: GObject.GType<WebExtension>;
-        declare static readonly __signalSignatures: WebExtension.SignalSignatures;
 
         // Constructors
 
@@ -38176,15 +39620,6 @@ export namespace WebKit2WebExtension {
             signal: K,
             ...args: Parameters<WebExtension.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'page-created', callback: (_source: this, web_page: WebPage) => void): number;
-        connect_after(signal: 'page-created', callback: (_source: this, web_page: WebPage) => void): number;
-        emit(signal: 'page-created', web_page: WebPage): void;
-        connect(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => void): number;
-        connect_after(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => void): number;
-        emit(signal: 'user-message-received', message: UserMessage): void;
 
         // Methods
 
@@ -38261,7 +39696,6 @@ export namespace WebKit2WebExtension {
      */
     class WebHitTestResult extends HitTestResult {
         static $gtype: GObject.GType<WebHitTestResult>;
-        declare static readonly __signalSignatures: WebHitTestResult.SignalSignatures;
 
         // Properties
 
@@ -38276,6 +39710,21 @@ export namespace WebKit2WebExtension {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof WebHitTestResult.SignalSignatures>(
+            signal: K,
+            callback: WebHitTestResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebHitTestResult.SignalSignatures>(
+            signal: K,
+            callback: WebHitTestResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebHitTestResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebHitTestResult.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -38289,35 +39738,36 @@ export namespace WebKit2WebExtension {
         // Signal callback interfaces
 
         interface ConsoleMessageSent {
-            (console_message: ConsoleMessage): void;
+            (_source: WebPage, console_message: ConsoleMessage): void;
         }
 
         interface ContextMenu {
-            (context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
+            (_source: WebPage, context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
         }
 
         interface DocumentLoaded {
-            (): void;
+            (_source: WebPage): void;
         }
 
         interface FormControlsAssociated {
-            (elements: DOMElement[]): void;
+            (_source: WebPage, elements: DOMElement[]): void;
         }
 
         interface FormControlsAssociatedForFrame {
-            (elements: DOMElement[], frame: Frame): void;
+            (_source: WebPage, elements: DOMElement[], frame: Frame): void;
         }
 
         interface SendRequest {
-            (request: URIRequest, redirected_response: URIResponse): boolean;
+            (_source: WebPage, request: URIRequest, redirected_response: URIResponse): boolean;
         }
 
         interface UserMessageReceived {
-            (message: UserMessage): boolean;
+            (_source: WebPage, message: UserMessage): boolean;
         }
 
         interface WillSubmitForm {
             (
+                _source: WebPage,
                 form: DOMElement,
                 step: FormSubmissionStep,
                 source_frame: Frame,
@@ -38351,7 +39801,6 @@ export namespace WebKit2WebExtension {
      */
     class WebPage extends GObject.Object {
         static $gtype: GObject.GType<WebPage>;
-        declare static readonly __signalSignatures: WebPage.SignalSignatures;
 
         // Properties
 
@@ -38376,93 +39825,6 @@ export namespace WebKit2WebExtension {
         emit<K extends keyof WebPage.SignalSignatures>(
             signal: K,
             ...args: Parameters<WebPage.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'console-message-sent',
-            callback: (_source: this, console_message: ConsoleMessage) => void,
-        ): number;
-        connect_after(
-            signal: 'console-message-sent',
-            callback: (_source: this, console_message: ConsoleMessage) => void,
-        ): number;
-        emit(signal: 'console-message-sent', console_message: ConsoleMessage): void;
-        connect(
-            signal: 'context-menu',
-            callback: (_source: this, context_menu: ContextMenu, hit_test_result: WebHitTestResult) => boolean,
-        ): number;
-        connect_after(
-            signal: 'context-menu',
-            callback: (_source: this, context_menu: ContextMenu, hit_test_result: WebHitTestResult) => boolean,
-        ): number;
-        emit(signal: 'context-menu', context_menu: ContextMenu, hit_test_result: WebHitTestResult): void;
-        connect(signal: 'document-loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'document-loaded', callback: (_source: this) => void): number;
-        emit(signal: 'document-loaded'): void;
-        connect(signal: 'form-controls-associated', callback: (_source: this, elements: DOMElement[]) => void): number;
-        connect_after(
-            signal: 'form-controls-associated',
-            callback: (_source: this, elements: DOMElement[]) => void,
-        ): number;
-        emit(signal: 'form-controls-associated', elements: DOMElement[]): void;
-        connect(
-            signal: 'form-controls-associated-for-frame',
-            callback: (_source: this, elements: DOMElement[], frame: Frame) => void,
-        ): number;
-        connect_after(
-            signal: 'form-controls-associated-for-frame',
-            callback: (_source: this, elements: DOMElement[], frame: Frame) => void,
-        ): number;
-        emit(signal: 'form-controls-associated-for-frame', elements: DOMElement[], frame: Frame): void;
-        connect(
-            signal: 'send-request',
-            callback: (_source: this, request: URIRequest, redirected_response: URIResponse) => boolean,
-        ): number;
-        connect_after(
-            signal: 'send-request',
-            callback: (_source: this, request: URIRequest, redirected_response: URIResponse) => boolean,
-        ): number;
-        emit(signal: 'send-request', request: URIRequest, redirected_response: URIResponse): void;
-        connect(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => boolean): number;
-        connect_after(
-            signal: 'user-message-received',
-            callback: (_source: this, message: UserMessage) => boolean,
-        ): number;
-        emit(signal: 'user-message-received', message: UserMessage): void;
-        connect(
-            signal: 'will-submit-form',
-            callback: (
-                _source: this,
-                form: DOMElement,
-                step: FormSubmissionStep,
-                source_frame: Frame,
-                target_frame: Frame,
-                text_field_names: string[],
-                text_field_values: string[],
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'will-submit-form',
-            callback: (
-                _source: this,
-                form: DOMElement,
-                step: FormSubmissionStep,
-                source_frame: Frame,
-                target_frame: Frame,
-                text_field_names: string[],
-                text_field_values: string[],
-            ) => void,
-        ): number;
-        emit(
-            signal: 'will-submit-form',
-            form: DOMElement,
-            step: FormSubmissionStep,
-            source_frame: Frame,
-            target_frame: Frame,
-            text_field_names: string[],
-            text_field_values: string[],
         ): void;
 
         // Methods

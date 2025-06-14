@@ -67,7 +67,6 @@ export namespace Uhm {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -81,6 +80,18 @@ export namespace Uhm {
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -111,7 +122,6 @@ export namespace Uhm {
      */
     class Resolver extends Gio.Resolver {
         static $gtype: GObject.GType<Resolver>;
-        declare static readonly __signalSignatures: Resolver.SignalSignatures;
 
         // Constructors
 
@@ -120,6 +130,18 @@ export namespace Uhm {
         _init(...args: any[]): void;
 
         static ['new'](): Resolver;
+
+        // Signals
+
+        connect<K extends keyof Resolver.SignalSignatures>(signal: K, callback: Resolver.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resolver.SignalSignatures>(
+            signal: K,
+            callback: Resolver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resolver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resolver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -150,11 +172,11 @@ export namespace Uhm {
         // Signal callback interfaces
 
         interface CompareMessages {
-            (expected_message: Message, actual_message: Message): boolean;
+            (_source: Server, expected_message: Message, actual_message: Message): boolean;
         }
 
         interface HandleMessage {
-            (message: Message): boolean;
+            (_source: Server, message: Message): boolean;
         }
 
         // Signal signatures
@@ -185,7 +207,6 @@ export namespace Uhm {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
-        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -296,21 +317,6 @@ export namespace Uhm {
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'compare-messages',
-            callback: (_source: this, expected_message: Message, actual_message: Message) => boolean,
-        ): number;
-        connect_after(
-            signal: 'compare-messages',
-            callback: (_source: this, expected_message: Message, actual_message: Message) => boolean,
-        ): number;
-        emit(signal: 'compare-messages', expected_message: Message, actual_message: Message): void;
-        connect(signal: 'handle-message', callback: (_source: this, message: Message) => boolean): number;
-        connect_after(signal: 'handle-message', callback: (_source: this, message: Message) => boolean): number;
-        emit(signal: 'handle-message', message: Message): void;
 
         // Static methods
 

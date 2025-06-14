@@ -168,7 +168,7 @@ export namespace Notify {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: Notification): void;
         }
 
         // Signal signatures
@@ -205,7 +205,6 @@ export namespace Notify {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
-        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Properties
 
@@ -289,12 +288,6 @@ export namespace Notify {
             signal: K,
             ...args: Parameters<Notification.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
 
         // Virtual methods
 

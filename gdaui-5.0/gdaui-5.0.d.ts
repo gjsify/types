@@ -191,19 +191,19 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Activated {
-            (): void;
+            (_source: BasicForm): void;
         }
 
         interface HolderChanged {
-            (param: Gda.Holder, is_user_modif: boolean): void;
+            (_source: BasicForm, param: Gda.Holder, is_user_modif: boolean): void;
         }
 
         interface LayoutChanged {
-            (): void;
+            (_source: BasicForm): void;
         }
 
         interface PopulatePopup {
-            (menu: Gtk.Menu): void;
+            (_source: BasicForm, menu: Gtk.Menu): void;
         }
 
         // Signal signatures
@@ -237,7 +237,6 @@ export namespace Gdaui {
 
     class BasicForm extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BasicForm>;
-        declare static readonly __signalSignatures: BasicForm.SignalSignatures;
 
         // Properties
 
@@ -299,27 +298,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<BasicForm.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activated', callback: (_source: this) => void): number;
-        connect_after(signal: 'activated', callback: (_source: this) => void): number;
-        emit(signal: 'activated'): void;
-        connect(
-            signal: 'holder-changed',
-            callback: (_source: this, param: Gda.Holder, is_user_modif: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'holder-changed',
-            callback: (_source: this, param: Gda.Holder, is_user_modif: boolean) => void,
-        ): number;
-        emit(signal: 'holder-changed', param: Gda.Holder, is_user_modif: boolean): void;
-        connect(signal: 'layout-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layout-changed'): void;
-        connect(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        connect_after(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        emit(signal: 'populate-popup', menu: Gtk.Menu): void;
 
         // Virtual methods
 
@@ -896,7 +874,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Activate {
-            (object: number): void;
+            (_source: Cloud, object: number): void;
         }
 
         // Signal signatures
@@ -926,7 +904,6 @@ export namespace Gdaui {
 
     class Cloud extends Gtk.Box implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Cloud>;
-        declare static readonly __signalSignatures: Cloud.SignalSignatures;
 
         // Properties
 
@@ -969,12 +946,6 @@ export namespace Gdaui {
         connect<K extends keyof Cloud.SignalSignatures>(signal: K, callback: Cloud.SignalSignatures[K]): number;
         connect_after<K extends keyof Cloud.SignalSignatures>(signal: K, callback: Cloud.SignalSignatures[K]): number;
         emit<K extends keyof Cloud.SignalSignatures>(signal: K, ...args: Parameters<Cloud.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'activate', object: number): void;
 
         // Virtual methods
 
@@ -1597,7 +1568,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<Combo>;
-        declare static readonly __signalSignatures: Combo.SignalSignatures;
 
         // Properties
 
@@ -1626,6 +1596,12 @@ export namespace Gdaui {
         // Conflicted with Gtk.ComboBox.new_with_model
 
         static new_with_model(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Combo.SignalSignatures>(signal: K, callback: Combo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Combo.SignalSignatures>(signal: K, callback: Combo.SignalSignatures[K]): number;
+        emit<K extends keyof Combo.SignalSignatures>(signal: K, ...args: Parameters<Combo.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6238,7 +6214,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0: GObject.Value | any): void;
+            (_source: DataCellRendererBin, object: string, p0: GObject.Value | any): void;
         }
 
         // Signal signatures
@@ -6261,7 +6237,6 @@ export namespace Gdaui {
 
     class DataCellRendererBin extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<DataCellRendererBin>;
-        declare static readonly __signalSignatures: DataCellRendererBin.SignalSignatures;
 
         // Properties
 
@@ -6300,12 +6275,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<DataCellRendererBin.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        emit(signal: 'changed', object: string, p0: GObject.Value | any): void;
 
         // Virtual methods
 
@@ -6316,7 +6285,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0: GObject.Value | any): void;
+            (_source: DataCellRendererBoolean, object: string, p0: GObject.Value | any): void;
         }
 
         // Signal signatures
@@ -6339,7 +6308,6 @@ export namespace Gdaui {
 
     class DataCellRendererBoolean extends Gtk.CellRendererToggle {
         static $gtype: GObject.GType<DataCellRendererBoolean>;
-        declare static readonly __signalSignatures: DataCellRendererBoolean.SignalSignatures;
 
         // Properties
 
@@ -6378,12 +6346,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<DataCellRendererBoolean.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        emit(signal: 'changed', object: string, p0: GObject.Value | any): void;
 
         // Virtual methods
 
@@ -6394,7 +6356,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0?: any | null, p1?: any | null): void;
+            (_source: DataCellRendererCombo, object: string, p0?: any | null, p1?: any | null): void;
         }
 
         // Signal signatures
@@ -6423,7 +6385,6 @@ export namespace Gdaui {
 
     class DataCellRendererCombo extends Gtk.CellRendererText {
         static $gtype: GObject.GType<DataCellRendererCombo>;
-        declare static readonly __signalSignatures: DataCellRendererCombo.SignalSignatures;
 
         // Properties
 
@@ -6468,25 +6429,13 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<DataCellRendererCombo.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'changed',
-            callback: (_source: this, object: string, p0: any | null, p1: any | null) => void,
-        ): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, object: string, p0: any | null, p1: any | null) => void,
-        ): number;
-        emit(signal: 'changed', object: string, p0?: any | null, p1?: any | null): void;
     }
 
     namespace DataCellRendererInfo {
         // Signal callback interfaces
 
         interface StatusChanged {
-            (object: string, p0: unknown): void;
+            (_source: DataCellRendererInfo, object: string, p0: unknown): void;
         }
 
         // Signal signatures
@@ -6508,7 +6457,6 @@ export namespace Gdaui {
 
     class DataCellRendererInfo extends Gtk.CellRenderer {
         static $gtype: GObject.GType<DataCellRendererInfo>;
-        declare static readonly __signalSignatures: DataCellRendererInfo.SignalSignatures;
 
         // Properties
 
@@ -6542,12 +6490,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<DataCellRendererInfo.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'status-changed', callback: (_source: this, object: string, p0: unknown) => void): number;
-        connect_after(signal: 'status-changed', callback: (_source: this, object: string, p0: unknown) => void): number;
-        emit(signal: 'status-changed', object: string, p0: unknown): void;
 
         // Virtual methods
 
@@ -6558,7 +6500,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: string, p0: GObject.Value | any): void;
+            (_source: DataCellRendererTextual, object: string, p0: GObject.Value | any): void;
         }
 
         // Signal signatures
@@ -6581,7 +6523,6 @@ export namespace Gdaui {
 
     class DataCellRendererTextual extends Gtk.CellRendererText {
         static $gtype: GObject.GType<DataCellRendererTextual>;
-        declare static readonly __signalSignatures: DataCellRendererTextual.SignalSignatures;
 
         // Properties
 
@@ -6618,12 +6559,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<DataCellRendererTextual.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: string, p0: GObject.Value) => void): number;
-        emit(signal: 'changed', object: string, p0: GObject.Value | any): void;
 
         // Virtual methods
 
@@ -6648,7 +6583,6 @@ export namespace Gdaui {
 
     class DataFilter extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DataFilter>;
-        declare static readonly __signalSignatures: DataFilter.SignalSignatures;
 
         // Properties
 
@@ -6671,6 +6605,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DataFilter.SignalSignatures>(
+            signal: K,
+            callback: DataFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataFilter.SignalSignatures>(
+            signal: K,
+            callback: DataFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataFilter.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -7151,7 +7100,6 @@ export namespace Gdaui {
 
     class DataProxyInfo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DataProxyInfo>;
-        declare static readonly __signalSignatures: DataProxyInfo.SignalSignatures;
 
         // Properties
 
@@ -7184,6 +7132,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DataProxyInfo.SignalSignatures>(
+            signal: K,
+            callback: DataProxyInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataProxyInfo.SignalSignatures>(
+            signal: K,
+            callback: DataProxyInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataProxyInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataProxyInfo.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -7660,7 +7623,6 @@ export namespace Gdaui {
 
     class DataStore extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<DataStore>;
-        declare static readonly __signalSignatures: DataStore.SignalSignatures;
 
         // Properties
 
@@ -7680,6 +7642,18 @@ export namespace Gdaui {
         constructor(properties?: Partial<DataStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataStore.SignalSignatures>(signal: K, callback: DataStore.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataStore.SignalSignatures>(
+            signal: K,
+            callback: DataStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataStore.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8595,7 +8569,6 @@ export namespace Gdaui {
 
     class Entry extends Gtk.Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<Entry>;
-        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -8618,6 +8591,12 @@ export namespace Gdaui {
         // Conflicted with Gtk.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -13242,7 +13221,6 @@ export namespace Gdaui {
 
     class EntryBin extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryBin>;
-        declare static readonly __signalSignatures: EntryBin.SignalSignatures;
 
         // Fields
 
@@ -13258,6 +13236,18 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryBin.SignalSignatures>(signal: K, callback: EntryBin.SignalSignatures[K]): number;
+        connect_after<K extends keyof EntryBin.SignalSignatures>(
+            signal: K,
+            callback: EntryBin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryBin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryBin.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -17720,7 +17710,6 @@ export namespace Gdaui {
 
     class EntryBoolean extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryBoolean>;
-        declare static readonly __signalSignatures: EntryBoolean.SignalSignatures;
 
         // Fields
 
@@ -17736,6 +17725,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryBoolean.SignalSignatures>(
+            signal: K,
+            callback: EntryBoolean.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryBoolean.SignalSignatures>(
+            signal: K,
+            callback: EntryBoolean.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryBoolean.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryBoolean.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -22201,7 +22205,6 @@ export namespace Gdaui {
 
     class EntryCombo extends EntryShell implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryCombo>;
-        declare static readonly __signalSignatures: EntryCombo.SignalSignatures;
 
         // Properties
 
@@ -22224,6 +22227,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryCombo.SignalSignatures>(
+            signal: K,
+            callback: EntryCombo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryCombo.SignalSignatures>(
+            signal: K,
+            callback: EntryCombo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryCombo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryCombo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26743,7 +26761,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryCommonTime>;
-        declare static readonly __signalSignatures: EntryCommonTime.SignalSignatures;
 
         // Properties
 
@@ -26763,6 +26780,21 @@ export namespace Gdaui {
         constructor(properties?: Partial<EntryCommonTime.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EntryCommonTime.SignalSignatures>(
+            signal: K,
+            callback: EntryCommonTime.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryCommonTime.SignalSignatures>(
+            signal: K,
+            callback: EntryCommonTime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryCommonTime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryCommonTime.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -31273,7 +31305,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryDate>;
-        declare static readonly __signalSignatures: EntryDate.SignalSignatures;
 
         // Fields
 
@@ -31289,6 +31320,18 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryDate.SignalSignatures>(signal: K, callback: EntryDate.SignalSignatures[K]): number;
+        connect_after<K extends keyof EntryDate.SignalSignatures>(
+            signal: K,
+            callback: EntryDate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryDate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryDate.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -35636,7 +35679,6 @@ export namespace Gdaui {
 
     class EntryNone extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryNone>;
-        declare static readonly __signalSignatures: EntryNone.SignalSignatures;
 
         // Fields
 
@@ -35652,6 +35694,18 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryNone.SignalSignatures>(signal: K, callback: EntryNone.SignalSignatures[K]): number;
+        connect_after<K extends keyof EntryNone.SignalSignatures>(
+            signal: K,
+            callback: EntryNone.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryNone.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryNone.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -40122,7 +40176,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryNumber>;
-        declare static readonly __signalSignatures: EntryNumber.SignalSignatures;
 
         // Properties
 
@@ -40146,6 +40199,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryNumber.SignalSignatures>(
+            signal: K,
+            callback: EntryNumber.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryNumber.SignalSignatures>(
+            signal: K,
+            callback: EntryNumber.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryNumber.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryNumber.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -44660,7 +44728,6 @@ export namespace Gdaui {
 
     class EntryShell extends Gtk.Viewport implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryShell>;
-        declare static readonly __signalSignatures: EntryShell.SignalSignatures;
 
         // Properties
 
@@ -44682,6 +44749,21 @@ export namespace Gdaui {
         constructor(properties?: Partial<EntryShell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EntryShell.SignalSignatures>(
+            signal: K,
+            callback: EntryShell.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryShell.SignalSignatures>(
+            signal: K,
+            callback: EntryShell.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryShell.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryShell.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -45276,7 +45358,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryString>;
-        declare static readonly __signalSignatures: EntryString.SignalSignatures;
 
         // Properties
 
@@ -45302,6 +45383,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryString.SignalSignatures>(
+            signal: K,
+            callback: EntryString.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryString.SignalSignatures>(
+            signal: K,
+            callback: EntryString.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryString.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryString.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -49812,7 +49908,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryTime>;
-        declare static readonly __signalSignatures: EntryTime.SignalSignatures;
 
         // Fields
 
@@ -49828,6 +49923,18 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryTime.SignalSignatures>(signal: K, callback: EntryTime.SignalSignatures[K]): number;
+        connect_after<K extends keyof EntryTime.SignalSignatures>(
+            signal: K,
+            callback: EntryTime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryTime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryTime.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -54179,7 +54286,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryTimestamp>;
-        declare static readonly __signalSignatures: EntryTimestamp.SignalSignatures;
 
         // Fields
 
@@ -54195,6 +54301,21 @@ export namespace Gdaui {
         // Conflicted with Gtk.Viewport.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EntryTimestamp.SignalSignatures>(
+            signal: K,
+            callback: EntryTimestamp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryTimestamp.SignalSignatures>(
+            signal: K,
+            callback: EntryTimestamp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryTimestamp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryTimestamp.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -58545,7 +58666,6 @@ export namespace Gdaui {
 
     class EntryWrapper extends EntryShell implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryWrapper>;
-        declare static readonly __signalSignatures: EntryWrapper.SignalSignatures;
 
         // Properties
 
@@ -58563,6 +58683,21 @@ export namespace Gdaui {
         constructor(properties?: Partial<EntryWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EntryWrapper.SignalSignatures>(
+            signal: K,
+            callback: EntryWrapper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryWrapper.SignalSignatures>(
+            signal: K,
+            callback: EntryWrapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryWrapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryWrapper.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -63039,7 +63174,6 @@ export namespace Gdaui {
 
     class Form extends Gtk.Box implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Form>;
-        declare static readonly __signalSignatures: Form.SignalSignatures;
 
         // Properties
 
@@ -63062,6 +63196,12 @@ export namespace Gdaui {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Form.SignalSignatures>(signal: K, callback: Form.SignalSignatures[K]): number;
+        connect_after<K extends keyof Form.SignalSignatures>(signal: K, callback: Form.SignalSignatures[K]): number;
+        emit<K extends keyof Form.SignalSignatures>(signal: K, ...args: Parameters<Form.SignalSignatures[K]>): void;
 
         // Inherited properties
         /**
@@ -63743,7 +63883,6 @@ export namespace Gdaui {
 
     class FormattedEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<FormattedEntry>;
-        declare static readonly __signalSignatures: FormattedEntry.SignalSignatures;
 
         // Properties
 
@@ -63766,6 +63905,21 @@ export namespace Gdaui {
         // Conflicted with Gdaui.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof FormattedEntry.SignalSignatures>(
+            signal: K,
+            callback: FormattedEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormattedEntry.SignalSignatures>(
+            signal: K,
+            callback: FormattedEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormattedEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormattedEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -68079,7 +68233,6 @@ export namespace Gdaui {
 
     class Grid extends Gtk.Box implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Grid>;
-        declare static readonly __signalSignatures: Grid.SignalSignatures;
 
         // Properties
 
@@ -68103,6 +68256,12 @@ export namespace Gdaui {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -68778,7 +68937,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (object: boolean): void;
+            (_source: Login, object: boolean): void;
         }
 
         // Signal signatures
@@ -68800,7 +68959,6 @@ export namespace Gdaui {
 
     class Login extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Login>;
-        declare static readonly __signalSignatures: Login.SignalSignatures;
 
         // Properties
 
@@ -68824,12 +68982,6 @@ export namespace Gdaui {
         connect<K extends keyof Login.SignalSignatures>(signal: K, callback: Login.SignalSignatures[K]): number;
         connect_after<K extends keyof Login.SignalSignatures>(signal: K, callback: Login.SignalSignatures[K]): number;
         emit<K extends keyof Login.SignalSignatures>(signal: K, ...args: Parameters<Login.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'changed', object: boolean): void;
 
         // Virtual methods
 
@@ -69356,7 +69508,6 @@ export namespace Gdaui {
 
     class NumericEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<NumericEntry>;
-        declare static readonly __signalSignatures: NumericEntry.SignalSignatures;
 
         // Properties
 
@@ -69389,6 +69540,21 @@ export namespace Gdaui {
         // Conflicted with Gdaui.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof NumericEntry.SignalSignatures>(
+            signal: K,
+            callback: NumericEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NumericEntry.SignalSignatures>(
+            signal: K,
+            callback: NumericEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NumericEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NumericEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -73688,7 +73854,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<ProviderSelector>;
-        declare static readonly __signalSignatures: ProviderSelector.SignalSignatures;
 
         // Constructors
 
@@ -73697,6 +73862,21 @@ export namespace Gdaui {
         _init(...args: any[]): void;
 
         static ['new'](): ProviderSelector;
+
+        // Signals
+
+        connect<K extends keyof ProviderSelector.SignalSignatures>(
+            signal: K,
+            callback: ProviderSelector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProviderSelector.SignalSignatures>(
+            signal: K,
+            callback: ProviderSelector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProviderSelector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProviderSelector.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -78132,7 +78312,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable
     {
         static $gtype: GObject.GType<RawForm>;
-        declare static readonly __signalSignatures: RawForm.SignalSignatures;
 
         // Properties
 
@@ -78153,6 +78332,18 @@ export namespace Gdaui {
         // Conflicted with Gdaui.BasicForm.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof RawForm.SignalSignatures>(signal: K, callback: RawForm.SignalSignatures[K]): number;
+        connect_after<K extends keyof RawForm.SignalSignatures>(
+            signal: K,
+            callback: RawForm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RawForm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RawForm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -78802,11 +78993,11 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface DoubleClicked {
-            (row: number): void;
+            (_source: RawGrid, row: number): void;
         }
 
         interface PopulatePopup {
-            (menu: Gtk.Menu): void;
+            (_source: RawGrid, menu: Gtk.Menu): void;
         }
 
         // Signal signatures
@@ -78839,7 +79030,6 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<RawGrid>;
-        declare static readonly __signalSignatures: RawGrid.SignalSignatures;
 
         // Properties
 
@@ -78884,15 +79074,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<RawGrid.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'double-clicked', callback: (_source: this, row: number) => void): number;
-        connect_after(signal: 'double-clicked', callback: (_source: this, row: number) => void): number;
-        emit(signal: 'double-clicked', row: number): void;
-        connect(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        connect_after(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        emit(signal: 'populate-popup', menu: Gtk.Menu): void;
 
         // Virtual methods
 
@@ -79680,7 +79861,7 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: RtEditor): void;
         }
 
         // Signal signatures
@@ -79707,7 +79888,6 @@ export namespace Gdaui {
 
     class RtEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<RtEditor>;
-        declare static readonly __signalSignatures: RtEditor.SignalSignatures;
 
         // Properties
 
@@ -79777,12 +79957,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<RtEditor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -80286,7 +80460,6 @@ export namespace Gdaui {
 
     class ServerOperation extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ServerOperation>;
-        declare static readonly __signalSignatures: ServerOperation.SignalSignatures;
 
         // Properties
 
@@ -80318,6 +80491,21 @@ export namespace Gdaui {
             title?: string | null,
             header?: string | null,
         ): ServerOperation;
+
+        // Signals
+
+        connect<K extends keyof ServerOperation.SignalSignatures>(
+            signal: K,
+            callback: ServerOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerOperation.SignalSignatures>(
+            signal: K,
+            callback: ServerOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerOperation.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -80782,11 +80970,11 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface PublicDataChanged {
-            (): void;
+            (_source: Set): void;
         }
 
         interface SourceModelChanged {
-            (object?: any | null): void;
+            (_source: Set, object?: any | null): void;
         }
 
         // Signal signatures
@@ -80804,7 +80992,6 @@ export namespace Gdaui {
 
     class Set extends GObject.Object {
         static $gtype: GObject.GType<Set>;
-        declare static readonly __signalSignatures: Set.SignalSignatures;
 
         // Properties
 
@@ -80828,15 +81015,6 @@ export namespace Gdaui {
         connect<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
         connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
         emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: Parameters<Set.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'public-data-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'public-data-changed', callback: (_source: this) => void): number;
-        emit(signal: 'public-data-changed'): void;
-        connect(signal: 'source-model-changed', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'source-model-changed', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'source-model-changed', object?: any | null): void;
 
         // Virtual methods
 
@@ -80852,23 +81030,23 @@ export namespace Gdaui {
         // Signal callback interfaces
 
         interface DragCanDrag {
-            (object: string): boolean;
+            (_source: TreeStore, object: string): boolean;
         }
 
         interface DragCanDrop {
-            (object: string, p0?: any | null): boolean;
+            (_source: TreeStore, object: string, p0?: any | null): boolean;
         }
 
         interface DragDelete {
-            (object: string): boolean;
+            (_source: TreeStore, object: string): boolean;
         }
 
         interface DragDrop {
-            (object: string, p0?: any | null): boolean;
+            (_source: TreeStore, object: string, p0?: any | null): boolean;
         }
 
         interface DragGet {
-            (object: string, p0?: any | null): boolean;
+            (_source: TreeStore, object: string, p0?: any | null): boolean;
         }
 
         // Signal signatures
@@ -80893,7 +81071,6 @@ export namespace Gdaui {
 
     class TreeStore extends GObject.Object implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<TreeStore>;
-        declare static readonly __signalSignatures: TreeStore.SignalSignatures;
 
         // Properties
 
@@ -80920,30 +81097,6 @@ export namespace Gdaui {
             signal: K,
             ...args: Parameters<TreeStore.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'drag-can-drag', callback: (_source: this, object: string) => boolean): number;
-        connect_after(signal: 'drag-can-drag', callback: (_source: this, object: string) => boolean): number;
-        emit(signal: 'drag-can-drag', object: string): void;
-        connect(signal: 'drag-can-drop', callback: (_source: this, object: string, p0: any | null) => boolean): number;
-        connect_after(
-            signal: 'drag-can-drop',
-            callback: (_source: this, object: string, p0: any | null) => boolean,
-        ): number;
-        emit(signal: 'drag-can-drop', object: string, p0?: any | null): void;
-        connect(signal: 'drag-delete', callback: (_source: this, object: string) => boolean): number;
-        connect_after(signal: 'drag-delete', callback: (_source: this, object: string) => boolean): number;
-        emit(signal: 'drag-delete', object: string): void;
-        connect(signal: 'drag-drop', callback: (_source: this, object: string, p0: any | null) => boolean): number;
-        connect_after(
-            signal: 'drag-drop',
-            callback: (_source: this, object: string, p0: any | null) => boolean,
-        ): number;
-        emit(signal: 'drag-drop', object: string, p0?: any | null): void;
-        connect(signal: 'drag-get', callback: (_source: this, object: string, p0: any | null) => boolean): number;
-        connect_after(signal: 'drag-get', callback: (_source: this, object: string, p0: any | null) => boolean): number;
-        emit(signal: 'drag-get', object: string, p0?: any | null): void;
 
         // Static methods
 

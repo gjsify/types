@@ -121,7 +121,6 @@ export namespace GstController {
      */
     class ARGBControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ARGBControlBinding>;
-        declare static readonly __signalSignatures: ARGBControlBinding.SignalSignatures;
 
         // Properties
 
@@ -156,6 +155,21 @@ export namespace GstController {
             cs_g: Gst.ControlSource,
             cs_b: Gst.ControlSource,
         ): ARGBControlBinding;
+
+        // Signals
+
+        connect<K extends keyof ARGBControlBinding.SignalSignatures>(
+            signal: K,
+            callback: ARGBControlBinding.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ARGBControlBinding.SignalSignatures>(
+            signal: K,
+            callback: ARGBControlBinding.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ARGBControlBinding.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ARGBControlBinding.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DirectControlBinding {
@@ -181,7 +195,6 @@ export namespace GstController {
      */
     class DirectControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<DirectControlBinding>;
-        declare static readonly __signalSignatures: DirectControlBinding.SignalSignatures;
 
         // Properties
 
@@ -200,6 +213,21 @@ export namespace GstController {
         static ['new'](object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding;
 
         static new_absolute(object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding;
+
+        // Signals
+
+        connect<K extends keyof DirectControlBinding.SignalSignatures>(
+            signal: K,
+            callback: DirectControlBinding.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectControlBinding.SignalSignatures>(
+            signal: K,
+            callback: DirectControlBinding.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectControlBinding.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectControlBinding.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InterpolationControlSource {
@@ -225,7 +253,6 @@ export namespace GstController {
      */
     class InterpolationControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<InterpolationControlSource>;
-        declare static readonly __signalSignatures: InterpolationControlSource.SignalSignatures;
 
         // Properties
 
@@ -239,6 +266,21 @@ export namespace GstController {
         _init(...args: any[]): void;
 
         static ['new'](): InterpolationControlSource;
+
+        // Signals
+
+        connect<K extends keyof InterpolationControlSource.SignalSignatures>(
+            signal: K,
+            callback: InterpolationControlSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InterpolationControlSource.SignalSignatures>(
+            signal: K,
+            callback: InterpolationControlSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InterpolationControlSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InterpolationControlSource.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LFOControlSource {
@@ -268,7 +310,6 @@ export namespace GstController {
      */
     class LFOControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<LFOControlSource>;
-        declare static readonly __signalSignatures: LFOControlSource.SignalSignatures;
 
         // Properties
 
@@ -311,6 +352,21 @@ export namespace GstController {
         _init(...args: any[]): void;
 
         static ['new'](): LFOControlSource;
+
+        // Signals
+
+        connect<K extends keyof LFOControlSource.SignalSignatures>(
+            signal: K,
+            callback: LFOControlSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LFOControlSource.SignalSignatures>(
+            signal: K,
+            callback: LFOControlSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LFOControlSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LFOControlSource.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ProxyControlBinding {
@@ -327,7 +383,6 @@ export namespace GstController {
      */
     class ProxyControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ProxyControlBinding>;
-        declare static readonly __signalSignatures: ProxyControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -341,21 +396,36 @@ export namespace GstController {
             ref_object: Gst.Object,
             ref_property_name: string,
         ): ProxyControlBinding;
+
+        // Signals
+
+        connect<K extends keyof ProxyControlBinding.SignalSignatures>(
+            signal: K,
+            callback: ProxyControlBinding.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyControlBinding.SignalSignatures>(
+            signal: K,
+            callback: ProxyControlBinding.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyControlBinding.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyControlBinding.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TimedValueControlSource {
         // Signal callback interfaces
 
         interface ValueAdded {
-            (timed_value: ControlPoint): void;
+            (_source: TimedValueControlSource, timed_value: ControlPoint): void;
         }
 
         interface ValueChanged {
-            (timed_value: ControlPoint): void;
+            (_source: TimedValueControlSource, timed_value: ControlPoint): void;
         }
 
         interface ValueRemoved {
-            (timed_value: ControlPoint): void;
+            (_source: TimedValueControlSource, timed_value: ControlPoint): void;
         }
 
         // Signal signatures
@@ -380,7 +450,6 @@ export namespace GstController {
      */
     abstract class TimedValueControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<TimedValueControlSource>;
-        declare static readonly __signalSignatures: TimedValueControlSource.SignalSignatures;
 
         // Fields
 
@@ -407,18 +476,6 @@ export namespace GstController {
             signal: K,
             ...args: Parameters<TimedValueControlSource.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'value-added', callback: (_source: this, timed_value: ControlPoint) => void): number;
-        connect_after(signal: 'value-added', callback: (_source: this, timed_value: ControlPoint) => void): number;
-        emit(signal: 'value-added', timed_value: ControlPoint): void;
-        connect(signal: 'value-changed', callback: (_source: this, timed_value: ControlPoint) => void): number;
-        connect_after(signal: 'value-changed', callback: (_source: this, timed_value: ControlPoint) => void): number;
-        emit(signal: 'value-changed', timed_value: ControlPoint): void;
-        connect(signal: 'value-removed', callback: (_source: this, timed_value: ControlPoint) => void): number;
-        connect_after(signal: 'value-removed', callback: (_source: this, timed_value: ControlPoint) => void): number;
-        emit(signal: 'value-removed', timed_value: ControlPoint): void;
 
         // Methods
 
@@ -494,7 +551,6 @@ export namespace GstController {
      */
     class TriggerControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<TriggerControlSource>;
-        declare static readonly __signalSignatures: TriggerControlSource.SignalSignatures;
 
         // Properties
 
@@ -508,6 +564,21 @@ export namespace GstController {
         _init(...args: any[]): void;
 
         static ['new'](): TriggerControlSource;
+
+        // Signals
+
+        connect<K extends keyof TriggerControlSource.SignalSignatures>(
+            signal: K,
+            callback: TriggerControlSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TriggerControlSource.SignalSignatures>(
+            signal: K,
+            callback: TriggerControlSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TriggerControlSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TriggerControlSource.SignalSignatures[K]>
+        ): void;
     }
 
     type ARGBControlBindingClass = typeof ARGBControlBinding;

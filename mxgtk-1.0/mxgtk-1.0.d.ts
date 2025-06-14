@@ -46,7 +46,6 @@ export namespace MxGtk {
      */
     class Frame extends Gtk.Frame implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Frame>;
-        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Constructors
 
@@ -55,6 +54,12 @@ export namespace MxGtk {
         _init(...args: any[]): void;
 
         static ['new'](): Frame;
+
+        // Signals
+
+        connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -502,7 +507,7 @@ export namespace MxGtk {
         // Signal callback interfaces
 
         interface SwitchFlipped {
-            (object: boolean): void;
+            (_source: LightSwitch, object: boolean): void;
         }
 
         // Signal signatures
@@ -526,7 +531,6 @@ export namespace MxGtk {
      */
     class LightSwitch extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LightSwitch>;
-        declare static readonly __signalSignatures: LightSwitch.SignalSignatures;
 
         // Properties
 
@@ -555,12 +559,6 @@ export namespace MxGtk {
             signal: K,
             ...args: Parameters<LightSwitch.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'switch-flipped', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'switch-flipped', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'switch-flipped', object: boolean): void;
 
         // Virtual methods
 

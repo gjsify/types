@@ -113,13 +113,24 @@ export namespace PangoFc {
      */
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
-        declare static readonly __signalSignatures: Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Decoder.SignalSignatures>(signal: K, callback: Decoder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Decoder.SignalSignatures>(
+            signal: K,
+            callback: Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -197,7 +208,6 @@ export namespace PangoFc {
      */
     abstract class Font extends Pango.Font {
         static $gtype: GObject.GType<Font>;
-        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Properties
 
@@ -224,6 +234,12 @@ export namespace PangoFc {
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -316,13 +332,24 @@ export namespace PangoFc {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
-        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            callback: FontMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

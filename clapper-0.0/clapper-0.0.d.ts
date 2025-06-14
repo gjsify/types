@@ -289,7 +289,6 @@ export namespace Clapper {
      */
     class AudioStream extends Stream {
         static $gtype: GObject.GType<AudioStream>;
-        declare static readonly __signalSignatures: AudioStream.SignalSignatures;
 
         // Properties
 
@@ -343,6 +342,21 @@ export namespace Clapper {
         constructor(properties?: Partial<AudioStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioStream.SignalSignatures>(
+            signal: K,
+            callback: AudioStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioStream.SignalSignatures>(
+            signal: K,
+            callback: AudioStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -419,7 +433,6 @@ export namespace Clapper {
      */
     class Discoverer extends Feature {
         static $gtype: GObject.GType<Discoverer>;
-        declare static readonly __signalSignatures: Discoverer.SignalSignatures;
 
         // Properties
 
@@ -441,6 +454,21 @@ export namespace Clapper {
         _init(...args: any[]): void;
 
         static ['new'](): Discoverer;
+
+        // Signals
+
+        connect<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            callback: Discoverer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            callback: Discoverer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Discoverer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -479,13 +507,24 @@ export namespace Clapper {
      */
     class Feature extends Gst.Object {
         static $gtype: GObject.GType<Feature>;
-        declare static readonly __signalSignatures: Feature.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Feature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Feature.SignalSignatures>(signal: K, callback: Feature.SignalSignatures[K]): number;
+        connect_after<K extends keyof Feature.SignalSignatures>(
+            signal: K,
+            callback: Feature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Feature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Feature.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -593,13 +632,24 @@ export namespace Clapper {
      */
     class Harvest extends Gst.Object {
         static $gtype: GObject.GType<Harvest>;
-        declare static readonly __signalSignatures: Harvest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Harvest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Harvest.SignalSignatures>(signal: K, callback: Harvest.SignalSignatures[K]): number;
+        connect_after<K extends keyof Harvest.SignalSignatures>(
+            signal: K,
+            callback: Harvest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Harvest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Harvest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -718,7 +768,6 @@ export namespace Clapper {
      */
     class Marker extends Gst.Object {
         static $gtype: GObject.GType<Marker>;
-        declare static readonly __signalSignatures: Marker.SignalSignatures;
 
         // Properties
 
@@ -750,6 +799,12 @@ export namespace Clapper {
         _init(...args: any[]): void;
 
         static ['new'](marker_type: MarkerType, title: string | null, start: number, end: number): Marker;
+
+        // Signals
+
+        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -803,7 +858,6 @@ export namespace Clapper {
      */
     class MediaItem extends Gst.Object {
         static $gtype: GObject.GType<MediaItem>;
-        declare static readonly __signalSignatures: MediaItem.SignalSignatures;
 
         // Properties
 
@@ -860,6 +914,18 @@ export namespace Clapper {
         static new_cached(uri: string, location?: string | null): MediaItem;
 
         static new_from_file(file: Gio.File): MediaItem;
+
+        // Signals
+
+        connect<K extends keyof MediaItem.SignalSignatures>(signal: K, callback: MediaItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MediaItem.SignalSignatures>(
+            signal: K,
+            callback: MediaItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -938,7 +1004,6 @@ export namespace Clapper {
      */
     class Mpris extends Feature {
         static $gtype: GObject.GType<Mpris>;
-        declare static readonly __signalSignatures: Mpris.SignalSignatures;
 
         // Properties
 
@@ -1003,6 +1068,12 @@ export namespace Clapper {
 
         static ['new'](own_name: string, identity: string, desktop_entry?: string | null): Mpris;
 
+        // Signals
+
+        connect<K extends keyof Mpris.SignalSignatures>(signal: K, callback: Mpris.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mpris.SignalSignatures>(signal: K, callback: Mpris.SignalSignatures[K]): number;
+        emit<K extends keyof Mpris.SignalSignatures>(signal: K, ...args: Parameters<Mpris.SignalSignatures[K]>): void;
+
         // Methods
 
         /**
@@ -1038,23 +1109,23 @@ export namespace Clapper {
         // Signal callback interfaces
 
         interface DownloadComplete {
-            (item: MediaItem, location: string): void;
+            (_source: Player, item: MediaItem, location: string): void;
         }
 
         interface Error {
-            (error: GLib.Error, debug_info?: string | null): void;
+            (_source: Player, error: GLib.Error, debug_info?: string | null): void;
         }
 
         interface MissingPlugin {
-            (name: string, installer_detail?: string | null): void;
+            (_source: Player, name: string, installer_detail?: string | null): void;
         }
 
         interface SeekDone {
-            (): void;
+            (_source: Player): void;
         }
 
         interface Warning {
-            (error: GLib.Error, debug_info?: string | null): void;
+            (_source: Player, error: GLib.Error, debug_info?: string | null): void;
         }
 
         // Signal signatures
@@ -1139,7 +1210,6 @@ export namespace Clapper {
      */
     class Player extends ThreadedObject {
         static $gtype: GObject.GType<Player>;
-        declare static readonly __signalSignatures: Player.SignalSignatures;
 
         // Properties
 
@@ -1483,48 +1553,6 @@ export namespace Clapper {
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'download-complete',
-            callback: (_source: this, item: MediaItem, location: string) => void,
-        ): number;
-        connect_after(
-            signal: 'download-complete',
-            callback: (_source: this, item: MediaItem, location: string) => void,
-        ): number;
-        emit(signal: 'download-complete', item: MediaItem, location: string): void;
-        connect(
-            signal: 'error',
-            callback: (_source: this, error: GLib.Error, debug_info: string | null) => void,
-        ): number;
-        connect_after(
-            signal: 'error',
-            callback: (_source: this, error: GLib.Error, debug_info: string | null) => void,
-        ): number;
-        emit(signal: 'error', error: GLib.Error, debug_info?: string | null): void;
-        connect(
-            signal: 'missing-plugin',
-            callback: (_source: this, name: string, installer_detail: string | null) => void,
-        ): number;
-        connect_after(
-            signal: 'missing-plugin',
-            callback: (_source: this, name: string, installer_detail: string | null) => void,
-        ): number;
-        emit(signal: 'missing-plugin', name: string, installer_detail?: string | null): void;
-        connect(signal: 'seek-done', callback: (_source: this) => void): number;
-        connect_after(signal: 'seek-done', callback: (_source: this) => void): number;
-        emit(signal: 'seek-done'): void;
-        connect(
-            signal: 'warning',
-            callback: (_source: this, error: GLib.Error, debug_info: string | null) => void,
-        ): number;
-        connect_after(
-            signal: 'warning',
-            callback: (_source: this, error: GLib.Error, debug_info: string | null) => void,
-        ): number;
-        emit(signal: 'warning', error: GLib.Error, debug_info?: string | null): void;
 
         // Methods
 
@@ -1874,7 +1902,6 @@ export namespace Clapper {
      */
     class Queue<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Queue>;
-        declare static readonly __signalSignatures: Queue.SignalSignatures;
 
         // Properties
 
@@ -1930,6 +1957,12 @@ export namespace Clapper {
         constructor(properties?: Partial<Queue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Queue.SignalSignatures>(signal: K, callback: Queue.SignalSignatures[K]): number;
+        connect_after<K extends keyof Queue.SignalSignatures>(signal: K, callback: Queue.SignalSignatures[K]): number;
+        emit<K extends keyof Queue.SignalSignatures>(signal: K, ...args: Parameters<Queue.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2649,7 +2682,6 @@ export namespace Clapper {
      */
     class Stream extends Gst.Object {
         static $gtype: GObject.GType<Stream>;
-        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -2671,6 +2703,12 @@ export namespace Clapper {
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2722,7 +2760,6 @@ export namespace Clapper {
      */
     class StreamList<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<StreamList>;
-        declare static readonly __signalSignatures: StreamList.SignalSignatures;
 
         // Properties
 
@@ -2758,6 +2795,21 @@ export namespace Clapper {
         constructor(properties?: Partial<StreamList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StreamList.SignalSignatures>(
+            signal: K,
+            callback: StreamList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamList.SignalSignatures>(
+            signal: K,
+            callback: StreamList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3358,7 +3410,6 @@ export namespace Clapper {
      */
     class SubtitleStream extends Stream {
         static $gtype: GObject.GType<SubtitleStream>;
-        declare static readonly __signalSignatures: SubtitleStream.SignalSignatures;
 
         // Properties
 
@@ -3384,6 +3435,21 @@ export namespace Clapper {
         constructor(properties?: Partial<SubtitleStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SubtitleStream.SignalSignatures>(
+            signal: K,
+            callback: SubtitleStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubtitleStream.SignalSignatures>(
+            signal: K,
+            callback: SubtitleStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubtitleStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubtitleStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3416,13 +3482,27 @@ export namespace Clapper {
      */
     class ThreadedObject extends Gst.Object {
         static $gtype: GObject.GType<ThreadedObject>;
-        declare static readonly __signalSignatures: ThreadedObject.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ThreadedObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ThreadedObject.SignalSignatures>(
+            signal: K,
+            callback: ThreadedObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThreadedObject.SignalSignatures>(
+            signal: K,
+            callback: ThreadedObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThreadedObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThreadedObject.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3470,7 +3550,6 @@ export namespace Clapper {
      */
     class Timeline<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Timeline>;
-        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -3488,6 +3567,18 @@ export namespace Clapper {
         constructor(properties?: Partial<Timeline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            callback: Timeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Timeline.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4083,7 +4174,6 @@ export namespace Clapper {
      */
     class VideoStream extends Stream {
         static $gtype: GObject.GType<VideoStream>;
-        declare static readonly __signalSignatures: VideoStream.SignalSignatures;
 
         // Properties
 
@@ -4121,6 +4211,21 @@ export namespace Clapper {
         constructor(properties?: Partial<VideoStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoStream.SignalSignatures>(
+            signal: K,
+            callback: VideoStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoStream.SignalSignatures>(
+            signal: K,
+            callback: VideoStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

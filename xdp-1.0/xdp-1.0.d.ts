@@ -670,6 +670,7 @@ export namespace Xdp {
 
         interface LocationUpdated {
             (
+                _source: Portal,
                 latitude: number,
                 longitude: number,
                 altitude: number,
@@ -683,23 +684,24 @@ export namespace Xdp {
         }
 
         interface NotificationActionInvoked {
-            (id: string, action: string, parameter?: GLib.Variant | null): void;
+            (_source: Portal, id: string, action: string, parameter?: GLib.Variant | null): void;
         }
 
         interface SessionStateChanged {
-            (screensaver_active: boolean, session_state: LoginSessionState): void;
+            (_source: Portal, screensaver_active: boolean, session_state: LoginSessionState): void;
         }
 
         interface SpawnExited {
-            (pid: number, exit_status: number): void;
+            (_source: Portal, pid: number, exit_status: number): void;
         }
 
         interface UpdateAvailable {
-            (running_commit: string, local_commit: string, remote_commit: string): void;
+            (_source: Portal, running_commit: string, local_commit: string, remote_commit: string): void;
         }
 
         interface UpdateProgress {
             (
+                _source: Portal,
                 n_ops: number,
                 op: number,
                 progress: number,
@@ -735,7 +737,6 @@ export namespace Xdp {
      */
     class Portal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Portal>;
-        declare static readonly __signalSignatures: Portal.SignalSignatures;
 
         // Constructors
 
@@ -752,117 +753,6 @@ export namespace Xdp {
         connect<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
         connect_after<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
         emit<K extends keyof Portal.SignalSignatures>(signal: K, ...args: Parameters<Portal.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'location-updated',
-            callback: (
-                _source: this,
-                latitude: number,
-                longitude: number,
-                altitude: number,
-                accuracy: number,
-                speed: number,
-                heading: number,
-                description: string,
-                timestamp_s: number,
-                timestamp_ms: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'location-updated',
-            callback: (
-                _source: this,
-                latitude: number,
-                longitude: number,
-                altitude: number,
-                accuracy: number,
-                speed: number,
-                heading: number,
-                description: string,
-                timestamp_s: number,
-                timestamp_ms: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'location-updated',
-            latitude: number,
-            longitude: number,
-            altitude: number,
-            accuracy: number,
-            speed: number,
-            heading: number,
-            description: string,
-            timestamp_s: number,
-            timestamp_ms: number,
-        ): void;
-        connect(
-            signal: 'notification-action-invoked',
-            callback: (_source: this, id: string, action: string, parameter: GLib.Variant | null) => void,
-        ): number;
-        connect_after(
-            signal: 'notification-action-invoked',
-            callback: (_source: this, id: string, action: string, parameter: GLib.Variant | null) => void,
-        ): number;
-        emit(signal: 'notification-action-invoked', id: string, action: string, parameter?: GLib.Variant | null): void;
-        connect(
-            signal: 'session-state-changed',
-            callback: (_source: this, screensaver_active: boolean, session_state: LoginSessionState) => void,
-        ): number;
-        connect_after(
-            signal: 'session-state-changed',
-            callback: (_source: this, screensaver_active: boolean, session_state: LoginSessionState) => void,
-        ): number;
-        emit(signal: 'session-state-changed', screensaver_active: boolean, session_state: LoginSessionState): void;
-        connect(signal: 'spawn-exited', callback: (_source: this, pid: number, exit_status: number) => void): number;
-        connect_after(
-            signal: 'spawn-exited',
-            callback: (_source: this, pid: number, exit_status: number) => void,
-        ): number;
-        emit(signal: 'spawn-exited', pid: number, exit_status: number): void;
-        connect(
-            signal: 'update-available',
-            callback: (_source: this, running_commit: string, local_commit: string, remote_commit: string) => void,
-        ): number;
-        connect_after(
-            signal: 'update-available',
-            callback: (_source: this, running_commit: string, local_commit: string, remote_commit: string) => void,
-        ): number;
-        emit(signal: 'update-available', running_commit: string, local_commit: string, remote_commit: string): void;
-        connect(
-            signal: 'update-progress',
-            callback: (
-                _source: this,
-                n_ops: number,
-                op: number,
-                progress: number,
-                status: UpdateStatus,
-                error: string,
-                error_message: string,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'update-progress',
-            callback: (
-                _source: this,
-                n_ops: number,
-                op: number,
-                progress: number,
-                status: UpdateStatus,
-                error: string,
-                error_message: string,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'update-progress',
-            n_ops: number,
-            op: number,
-            progress: number,
-            status: UpdateStatus,
-            error: string,
-            error_message: string,
-        ): void;
 
         // Static methods
 
@@ -3508,7 +3398,7 @@ export namespace Xdp {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: Session): void;
         }
 
         // Signal signatures
@@ -3536,7 +3426,6 @@ export namespace Xdp {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -3555,12 +3444,6 @@ export namespace Xdp {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
 
         // Methods
 

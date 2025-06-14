@@ -133,11 +133,11 @@ export namespace Budgie {
         // Signal callback interfaces
 
         interface PanelPositionChanged {
-            (position: PanelPosition): void;
+            (_source: Applet, position: PanelPosition): void;
         }
 
         interface PanelSizeChanged {
-            (panel_size: number, icon_size: number, small_icon_size: number): void;
+            (_source: Applet, panel_size: number, icon_size: number, small_icon_size: number): void;
         }
 
         // Signal signatures
@@ -163,7 +163,6 @@ export namespace Budgie {
 
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
-        declare static readonly __signalSignatures: Applet.SignalSignatures;
 
         // Properties
 
@@ -261,24 +260,6 @@ export namespace Budgie {
         connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'panel-position-changed', callback: (_source: this, position: PanelPosition) => void): number;
-        connect_after(
-            signal: 'panel-position-changed',
-            callback: (_source: this, position: PanelPosition) => void,
-        ): number;
-        emit(signal: 'panel-position-changed', position: PanelPosition): void;
-        connect(
-            signal: 'panel-size-changed',
-            callback: (_source: this, panel_size: number, icon_size: number, small_icon_size: number) => void,
-        ): number;
-        connect_after(
-            signal: 'panel-size-changed',
-            callback: (_source: this, panel_size: number, icon_size: number, small_icon_size: number) => void,
-        ): number;
-        emit(signal: 'panel-size-changed', panel_size: number, icon_size: number, small_icon_size: number): void;
 
         // Virtual methods
 
@@ -952,7 +933,6 @@ export namespace Budgie {
      */
     class AppletInfo extends GObject.Object {
         static $gtype: GObject.GType<AppletInfo>;
-        declare static readonly __signalSignatures: AppletInfo.SignalSignatures;
 
         // Properties
 
@@ -982,13 +962,28 @@ export namespace Budgie {
         static ['new'](plugin_info: Peas.PluginInfo, uuid: string, applet: Applet, settings: Gio.Settings): AppletInfo;
 
         static new_from_uuid(uuid: string): AppletInfo;
+
+        // Signals
+
+        connect<K extends keyof AppletInfo.SignalSignatures>(
+            signal: K,
+            callback: AppletInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AppletInfo.SignalSignatures>(
+            signal: K,
+            callback: AppletInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AppletInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AppletInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Popover {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: Popover): void;
         }
 
         // Signal signatures
@@ -1011,7 +1006,6 @@ export namespace Budgie {
 
     class Popover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Popover>;
-        declare static readonly __signalSignatures: Popover.SignalSignatures;
 
         // Properties
 
@@ -1052,12 +1046,6 @@ export namespace Budgie {
             signal: K,
             ...args: Parameters<Popover.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
 
         // Virtual methods
 
@@ -1532,7 +1520,6 @@ export namespace Budgie {
 
     class PopoverManager extends GObject.Object {
         static $gtype: GObject.GType<PopoverManager>;
-        declare static readonly __signalSignatures: PopoverManager.SignalSignatures;
 
         // Constructors
 
@@ -1541,6 +1528,21 @@ export namespace Budgie {
         _init(...args: any[]): void;
 
         static ['new'](): PopoverManager;
+
+        // Signals
+
+        connect<K extends keyof PopoverManager.SignalSignatures>(
+            signal: K,
+            callback: PopoverManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PopoverManager.SignalSignatures>(
+            signal: K,
+            callback: PopoverManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PopoverManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PopoverManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

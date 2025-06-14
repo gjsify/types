@@ -165,7 +165,6 @@ export namespace NMGtk {
         implements Gio.AsyncInitable<MobileProvidersDatabase>, Gio.Initable
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
-        declare static readonly __signalSignatures: MobileProvidersDatabase.SignalSignatures;
 
         // Properties
 
@@ -190,6 +189,21 @@ export namespace NMGtk {
             service_providers?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): MobileProvidersDatabase;
+
+        // Signals
+
+        connect<K extends keyof MobileProvidersDatabase.SignalSignatures>(
+            signal: K,
+            callback: MobileProvidersDatabase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MobileProvidersDatabase.SignalSignatures>(
+            signal: K,
+            callback: MobileProvidersDatabase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MobileProvidersDatabase.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -948,7 +962,6 @@ export namespace NMGtk {
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
-        declare static readonly __signalSignatures: VpnPasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -960,6 +973,21 @@ export namespace NMGtk {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VpnPasswordDialog.SignalSignatures>(
+            signal: K,
+            callback: VpnPasswordDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VpnPasswordDialog.SignalSignatures>(
+            signal: K,
+            callback: VpnPasswordDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VpnPasswordDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VpnPasswordDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1436,7 +1464,6 @@ export namespace NMGtk {
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
-        declare static readonly __signalSignatures: WifiDialog.SignalSignatures;
 
         // Constructors
 
@@ -1461,6 +1488,21 @@ export namespace NMGtk {
         static new_for_hidden(client: NMClient.Client, settings: NMClient.RemoteSettings): WifiDialog;
 
         static new_for_other(client: NMClient.Client, settings: NMClient.RemoteSettings): WifiDialog;
+
+        // Signals
+
+        connect<K extends keyof WifiDialog.SignalSignatures>(
+            signal: K,
+            callback: WifiDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WifiDialog.SignalSignatures>(
+            signal: K,
+            callback: WifiDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WifiDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WifiDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

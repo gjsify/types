@@ -336,27 +336,27 @@ export namespace GPaste {
         // Signal callback interfaces
 
         interface DeleteHistory {
-            (history: string): void;
+            (_source: Client, history: string): void;
         }
 
         interface EmptyHistory {
-            (history: string): void;
+            (_source: Client, history: string): void;
         }
 
         interface ShowHistory {
-            (): void;
+            (_source: Client): void;
         }
 
         interface SwitchHistory {
-            (history: string): void;
+            (_source: Client, history: string): void;
         }
 
         interface Tracking {
-            (object: boolean): void;
+            (_source: Client, object: boolean): void;
         }
 
         interface Update {
-            (action: UpdateAction, target: UpdateTarget, index: number): void;
+            (_source: Client, action: UpdateAction, target: UpdateTarget, index: number): void;
         }
 
         // Signal signatures
@@ -380,7 +380,6 @@ export namespace GPaste {
 
     class Client extends Gio.DBusProxy implements Gio.AsyncInitable<Client>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -400,33 +399,6 @@ export namespace GPaste {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'delete-history', callback: (_source: this, history: string) => void): number;
-        connect_after(signal: 'delete-history', callback: (_source: this, history: string) => void): number;
-        emit(signal: 'delete-history', history: string): void;
-        connect(signal: 'empty-history', callback: (_source: this, history: string) => void): number;
-        connect_after(signal: 'empty-history', callback: (_source: this, history: string) => void): number;
-        emit(signal: 'empty-history', history: string): void;
-        connect(signal: 'show-history', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-history', callback: (_source: this) => void): number;
-        emit(signal: 'show-history'): void;
-        connect(signal: 'switch-history', callback: (_source: this, history: string) => void): number;
-        connect_after(signal: 'switch-history', callback: (_source: this, history: string) => void): number;
-        emit(signal: 'switch-history', history: string): void;
-        connect(signal: 'tracking', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'tracking', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'tracking', object: boolean): void;
-        connect(
-            signal: 'update',
-            callback: (_source: this, action: UpdateAction, target: UpdateTarget, index: number) => void,
-        ): number;
-        connect_after(
-            signal: 'update',
-            callback: (_source: this, action: UpdateAction, target: UpdateTarget, index: number) => void,
-        ): number;
-        emit(signal: 'update', action: UpdateAction, target: UpdateTarget, index: number): void;
 
         // Static methods
 
@@ -2120,7 +2092,6 @@ export namespace GPaste {
 
     class ClientItem extends GObject.Object {
         static $gtype: GObject.GType<ClientItem>;
-        declare static readonly __signalSignatures: ClientItem.SignalSignatures;
 
         // Constructors
 
@@ -2129,6 +2100,21 @@ export namespace GPaste {
         _init(...args: any[]): void;
 
         static ['new'](uuid: string, value: string): ClientItem;
+
+        // Signals
+
+        connect<K extends keyof ClientItem.SignalSignatures>(
+            signal: K,
+            callback: ClientItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientItem.SignalSignatures>(
+            signal: K,
+            callback: ClientItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2146,7 +2132,7 @@ export namespace GPaste {
         // Signal callback interfaces
 
         interface AcceleratorActivated {
-            (id: number): void;
+            (_source: GnomeShellClient, id: number): void;
         }
 
         // Signal signatures
@@ -2168,7 +2154,6 @@ export namespace GPaste {
         implements Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GnomeShellClient>;
-        declare static readonly __signalSignatures: GnomeShellClient.SignalSignatures;
 
         // Constructors
 
@@ -2197,12 +2182,6 @@ export namespace GPaste {
             signal: K,
             ...args: Parameters<GnomeShellClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'accelerator-activated', callback: (_source: this, id: number) => void): number;
-        connect_after(signal: 'accelerator-activated', callback: (_source: this, id: number) => void): number;
-        emit(signal: 'accelerator-activated', id: number): void;
 
         // Static methods
 
@@ -3076,7 +3055,7 @@ export namespace GPaste {
         // Signal callback interfaces
 
         interface ActiveChanged {
-            (active: boolean): void;
+            (_source: ScreensaverClient, active: boolean): void;
         }
 
         // Signal signatures
@@ -3098,7 +3077,6 @@ export namespace GPaste {
         implements Gio.AsyncInitable<ScreensaverClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ScreensaverClient>;
-        declare static readonly __signalSignatures: ScreensaverClient.SignalSignatures;
 
         // Constructors
 
@@ -3127,12 +3105,6 @@ export namespace GPaste {
             signal: K,
             ...args: Parameters<ScreensaverClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-changed', callback: (_source: this, active: boolean) => void): number;
-        connect_after(signal: 'active-changed', callback: (_source: this, active: boolean) => void): number;
-        emit(signal: 'active-changed', active: boolean): void;
 
         // Static methods
 
@@ -3910,15 +3882,15 @@ export namespace GPaste {
         // Signal callback interfaces
 
         interface Changed {
-            (key: string): void;
+            (_source: Settings, key: string): void;
         }
 
         interface Rebind {
-            (key: string): void;
+            (_source: Settings, key: string): void;
         }
 
         interface Track {
-            (tracking_state: boolean): void;
+            (_source: Settings, tracking_state: boolean): void;
         }
 
         // Signal signatures
@@ -3935,7 +3907,6 @@ export namespace GPaste {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Constructors
 
@@ -3956,18 +3927,6 @@ export namespace GPaste {
             signal: K,
             ...args: Parameters<Settings.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, key: string) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, key: string) => void): number;
-        emit(signal: 'changed', key: string): void;
-        connect(signal: 'rebind', callback: (_source: this, key: string) => void): number;
-        connect_after(signal: 'rebind', callback: (_source: this, key: string) => void): number;
-        emit(signal: 'rebind', key: string): void;
-        connect(signal: 'track', callback: (_source: this, tracking_state: boolean) => void): number;
-        connect_after(signal: 'track', callback: (_source: this, tracking_state: boolean) => void): number;
-        emit(signal: 'track', tracking_state: boolean): void;
 
         // Methods
 

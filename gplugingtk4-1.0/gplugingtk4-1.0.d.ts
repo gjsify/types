@@ -90,7 +90,7 @@ export namespace GPluginGtk4 {
         // Signal callback interfaces
 
         interface PluginStateSet {
-            (enabled: boolean): void;
+            (_source: PluginPage, enabled: boolean): void;
         }
 
         // Signal signatures
@@ -118,7 +118,6 @@ export namespace GPluginGtk4 {
      */
     class PluginPage extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<PluginPage>;
-        declare static readonly __signalSignatures: PluginPage.SignalSignatures;
 
         // Properties
 
@@ -160,12 +159,6 @@ export namespace GPluginGtk4 {
             signal: K,
             ...args: Parameters<PluginPage.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'plugin-state-set', callback: (_source: this, enabled: boolean) => void): number;
-        connect_after(signal: 'plugin-state-set', callback: (_source: this, enabled: boolean) => void): number;
-        emit(signal: 'plugin-state-set', enabled: boolean): void;
 
         // Methods
 
@@ -664,7 +657,7 @@ export namespace GPluginGtk4 {
         // Signal callback interfaces
 
         interface PluginStateSet {
-            (enabled: boolean): void;
+            (_source: PluginRow, enabled: boolean): void;
         }
 
         // Signal signatures
@@ -693,7 +686,6 @@ export namespace GPluginGtk4 {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PluginRow>;
-        declare static readonly __signalSignatures: PluginRow.SignalSignatures;
 
         // Properties
 
@@ -722,12 +714,6 @@ export namespace GPluginGtk4 {
             signal: K,
             ...args: Parameters<PluginRow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'plugin-state-set', callback: (_source: this, enabled: boolean) => void): number;
-        connect_after(signal: 'plugin-state-set', callback: (_source: this, enabled: boolean) => void): number;
-        emit(signal: 'plugin-state-set', enabled: boolean): void;
 
         // Methods
 
@@ -3825,7 +3811,6 @@ export namespace GPluginGtk4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<PluginSettingsList>;
-        declare static readonly __signalSignatures: PluginSettingsList.SignalSignatures;
 
         // Properties
 
@@ -3842,6 +3827,21 @@ export namespace GPluginGtk4 {
         _init(...args: any[]): void;
 
         static ['new'](): PluginSettingsList;
+
+        // Signals
+
+        connect<K extends keyof PluginSettingsList.SignalSignatures>(
+            signal: K,
+            callback: PluginSettingsList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginSettingsList.SignalSignatures>(
+            signal: K,
+            callback: PluginSettingsList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginSettingsList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginSettingsList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4343,7 +4343,6 @@ export namespace GPluginGtk4 {
      */
     class View extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -4380,6 +4379,12 @@ export namespace GPluginGtk4 {
         _init(...args: any[]): void;
 
         static ['new'](): View;
+
+        // Signals
+
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
 
         // Methods
 

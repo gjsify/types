@@ -2209,7 +2209,6 @@ export namespace Skk {
 
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
-        declare static readonly __signalSignatures: RomKanaConverter.SignalSignatures;
 
         // Properties
 
@@ -2232,6 +2231,21 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](): RomKanaConverter;
+
+        // Signals
+
+        connect<K extends keyof RomKanaConverter.SignalSignatures>(
+            signal: K,
+            callback: RomKanaConverter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RomKanaConverter.SignalSignatures>(
+            signal: K,
+            callback: RomKanaConverter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RomKanaConverter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RomKanaConverter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2264,7 +2278,6 @@ export namespace Skk {
 
     abstract class Dict extends GObject.Object {
         static $gtype: GObject.GType<Dict>;
-        declare static readonly __signalSignatures: Dict.SignalSignatures;
 
         // Properties
 
@@ -2276,6 +2289,12 @@ export namespace Skk {
         constructor(properties?: Partial<Dict.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Dict.SignalSignatures>(signal: K, callback: Dict.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dict.SignalSignatures>(signal: K, callback: Dict.SignalSignatures[K]): number;
+        emit<K extends keyof Dict.SignalSignatures>(signal: K, ...args: Parameters<Dict.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2311,7 +2330,6 @@ export namespace Skk {
 
     class EmptyDict extends Dict {
         static $gtype: GObject.GType<EmptyDict>;
-        declare static readonly __signalSignatures: EmptyDict.SignalSignatures;
 
         // Constructors
 
@@ -2320,6 +2338,18 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](): EmptyDict;
+
+        // Signals
+
+        connect<K extends keyof EmptyDict.SignalSignatures>(signal: K, callback: EmptyDict.SignalSignatures[K]): number;
+        connect_after<K extends keyof EmptyDict.SignalSignatures>(
+            signal: K,
+            callback: EmptyDict.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EmptyDict.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EmptyDict.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileDict {
@@ -2333,7 +2363,6 @@ export namespace Skk {
 
     class FileDict extends Dict {
         static $gtype: GObject.GType<FileDict>;
-        declare static readonly __signalSignatures: FileDict.SignalSignatures;
 
         // Constructors
 
@@ -2342,6 +2371,18 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](path: string, encoding: string): FileDict;
+
+        // Signals
+
+        connect<K extends keyof FileDict.SignalSignatures>(signal: K, callback: FileDict.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileDict.SignalSignatures>(
+            signal: K,
+            callback: FileDict.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileDict.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileDict.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CdbDict {
@@ -2355,7 +2396,6 @@ export namespace Skk {
 
     class CdbDict extends Dict {
         static $gtype: GObject.GType<CdbDict>;
-        declare static readonly __signalSignatures: CdbDict.SignalSignatures;
 
         // Constructors
 
@@ -2364,6 +2404,18 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](path: string, encoding: string): CdbDict;
+
+        // Signals
+
+        connect<K extends keyof CdbDict.SignalSignatures>(signal: K, callback: CdbDict.SignalSignatures[K]): number;
+        connect_after<K extends keyof CdbDict.SignalSignatures>(
+            signal: K,
+            callback: CdbDict.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CdbDict.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CdbDict.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UserDict {
@@ -2377,7 +2429,6 @@ export namespace Skk {
 
     class UserDict extends Dict {
         static $gtype: GObject.GType<UserDict>;
-        declare static readonly __signalSignatures: UserDict.SignalSignatures;
 
         // Constructors
 
@@ -2386,6 +2437,18 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](path: string, encoding: string): UserDict;
+
+        // Signals
+
+        connect<K extends keyof UserDict.SignalSignatures>(signal: K, callback: UserDict.SignalSignatures[K]): number;
+        connect_after<K extends keyof UserDict.SignalSignatures>(
+            signal: K,
+            callback: UserDict.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserDict.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserDict.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SkkServ {
@@ -2399,7 +2462,6 @@ export namespace Skk {
 
     class SkkServ extends Dict {
         static $gtype: GObject.GType<SkkServ>;
-        declare static readonly __signalSignatures: SkkServ.SignalSignatures;
 
         // Constructors
 
@@ -2408,6 +2470,18 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](host: string, port: number, encoding: string): SkkServ;
+
+        // Signals
+
+        connect<K extends keyof SkkServ.SignalSignatures>(signal: K, callback: SkkServ.SignalSignatures[K]): number;
+        connect_after<K extends keyof SkkServ.SignalSignatures>(
+            signal: K,
+            callback: SkkServ.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkkServ.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkkServ.SignalSignatures[K]>
+        ): void;
     }
 
     namespace KeyEvent {
@@ -2425,7 +2499,6 @@ export namespace Skk {
 
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
-        declare static readonly __signalSignatures: KeyEvent.SignalSignatures;
 
         // Properties
 
@@ -2448,6 +2521,18 @@ export namespace Skk {
 
         static from_x_keysym(keyval: number, modifiers: ModifierType): KeyEvent;
 
+        // Signals
+
+        connect<K extends keyof KeyEvent.SignalSignatures>(signal: K, callback: KeyEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof KeyEvent.SignalSignatures>(
+            signal: K,
+            callback: KeyEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         copy(): KeyEvent;
@@ -2463,7 +2548,7 @@ export namespace Skk {
         // Signal callback interfaces
 
         interface Forwarded {
-            (key: KeyEvent): void;
+            (_source: KeyEventFilter, key: KeyEvent): void;
         }
 
         // Signal signatures
@@ -2478,7 +2563,6 @@ export namespace Skk {
 
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
-        declare static readonly __signalSignatures: KeyEventFilter.SignalSignatures;
 
         // Constructors
 
@@ -2500,12 +2584,6 @@ export namespace Skk {
             signal: K,
             ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'forwarded', callback: (_source: this, key: KeyEvent) => void): number;
-        connect_after(signal: 'forwarded', callback: (_source: this, key: KeyEvent) => void): number;
-        emit(signal: 'forwarded', key: KeyEvent): void;
 
         // Virtual methods
 
@@ -2531,7 +2609,6 @@ export namespace Skk {
 
     class Rule extends GObject.Object {
         static $gtype: GObject.GType<Rule>;
-        declare static readonly __signalSignatures: Rule.SignalSignatures;
 
         // Properties
 
@@ -2552,6 +2629,12 @@ export namespace Skk {
 
         static ['new'](name: string): Rule;
 
+        // Signals
+
+        connect<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
+        emit<K extends keyof Rule.SignalSignatures>(signal: K, ...args: Parameters<Rule.SignalSignatures[K]>): void;
+
         // Static methods
 
         static find_rule(name: string): RuleMetadata | null;
@@ -2566,11 +2649,11 @@ export namespace Skk {
         // Signal callback interfaces
 
         interface RetrieveSurroundingText {
-            (text: string, cursor_pos: number): boolean;
+            (_source: Context, text: string, cursor_pos: number): boolean;
         }
 
         interface DeleteSurroundingText {
-            (offset: number, nchars: number): boolean;
+            (_source: Context, offset: number, nchars: number): boolean;
         }
 
         // Signal signatures
@@ -2601,7 +2684,6 @@ export namespace Skk {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -2650,27 +2732,6 @@ export namespace Skk {
             signal: K,
             ...args: Parameters<Context.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'retrieve-surrounding-text',
-            callback: (_source: this, text: string, cursor_pos: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'retrieve-surrounding-text',
-            callback: (_source: this, text: string, cursor_pos: number) => boolean,
-        ): number;
-        emit(signal: 'retrieve-surrounding-text', text: string, cursor_pos: number): void;
-        connect(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, offset: number, nchars: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, offset: number, nchars: number) => boolean,
-        ): number;
-        emit(signal: 'delete-surrounding-text', offset: number, nchars: number): void;
 
         // Methods
 
@@ -2719,7 +2780,6 @@ export namespace Skk {
 
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
-        declare static readonly __signalSignatures: Candidate.SignalSignatures;
 
         // Properties
 
@@ -2748,6 +2808,18 @@ export namespace Skk {
             output?: string | null,
         ): Candidate;
 
+        // Signals
+
+        connect<K extends keyof Candidate.SignalSignatures>(signal: K, callback: Candidate.SignalSignatures[K]): number;
+        connect_after<K extends keyof Candidate.SignalSignatures>(
+            signal: K,
+            callback: Candidate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Candidate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Candidate.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         to_string(): string;
@@ -2765,11 +2837,11 @@ export namespace Skk {
         // Signal callback interfaces
 
         interface Populated {
-            (): void;
+            (_source: CandidateList): void;
         }
 
         interface Selected {
-            (candidate: Candidate): void;
+            (_source: CandidateList, candidate: Candidate): void;
         }
 
         // Signal signatures
@@ -2795,7 +2867,6 @@ export namespace Skk {
 
     abstract class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
-        declare static readonly __signalSignatures: CandidateList.SignalSignatures;
 
         // Properties
 
@@ -2833,15 +2904,6 @@ export namespace Skk {
             signal: K,
             ...args: Parameters<CandidateList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'populated', callback: (_source: this) => void): number;
-        connect_after(signal: 'populated', callback: (_source: this) => void): number;
-        emit(signal: 'populated'): void;
-        connect(signal: 'selected', callback: (_source: this, candidate: Candidate) => void): number;
-        connect_after(signal: 'selected', callback: (_source: this, candidate: Candidate) => void): number;
-        emit(signal: 'selected', candidate: Candidate): void;
 
         // Virtual methods
 
@@ -2900,7 +2962,6 @@ export namespace Skk {
 
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
-        declare static readonly __signalSignatures: NicolaKeyEventFilter.SignalSignatures;
 
         // Fields
 
@@ -2920,6 +2981,21 @@ export namespace Skk {
         _init(...args: any[]): void;
 
         static ['new'](): NicolaKeyEventFilter;
+
+        // Signals
+
+        connect<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: NicolaKeyEventFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: NicolaKeyEventFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NicolaKeyEventFilter.SignalSignatures[K]>
+        ): void;
     }
 
     type RomKanaConverterClass = typeof RomKanaConverter;

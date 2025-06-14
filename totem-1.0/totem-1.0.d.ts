@@ -300,27 +300,27 @@ export namespace Totem {
         // Signal callback interfaces
 
         interface FileClosed {
-            (): void;
+            (_source: Object): void;
         }
 
         interface FileHasPlayed {
-            (mrl: string): void;
+            (_source: Object, mrl: string): void;
         }
 
         interface FileOpened {
-            (mrl: string): void;
+            (_source: Object, mrl: string): void;
         }
 
         interface GetTextSubtitle {
-            (mrl: string): string;
+            (_source: Object, mrl: string): string;
         }
 
         interface GetUserAgent {
-            (mrl: string): string;
+            (_source: Object, mrl: string): string;
         }
 
         interface MetadataUpdated {
-            (artist: string, title: string, album: string, track_number: number): void;
+            (_source: Object, artist: string, title: string, album: string, track_number: number): void;
         }
 
         // Signal signatures
@@ -362,7 +362,6 @@ export namespace Totem {
      */
     class Object extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -438,33 +437,6 @@ export namespace Totem {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'file-closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-closed', callback: (_source: this) => void): number;
-        emit(signal: 'file-closed'): void;
-        connect(signal: 'file-has-played', callback: (_source: this, mrl: string) => void): number;
-        connect_after(signal: 'file-has-played', callback: (_source: this, mrl: string) => void): number;
-        emit(signal: 'file-has-played', mrl: string): void;
-        connect(signal: 'file-opened', callback: (_source: this, mrl: string) => void): number;
-        connect_after(signal: 'file-opened', callback: (_source: this, mrl: string) => void): number;
-        emit(signal: 'file-opened', mrl: string): void;
-        connect(signal: 'get-text-subtitle', callback: (_source: this, mrl: string) => string): number;
-        connect_after(signal: 'get-text-subtitle', callback: (_source: this, mrl: string) => string): number;
-        emit(signal: 'get-text-subtitle', mrl: string): void;
-        connect(signal: 'get-user-agent', callback: (_source: this, mrl: string) => string): number;
-        connect_after(signal: 'get-user-agent', callback: (_source: this, mrl: string) => string): number;
-        emit(signal: 'get-user-agent', mrl: string): void;
-        connect(
-            signal: 'metadata-updated',
-            callback: (_source: this, artist: string, title: string, album: string, track_number: number) => void,
-        ): number;
-        connect_after(
-            signal: 'metadata-updated',
-            callback: (_source: this, artist: string, title: string, album: string, track_number: number) => void,
-        ): number;
-        emit(signal: 'metadata-updated', artist: string, title: string, album: string, track_number: number): void;
 
         // Static methods
 

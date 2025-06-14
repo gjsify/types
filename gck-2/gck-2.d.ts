@@ -388,7 +388,6 @@ export namespace Gck {
      */
     class Enumerator extends GObject.Object {
         static $gtype: GObject.GType<Enumerator>;
-        declare static readonly __signalSignatures: Enumerator.SignalSignatures;
 
         // Properties
 
@@ -411,6 +410,21 @@ export namespace Gck {
         constructor(properties?: Partial<Enumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Enumerator.SignalSignatures>(
+            signal: K,
+            callback: Enumerator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Enumerator.SignalSignatures>(
+            signal: K,
+            callback: Enumerator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Enumerator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Enumerator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -544,7 +558,6 @@ export namespace Gck {
      */
     class Module extends GObject.Object {
         static $gtype: GObject.GType<Module>;
-        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -567,6 +580,12 @@ export namespace Gck {
         constructor(properties?: Partial<Module.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -661,7 +680,6 @@ export namespace Gck {
      */
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -689,6 +707,12 @@ export namespace Gck {
         _init(...args: any[]): void;
 
         static from_handle(session: Session, object_handle: number): Object;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1165,7 +1189,6 @@ export namespace Gck {
      */
     class Password extends Gio.TlsPassword {
         static $gtype: GObject.GType<Password>;
-        declare static readonly __signalSignatures: Password.SignalSignatures;
 
         // Properties
 
@@ -1189,6 +1212,18 @@ export namespace Gck {
         constructor(properties?: Partial<Password.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Password.SignalSignatures>(signal: K, callback: Password.SignalSignatures[K]): number;
+        connect_after<K extends keyof Password.SignalSignatures>(
+            signal: K,
+            callback: Password.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Password.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Password.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1215,7 +1250,7 @@ export namespace Gck {
         // Signal callback interfaces
 
         interface DiscardHandle {
-            (handle: number): boolean;
+            (_source: Session, handle: number): boolean;
         }
 
         // Signal signatures
@@ -1249,7 +1284,6 @@ export namespace Gck {
      */
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -1310,12 +1344,6 @@ export namespace Gck {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'discard-handle', callback: (_source: this, handle: number) => boolean): number;
-        connect_after(signal: 'discard-handle', callback: (_source: this, handle: number) => boolean): number;
-        emit(signal: 'discard-handle', handle: number): void;
 
         // Static methods
 
@@ -3271,7 +3299,6 @@ export namespace Gck {
      */
     class Slot extends GObject.Object {
         static $gtype: GObject.GType<Slot>;
-        declare static readonly __signalSignatures: Slot.SignalSignatures;
 
         // Properties
 
@@ -3289,6 +3316,12 @@ export namespace Gck {
         constructor(properties?: Partial<Slot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        emit<K extends keyof Slot.SignalSignatures>(signal: K, ...args: Parameters<Slot.SignalSignatures[K]>): void;
 
         // Static methods
 

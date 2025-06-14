@@ -68,7 +68,6 @@ export namespace Gepub {
 
     class Doc extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Doc>;
-        declare static readonly __signalSignatures: Doc.SignalSignatures;
 
         // Properties
 
@@ -84,6 +83,12 @@ export namespace Gepub {
         _init(...args: any[]): void;
 
         static ['new'](path: string): Doc;
+
+        // Signals
+
+        connect<K extends keyof Doc.SignalSignatures>(signal: K, callback: Doc.SignalSignatures[K]): number;
+        connect_after<K extends keyof Doc.SignalSignatures>(signal: K, callback: Doc.SignalSignatures[K]): number;
+        emit<K extends keyof Doc.SignalSignatures>(signal: K, ...args: Parameters<Doc.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -652,7 +657,6 @@ export namespace Gepub {
 
     class Widget extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
-        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -666,6 +670,12 @@ export namespace Gepub {
         _init(...args: any[]): void;
 
         static ['new'](): Widget;
+
+        // Signals
+
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
 
         // Methods
 

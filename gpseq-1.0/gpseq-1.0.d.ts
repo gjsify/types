@@ -331,7 +331,6 @@ export namespace Gpseq {
 
     class ArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<ArraySpliterator>;
-        declare static readonly __signalSignatures: ArraySpliterator.SignalSignatures;
 
         // Properties
 
@@ -355,6 +354,21 @@ export namespace Gpseq {
             start: number,
             stop: number,
         ): ArraySpliterator;
+
+        // Signals
+
+        connect<K extends keyof ArraySpliterator.SignalSignatures>(
+            signal: K,
+            callback: ArraySpliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArraySpliterator.SignalSignatures>(
+            signal: K,
+            callback: ArraySpliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArraySpliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArraySpliterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -849,7 +863,6 @@ export namespace Gpseq {
 
     abstract class ForkJoinTask extends GObject.Object implements Task {
         static $gtype: GObject.GType<ForkJoinTask>;
-        declare static readonly __signalSignatures: ForkJoinTask.SignalSignatures;
 
         // Properties
 
@@ -880,6 +893,21 @@ export namespace Gpseq {
         constructor(properties?: Partial<ForkJoinTask.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ForkJoinTask.SignalSignatures>(
+            signal: K,
+            callback: ForkJoinTask.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ForkJoinTask.SignalSignatures>(
+            signal: K,
+            callback: ForkJoinTask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ForkJoinTask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ForkJoinTask.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1358,7 +1386,6 @@ export namespace Gpseq {
 
     class ForkJoinTaskSharedResult {
         static $gtype: GObject.GType<ForkJoinTaskSharedResult>;
-        declare static readonly __signalSignatures: ForkJoinTaskSharedResult.SignalSignatures;
 
         // Fields
 
@@ -1369,6 +1396,21 @@ export namespace Gpseq {
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): ForkJoinTaskSharedResult;
+
+        // Signals
+
+        connect<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
+            signal: K,
+            callback: ForkJoinTaskSharedResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
+            signal: K,
+            callback: ForkJoinTaskSharedResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ForkJoinTaskSharedResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1398,7 +1440,6 @@ export namespace Gpseq {
 
     class FuncTask extends GObject.Object implements Task {
         static $gtype: GObject.GType<FuncTask>;
-        declare static readonly __signalSignatures: FuncTask.SignalSignatures;
 
         // Properties
 
@@ -1416,6 +1457,18 @@ export namespace Gpseq {
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): FuncTask;
+
+        // Signals
+
+        connect<K extends keyof FuncTask.SignalSignatures>(signal: K, callback: FuncTask.SignalSignatures[K]): number;
+        connect_after<K extends keyof FuncTask.SignalSignatures>(
+            signal: K,
+            callback: FuncTask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FuncTask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FuncTask.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get future(): Future;
@@ -1889,7 +1942,6 @@ export namespace Gpseq {
 
     abstract class Future extends GObject.Object implements Gee.Hashable, Result {
         static $gtype: GObject.GType<Future>;
-        declare static readonly __signalSignatures: Future.SignalSignatures;
 
         // Properties
 
@@ -1906,6 +1958,12 @@ export namespace Gpseq {
         constructor(properties?: Partial<Future.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: Parameters<Future.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2427,7 +2485,6 @@ export namespace Gpseq {
 
     class GenericArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<GenericArraySpliterator>;
-        declare static readonly __signalSignatures: GenericArraySpliterator.SignalSignatures;
 
         // Properties
 
@@ -2451,6 +2508,21 @@ export namespace Gpseq {
             start: number,
             stop: number,
         ): GenericArraySpliterator;
+
+        // Signals
+
+        connect<K extends keyof GenericArraySpliterator.SignalSignatures>(
+            signal: K,
+            callback: GenericArraySpliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GenericArraySpliterator.SignalSignatures>(
+            signal: K,
+            callback: GenericArraySpliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GenericArraySpliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GenericArraySpliterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -2931,7 +3003,6 @@ export namespace Gpseq {
 
     class IteratorSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<IteratorSpliterator>;
-        declare static readonly __signalSignatures: IteratorSpliterator.SignalSignatures;
 
         // Properties
 
@@ -2961,6 +3032,21 @@ export namespace Gpseq {
             g_dup_func: GObject.BoxedCopyFunc,
             collection: Gee.Collection,
         ): IteratorSpliterator;
+
+        // Signals
+
+        connect<K extends keyof IteratorSpliterator.SignalSignatures>(
+            signal: K,
+            callback: IteratorSpliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IteratorSpliterator.SignalSignatures>(
+            signal: K,
+            callback: IteratorSpliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IteratorSpliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IteratorSpliterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -3441,7 +3527,6 @@ export namespace Gpseq {
 
     class ListSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<ListSpliterator>;
-        declare static readonly __signalSignatures: ListSpliterator.SignalSignatures;
 
         // Properties
 
@@ -3465,6 +3550,21 @@ export namespace Gpseq {
             start: number,
             stop: number,
         ): ListSpliterator;
+
+        // Signals
+
+        connect<K extends keyof ListSpliterator.SignalSignatures>(
+            signal: K,
+            callback: ListSpliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ListSpliterator.SignalSignatures>(
+            signal: K,
+            callback: ListSpliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListSpliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListSpliterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -3950,7 +4050,6 @@ export namespace Gpseq {
 
     class Optional extends GObject.Object {
         static $gtype: GObject.GType<Optional>;
-        declare static readonly __signalSignatures: Optional.SignalSignatures;
 
         // Properties
 
@@ -3978,6 +4077,18 @@ export namespace Gpseq {
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Optional;
 
+        // Signals
+
+        connect<K extends keyof Optional.SignalSignatures>(signal: K, callback: Optional.SignalSignatures[K]): number;
+        connect_after<K extends keyof Optional.SignalSignatures>(
+            signal: K,
+            callback: Optional.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Optional.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Optional.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_value_type(): GObject.GType;
@@ -4000,7 +4111,6 @@ export namespace Gpseq {
 
     class Promise {
         static $gtype: GObject.GType<Promise>;
-        declare static readonly __signalSignatures: Promise.SignalSignatures;
 
         // Fields
 
@@ -4011,6 +4121,18 @@ export namespace Gpseq {
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc): Promise;
+
+        // Signals
+
+        connect<K extends keyof Promise.SignalSignatures>(signal: K, callback: Promise.SignalSignatures[K]): number;
+        connect_after<K extends keyof Promise.SignalSignatures>(
+            signal: K,
+            callback: Promise.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Promise.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Promise.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4045,7 +4167,6 @@ export namespace Gpseq {
 
     class Seq extends GObject.Object {
         static $gtype: GObject.GType<Seq>;
-        declare static readonly __signalSignatures: Seq.SignalSignatures;
 
         // Properties
 
@@ -4076,6 +4197,12 @@ export namespace Gpseq {
             spliterator: Spliterator,
             env: TaskEnv,
         ): Seq;
+
+        // Signals
+
+        connect<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
+        connect_after<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
+        emit<K extends keyof Seq.SignalSignatures>(signal: K, ...args: Parameters<Seq.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4237,7 +4364,6 @@ export namespace Gpseq {
 
     abstract class SpliteratorTask extends ForkJoinTask {
         static $gtype: GObject.GType<SpliteratorTask>;
-        declare static readonly __signalSignatures: SpliteratorTask.SignalSignatures;
 
         // Properties
 
@@ -4270,6 +4396,21 @@ export namespace Gpseq {
         constructor(properties?: Partial<SpliteratorTask.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SpliteratorTask.SignalSignatures>(
+            signal: K,
+            callback: SpliteratorTask.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SpliteratorTask.SignalSignatures>(
+            signal: K,
+            callback: SpliteratorTask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpliteratorTask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpliteratorTask.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4314,7 +4455,6 @@ export namespace Gpseq {
 
     class SubArray extends GObject.Object implements Gee.Traversable, Gee.Iterable {
         static $gtype: GObject.GType<SubArray>;
-        declare static readonly __signalSignatures: SubArray.SignalSignatures;
 
         // Properties
 
@@ -4341,6 +4481,18 @@ export namespace Gpseq {
             start: number,
             stop: number,
         ): SubArray;
+
+        // Signals
+
+        connect<K extends keyof SubArray.SignalSignatures>(signal: K, callback: SubArray.SignalSignatures[K]): number;
+        connect_after<K extends keyof SubArray.SignalSignatures>(
+            signal: K,
+            callback: SubArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubArray.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4840,7 +4992,6 @@ export namespace Gpseq {
 
     class SubArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<SubArraySpliterator>;
-        declare static readonly __signalSignatures: SubArraySpliterator.SignalSignatures;
 
         // Properties
 
@@ -4864,6 +5015,21 @@ export namespace Gpseq {
             start: number,
             stop: number,
         ): SubArraySpliterator;
+
+        // Signals
+
+        connect<K extends keyof SubArraySpliterator.SignalSignatures>(
+            signal: K,
+            callback: SubArraySpliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubArraySpliterator.SignalSignatures>(
+            signal: K,
+            callback: SubArraySpliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubArraySpliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubArraySpliterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -5344,7 +5510,6 @@ export namespace Gpseq {
 
     class SupplierSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<SupplierSpliterator>;
-        declare static readonly __signalSignatures: SupplierSpliterator.SignalSignatures;
 
         // Properties
 
@@ -5366,6 +5531,21 @@ export namespace Gpseq {
             g_dup_func: GObject.BoxedCopyFunc,
             supplier: Supplier,
         ): SupplierSpliterator;
+
+        // Signals
+
+        connect<K extends keyof SupplierSpliterator.SignalSignatures>(
+            signal: K,
+            callback: SupplierSpliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SupplierSpliterator.SignalSignatures>(
+            signal: K,
+            callback: SupplierSpliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SupplierSpliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SupplierSpliterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -5841,7 +6021,6 @@ export namespace Gpseq {
 
     abstract class TaskEnv extends GObject.Object {
         static $gtype: GObject.GType<TaskEnv>;
-        declare static readonly __signalSignatures: TaskEnv.SignalSignatures;
 
         // Properties
 
@@ -5852,6 +6031,18 @@ export namespace Gpseq {
         constructor(properties?: Partial<TaskEnv.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TaskEnv.SignalSignatures>(signal: K, callback: TaskEnv.SignalSignatures[K]): number;
+        connect_after<K extends keyof TaskEnv.SignalSignatures>(
+            signal: K,
+            callback: TaskEnv.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskEnv.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskEnv.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5886,7 +6077,6 @@ export namespace Gpseq {
 
     class WaitGroup extends GObject.Object {
         static $gtype: GObject.GType<WaitGroup>;
-        declare static readonly __signalSignatures: WaitGroup.SignalSignatures;
 
         // Constructors
 
@@ -5895,6 +6085,18 @@ export namespace Gpseq {
         _init(...args: any[]): void;
 
         static ['new'](): WaitGroup;
+
+        // Signals
+
+        connect<K extends keyof WaitGroup.SignalSignatures>(signal: K, callback: WaitGroup.SignalSignatures[K]): number;
+        connect_after<K extends keyof WaitGroup.SignalSignatures>(
+            signal: K,
+            callback: WaitGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaitGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaitGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5929,7 +6131,6 @@ export namespace Gpseq {
 
     class WorkerPool extends GObject.Object implements Executor {
         static $gtype: GObject.GType<WorkerPool>;
-        declare static readonly __signalSignatures: WorkerPool.SignalSignatures;
 
         // Properties
 
@@ -5956,6 +6157,21 @@ export namespace Gpseq {
         static with_defaults(): WorkerPool;
 
         static ['new'](parallels: number, factory: ThreadFactory): WorkerPool;
+
+        // Signals
+
+        connect<K extends keyof WorkerPool.SignalSignatures>(
+            signal: K,
+            callback: WorkerPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkerPool.SignalSignatures>(
+            signal: K,
+            callback: WorkerPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkerPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkerPool.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6445,7 +6661,6 @@ export namespace Gpseq {
 
     class WorkerThread extends GObject.Object {
         static $gtype: GObject.GType<WorkerThread>;
-        declare static readonly __signalSignatures: WorkerThread.SignalSignatures;
 
         // Properties
 
@@ -6466,6 +6681,21 @@ export namespace Gpseq {
         _init(...args: any[]): void;
 
         static ['new'](pool: WorkerPool): WorkerThread;
+
+        // Signals
+
+        connect<K extends keyof WorkerThread.SignalSignatures>(
+            signal: K,
+            callback: WorkerThread.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkerThread.SignalSignatures>(
+            signal: K,
+            callback: WorkerThread.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkerThread.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkerThread.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6506,7 +6736,6 @@ export namespace Gpseq {
 
     class Wrapper extends GObject.Object {
         static $gtype: GObject.GType<Wrapper>;
-        declare static readonly __signalSignatures: Wrapper.SignalSignatures;
 
         // Properties
 
@@ -6527,6 +6756,18 @@ export namespace Gpseq {
         _init(...args: any[]): void;
 
         static ['new'](g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, value: any): Wrapper;
+
+        // Signals
+
+        connect<K extends keyof Wrapper.SignalSignatures>(signal: K, callback: Wrapper.SignalSignatures[K]): number;
+        connect_after<K extends keyof Wrapper.SignalSignatures>(
+            signal: K,
+            callback: Wrapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Wrapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Wrapper.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

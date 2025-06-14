@@ -80,7 +80,6 @@ export namespace Passim {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -89,6 +88,12 @@ export namespace Passim {
         _init(...args: any[]): void;
 
         static ['new'](): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -160,7 +165,6 @@ export namespace Passim {
      */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
-        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Constructors
 
@@ -169,6 +173,12 @@ export namespace Passim {
         _init(...args: any[]): void;
 
         static ['new'](): Item;
+
+        // Signals
+
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
 
         // Static methods
 

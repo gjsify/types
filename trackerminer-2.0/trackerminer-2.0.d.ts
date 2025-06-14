@@ -307,11 +307,11 @@ export namespace TrackerMiner {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: Decorator): void;
         }
 
         interface ItemsAvailable {
-            (): void;
+            (_source: Decorator): void;
         }
 
         // Signal signatures
@@ -340,7 +340,6 @@ export namespace TrackerMiner {
      */
     abstract class Decorator extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<Decorator>;
-        declare static readonly __signalSignatures: Decorator.SignalSignatures;
 
         // Properties
 
@@ -378,15 +377,6 @@ export namespace TrackerMiner {
             signal: K,
             ...args: Parameters<Decorator.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'items-available', callback: (_source: this) => void): number;
-        connect_after(signal: 'items-available', callback: (_source: this) => void): number;
-        emit(signal: 'items-available'): void;
 
         // Static methods
 
@@ -1032,7 +1022,6 @@ export namespace TrackerMiner {
      */
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
         static $gtype: GObject.GType<DecoratorFS>;
-        declare static readonly __signalSignatures: DecoratorFS.SignalSignatures;
 
         // Fields
 
@@ -1043,6 +1032,21 @@ export namespace TrackerMiner {
         constructor(properties?: Partial<DecoratorFS.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DecoratorFS.SignalSignatures>(
+            signal: K,
+            callback: DecoratorFS.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DecoratorFS.SignalSignatures>(
+            signal: K,
+            callback: DecoratorFS.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DecoratorFS.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DecoratorFS.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1499,19 +1503,19 @@ export namespace TrackerMiner {
         // Signal callback interfaces
 
         interface ChildUpdated {
-            (root: Gio.File, child: Gio.File): void;
+            (_source: IndexingTree, root: Gio.File, child: Gio.File): void;
         }
 
         interface DirectoryAdded {
-            (directory: Gio.File): void;
+            (_source: IndexingTree, directory: Gio.File): void;
         }
 
         interface DirectoryRemoved {
-            (directory: Gio.File): void;
+            (_source: IndexingTree, directory: Gio.File): void;
         }
 
         interface DirectoryUpdated {
-            (directory: Gio.File): void;
+            (_source: IndexingTree, directory: Gio.File): void;
         }
 
         // Signal signatures
@@ -1536,7 +1540,6 @@ export namespace TrackerMiner {
      */
     class IndexingTree extends GObject.Object {
         static $gtype: GObject.GType<IndexingTree>;
-        declare static readonly __signalSignatures: IndexingTree.SignalSignatures;
 
         // Properties
 
@@ -1574,24 +1577,6 @@ export namespace TrackerMiner {
             signal: K,
             ...args: Parameters<IndexingTree.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'child-updated', callback: (_source: this, root: Gio.File, child: Gio.File) => void): number;
-        connect_after(
-            signal: 'child-updated',
-            callback: (_source: this, root: Gio.File, child: Gio.File) => void,
-        ): number;
-        emit(signal: 'child-updated', root: Gio.File, child: Gio.File): void;
-        connect(signal: 'directory-added', callback: (_source: this, directory: Gio.File) => void): number;
-        connect_after(signal: 'directory-added', callback: (_source: this, directory: Gio.File) => void): number;
-        emit(signal: 'directory-added', directory: Gio.File): void;
-        connect(signal: 'directory-removed', callback: (_source: this, directory: Gio.File) => void): number;
-        connect_after(signal: 'directory-removed', callback: (_source: this, directory: Gio.File) => void): number;
-        emit(signal: 'directory-removed', directory: Gio.File): void;
-        connect(signal: 'directory-updated', callback: (_source: this, directory: Gio.File) => void): number;
-        connect_after(signal: 'directory-updated', callback: (_source: this, directory: Gio.File) => void): number;
-        emit(signal: 'directory-updated', directory: Gio.File): void;
 
         // Virtual methods
 
@@ -1760,23 +1745,23 @@ export namespace TrackerMiner {
         // Signal callback interfaces
 
         interface Paused {
-            (): void;
+            (_source: Miner): void;
         }
 
         interface Progress {
-            (status: string, progress: number, remaining_time: number): void;
+            (_source: Miner, status: string, progress: number, remaining_time: number): void;
         }
 
         interface Resumed {
-            (): void;
+            (_source: Miner): void;
         }
 
         interface Started {
-            (): void;
+            (_source: Miner): void;
         }
 
         interface Stopped {
-            (): void;
+            (_source: Miner): void;
         }
 
         // Signal signatures
@@ -1803,7 +1788,6 @@ export namespace TrackerMiner {
      */
     abstract class Miner extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Miner>;
-        declare static readonly __signalSignatures: Miner.SignalSignatures;
 
         // Properties
 
@@ -1827,30 +1811,6 @@ export namespace TrackerMiner {
         connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
         connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
         emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: Parameters<Miner.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'paused', callback: (_source: this) => void): number;
-        connect_after(signal: 'paused', callback: (_source: this) => void): number;
-        emit(signal: 'paused'): void;
-        connect(
-            signal: 'progress',
-            callback: (_source: this, status: string, progress: number, remaining_time: number) => void,
-        ): number;
-        connect_after(
-            signal: 'progress',
-            callback: (_source: this, status: string, progress: number, remaining_time: number) => void,
-        ): number;
-        emit(signal: 'progress', status: string, progress: number, remaining_time: number): void;
-        connect(signal: 'resumed', callback: (_source: this) => void): number;
-        connect_after(signal: 'resumed', callback: (_source: this) => void): number;
-        emit(signal: 'resumed'): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
-        connect(signal: 'stopped', callback: (_source: this) => void): number;
-        connect_after(signal: 'stopped', callback: (_source: this) => void): number;
-        emit(signal: 'stopped'): void;
 
         // Static methods
 
@@ -2436,6 +2396,7 @@ export namespace TrackerMiner {
 
         interface Finished {
             (
+                _source: MinerFS,
                 elapsed: number,
                 directories_found: number,
                 directories_ignored: number,
@@ -2445,27 +2406,27 @@ export namespace TrackerMiner {
         }
 
         interface FinishedRoot {
-            (file: Gio.File): void;
+            (_source: MinerFS, file: Gio.File): void;
         }
 
         interface MoveFile {
-            (object: Gio.File, p0: Gio.File, p1: boolean): string;
+            (_source: MinerFS, object: Gio.File, p0: Gio.File, p1: boolean): string;
         }
 
         interface ProcessFile {
-            (file: Gio.File, builder: Gio.Task): boolean;
+            (_source: MinerFS, file: Gio.File, builder: Gio.Task): boolean;
         }
 
         interface ProcessFileAttributes {
-            (file: Gio.File, builder: Gio.Task): boolean;
+            (_source: MinerFS, file: Gio.File, builder: Gio.Task): boolean;
         }
 
         interface RemoveChildren {
-            (object: Gio.File): string;
+            (_source: MinerFS, object: Gio.File): string;
         }
 
         interface RemoveFile {
-            (file: Gio.File): string;
+            (_source: MinerFS, file: Gio.File): string;
         }
 
         // Signal signatures
@@ -2498,7 +2459,6 @@ export namespace TrackerMiner {
      */
     abstract class MinerFS extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerFS>;
-        declare static readonly __signalSignatures: MinerFS.SignalSignatures;
 
         // Properties
 
@@ -2533,75 +2493,6 @@ export namespace TrackerMiner {
             signal: K,
             ...args: Parameters<MinerFS.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'finished',
-            callback: (
-                _source: this,
-                elapsed: number,
-                directories_found: number,
-                directories_ignored: number,
-                files_found: number,
-                files_ignored: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'finished',
-            callback: (
-                _source: this,
-                elapsed: number,
-                directories_found: number,
-                directories_ignored: number,
-                files_found: number,
-                files_ignored: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'finished',
-            elapsed: number,
-            directories_found: number,
-            directories_ignored: number,
-            files_found: number,
-            files_ignored: number,
-        ): void;
-        connect(signal: 'finished-root', callback: (_source: this, file: Gio.File) => void): number;
-        connect_after(signal: 'finished-root', callback: (_source: this, file: Gio.File) => void): number;
-        emit(signal: 'finished-root', file: Gio.File): void;
-        connect(
-            signal: 'move-file',
-            callback: (_source: this, object: Gio.File, p0: Gio.File, p1: boolean) => string,
-        ): number;
-        connect_after(
-            signal: 'move-file',
-            callback: (_source: this, object: Gio.File, p0: Gio.File, p1: boolean) => string,
-        ): number;
-        emit(signal: 'move-file', object: Gio.File, p0: Gio.File, p1: boolean): void;
-        connect(
-            signal: 'process-file',
-            callback: (_source: this, file: Gio.File, builder: Gio.Task) => boolean,
-        ): number;
-        connect_after(
-            signal: 'process-file',
-            callback: (_source: this, file: Gio.File, builder: Gio.Task) => boolean,
-        ): number;
-        emit(signal: 'process-file', file: Gio.File, builder: Gio.Task): void;
-        connect(
-            signal: 'process-file-attributes',
-            callback: (_source: this, file: Gio.File, builder: Gio.Task) => boolean,
-        ): number;
-        connect_after(
-            signal: 'process-file-attributes',
-            callback: (_source: this, file: Gio.File, builder: Gio.Task) => boolean,
-        ): number;
-        emit(signal: 'process-file-attributes', file: Gio.File, builder: Gio.Task): void;
-        connect(signal: 'remove-children', callback: (_source: this, object: Gio.File) => string): number;
-        connect_after(signal: 'remove-children', callback: (_source: this, object: Gio.File) => string): number;
-        emit(signal: 'remove-children', object: Gio.File): void;
-        connect(signal: 'remove-file', callback: (_source: this, file: Gio.File) => string): number;
-        connect_after(signal: 'remove-file', callback: (_source: this, file: Gio.File) => string): number;
-        emit(signal: 'remove-file', file: Gio.File): void;
 
         // Static methods
 
@@ -3245,11 +3136,11 @@ export namespace TrackerMiner {
         // Signal callback interfaces
 
         interface Connected {
-            (type: unknown): boolean;
+            (_source: MinerOnline, type: unknown): boolean;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: MinerOnline): void;
         }
 
         // Signal signatures
@@ -3268,7 +3159,6 @@ export namespace TrackerMiner {
      */
     abstract class MinerOnline extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerOnline>;
-        declare static readonly __signalSignatures: MinerOnline.SignalSignatures;
 
         // Constructors
 
@@ -3290,15 +3180,6 @@ export namespace TrackerMiner {
             signal: K,
             ...args: Parameters<MinerOnline.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connected', callback: (_source: this, type: unknown) => boolean): number;
-        connect_after(signal: 'connected', callback: (_source: this, type: unknown) => boolean): number;
-        emit(signal: 'connected', type: unknown): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
 
         // Virtual methods
 
@@ -3857,7 +3738,6 @@ export namespace TrackerMiner {
 
     class MinerProxy extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MinerProxy>;
-        declare static readonly __signalSignatures: MinerProxy.SignalSignatures;
 
         // Properties
 
@@ -3879,6 +3759,21 @@ export namespace TrackerMiner {
             dbus_path: string,
             cancellable?: Gio.Cancellable | null,
         ): MinerProxy;
+
+        // Signals
+
+        connect<K extends keyof MinerProxy.SignalSignatures>(
+            signal: K,
+            callback: MinerProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MinerProxy.SignalSignatures>(
+            signal: K,
+            callback: MinerProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MinerProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MinerProxy.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

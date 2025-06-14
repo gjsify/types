@@ -2346,11 +2346,11 @@ export namespace Atspi {
         // Signal callback interfaces
 
         interface ModeChanged {
-            (arg1: number, why: string): void;
+            (_source: Accessible, arg1: number, why: string): void;
         }
 
         interface RegionChanged {
-            (arg1: number, arg2: number): void;
+            (_source: Accessible, arg1: number, arg2: number): void;
         }
 
         // Signal signatures
@@ -2401,7 +2401,6 @@ export namespace Atspi {
             Value
     {
         static $gtype: GObject.GType<Accessible>;
-        declare static readonly __signalSignatures: Accessible.SignalSignatures;
 
         // Fields
 
@@ -2434,15 +2433,6 @@ export namespace Atspi {
             signal: K,
             ...args: Parameters<Accessible.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'mode-changed', callback: (_source: this, arg1: number, why: string) => void): number;
-        connect_after(signal: 'mode-changed', callback: (_source: this, arg1: number, why: string) => void): number;
-        emit(signal: 'mode-changed', arg1: number, why: string): void;
-        connect(signal: 'region-changed', callback: (_source: this, arg1: number, arg2: number) => void): number;
-        connect_after(signal: 'region-changed', callback: (_source: this, arg1: number, arg2: number) => void): number;
-        emit(signal: 'region-changed', arg1: number, arg2: number): void;
 
         // Virtual methods
 
@@ -4207,7 +4197,6 @@ export namespace Atspi {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Fields
 
@@ -4224,6 +4213,21 @@ export namespace Atspi {
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Device {
@@ -4240,7 +4244,6 @@ export namespace Atspi {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -4266,6 +4269,12 @@ export namespace Atspi {
         static ['new'](): Device;
 
         static new_full(app_id?: string | null): Device;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -4476,7 +4485,6 @@ export namespace Atspi {
 
     class DeviceA11yManager extends Device {
         static $gtype: GObject.GType<DeviceA11yManager>;
-        declare static readonly __signalSignatures: DeviceA11yManager.SignalSignatures;
 
         // Constructors
 
@@ -4487,6 +4495,21 @@ export namespace Atspi {
         static try_new(): DeviceA11yManager;
 
         static try_new_full(app_id?: string | null): DeviceA11yManager;
+
+        // Signals
+
+        connect<K extends keyof DeviceA11yManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceA11yManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceA11yManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceA11yManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceA11yManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceA11yManager.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DeviceLegacy {
@@ -4500,7 +4523,6 @@ export namespace Atspi {
 
     class DeviceLegacy extends Device {
         static $gtype: GObject.GType<DeviceLegacy>;
-        declare static readonly __signalSignatures: DeviceLegacy.SignalSignatures;
 
         // Constructors
 
@@ -4511,6 +4533,21 @@ export namespace Atspi {
         static ['new'](): DeviceLegacy;
 
         static new_full(app_id?: string | null): DeviceLegacy;
+
+        // Signals
+
+        connect<K extends keyof DeviceLegacy.SignalSignatures>(
+            signal: K,
+            callback: DeviceLegacy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceLegacy.SignalSignatures>(
+            signal: K,
+            callback: DeviceLegacy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceLegacy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceLegacy.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DeviceListener {
@@ -4524,7 +4561,6 @@ export namespace Atspi {
 
     class DeviceListener extends GObject.Object {
         static $gtype: GObject.GType<DeviceListener>;
-        declare static readonly __signalSignatures: DeviceListener.SignalSignatures;
 
         // Fields
 
@@ -4538,6 +4574,21 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](callback?: DeviceListenerCB | null): DeviceListener;
+
+        // Signals
+
+        connect<K extends keyof DeviceListener.SignalSignatures>(
+            signal: K,
+            callback: DeviceListener.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceListener.SignalSignatures>(
+            signal: K,
+            callback: DeviceListener.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceListener.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceListener.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4569,7 +4620,6 @@ export namespace Atspi {
 
     class DeviceX11 extends Device {
         static $gtype: GObject.GType<DeviceX11>;
-        declare static readonly __signalSignatures: DeviceX11.SignalSignatures;
 
         // Constructors
 
@@ -4580,6 +4630,18 @@ export namespace Atspi {
         static ['new'](): DeviceX11;
 
         static new_full(app_id?: string | null): DeviceX11;
+
+        // Signals
+
+        connect<K extends keyof DeviceX11.SignalSignatures>(signal: K, callback: DeviceX11.SignalSignatures[K]): number;
+        connect_after<K extends keyof DeviceX11.SignalSignatures>(
+            signal: K,
+            callback: DeviceX11.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceX11.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceX11.SignalSignatures[K]>
+        ): void;
     }
 
     namespace EventListener {
@@ -4602,7 +4664,6 @@ export namespace Atspi {
      */
     class EventListener extends GObject.Object {
         static $gtype: GObject.GType<EventListener>;
-        declare static readonly __signalSignatures: EventListener.SignalSignatures;
 
         // Fields
 
@@ -4617,6 +4678,21 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](callback: EventListenerCB): EventListener;
+
+        // Signals
+
+        connect<K extends keyof EventListener.SignalSignatures>(
+            signal: K,
+            callback: EventListener.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EventListener.SignalSignatures>(
+            signal: K,
+            callback: EventListener.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EventListener.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EventListener.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4783,13 +4859,24 @@ export namespace Atspi {
      */
     class Hyperlink extends Object {
         static $gtype: GObject.GType<Hyperlink>;
-        declare static readonly __signalSignatures: Hyperlink.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Hyperlink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: Hyperlink.SignalSignatures[K]): number;
+        connect_after<K extends keyof Hyperlink.SignalSignatures>(
+            signal: K,
+            callback: Hyperlink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Hyperlink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Hyperlink.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4854,7 +4941,6 @@ export namespace Atspi {
      */
     class MatchRule extends GObject.Object {
         static $gtype: GObject.GType<MatchRule>;
-        declare static readonly __signalSignatures: MatchRule.SignalSignatures;
 
         // Fields
 
@@ -4884,6 +4970,18 @@ export namespace Atspi {
             interfacematchtype: CollectionMatchType,
             invert: boolean,
         ): MatchRule;
+
+        // Signals
+
+        connect<K extends keyof MatchRule.SignalSignatures>(signal: K, callback: MatchRule.SignalSignatures[K]): number;
+        connect_after<K extends keyof MatchRule.SignalSignatures>(
+            signal: K,
+            callback: MatchRule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MatchRule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MatchRule.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
@@ -4897,7 +4995,6 @@ export namespace Atspi {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Fields
 
@@ -4909,6 +5006,12 @@ export namespace Atspi {
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
     }
 
     namespace Relation {
@@ -4930,7 +5033,6 @@ export namespace Atspi {
      */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
-        declare static readonly __signalSignatures: Relation.SignalSignatures;
 
         // Fields
 
@@ -4942,6 +5044,18 @@ export namespace Atspi {
         constructor(properties?: Partial<Relation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: Relation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Relation.SignalSignatures>(
+            signal: K,
+            callback: Relation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Relation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Relation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4980,7 +5094,6 @@ export namespace Atspi {
      */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
-        declare static readonly __signalSignatures: StateSet.SignalSignatures;
 
         // Fields
 
@@ -4994,6 +5107,18 @@ export namespace Atspi {
         _init(...args: any[]): void;
 
         static ['new'](states: StateType[]): StateSet;
+
+        // Signals
+
+        connect<K extends keyof StateSet.SignalSignatures>(signal: K, callback: StateSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof StateSet.SignalSignatures>(
+            signal: K,
+            callback: StateSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StateSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StateSet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

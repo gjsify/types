@@ -127,31 +127,31 @@ export namespace AyatanaAppIndicator3 {
         // Signal callback interfaces
 
         interface ConnectionChanged {
-            (arg1: boolean): void;
+            (_source: Indicator, arg1: boolean): void;
         }
 
         interface NewAttentionIcon {
-            (): void;
+            (_source: Indicator): void;
         }
 
         interface NewIcon {
-            (): void;
+            (_source: Indicator): void;
         }
 
         interface NewIconThemePath {
-            (arg1: string): void;
+            (_source: Indicator, arg1: string): void;
         }
 
         interface NewLabel {
-            (arg1: string, arg2: string): void;
+            (_source: Indicator, arg1: string, arg2: string): void;
         }
 
         interface NewStatus {
-            (arg1: string): void;
+            (_source: Indicator, arg1: string): void;
         }
 
         interface ScrollEvent {
-            (arg1: number, arg2: Gdk.ScrollDirection): void;
+            (_source: Indicator, arg1: number, arg2: Gdk.ScrollDirection): void;
         }
 
         // Signal signatures
@@ -202,7 +202,6 @@ export namespace AyatanaAppIndicator3 {
      */
     class Indicator extends GObject.Object {
         static $gtype: GObject.GType<Indicator>;
-        declare static readonly __signalSignatures: Indicator.SignalSignatures;
 
         // Properties
 
@@ -382,36 +381,6 @@ export namespace AyatanaAppIndicator3 {
             signal: K,
             ...args: Parameters<Indicator.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connection-changed', callback: (_source: this, arg1: boolean) => void): number;
-        connect_after(signal: 'connection-changed', callback: (_source: this, arg1: boolean) => void): number;
-        emit(signal: 'connection-changed', arg1: boolean): void;
-        connect(signal: 'new-attention-icon', callback: (_source: this) => void): number;
-        connect_after(signal: 'new-attention-icon', callback: (_source: this) => void): number;
-        emit(signal: 'new-attention-icon'): void;
-        connect(signal: 'new-icon', callback: (_source: this) => void): number;
-        connect_after(signal: 'new-icon', callback: (_source: this) => void): number;
-        emit(signal: 'new-icon'): void;
-        connect(signal: 'new-icon-theme-path', callback: (_source: this, arg1: string) => void): number;
-        connect_after(signal: 'new-icon-theme-path', callback: (_source: this, arg1: string) => void): number;
-        emit(signal: 'new-icon-theme-path', arg1: string): void;
-        connect(signal: 'new-label', callback: (_source: this, arg1: string, arg2: string) => void): number;
-        connect_after(signal: 'new-label', callback: (_source: this, arg1: string, arg2: string) => void): number;
-        emit(signal: 'new-label', arg1: string, arg2: string): void;
-        connect(signal: 'new-status', callback: (_source: this, arg1: string) => void): number;
-        connect_after(signal: 'new-status', callback: (_source: this, arg1: string) => void): number;
-        emit(signal: 'new-status', arg1: string): void;
-        connect(
-            signal: 'scroll-event',
-            callback: (_source: this, arg1: number, arg2: Gdk.ScrollDirection) => void,
-        ): number;
-        connect_after(
-            signal: 'scroll-event',
-            callback: (_source: this, arg1: number, arg2: Gdk.ScrollDirection) => void,
-        ): number;
-        emit(signal: 'scroll-event', arg1: number, arg2: Gdk.ScrollDirection): void;
 
         // Virtual methods
 

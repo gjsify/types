@@ -274,13 +274,27 @@ export namespace Liferea {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -736,15 +750,15 @@ export namespace Liferea {
         // Signal callback interfaces
 
         interface LocationChanged {
-            (object: string): void;
+            (_source: Browser, object: string): void;
         }
 
         interface StatusbarChanged {
-            (object: string): void;
+            (_source: Browser, object: string): void;
         }
 
         interface TitleChanged {
-            (object: string): void;
+            (_source: Browser, object: string): void;
         }
 
         // Signal signatures
@@ -763,7 +777,6 @@ export namespace Liferea {
 
     class Browser extends GObject.Object {
         static $gtype: GObject.GType<Browser>;
-        declare static readonly __signalSignatures: Browser.SignalSignatures;
 
         // Properties
 
@@ -786,18 +799,6 @@ export namespace Liferea {
             signal: K,
             ...args: Parameters<Browser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'location-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'location-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'location-changed', object: string): void;
-        connect(signal: 'statusbar-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'statusbar-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'statusbar-changed', object: string): void;
-        connect(signal: 'title-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'title-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'title-changed', object: string): void;
 
         // Methods
 
@@ -879,7 +880,6 @@ export namespace Liferea {
 
     class BrowserTabs extends GObject.Object {
         static $gtype: GObject.GType<BrowserTabs>;
-        declare static readonly __signalSignatures: BrowserTabs.SignalSignatures;
 
         // Properties
 
@@ -894,6 +894,21 @@ export namespace Liferea {
         _init(...args: any[]): void;
 
         static add_new(url: string, title: string, activate: boolean): BrowserTabs;
+
+        // Signals
+
+        connect<K extends keyof BrowserTabs.SignalSignatures>(
+            signal: K,
+            callback: BrowserTabs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BrowserTabs.SignalSignatures>(
+            signal: K,
+            callback: BrowserTabs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BrowserTabs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BrowserTabs.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -918,15 +933,15 @@ export namespace Liferea {
         // Signal callback interfaces
 
         interface ItemsUpdated {
-            (object: string): void;
+            (_source: FeedList, object: string): void;
         }
 
         interface NewItems {
-            (object?: any | null): void;
+            (_source: FeedList, object?: any | null): void;
         }
 
         interface NodeUpdated {
-            (object: string): void;
+            (_source: FeedList, object: string): void;
         }
 
         // Signal signatures
@@ -943,7 +958,6 @@ export namespace Liferea {
 
     class FeedList extends GObject.Object {
         static $gtype: GObject.GType<FeedList>;
-        declare static readonly __signalSignatures: FeedList.SignalSignatures;
 
         // Constructors
 
@@ -962,18 +976,6 @@ export namespace Liferea {
             signal: K,
             ...args: Parameters<FeedList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'items-updated', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'items-updated', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'items-updated', object: string): void;
-        connect(signal: 'new-items', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'new-items', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'new-items', object?: any | null): void;
-        connect(signal: 'node-updated', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'node-updated', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'node-updated', object: string): void;
 
         // Static methods
 
@@ -1013,7 +1015,6 @@ export namespace Liferea {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
-        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Fields
 
@@ -1047,6 +1048,12 @@ export namespace Liferea {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+
         // Methods
 
         get_description(): string;
@@ -1059,7 +1066,7 @@ export namespace Liferea {
         // Signal callback interfaces
 
         interface ItemUpdated {
-            (object: string): void;
+            (_source: ItemList, object: string): void;
         }
 
         // Signal signatures
@@ -1074,7 +1081,6 @@ export namespace Liferea {
 
     class ItemList extends GObject.Object {
         static $gtype: GObject.GType<ItemList>;
-        declare static readonly __signalSignatures: ItemList.SignalSignatures;
 
         // Constructors
 
@@ -1093,12 +1099,6 @@ export namespace Liferea {
             signal: K,
             ...args: Parameters<ItemList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'item-updated', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'item-updated', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'item-updated', object: string): void;
 
         // Static methods
 
@@ -1125,13 +1125,27 @@ export namespace Liferea {
 
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
-        declare static readonly __signalSignatures: ItemListView.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ItemListView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ItemListView.SignalSignatures>(
+            signal: K,
+            callback: ItemListView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ItemListView.SignalSignatures>(
+            signal: K,
+            callback: ItemListView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ItemListView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ItemListView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1181,7 +1195,6 @@ export namespace Liferea {
 
     class ItemView extends GObject.Object {
         static $gtype: GObject.GType<ItemView>;
-        declare static readonly __signalSignatures: ItemView.SignalSignatures;
 
         // Properties
 
@@ -1195,6 +1208,18 @@ export namespace Liferea {
         constructor(properties?: Partial<ItemView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ItemView.SignalSignatures>(signal: K, callback: ItemView.SignalSignatures[K]): number;
+        connect_after<K extends keyof ItemView.SignalSignatures>(
+            signal: K,
+            callback: ItemView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ItemView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ItemView.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1264,11 +1289,11 @@ export namespace Liferea {
         // Signal callback interfaces
 
         interface OnlineStatusChanged {
-            (object: boolean): void;
+            (_source: NetworkMonitor, object: boolean): void;
         }
 
         interface ProxyChanged {
-            (): void;
+            (_source: NetworkMonitor): void;
         }
 
         // Signal signatures
@@ -1284,7 +1309,6 @@ export namespace Liferea {
 
     class NetworkMonitor extends GObject.Object {
         static $gtype: GObject.GType<NetworkMonitor>;
-        declare static readonly __signalSignatures: NetworkMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1306,15 +1330,6 @@ export namespace Liferea {
             signal: K,
             ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'online-status-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'online-status-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'online-status-changed', object: boolean): void;
-        connect(signal: 'proxy-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'proxy-changed', callback: (_source: this) => void): number;
-        emit(signal: 'proxy-changed'): void;
 
         // Static methods
 
@@ -1354,7 +1369,6 @@ export namespace Liferea {
 
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
-        declare static readonly __signalSignatures: Shell.SignalSignatures;
 
         // Properties
 
@@ -1373,6 +1387,12 @@ export namespace Liferea {
         constructor(properties?: Partial<Shell.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: Parameters<Shell.SignalSignatures[K]>): void;
 
         // Static methods
 

@@ -1457,7 +1457,6 @@ export namespace GData {
      */
     class APPCategories extends Parsable {
         static $gtype: GObject.GType<APPCategories>;
-        declare static readonly __signalSignatures: APPCategories.SignalSignatures;
 
         // Properties
 
@@ -1479,6 +1478,21 @@ export namespace GData {
         constructor(properties?: Partial<APPCategories.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof APPCategories.SignalSignatures>(
+            signal: K,
+            callback: APPCategories.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof APPCategories.SignalSignatures>(
+            signal: K,
+            callback: APPCategories.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof APPCategories.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<APPCategories.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1511,7 +1525,6 @@ export namespace GData {
      */
     class AccessRule extends Entry {
         static $gtype: GObject.GType<AccessRule>;
-        declare static readonly __signalSignatures: AccessRule.SignalSignatures;
 
         // Properties
 
@@ -1572,6 +1585,21 @@ export namespace GData {
         // Conflicted with GData.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof AccessRule.SignalSignatures>(
+            signal: K,
+            callback: AccessRule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccessRule.SignalSignatures>(
+            signal: K,
+            callback: AccessRule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccessRule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccessRule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1635,7 +1663,6 @@ export namespace GData {
      */
     class Author extends Parsable implements Comparable {
         static $gtype: GObject.GType<Author>;
-        declare static readonly __signalSignatures: Author.SignalSignatures;
 
         // Properties
 
@@ -1679,6 +1706,12 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](name: string, uri?: string | null, email_address?: string | null): Author;
+
+        // Signals
+
+        connect<K extends keyof Author.SignalSignatures>(signal: K, callback: Author.SignalSignatures[K]): number;
+        connect_after<K extends keyof Author.SignalSignatures>(signal: K, callback: Author.SignalSignatures[K]): number;
+        emit<K extends keyof Author.SignalSignatures>(signal: K, ...args: Parameters<Author.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2190,7 +2223,6 @@ export namespace GData {
      */
     class AuthorizationDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationDomain>;
-        declare static readonly __signalSignatures: AuthorizationDomain.SignalSignatures;
 
         // Properties
 
@@ -2215,6 +2247,21 @@ export namespace GData {
         constructor(properties?: Partial<AuthorizationDomain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthorizationDomain.SignalSignatures>(
+            signal: K,
+            callback: AuthorizationDomain.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(
+            signal: K,
+            callback: AuthorizationDomain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthorizationDomain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthorizationDomain.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2250,7 +2297,6 @@ export namespace GData {
      */
     class BatchOperation extends GObject.Object {
         static $gtype: GObject.GType<BatchOperation>;
-        declare static readonly __signalSignatures: BatchOperation.SignalSignatures;
 
         // Properties
 
@@ -2288,6 +2334,21 @@ export namespace GData {
         constructor(properties?: Partial<BatchOperation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BatchOperation.SignalSignatures>(
+            signal: K,
+            callback: BatchOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BatchOperation.SignalSignatures>(
+            signal: K,
+            callback: BatchOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BatchOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BatchOperation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2446,7 +2507,6 @@ export namespace GData {
      */
     class CalendarAccessRule extends AccessRule {
         static $gtype: GObject.GType<CalendarAccessRule>;
-        declare static readonly __signalSignatures: CalendarAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -2458,6 +2518,21 @@ export namespace GData {
         // Conflicted with GData.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CalendarAccessRule.SignalSignatures>(
+            signal: K,
+            callback: CalendarAccessRule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarAccessRule.SignalSignatures>(
+            signal: K,
+            callback: CalendarAccessRule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarAccessRule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarAccessRule.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CalendarCalendar {
@@ -2483,7 +2558,6 @@ export namespace GData {
      */
     class CalendarCalendar extends Entry implements AccessHandler {
         static $gtype: GObject.GType<CalendarCalendar>;
-        declare static readonly __signalSignatures: CalendarCalendar.SignalSignatures;
 
         // Properties
 
@@ -2540,6 +2614,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): CalendarCalendar;
+
+        // Signals
+
+        connect<K extends keyof CalendarCalendar.SignalSignatures>(
+            signal: K,
+            callback: CalendarCalendar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarCalendar.SignalSignatures>(
+            signal: K,
+            callback: CalendarCalendar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarCalendar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarCalendar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2903,7 +2992,6 @@ export namespace GData {
      */
     class CalendarEvent extends Entry {
         static $gtype: GObject.GType<CalendarEvent>;
-        declare static readonly __signalSignatures: CalendarEvent.SignalSignatures;
 
         // Properties
 
@@ -3050,6 +3138,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): CalendarEvent;
+
+        // Signals
+
+        connect<K extends keyof CalendarEvent.SignalSignatures>(
+            signal: K,
+            callback: CalendarEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarEvent.SignalSignatures>(
+            signal: K,
+            callback: CalendarEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3258,13 +3361,27 @@ export namespace GData {
      */
     class CalendarFeed extends Feed {
         static $gtype: GObject.GType<CalendarFeed>;
-        declare static readonly __signalSignatures: CalendarFeed.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CalendarFeed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CalendarFeed.SignalSignatures>(
+            signal: K,
+            callback: CalendarFeed.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarFeed.SignalSignatures>(
+            signal: K,
+            callback: CalendarFeed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarFeed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarFeed.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CalendarQuery {
@@ -3297,7 +3414,6 @@ export namespace GData {
      */
     class CalendarQuery extends Query {
         static $gtype: GObject.GType<CalendarQuery>;
-        declare static readonly __signalSignatures: CalendarQuery.SignalSignatures;
 
         // Properties
 
@@ -3415,6 +3531,21 @@ export namespace GData {
 
         static new_with_limits(q: string | null, start_min: number, start_max: number): CalendarQuery;
 
+        // Signals
+
+        connect<K extends keyof CalendarQuery.SignalSignatures>(
+            signal: K,
+            callback: CalendarQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarQuery.SignalSignatures>(
+            signal: K,
+            callback: CalendarQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarQuery.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -3520,7 +3651,6 @@ export namespace GData {
      */
     class CalendarService extends Service implements Batchable {
         static $gtype: GObject.GType<CalendarService>;
-        declare static readonly __signalSignatures: CalendarService.SignalSignatures;
 
         // Constructors
 
@@ -3529,6 +3659,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](authorizer?: Authorizer | null): CalendarService;
+
+        // Signals
+
+        connect<K extends keyof CalendarService.SignalSignatures>(
+            signal: K,
+            callback: CalendarService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarService.SignalSignatures>(
+            signal: K,
+            callback: CalendarService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarService.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4317,7 +4462,6 @@ export namespace GData {
      */
     class Category extends Parsable implements Comparable {
         static $gtype: GObject.GType<Category>;
-        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -4356,6 +4500,18 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](term: string, scheme?: string | null, label?: string | null): Category;
+
+        // Signals
+
+        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect_after<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: Category.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Category.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4863,13 +5019,24 @@ export namespace GData {
      */
     abstract class Comment extends Entry {
         static $gtype: GObject.GType<Comment>;
-        declare static readonly __signalSignatures: Comment.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Comment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Comment.SignalSignatures>(signal: K, callback: Comment.SignalSignatures[K]): number;
+        connect_after<K extends keyof Comment.SignalSignatures>(
+            signal: K,
+            callback: Comment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Comment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Comment.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DocumentsAccessRule {
@@ -4887,7 +5054,6 @@ export namespace GData {
      */
     class DocumentsAccessRule extends AccessRule {
         static $gtype: GObject.GType<DocumentsAccessRule>;
-        declare static readonly __signalSignatures: DocumentsAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -4899,6 +5065,21 @@ export namespace GData {
         // Conflicted with GData.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DocumentsAccessRule.SignalSignatures>(
+            signal: K,
+            callback: DocumentsAccessRule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsAccessRule.SignalSignatures>(
+            signal: K,
+            callback: DocumentsAccessRule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsAccessRule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsAccessRule.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DocumentsDocument {
@@ -4915,7 +5096,6 @@ export namespace GData {
      */
     class DocumentsDocument extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDocument>;
-        declare static readonly __signalSignatures: DocumentsDocument.SignalSignatures;
 
         // Constructors
 
@@ -4924,6 +5104,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsDocument;
+
+        // Signals
+
+        connect<K extends keyof DocumentsDocument.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsDocument.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsDocument.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5319,7 +5514,6 @@ export namespace GData {
      */
     class DocumentsDrawing extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDrawing>;
-        declare static readonly __signalSignatures: DocumentsDrawing.SignalSignatures;
 
         // Constructors
 
@@ -5328,6 +5522,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsDrawing;
+
+        // Signals
+
+        connect<K extends keyof DocumentsDrawing.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDrawing.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsDrawing.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDrawing.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsDrawing.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsDrawing.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5568,7 +5777,6 @@ export namespace GData {
 
     class DocumentsDrive extends Entry {
         static $gtype: GObject.GType<DocumentsDrive>;
-        declare static readonly __signalSignatures: DocumentsDrive.SignalSignatures;
 
         // Properties
 
@@ -5582,6 +5790,21 @@ export namespace GData {
         constructor(properties?: Partial<DocumentsDrive.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DocumentsDrive.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDrive.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsDrive.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDrive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsDrive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsDrive.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5603,7 +5826,6 @@ export namespace GData {
 
     class DocumentsDriveQuery extends Query {
         static $gtype: GObject.GType<DocumentsDriveQuery>;
-        declare static readonly __signalSignatures: DocumentsDriveQuery.SignalSignatures;
 
         // Constructors
 
@@ -5612,6 +5834,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](q?: string | null): DocumentsDriveQuery;
+
+        // Signals
+
+        connect<K extends keyof DocumentsDriveQuery.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDriveQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsDriveQuery.SignalSignatures>(
+            signal: K,
+            callback: DocumentsDriveQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsDriveQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsDriveQuery.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DocumentsEntry {
@@ -5647,7 +5884,6 @@ export namespace GData {
      */
     abstract class DocumentsEntry extends Entry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsEntry>;
-        declare static readonly __signalSignatures: DocumentsEntry.SignalSignatures;
 
         // Properties
 
@@ -5767,6 +6003,21 @@ export namespace GData {
         constructor(properties?: Partial<DocumentsEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DocumentsEntry.SignalSignatures>(
+            signal: K,
+            callback: DocumentsEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsEntry.SignalSignatures>(
+            signal: K,
+            callback: DocumentsEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6145,13 +6396,27 @@ export namespace GData {
      */
     class DocumentsFeed extends Feed {
         static $gtype: GObject.GType<DocumentsFeed>;
-        declare static readonly __signalSignatures: DocumentsFeed.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DocumentsFeed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DocumentsFeed.SignalSignatures>(
+            signal: K,
+            callback: DocumentsFeed.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsFeed.SignalSignatures>(
+            signal: K,
+            callback: DocumentsFeed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsFeed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsFeed.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DocumentsFolder {
@@ -6168,7 +6433,6 @@ export namespace GData {
      */
     class DocumentsFolder extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsFolder>;
-        declare static readonly __signalSignatures: DocumentsFolder.SignalSignatures;
 
         // Constructors
 
@@ -6177,6 +6441,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsFolder;
+
+        // Signals
+
+        connect<K extends keyof DocumentsFolder.SignalSignatures>(
+            signal: K,
+            callback: DocumentsFolder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsFolder.SignalSignatures>(
+            signal: K,
+            callback: DocumentsFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsFolder.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -6486,7 +6765,6 @@ export namespace GData {
      */
     class DocumentsMetadata extends Parsable {
         static $gtype: GObject.GType<DocumentsMetadata>;
-        declare static readonly __signalSignatures: DocumentsMetadata.SignalSignatures;
 
         // Properties
 
@@ -6512,6 +6790,21 @@ export namespace GData {
         constructor(properties?: Partial<DocumentsMetadata.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DocumentsMetadata.SignalSignatures>(
+            signal: K,
+            callback: DocumentsMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsMetadata.SignalSignatures>(
+            signal: K,
+            callback: DocumentsMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsMetadata.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6541,7 +6834,6 @@ export namespace GData {
      */
     class DocumentsPdf extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPdf>;
-        declare static readonly __signalSignatures: DocumentsPdf.SignalSignatures;
 
         // Constructors
 
@@ -6550,6 +6842,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsPdf;
+
+        // Signals
+
+        connect<K extends keyof DocumentsPdf.SignalSignatures>(
+            signal: K,
+            callback: DocumentsPdf.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsPdf.SignalSignatures>(
+            signal: K,
+            callback: DocumentsPdf.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsPdf.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsPdf.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -6791,7 +7098,6 @@ export namespace GData {
      */
     class DocumentsPresentation extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPresentation>;
-        declare static readonly __signalSignatures: DocumentsPresentation.SignalSignatures;
 
         // Constructors
 
@@ -6800,6 +7106,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsPresentation;
+
+        // Signals
+
+        connect<K extends keyof DocumentsPresentation.SignalSignatures>(
+            signal: K,
+            callback: DocumentsPresentation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsPresentation.SignalSignatures>(
+            signal: K,
+            callback: DocumentsPresentation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsPresentation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsPresentation.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -7046,7 +7367,6 @@ export namespace GData {
      */
     class DocumentsProperty extends Parsable implements Comparable {
         static $gtype: GObject.GType<DocumentsProperty>;
-        declare static readonly __signalSignatures: DocumentsProperty.SignalSignatures;
 
         // Properties
 
@@ -7088,6 +7408,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](key: string): DocumentsProperty;
+
+        // Signals
+
+        connect<K extends keyof DocumentsProperty.SignalSignatures>(
+            signal: K,
+            callback: DocumentsProperty.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsProperty.SignalSignatures>(
+            signal: K,
+            callback: DocumentsProperty.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsProperty.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsProperty.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7607,7 +7942,6 @@ export namespace GData {
      */
     class DocumentsQuery extends Query {
         static $gtype: GObject.GType<DocumentsQuery>;
-        declare static readonly __signalSignatures: DocumentsQuery.SignalSignatures;
 
         // Properties
 
@@ -7667,6 +8001,21 @@ export namespace GData {
         static ['new'](q?: string | null): DocumentsQuery;
 
         static new_with_limits(q: string | null, start_index: number, max_results: number): DocumentsQuery;
+
+        // Signals
+
+        connect<K extends keyof DocumentsQuery.SignalSignatures>(
+            signal: K,
+            callback: DocumentsQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsQuery.SignalSignatures>(
+            signal: K,
+            callback: DocumentsQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsQuery.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7746,7 +8095,6 @@ export namespace GData {
      */
     class DocumentsService extends Service implements Batchable {
         static $gtype: GObject.GType<DocumentsService>;
-        declare static readonly __signalSignatures: DocumentsService.SignalSignatures;
 
         // Constructors
 
@@ -7755,6 +8103,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](authorizer?: Authorizer | null): DocumentsService;
+
+        // Signals
+
+        connect<K extends keyof DocumentsService.SignalSignatures>(
+            signal: K,
+            callback: DocumentsService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsService.SignalSignatures>(
+            signal: K,
+            callback: DocumentsService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsService.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8899,7 +9262,6 @@ export namespace GData {
      */
     class DocumentsSpreadsheet extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsSpreadsheet>;
-        declare static readonly __signalSignatures: DocumentsSpreadsheet.SignalSignatures;
 
         // Constructors
 
@@ -8908,6 +9270,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsSpreadsheet;
+
+        // Signals
+
+        connect<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
+            signal: K,
+            callback: DocumentsSpreadsheet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
+            signal: K,
+            callback: DocumentsSpreadsheet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsSpreadsheet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9168,7 +9545,6 @@ export namespace GData {
      */
     class DocumentsText extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsText>;
-        declare static readonly __signalSignatures: DocumentsText.SignalSignatures;
 
         // Constructors
 
@@ -9177,6 +9553,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): DocumentsText;
+
+        // Signals
+
+        connect<K extends keyof DocumentsText.SignalSignatures>(
+            signal: K,
+            callback: DocumentsText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsText.SignalSignatures>(
+            signal: K,
+            callback: DocumentsText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsText.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -9421,7 +9812,6 @@ export namespace GData {
      */
     class DocumentsUploadQuery extends GObject.Object {
         static $gtype: GObject.GType<DocumentsUploadQuery>;
-        declare static readonly __signalSignatures: DocumentsUploadQuery.SignalSignatures;
 
         // Properties
 
@@ -9452,6 +9842,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](): DocumentsUploadQuery;
+
+        // Signals
+
+        connect<K extends keyof DocumentsUploadQuery.SignalSignatures>(
+            signal: K,
+            callback: DocumentsUploadQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentsUploadQuery.SignalSignatures>(
+            signal: K,
+            callback: DocumentsUploadQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentsUploadQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentsUploadQuery.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9510,7 +9915,6 @@ export namespace GData {
      */
     class DownloadStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<DownloadStream>;
-        declare static readonly __signalSignatures: DownloadStream.SignalSignatures;
 
         // Properties
 
@@ -9597,6 +10001,21 @@ export namespace GData {
             download_uri: string,
             cancellable?: Gio.Cancellable | null,
         ): DownloadStream;
+
+        // Signals
+
+        connect<K extends keyof DownloadStream.SignalSignatures>(
+            signal: K,
+            callback: DownloadStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DownloadStream.SignalSignatures>(
+            signal: K,
+            callback: DownloadStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DownloadStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DownloadStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10202,7 +10621,6 @@ export namespace GData {
      */
     class Entry extends Parsable {
         static $gtype: GObject.GType<Entry>;
-        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -10302,6 +10720,12 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): Entry;
+
+        // Signals
+
+        connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -10472,7 +10896,6 @@ export namespace GData {
      */
     class Feed extends Parsable {
         static $gtype: GObject.GType<Feed>;
-        declare static readonly __signalSignatures: Feed.SignalSignatures;
 
         // Properties
 
@@ -10614,6 +11037,12 @@ export namespace GData {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof Feed.SignalSignatures>(signal: K, callback: Feed.SignalSignatures[K]): number;
+        connect_after<K extends keyof Feed.SignalSignatures>(signal: K, callback: Feed.SignalSignatures[K]): number;
+        emit<K extends keyof Feed.SignalSignatures>(signal: K, ...args: Parameters<Feed.SignalSignatures[K]>): void;
+
         // Methods
 
         /**
@@ -10741,7 +11170,6 @@ export namespace GData {
      */
     class GContactCalendar extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactCalendar>;
-        declare static readonly __signalSignatures: GContactCalendar.SignalSignatures;
 
         // Properties
 
@@ -10808,6 +11236,21 @@ export namespace GData {
             label: string | null,
             is_primary: boolean,
         ): GContactCalendar;
+
+        // Signals
+
+        connect<K extends keyof GContactCalendar.SignalSignatures>(
+            signal: K,
+            callback: GContactCalendar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactCalendar.SignalSignatures>(
+            signal: K,
+            callback: GContactCalendar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactCalendar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactCalendar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11328,7 +11771,6 @@ export namespace GData {
      */
     class GContactEvent extends Parsable {
         static $gtype: GObject.GType<GContactEvent>;
-        declare static readonly __signalSignatures: GContactEvent.SignalSignatures;
 
         // Properties
 
@@ -11375,6 +11817,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](date: GLib.Date, relation_type?: string | null, label?: string | null): GContactEvent;
+
+        // Signals
+
+        connect<K extends keyof GContactEvent.SignalSignatures>(
+            signal: K,
+            callback: GContactEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactEvent.SignalSignatures>(
+            signal: K,
+            callback: GContactEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11435,7 +11892,6 @@ export namespace GData {
      */
     class GContactExternalID extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactExternalID>;
-        declare static readonly __signalSignatures: GContactExternalID.SignalSignatures;
 
         // Properties
 
@@ -11481,6 +11937,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](value: string, relation_type?: string | null, label?: string | null): GContactExternalID;
+
+        // Signals
+
+        connect<K extends keyof GContactExternalID.SignalSignatures>(
+            signal: K,
+            callback: GContactExternalID.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactExternalID.SignalSignatures>(
+            signal: K,
+            callback: GContactExternalID.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactExternalID.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactExternalID.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11995,7 +12466,6 @@ export namespace GData {
      */
     class GContactJot extends Parsable {
         static $gtype: GObject.GType<GContactJot>;
-        declare static readonly __signalSignatures: GContactJot.SignalSignatures;
 
         // Properties
 
@@ -12031,6 +12501,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](content: string, relation_type: string): GContactJot;
+
+        // Signals
+
+        connect<K extends keyof GContactJot.SignalSignatures>(
+            signal: K,
+            callback: GContactJot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactJot.SignalSignatures>(
+            signal: K,
+            callback: GContactJot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactJot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactJot.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12074,7 +12559,6 @@ export namespace GData {
      */
     class GContactLanguage extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactLanguage>;
-        declare static readonly __signalSignatures: GContactLanguage.SignalSignatures;
 
         // Properties
 
@@ -12102,6 +12586,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](code?: string | null, label?: string | null): GContactLanguage;
+
+        // Signals
+
+        connect<K extends keyof GContactLanguage.SignalSignatures>(
+            signal: K,
+            callback: GContactLanguage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactLanguage.SignalSignatures>(
+            signal: K,
+            callback: GContactLanguage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactLanguage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactLanguage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12606,7 +13105,6 @@ export namespace GData {
      */
     class GContactRelation extends Parsable {
         static $gtype: GObject.GType<GContactRelation>;
-        declare static readonly __signalSignatures: GContactRelation.SignalSignatures;
 
         // Properties
 
@@ -12652,6 +13150,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](name: string, relation_type?: string | null, label?: string | null): GContactRelation;
+
+        // Signals
+
+        connect<K extends keyof GContactRelation.SignalSignatures>(
+            signal: K,
+            callback: GContactRelation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactRelation.SignalSignatures>(
+            signal: K,
+            callback: GContactRelation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactRelation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactRelation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12715,7 +13228,6 @@ export namespace GData {
      */
     class GContactWebsite extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactWebsite>;
-        declare static readonly __signalSignatures: GContactWebsite.SignalSignatures;
 
         // Properties
 
@@ -12778,6 +13290,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](uri: string, relation_type: string, label: string | null, is_primary: boolean): GContactWebsite;
+
+        // Signals
+
+        connect<K extends keyof GContactWebsite.SignalSignatures>(
+            signal: K,
+            callback: GContactWebsite.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GContactWebsite.SignalSignatures>(
+            signal: K,
+            callback: GContactWebsite.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContactWebsite.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContactWebsite.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13302,7 +13829,6 @@ export namespace GData {
      */
     class GDEmailAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDEmailAddress>;
-        declare static readonly __signalSignatures: GDEmailAddress.SignalSignatures;
 
         // Properties
 
@@ -13383,6 +13909,21 @@ export namespace GData {
             label: string | null,
             is_primary: boolean,
         ): GDEmailAddress;
+
+        // Signals
+
+        connect<K extends keyof GDEmailAddress.SignalSignatures>(
+            signal: K,
+            callback: GDEmailAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDEmailAddress.SignalSignatures>(
+            signal: K,
+            callback: GDEmailAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDEmailAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDEmailAddress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13915,7 +14456,6 @@ export namespace GData {
      */
     class GDIMAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDIMAddress>;
-        declare static readonly __signalSignatures: GDIMAddress.SignalSignatures;
 
         // Properties
 
@@ -13989,6 +14529,21 @@ export namespace GData {
             label: string | null,
             is_primary: boolean,
         ): GDIMAddress;
+
+        // Signals
+
+        connect<K extends keyof GDIMAddress.SignalSignatures>(
+            signal: K,
+            callback: GDIMAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDIMAddress.SignalSignatures>(
+            signal: K,
+            callback: GDIMAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDIMAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDIMAddress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14522,7 +15077,6 @@ export namespace GData {
      */
     class GDName extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDName>;
-        declare static readonly __signalSignatures: GDName.SignalSignatures;
 
         // Properties
 
@@ -14616,6 +15170,12 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](given_name?: string | null, family_name?: string | null): GDName;
+
+        // Signals
+
+        connect<K extends keyof GDName.SignalSignatures>(signal: K, callback: GDName.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDName.SignalSignatures>(signal: K, callback: GDName.SignalSignatures[K]): number;
+        emit<K extends keyof GDName.SignalSignatures>(signal: K, ...args: Parameters<GDName.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -15162,7 +15722,6 @@ export namespace GData {
      */
     class GDOrganization extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDOrganization>;
-        declare static readonly __signalSignatures: GDOrganization.SignalSignatures;
 
         // Properties
 
@@ -15277,6 +15836,21 @@ export namespace GData {
             label: string | null,
             is_primary: boolean,
         ): GDOrganization;
+
+        // Signals
+
+        connect<K extends keyof GDOrganization.SignalSignatures>(
+            signal: K,
+            callback: GDOrganization.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDOrganization.SignalSignatures>(
+            signal: K,
+            callback: GDOrganization.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDOrganization.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDOrganization.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15859,7 +16433,6 @@ export namespace GData {
      */
     class GDPhoneNumber extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDPhoneNumber>;
-        declare static readonly __signalSignatures: GDPhoneNumber.SignalSignatures;
 
         // Properties
 
@@ -15933,6 +16506,21 @@ export namespace GData {
             uri: string | null,
             is_primary: boolean,
         ): GDPhoneNumber;
+
+        // Signals
+
+        connect<K extends keyof GDPhoneNumber.SignalSignatures>(
+            signal: K,
+            callback: GDPhoneNumber.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDPhoneNumber.SignalSignatures>(
+            signal: K,
+            callback: GDPhoneNumber.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDPhoneNumber.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDPhoneNumber.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16481,7 +17069,6 @@ export namespace GData {
      */
     class GDPostalAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDPostalAddress>;
-        declare static readonly __signalSignatures: GDPostalAddress.SignalSignatures;
 
         // Properties
 
@@ -16683,6 +17270,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](relation_type: string | null, label: string | null, is_primary: boolean): GDPostalAddress;
+
+        // Signals
+
+        connect<K extends keyof GDPostalAddress.SignalSignatures>(
+            signal: K,
+            callback: GDPostalAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDPostalAddress.SignalSignatures>(
+            signal: K,
+            callback: GDPostalAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDPostalAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDPostalAddress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17354,7 +17956,6 @@ export namespace GData {
      */
     class GDReminder extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDReminder>;
-        declare static readonly __signalSignatures: GDReminder.SignalSignatures;
 
         // Properties
 
@@ -17420,6 +18021,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](method: string | null, absolute_time: number, relative_time: number): GDReminder;
+
+        // Signals
+
+        connect<K extends keyof GDReminder.SignalSignatures>(
+            signal: K,
+            callback: GDReminder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDReminder.SignalSignatures>(
+            signal: K,
+            callback: GDReminder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDReminder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDReminder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17938,7 +18554,6 @@ export namespace GData {
      */
     class GDWhen extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWhen>;
-        declare static readonly __signalSignatures: GDWhen.SignalSignatures;
 
         // Properties
 
@@ -18016,6 +18631,12 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](start_time: number, end_time: number, is_date: boolean): GDWhen;
+
+        // Signals
+
+        connect<K extends keyof GDWhen.SignalSignatures>(signal: K, callback: GDWhen.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDWhen.SignalSignatures>(signal: K, callback: GDWhen.SignalSignatures[K]): number;
+        emit<K extends keyof GDWhen.SignalSignatures>(signal: K, ...args: Parameters<GDWhen.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -18548,7 +19169,6 @@ export namespace GData {
      */
     class GDWhere extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWhere>;
-        declare static readonly __signalSignatures: GDWhere.SignalSignatures;
 
         // Properties
 
@@ -18602,6 +19222,18 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](relation_type?: string | null, value_string?: string | null, label?: string | null): GDWhere;
+
+        // Signals
+
+        connect<K extends keyof GDWhere.SignalSignatures>(signal: K, callback: GDWhere.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDWhere.SignalSignatures>(
+            signal: K,
+            callback: GDWhere.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDWhere.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDWhere.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19118,7 +19750,6 @@ export namespace GData {
      */
     class GDWho extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWho>;
-        declare static readonly __signalSignatures: GDWho.SignalSignatures;
 
         // Properties
 
@@ -19184,6 +19815,12 @@ export namespace GData {
             value_string?: string | null,
             email_address?: string | null,
         ): GDWho;
+
+        // Signals
+
+        connect<K extends keyof GDWho.SignalSignatures>(signal: K, callback: GDWho.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDWho.SignalSignatures>(signal: K, callback: GDWho.SignalSignatures[K]): number;
+        emit<K extends keyof GDWho.SignalSignatures>(signal: K, ...args: Parameters<GDWho.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -19697,7 +20334,6 @@ export namespace GData {
      */
     class Generator extends Parsable implements Comparable {
         static $gtype: GObject.GType<Generator>;
-        declare static readonly __signalSignatures: Generator.SignalSignatures;
 
         // Properties
 
@@ -19731,6 +20367,18 @@ export namespace GData {
         constructor(properties?: Partial<Generator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Generator.SignalSignatures>(signal: K, callback: Generator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Generator.SignalSignatures>(
+            signal: K,
+            callback: Generator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Generator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Generator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20222,7 +20870,6 @@ export namespace GData {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
-        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Properties
 
@@ -20242,6 +20889,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](goa_object: Goa.Object): GoaAuthorizer;
+
+        // Signals
+
+        connect<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20921,7 +21583,6 @@ export namespace GData {
      */
     class Link extends Parsable implements Comparable {
         static $gtype: GObject.GType<Link>;
-        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -20999,6 +21660,12 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](uri: string, relation_type?: string | null): Link;
+
+        // Signals
+
+        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -21554,7 +22221,6 @@ export namespace GData {
      */
     class MediaCategory extends Parsable {
         static $gtype: GObject.GType<MediaCategory>;
-        declare static readonly __signalSignatures: MediaCategory.SignalSignatures;
 
         // Properties
 
@@ -21587,6 +22253,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](category: string, scheme?: string | null, label?: string | null): MediaCategory;
+
+        // Signals
+
+        connect<K extends keyof MediaCategory.SignalSignatures>(
+            signal: K,
+            callback: MediaCategory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaCategory.SignalSignatures>(
+            signal: K,
+            callback: MediaCategory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaCategory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaCategory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21652,7 +22333,6 @@ export namespace GData {
      */
     class MediaContent extends Parsable {
         static $gtype: GObject.GType<MediaContent>;
-        declare static readonly __signalSignatures: MediaContent.SignalSignatures;
 
         // Properties
 
@@ -21729,6 +22409,21 @@ export namespace GData {
         constructor(properties?: Partial<MediaContent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaContent.SignalSignatures>(
+            signal: K,
+            callback: MediaContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaContent.SignalSignatures>(
+            signal: K,
+            callback: MediaContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaContent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21807,7 +22502,6 @@ export namespace GData {
      */
     class MediaCredit extends Parsable {
         static $gtype: GObject.GType<MediaCredit>;
-        declare static readonly __signalSignatures: MediaCredit.SignalSignatures;
 
         // Properties
 
@@ -21835,6 +22529,21 @@ export namespace GData {
         constructor(properties?: Partial<MediaCredit.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaCredit.SignalSignatures>(
+            signal: K,
+            callback: MediaCredit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaCredit.SignalSignatures>(
+            signal: K,
+            callback: MediaCredit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaCredit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaCredit.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21874,7 +22583,6 @@ export namespace GData {
      */
     class MediaThumbnail extends Parsable {
         static $gtype: GObject.GType<MediaThumbnail>;
-        declare static readonly __signalSignatures: MediaThumbnail.SignalSignatures;
 
         // Properties
 
@@ -21908,6 +22616,21 @@ export namespace GData {
         constructor(properties?: Partial<MediaThumbnail.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaThumbnail.SignalSignatures>(
+            signal: K,
+            callback: MediaThumbnail.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaThumbnail.SignalSignatures>(
+            signal: K,
+            callback: MediaThumbnail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaThumbnail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaThumbnail.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21975,7 +22698,6 @@ export namespace GData {
      */
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<OAuth2Authorizer>;
-        declare static readonly __signalSignatures: OAuth2Authorizer.SignalSignatures;
 
         // Properties
 
@@ -22155,6 +22877,21 @@ export namespace GData {
             redirect_uri: string,
             authorization_domains: AuthorizationDomain[],
         ): OAuth2Authorizer;
+
+        // Signals
+
+        connect<K extends keyof OAuth2Authorizer.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Authorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Authorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2Authorizer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22978,7 +23715,6 @@ export namespace GData {
      */
     abstract class Parsable extends GObject.Object {
         static $gtype: GObject.GType<Parsable>;
-        declare static readonly __signalSignatures: Parsable.SignalSignatures;
 
         // Properties
 
@@ -23000,6 +23736,18 @@ export namespace GData {
         static new_from_json(parsable_type: GObject.GType, json: string, length: number): Parsable;
 
         static new_from_xml(parsable_type: GObject.GType, xml: string, length: number): Parsable;
+
+        // Signals
+
+        connect<K extends keyof Parsable.SignalSignatures>(signal: K, callback: Parsable.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parsable.SignalSignatures>(
+            signal: K,
+            callback: Parsable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Parsable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Parsable.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -23070,7 +23818,6 @@ export namespace GData {
      */
     class PicasaWebAlbum extends Entry {
         static $gtype: GObject.GType<PicasaWebAlbum>;
-        declare static readonly __signalSignatures: PicasaWebAlbum.SignalSignatures;
 
         // Properties
 
@@ -23236,6 +23983,21 @@ export namespace GData {
 
         static ['new'](id?: string | null): PicasaWebAlbum;
 
+        // Signals
+
+        connect<K extends keyof PicasaWebAlbum.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebAlbum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebAlbum.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebAlbum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebAlbum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebAlbum.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -23373,7 +24135,6 @@ export namespace GData {
      */
     class PicasaWebComment extends Comment {
         static $gtype: GObject.GType<PicasaWebComment>;
-        declare static readonly __signalSignatures: PicasaWebComment.SignalSignatures;
 
         // Constructors
 
@@ -23385,6 +24146,21 @@ export namespace GData {
         // Conflicted with GData.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PicasaWebComment.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebComment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebComment.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebComment.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PicasaWebFeed {
@@ -23401,13 +24177,27 @@ export namespace GData {
      */
     class PicasaWebFeed extends Feed {
         static $gtype: GObject.GType<PicasaWebFeed>;
-        declare static readonly __signalSignatures: PicasaWebFeed.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PicasaWebFeed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PicasaWebFeed.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebFeed.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebFeed.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebFeed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebFeed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebFeed.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PicasaWebFile {
@@ -23459,7 +24249,6 @@ export namespace GData {
      */
     class PicasaWebFile extends Entry implements Commentable {
         static $gtype: GObject.GType<PicasaWebFile>;
-        declare static readonly __signalSignatures: PicasaWebFile.SignalSignatures;
 
         // Properties
 
@@ -23720,6 +24509,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): PicasaWebFile;
+
+        // Signals
+
+        connect<K extends keyof PicasaWebFile.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebFile.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24397,7 +25201,6 @@ export namespace GData {
      */
     class PicasaWebQuery extends Query {
         static $gtype: GObject.GType<PicasaWebQuery>;
-        declare static readonly __signalSignatures: PicasaWebQuery.SignalSignatures;
 
         // Properties
 
@@ -24460,6 +25263,21 @@ export namespace GData {
         static ['new'](q?: string | null): PicasaWebQuery;
 
         static new_with_limits(q: string | null, start_index: number, max_results: number): PicasaWebQuery;
+
+        // Signals
+
+        connect<K extends keyof PicasaWebQuery.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebQuery.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebQuery.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24553,7 +25371,6 @@ export namespace GData {
      */
     class PicasaWebService extends Service {
         static $gtype: GObject.GType<PicasaWebService>;
-        declare static readonly __signalSignatures: PicasaWebService.SignalSignatures;
 
         // Constructors
 
@@ -24562,6 +25379,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](authorizer?: Authorizer | null): PicasaWebService;
+
+        // Signals
+
+        connect<K extends keyof PicasaWebService.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebService.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebService.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -24809,7 +25641,6 @@ export namespace GData {
      */
     class PicasaWebUser extends Entry {
         static $gtype: GObject.GType<PicasaWebUser>;
-        declare static readonly __signalSignatures: PicasaWebUser.SignalSignatures;
 
         // Properties
 
@@ -24881,6 +25712,21 @@ export namespace GData {
         constructor(properties?: Partial<PicasaWebUser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PicasaWebUser.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebUser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PicasaWebUser.SignalSignatures>(
+            signal: K,
+            callback: PicasaWebUser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PicasaWebUser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PicasaWebUser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24955,7 +25801,6 @@ export namespace GData {
      */
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
-        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Properties
 
@@ -25110,6 +25955,12 @@ export namespace GData {
         static ['new'](q?: string | null): Query;
 
         static new_with_limits(q: string | null, start_index: number, max_results: number): Query;
+
+        // Signals
+
+        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -25291,7 +26142,6 @@ export namespace GData {
      */
     class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
-        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -25348,6 +26198,18 @@ export namespace GData {
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -25941,7 +26803,6 @@ export namespace GData {
      */
     class TasksQuery extends Query {
         static $gtype: GObject.GType<TasksQuery>;
-        declare static readonly __signalSignatures: TasksQuery.SignalSignatures;
 
         // Properties
 
@@ -26031,6 +26892,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](q?: string | null): TasksQuery;
+
+        // Signals
+
+        connect<K extends keyof TasksQuery.SignalSignatures>(
+            signal: K,
+            callback: TasksQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TasksQuery.SignalSignatures>(
+            signal: K,
+            callback: TasksQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TasksQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TasksQuery.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26132,7 +27008,6 @@ export namespace GData {
      */
     class TasksService extends Service {
         static $gtype: GObject.GType<TasksService>;
-        declare static readonly __signalSignatures: TasksService.SignalSignatures;
 
         // Constructors
 
@@ -26141,6 +27016,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](authorizer?: Authorizer | null): TasksService;
+
+        // Signals
+
+        connect<K extends keyof TasksService.SignalSignatures>(
+            signal: K,
+            callback: TasksService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TasksService.SignalSignatures>(
+            signal: K,
+            callback: TasksService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TasksService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TasksService.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -26421,7 +27311,6 @@ export namespace GData {
      */
     class TasksTask extends Entry {
         static $gtype: GObject.GType<TasksTask>;
-        declare static readonly __signalSignatures: TasksTask.SignalSignatures;
 
         // Properties
 
@@ -26501,6 +27390,18 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): TasksTask;
+
+        // Signals
+
+        connect<K extends keyof TasksTask.SignalSignatures>(signal: K, callback: TasksTask.SignalSignatures[K]): number;
+        connect_after<K extends keyof TasksTask.SignalSignatures>(
+            signal: K,
+            callback: TasksTask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TasksTask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TasksTask.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26593,7 +27494,6 @@ export namespace GData {
      */
     class TasksTasklist extends Entry {
         static $gtype: GObject.GType<TasksTasklist>;
-        declare static readonly __signalSignatures: TasksTasklist.SignalSignatures;
 
         // Constructors
 
@@ -26602,6 +27502,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): TasksTasklist;
+
+        // Signals
+
+        connect<K extends keyof TasksTasklist.SignalSignatures>(
+            signal: K,
+            callback: TasksTasklist.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TasksTasklist.SignalSignatures>(
+            signal: K,
+            callback: TasksTasklist.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TasksTasklist.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TasksTasklist.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UploadStream {
@@ -26632,7 +27547,6 @@ export namespace GData {
      */
     class UploadStream extends Gio.OutputStream {
         static $gtype: GObject.GType<UploadStream>;
-        declare static readonly __signalSignatures: UploadStream.SignalSignatures;
 
         // Properties
 
@@ -26734,6 +27648,21 @@ export namespace GData {
             cancellable?: Gio.Cancellable | null,
         ): UploadStream;
 
+        // Signals
+
+        connect<K extends keyof UploadStream.SignalSignatures>(
+            signal: K,
+            callback: UploadStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UploadStream.SignalSignatures>(
+            signal: K,
+            callback: UploadStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UploadStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UploadStream.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -26820,7 +27749,6 @@ export namespace GData {
      */
     class YouTubeCategory extends Category implements Comparable {
         static $gtype: GObject.GType<YouTubeCategory>;
-        declare static readonly __signalSignatures: YouTubeCategory.SignalSignatures;
 
         // Properties
 
@@ -26846,6 +27774,21 @@ export namespace GData {
         constructor(properties?: Partial<YouTubeCategory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof YouTubeCategory.SignalSignatures>(
+            signal: K,
+            callback: YouTubeCategory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeCategory.SignalSignatures>(
+            signal: K,
+            callback: YouTubeCategory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeCategory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeCategory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27329,7 +28272,6 @@ export namespace GData {
      */
     class YouTubeComment extends Comment {
         static $gtype: GObject.GType<YouTubeComment>;
-        declare static readonly __signalSignatures: YouTubeComment.SignalSignatures;
 
         // Properties
 
@@ -27358,6 +28300,21 @@ export namespace GData {
         // Conflicted with GData.Entry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof YouTubeComment.SignalSignatures>(
+            signal: K,
+            callback: YouTubeComment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeComment.SignalSignatures>(
+            signal: K,
+            callback: YouTubeComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeComment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27394,13 +28351,27 @@ export namespace GData {
      */
     class YouTubeFeed extends Feed {
         static $gtype: GObject.GType<YouTubeFeed>;
-        declare static readonly __signalSignatures: YouTubeFeed.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<YouTubeFeed.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof YouTubeFeed.SignalSignatures>(
+            signal: K,
+            callback: YouTubeFeed.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeFeed.SignalSignatures>(
+            signal: K,
+            callback: YouTubeFeed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeFeed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeFeed.SignalSignatures[K]>
+        ): void;
     }
 
     namespace YouTubeQuery {
@@ -27429,7 +28400,6 @@ export namespace GData {
      */
     class YouTubeQuery extends Query {
         static $gtype: GObject.GType<YouTubeQuery>;
-        declare static readonly __signalSignatures: YouTubeQuery.SignalSignatures;
 
         // Properties
 
@@ -27557,6 +28527,21 @@ export namespace GData {
 
         static ['new'](q?: string | null): YouTubeQuery;
 
+        // Signals
+
+        connect<K extends keyof YouTubeQuery.SignalSignatures>(
+            signal: K,
+            callback: YouTubeQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeQuery.SignalSignatures>(
+            signal: K,
+            callback: YouTubeQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeQuery.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -27647,7 +28632,6 @@ export namespace GData {
      */
     class YouTubeService extends Service implements Batchable {
         static $gtype: GObject.GType<YouTubeService>;
-        declare static readonly __signalSignatures: YouTubeService.SignalSignatures;
 
         // Properties
 
@@ -27677,6 +28661,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](developer_key: string, authorizer?: Authorizer | null): YouTubeService;
+
+        // Signals
+
+        connect<K extends keyof YouTubeService.SignalSignatures>(
+            signal: K,
+            callback: YouTubeService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeService.SignalSignatures>(
+            signal: K,
+            callback: YouTubeService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeService.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -28533,7 +29532,6 @@ export namespace GData {
      */
     class YouTubeState extends Parsable {
         static $gtype: GObject.GType<YouTubeState>;
-        declare static readonly __signalSignatures: YouTubeState.SignalSignatures;
 
         // Properties
 
@@ -28587,6 +29585,21 @@ export namespace GData {
         constructor(properties?: Partial<YouTubeState.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof YouTubeState.SignalSignatures>(
+            signal: K,
+            callback: YouTubeState.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeState.SignalSignatures>(
+            signal: K,
+            callback: YouTubeState.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeState.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeState.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -28655,7 +29668,6 @@ export namespace GData {
      */
     class YouTubeVideo extends Entry implements Commentable {
         static $gtype: GObject.GType<YouTubeVideo>;
-        declare static readonly __signalSignatures: YouTubeVideo.SignalSignatures;
 
         // Properties
 
@@ -28859,6 +29871,21 @@ export namespace GData {
         _init(...args: any[]): void;
 
         static ['new'](id?: string | null): YouTubeVideo;
+
+        // Signals
+
+        connect<K extends keyof YouTubeVideo.SignalSignatures>(
+            signal: K,
+            callback: YouTubeVideo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YouTubeVideo.SignalSignatures>(
+            signal: K,
+            callback: YouTubeVideo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YouTubeVideo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YouTubeVideo.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

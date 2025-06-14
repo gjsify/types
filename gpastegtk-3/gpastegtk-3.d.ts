@@ -88,7 +88,6 @@ export namespace GPasteGtk {
 
     class SettingsUiPanel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiPanel>;
-        declare static readonly __signalSignatures: SettingsUiPanel.SignalSignatures;
 
         // Constructors
 
@@ -97,6 +96,21 @@ export namespace GPasteGtk {
         _init(...args: any[]): void;
 
         static ['new'](): SettingsUiPanel;
+
+        // Signals
+
+        connect<K extends keyof SettingsUiPanel.SignalSignatures>(
+            signal: K,
+            callback: SettingsUiPanel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsUiPanel.SignalSignatures>(
+            signal: K,
+            callback: SettingsUiPanel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsUiPanel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsUiPanel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -626,7 +640,6 @@ export namespace GPasteGtk {
 
     class SettingsUiStack extends Gtk.Stack implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SettingsUiStack>;
-        declare static readonly __signalSignatures: SettingsUiStack.SignalSignatures;
 
         // Constructors
 
@@ -635,6 +648,21 @@ export namespace GPasteGtk {
         _init(...args: any[]): void;
 
         static ['new'](): SettingsUiStack;
+
+        // Signals
+
+        connect<K extends keyof SettingsUiStack.SignalSignatures>(
+            signal: K,
+            callback: SettingsUiStack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsUiStack.SignalSignatures>(
+            signal: K,
+            callback: SettingsUiStack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsUiStack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsUiStack.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1107,7 +1135,6 @@ export namespace GPasteGtk {
 
     class SettingsUiWidget extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiWidget>;
-        declare static readonly __signalSignatures: SettingsUiWidget.SignalSignatures;
 
         // Constructors
 
@@ -1116,6 +1143,21 @@ export namespace GPasteGtk {
         _init(...args: any[]): void;
 
         static ['new'](): SettingsUiWidget;
+
+        // Signals
+
+        connect<K extends keyof SettingsUiWidget.SignalSignatures>(
+            signal: K,
+            callback: SettingsUiWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsUiWidget.SignalSignatures>(
+            signal: K,
+            callback: SettingsUiWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsUiWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsUiWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

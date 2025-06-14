@@ -634,7 +634,6 @@ export namespace GstWebRTC {
 
     class WebRTCDTLSTransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCDTLSTransport>;
-        declare static readonly __signalSignatures: WebRTCDTLSTransport.SignalSignatures;
 
         // Properties
 
@@ -654,45 +653,60 @@ export namespace GstWebRTC {
         constructor(properties?: Partial<WebRTCDTLSTransport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebRTCDTLSTransport.SignalSignatures>(
+            signal: K,
+            callback: WebRTCDTLSTransport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCDTLSTransport.SignalSignatures>(
+            signal: K,
+            callback: WebRTCDTLSTransport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCDTLSTransport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCDTLSTransport.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WebRTCDataChannel {
         // Signal callback interfaces
 
         interface Close {
-            (): void;
+            (_source: WebRTCDataChannel): void;
         }
 
         interface OnBufferedAmountLow {
-            (): void;
+            (_source: WebRTCDataChannel): void;
         }
 
         interface OnClose {
-            (): void;
+            (_source: WebRTCDataChannel): void;
         }
 
         interface OnError {
-            (error: GLib.Error): void;
+            (_source: WebRTCDataChannel, error: GLib.Error): void;
         }
 
         interface OnMessageData {
-            (data?: GLib.Bytes | null): void;
+            (_source: WebRTCDataChannel, data?: GLib.Bytes | null): void;
         }
 
         interface OnMessageString {
-            (data?: string | null): void;
+            (_source: WebRTCDataChannel, data?: string | null): void;
         }
 
         interface OnOpen {
-            (): void;
+            (_source: WebRTCDataChannel): void;
         }
 
         interface SendData {
-            (data?: GLib.Bytes | null): void;
+            (_source: WebRTCDataChannel, data?: GLib.Bytes | null): void;
         }
 
         interface SendString {
-            (data?: string | null): void;
+            (_source: WebRTCDataChannel, data?: string | null): void;
         }
 
         // Signal signatures
@@ -732,7 +746,6 @@ export namespace GstWebRTC {
 
     abstract class WebRTCDataChannel extends GObject.Object {
         static $gtype: GObject.GType<WebRTCDataChannel>;
-        declare static readonly __signalSignatures: WebRTCDataChannel.SignalSignatures;
 
         // Properties
 
@@ -775,36 +788,6 @@ export namespace GstWebRTC {
             signal: K,
             ...args: Parameters<WebRTCDataChannel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
-        connect(signal: 'on-buffered-amount-low', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-buffered-amount-low', callback: (_source: this) => void): number;
-        emit(signal: 'on-buffered-amount-low'): void;
-        connect(signal: 'on-close', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-close', callback: (_source: this) => void): number;
-        emit(signal: 'on-close'): void;
-        connect(signal: 'on-error', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'on-error', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'on-error', error: GLib.Error): void;
-        connect(signal: 'on-message-data', callback: (_source: this, data: GLib.Bytes | null) => void): number;
-        connect_after(signal: 'on-message-data', callback: (_source: this, data: GLib.Bytes | null) => void): number;
-        emit(signal: 'on-message-data', data?: GLib.Bytes | null): void;
-        connect(signal: 'on-message-string', callback: (_source: this, data: string | null) => void): number;
-        connect_after(signal: 'on-message-string', callback: (_source: this, data: string | null) => void): number;
-        emit(signal: 'on-message-string', data?: string | null): void;
-        connect(signal: 'on-open', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-open', callback: (_source: this) => void): number;
-        emit(signal: 'on-open'): void;
-        connect(signal: 'send-data', callback: (_source: this, data: GLib.Bytes | null) => void): number;
-        connect_after(signal: 'send-data', callback: (_source: this, data: GLib.Bytes | null) => void): number;
-        emit(signal: 'send-data', data?: GLib.Bytes | null): void;
-        connect(signal: 'send-string', callback: (_source: this, data: string | null) => void): number;
-        connect_after(signal: 'send-string', callback: (_source: this, data: string | null) => void): number;
-        emit(signal: 'send-string', data?: string | null): void;
 
         // Methods
 
@@ -840,7 +823,7 @@ export namespace GstWebRTC {
         // Signal callback interfaces
 
         interface AddLocalIpAddress {
-            (address: string): boolean;
+            (_source: WebRTCICE, address: string): boolean;
         }
 
         // Signal signatures
@@ -860,7 +843,6 @@ export namespace GstWebRTC {
 
     abstract class WebRTCICE extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICE>;
-        declare static readonly __signalSignatures: WebRTCICE.SignalSignatures;
 
         // Properties
 
@@ -911,12 +893,6 @@ export namespace GstWebRTC {
             signal: K,
             ...args: Parameters<WebRTCICE.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'add-local-ip-address', callback: (_source: this, address: string) => boolean): number;
-        connect_after(signal: 'add-local-ip-address', callback: (_source: this, address: string) => boolean): number;
-        emit(signal: 'add-local-ip-address', address: string): void;
 
         // Virtual methods
 
@@ -992,7 +968,6 @@ export namespace GstWebRTC {
 
     abstract class WebRTCICEStream extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICEStream>;
-        declare static readonly __signalSignatures: WebRTCICEStream.SignalSignatures;
 
         // Properties
 
@@ -1004,6 +979,21 @@ export namespace GstWebRTC {
         constructor(properties?: Partial<WebRTCICEStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebRTCICEStream.SignalSignatures>(
+            signal: K,
+            callback: WebRTCICEStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCICEStream.SignalSignatures>(
+            signal: K,
+            callback: WebRTCICEStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCICEStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCICEStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1020,11 +1010,11 @@ export namespace GstWebRTC {
         // Signal callback interfaces
 
         interface OnNewCandidate {
-            (object: string): void;
+            (_source: WebRTCICETransport, object: string): void;
         }
 
         interface OnSelectedCandidatePairChange {
-            (): void;
+            (_source: WebRTCICETransport): void;
         }
 
         // Signal signatures
@@ -1045,7 +1035,6 @@ export namespace GstWebRTC {
 
     abstract class WebRTCICETransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICETransport>;
-        declare static readonly __signalSignatures: WebRTCICETransport.SignalSignatures;
 
         // Properties
 
@@ -1080,15 +1069,6 @@ export namespace GstWebRTC {
             signal: K,
             ...args: Parameters<WebRTCICETransport.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'on-new-candidate', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'on-new-candidate', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'on-new-candidate', object: string): void;
-        connect(signal: 'on-selected-candidate-pair-change', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-selected-candidate-pair-change', callback: (_source: this) => void): number;
-        emit(signal: 'on-selected-candidate-pair-change'): void;
 
         // Virtual methods
 
@@ -1120,7 +1100,6 @@ export namespace GstWebRTC {
      */
     class WebRTCRTPReceiver extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPReceiver>;
-        declare static readonly __signalSignatures: WebRTCRTPReceiver.SignalSignatures;
 
         // Properties
 
@@ -1134,6 +1113,21 @@ export namespace GstWebRTC {
         constructor(properties?: Partial<WebRTCRTPReceiver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebRTCRTPReceiver.SignalSignatures>(
+            signal: K,
+            callback: WebRTCRTPReceiver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCRTPReceiver.SignalSignatures>(
+            signal: K,
+            callback: WebRTCRTPReceiver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCRTPReceiver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCRTPReceiver.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WebRTCRTPSender {
@@ -1155,7 +1149,6 @@ export namespace GstWebRTC {
      */
     class WebRTCRTPSender extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPSender>;
-        declare static readonly __signalSignatures: WebRTCRTPSender.SignalSignatures;
 
         // Properties
 
@@ -1174,6 +1167,21 @@ export namespace GstWebRTC {
         constructor(properties?: Partial<WebRTCRTPSender.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebRTCRTPSender.SignalSignatures>(
+            signal: K,
+            callback: WebRTCRTPSender.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCRTPSender.SignalSignatures>(
+            signal: K,
+            callback: WebRTCRTPSender.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCRTPSender.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCRTPSender.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1211,7 +1219,6 @@ export namespace GstWebRTC {
      */
     abstract class WebRTCRTPTransceiver extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPTransceiver>;
-        declare static readonly __signalSignatures: WebRTCRTPTransceiver.SignalSignatures;
 
         // Properties
 
@@ -1266,6 +1273,21 @@ export namespace GstWebRTC {
         constructor(properties?: Partial<WebRTCRTPTransceiver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebRTCRTPTransceiver.SignalSignatures>(
+            signal: K,
+            callback: WebRTCRTPTransceiver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCRTPTransceiver.SignalSignatures>(
+            signal: K,
+            callback: WebRTCRTPTransceiver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCRTPTransceiver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCRTPTransceiver.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WebRTCSCTPTransport {
@@ -1286,7 +1308,6 @@ export namespace GstWebRTC {
 
     abstract class WebRTCSCTPTransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCSCTPTransport>;
-        declare static readonly __signalSignatures: WebRTCSCTPTransport.SignalSignatures;
 
         // Properties
 
@@ -1302,6 +1323,21 @@ export namespace GstWebRTC {
         constructor(properties?: Partial<WebRTCSCTPTransport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebRTCSCTPTransport.SignalSignatures>(
+            signal: K,
+            callback: WebRTCSCTPTransport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCSCTPTransport.SignalSignatures>(
+            signal: K,
+            callback: WebRTCSCTPTransport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCSCTPTransport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCSCTPTransport.SignalSignatures[K]>
+        ): void;
     }
 
     type WebRTCDTLSTransportClass = typeof WebRTCDTLSTransport;

@@ -321,7 +321,6 @@ export namespace Dee {
      */
     class Analyzer extends GObject.Object {
         static $gtype: GObject.GType<Analyzer>;
-        declare static readonly __signalSignatures: Analyzer.SignalSignatures;
 
         // Constructors
 
@@ -330,6 +329,18 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](): Analyzer;
+
+        // Signals
+
+        connect<K extends keyof Analyzer.SignalSignatures>(signal: K, callback: Analyzer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Analyzer.SignalSignatures>(
+            signal: K,
+            callback: Analyzer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Analyzer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Analyzer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -475,7 +486,6 @@ export namespace Dee {
 
     class Client extends Peer {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -491,6 +501,12 @@ export namespace Dee {
         static ['new'](swarm_name: string): Client;
 
         static new_for_address(swarm_name: string, bus_address: string): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
     }
 
     namespace FileResourceManager {
@@ -507,7 +523,6 @@ export namespace Dee {
 
     class FileResourceManager extends GObject.Object implements ResourceManager {
         static $gtype: GObject.GType<FileResourceManager>;
-        declare static readonly __signalSignatures: FileResourceManager.SignalSignatures;
 
         // Properties
 
@@ -527,6 +542,21 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](primary_path: string): FileResourceManager;
+
+        // Signals
+
+        connect<K extends keyof FileResourceManager.SignalSignatures>(
+            signal: K,
+            callback: FileResourceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileResourceManager.SignalSignatures>(
+            signal: K,
+            callback: FileResourceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileResourceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileResourceManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1063,7 +1093,6 @@ export namespace Dee {
      */
     class FilterModel extends ProxyModel implements Model, Serializable {
         static $gtype: GObject.GType<FilterModel>;
-        declare static readonly __signalSignatures: FilterModel.SignalSignatures;
 
         // Properties
 
@@ -1080,6 +1109,21 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](orig_model: Model, filter: Filter): FilterModel;
+
+        // Signals
+
+        connect<K extends keyof FilterModel.SignalSignatures>(
+            signal: K,
+            callback: FilterModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterModel.SignalSignatures>(
+            signal: K,
+            callback: FilterModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1598,13 +1642,27 @@ export namespace Dee {
 
     class GListResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<GListResultSet>;
-        declare static readonly __signalSignatures: GListResultSet.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GListResultSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GListResultSet.SignalSignatures>(
+            signal: K,
+            callback: GListResultSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GListResultSet.SignalSignatures>(
+            signal: K,
+            callback: GListResultSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GListResultSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GListResultSet.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2145,7 +2203,6 @@ export namespace Dee {
      */
     class HashIndex extends Index {
         static $gtype: GObject.GType<HashIndex>;
-        declare static readonly __signalSignatures: HashIndex.SignalSignatures;
 
         // Constructors
 
@@ -2154,6 +2211,18 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](model: Model, analyzer: Analyzer, reader: ModelReader): HashIndex;
+
+        // Signals
+
+        connect<K extends keyof HashIndex.SignalSignatures>(signal: K, callback: HashIndex.SignalSignatures[K]): number;
+        connect_after<K extends keyof HashIndex.SignalSignatures>(
+            signal: K,
+            callback: HashIndex.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashIndex.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashIndex.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Index {
@@ -2175,7 +2244,6 @@ export namespace Dee {
      */
     abstract class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
-        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Properties
 
@@ -2197,6 +2265,12 @@ export namespace Dee {
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2297,19 +2371,19 @@ export namespace Dee {
         // Signal callback interfaces
 
         interface ConnectionAcquired {
-            (object: Gio.DBusConnection): void;
+            (_source: Peer, object: Gio.DBusConnection): void;
         }
 
         interface ConnectionClosed {
-            (connection: Gio.DBusConnection): void;
+            (_source: Peer, connection: Gio.DBusConnection): void;
         }
 
         interface PeerFound {
-            (name: string): void;
+            (_source: Peer, name: string): void;
         }
 
         interface PeerLost {
-            (name: string): void;
+            (_source: Peer, name: string): void;
         }
 
         // Signal signatures
@@ -2338,7 +2412,6 @@ export namespace Dee {
      */
     class Peer extends GObject.Object {
         static $gtype: GObject.GType<Peer>;
-        declare static readonly __signalSignatures: Peer.SignalSignatures;
 
         // Properties
 
@@ -2364,27 +2437,6 @@ export namespace Dee {
         connect<K extends keyof Peer.SignalSignatures>(signal: K, callback: Peer.SignalSignatures[K]): number;
         connect_after<K extends keyof Peer.SignalSignatures>(signal: K, callback: Peer.SignalSignatures[K]): number;
         emit<K extends keyof Peer.SignalSignatures>(signal: K, ...args: Parameters<Peer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connection-acquired', callback: (_source: this, object: Gio.DBusConnection) => void): number;
-        connect_after(
-            signal: 'connection-acquired',
-            callback: (_source: this, object: Gio.DBusConnection) => void,
-        ): number;
-        emit(signal: 'connection-acquired', object: Gio.DBusConnection): void;
-        connect(signal: 'connection-closed', callback: (_source: this, connection: Gio.DBusConnection) => void): number;
-        connect_after(
-            signal: 'connection-closed',
-            callback: (_source: this, connection: Gio.DBusConnection) => void,
-        ): number;
-        emit(signal: 'connection-closed', connection: Gio.DBusConnection): void;
-        connect(signal: 'peer-found', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'peer-found', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'peer-found', name: string): void;
-        connect(signal: 'peer-lost', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'peer-lost', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'peer-lost', name: string): void;
 
         // Virtual methods
 
@@ -2467,7 +2519,6 @@ export namespace Dee {
      */
     class ProxyModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<ProxyModel>;
-        declare static readonly __signalSignatures: ProxyModel.SignalSignatures;
 
         // Properties
 
@@ -2513,6 +2564,21 @@ export namespace Dee {
         constructor(properties?: Partial<ProxyModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyModel.SignalSignatures>(
+            signal: K,
+            callback: ProxyModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyModel.SignalSignatures>(
+            signal: K,
+            callback: ProxyModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3623,7 +3689,6 @@ export namespace Dee {
      */
     class SequenceModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<SequenceModel>;
-        declare static readonly __signalSignatures: SequenceModel.SignalSignatures;
 
         // Constructors
 
@@ -3632,6 +3697,21 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](): SequenceModel;
+
+        // Signals
+
+        connect<K extends keyof SequenceModel.SignalSignatures>(
+            signal: K,
+            callback: SequenceModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SequenceModel.SignalSignatures>(
+            signal: K,
+            callback: SequenceModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SequenceModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SequenceModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -4742,13 +4822,27 @@ export namespace Dee {
      */
     abstract class SerializableModel extends GObject.Object implements Model, Serializable {
         static $gtype: GObject.GType<SerializableModel>;
-        declare static readonly __signalSignatures: SerializableModel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SerializableModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SerializableModel.SignalSignatures>(
+            signal: K,
+            callback: SerializableModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableModel.SignalSignatures>(
+            signal: K,
+            callback: SerializableModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5870,7 +5964,6 @@ export namespace Dee {
 
     class Server extends Peer {
         static $gtype: GObject.GType<Server>;
-        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -5888,6 +5981,12 @@ export namespace Dee {
         static ['new'](swarm_name: string): Server;
 
         static new_for_address(swarm_name: string, bus_address: string): Server;
+
+        // Signals
+
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -5912,11 +6011,11 @@ export namespace Dee {
         // Signal callback interfaces
 
         interface BeginTransaction {
-            (begin_seqnum: number, end_seqnum: number): void;
+            (_source: SharedModel, begin_seqnum: number, end_seqnum: number): void;
         }
 
         interface EndTransaction {
-            (begin_seqnum: number, end_seqnum: number): void;
+            (_source: SharedModel, begin_seqnum: number, end_seqnum: number): void;
         }
 
         // Signal signatures
@@ -5946,7 +6045,6 @@ export namespace Dee {
      */
     class SharedModel extends ProxyModel implements Model, Serializable {
         static $gtype: GObject.GType<SharedModel>;
-        declare static readonly __signalSignatures: SharedModel.SignalSignatures;
 
         // Properties
 
@@ -6034,27 +6132,6 @@ export namespace Dee {
             signal: K,
             ...args: Parameters<SharedModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'begin-transaction',
-            callback: (_source: this, begin_seqnum: number, end_seqnum: number) => void,
-        ): number;
-        connect_after(
-            signal: 'begin-transaction',
-            callback: (_source: this, begin_seqnum: number, end_seqnum: number) => void,
-        ): number;
-        emit(signal: 'begin-transaction', begin_seqnum: number, end_seqnum: number): void;
-        connect(
-            signal: 'end-transaction',
-            callback: (_source: this, begin_seqnum: number, end_seqnum: number) => void,
-        ): number;
-        connect_after(
-            signal: 'end-transaction',
-            callback: (_source: this, begin_seqnum: number, end_seqnum: number) => void,
-        ): number;
-        emit(signal: 'end-transaction', begin_seqnum: number, end_seqnum: number): void;
 
         // Methods
 
@@ -6582,13 +6659,24 @@ export namespace Dee {
      */
     class TermList extends GObject.Object {
         static $gtype: GObject.GType<TermList>;
-        declare static readonly __signalSignatures: TermList.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TermList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TermList.SignalSignatures>(signal: K, callback: TermList.SignalSignatures[K]): number;
+        connect_after<K extends keyof TermList.SignalSignatures>(
+            signal: K,
+            callback: TermList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TermList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TermList.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -6696,7 +6784,6 @@ export namespace Dee {
      */
     class TextAnalyzer extends Analyzer {
         static $gtype: GObject.GType<TextAnalyzer>;
-        declare static readonly __signalSignatures: TextAnalyzer.SignalSignatures;
 
         // Constructors
 
@@ -6705,6 +6792,21 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](): TextAnalyzer;
+
+        // Signals
+
+        connect<K extends keyof TextAnalyzer.SignalSignatures>(
+            signal: K,
+            callback: TextAnalyzer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextAnalyzer.SignalSignatures>(
+            signal: K,
+            callback: TextAnalyzer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextAnalyzer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextAnalyzer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Transaction {
@@ -6727,7 +6829,6 @@ export namespace Dee {
      */
     class Transaction extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<Transaction>;
-        declare static readonly __signalSignatures: Transaction.SignalSignatures;
 
         // Properties
 
@@ -6740,6 +6841,21 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](target: Model): Transaction;
+
+        // Signals
+
+        connect<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            callback: Transaction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            callback: Transaction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transaction.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7872,7 +7988,6 @@ export namespace Dee {
      */
     class TreeIndex extends Index {
         static $gtype: GObject.GType<TreeIndex>;
-        declare static readonly __signalSignatures: TreeIndex.SignalSignatures;
 
         // Constructors
 
@@ -7881,6 +7996,18 @@ export namespace Dee {
         _init(...args: any[]): void;
 
         static ['new'](model: Model, analyzer: Analyzer, reader: ModelReader): TreeIndex;
+
+        // Signals
+
+        connect<K extends keyof TreeIndex.SignalSignatures>(signal: K, callback: TreeIndex.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeIndex.SignalSignatures>(
+            signal: K,
+            callback: TreeIndex.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeIndex.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeIndex.SignalSignatures[K]>
+        ): void;
     }
 
     type AnalyzerClass = typeof Analyzer;

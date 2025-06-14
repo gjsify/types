@@ -163,7 +163,6 @@ export namespace AppStreamBuilder {
 
     class App extends AppStreamGlib.App {
         static $gtype: GObject.GType<App>;
-        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
@@ -175,6 +174,12 @@ export namespace AppStreamBuilder {
         // Conflicted with AppStreamGlib.App.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -212,7 +217,6 @@ export namespace AppStreamBuilder {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -221,6 +225,18 @@ export namespace AppStreamBuilder {
         _init(...args: any[]): void;
 
         static ['new'](): Context;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -375,7 +391,6 @@ export namespace AppStreamBuilder {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
-        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Constructors
 
@@ -384,6 +399,18 @@ export namespace AppStreamBuilder {
         _init(...args: any[]): void;
 
         static ['new'](): Package;
+
+        // Signals
+
+        connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect_after<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            callback: Package.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Package.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -677,7 +704,6 @@ export namespace AppStreamBuilder {
 
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
-        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Constructors
 
@@ -686,6 +712,12 @@ export namespace AppStreamBuilder {
         _init(...args: any[]): void;
 
         static ['new'](ctx: Context): Task;
+
+        // Signals
+
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
 
         // Methods
 

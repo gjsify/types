@@ -37,7 +37,6 @@ export namespace Vgda {
 
     class GProvider extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<GProvider>;
-        declare static readonly __signalSignatures: GProvider.SignalSignatures;
 
         // Constructors
 
@@ -46,6 +45,18 @@ export namespace Vgda {
         _init(...args: any[]): void;
 
         static ['new'](): GProvider;
+
+        // Signals
+
+        connect<K extends keyof GProvider.SignalSignatures>(signal: K, callback: GProvider.SignalSignatures[K]): number;
+        connect_after<K extends keyof GProvider.SignalSignatures>(
+            signal: K,
+            callback: GProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GProvider.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get status(): Vda.ConnectionStatus;

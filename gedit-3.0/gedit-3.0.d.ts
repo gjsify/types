@@ -305,13 +305,18 @@ export namespace Gedit {
 
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<App>;
-        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -795,19 +800,19 @@ export namespace Gedit {
         // Signal callback interfaces
 
         interface Load {
-            (): void;
+            (_source: Document): void;
         }
 
         interface Loaded {
-            (): void;
+            (_source: Document): void;
         }
 
         interface Save {
-            (): void;
+            (_source: Document): void;
         }
 
         interface Saved {
-            (): void;
+            (_source: Document): void;
         }
 
         // Signal signatures
@@ -832,7 +837,6 @@ export namespace Gedit {
 
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
-        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -888,21 +892,6 @@ export namespace Gedit {
             signal: K,
             ...args: Parameters<Document.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'load', callback: (_source: this) => void): number;
-        connect_after(signal: 'load', callback: (_source: this) => void): number;
-        emit(signal: 'load'): void;
-        connect(signal: 'loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this) => void): number;
-        emit(signal: 'loaded'): void;
-        connect(signal: 'save', callback: (_source: this) => void): number;
-        connect_after(signal: 'save', callback: (_source: this) => void): number;
-        emit(signal: 'save'): void;
-        connect(signal: 'saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'saved', callback: (_source: this) => void): number;
-        emit(signal: 'saved'): void;
 
         // Virtual methods
 
@@ -991,7 +980,6 @@ export namespace Gedit {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
-        declare static readonly __signalSignatures: EncodingsComboBox.SignalSignatures;
 
         // Properties
 
@@ -1020,6 +1008,21 @@ export namespace Gedit {
         // Conflicted with Gtk.ComboBox.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EncodingsComboBox.SignalSignatures>(
+            signal: K,
+            callback: EncodingsComboBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingsComboBox.SignalSignatures>(
+            signal: K,
+            callback: EncodingsComboBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingsComboBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingsComboBox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5523,7 +5526,6 @@ export namespace Gedit {
 
     class MenuExtension extends GObject.Object {
         static $gtype: GObject.GType<MenuExtension>;
-        declare static readonly __signalSignatures: MenuExtension.SignalSignatures;
 
         // Properties
 
@@ -5536,6 +5538,21 @@ export namespace Gedit {
         _init(...args: any[]): void;
 
         static ['new'](menu: Gio.Menu): MenuExtension;
+
+        // Signals
+
+        connect<K extends keyof MenuExtension.SignalSignatures>(
+            signal: K,
+            callback: MenuExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuExtension.SignalSignatures>(
+            signal: K,
+            callback: MenuExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuExtension.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5559,7 +5576,6 @@ export namespace Gedit {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -5578,6 +5594,18 @@ export namespace Gedit {
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5619,15 +5647,15 @@ export namespace Gedit {
         // Signal callback interfaces
 
         interface Dispatch {
-            (message: Message): void;
+            (_source: MessageBus, message: Message): void;
         }
 
         interface Registered {
-            (object_path: string, method: string): void;
+            (_source: MessageBus, object_path: string, method: string): void;
         }
 
         interface Unregistered {
-            (object_path: string, method: string): void;
+            (_source: MessageBus, object_path: string, method: string): void;
         }
 
         // Signal signatures
@@ -5644,7 +5672,6 @@ export namespace Gedit {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
-        declare static readonly __signalSignatures: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -5656,6 +5683,10 @@ export namespace Gedit {
 
         // Signals
 
+        connect<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            callback: MessageBus.SignalSignatures[K],
+        ): number;
         connect_after<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
             callback: MessageBus.SignalSignatures[K],
@@ -5664,20 +5695,6 @@ export namespace Gedit {
             signal: K,
             ...args: Parameters<MessageBus.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
-        emit(signal: 'dispatch', message: Message): void;
-        connect_after(
-            signal: 'registered',
-            callback: (_source: this, object_path: string, method: string) => void,
-        ): number;
-        emit(signal: 'registered', object_path: string, method: string): void;
-        connect_after(
-            signal: 'unregistered',
-            callback: (_source: this, object_path: string, method: string) => void,
-        ): number;
-        emit(signal: 'unregistered', object_path: string, method: string): void;
 
         // Static methods
 
@@ -5833,7 +5850,6 @@ export namespace Gedit {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
-        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -5842,6 +5858,18 @@ export namespace Gedit {
         _init(...args: any[]): void;
 
         static ['new'](): Statusbar;
+
+        // Signals
+
+        connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: Statusbar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            callback: Statusbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Statusbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6299,7 +6327,7 @@ export namespace Gedit {
         // Signal callback interfaces
 
         interface DropUris {
-            (object: string[]): void;
+            (_source: Tab, object: string[]): void;
         }
 
         // Signal signatures
@@ -6326,7 +6354,6 @@ export namespace Gedit {
 
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
-        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -6352,12 +6379,6 @@ export namespace Gedit {
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'drop-uris', callback: (_source: this, object: string[]) => void): number;
-        connect_after(signal: 'drop-uris', callback: (_source: this, object: string[]) => void): number;
-        emit(signal: 'drop-uris', object: string[]): void;
 
         // Static methods
 
@@ -6872,7 +6893,7 @@ export namespace Gedit {
         // Signal callback interfaces
 
         interface DropUris {
-            (uri_list: string[]): void;
+            (_source: View, uri_list: string[]): void;
         }
 
         // Signal signatures
@@ -6891,7 +6912,6 @@ export namespace Gedit {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 
@@ -6909,12 +6929,6 @@ export namespace Gedit {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'drop-uris', callback: (_source: this, uri_list: string[]) => void): number;
-        connect_after(signal: 'drop-uris', callback: (_source: this, uri_list: string[]) => void): number;
-        emit(signal: 'drop-uris', uri_list: string[]): void;
 
         // Virtual methods
 
@@ -7366,23 +7380,23 @@ export namespace Gedit {
         // Signal callback interfaces
 
         interface ActiveTabChanged {
-            (object: Tab): void;
+            (_source: Window, object: Tab): void;
         }
 
         interface ActiveTabStateChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface TabAdded {
-            (object: Tab): void;
+            (_source: Window, object: Tab): void;
         }
 
         interface TabRemoved {
-            (object: Tab): void;
+            (_source: Window, object: Tab): void;
         }
 
         interface TabsReordered {
-            (): void;
+            (_source: Window): void;
         }
 
         // Signal signatures
@@ -7411,7 +7425,6 @@ export namespace Gedit {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -7433,24 +7446,6 @@ export namespace Gedit {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-tab-changed', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'active-tab-changed', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'active-tab-changed', object: Tab): void;
-        connect(signal: 'active-tab-state-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'active-tab-state-changed', callback: (_source: this) => void): number;
-        emit(signal: 'active-tab-state-changed'): void;
-        connect(signal: 'tab-added', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-added', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-added', object: Tab): void;
-        connect(signal: 'tab-removed', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-removed', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-removed', object: Tab): void;
-        connect(signal: 'tabs-reordered', callback: (_source: this) => void): number;
-        connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
-        emit(signal: 'tabs-reordered'): void;
 
         // Virtual methods
 

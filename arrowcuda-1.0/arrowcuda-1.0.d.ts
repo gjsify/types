@@ -32,7 +32,6 @@ export namespace ArrowCUDA {
 
     class Buffer extends Arrow.Buffer {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -48,6 +47,12 @@ export namespace ArrowCUDA {
         static new_ipc(context: Context, handle: IPCMemoryHandle): Buffer;
 
         static new_record_batch(context: Context, record_batch: Arrow.RecordBatch): Buffer;
+
+        // Signals
+
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -72,7 +77,6 @@ export namespace ArrowCUDA {
 
     class BufferInputStream extends Arrow.BufferInputStream implements Arrow.File, Arrow.Readable {
         static $gtype: GObject.GType<BufferInputStream>;
-        declare static readonly __signalSignatures: BufferInputStream.SignalSignatures;
 
         // Constructors
 
@@ -81,6 +85,21 @@ export namespace ArrowCUDA {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Buffer): BufferInputStream;
+
+        // Signals
+
+        connect<K extends keyof BufferInputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferInputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferInputStream.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -538,7 +557,6 @@ export namespace ArrowCUDA {
 
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
-        declare static readonly __signalSignatures: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -547,6 +565,21 @@ export namespace ArrowCUDA {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Buffer): BufferOutputStream;
+
+        // Signals
+
+        connect<K extends keyof BufferOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1019,7 +1052,6 @@ export namespace ArrowCUDA {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -1030,6 +1062,18 @@ export namespace ArrowCUDA {
         constructor(properties?: Partial<Context.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1047,7 +1091,6 @@ export namespace ArrowCUDA {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
-        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -1056,6 +1099,21 @@ export namespace ArrowCUDA {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceManager;
+
+        // Signals
+
+        connect<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1074,7 +1132,6 @@ export namespace ArrowCUDA {
 
     class HostBuffer extends Arrow.MutableBuffer {
         static $gtype: GObject.GType<HostBuffer>;
-        declare static readonly __signalSignatures: HostBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1086,6 +1143,21 @@ export namespace ArrowCUDA {
         // Conflicted with Arrow.MutableBuffer.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof HostBuffer.SignalSignatures>(
+            signal: K,
+            callback: HostBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HostBuffer.SignalSignatures>(
+            signal: K,
+            callback: HostBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HostBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HostBuffer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IPCMemoryHandle {
@@ -1102,7 +1174,6 @@ export namespace ArrowCUDA {
 
     class IPCMemoryHandle extends GObject.Object {
         static $gtype: GObject.GType<IPCMemoryHandle>;
-        declare static readonly __signalSignatures: IPCMemoryHandle.SignalSignatures;
 
         // Properties
 
@@ -1116,6 +1187,21 @@ export namespace ArrowCUDA {
         _init(...args: any[]): void;
 
         static ['new'](data: Uint8Array | string): IPCMemoryHandle;
+
+        // Signals
+
+        connect<K extends keyof IPCMemoryHandle.SignalSignatures>(
+            signal: K,
+            callback: IPCMemoryHandle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IPCMemoryHandle.SignalSignatures>(
+            signal: K,
+            callback: IPCMemoryHandle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IPCMemoryHandle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IPCMemoryHandle.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

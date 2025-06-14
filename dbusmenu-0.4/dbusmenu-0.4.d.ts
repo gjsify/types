@@ -378,27 +378,27 @@ export namespace Dbusmenu {
         // Signal callback interfaces
 
         interface EventResult {
-            (object: GObject.Object, p0: string, p1: GLib.Variant, p2: number, p3?: any | null): void;
+            (_source: Client, object: GObject.Object, p0: string, p1: GLib.Variant, p2: number, p3?: any | null): void;
         }
 
         interface IconThemeDirsChanged {
-            (arg1?: any | null): void;
+            (_source: Client, arg1?: any | null): void;
         }
 
         interface ItemActivate {
-            (arg1: GObject.Object, arg2: number): void;
+            (_source: Client, arg1: GObject.Object, arg2: number): void;
         }
 
         interface LayoutUpdated {
-            (): void;
+            (_source: Client): void;
         }
 
         interface NewMenuitem {
-            (arg1: GObject.Object): void;
+            (_source: Client, arg1: GObject.Object): void;
         }
 
         interface RootChanged {
-            (arg1: GObject.Object): void;
+            (_source: Client, arg1: GObject.Object): void;
         }
 
         // Signal signatures
@@ -429,7 +429,6 @@ export namespace Dbusmenu {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -455,57 +454,6 @@ export namespace Dbusmenu {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-result',
-            callback: (
-                _source: this,
-                object: GObject.Object,
-                p0: string,
-                p1: GLib.Variant,
-                p2: number,
-                p3: any | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'event-result',
-            callback: (
-                _source: this,
-                object: GObject.Object,
-                p0: string,
-                p1: GLib.Variant,
-                p2: number,
-                p3: any | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'event-result',
-            object: GObject.Object,
-            p0: string,
-            p1: GLib.Variant,
-            p2: number,
-            p3?: any | null,
-        ): void;
-        connect(signal: 'icon-theme-dirs-changed', callback: (_source: this, arg1: any | null) => void): number;
-        connect_after(signal: 'icon-theme-dirs-changed', callback: (_source: this, arg1: any | null) => void): number;
-        emit(signal: 'icon-theme-dirs-changed', arg1?: any | null): void;
-        connect(signal: 'item-activate', callback: (_source: this, arg1: GObject.Object, arg2: number) => void): number;
-        connect_after(
-            signal: 'item-activate',
-            callback: (_source: this, arg1: GObject.Object, arg2: number) => void,
-        ): number;
-        emit(signal: 'item-activate', arg1: GObject.Object, arg2: number): void;
-        connect(signal: 'layout-updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'layout-updated', callback: (_source: this) => void): number;
-        emit(signal: 'layout-updated'): void;
-        connect(signal: 'new-menuitem', callback: (_source: this, arg1: GObject.Object) => void): number;
-        connect_after(signal: 'new-menuitem', callback: (_source: this, arg1: GObject.Object) => void): number;
-        emit(signal: 'new-menuitem', arg1: GObject.Object): void;
-        connect(signal: 'root-changed', callback: (_source: this, arg1: GObject.Object) => void): number;
-        connect_after(signal: 'root-changed', callback: (_source: this, arg1: GObject.Object) => void): number;
-        emit(signal: 'root-changed', arg1: GObject.Object): void;
 
         // Methods
 
@@ -581,39 +529,39 @@ export namespace Dbusmenu {
         // Signal callback interfaces
 
         interface AboutToShow {
-            (): boolean;
+            (_source: Menuitem): boolean;
         }
 
         interface ChildAdded {
-            (arg1: GObject.Object, arg2: number): void;
+            (_source: Menuitem, arg1: GObject.Object, arg2: number): void;
         }
 
         interface ChildMoved {
-            (arg1: GObject.Object, arg2: number, arg3: number): void;
+            (_source: Menuitem, arg1: GObject.Object, arg2: number, arg3: number): void;
         }
 
         interface ChildRemoved {
-            (arg1: GObject.Object): void;
+            (_source: Menuitem, arg1: GObject.Object): void;
         }
 
         interface Event {
-            (arg1: string, arg2: GLib.Variant, arg3: number): boolean;
+            (_source: Menuitem, arg1: string, arg2: GLib.Variant, arg3: number): boolean;
         }
 
         interface ItemActivated {
-            (arg1: number): void;
+            (_source: Menuitem, arg1: number): void;
         }
 
         interface PropertyChanged {
-            (arg1: string, arg2: GLib.Variant): void;
+            (_source: Menuitem, arg1: string, arg2: GLib.Variant): void;
         }
 
         interface Realized {
-            (): void;
+            (_source: Menuitem): void;
         }
 
         interface ShowToUser {
-            (arg1: number): void;
+            (_source: Menuitem, arg1: number): void;
         }
 
         // Signal signatures
@@ -646,7 +594,6 @@ export namespace Dbusmenu {
      */
     class Menuitem extends GObject.Object {
         static $gtype: GObject.GType<Menuitem>;
-        declare static readonly __signalSignatures: Menuitem.SignalSignatures;
 
         // Properties
 
@@ -673,57 +620,6 @@ export namespace Dbusmenu {
             signal: K,
             ...args: Parameters<Menuitem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'about-to-show', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'about-to-show', callback: (_source: this) => boolean): number;
-        emit(signal: 'about-to-show'): void;
-        connect(signal: 'child-added', callback: (_source: this, arg1: GObject.Object, arg2: number) => void): number;
-        connect_after(
-            signal: 'child-added',
-            callback: (_source: this, arg1: GObject.Object, arg2: number) => void,
-        ): number;
-        emit(signal: 'child-added', arg1: GObject.Object, arg2: number): void;
-        connect(
-            signal: 'child-moved',
-            callback: (_source: this, arg1: GObject.Object, arg2: number, arg3: number) => void,
-        ): number;
-        connect_after(
-            signal: 'child-moved',
-            callback: (_source: this, arg1: GObject.Object, arg2: number, arg3: number) => void,
-        ): number;
-        emit(signal: 'child-moved', arg1: GObject.Object, arg2: number, arg3: number): void;
-        connect(signal: 'child-removed', callback: (_source: this, arg1: GObject.Object) => void): number;
-        connect_after(signal: 'child-removed', callback: (_source: this, arg1: GObject.Object) => void): number;
-        emit(signal: 'child-removed', arg1: GObject.Object): void;
-        connect(
-            signal: 'event',
-            callback: (_source: this, arg1: string, arg2: GLib.Variant, arg3: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'event',
-            callback: (_source: this, arg1: string, arg2: GLib.Variant, arg3: number) => boolean,
-        ): number;
-        emit(signal: 'event', arg1: string, arg2: GLib.Variant, arg3: number): void;
-        connect(signal: 'item-activated', callback: (_source: this, arg1: number) => void): number;
-        connect_after(signal: 'item-activated', callback: (_source: this, arg1: number) => void): number;
-        emit(signal: 'item-activated', arg1: number): void;
-        connect(
-            signal: 'property-changed',
-            callback: (_source: this, arg1: string, arg2: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'property-changed',
-            callback: (_source: this, arg1: string, arg2: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'property-changed', arg1: string, arg2: GLib.Variant): void;
-        connect(signal: 'realized', callback: (_source: this) => void): number;
-        connect_after(signal: 'realized', callback: (_source: this) => void): number;
-        emit(signal: 'realized'): void;
-        connect(signal: 'show-to-user', callback: (_source: this, arg1: number) => void): number;
-        connect_after(signal: 'show-to-user', callback: (_source: this, arg1: number) => void): number;
-        emit(signal: 'show-to-user', arg1: number): void;
 
         // Virtual methods
 
@@ -1084,7 +980,6 @@ export namespace Dbusmenu {
      */
     class MenuitemProxy extends Menuitem {
         static $gtype: GObject.GType<MenuitemProxy>;
-        declare static readonly __signalSignatures: MenuitemProxy.SignalSignatures;
 
         // Properties
 
@@ -1102,6 +997,21 @@ export namespace Dbusmenu {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof MenuitemProxy.SignalSignatures>(
+            signal: K,
+            callback: MenuitemProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuitemProxy.SignalSignatures>(
+            signal: K,
+            callback: MenuitemProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuitemProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuitemProxy.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -1116,19 +1026,19 @@ export namespace Dbusmenu {
         // Signal callback interfaces
 
         interface ItemActivationRequested {
-            (arg1: number, arg2: number): void;
+            (_source: Server, arg1: number, arg2: number): void;
         }
 
         interface ItemPropertyUpdated {
-            (object: number, p0: string, p1: GLib.Variant): void;
+            (_source: Server, object: number, p0: string, p1: GLib.Variant): void;
         }
 
         interface ItemUpdated {
-            (object: number): void;
+            (_source: Server, object: number): void;
         }
 
         interface LayoutUpdated {
-            (arg1: number, arg2: number): void;
+            (_source: Server, arg1: number, arg2: number): void;
         }
 
         // Signal signatures
@@ -1156,7 +1066,6 @@ export namespace Dbusmenu {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
-        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -1181,33 +1090,6 @@ export namespace Dbusmenu {
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'item-activation-requested',
-            callback: (_source: this, arg1: number, arg2: number) => void,
-        ): number;
-        connect_after(
-            signal: 'item-activation-requested',
-            callback: (_source: this, arg1: number, arg2: number) => void,
-        ): number;
-        emit(signal: 'item-activation-requested', arg1: number, arg2: number): void;
-        connect(
-            signal: 'item-property-updated',
-            callback: (_source: this, object: number, p0: string, p1: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'item-property-updated',
-            callback: (_source: this, object: number, p0: string, p1: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'item-property-updated', object: number, p0: string, p1: GLib.Variant): void;
-        connect(signal: 'item-updated', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'item-updated', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'item-updated', object: number): void;
-        connect(signal: 'layout-updated', callback: (_source: this, arg1: number, arg2: number) => void): number;
-        connect_after(signal: 'layout-updated', callback: (_source: this, arg1: number, arg2: number) => void): number;
-        emit(signal: 'layout-updated', arg1: number, arg2: number): void;
 
         // Methods
 

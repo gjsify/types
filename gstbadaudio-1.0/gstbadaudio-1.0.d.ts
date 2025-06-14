@@ -228,7 +228,6 @@ export namespace GstBadAudio {
      */
     abstract class NonstreamAudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<NonstreamAudioDecoder>;
-        declare static readonly __signalSignatures: NonstreamAudioDecoder.SignalSignatures;
 
         // Properties
 
@@ -261,6 +260,21 @@ export namespace GstBadAudio {
         constructor(properties?: Partial<NonstreamAudioDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
+            signal: K,
+            callback: NonstreamAudioDecoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
+            signal: K,
+            callback: NonstreamAudioDecoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NonstreamAudioDecoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -411,7 +425,6 @@ export namespace GstBadAudio {
      */
     class PlanarAudioAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlanarAudioAdapter>;
-        declare static readonly __signalSignatures: PlanarAudioAdapter.SignalSignatures;
 
         // Constructors
 
@@ -420,6 +433,21 @@ export namespace GstBadAudio {
         _init(...args: any[]): void;
 
         static ['new'](): PlanarAudioAdapter;
+
+        // Signals
+
+        connect<K extends keyof PlanarAudioAdapter.SignalSignatures>(
+            signal: K,
+            callback: PlanarAudioAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlanarAudioAdapter.SignalSignatures>(
+            signal: K,
+            callback: PlanarAudioAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlanarAudioAdapter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

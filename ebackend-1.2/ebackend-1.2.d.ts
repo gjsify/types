@@ -400,7 +400,6 @@ export namespace EBackend {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
-        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Properties
 
@@ -419,6 +418,18 @@ export namespace EBackend {
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -761,13 +772,27 @@ export namespace EBackend {
      */
     abstract class BackendFactory extends EDataServer.Extension {
         static $gtype: GObject.GType<BackendFactory>;
-        declare static readonly __signalSignatures: BackendFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BackendFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BackendFactory.SignalSignatures>(
+            signal: K,
+            callback: BackendFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackendFactory.SignalSignatures>(
+            signal: K,
+            callback: BackendFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackendFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackendFactory.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -821,6 +846,7 @@ export namespace EBackend {
 
         interface BeforePut {
             (
+                _source: Cache,
                 object: string,
                 p0: string,
                 p1: string,
@@ -832,11 +858,11 @@ export namespace EBackend {
         }
 
         interface BeforeRemove {
-            (object: string, p0?: Gio.Cancellable | null, p1?: any | null): boolean;
+            (_source: Cache, object: string, p0?: Gio.Cancellable | null, p1?: any | null): boolean;
         }
 
         interface RevisionChanged {
-            (): void;
+            (_source: Cache): void;
         }
 
         // Signal signatures
@@ -857,7 +883,6 @@ export namespace EBackend {
      */
     abstract class Cache extends GObject.Object {
         static $gtype: GObject.GType<Cache>;
-        declare static readonly __signalSignatures: Cache.SignalSignatures;
 
         // Constructors
 
@@ -870,57 +895,6 @@ export namespace EBackend {
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
         emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: Parameters<Cache.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'before-put',
-            callback: (
-                _source: this,
-                object: string,
-                p0: string,
-                p1: string,
-                p2: CacheColumnValues,
-                p3: boolean,
-                p4: Gio.Cancellable | null,
-                p5: any | null,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'before-put',
-            callback: (
-                _source: this,
-                object: string,
-                p0: string,
-                p1: string,
-                p2: CacheColumnValues,
-                p3: boolean,
-                p4: Gio.Cancellable | null,
-                p5: any | null,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'before-put',
-            object: string,
-            p0: string,
-            p1: string,
-            p2: CacheColumnValues,
-            p3: boolean,
-            p4?: Gio.Cancellable | null,
-            p5?: any | null,
-        ): void;
-        connect(
-            signal: 'before-remove',
-            callback: (_source: this, object: string, p0: Gio.Cancellable | null, p1: any | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'before-remove',
-            callback: (_source: this, object: string, p0: Gio.Cancellable | null, p1: any | null) => boolean,
-        ): number;
-        emit(signal: 'before-remove', object: string, p0?: Gio.Cancellable | null, p1?: any | null): void;
-        connect(signal: 'revision-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'revision-changed', callback: (_source: this) => void): number;
-        emit(signal: 'revision-changed'): void;
 
         // Static methods
 
@@ -1269,7 +1243,7 @@ export namespace EBackend {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: CacheKeys): void;
         }
 
         // Signal signatures
@@ -1296,7 +1270,6 @@ export namespace EBackend {
      */
     class CacheKeys extends GObject.Object {
         static $gtype: GObject.GType<CacheKeys>;
-        declare static readonly __signalSignatures: CacheKeys.SignalSignatures;
 
         // Properties
 
@@ -1348,12 +1321,6 @@ export namespace EBackend {
             signal: K,
             ...args: Parameters<CacheKeys.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -1464,13 +1431,27 @@ export namespace EBackend {
 
     class CacheReaper extends EDataServer.Extension implements EDataServer.Extensible {
         static $gtype: GObject.GType<CacheReaper>;
-        declare static readonly __signalSignatures: CacheReaper.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CacheReaper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CacheReaper.SignalSignatures>(
+            signal: K,
+            callback: CacheReaper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CacheReaper.SignalSignatures>(
+            signal: K,
+            callback: CacheReaper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CacheReaper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CacheReaper.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1967,11 +1948,11 @@ export namespace EBackend {
         // Signal callback interfaces
 
         interface ChildAdded {
-            (child_source: ServerSideSource): void;
+            (_source: CollectionBackend, child_source: ServerSideSource): void;
         }
 
         interface ChildRemoved {
-            (child_source: ServerSideSource): void;
+            (_source: CollectionBackend, child_source: ServerSideSource): void;
         }
 
         // Signal signatures
@@ -1995,7 +1976,6 @@ export namespace EBackend {
      */
     class CollectionBackend extends Backend {
         static $gtype: GObject.GType<CollectionBackend>;
-        declare static readonly __signalSignatures: CollectionBackend.SignalSignatures;
 
         // Properties
 
@@ -2023,18 +2003,6 @@ export namespace EBackend {
             signal: K,
             ...args: Parameters<CollectionBackend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'child-added', callback: (_source: this, child_source: ServerSideSource) => void): number;
-        connect_after(signal: 'child-added', callback: (_source: this, child_source: ServerSideSource) => void): number;
-        emit(signal: 'child-added', child_source: ServerSideSource): void;
-        connect(signal: 'child-removed', callback: (_source: this, child_source: ServerSideSource) => void): number;
-        connect_after(
-            signal: 'child-removed',
-            callback: (_source: this, child_source: ServerSideSource) => void,
-        ): number;
-        emit(signal: 'child-removed', child_source: ServerSideSource): void;
 
         // Virtual methods
 
@@ -2527,13 +2495,27 @@ export namespace EBackend {
      */
     class CollectionBackendFactory extends BackendFactory {
         static $gtype: GObject.GType<CollectionBackendFactory>;
-        declare static readonly __signalSignatures: CollectionBackendFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CollectionBackendFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CollectionBackendFactory.SignalSignatures>(
+            signal: K,
+            callback: CollectionBackendFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CollectionBackendFactory.SignalSignatures>(
+            signal: K,
+            callback: CollectionBackendFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CollectionBackendFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CollectionBackendFactory.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2576,23 +2558,23 @@ export namespace EBackend {
         // Signal callback interfaces
 
         interface BusAcquired {
-            (connection: Gio.DBusConnection): void;
+            (_source: DBusServer, connection: Gio.DBusConnection): void;
         }
 
         interface BusNameAcquired {
-            (connection: Gio.DBusConnection): void;
+            (_source: DBusServer, connection: Gio.DBusConnection): void;
         }
 
         interface BusNameLost {
-            (connection: Gio.DBusConnection): void;
+            (_source: DBusServer, connection: Gio.DBusConnection): void;
         }
 
         interface QuitServer {
-            (code: DBusServerExitCode): void;
+            (_source: DBusServer, code: DBusServerExitCode): void;
         }
 
         interface RunServer {
-            (): DBusServerExitCode;
+            (_source: DBusServer): DBusServerExitCode;
         }
 
         // Signal signatures
@@ -2615,7 +2597,6 @@ export namespace EBackend {
      */
     abstract class DBusServer extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<DBusServer>;
-        declare static readonly __signalSignatures: DBusServer.SignalSignatures;
 
         // Constructors
 
@@ -2637,33 +2618,6 @@ export namespace EBackend {
             signal: K,
             ...args: Parameters<DBusServer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'bus-acquired', callback: (_source: this, connection: Gio.DBusConnection) => void): number;
-        connect_after(
-            signal: 'bus-acquired',
-            callback: (_source: this, connection: Gio.DBusConnection) => void,
-        ): number;
-        emit(signal: 'bus-acquired', connection: Gio.DBusConnection): void;
-        connect(signal: 'bus-name-acquired', callback: (_source: this, connection: Gio.DBusConnection) => void): number;
-        connect_after(
-            signal: 'bus-name-acquired',
-            callback: (_source: this, connection: Gio.DBusConnection) => void,
-        ): number;
-        emit(signal: 'bus-name-acquired', connection: Gio.DBusConnection): void;
-        connect(signal: 'bus-name-lost', callback: (_source: this, connection: Gio.DBusConnection) => void): number;
-        connect_after(
-            signal: 'bus-name-lost',
-            callback: (_source: this, connection: Gio.DBusConnection) => void,
-        ): number;
-        emit(signal: 'bus-name-lost', connection: Gio.DBusConnection): void;
-        connect(signal: 'quit-server', callback: (_source: this, code: DBusServerExitCode) => void): number;
-        connect_after(signal: 'quit-server', callback: (_source: this, code: DBusServerExitCode) => void): number;
-        emit(signal: 'quit-server', code: DBusServerExitCode): void;
-        connect(signal: 'run-server', callback: (_source: this) => DBusServerExitCode): number;
-        connect_after(signal: 'run-server', callback: (_source: this) => DBusServerExitCode): number;
-        emit(signal: 'run-server'): void;
 
         // Virtual methods
 
@@ -3210,7 +3164,6 @@ export namespace EBackend {
      */
     class DataFactory extends DBusServer implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataFactory>;
-        declare static readonly __signalSignatures: DataFactory.SignalSignatures;
 
         // Properties
 
@@ -3225,6 +3178,21 @@ export namespace EBackend {
         constructor(properties?: Partial<DataFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataFactory.SignalSignatures>(
+            signal: K,
+            callback: DataFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataFactory.SignalSignatures>(
+            signal: K,
+            callback: DataFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataFactory.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3892,7 +3860,6 @@ export namespace EBackend {
      */
     class FileCache extends GObject.Object {
         static $gtype: GObject.GType<FileCache>;
-        declare static readonly __signalSignatures: FileCache.SignalSignatures;
 
         // Properties
 
@@ -3908,6 +3875,18 @@ export namespace EBackend {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): FileCache;
+
+        // Signals
+
+        connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: FileCache.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileCache.SignalSignatures>(
+            signal: K,
+            callback: FileCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4011,7 +3990,6 @@ export namespace EBackend {
      */
     class ServerSideSource extends EDataServer.Source implements Gio.Initable, Gio.ProxyResolver {
         static $gtype: GObject.GType<ServerSideSource>;
-        declare static readonly __signalSignatures: ServerSideSource.SignalSignatures;
 
         // Properties
 
@@ -4051,6 +4029,21 @@ export namespace EBackend {
         static ['new'](...args: never[]): any;
 
         static new_memory_only(server: SourceRegistryServer, uid?: string | null): ServerSideSource;
+
+        // Signals
+
+        connect<K extends keyof ServerSideSource.SignalSignatures>(
+            signal: K,
+            callback: ServerSideSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerSideSource.SignalSignatures>(
+            signal: K,
+            callback: ServerSideSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerSideSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerSideSource.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4882,7 +4875,6 @@ export namespace EBackend {
         implements EDataServer.Extensible
     {
         static $gtype: GObject.GType<ServerSideSourceCredentialsProvider>;
-        declare static readonly __signalSignatures: ServerSideSourceCredentialsProvider.SignalSignatures;
 
         // Constructors
 
@@ -4894,6 +4886,21 @@ export namespace EBackend {
         // Conflicted with EDataServer.SourceCredentialsProvider.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
+            signal: K,
+            callback: ServerSideSourceCredentialsProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
+            signal: K,
+            callback: ServerSideSourceCredentialsProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerSideSourceCredentialsProvider.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5365,23 +5372,23 @@ export namespace EBackend {
         // Signal callback interfaces
 
         interface FilesLoaded {
-            (): void;
+            (_source: SourceRegistryServer): void;
         }
 
         interface LoadError {
-            (file: Gio.File, error: GLib.Error): void;
+            (_source: SourceRegistryServer, file: Gio.File, error: GLib.Error): void;
         }
 
         interface SourceAdded {
-            (source: ServerSideSource): void;
+            (_source: SourceRegistryServer, source: ServerSideSource): void;
         }
 
         interface SourceRemoved {
-            (source: ServerSideSource): void;
+            (_source: SourceRegistryServer, source: ServerSideSource): void;
         }
 
         interface TweakKeyFile {
-            (key_file: GLib.KeyFile, uid: string): boolean;
+            (_source: SourceRegistryServer, key_file: GLib.KeyFile, uid: string): boolean;
         }
 
         // Signal signatures
@@ -5408,7 +5415,6 @@ export namespace EBackend {
      */
     class SourceRegistryServer extends DataFactory implements OAuth2Support, EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistryServer>;
-        declare static readonly __signalSignatures: SourceRegistryServer.SignalSignatures;
 
         // Constructors
 
@@ -5432,33 +5438,6 @@ export namespace EBackend {
             signal: K,
             ...args: Parameters<SourceRegistryServer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'files-loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'files-loaded', callback: (_source: this) => void): number;
-        emit(signal: 'files-loaded'): void;
-        connect(signal: 'load-error', callback: (_source: this, file: Gio.File, error: GLib.Error) => void): number;
-        connect_after(
-            signal: 'load-error',
-            callback: (_source: this, file: Gio.File, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'load-error', file: Gio.File, error: GLib.Error): void;
-        connect(signal: 'source-added', callback: (_source: this, source: ServerSideSource) => void): number;
-        connect_after(signal: 'source-added', callback: (_source: this, source: ServerSideSource) => void): number;
-        emit(signal: 'source-added', source: ServerSideSource): void;
-        connect(signal: 'source-removed', callback: (_source: this, source: ServerSideSource) => void): number;
-        connect_after(signal: 'source-removed', callback: (_source: this, source: ServerSideSource) => void): number;
-        emit(signal: 'source-removed', source: ServerSideSource): void;
-        connect(
-            signal: 'tweak-key-file',
-            callback: (_source: this, key_file: GLib.KeyFile, uid: string) => boolean,
-        ): number;
-        connect_after(
-            signal: 'tweak-key-file',
-            callback: (_source: this, key_file: GLib.KeyFile, uid: string) => boolean,
-        ): number;
-        emit(signal: 'tweak-key-file', key_file: GLib.KeyFile, uid: string): void;
 
         // Virtual methods
 
@@ -6276,7 +6255,6 @@ export namespace EBackend {
      */
     class SubprocessFactory extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessFactory>;
-        declare static readonly __signalSignatures: SubprocessFactory.SignalSignatures;
 
         // Properties
 
@@ -6287,6 +6265,21 @@ export namespace EBackend {
         constructor(properties?: Partial<SubprocessFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SubprocessFactory.SignalSignatures>(
+            signal: K,
+            callback: SubprocessFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessFactory.SignalSignatures>(
+            signal: K,
+            callback: SubprocessFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6915,7 +6908,6 @@ export namespace EBackend {
      */
     class UserPrompter extends GObject.Object {
         static $gtype: GObject.GType<UserPrompter>;
-        declare static readonly __signalSignatures: UserPrompter.SignalSignatures;
 
         // Constructors
 
@@ -6924,6 +6916,21 @@ export namespace EBackend {
         _init(...args: any[]): void;
 
         static ['new'](): UserPrompter;
+
+        // Signals
+
+        connect<K extends keyof UserPrompter.SignalSignatures>(
+            signal: K,
+            callback: UserPrompter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserPrompter.SignalSignatures>(
+            signal: K,
+            callback: UserPrompter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserPrompter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserPrompter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7166,6 +7173,7 @@ export namespace EBackend {
 
         interface Prompt {
             (
+                _source: UserPrompterServer,
                 prompt_id: number,
                 type: string | null,
                 title: string | null,
@@ -7192,7 +7200,6 @@ export namespace EBackend {
      */
     class UserPrompterServer extends DBusServer implements EDataServer.Extensible {
         static $gtype: GObject.GType<UserPrompterServer>;
-        declare static readonly __signalSignatures: UserPrompterServer.SignalSignatures;
 
         // Constructors
 
@@ -7215,45 +7222,6 @@ export namespace EBackend {
         emit<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
             ...args: Parameters<UserPrompterServer.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'prompt',
-            callback: (
-                _source: this,
-                prompt_id: number,
-                type: string | null,
-                title: string | null,
-                primary_text: string | null,
-                secondary_text: string | null,
-                use_markup: boolean,
-                button_captions: string[] | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'prompt',
-            callback: (
-                _source: this,
-                prompt_id: number,
-                type: string | null,
-                title: string | null,
-                primary_text: string | null,
-                secondary_text: string | null,
-                use_markup: boolean,
-                button_captions: string[] | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'prompt',
-            prompt_id: number,
-            type: string | null,
-            title: string | null,
-            primary_text: string | null,
-            secondary_text: string | null,
-            use_markup: boolean,
-            button_captions?: string[] | null,
         ): void;
 
         // Methods
@@ -7764,13 +7732,27 @@ export namespace EBackend {
      */
     abstract class UserPrompterServerExtension extends EDataServer.Extension {
         static $gtype: GObject.GType<UserPrompterServerExtension>;
-        declare static readonly __signalSignatures: UserPrompterServerExtension.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UserPrompterServerExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserPrompterServerExtension.SignalSignatures>(
+            signal: K,
+            callback: UserPrompterServerExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserPrompterServerExtension.SignalSignatures>(
+            signal: K,
+            callback: UserPrompterServerExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserPrompterServerExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserPrompterServerExtension.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -7844,13 +7826,27 @@ export namespace EBackend {
      */
     class WebDAVCollectionBackend extends CollectionBackend {
         static $gtype: GObject.GType<WebDAVCollectionBackend>;
-        declare static readonly __signalSignatures: WebDAVCollectionBackend.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebDAVCollectionBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
+            signal: K,
+            callback: WebDAVCollectionBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
+            signal: K,
+            callback: WebDAVCollectionBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebDAVCollectionBackend.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

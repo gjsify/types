@@ -181,7 +181,6 @@ export namespace Tracker {
 
     class NamespaceManager extends GObject.Object {
         static $gtype: GObject.GType<NamespaceManager>;
-        declare static readonly __signalSignatures: NamespaceManager.SignalSignatures;
 
         // Constructors
 
@@ -190,6 +189,21 @@ export namespace Tracker {
         _init(...args: any[]): void;
 
         static ['new'](): NamespaceManager;
+
+        // Signals
+
+        connect<K extends keyof NamespaceManager.SignalSignatures>(
+            signal: K,
+            callback: NamespaceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NamespaceManager.SignalSignatures>(
+            signal: K,
+            callback: NamespaceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NamespaceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NamespaceManager.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -246,7 +260,7 @@ export namespace Tracker {
         // Signal callback interfaces
 
         interface Events {
-            (events: NotifierEvent[]): void;
+            (_source: Notifier, events: NotifierEvent[]): void;
         }
 
         // Signal signatures
@@ -263,7 +277,6 @@ export namespace Tracker {
 
     class Notifier extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Notifier>;
-        declare static readonly __signalSignatures: Notifier.SignalSignatures;
 
         // Properties
 
@@ -291,12 +304,6 @@ export namespace Tracker {
             signal: K,
             ...args: Parameters<Notifier.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'events', callback: (_source: this, events: NotifierEvent[]) => void): number;
-        connect_after(signal: 'events', callback: (_source: this, events: NotifierEvent[]) => void): number;
-        emit(signal: 'events', events: NotifierEvent[]): void;
 
         // Inherited methods
         /**
@@ -842,7 +849,6 @@ export namespace Tracker {
      */
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
-        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -860,6 +866,18 @@ export namespace Tracker {
         _init(...args: any[]): void;
 
         static ['new'](identifier: string): Resource;
+
+        // Signals
+
+        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: Resource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1108,7 +1126,6 @@ export namespace Tracker {
 
     class SparqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SparqlBuilder>;
-        declare static readonly __signalSignatures: SparqlBuilder.SignalSignatures;
 
         // Properties
 
@@ -1128,6 +1145,21 @@ export namespace Tracker {
         static embedded_insert(): SparqlBuilder;
 
         static ['new'](): SparqlBuilder;
+
+        // Signals
+
+        connect<K extends keyof SparqlBuilder.SignalSignatures>(
+            signal: K,
+            callback: SparqlBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlBuilder.SignalSignatures>(
+            signal: K,
+            callback: SparqlBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1174,13 +1206,27 @@ export namespace Tracker {
 
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
-        declare static readonly __signalSignatures: SparqlConnection.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SparqlConnection.SignalSignatures>(
+            signal: K,
+            callback: SparqlConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlConnection.SignalSignatures>(
+            signal: K,
+            callback: SparqlConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1367,7 +1413,6 @@ export namespace Tracker {
 
     abstract class SparqlCursor extends GObject.Object {
         static $gtype: GObject.GType<SparqlCursor>;
-        declare static readonly __signalSignatures: SparqlCursor.SignalSignatures;
 
         // Properties
 
@@ -1381,6 +1426,21 @@ export namespace Tracker {
         constructor(properties?: Partial<SparqlCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SparqlCursor.SignalSignatures>(
+            signal: K,
+            callback: SparqlCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlCursor.SignalSignatures>(
+            signal: K,
+            callback: SparqlCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1436,7 +1496,6 @@ export namespace Tracker {
 
     abstract class SparqlStatement extends GObject.Object {
         static $gtype: GObject.GType<SparqlStatement>;
-        declare static readonly __signalSignatures: SparqlStatement.SignalSignatures;
 
         // Properties
 
@@ -1450,6 +1509,21 @@ export namespace Tracker {
         constructor(properties?: Partial<SparqlStatement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SparqlStatement.SignalSignatures>(
+            signal: K,
+            callback: SparqlStatement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlStatement.SignalSignatures>(
+            signal: K,
+            callback: SparqlStatement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlStatement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlStatement.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

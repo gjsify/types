@@ -69,15 +69,15 @@ export namespace MetaTest {
         // Signal callback interfaces
 
         interface AfterTests {
-            (): void;
+            (_source: ContextTest): void;
         }
 
         interface BeforeTests {
-            (): void;
+            (_source: ContextTest): void;
         }
 
         interface RunTests {
-            (): number;
+            (_source: ContextTest): number;
         }
 
         // Signal signatures
@@ -94,7 +94,6 @@ export namespace MetaTest {
 
     class ContextTest extends Meta.Context {
         static $gtype: GObject.GType<ContextTest>;
-        declare static readonly __signalSignatures: ContextTest.SignalSignatures;
 
         // Constructors
 
@@ -116,18 +115,6 @@ export namespace MetaTest {
             signal: K,
             ...args: Parameters<ContextTest.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'after-tests', callback: (_source: this) => void): number;
-        connect_after(signal: 'after-tests', callback: (_source: this) => void): number;
-        emit(signal: 'after-tests'): void;
-        connect(signal: 'before-tests', callback: (_source: this) => void): number;
-        connect_after(signal: 'before-tests', callback: (_source: this) => void): number;
-        emit(signal: 'before-tests'): void;
-        connect(signal: 'run-tests', callback: (_source: this) => number): number;
-        connect_after(signal: 'run-tests', callback: (_source: this) => number): number;
-        emit(signal: 'run-tests'): void;
 
         // Methods
 
@@ -146,7 +133,6 @@ export namespace MetaTest {
 
     class TestMonitor extends GObject.Object {
         static $gtype: GObject.GType<TestMonitor>;
-        declare static readonly __signalSignatures: TestMonitor.SignalSignatures;
 
         // Constructors
 
@@ -155,6 +141,21 @@ export namespace MetaTest {
         _init(...args: any[]): void;
 
         static ['new'](context: Meta.Context, width: number, height: number, refresh_rate: number): TestMonitor;
+
+        // Signals
+
+        connect<K extends keyof TestMonitor.SignalSignatures>(
+            signal: K,
+            callback: TestMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TestMonitor.SignalSignatures>(
+            signal: K,
+            callback: TestMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TestMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TestMonitor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

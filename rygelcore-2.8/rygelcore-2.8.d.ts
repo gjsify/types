@@ -119,7 +119,6 @@ export namespace RygelCore {
 
     class ConnectionManager extends GUPnP.Service {
         static $gtype: GObject.GType<ConnectionManager>;
-        declare static readonly __signalSignatures: ConnectionManager.SignalSignatures;
 
         // Fields
 
@@ -137,6 +136,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionManager;
+
+        // Signals
+
+        connect<K extends keyof ConnectionManager.SignalSignatures>(
+            signal: K,
+            callback: ConnectionManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionManager.SignalSignatures>(
+            signal: K,
+            callback: ConnectionManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionManager.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -161,7 +175,6 @@ export namespace RygelCore {
 
     class BasicManagement extends GUPnP.Service {
         static $gtype: GObject.GType<BasicManagement>;
-        declare static readonly __signalSignatures: BasicManagement.SignalSignatures;
 
         // Properties
 
@@ -182,6 +195,21 @@ export namespace RygelCore {
 
         static ['new'](): BasicManagement;
 
+        // Signals
+
+        connect<K extends keyof BasicManagement.SignalSignatures>(
+            signal: K,
+            callback: BasicManagement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BasicManagement.SignalSignatures>(
+            signal: K,
+            callback: BasicManagement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BasicManagement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BasicManagement.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_max_history_size(): number;
@@ -199,7 +227,6 @@ export namespace RygelCore {
 
     class DescriptionFile extends GObject.Object {
         static $gtype: GObject.GType<DescriptionFile>;
-        declare static readonly __signalSignatures: DescriptionFile.SignalSignatures;
 
         // Constructors
 
@@ -210,6 +237,21 @@ export namespace RygelCore {
         static ['new'](template_file: string): DescriptionFile;
 
         static from_xml_document(doc: GUPnP.XMLDoc): DescriptionFile;
+
+        // Signals
+
+        connect<K extends keyof DescriptionFile.SignalSignatures>(
+            signal: K,
+            callback: DescriptionFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DescriptionFile.SignalSignatures>(
+            signal: K,
+            callback: DescriptionFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DescriptionFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DescriptionFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -240,7 +282,6 @@ export namespace RygelCore {
 
     class DLNAProfile {
         static $gtype: GObject.GType<DLNAProfile>;
-        declare static readonly __signalSignatures: DLNAProfile.SignalSignatures;
 
         // Fields
 
@@ -253,6 +294,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](name: string, mime: string): DLNAProfile;
+
+        // Signals
+
+        connect<K extends keyof DLNAProfile.SignalSignatures>(
+            signal: K,
+            callback: DLNAProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DLNAProfile.SignalSignatures>(
+            signal: K,
+            callback: DLNAProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DLNAProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DLNAProfile.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -270,7 +326,6 @@ export namespace RygelCore {
 
     class EnergyManagement extends GUPnP.Service {
         static $gtype: GObject.GType<EnergyManagement>;
-        declare static readonly __signalSignatures: EnergyManagement.SignalSignatures;
 
         // Constructors
 
@@ -279,6 +334,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): EnergyManagement;
+
+        // Signals
+
+        connect<K extends keyof EnergyManagement.SignalSignatures>(
+            signal: K,
+            callback: EnergyManagement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EnergyManagement.SignalSignatures>(
+            signal: K,
+            callback: EnergyManagement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EnergyManagement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EnergyManagement.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RootDevice {
@@ -294,7 +364,6 @@ export namespace RygelCore {
 
     class RootDevice extends GUPnP.RootDevice implements Gio.Initable {
         static $gtype: GObject.GType<RootDevice>;
-        declare static readonly __signalSignatures: RootDevice.SignalSignatures;
 
         // Properties
 
@@ -317,6 +386,21 @@ export namespace RygelCore {
         // Conflicted with GUPnP.RootDevice.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof RootDevice.SignalSignatures>(
+            signal: K,
+            callback: RootDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RootDevice.SignalSignatures>(
+            signal: K,
+            callback: RootDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RootDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RootDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -862,7 +946,6 @@ export namespace RygelCore {
 
     class RootDeviceFactory extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RootDeviceFactory>;
-        declare static readonly __signalSignatures: RootDeviceFactory.SignalSignatures;
 
         // Properties
 
@@ -875,6 +958,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](context: GUPnP.Context): RootDeviceFactory;
+
+        // Signals
+
+        connect<K extends keyof RootDeviceFactory.SignalSignatures>(
+            signal: K,
+            callback: RootDeviceFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RootDeviceFactory.SignalSignatures>(
+            signal: K,
+            callback: RootDeviceFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RootDeviceFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RootDeviceFactory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1419,13 +1517,27 @@ export namespace RygelCore {
 
     class LogHandler extends GObject.Object {
         static $gtype: GObject.GType<LogHandler>;
-        declare static readonly __signalSignatures: LogHandler.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LogHandler.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LogHandler.SignalSignatures>(
+            signal: K,
+            callback: LogHandler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LogHandler.SignalSignatures>(
+            signal: K,
+            callback: LogHandler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LogHandler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LogHandler.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1443,7 +1555,6 @@ export namespace RygelCore {
 
     class MetaConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<MetaConfig>;
-        declare static readonly __signalSignatures: MetaConfig.SignalSignatures;
 
         // Constructors
 
@@ -1452,6 +1563,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): MetaConfig;
+
+        // Signals
+
+        connect<K extends keyof MetaConfig.SignalSignatures>(
+            signal: K,
+            callback: MetaConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetaConfig.SignalSignatures>(
+            signal: K,
+            callback: MetaConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetaConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetaConfig.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1946,7 +2072,7 @@ export namespace RygelCore {
         // Signal callback interfaces
 
         interface PluginAvailable {
-            (plugin: Plugin): void;
+            (_source: PluginLoader, plugin: Plugin): void;
         }
 
         // Signal signatures
@@ -1961,7 +2087,6 @@ export namespace RygelCore {
 
     class PluginLoader extends RecursiveModuleLoader {
         static $gtype: GObject.GType<PluginLoader>;
-        declare static readonly __signalSignatures: PluginLoader.SignalSignatures;
 
         // Constructors
 
@@ -1985,12 +2110,6 @@ export namespace RygelCore {
             signal: K,
             ...args: Parameters<PluginLoader.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'plugin-available', callback: (_source: this, plugin: Plugin) => void): number;
-        connect_after(signal: 'plugin-available', callback: (_source: this, plugin: Plugin) => void): number;
-        emit(signal: 'plugin-available', plugin: Plugin): void;
 
         // Methods
 
@@ -2014,7 +2133,6 @@ export namespace RygelCore {
 
     abstract class RecursiveModuleLoader extends GObject.Object {
         static $gtype: GObject.GType<RecursiveModuleLoader>;
-        declare static readonly __signalSignatures: RecursiveModuleLoader.SignalSignatures;
 
         // Properties
 
@@ -2028,6 +2146,21 @@ export namespace RygelCore {
         constructor(properties?: Partial<RecursiveModuleLoader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RecursiveModuleLoader.SignalSignatures>(
+            signal: K,
+            callback: RecursiveModuleLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecursiveModuleLoader.SignalSignatures>(
+            signal: K,
+            callback: RecursiveModuleLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecursiveModuleLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecursiveModuleLoader.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2069,7 +2202,6 @@ export namespace RygelCore {
 
     class Plugin extends GUPnP.ResourceFactory {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -2113,6 +2245,12 @@ export namespace RygelCore {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+
         // Virtual methods
 
         vfunc_apply_hacks(device: RootDevice, description_path: string): void;
@@ -2143,7 +2281,6 @@ export namespace RygelCore {
 
     class ResourceInfo {
         static $gtype: GObject.GType<ResourceInfo>;
-        declare static readonly __signalSignatures: ResourceInfo.SignalSignatures;
 
         // Fields
 
@@ -2158,6 +2295,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](upnp_id: string, upnp_type: string, description_path: string, type: GObject.GType): ResourceInfo;
+
+        // Signals
+
+        connect<K extends keyof ResourceInfo.SignalSignatures>(
+            signal: K,
+            callback: ResourceInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourceInfo.SignalSignatures>(
+            signal: K,
+            callback: ResourceInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourceInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourceInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MediaDevice {
@@ -2175,7 +2327,6 @@ export namespace RygelCore {
 
     abstract class MediaDevice extends GObject.Object {
         static $gtype: GObject.GType<MediaDevice>;
-        declare static readonly __signalSignatures: MediaDevice.SignalSignatures;
 
         // Properties
 
@@ -2189,6 +2340,21 @@ export namespace RygelCore {
         constructor(properties?: Partial<MediaDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaDevice.SignalSignatures>(
+            signal: K,
+            callback: MediaDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaDevice.SignalSignatures>(
+            signal: K,
+            callback: MediaDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2212,7 +2378,6 @@ export namespace RygelCore {
 
     class BaseConfiguration extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<BaseConfiguration>;
-        declare static readonly __signalSignatures: BaseConfiguration.SignalSignatures;
 
         // Constructors
 
@@ -2221,6 +2386,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): BaseConfiguration;
+
+        // Signals
+
+        connect<K extends keyof BaseConfiguration.SignalSignatures>(
+            signal: K,
+            callback: BaseConfiguration.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseConfiguration.SignalSignatures>(
+            signal: K,
+            callback: BaseConfiguration.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseConfiguration.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseConfiguration.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2722,7 +2902,6 @@ export namespace RygelCore {
 
     class CmdlineConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<CmdlineConfig>;
-        declare static readonly __signalSignatures: CmdlineConfig.SignalSignatures;
 
         // Constructors
 
@@ -2731,6 +2910,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): CmdlineConfig;
+
+        // Signals
+
+        connect<K extends keyof CmdlineConfig.SignalSignatures>(
+            signal: K,
+            callback: CmdlineConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CmdlineConfig.SignalSignatures>(
+            signal: K,
+            callback: CmdlineConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CmdlineConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CmdlineConfig.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3235,7 +3429,6 @@ export namespace RygelCore {
 
     class EnvironmentConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<EnvironmentConfig>;
-        declare static readonly __signalSignatures: EnvironmentConfig.SignalSignatures;
 
         // Constructors
 
@@ -3244,6 +3437,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): EnvironmentConfig;
+
+        // Signals
+
+        connect<K extends keyof EnvironmentConfig.SignalSignatures>(
+            signal: K,
+            callback: EnvironmentConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EnvironmentConfig.SignalSignatures>(
+            signal: K,
+            callback: EnvironmentConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EnvironmentConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EnvironmentConfig.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3743,7 +3951,6 @@ export namespace RygelCore {
 
     class UserConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<UserConfig>;
-        declare static readonly __signalSignatures: UserConfig.SignalSignatures;
 
         // Fields
 
@@ -3759,6 +3966,21 @@ export namespace RygelCore {
         static ['new'](local_path: string): UserConfig;
 
         static with_paths(local_path: string, system_path: string): UserConfig;
+
+        // Signals
+
+        connect<K extends keyof UserConfig.SignalSignatures>(
+            signal: K,
+            callback: UserConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserConfig.SignalSignatures>(
+            signal: K,
+            callback: UserConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserConfig.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4263,7 +4485,6 @@ export namespace RygelCore {
 
     class V1Hacks extends GObject.Object {
         static $gtype: GObject.GType<V1Hacks>;
-        declare static readonly __signalSignatures: V1Hacks.SignalSignatures;
 
         // Properties
 
@@ -4286,6 +4507,18 @@ export namespace RygelCore {
 
         static ['new'](device_type: string, service_types: string[]): V1Hacks;
 
+        // Signals
+
+        connect<K extends keyof V1Hacks.SignalSignatures>(signal: K, callback: V1Hacks.SignalSignatures[K]): number;
+        connect_after<K extends keyof V1Hacks.SignalSignatures>(
+            signal: K,
+            callback: V1Hacks.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof V1Hacks.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<V1Hacks.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         apply_on_device(device: RootDevice, template_path?: string | null): void;
@@ -4301,7 +4534,6 @@ export namespace RygelCore {
 
     class IconInfo {
         static $gtype: GObject.GType<IconInfo>;
-        declare static readonly __signalSignatures: IconInfo.SignalSignatures;
 
         // Fields
 
@@ -4319,6 +4551,18 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](mime_type: string, file_extension: string): IconInfo;
+
+        // Signals
+
+        connect<K extends keyof IconInfo.SignalSignatures>(signal: K, callback: IconInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof IconInfo.SignalSignatures>(
+            signal: K,
+            callback: IconInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IconInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IconInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace XMLUtils {
@@ -4328,7 +4572,6 @@ export namespace RygelCore {
 
     class XMLUtils {
         static $gtype: GObject.GType<XMLUtils>;
-        declare static readonly __signalSignatures: XMLUtils.SignalSignatures;
 
         // Fields
 
@@ -4339,6 +4582,18 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): XMLUtils;
+
+        // Signals
+
+        connect<K extends keyof XMLUtils.SignalSignatures>(signal: K, callback: XMLUtils.SignalSignatures[K]): number;
+        connect_after<K extends keyof XMLUtils.SignalSignatures>(
+            signal: K,
+            callback: XMLUtils.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XMLUtils.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XMLUtils.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4352,7 +4607,6 @@ export namespace RygelCore {
 
     class XMLUtilsIterator {
         static $gtype: GObject.GType<XMLUtilsIterator>;
-        declare static readonly __signalSignatures: XMLUtilsIterator.SignalSignatures;
 
         // Fields
 
@@ -4363,6 +4617,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](node?: any | null): XMLUtilsIterator;
+
+        // Signals
+
+        connect<K extends keyof XMLUtilsIterator.SignalSignatures>(
+            signal: K,
+            callback: XMLUtilsIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof XMLUtilsIterator.SignalSignatures>(
+            signal: K,
+            callback: XMLUtilsIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XMLUtilsIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XMLUtilsIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4378,13 +4647,27 @@ export namespace RygelCore {
 
     class XMLUtilsChildIterator extends XMLUtilsIterator {
         static $gtype: GObject.GType<XMLUtilsChildIterator>;
-        declare static readonly __signalSignatures: XMLUtilsChildIterator.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](node?: any | null): XMLUtilsChildIterator;
+
+        // Signals
+
+        connect<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
+            signal: K,
+            callback: XMLUtilsChildIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
+            signal: K,
+            callback: XMLUtilsChildIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XMLUtilsChildIterator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PluginInformation {
@@ -4405,7 +4688,6 @@ export namespace RygelCore {
 
     class PluginInformation extends GObject.Object {
         static $gtype: GObject.GType<PluginInformation>;
-        declare static readonly __signalSignatures: PluginInformation.SignalSignatures;
 
         // Properties
 
@@ -4423,6 +4705,21 @@ export namespace RygelCore {
         constructor(properties?: Partial<PluginInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PluginInformation.SignalSignatures>(
+            signal: K,
+            callback: PluginInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginInformation.SignalSignatures>(
+            signal: K,
+            callback: PluginInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginInformation.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4448,7 +4745,6 @@ export namespace RygelCore {
 
     class Dlna150Hacks extends GObject.Object {
         static $gtype: GObject.GType<Dlna150Hacks>;
-        declare static readonly __signalSignatures: Dlna150Hacks.SignalSignatures;
 
         // Fields
 
@@ -4461,6 +4757,21 @@ export namespace RygelCore {
         _init(...args: any[]): void;
 
         static ['new'](): Dlna150Hacks;
+
+        // Signals
+
+        connect<K extends keyof Dlna150Hacks.SignalSignatures>(
+            signal: K,
+            callback: Dlna150Hacks.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Dlna150Hacks.SignalSignatures>(
+            signal: K,
+            callback: Dlna150Hacks.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Dlna150Hacks.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Dlna150Hacks.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

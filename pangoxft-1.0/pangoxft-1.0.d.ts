@@ -166,13 +166,18 @@ export namespace PangoXft {
      */
     class Font extends PangoFc.Font {
         static $gtype: GObject.GType<Font>;
-        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -225,13 +230,24 @@ export namespace PangoXft {
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
-        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            callback: FontMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontMap.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -789,7 +805,6 @@ export namespace PangoXft {
      */
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
-        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 
@@ -803,6 +818,18 @@ export namespace PangoXft {
         _init(...args: any[]): void;
 
         static ['new'](display: xlib.Display, screen: number): Renderer;
+
+        // Signals
+
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: Renderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Renderer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

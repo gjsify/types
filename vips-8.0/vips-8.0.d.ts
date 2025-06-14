@@ -3768,7 +3768,6 @@ export namespace Vips {
 
     abstract class Foreign extends Operation {
         static $gtype: GObject.GType<Foreign>;
-        declare static readonly __signalSignatures: Foreign.SignalSignatures;
 
         // Fields
 
@@ -3779,6 +3778,18 @@ export namespace Vips {
         constructor(properties?: Partial<Foreign.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Foreign.SignalSignatures>(signal: K, callback: Foreign.SignalSignatures[K]): number;
+        connect_after<K extends keyof Foreign.SignalSignatures>(
+            signal: K,
+            callback: Foreign.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Foreign.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Foreign.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3905,7 +3916,6 @@ export namespace Vips {
 
     abstract class ForeignLoad extends Foreign {
         static $gtype: GObject.GType<ForeignLoad>;
-        declare static readonly __signalSignatures: ForeignLoad.SignalSignatures;
 
         // Properties
 
@@ -3943,6 +3953,21 @@ export namespace Vips {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof ForeignLoad.SignalSignatures>(
+            signal: K,
+            callback: ForeignLoad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ForeignLoad.SignalSignatures>(
+            signal: K,
+            callback: ForeignLoad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ForeignLoad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ForeignLoad.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         vfunc_get_flags(): ForeignFlags;
@@ -3971,7 +3996,6 @@ export namespace Vips {
 
     abstract class ForeignSave extends Foreign {
         static $gtype: GObject.GType<ForeignSave>;
-        declare static readonly __signalSignatures: ForeignSave.SignalSignatures;
 
         // Properties
 
@@ -4000,33 +4024,48 @@ export namespace Vips {
         constructor(properties?: Partial<ForeignSave.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ForeignSave.SignalSignatures>(
+            signal: K,
+            callback: ForeignSave.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ForeignSave.SignalSignatures>(
+            signal: K,
+            callback: ForeignSave.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ForeignSave.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ForeignSave.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Image {
         // Signal callback interfaces
 
         interface Eval {
-            (progress: Progress): void;
+            (_source: Image, progress: Progress): void;
         }
 
         interface Invalidate {
-            (): void;
+            (_source: Image): void;
         }
 
         interface Minimise {
-            (): void;
+            (_source: Image): void;
         }
 
         interface Posteval {
-            (progress: Progress): void;
+            (_source: Image, progress: Progress): void;
         }
 
         interface Preeval {
-            (progress: Progress): void;
+            (_source: Image, progress: Progress): void;
         }
 
         interface Written {
-            (result: number): void;
+            (_source: Image, result: number): void;
         }
 
         // Signal signatures
@@ -4070,7 +4109,6 @@ export namespace Vips {
      */
     class Image extends Object {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -4156,27 +4194,6 @@ export namespace Vips {
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'eval', callback: (_source: this, progress: Progress) => void): number;
-        connect_after(signal: 'eval', callback: (_source: this, progress: Progress) => void): number;
-        emit(signal: 'eval', progress: Progress): void;
-        connect(signal: 'invalidate', callback: (_source: this) => void): number;
-        connect_after(signal: 'invalidate', callback: (_source: this) => void): number;
-        emit(signal: 'invalidate'): void;
-        connect(signal: 'minimise', callback: (_source: this) => void): number;
-        connect_after(signal: 'minimise', callback: (_source: this) => void): number;
-        emit(signal: 'minimise'): void;
-        connect(signal: 'posteval', callback: (_source: this, progress: Progress) => void): number;
-        connect_after(signal: 'posteval', callback: (_source: this, progress: Progress) => void): number;
-        emit(signal: 'posteval', progress: Progress): void;
-        connect(signal: 'preeval', callback: (_source: this, progress: Progress) => void): number;
-        connect_after(signal: 'preeval', callback: (_source: this, progress: Progress) => void): number;
-        emit(signal: 'preeval', progress: Progress): void;
-        connect(signal: 'written', callback: (_source: this, result: number) => void): number;
-        connect_after(signal: 'written', callback: (_source: this, result: number) => void): number;
-        emit(signal: 'written', result: number): void;
 
         // Static methods
 
@@ -4947,7 +4964,6 @@ export namespace Vips {
 
     abstract class Interpolate extends Object {
         static $gtype: GObject.GType<Interpolate>;
-        declare static readonly __signalSignatures: Interpolate.SignalSignatures;
 
         // Fields
 
@@ -4960,6 +4976,21 @@ export namespace Vips {
         _init(...args: any[]): void;
 
         static ['new'](nickname: string): Interpolate;
+
+        // Signals
+
+        connect<K extends keyof Interpolate.SignalSignatures>(
+            signal: K,
+            callback: Interpolate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Interpolate.SignalSignatures>(
+            signal: K,
+            callback: Interpolate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Interpolate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Interpolate.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5011,19 +5042,19 @@ export namespace Vips {
         // Signal callback interfaces
 
         interface Close {
-            (): void;
+            (_source: Object): void;
         }
 
         interface Postbuild {
-            (): number;
+            (_source: Object): number;
         }
 
         interface Postclose {
-            (): void;
+            (_source: Object): void;
         }
 
         interface Preclose {
-            (): void;
+            (_source: Object): void;
         }
 
         // Signal signatures
@@ -5044,7 +5075,6 @@ export namespace Vips {
 
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -5075,21 +5105,6 @@ export namespace Vips {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
-        connect(signal: 'postbuild', callback: (_source: this) => number): number;
-        connect_after(signal: 'postbuild', callback: (_source: this) => number): number;
-        emit(signal: 'postbuild'): void;
-        connect(signal: 'postclose', callback: (_source: this) => void): number;
-        connect_after(signal: 'postclose', callback: (_source: this) => void): number;
-        emit(signal: 'postclose'): void;
-        connect(signal: 'preclose', callback: (_source: this) => void): number;
-        connect_after(signal: 'preclose', callback: (_source: this) => void): number;
-        emit(signal: 'preclose'): void;
 
         // Static methods
 
@@ -5205,7 +5220,7 @@ export namespace Vips {
         // Signal callback interfaces
 
         interface Invalidate {
-            (): void;
+            (_source: Operation): void;
         }
 
         // Signal signatures
@@ -5220,7 +5235,6 @@ export namespace Vips {
 
     abstract class Operation extends Object {
         static $gtype: GObject.GType<Operation>;
-        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Fields
 
@@ -5247,12 +5261,6 @@ export namespace Vips {
             signal: K,
             ...args: Parameters<Operation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'invalidate', callback: (_source: this) => void): number;
-        connect_after(signal: 'invalidate', callback: (_source: this) => void): number;
-        emit(signal: 'invalidate'): void;
 
         // Static methods
 
@@ -5316,7 +5324,6 @@ export namespace Vips {
      */
     class Region extends Object {
         static $gtype: GObject.GType<Region>;
-        declare static readonly __signalSignatures: Region.SignalSignatures;
 
         // Fields
 
@@ -5331,6 +5338,12 @@ export namespace Vips {
         _init(...args: any[]): void;
 
         static ['new'](image: Image): Region;
+
+        // Signals
+
+        connect<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
+        connect_after<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
+        emit<K extends keyof Region.SignalSignatures>(signal: K, ...args: Parameters<Region.SignalSignatures[K]>): void;
 
         // Methods
 

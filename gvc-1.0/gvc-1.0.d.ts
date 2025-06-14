@@ -66,7 +66,7 @@ export namespace Gvc {
         // Signal callback interfaces
 
         interface VolumeChanged {
-            (object: boolean): void;
+            (_source: ChannelMap, object: boolean): void;
         }
 
         // Signal signatures
@@ -81,7 +81,6 @@ export namespace Gvc {
 
     class ChannelMap extends GObject.Object {
         static $gtype: GObject.GType<ChannelMap>;
-        declare static readonly __signalSignatures: ChannelMap.SignalSignatures;
 
         // Constructors
 
@@ -105,12 +104,6 @@ export namespace Gvc {
             signal: K,
             ...args: Parameters<ChannelMap.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'volume-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'volume-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'volume-changed', object: boolean): void;
 
         // Virtual methods
 
@@ -147,7 +140,6 @@ export namespace Gvc {
 
     class MixerCard extends GObject.Object {
         static $gtype: GObject.GType<MixerCard>;
-        declare static readonly __signalSignatures: MixerCard.SignalSignatures;
 
         // Properties
 
@@ -171,6 +163,18 @@ export namespace Gvc {
         constructor(properties?: Partial<MixerCard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerCard.SignalSignatures>(signal: K, callback: MixerCard.SignalSignatures[K]): number;
+        connect_after<K extends keyof MixerCard.SignalSignatures>(
+            signal: K,
+            callback: MixerCard.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerCard.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerCard.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -198,63 +202,63 @@ export namespace Gvc {
         // Signal callback interfaces
 
         interface ActiveInputUpdate {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface ActiveOutputUpdate {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface AudioDeviceSelectionNeeded {
-            (object: number, p0: boolean, p1: number): void;
+            (_source: MixerControl, object: number, p0: boolean, p1: number): void;
         }
 
         interface CardAdded {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface CardRemoved {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface DefaultSinkChanged {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface DefaultSourceChanged {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface InputAdded {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface InputRemoved {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface OutputAdded {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface OutputRemoved {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface StateChanged {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface StreamAdded {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface StreamChanged {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         interface StreamRemoved {
-            (object: number): void;
+            (_source: MixerControl, object: number): void;
         }
 
         // Signal signatures
@@ -285,7 +289,6 @@ export namespace Gvc {
 
     class MixerControl extends GObject.Object {
         static $gtype: GObject.GType<MixerControl>;
-        declare static readonly __signalSignatures: MixerControl.SignalSignatures;
 
         // Properties
 
@@ -313,60 +316,6 @@ export namespace Gvc {
             signal: K,
             ...args: Parameters<MixerControl.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-input-update', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'active-input-update', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'active-input-update', object: number): void;
-        connect(signal: 'active-output-update', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'active-output-update', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'active-output-update', object: number): void;
-        connect(
-            signal: 'audio-device-selection-needed',
-            callback: (_source: this, object: number, p0: boolean, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'audio-device-selection-needed',
-            callback: (_source: this, object: number, p0: boolean, p1: number) => void,
-        ): number;
-        emit(signal: 'audio-device-selection-needed', object: number, p0: boolean, p1: number): void;
-        connect(signal: 'card-added', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'card-added', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'card-added', object: number): void;
-        connect(signal: 'card-removed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'card-removed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'card-removed', object: number): void;
-        connect(signal: 'default-sink-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'default-sink-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'default-sink-changed', object: number): void;
-        connect(signal: 'default-source-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'default-source-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'default-source-changed', object: number): void;
-        connect(signal: 'input-added', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'input-added', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'input-added', object: number): void;
-        connect(signal: 'input-removed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'input-removed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'input-removed', object: number): void;
-        connect(signal: 'output-added', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'output-added', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'output-added', object: number): void;
-        connect(signal: 'output-removed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'output-removed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'output-removed', object: number): void;
-        connect(signal: 'state-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'state-changed', object: number): void;
-        connect(signal: 'stream-added', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'stream-added', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'stream-added', object: number): void;
-        connect(signal: 'stream-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'stream-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'stream-changed', object: number): void;
-        connect(signal: 'stream-removed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'stream-removed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'stream-removed', object: number): void;
 
         // Virtual methods
 
@@ -429,7 +378,6 @@ export namespace Gvc {
 
     class MixerEventRole extends MixerStream {
         static $gtype: GObject.GType<MixerEventRole>;
-        declare static readonly __signalSignatures: MixerEventRole.SignalSignatures;
 
         // Properties
 
@@ -441,6 +389,21 @@ export namespace Gvc {
         constructor(properties?: Partial<MixerEventRole.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerEventRole.SignalSignatures>(
+            signal: K,
+            callback: MixerEventRole.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerEventRole.SignalSignatures>(
+            signal: K,
+            callback: MixerEventRole.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerEventRole.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerEventRole.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MixerSink {
@@ -454,13 +417,24 @@ export namespace Gvc {
 
     class MixerSink extends MixerStream {
         static $gtype: GObject.GType<MixerSink>;
-        declare static readonly __signalSignatures: MixerSink.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MixerSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerSink.SignalSignatures>(signal: K, callback: MixerSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof MixerSink.SignalSignatures>(
+            signal: K,
+            callback: MixerSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerSink.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MixerSinkInput {
@@ -474,13 +448,27 @@ export namespace Gvc {
 
     class MixerSinkInput extends MixerStream {
         static $gtype: GObject.GType<MixerSinkInput>;
-        declare static readonly __signalSignatures: MixerSinkInput.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MixerSinkInput.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerSinkInput.SignalSignatures>(
+            signal: K,
+            callback: MixerSinkInput.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerSinkInput.SignalSignatures>(
+            signal: K,
+            callback: MixerSinkInput.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerSinkInput.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerSinkInput.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MixerSource {
@@ -494,13 +482,27 @@ export namespace Gvc {
 
     class MixerSource extends MixerStream {
         static $gtype: GObject.GType<MixerSource>;
-        declare static readonly __signalSignatures: MixerSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MixerSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerSource.SignalSignatures>(
+            signal: K,
+            callback: MixerSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerSource.SignalSignatures>(
+            signal: K,
+            callback: MixerSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerSource.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MixerSourceOutput {
@@ -514,13 +516,27 @@ export namespace Gvc {
 
     class MixerSourceOutput extends MixerStream {
         static $gtype: GObject.GType<MixerSourceOutput>;
-        declare static readonly __signalSignatures: MixerSourceOutput.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MixerSourceOutput.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerSourceOutput.SignalSignatures>(
+            signal: K,
+            callback: MixerSourceOutput.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerSourceOutput.SignalSignatures>(
+            signal: K,
+            callback: MixerSourceOutput.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerSourceOutput.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerSourceOutput.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MixerStream {
@@ -565,7 +581,6 @@ export namespace Gvc {
 
     abstract class MixerStream extends GObject.Object {
         static $gtype: GObject.GType<MixerStream>;
-        declare static readonly __signalSignatures: MixerStream.SignalSignatures;
 
         // Properties
 
@@ -631,6 +646,21 @@ export namespace Gvc {
         constructor(properties?: Partial<MixerStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerStream.SignalSignatures>(
+            signal: K,
+            callback: MixerStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerStream.SignalSignatures>(
+            signal: K,
+            callback: MixerStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -706,7 +736,6 @@ export namespace Gvc {
 
     class MixerUIDevice extends GObject.Object {
         static $gtype: GObject.GType<MixerUIDevice>;
-        declare static readonly __signalSignatures: MixerUIDevice.SignalSignatures;
 
         // Properties
 
@@ -740,6 +769,21 @@ export namespace Gvc {
         constructor(properties?: Partial<MixerUIDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerUIDevice.SignalSignatures>(
+            signal: K,
+            callback: MixerUIDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerUIDevice.SignalSignatures>(
+            signal: K,
+            callback: MixerUIDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerUIDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerUIDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

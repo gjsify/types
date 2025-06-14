@@ -67,7 +67,6 @@ export namespace ColordGtk {
 
     class SampleWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SampleWidget>;
-        declare static readonly __signalSignatures: SampleWidget.SignalSignatures;
 
         // Properties
 
@@ -81,6 +80,21 @@ export namespace ColordGtk {
         _init(...args: any[]): void;
 
         static ['new'](): SampleWidget;
+
+        // Signals
+
+        connect<K extends keyof SampleWidget.SignalSignatures>(
+            signal: K,
+            callback: SampleWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SampleWidget.SignalSignatures>(
+            signal: K,
+            callback: SampleWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SampleWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SampleWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -546,7 +560,6 @@ export namespace ColordGtk {
 
     class SampleWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SampleWindow>;
-        declare static readonly __signalSignatures: SampleWindow.SignalSignatures;
 
         // Constructors
 
@@ -555,6 +568,21 @@ export namespace ColordGtk {
         _init(...args: any[]): void;
 
         static ['new'](): SampleWindow;
+
+        // Signals
+
+        connect<K extends keyof SampleWindow.SignalSignatures>(
+            signal: K,
+            callback: SampleWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SampleWindow.SignalSignatures>(
+            signal: K,
+            callback: SampleWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SampleWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SampleWindow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1015,7 +1043,7 @@ export namespace ColordGtk {
         // Signal callback interfaces
 
         interface Changed {
-            (object: Colord.Profile): void;
+            (_source: Window, object: Colord.Profile): void;
         }
 
         // Signal signatures
@@ -1032,7 +1060,6 @@ export namespace ColordGtk {
 
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -1051,12 +1078,6 @@ export namespace ColordGtk {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: Colord.Profile) => void): number;
-        emit(signal: 'changed', object: Colord.Profile): void;
 
         // Static methods
 

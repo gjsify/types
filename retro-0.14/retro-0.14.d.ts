@@ -479,13 +479,27 @@ export namespace Retro {
 
     class ControllerIterator extends GObject.Object {
         static $gtype: GObject.GType<ControllerIterator>;
-        declare static readonly __signalSignatures: ControllerIterator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ControllerIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ControllerIterator.SignalSignatures>(
+            signal: K,
+            callback: ControllerIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControllerIterator.SignalSignatures>(
+            signal: K,
+            callback: ControllerIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControllerIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControllerIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -500,27 +514,27 @@ export namespace Retro {
         // Signal callback interfaces
 
         interface AudioOutput {
-            (data: Uint8Array | string, sample_rate: number): void;
+            (_source: Core, data: Uint8Array | string, sample_rate: number): void;
         }
 
         interface Log {
-            (log_domain: string, log_level: GLib.LogLevelFlags, message: string): void;
+            (_source: Core, log_domain: string, log_level: GLib.LogLevelFlags, message: string): void;
         }
 
         interface Message {
-            (message: string, frames: number): boolean;
+            (_source: Core, message: string, frames: number): boolean;
         }
 
         interface OptionsSet {
-            (): void;
+            (_source: Core): void;
         }
 
         interface Shutdown {
-            (): boolean;
+            (_source: Core): boolean;
         }
 
         interface VideoOutput {
-            (pixdata: Pixdata): void;
+            (_source: Core, pixdata: Pixdata): void;
         }
 
         // Signal signatures
@@ -559,7 +573,6 @@ export namespace Retro {
 
     class Core extends GObject.Object {
         static $gtype: GObject.GType<Core>;
-        declare static readonly __signalSignatures: Core.SignalSignatures;
 
         // Properties
 
@@ -660,39 +673,6 @@ export namespace Retro {
         connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
         connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
         emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'audio-output',
-            callback: (_source: this, data: Uint8Array, sample_rate: number) => void,
-        ): number;
-        connect_after(
-            signal: 'audio-output',
-            callback: (_source: this, data: Uint8Array, sample_rate: number) => void,
-        ): number;
-        emit(signal: 'audio-output', data: Uint8Array | string, sample_rate: number): void;
-        connect(
-            signal: 'log',
-            callback: (_source: this, log_domain: string, log_level: GLib.LogLevelFlags, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'log',
-            callback: (_source: this, log_domain: string, log_level: GLib.LogLevelFlags, message: string) => void,
-        ): number;
-        emit(signal: 'log', log_domain: string, log_level: GLib.LogLevelFlags, message: string): void;
-        connect(signal: 'message', callback: (_source: this, message: string, frames: number) => boolean): number;
-        connect_after(signal: 'message', callback: (_source: this, message: string, frames: number) => boolean): number;
-        emit(signal: 'message', message: string, frames: number): void;
-        connect(signal: 'options-set', callback: (_source: this) => void): number;
-        connect_after(signal: 'options-set', callback: (_source: this) => void): number;
-        emit(signal: 'options-set'): void;
-        connect(signal: 'shutdown', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'shutdown', callback: (_source: this) => boolean): number;
-        emit(signal: 'shutdown'): void;
-        connect(signal: 'video-output', callback: (_source: this, pixdata: Pixdata) => void): number;
-        connect_after(signal: 'video-output', callback: (_source: this, pixdata: Pixdata) => void): number;
-        emit(signal: 'video-output', pixdata: Pixdata): void;
 
         // Methods
 
@@ -876,7 +856,6 @@ export namespace Retro {
 
     class CoreDescriptor extends GObject.Object {
         static $gtype: GObject.GType<CoreDescriptor>;
-        declare static readonly __signalSignatures: CoreDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -885,6 +864,21 @@ export namespace Retro {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): CoreDescriptor;
+
+        // Signals
+
+        connect<K extends keyof CoreDescriptor.SignalSignatures>(
+            signal: K,
+            callback: CoreDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CoreDescriptor.SignalSignatures>(
+            signal: K,
+            callback: CoreDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CoreDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CoreDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1021,7 +1015,6 @@ export namespace Retro {
 
     class CoreView extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CoreView>;
-        declare static readonly __signalSignatures: CoreView.SignalSignatures;
 
         // Properties
 
@@ -1041,6 +1034,18 @@ export namespace Retro {
         _init(...args: any[]): void;
 
         static ['new'](): CoreView;
+
+        // Signals
+
+        connect<K extends keyof CoreView.SignalSignatures>(signal: K, callback: CoreView.SignalSignatures[K]): number;
+        connect_after<K extends keyof CoreView.SignalSignatures>(
+            signal: K,
+            callback: CoreView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CoreView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CoreView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1590,7 +1595,6 @@ export namespace Retro {
 
     class KeyJoypadMapping extends GObject.Object {
         static $gtype: GObject.GType<KeyJoypadMapping>;
-        declare static readonly __signalSignatures: KeyJoypadMapping.SignalSignatures;
 
         // Constructors
 
@@ -1601,6 +1605,21 @@ export namespace Retro {
         static ['new'](): KeyJoypadMapping;
 
         static new_default(): KeyJoypadMapping;
+
+        // Signals
+
+        connect<K extends keyof KeyJoypadMapping.SignalSignatures>(
+            signal: K,
+            callback: KeyJoypadMapping.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(
+            signal: K,
+            callback: KeyJoypadMapping.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyJoypadMapping.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyJoypadMapping.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1633,7 +1652,6 @@ export namespace Retro {
 
     class MainLoop extends GObject.Object {
         static $gtype: GObject.GType<MainLoop>;
-        declare static readonly __signalSignatures: MainLoop.SignalSignatures;
 
         // Properties
 
@@ -1651,6 +1669,18 @@ export namespace Retro {
         _init(...args: any[]): void;
 
         static ['new'](core: Core): MainLoop;
+
+        // Signals
+
+        connect<K extends keyof MainLoop.SignalSignatures>(signal: K, callback: MainLoop.SignalSignatures[K]): number;
+        connect_after<K extends keyof MainLoop.SignalSignatures>(
+            signal: K,
+            callback: MainLoop.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainLoop.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainLoop.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1699,7 +1729,6 @@ export namespace Retro {
 
     class ModuleIterator extends GObject.Object {
         static $gtype: GObject.GType<ModuleIterator>;
-        declare static readonly __signalSignatures: ModuleIterator.SignalSignatures;
 
         // Constructors
 
@@ -1708,6 +1737,21 @@ export namespace Retro {
         _init(...args: any[]): void;
 
         static ['new'](lookup_paths: string[], recursive: boolean): ModuleIterator;
+
+        // Signals
+
+        connect<K extends keyof ModuleIterator.SignalSignatures>(
+            signal: K,
+            callback: ModuleIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleIterator.SignalSignatures>(
+            signal: K,
+            callback: ModuleIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1735,7 +1779,6 @@ export namespace Retro {
 
     class ModuleQuery extends GObject.Object {
         static $gtype: GObject.GType<ModuleQuery>;
-        declare static readonly __signalSignatures: ModuleQuery.SignalSignatures;
 
         // Constructors
 
@@ -1744,6 +1787,21 @@ export namespace Retro {
         _init(...args: any[]): void;
 
         static ['new'](recursive: boolean): ModuleQuery;
+
+        // Signals
+
+        connect<K extends keyof ModuleQuery.SignalSignatures>(
+            signal: K,
+            callback: ModuleQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleQuery.SignalSignatures>(
+            signal: K,
+            callback: ModuleQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleQuery.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1758,7 +1816,7 @@ export namespace Retro {
         // Signal callback interfaces
 
         interface ValueChanged {
-            (): void;
+            (_source: Option): void;
         }
 
         // Signal signatures
@@ -1773,7 +1831,6 @@ export namespace Retro {
 
     class Option extends GObject.Object {
         static $gtype: GObject.GType<Option>;
-        declare static readonly __signalSignatures: Option.SignalSignatures;
 
         // Constructors
 
@@ -1786,12 +1843,6 @@ export namespace Retro {
         connect<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
         connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
         emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: Parameters<Option.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'value-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'value-changed', callback: (_source: this) => void): number;
-        emit(signal: 'value-changed'): void;
 
         // Methods
 
@@ -1834,13 +1885,27 @@ export namespace Retro {
 
     class OptionIterator extends GObject.Object {
         static $gtype: GObject.GType<OptionIterator>;
-        declare static readonly __signalSignatures: OptionIterator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OptionIterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OptionIterator.SignalSignatures>(
+            signal: K,
+            callback: OptionIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OptionIterator.SignalSignatures>(
+            signal: K,
+            callback: OptionIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OptionIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OptionIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

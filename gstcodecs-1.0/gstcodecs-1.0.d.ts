@@ -356,13 +356,27 @@ export namespace GstCodecs {
      */
     abstract class AV1Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<AV1Decoder>;
-        declare static readonly __signalSignatures: AV1Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AV1Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AV1Decoder.SignalSignatures>(
+            signal: K,
+            callback: AV1Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AV1Decoder.SignalSignatures>(
+            signal: K,
+            callback: AV1Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AV1Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AV1Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -433,7 +447,6 @@ export namespace GstCodecs {
      */
     abstract class H264Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<H264Decoder>;
-        declare static readonly __signalSignatures: H264Decoder.SignalSignatures;
 
         // Properties
 
@@ -451,6 +464,21 @@ export namespace GstCodecs {
         constructor(properties?: Partial<H264Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof H264Decoder.SignalSignatures>(
+            signal: K,
+            callback: H264Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof H264Decoder.SignalSignatures>(
+            signal: K,
+            callback: H264Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof H264Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<H264Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -549,13 +577,27 @@ export namespace GstCodecs {
      */
     abstract class H265Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<H265Decoder>;
-        declare static readonly __signalSignatures: H265Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<H265Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof H265Decoder.SignalSignatures>(
+            signal: K,
+            callback: H265Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof H265Decoder.SignalSignatures>(
+            signal: K,
+            callback: H265Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof H265Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<H265Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -635,13 +677,27 @@ export namespace GstCodecs {
      */
     abstract class Mpeg2Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Mpeg2Decoder>;
-        declare static readonly __signalSignatures: Mpeg2Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Mpeg2Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Mpeg2Decoder.SignalSignatures>(
+            signal: K,
+            callback: Mpeg2Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Mpeg2Decoder.SignalSignatures>(
+            signal: K,
+            callback: Mpeg2Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Mpeg2Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Mpeg2Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -717,13 +773,27 @@ export namespace GstCodecs {
      */
     abstract class Vp8Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp8Decoder>;
-        declare static readonly __signalSignatures: Vp8Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Vp8Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Vp8Decoder.SignalSignatures>(
+            signal: K,
+            callback: Vp8Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Vp8Decoder.SignalSignatures>(
+            signal: K,
+            callback: Vp8Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Vp8Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Vp8Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -753,13 +823,27 @@ export namespace GstCodecs {
      */
     abstract class Vp9Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp9Decoder>;
-        declare static readonly __signalSignatures: Vp9Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Vp9Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Vp9Decoder.SignalSignatures>(
+            signal: K,
+            callback: Vp9Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Vp9Decoder.SignalSignatures>(
+            signal: K,
+            callback: Vp9Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Vp9Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Vp9Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

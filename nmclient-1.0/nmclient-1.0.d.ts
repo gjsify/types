@@ -1263,7 +1263,6 @@ export namespace NMClient {
 
     class AccessPoint extends Object implements Gio.AsyncInitable<AccessPoint>, Gio.Initable {
         static $gtype: GObject.GType<AccessPoint>;
-        declare static readonly __signalSignatures: AccessPoint.SignalSignatures;
 
         // Properties
 
@@ -1345,6 +1344,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): AccessPoint;
+
+        // Signals
+
+        connect<K extends keyof AccessPoint.SignalSignatures>(
+            signal: K,
+            callback: AccessPoint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccessPoint.SignalSignatures>(
+            signal: K,
+            callback: AccessPoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccessPoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccessPoint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2191,7 +2205,6 @@ export namespace NMClient {
 
     class ActiveConnection extends Object implements Gio.AsyncInitable<ActiveConnection>, Gio.Initable {
         static $gtype: GObject.GType<ActiveConnection>;
-        declare static readonly __signalSignatures: ActiveConnection.SignalSignatures;
 
         // Properties
 
@@ -2280,6 +2293,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): ActiveConnection;
+
+        // Signals
+
+        connect<K extends keyof ActiveConnection.SignalSignatures>(
+            signal: K,
+            callback: ActiveConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActiveConnection.SignalSignatures>(
+            signal: K,
+            callback: ActiveConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActiveConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActiveConnection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3097,23 +3125,23 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface AnyDeviceAdded {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface AnyDeviceRemoved {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface DeviceAdded {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface DeviceRemoved {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface PermissionChanged {
-            (permission: number, result: number): void;
+            (_source: Client, permission: number, result: number): void;
         }
 
         // Signal signatures
@@ -3165,7 +3193,6 @@ export namespace NMClient {
 
     class Client extends Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -3316,30 +3343,6 @@ export namespace NMClient {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'any-device-added', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'any-device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'any-device-added', device: Device): void;
-        connect(signal: 'any-device-removed', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'any-device-removed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'any-device-removed', device: Device): void;
-        connect(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-added', device: Device): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-removed', device: Device): void;
-        connect(
-            signal: 'permission-changed',
-            callback: (_source: this, permission: number, result: number) => void,
-        ): number;
-        connect_after(
-            signal: 'permission-changed',
-            callback: (_source: this, permission: number, result: number) => void,
-        ): number;
-        emit(signal: 'permission-changed', permission: number, result: number): void;
 
         // Static methods
 
@@ -4383,7 +4386,6 @@ export namespace NMClient {
 
     class DHCP4Config extends Object implements Gio.AsyncInitable<DHCP4Config>, Gio.Initable {
         static $gtype: GObject.GType<DHCP4Config>;
-        declare static readonly __signalSignatures: DHCP4Config.SignalSignatures;
 
         // Properties
 
@@ -4399,6 +4401,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): DHCP4Config;
+
+        // Signals
+
+        connect<K extends keyof DHCP4Config.SignalSignatures>(
+            signal: K,
+            callback: DHCP4Config.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DHCP4Config.SignalSignatures>(
+            signal: K,
+            callback: DHCP4Config.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DHCP4Config.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DHCP4Config.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5156,7 +5173,6 @@ export namespace NMClient {
 
     class DHCP6Config extends Object implements Gio.AsyncInitable<DHCP6Config>, Gio.Initable {
         static $gtype: GObject.GType<DHCP6Config>;
-        declare static readonly __signalSignatures: DHCP6Config.SignalSignatures;
 
         // Properties
 
@@ -5172,6 +5188,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): DHCP6Config;
+
+        // Signals
+
+        connect<K extends keyof DHCP6Config.SignalSignatures>(
+            signal: K,
+            callback: DHCP6Config.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DHCP6Config.SignalSignatures>(
+            signal: K,
+            callback: DHCP6Config.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DHCP6Config.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DHCP6Config.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5917,7 +5948,7 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface StateChanged {
-            (new_state: number, old_state: number, reason: number): void;
+            (_source: Device, new_state: number, old_state: number, reason: number): void;
         }
 
         // Signal signatures
@@ -5971,7 +6002,6 @@ export namespace NMClient {
 
     class Device extends Object implements Gio.AsyncInitable<Device>, Gio.Initable {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -6143,18 +6173,6 @@ export namespace NMClient {
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'state-changed',
-            callback: (_source: this, new_state: number, old_state: number, reason: number) => void,
-        ): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, new_state: number, old_state: number, reason: number) => void,
-        ): number;
-        emit(signal: 'state-changed', new_state: number, old_state: number, reason: number): void;
 
         // Static methods
 
@@ -7173,7 +7191,6 @@ export namespace NMClient {
 
     class DeviceAdsl extends Device implements Gio.AsyncInitable<DeviceAdsl>, Gio.Initable {
         static $gtype: GObject.GType<DeviceAdsl>;
-        declare static readonly __signalSignatures: DeviceAdsl.SignalSignatures;
 
         // Properties
 
@@ -7189,6 +7206,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceAdsl;
+
+        // Signals
+
+        connect<K extends keyof DeviceAdsl.SignalSignatures>(
+            signal: K,
+            callback: DeviceAdsl.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceAdsl.SignalSignatures>(
+            signal: K,
+            callback: DeviceAdsl.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceAdsl.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceAdsl.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7860,7 +7892,6 @@ export namespace NMClient {
 
     class DeviceBond extends Device implements Gio.AsyncInitable<DeviceBond>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBond>;
-        declare static readonly __signalSignatures: DeviceBond.SignalSignatures;
 
         // Properties
 
@@ -7888,6 +7919,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceBond;
+
+        // Signals
+
+        connect<K extends keyof DeviceBond.SignalSignatures>(
+            signal: K,
+            callback: DeviceBond.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceBond.SignalSignatures>(
+            signal: K,
+            callback: DeviceBond.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceBond.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceBond.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8569,7 +8615,6 @@ export namespace NMClient {
 
     class DeviceBridge extends Device implements Gio.AsyncInitable<DeviceBridge>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBridge>;
-        declare static readonly __signalSignatures: DeviceBridge.SignalSignatures;
 
         // Properties
 
@@ -8597,6 +8642,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceBridge;
+
+        // Signals
+
+        connect<K extends keyof DeviceBridge.SignalSignatures>(
+            signal: K,
+            callback: DeviceBridge.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceBridge.SignalSignatures>(
+            signal: K,
+            callback: DeviceBridge.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceBridge.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceBridge.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9279,7 +9339,6 @@ export namespace NMClient {
 
     class DeviceBt extends Device implements Gio.AsyncInitable<DeviceBt>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBt>;
-        declare static readonly __signalSignatures: DeviceBt.SignalSignatures;
 
         // Properties
 
@@ -9311,6 +9370,18 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceBt;
+
+        // Signals
+
+        connect<K extends keyof DeviceBt.SignalSignatures>(signal: K, callback: DeviceBt.SignalSignatures[K]): number;
+        connect_after<K extends keyof DeviceBt.SignalSignatures>(
+            signal: K,
+            callback: DeviceBt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceBt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceBt.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9996,7 +10067,6 @@ export namespace NMClient {
 
     class DeviceEthernet extends Device implements Gio.AsyncInitable<DeviceEthernet>, Gio.Initable {
         static $gtype: GObject.GType<DeviceEthernet>;
-        declare static readonly __signalSignatures: DeviceEthernet.SignalSignatures;
 
         // Properties
 
@@ -10032,6 +10102,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceEthernet;
+
+        // Signals
+
+        connect<K extends keyof DeviceEthernet.SignalSignatures>(
+            signal: K,
+            callback: DeviceEthernet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceEthernet.SignalSignatures>(
+            signal: K,
+            callback: DeviceEthernet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceEthernet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceEthernet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10718,7 +10803,6 @@ export namespace NMClient {
 
     class DeviceGeneric extends Device implements Gio.AsyncInitable<DeviceGeneric>, Gio.Initable {
         static $gtype: GObject.GType<DeviceGeneric>;
-        declare static readonly __signalSignatures: DeviceGeneric.SignalSignatures;
 
         // Properties
 
@@ -10748,6 +10832,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceGeneric;
+
+        // Signals
+
+        connect<K extends keyof DeviceGeneric.SignalSignatures>(
+            signal: K,
+            callback: DeviceGeneric.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceGeneric.SignalSignatures>(
+            signal: K,
+            callback: DeviceGeneric.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceGeneric.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceGeneric.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11418,7 +11517,6 @@ export namespace NMClient {
 
     class DeviceInfiniband extends Device implements Gio.AsyncInitable<DeviceInfiniband>, Gio.Initable {
         static $gtype: GObject.GType<DeviceInfiniband>;
-        declare static readonly __signalSignatures: DeviceInfiniband.SignalSignatures;
 
         // Properties
 
@@ -11442,6 +11540,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceInfiniband;
+
+        // Signals
+
+        connect<K extends keyof DeviceInfiniband.SignalSignatures>(
+            signal: K,
+            callback: DeviceInfiniband.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceInfiniband.SignalSignatures>(
+            signal: K,
+            callback: DeviceInfiniband.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceInfiniband.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceInfiniband.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12118,7 +12231,6 @@ export namespace NMClient {
 
     class DeviceModem extends Device implements Gio.AsyncInitable<DeviceModem>, Gio.Initable {
         static $gtype: GObject.GType<DeviceModem>;
-        declare static readonly __signalSignatures: DeviceModem.SignalSignatures;
 
         // Properties
 
@@ -12152,6 +12264,21 @@ export namespace NMClient {
         constructor(properties?: Partial<DeviceModem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DeviceModem.SignalSignatures>(
+            signal: K,
+            callback: DeviceModem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceModem.SignalSignatures>(
+            signal: K,
+            callback: DeviceModem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceModem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceModem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12833,7 +12960,6 @@ export namespace NMClient {
 
     class DeviceOlpcMesh extends Device implements Gio.AsyncInitable<DeviceOlpcMesh>, Gio.Initable {
         static $gtype: GObject.GType<DeviceOlpcMesh>;
-        declare static readonly __signalSignatures: DeviceOlpcMesh.SignalSignatures;
 
         // Properties
 
@@ -12865,6 +12991,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceOlpcMesh;
+
+        // Signals
+
+        connect<K extends keyof DeviceOlpcMesh.SignalSignatures>(
+            signal: K,
+            callback: DeviceOlpcMesh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceOlpcMesh.SignalSignatures>(
+            signal: K,
+            callback: DeviceOlpcMesh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceOlpcMesh.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13546,7 +13687,6 @@ export namespace NMClient {
 
     class DeviceTeam extends Device implements Gio.AsyncInitable<DeviceTeam>, Gio.Initable {
         static $gtype: GObject.GType<DeviceTeam>;
-        declare static readonly __signalSignatures: DeviceTeam.SignalSignatures;
 
         // Properties
 
@@ -13574,6 +13714,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceTeam;
+
+        // Signals
+
+        connect<K extends keyof DeviceTeam.SignalSignatures>(
+            signal: K,
+            callback: DeviceTeam.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceTeam.SignalSignatures>(
+            signal: K,
+            callback: DeviceTeam.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceTeam.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceTeam.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14257,7 +14412,6 @@ export namespace NMClient {
 
     class DeviceVlan extends Device implements Gio.AsyncInitable<DeviceVlan>, Gio.Initable {
         static $gtype: GObject.GType<DeviceVlan>;
-        declare static readonly __signalSignatures: DeviceVlan.SignalSignatures;
 
         // Properties
 
@@ -14293,6 +14447,21 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): DeviceVlan;
+
+        // Signals
+
+        connect<K extends keyof DeviceVlan.SignalSignatures>(
+            signal: K,
+            callback: DeviceVlan.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceVlan.SignalSignatures>(
+            signal: K,
+            callback: DeviceVlan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceVlan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceVlan.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14956,11 +15125,11 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface AccessPointAdded {
-            (ap: GObject.Object): void;
+            (_source: DeviceWifi, ap: GObject.Object): void;
         }
 
         interface AccessPointRemoved {
-            (ap: GObject.Object): void;
+            (_source: DeviceWifi, ap: GObject.Object): void;
         }
 
         // Signal signatures
@@ -14992,7 +15161,6 @@ export namespace NMClient {
 
     class DeviceWifi extends Device implements Gio.AsyncInitable<DeviceWifi>, Gio.Initable {
         static $gtype: GObject.GType<DeviceWifi>;
-        declare static readonly __signalSignatures: DeviceWifi.SignalSignatures;
 
         // Properties
 
@@ -15067,15 +15235,6 @@ export namespace NMClient {
             signal: K,
             ...args: Parameters<DeviceWifi.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'access-point-added', callback: (_source: this, ap: GObject.Object) => void): number;
-        connect_after(signal: 'access-point-added', callback: (_source: this, ap: GObject.Object) => void): number;
-        emit(signal: 'access-point-added', ap: GObject.Object): void;
-        connect(signal: 'access-point-removed', callback: (_source: this, ap: GObject.Object) => void): number;
-        connect_after(signal: 'access-point-removed', callback: (_source: this, ap: GObject.Object) => void): number;
-        emit(signal: 'access-point-removed', ap: GObject.Object): void;
 
         // Virtual methods
 
@@ -15782,11 +15941,11 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface NspAdded {
-            (nsp: GObject.Object): void;
+            (_source: DeviceWimax, nsp: GObject.Object): void;
         }
 
         interface NspRemoved {
-            (nsp: GObject.Object): void;
+            (_source: DeviceWimax, nsp: GObject.Object): void;
         }
 
         // Signal signatures
@@ -15818,7 +15977,6 @@ export namespace NMClient {
 
     class DeviceWimax extends Device implements Gio.AsyncInitable<DeviceWimax>, Gio.Initable {
         static $gtype: GObject.GType<DeviceWimax>;
-        declare static readonly __signalSignatures: DeviceWimax.SignalSignatures;
 
         // Properties
 
@@ -15907,15 +16065,6 @@ export namespace NMClient {
             signal: K,
             ...args: Parameters<DeviceWimax.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'nsp-added', callback: (_source: this, nsp: GObject.Object) => void): number;
-        connect_after(signal: 'nsp-added', callback: (_source: this, nsp: GObject.Object) => void): number;
-        emit(signal: 'nsp-added', nsp: GObject.Object): void;
-        connect(signal: 'nsp-removed', callback: (_source: this, nsp: GObject.Object) => void): number;
-        connect_after(signal: 'nsp-removed', callback: (_source: this, nsp: GObject.Object) => void): number;
-        emit(signal: 'nsp-removed', nsp: GObject.Object): void;
 
         // Virtual methods
 
@@ -16646,7 +16795,6 @@ export namespace NMClient {
 
     class IP4Config extends Object implements Gio.AsyncInitable<IP4Config>, Gio.Initable {
         static $gtype: GObject.GType<IP4Config>;
-        declare static readonly __signalSignatures: IP4Config.SignalSignatures;
 
         // Properties
 
@@ -16690,6 +16838,18 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): IP4Config;
+
+        // Signals
+
+        connect<K extends keyof IP4Config.SignalSignatures>(signal: K, callback: IP4Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof IP4Config.SignalSignatures>(
+            signal: K,
+            callback: IP4Config.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IP4Config.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IP4Config.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17476,7 +17636,6 @@ export namespace NMClient {
 
     class IP6Config extends Object implements Gio.AsyncInitable<IP6Config>, Gio.Initable {
         static $gtype: GObject.GType<IP6Config>;
-        declare static readonly __signalSignatures: IP6Config.SignalSignatures;
 
         // Properties
 
@@ -17517,6 +17676,18 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, object_path: string): IP6Config;
+
+        // Signals
+
+        connect<K extends keyof IP6Config.SignalSignatures>(signal: K, callback: IP6Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof IP6Config.SignalSignatures>(
+            signal: K,
+            callback: IP6Config.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IP6Config.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IP6Config.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18287,7 +18458,7 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface ObjectCreationFailed {
-            (error?: any | null, failed_path?: any | null): void;
+            (_source: Object, error?: any | null, failed_path?: any | null): void;
         }
 
         // Signal signatures
@@ -18308,7 +18479,6 @@ export namespace NMClient {
 
     abstract class Object extends GObject.Object implements Gio.AsyncInitable<Object>, Gio.Initable {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -18326,18 +18496,6 @@ export namespace NMClient {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'object-creation-failed',
-            callback: (_source: this, error: any | null, failed_path: any | null) => void,
-        ): number;
-        connect_after(
-            signal: 'object-creation-failed',
-            callback: (_source: this, error: any | null, failed_path: any | null) => void,
-        ): number;
-        emit(signal: 'object-creation-failed', error?: any | null, failed_path?: any | null): void;
 
         // Virtual methods
 
@@ -19086,15 +19244,15 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface Removed {
-            (): void;
+            (_source: RemoteConnection): void;
         }
 
         interface Updated {
-            (): void;
+            (_source: RemoteConnection): void;
         }
 
         interface Visible {
-            (object: boolean): void;
+            (_source: RemoteConnection, object: boolean): void;
         }
 
         // Signal signatures
@@ -19121,7 +19279,6 @@ export namespace NMClient {
         implements Gio.AsyncInitable<RemoteConnection>, Gio.Initable
     {
         static $gtype: GObject.GType<RemoteConnection>;
-        declare static readonly __signalSignatures: RemoteConnection.SignalSignatures;
 
         // Properties
 
@@ -19158,18 +19315,6 @@ export namespace NMClient {
             signal: K,
             ...args: Parameters<RemoteConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this) => void): number;
-        emit(signal: 'removed'): void;
-        connect(signal: 'updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this) => void): number;
-        emit(signal: 'updated'): void;
-        connect(signal: 'visible', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'visible', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'visible', object: boolean): void;
 
         // Virtual methods
 
@@ -19941,11 +20086,11 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface ConnectionsRead {
-            (): void;
+            (_source: RemoteSettings): void;
         }
 
         interface NewConnection {
-            (object: GObject.Object): void;
+            (_source: RemoteSettings, object: GObject.Object): void;
         }
 
         // Signal signatures
@@ -19970,7 +20115,6 @@ export namespace NMClient {
 
     class RemoteSettings extends GObject.Object implements Gio.AsyncInitable<RemoteSettings>, Gio.Initable {
         static $gtype: GObject.GType<RemoteSettings>;
-        declare static readonly __signalSignatures: RemoteSettings.SignalSignatures;
 
         // Properties
 
@@ -20023,15 +20167,6 @@ export namespace NMClient {
             signal: K,
             ...args: Parameters<RemoteSettings.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connections-read', callback: (_source: this) => void): number;
-        connect_after(signal: 'connections-read', callback: (_source: this) => void): number;
-        emit(signal: 'connections-read'): void;
-        connect(signal: 'new-connection', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'new-connection', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'new-connection', object: GObject.Object): void;
 
         // Static methods
 
@@ -20866,7 +21001,7 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface RegistrationResult {
-            (error?: any | null): void;
+            (_source: SecretAgent, error?: any | null): void;
         }
 
         // Signal signatures
@@ -20887,7 +21022,6 @@ export namespace NMClient {
 
     abstract class SecretAgent extends GObject.Object {
         static $gtype: GObject.GType<SecretAgent>;
-        declare static readonly __signalSignatures: SecretAgent.SignalSignatures;
 
         // Properties
 
@@ -20953,12 +21087,6 @@ export namespace NMClient {
             signal: K,
             ...args: Parameters<SecretAgent.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'registration-result', callback: (_source: this, error: any | null) => void): number;
-        connect_after(signal: 'registration-result', callback: (_source: this, error: any | null) => void): number;
-        emit(signal: 'registration-result', error?: any | null): void;
 
         // Virtual methods
 
@@ -21068,7 +21196,7 @@ export namespace NMClient {
         // Signal callback interfaces
 
         interface VpnStateChanged {
-            (object: number, p0: number): void;
+            (_source: VPNConnection, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -21090,7 +21218,6 @@ export namespace NMClient {
 
     class VPNConnection extends ActiveConnection implements Gio.AsyncInitable<VPNConnection>, Gio.Initable {
         static $gtype: GObject.GType<VPNConnection>;
-        declare static readonly __signalSignatures: VPNConnection.SignalSignatures;
 
         // Properties
 
@@ -21129,15 +21256,6 @@ export namespace NMClient {
             signal: K,
             ...args: Parameters<VPNConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'vpn-state-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(
-            signal: 'vpn-state-changed',
-            callback: (_source: this, object: number, p0: number) => void,
-        ): number;
-        emit(signal: 'vpn-state-changed', object: number, p0: number): void;
 
         // Virtual methods
 
@@ -21820,7 +21938,6 @@ export namespace NMClient {
 
     class WimaxNsp extends Object implements Gio.AsyncInitable<WimaxNsp>, Gio.Initable {
         static $gtype: GObject.GType<WimaxNsp>;
-        declare static readonly __signalSignatures: WimaxNsp.SignalSignatures;
 
         // Properties
 
@@ -21852,6 +21969,18 @@ export namespace NMClient {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusGLib.Connection, path: string): WimaxNsp;
+
+        // Signals
+
+        connect<K extends keyof WimaxNsp.SignalSignatures>(signal: K, callback: WimaxNsp.SignalSignatures[K]): number;
+        connect_after<K extends keyof WimaxNsp.SignalSignatures>(
+            signal: K,
+            callback: WimaxNsp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WimaxNsp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WimaxNsp.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

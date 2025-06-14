@@ -47,7 +47,7 @@ export namespace GUdev {
         // Signal callback interfaces
 
         interface Uevent {
-            (action: string, device: Device): void;
+            (_source: Client, action: string, device: Device): void;
         }
 
         // Signal signatures
@@ -87,7 +87,6 @@ export namespace GUdev {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -118,12 +117,6 @@ export namespace GUdev {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'uevent', callback: (_source: this, action: string, device: Device) => void): number;
-        connect_after(signal: 'uevent', callback: (_source: this, action: string, device: Device) => void): number;
-        emit(signal: 'uevent', action: string, device: Device): void;
 
         // Virtual methods
 
@@ -224,13 +217,18 @@ export namespace GUdev {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -557,7 +555,6 @@ export namespace GUdev {
      */
     class Enumerator extends GObject.Object {
         static $gtype: GObject.GType<Enumerator>;
-        declare static readonly __signalSignatures: Enumerator.SignalSignatures;
 
         // Properties
 
@@ -573,6 +570,21 @@ export namespace GUdev {
         _init(...args: any[]): void;
 
         static ['new'](client: Client): Enumerator;
+
+        // Signals
+
+        connect<K extends keyof Enumerator.SignalSignatures>(
+            signal: K,
+            callback: Enumerator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Enumerator.SignalSignatures>(
+            signal: K,
+            callback: Enumerator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Enumerator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Enumerator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -146,19 +146,19 @@ export namespace SugarExt {
         // Signal callback interfaces
 
         interface Quit {
-            (): void;
+            (_source: Client): void;
         }
 
         interface QuitCancelled {
-            (): void;
+            (_source: Client): void;
         }
 
         interface QuitRequested {
-            (): void;
+            (_source: Client): void;
         }
 
         interface SaveState {
-            (object?: any | null): void;
+            (_source: Client, object?: any | null): void;
         }
 
         // Signal signatures
@@ -176,7 +176,6 @@ export namespace SugarExt {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -189,21 +188,6 @@ export namespace SugarExt {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'quit', callback: (_source: this) => void): number;
-        connect_after(signal: 'quit', callback: (_source: this) => void): number;
-        emit(signal: 'quit'): void;
-        connect(signal: 'quit-cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'quit-cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'quit-cancelled'): void;
-        connect(signal: 'quit-requested', callback: (_source: this) => void): number;
-        connect_after(signal: 'quit-requested', callback: (_source: this) => void): number;
-        emit(signal: 'quit-requested'): void;
-        connect(signal: 'save-state', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'save-state', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'save-state', object?: any | null): void;
 
         // Static methods
 
@@ -310,7 +294,6 @@ export namespace SugarExt {
 
     class ClientXSMP extends Client {
         static $gtype: GObject.GType<ClientXSMP>;
-        declare static readonly __signalSignatures: ClientXSMP.SignalSignatures;
 
         // Fields
 
@@ -336,6 +319,21 @@ export namespace SugarExt {
         constructor(properties?: Partial<ClientXSMP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientXSMP.SignalSignatures>(
+            signal: K,
+            callback: ClientXSMP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientXSMP.SignalSignatures>(
+            signal: K,
+            callback: ClientXSMP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientXSMP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientXSMP.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CursorTracker {
@@ -349,7 +347,6 @@ export namespace SugarExt {
 
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
-        declare static readonly __signalSignatures: CursorTracker.SignalSignatures;
 
         // Constructors
 
@@ -358,6 +355,21 @@ export namespace SugarExt {
         _init(...args: any[]): void;
 
         static ['new'](): CursorTracker;
+
+        // Signals
+
+        connect<K extends keyof CursorTracker.SignalSignatures>(
+            signal: K,
+            callback: CursorTracker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CursorTracker.SignalSignatures>(
+            signal: K,
+            callback: CursorTracker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CursorTracker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CursorTracker.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GestureGrabber {
@@ -371,7 +383,6 @@ export namespace SugarExt {
 
     class GestureGrabber extends GObject.Object {
         static $gtype: GObject.GType<GestureGrabber>;
-        declare static readonly __signalSignatures: GestureGrabber.SignalSignatures;
 
         // Constructors
 
@@ -380,6 +391,21 @@ export namespace SugarExt {
         _init(...args: any[]): void;
 
         static ['new'](): GestureGrabber;
+
+        // Signals
+
+        connect<K extends keyof GestureGrabber.SignalSignatures>(
+            signal: K,
+            callback: GestureGrabber.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GestureGrabber.SignalSignatures>(
+            signal: K,
+            callback: GestureGrabber.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GestureGrabber.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GestureGrabber.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -398,7 +424,6 @@ export namespace SugarExt {
 
     class Grid extends GObject.Object {
         static $gtype: GObject.GType<Grid>;
-        declare static readonly __signalSignatures: Grid.SignalSignatures;
 
         // Fields
 
@@ -413,6 +438,12 @@ export namespace SugarExt {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
+
         // Methods
 
         add_weight(rect: Gdk.Rectangle): void;
@@ -425,11 +456,11 @@ export namespace SugarExt {
         // Signal callback interfaces
 
         interface KeyPressed {
-            (object: number, p0: number, p1: number): boolean;
+            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean;
         }
 
         interface KeyReleased {
-            (object: number, p0: number, p1: number): boolean;
+            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean;
         }
 
         // Signal signatures
@@ -445,7 +476,6 @@ export namespace SugarExt {
 
     class KeyGrabber extends GObject.Object {
         static $gtype: GObject.GType<KeyGrabber>;
-        declare static readonly __signalSignatures: KeyGrabber.SignalSignatures;
 
         // Fields
 
@@ -473,27 +503,6 @@ export namespace SugarExt {
             signal: K,
             ...args: Parameters<KeyGrabber.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'key-pressed',
-            callback: (_source: this, object: number, p0: number, p1: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'key-pressed',
-            callback: (_source: this, object: number, p0: number, p1: number) => boolean,
-        ): number;
-        emit(signal: 'key-pressed', object: number, p0: number, p1: number): void;
-        connect(
-            signal: 'key-released',
-            callback: (_source: this, object: number, p0: number, p1: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'key-released',
-            callback: (_source: this, object: number, p0: number, p1: number) => boolean,
-        ): number;
-        emit(signal: 'key-released', object: number, p0: number, p1: number): void;
 
         // Virtual methods
 
@@ -515,7 +524,7 @@ export namespace SugarExt {
         // Signal callback interfaces
 
         interface ShutdownCompleted {
-            (): void;
+            (_source: Session): void;
         }
 
         // Signal signatures
@@ -530,7 +539,6 @@ export namespace SugarExt {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -549,12 +557,6 @@ export namespace SugarExt {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'shutdown-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'shutdown-completed', callback: (_source: this) => void): number;
-        emit(signal: 'shutdown-completed'): void;
 
         // Static methods
 
@@ -588,7 +590,6 @@ export namespace SugarExt {
 
     class Volume extends GObject.Object {
         static $gtype: GObject.GType<Volume>;
-        declare static readonly __signalSignatures: Volume.SignalSignatures;
 
         // Constructors
 
@@ -597,6 +598,12 @@ export namespace SugarExt {
         _init(...args: any[]): void;
 
         static ['new'](): Volume;
+
+        // Signals
+
+        connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: Parameters<Volume.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -627,7 +634,6 @@ export namespace SugarExt {
 
     class VolumeAlsa extends Volume {
         static $gtype: GObject.GType<VolumeAlsa>;
-        declare static readonly __signalSignatures: VolumeAlsa.SignalSignatures;
 
         // Constructors
 
@@ -639,6 +645,21 @@ export namespace SugarExt {
         // Conflicted with SugarExt.Volume.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VolumeAlsa.SignalSignatures>(
+            signal: K,
+            callback: VolumeAlsa.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VolumeAlsa.SignalSignatures>(
+            signal: K,
+            callback: VolumeAlsa.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VolumeAlsa.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VolumeAlsa.SignalSignatures[K]>
+        ): void;
     }
 
     type ClientClass = typeof Client;

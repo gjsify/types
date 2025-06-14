@@ -377,7 +377,6 @@ export namespace Shumate {
      */
     class Compass extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Compass>;
-        declare static readonly __signalSignatures: Compass.SignalSignatures;
 
         // Properties
 
@@ -394,6 +393,18 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](viewport?: Viewport | null): Compass;
+
+        // Signals
+
+        connect<K extends keyof Compass.SignalSignatures>(signal: K, callback: Compass.SignalSignatures[K]): number;
+        connect_after<K extends keyof Compass.SignalSignatures>(
+            signal: K,
+            callback: Compass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Compass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Compass.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1147,7 +1158,6 @@ export namespace Shumate {
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
-        declare static readonly __signalSignatures: Coordinate.SignalSignatures;
 
         // Constructors
 
@@ -1158,6 +1168,21 @@ export namespace Shumate {
         static ['new'](): Coordinate;
 
         static new_full(latitude: number, longitude: number): Coordinate;
+
+        // Signals
+
+        connect<K extends keyof Coordinate.SignalSignatures>(
+            signal: K,
+            callback: Coordinate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Coordinate.SignalSignatures>(
+            signal: K,
+            callback: Coordinate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Coordinate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Coordinate.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -1657,7 +1682,7 @@ export namespace Shumate {
         // Signal callback interfaces
 
         interface ReceivedData {
-            (x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array): void;
+            (_source: DataSource, x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array): void;
         }
 
         // Signal signatures
@@ -1680,7 +1705,6 @@ export namespace Shumate {
      */
     abstract class DataSource extends GObject.Object {
         static $gtype: GObject.GType<DataSource>;
-        declare static readonly __signalSignatures: DataSource.SignalSignatures;
 
         // Properties
 
@@ -1725,18 +1749,6 @@ export namespace Shumate {
             signal: K,
             ...args: Parameters<DataSource.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'received-data',
-            callback: (_source: this, x: number, y: number, zoom_level: number, bytes: GLib.Bytes) => void,
-        ): number;
-        connect_after(
-            signal: 'received-data',
-            callback: (_source: this, x: number, y: number, zoom_level: number, bytes: GLib.Bytes) => void,
-        ): number;
-        emit(signal: 'received-data', x: number, y: number, zoom_level: number, bytes: GLib.Bytes | Uint8Array): void;
 
         // Virtual methods
 
@@ -1922,7 +1934,6 @@ export namespace Shumate {
      */
     class DataSourceRequest extends GObject.Object {
         static $gtype: GObject.GType<DataSourceRequest>;
-        declare static readonly __signalSignatures: DataSourceRequest.SignalSignatures;
 
         // Properties
 
@@ -1965,6 +1976,21 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](x: number, y: number, zoom_level: number): DataSourceRequest;
+
+        // Signals
+
+        connect<K extends keyof DataSourceRequest.SignalSignatures>(
+            signal: K,
+            callback: DataSourceRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataSourceRequest.SignalSignatures>(
+            signal: K,
+            callback: DataSourceRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataSourceRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataSourceRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2063,7 +2089,6 @@ export namespace Shumate {
      */
     class FileCache extends GObject.Object {
         static $gtype: GObject.GType<FileCache>;
-        declare static readonly __signalSignatures: FileCache.SignalSignatures;
 
         // Properties
 
@@ -2107,6 +2132,18 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static new_full(size_limit: number, cache_key: string, cache_dir?: string | null): FileCache;
+
+        // Signals
+
+        connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: FileCache.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileCache.SignalSignatures>(
+            signal: K,
+            callback: FileCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2315,7 +2352,6 @@ export namespace Shumate {
      */
     abstract class Layer extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Layer>;
-        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Properties
 
@@ -2326,6 +2362,12 @@ export namespace Shumate {
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -3090,7 +3132,6 @@ export namespace Shumate {
      */
     class License extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<License>;
-        declare static readonly __signalSignatures: License.SignalSignatures;
 
         // Properties
 
@@ -3121,6 +3162,18 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](): License;
+
+        // Signals
+
+        connect<K extends keyof License.SignalSignatures>(signal: K, callback: License.SignalSignatures[K]): number;
+        connect_after<K extends keyof License.SignalSignatures>(
+            signal: K,
+            callback: License.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof License.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<License.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3878,7 +3931,7 @@ export namespace Shumate {
         // Signal callback interfaces
 
         interface AnimationCompleted {
-            (): void;
+            (_source: Map): void;
         }
 
         // Signal signatures
@@ -3921,7 +3974,6 @@ export namespace Shumate {
      */
     class Map extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Map>;
-        declare static readonly __signalSignatures: Map.SignalSignatures;
 
         // Properties
 
@@ -3989,12 +4041,6 @@ export namespace Shumate {
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'animation-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'animation-completed', callback: (_source: this) => void): number;
-        emit(signal: 'animation-completed'): void;
 
         // Methods
 
@@ -4845,15 +4891,15 @@ export namespace Shumate {
         // Signal callback interfaces
 
         interface MapLoaded {
-            (errors: boolean): void;
+            (_source: MapLayer, errors: boolean): void;
         }
 
         interface SymbolClicked {
-            (event: SymbolEvent): void;
+            (_source: MapLayer, event: SymbolEvent): void;
         }
 
         interface TileError {
-            (tile: Tile, error: GLib.Error): void;
+            (_source: MapLayer, tile: Tile, error: GLib.Error): void;
         }
 
         // Signal signatures
@@ -4881,7 +4927,6 @@ export namespace Shumate {
      */
     class MapLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MapLayer>;
-        declare static readonly __signalSignatures: MapLayer.SignalSignatures;
 
         // Properties
 
@@ -4907,18 +4952,6 @@ export namespace Shumate {
             signal: K,
             ...args: Parameters<MapLayer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'map-loaded', callback: (_source: this, errors: boolean) => void): number;
-        connect_after(signal: 'map-loaded', callback: (_source: this, errors: boolean) => void): number;
-        emit(signal: 'map-loaded', errors: boolean): void;
-        connect(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
-        connect_after(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
-        emit(signal: 'symbol-clicked', event: SymbolEvent): void;
-        connect(signal: 'tile-error', callback: (_source: this, tile: Tile, error: GLib.Error) => void): number;
-        connect_after(signal: 'tile-error', callback: (_source: this, tile: Tile, error: GLib.Error) => void): number;
-        emit(signal: 'tile-error', tile: Tile, error: GLib.Error): void;
 
         // Inherited methods
         /**
@@ -5394,7 +5427,6 @@ export namespace Shumate {
      */
     abstract class MapSource extends GObject.Object {
         static $gtype: GObject.GType<MapSource>;
-        declare static readonly __signalSignatures: MapSource.SignalSignatures;
 
         // Properties
 
@@ -5464,6 +5496,18 @@ export namespace Shumate {
         constructor(properties?: Partial<MapSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MapSource.SignalSignatures>(signal: K, callback: MapSource.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapSource.SignalSignatures>(
+            signal: K,
+            callback: MapSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapSource.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5689,7 +5733,6 @@ export namespace Shumate {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<MapSourceRegistry>;
-        declare static readonly __signalSignatures: MapSourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -5700,6 +5743,21 @@ export namespace Shumate {
         static ['new'](): MapSourceRegistry;
 
         static new_with_defaults(): MapSourceRegistry;
+
+        // Signals
+
+        connect<K extends keyof MapSourceRegistry.SignalSignatures>(
+            signal: K,
+            callback: MapSourceRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MapSourceRegistry.SignalSignatures>(
+            signal: K,
+            callback: MapSourceRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapSourceRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapSourceRegistry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6294,7 +6352,6 @@ export namespace Shumate {
      */
     class Marker extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Marker>;
-        declare static readonly __signalSignatures: Marker.SignalSignatures;
 
         // Properties
 
@@ -6316,6 +6373,12 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](): Marker;
+
+        // Signals
+
+        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -7130,11 +7193,11 @@ export namespace Shumate {
         // Signal callback interfaces
 
         interface MarkerSelected {
-            (marker: Marker): void;
+            (_source: MarkerLayer, marker: Marker): void;
         }
 
         interface MarkerUnselected {
-            (marker: Marker): void;
+            (_source: MarkerLayer, marker: Marker): void;
         }
 
         // Signal signatures
@@ -7161,7 +7224,6 @@ export namespace Shumate {
      */
     class MarkerLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MarkerLayer>;
-        declare static readonly __signalSignatures: MarkerLayer.SignalSignatures;
 
         // Properties
 
@@ -7200,15 +7262,6 @@ export namespace Shumate {
             signal: K,
             ...args: Parameters<MarkerLayer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'marker-selected', callback: (_source: this, marker: Marker) => void): number;
-        connect_after(signal: 'marker-selected', callback: (_source: this, marker: Marker) => void): number;
-        emit(signal: 'marker-selected', marker: Marker): void;
-        connect(signal: 'marker-unselected', callback: (_source: this, marker: Marker) => void): number;
-        connect_after(signal: 'marker-unselected', callback: (_source: this, marker: Marker) => void): number;
-        emit(signal: 'marker-unselected', marker: Marker): void;
 
         // Methods
 
@@ -7758,7 +7811,6 @@ export namespace Shumate {
      */
     class PathLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PathLayer>;
-        declare static readonly __signalSignatures: PathLayer.SignalSignatures;
 
         // Properties
 
@@ -7835,6 +7887,18 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](viewport: Viewport): PathLayer;
+
+        // Signals
+
+        connect<K extends keyof PathLayer.SignalSignatures>(signal: K, callback: PathLayer.SignalSignatures[K]): number;
+        connect_after<K extends keyof PathLayer.SignalSignatures>(
+            signal: K,
+            callback: PathLayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PathLayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PathLayer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8422,7 +8486,6 @@ export namespace Shumate {
      */
     class Point extends Marker implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Point>;
-        declare static readonly __signalSignatures: Point.SignalSignatures;
 
         // Constructors
 
@@ -8431,6 +8494,12 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](): Point;
+
+        // Signals
+
+        connect<K extends keyof Point.SignalSignatures>(signal: K, callback: Point.SignalSignatures[K]): number;
+        connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: Point.SignalSignatures[K]): number;
+        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: Parameters<Point.SignalSignatures[K]>): void;
 
         // Inherited properties
         /**
@@ -8940,7 +9009,6 @@ export namespace Shumate {
 
     class RasterRenderer extends MapSource {
         static $gtype: GObject.GType<RasterRenderer>;
-        declare static readonly __signalSignatures: RasterRenderer.SignalSignatures;
 
         // Properties
 
@@ -8988,6 +9056,21 @@ export namespace Shumate {
             projection: MapProjection,
             url_template: string,
         ): RasterRenderer;
+
+        // Signals
+
+        connect<K extends keyof RasterRenderer.SignalSignatures>(
+            signal: K,
+            callback: RasterRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RasterRenderer.SignalSignatures>(
+            signal: K,
+            callback: RasterRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RasterRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RasterRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Scale {
@@ -9023,7 +9106,6 @@ export namespace Shumate {
      */
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Scale>;
-        declare static readonly __signalSignatures: Scale.SignalSignatures;
 
         // Properties
 
@@ -9055,6 +9137,12 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](viewport?: Viewport | null): Scale;
+
+        // Signals
+
+        connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: Parameters<Scale.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -9818,7 +9906,7 @@ export namespace Shumate {
         // Signal callback interfaces
 
         interface SymbolClicked {
-            (event: SymbolEvent): void;
+            (_source: SimpleMap, event: SymbolEvent): void;
         }
 
         // Signal signatures
@@ -9856,7 +9944,6 @@ export namespace Shumate {
      */
     class SimpleMap extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SimpleMap>;
-        declare static readonly __signalSignatures: SimpleMap.SignalSignatures;
 
         // Properties
 
@@ -9908,12 +9995,6 @@ export namespace Shumate {
             signal: K,
             ...args: Parameters<SimpleMap.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
-        connect_after(signal: 'symbol-clicked', callback: (_source: this, event: SymbolEvent) => void): number;
-        emit(signal: 'symbol-clicked', event: SymbolEvent): void;
 
         // Methods
 
@@ -10734,7 +10815,6 @@ export namespace Shumate {
      */
     class SymbolEvent extends GObject.Object implements Location {
         static $gtype: GObject.GType<SymbolEvent>;
-        declare static readonly __signalSignatures: SymbolEvent.SignalSignatures;
 
         // Properties
 
@@ -10766,6 +10846,21 @@ export namespace Shumate {
         constructor(properties?: Partial<SymbolEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SymbolEvent.SignalSignatures>(
+            signal: K,
+            callback: SymbolEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SymbolEvent.SignalSignatures>(
+            signal: K,
+            callback: SymbolEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SymbolEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SymbolEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11330,7 +11425,6 @@ export namespace Shumate {
      */
     class Tile extends GObject.Object {
         static $gtype: GObject.GType<Tile>;
-        declare static readonly __signalSignatures: Tile.SignalSignatures;
 
         // Properties
 
@@ -11399,6 +11493,12 @@ export namespace Shumate {
         static ['new'](): Tile;
 
         static new_full(x: number, y: number, size: number, zoom_level: number): Tile;
+
+        // Signals
+
+        connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
+        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: Parameters<Tile.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -11504,7 +11604,6 @@ export namespace Shumate {
      */
     class TileDownloader extends DataSource {
         static $gtype: GObject.GType<TileDownloader>;
-        declare static readonly __signalSignatures: TileDownloader.SignalSignatures;
 
         // Properties
 
@@ -11538,6 +11637,21 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](url_template: string): TileDownloader;
+
+        // Signals
+
+        connect<K extends keyof TileDownloader.SignalSignatures>(
+            signal: K,
+            callback: TileDownloader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TileDownloader.SignalSignatures>(
+            signal: K,
+            callback: TileDownloader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TileDownloader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TileDownloader.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VectorReader {
@@ -11560,7 +11674,6 @@ export namespace Shumate {
      */
     class VectorReader extends GObject.Object {
         static $gtype: GObject.GType<VectorReader>;
-        declare static readonly __signalSignatures: VectorReader.SignalSignatures;
 
         // Constructors
 
@@ -11569,6 +11682,21 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](bytes: GLib.Bytes | Uint8Array): VectorReader;
+
+        // Signals
+
+        connect<K extends keyof VectorReader.SignalSignatures>(
+            signal: K,
+            callback: VectorReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorReader.SignalSignatures>(
+            signal: K,
+            callback: VectorReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11616,7 +11744,6 @@ export namespace Shumate {
      */
     class VectorReaderIter extends GObject.Object {
         static $gtype: GObject.GType<VectorReaderIter>;
-        declare static readonly __signalSignatures: VectorReaderIter.SignalSignatures;
 
         // Properties
 
@@ -11627,6 +11754,21 @@ export namespace Shumate {
         constructor(properties?: Partial<VectorReaderIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VectorReaderIter.SignalSignatures>(
+            signal: K,
+            callback: VectorReaderIter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorReaderIter.SignalSignatures>(
+            signal: K,
+            callback: VectorReaderIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorReaderIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorReaderIter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11772,7 +11914,6 @@ export namespace Shumate {
      */
     class VectorRenderer extends MapSource implements Gio.Initable {
         static $gtype: GObject.GType<VectorRenderer>;
-        declare static readonly __signalSignatures: VectorRenderer.SignalSignatures;
 
         // Properties
 
@@ -11808,6 +11949,21 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](id: string, style_json: string): VectorRenderer;
+
+        // Signals
+
+        connect<K extends keyof VectorRenderer.SignalSignatures>(
+            signal: K,
+            callback: VectorRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorRenderer.SignalSignatures>(
+            signal: K,
+            callback: VectorRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorRenderer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12413,7 +12569,6 @@ export namespace Shumate {
      */
     class VectorSprite extends GObject.Object implements Gdk.Paintable, Gtk.SymbolicPaintable {
         static $gtype: GObject.GType<VectorSprite>;
-        declare static readonly __signalSignatures: VectorSprite.SignalSignatures;
 
         // Properties
 
@@ -12465,6 +12620,21 @@ export namespace Shumate {
             scale_factor: number,
             source_rect?: Gdk.Rectangle | null,
         ): VectorSprite;
+
+        // Signals
+
+        connect<K extends keyof VectorSprite.SignalSignatures>(
+            signal: K,
+            callback: VectorSprite.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorSprite.SignalSignatures>(
+            signal: K,
+            callback: VectorSprite.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorSprite.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorSprite.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13205,7 +13375,6 @@ export namespace Shumate {
      */
     class VectorSpriteSheet extends GObject.Object {
         static $gtype: GObject.GType<VectorSpriteSheet>;
-        declare static readonly __signalSignatures: VectorSpriteSheet.SignalSignatures;
 
         // Constructors
 
@@ -13214,6 +13383,21 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](): VectorSpriteSheet;
+
+        // Signals
+
+        connect<K extends keyof VectorSpriteSheet.SignalSignatures>(
+            signal: K,
+            callback: VectorSpriteSheet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorSpriteSheet.SignalSignatures>(
+            signal: K,
+            callback: VectorSpriteSheet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorSpriteSheet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorSpriteSheet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13294,7 +13478,6 @@ export namespace Shumate {
      */
     class Viewport extends GObject.Object implements Location {
         static $gtype: GObject.GType<Viewport>;
-        declare static readonly __signalSignatures: Viewport.SignalSignatures;
 
         // Properties
 
@@ -13351,6 +13534,18 @@ export namespace Shumate {
         _init(...args: any[]): void;
 
         static ['new'](): Viewport;
+
+        // Signals
+
+        connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: Viewport.SignalSignatures[K]): number;
+        connect_after<K extends keyof Viewport.SignalSignatures>(
+            signal: K,
+            callback: Viewport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Viewport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Viewport.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

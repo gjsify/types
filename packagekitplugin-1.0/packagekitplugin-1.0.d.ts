@@ -177,7 +177,6 @@ export namespace PackageKitPlugin {
 
     class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
-        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
@@ -186,6 +185,18 @@ export namespace PackageKitPlugin {
         _init(...args: any[]): void;
 
         static ['new'](conf: GLib.KeyFile): Backend;
+
+        // Signals
+
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -332,7 +343,6 @@ export namespace PackageKitPlugin {
 
     class BackendJob extends GObject.Object {
         static $gtype: GObject.GType<BackendJob>;
-        declare static readonly __signalSignatures: BackendJob.SignalSignatures;
 
         // Constructors
 
@@ -341,6 +351,21 @@ export namespace PackageKitPlugin {
         _init(...args: any[]): void;
 
         static ['new'](conf: GLib.KeyFile): BackendJob;
+
+        // Signals
+
+        connect<K extends keyof BackendJob.SignalSignatures>(
+            signal: K,
+            callback: BackendJob.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackendJob.SignalSignatures>(
+            signal: K,
+            callback: BackendJob.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackendJob.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackendJob.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -480,7 +505,7 @@ export namespace PackageKitPlugin {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: Transaction): void;
         }
 
         // Signal signatures
@@ -495,7 +520,6 @@ export namespace PackageKitPlugin {
 
     class Transaction extends GObject.Object {
         static $gtype: GObject.GType<Transaction>;
-        declare static readonly __signalSignatures: Transaction.SignalSignatures;
 
         // Constructors
 
@@ -519,12 +543,6 @@ export namespace PackageKitPlugin {
             signal: K,
             ...args: Parameters<Transaction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Static methods
 

@@ -984,7 +984,6 @@ export namespace GstPbutils {
      */
     abstract class AudioVisualizer extends Gst.Element {
         static $gtype: GObject.GType<AudioVisualizer>;
-        declare static readonly __signalSignatures: AudioVisualizer.SignalSignatures;
 
         // Properties
 
@@ -1005,6 +1004,21 @@ export namespace GstPbutils {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof AudioVisualizer.SignalSignatures>(
+            signal: K,
+            callback: AudioVisualizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioVisualizer.SignalSignatures>(
+            signal: K,
+            callback: AudioVisualizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioVisualizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioVisualizer.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         vfunc_decide_allocation(query: Gst.Query): boolean;
@@ -1016,23 +1030,23 @@ export namespace GstPbutils {
         // Signal callback interfaces
 
         interface Discovered {
-            (info: DiscovererInfo, error?: GLib.Error | null): void;
+            (_source: Discoverer, info: DiscovererInfo, error?: GLib.Error | null): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: Discoverer): void;
         }
 
         interface LoadSerializedInfo {
-            (uri: string): DiscovererInfo | null;
+            (_source: Discoverer, uri: string): DiscovererInfo | null;
         }
 
         interface SourceSetup {
-            (source: Gst.Element): void;
+            (_source: Discoverer, source: Gst.Element): void;
         }
 
         interface Starting {
-            (): void;
+            (_source: Discoverer): void;
         }
 
         // Signal signatures
@@ -1073,7 +1087,6 @@ export namespace GstPbutils {
      */
     class Discoverer extends GObject.Object {
         static $gtype: GObject.GType<Discoverer>;
-        declare static readonly __signalSignatures: Discoverer.SignalSignatures;
 
         // Properties
 
@@ -1113,36 +1126,6 @@ export namespace GstPbutils {
             signal: K,
             ...args: Parameters<Discoverer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'discovered',
-            callback: (_source: this, info: DiscovererInfo, error: GLib.Error | null) => void,
-        ): number;
-        connect_after(
-            signal: 'discovered',
-            callback: (_source: this, info: DiscovererInfo, error: GLib.Error | null) => void,
-        ): number;
-        emit(signal: 'discovered', info: DiscovererInfo, error?: GLib.Error | null): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(
-            signal: 'load-serialized-info',
-            callback: (_source: this, uri: string) => DiscovererInfo | null,
-        ): number;
-        connect_after(
-            signal: 'load-serialized-info',
-            callback: (_source: this, uri: string) => DiscovererInfo | null,
-        ): number;
-        emit(signal: 'load-serialized-info', uri: string): void;
-        connect(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
-        connect_after(signal: 'source-setup', callback: (_source: this, source: Gst.Element) => void): number;
-        emit(signal: 'source-setup', source: Gst.Element): void;
-        connect(signal: 'starting', callback: (_source: this) => void): number;
-        connect_after(signal: 'starting', callback: (_source: this) => void): number;
-        emit(signal: 'starting'): void;
 
         // Virtual methods
 
@@ -1205,13 +1188,27 @@ export namespace GstPbutils {
      */
     class DiscovererAudioInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererAudioInfo>;
-        declare static readonly __signalSignatures: DiscovererAudioInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DiscovererAudioInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DiscovererAudioInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererAudioInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererAudioInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererAudioInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererAudioInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererAudioInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1238,13 +1235,27 @@ export namespace GstPbutils {
      */
     class DiscovererContainerInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererContainerInfo>;
-        declare static readonly __signalSignatures: DiscovererContainerInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DiscovererContainerInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DiscovererContainerInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererContainerInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererContainerInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererContainerInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererContainerInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererContainerInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1266,13 +1277,27 @@ export namespace GstPbutils {
      */
     class DiscovererInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererInfo>;
-        declare static readonly __signalSignatures: DiscovererInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DiscovererInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DiscovererInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererInfo.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1368,13 +1393,27 @@ export namespace GstPbutils {
      */
     class DiscovererStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererStreamInfo>;
-        declare static readonly __signalSignatures: DiscovererStreamInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DiscovererStreamInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DiscovererStreamInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererStreamInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererStreamInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererStreamInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererStreamInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererStreamInfo.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1413,13 +1452,27 @@ export namespace GstPbutils {
      */
     class DiscovererSubtitleInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererSubtitleInfo>;
-        declare static readonly __signalSignatures: DiscovererSubtitleInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DiscovererSubtitleInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DiscovererSubtitleInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererSubtitleInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererSubtitleInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererSubtitleInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererSubtitleInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererSubtitleInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1440,13 +1493,27 @@ export namespace GstPbutils {
      */
     class DiscovererVideoInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererVideoInfo>;
-        declare static readonly __signalSignatures: DiscovererVideoInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DiscovererVideoInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DiscovererVideoInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererVideoInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererVideoInfo.SignalSignatures>(
+            signal: K,
+            callback: DiscovererVideoInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererVideoInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererVideoInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1477,7 +1544,6 @@ export namespace GstPbutils {
      */
     class EncodingAudioProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingAudioProfile>;
-        declare static readonly __signalSignatures: EncodingAudioProfile.SignalSignatures;
 
         // Constructors
 
@@ -1491,6 +1557,21 @@ export namespace GstPbutils {
             restriction: Gst.Caps | null,
             presence: number,
         ): EncodingAudioProfile;
+
+        // Signals
+
+        connect<K extends keyof EncodingAudioProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingAudioProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingAudioProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingAudioProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingAudioProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingAudioProfile.SignalSignatures[K]>
+        ): void;
     }
 
     namespace EncodingContainerProfile {
@@ -1507,7 +1588,6 @@ export namespace GstPbutils {
      */
     class EncodingContainerProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingContainerProfile>;
-        declare static readonly __signalSignatures: EncodingContainerProfile.SignalSignatures;
 
         // Constructors
 
@@ -1521,6 +1601,21 @@ export namespace GstPbutils {
             format: Gst.Caps,
             preset?: string | null,
         ): EncodingContainerProfile;
+
+        // Signals
+
+        connect<K extends keyof EncodingContainerProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingContainerProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingContainerProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingContainerProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingContainerProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingContainerProfile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1563,7 +1658,6 @@ export namespace GstPbutils {
      */
     class EncodingProfile extends GObject.Object {
         static $gtype: GObject.GType<EncodingProfile>;
-        declare static readonly __signalSignatures: EncodingProfile.SignalSignatures;
 
         // Properties
 
@@ -1601,6 +1695,21 @@ export namespace GstPbutils {
         constructor(properties?: Partial<EncodingProfile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EncodingProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingProfile.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1755,7 +1864,6 @@ export namespace GstPbutils {
      */
     class EncodingTarget extends GObject.Object {
         static $gtype: GObject.GType<EncodingTarget>;
-        declare static readonly __signalSignatures: EncodingTarget.SignalSignatures;
 
         // Constructors
 
@@ -1769,6 +1877,21 @@ export namespace GstPbutils {
             description: string,
             profiles: EncodingProfile[],
         ): EncodingTarget;
+
+        // Signals
+
+        connect<K extends keyof EncodingTarget.SignalSignatures>(
+            signal: K,
+            callback: EncodingTarget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingTarget.SignalSignatures>(
+            signal: K,
+            callback: EncodingTarget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingTarget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingTarget.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1834,7 +1957,6 @@ export namespace GstPbutils {
      */
     class EncodingVideoProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingVideoProfile>;
-        declare static readonly __signalSignatures: EncodingVideoProfile.SignalSignatures;
 
         // Constructors
 
@@ -1848,6 +1970,21 @@ export namespace GstPbutils {
             restriction: Gst.Caps | null,
             presence: number,
         ): EncodingVideoProfile;
+
+        // Signals
+
+        connect<K extends keyof EncodingVideoProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingVideoProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingVideoProfile.SignalSignatures>(
+            signal: K,
+            callback: EncodingVideoProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingVideoProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingVideoProfile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

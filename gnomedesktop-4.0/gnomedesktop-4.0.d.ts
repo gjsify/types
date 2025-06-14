@@ -259,7 +259,6 @@ export namespace GnomeDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
-        declare static readonly __signalSignatures: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -268,6 +267,21 @@ export namespace GnomeDesktop {
         _init(...args: any[]): void;
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
+
+        // Signals
+
+        connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            callback: DesktopThumbnailFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            callback: DesktopThumbnailFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -492,7 +506,6 @@ export namespace GnomeDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
-        declare static readonly __signalSignatures: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -501,6 +514,21 @@ export namespace GnomeDesktop {
         _init(...args: any[]): void;
 
         static ['new'](): IdleMonitor;
+
+        // Signals
+
+        connect<K extends keyof IdleMonitor.SignalSignatures>(
+            signal: K,
+            callback: IdleMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IdleMonitor.SignalSignatures>(
+            signal: K,
+            callback: IdleMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IdleMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1053,7 +1081,6 @@ export namespace GnomeDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
-        declare static readonly __signalSignatures: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1062,6 +1089,12 @@ export namespace GnomeDesktop {
         _init(...args: any[]): void;
 
         static ['new'](): PnpIds;
+
+        // Signals
+
+        connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: Parameters<PnpIds.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1091,7 +1124,6 @@ export namespace GnomeDesktop {
 
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
-        declare static readonly __signalSignatures: WallClock.SignalSignatures;
 
         // Properties
 
@@ -1142,6 +1174,18 @@ export namespace GnomeDesktop {
 
         static ['new'](): WallClock;
 
+        // Signals
+
+        connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: WallClock.SignalSignatures[K]): number;
+        connect_after<K extends keyof WallClock.SignalSignatures>(
+            signal: K,
+            callback: WallClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WallClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WallClock.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -1168,7 +1212,7 @@ export namespace GnomeDesktop {
         // Signal callback interfaces
 
         interface LayoutsChanged {
-            (): void;
+            (_source: XkbInfo): void;
         }
 
         // Signal signatures
@@ -1183,7 +1227,6 @@ export namespace GnomeDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
-        declare static readonly __signalSignatures: XkbInfo.SignalSignatures;
 
         // Fields
 
@@ -1208,12 +1251,6 @@ export namespace GnomeDesktop {
             signal: K,
             ...args: Parameters<XkbInfo.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'layouts-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layouts-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layouts-changed'): void;
 
         // Methods
 

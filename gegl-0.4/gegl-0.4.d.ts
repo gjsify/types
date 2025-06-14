@@ -732,7 +732,6 @@ export namespace Gegl {
 
     class AudioFragment extends GObject.Object {
         static $gtype: GObject.GType<AudioFragment>;
-        declare static readonly __signalSignatures: AudioFragment.SignalSignatures;
 
         // Properties
 
@@ -756,6 +755,21 @@ export namespace Gegl {
             max_samples: number,
         ): AudioFragment;
 
+        // Signals
+
+        connect<K extends keyof AudioFragment.SignalSignatures>(
+            signal: K,
+            callback: AudioFragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioFragment.SignalSignatures>(
+            signal: K,
+            callback: AudioFragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioFragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioFragment.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_channel_layout(): number;
@@ -776,7 +790,7 @@ export namespace Gegl {
         // Signal callback interfaces
 
         interface Changed {
-            (object: Rectangle): void;
+            (_source: Buffer, object: Rectangle): void;
         }
 
         // Signal signatures
@@ -819,7 +833,6 @@ export namespace Gegl {
 
     class Buffer extends TileHandler {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -871,12 +884,6 @@ export namespace Gegl {
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: Rectangle) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: Rectangle) => void): number;
-        emit(signal: 'changed', object: Rectangle): void;
 
         // Static methods
 
@@ -1107,7 +1114,6 @@ export namespace Gegl {
 
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
-        declare static readonly __signalSignatures: Color.SignalSignatures;
 
         // Properties
 
@@ -1121,6 +1127,12 @@ export namespace Gegl {
         _init(...args: any[]): void;
 
         static ['new'](string: string): Color;
+
+        // Signals
+
+        connect<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        emit<K extends keyof Color.SignalSignatures>(signal: K, ...args: Parameters<Color.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1238,7 +1250,6 @@ export namespace Gegl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -1290,6 +1301,12 @@ export namespace Gegl {
         constructor(properties?: Partial<Config.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
     }
 
     namespace Curve {
@@ -1303,7 +1320,6 @@ export namespace Gegl {
 
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
-        declare static readonly __signalSignatures: Curve.SignalSignatures;
 
         // Constructors
 
@@ -1314,6 +1330,12 @@ export namespace Gegl {
         static ['new'](y_min: number, y_max: number): Curve;
 
         static new_default(): Curve;
+
+        // Signals
+
+        connect<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
+        connect_after<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
+        emit<K extends keyof Curve.SignalSignatures>(signal: K, ...args: Parameters<Curve.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1372,7 +1394,6 @@ export namespace Gegl {
 
     class MetadataHash extends MetadataStore implements Metadata {
         static $gtype: GObject.GType<MetadataHash>;
-        declare static readonly __signalSignatures: MetadataHash.SignalSignatures;
 
         // Constructors
 
@@ -1381,6 +1402,21 @@ export namespace Gegl {
         _init(...args: any[]): void;
 
         static ['new'](): MetadataHash;
+
+        // Signals
+
+        connect<K extends keyof MetadataHash.SignalSignatures>(
+            signal: K,
+            callback: MetadataHash.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetadataHash.SignalSignatures>(
+            signal: K,
+            callback: MetadataHash.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetadataHash.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetadataHash.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -1968,23 +2004,23 @@ export namespace Gegl {
         // Signal callback interfaces
 
         interface Changed {
-            (pspec: GObject.ParamSpec): void;
+            (_source: MetadataStore, pspec: GObject.ParamSpec): void;
         }
 
         interface GenerateValue {
-            (pspec: GObject.ParamSpec, value: GObject.Value | any): boolean;
+            (_source: MetadataStore, pspec: GObject.ParamSpec, value: GObject.Value | any): boolean;
         }
 
         interface Mapped {
-            (file_module: string, exclude_unmapped: boolean): void;
+            (_source: MetadataStore, file_module: string, exclude_unmapped: boolean): void;
         }
 
         interface ParseValue {
-            (pspec: GObject.ParamSpec, value: GObject.Value | any): boolean;
+            (_source: MetadataStore, pspec: GObject.ParamSpec, value: GObject.Value | any): boolean;
         }
 
         interface Unmapped {
-            (file_module: string, local_name: string): void;
+            (_source: MetadataStore, file_module: string, local_name: string): void;
         }
 
         // Signal signatures
@@ -2022,7 +2058,6 @@ export namespace Gegl {
 
     abstract class MetadataStore extends GObject.Object implements Metadata {
         static $gtype: GObject.GType<MetadataStore>;
-        declare static readonly __signalSignatures: MetadataStore.SignalSignatures;
 
         // Properties
 
@@ -2139,45 +2174,6 @@ export namespace Gegl {
             signal: K,
             ...args: Parameters<MetadataStore.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, pspec: GObject.ParamSpec) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, pspec: GObject.ParamSpec) => void): number;
-        emit(signal: 'changed', pspec: GObject.ParamSpec): void;
-        connect(
-            signal: 'generate-value',
-            callback: (_source: this, pspec: GObject.ParamSpec, value: GObject.Value) => boolean,
-        ): number;
-        connect_after(
-            signal: 'generate-value',
-            callback: (_source: this, pspec: GObject.ParamSpec, value: GObject.Value) => boolean,
-        ): number;
-        emit(signal: 'generate-value', pspec: GObject.ParamSpec, value: GObject.Value | any): void;
-        connect(
-            signal: 'mapped',
-            callback: (_source: this, file_module: string, exclude_unmapped: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'mapped',
-            callback: (_source: this, file_module: string, exclude_unmapped: boolean) => void,
-        ): number;
-        emit(signal: 'mapped', file_module: string, exclude_unmapped: boolean): void;
-        connect(
-            signal: 'parse-value',
-            callback: (_source: this, pspec: GObject.ParamSpec, value: GObject.Value) => boolean,
-        ): number;
-        connect_after(
-            signal: 'parse-value',
-            callback: (_source: this, pspec: GObject.ParamSpec, value: GObject.Value) => boolean,
-        ): number;
-        emit(signal: 'parse-value', pspec: GObject.ParamSpec, value: GObject.Value | any): void;
-        connect(signal: 'unmapped', callback: (_source: this, file_module: string, local_name: string) => void): number;
-        connect_after(
-            signal: 'unmapped',
-            callback: (_source: this, file_module: string, local_name: string) => void,
-        ): number;
-        emit(signal: 'unmapped', file_module: string, local_name: string): void;
 
         // Virtual methods
 
@@ -3001,15 +2997,15 @@ export namespace Gegl {
         // Signal callback interfaces
 
         interface Computed {
-            (object: Rectangle): void;
+            (_source: Node, object: Rectangle): void;
         }
 
         interface Invalidated {
-            (object: Rectangle): void;
+            (_source: Node, object: Rectangle): void;
         }
 
         interface Progress {
-            (object: number): void;
+            (_source: Node, object: number): void;
         }
 
         // Signal signatures
@@ -3038,7 +3034,6 @@ export namespace Gegl {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
-        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -3081,16 +3076,9 @@ export namespace Gegl {
 
         // Signals
 
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'computed', callback: (_source: this, object: Rectangle) => void): number;
-        emit(signal: 'computed', object: Rectangle): void;
-        connect_after(signal: 'invalidated', callback: (_source: this, object: Rectangle) => void): number;
-        emit(signal: 'invalidated', object: Rectangle): void;
-        connect_after(signal: 'progress', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'progress', object: number): void;
 
         // Methods
 
@@ -3330,13 +3318,24 @@ export namespace Gegl {
 
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
-        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Operation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: Operation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Operation.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3357,7 +3356,7 @@ export namespace Gegl {
         // Signal callback interfaces
 
         interface Changed {
-            (object?: any | null): void;
+            (_source: Path, object?: any | null): void;
         }
 
         // Signal signatures
@@ -3372,7 +3371,6 @@ export namespace Gegl {
 
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
-        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Constructors
 
@@ -3389,12 +3387,6 @@ export namespace Gegl {
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
         emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'changed', object?: any | null): void;
 
         // Static methods
 
@@ -3547,7 +3539,6 @@ export namespace Gegl {
 
     class Processor extends GObject.Object {
         static $gtype: GObject.GType<Processor>;
-        declare static readonly __signalSignatures: Processor.SignalSignatures;
 
         // Properties
 
@@ -3563,6 +3554,18 @@ export namespace Gegl {
         constructor(properties?: Partial<Processor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Processor.SignalSignatures>(signal: K, callback: Processor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Processor.SignalSignatures>(
+            signal: K,
+            callback: Processor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Processor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Processor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3650,7 +3653,6 @@ export namespace Gegl {
 
     class Stats extends GObject.Object {
         static $gtype: GObject.GType<Stats>;
-        declare static readonly __signalSignatures: Stats.SignalSignatures;
 
         // Properties
 
@@ -3702,6 +3704,12 @@ export namespace Gegl {
         constructor(properties?: Partial<Stats.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
+        emit<K extends keyof Stats.SignalSignatures>(signal: K, ...args: Parameters<Stats.SignalSignatures[K]>): void;
     }
 
     namespace TileBackend {
@@ -3727,7 +3735,6 @@ export namespace Gegl {
 
     class TileBackend extends TileSource {
         static $gtype: GObject.GType<TileBackend>;
-        declare static readonly __signalSignatures: TileBackend.SignalSignatures;
 
         // Properties
 
@@ -3750,6 +3757,21 @@ export namespace Gegl {
         constructor(properties?: Partial<TileBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TileBackend.SignalSignatures>(
+            signal: K,
+            callback: TileBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TileBackend.SignalSignatures>(
+            signal: K,
+            callback: TileBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TileBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TileBackend.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3802,7 +3824,6 @@ export namespace Gegl {
 
     class TileHandler extends TileSource {
         static $gtype: GObject.GType<TileHandler>;
-        declare static readonly __signalSignatures: TileHandler.SignalSignatures;
 
         // Properties
 
@@ -3814,6 +3835,21 @@ export namespace Gegl {
         constructor(properties?: Partial<TileHandler.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TileHandler.SignalSignatures>(
+            signal: K,
+            callback: TileHandler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TileHandler.SignalSignatures>(
+            signal: K,
+            callback: TileHandler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TileHandler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TileHandler.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3835,7 +3871,6 @@ export namespace Gegl {
 
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
-        declare static readonly __signalSignatures: TileSource.SignalSignatures;
 
         // Fields
 
@@ -3847,6 +3882,21 @@ export namespace Gegl {
         constructor(properties?: Partial<TileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TileSource.SignalSignatures>(
+            signal: K,
+            callback: TileSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TileSource.SignalSignatures>(
+            signal: K,
+            callback: TileSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TileSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TileSource.SignalSignatures[K]>
+        ): void;
     }
 
     type AudioFragmentClass = typeof AudioFragment;

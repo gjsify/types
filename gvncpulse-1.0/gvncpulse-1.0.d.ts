@@ -32,7 +32,6 @@ export namespace GVncPulse {
 
     class AudioPulse extends GVnc.BaseAudio implements GVnc.Audio {
         static $gtype: GObject.GType<AudioPulse>;
-        declare static readonly __signalSignatures: AudioPulse.SignalSignatures;
 
         // Constructors
 
@@ -41,6 +40,21 @@ export namespace GVncPulse {
         _init(...args: any[]): void;
 
         static ['new'](): AudioPulse;
+
+        // Signals
+
+        connect<K extends keyof AudioPulse.SignalSignatures>(
+            signal: K,
+            callback: AudioPulse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioPulse.SignalSignatures>(
+            signal: K,
+            callback: AudioPulse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioPulse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioPulse.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

@@ -114,7 +114,7 @@ export namespace Avahi {
         // Signal callback interfaces
 
         interface StateChanged {
-            (object: ClientState): void;
+            (_source: Client, object: ClientState): void;
         }
 
         // Signal signatures
@@ -132,7 +132,6 @@ export namespace Avahi {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -152,12 +151,6 @@ export namespace Avahi {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'state-changed', callback: (_source: this, object: ClientState) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this, object: ClientState) => void): number;
-        emit(signal: 'state-changed', object: ClientState): void;
 
         // Methods
 
@@ -169,7 +162,7 @@ export namespace Avahi {
         // Signal callback interfaces
 
         interface StateChanged {
-            (object: EntryGroupState): void;
+            (_source: EntryGroup, object: EntryGroupState): void;
         }
 
         // Signal signatures
@@ -186,7 +179,6 @@ export namespace Avahi {
 
     class EntryGroup extends GObject.Object {
         static $gtype: GObject.GType<EntryGroup>;
-        declare static readonly __signalSignatures: EntryGroup.SignalSignatures;
 
         // Properties
 
@@ -214,12 +206,6 @@ export namespace Avahi {
             signal: K,
             ...args: Parameters<EntryGroup.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'state-changed', callback: (_source: this, object: EntryGroupState) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this, object: EntryGroupState) => void): number;
-        emit(signal: 'state-changed', object: EntryGroupState): void;
 
         // Methods
 
@@ -251,19 +237,20 @@ export namespace Avahi {
         // Signal callback interfaces
 
         interface AllForNow {
-            (): void;
+            (_source: RecordBrowser): void;
         }
 
         interface CacheExhausted {
-            (): void;
+            (_source: RecordBrowser): void;
         }
 
         interface Failure {
-            (object?: any | null): void;
+            (_source: RecordBrowser, object?: any | null): void;
         }
 
         interface NewRecord {
             (
+                _source: RecordBrowser,
                 object: number,
                 p0: Protocol,
                 p1: string,
@@ -277,6 +264,7 @@ export namespace Avahi {
 
         interface RemovedRecord {
             (
+                _source: RecordBrowser,
                 object: number,
                 p0: Protocol,
                 p1: string,
@@ -311,7 +299,6 @@ export namespace Avahi {
 
     class RecordBrowser extends GObject.Object {
         static $gtype: GObject.GType<RecordBrowser>;
-        declare static readonly __signalSignatures: RecordBrowser.SignalSignatures;
 
         // Properties
 
@@ -359,96 +346,6 @@ export namespace Avahi {
             signal: K,
             ...args: Parameters<RecordBrowser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'all-for-now', callback: (_source: this) => void): number;
-        connect_after(signal: 'all-for-now', callback: (_source: this) => void): number;
-        emit(signal: 'all-for-now'): void;
-        connect(signal: 'cache-exhausted', callback: (_source: this) => void): number;
-        connect_after(signal: 'cache-exhausted', callback: (_source: this) => void): number;
-        emit(signal: 'cache-exhausted'): void;
-        connect(signal: 'failure', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'failure', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'failure', object?: any | null): void;
-        connect(
-            signal: 'new-record',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: number,
-                p3: number,
-                p4: any | null,
-                p5: number,
-                p6: LookupResultFlags,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'new-record',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: number,
-                p3: number,
-                p4: any | null,
-                p5: number,
-                p6: LookupResultFlags,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'new-record',
-            object: number,
-            p0: Protocol,
-            p1: string,
-            p2: number,
-            p3: number,
-            p4: any | null,
-            p5: number,
-            p6: LookupResultFlags,
-        ): void;
-        connect(
-            signal: 'removed-record',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: number,
-                p3: number,
-                p4: any | null,
-                p5: number,
-                p6: LookupResultFlags,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'removed-record',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: number,
-                p3: number,
-                p4: any | null,
-                p5: number,
-                p6: LookupResultFlags,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'removed-record',
-            object: number,
-            p0: Protocol,
-            p1: string,
-            p2: number,
-            p3: number,
-            p4: any | null,
-            p5: number,
-            p6: LookupResultFlags,
-        ): void;
 
         // Methods
 
@@ -459,23 +356,39 @@ export namespace Avahi {
         // Signal callback interfaces
 
         interface AllForNow {
-            (): void;
+            (_source: ServiceBrowser): void;
         }
 
         interface CacheExhausted {
-            (): void;
+            (_source: ServiceBrowser): void;
         }
 
         interface Failure {
-            (object?: any | null): void;
+            (_source: ServiceBrowser, object?: any | null): void;
         }
 
         interface NewService {
-            (object: number, p0: Protocol, p1: string, p2: string, p3: string, p4: LookupResultFlags): void;
+            (
+                _source: ServiceBrowser,
+                object: number,
+                p0: Protocol,
+                p1: string,
+                p2: string,
+                p3: string,
+                p4: LookupResultFlags,
+            ): void;
         }
 
         interface RemovedService {
-            (object: number, p0: Protocol, p1: string, p2: string, p3: string, p4: LookupResultFlags): void;
+            (
+                _source: ServiceBrowser,
+                object: number,
+                p0: Protocol,
+                p1: string,
+                p2: string,
+                p3: string,
+                p4: LookupResultFlags,
+            ): void;
         }
 
         // Signal signatures
@@ -500,7 +413,6 @@ export namespace Avahi {
 
     class ServiceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ServiceBrowser>;
-        declare static readonly __signalSignatures: ServiceBrowser.SignalSignatures;
 
         // Properties
 
@@ -545,84 +457,6 @@ export namespace Avahi {
             signal: K,
             ...args: Parameters<ServiceBrowser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'all-for-now', callback: (_source: this) => void): number;
-        connect_after(signal: 'all-for-now', callback: (_source: this) => void): number;
-        emit(signal: 'all-for-now'): void;
-        connect(signal: 'cache-exhausted', callback: (_source: this) => void): number;
-        connect_after(signal: 'cache-exhausted', callback: (_source: this) => void): number;
-        emit(signal: 'cache-exhausted'): void;
-        connect(signal: 'failure', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'failure', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'failure', object?: any | null): void;
-        connect(
-            signal: 'new-service',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: LookupResultFlags,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'new-service',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: LookupResultFlags,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'new-service',
-            object: number,
-            p0: Protocol,
-            p1: string,
-            p2: string,
-            p3: string,
-            p4: LookupResultFlags,
-        ): void;
-        connect(
-            signal: 'removed-service',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: LookupResultFlags,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'removed-service',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: LookupResultFlags,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'removed-service',
-            object: number,
-            p0: Protocol,
-            p1: string,
-            p2: string,
-            p3: string,
-            p4: LookupResultFlags,
-        ): void;
 
         // Methods
 
@@ -633,11 +467,12 @@ export namespace Avahi {
         // Signal callback interfaces
 
         interface Failure {
-            (object?: any | null): void;
+            (_source: ServiceResolver, object?: any | null): void;
         }
 
         interface Found {
             (
+                _source: ServiceResolver,
                 object: number,
                 p0: Protocol,
                 p1: string,
@@ -672,7 +507,6 @@ export namespace Avahi {
 
     class ServiceResolver extends GObject.Object {
         static $gtype: GObject.GType<ServiceResolver>;
-        declare static readonly __signalSignatures: ServiceResolver.SignalSignatures;
 
         // Properties
 
@@ -720,57 +554,6 @@ export namespace Avahi {
         emit<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
             ...args: Parameters<ServiceResolver.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'failure', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'failure', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'failure', object?: any | null): void;
-        connect(
-            signal: 'found',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: any | null,
-                p6: number,
-                p7: any | null,
-                p8: LookupResultFlags,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'found',
-            callback: (
-                _source: this,
-                object: number,
-                p0: Protocol,
-                p1: string,
-                p2: string,
-                p3: string,
-                p4: string,
-                p5: any | null,
-                p6: number,
-                p7: any | null,
-                p8: LookupResultFlags,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'found',
-            object: number,
-            p0: Protocol,
-            p1: string,
-            p2: string,
-            p3: string,
-            p4: string,
-            p5: any | null,
-            p6: number,
-            p7: any | null,
-            p8: LookupResultFlags,
         ): void;
 
         // Methods

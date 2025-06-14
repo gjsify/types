@@ -6991,7 +6991,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: AppInfoMonitor): void;
         }
 
         // Signal signatures
@@ -7047,7 +7047,6 @@ export namespace Gio {
      */
     class AppInfoMonitor extends GObject.Object {
         static $gtype: GObject.GType<AppInfoMonitor>;
-        declare static readonly __signalSignatures: AppInfoMonitor.SignalSignatures;
 
         // Constructors
 
@@ -7069,12 +7068,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<AppInfoMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -7100,15 +7093,15 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface LaunchFailed {
-            (startup_notify_id: string): void;
+            (_source: AppLaunchContext, startup_notify_id: string): void;
         }
 
         interface LaunchStarted {
-            (info: AppInfo, platform_data?: GLib.Variant | null): void;
+            (_source: AppLaunchContext, info: AppInfo, platform_data?: GLib.Variant | null): void;
         }
 
         interface Launched {
-            (info: AppInfo, platform_data: GLib.Variant): void;
+            (_source: AppLaunchContext, info: AppInfo, platform_data: GLib.Variant): void;
         }
 
         // Signal signatures
@@ -7130,7 +7123,6 @@ export namespace Gio {
      */
     class AppLaunchContext extends GObject.Object {
         static $gtype: GObject.GType<AppLaunchContext>;
-        declare static readonly __signalSignatures: AppLaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -7154,30 +7146,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<AppLaunchContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'launch-failed', callback: (_source: this, startup_notify_id: string) => void): number;
-        connect_after(signal: 'launch-failed', callback: (_source: this, startup_notify_id: string) => void): number;
-        emit(signal: 'launch-failed', startup_notify_id: string): void;
-        connect(
-            signal: 'launch-started',
-            callback: (_source: this, info: AppInfo, platform_data: GLib.Variant | null) => void,
-        ): number;
-        connect_after(
-            signal: 'launch-started',
-            callback: (_source: this, info: AppInfo, platform_data: GLib.Variant | null) => void,
-        ): number;
-        emit(signal: 'launch-started', info: AppInfo, platform_data?: GLib.Variant | null): void;
-        connect(
-            signal: 'launched',
-            callback: (_source: this, info: AppInfo, platform_data: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'launched',
-            callback: (_source: this, info: AppInfo, platform_data: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'launched', info: AppInfo, platform_data: GLib.Variant): void;
 
         // Virtual methods
 
@@ -7285,31 +7253,31 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: Application): void;
         }
 
         interface CommandLine {
-            (command_line: ApplicationCommandLine): number;
+            (_source: Application, command_line: ApplicationCommandLine): number;
         }
 
         interface HandleLocalOptions {
-            (options: GLib.VariantDict): number;
+            (_source: Application, options: GLib.VariantDict): number;
         }
 
         interface NameLost {
-            (): boolean;
+            (_source: Application): boolean;
         }
 
         interface Open {
-            (files: File[], hint: string): void;
+            (_source: Application, files: File[], hint: string): void;
         }
 
         interface Shutdown {
-            (): void;
+            (_source: Application): void;
         }
 
         interface Startup {
-            (): void;
+            (_source: Application): void;
         }
 
         // Signal signatures
@@ -7475,7 +7443,6 @@ export namespace Gio {
      */
     class Application extends GObject.Object implements ActionGroup, ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -7576,39 +7543,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<Application.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
-        connect(
-            signal: 'command-line',
-            callback: (_source: this, command_line: ApplicationCommandLine) => number,
-        ): number;
-        connect_after(
-            signal: 'command-line',
-            callback: (_source: this, command_line: ApplicationCommandLine) => number,
-        ): number;
-        emit(signal: 'command-line', command_line: ApplicationCommandLine): void;
-        connect(signal: 'handle-local-options', callback: (_source: this, options: GLib.VariantDict) => number): number;
-        connect_after(
-            signal: 'handle-local-options',
-            callback: (_source: this, options: GLib.VariantDict) => number,
-        ): number;
-        emit(signal: 'handle-local-options', options: GLib.VariantDict): void;
-        connect(signal: 'name-lost', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'name-lost', callback: (_source: this) => boolean): number;
-        emit(signal: 'name-lost'): void;
-        connect(signal: 'open', callback: (_source: this, files: File[], hint: string) => void): number;
-        connect_after(signal: 'open', callback: (_source: this, files: File[], hint: string) => void): number;
-        emit(signal: 'open', files: File[], hint: string): void;
-        connect(signal: 'shutdown', callback: (_source: this) => void): number;
-        connect_after(signal: 'shutdown', callback: (_source: this) => void): number;
-        emit(signal: 'shutdown'): void;
-        connect(signal: 'startup', callback: (_source: this) => void): number;
-        connect_after(signal: 'startup', callback: (_source: this) => void): number;
-        emit(signal: 'startup'): void;
 
         // Static methods
 
@@ -9557,7 +9491,6 @@ export namespace Gio {
      */
     class ApplicationCommandLine extends GObject.Object {
         static $gtype: GObject.GType<ApplicationCommandLine>;
-        declare static readonly __signalSignatures: ApplicationCommandLine.SignalSignatures;
 
         // Properties
 
@@ -9592,6 +9525,21 @@ export namespace Gio {
         constructor(properties?: Partial<ApplicationCommandLine.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ApplicationCommandLine.SignalSignatures>(
+            signal: K,
+            callback: ApplicationCommandLine.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationCommandLine.SignalSignatures>(
+            signal: K,
+            callback: ApplicationCommandLine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationCommandLine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationCommandLine.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9871,7 +9819,6 @@ export namespace Gio {
      */
     class BufferedInputStream extends FilterInputStream implements Seekable {
         static $gtype: GObject.GType<BufferedInputStream>;
-        declare static readonly __signalSignatures: BufferedInputStream.SignalSignatures;
 
         // Properties
 
@@ -9895,6 +9842,21 @@ export namespace Gio {
         static ['new'](base_stream: InputStream): BufferedInputStream;
 
         static new_sized(base_stream: InputStream, size: number): BufferedInputStream;
+
+        // Signals
+
+        connect<K extends keyof BufferedInputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferedInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferedInputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferedInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferedInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferedInputStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -10662,7 +10624,6 @@ export namespace Gio {
      */
     class BufferedOutputStream extends FilterOutputStream implements Seekable {
         static $gtype: GObject.GType<BufferedOutputStream>;
-        declare static readonly __signalSignatures: BufferedOutputStream.SignalSignatures;
 
         // Properties
 
@@ -10696,6 +10657,21 @@ export namespace Gio {
         static ['new'](base_stream: OutputStream): BufferedOutputStream;
 
         static new_sized(base_stream: OutputStream, size: number): BufferedOutputStream;
+
+        // Signals
+
+        connect<K extends keyof BufferedOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferedOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferedOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BufferedOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferedOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferedOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11284,7 +11260,6 @@ export namespace Gio {
      */
     class BytesIcon extends GObject.Object implements Icon, LoadableIcon {
         static $gtype: GObject.GType<BytesIcon>;
-        declare static readonly __signalSignatures: BytesIcon.SignalSignatures;
 
         // Properties
 
@@ -11300,6 +11275,18 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](bytes: GLib.Bytes | Uint8Array): BytesIcon;
+
+        // Signals
+
+        connect<K extends keyof BytesIcon.SignalSignatures>(signal: K, callback: BytesIcon.SignalSignatures[K]): number;
+        connect_after<K extends keyof BytesIcon.SignalSignatures>(
+            signal: K,
+            callback: BytesIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BytesIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BytesIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11886,7 +11873,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: Cancellable): void;
         }
 
         // Signal signatures
@@ -11908,7 +11895,6 @@ export namespace Gio {
      */
     class Cancellable extends GObject.Object {
         static $gtype: GObject.GType<Cancellable>;
-        declare static readonly __signalSignatures: Cancellable.SignalSignatures;
 
         // Constructors
 
@@ -11920,6 +11906,10 @@ export namespace Gio {
 
         // Signals
 
+        connect<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            callback: Cancellable.SignalSignatures[K],
+        ): number;
         connect_after<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: Cancellable.SignalSignatures[K],
@@ -11928,10 +11918,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<Cancellable.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
 
         // Static methods
 
@@ -12176,7 +12162,6 @@ export namespace Gio {
      */
     class CharsetConverter extends GObject.Object implements Converter, Initable {
         static $gtype: GObject.GType<CharsetConverter>;
-        declare static readonly __signalSignatures: CharsetConverter.SignalSignatures;
 
         // Properties
 
@@ -12214,6 +12199,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](to_charset: string, from_charset: string): CharsetConverter;
+
+        // Signals
+
+        connect<K extends keyof CharsetConverter.SignalSignatures>(
+            signal: K,
+            callback: CharsetConverter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CharsetConverter.SignalSignatures>(
+            signal: K,
+            callback: CharsetConverter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CharsetConverter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CharsetConverter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12983,7 +12983,6 @@ export namespace Gio {
      */
     class ConverterInputStream extends FilterInputStream implements PollableInputStream {
         static $gtype: GObject.GType<ConverterInputStream>;
-        declare static readonly __signalSignatures: ConverterInputStream.SignalSignatures;
 
         // Properties
 
@@ -12999,6 +12998,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: InputStream, converter: Converter): ConverterInputStream;
+
+        // Signals
+
+        connect<K extends keyof ConverterInputStream.SignalSignatures>(
+            signal: K,
+            callback: ConverterInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConverterInputStream.SignalSignatures>(
+            signal: K,
+            callback: ConverterInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConverterInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConverterInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13899,7 +13913,6 @@ export namespace Gio {
      */
     class ConverterOutputStream extends FilterOutputStream implements PollableOutputStream {
         static $gtype: GObject.GType<ConverterOutputStream>;
-        declare static readonly __signalSignatures: ConverterOutputStream.SignalSignatures;
 
         // Properties
 
@@ -13915,6 +13928,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: OutputStream, converter: Converter): ConverterOutputStream;
+
+        // Signals
+
+        connect<K extends keyof ConverterOutputStream.SignalSignatures>(
+            signal: K,
+            callback: ConverterOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConverterOutputStream.SignalSignatures>(
+            signal: K,
+            callback: ConverterOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConverterOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConverterOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15327,7 +15355,6 @@ export namespace Gio {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
-        declare static readonly __signalSignatures: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -15336,6 +15363,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](): Credentials;
+
+        // Signals
+
+        connect<K extends keyof Credentials.SignalSignatures>(
+            signal: K,
+            callback: Credentials.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Credentials.SignalSignatures>(
+            signal: K,
+            callback: Credentials.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Credentials.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Credentials.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15421,13 +15463,27 @@ export namespace Gio {
      */
     class DBusActionGroup extends GObject.Object implements ActionGroup, RemoteActionGroup {
         static $gtype: GObject.GType<DBusActionGroup>;
-        declare static readonly __signalSignatures: DBusActionGroup.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DBusActionGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DBusActionGroup.SignalSignatures>(
+            signal: K,
+            callback: DBusActionGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusActionGroup.SignalSignatures>(
+            signal: K,
+            callback: DBusActionGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusActionGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusActionGroup.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -16399,11 +16455,11 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface AllowMechanism {
-            (mechanism: string): boolean;
+            (_source: DBusAuthObserver, mechanism: string): boolean;
         }
 
         interface AuthorizeAuthenticatedPeer {
-            (stream: IOStream, credentials?: Credentials | null): boolean;
+            (_source: DBusAuthObserver, stream: IOStream, credentials?: Credentials | null): boolean;
         }
 
         // Signal signatures
@@ -16484,7 +16540,6 @@ export namespace Gio {
      */
     class DBusAuthObserver extends GObject.Object {
         static $gtype: GObject.GType<DBusAuthObserver>;
-        declare static readonly __signalSignatures: DBusAuthObserver.SignalSignatures;
 
         // Constructors
 
@@ -16508,21 +16563,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DBusAuthObserver.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'allow-mechanism', callback: (_source: this, mechanism: string) => boolean): number;
-        connect_after(signal: 'allow-mechanism', callback: (_source: this, mechanism: string) => boolean): number;
-        emit(signal: 'allow-mechanism', mechanism: string): void;
-        connect(
-            signal: 'authorize-authenticated-peer',
-            callback: (_source: this, stream: IOStream, credentials: Credentials | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'authorize-authenticated-peer',
-            callback: (_source: this, stream: IOStream, credentials: Credentials | null) => boolean,
-        ): number;
-        emit(signal: 'authorize-authenticated-peer', stream: IOStream, credentials?: Credentials | null): void;
 
         // Methods
 
@@ -16545,7 +16585,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Closed {
-            (remote_peer_vanished: boolean, error?: GLib.Error | null): void;
+            (_source: DBusConnection, remote_peer_vanished: boolean, error?: GLib.Error | null): void;
         }
 
         // Signal signatures
@@ -16630,7 +16670,6 @@ export namespace Gio {
      */
     class DBusConnection extends GObject.Object implements AsyncInitable<DBusConnection>, Initable {
         static $gtype: GObject.GType<DBusConnection>;
-        declare static readonly __signalSignatures: DBusConnection.SignalSignatures;
 
         // Properties
 
@@ -16769,18 +16808,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DBusConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'closed',
-            callback: (_source: this, remote_peer_vanished: boolean, error: GLib.Error | null) => void,
-        ): number;
-        connect_after(
-            signal: 'closed',
-            callback: (_source: this, remote_peer_vanished: boolean, error: GLib.Error | null) => void,
-        ): number;
-        emit(signal: 'closed', remote_peer_vanished: boolean, error?: GLib.Error | null): void;
 
         // Static methods
 
@@ -18908,7 +18935,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface GAuthorizeMethod {
-            (invocation: DBusMethodInvocation): boolean;
+            (_source: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean;
         }
 
         // Signal signatures
@@ -18929,7 +18956,6 @@ export namespace Gio {
      */
     abstract class DBusInterfaceSkeleton extends GObject.Object implements DBusInterface {
         static $gtype: GObject.GType<DBusInterfaceSkeleton>;
-        declare static readonly __signalSignatures: DBusInterfaceSkeleton.SignalSignatures;
 
         // Properties
 
@@ -18964,18 +18990,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DBusInterfaceSkeleton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'g-authorize-method',
-            callback: (_source: this, invocation: DBusMethodInvocation) => boolean,
-        ): number;
-        connect_after(
-            signal: 'g-authorize-method',
-            callback: (_source: this, invocation: DBusMethodInvocation) => boolean,
-        ): number;
-        emit(signal: 'g-authorize-method', invocation: DBusMethodInvocation): void;
 
         // Virtual methods
 
@@ -19584,13 +19598,27 @@ export namespace Gio {
      */
     class DBusMenuModel extends MenuModel {
         static $gtype: GObject.GType<DBusMenuModel>;
-        declare static readonly __signalSignatures: DBusMenuModel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DBusMenuModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DBusMenuModel.SignalSignatures>(
+            signal: K,
+            callback: DBusMenuModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusMenuModel.SignalSignatures>(
+            signal: K,
+            callback: DBusMenuModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusMenuModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusMenuModel.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -19627,7 +19655,6 @@ export namespace Gio {
      */
     class DBusMessage extends GObject.Object {
         static $gtype: GObject.GType<DBusMessage>;
-        declare static readonly __signalSignatures: DBusMessage.SignalSignatures;
 
         // Properties
 
@@ -19651,6 +19678,21 @@ export namespace Gio {
         ): DBusMessage;
 
         static new_signal(path: string, interface_: string, signal: string): DBusMessage;
+
+        // Signals
+
+        connect<K extends keyof DBusMessage.SignalSignatures>(
+            signal: K,
+            callback: DBusMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusMessage.SignalSignatures>(
+            signal: K,
+            callback: DBusMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -19988,13 +20030,27 @@ export namespace Gio {
      */
     class DBusMethodInvocation extends GObject.Object {
         static $gtype: GObject.GType<DBusMethodInvocation>;
-        declare static readonly __signalSignatures: DBusMethodInvocation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DBusMethodInvocation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DBusMethodInvocation.SignalSignatures>(
+            signal: K,
+            callback: DBusMethodInvocation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusMethodInvocation.SignalSignatures>(
+            signal: K,
+            callback: DBusMethodInvocation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusMethodInvocation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusMethodInvocation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20168,6 +20224,7 @@ export namespace Gio {
 
         interface InterfaceProxyPropertiesChanged {
             (
+                _source: DBusObjectManagerClient,
                 object_proxy: DBusObjectProxy,
                 interface_proxy: DBusProxy,
                 changed_properties: GLib.Variant,
@@ -20177,6 +20234,7 @@ export namespace Gio {
 
         interface InterfaceProxySignal {
             (
+                _source: DBusObjectManagerClient,
                 object_proxy: DBusObjectProxy,
                 interface_proxy: DBusProxy,
                 sender_name: string,
@@ -20301,7 +20359,6 @@ export namespace Gio {
         implements AsyncInitable<DBusObjectManagerClient>, DBusObjectManager, Initable
     {
         static $gtype: GObject.GType<DBusObjectManagerClient>;
-        declare static readonly __signalSignatures: DBusObjectManagerClient.SignalSignatures;
 
         // Properties
 
@@ -20424,66 +20481,6 @@ export namespace Gio {
         emit<K extends keyof DBusObjectManagerClient.SignalSignatures>(
             signal: K,
             ...args: Parameters<DBusObjectManagerClient.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'interface-proxy-properties-changed',
-            callback: (
-                _source: this,
-                object_proxy: DBusObjectProxy,
-                interface_proxy: DBusProxy,
-                changed_properties: GLib.Variant,
-                invalidated_properties: string[],
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'interface-proxy-properties-changed',
-            callback: (
-                _source: this,
-                object_proxy: DBusObjectProxy,
-                interface_proxy: DBusProxy,
-                changed_properties: GLib.Variant,
-                invalidated_properties: string[],
-            ) => void,
-        ): number;
-        emit(
-            signal: 'interface-proxy-properties-changed',
-            object_proxy: DBusObjectProxy,
-            interface_proxy: DBusProxy,
-            changed_properties: GLib.Variant,
-            invalidated_properties: string[],
-        ): void;
-        connect(
-            signal: 'interface-proxy-signal',
-            callback: (
-                _source: this,
-                object_proxy: DBusObjectProxy,
-                interface_proxy: DBusProxy,
-                sender_name: string,
-                signal_name: string,
-                parameters: GLib.Variant,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'interface-proxy-signal',
-            callback: (
-                _source: this,
-                object_proxy: DBusObjectProxy,
-                interface_proxy: DBusProxy,
-                sender_name: string,
-                signal_name: string,
-                parameters: GLib.Variant,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'interface-proxy-signal',
-            object_proxy: DBusObjectProxy,
-            interface_proxy: DBusProxy,
-            sender_name: string,
-            signal_name: string,
-            parameters: GLib.Variant,
         ): void;
 
         // Static methods
@@ -21434,7 +21431,6 @@ export namespace Gio {
      */
     class DBusObjectManagerServer extends GObject.Object implements DBusObjectManager {
         static $gtype: GObject.GType<DBusObjectManagerServer>;
-        declare static readonly __signalSignatures: DBusObjectManagerServer.SignalSignatures;
 
         // Properties
 
@@ -21459,6 +21455,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](object_path: string): DBusObjectManagerServer;
+
+        // Signals
+
+        connect<K extends keyof DBusObjectManagerServer.SignalSignatures>(
+            signal: K,
+            callback: DBusObjectManagerServer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusObjectManagerServer.SignalSignatures>(
+            signal: K,
+            callback: DBusObjectManagerServer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusObjectManagerServer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusObjectManagerServer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22042,7 +22053,6 @@ export namespace Gio {
      */
     class DBusObjectProxy extends GObject.Object implements DBusObject {
         static $gtype: GObject.GType<DBusObjectProxy>;
-        declare static readonly __signalSignatures: DBusObjectProxy.SignalSignatures;
 
         // Properties
 
@@ -22070,6 +22080,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](connection: DBusConnection, object_path: string): DBusObjectProxy;
+
+        // Signals
+
+        connect<K extends keyof DBusObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: DBusObjectProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: DBusObjectProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusObjectProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusObjectProxy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22566,7 +22591,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface AuthorizeMethod {
-            (_interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean;
+            (_source: DBusObjectSkeleton, _interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean;
         }
 
         // Signal signatures
@@ -22591,7 +22616,6 @@ export namespace Gio {
      */
     class DBusObjectSkeleton extends GObject.Object implements DBusObject {
         static $gtype: GObject.GType<DBusObjectSkeleton>;
-        declare static readonly __signalSignatures: DBusObjectSkeleton.SignalSignatures;
 
         // Properties
 
@@ -22628,18 +22652,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DBusObjectSkeleton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'authorize-method',
-            callback: (_source: this, _interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation) => boolean,
-        ): number;
-        connect_after(
-            signal: 'authorize-method',
-            callback: (_source: this, _interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation) => boolean,
-        ): number;
-        emit(signal: 'authorize-method', _interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): void;
 
         // Virtual methods
 
@@ -23175,11 +23187,11 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface GPropertiesChanged {
-            (changed_properties: GLib.Variant, invalidated_properties: string[]): void;
+            (_source: DBusProxy, changed_properties: GLib.Variant, invalidated_properties: string[]): void;
         }
 
         interface GSignal {
-            (sender_name: string | null, signal_name: string, parameters: GLib.Variant): void;
+            (_source: DBusProxy, sender_name: string | null, signal_name: string, parameters: GLib.Variant): void;
         }
 
         // Signal signatures
@@ -23268,7 +23280,6 @@ export namespace Gio {
      */
     class DBusProxy extends GObject.Object implements AsyncInitable<DBusProxy>, DBusInterface, Initable {
         static $gtype: GObject.GType<DBusProxy>;
-        declare static readonly __signalSignatures: DBusProxy.SignalSignatures;
 
         [key: string]: any;
 
@@ -23465,37 +23476,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DBusProxy.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'g-properties-changed',
-            callback: (_source: this, changed_properties: GLib.Variant, invalidated_properties: string[]) => void,
-        ): number;
-        connect_after(
-            signal: 'g-properties-changed',
-            callback: (_source: this, changed_properties: GLib.Variant, invalidated_properties: string[]) => void,
-        ): number;
-        emit(signal: 'g-properties-changed', changed_properties: GLib.Variant, invalidated_properties: string[]): void;
-        connect(
-            signal: 'g-signal',
-            callback: (
-                _source: this,
-                sender_name: string | null,
-                signal_name: string,
-                parameters: GLib.Variant,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'g-signal',
-            callback: (
-                _source: this,
-                sender_name: string | null,
-                signal_name: string,
-                parameters: GLib.Variant,
-            ) => void,
-        ): number;
-        emit(signal: 'g-signal', sender_name: string | null, signal_name: string, parameters: GLib.Variant): void;
 
         // Static methods
 
@@ -24812,7 +24792,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface NewConnection {
-            (connection: DBusConnection): boolean;
+            (_source: DBusServer, connection: DBusConnection): boolean;
         }
 
         // Signal signatures
@@ -24858,7 +24838,6 @@ export namespace Gio {
      */
     class DBusServer extends GObject.Object implements Initable {
         static $gtype: GObject.GType<DBusServer>;
-        declare static readonly __signalSignatures: DBusServer.SignalSignatures;
 
         // Properties
 
@@ -24925,15 +24904,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DBusServer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'new-connection', callback: (_source: this, connection: DBusConnection) => boolean): number;
-        connect_after(
-            signal: 'new-connection',
-            callback: (_source: this, connection: DBusConnection) => boolean,
-        ): number;
-        emit(signal: 'new-connection', connection: DBusConnection): void;
 
         // Methods
 
@@ -25517,7 +25487,6 @@ export namespace Gio {
      */
     class DataInputStream extends BufferedInputStream implements Seekable {
         static $gtype: GObject.GType<DataInputStream>;
-        declare static readonly __signalSignatures: DataInputStream.SignalSignatures;
 
         // Properties
 
@@ -25555,6 +25524,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: InputStream): DataInputStream;
+
+        // Signals
+
+        connect<K extends keyof DataInputStream.SignalSignatures>(
+            signal: K,
+            callback: DataInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataInputStream.SignalSignatures>(
+            signal: K,
+            callback: DataInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26517,7 +26501,6 @@ export namespace Gio {
      */
     class DataOutputStream extends FilterOutputStream implements Seekable {
         static $gtype: GObject.GType<DataOutputStream>;
-        declare static readonly __signalSignatures: DataOutputStream.SignalSignatures;
 
         // Properties
 
@@ -26541,6 +26524,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: OutputStream): DataOutputStream;
+
+        // Signals
+
+        connect<K extends keyof DataOutputStream.SignalSignatures>(
+            signal: K,
+            callback: DataOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataOutputStream.SignalSignatures>(
+            signal: K,
+            callback: DataOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27156,7 +27154,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Authorize {
-            (invocation: DBusMethodInvocation): boolean;
+            (_source: DebugControllerDBus, invocation: DBusMethodInvocation): boolean;
         }
 
         // Signal signatures
@@ -27288,7 +27286,6 @@ export namespace Gio {
      */
     class DebugControllerDBus extends GObject.Object implements DebugController, Initable {
         static $gtype: GObject.GType<DebugControllerDBus>;
-        declare static readonly __signalSignatures: DebugControllerDBus.SignalSignatures;
 
         // Properties
 
@@ -27323,15 +27320,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<DebugControllerDBus.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authorize', callback: (_source: this, invocation: DBusMethodInvocation) => boolean): number;
-        connect_after(
-            signal: 'authorize',
-            callback: (_source: this, invocation: DBusMethodInvocation) => boolean,
-        ): number;
-        emit(signal: 'authorize', invocation: DBusMethodInvocation): void;
 
         // Virtual methods
 
@@ -27935,7 +27923,6 @@ export namespace Gio {
      */
     class DesktopAppInfo extends GObject.Object implements AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
-        declare static readonly __signalSignatures: DesktopAppInfo.SignalSignatures;
 
         // Properties
 
@@ -27955,6 +27942,21 @@ export namespace Gio {
         static new_from_filename(filename: string): DesktopAppInfo;
 
         static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
+
+        // Signals
+
+        connect<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            callback: DesktopAppInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            callback: DesktopAppInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -29112,7 +29114,6 @@ export namespace Gio {
      */
     class Emblem extends GObject.Object implements Icon {
         static $gtype: GObject.GType<Emblem>;
-        declare static readonly __signalSignatures: Emblem.SignalSignatures;
 
         // Properties
 
@@ -29134,6 +29135,12 @@ export namespace Gio {
         static ['new'](icon: Icon): Emblem;
 
         static new_with_origin(icon: Icon, origin: EmblemOrigin): Emblem;
+
+        // Signals
+
+        connect<K extends keyof Emblem.SignalSignatures>(signal: K, callback: Emblem.SignalSignatures[K]): number;
+        connect_after<K extends keyof Emblem.SignalSignatures>(signal: K, callback: Emblem.SignalSignatures[K]): number;
+        emit<K extends keyof Emblem.SignalSignatures>(signal: K, ...args: Parameters<Emblem.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -29673,7 +29680,6 @@ export namespace Gio {
      */
     class EmblemedIcon extends GObject.Object implements Icon {
         static $gtype: GObject.GType<EmblemedIcon>;
-        declare static readonly __signalSignatures: EmblemedIcon.SignalSignatures;
 
         // Properties
 
@@ -29689,6 +29695,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](icon: Icon, emblem?: Emblem | null): EmblemedIcon;
+
+        // Signals
+
+        connect<K extends keyof EmblemedIcon.SignalSignatures>(
+            signal: K,
+            callback: EmblemedIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EmblemedIcon.SignalSignatures>(
+            signal: K,
+            callback: EmblemedIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EmblemedIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EmblemedIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -30257,7 +30278,6 @@ export namespace Gio {
      */
     class FileEnumerator extends GObject.Object {
         static $gtype: GObject.GType<FileEnumerator>;
-        declare static readonly __signalSignatures: FileEnumerator.SignalSignatures;
 
         // Properties
 
@@ -30316,6 +30336,21 @@ export namespace Gio {
         constructor(properties?: Partial<FileEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileEnumerator.SignalSignatures>(
+            signal: K,
+            callback: FileEnumerator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileEnumerator.SignalSignatures>(
+            signal: K,
+            callback: FileEnumerator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileEnumerator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileEnumerator.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -30888,13 +30923,27 @@ export namespace Gio {
      */
     class FileIOStream extends IOStream implements Seekable {
         static $gtype: GObject.GType<FileIOStream>;
-        declare static readonly __signalSignatures: FileIOStream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FileIOStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileIOStream.SignalSignatures>(
+            signal: K,
+            callback: FileIOStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileIOStream.SignalSignatures>(
+            signal: K,
+            callback: FileIOStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileIOStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileIOStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -31560,7 +31609,6 @@ export namespace Gio {
      */
     class FileIcon extends GObject.Object implements Icon, LoadableIcon {
         static $gtype: GObject.GType<FileIcon>;
-        declare static readonly __signalSignatures: FileIcon.SignalSignatures;
 
         // Properties
 
@@ -31576,6 +31624,18 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](file: File): FileIcon;
+
+        // Signals
+
+        connect<K extends keyof FileIcon.SignalSignatures>(signal: K, callback: FileIcon.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileIcon.SignalSignatures>(
+            signal: K,
+            callback: FileIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32207,7 +32267,6 @@ export namespace Gio {
      */
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
-        declare static readonly __signalSignatures: FileInfo.SignalSignatures;
 
         // Constructors
 
@@ -32216,6 +32275,18 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](): FileInfo;
+
+        // Signals
+
+        connect<K extends keyof FileInfo.SignalSignatures>(signal: K, callback: FileInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileInfo.SignalSignatures>(
+            signal: K,
+            callback: FileInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32789,13 +32860,27 @@ export namespace Gio {
      */
     class FileInputStream extends InputStream implements Seekable {
         static $gtype: GObject.GType<FileInputStream>;
-        declare static readonly __signalSignatures: FileInputStream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FileInputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileInputStream.SignalSignatures>(
+            signal: K,
+            callback: FileInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileInputStream.SignalSignatures>(
+            signal: K,
+            callback: FileInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileInputStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -33441,7 +33526,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Changed {
-            (file: File, other_file: File | null, event_type: FileMonitorEvent): void;
+            (_source: FileMonitor, file: File, other_file: File | null, event_type: FileMonitorEvent): void;
         }
 
         // Signal signatures
@@ -33475,7 +33560,6 @@ export namespace Gio {
      */
     abstract class FileMonitor extends GObject.Object {
         static $gtype: GObject.GType<FileMonitor>;
-        declare static readonly __signalSignatures: FileMonitor.SignalSignatures;
 
         // Properties
 
@@ -33514,18 +33598,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<FileMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'changed',
-            callback: (_source: this, file: File, other_file: File | null, event_type: FileMonitorEvent) => void,
-        ): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, file: File, other_file: File | null, event_type: FileMonitorEvent) => void,
-        ): number;
-        emit(signal: 'changed', file: File, other_file: File | null, event_type: FileMonitorEvent): void;
 
         // Virtual methods
 
@@ -33595,13 +33667,27 @@ export namespace Gio {
      */
     class FileOutputStream extends OutputStream implements Seekable {
         static $gtype: GObject.GType<FileOutputStream>;
-        declare static readonly __signalSignatures: FileOutputStream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FileOutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FileOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FileOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -34249,7 +34335,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface GotCompletionData {
-            (): void;
+            (_source: FilenameCompleter): void;
         }
 
         // Signal signatures
@@ -34269,7 +34355,6 @@ export namespace Gio {
      */
     class FilenameCompleter extends GObject.Object {
         static $gtype: GObject.GType<FilenameCompleter>;
-        declare static readonly __signalSignatures: FilenameCompleter.SignalSignatures;
 
         // Constructors
 
@@ -34293,12 +34378,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<FilenameCompleter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'got-completion-data', callback: (_source: this) => void): number;
-        connect_after(signal: 'got-completion-data', callback: (_source: this) => void): number;
-        emit(signal: 'got-completion-data'): void;
 
         // Virtual methods
 
@@ -34348,7 +34427,6 @@ export namespace Gio {
      */
     abstract class FilterInputStream extends InputStream {
         static $gtype: GObject.GType<FilterInputStream>;
-        declare static readonly __signalSignatures: FilterInputStream.SignalSignatures;
 
         // Properties
 
@@ -34376,6 +34454,21 @@ export namespace Gio {
         constructor(properties?: Partial<FilterInputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FilterInputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterInputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34419,7 +34512,6 @@ export namespace Gio {
      */
     abstract class FilterOutputStream extends OutputStream {
         static $gtype: GObject.GType<FilterOutputStream>;
-        declare static readonly __signalSignatures: FilterOutputStream.SignalSignatures;
 
         // Properties
 
@@ -34445,6 +34537,21 @@ export namespace Gio {
         constructor(properties?: Partial<FilterOutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FilterOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34482,7 +34589,6 @@ export namespace Gio {
      */
     class IOModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<IOModule>;
-        declare static readonly __signalSignatures: IOModule.SignalSignatures;
 
         // Constructors
 
@@ -34491,6 +34597,18 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): IOModule;
+
+        // Signals
+
+        connect<K extends keyof IOModule.SignalSignatures>(signal: K, callback: IOModule.SignalSignatures[K]): number;
+        connect_after<K extends keyof IOModule.SignalSignatures>(
+            signal: K,
+            callback: IOModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IOModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IOModule.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -35074,7 +35192,6 @@ export namespace Gio {
      */
     abstract class IOStream extends GObject.Object {
         static $gtype: GObject.GType<IOStream>;
-        declare static readonly __signalSignatures: IOStream.SignalSignatures;
 
         // Properties
 
@@ -35104,6 +35221,18 @@ export namespace Gio {
         constructor(properties?: Partial<IOStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IOStream.SignalSignatures>(signal: K, callback: IOStream.SignalSignatures[K]): number;
+        connect_after<K extends keyof IOStream.SignalSignatures>(
+            signal: K,
+            callback: IOStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IOStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IOStream.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -35355,7 +35484,6 @@ export namespace Gio {
      */
     class InetAddress extends GObject.Object {
         static $gtype: GObject.GType<InetAddress>;
-        declare static readonly __signalSignatures: InetAddress.SignalSignatures;
 
         // Properties
 
@@ -35482,6 +35610,21 @@ export namespace Gio {
 
         static new_loopback(family: SocketFamily): InetAddress;
 
+        // Signals
+
+        connect<K extends keyof InetAddress.SignalSignatures>(
+            signal: K,
+            callback: InetAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InetAddress.SignalSignatures>(
+            signal: K,
+            callback: InetAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InetAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InetAddress.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         /**
@@ -35591,7 +35734,6 @@ export namespace Gio {
      */
     class InetAddressMask extends GObject.Object implements Initable {
         static $gtype: GObject.GType<InetAddressMask>;
-        declare static readonly __signalSignatures: InetAddressMask.SignalSignatures;
 
         // Properties
 
@@ -35619,6 +35761,21 @@ export namespace Gio {
         static ['new'](addr: InetAddress, length: number): InetAddressMask;
 
         static new_from_string(mask_string: string): InetAddressMask;
+
+        // Signals
+
+        connect<K extends keyof InetAddressMask.SignalSignatures>(
+            signal: K,
+            callback: InetAddressMask.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InetAddressMask.SignalSignatures>(
+            signal: K,
+            callback: InetAddressMask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InetAddressMask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InetAddressMask.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36206,7 +36363,6 @@ export namespace Gio {
      */
     class InetSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<InetSocketAddress>;
-        declare static readonly __signalSignatures: InetSocketAddress.SignalSignatures;
 
         // Properties
 
@@ -36240,6 +36396,21 @@ export namespace Gio {
         static ['new'](address: InetAddress, port: number): InetSocketAddress;
 
         static new_from_string(address: string, port: number): InetSocketAddress;
+
+        // Signals
+
+        connect<K extends keyof InetSocketAddress.SignalSignatures>(
+            signal: K,
+            callback: InetSocketAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InetSocketAddress.SignalSignatures>(
+            signal: K,
+            callback: InetSocketAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InetSocketAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InetSocketAddress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36785,13 +36956,27 @@ export namespace Gio {
      */
     abstract class InputStream extends GObject.Object {
         static $gtype: GObject.GType<InputStream>;
-        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<InputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -37576,7 +37761,6 @@ export namespace Gio {
      */
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements ListModel<A> {
         static $gtype: GObject.GType<ListStore>;
-        declare static readonly __signalSignatures: ListStore.SignalSignatures;
 
         // Properties
 
@@ -37610,6 +37794,18 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](item_type: GObject.GType): ListStore;
+
+        // Signals
+
+        connect<K extends keyof ListStore.SignalSignatures>(signal: K, callback: ListStore.SignalSignatures[K]): number;
+        connect_after<K extends keyof ListStore.SignalSignatures>(
+            signal: K,
+            callback: ListStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -38282,7 +38478,6 @@ export namespace Gio {
      */
     class MemoryInputStream extends InputStream implements PollableInputStream, Seekable {
         static $gtype: GObject.GType<MemoryInputStream>;
-        declare static readonly __signalSignatures: MemoryInputStream.SignalSignatures;
 
         // Constructors
 
@@ -38295,6 +38490,21 @@ export namespace Gio {
         static new_from_bytes(bytes: GLib.Bytes | Uint8Array): MemoryInputStream;
 
         static new_from_data(data: Uint8Array | string, destroy?: GLib.DestroyNotify | null): MemoryInputStream;
+
+        // Signals
+
+        connect<K extends keyof MemoryInputStream.SignalSignatures>(
+            signal: K,
+            callback: MemoryInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MemoryInputStream.SignalSignatures>(
+            signal: K,
+            callback: MemoryInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MemoryInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MemoryInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -39745,7 +39955,6 @@ export namespace Gio {
      */
     class MemoryOutputStream extends OutputStream implements PollableOutputStream, Seekable {
         static $gtype: GObject.GType<MemoryOutputStream>;
-        declare static readonly __signalSignatures: MemoryOutputStream.SignalSignatures;
 
         // Properties
 
@@ -39773,6 +39982,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static new_resizable(): MemoryOutputStream;
+
+        // Signals
+
+        connect<K extends keyof MemoryOutputStream.SignalSignatures>(
+            signal: K,
+            callback: MemoryOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MemoryOutputStream.SignalSignatures>(
+            signal: K,
+            callback: MemoryOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MemoryOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MemoryOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -41727,7 +41951,6 @@ export namespace Gio {
      */
     class Menu extends MenuModel {
         static $gtype: GObject.GType<Menu>;
-        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -41736,6 +41959,12 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](): Menu;
+
+        // Signals
+
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -41896,13 +42125,27 @@ export namespace Gio {
      */
     abstract class MenuAttributeIter extends GObject.Object {
         static $gtype: GObject.GType<MenuAttributeIter>;
-        declare static readonly __signalSignatures: MenuAttributeIter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MenuAttributeIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MenuAttributeIter.SignalSignatures>(
+            signal: K,
+            callback: MenuAttributeIter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuAttributeIter.SignalSignatures>(
+            signal: K,
+            callback: MenuAttributeIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuAttributeIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuAttributeIter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -41991,7 +42234,6 @@ export namespace Gio {
      */
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
-        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -42006,6 +42248,18 @@ export namespace Gio {
         static new_section(label: string | null, section: MenuModel): MenuItem;
 
         static new_submenu(label: string | null, submenu: MenuModel): MenuItem;
+
+        // Signals
+
+        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: MenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -42184,13 +42438,27 @@ export namespace Gio {
      */
     abstract class MenuLinkIter extends GObject.Object {
         static $gtype: GObject.GType<MenuLinkIter>;
-        declare static readonly __signalSignatures: MenuLinkIter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MenuLinkIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MenuLinkIter.SignalSignatures>(
+            signal: K,
+            callback: MenuLinkIter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuLinkIter.SignalSignatures>(
+            signal: K,
+            callback: MenuLinkIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuLinkIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuLinkIter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -42264,7 +42532,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface ItemsChanged {
-            (position: number, removed: number, added: number): void;
+            (_source: MenuModel, position: number, removed: number, added: number): void;
         }
 
         // Signal signatures
@@ -42400,7 +42668,6 @@ export namespace Gio {
      */
     abstract class MenuModel extends GObject.Object {
         static $gtype: GObject.GType<MenuModel>;
-        declare static readonly __signalSignatures: MenuModel.SignalSignatures;
 
         // Constructors
 
@@ -42419,18 +42686,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<MenuModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'items-changed',
-            callback: (_source: this, position: number, removed: number, added: number) => void,
-        ): number;
-        connect_after(
-            signal: 'items-changed',
-            callback: (_source: this, position: number, removed: number, added: number) => void,
-        ): number;
-        emit(signal: 'items-changed', position: number, removed: number, added: number): void;
 
         // Virtual methods
 
@@ -42596,27 +42851,33 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Aborted {
-            (): void;
+            (_source: MountOperation): void;
         }
 
         interface AskPassword {
-            (message: string, default_user: string, default_domain: string, flags: AskPasswordFlags): void;
+            (
+                _source: MountOperation,
+                message: string,
+                default_user: string,
+                default_domain: string,
+                flags: AskPasswordFlags,
+            ): void;
         }
 
         interface AskQuestion {
-            (message: string, choices: string[]): void;
+            (_source: MountOperation, message: string, choices: string[]): void;
         }
 
         interface Reply {
-            (result: MountOperationResult): void;
+            (_source: MountOperation, result: MountOperationResult): void;
         }
 
         interface ShowProcesses {
-            (message: string, processes: GLib.Pid[], choices: string[]): void;
+            (_source: MountOperation, message: string, processes: GLib.Pid[], choices: string[]): void;
         }
 
         interface ShowUnmountProgress {
-            (message: string, time_left: number, bytes_left: number): void;
+            (_source: MountOperation, message: string, time_left: number, bytes_left: number): void;
         }
 
         // Signal signatures
@@ -42673,7 +42934,6 @@ export namespace Gio {
      */
     class MountOperation extends GObject.Object {
         static $gtype: GObject.GType<MountOperation>;
-        declare static readonly __signalSignatures: MountOperation.SignalSignatures;
 
         // Properties
 
@@ -42774,66 +43034,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<MountOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'aborted', callback: (_source: this) => void): number;
-        connect_after(signal: 'aborted', callback: (_source: this) => void): number;
-        emit(signal: 'aborted'): void;
-        connect(
-            signal: 'ask-password',
-            callback: (
-                _source: this,
-                message: string,
-                default_user: string,
-                default_domain: string,
-                flags: AskPasswordFlags,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'ask-password',
-            callback: (
-                _source: this,
-                message: string,
-                default_user: string,
-                default_domain: string,
-                flags: AskPasswordFlags,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'ask-password',
-            message: string,
-            default_user: string,
-            default_domain: string,
-            flags: AskPasswordFlags,
-        ): void;
-        connect(signal: 'ask-question', callback: (_source: this, message: string, choices: string[]) => void): number;
-        connect_after(
-            signal: 'ask-question',
-            callback: (_source: this, message: string, choices: string[]) => void,
-        ): number;
-        emit(signal: 'ask-question', message: string, choices: string[]): void;
-        connect(signal: 'reply', callback: (_source: this, result: MountOperationResult) => void): number;
-        connect_after(signal: 'reply', callback: (_source: this, result: MountOperationResult) => void): number;
-        emit(signal: 'reply', result: MountOperationResult): void;
-        connect(
-            signal: 'show-processes',
-            callback: (_source: this, message: string, processes: GLib.Pid[], choices: string[]) => void,
-        ): number;
-        connect_after(
-            signal: 'show-processes',
-            callback: (_source: this, message: string, processes: GLib.Pid[], choices: string[]) => void,
-        ): number;
-        emit(signal: 'show-processes', message: string, processes: GLib.Pid[], choices: string[]): void;
-        connect(
-            signal: 'show-unmount-progress',
-            callback: (_source: this, message: string, time_left: number, bytes_left: number) => void,
-        ): number;
-        connect_after(
-            signal: 'show-unmount-progress',
-            callback: (_source: this, message: string, time_left: number, bytes_left: number) => void,
-        ): number;
-        emit(signal: 'show-unmount-progress', message: string, time_left: number, bytes_left: number): void;
 
         // Virtual methods
 
@@ -42983,7 +43183,6 @@ export namespace Gio {
      */
     class NativeSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<NativeSocketAddress>;
-        declare static readonly __signalSignatures: NativeSocketAddress.SignalSignatures;
 
         // Constructors
 
@@ -42992,6 +43191,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](_native: any | null, len: number): NativeSocketAddress;
+
+        // Signals
+
+        connect<K extends keyof NativeSocketAddress.SignalSignatures>(
+            signal: K,
+            callback: NativeSocketAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NativeSocketAddress.SignalSignatures>(
+            signal: K,
+            callback: NativeSocketAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NativeSocketAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NativeSocketAddress.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -43497,13 +43711,27 @@ export namespace Gio {
 
     abstract class NativeVolumeMonitor extends VolumeMonitor {
         static $gtype: GObject.GType<NativeVolumeMonitor>;
-        declare static readonly __signalSignatures: NativeVolumeMonitor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<NativeVolumeMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NativeVolumeMonitor.SignalSignatures>(
+            signal: K,
+            callback: NativeVolumeMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NativeVolumeMonitor.SignalSignatures>(
+            signal: K,
+            callback: NativeVolumeMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NativeVolumeMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NativeVolumeMonitor.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NetworkAddress {
@@ -43533,7 +43761,6 @@ export namespace Gio {
      */
     class NetworkAddress extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<NetworkAddress>;
-        declare static readonly __signalSignatures: NetworkAddress.SignalSignatures;
 
         // Properties
 
@@ -43559,6 +43786,21 @@ export namespace Gio {
         static ['new'](hostname: string, port: number): NetworkAddress;
 
         static new_loopback(port: number): NetworkAddress;
+
+        // Signals
+
+        connect<K extends keyof NetworkAddress.SignalSignatures>(
+            signal: K,
+            callback: NetworkAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkAddress.SignalSignatures>(
+            signal: K,
+            callback: NetworkAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkAddress.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -44139,7 +44381,6 @@ export namespace Gio {
      */
     class NetworkService extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<NetworkService>;
-        declare static readonly __signalSignatures: NetworkService.SignalSignatures;
 
         // Properties
 
@@ -44168,6 +44409,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](service: string, protocol: string, domain: string): NetworkService;
+
+        // Signals
+
+        connect<K extends keyof NetworkService.SignalSignatures>(
+            signal: K,
+            callback: NetworkService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkService.SignalSignatures>(
+            signal: K,
+            callback: NetworkService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44751,7 +45007,6 @@ export namespace Gio {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
-        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Constructors
 
@@ -44760,6 +45015,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](title: string): Notification;
+
+        // Signals
+
+        connect<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notification.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44884,13 +45154,27 @@ export namespace Gio {
      */
     abstract class OutputStream extends GObject.Object {
         static $gtype: GObject.GType<OutputStream>;
-        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -46110,7 +46394,6 @@ export namespace Gio {
      */
     abstract class Permission extends GObject.Object {
         static $gtype: GObject.GType<Permission>;
-        declare static readonly __signalSignatures: Permission.SignalSignatures;
 
         // Properties
 
@@ -46145,6 +46428,21 @@ export namespace Gio {
         constructor(properties?: Partial<Permission.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Permission.SignalSignatures>(
+            signal: K,
+            callback: Permission.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Permission.SignalSignatures>(
+            signal: K,
+            callback: Permission.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Permission.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Permission.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -46455,7 +46753,6 @@ export namespace Gio {
      */
     class PropertyAction extends GObject.Object implements Action {
         static $gtype: GObject.GType<PropertyAction>;
-        declare static readonly __signalSignatures: PropertyAction.SignalSignatures;
 
         // Properties
 
@@ -46533,6 +46830,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](name: string, object: GObject.Object, property_name: string): PropertyAction;
+
+        // Signals
+
+        connect<K extends keyof PropertyAction.SignalSignatures>(
+            signal: K,
+            callback: PropertyAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyAction.SignalSignatures>(
+            signal: K,
+            callback: PropertyAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyAction.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -47197,7 +47509,6 @@ export namespace Gio {
      */
     class ProxyAddress extends InetSocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<ProxyAddress>;
-        declare static readonly __signalSignatures: ProxyAddress.SignalSignatures;
 
         // Properties
 
@@ -47263,6 +47574,21 @@ export namespace Gio {
         // Conflicted with Gio.InetSocketAddress.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ProxyAddress.SignalSignatures>(
+            signal: K,
+            callback: ProxyAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyAddress.SignalSignatures>(
+            signal: K,
+            callback: ProxyAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyAddress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -47779,7 +48105,6 @@ export namespace Gio {
      */
     class ProxyAddressEnumerator extends SocketAddressEnumerator {
         static $gtype: GObject.GType<ProxyAddressEnumerator>;
-        declare static readonly __signalSignatures: ProxyAddressEnumerator.SignalSignatures;
 
         // Properties
 
@@ -47817,13 +48142,28 @@ export namespace Gio {
         constructor(properties?: Partial<ProxyAddressEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyAddressEnumerator.SignalSignatures>(
+            signal: K,
+            callback: ProxyAddressEnumerator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyAddressEnumerator.SignalSignatures>(
+            signal: K,
+            callback: ProxyAddressEnumerator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyAddressEnumerator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyAddressEnumerator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Resolver {
         // Signal callback interfaces
 
         interface Reload {
-            (): void;
+            (_source: Resolver): void;
         }
 
         // Signal signatures
@@ -47861,7 +48201,6 @@ export namespace Gio {
      */
     abstract class Resolver extends GObject.Object {
         static $gtype: GObject.GType<Resolver>;
-        declare static readonly __signalSignatures: Resolver.SignalSignatures;
 
         // Properties
 
@@ -47897,12 +48236,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<Resolver.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'reload', callback: (_source: this) => void): number;
-        connect_after(signal: 'reload', callback: (_source: this) => void): number;
-        emit(signal: 'reload'): void;
 
         // Static methods
 
@@ -48526,19 +48859,19 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface ChangeEvent {
-            (keys?: GLib.Quark[] | null): boolean;
+            (_source: Settings, keys?: GLib.Quark[] | null): boolean;
         }
 
         interface Changed {
-            (key: string): void;
+            (_source: Settings, key: string): void;
         }
 
         interface WritableChangeEvent {
-            (key: number): boolean;
+            (_source: Settings, key: number): boolean;
         }
 
         interface WritableChanged {
-            (key: string): void;
+            (_source: Settings, key: string): void;
         }
 
         // Signal signatures
@@ -48951,7 +49284,6 @@ export namespace Gio {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -49064,21 +49396,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<Settings.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'change-event', callback: (_source: this, keys: GLib.Quark[] | null) => boolean): number;
-        connect_after(signal: 'change-event', callback: (_source: this, keys: GLib.Quark[] | null) => boolean): number;
-        emit(signal: 'change-event', keys?: GLib.Quark[] | null): void;
-        connect(signal: 'changed', callback: (_source: this, key: string) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, key: string) => void): number;
-        emit(signal: 'changed', key: string): void;
-        connect(signal: 'writable-change-event', callback: (_source: this, key: number) => boolean): number;
-        connect_after(signal: 'writable-change-event', callback: (_source: this, key: number) => boolean): number;
-        emit(signal: 'writable-change-event', key: number): void;
-        connect(signal: 'writable-changed', callback: (_source: this, key: string) => void): number;
-        connect_after(signal: 'writable-changed', callback: (_source: this, key: string) => void): number;
-        emit(signal: 'writable-changed', key: string): void;
 
         // Static methods
 
@@ -49713,13 +50030,27 @@ export namespace Gio {
      */
     abstract class SettingsBackend extends GObject.Object {
         static $gtype: GObject.GType<SettingsBackend>;
-        declare static readonly __signalSignatures: SettingsBackend.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SettingsBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SettingsBackend.SignalSignatures>(
+            signal: K,
+            callback: SettingsBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsBackend.SignalSignatures>(
+            signal: K,
+            callback: SettingsBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsBackend.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -49910,11 +50241,11 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Activate {
-            (parameter?: GLib.Variant | null): void;
+            (_source: SimpleAction, parameter?: GLib.Variant | null): void;
         }
 
         interface ChangeState {
-            (value?: GLib.Variant | null): void;
+            (_source: SimpleAction, value?: GLib.Variant | null): void;
         }
 
         // Signal signatures
@@ -49943,7 +50274,6 @@ export namespace Gio {
      */
     class SimpleAction extends GObject.Object implements Action {
         static $gtype: GObject.GType<SimpleAction>;
-        declare static readonly __signalSignatures: SimpleAction.SignalSignatures;
 
         // Properties
 
@@ -50010,15 +50340,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<SimpleAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this, parameter: GLib.Variant | null) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this, parameter: GLib.Variant | null) => void): number;
-        emit(signal: 'activate', parameter?: GLib.Variant | null): void;
-        connect(signal: 'change-state', callback: (_source: this, value: GLib.Variant | null) => void): number;
-        connect_after(signal: 'change-state', callback: (_source: this, value: GLib.Variant | null) => void): number;
-        emit(signal: 'change-state', value?: GLib.Variant | null): void;
 
         // Methods
 
@@ -50713,7 +51034,6 @@ export namespace Gio {
      */
     class SimpleActionGroup extends GObject.Object implements ActionGroup, ActionMap {
         static $gtype: GObject.GType<SimpleActionGroup>;
-        declare static readonly __signalSignatures: SimpleActionGroup.SignalSignatures;
 
         // Constructors
 
@@ -50722,6 +51042,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](): SimpleActionGroup;
+
+        // Signals
+
+        connect<K extends keyof SimpleActionGroup.SignalSignatures>(
+            signal: K,
+            callback: SimpleActionGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleActionGroup.SignalSignatures>(
+            signal: K,
+            callback: SimpleActionGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleActionGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleActionGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -51898,7 +52233,6 @@ export namespace Gio {
      */
     class SimpleAsyncResult extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<SimpleAsyncResult>;
-        declare static readonly __signalSignatures: SimpleAsyncResult.SignalSignatures;
 
         // Constructors
 
@@ -51917,6 +52251,21 @@ export namespace Gio {
             callback: AsyncReadyCallback | null,
             error: GLib.Error,
         ): SimpleAsyncResult;
+
+        // Signals
+
+        connect<K extends keyof SimpleAsyncResult.SignalSignatures>(
+            signal: K,
+            callback: SimpleAsyncResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleAsyncResult.SignalSignatures>(
+            signal: K,
+            callback: SimpleAsyncResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleAsyncResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleAsyncResult.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -52541,7 +52890,6 @@ export namespace Gio {
      */
     class SimpleIOStream extends IOStream {
         static $gtype: GObject.GType<SimpleIOStream>;
-        declare static readonly __signalSignatures: SimpleIOStream.SignalSignatures;
 
         // Properties
 
@@ -52569,6 +52917,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](input_stream: InputStream, output_stream: OutputStream): SimpleIOStream;
+
+        // Signals
+
+        connect<K extends keyof SimpleIOStream.SignalSignatures>(
+            signal: K,
+            callback: SimpleIOStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleIOStream.SignalSignatures>(
+            signal: K,
+            callback: SimpleIOStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleIOStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleIOStream.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SimplePermission {
@@ -52590,7 +52953,6 @@ export namespace Gio {
      */
     class SimplePermission extends Permission {
         static $gtype: GObject.GType<SimplePermission>;
-        declare static readonly __signalSignatures: SimplePermission.SignalSignatures;
 
         // Constructors
 
@@ -52599,6 +52961,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](allowed: boolean): SimplePermission;
+
+        // Signals
+
+        connect<K extends keyof SimplePermission.SignalSignatures>(
+            signal: K,
+            callback: SimplePermission.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimplePermission.SignalSignatures>(
+            signal: K,
+            callback: SimplePermission.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimplePermission.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimplePermission.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SimpleProxyResolver {
@@ -52627,7 +53004,6 @@ export namespace Gio {
      */
     class SimpleProxyResolver extends GObject.Object implements ProxyResolver {
         static $gtype: GObject.GType<SimpleProxyResolver>;
-        declare static readonly __signalSignatures: SimpleProxyResolver.SignalSignatures;
 
         // Properties
 
@@ -52735,6 +53111,21 @@ export namespace Gio {
         constructor(properties?: Partial<SimpleProxyResolver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SimpleProxyResolver.SignalSignatures>(
+            signal: K,
+            callback: SimpleProxyResolver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleProxyResolver.SignalSignatures>(
+            signal: K,
+            callback: SimpleProxyResolver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleProxyResolver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleProxyResolver.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -53439,7 +53830,6 @@ export namespace Gio {
      */
     class Socket extends GObject.Object implements DatagramBased, Initable {
         static $gtype: GObject.GType<Socket>;
-        declare static readonly __signalSignatures: Socket.SignalSignatures;
 
         // Properties
 
@@ -53540,6 +53930,12 @@ export namespace Gio {
         static ['new'](family: SocketFamily, type: SocketType, protocol: SocketProtocol): Socket;
 
         static new_from_fd(fd: number): Socket;
+
+        // Signals
+
+        connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -55256,7 +55652,6 @@ export namespace Gio {
      */
     abstract class SocketAddress extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<SocketAddress>;
-        declare static readonly __signalSignatures: SocketAddress.SignalSignatures;
 
         // Properties
 
@@ -55272,6 +55667,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static new_from_native(_native: any, len: number): SocketAddress;
+
+        // Signals
+
+        connect<K extends keyof SocketAddress.SignalSignatures>(
+            signal: K,
+            callback: SocketAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SocketAddress.SignalSignatures>(
+            signal: K,
+            callback: SocketAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SocketAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SocketAddress.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -55845,13 +56255,27 @@ export namespace Gio {
      */
     abstract class SocketAddressEnumerator extends GObject.Object {
         static $gtype: GObject.GType<SocketAddressEnumerator>;
-        declare static readonly __signalSignatures: SocketAddressEnumerator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SocketAddressEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SocketAddressEnumerator.SignalSignatures>(
+            signal: K,
+            callback: SocketAddressEnumerator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SocketAddressEnumerator.SignalSignatures>(
+            signal: K,
+            callback: SocketAddressEnumerator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SocketAddressEnumerator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SocketAddressEnumerator.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -55958,7 +56382,12 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Event {
-            (event: SocketClientEvent, connectable: SocketConnectable, connection?: IOStream | null): void;
+            (
+                _source: SocketClient,
+                event: SocketClientEvent,
+                connectable: SocketConnectable,
+                connection?: IOStream | null,
+            ): void;
         }
 
         // Signal signatures
@@ -56002,7 +56431,6 @@ export namespace Gio {
      */
     class SocketClient extends GObject.Object {
         static $gtype: GObject.GType<SocketClient>;
-        declare static readonly __signalSignatures: SocketClient.SignalSignatures;
 
         // Properties
 
@@ -56112,6 +56540,10 @@ export namespace Gio {
 
         // Signals
 
+        connect<K extends keyof SocketClient.SignalSignatures>(
+            signal: K,
+            callback: SocketClient.SignalSignatures[K],
+        ): number;
         connect_after<K extends keyof SocketClient.SignalSignatures>(
             signal: K,
             callback: SocketClient.SignalSignatures[K],
@@ -56119,23 +56551,6 @@ export namespace Gio {
         emit<K extends keyof SocketClient.SignalSignatures>(
             signal: K,
             ...args: Parameters<SocketClient.SignalSignatures[K]>
-        ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(
-            signal: 'event',
-            callback: (
-                _source: this,
-                event: SocketClientEvent,
-                connectable: SocketConnectable,
-                connection: IOStream | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'event',
-            event: SocketClientEvent,
-            connectable: SocketConnectable,
-            connection?: IOStream | null,
         ): void;
 
         // Virtual methods
@@ -56713,7 +57128,6 @@ export namespace Gio {
      */
     class SocketConnection extends IOStream {
         static $gtype: GObject.GType<SocketConnection>;
-        declare static readonly __signalSignatures: SocketConnection.SignalSignatures;
 
         // Properties
 
@@ -56727,6 +57141,21 @@ export namespace Gio {
         constructor(properties?: Partial<SocketConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SocketConnection.SignalSignatures>(
+            signal: K,
+            callback: SocketConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SocketConnection.SignalSignatures>(
+            signal: K,
+            callback: SocketConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SocketConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SocketConnection.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -56893,13 +57322,27 @@ export namespace Gio {
      */
     abstract class SocketControlMessage extends GObject.Object {
         static $gtype: GObject.GType<SocketControlMessage>;
-        declare static readonly __signalSignatures: SocketControlMessage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SocketControlMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SocketControlMessage.SignalSignatures>(
+            signal: K,
+            callback: SocketControlMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SocketControlMessage.SignalSignatures>(
+            signal: K,
+            callback: SocketControlMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SocketControlMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SocketControlMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -56980,7 +57423,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Event {
-            (event: SocketListenerEvent, socket: Socket): void;
+            (_source: SocketListener, event: SocketListenerEvent, socket: Socket): void;
         }
 
         // Signal signatures
@@ -57015,7 +57458,6 @@ export namespace Gio {
      */
     class SocketListener extends GObject.Object {
         static $gtype: GObject.GType<SocketListener>;
-        declare static readonly __signalSignatures: SocketListener.SignalSignatures;
 
         // Properties
 
@@ -57052,15 +57494,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<SocketListener.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'event', callback: (_source: this, event: SocketListenerEvent, socket: Socket) => void): number;
-        connect_after(
-            signal: 'event',
-            callback: (_source: this, event: SocketListenerEvent, socket: Socket) => void,
-        ): number;
-        emit(signal: 'event', event: SocketListenerEvent, socket: Socket): void;
 
         // Virtual methods
 
@@ -57290,7 +57723,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Incoming {
-            (connection: SocketConnection, source_object?: GObject.Object | null): boolean;
+            (_source: SocketService, connection: SocketConnection, source_object?: GObject.Object | null): boolean;
         }
 
         // Signal signatures
@@ -57335,7 +57768,6 @@ export namespace Gio {
      */
     class SocketService extends SocketListener {
         static $gtype: GObject.GType<SocketService>;
-        declare static readonly __signalSignatures: SocketService.SignalSignatures;
 
         // Properties
 
@@ -57367,18 +57799,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<SocketService.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'incoming',
-            callback: (_source: this, connection: SocketConnection, source_object: GObject.Object | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'incoming',
-            callback: (_source: this, connection: SocketConnection, source_object: GObject.Object | null) => boolean,
-        ): number;
-        emit(signal: 'incoming', connection: SocketConnection, source_object?: GObject.Object | null): void;
 
         // Virtual methods
 
@@ -57508,7 +57928,6 @@ export namespace Gio {
      */
     class Subprocess extends GObject.Object implements Initable {
         static $gtype: GObject.GType<Subprocess>;
-        declare static readonly __signalSignatures: Subprocess.SignalSignatures;
 
         // Properties
 
@@ -57528,6 +57947,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](argv: string[], flags: SubprocessFlags): Subprocess;
+
+        // Signals
+
+        connect<K extends keyof Subprocess.SignalSignatures>(
+            signal: K,
+            callback: Subprocess.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Subprocess.SignalSignatures>(
+            signal: K,
+            callback: Subprocess.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Subprocess.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Subprocess.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -58429,7 +58863,6 @@ export namespace Gio {
      */
     class SubprocessLauncher extends GObject.Object {
         static $gtype: GObject.GType<SubprocessLauncher>;
-        declare static readonly __signalSignatures: SubprocessLauncher.SignalSignatures;
 
         // Properties
 
@@ -58445,6 +58878,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](flags: SubprocessFlags): SubprocessLauncher;
+
+        // Signals
+
+        connect<K extends keyof SubprocessLauncher.SignalSignatures>(
+            signal: K,
+            callback: SubprocessLauncher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessLauncher.SignalSignatures>(
+            signal: K,
+            callback: SubprocessLauncher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessLauncher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessLauncher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -59212,7 +59660,6 @@ export namespace Gio {
      */
     class Task extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<Task>;
-        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -59249,6 +59696,12 @@ export namespace Gio {
             cancellable?: Cancellable | null,
             callback?: AsyncReadyCallback | null,
         ): Task;
+
+        // Signals
+
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -60132,7 +60585,6 @@ export namespace Gio {
      */
     class TcpConnection extends SocketConnection {
         static $gtype: GObject.GType<TcpConnection>;
-        declare static readonly __signalSignatures: TcpConnection.SignalSignatures;
 
         // Properties
 
@@ -60152,6 +60604,17 @@ export namespace Gio {
         constructor(properties?: Partial<TcpConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect_after<K extends keyof TcpConnection.SignalSignatures>(
+            signal: K,
+            callback: TcpConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TcpConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TcpConnection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -60198,7 +60661,6 @@ export namespace Gio {
      */
     class TcpWrapperConnection extends TcpConnection {
         static $gtype: GObject.GType<TcpWrapperConnection>;
-        declare static readonly __signalSignatures: TcpWrapperConnection.SignalSignatures;
 
         // Properties
 
@@ -60218,6 +60680,17 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](base_io_stream: IOStream, socket: Socket): TcpWrapperConnection;
+
+        // Signals
+
+        connect_after<K extends keyof TcpWrapperConnection.SignalSignatures>(
+            signal: K,
+            callback: TcpWrapperConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TcpWrapperConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TcpWrapperConnection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -60322,7 +60795,6 @@ export namespace Gio {
      */
     class TestDBus extends GObject.Object {
         static $gtype: GObject.GType<TestDBus>;
-        declare static readonly __signalSignatures: TestDBus.SignalSignatures;
 
         // Properties
 
@@ -60338,6 +60810,18 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](flags: TestDBusFlags): TestDBus;
+
+        // Signals
+
+        connect<K extends keyof TestDBus.SignalSignatures>(signal: K, callback: TestDBus.SignalSignatures[K]): number;
+        connect_after<K extends keyof TestDBus.SignalSignatures>(
+            signal: K,
+            callback: TestDBus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TestDBus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TestDBus.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -60428,7 +60912,6 @@ export namespace Gio {
      */
     class ThemedIcon extends GObject.Object implements Icon {
         static $gtype: GObject.GType<ThemedIcon>;
-        declare static readonly __signalSignatures: ThemedIcon.SignalSignatures;
 
         // Properties
 
@@ -60492,6 +60975,21 @@ export namespace Gio {
         static new_from_names(iconnames: string[]): ThemedIcon;
 
         static new_with_default_fallbacks(iconname: string): ThemedIcon;
+
+        // Signals
+
+        connect<K extends keyof ThemedIcon.SignalSignatures>(
+            signal: K,
+            callback: ThemedIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThemedIcon.SignalSignatures>(
+            signal: K,
+            callback: ThemedIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThemedIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThemedIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -61036,20 +61534,38 @@ export namespace Gio {
      */
     class ThreadedResolver extends Resolver {
         static $gtype: GObject.GType<ThreadedResolver>;
-        declare static readonly __signalSignatures: ThreadedResolver.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ThreadedResolver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ThreadedResolver.SignalSignatures>(
+            signal: K,
+            callback: ThreadedResolver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThreadedResolver.SignalSignatures>(
+            signal: K,
+            callback: ThreadedResolver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThreadedResolver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThreadedResolver.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ThreadedSocketService {
         // Signal callback interfaces
 
         interface Run {
-            (connection: SocketConnection, source_object?: GObject.Object | null): boolean;
+            (
+                _source: ThreadedSocketService,
+                connection: SocketConnection,
+                source_object?: GObject.Object | null,
+            ): boolean;
         }
 
         // Signal signatures
@@ -61085,7 +61601,6 @@ export namespace Gio {
      */
     class ThreadedSocketService extends SocketService {
         static $gtype: GObject.GType<ThreadedSocketService>;
-        declare static readonly __signalSignatures: ThreadedSocketService.SignalSignatures;
 
         // Properties
 
@@ -61123,18 +61638,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<ThreadedSocketService.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'run',
-            callback: (_source: this, connection: SocketConnection, source_object: GObject.Object | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'run',
-            callback: (_source: this, connection: SocketConnection, source_object: GObject.Object | null) => boolean,
-        ): number;
-        emit(signal: 'run', connection: SocketConnection, source_object?: GObject.Object | null): void;
 
         // Virtual methods
 
@@ -61187,7 +61690,6 @@ export namespace Gio {
      */
     abstract class TlsCertificate extends GObject.Object {
         static $gtype: GObject.GType<TlsCertificate>;
-        declare static readonly __signalSignatures: TlsCertificate.SignalSignatures;
 
         // Properties
 
@@ -61431,6 +61933,21 @@ export namespace Gio {
 
         static new_from_pkcs12(data: Uint8Array | string, password?: string | null): TlsCertificate;
 
+        // Signals
+
+        connect<K extends keyof TlsCertificate.SignalSignatures>(
+            signal: K,
+            callback: TlsCertificate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TlsCertificate.SignalSignatures>(
+            signal: K,
+            callback: TlsCertificate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TlsCertificate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TlsCertificate.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         /**
@@ -61576,7 +62093,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface AcceptCertificate {
-            (peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
+            (_source: TlsConnection, peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
         }
 
         // Signal signatures
@@ -61624,7 +62141,6 @@ export namespace Gio {
      */
     abstract class TlsConnection extends IOStream {
         static $gtype: GObject.GType<TlsConnection>;
-        declare static readonly __signalSignatures: TlsConnection.SignalSignatures;
 
         // Properties
 
@@ -61828,18 +62344,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<TlsConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'accept-certificate',
-            callback: (_source: this, peer_cert: TlsCertificate, errors: TlsCertificateFlags) => boolean,
-        ): number;
-        connect_after(
-            signal: 'accept-certificate',
-            callback: (_source: this, peer_cert: TlsCertificate, errors: TlsCertificateFlags) => boolean,
-        ): number;
-        emit(signal: 'accept-certificate', peer_cert: TlsCertificate, errors: TlsCertificateFlags): void;
 
         // Virtual methods
 
@@ -62241,13 +62745,27 @@ export namespace Gio {
      */
     abstract class TlsDatabase extends GObject.Object {
         static $gtype: GObject.GType<TlsDatabase>;
-        declare static readonly __signalSignatures: TlsDatabase.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TlsDatabase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TlsDatabase.SignalSignatures>(
+            signal: K,
+            callback: TlsDatabase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TlsDatabase.SignalSignatures>(
+            signal: K,
+            callback: TlsDatabase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TlsDatabase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TlsDatabase.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -62974,13 +63492,27 @@ export namespace Gio {
      */
     class TlsInteraction extends GObject.Object {
         static $gtype: GObject.GType<TlsInteraction>;
-        declare static readonly __signalSignatures: TlsInteraction.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TlsInteraction.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TlsInteraction.SignalSignatures>(
+            signal: K,
+            callback: TlsInteraction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TlsInteraction.SignalSignatures>(
+            signal: K,
+            callback: TlsInteraction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TlsInteraction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TlsInteraction.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -63383,7 +63915,6 @@ export namespace Gio {
      */
     class TlsPassword extends GObject.Object {
         static $gtype: GObject.GType<TlsPassword>;
-        declare static readonly __signalSignatures: TlsPassword.SignalSignatures;
 
         // Properties
 
@@ -63410,6 +63941,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](flags: TlsPasswordFlags, description: string): TlsPassword;
+
+        // Signals
+
+        connect<K extends keyof TlsPassword.SignalSignatures>(
+            signal: K,
+            callback: TlsPassword.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TlsPassword.SignalSignatures>(
+            signal: K,
+            callback: TlsPassword.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TlsPassword.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TlsPassword.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -63538,13 +64084,23 @@ export namespace Gio {
      */
     class UnixConnection extends SocketConnection {
         static $gtype: GObject.GType<UnixConnection>;
-        declare static readonly __signalSignatures: UnixConnection.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UnixConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect_after<K extends keyof UnixConnection.SignalSignatures>(
+            signal: K,
+            callback: UnixConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixConnection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -63746,7 +64302,6 @@ export namespace Gio {
      */
     class UnixCredentialsMessage extends SocketControlMessage {
         static $gtype: GObject.GType<UnixCredentialsMessage>;
-        declare static readonly __signalSignatures: UnixCredentialsMessage.SignalSignatures;
 
         // Properties
 
@@ -63764,6 +64319,21 @@ export namespace Gio {
         static ['new'](): UnixCredentialsMessage;
 
         static new_with_credentials(credentials: Credentials): UnixCredentialsMessage;
+
+        // Signals
+
+        connect<K extends keyof UnixCredentialsMessage.SignalSignatures>(
+            signal: K,
+            callback: UnixCredentialsMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixCredentialsMessage.SignalSignatures>(
+            signal: K,
+            callback: UnixCredentialsMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixCredentialsMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixCredentialsMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -63808,7 +64378,6 @@ export namespace Gio {
      */
     class UnixFDList extends GObject.Object {
         static $gtype: GObject.GType<UnixFDList>;
-        declare static readonly __signalSignatures: UnixFDList.SignalSignatures;
 
         // Constructors
 
@@ -63819,6 +64388,21 @@ export namespace Gio {
         static ['new'](): UnixFDList;
 
         static new_from_array(fds: number[]): UnixFDList;
+
+        // Signals
+
+        connect<K extends keyof UnixFDList.SignalSignatures>(
+            signal: K,
+            callback: UnixFDList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixFDList.SignalSignatures>(
+            signal: K,
+            callback: UnixFDList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixFDList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixFDList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -63932,7 +64516,6 @@ export namespace Gio {
      */
     class UnixFDMessage extends SocketControlMessage {
         static $gtype: GObject.GType<UnixFDMessage>;
-        declare static readonly __signalSignatures: UnixFDMessage.SignalSignatures;
 
         // Properties
 
@@ -63954,6 +64537,21 @@ export namespace Gio {
         static ['new'](): UnixFDMessage;
 
         static new_with_fd_list(fd_list: UnixFDList): UnixFDMessage;
+
+        // Signals
+
+        connect<K extends keyof UnixFDMessage.SignalSignatures>(
+            signal: K,
+            callback: UnixFDMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixFDMessage.SignalSignatures>(
+            signal: K,
+            callback: UnixFDMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixFDMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixFDMessage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -64029,7 +64627,6 @@ export namespace Gio {
      */
     class UnixInputStream extends InputStream implements FileDescriptorBased, PollableInputStream {
         static $gtype: GObject.GType<UnixInputStream>;
-        declare static readonly __signalSignatures: UnixInputStream.SignalSignatures;
 
         // Properties
 
@@ -64055,6 +64652,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](fd: number, close_fd: boolean): UnixInputStream;
+
+        // Signals
+
+        connect<K extends keyof UnixInputStream.SignalSignatures>(
+            signal: K,
+            callback: UnixInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixInputStream.SignalSignatures>(
+            signal: K,
+            callback: UnixInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -65394,11 +66006,11 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface MountpointsChanged {
-            (): void;
+            (_source: UnixMountMonitor): void;
         }
 
         interface MountsChanged {
-            (): void;
+            (_source: UnixMountMonitor): void;
         }
 
         // Signal signatures
@@ -65424,7 +66036,6 @@ export namespace Gio {
      */
     class UnixMountMonitor extends GObject.Object {
         static $gtype: GObject.GType<UnixMountMonitor>;
-        declare static readonly __signalSignatures: UnixMountMonitor.SignalSignatures;
 
         // Constructors
 
@@ -65448,15 +66059,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<UnixMountMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'mountpoints-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'mountpoints-changed', callback: (_source: this) => void): number;
-        emit(signal: 'mountpoints-changed'): void;
-        connect(signal: 'mounts-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'mounts-changed', callback: (_source: this) => void): number;
-        emit(signal: 'mounts-changed'): void;
 
         // Static methods
 
@@ -65517,7 +66119,6 @@ export namespace Gio {
      */
     class UnixOutputStream extends OutputStream implements FileDescriptorBased, PollableOutputStream {
         static $gtype: GObject.GType<UnixOutputStream>;
-        declare static readonly __signalSignatures: UnixOutputStream.SignalSignatures;
 
         // Properties
 
@@ -65543,6 +66144,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](fd: number, close_fd: boolean): UnixOutputStream;
+
+        // Signals
+
+        connect<K extends keyof UnixOutputStream.SignalSignatures>(
+            signal: K,
+            callback: UnixOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixOutputStream.SignalSignatures>(
+            signal: K,
+            callback: UnixOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -67401,7 +68017,6 @@ export namespace Gio {
      */
     class UnixSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<UnixSocketAddress>;
-        declare static readonly __signalSignatures: UnixSocketAddress.SignalSignatures;
 
         // Properties
 
@@ -67441,6 +68056,21 @@ export namespace Gio {
         static new_abstract(path: number[]): UnixSocketAddress;
 
         static new_with_type(path: number[], type: UnixSocketAddressType): UnixSocketAddress;
+
+        // Signals
+
+        connect<K extends keyof UnixSocketAddress.SignalSignatures>(
+            signal: K,
+            callback: UnixSocketAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixSocketAddress.SignalSignatures>(
+            signal: K,
+            callback: UnixSocketAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixSocketAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixSocketAddress.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -67986,13 +68616,18 @@ export namespace Gio {
      */
     class Vfs extends GObject.Object {
         static $gtype: GObject.GType<Vfs>;
-        declare static readonly __signalSignatures: Vfs.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Vfs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Vfs.SignalSignatures>(signal: K, callback: Vfs.SignalSignatures[K]): number;
+        connect_after<K extends keyof Vfs.SignalSignatures>(signal: K, callback: Vfs.SignalSignatures[K]): number;
+        emit<K extends keyof Vfs.SignalSignatures>(signal: K, ...args: Parameters<Vfs.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -68138,51 +68773,51 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface DriveChanged {
-            (drive: Drive): void;
+            (_source: VolumeMonitor, drive: Drive): void;
         }
 
         interface DriveConnected {
-            (drive: Drive): void;
+            (_source: VolumeMonitor, drive: Drive): void;
         }
 
         interface DriveDisconnected {
-            (drive: Drive): void;
+            (_source: VolumeMonitor, drive: Drive): void;
         }
 
         interface DriveEjectButton {
-            (drive: Drive): void;
+            (_source: VolumeMonitor, drive: Drive): void;
         }
 
         interface DriveStopButton {
-            (drive: Drive): void;
+            (_source: VolumeMonitor, drive: Drive): void;
         }
 
         interface MountAdded {
-            (mount: Mount): void;
+            (_source: VolumeMonitor, mount: Mount): void;
         }
 
         interface MountChanged {
-            (mount: Mount): void;
+            (_source: VolumeMonitor, mount: Mount): void;
         }
 
         interface MountPreUnmount {
-            (mount: Mount): void;
+            (_source: VolumeMonitor, mount: Mount): void;
         }
 
         interface MountRemoved {
-            (mount: Mount): void;
+            (_source: VolumeMonitor, mount: Mount): void;
         }
 
         interface VolumeAdded {
-            (volume: Volume): void;
+            (_source: VolumeMonitor, volume: Volume): void;
         }
 
         interface VolumeChanged {
-            (volume: Volume): void;
+            (_source: VolumeMonitor, volume: Volume): void;
         }
 
         interface VolumeRemoved {
-            (volume: Volume): void;
+            (_source: VolumeMonitor, volume: Volume): void;
         }
 
         // Signal signatures
@@ -68221,7 +68856,6 @@ export namespace Gio {
      */
     class VolumeMonitor extends GObject.Object {
         static $gtype: GObject.GType<VolumeMonitor>;
-        declare static readonly __signalSignatures: VolumeMonitor.SignalSignatures;
 
         // Constructors
 
@@ -68243,45 +68877,6 @@ export namespace Gio {
             signal: K,
             ...args: Parameters<VolumeMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'drive-changed', callback: (_source: this, drive: Drive) => void): number;
-        connect_after(signal: 'drive-changed', callback: (_source: this, drive: Drive) => void): number;
-        emit(signal: 'drive-changed', drive: Drive): void;
-        connect(signal: 'drive-connected', callback: (_source: this, drive: Drive) => void): number;
-        connect_after(signal: 'drive-connected', callback: (_source: this, drive: Drive) => void): number;
-        emit(signal: 'drive-connected', drive: Drive): void;
-        connect(signal: 'drive-disconnected', callback: (_source: this, drive: Drive) => void): number;
-        connect_after(signal: 'drive-disconnected', callback: (_source: this, drive: Drive) => void): number;
-        emit(signal: 'drive-disconnected', drive: Drive): void;
-        connect(signal: 'drive-eject-button', callback: (_source: this, drive: Drive) => void): number;
-        connect_after(signal: 'drive-eject-button', callback: (_source: this, drive: Drive) => void): number;
-        emit(signal: 'drive-eject-button', drive: Drive): void;
-        connect(signal: 'drive-stop-button', callback: (_source: this, drive: Drive) => void): number;
-        connect_after(signal: 'drive-stop-button', callback: (_source: this, drive: Drive) => void): number;
-        emit(signal: 'drive-stop-button', drive: Drive): void;
-        connect(signal: 'mount-added', callback: (_source: this, mount: Mount) => void): number;
-        connect_after(signal: 'mount-added', callback: (_source: this, mount: Mount) => void): number;
-        emit(signal: 'mount-added', mount: Mount): void;
-        connect(signal: 'mount-changed', callback: (_source: this, mount: Mount) => void): number;
-        connect_after(signal: 'mount-changed', callback: (_source: this, mount: Mount) => void): number;
-        emit(signal: 'mount-changed', mount: Mount): void;
-        connect(signal: 'mount-pre-unmount', callback: (_source: this, mount: Mount) => void): number;
-        connect_after(signal: 'mount-pre-unmount', callback: (_source: this, mount: Mount) => void): number;
-        emit(signal: 'mount-pre-unmount', mount: Mount): void;
-        connect(signal: 'mount-removed', callback: (_source: this, mount: Mount) => void): number;
-        connect_after(signal: 'mount-removed', callback: (_source: this, mount: Mount) => void): number;
-        emit(signal: 'mount-removed', mount: Mount): void;
-        connect(signal: 'volume-added', callback: (_source: this, volume: Volume) => void): number;
-        connect_after(signal: 'volume-added', callback: (_source: this, volume: Volume) => void): number;
-        emit(signal: 'volume-added', volume: Volume): void;
-        connect(signal: 'volume-changed', callback: (_source: this, volume: Volume) => void): number;
-        connect_after(signal: 'volume-changed', callback: (_source: this, volume: Volume) => void): number;
-        emit(signal: 'volume-changed', volume: Volume): void;
-        connect(signal: 'volume-removed', callback: (_source: this, volume: Volume) => void): number;
-        connect_after(signal: 'volume-removed', callback: (_source: this, volume: Volume) => void): number;
-        emit(signal: 'volume-removed', volume: Volume): void;
 
         // Static methods
 
@@ -68428,7 +69023,6 @@ export namespace Gio {
      */
     class ZlibCompressor extends GObject.Object implements Converter {
         static $gtype: GObject.GType<ZlibCompressor>;
-        declare static readonly __signalSignatures: ZlibCompressor.SignalSignatures;
 
         // Properties
 
@@ -68463,6 +69057,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](format: ZlibCompressorFormat, level: number): ZlibCompressor;
+
+        // Signals
+
+        connect<K extends keyof ZlibCompressor.SignalSignatures>(
+            signal: K,
+            callback: ZlibCompressor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ZlibCompressor.SignalSignatures>(
+            signal: K,
+            callback: ZlibCompressor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ZlibCompressor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ZlibCompressor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -69148,7 +69757,6 @@ export namespace Gio {
      */
     class ZlibDecompressor extends GObject.Object implements Converter {
         static $gtype: GObject.GType<ZlibDecompressor>;
-        declare static readonly __signalSignatures: ZlibDecompressor.SignalSignatures;
 
         // Properties
 
@@ -69178,6 +69786,21 @@ export namespace Gio {
         _init(...args: any[]): void;
 
         static ['new'](format: ZlibCompressorFormat): ZlibDecompressor;
+
+        // Signals
+
+        connect<K extends keyof ZlibDecompressor.SignalSignatures>(
+            signal: K,
+            callback: ZlibDecompressor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ZlibDecompressor.SignalSignatures>(
+            signal: K,
+            callback: ZlibDecompressor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ZlibDecompressor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ZlibDecompressor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -85289,11 +85912,25 @@ export namespace Gio {
 
     class DBusExportedObject {
         static $gtype: GObject.GType<DBusExportedObject>;
-        declare static readonly __signalSignatures: DBusExportedObject.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DBusExportedObject.SignalSignatures>(
+            signal: K,
+            callback: DBusExportedObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusExportedObject.SignalSignatures>(
+            signal: K,
+            callback: DBusExportedObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusExportedObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusExportedObject.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

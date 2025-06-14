@@ -114,7 +114,7 @@ export namespace AtrilView {
         // Signal callback interfaces
 
         interface PageChanged {
-            (object: number, p0: number): void;
+            (_source: DocumentModel, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -146,7 +146,6 @@ export namespace AtrilView {
 
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
-        declare static readonly __signalSignatures: DocumentModel.SignalSignatures;
 
         // Properties
 
@@ -207,12 +206,6 @@ export namespace AtrilView {
             signal: K,
             ...args: Parameters<DocumentModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'page-changed', object: number, p0: number): void;
 
         // Methods
 
@@ -253,11 +246,11 @@ export namespace AtrilView {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: Job): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: Job): void;
         }
 
         // Signal signatures
@@ -273,7 +266,6 @@ export namespace AtrilView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
-        declare static readonly __signalSignatures: Job.SignalSignatures;
 
         // Fields
 
@@ -297,15 +289,6 @@ export namespace AtrilView {
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Static methods
 
@@ -342,7 +325,6 @@ export namespace AtrilView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
-        declare static readonly __signalSignatures: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -355,6 +337,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document): JobAnnots;
+
+        // Signals
+
+        connect<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: JobAnnots.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobAnnots.SignalSignatures>(
+            signal: K,
+            callback: JobAnnots.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobAnnots.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobAnnots.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobAttachments {
@@ -368,7 +362,6 @@ export namespace AtrilView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
-        declare static readonly __signalSignatures: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -381,6 +374,21 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document): JobAttachments;
+
+        // Signals
+
+        connect<K extends keyof JobAttachments.SignalSignatures>(
+            signal: K,
+            callback: JobAttachments.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobAttachments.SignalSignatures>(
+            signal: K,
+            callback: JobAttachments.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobAttachments.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobAttachments.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobExport {
@@ -394,7 +402,6 @@ export namespace AtrilView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
-        declare static readonly __signalSignatures: JobExport.SignalSignatures;
 
         // Fields
 
@@ -409,6 +416,18 @@ export namespace AtrilView {
 
         static ['new'](document: AtrilDocument.Document): JobExport;
 
+        // Signals
+
+        connect<K extends keyof JobExport.SignalSignatures>(signal: K, callback: JobExport.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobExport.SignalSignatures>(
+            signal: K,
+            callback: JobExport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobExport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobExport.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_page(page: number): void;
@@ -418,7 +437,7 @@ export namespace AtrilView {
         // Signal callback interfaces
 
         interface Updated {
-            (object: number): void;
+            (_source: JobFind, object: number): void;
         }
 
         // Signal signatures
@@ -433,7 +452,6 @@ export namespace AtrilView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
-        declare static readonly __signalSignatures: JobFind.SignalSignatures;
 
         // Fields
 
@@ -470,12 +488,6 @@ export namespace AtrilView {
             signal: K,
             ...args: Parameters<JobFind.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'updated', object: number): void;
 
         // Virtual methods
 
@@ -492,7 +504,7 @@ export namespace AtrilView {
         // Signal callback interfaces
 
         interface Updated {
-            (object: number): void;
+            (_source: JobFonts, object: number): void;
         }
 
         // Signal signatures
@@ -507,7 +519,6 @@ export namespace AtrilView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
-        declare static readonly __signalSignatures: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -532,12 +543,6 @@ export namespace AtrilView {
             signal: K,
             ...args: Parameters<JobFonts.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'updated', object: number): void;
 
         // Virtual methods
 
@@ -555,7 +560,6 @@ export namespace AtrilView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
-        declare static readonly __signalSignatures: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -568,6 +572,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document): JobLayers;
+
+        // Signals
+
+        connect<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: JobLayers.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLayers.SignalSignatures>(
+            signal: K,
+            callback: JobLayers.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLayers.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLayers.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobLinks {
@@ -581,7 +597,6 @@ export namespace AtrilView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
-        declare static readonly __signalSignatures: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -594,6 +609,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document): JobLinks;
+
+        // Signals
+
+        connect<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: JobLinks.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLinks.SignalSignatures>(
+            signal: K,
+            callback: JobLinks.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLinks.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLinks.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobLoad {
@@ -607,7 +634,6 @@ export namespace AtrilView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
-        declare static readonly __signalSignatures: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -621,6 +647,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): JobLoad;
+
+        // Signals
+
+        connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: JobLoad.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            callback: JobLoad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLoad.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -639,7 +677,6 @@ export namespace AtrilView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
-        declare static readonly __signalSignatures: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -658,6 +695,21 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document, page: number, flags: JobPageDataFlags): JobPageData;
+
+        // Signals
+
+        connect<K extends keyof JobPageData.SignalSignatures>(
+            signal: K,
+            callback: JobPageData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobPageData.SignalSignatures>(
+            signal: K,
+            callback: JobPageData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobPageData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobPageData.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobPrint {
@@ -671,7 +723,6 @@ export namespace AtrilView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
-        declare static readonly __signalSignatures: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -684,6 +735,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document): JobPrint;
+
+        // Signals
+
+        connect<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: JobPrint.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobPrint.SignalSignatures>(
+            signal: K,
+            callback: JobPrint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobPrint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobPrint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -702,7 +765,6 @@ export namespace AtrilView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
-        declare static readonly __signalSignatures: JobRender.SignalSignatures;
 
         // Fields
 
@@ -733,6 +795,18 @@ export namespace AtrilView {
             height: number,
         ): JobRender;
 
+        // Signals
+
+        connect<K extends keyof JobRender.SignalSignatures>(signal: K, callback: JobRender.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobRender.SignalSignatures>(
+            signal: K,
+            callback: JobRender.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobRender.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobRender.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_selection_info(
@@ -754,7 +828,6 @@ export namespace AtrilView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
-        declare static readonly __signalSignatures: JobSave.SignalSignatures;
 
         // Fields
 
@@ -768,6 +841,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document, uri: string, document_uri: string): JobSave;
+
+        // Signals
+
+        connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: JobSave.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            callback: JobSave.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobSave.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobThumbnail {
@@ -781,7 +866,6 @@ export namespace AtrilView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
-        declare static readonly __signalSignatures: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -797,21 +881,36 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](document: AtrilDocument.Document, page: number, rotation: number, scale: number): JobThumbnail;
+
+        // Signals
+
+        connect<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            callback: JobThumbnail.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            callback: JobThumbnail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobThumbnail.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PrintOperation {
         // Signal callback interfaces
 
         interface BeginPrint {
-            (): void;
+            (_source: PrintOperation): void;
         }
 
         interface Done {
-            (object: Gtk.PrintOperationResult): void;
+            (_source: PrintOperation, object: Gtk.PrintOperationResult): void;
         }
 
         interface StatusChanged {
-            (): void;
+            (_source: PrintOperation): void;
         }
 
         // Signal signatures
@@ -830,7 +929,6 @@ export namespace AtrilView {
 
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
-        declare static readonly __signalSignatures: PrintOperation.SignalSignatures;
 
         // Properties
 
@@ -858,18 +956,6 @@ export namespace AtrilView {
             signal: K,
             ...args: Parameters<PrintOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'begin-print', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-print', callback: (_source: this) => void): number;
-        emit(signal: 'begin-print'): void;
-        connect(signal: 'done', callback: (_source: this, object: Gtk.PrintOperationResult) => void): number;
-        connect_after(signal: 'done', callback: (_source: this, object: Gtk.PrintOperationResult) => void): number;
-        emit(signal: 'done', object: Gtk.PrintOperationResult): void;
-        connect(signal: 'status-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
-        emit(signal: 'status-changed'): void;
 
         // Static methods
 
@@ -897,47 +983,47 @@ export namespace AtrilView {
         // Signal callback interfaces
 
         interface AnnotAdded {
-            (object: AtrilDocument.Annotation): void;
+            (_source: View, object: AtrilDocument.Annotation): void;
         }
 
         interface AnnotRemoved {
-            (object: AtrilDocument.Annotation): void;
+            (_source: View, object: AtrilDocument.Annotation): void;
         }
 
         interface CursorMoved {
-            (object: number, p0: number): void;
+            (_source: View, object: number, p0: number): void;
         }
 
         interface ExternalLink {
-            (object: GObject.Object): void;
+            (_source: View, object: GObject.Object): void;
         }
 
         interface HandleLink {
-            (object: GObject.Object): void;
+            (_source: View, object: GObject.Object): void;
         }
 
         interface LayersChanged {
-            (): void;
+            (_source: View): void;
         }
 
         interface MoveCursor {
-            (object: Gtk.MovementStep, p0: number, p1: boolean): boolean;
+            (_source: View, object: Gtk.MovementStep, p0: number, p1: boolean): boolean;
         }
 
         interface Popup {
-            (object?: any | null): void;
+            (_source: View, object?: any | null): void;
         }
 
         interface Scroll {
-            (object: Gtk.ScrollType, p0: Gtk.Orientation): void;
+            (_source: View, object: Gtk.ScrollType, p0: Gtk.Orientation): void;
         }
 
         interface SelectionChanged {
-            (): void;
+            (_source: View): void;
         }
 
         interface SyncSource {
-            (object?: any | null): void;
+            (_source: View, object?: any | null): void;
         }
 
         // Signal signatures
@@ -969,7 +1055,6 @@ export namespace AtrilView {
 
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -989,60 +1074,6 @@ export namespace AtrilView {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'annot-added', callback: (_source: this, object: AtrilDocument.Annotation) => void): number;
-        connect_after(
-            signal: 'annot-added',
-            callback: (_source: this, object: AtrilDocument.Annotation) => void,
-        ): number;
-        emit(signal: 'annot-added', object: AtrilDocument.Annotation): void;
-        connect(signal: 'annot-removed', callback: (_source: this, object: AtrilDocument.Annotation) => void): number;
-        connect_after(
-            signal: 'annot-removed',
-            callback: (_source: this, object: AtrilDocument.Annotation) => void,
-        ): number;
-        emit(signal: 'annot-removed', object: AtrilDocument.Annotation): void;
-        connect(signal: 'cursor-moved', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'cursor-moved', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'cursor-moved', object: number, p0: number): void;
-        connect(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'external-link', object: GObject.Object): void;
-        connect(signal: 'handle-link', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'handle-link', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'handle-link', object: GObject.Object): void;
-        connect(signal: 'layers-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layers-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layers-changed'): void;
-        connect(
-            signal: 'move-cursor',
-            callback: (_source: this, object: Gtk.MovementStep, p0: number, p1: boolean) => boolean,
-        ): number;
-        connect_after(
-            signal: 'move-cursor',
-            callback: (_source: this, object: Gtk.MovementStep, p0: number, p1: boolean) => boolean,
-        ): number;
-        emit(signal: 'move-cursor', object: Gtk.MovementStep, p0: number, p1: boolean): void;
-        connect(signal: 'popup', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'popup', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'popup', object?: any | null): void;
-        connect(
-            signal: 'scroll',
-            callback: (_source: this, object: Gtk.ScrollType, p0: Gtk.Orientation) => void,
-        ): number;
-        connect_after(
-            signal: 'scroll',
-            callback: (_source: this, object: Gtk.ScrollType, p0: Gtk.Orientation) => void,
-        ): number;
-        emit(signal: 'scroll', object: Gtk.ScrollType, p0: Gtk.Orientation): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
-        connect(signal: 'sync-source', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'sync-source', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'sync-source', object?: any | null): void;
 
         // Methods
 
@@ -1643,15 +1674,15 @@ export namespace AtrilView {
         // Signal callback interfaces
 
         interface ChangePage {
-            (object: Gtk.ScrollType): void;
+            (_source: ViewPresentation, object: Gtk.ScrollType): void;
         }
 
         interface ExternalLink {
-            (object: GObject.Object): void;
+            (_source: ViewPresentation, object: GObject.Object): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: ViewPresentation): void;
         }
 
         // Signal signatures
@@ -1678,7 +1709,6 @@ export namespace AtrilView {
 
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
-        declare static readonly __signalSignatures: ViewPresentation.SignalSignatures;
 
         // Properties
 
@@ -1717,18 +1747,6 @@ export namespace AtrilView {
             signal: K,
             ...args: Parameters<ViewPresentation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'change-page', callback: (_source: this, object: Gtk.ScrollType) => void): number;
-        connect_after(signal: 'change-page', callback: (_source: this, object: Gtk.ScrollType) => void): number;
-        emit(signal: 'change-page', object: Gtk.ScrollType): void;
-        connect(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'external-link', object: GObject.Object): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Methods
 
@@ -2370,7 +2388,6 @@ export namespace AtrilView {
 
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
-        declare static readonly __signalSignatures: WebView.SignalSignatures;
 
         // Constructors
 
@@ -2379,6 +2396,18 @@ export namespace AtrilView {
         _init(...args: any[]): void;
 
         static ['new'](): WebView;
+
+        // Signals
+
+        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            callback: WebView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -126,7 +126,6 @@ export namespace Lasem {
 
     abstract class DomCharacterData extends DomNode {
         static $gtype: GObject.GType<DomCharacterData>;
-        declare static readonly __signalSignatures: DomCharacterData.SignalSignatures;
 
         // Fields
 
@@ -138,6 +137,21 @@ export namespace Lasem {
         constructor(properties?: Partial<DomCharacterData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomCharacterData.SignalSignatures>(
+            signal: K,
+            callback: DomCharacterData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomCharacterData.SignalSignatures>(
+            signal: K,
+            callback: DomCharacterData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomCharacterData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomCharacterData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -158,7 +172,6 @@ export namespace Lasem {
 
     abstract class DomDocument extends DomNode {
         static $gtype: GObject.GType<DomDocument>;
-        declare static readonly __signalSignatures: DomDocument.SignalSignatures;
 
         // Fields
 
@@ -176,6 +189,21 @@ export namespace Lasem {
         static new_from_path(path: string): DomDocument;
 
         static new_from_url(url: string): DomDocument;
+
+        // Signals
+
+        connect<K extends keyof DomDocument.SignalSignatures>(
+            signal: K,
+            callback: DomDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomDocument.SignalSignatures>(
+            signal: K,
+            callback: DomDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomDocument.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -223,7 +251,6 @@ export namespace Lasem {
 
     abstract class DomDocumentFragment extends DomNode {
         static $gtype: GObject.GType<DomDocumentFragment>;
-        declare static readonly __signalSignatures: DomDocumentFragment.SignalSignatures;
 
         // Fields
 
@@ -236,6 +263,21 @@ export namespace Lasem {
         _init(...args: any[]): void;
 
         static ['new'](): DomDocumentFragment;
+
+        // Signals
+
+        connect<K extends keyof DomDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: DomDocumentFragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: DomDocumentFragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomDocumentFragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomDocumentFragment.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomElement {
@@ -249,7 +291,6 @@ export namespace Lasem {
 
     abstract class DomElement extends DomNode {
         static $gtype: GObject.GType<DomElement>;
-        declare static readonly __signalSignatures: DomElement.SignalSignatures;
 
         // Fields
 
@@ -260,6 +301,21 @@ export namespace Lasem {
         constructor(properties?: Partial<DomElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomElement.SignalSignatures>(
+            signal: K,
+            callback: DomElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomElement.SignalSignatures>(
+            signal: K,
+            callback: DomElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomElement.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -295,7 +351,6 @@ export namespace Lasem {
 
     abstract class DomNamedNodeMap extends GObject.Object {
         static $gtype: GObject.GType<DomNamedNodeMap>;
-        declare static readonly __signalSignatures: DomNamedNodeMap.SignalSignatures;
 
         // Fields
 
@@ -306,6 +361,21 @@ export namespace Lasem {
         constructor(properties?: Partial<DomNamedNodeMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomNamedNodeMap.SignalSignatures>(
+            signal: K,
+            callback: DomNamedNodeMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomNamedNodeMap.SignalSignatures>(
+            signal: K,
+            callback: DomNamedNodeMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomNamedNodeMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomNamedNodeMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -332,7 +402,6 @@ export namespace Lasem {
 
     abstract class DomNode extends GObject.Object {
         static $gtype: GObject.GType<DomNode>;
-        declare static readonly __signalSignatures: DomNode.SignalSignatures;
 
         // Fields
 
@@ -348,6 +417,18 @@ export namespace Lasem {
         constructor(properties?: Partial<DomNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomNode.SignalSignatures>(signal: K, callback: DomNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof DomNode.SignalSignatures>(
+            signal: K,
+            callback: DomNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomNode.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -436,7 +517,6 @@ export namespace Lasem {
 
     abstract class DomNodeList extends GObject.Object {
         static $gtype: GObject.GType<DomNodeList>;
-        declare static readonly __signalSignatures: DomNodeList.SignalSignatures;
 
         // Fields
 
@@ -447,6 +527,21 @@ export namespace Lasem {
         constructor(properties?: Partial<DomNodeList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomNodeList.SignalSignatures>(
+            signal: K,
+            callback: DomNodeList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomNodeList.SignalSignatures>(
+            signal: K,
+            callback: DomNodeList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomNodeList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomNodeList.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -470,7 +565,6 @@ export namespace Lasem {
 
     class DomText extends DomCharacterData {
         static $gtype: GObject.GType<DomText>;
-        declare static readonly __signalSignatures: DomText.SignalSignatures;
 
         // Fields
 
@@ -483,6 +577,18 @@ export namespace Lasem {
         _init(...args: any[]): void;
 
         static ['new'](data: string): DomText;
+
+        // Signals
+
+        connect<K extends keyof DomText.SignalSignatures>(signal: K, callback: DomText.SignalSignatures[K]): number;
+        connect_after<K extends keyof DomText.SignalSignatures>(
+            signal: K,
+            callback: DomText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomText.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomView {
@@ -496,7 +602,6 @@ export namespace Lasem {
 
     abstract class DomView extends GObject.Object {
         static $gtype: GObject.GType<DomView>;
-        declare static readonly __signalSignatures: DomView.SignalSignatures;
 
         // Fields
 
@@ -513,6 +618,18 @@ export namespace Lasem {
         constructor(properties?: Partial<DomView.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomView.SignalSignatures>(signal: K, callback: DomView.SignalSignatures[K]): number;
+        connect_after<K extends keyof DomView.SignalSignatures>(
+            signal: K,
+            callback: DomView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomView.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

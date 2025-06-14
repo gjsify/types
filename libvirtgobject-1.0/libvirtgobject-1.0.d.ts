@@ -388,19 +388,19 @@ export namespace LibvirtGObject {
         // Signal callback interfaces
 
         interface ConnectionClosed {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface ConnectionOpened {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface DomainAdded {
-            (object: Domain): void;
+            (_source: Connection, object: Domain): void;
         }
 
         interface DomainRemoved {
-            (object: Domain): void;
+            (_source: Connection, object: Domain): void;
         }
 
         // Signal signatures
@@ -421,7 +421,6 @@ export namespace LibvirtGObject {
 
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -450,21 +449,6 @@ export namespace LibvirtGObject {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connection-closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'connection-closed', callback: (_source: this) => void): number;
-        emit(signal: 'connection-closed'): void;
-        connect(signal: 'connection-opened', callback: (_source: this) => void): number;
-        connect_after(signal: 'connection-opened', callback: (_source: this) => void): number;
-        emit(signal: 'connection-opened'): void;
-        connect(signal: 'domain-added', callback: (_source: this, object: Domain) => void): number;
-        connect_after(signal: 'domain-added', callback: (_source: this, object: Domain) => void): number;
-        emit(signal: 'domain-added', object: Domain): void;
-        connect(signal: 'domain-removed', callback: (_source: this, object: Domain) => void): number;
-        connect_after(signal: 'domain-removed', callback: (_source: this, object: Domain) => void): number;
-        emit(signal: 'domain-removed', object: Domain): void;
 
         // Virtual methods
 
@@ -748,27 +732,27 @@ export namespace LibvirtGObject {
         // Signal callback interfaces
 
         interface Pmsuspended {
-            (): void;
+            (_source: Domain): void;
         }
 
         interface Resumed {
-            (): void;
+            (_source: Domain): void;
         }
 
         interface Started {
-            (): void;
+            (_source: Domain): void;
         }
 
         interface Stopped {
-            (): void;
+            (_source: Domain): void;
         }
 
         interface Suspended {
-            (): void;
+            (_source: Domain): void;
         }
 
         interface Updated {
-            (): void;
+            (_source: Domain): void;
         }
 
         // Signal signatures
@@ -791,7 +775,6 @@ export namespace LibvirtGObject {
 
     class Domain extends GObject.Object {
         static $gtype: GObject.GType<Domain>;
-        declare static readonly __signalSignatures: Domain.SignalSignatures;
 
         // Properties
 
@@ -809,27 +792,6 @@ export namespace LibvirtGObject {
         connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
         connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
         emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: Parameters<Domain.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pmsuspended', callback: (_source: this) => void): number;
-        connect_after(signal: 'pmsuspended', callback: (_source: this) => void): number;
-        emit(signal: 'pmsuspended'): void;
-        connect(signal: 'resumed', callback: (_source: this) => void): number;
-        connect_after(signal: 'resumed', callback: (_source: this) => void): number;
-        emit(signal: 'resumed'): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
-        connect(signal: 'stopped', callback: (_source: this) => void): number;
-        connect_after(signal: 'stopped', callback: (_source: this) => void): number;
-        emit(signal: 'stopped'): void;
-        connect(signal: 'suspended', callback: (_source: this) => void): number;
-        connect_after(signal: 'suspended', callback: (_source: this) => void): number;
-        emit(signal: 'suspended'): void;
-        connect(signal: 'updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this) => void): number;
-        emit(signal: 'updated'): void;
 
         // Virtual methods
 
@@ -1220,7 +1182,6 @@ export namespace LibvirtGObject {
 
     abstract class DomainDevice extends GObject.Object {
         static $gtype: GObject.GType<DomainDevice>;
-        declare static readonly __signalSignatures: DomainDevice.SignalSignatures;
 
         // Properties
 
@@ -1232,6 +1193,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<DomainDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainDevice.SignalSignatures>(
+            signal: K,
+            callback: DomainDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainDevice.SignalSignatures>(
+            signal: K,
+            callback: DomainDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1250,13 +1226,27 @@ export namespace LibvirtGObject {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
-        declare static readonly __signalSignatures: DomainDisk.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainDisk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainDisk.SignalSignatures>(
+            signal: K,
+            callback: DomainDisk.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainDisk.SignalSignatures>(
+            signal: K,
+            callback: DomainDisk.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainDisk.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainDisk.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1287,13 +1277,27 @@ export namespace LibvirtGObject {
 
     class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
-        declare static readonly __signalSignatures: DomainInterface.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainInterface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainInterface.SignalSignatures>(
+            signal: K,
+            callback: DomainInterface.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterface.SignalSignatures>(
+            signal: K,
+            callback: DomainInterface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterface.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1319,7 +1323,6 @@ export namespace LibvirtGObject {
 
     class DomainSnapshot extends GObject.Object {
         static $gtype: GObject.GType<DomainSnapshot>;
-        declare static readonly __signalSignatures: DomainSnapshot.SignalSignatures;
 
         // Properties
 
@@ -1330,6 +1333,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<DomainSnapshot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainSnapshot.SignalSignatures>(
+            signal: K,
+            callback: DomainSnapshot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSnapshot.SignalSignatures>(
+            signal: K,
+            callback: DomainSnapshot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSnapshot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSnapshot.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1384,7 +1402,6 @@ export namespace LibvirtGObject {
 
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
-        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Properties
 
@@ -1395,6 +1412,18 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect_after<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: Interface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Interface.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1407,11 +1436,11 @@ export namespace LibvirtGObject {
         // Signal callback interfaces
 
         interface ConnectionAdded {
-            (object: Connection): void;
+            (_source: Manager, object: Connection): void;
         }
 
         interface ConnectionRemoved {
-            (object: Connection): void;
+            (_source: Manager, object: Connection): void;
         }
 
         // Signal signatures
@@ -1427,7 +1456,6 @@ export namespace LibvirtGObject {
 
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
-        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1448,15 +1476,6 @@ export namespace LibvirtGObject {
             signal: K,
             ...args: Parameters<Manager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connection-added', callback: (_source: this, object: Connection) => void): number;
-        connect_after(signal: 'connection-added', callback: (_source: this, object: Connection) => void): number;
-        emit(signal: 'connection-added', object: Connection): void;
-        connect(signal: 'connection-removed', callback: (_source: this, object: Connection) => void): number;
-        connect_after(signal: 'connection-removed', callback: (_source: this, object: Connection) => void): number;
-        emit(signal: 'connection-removed', object: Connection): void;
 
         // Virtual methods
 
@@ -1484,7 +1503,6 @@ export namespace LibvirtGObject {
 
     class Network extends GObject.Object {
         static $gtype: GObject.GType<Network>;
-        declare static readonly __signalSignatures: Network.SignalSignatures;
 
         // Properties
 
@@ -1495,6 +1513,18 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<Network.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Network.SignalSignatures>(signal: K, callback: Network.SignalSignatures[K]): number;
+        connect_after<K extends keyof Network.SignalSignatures>(
+            signal: K,
+            callback: Network.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Network.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Network.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1531,7 +1561,6 @@ export namespace LibvirtGObject {
 
     class NetworkDHCPLease extends GObject.Object {
         static $gtype: GObject.GType<NetworkDHCPLease>;
-        declare static readonly __signalSignatures: NetworkDHCPLease.SignalSignatures;
 
         // Properties
 
@@ -1542,6 +1571,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<NetworkDHCPLease.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NetworkDHCPLease.SignalSignatures>(
+            signal: K,
+            callback: NetworkDHCPLease.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkDHCPLease.SignalSignatures>(
+            signal: K,
+            callback: NetworkDHCPLease.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkDHCPLease.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkDHCPLease.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1569,7 +1613,6 @@ export namespace LibvirtGObject {
 
     class NetworkFilter extends GObject.Object {
         static $gtype: GObject.GType<NetworkFilter>;
-        declare static readonly __signalSignatures: NetworkFilter.SignalSignatures;
 
         // Properties
 
@@ -1580,6 +1623,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<NetworkFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NetworkFilter.SignalSignatures>(
+            signal: K,
+            callback: NetworkFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkFilter.SignalSignatures>(
+            signal: K,
+            callback: NetworkFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1601,7 +1659,6 @@ export namespace LibvirtGObject {
 
     class NodeDevice extends GObject.Object {
         static $gtype: GObject.GType<NodeDevice>;
-        declare static readonly __signalSignatures: NodeDevice.SignalSignatures;
 
         // Properties
 
@@ -1612,6 +1669,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<NodeDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NodeDevice.SignalSignatures>(
+            signal: K,
+            callback: NodeDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NodeDevice.SignalSignatures>(
+            signal: K,
+            callback: NodeDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NodeDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NodeDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1632,7 +1704,6 @@ export namespace LibvirtGObject {
 
     class Secret extends GObject.Object {
         static $gtype: GObject.GType<Secret>;
-        declare static readonly __signalSignatures: Secret.SignalSignatures;
 
         // Properties
 
@@ -1643,6 +1714,12 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<Secret.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        emit<K extends keyof Secret.SignalSignatures>(signal: K, ...args: Parameters<Secret.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1664,7 +1741,6 @@ export namespace LibvirtGObject {
 
     class StoragePool extends GObject.Object {
         static $gtype: GObject.GType<StoragePool>;
-        declare static readonly __signalSignatures: StoragePool.SignalSignatures;
 
         // Properties
 
@@ -1675,6 +1751,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<StoragePool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StoragePool.SignalSignatures>(
+            signal: K,
+            callback: StoragePool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoragePool.SignalSignatures>(
+            signal: K,
+            callback: StoragePool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoragePool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoragePool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1773,7 +1864,6 @@ export namespace LibvirtGObject {
 
     class StorageVol extends GObject.Object {
         static $gtype: GObject.GType<StorageVol>;
-        declare static readonly __signalSignatures: StorageVol.SignalSignatures;
 
         // Properties
 
@@ -1785,6 +1875,21 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<StorageVol.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StorageVol.SignalSignatures>(
+            signal: K,
+            callback: StorageVol.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StorageVol.SignalSignatures>(
+            signal: K,
+            callback: StorageVol.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StorageVol.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StorageVol.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1822,7 +1927,6 @@ export namespace LibvirtGObject {
 
     class Stream extends Gio.IOStream {
         static $gtype: GObject.GType<Stream>;
-        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -1833,6 +1937,12 @@ export namespace LibvirtGObject {
         constructor(properties?: Partial<Stream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
 
         // Methods
 

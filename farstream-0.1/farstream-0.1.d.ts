@@ -370,13 +370,27 @@ export namespace Farstream {
      */
     class Conference extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<Conference>;
-        declare static readonly __signalSignatures: Conference.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Conference.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Conference.SignalSignatures>(
+            signal: K,
+            callback: Conference.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Conference.SignalSignatures>(
+            signal: K,
+            callback: Conference.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Conference.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Conference.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -435,7 +449,7 @@ export namespace Farstream {
         // Signal callback interfaces
 
         interface ElementAdded {
-            (bin: Gst.Bin, element: Gst.Element): void;
+            (_source: ElementAddedNotifier, bin: Gst.Bin, element: Gst.Element): void;
         }
 
         // Signal signatures
@@ -453,7 +467,6 @@ export namespace Farstream {
      */
     class ElementAddedNotifier extends GObject.Object {
         static $gtype: GObject.GType<ElementAddedNotifier>;
-        declare static readonly __signalSignatures: ElementAddedNotifier.SignalSignatures;
 
         // Constructors
 
@@ -477,15 +490,6 @@ export namespace Farstream {
             signal: K,
             ...args: Parameters<ElementAddedNotifier.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'element-added', callback: (_source: this, bin: Gst.Bin, element: Gst.Element) => void): number;
-        connect_after(
-            signal: 'element-added',
-            callback: (_source: this, bin: Gst.Bin, element: Gst.Element) => void,
-        ): number;
-        emit(signal: 'element-added', bin: Gst.Bin, element: Gst.Element): void;
 
         // Methods
 
@@ -544,13 +548,27 @@ export namespace Farstream {
      */
     abstract class Participant extends Gst.Object {
         static $gtype: GObject.GType<Participant>;
-        declare static readonly __signalSignatures: Participant.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Participant.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Participant.SignalSignatures>(
+            signal: K,
+            callback: Participant.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Participant.SignalSignatures>(
+            signal: K,
+            callback: Participant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Participant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Participant.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Plugin {
@@ -567,13 +585,18 @@ export namespace Farstream {
      */
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1065,7 +1088,7 @@ export namespace Farstream {
         // Signal callback interfaces
 
         interface Error {
-            (object: GObject.Object, error_no: Error, error_msg: string): void;
+            (_source: Session, object: GObject.Object, error_no: Error, error_msg: string): void;
         }
 
         // Signal signatures
@@ -1098,7 +1121,6 @@ export namespace Farstream {
      */
     abstract class Session extends Gst.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -1257,18 +1279,6 @@ export namespace Farstream {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'error',
-            callback: (_source: this, object: GObject.Object, error_no: Error, error_msg: string) => void,
-        ): number;
-        connect_after(
-            signal: 'error',
-            callback: (_source: this, object: GObject.Object, error_no: Error, error_msg: string) => void,
-        ): number;
-        emit(signal: 'error', object: GObject.Object, error_no: Error, error_msg: string): void;
 
         // Virtual methods
 
@@ -1480,11 +1490,11 @@ export namespace Farstream {
         // Signal callback interfaces
 
         interface Error {
-            (errorno: Error, error_msg: string): void;
+            (_source: Stream, errorno: Error, error_msg: string): void;
         }
 
         interface SrcPadAdded {
-            (pad: Gst.Pad, codec: Codec): void;
+            (_source: Stream, pad: Gst.Pad, codec: Codec): void;
         }
 
         // Signal signatures
@@ -1513,7 +1523,6 @@ export namespace Farstream {
      */
     abstract class Stream extends Gst.Object {
         static $gtype: GObject.GType<Stream>;
-        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -1596,15 +1605,6 @@ export namespace Farstream {
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
         emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
-        emit(signal: 'error', errorno: Error, error_msg: string): void;
-        connect(signal: 'src-pad-added', callback: (_source: this, pad: Gst.Pad, codec: Codec) => void): number;
-        connect_after(signal: 'src-pad-added', callback: (_source: this, pad: Gst.Pad, codec: Codec) => void): number;
-        emit(signal: 'src-pad-added', pad: Gst.Pad, codec: Codec): void;
 
         // Virtual methods
 
@@ -1791,27 +1791,27 @@ export namespace Farstream {
         // Signal callback interfaces
 
         interface Error {
-            (errorno: Error, error_msg: string): void;
+            (_source: StreamTransmitter, errorno: Error, error_msg: string): void;
         }
 
         interface KnownSourcePacketReceived {
-            (component: number, buffer: any): void;
+            (_source: StreamTransmitter, component: number, buffer: any): void;
         }
 
         interface LocalCandidatesPrepared {
-            (): void;
+            (_source: StreamTransmitter): void;
         }
 
         interface NewActiveCandidatePair {
-            (local_candidate: Candidate, remote_candidate: Candidate): void;
+            (_source: StreamTransmitter, local_candidate: Candidate, remote_candidate: Candidate): void;
         }
 
         interface NewLocalCandidate {
-            (local_candidate: Candidate): void;
+            (_source: StreamTransmitter, local_candidate: Candidate): void;
         }
 
         interface StateChanged {
-            (component: number, state: StreamState): void;
+            (_source: StreamTransmitter, component: number, state: StreamState): void;
         }
 
         // Signal signatures
@@ -1840,7 +1840,6 @@ export namespace Farstream {
      */
     abstract class StreamTransmitter extends Gst.Object {
         static $gtype: GObject.GType<StreamTransmitter>;
-        declare static readonly __signalSignatures: StreamTransmitter.SignalSignatures;
 
         // Properties
 
@@ -1882,48 +1881,6 @@ export namespace Farstream {
             signal: K,
             ...args: Parameters<StreamTransmitter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
-        emit(signal: 'error', errorno: Error, error_msg: string): void;
-        connect(
-            signal: 'known-source-packet-received',
-            callback: (_source: this, component: number, buffer: any) => void,
-        ): number;
-        connect_after(
-            signal: 'known-source-packet-received',
-            callback: (_source: this, component: number, buffer: any) => void,
-        ): number;
-        emit(signal: 'known-source-packet-received', component: number, buffer: any): void;
-        connect(signal: 'local-candidates-prepared', callback: (_source: this) => void): number;
-        connect_after(signal: 'local-candidates-prepared', callback: (_source: this) => void): number;
-        emit(signal: 'local-candidates-prepared'): void;
-        connect(
-            signal: 'new-active-candidate-pair',
-            callback: (_source: this, local_candidate: Candidate, remote_candidate: Candidate) => void,
-        ): number;
-        connect_after(
-            signal: 'new-active-candidate-pair',
-            callback: (_source: this, local_candidate: Candidate, remote_candidate: Candidate) => void,
-        ): number;
-        emit(signal: 'new-active-candidate-pair', local_candidate: Candidate, remote_candidate: Candidate): void;
-        connect(signal: 'new-local-candidate', callback: (_source: this, local_candidate: Candidate) => void): number;
-        connect_after(
-            signal: 'new-local-candidate',
-            callback: (_source: this, local_candidate: Candidate) => void,
-        ): number;
-        emit(signal: 'new-local-candidate', local_candidate: Candidate): void;
-        connect(
-            signal: 'state-changed',
-            callback: (_source: this, component: number, state: StreamState) => void,
-        ): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, component: number, state: StreamState) => void,
-        ): number;
-        emit(signal: 'state-changed', component: number, state: StreamState): void;
 
         // Virtual methods
 
@@ -1992,11 +1949,11 @@ export namespace Farstream {
         // Signal callback interfaces
 
         interface Error {
-            (errorno: Error, error_msg: string): void;
+            (_source: Transmitter, errorno: Error, error_msg: string): void;
         }
 
         interface GetRecvonlyFilter {
-            (component: number): Gst.Element;
+            (_source: Transmitter, component: number): Gst.Element;
         }
 
         // Signal signatures
@@ -2022,7 +1979,6 @@ export namespace Farstream {
      */
     abstract class Transmitter extends Gst.Object {
         static $gtype: GObject.GType<Transmitter>;
-        declare static readonly __signalSignatures: Transmitter.SignalSignatures;
 
         // Properties
 
@@ -2092,18 +2048,6 @@ export namespace Farstream {
             signal: K,
             ...args: Parameters<Transmitter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, errorno: Error, error_msg: string) => void): number;
-        emit(signal: 'error', errorno: Error, error_msg: string): void;
-        connect(signal: 'get-recvonly-filter', callback: (_source: this, component: number) => Gst.Element): number;
-        connect_after(
-            signal: 'get-recvonly-filter',
-            callback: (_source: this, component: number) => Gst.Element,
-        ): number;
-        emit(signal: 'get-recvonly-filter', component: number): void;
 
         // Static methods
 

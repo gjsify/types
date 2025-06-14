@@ -2151,7 +2151,6 @@ export namespace PackageKitGlib {
 
     class Category extends Source {
         static $gtype: GObject.GType<Category>;
-        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -2177,6 +2176,18 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Category;
+
+        // Signals
+
+        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect_after<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: Category.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Category.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2252,7 +2263,6 @@ export namespace PackageKitGlib {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -2287,6 +2297,12 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3487,7 +3503,6 @@ export namespace PackageKitGlib {
 
     class ClientHelper extends GObject.Object {
         static $gtype: GObject.GType<ClientHelper>;
-        declare static readonly __signalSignatures: ClientHelper.SignalSignatures;
 
         // Constructors
 
@@ -3496,6 +3511,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): ClientHelper;
+
+        // Signals
+
+        connect<K extends keyof ClientHelper.SignalSignatures>(
+            signal: K,
+            callback: ClientHelper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientHelper.SignalSignatures>(
+            signal: K,
+            callback: ClientHelper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientHelper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientHelper.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3530,19 +3560,19 @@ export namespace PackageKitGlib {
         // Signal callback interfaces
 
         interface RepoListChanged {
-            (): void;
+            (_source: Control): void;
         }
 
         interface RestartSchedule {
-            (): void;
+            (_source: Control): void;
         }
 
         interface TransactionListChanged {
-            (transaction_ids: string[]): void;
+            (_source: Control, transaction_ids: string[]): void;
         }
 
         interface UpdatesChanged {
-            (): void;
+            (_source: Control): void;
         }
 
         // Signal signatures
@@ -3585,7 +3615,6 @@ export namespace PackageKitGlib {
 
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
-        declare static readonly __signalSignatures: Control.SignalSignatures;
 
         // Properties
 
@@ -3651,27 +3680,6 @@ export namespace PackageKitGlib {
             signal: K,
             ...args: Parameters<Control.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'repo-list-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'repo-list-changed', callback: (_source: this) => void): number;
-        emit(signal: 'repo-list-changed'): void;
-        connect(signal: 'restart-schedule', callback: (_source: this) => void): number;
-        connect_after(signal: 'restart-schedule', callback: (_source: this) => void): number;
-        emit(signal: 'restart-schedule'): void;
-        connect(
-            signal: 'transaction-list-changed',
-            callback: (_source: this, transaction_ids: string[]) => void,
-        ): number;
-        connect_after(
-            signal: 'transaction-list-changed',
-            callback: (_source: this, transaction_ids: string[]) => void,
-        ): number;
-        emit(signal: 'transaction-list-changed', transaction_ids: string[]): void;
-        connect(signal: 'updates-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'updates-changed', callback: (_source: this) => void): number;
-        emit(signal: 'updates-changed'): void;
 
         // Virtual methods
 
@@ -4036,7 +4044,6 @@ export namespace PackageKitGlib {
 
     class Desktop extends GObject.Object {
         static $gtype: GObject.GType<Desktop>;
-        declare static readonly __signalSignatures: Desktop.SignalSignatures;
 
         // Constructors
 
@@ -4045,6 +4052,18 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Desktop;
+
+        // Signals
+
+        connect<K extends keyof Desktop.SignalSignatures>(signal: K, callback: Desktop.SignalSignatures[K]): number;
+        connect_after<K extends keyof Desktop.SignalSignatures>(
+            signal: K,
+            callback: Desktop.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Desktop.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Desktop.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4098,7 +4117,6 @@ export namespace PackageKitGlib {
 
     class Details extends Source {
         static $gtype: GObject.GType<Details>;
-        declare static readonly __signalSignatures: Details.SignalSignatures;
 
         // Properties
 
@@ -4130,6 +4148,18 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Details;
+
+        // Signals
+
+        connect<K extends keyof Details.SignalSignatures>(signal: K, callback: Details.SignalSignatures[K]): number;
+        connect_after<K extends keyof Details.SignalSignatures>(
+            signal: K,
+            callback: Details.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Details.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Details.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4191,7 +4221,6 @@ export namespace PackageKitGlib {
 
     class DistroUpgrade extends Source {
         static $gtype: GObject.GType<DistroUpgrade>;
-        declare static readonly __signalSignatures: DistroUpgrade.SignalSignatures;
 
         // Properties
 
@@ -4209,6 +4238,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): DistroUpgrade;
+
+        // Signals
+
+        connect<K extends keyof DistroUpgrade.SignalSignatures>(
+            signal: K,
+            callback: DistroUpgrade.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DistroUpgrade.SignalSignatures>(
+            signal: K,
+            callback: DistroUpgrade.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DistroUpgrade.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DistroUpgrade.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4244,7 +4288,6 @@ export namespace PackageKitGlib {
 
     class Error extends Source {
         static $gtype: GObject.GType<Error>;
-        declare static readonly __signalSignatures: Error.SignalSignatures;
 
         // Properties
 
@@ -4260,6 +4303,12 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Error;
+
+        // Signals
+
+        connect<K extends keyof Error.SignalSignatures>(signal: K, callback: Error.SignalSignatures[K]): number;
+        connect_after<K extends keyof Error.SignalSignatures>(signal: K, callback: Error.SignalSignatures[K]): number;
+        emit<K extends keyof Error.SignalSignatures>(signal: K, ...args: Parameters<Error.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4295,7 +4344,6 @@ export namespace PackageKitGlib {
 
     class EulaRequired extends Source {
         static $gtype: GObject.GType<EulaRequired>;
-        declare static readonly __signalSignatures: EulaRequired.SignalSignatures;
 
         // Properties
 
@@ -4348,6 +4396,21 @@ export namespace PackageKitGlib {
 
         static ['new'](): EulaRequired;
 
+        // Signals
+
+        connect<K extends keyof EulaRequired.SignalSignatures>(
+            signal: K,
+            callback: EulaRequired.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EulaRequired.SignalSignatures>(
+            signal: K,
+            callback: EulaRequired.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EulaRequired.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EulaRequired.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -4387,7 +4450,6 @@ export namespace PackageKitGlib {
 
     class Files extends Source {
         static $gtype: GObject.GType<Files>;
-        declare static readonly __signalSignatures: Files.SignalSignatures;
 
         // Properties
 
@@ -4405,6 +4467,12 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Files;
+
+        // Signals
+
+        connect<K extends keyof Files.SignalSignatures>(signal: K, callback: Files.SignalSignatures[K]): number;
+        connect_after<K extends keyof Files.SignalSignatures>(signal: K, callback: Files.SignalSignatures[K]): number;
+        emit<K extends keyof Files.SignalSignatures>(signal: K, ...args: Parameters<Files.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4436,7 +4504,6 @@ export namespace PackageKitGlib {
 
     class ItemProgress extends Source {
         static $gtype: GObject.GType<ItemProgress>;
-        declare static readonly __signalSignatures: ItemProgress.SignalSignatures;
 
         // Properties
 
@@ -4456,6 +4523,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): ItemProgress;
+
+        // Signals
+
+        connect<K extends keyof ItemProgress.SignalSignatures>(
+            signal: K,
+            callback: ItemProgress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ItemProgress.SignalSignatures>(
+            signal: K,
+            callback: ItemProgress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ItemProgress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ItemProgress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4494,7 +4576,6 @@ export namespace PackageKitGlib {
 
     class MediaChangeRequired extends Source {
         static $gtype: GObject.GType<MediaChangeRequired>;
-        declare static readonly __signalSignatures: MediaChangeRequired.SignalSignatures;
 
         // Properties
 
@@ -4518,13 +4599,28 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): MediaChangeRequired;
+
+        // Signals
+
+        connect<K extends keyof MediaChangeRequired.SignalSignatures>(
+            signal: K,
+            callback: MediaChangeRequired.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaChangeRequired.SignalSignatures>(
+            signal: K,
+            callback: MediaChangeRequired.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaChangeRequired.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaChangeRequired.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Package {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Package): void;
         }
 
         // Signal signatures
@@ -4573,7 +4669,6 @@ export namespace PackageKitGlib {
 
     class Package extends Source {
         static $gtype: GObject.GType<Package>;
-        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Properties
 
@@ -4669,12 +4764,6 @@ export namespace PackageKitGlib {
             signal: K,
             ...args: Parameters<Package.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -4866,7 +4955,6 @@ export namespace PackageKitGlib {
 
     class PackageSack extends GObject.Object {
         static $gtype: GObject.GType<PackageSack>;
-        declare static readonly __signalSignatures: PackageSack.SignalSignatures;
 
         // Constructors
 
@@ -4875,6 +4963,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): PackageSack;
+
+        // Signals
+
+        connect<K extends keyof PackageSack.SignalSignatures>(
+            signal: K,
+            callback: PackageSack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PackageSack.SignalSignatures>(
+            signal: K,
+            callback: PackageSack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PackageSack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PackageSack.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5085,7 +5188,6 @@ export namespace PackageKitGlib {
 
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
-        declare static readonly __signalSignatures: Progress.SignalSignatures;
 
         // Properties
 
@@ -5222,6 +5324,18 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Progress;
+
+        // Signals
+
+        connect<K extends keyof Progress.SignalSignatures>(signal: K, callback: Progress.SignalSignatures[K]): number;
+        connect_after<K extends keyof Progress.SignalSignatures>(
+            signal: K,
+            callback: Progress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Progress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Progress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5419,7 +5533,6 @@ export namespace PackageKitGlib {
 
     class RepoDetail extends Source {
         static $gtype: GObject.GType<RepoDetail>;
-        declare static readonly __signalSignatures: RepoDetail.SignalSignatures;
 
         // Properties
 
@@ -5439,6 +5552,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): RepoDetail;
+
+        // Signals
+
+        connect<K extends keyof RepoDetail.SignalSignatures>(
+            signal: K,
+            callback: RepoDetail.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepoDetail.SignalSignatures>(
+            signal: K,
+            callback: RepoDetail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepoDetail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepoDetail.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5486,7 +5614,6 @@ export namespace PackageKitGlib {
 
     class RepoSignatureRequired extends Source {
         static $gtype: GObject.GType<RepoSignatureRequired>;
-        declare static readonly __signalSignatures: RepoSignatureRequired.SignalSignatures;
 
         // Properties
 
@@ -5528,6 +5655,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): RepoSignatureRequired;
+
+        // Signals
+
+        connect<K extends keyof RepoSignatureRequired.SignalSignatures>(
+            signal: K,
+            callback: RepoSignatureRequired.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepoSignatureRequired.SignalSignatures>(
+            signal: K,
+            callback: RepoSignatureRequired.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepoSignatureRequired.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepoSignatureRequired.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RequireRestart {
@@ -5545,7 +5687,6 @@ export namespace PackageKitGlib {
 
     class RequireRestart extends Source {
         static $gtype: GObject.GType<RequireRestart>;
-        declare static readonly __signalSignatures: RequireRestart.SignalSignatures;
 
         // Properties
 
@@ -5563,6 +5704,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): RequireRestart;
+
+        // Signals
+
+        connect<K extends keyof RequireRestart.SignalSignatures>(
+            signal: K,
+            callback: RequireRestart.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RequireRestart.SignalSignatures>(
+            signal: K,
+            callback: RequireRestart.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RequireRestart.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RequireRestart.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Results {
@@ -5582,7 +5738,6 @@ export namespace PackageKitGlib {
 
     class Results extends GObject.Object {
         static $gtype: GObject.GType<Results>;
-        declare static readonly __signalSignatures: Results.SignalSignatures;
 
         // Properties
 
@@ -5613,6 +5768,18 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Results;
+
+        // Signals
+
+        connect<K extends keyof Results.SignalSignatures>(signal: K, callback: Results.SignalSignatures[K]): number;
+        connect_after<K extends keyof Results.SignalSignatures>(
+            signal: K,
+            callback: Results.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Results.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Results.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5820,7 +5987,6 @@ export namespace PackageKitGlib {
 
     class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
-        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -5838,6 +6004,12 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Source;
+
+        // Signals
+
+        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
     }
 
     namespace Task {
@@ -5861,7 +6033,6 @@ export namespace PackageKitGlib {
 
     class Task extends Client {
         static $gtype: GObject.GType<Task>;
-        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -5918,6 +6089,12 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): Task;
+
+        // Signals
+
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -6694,11 +6871,11 @@ export namespace PackageKitGlib {
         // Signal callback interfaces
 
         interface Added {
-            (tid: string): void;
+            (_source: TransactionList, tid: string): void;
         }
 
         interface Removed {
-            (tid: string): void;
+            (_source: TransactionList, tid: string): void;
         }
 
         // Signal signatures
@@ -6714,7 +6891,6 @@ export namespace PackageKitGlib {
 
     class TransactionList extends GObject.Object {
         static $gtype: GObject.GType<TransactionList>;
-        declare static readonly __signalSignatures: TransactionList.SignalSignatures;
 
         // Constructors
 
@@ -6738,15 +6914,6 @@ export namespace PackageKitGlib {
             signal: K,
             ...args: Parameters<TransactionList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'added', callback: (_source: this, tid: string) => void): number;
-        connect_after(signal: 'added', callback: (_source: this, tid: string) => void): number;
-        emit(signal: 'added', tid: string): void;
-        connect(signal: 'removed', callback: (_source: this, tid: string) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this, tid: string) => void): number;
-        emit(signal: 'removed', tid: string): void;
 
         // Virtual methods
 
@@ -6782,7 +6949,6 @@ export namespace PackageKitGlib {
 
     class TransactionPast extends Source {
         static $gtype: GObject.GType<TransactionPast>;
-        declare static readonly __signalSignatures: TransactionPast.SignalSignatures;
 
         // Properties
 
@@ -6810,6 +6976,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): TransactionPast;
+
+        // Signals
+
+        connect<K extends keyof TransactionPast.SignalSignatures>(
+            signal: K,
+            callback: TransactionPast.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransactionPast.SignalSignatures>(
+            signal: K,
+            callback: TransactionPast.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransactionPast.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransactionPast.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6896,7 +7077,6 @@ export namespace PackageKitGlib {
 
     class UpdateDetail extends Source {
         static $gtype: GObject.GType<UpdateDetail>;
-        declare static readonly __signalSignatures: UpdateDetail.SignalSignatures;
 
         // Properties
 
@@ -6942,6 +7122,21 @@ export namespace PackageKitGlib {
         _init(...args: any[]): void;
 
         static ['new'](): UpdateDetail;
+
+        // Signals
+
+        connect<K extends keyof UpdateDetail.SignalSignatures>(
+            signal: K,
+            callback: UpdateDetail.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UpdateDetail.SignalSignatures>(
+            signal: K,
+            callback: UpdateDetail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UpdateDetail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UpdateDetail.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -178,7 +178,6 @@ export namespace Libmsi {
 
     class Database extends GObject.Object {
         static $gtype: GObject.GType<Database>;
-        declare static readonly __signalSignatures: Database.SignalSignatures;
 
         // Properties
 
@@ -193,6 +192,18 @@ export namespace Libmsi {
         _init(...args: any[]): void;
 
         static ['new'](path: string, flags: number, persist?: string | null): Database;
+
+        // Signals
+
+        connect<K extends keyof Database.SignalSignatures>(signal: K, callback: Database.SignalSignatures[K]): number;
+        connect_after<K extends keyof Database.SignalSignatures>(
+            signal: K,
+            callback: Database.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Database.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Database.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -245,7 +256,6 @@ export namespace Libmsi {
 
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
-        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Properties
 
@@ -259,6 +269,12 @@ export namespace Libmsi {
         _init(...args: any[]): void;
 
         static ['new'](database: Database, query: string): Query;
+
+        // Signals
+
+        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -304,7 +320,6 @@ export namespace Libmsi {
 
     class Record extends GObject.Object {
         static $gtype: GObject.GType<Record>;
-        declare static readonly __signalSignatures: Record.SignalSignatures;
 
         // Properties
 
@@ -317,6 +332,12 @@ export namespace Libmsi {
         _init(...args: any[]): void;
 
         static ['new'](count: number): Record;
+
+        // Signals
+
+        connect<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
+        connect_after<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
+        emit<K extends keyof Record.SignalSignatures>(signal: K, ...args: Parameters<Record.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -394,7 +415,6 @@ export namespace Libmsi {
 
     class SummaryInfo extends GObject.Object {
         static $gtype: GObject.GType<SummaryInfo>;
-        declare static readonly __signalSignatures: SummaryInfo.SignalSignatures;
 
         // Properties
 
@@ -409,6 +429,21 @@ export namespace Libmsi {
         _init(...args: any[]): void;
 
         static ['new'](database: Database | null, update_count: number): SummaryInfo;
+
+        // Signals
+
+        connect<K extends keyof SummaryInfo.SignalSignatures>(
+            signal: K,
+            callback: SummaryInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SummaryInfo.SignalSignatures>(
+            signal: K,
+            callback: SummaryInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SummaryInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SummaryInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -658,7 +658,7 @@ export namespace GWeather {
         // Signal callback interfaces
 
         interface Updated {
-            (): void;
+            (_source: Info): void;
         }
 
         // Signal signatures
@@ -689,7 +689,6 @@ export namespace GWeather {
      */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
-        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Properties
 
@@ -721,12 +720,6 @@ export namespace GWeather {
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
         emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this) => void): number;
-        emit(signal: 'updated'): void;
 
         // Static methods
 
@@ -899,7 +892,6 @@ export namespace GWeather {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<LocationEntry>;
-        declare static readonly __signalSignatures: LocationEntry.SignalSignatures;
 
         // Properties
 
@@ -919,6 +911,21 @@ export namespace GWeather {
         // Conflicted with Gtk.SearchEntry.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LocationEntry.SignalSignatures>(
+            signal: K,
+            callback: LocationEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocationEntry.SignalSignatures>(
+            signal: K,
+            callback: LocationEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocationEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocationEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5252,7 +5259,6 @@ export namespace GWeather {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<TimezoneMenu>;
-        declare static readonly __signalSignatures: TimezoneMenu.SignalSignatures;
 
         // Properties
 
@@ -5270,6 +5276,21 @@ export namespace GWeather {
         // Conflicted with Gtk.ComboBox.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TimezoneMenu.SignalSignatures>(
+            signal: K,
+            callback: TimezoneMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimezoneMenu.SignalSignatures>(
+            signal: K,
+            callback: TimezoneMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimezoneMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimezoneMenu.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

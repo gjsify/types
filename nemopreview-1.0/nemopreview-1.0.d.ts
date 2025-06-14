@@ -70,7 +70,6 @@ export namespace NemoPreview {
 
     class CoverArtFetcher extends GObject.Object {
         static $gtype: GObject.GType<CoverArtFetcher>;
-        declare static readonly __signalSignatures: CoverArtFetcher.SignalSignatures;
 
         // Properties
 
@@ -83,6 +82,21 @@ export namespace NemoPreview {
         _init(...args: any[]): void;
 
         static ['new'](taglist: Gst.TagList): CoverArtFetcher;
+
+        // Signals
+
+        connect<K extends keyof CoverArtFetcher.SignalSignatures>(
+            signal: K,
+            callback: CoverArtFetcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CoverArtFetcher.SignalSignatures>(
+            signal: K,
+            callback: CoverArtFetcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CoverArtFetcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CoverArtFetcher.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileLoader {
@@ -106,7 +120,6 @@ export namespace NemoPreview {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
-        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -129,6 +142,21 @@ export namespace NemoPreview {
 
         static ['new'](file: Gio.File): FileLoader;
 
+        // Signals
+
+        connect<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            callback: FileLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            callback: FileLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileLoader.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_content_type_string(): string;
@@ -145,11 +173,11 @@ export namespace NemoPreview {
         // Signal callback interfaces
 
         interface Error {
-            (object: string): void;
+            (_source: FontWidget, object: string): void;
         }
 
         interface Loaded {
-            (): void;
+            (_source: FontWidget): void;
         }
 
         // Signal signatures
@@ -170,7 +198,6 @@ export namespace NemoPreview {
 
     class FontWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FontWidget>;
-        declare static readonly __signalSignatures: FontWidget.SignalSignatures;
 
         // Properties
 
@@ -202,15 +229,6 @@ export namespace NemoPreview {
             signal: K,
             ...args: Parameters<FontWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'error', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'error', object: string): void;
-        connect(signal: 'loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this) => void): number;
-        emit(signal: 'loaded'): void;
 
         // Methods
 
@@ -672,7 +690,6 @@ export namespace NemoPreview {
 
     class PdfLoader extends GObject.Object {
         static $gtype: GObject.GType<PdfLoader>;
-        declare static readonly __signalSignatures: PdfLoader.SignalSignatures;
 
         // Properties
 
@@ -687,6 +704,18 @@ export namespace NemoPreview {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): PdfLoader;
+
+        // Signals
+
+        connect<K extends keyof PdfLoader.SignalSignatures>(signal: K, callback: PdfLoader.SignalSignatures[K]): number;
+        connect_after<K extends keyof PdfLoader.SignalSignatures>(
+            signal: K,
+            callback: PdfLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PdfLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PdfLoader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -711,7 +740,6 @@ export namespace NemoPreview {
 
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
-        declare static readonly __signalSignatures: SoundPlayer.SignalSignatures;
 
         // Properties
 
@@ -729,13 +757,28 @@ export namespace NemoPreview {
         constructor(properties?: Partial<SoundPlayer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SoundPlayer.SignalSignatures>(
+            signal: K,
+            callback: SoundPlayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SoundPlayer.SignalSignatures>(
+            signal: K,
+            callback: SoundPlayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SoundPlayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SoundPlayer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TextLoader {
         // Signal callback interfaces
 
         interface Loaded {
-            (object: GtkSource.Buffer): void;
+            (_source: TextLoader, object: GtkSource.Buffer): void;
         }
 
         // Signal signatures
@@ -752,7 +795,6 @@ export namespace NemoPreview {
 
     class TextLoader extends GObject.Object {
         static $gtype: GObject.GType<TextLoader>;
-        declare static readonly __signalSignatures: TextLoader.SignalSignatures;
 
         // Properties
 
@@ -781,12 +823,6 @@ export namespace NemoPreview {
             signal: K,
             ...args: Parameters<TextLoader.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'loaded', callback: (_source: this, object: GtkSource.Buffer) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this, object: GtkSource.Buffer) => void): number;
-        emit(signal: 'loaded', object: GtkSource.Buffer): void;
     }
 
     type CoverArtFetcherClass = typeof CoverArtFetcher;

@@ -480,7 +480,6 @@ export namespace Xmlb {
 
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
-        declare static readonly __signalSignatures: Builder.SignalSignatures;
 
         // Constructors
 
@@ -489,6 +488,18 @@ export namespace Xmlb {
         _init(...args: any[]): void;
 
         static ['new'](): Builder;
+
+        // Signals
+
+        connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: Builder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Builder.SignalSignatures>(
+            signal: K,
+            callback: Builder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Builder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Builder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -569,7 +580,6 @@ export namespace Xmlb {
 
     class BuilderFixup extends GObject.Object {
         static $gtype: GObject.GType<BuilderFixup>;
-        declare static readonly __signalSignatures: BuilderFixup.SignalSignatures;
 
         // Constructors
 
@@ -578,6 +588,21 @@ export namespace Xmlb {
         _init(...args: any[]): void;
 
         static ['new'](id: string, func: BuilderFixupFunc): BuilderFixup;
+
+        // Signals
+
+        connect<K extends keyof BuilderFixup.SignalSignatures>(
+            signal: K,
+            callback: BuilderFixup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuilderFixup.SignalSignatures>(
+            signal: K,
+            callback: BuilderFixup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuilderFixup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuilderFixup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -608,7 +633,6 @@ export namespace Xmlb {
 
     class BuilderNode extends GObject.Object {
         static $gtype: GObject.GType<BuilderNode>;
-        declare static readonly __signalSignatures: BuilderNode.SignalSignatures;
 
         // Constructors
 
@@ -617,6 +641,21 @@ export namespace Xmlb {
         _init(...args: any[]): void;
 
         static ['new'](element: string): BuilderNode;
+
+        // Signals
+
+        connect<K extends keyof BuilderNode.SignalSignatures>(
+            signal: K,
+            callback: BuilderNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuilderNode.SignalSignatures>(
+            signal: K,
+            callback: BuilderNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuilderNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuilderNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -808,7 +847,6 @@ export namespace Xmlb {
 
     class BuilderSource extends GObject.Object {
         static $gtype: GObject.GType<BuilderSource>;
-        declare static readonly __signalSignatures: BuilderSource.SignalSignatures;
 
         // Constructors
 
@@ -817,6 +855,21 @@ export namespace Xmlb {
         _init(...args: any[]): void;
 
         static ['new'](): BuilderSource;
+
+        // Signals
+
+        connect<K extends keyof BuilderSource.SignalSignatures>(
+            signal: K,
+            callback: BuilderSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuilderSource.SignalSignatures>(
+            signal: K,
+            callback: BuilderSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuilderSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuilderSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -872,13 +925,27 @@ export namespace Xmlb {
 
     class BuilderSourceCtx extends GObject.Object {
         static $gtype: GObject.GType<BuilderSourceCtx>;
-        declare static readonly __signalSignatures: BuilderSourceCtx.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BuilderSourceCtx.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BuilderSourceCtx.SignalSignatures>(
+            signal: K,
+            callback: BuilderSourceCtx.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuilderSourceCtx.SignalSignatures>(
+            signal: K,
+            callback: BuilderSourceCtx.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuilderSourceCtx.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuilderSourceCtx.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -915,7 +982,6 @@ export namespace Xmlb {
 
     class Machine extends GObject.Object {
         static $gtype: GObject.GType<Machine>;
-        declare static readonly __signalSignatures: Machine.SignalSignatures;
 
         // Constructors
 
@@ -924,6 +990,18 @@ export namespace Xmlb {
         _init(...args: any[]): void;
 
         static ['new'](): Machine;
+
+        // Signals
+
+        connect<K extends keyof Machine.SignalSignatures>(signal: K, callback: Machine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Machine.SignalSignatures>(
+            signal: K,
+            callback: Machine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Machine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Machine.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1098,13 +1176,18 @@ export namespace Xmlb {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
-        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Node.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1360,7 +1443,6 @@ export namespace Xmlb {
 
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
-        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Constructors
 
@@ -1371,6 +1453,12 @@ export namespace Xmlb {
         static ['new'](silo: Silo, xpath: string): Query;
 
         static new_full(silo: Silo, xpath: string, flags: QueryFlags): Query;
+
+        // Signals
+
+        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1431,7 +1519,6 @@ export namespace Xmlb {
 
     class Silo extends GObject.Object {
         static $gtype: GObject.GType<Silo>;
-        declare static readonly __signalSignatures: Silo.SignalSignatures;
 
         // Properties
 
@@ -1486,6 +1573,12 @@ export namespace Xmlb {
         static ['new'](): Silo;
 
         static new_from_xml(xml: string): Silo;
+
+        // Signals
+
+        connect<K extends keyof Silo.SignalSignatures>(signal: K, callback: Silo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Silo.SignalSignatures>(signal: K, callback: Silo.SignalSignatures[K]): number;
+        emit<K extends keyof Silo.SignalSignatures>(signal: K, ...args: Parameters<Silo.SignalSignatures[K]>): void;
 
         // Methods
 

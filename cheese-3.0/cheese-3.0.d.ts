@@ -100,19 +100,19 @@ export namespace Cheese {
         // Signal callback interfaces
 
         interface PhotoSaved {
-            (): void;
+            (_source: Camera): void;
         }
 
         interface PhotoTaken {
-            (pixbuf: GdkPixbuf.Pixbuf): void;
+            (_source: Camera, pixbuf: GdkPixbuf.Pixbuf): void;
         }
 
         interface StateFlagsChanged {
-            (state: number): void;
+            (_source: Camera, state: number): void;
         }
 
         interface VideoSaved {
-            (): void;
+            (_source: Camera): void;
         }
 
         // Signal signatures
@@ -140,7 +140,6 @@ export namespace Cheese {
      */
     class Camera extends GObject.Object {
         static $gtype: GObject.GType<Camera>;
-        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -191,21 +190,6 @@ export namespace Cheese {
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'photo-saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'photo-saved', callback: (_source: this) => void): number;
-        emit(signal: 'photo-saved'): void;
-        connect(signal: 'photo-taken', callback: (_source: this, pixbuf: GdkPixbuf.Pixbuf) => void): number;
-        connect_after(signal: 'photo-taken', callback: (_source: this, pixbuf: GdkPixbuf.Pixbuf) => void): number;
-        emit(signal: 'photo-taken', pixbuf: GdkPixbuf.Pixbuf): void;
-        connect(signal: 'state-flags-changed', callback: (_source: this, state: number) => void): number;
-        connect_after(signal: 'state-flags-changed', callback: (_source: this, state: number) => void): number;
-        emit(signal: 'state-flags-changed', state: number): void;
-        connect(signal: 'video-saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'video-saved', callback: (_source: this) => void): number;
-        emit(signal: 'video-saved'): void;
 
         // Virtual methods
 
@@ -344,7 +328,6 @@ export namespace Cheese {
      */
     class CameraDevice extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<CameraDevice>;
-        declare static readonly __signalSignatures: CameraDevice.SignalSignatures;
 
         // Properties
 
@@ -368,6 +351,21 @@ export namespace Cheese {
         _init(...args: any[]): void;
 
         static ['new'](device: Gst.Device): CameraDevice;
+
+        // Signals
+
+        connect<K extends keyof CameraDevice.SignalSignatures>(
+            signal: K,
+            callback: CameraDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraDevice.SignalSignatures>(
+            signal: K,
+            callback: CameraDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraDevice.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -944,11 +942,11 @@ export namespace Cheese {
         // Signal callback interfaces
 
         interface Added {
-            (device: CameraDevice): void;
+            (_source: CameraDeviceMonitor, device: CameraDevice): void;
         }
 
         interface Removed {
-            (device: CameraDevice): void;
+            (_source: CameraDeviceMonitor, device: CameraDevice): void;
         }
 
         // Signal signatures
@@ -970,7 +968,6 @@ export namespace Cheese {
      */
     class CameraDeviceMonitor extends GObject.Object implements Gio.AsyncInitable<CameraDeviceMonitor>, Gio.Initable {
         static $gtype: GObject.GType<CameraDeviceMonitor>;
-        declare static readonly __signalSignatures: CameraDeviceMonitor.SignalSignatures;
 
         // Constructors
 
@@ -999,15 +996,6 @@ export namespace Cheese {
             signal: K,
             ...args: Parameters<CameraDeviceMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'added', callback: (_source: this, device: CameraDevice) => void): number;
-        connect_after(signal: 'added', callback: (_source: this, device: CameraDevice) => void): number;
-        emit(signal: 'added', device: CameraDevice): void;
-        connect(signal: 'removed', callback: (_source: this, device: CameraDevice) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this, device: CameraDevice) => void): number;
-        emit(signal: 'removed', device: CameraDevice): void;
 
         // Static methods
 
@@ -1785,7 +1773,6 @@ export namespace Cheese {
      */
     class Effect extends GObject.Object {
         static $gtype: GObject.GType<Effect>;
-        declare static readonly __signalSignatures: Effect.SignalSignatures;
 
         // Properties
 
@@ -1821,6 +1808,12 @@ export namespace Cheese {
         _init(...args: any[]): void;
 
         static ['new'](name: string, pipeline_desc: string): Effect;
+
+        // Signals
+
+        connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1875,7 +1868,6 @@ export namespace Cheese {
      */
     class FileUtil extends GObject.Object {
         static $gtype: GObject.GType<FileUtil>;
-        declare static readonly __signalSignatures: FileUtil.SignalSignatures;
 
         // Constructors
 
@@ -1884,6 +1876,18 @@ export namespace Cheese {
         _init(...args: any[]): void;
 
         static ['new'](): FileUtil;
+
+        // Signals
+
+        connect<K extends keyof FileUtil.SignalSignatures>(signal: K, callback: FileUtil.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileUtil.SignalSignatures>(
+            signal: K,
+            callback: FileUtil.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileUtil.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileUtil.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

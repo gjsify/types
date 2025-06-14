@@ -476,7 +476,6 @@ export namespace Libosinfo {
 
     class AvatarFormat extends Entity {
         static $gtype: GObject.GType<AvatarFormat>;
-        declare static readonly __signalSignatures: AvatarFormat.SignalSignatures;
 
         // Properties
 
@@ -509,6 +508,21 @@ export namespace Libosinfo {
 
         static ['new'](): AvatarFormat;
 
+        // Signals
+
+        connect<K extends keyof AvatarFormat.SignalSignatures>(
+            signal: K,
+            callback: AvatarFormat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AvatarFormat.SignalSignatures>(
+            signal: K,
+            callback: AvatarFormat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AvatarFormat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AvatarFormat.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_alpha(): boolean;
@@ -528,7 +542,6 @@ export namespace Libosinfo {
 
     class Datamap extends Entity {
         static $gtype: GObject.GType<Datamap>;
-        declare static readonly __signalSignatures: Datamap.SignalSignatures;
 
         // Constructors
 
@@ -537,6 +550,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string): Datamap;
+
+        // Signals
+
+        connect<K extends keyof Datamap.SignalSignatures>(signal: K, callback: Datamap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Datamap.SignalSignatures>(
+            signal: K,
+            callback: Datamap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Datamap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Datamap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -570,7 +595,6 @@ export namespace Libosinfo {
 
     class DatamapList extends List {
         static $gtype: GObject.GType<DatamapList>;
-        declare static readonly __signalSignatures: DatamapList.SignalSignatures;
 
         // Constructors
 
@@ -579,6 +603,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): DatamapList;
+
+        // Signals
+
+        connect<K extends keyof DatamapList.SignalSignatures>(
+            signal: K,
+            callback: DatamapList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DatamapList.SignalSignatures>(
+            signal: K,
+            callback: DatamapList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DatamapList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DatamapList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Db {
@@ -592,7 +631,6 @@ export namespace Libosinfo {
 
     class Db extends GObject.Object {
         static $gtype: GObject.GType<Db>;
-        declare static readonly __signalSignatures: Db.SignalSignatures;
 
         // Constructors
 
@@ -601,6 +639,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): Db;
+
+        // Signals
+
+        connect<K extends keyof Db.SignalSignatures>(signal: K, callback: Db.SignalSignatures[K]): number;
+        connect_after<K extends keyof Db.SignalSignatures>(signal: K, callback: Db.SignalSignatures[K]): number;
+        emit<K extends keyof Db.SignalSignatures>(signal: K, ...args: Parameters<Db.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -755,7 +799,6 @@ export namespace Libosinfo {
 
     class Deployment extends Entity {
         static $gtype: GObject.GType<Deployment>;
-        declare static readonly __signalSignatures: Deployment.SignalSignatures;
 
         // Properties
 
@@ -775,6 +818,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string, os: Os, platform: Platform): Deployment;
+
+        // Signals
+
+        connect<K extends keyof Deployment.SignalSignatures>(
+            signal: K,
+            callback: Deployment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Deployment.SignalSignatures>(
+            signal: K,
+            callback: Deployment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Deployment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Deployment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -835,7 +893,6 @@ export namespace Libosinfo {
 
     class DeploymentList extends List {
         static $gtype: GObject.GType<DeploymentList>;
-        declare static readonly __signalSignatures: DeploymentList.SignalSignatures;
 
         // Constructors
 
@@ -844,6 +901,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): DeploymentList;
+
+        // Signals
+
+        connect<K extends keyof DeploymentList.SignalSignatures>(
+            signal: K,
+            callback: DeploymentList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeploymentList.SignalSignatures>(
+            signal: K,
+            callback: DeploymentList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeploymentList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeploymentList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -887,7 +959,6 @@ export namespace Libosinfo {
 
     class Device extends Entity {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -896,6 +967,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string): Device;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -920,13 +997,27 @@ export namespace Libosinfo {
 
     class DeviceDriver extends Entity {
         static $gtype: GObject.GType<DeviceDriver>;
-        declare static readonly __signalSignatures: DeviceDriver.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DeviceDriver.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DeviceDriver.SignalSignatures>(
+            signal: K,
+            callback: DeviceDriver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceDriver.SignalSignatures>(
+            signal: K,
+            callback: DeviceDriver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceDriver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceDriver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -973,7 +1064,6 @@ export namespace Libosinfo {
 
     class DeviceDriverList extends List {
         static $gtype: GObject.GType<DeviceDriverList>;
-        declare static readonly __signalSignatures: DeviceDriverList.SignalSignatures;
 
         // Constructors
 
@@ -982,6 +1072,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceDriverList;
+
+        // Signals
+
+        connect<K extends keyof DeviceDriverList.SignalSignatures>(
+            signal: K,
+            callback: DeviceDriverList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceDriverList.SignalSignatures>(
+            signal: K,
+            callback: DeviceDriverList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceDriverList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceDriverList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DeviceLink {
@@ -997,7 +1102,6 @@ export namespace Libosinfo {
 
     class DeviceLink extends Entity {
         static $gtype: GObject.GType<DeviceLink>;
-        declare static readonly __signalSignatures: DeviceLink.SignalSignatures;
 
         // Properties
 
@@ -1013,6 +1117,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](target: Device): DeviceLink;
+
+        // Signals
+
+        connect<K extends keyof DeviceLink.SignalSignatures>(
+            signal: K,
+            callback: DeviceLink.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceLink.SignalSignatures>(
+            signal: K,
+            callback: DeviceLink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceLink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceLink.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1038,7 +1157,6 @@ export namespace Libosinfo {
 
     class DeviceLinkFilter extends Filter {
         static $gtype: GObject.GType<DeviceLinkFilter>;
-        declare static readonly __signalSignatures: DeviceLinkFilter.SignalSignatures;
 
         // Properties
 
@@ -1062,6 +1180,21 @@ export namespace Libosinfo {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof DeviceLinkFilter.SignalSignatures>(
+            signal: K,
+            callback: DeviceLinkFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceLinkFilter.SignalSignatures>(
+            signal: K,
+            callback: DeviceLinkFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceLinkFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceLinkFilter.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -1083,7 +1216,6 @@ export namespace Libosinfo {
 
     class DeviceLinkList extends List {
         static $gtype: GObject.GType<DeviceLinkList>;
-        declare static readonly __signalSignatures: DeviceLinkList.SignalSignatures;
 
         // Constructors
 
@@ -1092,6 +1224,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceLinkList;
+
+        // Signals
+
+        connect<K extends keyof DeviceLinkList.SignalSignatures>(
+            signal: K,
+            callback: DeviceLinkList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceLinkList.SignalSignatures>(
+            signal: K,
+            callback: DeviceLinkList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceLinkList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceLinkList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1141,7 +1288,6 @@ export namespace Libosinfo {
 
     class DeviceList extends List {
         static $gtype: GObject.GType<DeviceList>;
-        declare static readonly __signalSignatures: DeviceList.SignalSignatures;
 
         // Constructors
 
@@ -1150,6 +1296,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceList;
+
+        // Signals
+
+        connect<K extends keyof DeviceList.SignalSignatures>(
+            signal: K,
+            callback: DeviceList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceList.SignalSignatures>(
+            signal: K,
+            callback: DeviceList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1195,7 +1356,6 @@ export namespace Libosinfo {
 
     abstract class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
-        declare static readonly __signalSignatures: Entity.SignalSignatures;
 
         // Properties
 
@@ -1213,6 +1373,12 @@ export namespace Libosinfo {
         constructor(properties?: Partial<Entity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: Parameters<Entity.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1349,7 +1515,6 @@ export namespace Libosinfo {
 
     class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
-        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Constructors
 
@@ -1358,6 +1523,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): Filter;
+
+        // Signals
+
+        connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -1422,7 +1593,6 @@ export namespace Libosinfo {
 
     class Firmware extends Entity {
         static $gtype: GObject.GType<Firmware>;
-        declare static readonly __signalSignatures: Firmware.SignalSignatures;
 
         // Properties
 
@@ -1441,6 +1611,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string, architecture: string, type: string): Firmware;
+
+        // Signals
+
+        connect<K extends keyof Firmware.SignalSignatures>(signal: K, callback: Firmware.SignalSignatures[K]): number;
+        connect_after<K extends keyof Firmware.SignalSignatures>(
+            signal: K,
+            callback: Firmware.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Firmware.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Firmware.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1472,7 +1654,6 @@ export namespace Libosinfo {
 
     class FirmwareList extends List {
         static $gtype: GObject.GType<FirmwareList>;
-        declare static readonly __signalSignatures: FirmwareList.SignalSignatures;
 
         // Constructors
 
@@ -1481,6 +1662,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): FirmwareList;
+
+        // Signals
+
+        connect<K extends keyof FirmwareList.SignalSignatures>(
+            signal: K,
+            callback: FirmwareList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FirmwareList.SignalSignatures>(
+            signal: K,
+            callback: FirmwareList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FirmwareList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FirmwareList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Image {
@@ -1500,7 +1696,6 @@ export namespace Libosinfo {
 
     class Image extends Entity {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -1537,6 +1732,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string, architecture: string, format: string): Image;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1584,7 +1785,6 @@ export namespace Libosinfo {
 
     class ImageList extends List {
         static $gtype: GObject.GType<ImageList>;
-        declare static readonly __signalSignatures: ImageList.SignalSignatures;
 
         // Constructors
 
@@ -1593,6 +1793,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): ImageList;
+
+        // Signals
+
+        connect<K extends keyof ImageList.SignalSignatures>(signal: K, callback: ImageList.SignalSignatures[K]): number;
+        connect_after<K extends keyof ImageList.SignalSignatures>(
+            signal: K,
+            callback: ImageList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InstallConfig {
@@ -1606,7 +1818,6 @@ export namespace Libosinfo {
 
     class InstallConfig extends Entity {
         static $gtype: GObject.GType<InstallConfig>;
-        declare static readonly __signalSignatures: InstallConfig.SignalSignatures;
 
         // Constructors
 
@@ -1615,6 +1826,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string): InstallConfig;
+
+        // Signals
+
+        connect<K extends keyof InstallConfig.SignalSignatures>(
+            signal: K,
+            callback: InstallConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstallConfig.SignalSignatures>(
+            signal: K,
+            callback: InstallConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstallConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstallConfig.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1860,7 +2086,6 @@ export namespace Libosinfo {
 
     class InstallConfigParam extends Entity {
         static $gtype: GObject.GType<InstallConfigParam>;
-        declare static readonly __signalSignatures: InstallConfigParam.SignalSignatures;
 
         // Properties
 
@@ -1893,6 +2118,21 @@ export namespace Libosinfo {
 
         static ['new'](name: string): InstallConfigParam;
 
+        // Signals
+
+        connect<K extends keyof InstallConfigParam.SignalSignatures>(
+            signal: K,
+            callback: InstallConfigParam.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstallConfigParam.SignalSignatures>(
+            signal: K,
+            callback: InstallConfigParam.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstallConfigParam.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstallConfigParam.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_name(): string;
@@ -1920,7 +2160,6 @@ export namespace Libosinfo {
 
     class InstallConfigParamList extends List {
         static $gtype: GObject.GType<InstallConfigParamList>;
-        declare static readonly __signalSignatures: InstallConfigParamList.SignalSignatures;
 
         // Constructors
 
@@ -1929,6 +2168,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): InstallConfigParamList;
+
+        // Signals
+
+        connect<K extends keyof InstallConfigParamList.SignalSignatures>(
+            signal: K,
+            callback: InstallConfigParamList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstallConfigParamList.SignalSignatures>(
+            signal: K,
+            callback: InstallConfigParamList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstallConfigParamList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstallConfigParamList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InstallScript {
@@ -1958,7 +2212,6 @@ export namespace Libosinfo {
 
     class InstallScript extends Entity {
         static $gtype: GObject.GType<InstallScript>;
-        declare static readonly __signalSignatures: InstallScript.SignalSignatures;
 
         // Properties
 
@@ -1991,6 +2244,21 @@ export namespace Libosinfo {
         static new_data(id: string, profile: string, templateData: string): InstallScript;
 
         static new_uri(id: string, profile: string, templateUri: string): InstallScript;
+
+        // Signals
+
+        connect<K extends keyof InstallScript.SignalSignatures>(
+            signal: K,
+            callback: InstallScript.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstallScript.SignalSignatures>(
+            signal: K,
+            callback: InstallScript.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstallScript.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstallScript.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2569,7 +2837,6 @@ export namespace Libosinfo {
 
     class InstallScriptList extends List {
         static $gtype: GObject.GType<InstallScriptList>;
-        declare static readonly __signalSignatures: InstallScriptList.SignalSignatures;
 
         // Constructors
 
@@ -2578,6 +2845,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): InstallScriptList;
+
+        // Signals
+
+        connect<K extends keyof InstallScriptList.SignalSignatures>(
+            signal: K,
+            callback: InstallScriptList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InstallScriptList.SignalSignatures>(
+            signal: K,
+            callback: InstallScriptList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InstallScriptList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InstallScriptList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2624,7 +2906,6 @@ export namespace Libosinfo {
 
     abstract class List extends GObject.Object {
         static $gtype: GObject.GType<List>;
-        declare static readonly __signalSignatures: List.SignalSignatures;
 
         // Properties
 
@@ -2646,6 +2927,12 @@ export namespace Libosinfo {
         constructor(properties?: Partial<List.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof List.SignalSignatures>(signal: K, callback: List.SignalSignatures[K]): number;
+        connect_after<K extends keyof List.SignalSignatures>(signal: K, callback: List.SignalSignatures[K]): number;
+        emit<K extends keyof List.SignalSignatures>(signal: K, ...args: Parameters<List.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2759,7 +3046,6 @@ export namespace Libosinfo {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
-        declare static readonly __signalSignatures: Loader.SignalSignatures;
 
         // Constructors
 
@@ -2768,6 +3054,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): Loader;
+
+        // Signals
+
+        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2845,7 +3137,6 @@ export namespace Libosinfo {
 
     class Media extends Entity {
         static $gtype: GObject.GType<Media>;
-        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -3029,6 +3320,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string, architecture: string): Media;
+
+        // Signals
+
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3243,7 +3540,6 @@ export namespace Libosinfo {
 
     class MediaList extends List {
         static $gtype: GObject.GType<MediaList>;
-        declare static readonly __signalSignatures: MediaList.SignalSignatures;
 
         // Constructors
 
@@ -3252,6 +3548,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): MediaList;
+
+        // Signals
+
+        connect<K extends keyof MediaList.SignalSignatures>(signal: K, callback: MediaList.SignalSignatures[K]): number;
+        connect_after<K extends keyof MediaList.SignalSignatures>(
+            signal: K,
+            callback: MediaList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3302,7 +3610,6 @@ export namespace Libosinfo {
 
     class Os extends Product {
         static $gtype: GObject.GType<Os>;
-        declare static readonly __signalSignatures: Os.SignalSignatures;
 
         // Properties
 
@@ -3342,6 +3649,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string): Os;
+
+        // Signals
+
+        connect<K extends keyof Os.SignalSignatures>(signal: K, callback: Os.SignalSignatures[K]): number;
+        connect_after<K extends keyof Os.SignalSignatures>(signal: K, callback: Os.SignalSignatures[K]): number;
+        emit<K extends keyof Os.SignalSignatures>(signal: K, ...args: Parameters<Os.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3554,7 +3867,6 @@ export namespace Libosinfo {
 
     class OsList extends ProductList {
         static $gtype: GObject.GType<OsList>;
-        declare static readonly __signalSignatures: OsList.SignalSignatures;
 
         // Constructors
 
@@ -3563,6 +3875,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): OsList;
+
+        // Signals
+
+        connect<K extends keyof OsList.SignalSignatures>(signal: K, callback: OsList.SignalSignatures[K]): number;
+        connect_after<K extends keyof OsList.SignalSignatures>(signal: K, callback: OsList.SignalSignatures[K]): number;
+        emit<K extends keyof OsList.SignalSignatures>(signal: K, ...args: Parameters<OsList.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3608,7 +3926,6 @@ export namespace Libosinfo {
 
     class OsVariant extends Entity {
         static $gtype: GObject.GType<OsVariant>;
-        declare static readonly __signalSignatures: OsVariant.SignalSignatures;
 
         // Properties
 
@@ -3625,6 +3942,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string): OsVariant;
+
+        // Signals
+
+        connect<K extends keyof OsVariant.SignalSignatures>(signal: K, callback: OsVariant.SignalSignatures[K]): number;
+        connect_after<K extends keyof OsVariant.SignalSignatures>(
+            signal: K,
+            callback: OsVariant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OsVariant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OsVariant.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3646,7 +3975,6 @@ export namespace Libosinfo {
 
     class OsVariantList extends List {
         static $gtype: GObject.GType<OsVariantList>;
-        declare static readonly __signalSignatures: OsVariantList.SignalSignatures;
 
         // Constructors
 
@@ -3655,6 +3983,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): OsVariantList;
+
+        // Signals
+
+        connect<K extends keyof OsVariantList.SignalSignatures>(
+            signal: K,
+            callback: OsVariantList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OsVariantList.SignalSignatures>(
+            signal: K,
+            callback: OsVariantList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OsVariantList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OsVariantList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Platform {
@@ -3668,7 +4011,6 @@ export namespace Libosinfo {
 
     class Platform extends Product {
         static $gtype: GObject.GType<Platform>;
-        declare static readonly __signalSignatures: Platform.SignalSignatures;
 
         // Constructors
 
@@ -3677,6 +4019,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string): Platform;
+
+        // Signals
+
+        connect<K extends keyof Platform.SignalSignatures>(signal: K, callback: Platform.SignalSignatures[K]): number;
+        connect_after<K extends keyof Platform.SignalSignatures>(
+            signal: K,
+            callback: Platform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Platform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Platform.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3722,7 +4076,6 @@ export namespace Libosinfo {
 
     class PlatformList extends ProductList {
         static $gtype: GObject.GType<PlatformList>;
-        declare static readonly __signalSignatures: PlatformList.SignalSignatures;
 
         // Constructors
 
@@ -3731,6 +4084,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): PlatformList;
+
+        // Signals
+
+        connect<K extends keyof PlatformList.SignalSignatures>(
+            signal: K,
+            callback: PlatformList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlatformList.SignalSignatures>(
+            signal: K,
+            callback: PlatformList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlatformList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlatformList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3782,7 +4150,6 @@ export namespace Libosinfo {
 
     abstract class Product extends Entity {
         static $gtype: GObject.GType<Product>;
-        declare static readonly __signalSignatures: Product.SignalSignatures;
 
         // Properties
 
@@ -3820,6 +4187,18 @@ export namespace Libosinfo {
         constructor(properties?: Partial<Product.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Product.SignalSignatures>(signal: K, callback: Product.SignalSignatures[K]): number;
+        connect_after<K extends keyof Product.SignalSignatures>(
+            signal: K,
+            callback: Product.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Product.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Product.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3864,7 +4243,6 @@ export namespace Libosinfo {
 
     class ProductFilter extends Filter {
         static $gtype: GObject.GType<ProductFilter>;
-        declare static readonly __signalSignatures: ProductFilter.SignalSignatures;
 
         // Constructors
 
@@ -3873,6 +4251,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): ProductFilter;
+
+        // Signals
+
+        connect<K extends keyof ProductFilter.SignalSignatures>(
+            signal: K,
+            callback: ProductFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProductFilter.SignalSignatures>(
+            signal: K,
+            callback: ProductFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProductFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProductFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3916,7 +4309,6 @@ export namespace Libosinfo {
 
     class ProductList extends List {
         static $gtype: GObject.GType<ProductList>;
-        declare static readonly __signalSignatures: ProductList.SignalSignatures;
 
         // Constructors
 
@@ -3925,6 +4317,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): ProductList;
+
+        // Signals
+
+        connect<K extends keyof ProductList.SignalSignatures>(
+            signal: K,
+            callback: ProductList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProductList.SignalSignatures>(
+            signal: K,
+            callback: ProductList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProductList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProductList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3975,7 +4382,6 @@ export namespace Libosinfo {
 
     class Resources extends Entity {
         static $gtype: GObject.GType<Resources>;
-        declare static readonly __signalSignatures: Resources.SignalSignatures;
 
         // Properties
 
@@ -4016,6 +4422,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string, architecture: string): Resources;
+
+        // Signals
+
+        connect<K extends keyof Resources.SignalSignatures>(signal: K, callback: Resources.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resources.SignalSignatures>(
+            signal: K,
+            callback: Resources.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resources.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resources.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4083,7 +4501,6 @@ export namespace Libosinfo {
 
     class ResourcesList extends List {
         static $gtype: GObject.GType<ResourcesList>;
-        declare static readonly __signalSignatures: ResourcesList.SignalSignatures;
 
         // Constructors
 
@@ -4092,6 +4509,21 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): ResourcesList;
+
+        // Signals
+
+        connect<K extends keyof ResourcesList.SignalSignatures>(
+            signal: K,
+            callback: ResourcesList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourcesList.SignalSignatures>(
+            signal: K,
+            callback: ResourcesList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourcesList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourcesList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4155,7 +4587,6 @@ export namespace Libosinfo {
 
     class Tree extends Entity {
         static $gtype: GObject.GType<Tree>;
-        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -4265,6 +4696,12 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](id: string, architecture: string): Tree;
+
+        // Signals
+
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4400,7 +4837,6 @@ export namespace Libosinfo {
 
     class TreeList extends List {
         static $gtype: GObject.GType<TreeList>;
-        declare static readonly __signalSignatures: TreeList.SignalSignatures;
 
         // Constructors
 
@@ -4409,6 +4845,18 @@ export namespace Libosinfo {
         _init(...args: any[]): void;
 
         static ['new'](): TreeList;
+
+        // Signals
+
+        connect<K extends keyof TreeList.SignalSignatures>(signal: K, callback: TreeList.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeList.SignalSignatures>(
+            signal: K,
+            callback: TreeList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

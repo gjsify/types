@@ -33,7 +33,6 @@ export namespace Grss {
 
     class FeedAtomFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedAtomFormatter>;
-        declare static readonly __signalSignatures: FeedAtomFormatter.SignalSignatures;
 
         // Constructors
 
@@ -42,6 +41,21 @@ export namespace Grss {
         _init(...args: any[]): void;
 
         static ['new'](): FeedAtomFormatter;
+
+        // Signals
+
+        connect<K extends keyof FeedAtomFormatter.SignalSignatures>(
+            signal: K,
+            callback: FeedAtomFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedAtomFormatter.SignalSignatures>(
+            signal: K,
+            callback: FeedAtomFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedAtomFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedAtomFormatter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FeedChannel {
@@ -55,7 +69,6 @@ export namespace Grss {
 
     class FeedChannel extends GObject.Object {
         static $gtype: GObject.GType<FeedChannel>;
-        declare static readonly __signalSignatures: FeedChannel.SignalSignatures;
 
         // Constructors
 
@@ -72,6 +85,21 @@ export namespace Grss {
         static new_from_xml(doc: libxml2.DocPtr): FeedChannel;
 
         static new_with_source(source: string): FeedChannel;
+
+        // Signals
+
+        connect<K extends keyof FeedChannel.SignalSignatures>(
+            signal: K,
+            callback: FeedChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedChannel.SignalSignatures>(
+            signal: K,
+            callback: FeedChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedChannel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -377,7 +405,6 @@ export namespace Grss {
 
     class FeedEnclosure extends GObject.Object {
         static $gtype: GObject.GType<FeedEnclosure>;
-        declare static readonly __signalSignatures: FeedEnclosure.SignalSignatures;
 
         // Constructors
 
@@ -386,6 +413,21 @@ export namespace Grss {
         _init(...args: any[]): void;
 
         static ['new'](url: string): FeedEnclosure;
+
+        // Signals
+
+        connect<K extends keyof FeedEnclosure.SignalSignatures>(
+            signal: K,
+            callback: FeedEnclosure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedEnclosure.SignalSignatures>(
+            signal: K,
+            callback: FeedEnclosure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedEnclosure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedEnclosure.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -455,13 +497,27 @@ export namespace Grss {
 
     abstract class FeedFormatter extends GObject.Object {
         static $gtype: GObject.GType<FeedFormatter>;
-        declare static readonly __signalSignatures: FeedFormatter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FeedFormatter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FeedFormatter.SignalSignatures>(
+            signal: K,
+            callback: FeedFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedFormatter.SignalSignatures>(
+            signal: K,
+            callback: FeedFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedFormatter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -525,7 +581,6 @@ export namespace Grss {
 
     class FeedItem extends GObject.Object {
         static $gtype: GObject.GType<FeedItem>;
-        declare static readonly __signalSignatures: FeedItem.SignalSignatures;
 
         // Constructors
 
@@ -534,6 +589,18 @@ export namespace Grss {
         _init(...args: any[]): void;
 
         static ['new'](parent: FeedChannel): FeedItem;
+
+        // Signals
+
+        connect<K extends keyof FeedItem.SignalSignatures>(signal: K, callback: FeedItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof FeedItem.SignalSignatures>(
+            signal: K,
+            callback: FeedItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -714,7 +781,6 @@ export namespace Grss {
 
     class FeedParser extends GObject.Object {
         static $gtype: GObject.GType<FeedParser>;
-        declare static readonly __signalSignatures: FeedParser.SignalSignatures;
 
         // Constructors
 
@@ -723,6 +789,21 @@ export namespace Grss {
         _init(...args: any[]): void;
 
         static ['new'](): FeedParser;
+
+        // Signals
+
+        connect<K extends keyof FeedParser.SignalSignatures>(
+            signal: K,
+            callback: FeedParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedParser.SignalSignatures>(
+            signal: K,
+            callback: FeedParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -756,7 +837,6 @@ export namespace Grss {
 
     class FeedRssFormatter extends FeedFormatter {
         static $gtype: GObject.GType<FeedRssFormatter>;
-        declare static readonly __signalSignatures: FeedRssFormatter.SignalSignatures;
 
         // Constructors
 
@@ -765,6 +845,21 @@ export namespace Grss {
         _init(...args: any[]): void;
 
         static ['new'](): FeedRssFormatter;
+
+        // Signals
+
+        connect<K extends keyof FeedRssFormatter.SignalSignatures>(
+            signal: K,
+            callback: FeedRssFormatter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedRssFormatter.SignalSignatures>(
+            signal: K,
+            callback: FeedRssFormatter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedRssFormatter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedRssFormatter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FeedsGroup {
@@ -778,7 +873,6 @@ export namespace Grss {
 
     class FeedsGroup extends GObject.Object {
         static $gtype: GObject.GType<FeedsGroup>;
-        declare static readonly __signalSignatures: FeedsGroup.SignalSignatures;
 
         // Constructors
 
@@ -787,6 +881,21 @@ export namespace Grss {
         _init(...args: any[]): void;
 
         static ['new'](): FeedsGroup;
+
+        // Signals
+
+        connect<K extends keyof FeedsGroup.SignalSignatures>(
+            signal: K,
+            callback: FeedsGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedsGroup.SignalSignatures>(
+            signal: K,
+            callback: FeedsGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedsGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedsGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -816,15 +925,15 @@ export namespace Grss {
         // Signal callback interfaces
 
         interface FeedFail {
-            (feed: GObject.Object): void;
+            (_source: FeedsPool, feed: GObject.Object): void;
         }
 
         interface FeedFetching {
-            (feed: GObject.Object): void;
+            (_source: FeedsPool, feed: GObject.Object): void;
         }
 
         interface FeedReady {
-            (feed: GObject.Object, items: FeedItem[]): void;
+            (_source: FeedsPool, feed: GObject.Object, items: FeedItem[]): void;
         }
 
         // Signal signatures
@@ -841,7 +950,6 @@ export namespace Grss {
 
     class FeedsPool extends GObject.Object {
         static $gtype: GObject.GType<FeedsPool>;
-        declare static readonly __signalSignatures: FeedsPool.SignalSignatures;
 
         // Constructors
 
@@ -862,24 +970,6 @@ export namespace Grss {
             signal: K,
             ...args: Parameters<FeedsPool.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'feed-fail', callback: (_source: this, feed: GObject.Object) => void): number;
-        connect_after(signal: 'feed-fail', callback: (_source: this, feed: GObject.Object) => void): number;
-        emit(signal: 'feed-fail', feed: GObject.Object): void;
-        connect(signal: 'feed-fetching', callback: (_source: this, feed: GObject.Object) => void): number;
-        connect_after(signal: 'feed-fetching', callback: (_source: this, feed: GObject.Object) => void): number;
-        emit(signal: 'feed-fetching', feed: GObject.Object): void;
-        connect(
-            signal: 'feed-ready',
-            callback: (_source: this, feed: GObject.Object, items: FeedItem[]) => void,
-        ): number;
-        connect_after(
-            signal: 'feed-ready',
-            callback: (_source: this, feed: GObject.Object, items: FeedItem[]) => void,
-        ): number;
-        emit(signal: 'feed-ready', feed: GObject.Object, items: FeedItem[]): void;
 
         // Virtual methods
 
@@ -929,11 +1019,11 @@ export namespace Grss {
         // Signal callback interfaces
 
         interface DeleteSubscription {
-            (object: FeedChannel, p0: string): void;
+            (_source: FeedsPublisher, object: FeedChannel, p0: string): void;
         }
 
         interface NewSubscription {
-            (object: FeedChannel, p0: string): void;
+            (_source: FeedsPublisher, object: FeedChannel, p0: string): void;
         }
 
         // Signal signatures
@@ -949,7 +1039,6 @@ export namespace Grss {
 
     class FeedsPublisher extends GObject.Object {
         static $gtype: GObject.GType<FeedsPublisher>;
-        declare static readonly __signalSignatures: FeedsPublisher.SignalSignatures;
 
         // Constructors
 
@@ -973,24 +1062,6 @@ export namespace Grss {
             signal: K,
             ...args: Parameters<FeedsPublisher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'delete-subscription',
-            callback: (_source: this, object: FeedChannel, p0: string) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-subscription',
-            callback: (_source: this, object: FeedChannel, p0: string) => void,
-        ): number;
-        emit(signal: 'delete-subscription', object: FeedChannel, p0: string): void;
-        connect(signal: 'new-subscription', callback: (_source: this, object: FeedChannel, p0: string) => void): number;
-        connect_after(
-            signal: 'new-subscription',
-            callback: (_source: this, object: FeedChannel, p0: string) => void,
-        ): number;
-        emit(signal: 'new-subscription', object: FeedChannel, p0: string): void;
 
         // Virtual methods
 
@@ -1062,13 +1133,27 @@ export namespace Grss {
 
     abstract class FeedsStore extends GObject.Object {
         static $gtype: GObject.GType<FeedsStore>;
-        declare static readonly __signalSignatures: FeedsStore.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FeedsStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FeedsStore.SignalSignatures>(
+            signal: K,
+            callback: FeedsStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FeedsStore.SignalSignatures>(
+            signal: K,
+            callback: FeedsStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedsStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedsStore.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1137,7 +1222,7 @@ export namespace Grss {
         // Signal callback interfaces
 
         interface NotificationReceived {
-            (feed: GObject.Object, item: GObject.Object): void;
+            (_source: FeedsSubscriber, feed: GObject.Object, item: GObject.Object): void;
         }
 
         // Signal signatures
@@ -1152,7 +1237,6 @@ export namespace Grss {
 
     class FeedsSubscriber extends GObject.Object {
         static $gtype: GObject.GType<FeedsSubscriber>;
-        declare static readonly __signalSignatures: FeedsSubscriber.SignalSignatures;
 
         // Constructors
 
@@ -1176,18 +1260,6 @@ export namespace Grss {
             signal: K,
             ...args: Parameters<FeedsSubscriber.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'notification-received',
-            callback: (_source: this, feed: GObject.Object, item: GObject.Object) => void,
-        ): number;
-        connect_after(
-            signal: 'notification-received',
-            callback: (_source: this, feed: GObject.Object, item: GObject.Object) => void,
-        ): number;
-        emit(signal: 'notification-received', feed: GObject.Object, item: GObject.Object): void;
 
         // Virtual methods
 

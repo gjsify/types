@@ -53,7 +53,6 @@ export namespace FolksLibsocialweb {
             Folks.WebServiceDetails
     {
         static $gtype: GObject.GType<Persona>;
-        declare static readonly __signalSignatures: Persona.SignalSignatures;
 
         // Properties
 
@@ -67,6 +66,18 @@ export namespace FolksLibsocialweb {
         _init(...args: any[]): void;
 
         static ['new'](store: PersonaStore, contact: SocialWebClient.Contact): Persona;
+
+        // Signals
+
+        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect_after<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            callback: Persona.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Persona.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -653,7 +664,6 @@ export namespace FolksLibsocialweb {
 
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
-        declare static readonly __signalSignatures: PersonaStore.SignalSignatures;
 
         // Properties
 
@@ -666,6 +676,21 @@ export namespace FolksLibsocialweb {
         _init(...args: any[]): void;
 
         static ['new'](service: SocialWebClient.ClientService): PersonaStore;
+
+        // Signals
+
+        connect<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            callback: PersonaStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            callback: PersonaStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

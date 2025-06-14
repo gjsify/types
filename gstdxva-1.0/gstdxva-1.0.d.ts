@@ -49,13 +49,27 @@ export namespace GstDxva {
 
     abstract class DxvaAV1Decoder extends GstCodecs.AV1Decoder {
         static $gtype: GObject.GType<DxvaAV1Decoder>;
-        declare static readonly __signalSignatures: DxvaAV1Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DxvaAV1Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DxvaAV1Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaAV1Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DxvaAV1Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaAV1Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DxvaAV1Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DxvaAV1Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -100,13 +114,27 @@ export namespace GstDxva {
 
     abstract class DxvaH264Decoder extends GstCodecs.H264Decoder {
         static $gtype: GObject.GType<DxvaH264Decoder>;
-        declare static readonly __signalSignatures: DxvaH264Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DxvaH264Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DxvaH264Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaH264Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DxvaH264Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaH264Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DxvaH264Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DxvaH264Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -149,13 +177,27 @@ export namespace GstDxva {
 
     abstract class DxvaH265Decoder extends GstCodecs.H265Decoder {
         static $gtype: GObject.GType<DxvaH265Decoder>;
-        declare static readonly __signalSignatures: DxvaH265Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DxvaH265Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DxvaH265Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaH265Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DxvaH265Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaH265Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DxvaH265Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DxvaH265Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -197,13 +239,27 @@ export namespace GstDxva {
 
     abstract class DxvaMpeg2Decoder extends GstCodecs.Mpeg2Decoder {
         static $gtype: GObject.GType<DxvaMpeg2Decoder>;
-        declare static readonly __signalSignatures: DxvaMpeg2Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DxvaMpeg2Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaMpeg2Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaMpeg2Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DxvaMpeg2Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -250,13 +306,27 @@ export namespace GstDxva {
 
     abstract class DxvaVp8Decoder extends GstCodecs.Vp8Decoder {
         static $gtype: GObject.GType<DxvaVp8Decoder>;
-        declare static readonly __signalSignatures: DxvaVp8Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DxvaVp8Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DxvaVp8Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaVp8Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DxvaVp8Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaVp8Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DxvaVp8Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DxvaVp8Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -298,13 +368,27 @@ export namespace GstDxva {
 
     abstract class DxvaVp9Decoder extends GstCodecs.Vp9Decoder {
         static $gtype: GObject.GType<DxvaVp9Decoder>;
-        declare static readonly __signalSignatures: DxvaVp9Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DxvaVp9Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DxvaVp9Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaVp9Decoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DxvaVp9Decoder.SignalSignatures>(
+            signal: K,
+            callback: DxvaVp9Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DxvaVp9Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DxvaVp9Decoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

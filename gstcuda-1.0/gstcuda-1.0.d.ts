@@ -205,13 +205,27 @@ export namespace GstCuda {
      */
     class CudaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<CudaAllocator>;
-        declare static readonly __signalSignatures: CudaAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CudaAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CudaAllocator.SignalSignatures>(
+            signal: K,
+            callback: CudaAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CudaAllocator.SignalSignatures>(
+            signal: K,
+            callback: CudaAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CudaAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CudaAllocator.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -295,7 +309,6 @@ export namespace GstCuda {
 
     class CudaBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<CudaBufferPool>;
-        declare static readonly __signalSignatures: CudaBufferPool.SignalSignatures;
 
         // Fields
 
@@ -311,6 +324,21 @@ export namespace GstCuda {
         // Conflicted with Gst.BufferPool.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CudaBufferPool.SignalSignatures>(
+            signal: K,
+            callback: CudaBufferPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CudaBufferPool.SignalSignatures>(
+            signal: K,
+            callback: CudaBufferPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CudaBufferPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CudaBufferPool.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CudaContext {
@@ -331,7 +359,6 @@ export namespace GstCuda {
 
     class CudaContext extends Gst.Object {
         static $gtype: GObject.GType<CudaContext>;
-        declare static readonly __signalSignatures: CudaContext.SignalSignatures;
 
         // Properties
 
@@ -367,6 +394,21 @@ export namespace GstCuda {
         static ['new'](device_id: number): CudaContext;
 
         static new_wrapped(handler: CudaGst.context, device: CudaGst.device): CudaContext;
+
+        // Signals
+
+        connect<K extends keyof CudaContext.SignalSignatures>(
+            signal: K,
+            callback: CudaContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CudaContext.SignalSignatures>(
+            signal: K,
+            callback: CudaContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CudaContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CudaContext.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -418,7 +460,6 @@ export namespace GstCuda {
      */
     class CudaPoolAllocator extends CudaAllocator {
         static $gtype: GObject.GType<CudaPoolAllocator>;
-        declare static readonly __signalSignatures: CudaPoolAllocator.SignalSignatures;
 
         // Fields
 
@@ -439,6 +480,21 @@ export namespace GstCuda {
             prop: CudaGst.memAllocationProp,
             granularity_flags: CudaGst.memAllocationGranularity_flags,
         ): CudaPoolAllocator;
+
+        // Signals
+
+        connect<K extends keyof CudaPoolAllocator.SignalSignatures>(
+            signal: K,
+            callback: CudaPoolAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CudaPoolAllocator.SignalSignatures>(
+            signal: K,
+            callback: CudaPoolAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CudaPoolAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CudaPoolAllocator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

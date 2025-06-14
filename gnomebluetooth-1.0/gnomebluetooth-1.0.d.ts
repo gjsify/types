@@ -341,11 +341,11 @@ export namespace GnomeBluetooth {
         // Signal callback interfaces
 
         interface SelectedDeviceActivated {
-            (address: string): void;
+            (_source: Chooser, address: string): void;
         }
 
         interface SelectedDeviceChanged {
-            (address: string): void;
+            (_source: Chooser, address: string): void;
         }
 
         // Signal signatures
@@ -390,7 +390,6 @@ export namespace GnomeBluetooth {
      */
     class Chooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Chooser>;
-        declare static readonly __signalSignatures: Chooser.SignalSignatures;
 
         // Properties
 
@@ -450,15 +449,6 @@ export namespace GnomeBluetooth {
             signal: K,
             ...args: Parameters<Chooser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'selected-device-activated', callback: (_source: this, address: string) => void): number;
-        connect_after(signal: 'selected-device-activated', callback: (_source: this, address: string) => void): number;
-        emit(signal: 'selected-device-activated', address: string): void;
-        connect(signal: 'selected-device-changed', callback: (_source: this, address: string) => void): number;
-        connect_after(signal: 'selected-device-changed', callback: (_source: this, address: string) => void): number;
-        emit(signal: 'selected-device-changed', address: string): void;
 
         // Virtual methods
 
@@ -988,7 +978,7 @@ export namespace GnomeBluetooth {
         // Signal callback interfaces
 
         interface ChooserCreated {
-            (chooser: GObject.Object): void;
+            (_source: ChooserButton, chooser: GObject.Object): void;
         }
 
         // Signal signatures
@@ -1019,7 +1009,6 @@ export namespace GnomeBluetooth {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ChooserButton>;
-        declare static readonly __signalSignatures: ChooserButton.SignalSignatures;
 
         // Properties
 
@@ -1063,12 +1052,6 @@ export namespace GnomeBluetooth {
             signal: K,
             ...args: Parameters<ChooserButton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
-        connect_after(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
-        emit(signal: 'chooser-created', chooser: GObject.Object): void;
 
         // Virtual methods
 
@@ -5607,7 +5590,7 @@ export namespace GnomeBluetooth {
         // Signal callback interfaces
 
         interface ChooserCreated {
-            (chooser: GObject.Object): void;
+            (_source: ChooserCombo, chooser: GObject.Object): void;
         }
 
         // Signal signatures
@@ -5633,7 +5616,6 @@ export namespace GnomeBluetooth {
      */
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ChooserCombo>;
-        declare static readonly __signalSignatures: ChooserCombo.SignalSignatures;
 
         // Properties
 
@@ -5669,12 +5651,6 @@ export namespace GnomeBluetooth {
             signal: K,
             ...args: Parameters<ChooserCombo.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
-        connect_after(signal: 'chooser-created', callback: (_source: this, chooser: GObject.Object) => void): number;
-        emit(signal: 'chooser-created', chooser: GObject.Object): void;
 
         // Virtual methods
 
@@ -6143,7 +6119,7 @@ export namespace GnomeBluetooth {
         // Signal callback interfaces
 
         interface DeviceRemoved {
-            (device: string): void;
+            (_source: Client, device: string): void;
         }
 
         // Signal signatures
@@ -6173,7 +6149,6 @@ export namespace GnomeBluetooth {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -6235,12 +6210,6 @@ export namespace GnomeBluetooth {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: string) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: string) => void): number;
-        emit(signal: 'device-removed', device: string): void;
 
         // Methods
 
@@ -6339,7 +6308,6 @@ export namespace GnomeBluetooth {
 
     class FilterWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilterWidget>;
-        declare static readonly __signalSignatures: FilterWidget.SignalSignatures;
 
         // Properties
 
@@ -6365,6 +6333,21 @@ export namespace GnomeBluetooth {
         _init(...args: any[]): void;
 
         static ['new'](): FilterWidget;
+
+        // Signals
+
+        connect<K extends keyof FilterWidget.SignalSignatures>(
+            signal: K,
+            callback: FilterWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterWidget.SignalSignatures>(
+            signal: K,
+            callback: FilterWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6845,11 +6828,11 @@ export namespace GnomeBluetooth {
         // Signal callback interfaces
 
         interface AdapterStatusChanged {
-            (): void;
+            (_source: SettingsWidget): void;
         }
 
         interface PanelChanged {
-            (panel: string): void;
+            (_source: SettingsWidget, panel: string): void;
         }
 
         // Signal signatures
@@ -6873,7 +6856,6 @@ export namespace GnomeBluetooth {
      */
     class SettingsWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsWidget>;
-        declare static readonly __signalSignatures: SettingsWidget.SignalSignatures;
 
         // Constructors
 
@@ -6897,15 +6879,6 @@ export namespace GnomeBluetooth {
             signal: K,
             ...args: Parameters<SettingsWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'adapter-status-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'adapter-status-changed', callback: (_source: this) => void): number;
-        emit(signal: 'adapter-status-changed'): void;
-        connect(signal: 'panel-changed', callback: (_source: this, panel: string) => void): number;
-        connect_after(signal: 'panel-changed', callback: (_source: this, panel: string) => void): number;
-        emit(signal: 'panel-changed', panel: string): void;
 
         // Methods
 

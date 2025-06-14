@@ -50,13 +50,27 @@ export namespace GdkWayland {
      */
     class WaylandDevice extends Gdk.Device {
         static $gtype: GObject.GType<WaylandDevice>;
-        declare static readonly __signalSignatures: WaylandDevice.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandDevice.SignalSignatures>(
+            signal: K,
+            callback: WaylandDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandDevice.SignalSignatures>(
+            signal: K,
+            callback: WaylandDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -101,13 +115,27 @@ export namespace GdkWayland {
      */
     class WaylandDisplay extends Gdk.Display {
         static $gtype: GObject.GType<WaylandDisplay>;
-        declare static readonly __signalSignatures: WaylandDisplay.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandDisplay.SignalSignatures>(
+            signal: K,
+            callback: WaylandDisplay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandDisplay.SignalSignatures>(
+            signal: K,
+            callback: WaylandDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandDisplay.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -164,13 +192,27 @@ export namespace GdkWayland {
      */
     class WaylandGLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<WaylandGLContext>;
-        declare static readonly __signalSignatures: WaylandGLContext.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandGLContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandGLContext.SignalSignatures>(
+            signal: K,
+            callback: WaylandGLContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandGLContext.SignalSignatures>(
+            signal: K,
+            callback: WaylandGLContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandGLContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandGLContext.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WaylandMonitor {
@@ -191,13 +233,27 @@ export namespace GdkWayland {
      */
     class WaylandMonitor extends Gdk.Monitor {
         static $gtype: GObject.GType<WaylandMonitor>;
-        declare static readonly __signalSignatures: WaylandMonitor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandMonitor.SignalSignatures>(
+            signal: K,
+            callback: WaylandMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandMonitor.SignalSignatures>(
+            signal: K,
+            callback: WaylandMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandMonitor.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WaylandPopup {
@@ -214,13 +270,27 @@ export namespace GdkWayland {
      */
     class WaylandPopup extends WaylandSurface implements Gdk.Popup {
         static $gtype: GObject.GType<WaylandPopup>;
-        declare static readonly __signalSignatures: WaylandPopup.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandPopup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandPopup.SignalSignatures>(
+            signal: K,
+            callback: WaylandPopup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandPopup.SignalSignatures>(
+            signal: K,
+            callback: WaylandPopup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandPopup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandPopup.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -618,13 +688,27 @@ export namespace GdkWayland {
      */
     class WaylandSeat extends Gdk.Seat {
         static $gtype: GObject.GType<WaylandSeat>;
-        declare static readonly __signalSignatures: WaylandSeat.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandSeat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandSeat.SignalSignatures>(
+            signal: K,
+            callback: WaylandSeat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandSeat.SignalSignatures>(
+            signal: K,
+            callback: WaylandSeat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandSeat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandSeat.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WaylandSurface {
@@ -645,13 +729,27 @@ export namespace GdkWayland {
      */
     class WaylandSurface extends Gdk.Surface {
         static $gtype: GObject.GType<WaylandSurface>;
-        declare static readonly __signalSignatures: WaylandSurface.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandSurface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandSurface.SignalSignatures>(
+            signal: K,
+            callback: WaylandSurface.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandSurface.SignalSignatures>(
+            signal: K,
+            callback: WaylandSurface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandSurface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandSurface.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -680,13 +778,27 @@ export namespace GdkWayland {
      */
     class WaylandToplevel extends WaylandSurface implements Gdk.Toplevel {
         static $gtype: GObject.GType<WaylandToplevel>;
-        declare static readonly __signalSignatures: WaylandToplevel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WaylandToplevel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WaylandToplevel.SignalSignatures>(
+            signal: K,
+            callback: WaylandToplevel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WaylandToplevel.SignalSignatures>(
+            signal: K,
+            callback: WaylandToplevel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WaylandToplevel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WaylandToplevel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

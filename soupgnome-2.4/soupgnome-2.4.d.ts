@@ -34,7 +34,6 @@ export namespace SoupGNOME {
 
     class CookieJarSqlite extends Soup.CookieJarDB implements Soup.SessionFeature {
         static $gtype: GObject.GType<CookieJarSqlite>;
-        declare static readonly __signalSignatures: CookieJarSqlite.SignalSignatures;
 
         // Constructors
 
@@ -46,6 +45,21 @@ export namespace SoupGNOME {
         // Conflicted with Soup.CookieJar.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CookieJarSqlite.SignalSignatures>(
+            signal: K,
+            callback: CookieJarSqlite.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CookieJarSqlite.SignalSignatures>(
+            signal: K,
+            callback: CookieJarSqlite.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CookieJarSqlite.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CookieJarSqlite.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -500,13 +514,27 @@ export namespace SoupGNOME {
 
     class PasswordManagerGNOME extends GObject.Object implements Soup.SessionFeature {
         static $gtype: GObject.GType<PasswordManagerGNOME>;
-        declare static readonly __signalSignatures: PasswordManagerGNOME.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PasswordManagerGNOME.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PasswordManagerGNOME.SignalSignatures>(
+            signal: K,
+            callback: PasswordManagerGNOME.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PasswordManagerGNOME.SignalSignatures>(
+            signal: K,
+            callback: PasswordManagerGNOME.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PasswordManagerGNOME.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PasswordManagerGNOME.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -1038,13 +1066,27 @@ export namespace SoupGNOME {
 
     class ProxyResolverGNOME extends Soup.ProxyResolverDefault implements Soup.ProxyURIResolver, Soup.SessionFeature {
         static $gtype: GObject.GType<ProxyResolverGNOME>;
-        declare static readonly __signalSignatures: ProxyResolverGNOME.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ProxyResolverGNOME.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyResolverGNOME.SignalSignatures>(
+            signal: K,
+            callback: ProxyResolverGNOME.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyResolverGNOME.SignalSignatures>(
+            signal: K,
+            callback: ProxyResolverGNOME.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyResolverGNOME.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyResolverGNOME.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

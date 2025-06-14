@@ -104,15 +104,15 @@ export namespace Fep {
         // Signal callback interfaces
 
         interface FilterEvent {
-            (event?: any | null): boolean;
+            (_source: GClient, event?: any | null): boolean;
         }
 
         interface FilterKeyEvent {
-            (keyval: number, modifiers: number): boolean;
+            (_source: GClient, keyval: number, modifiers: number): boolean;
         }
 
         interface Resized {
-            (cols: number, rows: number): void;
+            (_source: GClient, cols: number, rows: number): void;
         }
 
         // Signal signatures
@@ -131,7 +131,6 @@ export namespace Fep {
 
     class GClient extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GClient>;
-        declare static readonly __signalSignatures: GClient.SignalSignatures;
 
         // Properties
 
@@ -156,24 +155,6 @@ export namespace Fep {
             signal: K,
             ...args: Parameters<GClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'filter-event', callback: (_source: this, event: any | null) => boolean): number;
-        connect_after(signal: 'filter-event', callback: (_source: this, event: any | null) => boolean): number;
-        emit(signal: 'filter-event', event?: any | null): void;
-        connect(
-            signal: 'filter-key-event',
-            callback: (_source: this, keyval: number, modifiers: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'filter-key-event',
-            callback: (_source: this, keyval: number, modifiers: number) => boolean,
-        ): number;
-        emit(signal: 'filter-key-event', keyval: number, modifiers: number): void;
-        connect(signal: 'resized', callback: (_source: this, cols: number, rows: number) => void): number;
-        connect_after(signal: 'resized', callback: (_source: this, cols: number, rows: number) => void): number;
-        emit(signal: 'resized', cols: number, rows: number): void;
 
         // Virtual methods
 

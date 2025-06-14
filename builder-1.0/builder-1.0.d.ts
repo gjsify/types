@@ -82,13 +82,27 @@ export namespace Builder {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -619,7 +633,7 @@ export namespace Builder {
         // Signal callback interfaces
 
         interface RequestDocumentation {
-            (object: string): void;
+            (_source: EditorView, object: string): void;
         }
 
         // Signal signatures
@@ -638,7 +652,6 @@ export namespace Builder {
 
     class EditorView extends View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
-        declare static readonly __signalSignatures: EditorView.SignalSignatures;
 
         // Constructors
 
@@ -660,12 +673,6 @@ export namespace Builder {
             signal: K,
             ...args: Parameters<EditorView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'request-documentation', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'request-documentation', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'request-documentation', object: string): void;
 
         // Inherited methods
         /**
@@ -1122,7 +1129,6 @@ export namespace Builder {
 
     class MenuExtension extends GObject.Object {
         static $gtype: GObject.GType<MenuExtension>;
-        declare static readonly __signalSignatures: MenuExtension.SignalSignatures;
 
         // Properties
 
@@ -1138,6 +1144,21 @@ export namespace Builder {
 
         static new_for_section(menu: Gio.Menu, section: string): MenuExtension;
 
+        // Signals
+
+        connect<K extends keyof MenuExtension.SignalSignatures>(
+            signal: K,
+            callback: MenuExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuExtension.SignalSignatures>(
+            signal: K,
+            callback: MenuExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuExtension.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         append_menu_item(item: Gio.MenuItem): void;
@@ -1149,11 +1170,11 @@ export namespace Builder {
         // Signal callback interfaces
 
         interface Action {
-            (object: string, p0: string, p1: string): void;
+            (_source: Tree, object: string, p0: string, p1: string): void;
         }
 
         interface PopulatePopup {
-            (object: Gtk.Widget): void;
+            (_source: Tree, object: Gtk.Widget): void;
         }
 
         // Signal signatures
@@ -1178,7 +1199,6 @@ export namespace Builder {
 
     class Tree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Tree>;
-        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -1202,18 +1222,6 @@ export namespace Builder {
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action', callback: (_source: this, object: string, p0: string, p1: string) => void): number;
-        connect_after(
-            signal: 'action',
-            callback: (_source: this, object: string, p0: string, p1: string) => void,
-        ): number;
-        emit(signal: 'action', object: string, p0: string, p1: string): void;
-        connect(signal: 'populate-popup', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'populate-popup', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'populate-popup', object: Gtk.Widget): void;
 
         // Virtual methods
 
@@ -1831,31 +1839,31 @@ export namespace Builder {
         // Signal callback interfaces
 
         interface Added {
-            (object: Tree): void;
+            (_source: TreeBuilder, object: Tree): void;
         }
 
         interface BuildNode {
-            (object: TreeNode): void;
+            (_source: TreeBuilder, object: TreeNode): void;
         }
 
         interface NodeActivated {
-            (object: TreeNode): boolean;
+            (_source: TreeBuilder, object: TreeNode): boolean;
         }
 
         interface NodePopup {
-            (object: TreeNode, p0: Gio.Menu): void;
+            (_source: TreeBuilder, object: TreeNode, p0: Gio.Menu): void;
         }
 
         interface NodeSelected {
-            (object: TreeNode): void;
+            (_source: TreeBuilder, object: TreeNode): void;
         }
 
         interface NodeUnselected {
-            (object: TreeNode): void;
+            (_source: TreeBuilder, object: TreeNode): void;
         }
 
         interface Removed {
-            (object: Tree): void;
+            (_source: TreeBuilder, object: Tree): void;
         }
 
         // Signal signatures
@@ -1878,7 +1886,6 @@ export namespace Builder {
 
     class TreeBuilder extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<TreeBuilder>;
-        declare static readonly __signalSignatures: TreeBuilder.SignalSignatures;
 
         // Properties
 
@@ -1904,30 +1911,6 @@ export namespace Builder {
             signal: K,
             ...args: Parameters<TreeBuilder.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'added', callback: (_source: this, object: Tree) => void): number;
-        connect_after(signal: 'added', callback: (_source: this, object: Tree) => void): number;
-        emit(signal: 'added', object: Tree): void;
-        connect(signal: 'build-node', callback: (_source: this, object: TreeNode) => void): number;
-        connect_after(signal: 'build-node', callback: (_source: this, object: TreeNode) => void): number;
-        emit(signal: 'build-node', object: TreeNode): void;
-        connect(signal: 'node-activated', callback: (_source: this, object: TreeNode) => boolean): number;
-        connect_after(signal: 'node-activated', callback: (_source: this, object: TreeNode) => boolean): number;
-        emit(signal: 'node-activated', object: TreeNode): void;
-        connect(signal: 'node-popup', callback: (_source: this, object: TreeNode, p0: Gio.Menu) => void): number;
-        connect_after(signal: 'node-popup', callback: (_source: this, object: TreeNode, p0: Gio.Menu) => void): number;
-        emit(signal: 'node-popup', object: TreeNode, p0: Gio.Menu): void;
-        connect(signal: 'node-selected', callback: (_source: this, object: TreeNode) => void): number;
-        connect_after(signal: 'node-selected', callback: (_source: this, object: TreeNode) => void): number;
-        emit(signal: 'node-selected', object: TreeNode): void;
-        connect(signal: 'node-unselected', callback: (_source: this, object: TreeNode) => void): number;
-        connect_after(signal: 'node-unselected', callback: (_source: this, object: TreeNode) => void): number;
-        emit(signal: 'node-unselected', object: TreeNode): void;
-        connect(signal: 'removed', callback: (_source: this, object: Tree) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this, object: Tree) => void): number;
-        emit(signal: 'removed', object: Tree): void;
 
         // Virtual methods
 
@@ -1972,7 +1955,6 @@ export namespace Builder {
 
     class TreeNode extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<TreeNode>;
-        declare static readonly __signalSignatures: TreeNode.SignalSignatures;
 
         // Properties
 
@@ -2053,6 +2035,18 @@ export namespace Builder {
         _init(...args: any[]): void;
 
         static ['new'](): TreeNode;
+
+        // Signals
+
+        connect<K extends keyof TreeNode.SignalSignatures>(signal: K, callback: TreeNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeNode.SignalSignatures>(
+            signal: K,
+            callback: TreeNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2165,7 +2159,6 @@ export namespace Builder {
 
     class View extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -2182,6 +2175,12 @@ export namespace Builder {
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2726,7 +2725,6 @@ export namespace Builder {
 
     class ViewGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewGrid>;
-        declare static readonly __signalSignatures: ViewGrid.SignalSignatures;
 
         // Constructors
 
@@ -2735,6 +2733,18 @@ export namespace Builder {
         _init(...args: any[]): void;
 
         static ['new'](): ViewGrid;
+
+        // Signals
+
+        connect<K extends keyof ViewGrid.SignalSignatures>(signal: K, callback: ViewGrid.SignalSignatures[K]): number;
+        connect_after<K extends keyof ViewGrid.SignalSignatures>(
+            signal: K,
+            callback: ViewGrid.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ViewGrid.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ViewGrid.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3203,11 +3213,11 @@ export namespace Builder {
         // Signal callback interfaces
 
         interface Empty {
-            (): void;
+            (_source: ViewStack): void;
         }
 
         interface Split {
-            (view: View, split_type: number): void;
+            (_source: ViewStack, view: View, split_type: number): void;
         }
 
         // Signal signatures
@@ -3229,7 +3239,6 @@ export namespace Builder {
 
     class ViewStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewStack>;
-        declare static readonly __signalSignatures: ViewStack.SignalSignatures;
 
         // Properties
 
@@ -3257,15 +3266,6 @@ export namespace Builder {
             signal: K,
             ...args: Parameters<ViewStack.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'empty', callback: (_source: this) => void): number;
-        connect_after(signal: 'empty', callback: (_source: this) => void): number;
-        emit(signal: 'empty'): void;
-        connect(signal: 'split', callback: (_source: this, view: View, split_type: number) => void): number;
-        connect_after(signal: 'split', callback: (_source: this, view: View, split_type: number) => void): number;
-        emit(signal: 'split', view: View, split_type: number): void;
 
         // Methods
 
@@ -3729,7 +3729,7 @@ export namespace Builder {
         // Signal callback interfaces
 
         interface Unload {
-            (object: Ide.Context): void;
+            (_source: Workbench, object: Ide.Context): void;
         }
 
         // Signal signatures
@@ -3757,7 +3757,6 @@ export namespace Builder {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Workbench>;
-        declare static readonly __signalSignatures: Workbench.SignalSignatures;
 
         // Properties
 
@@ -3789,12 +3788,6 @@ export namespace Builder {
             signal: K,
             ...args: Parameters<Workbench.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'unload', callback: (_source: this, object: Ide.Context) => void): number;
-        connect_after(signal: 'unload', callback: (_source: this, object: Ide.Context) => void): number;
-        emit(signal: 'unload', object: Ide.Context): void;
 
         // Methods
 

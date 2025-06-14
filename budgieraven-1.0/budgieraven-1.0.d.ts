@@ -35,7 +35,7 @@ export namespace BudgieRaven {
         // Signal callback interfaces
 
         interface RavenExpanded {
-            (object: boolean): void;
+            (_source: RavenWidget, object: boolean): void;
         }
 
         // Signal signatures
@@ -53,7 +53,6 @@ export namespace BudgieRaven {
 
     class RavenWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<RavenWidget>;
-        declare static readonly __signalSignatures: RavenWidget.SignalSignatures;
 
         // Constructors
 
@@ -77,12 +76,6 @@ export namespace BudgieRaven {
             signal: K,
             ...args: Parameters<RavenWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'raven-expanded', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'raven-expanded', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'raven-expanded', object: boolean): void;
 
         // Virtual methods
 

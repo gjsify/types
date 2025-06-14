@@ -206,7 +206,6 @@ export namespace GPlugin {
      */
     class FileSource extends GObject.Object implements Source {
         static $gtype: GObject.GType<FileSource>;
-        declare static readonly __signalSignatures: FileSource.SignalSignatures;
 
         // Properties
 
@@ -220,6 +219,21 @@ export namespace GPlugin {
         constructor(properties?: Partial<FileSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileSource.SignalSignatures>(
+            signal: K,
+            callback: FileSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSource.SignalSignatures>(
+            signal: K,
+            callback: FileSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSource.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -707,7 +721,6 @@ export namespace GPlugin {
      */
     abstract class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
-        declare static readonly __signalSignatures: Loader.SignalSignatures;
 
         // Properties
 
@@ -721,6 +734,12 @@ export namespace GPlugin {
         constructor(properties?: Partial<Loader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -780,35 +799,35 @@ export namespace GPlugin {
         // Signal callback interfaces
 
         interface LoadPluginFailed {
-            (plugin: GObject.Object, error: GLib.Error): void;
+            (_source: Manager, plugin: GObject.Object, error: GLib.Error): void;
         }
 
         interface LoadedPlugin {
-            (plugin: GObject.Object): void;
+            (_source: Manager, plugin: GObject.Object): void;
         }
 
         interface LoaderRegistered {
-            (loader: Loader): void;
+            (_source: Manager, loader: Loader): void;
         }
 
         interface LoaderUnregistered {
-            (loader: Loader): void;
+            (_source: Manager, loader: Loader): void;
         }
 
         interface LoadingPlugin {
-            (plugin: GObject.Object, error?: any | null): boolean;
+            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean;
         }
 
         interface UnloadPluginFailed {
-            (plugin: GObject.Object, error: GLib.Error): void;
+            (_source: Manager, plugin: GObject.Object, error: GLib.Error): void;
         }
 
         interface UnloadedPlugin {
-            (plugin: GObject.Object): void;
+            (_source: Manager, plugin: GObject.Object): void;
         }
 
         interface UnloadingPlugin {
-            (plugin: GObject.Object, error?: any | null): boolean;
+            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean;
         }
 
         // Signal signatures
@@ -835,7 +854,6 @@ export namespace GPlugin {
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
-        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Constructors
 
@@ -854,57 +872,6 @@ export namespace GPlugin {
             signal: K,
             ...args: Parameters<Manager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'load-plugin-failed',
-            callback: (_source: this, plugin: GObject.Object, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'load-plugin-failed',
-            callback: (_source: this, plugin: GObject.Object, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'load-plugin-failed', plugin: GObject.Object, error: GLib.Error): void;
-        connect(signal: 'loaded-plugin', callback: (_source: this, plugin: GObject.Object) => void): number;
-        connect_after(signal: 'loaded-plugin', callback: (_source: this, plugin: GObject.Object) => void): number;
-        emit(signal: 'loaded-plugin', plugin: GObject.Object): void;
-        connect(signal: 'loader-registered', callback: (_source: this, loader: Loader) => void): number;
-        connect_after(signal: 'loader-registered', callback: (_source: this, loader: Loader) => void): number;
-        emit(signal: 'loader-registered', loader: Loader): void;
-        connect(signal: 'loader-unregistered', callback: (_source: this, loader: Loader) => void): number;
-        connect_after(signal: 'loader-unregistered', callback: (_source: this, loader: Loader) => void): number;
-        emit(signal: 'loader-unregistered', loader: Loader): void;
-        connect(
-            signal: 'loading-plugin',
-            callback: (_source: this, plugin: GObject.Object, error: any | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'loading-plugin',
-            callback: (_source: this, plugin: GObject.Object, error: any | null) => boolean,
-        ): number;
-        emit(signal: 'loading-plugin', plugin: GObject.Object, error?: any | null): void;
-        connect(
-            signal: 'unload-plugin-failed',
-            callback: (_source: this, plugin: GObject.Object, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'unload-plugin-failed',
-            callback: (_source: this, plugin: GObject.Object, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'unload-plugin-failed', plugin: GObject.Object, error: GLib.Error): void;
-        connect(signal: 'unloaded-plugin', callback: (_source: this, plugin: GObject.Object) => void): number;
-        connect_after(signal: 'unloaded-plugin', callback: (_source: this, plugin: GObject.Object) => void): number;
-        emit(signal: 'unloaded-plugin', plugin: GObject.Object): void;
-        connect(
-            signal: 'unloading-plugin',
-            callback: (_source: this, plugin: GObject.Object, error: any | null) => boolean,
-        ): number;
-        connect_after(
-            signal: 'unloading-plugin',
-            callback: (_source: this, plugin: GObject.Object, error: any | null) => boolean,
-        ): number;
-        emit(signal: 'unloading-plugin', plugin: GObject.Object, error?: any | null): void;
 
         // Static methods
 
@@ -1122,7 +1089,6 @@ export namespace GPlugin {
      */
     class PluginInfo extends GObject.Object {
         static $gtype: GObject.GType<PluginInfo>;
-        declare static readonly __signalSignatures: PluginInfo.SignalSignatures;
 
         // Properties
 
@@ -1369,6 +1335,21 @@ export namespace GPlugin {
         constructor(properties?: Partial<PluginInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PluginInfo.SignalSignatures>(
+            signal: K,
+            callback: PluginInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginInfo.SignalSignatures>(
+            signal: K,
+            callback: PluginInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

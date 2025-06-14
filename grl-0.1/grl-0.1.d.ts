@@ -413,7 +413,6 @@ export namespace Grl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -422,6 +421,12 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](plugin: string, source: string): Config;
+
+        // Signals
+
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -507,7 +512,6 @@ export namespace Grl {
 
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
-        declare static readonly __signalSignatures: Data.SignalSignatures;
 
         // Properties
 
@@ -521,6 +525,12 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): Data;
+
+        // Signals
+
+        connect<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: Parameters<Data.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -785,7 +795,6 @@ export namespace Grl {
 
     class Media extends Data {
         static $gtype: GObject.GType<Media>;
-        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Constructors
 
@@ -794,6 +803,12 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): Media;
+
+        // Signals
+
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1018,7 +1033,6 @@ export namespace Grl {
 
     class MediaAudio extends Media {
         static $gtype: GObject.GType<MediaAudio>;
-        declare static readonly __signalSignatures: MediaAudio.SignalSignatures;
 
         // Constructors
 
@@ -1027,6 +1041,21 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): MediaAudio;
+
+        // Signals
+
+        connect<K extends keyof MediaAudio.SignalSignatures>(
+            signal: K,
+            callback: MediaAudio.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaAudio.SignalSignatures>(
+            signal: K,
+            callback: MediaAudio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaAudio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaAudio.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1127,7 +1156,6 @@ export namespace Grl {
 
     class MediaBox extends Media {
         static $gtype: GObject.GType<MediaBox>;
-        declare static readonly __signalSignatures: MediaBox.SignalSignatures;
 
         // Constructors
 
@@ -1136,6 +1164,18 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): MediaBox;
+
+        // Signals
+
+        connect<K extends keyof MediaBox.SignalSignatures>(signal: K, callback: MediaBox.SignalSignatures[K]): number;
+        connect_after<K extends keyof MediaBox.SignalSignatures>(
+            signal: K,
+            callback: MediaBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaBox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1165,7 +1205,6 @@ export namespace Grl {
 
     class MediaImage extends Media {
         static $gtype: GObject.GType<MediaImage>;
-        declare static readonly __signalSignatures: MediaImage.SignalSignatures;
 
         // Constructors
 
@@ -1174,6 +1213,21 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): MediaImage;
+
+        // Signals
+
+        connect<K extends keyof MediaImage.SignalSignatures>(
+            signal: K,
+            callback: MediaImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaImage.SignalSignatures>(
+            signal: K,
+            callback: MediaImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaImage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1257,13 +1311,27 @@ export namespace Grl {
 
     abstract class MediaPlugin extends GObject.Object {
         static $gtype: GObject.GType<MediaPlugin>;
-        declare static readonly __signalSignatures: MediaPlugin.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MediaPlugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaPlugin.SignalSignatures>(
+            signal: K,
+            callback: MediaPlugin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaPlugin.SignalSignatures>(
+            signal: K,
+            callback: MediaPlugin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaPlugin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaPlugin.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1334,7 +1402,12 @@ export namespace Grl {
         // Signal callback interfaces
 
         interface ContentChanged {
-            (changed_medias: any[], change_type: MediaSourceChangeType, location_unknown: boolean): void;
+            (
+                _source: MediaSource,
+                changed_medias: any[],
+                change_type: MediaSourceChangeType,
+                location_unknown: boolean,
+            ): void;
         }
 
         // Signal signatures
@@ -1352,7 +1425,6 @@ export namespace Grl {
 
     abstract class MediaSource extends MetadataSource {
         static $gtype: GObject.GType<MediaSource>;
-        declare static readonly __signalSignatures: MediaSource.SignalSignatures;
 
         // Properties
 
@@ -1388,33 +1460,6 @@ export namespace Grl {
         emit<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
             ...args: Parameters<MediaSource.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'content-changed',
-            callback: (
-                _source: this,
-                changed_medias: any[],
-                change_type: MediaSourceChangeType,
-                location_unknown: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'content-changed',
-            callback: (
-                _source: this,
-                changed_medias: any[],
-                change_type: MediaSourceChangeType,
-                location_unknown: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'content-changed',
-            changed_medias: any[],
-            change_type: MediaSourceChangeType,
-            location_unknown: boolean,
         ): void;
 
         // Virtual methods
@@ -1813,7 +1858,6 @@ export namespace Grl {
 
     class MediaVideo extends Media {
         static $gtype: GObject.GType<MediaVideo>;
-        declare static readonly __signalSignatures: MediaVideo.SignalSignatures;
 
         // Constructors
 
@@ -1822,6 +1866,21 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): MediaVideo;
+
+        // Signals
+
+        connect<K extends keyof MediaVideo.SignalSignatures>(
+            signal: K,
+            callback: MediaVideo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaVideo.SignalSignatures>(
+            signal: K,
+            callback: MediaVideo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaVideo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaVideo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1924,7 +1983,6 @@ export namespace Grl {
 
     abstract class MetadataSource extends MediaPlugin {
         static $gtype: GObject.GType<MetadataSource>;
-        declare static readonly __signalSignatures: MetadataSource.SignalSignatures;
 
         // Properties
 
@@ -1964,6 +2022,21 @@ export namespace Grl {
         constructor(properties?: Partial<MetadataSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MetadataSource.SignalSignatures>(
+            signal: K,
+            callback: MetadataSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetadataSource.SignalSignatures>(
+            signal: K,
+            callback: MetadataSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetadataSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetadataSource.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2234,11 +2307,11 @@ export namespace Grl {
         // Signal callback interfaces
 
         interface SourceAdded {
-            (plugin: MediaPlugin): void;
+            (_source: PluginRegistry, plugin: MediaPlugin): void;
         }
 
         interface SourceRemoved {
-            (plugin: MediaPlugin): void;
+            (_source: PluginRegistry, plugin: MediaPlugin): void;
         }
 
         // Signal signatures
@@ -2254,7 +2327,6 @@ export namespace Grl {
 
     class PluginRegistry extends GObject.Object {
         static $gtype: GObject.GType<PluginRegistry>;
-        declare static readonly __signalSignatures: PluginRegistry.SignalSignatures;
 
         // Constructors
 
@@ -2276,15 +2348,6 @@ export namespace Grl {
             signal: K,
             ...args: Parameters<PluginRegistry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'source-added', callback: (_source: this, plugin: MediaPlugin) => void): number;
-        connect_after(signal: 'source-added', callback: (_source: this, plugin: MediaPlugin) => void): number;
-        emit(signal: 'source-added', plugin: MediaPlugin): void;
-        connect(signal: 'source-removed', callback: (_source: this, plugin: MediaPlugin) => void): number;
-        connect_after(signal: 'source-removed', callback: (_source: this, plugin: MediaPlugin) => void): number;
-        emit(signal: 'source-removed', plugin: MediaPlugin): void;
 
         // Static methods
 
@@ -2467,7 +2530,6 @@ export namespace Grl {
 
     class RelatedKeys extends GObject.Object {
         static $gtype: GObject.GType<RelatedKeys>;
-        declare static readonly __signalSignatures: RelatedKeys.SignalSignatures;
 
         // Constructors
 
@@ -2476,6 +2538,21 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): RelatedKeys;
+
+        // Signals
+
+        connect<K extends keyof RelatedKeys.SignalSignatures>(
+            signal: K,
+            callback: RelatedKeys.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RelatedKeys.SignalSignatures>(
+            signal: K,
+            callback: RelatedKeys.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RelatedKeys.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RelatedKeys.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

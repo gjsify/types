@@ -201,7 +201,6 @@ export namespace Mks {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -215,6 +214,12 @@ export namespace Mks {
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -245,7 +250,6 @@ export namespace Mks {
 
     class Display extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Display>;
-        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -267,6 +271,18 @@ export namespace Mks {
         _init(...args: any[]): void;
 
         static ['new'](): Display;
+
+        // Signals
+
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect_after<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: Display.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Display.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1044,7 +1060,6 @@ export namespace Mks {
      */
     class Keyboard extends Device {
         static $gtype: GObject.GType<Keyboard>;
-        declare static readonly __signalSignatures: Keyboard.SignalSignatures;
 
         // Properties
 
@@ -1058,6 +1073,18 @@ export namespace Mks {
         constructor(properties?: Partial<Keyboard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Keyboard.SignalSignatures>(signal: K, callback: Keyboard.SignalSignatures[K]): number;
+        connect_after<K extends keyof Keyboard.SignalSignatures>(
+            signal: K,
+            callback: Keyboard.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Keyboard.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Keyboard.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1175,7 +1202,6 @@ export namespace Mks {
      */
     class Mouse extends Device {
         static $gtype: GObject.GType<Mouse>;
-        declare static readonly __signalSignatures: Mouse.SignalSignatures;
 
         // Properties
 
@@ -1193,6 +1219,12 @@ export namespace Mks {
         constructor(properties?: Partial<Mouse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Mouse.SignalSignatures>(signal: K, callback: Mouse.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mouse.SignalSignatures>(signal: K, callback: Mouse.SignalSignatures[K]): number;
+        emit<K extends keyof Mouse.SignalSignatures>(signal: K, ...args: Parameters<Mouse.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1398,7 +1430,6 @@ export namespace Mks {
 
     class Screen extends Device {
         static $gtype: GObject.GType<Screen>;
-        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Properties
 
@@ -1416,6 +1447,12 @@ export namespace Mks {
         constructor(properties?: Partial<Screen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1584,7 +1621,6 @@ export namespace Mks {
      */
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -1615,6 +1651,18 @@ export namespace Mks {
         static new_for_connection_finish(result: Gio.AsyncResult): Session;
 
         static new_for_connection_sync(connection: Gio.DBusConnection, cancellable?: Gio.Cancellable | null): Session;
+
+        // Signals
+
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2412,7 +2460,6 @@ export namespace Mks {
      */
     class Touchable extends Device {
         static $gtype: GObject.GType<Touchable>;
-        declare static readonly __signalSignatures: Touchable.SignalSignatures;
 
         // Properties
 
@@ -2430,6 +2477,18 @@ export namespace Mks {
         constructor(properties?: Partial<Touchable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Touchable.SignalSignatures>(signal: K, callback: Touchable.SignalSignatures[K]): number;
+        connect_after<K extends keyof Touchable.SignalSignatures>(
+            signal: K,
+            callback: Touchable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Touchable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Touchable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

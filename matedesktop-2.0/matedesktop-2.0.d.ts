@@ -377,11 +377,11 @@ export namespace MateDesktop {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: BG): void;
         }
 
         interface Transitioned {
-            (): void;
+            (_source: BG): void;
         }
 
         // Signal signatures
@@ -397,7 +397,6 @@ export namespace MateDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
-        declare static readonly __signalSignatures: BG.SignalSignatures;
 
         // Constructors
 
@@ -412,15 +411,6 @@ export namespace MateDesktop {
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'transitioned', callback: (_source: this) => void): number;
-        connect_after(signal: 'transitioned', callback: (_source: this) => void): number;
-        emit(signal: 'transitioned'): void;
 
         // Static methods
 
@@ -540,7 +530,7 @@ export namespace MateDesktop {
         // Signal callback interfaces
 
         interface Finished {
-            (window: GObject.Object): void;
+            (_source: BGCrossfade, window: GObject.Object): void;
         }
 
         // Signal signatures
@@ -558,7 +548,6 @@ export namespace MateDesktop {
 
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
-        declare static readonly __signalSignatures: BGCrossfade.SignalSignatures;
 
         // Properties
 
@@ -599,12 +588,6 @@ export namespace MateDesktop {
             signal: K,
             ...args: Parameters<BGCrossfade.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this, window: GObject.Object) => void): number;
-        emit(signal: 'finished', window: GObject.Object): void;
 
         // Virtual methods
 
@@ -667,7 +650,7 @@ export namespace MateDesktop {
         // Signal callback interfaces
 
         interface ColorChanged {
-            (): void;
+            (_source: ColorSelection): void;
         }
 
         // Signal signatures
@@ -697,7 +680,6 @@ export namespace MateDesktop {
 
     class ColorSelection extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColorSelection>;
-        declare static readonly __signalSignatures: ColorSelection.SignalSignatures;
 
         // Properties
 
@@ -742,12 +724,6 @@ export namespace MateDesktop {
             signal: K,
             ...args: Parameters<ColorSelection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'color-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'color-changed', callback: (_source: this) => void): number;
-        emit(signal: 'color-changed'): void;
 
         // Static methods
 
@@ -1332,7 +1308,6 @@ export namespace MateDesktop {
 
     class ColorSelectionDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ColorSelectionDialog>;
-        declare static readonly __signalSignatures: ColorSelectionDialog.SignalSignatures;
 
         // Properties
 
@@ -1359,6 +1334,21 @@ export namespace MateDesktop {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ColorSelectionDialog.SignalSignatures>(
+            signal: K,
+            callback: ColorSelectionDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorSelectionDialog.SignalSignatures>(
+            signal: K,
+            callback: ColorSelectionDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorSelectionDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorSelectionDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1821,7 +1811,6 @@ export namespace MateDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
-        declare static readonly __signalSignatures: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -1830,6 +1819,21 @@ export namespace MateDesktop {
         _init(...args: any[]): void;
 
         static ['new'](size: DesktopThumbnailSize): DesktopThumbnailFactory;
+
+        // Signals
+
+        connect<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            callback: DesktopThumbnailFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            callback: DesktopThumbnailFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1899,11 +1903,11 @@ export namespace MateDesktop {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: HSV): void;
         }
 
         interface Move {
-            (object: Gtk.DirectionType): void;
+            (_source: HSV, object: Gtk.DirectionType): void;
         }
 
         // Signal signatures
@@ -1922,7 +1926,6 @@ export namespace MateDesktop {
 
     class HSV extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HSV>;
-        declare static readonly __signalSignatures: HSV.SignalSignatures;
 
         // Constructors
 
@@ -1937,15 +1940,6 @@ export namespace MateDesktop {
         connect<K extends keyof HSV.SignalSignatures>(signal: K, callback: HSV.SignalSignatures[K]): number;
         connect_after<K extends keyof HSV.SignalSignatures>(signal: K, callback: HSV.SignalSignatures[K]): number;
         emit<K extends keyof HSV.SignalSignatures>(signal: K, ...args: Parameters<HSV.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'move', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        connect_after(signal: 'move', callback: (_source: this, object: Gtk.DirectionType) => void): number;
-        emit(signal: 'move', object: Gtk.DirectionType): void;
 
         // Virtual methods
 
@@ -2625,7 +2619,6 @@ export namespace MateDesktop {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ImageMenuItem>;
-        declare static readonly __signalSignatures: ImageMenuItem.SignalSignatures;
 
         // Properties
 
@@ -2650,6 +2643,21 @@ export namespace MateDesktop {
         static new_with_label(label: string): ImageMenuItem;
 
         static new_with_mnemonic(label: string): ImageMenuItem;
+
+        // Signals
+
+        connect<K extends keyof ImageMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ImageMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ImageMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7205,7 +7213,6 @@ export namespace MateDesktop {
 
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
-        declare static readonly __signalSignatures: RRConfig.SignalSignatures;
 
         // Properties
 
@@ -7220,6 +7227,18 @@ export namespace MateDesktop {
         static new_current(screen: RRScreen): RRConfig;
 
         static new_stored(screen: RRScreen): RRConfig;
+
+        // Signals
+
+        connect<K extends keyof RRConfig.SignalSignatures>(signal: K, callback: RRConfig.SignalSignatures[K]): number;
+        connect_after<K extends keyof RRConfig.SignalSignatures>(
+            signal: K,
+            callback: RRConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RRConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RRConfig.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7256,7 +7275,6 @@ export namespace MateDesktop {
 
     class RRLabeler extends GObject.Object {
         static $gtype: GObject.GType<RRLabeler>;
-        declare static readonly __signalSignatures: RRLabeler.SignalSignatures;
 
         // Properties
 
@@ -7269,6 +7287,18 @@ export namespace MateDesktop {
         _init(...args: any[]): void;
 
         static ['new'](config: RRConfig): RRLabeler;
+
+        // Signals
+
+        connect<K extends keyof RRLabeler.SignalSignatures>(signal: K, callback: RRLabeler.SignalSignatures[K]): number;
+        connect_after<K extends keyof RRLabeler.SignalSignatures>(
+            signal: K,
+            callback: RRLabeler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RRLabeler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RRLabeler.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7294,13 +7324,27 @@ export namespace MateDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
-        declare static readonly __signalSignatures: RROutputInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RROutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RROutputInfo.SignalSignatures>(
+            signal: K,
+            callback: RROutputInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RROutputInfo.SignalSignatures>(
+            signal: K,
+            callback: RROutputInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RROutputInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RROutputInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7336,7 +7380,7 @@ export namespace MateDesktop {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: RRScreen): void;
         }
 
         // Signal signatures
@@ -7354,7 +7398,6 @@ export namespace MateDesktop {
 
     class RRScreen extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
-        declare static readonly __signalSignatures: RRScreen.SignalSignatures;
 
         // Properties
 
@@ -7380,12 +7423,6 @@ export namespace MateDesktop {
             signal: K,
             ...args: Parameters<RRScreen.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 

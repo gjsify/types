@@ -52,7 +52,6 @@ export namespace Parquet {
 
     class ArrowFileReader extends GObject.Object {
         static $gtype: GObject.GType<ArrowFileReader>;
-        declare static readonly __signalSignatures: ArrowFileReader.SignalSignatures;
 
         // Properties
 
@@ -68,6 +67,21 @@ export namespace Parquet {
         static new_arrow(source: Arrow.SeekableInputStream): ArrowFileReader;
 
         static new_path(path: string): ArrowFileReader;
+
+        // Signals
+
+        connect<K extends keyof ArrowFileReader.SignalSignatures>(
+            signal: K,
+            callback: ArrowFileReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArrowFileReader.SignalSignatures>(
+            signal: K,
+            callback: ArrowFileReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArrowFileReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArrowFileReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -93,7 +107,6 @@ export namespace Parquet {
 
     class ArrowFileWriter extends GObject.Object {
         static $gtype: GObject.GType<ArrowFileWriter>;
-        declare static readonly __signalSignatures: ArrowFileWriter.SignalSignatures;
 
         // Properties
 
@@ -118,6 +131,21 @@ export namespace Parquet {
             writer_properties?: WriterProperties | null,
         ): ArrowFileWriter;
 
+        // Signals
+
+        connect<K extends keyof ArrowFileWriter.SignalSignatures>(
+            signal: K,
+            callback: ArrowFileWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArrowFileWriter.SignalSignatures>(
+            signal: K,
+            callback: ArrowFileWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArrowFileWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArrowFileWriter.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         close(): boolean;
@@ -135,7 +163,6 @@ export namespace Parquet {
 
     class WriterProperties extends GObject.Object {
         static $gtype: GObject.GType<WriterProperties>;
-        declare static readonly __signalSignatures: WriterProperties.SignalSignatures;
 
         // Constructors
 
@@ -144,6 +171,21 @@ export namespace Parquet {
         _init(...args: any[]): void;
 
         static ['new'](): WriterProperties;
+
+        // Signals
+
+        connect<K extends keyof WriterProperties.SignalSignatures>(
+            signal: K,
+            callback: WriterProperties.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WriterProperties.SignalSignatures>(
+            signal: K,
+            callback: WriterProperties.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WriterProperties.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WriterProperties.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

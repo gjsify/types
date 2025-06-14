@@ -112,7 +112,6 @@ export namespace GcrUi {
      */
     class CertificateRenderer extends GObject.Object implements Gcr.Certificate, Gcr.Comparable, Renderer {
         static $gtype: GObject.GType<CertificateRenderer>;
-        declare static readonly __signalSignatures: CertificateRenderer.SignalSignatures;
 
         // Properties
 
@@ -142,6 +141,21 @@ export namespace GcrUi {
         static ['new'](certificate: Gcr.Certificate): CertificateRenderer;
 
         static new_for_attributes(label?: string | null, attrs?: any | null): CertificateRenderer;
+
+        // Signals
+
+        connect<K extends keyof CertificateRenderer.SignalSignatures>(
+            signal: K,
+            callback: CertificateRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateRenderer.SignalSignatures>(
+            signal: K,
+            callback: CertificateRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateRenderer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -887,7 +901,6 @@ export namespace GcrUi {
      */
     class CertificateWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CertificateWidget>;
-        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Properties
 
@@ -903,6 +916,21 @@ export namespace GcrUi {
         _init(...args: any[]): void;
 
         static ['new'](certificate?: Gcr.Certificate | null): CertificateWidget;
+
+        // Signals
+
+        connect<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1410,7 +1438,6 @@ export namespace GcrUi {
      */
     class CollectionModel extends GObject.Object implements Gtk.TreeModel, Gtk.TreeSortable {
         static $gtype: GObject.GType<CollectionModel>;
-        declare static readonly __signalSignatures: CollectionModel.SignalSignatures;
 
         // Properties
 
@@ -1423,6 +1450,21 @@ export namespace GcrUi {
         constructor(properties?: Partial<CollectionModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CollectionModel.SignalSignatures>(
+            signal: K,
+            callback: CollectionModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CollectionModel.SignalSignatures>(
+            signal: K,
+            callback: CollectionModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CollectionModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CollectionModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2470,7 +2512,6 @@ export namespace GcrUi {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<ComboSelector>;
-        declare static readonly __signalSignatures: ComboSelector.SignalSignatures;
 
         // Properties
 
@@ -2489,6 +2530,21 @@ export namespace GcrUi {
         // Conflicted with Gtk.ComboBox.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ComboSelector.SignalSignatures>(
+            signal: K,
+            callback: ComboSelector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ComboSelector.SignalSignatures>(
+            signal: K,
+            callback: ComboSelector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ComboSelector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ComboSelector.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7006,7 +7062,6 @@ export namespace GcrUi {
      */
     class FailureRenderer extends GObject.Object implements Renderer {
         static $gtype: GObject.GType<FailureRenderer>;
-        declare static readonly __signalSignatures: FailureRenderer.SignalSignatures;
 
         // Properties
 
@@ -7022,6 +7077,21 @@ export namespace GcrUi {
         _init(...args: any[]): void;
 
         static ['new'](label: string | null, error: GLib.Error): FailureRenderer;
+
+        // Signals
+
+        connect<K extends keyof FailureRenderer.SignalSignatures>(
+            signal: K,
+            callback: FailureRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FailureRenderer.SignalSignatures>(
+            signal: K,
+            callback: FailureRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FailureRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FailureRenderer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7511,11 +7581,11 @@ export namespace GcrUi {
         // Signal callback interfaces
 
         interface Imported {
-            (importer: GObject.Object, error: GLib.Error): void;
+            (_source: ImportButton, importer: GObject.Object, error: GLib.Error): void;
         }
 
         interface Importing {
-            (importer: GObject.Object): void;
+            (_source: ImportButton, importer: GObject.Object): void;
         }
 
         // Signal signatures
@@ -7546,7 +7616,6 @@ export namespace GcrUi {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ImportButton>;
-        declare static readonly __signalSignatures: ImportButton.SignalSignatures;
 
         // Constructors
 
@@ -7573,21 +7642,6 @@ export namespace GcrUi {
             signal: K,
             ...args: Parameters<ImportButton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'imported',
-            callback: (_source: this, importer: GObject.Object, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'imported',
-            callback: (_source: this, importer: GObject.Object, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'imported', importer: GObject.Object, error: GLib.Error): void;
-        connect(signal: 'importing', callback: (_source: this, importer: GObject.Object) => void): number;
-        connect_after(signal: 'importing', callback: (_source: this, importer: GObject.Object) => void): number;
-        emit(signal: 'importing', importer: GObject.Object): void;
 
         // Virtual methods
 
@@ -12139,7 +12193,6 @@ export namespace GcrUi {
      */
     class KeyRenderer extends GObject.Object implements Renderer {
         static $gtype: GObject.GType<KeyRenderer>;
-        declare static readonly __signalSignatures: KeyRenderer.SignalSignatures;
 
         // Properties
 
@@ -12153,6 +12206,21 @@ export namespace GcrUi {
         _init(...args: any[]): void;
 
         static ['new'](label?: string | null, attrs?: Gck.Attributes | null): KeyRenderer;
+
+        // Signals
+
+        connect<K extends keyof KeyRenderer.SignalSignatures>(
+            signal: K,
+            callback: KeyRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyRenderer.SignalSignatures>(
+            signal: K,
+            callback: KeyRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyRenderer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12674,7 +12742,6 @@ export namespace GcrUi {
      */
     class KeyWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<KeyWidget>;
-        declare static readonly __signalSignatures: KeyWidget.SignalSignatures;
 
         // Properties
 
@@ -12688,6 +12755,18 @@ export namespace GcrUi {
         _init(...args: any[]): void;
 
         static ['new'](attrs?: Gck.Attributes | null): KeyWidget;
+
+        // Signals
+
+        connect<K extends keyof KeyWidget.SignalSignatures>(signal: K, callback: KeyWidget.SignalSignatures[K]): number;
+        connect_after<K extends keyof KeyWidget.SignalSignatures>(
+            signal: K,
+            callback: KeyWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13167,7 +13246,6 @@ export namespace GcrUi {
      */
     class ListSelector extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<ListSelector>;
-        declare static readonly __signalSignatures: ListSelector.SignalSignatures;
 
         // Properties
 
@@ -13186,6 +13264,21 @@ export namespace GcrUi {
         // Conflicted with Gtk.TreeView.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ListSelector.SignalSignatures>(
+            signal: K,
+            callback: ListSelector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ListSelector.SignalSignatures>(
+            signal: K,
+            callback: ListSelector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListSelector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListSelector.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13775,7 +13868,6 @@ export namespace GcrUi {
      */
     class PromptDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gcr.Prompt, Gtk.Buildable {
         static $gtype: GObject.GType<PromptDialog>;
-        declare static readonly __signalSignatures: PromptDialog.SignalSignatures;
 
         // Properties
 
@@ -13817,6 +13909,21 @@ export namespace GcrUi {
         constructor(properties?: Partial<PromptDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PromptDialog.SignalSignatures>(
+            signal: K,
+            callback: PromptDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PromptDialog.SignalSignatures>(
+            signal: K,
+            callback: PromptDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PromptDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PromptDialog.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -14829,7 +14936,6 @@ export namespace GcrUi {
      */
     class SecureEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SecureEntryBuffer>;
-        declare static readonly __signalSignatures: SecureEntryBuffer.SignalSignatures;
 
         // Constructors
 
@@ -14838,6 +14944,21 @@ export namespace GcrUi {
         _init(...args: any[]): void;
 
         static ['new'](): SecureEntryBuffer;
+
+        // Signals
+
+        connect<K extends keyof SecureEntryBuffer.SignalSignatures>(
+            signal: K,
+            callback: SecureEntryBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecureEntryBuffer.SignalSignatures>(
+            signal: K,
+            callback: SecureEntryBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecureEntryBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecureEntryBuffer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeSelector {
@@ -14862,7 +14983,6 @@ export namespace GcrUi {
      */
     class TreeSelector extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<TreeSelector>;
-        declare static readonly __signalSignatures: TreeSelector.SignalSignatures;
 
         // Properties
 
@@ -14880,6 +15000,21 @@ export namespace GcrUi {
         constructor(properties?: Partial<TreeSelector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TreeSelector.SignalSignatures>(
+            signal: K,
+            callback: TreeSelector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeSelector.SignalSignatures>(
+            signal: K,
+            callback: TreeSelector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeSelector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeSelector.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15467,7 +15602,6 @@ export namespace GcrUi {
      */
     class UnlockOptionsWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<UnlockOptionsWidget>;
-        declare static readonly __signalSignatures: UnlockOptionsWidget.SignalSignatures;
 
         // Properties
 
@@ -15483,6 +15617,21 @@ export namespace GcrUi {
         _init(...args: any[]): void;
 
         static ['new'](): UnlockOptionsWidget;
+
+        // Signals
+
+        connect<K extends keyof UnlockOptionsWidget.SignalSignatures>(
+            signal: K,
+            callback: UnlockOptionsWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnlockOptionsWidget.SignalSignatures>(
+            signal: K,
+            callback: UnlockOptionsWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnlockOptionsWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnlockOptionsWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15990,7 +16139,7 @@ export namespace GcrUi {
         // Signal callback interfaces
 
         interface Added {
-            (renderer: Renderer, parsed: Gcr.Parsed): void;
+            (_source: ViewerWidget, renderer: Renderer, parsed: Gcr.Parsed): void;
         }
 
         // Signal signatures
@@ -16017,7 +16166,6 @@ export namespace GcrUi {
      */
     class ViewerWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ViewerWidget>;
-        declare static readonly __signalSignatures: ViewerWidget.SignalSignatures;
 
         // Properties
 
@@ -16066,15 +16214,6 @@ export namespace GcrUi {
             signal: K,
             ...args: Parameters<ViewerWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'added', callback: (_source: this, renderer: Renderer, parsed: Gcr.Parsed) => void): number;
-        connect_after(
-            signal: 'added',
-            callback: (_source: this, renderer: Renderer, parsed: Gcr.Parsed) => void,
-        ): number;
-        emit(signal: 'added', renderer: Renderer, parsed: Gcr.Parsed): void;
 
         // Methods
 

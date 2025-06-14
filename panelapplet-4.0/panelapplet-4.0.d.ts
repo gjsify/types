@@ -78,19 +78,19 @@ export namespace PanelApplet {
         // Signal callback interfaces
 
         interface ChangeBackground {
-            (pattern: cairo.Pattern): void;
+            (_source: Applet, pattern: cairo.Pattern): void;
         }
 
         interface ChangeOrient {
-            (orient: number): void;
+            (_source: Applet, orient: number): void;
         }
 
         interface ChangeSize {
-            (size: number): void;
+            (_source: Applet, size: number): void;
         }
 
         interface MoveFocusOutOfApplet {
-            (direction: Gtk.DirectionType): void;
+            (_source: Applet, direction: Gtk.DirectionType): void;
         }
 
         // Signal signatures
@@ -123,7 +123,6 @@ export namespace PanelApplet {
 
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
-        declare static readonly __signalSignatures: Applet.SignalSignatures;
 
         // Properties
 
@@ -214,27 +213,6 @@ export namespace PanelApplet {
         connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'change-background', callback: (_source: this, pattern: cairo.Pattern) => void): number;
-        connect_after(signal: 'change-background', callback: (_source: this, pattern: cairo.Pattern) => void): number;
-        emit(signal: 'change-background', pattern: cairo.Pattern): void;
-        connect(signal: 'change-orient', callback: (_source: this, orient: number) => void): number;
-        connect_after(signal: 'change-orient', callback: (_source: this, orient: number) => void): number;
-        emit(signal: 'change-orient', orient: number): void;
-        connect(signal: 'change-size', callback: (_source: this, size: number) => void): number;
-        connect_after(signal: 'change-size', callback: (_source: this, size: number) => void): number;
-        emit(signal: 'change-size', size: number): void;
-        connect(
-            signal: 'move-focus-out-of-applet',
-            callback: (_source: this, direction: Gtk.DirectionType) => void,
-        ): number;
-        connect_after(
-            signal: 'move-focus-out-of-applet',
-            callback: (_source: this, direction: Gtk.DirectionType) => void,
-        ): number;
-        emit(signal: 'move-focus-out-of-applet', direction: Gtk.DirectionType): void;
 
         // Static methods
 

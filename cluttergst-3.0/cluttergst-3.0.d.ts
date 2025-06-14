@@ -161,7 +161,6 @@ export namespace ClutterGst {
      */
     class Aspectratio extends Content implements Clutter.Content {
         static $gtype: GObject.GType<Aspectratio>;
-        declare static readonly __signalSignatures: Aspectratio.SignalSignatures;
 
         // Properties
 
@@ -193,6 +192,21 @@ export namespace ClutterGst {
         constructor(properties?: Partial<Aspectratio.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Aspectratio.SignalSignatures>(
+            signal: K,
+            callback: Aspectratio.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Aspectratio.SignalSignatures>(
+            signal: K,
+            callback: Aspectratio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Aspectratio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Aspectratio.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -680,19 +694,19 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface PhotoSaved {
-            (): void;
+            (_source: Camera): void;
         }
 
         interface PhotoTaken {
-            (pixbuf: GdkPixbuf.Pixbuf): void;
+            (_source: Camera, pixbuf: GdkPixbuf.Pixbuf): void;
         }
 
         interface ReadyForCapture {
-            (ready: boolean): void;
+            (_source: Camera, ready: boolean): void;
         }
 
         interface VideoSaved {
-            (): void;
+            (_source: Camera): void;
         }
 
         // Signal signatures
@@ -719,7 +733,6 @@ export namespace ClutterGst {
      */
     class Camera extends GObject.Object implements Player {
         static $gtype: GObject.GType<Camera>;
-        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -739,21 +752,6 @@ export namespace ClutterGst {
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'photo-saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'photo-saved', callback: (_source: this) => void): number;
-        emit(signal: 'photo-saved'): void;
-        connect(signal: 'photo-taken', callback: (_source: this, pixbuf: GdkPixbuf.Pixbuf) => void): number;
-        connect_after(signal: 'photo-taken', callback: (_source: this, pixbuf: GdkPixbuf.Pixbuf) => void): number;
-        emit(signal: 'photo-taken', pixbuf: GdkPixbuf.Pixbuf): void;
-        connect(signal: 'ready-for-capture', callback: (_source: this, ready: boolean) => void): number;
-        connect_after(signal: 'ready-for-capture', callback: (_source: this, ready: boolean) => void): number;
-        emit(signal: 'ready-for-capture', ready: boolean): void;
-        connect(signal: 'video-saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'video-saved', callback: (_source: this) => void): number;
-        emit(signal: 'video-saved'): void;
 
         // Virtual methods
 
@@ -1504,7 +1502,7 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface CaptureResolutionChanged {
-            (width: number, height: number): void;
+            (_source: CameraDevice, width: number, height: number): void;
         }
 
         // Signal signatures
@@ -1530,7 +1528,6 @@ export namespace ClutterGst {
      */
     class CameraDevice extends GObject.Object {
         static $gtype: GObject.GType<CameraDevice>;
-        declare static readonly __signalSignatures: CameraDevice.SignalSignatures;
 
         // Properties
 
@@ -1571,18 +1568,6 @@ export namespace ClutterGst {
             signal: K,
             ...args: Parameters<CameraDevice.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'capture-resolution-changed',
-            callback: (_source: this, width: number, height: number) => void,
-        ): number;
-        connect_after(
-            signal: 'capture-resolution-changed',
-            callback: (_source: this, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'capture-resolution-changed', width: number, height: number): void;
 
         // Virtual methods
 
@@ -1621,11 +1606,11 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface CameraAdded {
-            (camera_device: CameraDevice): void;
+            (_source: CameraManager, camera_device: CameraDevice): void;
         }
 
         interface CameraRemoved {
-            (camera_device: CameraDevice): void;
+            (_source: CameraManager, camera_device: CameraDevice): void;
         }
 
         // Signal signatures
@@ -1647,7 +1632,6 @@ export namespace ClutterGst {
      */
     class CameraManager extends GObject.Object {
         static $gtype: GObject.GType<CameraManager>;
-        declare static readonly __signalSignatures: CameraManager.SignalSignatures;
 
         // Constructors
 
@@ -1669,15 +1653,6 @@ export namespace ClutterGst {
             signal: K,
             ...args: Parameters<CameraManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'camera-added', callback: (_source: this, camera_device: CameraDevice) => void): number;
-        connect_after(signal: 'camera-added', callback: (_source: this, camera_device: CameraDevice) => void): number;
-        emit(signal: 'camera-added', camera_device: CameraDevice): void;
-        connect(signal: 'camera-removed', callback: (_source: this, camera_device: CameraDevice) => void): number;
-        connect_after(signal: 'camera-removed', callback: (_source: this, camera_device: CameraDevice) => void): number;
-        emit(signal: 'camera-removed', camera_device: CameraDevice): void;
 
         // Static methods
 
@@ -1702,7 +1677,7 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface SizeChange {
-            (width: number, height: number): void;
+            (_source: Content, width: number, height: number): void;
         }
 
         // Signal signatures
@@ -1729,7 +1704,6 @@ export namespace ClutterGst {
      */
     class Content extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<Content>;
-        declare static readonly __signalSignatures: Content.SignalSignatures;
 
         // Properties
 
@@ -1765,12 +1739,6 @@ export namespace ClutterGst {
             signal: K,
             ...args: Parameters<Content.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'size-change', callback: (_source: this, width: number, height: number) => void): number;
-        connect_after(signal: 'size-change', callback: (_source: this, width: number, height: number) => void): number;
-        emit(signal: 'size-change', width: number, height: number): void;
 
         // Static methods
 
@@ -2300,7 +2268,6 @@ export namespace ClutterGst {
      */
     class Crop extends Content implements Clutter.Content {
         static $gtype: GObject.GType<Crop>;
-        declare static readonly __signalSignatures: Crop.SignalSignatures;
 
         // Properties
 
@@ -2355,6 +2322,12 @@ export namespace ClutterGst {
         // Conflicted with ClutterGst.Content.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
+        connect_after<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
+        emit<K extends keyof Crop.SignalSignatures>(signal: K, ...args: Parameters<Crop.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -2838,7 +2811,7 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface ShouldBuffer {
-            (query: Gst.Query): boolean;
+            (_source: Playback, query: Gst.Query): boolean;
         }
 
         // Signal signatures
@@ -2886,7 +2859,6 @@ export namespace ClutterGst {
      */
     class Playback extends GObject.Object implements Player {
         static $gtype: GObject.GType<Playback>;
-        declare static readonly __signalSignatures: Playback.SignalSignatures;
 
         // Properties
 
@@ -3031,12 +3003,6 @@ export namespace ClutterGst {
             signal: K,
             ...args: Parameters<Playback.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'should-buffer', callback: (_source: this, query: Gst.Query) => boolean): number;
-        connect_after(signal: 'should-buffer', callback: (_source: this, query: Gst.Query) => boolean): number;
-        emit(signal: 'should-buffer', query: Gst.Query): void;
 
         // Virtual methods
 
@@ -3772,15 +3738,15 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface NewFrame {
-            (): void;
+            (_source: VideoSink): void;
         }
 
         interface NewOverlays {
-            (): void;
+            (_source: VideoSink): void;
         }
 
         interface PipelineReady {
-            (): void;
+            (_source: VideoSink): void;
         }
 
         // Signal signatures
@@ -3807,7 +3773,6 @@ export namespace ClutterGst {
      */
     class VideoSink extends GstVideo.VideoSink implements GstVideo.ColorBalance, GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
-        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -3835,18 +3800,6 @@ export namespace ClutterGst {
             signal: K,
             ...args: Parameters<VideoSink.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'new-frame', callback: (_source: this) => void): number;
-        connect_after(signal: 'new-frame', callback: (_source: this) => void): number;
-        emit(signal: 'new-frame'): void;
-        connect(signal: 'new-overlays', callback: (_source: this) => void): number;
-        connect_after(signal: 'new-overlays', callback: (_source: this) => void): number;
-        emit(signal: 'new-overlays'): void;
-        connect(signal: 'pipeline-ready', callback: (_source: this) => void): number;
-        connect_after(signal: 'pipeline-ready', callback: (_source: this) => void): number;
-        emit(signal: 'pipeline-ready'): void;
 
         // Virtual methods
 

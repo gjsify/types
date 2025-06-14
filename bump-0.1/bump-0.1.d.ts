@@ -28,7 +28,7 @@ export namespace Bump {
         // Signal callback interfaces
 
         interface ConsumerShortage {
-            (): void;
+            (_source: AsyncPriorityQueue): void;
         }
 
         // Signal signatures
@@ -52,7 +52,6 @@ export namespace Bump {
 
     class AsyncPriorityQueue extends Gee.PriorityQueue {
         static $gtype: GObject.GType<AsyncPriorityQueue>;
-        declare static readonly __signalSignatures: AsyncPriorityQueue.SignalSignatures;
 
         // Properties
 
@@ -96,12 +95,6 @@ export namespace Bump {
             signal: K,
             ...args: Parameters<AsyncPriorityQueue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'consumer-shortage', callback: (_source: this) => void): number;
-        connect_after(signal: 'consumer-shortage', callback: (_source: this) => void): number;
-        emit(signal: 'consumer-shortage'): void;
 
         // Methods
 
@@ -133,7 +126,6 @@ export namespace Bump {
 
     class Claim extends GObject.Object implements Gio.Initable, Gio.AsyncInitable<Claim> {
         static $gtype: GObject.GType<Claim>;
-        declare static readonly __signalSignatures: Claim.SignalSignatures;
 
         // Properties
 
@@ -156,6 +148,12 @@ export namespace Bump {
         _init(...args: any[]): void;
 
         static ['new'](): Claim;
+
+        // Signals
+
+        connect<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
+        connect_after<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
+        emit<K extends keyof Claim.SignalSignatures>(signal: K, ...args: Parameters<Claim.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -677,7 +675,6 @@ export namespace Bump {
 
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
-        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -700,6 +697,12 @@ export namespace Bump {
         _init(...args: any[]): void;
 
         static ['new'](t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, auto_reset: boolean): Event;
+
+        // Signals
+
+        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -788,7 +791,6 @@ export namespace Bump {
 
     abstract class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
-        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Properties
 
@@ -804,6 +806,18 @@ export namespace Bump {
         constructor(properties?: Partial<Factory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect_after<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            callback: Factory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Factory.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -904,7 +918,6 @@ export namespace Bump {
 
     class Lazy extends Factory {
         static $gtype: GObject.GType<Lazy>;
-        declare static readonly __signalSignatures: Lazy.SignalSignatures;
 
         // Properties
 
@@ -926,6 +939,12 @@ export namespace Bump {
         _init(...args: any[]): void;
 
         static ['new'](t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): Lazy;
+
+        // Signals
+
+        connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
+        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: Parameters<Lazy.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -954,7 +973,6 @@ export namespace Bump {
 
     class ResourceClaim extends Claim {
         static $gtype: GObject.GType<ResourceClaim>;
-        declare static readonly __signalSignatures: ResourceClaim.SignalSignatures;
 
         // Properties
 
@@ -977,6 +995,21 @@ export namespace Bump {
         // Conflicted with Bump.Claim.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ResourceClaim.SignalSignatures>(
+            signal: K,
+            callback: ResourceClaim.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourceClaim.SignalSignatures>(
+            signal: K,
+            callback: ResourceClaim.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourceClaim.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourceClaim.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1023,7 +1056,6 @@ export namespace Bump {
 
     class ResourcePool extends Factory {
         static $gtype: GObject.GType<ResourcePool>;
-        declare static readonly __signalSignatures: ResourcePool.SignalSignatures;
 
         // Properties
 
@@ -1056,6 +1088,21 @@ export namespace Bump {
         _init(...args: any[]): void;
 
         static ['new'](t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, max_resources: number): ResourcePool;
+
+        // Signals
+
+        connect<K extends keyof ResourcePool.SignalSignatures>(
+            signal: K,
+            callback: ResourcePool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourcePool.SignalSignatures>(
+            signal: K,
+            callback: ResourcePool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourcePool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourcePool.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1157,7 +1204,6 @@ export namespace Bump {
 
     class Semaphore extends TaskQueue {
         static $gtype: GObject.GType<Semaphore>;
-        declare static readonly __signalSignatures: Semaphore.SignalSignatures;
 
         // Properties
 
@@ -1177,6 +1223,18 @@ export namespace Bump {
         // Conflicted with Bump.TaskQueue.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Semaphore.SignalSignatures>(signal: K, callback: Semaphore.SignalSignatures[K]): number;
+        connect_after<K extends keyof Semaphore.SignalSignatures>(
+            signal: K,
+            callback: Semaphore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Semaphore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Semaphore.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1227,7 +1285,6 @@ export namespace Bump {
 
     class SemaphoreClaim extends Claim {
         static $gtype: GObject.GType<SemaphoreClaim>;
-        declare static readonly __signalSignatures: SemaphoreClaim.SignalSignatures;
 
         // Properties
 
@@ -1238,6 +1295,21 @@ export namespace Bump {
         constructor(properties?: Partial<SemaphoreClaim.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SemaphoreClaim.SignalSignatures>(
+            signal: K,
+            callback: SemaphoreClaim.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SemaphoreClaim.SignalSignatures>(
+            signal: K,
+            callback: SemaphoreClaim.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SemaphoreClaim.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SemaphoreClaim.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1258,7 +1330,6 @@ export namespace Bump {
 
     class TaskQueue extends GObject.Object implements Queue, Threading {
         static $gtype: GObject.GType<TaskQueue>;
-        declare static readonly __signalSignatures: TaskQueue.SignalSignatures;
 
         // Constructors
 
@@ -1267,6 +1338,18 @@ export namespace Bump {
         _init(...args: any[]): void;
 
         static ['new'](): TaskQueue;
+
+        // Signals
+
+        connect<K extends keyof TaskQueue.SignalSignatures>(signal: K, callback: TaskQueue.SignalSignatures[K]): number;
+        connect_after<K extends keyof TaskQueue.SignalSignatures>(
+            signal: K,
+            callback: TaskQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskQueue.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

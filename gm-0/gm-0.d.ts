@@ -126,7 +126,6 @@ export namespace Gm {
      */
     class Cutout extends GObject.Object {
         static $gtype: GObject.GType<Cutout>;
-        declare static readonly __signalSignatures: Cutout.SignalSignatures;
 
         // Properties
 
@@ -150,6 +149,12 @@ export namespace Gm {
         _init(...args: any[]): void;
 
         static ['new'](path: string): Cutout;
+
+        // Signals
+
+        connect<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
+        emit<K extends keyof Cutout.SignalSignatures>(signal: K, ...args: Parameters<Cutout.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -192,7 +197,6 @@ export namespace Gm {
      */
     class DeviceInfo extends GObject.Object {
         static $gtype: GObject.GType<DeviceInfo>;
-        declare static readonly __signalSignatures: DeviceInfo.SignalSignatures;
 
         // Properties
 
@@ -208,6 +212,21 @@ export namespace Gm {
         _init(...args: any[]): void;
 
         static ['new'](compatibles: string): DeviceInfo;
+
+        // Signals
+
+        connect<K extends keyof DeviceInfo.SignalSignatures>(
+            signal: K,
+            callback: DeviceInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceInfo.SignalSignatures>(
+            signal: K,
+            callback: DeviceInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -245,7 +264,6 @@ export namespace Gm {
      */
     class DisplayPanel extends GObject.Object {
         static $gtype: GObject.GType<DisplayPanel>;
-        declare static readonly __signalSignatures: DisplayPanel.SignalSignatures;
 
         // Properties
 
@@ -313,6 +331,21 @@ export namespace Gm {
         static new_from_data(data: string): DisplayPanel;
 
         static new_from_resource(resource_name: string): DisplayPanel;
+
+        // Signals
+
+        connect<K extends keyof DisplayPanel.SignalSignatures>(
+            signal: K,
+            callback: DisplayPanel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DisplayPanel.SignalSignatures>(
+            signal: K,
+            callback: DisplayPanel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayPanel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayPanel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

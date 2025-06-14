@@ -137,27 +137,27 @@ export namespace Manette {
         // Signal callback interfaces
 
         interface AbsoluteAxisEvent {
-            (event: Event): void;
+            (_source: Device, event: Event): void;
         }
 
         interface ButtonPressEvent {
-            (event: Event): void;
+            (_source: Device, event: Event): void;
         }
 
         interface ButtonReleaseEvent {
-            (event: Event): void;
+            (_source: Device, event: Event): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Device): void;
         }
 
         interface Event {
-            (event: Event): void;
+            (_source: Device, event: Event): void;
         }
 
         interface HatAxisEvent {
-            (event: Event): void;
+            (_source: Device, event: Event): void;
         }
 
         // Signal signatures
@@ -182,7 +182,6 @@ export namespace Manette {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -195,27 +194,6 @@ export namespace Manette {
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'absolute-axis-event', callback: (_source: this, event: Event) => void): number;
-        connect_after(signal: 'absolute-axis-event', callback: (_source: this, event: Event) => void): number;
-        emit(signal: 'absolute-axis-event', event: Event): void;
-        connect(signal: 'button-press-event', callback: (_source: this, event: Event) => void): number;
-        connect_after(signal: 'button-press-event', callback: (_source: this, event: Event) => void): number;
-        emit(signal: 'button-press-event', event: Event): void;
-        connect(signal: 'button-release-event', callback: (_source: this, event: Event) => void): number;
-        connect_after(signal: 'button-release-event', callback: (_source: this, event: Event) => void): number;
-        emit(signal: 'button-release-event', event: Event): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
-        connect(signal: 'event', callback: (_source: this, event: Event) => void): number;
-        connect_after(signal: 'event', callback: (_source: this, event: Event) => void): number;
-        emit(signal: 'event', event: Event): void;
-        connect(signal: 'hat-axis-event', callback: (_source: this, event: Event) => void): number;
-        connect_after(signal: 'hat-axis-event', callback: (_source: this, event: Event) => void): number;
-        emit(signal: 'hat-axis-event', event: Event): void;
 
         // Methods
 
@@ -295,11 +273,11 @@ export namespace Manette {
         // Signal callback interfaces
 
         interface DeviceConnected {
-            (device: Device): void;
+            (_source: Monitor, device: Device): void;
         }
 
         interface DeviceDisconnected {
-            (device: Device): void;
+            (_source: Monitor, device: Device): void;
         }
 
         // Signal signatures
@@ -320,7 +298,6 @@ export namespace Manette {
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
-        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Constructors
 
@@ -341,15 +318,6 @@ export namespace Manette {
             signal: K,
             ...args: Parameters<Monitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-connected', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-connected', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-connected', device: Device): void;
-        connect(signal: 'device-disconnected', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-disconnected', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-disconnected', device: Device): void;
 
         // Methods
 

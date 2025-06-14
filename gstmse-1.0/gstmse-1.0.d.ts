@@ -183,15 +183,15 @@ export namespace GstMse {
         // Signal callback interfaces
 
         interface OnSourceClose {
-            (): void;
+            (_source: MediaSource): void;
         }
 
         interface OnSourceEnded {
-            (): void;
+            (_source: MediaSource): void;
         }
 
         interface OnSourceOpen {
-            (): void;
+            (_source: MediaSource): void;
         }
 
         // Signal signatures
@@ -228,7 +228,6 @@ export namespace GstMse {
      */
     class MediaSource extends Gst.Object {
         static $gtype: GObject.GType<MediaSource>;
-        declare static readonly __signalSignatures: MediaSource.SignalSignatures;
 
         // Properties
 
@@ -305,18 +304,6 @@ export namespace GstMse {
             signal: K,
             ...args: Parameters<MediaSource.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'on-source-close', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-source-close', callback: (_source: this) => void): number;
-        emit(signal: 'on-source-close'): void;
-        connect(signal: 'on-source-ended', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-source-ended', callback: (_source: this) => void): number;
-        emit(signal: 'on-source-ended'): void;
-        connect(signal: 'on-source-open', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-source-open', callback: (_source: this) => void): number;
-        emit(signal: 'on-source-open'): void;
 
         // Static methods
 
@@ -486,7 +473,6 @@ export namespace GstMse {
      */
     class MseSrc extends Gst.Element implements Gst.URIHandler {
         static $gtype: GObject.GType<MseSrc>;
-        declare static readonly __signalSignatures: MseSrc.SignalSignatures;
 
         // Properties
 
@@ -551,6 +537,12 @@ export namespace GstMse {
         constructor(properties?: Partial<MseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
+        emit<K extends keyof MseSrc.SignalSignatures>(signal: K, ...args: Parameters<MseSrc.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1068,36 +1060,47 @@ export namespace GstMse {
 
     class MseSrcPad extends Gst.Pad {
         static $gtype: GObject.GType<MseSrcPad>;
-        declare static readonly __signalSignatures: MseSrcPad.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MseSrcPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MseSrcPad.SignalSignatures>(signal: K, callback: MseSrcPad.SignalSignatures[K]): number;
+        connect_after<K extends keyof MseSrcPad.SignalSignatures>(
+            signal: K,
+            callback: MseSrcPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MseSrcPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MseSrcPad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceBuffer {
         // Signal callback interfaces
 
         interface OnAbort {
-            (): void;
+            (_source: SourceBuffer): void;
         }
 
         interface OnError {
-            (): void;
+            (_source: SourceBuffer): void;
         }
 
         interface OnUpdate {
-            (): void;
+            (_source: SourceBuffer): void;
         }
 
         interface OnUpdateEnd {
-            (): void;
+            (_source: SourceBuffer): void;
         }
 
         interface OnUpdateStart {
-            (): void;
+            (_source: SourceBuffer): void;
         }
 
         // Signal signatures
@@ -1155,7 +1158,6 @@ export namespace GstMse {
      */
     class SourceBuffer extends Gst.Object {
         static $gtype: GObject.GType<SourceBuffer>;
-        declare static readonly __signalSignatures: SourceBuffer.SignalSignatures;
 
         // Properties
 
@@ -1274,24 +1276,6 @@ export namespace GstMse {
             signal: K,
             ...args: Parameters<SourceBuffer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'on-abort', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-abort', callback: (_source: this) => void): number;
-        emit(signal: 'on-abort'): void;
-        connect(signal: 'on-error', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-error', callback: (_source: this) => void): number;
-        emit(signal: 'on-error'): void;
-        connect(signal: 'on-update', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-update', callback: (_source: this) => void): number;
-        emit(signal: 'on-update'): void;
-        connect(signal: 'on-update-end', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-update-end', callback: (_source: this) => void): number;
-        emit(signal: 'on-update-end'): void;
-        connect(signal: 'on-update-start', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-update-start', callback: (_source: this) => void): number;
-        emit(signal: 'on-update-start'): void;
 
         // Methods
 
@@ -1420,11 +1404,11 @@ export namespace GstMse {
         // Signal callback interfaces
 
         interface OnSourcebufferAdded {
-            (): void;
+            (_source: SourceBufferList): void;
         }
 
         interface OnSourcebufferRemoved {
-            (): void;
+            (_source: SourceBufferList): void;
         }
 
         // Signal signatures
@@ -1453,7 +1437,6 @@ export namespace GstMse {
      */
     class SourceBufferList extends Gst.Object {
         static $gtype: GObject.GType<SourceBufferList>;
-        declare static readonly __signalSignatures: SourceBufferList.SignalSignatures;
 
         // Properties
 
@@ -1484,15 +1467,6 @@ export namespace GstMse {
             signal: K,
             ...args: Parameters<SourceBufferList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'on-sourcebuffer-added', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-sourcebuffer-added', callback: (_source: this) => void): number;
-        emit(signal: 'on-sourcebuffer-added'): void;
-        connect(signal: 'on-sourcebuffer-removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'on-sourcebuffer-removed', callback: (_source: this) => void): number;
-        emit(signal: 'on-sourcebuffer-removed'): void;
 
         // Methods
 

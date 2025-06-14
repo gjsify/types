@@ -170,11 +170,11 @@ export namespace Garcon {
         // Signal callback interfaces
 
         interface DirectoryChanged {
-            (object: MenuDirectory, p0: MenuDirectory): void;
+            (_source: Menu, object: MenuDirectory, p0: MenuDirectory): void;
         }
 
         interface ReloadRequired {
-            (): void;
+            (_source: Menu): void;
         }
 
         // Signal signatures
@@ -193,7 +193,6 @@ export namespace Garcon {
 
     class Menu extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<Menu>;
-        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Properties
 
@@ -224,21 +223,6 @@ export namespace Garcon {
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'directory-changed',
-            callback: (_source: this, object: MenuDirectory, p0: MenuDirectory) => void,
-        ): number;
-        connect_after(
-            signal: 'directory-changed',
-            callback: (_source: this, object: MenuDirectory, p0: MenuDirectory) => void,
-        ): number;
-        emit(signal: 'directory-changed', object: MenuDirectory, p0: MenuDirectory): void;
-        connect(signal: 'reload-required', callback: (_source: this) => void): number;
-        connect_after(signal: 'reload-required', callback: (_source: this) => void): number;
-        emit(signal: 'reload-required'): void;
 
         // Methods
 
@@ -798,7 +782,6 @@ export namespace Garcon {
 
     class MenuDirectory extends GObject.Object {
         static $gtype: GObject.GType<MenuDirectory>;
-        declare static readonly __signalSignatures: MenuDirectory.SignalSignatures;
 
         // Properties
 
@@ -841,6 +824,21 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static ['new'](file: Gio.File): MenuDirectory;
+
+        // Signals
+
+        connect<K extends keyof MenuDirectory.SignalSignatures>(
+            signal: K,
+            callback: MenuDirectory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuDirectory.SignalSignatures>(
+            signal: K,
+            callback: MenuDirectory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuDirectory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuDirectory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -924,7 +922,7 @@ export namespace Garcon {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: MenuItem): void;
         }
 
         // Signal signatures
@@ -962,7 +960,6 @@ export namespace Garcon {
 
     class MenuItem extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuItem>;
-        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -1106,12 +1103,6 @@ export namespace Garcon {
             signal: K,
             ...args: Parameters<MenuItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -1622,7 +1613,6 @@ export namespace Garcon {
 
     class MenuItemAction extends GObject.Object {
         static $gtype: GObject.GType<MenuItemAction>;
-        declare static readonly __signalSignatures: MenuItemAction.SignalSignatures;
 
         // Properties
 
@@ -1655,6 +1645,21 @@ export namespace Garcon {
 
         static ['new'](): MenuItemAction;
 
+        // Signals
+
+        connect<K extends keyof MenuItemAction.SignalSignatures>(
+            signal: K,
+            callback: MenuItemAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuItemAction.SignalSignatures>(
+            signal: K,
+            callback: MenuItemAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItemAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItemAction.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         vfunc_changed(): void;
@@ -1684,7 +1689,6 @@ export namespace Garcon {
 
     class MenuItemCache extends GObject.Object {
         static $gtype: GObject.GType<MenuItemCache>;
-        declare static readonly __signalSignatures: MenuItemCache.SignalSignatures;
 
         // Constructors
 
@@ -1693,6 +1697,21 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static get_default(): MenuItemCache;
+
+        // Signals
+
+        connect<K extends keyof MenuItemCache.SignalSignatures>(
+            signal: K,
+            callback: MenuItemCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuItemCache.SignalSignatures>(
+            signal: K,
+            callback: MenuItemCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItemCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItemCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1713,7 +1732,6 @@ export namespace Garcon {
 
     class MenuItemPool extends GObject.Object {
         static $gtype: GObject.GType<MenuItemPool>;
-        declare static readonly __signalSignatures: MenuItemPool.SignalSignatures;
 
         // Constructors
 
@@ -1722,6 +1740,21 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static ['new'](): MenuItemPool;
+
+        // Signals
+
+        connect<K extends keyof MenuItemPool.SignalSignatures>(
+            signal: K,
+            callback: MenuItemPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuItemPool.SignalSignatures>(
+            signal: K,
+            callback: MenuItemPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItemPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItemPool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1748,7 +1781,6 @@ export namespace Garcon {
 
     class MenuMerger extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuMerger>;
-        declare static readonly __signalSignatures: MenuMerger.SignalSignatures;
 
         // Properties
 
@@ -1762,6 +1794,21 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static ['new'](provider: MenuTreeProvider): MenuMerger;
+
+        // Signals
+
+        connect<K extends keyof MenuMerger.SignalSignatures>(
+            signal: K,
+            callback: MenuMerger.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuMerger.SignalSignatures>(
+            signal: K,
+            callback: MenuMerger.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuMerger.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuMerger.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2225,7 +2272,6 @@ export namespace Garcon {
 
     class MenuNode extends GObject.Object {
         static $gtype: GObject.GType<MenuNode>;
-        declare static readonly __signalSignatures: MenuNode.SignalSignatures;
 
         // Properties
 
@@ -2241,6 +2287,18 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static ['new'](node_type: MenuNodeType): MenuNode;
+
+        // Signals
+
+        connect<K extends keyof MenuNode.SignalSignatures>(signal: K, callback: MenuNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuNode.SignalSignatures>(
+            signal: K,
+            callback: MenuNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuNode.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2285,7 +2343,6 @@ export namespace Garcon {
 
     class MenuParser extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuParser>;
-        declare static readonly __signalSignatures: MenuParser.SignalSignatures;
 
         // Properties
 
@@ -2298,6 +2355,21 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static ['new'](file: Gio.File): MenuParser;
+
+        // Signals
+
+        connect<K extends keyof MenuParser.SignalSignatures>(
+            signal: K,
+            callback: MenuParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuParser.SignalSignatures>(
+            signal: K,
+            callback: MenuParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2758,7 +2830,6 @@ export namespace Garcon {
 
     class MenuSeparator extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuSeparator>;
-        declare static readonly __signalSignatures: MenuSeparator.SignalSignatures;
 
         // Constructors
 
@@ -2767,6 +2838,21 @@ export namespace Garcon {
         _init(...args: any[]): void;
 
         static get_default(): MenuSeparator;
+
+        // Signals
+
+        connect<K extends keyof MenuSeparator.SignalSignatures>(
+            signal: K,
+            callback: MenuSeparator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuSeparator.SignalSignatures>(
+            signal: K,
+            callback: MenuSeparator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuSeparator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuSeparator.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         equal(b: MenuElement): boolean;

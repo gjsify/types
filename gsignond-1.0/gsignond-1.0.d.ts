@@ -437,7 +437,6 @@ export namespace GSignond {
      */
     class AccessControlManager extends GObject.Object {
         static $gtype: GObject.GType<AccessControlManager>;
-        declare static readonly __signalSignatures: AccessControlManager.SignalSignatures;
 
         // Properties
 
@@ -448,6 +447,21 @@ export namespace GSignond {
         constructor(properties?: Partial<AccessControlManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AccessControlManager.SignalSignatures>(
+            signal: K,
+            callback: AccessControlManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccessControlManager.SignalSignatures>(
+            signal: K,
+            callback: AccessControlManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccessControlManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccessControlManager.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -606,7 +620,6 @@ export namespace GSignond {
      */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -615,6 +628,12 @@ export namespace GSignond {
         _init(...args: any[]): void;
 
         static ['new'](): Config;
+
+        // Signals
+
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -658,7 +677,6 @@ export namespace GSignond {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
-        declare static readonly __signalSignatures: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -667,6 +685,21 @@ export namespace GSignond {
         _init(...args: any[]): void;
 
         static ['new'](): Credentials;
+
+        // Signals
+
+        connect<K extends keyof Credentials.SignalSignatures>(
+            signal: K,
+            callback: Credentials.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Credentials.SignalSignatures>(
+            signal: K,
+            callback: Credentials.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Credentials.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Credentials.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -735,7 +768,6 @@ export namespace GSignond {
      */
     class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
-        declare static readonly __signalSignatures: Dictionary.SignalSignatures;
 
         // Constructors
 
@@ -746,6 +778,21 @@ export namespace GSignond {
         static ['new'](): Dictionary;
 
         static new_from_variant(variant: GLib.Variant): Dictionary;
+
+        // Signals
+
+        connect<K extends keyof Dictionary.SignalSignatures>(
+            signal: K,
+            callback: Dictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Dictionary.SignalSignatures>(
+            signal: K,
+            callback: Dictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Dictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Dictionary.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -903,13 +950,24 @@ export namespace GSignond {
      */
     class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
-        declare static readonly __signalSignatures: Extension.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Extension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Extension.SignalSignatures>(signal: K, callback: Extension.SignalSignatures[K]): number;
+        connect_after<K extends keyof Extension.SignalSignatures>(
+            signal: K,
+            callback: Extension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Extension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Extension.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -986,7 +1044,6 @@ export namespace GSignond {
      */
     class SecretStorage extends GObject.Object {
         static $gtype: GObject.GType<SecretStorage>;
-        declare static readonly __signalSignatures: SecretStorage.SignalSignatures;
 
         // Properties
 
@@ -997,6 +1054,21 @@ export namespace GSignond {
         constructor(properties?: Partial<SecretStorage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SecretStorage.SignalSignatures>(
+            signal: K,
+            callback: SecretStorage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecretStorage.SignalSignatures>(
+            signal: K,
+            callback: SecretStorage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecretStorage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecretStorage.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1161,7 +1233,6 @@ export namespace GSignond {
      */
     class SessionData extends Dictionary {
         static $gtype: GObject.GType<SessionData>;
-        declare static readonly __signalSignatures: SessionData.SignalSignatures;
 
         // Constructors
 
@@ -1172,6 +1243,21 @@ export namespace GSignond {
         static ['new'](): SessionData;
 
         static new_from_variant(variant: GLib.Variant): SessionData;
+
+        // Signals
+
+        connect<K extends keyof SessionData.SignalSignatures>(
+            signal: K,
+            callback: SessionData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionData.SignalSignatures>(
+            signal: K,
+            callback: SessionData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1307,7 +1393,6 @@ export namespace GSignond {
      */
     class SignonuiData extends Dictionary {
         static $gtype: GObject.GType<SignonuiData>;
-        declare static readonly __signalSignatures: SignonuiData.SignalSignatures;
 
         // Constructors
 
@@ -1318,6 +1403,21 @@ export namespace GSignond {
         static ['new'](): SignonuiData;
 
         static new_from_variant(variant: GLib.Variant): SignonuiData;
+
+        // Signals
+
+        connect<K extends keyof SignonuiData.SignalSignatures>(
+            signal: K,
+            callback: SignonuiData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignonuiData.SignalSignatures>(
+            signal: K,
+            callback: SignonuiData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignonuiData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignonuiData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1553,7 +1653,6 @@ export namespace GSignond {
      */
     class StorageManager extends GObject.Object {
         static $gtype: GObject.GType<StorageManager>;
-        declare static readonly __signalSignatures: StorageManager.SignalSignatures;
 
         // Properties
 
@@ -1568,6 +1667,21 @@ export namespace GSignond {
         constructor(properties?: Partial<StorageManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StorageManager.SignalSignatures>(
+            signal: K,
+            callback: StorageManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StorageManager.SignalSignatures>(
+            signal: K,
+            callback: StorageManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StorageManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StorageManager.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

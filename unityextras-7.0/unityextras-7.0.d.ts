@@ -34,7 +34,7 @@ export namespace UnityExtras {
         // Signal callback interfaces
 
         interface Progress {
-            (uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
+            (_source: PreviewPlayer, uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
         }
 
         // Signal signatures
@@ -49,7 +49,6 @@ export namespace UnityExtras {
 
     class PreviewPlayer extends GObject.Object {
         static $gtype: GObject.GType<PreviewPlayer>;
-        declare static readonly __signalSignatures: PreviewPlayer.SignalSignatures;
 
         // Constructors
 
@@ -73,18 +72,6 @@ export namespace UnityExtras {
             signal: K,
             ...args: Parameters<PreviewPlayer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'progress',
-            callback: (_source: this, uri: string, state: Unity.MusicPreviewTrackState, progress: number) => void,
-        ): number;
-        connect_after(
-            signal: 'progress',
-            callback: (_source: this, uri: string, state: Unity.MusicPreviewTrackState, progress: number) => void,
-        ): number;
-        emit(signal: 'progress', uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
 
         // Methods
 

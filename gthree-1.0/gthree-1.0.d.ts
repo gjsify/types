@@ -331,7 +331,6 @@ export namespace Gthree {
 
     class AmbientLight extends Light {
         static $gtype: GObject.GType<AmbientLight>;
-        declare static readonly __signalSignatures: AmbientLight.SignalSignatures;
 
         // Constructors
 
@@ -343,6 +342,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Light.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof AmbientLight.SignalSignatures>(
+            signal: K,
+            callback: AmbientLight.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AmbientLight.SignalSignatures>(
+            signal: K,
+            callback: AmbientLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AmbientLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AmbientLight.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AnimationAction {
@@ -356,7 +370,6 @@ export namespace Gthree {
 
     class AnimationAction extends GObject.Object {
         static $gtype: GObject.GType<AnimationAction>;
-        declare static readonly __signalSignatures: AnimationAction.SignalSignatures;
 
         // Constructors
 
@@ -365,6 +378,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](mixer: AnimationMixer, clip: AnimationClip, local_root: Object): AnimationAction;
+
+        // Signals
+
+        connect<K extends keyof AnimationAction.SignalSignatures>(
+            signal: K,
+            callback: AnimationAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnimationAction.SignalSignatures>(
+            signal: K,
+            callback: AnimationAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnimationAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnimationAction.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -410,7 +438,6 @@ export namespace Gthree {
 
     class AnimationClip extends GObject.Object {
         static $gtype: GObject.GType<AnimationClip>;
-        declare static readonly __signalSignatures: AnimationClip.SignalSignatures;
 
         // Constructors
 
@@ -419,6 +446,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](name: string, duration: number): AnimationClip;
+
+        // Signals
+
+        connect<K extends keyof AnimationClip.SignalSignatures>(
+            signal: K,
+            callback: AnimationClip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnimationClip.SignalSignatures>(
+            signal: K,
+            callback: AnimationClip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnimationClip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnimationClip.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -435,11 +477,11 @@ export namespace Gthree {
         // Signal callback interfaces
 
         interface Finished {
-            (object: AnimationAction, p0: number): void;
+            (_source: AnimationMixer, object: AnimationAction, p0: number): void;
         }
 
         interface Loop {
-            (object: AnimationAction, p0: number): void;
+            (_source: AnimationMixer, object: AnimationAction, p0: number): void;
         }
 
         // Signal signatures
@@ -455,7 +497,6 @@ export namespace Gthree {
 
     class AnimationMixer extends GObject.Object {
         static $gtype: GObject.GType<AnimationMixer>;
-        declare static readonly __signalSignatures: AnimationMixer.SignalSignatures;
 
         // Constructors
 
@@ -479,18 +520,6 @@ export namespace Gthree {
             signal: K,
             ...args: Parameters<AnimationMixer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this, object: AnimationAction, p0: number) => void): number;
-        connect_after(
-            signal: 'finished',
-            callback: (_source: this, object: AnimationAction, p0: number) => void,
-        ): number;
-        emit(signal: 'finished', object: AnimationAction, p0: number): void;
-        connect(signal: 'loop', callback: (_source: this, object: AnimationAction, p0: number) => void): number;
-        connect_after(signal: 'loop', callback: (_source: this, object: AnimationAction, p0: number) => void): number;
-        emit(signal: 'loop', object: AnimationAction, p0: number): void;
 
         // Methods
 
@@ -516,7 +545,6 @@ export namespace Gthree {
 
     class Attribute extends Resource {
         static $gtype: GObject.GType<Attribute>;
-        declare static readonly __signalSignatures: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -548,6 +576,18 @@ export namespace Gthree {
             item_offset: number,
             count: number,
         ): Attribute;
+
+        // Signals
+
+        connect<K extends keyof Attribute.SignalSignatures>(signal: K, callback: Attribute.SignalSignatures[K]): number;
+        connect_after<K extends keyof Attribute.SignalSignatures>(
+            signal: K,
+            callback: Attribute.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Attribute.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Attribute.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -625,7 +665,6 @@ export namespace Gthree {
 
     class BloomPass extends Pass {
         static $gtype: GObject.GType<BloomPass>;
-        declare static readonly __signalSignatures: BloomPass.SignalSignatures;
 
         // Constructors
 
@@ -634,6 +673,18 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](strength: number, sigma: number, resolution: number): BloomPass;
+
+        // Signals
+
+        connect<K extends keyof BloomPass.SignalSignatures>(signal: K, callback: BloomPass.SignalSignatures[K]): number;
+        connect_after<K extends keyof BloomPass.SignalSignatures>(
+            signal: K,
+            callback: BloomPass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BloomPass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BloomPass.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Bone {
@@ -647,7 +698,6 @@ export namespace Gthree {
 
     class Bone extends Object {
         static $gtype: GObject.GType<Bone>;
-        declare static readonly __signalSignatures: Bone.SignalSignatures;
 
         // Constructors
 
@@ -656,6 +706,12 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): Bone;
+
+        // Signals
+
+        connect<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
+        emit<K extends keyof Bone.SignalSignatures>(signal: K, ...args: Parameters<Bone.SignalSignatures[K]>): void;
     }
 
     namespace Camera {
@@ -672,7 +728,6 @@ export namespace Gthree {
 
     class Camera extends Object {
         static $gtype: GObject.GType<Camera>;
-        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -686,6 +741,12 @@ export namespace Gthree {
         constructor(properties?: Partial<Camera.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -726,7 +787,6 @@ export namespace Gthree {
 
     class ClearPass extends Pass {
         static $gtype: GObject.GType<ClearPass>;
-        declare static readonly __signalSignatures: ClearPass.SignalSignatures;
 
         // Constructors
 
@@ -735,6 +795,18 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](color: Graphene.Vec3): ClearPass;
+
+        // Signals
+
+        connect<K extends keyof ClearPass.SignalSignatures>(signal: K, callback: ClearPass.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClearPass.SignalSignatures>(
+            signal: K,
+            callback: ClearPass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClearPass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClearPass.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -752,7 +824,6 @@ export namespace Gthree {
 
     class ColorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<ColorKeyframeTrack>;
-        declare static readonly __signalSignatures: ColorKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -761,6 +832,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): ColorKeyframeTrack;
+
+        // Signals
+
+        connect<K extends keyof ColorKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: ColorKeyframeTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: ColorKeyframeTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorKeyframeTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorKeyframeTrack.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CubeTexture {
@@ -774,7 +860,6 @@ export namespace Gthree {
 
     class CubeTexture extends Texture {
         static $gtype: GObject.GType<CubeTexture>;
-        declare static readonly __signalSignatures: CubeTexture.SignalSignatures;
 
         // Constructors
 
@@ -795,6 +880,21 @@ export namespace Gthree {
         static ['new'](...args: never[]): any;
 
         static new_from_array(pixbufs: GdkPixbuf.Pixbuf): CubeTexture;
+
+        // Signals
+
+        connect<K extends keyof CubeTexture.SignalSignatures>(
+            signal: K,
+            callback: CubeTexture.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CubeTexture.SignalSignatures>(
+            signal: K,
+            callback: CubeTexture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CubeTexture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CubeTexture.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CubicInterpolant {
@@ -808,7 +908,6 @@ export namespace Gthree {
 
     class CubicInterpolant extends Interpolant {
         static $gtype: GObject.GType<CubicInterpolant>;
-        declare static readonly __signalSignatures: CubicInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -817,6 +916,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): CubicInterpolant;
+
+        // Signals
+
+        connect<K extends keyof CubicInterpolant.SignalSignatures>(
+            signal: K,
+            callback: CubicInterpolant.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CubicInterpolant.SignalSignatures>(
+            signal: K,
+            callback: CubicInterpolant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CubicInterpolant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CubicInterpolant.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DirectionalLight {
@@ -832,7 +946,6 @@ export namespace Gthree {
 
     class DirectionalLight extends Light {
         static $gtype: GObject.GType<DirectionalLight>;
-        declare static readonly __signalSignatures: DirectionalLight.SignalSignatures;
 
         // Properties
 
@@ -850,6 +963,21 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof DirectionalLight.SignalSignatures>(
+            signal: K,
+            callback: DirectionalLight.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectionalLight.SignalSignatures>(
+            signal: K,
+            callback: DirectionalLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectionalLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectionalLight.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_target(target: Object): void;
@@ -866,13 +994,27 @@ export namespace Gthree {
 
     class DirectionalLightShadow extends LightShadow {
         static $gtype: GObject.GType<DirectionalLightShadow>;
-        declare static readonly __signalSignatures: DirectionalLightShadow.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DirectionalLightShadow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DirectionalLightShadow.SignalSignatures>(
+            signal: K,
+            callback: DirectionalLightShadow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectionalLightShadow.SignalSignatures>(
+            signal: K,
+            callback: DirectionalLightShadow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectionalLightShadow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectionalLightShadow.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DiscreteInterpolant {
@@ -886,7 +1028,6 @@ export namespace Gthree {
 
     class DiscreteInterpolant extends Interpolant {
         static $gtype: GObject.GType<DiscreteInterpolant>;
-        declare static readonly __signalSignatures: DiscreteInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -895,6 +1036,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): DiscreteInterpolant;
+
+        // Signals
+
+        connect<K extends keyof DiscreteInterpolant.SignalSignatures>(
+            signal: K,
+            callback: DiscreteInterpolant.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscreteInterpolant.SignalSignatures>(
+            signal: K,
+            callback: DiscreteInterpolant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscreteInterpolant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscreteInterpolant.SignalSignatures[K]>
+        ): void;
     }
 
     namespace EffectComposer {
@@ -908,7 +1064,6 @@ export namespace Gthree {
 
     class EffectComposer extends GObject.Object {
         static $gtype: GObject.GType<EffectComposer>;
-        declare static readonly __signalSignatures: EffectComposer.SignalSignatures;
 
         // Constructors
 
@@ -917,6 +1072,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): EffectComposer;
+
+        // Signals
+
+        connect<K extends keyof EffectComposer.SignalSignatures>(
+            signal: K,
+            callback: EffectComposer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EffectComposer.SignalSignatures>(
+            signal: K,
+            callback: EffectComposer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EffectComposer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EffectComposer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -937,7 +1107,6 @@ export namespace Gthree {
 
     class Fog extends GObject.Object {
         static $gtype: GObject.GType<Fog>;
-        declare static readonly __signalSignatures: Fog.SignalSignatures;
 
         // Constructors
 
@@ -948,6 +1117,12 @@ export namespace Gthree {
         static new_exp2(color: Graphene.Vec3, density: number): Fog;
 
         static new_linear(color: Graphene.Vec3, near: number, far: number): Fog;
+
+        // Signals
+
+        connect<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
+        emit<K extends keyof Fog.SignalSignatures>(signal: K, ...args: Parameters<Fog.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -974,7 +1149,6 @@ export namespace Gthree {
 
     class FullscreenQuadPass extends Pass {
         static $gtype: GObject.GType<FullscreenQuadPass>;
-        declare static readonly __signalSignatures: FullscreenQuadPass.SignalSignatures;
 
         // Constructors
 
@@ -983,6 +1157,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](material: Material): FullscreenQuadPass;
+
+        // Signals
+
+        connect<K extends keyof FullscreenQuadPass.SignalSignatures>(
+            signal: K,
+            callback: FullscreenQuadPass.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FullscreenQuadPass.SignalSignatures>(
+            signal: K,
+            callback: FullscreenQuadPass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FullscreenQuadPass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FullscreenQuadPass.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1000,7 +1189,6 @@ export namespace Gthree {
 
     class Geometry extends GObject.Object {
         static $gtype: GObject.GType<Geometry>;
-        declare static readonly __signalSignatures: Geometry.SignalSignatures;
 
         // Fields
 
@@ -1088,6 +1276,18 @@ export namespace Gthree {
             q: number,
         ): Geometry;
 
+        // Signals
+
+        connect<K extends keyof Geometry.SignalSignatures>(signal: K, callback: Geometry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Geometry.SignalSignatures>(
+            signal: K,
+            callback: Geometry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Geometry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Geometry.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         add_group(start: number, count: number, material_index: number): void;
@@ -1124,7 +1324,6 @@ export namespace Gthree {
 
     class Group extends Object {
         static $gtype: GObject.GType<Group>;
-        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -1133,6 +1332,12 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): Group;
+
+        // Signals
+
+        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
     }
 
     namespace HemisphereLight {
@@ -1149,7 +1354,6 @@ export namespace Gthree {
 
     class HemisphereLight extends Light {
         static $gtype: GObject.GType<HemisphereLight>;
-        declare static readonly __signalSignatures: HemisphereLight.SignalSignatures;
 
         // Properties
 
@@ -1168,6 +1372,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Light.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof HemisphereLight.SignalSignatures>(
+            signal: K,
+            callback: HemisphereLight.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HemisphereLight.SignalSignatures>(
+            signal: K,
+            callback: HemisphereLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HemisphereLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HemisphereLight.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Interpolant {
@@ -1181,13 +1400,27 @@ export namespace Gthree {
 
     class Interpolant extends GObject.Object {
         static $gtype: GObject.GType<Interpolant>;
-        declare static readonly __signalSignatures: Interpolant.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Interpolant.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Interpolant.SignalSignatures>(
+            signal: K,
+            callback: Interpolant.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Interpolant.SignalSignatures>(
+            signal: K,
+            callback: Interpolant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Interpolant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Interpolant.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1215,7 +1448,6 @@ export namespace Gthree {
 
     class InterpolantSettings extends GObject.Object {
         static $gtype: GObject.GType<InterpolantSettings>;
-        declare static readonly __signalSignatures: InterpolantSettings.SignalSignatures;
 
         // Constructors
 
@@ -1224,6 +1456,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): InterpolantSettings;
+
+        // Signals
+
+        connect<K extends keyof InterpolantSettings.SignalSignatures>(
+            signal: K,
+            callback: InterpolantSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InterpolantSettings.SignalSignatures>(
+            signal: K,
+            callback: InterpolantSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InterpolantSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InterpolantSettings.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1244,13 +1491,27 @@ export namespace Gthree {
 
     class KeyframeTrack extends GObject.Object {
         static $gtype: GObject.GType<KeyframeTrack>;
-        declare static readonly __signalSignatures: KeyframeTrack.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<KeyframeTrack.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof KeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: KeyframeTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: KeyframeTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyframeTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyframeTrack.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1278,7 +1539,6 @@ export namespace Gthree {
 
     class Light extends Object {
         static $gtype: GObject.GType<Light>;
-        declare static readonly __signalSignatures: Light.SignalSignatures;
 
         // Properties
 
@@ -1294,6 +1554,12 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): Light;
+
+        // Signals
+
+        connect<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        connect_after<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        emit<K extends keyof Light.SignalSignatures>(signal: K, ...args: Parameters<Light.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -1318,13 +1584,27 @@ export namespace Gthree {
 
     class LightShadow extends GObject.Object {
         static $gtype: GObject.GType<LightShadow>;
-        declare static readonly __signalSignatures: LightShadow.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LightShadow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LightShadow.SignalSignatures>(
+            signal: K,
+            callback: LightShadow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LightShadow.SignalSignatures>(
+            signal: K,
+            callback: LightShadow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LightShadow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LightShadow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1351,7 +1631,6 @@ export namespace Gthree {
 
     class Line extends Object {
         static $gtype: GObject.GType<Line>;
-        declare static readonly __signalSignatures: Line.SignalSignatures;
 
         // Properties
 
@@ -1368,6 +1647,12 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
+        connect_after<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
+        emit<K extends keyof Line.SignalSignatures>(signal: K, ...args: Parameters<Line.SignalSignatures[K]>): void;
     }
 
     namespace LineBasicMaterial {
@@ -1385,7 +1670,6 @@ export namespace Gthree {
 
     class LineBasicMaterial extends Material {
         static $gtype: GObject.GType<LineBasicMaterial>;
-        declare static readonly __signalSignatures: LineBasicMaterial.SignalSignatures;
 
         // Properties
 
@@ -1403,6 +1687,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): LineBasicMaterial;
+
+        // Signals
+
+        connect<K extends keyof LineBasicMaterial.SignalSignatures>(
+            signal: K,
+            callback: LineBasicMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LineBasicMaterial.SignalSignatures>(
+            signal: K,
+            callback: LineBasicMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LineBasicMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LineBasicMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1423,7 +1722,6 @@ export namespace Gthree {
 
     class LineSegments extends Line {
         static $gtype: GObject.GType<LineSegments>;
-        declare static readonly __signalSignatures: LineSegments.SignalSignatures;
 
         // Constructors
 
@@ -1435,6 +1733,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LineSegments.SignalSignatures>(
+            signal: K,
+            callback: LineSegments.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LineSegments.SignalSignatures>(
+            signal: K,
+            callback: LineSegments.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LineSegments.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LineSegments.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LinearInterpolant {
@@ -1448,7 +1761,6 @@ export namespace Gthree {
 
     class LinearInterpolant extends Interpolant {
         static $gtype: GObject.GType<LinearInterpolant>;
-        declare static readonly __signalSignatures: LinearInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -1457,6 +1769,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): LinearInterpolant;
+
+        // Signals
+
+        connect<K extends keyof LinearInterpolant.SignalSignatures>(
+            signal: K,
+            callback: LinearInterpolant.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LinearInterpolant.SignalSignatures>(
+            signal: K,
+            callback: LinearInterpolant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LinearInterpolant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LinearInterpolant.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Loader {
@@ -1470,13 +1797,18 @@ export namespace Gthree {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
-        declare static readonly __signalSignatures: Loader.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Loader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1510,7 +1842,6 @@ export namespace Gthree {
 
     class Material extends GObject.Object {
         static $gtype: GObject.GType<Material>;
-        declare static readonly __signalSignatures: Material.SignalSignatures;
 
         // Properties
 
@@ -1538,6 +1869,18 @@ export namespace Gthree {
         constructor(properties?: Partial<Material.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Material.SignalSignatures>(signal: K, callback: Material.SignalSignatures[K]): number;
+        connect_after<K extends keyof Material.SignalSignatures>(
+            signal: K,
+            callback: Material.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Material.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Material.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1602,7 +1945,6 @@ export namespace Gthree {
 
     class Mesh extends Object {
         static $gtype: GObject.GType<Mesh>;
-        declare static readonly __signalSignatures: Mesh.SignalSignatures;
 
         // Properties
 
@@ -1620,6 +1962,12 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
+        emit<K extends keyof Mesh.SignalSignatures>(signal: K, ...args: Parameters<Mesh.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1651,7 +1999,6 @@ export namespace Gthree {
 
     class MeshBasicMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshBasicMaterial>;
-        declare static readonly __signalSignatures: MeshBasicMaterial.SignalSignatures;
 
         // Properties
 
@@ -1678,6 +2025,21 @@ export namespace Gthree {
 
         static ['new'](): MeshBasicMaterial;
 
+        // Signals
+
+        connect<K extends keyof MeshBasicMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshBasicMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshBasicMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshBasicMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshBasicMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshBasicMaterial.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_color(): Graphene.Vec3;
@@ -1703,7 +2065,6 @@ export namespace Gthree {
 
     class MeshDepthMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDepthMaterial>;
-        declare static readonly __signalSignatures: MeshDepthMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1712,6 +2073,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): MeshDepthMaterial;
+
+        // Signals
+
+        connect<K extends keyof MeshDepthMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshDepthMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshDepthMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshDepthMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshDepthMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshDepthMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1730,7 +2106,6 @@ export namespace Gthree {
 
     class MeshDistanceMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDistanceMaterial>;
-        declare static readonly __signalSignatures: MeshDistanceMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1739,6 +2114,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): MeshDistanceMaterial;
+
+        // Signals
+
+        connect<K extends keyof MeshDistanceMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshDistanceMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshDistanceMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshDistanceMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshDistanceMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshDistanceMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1771,7 +2161,6 @@ export namespace Gthree {
 
     class MeshLambertMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshLambertMaterial>;
-        declare static readonly __signalSignatures: MeshLambertMaterial.SignalSignatures;
 
         // Properties
 
@@ -1801,6 +2190,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): MeshLambertMaterial;
+
+        // Signals
+
+        connect<K extends keyof MeshLambertMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshLambertMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshLambertMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshLambertMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshLambertMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshLambertMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1838,7 +2242,6 @@ export namespace Gthree {
 
     class MeshMaterial extends Material {
         static $gtype: GObject.GType<MeshMaterial>;
-        declare static readonly __signalSignatures: MeshMaterial.SignalSignatures;
 
         // Properties
 
@@ -1865,6 +2268,21 @@ export namespace Gthree {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof MeshMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshMaterial.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_is_wireframe(): boolean;
@@ -1890,7 +2308,6 @@ export namespace Gthree {
 
     class MeshNormalMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshNormalMaterial>;
-        declare static readonly __signalSignatures: MeshNormalMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1899,6 +2316,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): MeshNormalMaterial;
+
+        // Signals
+
+        connect<K extends keyof MeshNormalMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshNormalMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshNormalMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshNormalMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshNormalMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshNormalMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1938,7 +2370,6 @@ export namespace Gthree {
 
     class MeshPhongMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshPhongMaterial>;
-        declare static readonly __signalSignatures: MeshPhongMaterial.SignalSignatures;
 
         // Properties
 
@@ -1990,6 +2421,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): MeshPhongMaterial;
+
+        // Signals
+
+        connect<K extends keyof MeshPhongMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshPhongMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshPhongMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshPhongMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshPhongMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshPhongMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2076,7 +2522,6 @@ export namespace Gthree {
 
     class MeshSpecglosMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshSpecglosMaterial>;
-        declare static readonly __signalSignatures: MeshSpecglosMaterial.SignalSignatures;
 
         // Properties
 
@@ -2179,6 +2624,21 @@ export namespace Gthree {
 
         static ['new'](): MeshSpecglosMaterial;
 
+        // Signals
+
+        connect<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshSpecglosMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshSpecglosMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshSpecglosMaterial.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_ao_map_intensity(): number;
@@ -2278,7 +2738,6 @@ export namespace Gthree {
 
     class MeshStandardMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshStandardMaterial>;
-        declare static readonly __signalSignatures: MeshStandardMaterial.SignalSignatures;
 
         // Properties
 
@@ -2379,6 +2838,21 @@ export namespace Gthree {
 
         static ['new'](): MeshStandardMaterial;
 
+        // Signals
+
+        connect<K extends keyof MeshStandardMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshStandardMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshStandardMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshStandardMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshStandardMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshStandardMaterial.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_ao_map_intensity(): number;
@@ -2468,7 +2942,6 @@ export namespace Gthree {
 
     class MeshToonMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshToonMaterial>;
-        declare static readonly __signalSignatures: MeshToonMaterial.SignalSignatures;
 
         // Properties
 
@@ -2549,6 +3022,21 @@ export namespace Gthree {
 
         static ['new'](): MeshToonMaterial;
 
+        // Signals
+
+        connect<K extends keyof MeshToonMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshToonMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MeshToonMaterial.SignalSignatures>(
+            signal: K,
+            callback: MeshToonMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MeshToonMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MeshToonMaterial.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_ao_map_intensity(): number;
@@ -2593,7 +3081,6 @@ export namespace Gthree {
 
     class NumberKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<NumberKeyframeTrack>;
-        declare static readonly __signalSignatures: NumberKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -2602,17 +3089,32 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): NumberKeyframeTrack;
+
+        // Signals
+
+        connect<K extends keyof NumberKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: NumberKeyframeTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NumberKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: NumberKeyframeTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NumberKeyframeTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NumberKeyframeTrack.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
         // Signal callback interfaces
 
         interface Destroy {
-            (): void;
+            (_source: Object): void;
         }
 
         interface ParentSet {
-            (object: Object): void;
+            (_source: Object, object: Object): void;
         }
 
         // Signal signatures
@@ -2639,7 +3141,6 @@ export namespace Gthree {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -2668,15 +3169,6 @@ export namespace Gthree {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
-        connect(signal: 'parent-set', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'parent-set', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'parent-set', object: Object): void;
 
         // Virtual methods
 
@@ -2771,7 +3263,6 @@ export namespace Gthree {
 
     class OrthographicCamera extends Camera {
         static $gtype: GObject.GType<OrthographicCamera>;
-        declare static readonly __signalSignatures: OrthographicCamera.SignalSignatures;
 
         // Properties
 
@@ -2802,6 +3293,21 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof OrthographicCamera.SignalSignatures>(
+            signal: K,
+            callback: OrthographicCamera.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OrthographicCamera.SignalSignatures>(
+            signal: K,
+            callback: OrthographicCamera.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OrthographicCamera.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OrthographicCamera.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_bottom(): number;
@@ -2825,7 +3331,6 @@ export namespace Gthree {
 
     class Pass extends GObject.Object {
         static $gtype: GObject.GType<Pass>;
-        declare static readonly __signalSignatures: Pass.SignalSignatures;
 
         // Fields
 
@@ -2841,6 +3346,12 @@ export namespace Gthree {
         constructor(properties?: Partial<Pass.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
+        emit<K extends keyof Pass.SignalSignatures>(signal: K, ...args: Parameters<Pass.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2883,7 +3394,6 @@ export namespace Gthree {
 
     class PerspectiveCamera extends Camera {
         static $gtype: GObject.GType<PerspectiveCamera>;
-        declare static readonly __signalSignatures: PerspectiveCamera.SignalSignatures;
 
         // Properties
 
@@ -2902,6 +3412,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PerspectiveCamera.SignalSignatures>(
+            signal: K,
+            callback: PerspectiveCamera.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PerspectiveCamera.SignalSignatures>(
+            signal: K,
+            callback: PerspectiveCamera.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PerspectiveCamera.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PerspectiveCamera.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2926,7 +3451,6 @@ export namespace Gthree {
 
     class PlaneHelper extends Object {
         static $gtype: GObject.GType<PlaneHelper>;
-        declare static readonly __signalSignatures: PlaneHelper.SignalSignatures;
 
         // Properties
 
@@ -2947,6 +3471,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PlaneHelper.SignalSignatures>(
+            signal: K,
+            callback: PlaneHelper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaneHelper.SignalSignatures>(
+            signal: K,
+            callback: PlaneHelper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaneHelper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaneHelper.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2972,7 +3511,6 @@ export namespace Gthree {
 
     class PointLight extends Light {
         static $gtype: GObject.GType<PointLight>;
-        declare static readonly __signalSignatures: PointLight.SignalSignatures;
 
         // Properties
 
@@ -2991,6 +3529,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Light.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PointLight.SignalSignatures>(
+            signal: K,
+            callback: PointLight.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PointLight.SignalSignatures>(
+            signal: K,
+            callback: PointLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PointLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PointLight.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3014,7 +3567,6 @@ export namespace Gthree {
 
     class Points extends Object {
         static $gtype: GObject.GType<Points>;
-        declare static readonly __signalSignatures: Points.SignalSignatures;
 
         // Properties
 
@@ -3032,6 +3584,12 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
+        connect_after<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
+        emit<K extends keyof Points.SignalSignatures>(signal: K, ...args: Parameters<Points.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3055,7 +3613,6 @@ export namespace Gthree {
 
     class PointsMaterial extends Material {
         static $gtype: GObject.GType<PointsMaterial>;
-        declare static readonly __signalSignatures: PointsMaterial.SignalSignatures;
 
         // Properties
 
@@ -3077,6 +3634,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): PointsMaterial;
+
+        // Signals
+
+        connect<K extends keyof PointsMaterial.SignalSignatures>(
+            signal: K,
+            callback: PointsMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PointsMaterial.SignalSignatures>(
+            signal: K,
+            callback: PointsMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PointsMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PointsMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3100,7 +3672,6 @@ export namespace Gthree {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
-        declare static readonly __signalSignatures: Program.SignalSignatures;
 
         // Constructors
 
@@ -3109,6 +3680,18 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](shader: Shader, parameters: ProgramParameters, renderer: Renderer): Program;
+
+        // Signals
+
+        connect<K extends keyof Program.SignalSignatures>(signal: K, callback: Program.SignalSignatures[K]): number;
+        connect_after<K extends keyof Program.SignalSignatures>(
+            signal: K,
+            callback: Program.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Program.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Program.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3130,7 +3713,6 @@ export namespace Gthree {
 
     class QuaternionInterpolant extends Interpolant {
         static $gtype: GObject.GType<QuaternionInterpolant>;
-        declare static readonly __signalSignatures: QuaternionInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -3139,6 +3721,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](parameter_positions: AttributeArray, sample_values: AttributeArray): QuaternionInterpolant;
+
+        // Signals
+
+        connect<K extends keyof QuaternionInterpolant.SignalSignatures>(
+            signal: K,
+            callback: QuaternionInterpolant.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof QuaternionInterpolant.SignalSignatures>(
+            signal: K,
+            callback: QuaternionInterpolant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof QuaternionInterpolant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<QuaternionInterpolant.SignalSignatures[K]>
+        ): void;
     }
 
     namespace QuaternionKeyframeTrack {
@@ -3152,7 +3749,6 @@ export namespace Gthree {
 
     class QuaternionKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<QuaternionKeyframeTrack>;
-        declare static readonly __signalSignatures: QuaternionKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -3161,6 +3757,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): QuaternionKeyframeTrack;
+
+        // Signals
+
+        connect<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: QuaternionKeyframeTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: QuaternionKeyframeTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<QuaternionKeyframeTrack.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Raycaster {
@@ -3174,7 +3785,6 @@ export namespace Gthree {
 
     class Raycaster extends GObject.Object {
         static $gtype: GObject.GType<Raycaster>;
-        declare static readonly __signalSignatures: Raycaster.SignalSignatures;
 
         // Constructors
 
@@ -3183,6 +3793,18 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): Raycaster;
+
+        // Signals
+
+        connect<K extends keyof Raycaster.SignalSignatures>(signal: K, callback: Raycaster.SignalSignatures[K]): number;
+        connect_after<K extends keyof Raycaster.SignalSignatures>(
+            signal: K,
+            callback: Raycaster.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Raycaster.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Raycaster.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3206,7 +3828,6 @@ export namespace Gthree {
 
     class RenderPass extends Pass {
         static $gtype: GObject.GType<RenderPass>;
-        declare static readonly __signalSignatures: RenderPass.SignalSignatures;
 
         // Constructors
 
@@ -3215,6 +3836,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](scene: Scene, camera: Camera, override_material: Material): RenderPass;
+
+        // Signals
+
+        connect<K extends keyof RenderPass.SignalSignatures>(
+            signal: K,
+            callback: RenderPass.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RenderPass.SignalSignatures>(
+            signal: K,
+            callback: RenderPass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RenderPass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RenderPass.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3232,7 +3868,6 @@ export namespace Gthree {
 
     class RenderTarget extends Resource {
         static $gtype: GObject.GType<RenderTarget>;
-        declare static readonly __signalSignatures: RenderTarget.SignalSignatures;
 
         // Constructors
 
@@ -3241,6 +3876,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](width: number, height: number): RenderTarget;
+
+        // Signals
+
+        connect<K extends keyof RenderTarget.SignalSignatures>(
+            signal: K,
+            callback: RenderTarget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RenderTarget.SignalSignatures>(
+            signal: K,
+            callback: RenderTarget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RenderTarget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RenderTarget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3268,7 +3918,6 @@ export namespace Gthree {
 
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
-        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -3277,6 +3926,18 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): Renderer;
+
+        // Signals
+
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: Renderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Renderer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3333,13 +3994,24 @@ export namespace Gthree {
 
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
-        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Resource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: Resource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resource.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3367,7 +4039,6 @@ export namespace Gthree {
 
     class Scene extends Object {
         static $gtype: GObject.GType<Scene>;
-        declare static readonly __signalSignatures: Scene.SignalSignatures;
 
         // Constructors
 
@@ -3376,6 +4047,12 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): Scene;
+
+        // Signals
+
+        connect<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
+        emit<K extends keyof Scene.SignalSignatures>(signal: K, ...args: Parameters<Scene.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3399,13 +4076,18 @@ export namespace Gthree {
 
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
-        declare static readonly __signalSignatures: Shader.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Shader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        emit<K extends keyof Shader.SignalSignatures>(signal: K, ...args: Parameters<Shader.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3435,7 +4117,6 @@ export namespace Gthree {
 
     class ShaderMaterial extends MeshMaterial {
         static $gtype: GObject.GType<ShaderMaterial>;
-        declare static readonly __signalSignatures: ShaderMaterial.SignalSignatures;
 
         // Properties
 
@@ -3456,6 +4137,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](shader: Shader): ShaderMaterial;
+
+        // Signals
+
+        connect<K extends keyof ShaderMaterial.SignalSignatures>(
+            signal: K,
+            callback: ShaderMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShaderMaterial.SignalSignatures>(
+            signal: K,
+            callback: ShaderMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShaderMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShaderMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3478,7 +4174,6 @@ export namespace Gthree {
 
     class ShaderPass extends Pass {
         static $gtype: GObject.GType<ShaderPass>;
-        declare static readonly __signalSignatures: ShaderPass.SignalSignatures;
 
         // Constructors
 
@@ -3487,6 +4182,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](shader: Shader, texture_id: string): ShaderPass;
+
+        // Signals
+
+        connect<K extends keyof ShaderPass.SignalSignatures>(
+            signal: K,
+            callback: ShaderPass.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShaderPass.SignalSignatures>(
+            signal: K,
+            callback: ShaderPass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShaderPass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShaderPass.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Skeleton {
@@ -3500,7 +4210,6 @@ export namespace Gthree {
 
     class Skeleton extends GObject.Object {
         static $gtype: GObject.GType<Skeleton>;
-        declare static readonly __signalSignatures: Skeleton.SignalSignatures;
 
         // Constructors
 
@@ -3509,6 +4218,18 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](bones: Bone, n_bones: number, bone_inverses: Graphene.Matrix): Skeleton;
+
+        // Signals
+
+        connect<K extends keyof Skeleton.SignalSignatures>(signal: K, callback: Skeleton.SignalSignatures[K]): number;
+        connect_after<K extends keyof Skeleton.SignalSignatures>(
+            signal: K,
+            callback: Skeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Skeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Skeleton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3530,7 +4251,6 @@ export namespace Gthree {
 
     class SkeletonHelper extends LineSegments {
         static $gtype: GObject.GType<SkeletonHelper>;
-        declare static readonly __signalSignatures: SkeletonHelper.SignalSignatures;
 
         // Properties
 
@@ -3546,6 +4266,21 @@ export namespace Gthree {
         // Conflicted with Gthree.LineSegments.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SkeletonHelper.SignalSignatures>(
+            signal: K,
+            callback: SkeletonHelper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkeletonHelper.SignalSignatures>(
+            signal: K,
+            callback: SkeletonHelper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkeletonHelper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkeletonHelper.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SkinnedMesh {
@@ -3559,7 +4294,6 @@ export namespace Gthree {
 
     class SkinnedMesh extends Mesh {
         static $gtype: GObject.GType<SkinnedMesh>;
-        declare static readonly __signalSignatures: SkinnedMesh.SignalSignatures;
 
         // Constructors
 
@@ -3571,6 +4305,21 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SkinnedMesh.SignalSignatures>(
+            signal: K,
+            callback: SkinnedMesh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkinnedMesh.SignalSignatures>(
+            signal: K,
+            callback: SkinnedMesh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkinnedMesh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkinnedMesh.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3599,7 +4348,6 @@ export namespace Gthree {
 
     class SpotLight extends Light {
         static $gtype: GObject.GType<SpotLight>;
-        declare static readonly __signalSignatures: SpotLight.SignalSignatures;
 
         // Properties
 
@@ -3631,6 +4379,18 @@ export namespace Gthree {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof SpotLight.SignalSignatures>(signal: K, callback: SpotLight.SignalSignatures[K]): number;
+        connect_after<K extends keyof SpotLight.SignalSignatures>(
+            signal: K,
+            callback: SpotLight.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpotLight.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpotLight.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_angle(): number;
@@ -3655,13 +4415,27 @@ export namespace Gthree {
 
     class SpotLightShadow extends LightShadow {
         static $gtype: GObject.GType<SpotLightShadow>;
-        declare static readonly __signalSignatures: SpotLightShadow.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SpotLightShadow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SpotLightShadow.SignalSignatures>(
+            signal: K,
+            callback: SpotLightShadow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SpotLightShadow.SignalSignatures>(
+            signal: K,
+            callback: SpotLightShadow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpotLightShadow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpotLightShadow.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Sprite {
@@ -3677,7 +4451,6 @@ export namespace Gthree {
 
     class Sprite extends Object {
         static $gtype: GObject.GType<Sprite>;
-        declare static readonly __signalSignatures: Sprite.SignalSignatures;
 
         // Properties
 
@@ -3694,6 +4467,12 @@ export namespace Gthree {
         // Conflicted with Gthree.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
+        emit<K extends keyof Sprite.SignalSignatures>(signal: K, ...args: Parameters<Sprite.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3719,7 +4498,6 @@ export namespace Gthree {
 
     class SpriteMaterial extends Material {
         static $gtype: GObject.GType<SpriteMaterial>;
-        declare static readonly __signalSignatures: SpriteMaterial.SignalSignatures;
 
         // Properties
 
@@ -3741,6 +4519,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](): SpriteMaterial;
+
+        // Signals
+
+        connect<K extends keyof SpriteMaterial.SignalSignatures>(
+            signal: K,
+            callback: SpriteMaterial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SpriteMaterial.SignalSignatures>(
+            signal: K,
+            callback: SpriteMaterial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpriteMaterial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpriteMaterial.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3767,7 +4560,6 @@ export namespace Gthree {
 
     class Texture extends Resource {
         static $gtype: GObject.GType<Texture>;
-        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Properties
 
@@ -3783,6 +4575,18 @@ export namespace Gthree {
         static ['new'](pixbuf: GdkPixbuf.Pixbuf): Texture;
 
         static new_from_surface(surface: cairo.Surface): Texture;
+
+        // Signals
+
+        connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect_after<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            callback: Texture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Texture.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3837,7 +4641,6 @@ export namespace Gthree {
 
     class Uniforms extends GObject.Object {
         static $gtype: GObject.GType<Uniforms>;
-        declare static readonly __signalSignatures: Uniforms.SignalSignatures;
 
         // Constructors
 
@@ -3848,6 +4651,18 @@ export namespace Gthree {
         static ['new'](): Uniforms;
 
         static new_from_definitions(element: UniformsDefinition, len: number): Uniforms;
+
+        // Signals
+
+        connect<K extends keyof Uniforms.SignalSignatures>(signal: K, callback: Uniforms.SignalSignatures[K]): number;
+        connect_after<K extends keyof Uniforms.SignalSignatures>(
+            signal: K,
+            callback: Uniforms.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Uniforms.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Uniforms.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3874,7 +4689,6 @@ export namespace Gthree {
 
     class VectorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<VectorKeyframeTrack>;
-        declare static readonly __signalSignatures: VectorKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -3883,6 +4697,21 @@ export namespace Gthree {
         _init(...args: any[]): void;
 
         static ['new'](name: string, times: AttributeArray, values: AttributeArray): VectorKeyframeTrack;
+
+        // Signals
+
+        connect<K extends keyof VectorKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: VectorKeyframeTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorKeyframeTrack.SignalSignatures>(
+            signal: K,
+            callback: VectorKeyframeTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorKeyframeTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorKeyframeTrack.SignalSignatures[K]>
+        ): void;
     }
 
     type AmbientLightClass = typeof AmbientLight;

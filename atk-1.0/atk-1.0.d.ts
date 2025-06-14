@@ -1830,13 +1830,27 @@ export namespace Atk {
      */
     class GObjectAccessible extends Object {
         static $gtype: GObject.GType<GObjectAccessible>;
-        declare static readonly __signalSignatures: GObjectAccessible.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GObjectAccessible.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GObjectAccessible.SignalSignatures>(
+            signal: K,
+            callback: GObjectAccessible.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GObjectAccessible.SignalSignatures>(
+            signal: K,
+            callback: GObjectAccessible.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GObjectAccessible.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GObjectAccessible.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1859,7 +1873,7 @@ export namespace Atk {
         // Signal callback interfaces
 
         interface LinkActivated {
-            (): void;
+            (_source: Hyperlink): void;
         }
 
         // Signal signatures
@@ -1893,7 +1907,6 @@ export namespace Atk {
      */
     class Hyperlink extends GObject.Object implements Action {
         static $gtype: GObject.GType<Hyperlink>;
-        declare static readonly __signalSignatures: Hyperlink.SignalSignatures;
 
         // Properties
 
@@ -1929,12 +1942,6 @@ export namespace Atk {
             signal: K,
             ...args: Parameters<Hyperlink.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'link-activated', callback: (_source: this) => void): number;
-        connect_after(signal: 'link-activated', callback: (_source: this) => void): number;
-        emit(signal: 'link-activated'): void;
 
         // Virtual methods
 
@@ -2647,13 +2654,18 @@ export namespace Atk {
      */
     class Misc extends GObject.Object {
         static $gtype: GObject.GType<Misc>;
-        declare static readonly __signalSignatures: Misc.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Misc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Misc.SignalSignatures>(signal: K, callback: Misc.SignalSignatures[K]): number;
+        connect_after<K extends keyof Misc.SignalSignatures>(signal: K, callback: Misc.SignalSignatures[K]): number;
+        emit<K extends keyof Misc.SignalSignatures>(signal: K, ...args: Parameters<Misc.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2754,7 +2766,6 @@ export namespace Atk {
             Window
     {
         static $gtype: GObject.GType<NoOpObject>;
-        declare static readonly __signalSignatures: NoOpObject.SignalSignatures;
 
         // Constructors
 
@@ -2763,6 +2774,21 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](obj: GObject.Object): NoOpObject;
+
+        // Signals
+
+        connect<K extends keyof NoOpObject.SignalSignatures>(
+            signal: K,
+            callback: NoOpObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NoOpObject.SignalSignatures>(
+            signal: K,
+            callback: NoOpObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NoOpObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NoOpObject.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get accessible_component_layer(): number;
@@ -5374,7 +5400,6 @@ export namespace Atk {
      */
     class NoOpObjectFactory extends ObjectFactory {
         static $gtype: GObject.GType<NoOpObjectFactory>;
-        declare static readonly __signalSignatures: NoOpObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -5383,45 +5408,60 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](): NoOpObjectFactory;
+
+        // Signals
+
+        connect<K extends keyof NoOpObjectFactory.SignalSignatures>(
+            signal: K,
+            callback: NoOpObjectFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NoOpObjectFactory.SignalSignatures>(
+            signal: K,
+            callback: NoOpObjectFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NoOpObjectFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NoOpObjectFactory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
         // Signal callback interfaces
 
         interface ActiveDescendantChanged {
-            (arg1: Object): void;
+            (_source: Object, arg1: Object): void;
         }
 
         interface Announcement {
-            (arg1: string): void;
+            (_source: Object, arg1: string): void;
         }
 
         interface AttributeChanged {
-            (arg1: string, arg2: string): void;
+            (_source: Object, arg1: string, arg2: string): void;
         }
 
         interface ChildrenChanged {
-            (arg1: number, arg2: Object): void;
+            (_source: Object, arg1: number, arg2: Object): void;
         }
 
         interface FocusEvent {
-            (arg1: boolean): void;
+            (_source: Object, arg1: boolean): void;
         }
 
         interface Notification {
-            (arg1: string, arg2: number): void;
+            (_source: Object, arg1: string, arg2: number): void;
         }
 
         interface PropertyChange {
-            (arg1: PropertyValues): void;
+            (_source: Object, arg1: PropertyValues): void;
         }
 
         interface StateChange {
-            (arg1: string, arg2: boolean): void;
+            (_source: Object, arg1: string, arg2: boolean): void;
         }
 
         interface VisibleDataChanged {
-            (): void;
+            (_source: Object): void;
         }
 
         // Signal signatures
@@ -5503,7 +5543,6 @@ export namespace Atk {
      */
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -5625,42 +5664,6 @@ export namespace Atk {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-descendant-changed', callback: (_source: this, arg1: Object) => void): number;
-        connect_after(signal: 'active-descendant-changed', callback: (_source: this, arg1: Object) => void): number;
-        emit(signal: 'active-descendant-changed', arg1: Object): void;
-        connect(signal: 'announcement', callback: (_source: this, arg1: string) => void): number;
-        connect_after(signal: 'announcement', callback: (_source: this, arg1: string) => void): number;
-        emit(signal: 'announcement', arg1: string): void;
-        connect(signal: 'attribute-changed', callback: (_source: this, arg1: string, arg2: string) => void): number;
-        connect_after(
-            signal: 'attribute-changed',
-            callback: (_source: this, arg1: string, arg2: string) => void,
-        ): number;
-        emit(signal: 'attribute-changed', arg1: string, arg2: string): void;
-        connect(signal: 'children-changed', callback: (_source: this, arg1: number, arg2: Object) => void): number;
-        connect_after(
-            signal: 'children-changed',
-            callback: (_source: this, arg1: number, arg2: Object) => void,
-        ): number;
-        emit(signal: 'children-changed', arg1: number, arg2: Object): void;
-        connect(signal: 'focus-event', callback: (_source: this, arg1: boolean) => void): number;
-        connect_after(signal: 'focus-event', callback: (_source: this, arg1: boolean) => void): number;
-        emit(signal: 'focus-event', arg1: boolean): void;
-        connect(signal: 'notification', callback: (_source: this, arg1: string, arg2: number) => void): number;
-        connect_after(signal: 'notification', callback: (_source: this, arg1: string, arg2: number) => void): number;
-        emit(signal: 'notification', arg1: string, arg2: number): void;
-        connect(signal: 'property-change', callback: (_source: this, arg1: PropertyValues) => void): number;
-        connect_after(signal: 'property-change', callback: (_source: this, arg1: PropertyValues) => void): number;
-        emit(signal: 'property-change', arg1: PropertyValues): void;
-        connect(signal: 'state-change', callback: (_source: this, arg1: string, arg2: boolean) => void): number;
-        connect_after(signal: 'state-change', callback: (_source: this, arg1: string, arg2: boolean) => void): number;
-        emit(signal: 'state-change', arg1: string, arg2: boolean): void;
-        connect(signal: 'visible-data-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'visible-data-changed', callback: (_source: this) => void): number;
-        emit(signal: 'visible-data-changed'): void;
 
         // Virtual methods
 
@@ -5984,13 +5987,27 @@ export namespace Atk {
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
-        declare static readonly __signalSignatures: ObjectFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ObjectFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObjectFactory.SignalSignatures>(
+            signal: K,
+            callback: ObjectFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectFactory.SignalSignatures>(
+            signal: K,
+            callback: ObjectFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectFactory.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -6043,7 +6060,6 @@ export namespace Atk {
      */
     class Plug extends Object implements Component {
         static $gtype: GObject.GType<Plug>;
-        declare static readonly __signalSignatures: Plug.SignalSignatures;
 
         // Constructors
 
@@ -6052,6 +6068,12 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](): Plug;
+
+        // Signals
+
+        connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: Parameters<Plug.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -6784,13 +6806,24 @@ export namespace Atk {
      */
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
-        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Registry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: Registry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Registry.SignalSignatures>(
+            signal: K,
+            callback: Registry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Registry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Registry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6843,7 +6876,6 @@ export namespace Atk {
      */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
-        declare static readonly __signalSignatures: Relation.SignalSignatures;
 
         // Properties
 
@@ -6865,6 +6897,18 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](targets: Object[], relationship: RelationType): Relation;
+
+        // Signals
+
+        connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: Relation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Relation.SignalSignatures>(
+            signal: K,
+            callback: Relation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Relation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Relation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6916,7 +6960,6 @@ export namespace Atk {
      */
     class RelationSet extends GObject.Object {
         static $gtype: GObject.GType<RelationSet>;
-        declare static readonly __signalSignatures: RelationSet.SignalSignatures;
 
         // Fields
 
@@ -6929,6 +6972,21 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](): RelationSet;
+
+        // Signals
+
+        connect<K extends keyof RelationSet.SignalSignatures>(
+            signal: K,
+            callback: RelationSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RelationSet.SignalSignatures>(
+            signal: K,
+            callback: RelationSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RelationSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RelationSet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7031,7 +7089,6 @@ export namespace Atk {
      */
     class Socket extends Object implements Component {
         static $gtype: GObject.GType<Socket>;
-        declare static readonly __signalSignatures: Socket.SignalSignatures;
 
         // Constructors
 
@@ -7040,6 +7097,12 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](): Socket;
+
+        // Signals
+
+        connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -7774,7 +7837,6 @@ export namespace Atk {
      */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
-        declare static readonly __signalSignatures: StateSet.SignalSignatures;
 
         // Constructors
 
@@ -7783,6 +7845,18 @@ export namespace Atk {
         _init(...args: any[]): void;
 
         static ['new'](): StateSet;
+
+        // Signals
+
+        connect<K extends keyof StateSet.SignalSignatures>(signal: K, callback: StateSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof StateSet.SignalSignatures>(
+            signal: K,
+            callback: StateSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StateSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StateSet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7883,13 +7957,18 @@ export namespace Atk {
      */
     class Util extends GObject.Object {
         static $gtype: GObject.GType<Util>;
-        declare static readonly __signalSignatures: Util.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: Parameters<Util.SignalSignatures[K]>): void;
     }
 
     type ActionIface = typeof Action;

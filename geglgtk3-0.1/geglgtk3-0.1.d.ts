@@ -60,11 +60,11 @@ export namespace GeglGtk3 {
         // Signal callback interfaces
 
         interface DrawBackground {
-            (cr: cairo.Context, rect: Gdk.Rectangle): void;
+            (_source: View, cr: cairo.Context, rect: Gdk.Rectangle): void;
         }
 
         interface DrawOverlay {
-            (cr: cairo.Context, rect: Gdk.Rectangle): void;
+            (_source: View, cr: cairo.Context, rect: Gdk.Rectangle): void;
         }
 
         // Signal signatures
@@ -91,7 +91,6 @@ export namespace GeglGtk3 {
 
     class View extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -127,27 +126,6 @@ export namespace GeglGtk3 {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'draw-background',
-            callback: (_source: this, cr: cairo.Context, rect: Gdk.Rectangle) => void,
-        ): number;
-        connect_after(
-            signal: 'draw-background',
-            callback: (_source: this, cr: cairo.Context, rect: Gdk.Rectangle) => void,
-        ): number;
-        emit(signal: 'draw-background', cr: cairo.Context, rect: Gdk.Rectangle): void;
-        connect(
-            signal: 'draw-overlay',
-            callback: (_source: this, cr: cairo.Context, rect: Gdk.Rectangle) => void,
-        ): number;
-        connect_after(
-            signal: 'draw-overlay',
-            callback: (_source: this, cr: cairo.Context, rect: Gdk.Rectangle) => void,
-        ): number;
-        emit(signal: 'draw-overlay', cr: cairo.Context, rect: Gdk.Rectangle): void;
 
         // Methods
 

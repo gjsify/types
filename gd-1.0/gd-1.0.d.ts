@@ -91,7 +91,6 @@ export namespace Gd {
 
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HeaderBar>;
-        declare static readonly __signalSignatures: HeaderBar.SignalSignatures;
 
         // Properties
 
@@ -121,6 +120,18 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderBar;
+
+        // Signals
+
+        connect<K extends keyof HeaderBar.SignalSignatures>(signal: K, callback: HeaderBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof HeaderBar.SignalSignatures>(
+            signal: K,
+            callback: HeaderBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -626,7 +637,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderMenuButton>;
-        declare static readonly __signalSignatures: HeaderMenuButton.SignalSignatures;
 
         // Constructors
 
@@ -635,6 +645,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderMenuButton;
+
+        // Signals
+
+        connect<K extends keyof HeaderMenuButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderMenuButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderMenuButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderMenuButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderMenuButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderMenuButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5168,7 +5193,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderRadioButton>;
-        declare static readonly __signalSignatures: HeaderRadioButton.SignalSignatures;
 
         // Constructors
 
@@ -5177,6 +5201,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderRadioButton;
+
+        // Signals
+
+        connect<K extends keyof HeaderRadioButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderRadioButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderRadioButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderRadioButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderRadioButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderRadioButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -9706,7 +9745,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderSimpleButton>;
-        declare static readonly __signalSignatures: HeaderSimpleButton.SignalSignatures;
 
         // Constructors
 
@@ -9715,6 +9753,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderSimpleButton;
+
+        // Signals
+
+        connect<K extends keyof HeaderSimpleButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderSimpleButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderSimpleButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderSimpleButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderSimpleButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderSimpleButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -14489,7 +14542,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderToggleButton>;
-        declare static readonly __signalSignatures: HeaderToggleButton.SignalSignatures;
 
         // Constructors
 
@@ -14498,6 +14550,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderToggleButton;
+
+        // Signals
+
+        connect<K extends keyof HeaderToggleButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderToggleButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderToggleButton.SignalSignatures>(
+            signal: K,
+            callback: HeaderToggleButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderToggleButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderToggleButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -19027,7 +19094,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.CellLayout, Gtk.Scrollable
     {
         static $gtype: GObject.GType<MainIconView>;
-        declare static readonly __signalSignatures: MainIconView.SignalSignatures;
 
         // Constructors
 
@@ -19036,6 +19102,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): MainIconView;
+
+        // Signals
+
+        connect<K extends keyof MainIconView.SignalSignatures>(
+            signal: K,
+            callback: MainIconView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MainIconView.SignalSignatures>(
+            signal: K,
+            callback: MainIconView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainIconView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainIconView.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -23598,7 +23679,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<MainListView>;
-        declare static readonly __signalSignatures: MainListView.SignalSignatures;
 
         // Constructors
 
@@ -23607,6 +23687,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): MainListView;
+
+        // Signals
+
+        connect<K extends keyof MainListView.SignalSignatures>(
+            signal: K,
+            callback: MainListView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MainListView.SignalSignatures>(
+            signal: K,
+            callback: MainListView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainListView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainListView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -28024,7 +28119,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Gtk.ToolShell
     {
         static $gtype: GObject.GType<MainToolbar>;
-        declare static readonly __signalSignatures: MainToolbar.SignalSignatures;
 
         // Properties
 
@@ -28040,6 +28134,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): MainToolbar;
+
+        // Signals
+
+        connect<K extends keyof MainToolbar.SignalSignatures>(
+            signal: K,
+            callback: MainToolbar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MainToolbar.SignalSignatures>(
+            signal: K,
+            callback: MainToolbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainToolbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainToolbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32460,15 +32569,15 @@ export namespace Gd {
         // Signal callback interfaces
 
         interface ItemActivated {
-            (object: string, p0: Gtk.TreePath): void;
+            (_source: MainView, object: string, p0: Gtk.TreePath): void;
         }
 
         interface SelectionModeRequest {
-            (): void;
+            (_source: MainView): void;
         }
 
         interface ViewSelectionChanged {
-            (): void;
+            (_source: MainView): void;
         }
 
         // Signal signatures
@@ -32494,7 +32603,6 @@ export namespace Gd {
 
     class MainView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<MainView>;
-        declare static readonly __signalSignatures: MainView.SignalSignatures;
 
         // Properties
 
@@ -32531,21 +32639,6 @@ export namespace Gd {
             signal: K,
             ...args: Parameters<MainView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'item-activated', callback: (_source: this, object: string, p0: Gtk.TreePath) => void): number;
-        connect_after(
-            signal: 'item-activated',
-            callback: (_source: this, object: string, p0: Gtk.TreePath) => void,
-        ): number;
-        emit(signal: 'item-activated', object: string, p0: Gtk.TreePath): void;
-        connect(signal: 'selection-mode-request', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-mode-request', callback: (_source: this) => void): number;
-        emit(signal: 'selection-mode-request'): void;
-        connect(signal: 'view-selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'view-selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'view-selection-changed'): void;
 
         // Methods
 
@@ -33024,7 +33117,6 @@ export namespace Gd {
 
     class Revealer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Revealer>;
-        declare static readonly __signalSignatures: Revealer.SignalSignatures;
 
         // Properties
 
@@ -33048,6 +33140,18 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): Revealer;
+
+        // Signals
+
+        connect<K extends keyof Revealer.SignalSignatures>(signal: K, callback: Revealer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Revealer.SignalSignatures>(
+            signal: K,
+            callback: Revealer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Revealer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Revealer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -33525,7 +33629,6 @@ export namespace Gd {
 
     class Stack extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Stack>;
-        declare static readonly __signalSignatures: Stack.SignalSignatures;
 
         // Properties
 
@@ -33555,6 +33658,12 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): Stack;
+
+        // Signals
+
+        connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
+        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: Parameters<Stack.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -34036,7 +34145,6 @@ export namespace Gd {
 
     class StackSwitcher extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StackSwitcher>;
-        declare static readonly __signalSignatures: StackSwitcher.SignalSignatures;
 
         // Properties
 
@@ -34054,6 +34162,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): StackSwitcher;
+
+        // Signals
+
+        connect<K extends keyof StackSwitcher.SignalSignatures>(
+            signal: K,
+            callback: StackSwitcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StackSwitcher.SignalSignatures>(
+            signal: K,
+            callback: StackSwitcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StackSwitcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StackSwitcher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34539,7 +34662,6 @@ export namespace Gd {
 
     class StyledTextRenderer extends Gtk.CellRendererText {
         static $gtype: GObject.GType<StyledTextRenderer>;
-        declare static readonly __signalSignatures: StyledTextRenderer.SignalSignatures;
 
         // Constructors
 
@@ -34548,6 +34670,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): StyledTextRenderer;
+
+        // Signals
+
+        connect<K extends keyof StyledTextRenderer.SignalSignatures>(
+            signal: K,
+            callback: StyledTextRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StyledTextRenderer.SignalSignatures>(
+            signal: K,
+            callback: StyledTextRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StyledTextRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StyledTextRenderer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34559,11 +34696,11 @@ export namespace Gd {
         // Signal callback interfaces
 
         interface TagButtonClicked {
-            (object: TaggedEntryTag): void;
+            (_source: TaggedEntry, object: TaggedEntryTag): void;
         }
 
         interface TagClicked {
-            (object: TaggedEntryTag): void;
+            (_source: TaggedEntry, object: TaggedEntryTag): void;
         }
 
         // Signal signatures
@@ -34590,7 +34727,6 @@ export namespace Gd {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<TaggedEntry>;
-        declare static readonly __signalSignatures: TaggedEntry.SignalSignatures;
 
         // Properties
 
@@ -34619,15 +34755,6 @@ export namespace Gd {
             signal: K,
             ...args: Parameters<TaggedEntry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'tag-button-clicked', callback: (_source: this, object: TaggedEntryTag) => void): number;
-        connect_after(signal: 'tag-button-clicked', callback: (_source: this, object: TaggedEntryTag) => void): number;
-        emit(signal: 'tag-button-clicked', object: TaggedEntryTag): void;
-        connect(signal: 'tag-clicked', callback: (_source: this, object: TaggedEntryTag) => void): number;
-        connect_after(signal: 'tag-clicked', callback: (_source: this, object: TaggedEntryTag) => void): number;
-        emit(signal: 'tag-clicked', object: TaggedEntryTag): void;
 
         // Methods
 
@@ -38927,7 +39054,6 @@ export namespace Gd {
 
     class TaggedEntryTag extends GObject.Object {
         static $gtype: GObject.GType<TaggedEntryTag>;
-        declare static readonly __signalSignatures: TaggedEntryTag.SignalSignatures;
 
         // Properties
 
@@ -38947,6 +39073,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](label: string): TaggedEntryTag;
+
+        // Signals
+
+        connect<K extends keyof TaggedEntryTag.SignalSignatures>(
+            signal: K,
+            callback: TaggedEntryTag.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TaggedEntryTag.SignalSignatures>(
+            signal: K,
+            callback: TaggedEntryTag.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaggedEntryTag.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaggedEntryTag.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -38975,7 +39116,6 @@ export namespace Gd {
 
     class TogglePixbufRenderer extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<TogglePixbufRenderer>;
-        declare static readonly __signalSignatures: TogglePixbufRenderer.SignalSignatures;
 
         // Properties
 
@@ -38995,6 +39135,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): TogglePixbufRenderer;
+
+        // Signals
+
+        connect<K extends keyof TogglePixbufRenderer.SignalSignatures>(
+            signal: K,
+            callback: TogglePixbufRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TogglePixbufRenderer.SignalSignatures>(
+            signal: K,
+            callback: TogglePixbufRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TogglePixbufRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TogglePixbufRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TwoLinesRenderer {
@@ -39013,7 +39168,6 @@ export namespace Gd {
 
     class TwoLinesRenderer extends Gtk.CellRendererText {
         static $gtype: GObject.GType<TwoLinesRenderer>;
-        declare static readonly __signalSignatures: TwoLinesRenderer.SignalSignatures;
 
         // Properties
 
@@ -39033,6 +39187,21 @@ export namespace Gd {
         _init(...args: any[]): void;
 
         static ['new'](): TwoLinesRenderer;
+
+        // Signals
+
+        connect<K extends keyof TwoLinesRenderer.SignalSignatures>(
+            signal: K,
+            callback: TwoLinesRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TwoLinesRenderer.SignalSignatures>(
+            signal: K,
+            callback: TwoLinesRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TwoLinesRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TwoLinesRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     type HeaderBarClass = typeof HeaderBar;

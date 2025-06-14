@@ -626,7 +626,7 @@ export namespace GWeather {
         // Signal callback interfaces
 
         interface Updated {
-            (): void;
+            (_source: Info): void;
         }
 
         // Signal signatures
@@ -657,7 +657,6 @@ export namespace GWeather {
      */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
-        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Properties
 
@@ -720,12 +719,6 @@ export namespace GWeather {
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
         emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this) => void): number;
-        emit(signal: 'updated'): void;
 
         // Static methods
 
@@ -889,7 +882,6 @@ export namespace GWeather {
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
-        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Constructors
 
@@ -898,6 +890,18 @@ export namespace GWeather {
         _init(...args: any[]): void;
 
         static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location;
+
+        // Signals
+
+        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect_after<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: Location.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Location.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

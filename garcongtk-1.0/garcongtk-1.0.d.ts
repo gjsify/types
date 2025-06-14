@@ -58,7 +58,6 @@ export namespace GarconGtk {
 
     class Menu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Menu>;
-        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Properties
 
@@ -95,6 +94,12 @@ export namespace GarconGtk {
         // Conflicted with Gtk.Menu.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
 
         // Static methods
 

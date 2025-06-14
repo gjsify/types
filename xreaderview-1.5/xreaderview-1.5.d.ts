@@ -109,7 +109,7 @@ export namespace XreaderView {
         // Signal callback interfaces
 
         interface PageChanged {
-            (object: number, p0: number): void;
+            (_source: DocumentModel, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -140,7 +140,6 @@ export namespace XreaderView {
 
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
-        declare static readonly __signalSignatures: DocumentModel.SignalSignatures;
 
         // Properties
 
@@ -199,12 +198,6 @@ export namespace XreaderView {
             signal: K,
             ...args: Parameters<DocumentModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'page-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'page-changed', object: number, p0: number): void;
 
         // Methods
 
@@ -245,11 +238,11 @@ export namespace XreaderView {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: Job): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: Job): void;
         }
 
         // Signal signatures
@@ -265,7 +258,6 @@ export namespace XreaderView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
-        declare static readonly __signalSignatures: Job.SignalSignatures;
 
         // Fields
 
@@ -289,15 +281,6 @@ export namespace XreaderView {
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Virtual methods
 
@@ -330,7 +313,6 @@ export namespace XreaderView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
-        declare static readonly __signalSignatures: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -343,6 +325,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document): JobAnnots;
+
+        // Signals
+
+        connect<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: JobAnnots.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobAnnots.SignalSignatures>(
+            signal: K,
+            callback: JobAnnots.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobAnnots.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobAnnots.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobAttachments {
@@ -356,7 +350,6 @@ export namespace XreaderView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
-        declare static readonly __signalSignatures: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -369,6 +362,21 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document): JobAttachments;
+
+        // Signals
+
+        connect<K extends keyof JobAttachments.SignalSignatures>(
+            signal: K,
+            callback: JobAttachments.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobAttachments.SignalSignatures>(
+            signal: K,
+            callback: JobAttachments.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobAttachments.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobAttachments.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobExport {
@@ -382,7 +390,6 @@ export namespace XreaderView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
-        declare static readonly __signalSignatures: JobExport.SignalSignatures;
 
         // Fields
 
@@ -397,6 +404,18 @@ export namespace XreaderView {
 
         static ['new'](document: XreaderDocument.Document): JobExport;
 
+        // Signals
+
+        connect<K extends keyof JobExport.SignalSignatures>(signal: K, callback: JobExport.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobExport.SignalSignatures>(
+            signal: K,
+            callback: JobExport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobExport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobExport.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_page(page: number): void;
@@ -406,7 +425,7 @@ export namespace XreaderView {
         // Signal callback interfaces
 
         interface Updated {
-            (object: number): void;
+            (_source: JobFind, object: number): void;
         }
 
         // Signal signatures
@@ -421,7 +440,6 @@ export namespace XreaderView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
-        declare static readonly __signalSignatures: JobFind.SignalSignatures;
 
         // Fields
 
@@ -459,12 +477,6 @@ export namespace XreaderView {
             signal: K,
             ...args: Parameters<JobFind.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'updated', object: number): void;
 
         // Virtual methods
 
@@ -482,7 +494,7 @@ export namespace XreaderView {
         // Signal callback interfaces
 
         interface Updated {
-            (object: number): void;
+            (_source: JobFonts, object: number): void;
         }
 
         // Signal signatures
@@ -497,7 +509,6 @@ export namespace XreaderView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
-        declare static readonly __signalSignatures: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -522,12 +533,6 @@ export namespace XreaderView {
             signal: K,
             ...args: Parameters<JobFonts.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'updated', object: number): void;
 
         // Virtual methods
 
@@ -545,7 +550,6 @@ export namespace XreaderView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
-        declare static readonly __signalSignatures: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -558,6 +562,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document): JobLayers;
+
+        // Signals
+
+        connect<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: JobLayers.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLayers.SignalSignatures>(
+            signal: K,
+            callback: JobLayers.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLayers.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLayers.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobLinks {
@@ -571,7 +587,6 @@ export namespace XreaderView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
-        declare static readonly __signalSignatures: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -584,6 +599,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document): JobLinks;
+
+        // Signals
+
+        connect<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: JobLinks.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLinks.SignalSignatures>(
+            signal: K,
+            callback: JobLinks.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLinks.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLinks.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobLoad {
@@ -597,7 +624,6 @@ export namespace XreaderView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
-        declare static readonly __signalSignatures: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -611,6 +637,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): JobLoad;
+
+        // Signals
+
+        connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: JobLoad.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            callback: JobLoad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLoad.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -629,7 +667,6 @@ export namespace XreaderView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
-        declare static readonly __signalSignatures: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -646,6 +683,21 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document, page: number, flags: JobPageDataFlags): JobPageData;
+
+        // Signals
+
+        connect<K extends keyof JobPageData.SignalSignatures>(
+            signal: K,
+            callback: JobPageData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobPageData.SignalSignatures>(
+            signal: K,
+            callback: JobPageData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobPageData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobPageData.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobPrint {
@@ -659,7 +711,6 @@ export namespace XreaderView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
-        declare static readonly __signalSignatures: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -672,6 +723,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document): JobPrint;
+
+        // Signals
+
+        connect<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: JobPrint.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobPrint.SignalSignatures>(
+            signal: K,
+            callback: JobPrint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobPrint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobPrint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -690,7 +753,6 @@ export namespace XreaderView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
-        declare static readonly __signalSignatures: JobRender.SignalSignatures;
 
         // Fields
 
@@ -721,6 +783,18 @@ export namespace XreaderView {
             height: number,
         ): JobRender;
 
+        // Signals
+
+        connect<K extends keyof JobRender.SignalSignatures>(signal: K, callback: JobRender.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobRender.SignalSignatures>(
+            signal: K,
+            callback: JobRender.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobRender.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobRender.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_selection_info(
@@ -742,7 +816,6 @@ export namespace XreaderView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
-        declare static readonly __signalSignatures: JobSave.SignalSignatures;
 
         // Fields
 
@@ -756,6 +829,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document, uri: string, document_uri: string): JobSave;
+
+        // Signals
+
+        connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: JobSave.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            callback: JobSave.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobSave.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobThumbnail {
@@ -769,7 +854,6 @@ export namespace XreaderView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
-        declare static readonly __signalSignatures: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -785,21 +869,36 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](document: XreaderDocument.Document, page: number, rotation: number, scale: number): JobThumbnail;
+
+        // Signals
+
+        connect<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            callback: JobThumbnail.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            callback: JobThumbnail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobThumbnail.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PrintOperation {
         // Signal callback interfaces
 
         interface BeginPrint {
-            (): void;
+            (_source: PrintOperation): void;
         }
 
         interface Done {
-            (object: Gtk.PrintOperationResult): void;
+            (_source: PrintOperation, object: Gtk.PrintOperationResult): void;
         }
 
         interface StatusChanged {
-            (): void;
+            (_source: PrintOperation): void;
         }
 
         // Signal signatures
@@ -818,7 +917,6 @@ export namespace XreaderView {
 
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
-        declare static readonly __signalSignatures: PrintOperation.SignalSignatures;
 
         // Properties
 
@@ -846,18 +944,6 @@ export namespace XreaderView {
             signal: K,
             ...args: Parameters<PrintOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'begin-print', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-print', callback: (_source: this) => void): number;
-        emit(signal: 'begin-print'): void;
-        connect(signal: 'done', callback: (_source: this, object: Gtk.PrintOperationResult) => void): number;
-        connect_after(signal: 'done', callback: (_source: this, object: Gtk.PrintOperationResult) => void): number;
-        emit(signal: 'done', object: Gtk.PrintOperationResult): void;
-        connect(signal: 'status-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
-        emit(signal: 'status-changed'): void;
 
         // Static methods
 
@@ -883,43 +969,43 @@ export namespace XreaderView {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: View): void;
         }
 
         interface AnnotAdded {
-            (object: XreaderDocument.Annotation): void;
+            (_source: View, object: XreaderDocument.Annotation): void;
         }
 
         interface AnnotRemoved {
-            (object: XreaderDocument.Annotation): void;
+            (_source: View, object: XreaderDocument.Annotation): void;
         }
 
         interface BindingActivated {
-            (object: Gtk.ScrollType, p0: boolean): void;
+            (_source: View, object: Gtk.ScrollType, p0: boolean): void;
         }
 
         interface ExternalLink {
-            (object: GObject.Object): void;
+            (_source: View, object: GObject.Object): void;
         }
 
         interface HandleLink {
-            (object: GObject.Object): void;
+            (_source: View, object: GObject.Object): void;
         }
 
         interface LayersChanged {
-            (): void;
+            (_source: View): void;
         }
 
         interface Popup {
-            (object?: any | null): void;
+            (_source: View, object?: any | null): void;
         }
 
         interface SelectionChanged {
-            (): void;
+            (_source: View): void;
         }
 
         interface SyncSource {
-            (object?: any | null): void;
+            (_source: View, object?: any | null): void;
         }
 
         // Signal signatures
@@ -947,7 +1033,6 @@ export namespace XreaderView {
 
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 
@@ -962,51 +1047,6 @@ export namespace XreaderView {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
-        connect(signal: 'annot-added', callback: (_source: this, object: XreaderDocument.Annotation) => void): number;
-        connect_after(
-            signal: 'annot-added',
-            callback: (_source: this, object: XreaderDocument.Annotation) => void,
-        ): number;
-        emit(signal: 'annot-added', object: XreaderDocument.Annotation): void;
-        connect(signal: 'annot-removed', callback: (_source: this, object: XreaderDocument.Annotation) => void): number;
-        connect_after(
-            signal: 'annot-removed',
-            callback: (_source: this, object: XreaderDocument.Annotation) => void,
-        ): number;
-        emit(signal: 'annot-removed', object: XreaderDocument.Annotation): void;
-        connect(
-            signal: 'binding-activated',
-            callback: (_source: this, object: Gtk.ScrollType, p0: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'binding-activated',
-            callback: (_source: this, object: Gtk.ScrollType, p0: boolean) => void,
-        ): number;
-        emit(signal: 'binding-activated', object: Gtk.ScrollType, p0: boolean): void;
-        connect(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'external-link', object: GObject.Object): void;
-        connect(signal: 'handle-link', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'handle-link', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'handle-link', object: GObject.Object): void;
-        connect(signal: 'layers-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layers-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layers-changed'): void;
-        connect(signal: 'popup', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'popup', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'popup', object?: any | null): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
-        connect(signal: 'sync-source', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'sync-source', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'sync-source', object?: any | null): void;
 
         // Methods
 
@@ -1601,15 +1641,15 @@ export namespace XreaderView {
         // Signal callback interfaces
 
         interface ChangePage {
-            (object: Gtk.ScrollType): void;
+            (_source: ViewPresentation, object: Gtk.ScrollType): void;
         }
 
         interface ExternalLink {
-            (object: GObject.Object): void;
+            (_source: ViewPresentation, object: GObject.Object): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: ViewPresentation): void;
         }
 
         // Signal signatures
@@ -1636,7 +1676,6 @@ export namespace XreaderView {
 
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
-        declare static readonly __signalSignatures: ViewPresentation.SignalSignatures;
 
         // Properties
 
@@ -1675,18 +1714,6 @@ export namespace XreaderView {
             signal: K,
             ...args: Parameters<ViewPresentation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'change-page', callback: (_source: this, object: Gtk.ScrollType) => void): number;
-        connect_after(signal: 'change-page', callback: (_source: this, object: Gtk.ScrollType) => void): number;
-        emit(signal: 'change-page', object: Gtk.ScrollType): void;
-        connect(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'external-link', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'external-link', object: GObject.Object): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Methods
 
@@ -2329,7 +2356,6 @@ export namespace XreaderView {
 
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
-        declare static readonly __signalSignatures: WebView.SignalSignatures;
 
         // Constructors
 
@@ -2338,6 +2364,18 @@ export namespace XreaderView {
         _init(...args: any[]): void;
 
         static ['new'](): WebView;
+
+        // Signals
+
+        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            callback: WebView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

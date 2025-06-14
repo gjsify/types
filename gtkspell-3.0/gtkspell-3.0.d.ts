@@ -57,7 +57,7 @@ export namespace GtkSpell {
         // Signal callback interfaces
 
         interface LanguageChanged {
-            (lang: string): void;
+            (_source: Checker, lang: string): void;
         }
 
         // Signal signatures
@@ -78,7 +78,6 @@ export namespace GtkSpell {
      */
     class Checker extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Checker>;
-        declare static readonly __signalSignatures: Checker.SignalSignatures;
 
         // Properties
 
@@ -106,12 +105,6 @@ export namespace GtkSpell {
             signal: K,
             ...args: Parameters<Checker.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'language-changed', callback: (_source: this, lang: string) => void): number;
-        connect_after(signal: 'language-changed', callback: (_source: this, lang: string) => void): number;
-        emit(signal: 'language-changed', lang: string): void;
 
         // Static methods
 

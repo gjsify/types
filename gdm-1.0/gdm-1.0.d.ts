@@ -76,13 +76,27 @@ export namespace Gdm {
         implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ChooserProxy>;
-        declare static readonly __signalSignatures: ChooserProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ChooserProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ChooserProxy.SignalSignatures>(
+            signal: K,
+            callback: ChooserProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChooserProxy.SignalSignatures>(
+            signal: K,
+            callback: ChooserProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChooserProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChooserProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -908,13 +922,27 @@ export namespace Gdm {
 
     class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
         static $gtype: GObject.GType<ChooserSkeleton>;
-        declare static readonly __signalSignatures: ChooserSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ChooserSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ChooserSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ChooserSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChooserSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ChooserSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChooserSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChooserSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         call_disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -1428,7 +1456,6 @@ export namespace Gdm {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -1437,6 +1464,12 @@ export namespace Gdm {
         _init(...args: any[]): void;
 
         static ['new'](): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1676,13 +1709,27 @@ export namespace Gdm {
         implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GreeterProxy>;
-        declare static readonly __signalSignatures: GreeterProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GreeterProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GreeterProxy.SignalSignatures>(
+            signal: K,
+            callback: GreeterProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GreeterProxy.SignalSignatures>(
+            signal: K,
+            callback: GreeterProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GreeterProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GreeterProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2597,13 +2644,27 @@ export namespace Gdm {
 
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
         static $gtype: GObject.GType<GreeterSkeleton>;
-        declare static readonly __signalSignatures: GreeterSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GreeterSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GreeterSkeleton.SignalSignatures>(
+            signal: K,
+            callback: GreeterSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GreeterSkeleton.SignalSignatures>(
+            signal: K,
+            callback: GreeterSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GreeterSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GreeterSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         call_begin_auto_login(arg_username: string, cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -3214,13 +3275,27 @@ export namespace Gdm {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
-        declare static readonly __signalSignatures: ManagerProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ManagerProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: ManagerProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: ManagerProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4091,13 +4166,27 @@ export namespace Gdm {
 
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
-        declare static readonly __signalSignatures: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ManagerSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ManagerSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ManagerSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get version(): string;
@@ -4664,13 +4753,27 @@ export namespace Gdm {
         implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<RemoteGreeterProxy>;
-        declare static readonly __signalSignatures: RemoteGreeterProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RemoteGreeterProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RemoteGreeterProxy.SignalSignatures>(
+            signal: K,
+            callback: RemoteGreeterProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteGreeterProxy.SignalSignatures>(
+            signal: K,
+            callback: RemoteGreeterProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteGreeterProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteGreeterProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5481,13 +5584,27 @@ export namespace Gdm {
 
     class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
         static $gtype: GObject.GType<RemoteGreeterSkeleton>;
-        declare static readonly __signalSignatures: RemoteGreeterSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RemoteGreeterSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
+            signal: K,
+            callback: RemoteGreeterSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
+            signal: K,
+            callback: RemoteGreeterSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteGreeterSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         call_disconnect(cancellable?: Gio.Cancellable | null): Promise<boolean>;
@@ -5998,13 +6115,27 @@ export namespace Gdm {
             Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
-        declare static readonly __signalSignatures: UserVerifierChoiceListProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UserVerifierChoiceListProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierChoiceListProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierChoiceListProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserVerifierChoiceListProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6839,13 +6970,27 @@ export namespace Gdm {
         implements UserVerifierChoiceList, Gio.DBusInterface
     {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
-        declare static readonly __signalSignatures: UserVerifierChoiceListSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UserVerifierChoiceListSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierChoiceListSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierChoiceListSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserVerifierChoiceListSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         call_select_choice(
@@ -7373,13 +7518,27 @@ export namespace Gdm {
         implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierProxy>;
-        declare static readonly __signalSignatures: UserVerifierProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UserVerifierProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserVerifierProxy.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserVerifierProxy.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserVerifierProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserVerifierProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8300,13 +8459,27 @@ export namespace Gdm {
 
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
         static $gtype: GObject.GType<UserVerifierSkeleton>;
-        declare static readonly __signalSignatures: UserVerifierSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UserVerifierSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserVerifierSkeleton.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserVerifierSkeleton.SignalSignatures>(
+            signal: K,
+            callback: UserVerifierSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserVerifierSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserVerifierSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         call_answer_query(
@@ -8923,13 +9096,27 @@ export namespace Gdm {
         implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<WorkerManagerProxy>;
-        declare static readonly __signalSignatures: WorkerManagerProxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WorkerManagerProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkerManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: WorkerManagerProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkerManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: WorkerManagerProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkerManagerProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkerManagerProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9877,13 +10064,27 @@ export namespace Gdm {
 
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
         static $gtype: GObject.GType<WorkerManagerSkeleton>;
-        declare static readonly __signalSignatures: WorkerManagerSkeleton.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WorkerManagerSkeleton.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: WorkerManagerSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: WorkerManagerSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkerManagerSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         call_choice_list_query(

@@ -80,43 +80,43 @@ export namespace GstApp {
         // Signal callback interfaces
 
         interface Eos {
-            (): void;
+            (_source: AppSink): void;
         }
 
         interface NewPreroll {
-            (): Gst.FlowReturn;
+            (_source: AppSink): Gst.FlowReturn;
         }
 
         interface NewSample {
-            (): Gst.FlowReturn;
+            (_source: AppSink): Gst.FlowReturn;
         }
 
         interface NewSerializedEvent {
-            (): boolean;
+            (_source: AppSink): boolean;
         }
 
         interface ProposeAllocation {
-            (query: Gst.Query): boolean;
+            (_source: AppSink, query: Gst.Query): boolean;
         }
 
         interface PullPreroll {
-            (): Gst.Sample | null;
+            (_source: AppSink): Gst.Sample | null;
         }
 
         interface PullSample {
-            (): Gst.Sample | null;
+            (_source: AppSink): Gst.Sample | null;
         }
 
         interface TryPullObject {
-            (timeout: number): Gst.MiniObject | null;
+            (_source: AppSink, timeout: number): Gst.MiniObject | null;
         }
 
         interface TryPullPreroll {
-            (timeout: number): Gst.Sample | null;
+            (_source: AppSink, timeout: number): Gst.Sample | null;
         }
 
         interface TryPullSample {
-            (timeout: number): Gst.Sample | null;
+            (_source: AppSink, timeout: number): Gst.Sample | null;
         }
 
         // Signal signatures
@@ -190,7 +190,6 @@ export namespace GstApp {
      */
     class AppSink extends GstBase.BaseSink implements Gst.URIHandler {
         static $gtype: GObject.GType<AppSink>;
-        declare static readonly __signalSignatures: AppSink.SignalSignatures;
 
         // Properties
 
@@ -238,48 +237,6 @@ export namespace GstApp {
             signal: K,
             ...args: Parameters<AppSink.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'eos', callback: (_source: this) => void): number;
-        connect_after(signal: 'eos', callback: (_source: this) => void): number;
-        emit(signal: 'eos'): void;
-        connect(signal: 'new-preroll', callback: (_source: this) => Gst.FlowReturn): number;
-        connect_after(signal: 'new-preroll', callback: (_source: this) => Gst.FlowReturn): number;
-        emit(signal: 'new-preroll'): void;
-        connect(signal: 'new-sample', callback: (_source: this) => Gst.FlowReturn): number;
-        connect_after(signal: 'new-sample', callback: (_source: this) => Gst.FlowReturn): number;
-        emit(signal: 'new-sample'): void;
-        connect(signal: 'new-serialized-event', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'new-serialized-event', callback: (_source: this) => boolean): number;
-        emit(signal: 'new-serialized-event'): void;
-        connect(signal: 'propose-allocation', callback: (_source: this, query: Gst.Query) => boolean): number;
-        connect_after(signal: 'propose-allocation', callback: (_source: this, query: Gst.Query) => boolean): number;
-        emit(signal: 'propose-allocation', query: Gst.Query): void;
-        connect(signal: 'pull-preroll', callback: (_source: this) => Gst.Sample | null): number;
-        connect_after(signal: 'pull-preroll', callback: (_source: this) => Gst.Sample | null): number;
-        emit(signal: 'pull-preroll'): void;
-        connect(signal: 'pull-sample', callback: (_source: this) => Gst.Sample | null): number;
-        connect_after(signal: 'pull-sample', callback: (_source: this) => Gst.Sample | null): number;
-        emit(signal: 'pull-sample'): void;
-        connect(signal: 'try-pull-object', callback: (_source: this, timeout: number) => Gst.MiniObject | null): number;
-        connect_after(
-            signal: 'try-pull-object',
-            callback: (_source: this, timeout: number) => Gst.MiniObject | null,
-        ): number;
-        emit(signal: 'try-pull-object', timeout: number): void;
-        connect(signal: 'try-pull-preroll', callback: (_source: this, timeout: number) => Gst.Sample | null): number;
-        connect_after(
-            signal: 'try-pull-preroll',
-            callback: (_source: this, timeout: number) => Gst.Sample | null,
-        ): number;
-        emit(signal: 'try-pull-preroll', timeout: number): void;
-        connect(signal: 'try-pull-sample', callback: (_source: this, timeout: number) => Gst.Sample | null): number;
-        connect_after(
-            signal: 'try-pull-sample',
-            callback: (_source: this, timeout: number) => Gst.Sample | null,
-        ): number;
-        emit(signal: 'try-pull-sample', timeout: number): void;
 
         // Virtual methods
 
@@ -1003,31 +960,31 @@ export namespace GstApp {
         // Signal callback interfaces
 
         interface EndOfStream {
-            (): Gst.FlowReturn;
+            (_source: AppSrc): Gst.FlowReturn;
         }
 
         interface EnoughData {
-            (): void;
+            (_source: AppSrc): void;
         }
 
         interface NeedData {
-            (length: number): void;
+            (_source: AppSrc, length: number): void;
         }
 
         interface PushBuffer {
-            (buffer: Gst.Buffer): Gst.FlowReturn;
+            (_source: AppSrc, buffer: Gst.Buffer): Gst.FlowReturn;
         }
 
         interface PushBufferList {
-            (buffer_list: Gst.BufferList): Gst.FlowReturn;
+            (_source: AppSrc, buffer_list: Gst.BufferList): Gst.FlowReturn;
         }
 
         interface PushSample {
-            (sample: Gst.Sample): Gst.FlowReturn;
+            (_source: AppSrc, sample: Gst.Sample): Gst.FlowReturn;
         }
 
         interface SeekData {
-            (offset: number): boolean;
+            (_source: AppSrc, offset: number): boolean;
         }
 
         // Signal signatures
@@ -1149,7 +1106,6 @@ export namespace GstApp {
      */
     class AppSrc extends GstBase.BaseSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AppSrc>;
-        declare static readonly __signalSignatures: AppSrc.SignalSignatures;
 
         // Properties
 
@@ -1372,36 +1328,6 @@ export namespace GstApp {
         connect<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
         connect_after<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
         emit<K extends keyof AppSrc.SignalSignatures>(signal: K, ...args: Parameters<AppSrc.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'end-of-stream', callback: (_source: this) => Gst.FlowReturn): number;
-        connect_after(signal: 'end-of-stream', callback: (_source: this) => Gst.FlowReturn): number;
-        emit(signal: 'end-of-stream'): void;
-        connect(signal: 'enough-data', callback: (_source: this) => void): number;
-        connect_after(signal: 'enough-data', callback: (_source: this) => void): number;
-        emit(signal: 'enough-data'): void;
-        connect(signal: 'need-data', callback: (_source: this, length: number) => void): number;
-        connect_after(signal: 'need-data', callback: (_source: this, length: number) => void): number;
-        emit(signal: 'need-data', length: number): void;
-        connect(signal: 'push-buffer', callback: (_source: this, buffer: Gst.Buffer) => Gst.FlowReturn): number;
-        connect_after(signal: 'push-buffer', callback: (_source: this, buffer: Gst.Buffer) => Gst.FlowReturn): number;
-        emit(signal: 'push-buffer', buffer: Gst.Buffer): void;
-        connect(
-            signal: 'push-buffer-list',
-            callback: (_source: this, buffer_list: Gst.BufferList) => Gst.FlowReturn,
-        ): number;
-        connect_after(
-            signal: 'push-buffer-list',
-            callback: (_source: this, buffer_list: Gst.BufferList) => Gst.FlowReturn,
-        ): number;
-        emit(signal: 'push-buffer-list', buffer_list: Gst.BufferList): void;
-        connect(signal: 'push-sample', callback: (_source: this, sample: Gst.Sample) => Gst.FlowReturn): number;
-        connect_after(signal: 'push-sample', callback: (_source: this, sample: Gst.Sample) => Gst.FlowReturn): number;
-        emit(signal: 'push-sample', sample: Gst.Sample): void;
-        connect(signal: 'seek-data', callback: (_source: this, offset: number) => boolean): number;
-        connect_after(signal: 'seek-data', callback: (_source: this, offset: number) => boolean): number;
-        emit(signal: 'seek-data', offset: number): void;
 
         // Virtual methods
 

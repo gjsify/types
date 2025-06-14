@@ -91,7 +91,6 @@ export namespace Gc {
 
     class SearchContext extends GObject.Object {
         static $gtype: GObject.GType<SearchContext>;
-        declare static readonly __signalSignatures: SearchContext.SignalSignatures;
 
         // Properties
 
@@ -105,6 +104,21 @@ export namespace Gc {
         _init(...args: any[]): void;
 
         static ['new'](criteria: SearchCriteria, flags: SearchFlag): SearchContext;
+
+        // Signals
+
+        connect<K extends keyof SearchContext.SignalSignatures>(
+            signal: K,
+            callback: SearchContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchContext.SignalSignatures>(
+            signal: K,
+            callback: SearchContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

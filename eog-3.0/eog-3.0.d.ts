@@ -365,7 +365,6 @@ export namespace Eog {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Fields
 
@@ -376,6 +375,21 @@ export namespace Eog {
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -884,7 +898,6 @@ export namespace Eog {
 
     class ClipboardHandler extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ClipboardHandler>;
-        declare static readonly __signalSignatures: ClipboardHandler.SignalSignatures;
 
         // Properties
 
@@ -898,6 +911,21 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](img: Image): ClipboardHandler;
+
+        // Signals
+
+        connect<K extends keyof ClipboardHandler.SignalSignatures>(
+            signal: K,
+            callback: ClipboardHandler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClipboardHandler.SignalSignatures>(
+            signal: K,
+            callback: ClipboardHandler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClipboardHandler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClipboardHandler.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -918,7 +946,6 @@ export namespace Eog {
 
     class DetailsDialog extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DetailsDialog>;
-        declare static readonly __signalSignatures: DetailsDialog.SignalSignatures;
 
         // Fields
 
@@ -935,6 +962,21 @@ export namespace Eog {
         // Conflicted with Gtk.Window.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DetailsDialog.SignalSignatures>(
+            signal: K,
+            callback: DetailsDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DetailsDialog.SignalSignatures>(
+            signal: K,
+            callback: DetailsDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DetailsDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DetailsDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1397,7 +1439,6 @@ export namespace Eog {
 
     class FileChooser extends Gtk.FileChooserDialog implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser {
         static $gtype: GObject.GType<FileChooser>;
-        declare static readonly __signalSignatures: FileChooser.SignalSignatures;
 
         // Constructors
 
@@ -1409,6 +1450,21 @@ export namespace Eog {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof FileChooser.SignalSignatures>(
+            signal: K,
+            callback: FileChooser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileChooser.SignalSignatures>(
+            signal: K,
+            callback: FileChooser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileChooser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileChooser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2522,27 +2578,27 @@ export namespace Eog {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Image): void;
         }
 
         interface FileChanged {
-            (): void;
+            (_source: Image): void;
         }
 
         interface NextFrame {
-            (delay: number): void;
+            (_source: Image, delay: number): void;
         }
 
         interface SaveProgress {
-            (object: number): void;
+            (_source: Image, object: number): void;
         }
 
         interface SizePrepared {
-            (object: number, p0: number): void;
+            (_source: Image, object: number, p0: number): void;
         }
 
         interface ThumbnailChanged {
-            (): void;
+            (_source: Image): void;
         }
 
         // Signal signatures
@@ -2562,7 +2618,6 @@ export namespace Eog {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -2577,27 +2632,6 @@ export namespace Eog {
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'file-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-changed', callback: (_source: this) => void): number;
-        emit(signal: 'file-changed'): void;
-        connect(signal: 'next-frame', callback: (_source: this, delay: number) => void): number;
-        connect_after(signal: 'next-frame', callback: (_source: this, delay: number) => void): number;
-        emit(signal: 'next-frame', delay: number): void;
-        connect(signal: 'save-progress', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'save-progress', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'save-progress', object: number): void;
-        connect(signal: 'size-prepared', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'size-prepared', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'size-prepared', object: number, p0: number): void;
-        connect(signal: 'thumbnail-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'thumbnail-changed', callback: (_source: this) => void): number;
-        emit(signal: 'thumbnail-changed'): void;
 
         // Static methods
 
@@ -2715,7 +2749,6 @@ export namespace Eog {
 
     class ImageSaveInfo extends GObject.Object {
         static $gtype: GObject.GType<ImageSaveInfo>;
-        declare static readonly __signalSignatures: ImageSaveInfo.SignalSignatures;
 
         // Fields
 
@@ -2739,21 +2772,36 @@ export namespace Eog {
         static new_from_image(image: Image): ImageSaveInfo;
 
         static new_from_uri(uri: string, format: GdkPixbuf.PixbufFormat): ImageSaveInfo;
+
+        // Signals
+
+        connect<K extends keyof ImageSaveInfo.SignalSignatures>(
+            signal: K,
+            callback: ImageSaveInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageSaveInfo.SignalSignatures>(
+            signal: K,
+            callback: ImageSaveInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageSaveInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageSaveInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Job {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: Job): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: Job): void;
         }
 
         interface Progress {
-            (object: number): void;
+            (_source: Job, object: number): void;
         }
 
         // Signal signatures
@@ -2770,7 +2818,6 @@ export namespace Eog {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
-        declare static readonly __signalSignatures: Job.SignalSignatures;
 
         // Fields
 
@@ -2791,18 +2838,6 @@ export namespace Eog {
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'progress', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'progress', object: number): void;
 
         // Static methods
 
@@ -2838,7 +2873,6 @@ export namespace Eog {
 
     class JobCopy extends Job {
         static $gtype: GObject.GType<JobCopy>;
-        declare static readonly __signalSignatures: JobCopy.SignalSignatures;
 
         // Fields
 
@@ -2853,6 +2887,18 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](images: Image[], destination: string): JobCopy;
+
+        // Signals
+
+        connect<K extends keyof JobCopy.SignalSignatures>(signal: K, callback: JobCopy.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobCopy.SignalSignatures>(
+            signal: K,
+            callback: JobCopy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobCopy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobCopy.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobLoad {
@@ -2866,7 +2912,6 @@ export namespace Eog {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
-        declare static readonly __signalSignatures: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -2880,6 +2925,18 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](image: Image, data: ImageData): JobLoad;
+
+        // Signals
+
+        connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: JobLoad.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            callback: JobLoad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobLoad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobLoad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobModel {
@@ -2893,7 +2950,6 @@ export namespace Eog {
 
     class JobModel extends Job {
         static $gtype: GObject.GType<JobModel>;
-        declare static readonly __signalSignatures: JobModel.SignalSignatures;
 
         // Fields
 
@@ -2907,6 +2963,18 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](file_list: Gio.File[]): JobModel;
+
+        // Signals
+
+        connect<K extends keyof JobModel.SignalSignatures>(signal: K, callback: JobModel.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobModel.SignalSignatures>(
+            signal: K,
+            callback: JobModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobModel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobSave {
@@ -2920,7 +2988,6 @@ export namespace Eog {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
-        declare static readonly __signalSignatures: JobSave.SignalSignatures;
 
         // Fields
 
@@ -2935,6 +3002,18 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](images: Image[]): JobSave;
+
+        // Signals
+
+        connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: JobSave.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            callback: JobSave.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobSave.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobSave.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobSaveAs {
@@ -2948,7 +3027,6 @@ export namespace Eog {
 
     class JobSaveAs extends JobSave {
         static $gtype: GObject.GType<JobSaveAs>;
-        declare static readonly __signalSignatures: JobSaveAs.SignalSignatures;
 
         // Fields
 
@@ -2965,6 +3043,18 @@ export namespace Eog {
         // Conflicted with Eog.JobSave.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof JobSaveAs.SignalSignatures>(signal: K, callback: JobSaveAs.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobSaveAs.SignalSignatures>(
+            signal: K,
+            callback: JobSaveAs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobSaveAs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobSaveAs.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobThumbnail {
@@ -2978,7 +3068,6 @@ export namespace Eog {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
-        declare static readonly __signalSignatures: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -2992,6 +3081,21 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](image: Image): JobThumbnail;
+
+        // Signals
+
+        connect<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            callback: JobThumbnail.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            callback: JobThumbnail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobThumbnail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobThumbnail.SignalSignatures[K]>
+        ): void;
     }
 
     namespace JobTransform {
@@ -3005,7 +3109,6 @@ export namespace Eog {
 
     class JobTransform extends Job {
         static $gtype: GObject.GType<JobTransform>;
-        declare static readonly __signalSignatures: JobTransform.SignalSignatures;
 
         // Fields
 
@@ -3019,13 +3122,28 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](images: Image[], transform: Transform): JobTransform;
+
+        // Signals
+
+        connect<K extends keyof JobTransform.SignalSignatures>(
+            signal: K,
+            callback: JobTransform.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof JobTransform.SignalSignatures>(
+            signal: K,
+            callback: JobTransform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobTransform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobTransform.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ListStore {
         // Signal callback interfaces
 
         interface DrawThumbnail {
-            (): void;
+            (_source: ListStore): void;
         }
 
         // Signal signatures
@@ -3049,7 +3167,6 @@ export namespace Eog {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ListStore>;
-        declare static readonly __signalSignatures: ListStore.SignalSignatures;
 
         // Constructors
 
@@ -3072,12 +3189,6 @@ export namespace Eog {
             signal: K,
             ...args: Parameters<ListStore.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'draw-thumbnail', callback: (_source: this) => void): number;
-        connect_after(signal: 'draw-thumbnail', callback: (_source: this) => void): number;
-        emit(signal: 'draw-thumbnail'): void;
 
         // Virtual methods
 
@@ -4411,7 +4522,6 @@ export namespace Eog {
 
     class RemotePresenter extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<RemotePresenter>;
-        declare static readonly __signalSignatures: RemotePresenter.SignalSignatures;
 
         // Properties
 
@@ -4441,6 +4551,21 @@ export namespace Eog {
         // Conflicted with Gtk.Window.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof RemotePresenter.SignalSignatures>(
+            signal: K,
+            callback: RemotePresenter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemotePresenter.SignalSignatures>(
+            signal: K,
+            callback: RemotePresenter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemotePresenter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemotePresenter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4892,19 +5017,19 @@ export namespace Eog {
         // Signal callback interfaces
 
         interface NextImage {
-            (): void;
+            (_source: ScrollView): void;
         }
 
         interface PreviousImage {
-            (): void;
+            (_source: ScrollView): void;
         }
 
         interface RotationChanged {
-            (object: number): void;
+            (_source: ScrollView, object: number): void;
         }
 
         interface ZoomChanged {
-            (object: number): void;
+            (_source: ScrollView, object: number): void;
         }
 
         // Signal signatures
@@ -4946,7 +5071,6 @@ export namespace Eog {
 
     class ScrollView extends Gtk.Overlay implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<ScrollView>;
-        declare static readonly __signalSignatures: ScrollView.SignalSignatures;
 
         // Properties
 
@@ -5072,21 +5196,6 @@ export namespace Eog {
             signal: K,
             ...args: Parameters<ScrollView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'next-image', callback: (_source: this) => void): number;
-        connect_after(signal: 'next-image', callback: (_source: this) => void): number;
-        emit(signal: 'next-image'): void;
-        connect(signal: 'previous-image', callback: (_source: this) => void): number;
-        connect_after(signal: 'previous-image', callback: (_source: this) => void): number;
-        emit(signal: 'previous-image'): void;
-        connect(signal: 'rotation-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'rotation-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'rotation-changed', object: number): void;
-        connect(signal: 'zoom-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'zoom-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'zoom-changed', object: number): void;
 
         // Virtual methods
 
@@ -5681,11 +5790,11 @@ export namespace Eog {
         // Signal callback interfaces
 
         interface PageAdded {
-            (object: Gtk.Widget): void;
+            (_source: Sidebar, object: Gtk.Widget): void;
         }
 
         interface PageRemoved {
-            (object: Gtk.Widget): void;
+            (_source: Sidebar, object: Gtk.Widget): void;
         }
 
         // Signal signatures
@@ -5708,7 +5817,6 @@ export namespace Eog {
 
     class Sidebar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Sidebar>;
-        declare static readonly __signalSignatures: Sidebar.SignalSignatures;
 
         // Properties
 
@@ -5740,15 +5848,6 @@ export namespace Eog {
             signal: K,
             ...args: Parameters<Sidebar.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'page-added', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'page-added', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'page-added', object: Gtk.Widget): void;
-        connect(signal: 'page-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'page-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'page-removed', object: Gtk.Widget): void;
 
         // Virtual methods
 
@@ -6239,7 +6338,6 @@ export namespace Eog {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
-        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -6248,6 +6346,18 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](): Statusbar;
+
+        // Signals
+
+        connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: Statusbar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            callback: Statusbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Statusbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6716,7 +6826,6 @@ export namespace Eog {
 
     class ThumbNav extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ThumbNav>;
-        declare static readonly __signalSignatures: ThumbNav.SignalSignatures;
 
         // Properties
 
@@ -6742,6 +6851,18 @@ export namespace Eog {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ThumbNav.SignalSignatures>(signal: K, callback: ThumbNav.SignalSignatures[K]): number;
+        connect_after<K extends keyof ThumbNav.SignalSignatures>(
+            signal: K,
+            callback: ThumbNav.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThumbNav.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThumbNav.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7246,7 +7367,6 @@ export namespace Eog {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout, Gtk.Orientable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<ThumbView>;
-        declare static readonly __signalSignatures: ThumbView.SignalSignatures;
 
         // Fields
 
@@ -7259,6 +7379,18 @@ export namespace Eog {
         _init(...args: any[]): void;
 
         static ['new'](): ThumbView;
+
+        // Signals
+
+        connect<K extends keyof ThumbView.SignalSignatures>(signal: K, callback: ThumbView.SignalSignatures[K]): number;
+        connect_after<K extends keyof ThumbView.SignalSignatures>(
+            signal: K,
+            callback: ThumbView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThumbView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThumbView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8035,7 +8167,6 @@ export namespace Eog {
 
     class Transform extends GObject.Object {
         static $gtype: GObject.GType<Transform>;
-        declare static readonly __signalSignatures: Transform.SignalSignatures;
 
         // Constructors
 
@@ -8050,6 +8181,18 @@ export namespace Eog {
         static ['new'](trans: TransformType): Transform;
 
         static rotate_new(degree: number): Transform;
+
+        // Signals
+
+        connect<K extends keyof Transform.SignalSignatures>(signal: K, callback: Transform.SignalSignatures[K]): number;
+        connect_after<K extends keyof Transform.SignalSignatures>(
+            signal: K,
+            callback: Transform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transform.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8093,7 +8236,6 @@ export namespace Eog {
 
     class URIConverter extends GObject.Object {
         static $gtype: GObject.GType<URIConverter>;
-        declare static readonly __signalSignatures: URIConverter.SignalSignatures;
 
         // Properties
 
@@ -8124,6 +8266,21 @@ export namespace Eog {
 
         static ['new'](base_file: Gio.File, img_format: GdkPixbuf.PixbufFormat, format_string: string): URIConverter;
 
+        // Signals
+
+        connect<K extends keyof URIConverter.SignalSignatures>(
+            signal: K,
+            callback: URIConverter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIConverter.SignalSignatures>(
+            signal: K,
+            callback: URIConverter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIConverter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIConverter.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static preview(
@@ -8148,7 +8305,7 @@ export namespace Eog {
         // Signal callback interfaces
 
         interface Prepared {
-            (): void;
+            (_source: Window): void;
         }
 
         // Signal signatures
@@ -8178,7 +8335,6 @@ export namespace Eog {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -8233,12 +8389,6 @@ export namespace Eog {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'prepared', callback: (_source: this) => void): number;
-        connect_after(signal: 'prepared', callback: (_source: this) => void): number;
-        emit(signal: 'prepared'): void;
 
         // Virtual methods
 

@@ -226,11 +226,11 @@ export namespace GnomeBluetooth {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (device: GObject.Object): void;
+            (_source: Client, device: GObject.Object): void;
         }
 
         interface DeviceRemoved {
-            (device: string): void;
+            (_source: Client, device: string): void;
         }
 
         // Signal signatures
@@ -261,7 +261,6 @@ export namespace GnomeBluetooth {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -341,15 +340,6 @@ export namespace GnomeBluetooth {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, device: GObject.Object) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: GObject.Object) => void): number;
-        emit(signal: 'device-added', device: GObject.Object): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: string) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: string) => void): number;
-        emit(signal: 'device-removed', device: string): void;
 
         // Methods
 
@@ -468,7 +458,6 @@ export namespace GnomeBluetooth {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -515,6 +504,12 @@ export namespace GnomeBluetooth {
         constructor(properties?: Partial<Device.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
 
         // Methods
 

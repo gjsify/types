@@ -156,7 +156,6 @@ export namespace ClutterGst {
      */
     class VideoSink extends GstBase.BaseSink implements GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
-        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -194,6 +193,18 @@ export namespace ClutterGst {
         _init(...args: any[]): void;
 
         static ['new'](texture: Clutter.Texture): VideoSink;
+
+        // Signals
+
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: VideoSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoSink.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -723,7 +734,6 @@ export namespace ClutterGst {
             Player
     {
         static $gtype: GObject.GType<VideoTexture>;
-        declare static readonly __signalSignatures: VideoTexture.SignalSignatures;
 
         // Properties
 
@@ -739,6 +749,21 @@ export namespace ClutterGst {
         _init(...args: any[]): void;
 
         static ['new'](): VideoTexture;
+
+        // Signals
+
+        connect<K extends keyof VideoTexture.SignalSignatures>(
+            signal: K,
+            callback: VideoTexture.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoTexture.SignalSignatures>(
+            signal: K,
+            callback: VideoTexture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoTexture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoTexture.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -424,7 +424,6 @@ export namespace AtrilDocument {
 
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
-        declare static readonly __signalSignatures: Annotation.SignalSignatures;
 
         // Properties
 
@@ -451,6 +450,21 @@ export namespace AtrilDocument {
         constructor(properties?: Partial<Annotation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Annotation.SignalSignatures>(
+            signal: K,
+            callback: Annotation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Annotation.SignalSignatures>(
+            signal: K,
+            callback: Annotation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Annotation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Annotation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -563,7 +577,6 @@ export namespace AtrilDocument {
 
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
-        declare static readonly __signalSignatures: AnnotationAttachment.SignalSignatures;
 
         // Properties
 
@@ -577,6 +590,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](page: Page, attachment: Attachment): AnnotationAttachment;
+
+        // Signals
+
+        connect<K extends keyof AnnotationAttachment.SignalSignatures>(
+            signal: K,
+            callback: AnnotationAttachment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(
+            signal: K,
+            callback: AnnotationAttachment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotationAttachment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotationAttachment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -737,7 +765,6 @@ export namespace AtrilDocument {
 
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
-        declare static readonly __signalSignatures: AnnotationText.SignalSignatures;
 
         // Properties
 
@@ -755,6 +782,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](page: Page): AnnotationText;
+
+        // Signals
+
+        connect<K extends keyof AnnotationText.SignalSignatures>(
+            signal: K,
+            callback: AnnotationText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotationText.SignalSignatures>(
+            signal: K,
+            callback: AnnotationText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotationText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotationText.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -920,7 +962,6 @@ export namespace AtrilDocument {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
-        declare static readonly __signalSignatures: Attachment.SignalSignatures;
 
         // Properties
 
@@ -950,6 +991,21 @@ export namespace AtrilDocument {
             data?: any | null,
         ): Attachment;
 
+        // Signals
+
+        connect<K extends keyof Attachment.SignalSignatures>(
+            signal: K,
+            callback: Attachment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Attachment.SignalSignatures>(
+            signal: K,
+            callback: Attachment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Attachment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Attachment.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static error_quark(): GLib.Quark;
@@ -976,7 +1032,6 @@ export namespace AtrilDocument {
 
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
-        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Fields
 
@@ -989,6 +1044,18 @@ export namespace AtrilDocument {
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1140,7 +1207,6 @@ export namespace AtrilDocument {
 
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
-        declare static readonly __signalSignatures: FormField.SignalSignatures;
 
         // Fields
 
@@ -1156,6 +1222,18 @@ export namespace AtrilDocument {
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: FormField.SignalSignatures[K]): number;
+        connect_after<K extends keyof FormField.SignalSignatures>(
+            signal: K,
+            callback: FormField.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormField.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormField.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FormFieldButton {
@@ -1169,7 +1247,6 @@ export namespace AtrilDocument {
 
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
-        declare static readonly __signalSignatures: FormFieldButton.SignalSignatures;
 
         // Fields
 
@@ -1184,6 +1261,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](id: number, type: FormFieldButtonType): FormFieldButton;
+
+        // Signals
+
+        connect<K extends keyof FormFieldButton.SignalSignatures>(
+            signal: K,
+            callback: FormFieldButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormFieldButton.SignalSignatures>(
+            signal: K,
+            callback: FormFieldButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormFieldButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormFieldButton.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FormFieldChoice {
@@ -1197,7 +1289,6 @@ export namespace AtrilDocument {
 
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
-        declare static readonly __signalSignatures: FormFieldChoice.SignalSignatures;
 
         // Fields
 
@@ -1217,6 +1308,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](id: number, type: FormFieldChoiceType): FormFieldChoice;
+
+        // Signals
+
+        connect<K extends keyof FormFieldChoice.SignalSignatures>(
+            signal: K,
+            callback: FormFieldChoice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormFieldChoice.SignalSignatures>(
+            signal: K,
+            callback: FormFieldChoice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormFieldChoice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormFieldChoice.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FormFieldSignature {
@@ -1230,7 +1336,6 @@ export namespace AtrilDocument {
 
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
-        declare static readonly __signalSignatures: FormFieldSignature.SignalSignatures;
 
         // Fields
 
@@ -1243,6 +1348,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](id: number): FormFieldSignature;
+
+        // Signals
+
+        connect<K extends keyof FormFieldSignature.SignalSignatures>(
+            signal: K,
+            callback: FormFieldSignature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormFieldSignature.SignalSignatures>(
+            signal: K,
+            callback: FormFieldSignature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormFieldSignature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormFieldSignature.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FormFieldText {
@@ -1256,7 +1376,6 @@ export namespace AtrilDocument {
 
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
-        declare static readonly __signalSignatures: FormFieldText.SignalSignatures;
 
         // Fields
 
@@ -1277,6 +1396,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](id: number, type: FormFieldTextType): FormFieldText;
+
+        // Signals
+
+        connect<K extends keyof FormFieldText.SignalSignatures>(
+            signal: K,
+            callback: FormFieldText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FormFieldText.SignalSignatures>(
+            signal: K,
+            callback: FormFieldText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormFieldText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormFieldText.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Image {
@@ -1290,7 +1424,6 @@ export namespace AtrilDocument {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Fields
 
@@ -1305,6 +1438,12 @@ export namespace AtrilDocument {
         static ['new'](page: number, img_id: number): Image;
 
         static new_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1325,7 +1464,6 @@ export namespace AtrilDocument {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
-        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Fields
 
@@ -1338,6 +1476,12 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](is_parent: boolean, rb_group: number): Layer;
+
+        // Signals
+
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1359,7 +1503,6 @@ export namespace AtrilDocument {
 
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
-        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -1373,6 +1516,12 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](title: string, action: LinkAction): Link;
+
+        // Signals
+
+        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1403,7 +1552,6 @@ export namespace AtrilDocument {
 
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
-        declare static readonly __signalSignatures: LinkAction.SignalSignatures;
 
         // Properties
 
@@ -1435,6 +1583,21 @@ export namespace AtrilDocument {
         static new_named(name: string): LinkAction;
 
         static new_remote(dest: LinkDest, filename: string): LinkAction;
+
+        // Signals
+
+        connect<K extends keyof LinkAction.SignalSignatures>(
+            signal: K,
+            callback: LinkAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LinkAction.SignalSignatures>(
+            signal: K,
+            callback: LinkAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LinkAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LinkAction.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1468,7 +1631,6 @@ export namespace AtrilDocument {
 
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
-        declare static readonly __signalSignatures: LinkDest.SignalSignatures;
 
         // Properties
 
@@ -1516,6 +1678,18 @@ export namespace AtrilDocument {
             change_zoom: boolean,
         ): LinkDest;
 
+        // Signals
+
+        connect<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: LinkDest.SignalSignatures[K]): number;
+        connect_after<K extends keyof LinkDest.SignalSignatures>(
+            signal: K,
+            callback: LinkDest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LinkDest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LinkDest.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_bottom(): number;
@@ -1540,7 +1714,6 @@ export namespace AtrilDocument {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
-        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Fields
 
@@ -1556,6 +1729,12 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](index: number): Page;
+
+        // Signals
+
+        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
     }
 
     namespace RenderContext {
@@ -1569,7 +1748,6 @@ export namespace AtrilDocument {
 
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
-        declare static readonly __signalSignatures: RenderContext.SignalSignatures;
 
         // Fields
 
@@ -1584,6 +1762,21 @@ export namespace AtrilDocument {
         _init(...args: any[]): void;
 
         static ['new'](page: Page, rotation: number, scale: number): RenderContext;
+
+        // Signals
+
+        connect<K extends keyof RenderContext.SignalSignatures>(
+            signal: K,
+            callback: RenderContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RenderContext.SignalSignatures>(
+            signal: K,
+            callback: RenderContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RenderContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RenderContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1611,7 +1804,6 @@ export namespace AtrilDocument {
 
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
-        declare static readonly __signalSignatures: TransitionEffect.SignalSignatures;
 
         // Properties
 
@@ -1635,6 +1827,21 @@ export namespace AtrilDocument {
         constructor(properties?: Partial<TransitionEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TransitionEffect.SignalSignatures>(
+            signal: K,
+            callback: TransitionEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransitionEffect.SignalSignatures>(
+            signal: K,
+            callback: TransitionEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransitionEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransitionEffect.SignalSignatures[K]>
+        ): void;
     }
 
     type AnnotationAttachmentClass = typeof AnnotationAttachment;

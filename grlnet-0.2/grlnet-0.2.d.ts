@@ -92,7 +92,6 @@ export namespace GrlNet {
 
     class Wc extends GObject.Object {
         static $gtype: GObject.GType<Wc>;
-        declare static readonly __signalSignatures: Wc.SignalSignatures;
 
         // Properties
 
@@ -118,6 +117,12 @@ export namespace GrlNet {
         _init(...args: any[]): void;
 
         static ['new'](): Wc;
+
+        // Signals
+
+        connect<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
+        connect_after<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
+        emit<K extends keyof Wc.SignalSignatures>(signal: K, ...args: Parameters<Wc.SignalSignatures[K]>): void;
 
         // Static methods
 

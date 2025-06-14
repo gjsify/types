@@ -54,7 +54,6 @@ export namespace Spelling {
      */
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
-        declare static readonly __signalSignatures: Checker.SignalSignatures;
 
         // Properties
 
@@ -81,6 +80,18 @@ export namespace Spelling {
         _init(...args: any[]): void;
 
         static ['new'](provider?: Provider | null, language?: string | null): Checker;
+
+        // Signals
+
+        connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            callback: Checker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Checker.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -155,7 +166,6 @@ export namespace Spelling {
      */
     abstract class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
-        declare static readonly __signalSignatures: Dictionary.SignalSignatures;
 
         // Properties
 
@@ -169,6 +179,21 @@ export namespace Spelling {
         constructor(properties?: Partial<Dictionary.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Dictionary.SignalSignatures>(
+            signal: K,
+            callback: Dictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Dictionary.SignalSignatures>(
+            signal: K,
+            callback: Dictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Dictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Dictionary.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -226,7 +251,6 @@ export namespace Spelling {
      */
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
-        declare static readonly __signalSignatures: Language.SignalSignatures;
 
         // Properties
 
@@ -248,6 +272,18 @@ export namespace Spelling {
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect_after<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            callback: Language.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Language.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -285,7 +321,6 @@ export namespace Spelling {
      */
     abstract class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
-        declare static readonly __signalSignatures: Provider.SignalSignatures;
 
         // Properties
 
@@ -303,6 +338,18 @@ export namespace Spelling {
         constructor(properties?: Partial<Provider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: Provider.SignalSignatures[K]): number;
+        connect_after<K extends keyof Provider.SignalSignatures>(
+            signal: K,
+            callback: Provider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Provider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Provider.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -364,7 +411,6 @@ export namespace Spelling {
      */
     class TextBufferAdapter extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<TextBufferAdapter>;
-        declare static readonly __signalSignatures: TextBufferAdapter.SignalSignatures;
 
         // Properties
 
@@ -395,6 +441,21 @@ export namespace Spelling {
         _init(...args: any[]): void;
 
         static ['new'](buffer: GtkSource.Buffer, checker: Checker): TextBufferAdapter;
+
+        // Signals
+
+        connect<K extends keyof TextBufferAdapter.SignalSignatures>(
+            signal: K,
+            callback: TextBufferAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextBufferAdapter.SignalSignatures>(
+            signal: K,
+            callback: TextBufferAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextBufferAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextBufferAdapter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

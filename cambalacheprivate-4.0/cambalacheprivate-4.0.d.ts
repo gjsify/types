@@ -46,13 +46,27 @@ export namespace CambalachePrivate {
 
     class BuilderScope extends Gtk.BuilderCScope implements Gtk.BuilderScope {
         static $gtype: GObject.GType<BuilderScope>;
-        declare static readonly __signalSignatures: BuilderScope.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BuilderScope.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BuilderScope.SignalSignatures>(
+            signal: K,
+            callback: BuilderScope.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuilderScope.SignalSignatures>(
+            signal: K,
+            callback: BuilderScope.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuilderScope.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuilderScope.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

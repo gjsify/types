@@ -256,23 +256,23 @@ export namespace GtkSource {
         // Signal callback interfaces
 
         interface BracketMatched {
-            (iter: Gtk.TextIter, state: unknown): void;
+            (_source: Buffer, iter: Gtk.TextIter, state: unknown): void;
         }
 
         interface HighlightUpdated {
-            (object: Gtk.TextIter, p0: Gtk.TextIter): void;
+            (_source: Buffer, object: Gtk.TextIter, p0: Gtk.TextIter): void;
         }
 
         interface Redo {
-            (): void;
+            (_source: Buffer): void;
         }
 
         interface SourceMarkUpdated {
-            (object: Gtk.TextMark): void;
+            (_source: Buffer, object: Gtk.TextMark): void;
         }
 
         interface Undo {
-            (): void;
+            (_source: Buffer): void;
         }
 
         // Signal signatures
@@ -307,7 +307,6 @@ export namespace GtkSource {
 
     class Buffer extends Gtk.TextBuffer {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -383,36 +382,6 @@ export namespace GtkSource {
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'bracket-matched',
-            callback: (_source: this, iter: Gtk.TextIter, state: unknown) => void,
-        ): number;
-        connect_after(
-            signal: 'bracket-matched',
-            callback: (_source: this, iter: Gtk.TextIter, state: unknown) => void,
-        ): number;
-        emit(signal: 'bracket-matched', iter: Gtk.TextIter, state: unknown): void;
-        connect(
-            signal: 'highlight-updated',
-            callback: (_source: this, object: Gtk.TextIter, p0: Gtk.TextIter) => void,
-        ): number;
-        connect_after(
-            signal: 'highlight-updated',
-            callback: (_source: this, object: Gtk.TextIter, p0: Gtk.TextIter) => void,
-        ): number;
-        emit(signal: 'highlight-updated', object: Gtk.TextIter, p0: Gtk.TextIter): void;
-        connect(signal: 'redo', callback: (_source: this) => void): number;
-        connect_after(signal: 'redo', callback: (_source: this) => void): number;
-        emit(signal: 'redo'): void;
-        connect(signal: 'source-mark-updated', callback: (_source: this, object: Gtk.TextMark) => void): number;
-        connect_after(signal: 'source-mark-updated', callback: (_source: this, object: Gtk.TextMark) => void): number;
-        emit(signal: 'source-mark-updated', object: Gtk.TextMark): void;
-        connect(signal: 'undo', callback: (_source: this) => void): number;
-        connect_after(signal: 'undo', callback: (_source: this) => void): number;
-        emit(signal: 'undo'): void;
 
         // Virtual methods
 
@@ -661,27 +630,27 @@ export namespace GtkSource {
         // Signal callback interfaces
 
         interface ActivateProposal {
-            (): void;
+            (_source: Completion): void;
         }
 
         interface Hide {
-            (): void;
+            (_source: Completion): void;
         }
 
         interface MoveCursor {
-            (step: Gtk.ScrollStep, num: number): void;
+            (_source: Completion, step: Gtk.ScrollStep, num: number): void;
         }
 
         interface MovePage {
-            (step: Gtk.ScrollStep, num: number): void;
+            (_source: Completion, step: Gtk.ScrollStep, num: number): void;
         }
 
         interface PopulateContext {
-            (context: CompletionContext): void;
+            (_source: Completion, context: CompletionContext): void;
         }
 
         interface Show {
-            (): void;
+            (_source: Completion): void;
         }
 
         // Signal signatures
@@ -718,7 +687,6 @@ export namespace GtkSource {
 
     class Completion extends Gtk.Object {
         static $gtype: GObject.GType<Completion>;
-        declare static readonly __signalSignatures: Completion.SignalSignatures;
 
         // Properties
 
@@ -834,36 +802,6 @@ export namespace GtkSource {
             signal: K,
             ...args: Parameters<Completion.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate-proposal', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate-proposal', callback: (_source: this) => void): number;
-        emit(signal: 'activate-proposal'): void;
-        connect(signal: 'hide', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide', callback: (_source: this) => void): number;
-        emit(signal: 'hide'): void;
-        connect(signal: 'move-cursor', callback: (_source: this, step: Gtk.ScrollStep, num: number) => void): number;
-        connect_after(
-            signal: 'move-cursor',
-            callback: (_source: this, step: Gtk.ScrollStep, num: number) => void,
-        ): number;
-        emit(signal: 'move-cursor', step: Gtk.ScrollStep, num: number): void;
-        connect(signal: 'move-page', callback: (_source: this, step: Gtk.ScrollStep, num: number) => void): number;
-        connect_after(
-            signal: 'move-page',
-            callback: (_source: this, step: Gtk.ScrollStep, num: number) => void,
-        ): number;
-        emit(signal: 'move-page', step: Gtk.ScrollStep, num: number): void;
-        connect(signal: 'populate-context', callback: (_source: this, context: CompletionContext) => void): number;
-        connect_after(
-            signal: 'populate-context',
-            callback: (_source: this, context: CompletionContext) => void,
-        ): number;
-        emit(signal: 'populate-context', context: CompletionContext): void;
-        connect(signal: 'show', callback: (_source: this) => void): number;
-        connect_after(signal: 'show', callback: (_source: this) => void): number;
-        emit(signal: 'show'): void;
 
         // Static methods
 
@@ -937,7 +875,7 @@ export namespace GtkSource {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: CompletionContext): void;
         }
 
         // Signal signatures
@@ -955,7 +893,6 @@ export namespace GtkSource {
 
     class CompletionContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<CompletionContext>;
-        declare static readonly __signalSignatures: CompletionContext.SignalSignatures;
 
         // Properties
 
@@ -989,12 +926,6 @@ export namespace GtkSource {
             signal: K,
             ...args: Parameters<CompletionContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
 
         // Virtual methods
 
@@ -1019,7 +950,7 @@ export namespace GtkSource {
         // Signal callback interfaces
 
         interface BeforeShow {
-            (): void;
+            (_source: CompletionInfo): void;
         }
 
         // Signal signatures
@@ -1046,7 +977,6 @@ export namespace GtkSource {
 
     class CompletionInfo extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CompletionInfo>;
-        declare static readonly __signalSignatures: CompletionInfo.SignalSignatures;
 
         // Properties
 
@@ -1089,12 +1019,6 @@ export namespace GtkSource {
             signal: K,
             ...args: Parameters<CompletionInfo.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'before-show', callback: (_source: this) => void): number;
-        connect_after(signal: 'before-show', callback: (_source: this) => void): number;
-        emit(signal: 'before-show'): void;
 
         // Virtual methods
 
@@ -1596,7 +1520,6 @@ export namespace GtkSource {
 
     class CompletionItem extends GObject.Object implements CompletionProposal {
         static $gtype: GObject.GType<CompletionItem>;
-        declare static readonly __signalSignatures: CompletionItem.SignalSignatures;
 
         // Properties
 
@@ -1647,6 +1570,21 @@ export namespace GtkSource {
             icon?: GdkPixbuf.Pixbuf | null,
             info?: string | null,
         ): CompletionItem;
+
+        // Signals
+
+        connect<K extends keyof CompletionItem.SignalSignatures>(
+            signal: K,
+            callback: CompletionItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionItem.SignalSignatures>(
+            signal: K,
+            callback: CompletionItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2192,11 +2130,11 @@ export namespace GtkSource {
         // Signal callback interfaces
 
         interface CellActivated {
-            (renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event): void;
+            (_source: Gutter, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event): void;
         }
 
         interface QueryTooltip {
-            (renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): boolean;
+            (_source: Gutter, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): boolean;
         }
 
         // Signal signatures
@@ -2216,7 +2154,6 @@ export namespace GtkSource {
 
     class Gutter extends GObject.Object {
         static $gtype: GObject.GType<Gutter>;
-        declare static readonly __signalSignatures: Gutter.SignalSignatures;
 
         // Properties
 
@@ -2244,27 +2181,6 @@ export namespace GtkSource {
         connect<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
         connect_after<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
         emit<K extends keyof Gutter.SignalSignatures>(signal: K, ...args: Parameters<Gutter.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'cell-activated',
-            callback: (_source: this, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event) => void,
-        ): number;
-        connect_after(
-            signal: 'cell-activated',
-            callback: (_source: this, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event) => void,
-        ): number;
-        emit(signal: 'cell-activated', renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event): void;
-        connect(
-            signal: 'query-tooltip',
-            callback: (_source: this, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip) => boolean,
-        ): number;
-        connect_after(
-            signal: 'query-tooltip',
-            callback: (_source: this, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip) => boolean,
-        ): number;
-        emit(signal: 'query-tooltip', renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): void;
 
         // Virtual methods
 
@@ -2338,7 +2254,6 @@ export namespace GtkSource {
 
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
-        declare static readonly __signalSignatures: Language.SignalSignatures;
 
         // Properties
 
@@ -2352,6 +2267,18 @@ export namespace GtkSource {
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect_after<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            callback: Language.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Language.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2408,7 +2335,6 @@ export namespace GtkSource {
 
     class LanguageManager extends GObject.Object {
         static $gtype: GObject.GType<LanguageManager>;
-        declare static readonly __signalSignatures: LanguageManager.SignalSignatures;
 
         // Properties
 
@@ -2426,6 +2352,21 @@ export namespace GtkSource {
         _init(...args: any[]): void;
 
         static ['new'](): LanguageManager;
+
+        // Signals
+
+        connect<K extends keyof LanguageManager.SignalSignatures>(
+            signal: K,
+            callback: LanguageManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LanguageManager.SignalSignatures>(
+            signal: K,
+            callback: LanguageManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LanguageManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LanguageManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2515,7 +2456,6 @@ export namespace GtkSource {
 
     class Mark extends Gtk.TextMark {
         static $gtype: GObject.GType<Mark>;
-        declare static readonly __signalSignatures: Mark.SignalSignatures;
 
         // Properties
 
@@ -2535,6 +2475,12 @@ export namespace GtkSource {
         // Conflicted with Gtk.TextMark.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
+        emit<K extends keyof Mark.SignalSignatures>(signal: K, ...args: Parameters<Mark.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2580,7 +2526,6 @@ export namespace GtkSource {
 
     class PrintCompositor extends GObject.Object {
         static $gtype: GObject.GType<PrintCompositor>;
-        declare static readonly __signalSignatures: PrintCompositor.SignalSignatures;
 
         // Properties
 
@@ -2826,6 +2771,21 @@ export namespace GtkSource {
         static ['new'](buffer: Buffer): PrintCompositor;
 
         static new_from_view(view: View): PrintCompositor;
+
+        // Signals
+
+        connect<K extends keyof PrintCompositor.SignalSignatures>(
+            signal: K,
+            callback: PrintCompositor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintCompositor.SignalSignatures>(
+            signal: K,
+            callback: PrintCompositor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintCompositor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintCompositor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3271,7 +3231,6 @@ export namespace GtkSource {
 
     class Style extends GObject.Object {
         static $gtype: GObject.GType<Style>;
-        declare static readonly __signalSignatures: Style.SignalSignatures;
 
         // Properties
 
@@ -3303,6 +3262,12 @@ export namespace GtkSource {
         constructor(properties?: Partial<Style.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
+        connect_after<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
+        emit<K extends keyof Style.SignalSignatures>(signal: K, ...args: Parameters<Style.SignalSignatures[K]>): void;
     }
 
     namespace StyleScheme {
@@ -3321,7 +3286,6 @@ export namespace GtkSource {
 
     class StyleScheme extends GObject.Object {
         static $gtype: GObject.GType<StyleScheme>;
-        declare static readonly __signalSignatures: StyleScheme.SignalSignatures;
 
         // Properties
 
@@ -3350,6 +3314,21 @@ export namespace GtkSource {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof StyleScheme.SignalSignatures>(
+            signal: K,
+            callback: StyleScheme.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StyleScheme.SignalSignatures>(
+            signal: K,
+            callback: StyleScheme.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StyleScheme.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StyleScheme.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_authors(): string[];
@@ -3375,7 +3354,6 @@ export namespace GtkSource {
 
     class StyleSchemeManager extends GObject.Object {
         static $gtype: GObject.GType<StyleSchemeManager>;
-        declare static readonly __signalSignatures: StyleSchemeManager.SignalSignatures;
 
         // Properties
 
@@ -3393,6 +3371,21 @@ export namespace GtkSource {
         _init(...args: any[]): void;
 
         static ['new'](): StyleSchemeManager;
+
+        // Signals
+
+        connect<K extends keyof StyleSchemeManager.SignalSignatures>(
+            signal: K,
+            callback: StyleSchemeManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StyleSchemeManager.SignalSignatures>(
+            signal: K,
+            callback: StyleSchemeManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StyleSchemeManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StyleSchemeManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3446,31 +3439,31 @@ export namespace GtkSource {
         // Signal callback interfaces
 
         interface LineMarkActivated {
-            (iter: Gtk.TextIter, event: Gdk.Event): void;
+            (_source: View, iter: Gtk.TextIter, event: Gdk.Event): void;
         }
 
         interface MoveLines {
-            (copy: boolean, count: number): void;
+            (_source: View, copy: boolean, count: number): void;
         }
 
         interface MoveWords {
-            (count: number): void;
+            (_source: View, count: number): void;
         }
 
         interface Redo {
-            (): void;
+            (_source: View): void;
         }
 
         interface ShowCompletion {
-            (): void;
+            (_source: View): void;
         }
 
         interface SmartHomeEnd {
-            (iter: Gtk.TextIter, count: number): void;
+            (_source: View, iter: Gtk.TextIter, count: number): void;
         }
 
         interface Undo {
-            (): void;
+            (_source: View): void;
         }
 
         // Signal signatures
@@ -3516,7 +3509,6 @@ export namespace GtkSource {
 
     class View extends Gtk.TextView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -3613,39 +3605,6 @@ export namespace GtkSource {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'line-mark-activated',
-            callback: (_source: this, iter: Gtk.TextIter, event: Gdk.Event) => void,
-        ): number;
-        connect_after(
-            signal: 'line-mark-activated',
-            callback: (_source: this, iter: Gtk.TextIter, event: Gdk.Event) => void,
-        ): number;
-        emit(signal: 'line-mark-activated', iter: Gtk.TextIter, event: Gdk.Event): void;
-        connect(signal: 'move-lines', callback: (_source: this, copy: boolean, count: number) => void): number;
-        connect_after(signal: 'move-lines', callback: (_source: this, copy: boolean, count: number) => void): number;
-        emit(signal: 'move-lines', copy: boolean, count: number): void;
-        connect(signal: 'move-words', callback: (_source: this, count: number) => void): number;
-        connect_after(signal: 'move-words', callback: (_source: this, count: number) => void): number;
-        emit(signal: 'move-words', count: number): void;
-        connect(signal: 'redo', callback: (_source: this) => void): number;
-        connect_after(signal: 'redo', callback: (_source: this) => void): number;
-        emit(signal: 'redo'): void;
-        connect(signal: 'show-completion', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-completion', callback: (_source: this) => void): number;
-        emit(signal: 'show-completion'): void;
-        connect(signal: 'smart-home-end', callback: (_source: this, iter: Gtk.TextIter, count: number) => void): number;
-        connect_after(
-            signal: 'smart-home-end',
-            callback: (_source: this, iter: Gtk.TextIter, count: number) => void,
-        ): number;
-        emit(signal: 'smart-home-end', iter: Gtk.TextIter, count: number): void;
-        connect(signal: 'undo', callback: (_source: this) => void): number;
-        connect_after(signal: 'undo', callback: (_source: this) => void): number;
-        emit(signal: 'undo'): void;
 
         // Virtual methods
 

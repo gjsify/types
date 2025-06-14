@@ -192,7 +192,6 @@ export namespace GstNet {
      */
     class NetClientClock extends Gst.SystemClock {
         static $gtype: GObject.GType<NetClientClock>;
-        declare static readonly __signalSignatures: NetClientClock.SignalSignatures;
 
         // Properties
 
@@ -235,6 +234,21 @@ export namespace GstNet {
             remote_port: number,
             base_time: Gst.ClockTime,
         ): NetClientClock;
+
+        // Signals
+
+        connect<K extends keyof NetClientClock.SignalSignatures>(
+            signal: K,
+            callback: NetClientClock.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetClientClock.SignalSignatures>(
+            signal: K,
+            callback: NetClientClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetClientClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetClientClock.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NetTimeProvider {
@@ -266,7 +280,6 @@ export namespace GstNet {
      */
     class NetTimeProvider extends Gst.Object implements Gio.Initable {
         static $gtype: GObject.GType<NetTimeProvider>;
-        declare static readonly __signalSignatures: NetTimeProvider.SignalSignatures;
 
         // Properties
 
@@ -287,6 +300,21 @@ export namespace GstNet {
         _init(...args: any[]): void;
 
         static ['new'](clock: Gst.Clock, address: string | null, port: number): NetTimeProvider;
+
+        // Signals
+
+        connect<K extends keyof NetTimeProvider.SignalSignatures>(
+            signal: K,
+            callback: NetTimeProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetTimeProvider.SignalSignatures>(
+            signal: K,
+            callback: NetTimeProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetTimeProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetTimeProvider.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -828,7 +856,6 @@ export namespace GstNet {
 
     class NtpClock extends NetClientClock {
         static $gtype: GObject.GType<NtpClock>;
-        declare static readonly __signalSignatures: NtpClock.SignalSignatures;
 
         // Fields
 
@@ -846,6 +873,18 @@ export namespace GstNet {
             remote_port: number,
             base_time: Gst.ClockTime,
         ): NtpClock;
+
+        // Signals
+
+        connect<K extends keyof NtpClock.SignalSignatures>(signal: K, callback: NtpClock.SignalSignatures[K]): number;
+        connect_after<K extends keyof NtpClock.SignalSignatures>(
+            signal: K,
+            callback: NtpClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NtpClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NtpClock.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PtpClock {
@@ -890,7 +929,6 @@ export namespace GstNet {
      */
     class PtpClock extends Gst.SystemClock {
         static $gtype: GObject.GType<PtpClock>;
-        declare static readonly __signalSignatures: PtpClock.SignalSignatures;
 
         // Properties
 
@@ -913,6 +951,18 @@ export namespace GstNet {
         _init(...args: any[]): void;
 
         static ['new'](name: string | null, domain: number): PtpClock;
+
+        // Signals
+
+        connect<K extends keyof PtpClock.SignalSignatures>(signal: K, callback: PtpClock.SignalSignatures[K]): number;
+        connect_after<K extends keyof PtpClock.SignalSignatures>(
+            signal: K,
+            callback: PtpClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PtpClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PtpClock.SignalSignatures[K]>
+        ): void;
     }
 
     /**

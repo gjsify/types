@@ -54,7 +54,6 @@ export namespace EpcUi {
      */
     class PasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PasswordDialog>;
-        declare static readonly __signalSignatures: PasswordDialog.SignalSignatures;
 
         // Properties
 
@@ -76,6 +75,21 @@ export namespace EpcUi {
         constructor(properties?: Partial<PasswordDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PasswordDialog.SignalSignatures>(
+            signal: K,
+            callback: PasswordDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PasswordDialog.SignalSignatures>(
+            signal: K,
+            callback: PasswordDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PasswordDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PasswordDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -554,7 +568,6 @@ export namespace EpcUi {
      */
     class ProgressWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ProgressWindow>;
-        declare static readonly __signalSignatures: ProgressWindow.SignalSignatures;
 
         // Properties
 
@@ -575,6 +588,21 @@ export namespace EpcUi {
         // Conflicted with Gtk.Window.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ProgressWindow.SignalSignatures>(
+            signal: K,
+            callback: ProgressWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProgressWindow.SignalSignatures>(
+            signal: K,
+            callback: ProgressWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProgressWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProgressWindow.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

@@ -75,7 +75,6 @@ export namespace GtkVnc {
 
     class CairoFramebuffer extends GVnc.BaseFramebuffer implements GVnc.Framebuffer {
         static $gtype: GObject.GType<CairoFramebuffer>;
-        declare static readonly __signalSignatures: CairoFramebuffer.SignalSignatures;
 
         // Properties
 
@@ -91,6 +90,21 @@ export namespace GtkVnc {
         // Conflicted with GVnc.BaseFramebuffer.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CairoFramebuffer.SignalSignatures>(
+            signal: K,
+            callback: CairoFramebuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CairoFramebuffer.SignalSignatures>(
+            signal: K,
+            callback: CairoFramebuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CairoFramebuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CairoFramebuffer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -718,71 +732,71 @@ export namespace GtkVnc {
         // Signal callback interfaces
 
         interface VncAuthCredential {
-            (object: GObject.ValueArray): void;
+            (_source: Display, object: GObject.ValueArray): void;
         }
 
         interface VncAuthFailure {
-            (object: string): void;
+            (_source: Display, object: string): void;
         }
 
         interface VncAuthUnsupported {
-            (object: number): void;
+            (_source: Display, object: number): void;
         }
 
         interface VncBell {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncConnected {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncDesktopRename {
-            (object: string): void;
+            (_source: Display, object: string): void;
         }
 
         interface VncDesktopResize {
-            (object: number, p0: number): void;
+            (_source: Display, object: number, p0: number): void;
         }
 
         interface VncDisconnected {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncError {
-            (object: string): void;
+            (_source: Display, object: string): void;
         }
 
         interface VncInitialized {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncKeyboardGrab {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncKeyboardUngrab {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncPointerGrab {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncPointerUngrab {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncPowerControlFailed {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncPowerControlInitialized {
-            (): void;
+            (_source: Display): void;
         }
 
         interface VncServerCutText {
-            (object: string): void;
+            (_source: Display, object: string): void;
         }
 
         // Signal signatures
@@ -847,7 +861,6 @@ export namespace GtkVnc {
 
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
-        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -927,66 +940,6 @@ export namespace GtkVnc {
             signal: K,
             ...args: Parameters<Display.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'vnc-auth-credential', callback: (_source: this, object: GObject.ValueArray) => void): number;
-        connect_after(
-            signal: 'vnc-auth-credential',
-            callback: (_source: this, object: GObject.ValueArray) => void,
-        ): number;
-        emit(signal: 'vnc-auth-credential', object: GObject.ValueArray): void;
-        connect(signal: 'vnc-auth-failure', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-auth-failure', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-auth-failure', object: string): void;
-        connect(signal: 'vnc-auth-unsupported', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'vnc-auth-unsupported', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'vnc-auth-unsupported', object: number): void;
-        connect(signal: 'vnc-bell', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-bell', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-bell'): void;
-        connect(signal: 'vnc-connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-connected', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-connected'): void;
-        connect(signal: 'vnc-desktop-rename', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-desktop-rename', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-desktop-rename', object: string): void;
-        connect(signal: 'vnc-desktop-resize', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(
-            signal: 'vnc-desktop-resize',
-            callback: (_source: this, object: number, p0: number) => void,
-        ): number;
-        emit(signal: 'vnc-desktop-resize', object: number, p0: number): void;
-        connect(signal: 'vnc-disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-disconnected'): void;
-        connect(signal: 'vnc-error', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-error', object: string): void;
-        connect(signal: 'vnc-initialized', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-initialized', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-initialized'): void;
-        connect(signal: 'vnc-keyboard-grab', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-keyboard-grab', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-keyboard-grab'): void;
-        connect(signal: 'vnc-keyboard-ungrab', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-keyboard-ungrab', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-keyboard-ungrab'): void;
-        connect(signal: 'vnc-pointer-grab', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-pointer-grab', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-pointer-grab'): void;
-        connect(signal: 'vnc-pointer-ungrab', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-pointer-ungrab', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-pointer-ungrab'): void;
-        connect(signal: 'vnc-power-control-failed', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-power-control-failed', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-power-control-failed'): void;
-        connect(signal: 'vnc-power-control-initialized', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-power-control-initialized', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-power-control-initialized'): void;
-        connect(signal: 'vnc-server-cut-text', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-server-cut-text', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-server-cut-text', object: string): void;
 
         // Static methods
 

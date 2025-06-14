@@ -29,13 +29,18 @@ export namespace DBusGLib {
 
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Proxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
     }
 
     class Connection {

@@ -899,13 +899,24 @@ export namespace Gsk {
      */
     class BlendNode extends RenderNode {
         static $gtype: GObject.GType<BlendNode>;
-        declare static readonly __signalSignatures: BlendNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](bottom: RenderNode, top: RenderNode, blend_mode: BlendMode): BlendNode;
+
+        // Signals
+
+        connect<K extends keyof BlendNode.SignalSignatures>(signal: K, callback: BlendNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof BlendNode.SignalSignatures>(
+            signal: K,
+            callback: BlendNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BlendNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BlendNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -936,13 +947,24 @@ export namespace Gsk {
      */
     class BlurNode extends RenderNode {
         static $gtype: GObject.GType<BlurNode>;
-        declare static readonly __signalSignatures: BlurNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, radius: number): BlurNode;
+
+        // Signals
+
+        connect<K extends keyof BlurNode.SignalSignatures>(signal: K, callback: BlurNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof BlurNode.SignalSignatures>(
+            signal: K,
+            callback: BlurNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BlurNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BlurNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -968,13 +990,27 @@ export namespace Gsk {
      */
     class BorderNode extends RenderNode {
         static $gtype: GObject.GType<BorderNode>;
-        declare static readonly __signalSignatures: BorderNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](outline: RoundedRect, border_width: number[], border_color: Gdk.RGBA[]): BorderNode;
+
+        // Signals
+
+        connect<K extends keyof BorderNode.SignalSignatures>(
+            signal: K,
+            callback: BorderNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BorderNode.SignalSignatures>(
+            signal: K,
+            callback: BorderNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BorderNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BorderNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1011,7 +1047,6 @@ export namespace Gsk {
      */
     class BroadwayRenderer extends Renderer {
         static $gtype: GObject.GType<BroadwayRenderer>;
-        declare static readonly __signalSignatures: BroadwayRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1020,6 +1055,21 @@ export namespace Gsk {
         _init(...args: any[]): void;
 
         static ['new'](): BroadwayRenderer;
+
+        // Signals
+
+        connect<K extends keyof BroadwayRenderer.SignalSignatures>(
+            signal: K,
+            callback: BroadwayRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BroadwayRenderer.SignalSignatures>(
+            signal: K,
+            callback: BroadwayRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BroadwayRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BroadwayRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CairoNode {
@@ -1032,13 +1082,24 @@ export namespace Gsk {
      */
     class CairoNode extends RenderNode {
         static $gtype: GObject.GType<CairoNode>;
-        declare static readonly __signalSignatures: CairoNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](bounds: Graphene.Rect): CairoNode;
+
+        // Signals
+
+        connect<K extends keyof CairoNode.SignalSignatures>(signal: K, callback: CairoNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof CairoNode.SignalSignatures>(
+            signal: K,
+            callback: CairoNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CairoNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CairoNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1075,7 +1136,6 @@ export namespace Gsk {
      */
     class CairoRenderer extends Renderer {
         static $gtype: GObject.GType<CairoRenderer>;
-        declare static readonly __signalSignatures: CairoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1084,6 +1144,21 @@ export namespace Gsk {
         _init(...args: any[]): void;
 
         static ['new'](): CairoRenderer;
+
+        // Signals
+
+        connect<K extends keyof CairoRenderer.SignalSignatures>(
+            signal: K,
+            callback: CairoRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CairoRenderer.SignalSignatures>(
+            signal: K,
+            callback: CairoRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CairoRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CairoRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ClipNode {
@@ -1096,13 +1171,24 @@ export namespace Gsk {
      */
     class ClipNode extends RenderNode {
         static $gtype: GObject.GType<ClipNode>;
-        declare static readonly __signalSignatures: ClipNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, clip: Graphene.Rect): ClipNode;
+
+        // Signals
+
+        connect<K extends keyof ClipNode.SignalSignatures>(signal: K, callback: ClipNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClipNode.SignalSignatures>(
+            signal: K,
+            callback: ClipNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClipNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClipNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1128,13 +1214,27 @@ export namespace Gsk {
      */
     class ColorMatrixNode extends RenderNode {
         static $gtype: GObject.GType<ColorMatrixNode>;
-        declare static readonly __signalSignatures: ColorMatrixNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, color_matrix: Graphene.Matrix, color_offset: Graphene.Vec4): ColorMatrixNode;
+
+        // Signals
+
+        connect<K extends keyof ColorMatrixNode.SignalSignatures>(
+            signal: K,
+            callback: ColorMatrixNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorMatrixNode.SignalSignatures>(
+            signal: K,
+            callback: ColorMatrixNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorMatrixNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorMatrixNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1165,13 +1265,24 @@ export namespace Gsk {
      */
     class ColorNode extends RenderNode {
         static $gtype: GObject.GType<ColorNode>;
-        declare static readonly __signalSignatures: ColorNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](rgba: Gdk.RGBA, bounds: Graphene.Rect): ColorNode;
+
+        // Signals
+
+        connect<K extends keyof ColorNode.SignalSignatures>(signal: K, callback: ColorNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof ColorNode.SignalSignatures>(
+            signal: K,
+            callback: ColorNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1195,7 +1306,6 @@ export namespace Gsk {
      */
     class ConicGradientNode extends RenderNode {
         static $gtype: GObject.GType<ConicGradientNode>;
-        declare static readonly __signalSignatures: ConicGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -1207,6 +1317,21 @@ export namespace Gsk {
             rotation: number,
             color_stops: ColorStop[],
         ): ConicGradientNode;
+
+        // Signals
+
+        connect<K extends keyof ConicGradientNode.SignalSignatures>(
+            signal: K,
+            callback: ConicGradientNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConicGradientNode.SignalSignatures>(
+            signal: K,
+            callback: ConicGradientNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConicGradientNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConicGradientNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1252,13 +1377,27 @@ export namespace Gsk {
      */
     class ContainerNode extends RenderNode {
         static $gtype: GObject.GType<ContainerNode>;
-        declare static readonly __signalSignatures: ContainerNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](children: RenderNode[]): ContainerNode;
+
+        // Signals
+
+        connect<K extends keyof ContainerNode.SignalSignatures>(
+            signal: K,
+            callback: ContainerNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContainerNode.SignalSignatures>(
+            signal: K,
+            callback: ContainerNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContainerNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContainerNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1285,13 +1424,27 @@ export namespace Gsk {
      */
     class CrossFadeNode extends RenderNode {
         static $gtype: GObject.GType<CrossFadeNode>;
-        declare static readonly __signalSignatures: CrossFadeNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](start: RenderNode, end: RenderNode, progress: number): CrossFadeNode;
+
+        // Signals
+
+        connect<K extends keyof CrossFadeNode.SignalSignatures>(
+            signal: K,
+            callback: CrossFadeNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CrossFadeNode.SignalSignatures>(
+            signal: K,
+            callback: CrossFadeNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CrossFadeNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CrossFadeNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1323,13 +1476,24 @@ export namespace Gsk {
      */
     class DebugNode extends RenderNode {
         static $gtype: GObject.GType<DebugNode>;
-        declare static readonly __signalSignatures: DebugNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, message: string): DebugNode;
+
+        // Signals
+
+        connect<K extends keyof DebugNode.SignalSignatures>(signal: K, callback: DebugNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof DebugNode.SignalSignatures>(
+            signal: K,
+            callback: DebugNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DebugNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DebugNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1356,13 +1520,24 @@ export namespace Gsk {
      */
     class FillNode extends RenderNode {
         static $gtype: GObject.GType<FillNode>;
-        declare static readonly __signalSignatures: FillNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, path: Path, fill_rule: FillRule): FillNode;
+
+        // Signals
+
+        connect<K extends keyof FillNode.SignalSignatures>(signal: K, callback: FillNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof FillNode.SignalSignatures>(
+            signal: K,
+            callback: FillNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FillNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FillNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1400,7 +1575,6 @@ export namespace Gsk {
      */
     class GLRenderer extends Renderer {
         static $gtype: GObject.GType<GLRenderer>;
-        declare static readonly __signalSignatures: GLRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1409,6 +1583,21 @@ export namespace Gsk {
         _init(...args: any[]): void;
 
         static ['new'](): GLRenderer;
+
+        // Signals
+
+        connect<K extends keyof GLRenderer.SignalSignatures>(
+            signal: K,
+            callback: GLRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLRenderer.SignalSignatures>(
+            signal: K,
+            callback: GLRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLShader {
@@ -1539,7 +1728,6 @@ export namespace Gsk {
      */
     class GLShader extends GObject.Object {
         static $gtype: GObject.GType<GLShader>;
-        declare static readonly __signalSignatures: GLShader.SignalSignatures;
 
         // Properties
 
@@ -1564,6 +1752,18 @@ export namespace Gsk {
         static new_from_bytes(sourcecode: GLib.Bytes | Uint8Array): GLShader;
 
         static new_from_resource(resource_path: string): GLShader;
+
+        // Signals
+
+        connect<K extends keyof GLShader.SignalSignatures>(signal: K, callback: GLShader.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLShader.SignalSignatures>(
+            signal: K,
+            callback: GLShader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLShader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLShader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1714,7 +1914,6 @@ export namespace Gsk {
      */
     class GLShaderNode extends RenderNode {
         static $gtype: GObject.GType<GLShaderNode>;
-        declare static readonly __signalSignatures: GLShaderNode.SignalSignatures;
 
         // Constructors
 
@@ -1726,6 +1925,21 @@ export namespace Gsk {
             args: GLib.Bytes | Uint8Array,
             children?: RenderNode[] | null,
         ): GLShaderNode;
+
+        // Signals
+
+        connect<K extends keyof GLShaderNode.SignalSignatures>(
+            signal: K,
+            callback: GLShaderNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLShaderNode.SignalSignatures>(
+            signal: K,
+            callback: GLShaderNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLShaderNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLShaderNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1762,7 +1976,6 @@ export namespace Gsk {
      */
     class InsetShadowNode extends RenderNode {
         static $gtype: GObject.GType<InsetShadowNode>;
-        declare static readonly __signalSignatures: InsetShadowNode.SignalSignatures;
 
         // Constructors
 
@@ -1776,6 +1989,21 @@ export namespace Gsk {
             spread: number,
             blur_radius: number,
         ): InsetShadowNode;
+
+        // Signals
+
+        connect<K extends keyof InsetShadowNode.SignalSignatures>(
+            signal: K,
+            callback: InsetShadowNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InsetShadowNode.SignalSignatures>(
+            signal: K,
+            callback: InsetShadowNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InsetShadowNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InsetShadowNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1824,7 +2052,6 @@ export namespace Gsk {
      */
     class LinearGradientNode extends RenderNode {
         static $gtype: GObject.GType<LinearGradientNode>;
-        declare static readonly __signalSignatures: LinearGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -1836,6 +2063,21 @@ export namespace Gsk {
             end: Graphene.Point,
             color_stops: ColorStop[],
         ): LinearGradientNode;
+
+        // Signals
+
+        connect<K extends keyof LinearGradientNode.SignalSignatures>(
+            signal: K,
+            callback: LinearGradientNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LinearGradientNode.SignalSignatures>(
+            signal: K,
+            callback: LinearGradientNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LinearGradientNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LinearGradientNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1871,13 +2113,24 @@ export namespace Gsk {
      */
     class MaskNode extends RenderNode {
         static $gtype: GObject.GType<MaskNode>;
-        declare static readonly __signalSignatures: MaskNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](source: RenderNode, mask: RenderNode, mask_mode: MaskMode): MaskNode;
+
+        // Signals
+
+        connect<K extends keyof MaskNode.SignalSignatures>(signal: K, callback: MaskNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof MaskNode.SignalSignatures>(
+            signal: K,
+            callback: MaskNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MaskNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MaskNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1914,7 +2167,6 @@ export namespace Gsk {
      */
     class NglRenderer extends Renderer {
         static $gtype: GObject.GType<NglRenderer>;
-        declare static readonly __signalSignatures: NglRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1923,6 +2175,21 @@ export namespace Gsk {
         _init(...args: any[]): void;
 
         static ['new'](): NglRenderer;
+
+        // Signals
+
+        connect<K extends keyof NglRenderer.SignalSignatures>(
+            signal: K,
+            callback: NglRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NglRenderer.SignalSignatures>(
+            signal: K,
+            callback: NglRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NglRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NglRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OpacityNode {
@@ -1935,13 +2202,27 @@ export namespace Gsk {
      */
     class OpacityNode extends RenderNode {
         static $gtype: GObject.GType<OpacityNode>;
-        declare static readonly __signalSignatures: OpacityNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, opacity: number): OpacityNode;
+
+        // Signals
+
+        connect<K extends keyof OpacityNode.SignalSignatures>(
+            signal: K,
+            callback: OpacityNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OpacityNode.SignalSignatures>(
+            signal: K,
+            callback: OpacityNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OpacityNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OpacityNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1967,7 +2248,6 @@ export namespace Gsk {
      */
     class OutsetShadowNode extends RenderNode {
         static $gtype: GObject.GType<OutsetShadowNode>;
-        declare static readonly __signalSignatures: OutsetShadowNode.SignalSignatures;
 
         // Constructors
 
@@ -1981,6 +2261,21 @@ export namespace Gsk {
             spread: number,
             blur_radius: number,
         ): OutsetShadowNode;
+
+        // Signals
+
+        connect<K extends keyof OutsetShadowNode.SignalSignatures>(
+            signal: K,
+            callback: OutsetShadowNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutsetShadowNode.SignalSignatures>(
+            signal: K,
+            callback: OutsetShadowNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutsetShadowNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutsetShadowNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2029,7 +2324,6 @@ export namespace Gsk {
      */
     class RadialGradientNode extends RenderNode {
         static $gtype: GObject.GType<RadialGradientNode>;
-        declare static readonly __signalSignatures: RadialGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -2044,6 +2338,21 @@ export namespace Gsk {
             end: number,
             color_stops: ColorStop[],
         ): RadialGradientNode;
+
+        // Signals
+
+        connect<K extends keyof RadialGradientNode.SignalSignatures>(
+            signal: K,
+            callback: RadialGradientNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RadialGradientNode.SignalSignatures>(
+            signal: K,
+            callback: RadialGradientNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RadialGradientNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RadialGradientNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2105,11 +2414,25 @@ export namespace Gsk {
      */
     abstract class RenderNode {
         static $gtype: GObject.GType<RenderNode>;
-        declare static readonly __signalSignatures: RenderNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RenderNode.SignalSignatures>(
+            signal: K,
+            callback: RenderNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RenderNode.SignalSignatures>(
+            signal: K,
+            callback: RenderNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RenderNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RenderNode.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2224,7 +2547,6 @@ export namespace Gsk {
      */
     abstract class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
-        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 
@@ -2244,6 +2566,18 @@ export namespace Gsk {
         _init(...args: any[]): void;
 
         static new_for_surface(surface: Gdk.Surface): Renderer;
+
+        // Signals
+
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: Renderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Renderer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2329,13 +2663,27 @@ export namespace Gsk {
      */
     class RepeatNode extends RenderNode {
         static $gtype: GObject.GType<RepeatNode>;
-        declare static readonly __signalSignatures: RepeatNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](bounds: Graphene.Rect, child: RenderNode, child_bounds?: Graphene.Rect | null): RepeatNode;
+
+        // Signals
+
+        connect<K extends keyof RepeatNode.SignalSignatures>(
+            signal: K,
+            callback: RepeatNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepeatNode.SignalSignatures>(
+            signal: K,
+            callback: RepeatNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepeatNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepeatNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2361,7 +2709,6 @@ export namespace Gsk {
      */
     class RepeatingLinearGradientNode extends RenderNode {
         static $gtype: GObject.GType<RepeatingLinearGradientNode>;
-        declare static readonly __signalSignatures: RepeatingLinearGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -2373,6 +2720,21 @@ export namespace Gsk {
             end: Graphene.Point,
             color_stops: ColorStop[],
         ): RepeatingLinearGradientNode;
+
+        // Signals
+
+        connect<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
+            signal: K,
+            callback: RepeatingLinearGradientNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
+            signal: K,
+            callback: RepeatingLinearGradientNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepeatingLinearGradientNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RepeatingRadialGradientNode {
@@ -2385,7 +2747,6 @@ export namespace Gsk {
      */
     class RepeatingRadialGradientNode extends RenderNode {
         static $gtype: GObject.GType<RepeatingRadialGradientNode>;
-        declare static readonly __signalSignatures: RepeatingRadialGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -2400,6 +2761,21 @@ export namespace Gsk {
             end: number,
             color_stops: ColorStop[],
         ): RepeatingRadialGradientNode;
+
+        // Signals
+
+        connect<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
+            signal: K,
+            callback: RepeatingRadialGradientNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
+            signal: K,
+            callback: RepeatingRadialGradientNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepeatingRadialGradientNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RoundedClipNode {
@@ -2412,13 +2788,27 @@ export namespace Gsk {
      */
     class RoundedClipNode extends RenderNode {
         static $gtype: GObject.GType<RoundedClipNode>;
-        declare static readonly __signalSignatures: RoundedClipNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, clip: RoundedRect): RoundedClipNode;
+
+        // Signals
+
+        connect<K extends keyof RoundedClipNode.SignalSignatures>(
+            signal: K,
+            callback: RoundedClipNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RoundedClipNode.SignalSignatures>(
+            signal: K,
+            callback: RoundedClipNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RoundedClipNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RoundedClipNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2444,13 +2834,27 @@ export namespace Gsk {
      */
     class ShadowNode extends RenderNode {
         static $gtype: GObject.GType<ShadowNode>;
-        declare static readonly __signalSignatures: ShadowNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, shadows: Shadow[]): ShadowNode;
+
+        // Signals
+
+        connect<K extends keyof ShadowNode.SignalSignatures>(
+            signal: K,
+            callback: ShadowNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShadowNode.SignalSignatures>(
+            signal: K,
+            callback: ShadowNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShadowNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShadowNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2483,13 +2887,27 @@ export namespace Gsk {
      */
     class StrokeNode extends RenderNode {
         static $gtype: GObject.GType<StrokeNode>;
-        declare static readonly __signalSignatures: StrokeNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, path: Path, stroke: Stroke): StrokeNode;
+
+        // Signals
+
+        connect<K extends keyof StrokeNode.SignalSignatures>(
+            signal: K,
+            callback: StrokeNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StrokeNode.SignalSignatures>(
+            signal: K,
+            callback: StrokeNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StrokeNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StrokeNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2521,11 +2939,25 @@ export namespace Gsk {
      */
     class SubsurfaceNode extends RenderNode {
         static $gtype: GObject.GType<SubsurfaceNode>;
-        declare static readonly __signalSignatures: SubsurfaceNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SubsurfaceNode.SignalSignatures>(
+            signal: K,
+            callback: SubsurfaceNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubsurfaceNode.SignalSignatures>(
+            signal: K,
+            callback: SubsurfaceNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubsurfaceNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubsurfaceNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2546,13 +2978,24 @@ export namespace Gsk {
      */
     class TextNode extends RenderNode {
         static $gtype: GObject.GType<TextNode>;
-        declare static readonly __signalSignatures: TextNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](font: Pango.Font, glyphs: Pango.GlyphString, color: Gdk.RGBA, offset: Graphene.Point): TextNode;
+
+        // Signals
+
+        connect<K extends keyof TextNode.SignalSignatures>(signal: K, callback: TextNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextNode.SignalSignatures>(
+            signal: K,
+            callback: TextNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2601,13 +3044,27 @@ export namespace Gsk {
      */
     class TextureNode extends RenderNode {
         static $gtype: GObject.GType<TextureNode>;
-        declare static readonly __signalSignatures: TextureNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](texture: Gdk.Texture, bounds: Graphene.Rect): TextureNode;
+
+        // Signals
+
+        connect<K extends keyof TextureNode.SignalSignatures>(
+            signal: K,
+            callback: TextureNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextureNode.SignalSignatures>(
+            signal: K,
+            callback: TextureNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextureNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextureNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2628,13 +3085,27 @@ export namespace Gsk {
      */
     class TextureScaleNode extends RenderNode {
         static $gtype: GObject.GType<TextureScaleNode>;
-        declare static readonly __signalSignatures: TextureScaleNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](texture: Gdk.Texture, bounds: Graphene.Rect, filter: ScalingFilter): TextureScaleNode;
+
+        // Signals
+
+        connect<K extends keyof TextureScaleNode.SignalSignatures>(
+            signal: K,
+            callback: TextureScaleNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextureScaleNode.SignalSignatures>(
+            signal: K,
+            callback: TextureScaleNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextureScaleNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextureScaleNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2660,13 +3131,27 @@ export namespace Gsk {
      */
     class TransformNode extends RenderNode {
         static $gtype: GObject.GType<TransformNode>;
-        declare static readonly __signalSignatures: TransformNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](child: RenderNode, transform: Transform): TransformNode;
+
+        // Signals
+
+        connect<K extends keyof TransformNode.SignalSignatures>(
+            signal: K,
+            callback: TransformNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransformNode.SignalSignatures>(
+            signal: K,
+            callback: TransformNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransformNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransformNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2698,7 +3183,6 @@ export namespace Gsk {
      */
     class VulkanRenderer extends Renderer {
         static $gtype: GObject.GType<VulkanRenderer>;
-        declare static readonly __signalSignatures: VulkanRenderer.SignalSignatures;
 
         // Constructors
 
@@ -2707,6 +3191,21 @@ export namespace Gsk {
         _init(...args: any[]): void;
 
         static ['new'](): VulkanRenderer;
+
+        // Signals
+
+        connect<K extends keyof VulkanRenderer.SignalSignatures>(
+            signal: K,
+            callback: VulkanRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanRenderer.SignalSignatures>(
+            signal: K,
+            callback: VulkanRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     type BroadwayRendererClass = typeof BroadwayRenderer;

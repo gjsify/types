@@ -142,7 +142,6 @@ export namespace GCab {
      */
     class Cabinet extends GObject.Object {
         static $gtype: GObject.GType<Cabinet>;
-        declare static readonly __signalSignatures: Cabinet.SignalSignatures;
 
         // Properties
 
@@ -158,6 +157,18 @@ export namespace GCab {
         _init(...args: any[]): void;
 
         static ['new'](): Cabinet;
+
+        // Signals
+
+        connect<K extends keyof Cabinet.SignalSignatures>(signal: K, callback: Cabinet.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cabinet.SignalSignatures>(
+            signal: K,
+            callback: Cabinet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Cabinet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Cabinet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -274,7 +285,6 @@ export namespace GCab {
      */
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
-        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -294,6 +304,12 @@ export namespace GCab {
         static new_with_bytes(name: string, bytes: GLib.Bytes | Uint8Array): File;
 
         static new_with_file(name: string, file: Gio.File): File;
+
+        // Signals
+
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -392,7 +408,6 @@ export namespace GCab {
      */
     class Folder extends GObject.Object {
         static $gtype: GObject.GType<Folder>;
-        declare static readonly __signalSignatures: Folder.SignalSignatures;
 
         // Properties
 
@@ -408,6 +423,12 @@ export namespace GCab {
         _init(...args: any[]): void;
 
         static ['new'](comptype: number): Folder;
+
+        // Signals
+
+        connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: Parameters<Folder.SignalSignatures[K]>): void;
 
         // Methods
 

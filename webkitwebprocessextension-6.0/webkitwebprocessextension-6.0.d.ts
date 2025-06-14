@@ -325,7 +325,6 @@ export namespace WebKitWebProcessExtension {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
-        declare static readonly __signalSignatures: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -336,6 +335,21 @@ export namespace WebKitWebProcessExtension {
         static ['new'](): ContextMenu;
 
         static new_with_items(items: ContextMenuItem[]): ContextMenu;
+
+        // Signals
+
+        connect<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            callback: ContextMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            callback: ContextMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -466,7 +480,6 @@ export namespace WebKitWebProcessExtension {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
-        declare static readonly __signalSignatures: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -483,6 +496,21 @@ export namespace WebKitWebProcessExtension {
         static new_separator(): ContextMenuItem;
 
         static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem;
+
+        // Signals
+
+        connect<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ContextMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ContextMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -538,13 +566,18 @@ export namespace WebKitWebProcessExtension {
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
-        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Frame.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -624,7 +657,6 @@ export namespace WebKitWebProcessExtension {
      */
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
-        declare static readonly __signalSignatures: HitTestResult.SignalSignatures;
 
         // Properties
 
@@ -689,6 +721,21 @@ export namespace WebKitWebProcessExtension {
         constructor(properties?: Partial<HitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            callback: HitTestResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            callback: HitTestResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HitTestResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -764,7 +811,7 @@ export namespace WebKitWebProcessExtension {
         // Signal callback interfaces
 
         interface WindowObjectCleared {
-            (page: WebPage, frame: Frame): void;
+            (_source: ScriptWorld, page: WebPage, frame: Frame): void;
         }
 
         // Signal signatures
@@ -779,7 +826,6 @@ export namespace WebKitWebProcessExtension {
 
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
-        declare static readonly __signalSignatures: ScriptWorld.SignalSignatures;
 
         // Constructors
 
@@ -805,18 +851,6 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             ...args: Parameters<ScriptWorld.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'window-object-cleared',
-            callback: (_source: this, page: WebPage, frame: Frame) => void,
-        ): number;
-        connect_after(
-            signal: 'window-object-cleared',
-            callback: (_source: this, page: WebPage, frame: Frame) => void,
-        ): number;
-        emit(signal: 'window-object-cleared', page: WebPage, frame: Frame): void;
 
         // Static methods
 
@@ -857,7 +891,6 @@ export namespace WebKitWebProcessExtension {
      */
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
-        declare static readonly __signalSignatures: URIRequest.SignalSignatures;
 
         // Properties
 
@@ -874,6 +907,21 @@ export namespace WebKitWebProcessExtension {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): URIRequest;
+
+        // Signals
+
+        connect<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            callback: URIRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            callback: URIRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -929,7 +977,6 @@ export namespace WebKitWebProcessExtension {
      */
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
-        declare static readonly __signalSignatures: URIResponse.SignalSignatures;
 
         // Properties
 
@@ -983,6 +1030,21 @@ export namespace WebKitWebProcessExtension {
         constructor(properties?: Partial<URIResponse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            callback: URIResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            callback: URIResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1055,7 +1117,6 @@ export namespace WebKitWebProcessExtension {
      */
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
-        declare static readonly __signalSignatures: UserMessage.SignalSignatures;
 
         // Properties
 
@@ -1091,6 +1152,21 @@ export namespace WebKitWebProcessExtension {
             parameters?: GLib.Variant | null,
             fd_list?: Gio.UnixFDList | null,
         ): UserMessage;
+
+        // Signals
+
+        connect<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            callback: UserMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            callback: UserMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1131,7 +1207,7 @@ export namespace WebKitWebProcessExtension {
         // Signal callback interfaces
 
         interface SelectionChanged {
-            (): void;
+            (_source: WebEditor): void;
         }
 
         // Signal signatures
@@ -1153,7 +1229,6 @@ export namespace WebKitWebProcessExtension {
      */
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
-        declare static readonly __signalSignatures: WebEditor.SignalSignatures;
 
         // Constructors
 
@@ -1172,12 +1247,6 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             ...args: Parameters<WebEditor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
 
         // Methods
 
@@ -1192,15 +1261,15 @@ export namespace WebKitWebProcessExtension {
         // Signal callback interfaces
 
         interface FormControlsAssociated {
-            (frame: Frame, elements: JavaScriptCore.Value[]): void;
+            (_source: WebFormManager, frame: Frame, elements: JavaScriptCore.Value[]): void;
         }
 
         interface WillSendSubmitEvent {
-            (form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
+            (_source: WebFormManager, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
         }
 
         interface WillSubmitForm {
-            (form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
+            (_source: WebFormManager, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
         }
 
         // Signal signatures
@@ -1220,7 +1289,6 @@ export namespace WebKitWebProcessExtension {
      */
     class WebFormManager extends GObject.Object {
         static $gtype: GObject.GType<WebFormManager>;
-        declare static readonly __signalSignatures: WebFormManager.SignalSignatures;
 
         // Constructors
 
@@ -1242,41 +1310,6 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             ...args: Parameters<WebFormManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'form-controls-associated',
-            callback: (_source: this, frame: Frame, elements: JavaScriptCore.Value[]) => void,
-        ): number;
-        connect_after(
-            signal: 'form-controls-associated',
-            callback: (_source: this, frame: Frame, elements: JavaScriptCore.Value[]) => void,
-        ): number;
-        emit(signal: 'form-controls-associated', frame: Frame, elements: JavaScriptCore.Value[]): void;
-        connect(
-            signal: 'will-send-submit-event',
-            callback: (_source: this, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame) => void,
-        ): number;
-        connect_after(
-            signal: 'will-send-submit-event',
-            callback: (_source: this, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame) => void,
-        ): number;
-        emit(
-            signal: 'will-send-submit-event',
-            form: JavaScriptCore.Value,
-            source_frame: Frame,
-            target_frame: Frame,
-        ): void;
-        connect(
-            signal: 'will-submit-form',
-            callback: (_source: this, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame) => void,
-        ): number;
-        connect_after(
-            signal: 'will-submit-form',
-            callback: (_source: this, form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame) => void,
-        ): number;
-        emit(signal: 'will-submit-form', form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame): void;
 
         // Static methods
 
@@ -1317,13 +1350,27 @@ export namespace WebKitWebProcessExtension {
      */
     class WebHitTestResult extends GObject.Object {
         static $gtype: GObject.GType<WebHitTestResult>;
-        declare static readonly __signalSignatures: WebHitTestResult.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebHitTestResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebHitTestResult.SignalSignatures>(
+            signal: K,
+            callback: WebHitTestResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebHitTestResult.SignalSignatures>(
+            signal: K,
+            callback: WebHitTestResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebHitTestResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebHitTestResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1417,19 +1464,19 @@ export namespace WebKitWebProcessExtension {
         // Signal callback interfaces
 
         interface ContextMenu {
-            (context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
+            (_source: WebPage, context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
         }
 
         interface DocumentLoaded {
-            (): void;
+            (_source: WebPage): void;
         }
 
         interface SendRequest {
-            (request: URIRequest, redirected_response: URIResponse): boolean;
+            (_source: WebPage, request: URIRequest, redirected_response: URIResponse): boolean;
         }
 
         interface UserMessageReceived {
-            (message: UserMessage): boolean;
+            (_source: WebPage, message: UserMessage): boolean;
         }
 
         // Signal signatures
@@ -1452,7 +1499,6 @@ export namespace WebKitWebProcessExtension {
      */
     class WebPage extends GObject.Object {
         static $gtype: GObject.GType<WebPage>;
-        declare static readonly __signalSignatures: WebPage.SignalSignatures;
 
         // Properties
 
@@ -1478,36 +1524,6 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             ...args: Parameters<WebPage.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'context-menu',
-            callback: (_source: this, context_menu: ContextMenu, hit_test_result: WebHitTestResult) => boolean,
-        ): number;
-        connect_after(
-            signal: 'context-menu',
-            callback: (_source: this, context_menu: ContextMenu, hit_test_result: WebHitTestResult) => boolean,
-        ): number;
-        emit(signal: 'context-menu', context_menu: ContextMenu, hit_test_result: WebHitTestResult): void;
-        connect(signal: 'document-loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'document-loaded', callback: (_source: this) => void): number;
-        emit(signal: 'document-loaded'): void;
-        connect(
-            signal: 'send-request',
-            callback: (_source: this, request: URIRequest, redirected_response: URIResponse) => boolean,
-        ): number;
-        connect_after(
-            signal: 'send-request',
-            callback: (_source: this, request: URIRequest, redirected_response: URIResponse) => boolean,
-        ): number;
-        emit(signal: 'send-request', request: URIRequest, redirected_response: URIResponse): void;
-        connect(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => boolean): number;
-        connect_after(
-            signal: 'user-message-received',
-            callback: (_source: this, message: UserMessage) => boolean,
-        ): number;
-        emit(signal: 'user-message-received', message: UserMessage): void;
 
         // Methods
 
@@ -1592,11 +1608,11 @@ export namespace WebKitWebProcessExtension {
         // Signal callback interfaces
 
         interface PageCreated {
-            (web_page: WebPage): void;
+            (_source: WebProcessExtension, web_page: WebPage): void;
         }
 
         interface UserMessageReceived {
-            (message: UserMessage): void;
+            (_source: WebProcessExtension, message: UserMessage): void;
         }
 
         // Signal signatures
@@ -1685,7 +1701,6 @@ export namespace WebKitWebProcessExtension {
      */
     class WebProcessExtension extends GObject.Object {
         static $gtype: GObject.GType<WebProcessExtension>;
-        declare static readonly __signalSignatures: WebProcessExtension.SignalSignatures;
 
         // Constructors
 
@@ -1707,15 +1722,6 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             ...args: Parameters<WebProcessExtension.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'page-created', callback: (_source: this, web_page: WebPage) => void): number;
-        connect_after(signal: 'page-created', callback: (_source: this, web_page: WebPage) => void): number;
-        emit(signal: 'page-created', web_page: WebPage): void;
-        connect(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => void): number;
-        connect_after(signal: 'user-message-received', callback: (_source: this, message: UserMessage) => void): number;
-        emit(signal: 'user-message-received', message: UserMessage): void;
 
         // Methods
 

@@ -54,13 +54,27 @@ export namespace GUPnPDLNA {
 
     abstract class AudioInformation extends GObject.Object {
         static $gtype: GObject.GType<AudioInformation>;
-        declare static readonly __signalSignatures: AudioInformation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AudioInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioInformation.SignalSignatures>(
+            signal: K,
+            callback: AudioInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioInformation.SignalSignatures>(
+            signal: K,
+            callback: AudioInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioInformation.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ContainerInformation {
@@ -74,13 +88,27 @@ export namespace GUPnPDLNA {
 
     abstract class ContainerInformation extends GObject.Object {
         static $gtype: GObject.GType<ContainerInformation>;
-        declare static readonly __signalSignatures: ContainerInformation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ContainerInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ContainerInformation.SignalSignatures>(
+            signal: K,
+            callback: ContainerInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContainerInformation.SignalSignatures>(
+            signal: K,
+            callback: ContainerInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContainerInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContainerInformation.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ImageInformation {
@@ -94,13 +122,27 @@ export namespace GUPnPDLNA {
 
     abstract class ImageInformation extends GObject.Object {
         static $gtype: GObject.GType<ImageInformation>;
-        declare static readonly __signalSignatures: ImageInformation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ImageInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ImageInformation.SignalSignatures>(
+            signal: K,
+            callback: ImageInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageInformation.SignalSignatures>(
+            signal: K,
+            callback: ImageInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageInformation.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Information {
@@ -124,7 +166,6 @@ export namespace GUPnPDLNA {
 
     abstract class Information extends GObject.Object {
         static $gtype: GObject.GType<Information>;
-        declare static readonly __signalSignatures: Information.SignalSignatures;
 
         // Properties
 
@@ -170,6 +211,21 @@ export namespace GUPnPDLNA {
         constructor(properties?: Partial<Information.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Information.SignalSignatures>(
+            signal: K,
+            callback: Information.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Information.SignalSignatures>(
+            signal: K,
+            callback: Information.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Information.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Information.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -229,7 +285,7 @@ export namespace GUPnPDLNA {
         // Signal callback interfaces
 
         interface Done {
-            (info: Information, error?: GLib.Error | null): void;
+            (_source: MetadataExtractor, info: Information, error?: GLib.Error | null): void;
         }
 
         // Signal signatures
@@ -244,7 +300,6 @@ export namespace GUPnPDLNA {
 
     abstract class MetadataExtractor extends GObject.Object {
         static $gtype: GObject.GType<MetadataExtractor>;
-        declare static readonly __signalSignatures: MetadataExtractor.SignalSignatures;
 
         // Constructors
 
@@ -266,15 +321,6 @@ export namespace GUPnPDLNA {
             signal: K,
             ...args: Parameters<MetadataExtractor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'done', callback: (_source: this, info: Information, error: GLib.Error | null) => void): number;
-        connect_after(
-            signal: 'done',
-            callback: (_source: this, info: Information, error: GLib.Error | null) => void,
-        ): number;
-        emit(signal: 'done', info: Information, error?: GLib.Error | null): void;
 
         // Virtual methods
 
@@ -348,7 +394,6 @@ export namespace GUPnPDLNA {
      */
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
-        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -378,6 +423,18 @@ export namespace GUPnPDLNA {
         constructor(properties?: Partial<Profile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            callback: Profile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Profile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -410,7 +467,7 @@ export namespace GUPnPDLNA {
         // Signal callback interfaces
 
         interface Done {
-            (info: Information, dlna?: Profile | null, error?: GLib.Error | null): void;
+            (_source: ProfileGuesser, info: Information, dlna?: Profile | null, error?: GLib.Error | null): void;
         }
 
         // Signal signatures
@@ -430,7 +487,6 @@ export namespace GUPnPDLNA {
 
     class ProfileGuesser extends GObject.Object {
         static $gtype: GObject.GType<ProfileGuesser>;
-        declare static readonly __signalSignatures: ProfileGuesser.SignalSignatures;
 
         // Properties
 
@@ -477,18 +533,6 @@ export namespace GUPnPDLNA {
             signal: K,
             ...args: Parameters<ProfileGuesser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'done',
-            callback: (_source: this, info: Information, dlna: Profile | null, error: GLib.Error | null) => void,
-        ): number;
-        connect_after(
-            signal: 'done',
-            callback: (_source: this, info: Information, dlna: Profile | null, error: GLib.Error | null) => void,
-        ): number;
-        emit(signal: 'done', info: Information, dlna?: Profile | null, error?: GLib.Error | null): void;
 
         // Static methods
 
@@ -549,13 +593,27 @@ export namespace GUPnPDLNA {
 
     abstract class VideoInformation extends GObject.Object {
         static $gtype: GObject.GType<VideoInformation>;
-        declare static readonly __signalSignatures: VideoInformation.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VideoInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoInformation.SignalSignatures>(
+            signal: K,
+            callback: VideoInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoInformation.SignalSignatures>(
+            signal: K,
+            callback: VideoInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoInformation.SignalSignatures[K]>
+        ): void;
     }
 
     type AudioInformationClass = typeof AudioInformation;

@@ -274,15 +274,15 @@ export namespace TotemPlParser {
         // Signal callback interfaces
 
         interface EntryParsed {
-            (uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
+            (_source: Parser, uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
         interface PlaylistEnded {
-            (uri: string): void;
+            (_source: Parser, uri: string): void;
         }
 
         interface PlaylistStarted {
-            (uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
+            (_source: Parser, uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
         // Signal signatures
@@ -308,7 +308,6 @@ export namespace TotemPlParser {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -357,38 +356,6 @@ export namespace TotemPlParser {
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'entry-parsed',
-            callback: (_source: this, uri: string, metadata: GLib.HashTable<string, string>) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-parsed',
-            callback: (_source: this, uri: string, metadata: GLib.HashTable<string, string>) => void,
-        ): number;
-        emit(
-            signal: 'entry-parsed',
-            uri: string,
-            metadata: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
-        connect(signal: 'playlist-ended', callback: (_source: this, uri: string) => void): number;
-        connect_after(signal: 'playlist-ended', callback: (_source: this, uri: string) => void): number;
-        emit(signal: 'playlist-ended', uri: string): void;
-        connect(
-            signal: 'playlist-started',
-            callback: (_source: this, uri: string, metadata: GLib.HashTable<string, string>) => void,
-        ): number;
-        connect_after(
-            signal: 'playlist-started',
-            callback: (_source: this, uri: string, metadata: GLib.HashTable<string, string>) => void,
-        ): number;
-        emit(
-            signal: 'playlist-started',
-            uri: string,
-            metadata: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
 
         // Static methods
 
@@ -671,7 +638,6 @@ export namespace TotemPlParser {
      */
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
-        declare static readonly __signalSignatures: Playlist.SignalSignatures;
 
         // Constructors
 
@@ -680,6 +646,18 @@ export namespace TotemPlParser {
         _init(...args: any[]): void;
 
         static ['new'](): Playlist;
+
+        // Signals
+
+        connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: Playlist.SignalSignatures[K]): number;
+        connect_after<K extends keyof Playlist.SignalSignatures>(
+            signal: K,
+            callback: Playlist.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Playlist.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Playlist.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -329,7 +329,6 @@ export namespace GeocodeGlib {
      */
     class BoundingBox extends GObject.Object {
         static $gtype: GObject.GType<BoundingBox>;
-        declare static readonly __signalSignatures: BoundingBox.SignalSignatures;
 
         // Properties
 
@@ -357,6 +356,21 @@ export namespace GeocodeGlib {
         _init(...args: any[]): void;
 
         static ['new'](top: number, bottom: number, left: number, right: number): BoundingBox;
+
+        // Signals
+
+        connect<K extends keyof BoundingBox.SignalSignatures>(
+            signal: K,
+            callback: BoundingBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BoundingBox.SignalSignatures>(
+            signal: K,
+            callback: BoundingBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BoundingBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BoundingBox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -411,7 +425,6 @@ export namespace GeocodeGlib {
      */
     class Forward extends GObject.Object {
         static $gtype: GObject.GType<Forward>;
-        declare static readonly __signalSignatures: Forward.SignalSignatures;
 
         // Properties
 
@@ -457,6 +470,18 @@ export namespace GeocodeGlib {
         static new_for_params(params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): Forward;
 
         static new_for_string(str: string): Forward;
+
+        // Signals
+
+        connect<K extends keyof Forward.SignalSignatures>(signal: K, callback: Forward.SignalSignatures[K]): number;
+        connect_after<K extends keyof Forward.SignalSignatures>(
+            signal: K,
+            callback: Forward.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Forward.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Forward.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -572,7 +597,6 @@ export namespace GeocodeGlib {
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
-        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Properties
 
@@ -629,6 +653,18 @@ export namespace GeocodeGlib {
             accuracy: number,
             description: string,
         ): Location;
+
+        // Signals
+
+        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect_after<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: Location.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Location.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -738,7 +774,6 @@ export namespace GeocodeGlib {
      */
     class MockBackend extends GObject.Object implements Backend {
         static $gtype: GObject.GType<MockBackend>;
-        declare static readonly __signalSignatures: MockBackend.SignalSignatures;
 
         // Constructors
 
@@ -747,6 +782,21 @@ export namespace GeocodeGlib {
         _init(...args: any[]): void;
 
         static ['new'](): MockBackend;
+
+        // Signals
+
+        connect<K extends keyof MockBackend.SignalSignatures>(
+            signal: K,
+            callback: MockBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MockBackend.SignalSignatures>(
+            signal: K,
+            callback: MockBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MockBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MockBackend.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1561,7 +1611,6 @@ export namespace GeocodeGlib {
      */
     class Nominatim extends GObject.Object implements Backend {
         static $gtype: GObject.GType<Nominatim>;
-        declare static readonly __signalSignatures: Nominatim.SignalSignatures;
 
         // Properties
 
@@ -1625,6 +1674,18 @@ export namespace GeocodeGlib {
         _init(...args: any[]): void;
 
         static ['new'](base_url: string, maintainer_email_address: string): Nominatim;
+
+        // Signals
+
+        connect<K extends keyof Nominatim.SignalSignatures>(signal: K, callback: Nominatim.SignalSignatures[K]): number;
+        connect_after<K extends keyof Nominatim.SignalSignatures>(
+            signal: K,
+            callback: Nominatim.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Nominatim.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Nominatim.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2411,7 +2472,6 @@ export namespace GeocodeGlib {
      */
     class Place extends GObject.Object {
         static $gtype: GObject.GType<Place>;
-        declare static readonly __signalSignatures: Place.SignalSignatures;
 
         // Properties
 
@@ -2557,6 +2617,12 @@ export namespace GeocodeGlib {
         static ['new'](name: string, place_type: PlaceType): Place;
 
         static new_with_location(name: string, place_type: PlaceType, location: Location): Place;
+
+        // Signals
+
+        connect<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
+        connect_after<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
+        emit<K extends keyof Place.SignalSignatures>(signal: K, ...args: Parameters<Place.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2758,7 +2824,6 @@ export namespace GeocodeGlib {
      */
     class Reverse extends GObject.Object {
         static $gtype: GObject.GType<Reverse>;
-        declare static readonly __signalSignatures: Reverse.SignalSignatures;
 
         // Constructors
 
@@ -2767,6 +2832,18 @@ export namespace GeocodeGlib {
         _init(...args: any[]): void;
 
         static new_for_location(location: Location): Reverse;
+
+        // Signals
+
+        connect<K extends keyof Reverse.SignalSignatures>(signal: K, callback: Reverse.SignalSignatures[K]): number;
+        connect_after<K extends keyof Reverse.SignalSignatures>(
+            signal: K,
+            callback: Reverse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Reverse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Reverse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

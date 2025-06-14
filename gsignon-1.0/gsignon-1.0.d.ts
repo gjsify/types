@@ -369,7 +369,6 @@ export namespace gSignon {
      */
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
-        declare static readonly __signalSignatures: AuthService.SignalSignatures;
 
         // Constructors
 
@@ -378,6 +377,21 @@ export namespace gSignon {
         _init(...args: any[]): void;
 
         static ['new'](): AuthService;
+
+        // Signals
+
+        connect<K extends keyof AuthService.SignalSignatures>(
+            signal: K,
+            callback: AuthService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthService.SignalSignatures>(
+            signal: K,
+            callback: AuthService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -433,7 +447,7 @@ export namespace gSignon {
         // Signal callback interfaces
 
         interface StateChanged {
-            (state: number, message: string): void;
+            (_source: AuthSession, state: number, message: string): void;
         }
 
         // Signal signatures
@@ -453,7 +467,6 @@ export namespace gSignon {
      */
     class AuthSession extends GObject.Object {
         static $gtype: GObject.GType<AuthSession>;
-        declare static readonly __signalSignatures: AuthSession.SignalSignatures;
 
         // Properties
 
@@ -483,15 +496,6 @@ export namespace gSignon {
             signal: K,
             ...args: Parameters<AuthSession.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'state-changed', callback: (_source: this, state: number, message: string) => void): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (_source: this, state: number, message: string) => void,
-        ): number;
-        emit(signal: 'state-changed', state: number, message: string): void;
 
         // Methods
 
@@ -614,11 +618,11 @@ export namespace gSignon {
         // Signal callback interfaces
 
         interface Removed {
-            (): void;
+            (_source: Identity): void;
         }
 
         interface Signout {
-            (): void;
+            (_source: Identity): void;
         }
 
         // Signal signatures
@@ -638,7 +642,6 @@ export namespace gSignon {
 
     class Identity extends GObject.Object {
         static $gtype: GObject.GType<Identity>;
-        declare static readonly __signalSignatures: Identity.SignalSignatures;
 
         // Properties
 
@@ -674,15 +677,6 @@ export namespace gSignon {
             signal: K,
             ...args: Parameters<Identity.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this) => void): number;
-        emit(signal: 'removed'): void;
-        connect(signal: 'signout', callback: (_source: this) => void): number;
-        connect_after(signal: 'signout', callback: (_source: this) => void): number;
-        emit(signal: 'signout'): void;
 
         // Methods
 

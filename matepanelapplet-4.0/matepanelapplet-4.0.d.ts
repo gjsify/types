@@ -68,19 +68,19 @@ export namespace MatePanelApplet {
         // Signal callback interfaces
 
         interface ChangeBackground {
-            (object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern): void;
+            (_source: Applet, object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern): void;
         }
 
         interface ChangeOrient {
-            (object: number): void;
+            (_source: Applet, object: number): void;
         }
 
         interface ChangeSize {
-            (object: number): void;
+            (_source: Applet, object: number): void;
         }
 
         interface MoveFocusOutOfApplet {
-            (object: Gtk.DirectionType): void;
+            (_source: Applet, object: Gtk.DirectionType): void;
         }
 
         // Signal signatures
@@ -118,7 +118,6 @@ export namespace MatePanelApplet {
 
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
-        declare static readonly __signalSignatures: Applet.SignalSignatures;
 
         // Properties
 
@@ -163,33 +162,6 @@ export namespace MatePanelApplet {
         connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'change-background',
-            callback: (_source: this, object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern) => void,
-        ): number;
-        connect_after(
-            signal: 'change-background',
-            callback: (_source: this, object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern) => void,
-        ): number;
-        emit(signal: 'change-background', object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern): void;
-        connect(signal: 'change-orient', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'change-orient', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'change-orient', object: number): void;
-        connect(signal: 'change-size', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'change-size', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'change-size', object: number): void;
-        connect(
-            signal: 'move-focus-out-of-applet',
-            callback: (_source: this, object: Gtk.DirectionType) => void,
-        ): number;
-        connect_after(
-            signal: 'move-focus-out-of-applet',
-            callback: (_source: this, object: Gtk.DirectionType) => void,
-        ): number;
-        emit(signal: 'move-focus-out-of-applet', object: Gtk.DirectionType): void;
 
         // Static methods
 

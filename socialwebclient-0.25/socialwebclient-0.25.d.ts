@@ -42,7 +42,7 @@ export namespace SocialWebClient {
         // Signal callback interfaces
 
         interface OnlineChanged {
-            (object: boolean): void;
+            (_source: Client, object: boolean): void;
         }
 
         // Signal signatures
@@ -57,7 +57,6 @@ export namespace SocialWebClient {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -72,12 +71,6 @@ export namespace SocialWebClient {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'online-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'online-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'online-changed', object: boolean): void;
 
         // Methods
 
@@ -90,15 +83,15 @@ export namespace SocialWebClient {
         // Signal callback interfaces
 
         interface ContactsAdded {
-            (contacts: Contact[]): void;
+            (_source: ClientContactView, contacts: Contact[]): void;
         }
 
         interface ContactsChanged {
-            (contacts: Contact[]): void;
+            (_source: ClientContactView, contacts: Contact[]): void;
         }
 
         interface ContactsRemoved {
-            (contacts: Contact[]): void;
+            (_source: ClientContactView, contacts: Contact[]): void;
         }
 
         // Signal signatures
@@ -118,7 +111,6 @@ export namespace SocialWebClient {
 
     class ClientContactView extends GObject.Object {
         static $gtype: GObject.GType<ClientContactView>;
-        declare static readonly __signalSignatures: ClientContactView.SignalSignatures;
 
         // Properties
 
@@ -145,18 +137,6 @@ export namespace SocialWebClient {
             signal: K,
             ...args: Parameters<ClientContactView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'contacts-added', callback: (_source: this, contacts: Contact[]) => void): number;
-        connect_after(signal: 'contacts-added', callback: (_source: this, contacts: Contact[]) => void): number;
-        emit(signal: 'contacts-added', contacts: Contact[]): void;
-        connect(signal: 'contacts-changed', callback: (_source: this, contacts: Contact[]) => void): number;
-        connect_after(signal: 'contacts-changed', callback: (_source: this, contacts: Contact[]) => void): number;
-        emit(signal: 'contacts-changed', contacts: Contact[]): void;
-        connect(signal: 'contacts-removed', callback: (_source: this, contacts: Contact[]) => void): number;
-        connect_after(signal: 'contacts-removed', callback: (_source: this, contacts: Contact[]) => void): number;
-        emit(signal: 'contacts-removed', contacts: Contact[]): void;
 
         // Methods
 
@@ -170,15 +150,15 @@ export namespace SocialWebClient {
         // Signal callback interfaces
 
         interface ItemsAdded {
-            (items: Item[]): void;
+            (_source: ClientItemView, items: Item[]): void;
         }
 
         interface ItemsChanged {
-            (items: Item[]): void;
+            (_source: ClientItemView, items: Item[]): void;
         }
 
         interface ItemsRemoved {
-            (items: Item[]): void;
+            (_source: ClientItemView, items: Item[]): void;
         }
 
         // Signal signatures
@@ -198,7 +178,6 @@ export namespace SocialWebClient {
 
     class ClientItemView extends GObject.Object {
         static $gtype: GObject.GType<ClientItemView>;
-        declare static readonly __signalSignatures: ClientItemView.SignalSignatures;
 
         // Properties
 
@@ -225,18 +204,6 @@ export namespace SocialWebClient {
             signal: K,
             ...args: Parameters<ClientItemView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'items-added', callback: (_source: this, items: Item[]) => void): number;
-        connect_after(signal: 'items-added', callback: (_source: this, items: Item[]) => void): number;
-        emit(signal: 'items-added', items: Item[]): void;
-        connect(signal: 'items-changed', callback: (_source: this, items: Item[]) => void): number;
-        connect_after(signal: 'items-changed', callback: (_source: this, items: Item[]) => void): number;
-        emit(signal: 'items-changed', items: Item[]): void;
-        connect(signal: 'items-removed', callback: (_source: this, items: Item[]) => void): number;
-        connect_after(signal: 'items-removed', callback: (_source: this, items: Item[]) => void): number;
-        emit(signal: 'items-removed', items: Item[]): void;
 
         // Methods
 
@@ -257,7 +224,6 @@ export namespace SocialWebClient {
 
     class ClientLastfm extends GObject.Object {
         static $gtype: GObject.GType<ClientLastfm>;
-        declare static readonly __signalSignatures: ClientLastfm.SignalSignatures;
 
         // Constructors
 
@@ -266,6 +232,21 @@ export namespace SocialWebClient {
         _init(...args: any[]): void;
 
         static ['new'](): ClientLastfm;
+
+        // Signals
+
+        connect<K extends keyof ClientLastfm.SignalSignatures>(
+            signal: K,
+            callback: ClientLastfm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientLastfm.SignalSignatures>(
+            signal: K,
+            callback: ClientLastfm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientLastfm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientLastfm.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -294,19 +275,19 @@ export namespace SocialWebClient {
         // Signal callback interfaces
 
         interface AvatarRetrieved {
-            (object: string): void;
+            (_source: ClientService, object: string): void;
         }
 
         interface CapabilitiesChanged {
-            (object: string[]): void;
+            (_source: ClientService, object: string[]): void;
         }
 
         interface StatusUpdated {
-            (object: boolean): void;
+            (_source: ClientService, object: boolean): void;
         }
 
         interface UserChanged {
-            (): void;
+            (_source: ClientService): void;
         }
 
         // Signal signatures
@@ -324,7 +305,6 @@ export namespace SocialWebClient {
 
     class ClientService extends GObject.Object {
         static $gtype: GObject.GType<ClientService>;
-        declare static readonly __signalSignatures: ClientService.SignalSignatures;
 
         // Constructors
 
@@ -346,21 +326,6 @@ export namespace SocialWebClient {
             signal: K,
             ...args: Parameters<ClientService.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'avatar-retrieved', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'avatar-retrieved', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'avatar-retrieved', object: string): void;
-        connect(signal: 'capabilities-changed', callback: (_source: this, object: string[]) => void): number;
-        connect_after(signal: 'capabilities-changed', callback: (_source: this, object: string[]) => void): number;
-        emit(signal: 'capabilities-changed', object: string[]): void;
-        connect(signal: 'status-updated', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'status-updated', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'status-updated', object: boolean): void;
-        connect(signal: 'user-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'user-changed', callback: (_source: this) => void): number;
-        emit(signal: 'user-changed'): void;
 
         // Static methods
 

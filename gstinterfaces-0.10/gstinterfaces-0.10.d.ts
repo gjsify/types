@@ -484,7 +484,7 @@ export namespace GstInterfaces {
         // Signal callback interfaces
 
         interface ValueChanged {
-            (object: number): void;
+            (_source: ColorBalanceChannel, object: number): void;
         }
 
         // Signal signatures
@@ -499,7 +499,6 @@ export namespace GstInterfaces {
 
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
-        declare static readonly __signalSignatures: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -527,12 +526,6 @@ export namespace GstInterfaces {
             signal: K,
             ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'value-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'value-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'value-changed', object: number): void;
     }
 
     namespace MixerOptions {
@@ -546,7 +539,6 @@ export namespace GstInterfaces {
 
     class MixerOptions extends MixerTrack {
         static $gtype: GObject.GType<MixerOptions>;
-        declare static readonly __signalSignatures: MixerOptions.SignalSignatures;
 
         // Fields
 
@@ -557,6 +549,21 @@ export namespace GstInterfaces {
         constructor(properties?: Partial<MixerOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerOptions.SignalSignatures>(
+            signal: K,
+            callback: MixerOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerOptions.SignalSignatures>(
+            signal: K,
+            callback: MixerOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MixerTrack {
@@ -582,7 +589,6 @@ export namespace GstInterfaces {
 
     class MixerTrack extends GObject.Object {
         static $gtype: GObject.GType<MixerTrack>;
-        declare static readonly __signalSignatures: MixerTrack.SignalSignatures;
 
         // Properties
 
@@ -603,17 +609,32 @@ export namespace GstInterfaces {
         constructor(properties?: Partial<MixerTrack.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MixerTrack.SignalSignatures>(
+            signal: K,
+            callback: MixerTrack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerTrack.SignalSignatures>(
+            signal: K,
+            callback: MixerTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerTrack.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TunerChannel {
         // Signal callback interfaces
 
         interface FrequencyChanged {
-            (object: number): void;
+            (_source: TunerChannel, object: number): void;
         }
 
         interface SignalChanged {
-            (object: number): void;
+            (_source: TunerChannel, object: number): void;
         }
 
         // Signal signatures
@@ -629,7 +650,6 @@ export namespace GstInterfaces {
 
     class TunerChannel extends GObject.Object {
         static $gtype: GObject.GType<TunerChannel>;
-        declare static readonly __signalSignatures: TunerChannel.SignalSignatures;
 
         // Fields
 
@@ -661,15 +681,6 @@ export namespace GstInterfaces {
             signal: K,
             ...args: Parameters<TunerChannel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'frequency-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'frequency-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'frequency-changed', object: number): void;
-        connect(signal: 'signal-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'signal-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'signal-changed', object: number): void;
     }
 
     namespace TunerNorm {
@@ -683,7 +694,6 @@ export namespace GstInterfaces {
 
     class TunerNorm extends GObject.Object {
         static $gtype: GObject.GType<TunerNorm>;
-        declare static readonly __signalSignatures: TunerNorm.SignalSignatures;
 
         // Fields
 
@@ -694,6 +704,18 @@ export namespace GstInterfaces {
         constructor(properties?: Partial<TunerNorm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: TunerNorm.SignalSignatures[K]): number;
+        connect_after<K extends keyof TunerNorm.SignalSignatures>(
+            signal: K,
+            callback: TunerNorm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TunerNorm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TunerNorm.SignalSignatures[K]>
+        ): void;
     }
 
     type ColorBalanceChannelClass = typeof ColorBalanceChannel;

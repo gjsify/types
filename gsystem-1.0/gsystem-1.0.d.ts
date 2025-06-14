@@ -497,13 +497,24 @@ export namespace GSystem {
      */
     class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
-        declare static readonly __signalSignatures: Console.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Console.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Console.SignalSignatures>(signal: K, callback: Console.SignalSignatures[K]): number;
+        connect_after<K extends keyof Console.SignalSignatures>(
+            signal: K,
+            callback: Console.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Console.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Console.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -580,7 +591,6 @@ export namespace GSystem {
      */
     class Subprocess extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Subprocess>;
-        declare static readonly __signalSignatures: Subprocess.SignalSignatures;
 
         // Properties
 
@@ -600,6 +610,21 @@ export namespace GSystem {
             stderr_disposition: SubprocessStreamDisposition,
             cancellable?: Gio.Cancellable | null,
         ): Subprocess;
+
+        // Signals
+
+        connect<K extends keyof Subprocess.SignalSignatures>(
+            signal: K,
+            callback: Subprocess.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Subprocess.SignalSignatures>(
+            signal: K,
+            callback: Subprocess.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Subprocess.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Subprocess.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1251,7 +1276,6 @@ export namespace GSystem {
      */
     class SubprocessContext extends GObject.Object {
         static $gtype: GObject.GType<SubprocessContext>;
-        declare static readonly __signalSignatures: SubprocessContext.SignalSignatures;
 
         // Properties
 
@@ -1279,6 +1303,21 @@ export namespace GSystem {
         static ['new'](argv: string): SubprocessContext;
 
         static new_argv0(argv0: string, argv: string): SubprocessContext;
+
+        // Signals
+
+        connect<K extends keyof SubprocessContext.SignalSignatures>(
+            signal: K,
+            callback: SubprocessContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessContext.SignalSignatures>(
+            signal: K,
+            callback: SubprocessContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

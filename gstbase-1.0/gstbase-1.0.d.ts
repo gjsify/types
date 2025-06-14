@@ -535,7 +535,6 @@ export namespace GstBase {
      */
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
-        declare static readonly __signalSignatures: Adapter.SignalSignatures;
 
         // Constructors
 
@@ -544,6 +543,18 @@ export namespace GstBase {
         _init(...args: any[]): void;
 
         static ['new'](): Adapter;
+
+        // Signals
+
+        connect<K extends keyof Adapter.SignalSignatures>(signal: K, callback: Adapter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Adapter.SignalSignatures>(
+            signal: K,
+            callback: Adapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Adapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Adapter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -885,7 +896,14 @@ export namespace GstBase {
         // Signal callback interfaces
 
         interface SamplesSelected {
-            (segment: Gst.Segment, pts: number, dts: number, duration: number, info?: Gst.Structure | null): void;
+            (
+                _source: Aggregator,
+                segment: Gst.Segment,
+                pts: number,
+                dts: number,
+                duration: number,
+                info?: Gst.Structure | null,
+            ): void;
         }
 
         // Signal signatures
@@ -973,7 +991,6 @@ export namespace GstBase {
      */
     abstract class Aggregator extends Gst.Element {
         static $gtype: GObject.GType<Aggregator>;
-        declare static readonly __signalSignatures: Aggregator.SignalSignatures;
 
         // Properties
 
@@ -1039,39 +1056,6 @@ export namespace GstBase {
         emit<K extends keyof Aggregator.SignalSignatures>(
             signal: K,
             ...args: Parameters<Aggregator.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'samples-selected',
-            callback: (
-                _source: this,
-                segment: Gst.Segment,
-                pts: number,
-                dts: number,
-                duration: number,
-                info: Gst.Structure | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'samples-selected',
-            callback: (
-                _source: this,
-                segment: Gst.Segment,
-                pts: number,
-                dts: number,
-                duration: number,
-                info: Gst.Structure | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'samples-selected',
-            segment: Gst.Segment,
-            pts: number,
-            dts: number,
-            duration: number,
-            info?: Gst.Structure | null,
         ): void;
 
         // Virtual methods
@@ -1388,7 +1372,7 @@ export namespace GstBase {
         // Signal callback interfaces
 
         interface BufferConsumed {
-            (object: Gst.Buffer): void;
+            (_source: AggregatorPad, object: Gst.Buffer): void;
         }
 
         // Signal signatures
@@ -1411,7 +1395,6 @@ export namespace GstBase {
      */
     class AggregatorPad extends Gst.Pad {
         static $gtype: GObject.GType<AggregatorPad>;
-        declare static readonly __signalSignatures: AggregatorPad.SignalSignatures;
 
         // Properties
 
@@ -1446,12 +1429,6 @@ export namespace GstBase {
             signal: K,
             ...args: Parameters<AggregatorPad.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'buffer-consumed', callback: (_source: this, object: Gst.Buffer) => void): number;
-        connect_after(signal: 'buffer-consumed', callback: (_source: this, object: Gst.Buffer) => void): number;
-        emit(signal: 'buffer-consumed', object: Gst.Buffer): void;
 
         // Virtual methods
 
@@ -1651,7 +1628,6 @@ export namespace GstBase {
      */
     abstract class BaseParse extends Gst.Element {
         static $gtype: GObject.GType<BaseParse>;
-        declare static readonly __signalSignatures: BaseParse.SignalSignatures;
 
         // Properties
 
@@ -1688,6 +1664,18 @@ export namespace GstBase {
         constructor(properties?: Partial<BaseParse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseParse.SignalSignatures>(signal: K, callback: BaseParse.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseParse.SignalSignatures>(
+            signal: K,
+            callback: BaseParse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseParse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseParse.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2117,7 +2105,6 @@ export namespace GstBase {
      */
     abstract class BaseSink extends Gst.Element {
         static $gtype: GObject.GType<BaseSink>;
-        declare static readonly __signalSignatures: BaseSink.SignalSignatures;
 
         // Properties
 
@@ -2269,6 +2256,18 @@ export namespace GstBase {
         constructor(properties?: Partial<BaseSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseSink.SignalSignatures>(signal: K, callback: BaseSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseSink.SignalSignatures>(
+            signal: K,
+            callback: BaseSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseSink.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2783,7 +2782,6 @@ export namespace GstBase {
      */
     abstract class BaseSrc extends Gst.Element {
         static $gtype: GObject.GType<BaseSrc>;
-        declare static readonly __signalSignatures: BaseSrc.SignalSignatures;
 
         // Properties
 
@@ -2827,6 +2825,18 @@ export namespace GstBase {
         constructor(properties?: Partial<BaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseSrc.SignalSignatures>(signal: K, callback: BaseSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseSrc.SignalSignatures>(
+            signal: K,
+            callback: BaseSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3285,7 +3295,6 @@ export namespace GstBase {
      */
     abstract class BaseTransform extends Gst.Element {
         static $gtype: GObject.GType<BaseTransform>;
-        declare static readonly __signalSignatures: BaseTransform.SignalSignatures;
 
         // Properties
 
@@ -3304,6 +3313,21 @@ export namespace GstBase {
         constructor(properties?: Partial<BaseTransform.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseTransform.SignalSignatures>(
+            signal: K,
+            callback: BaseTransform.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseTransform.SignalSignatures>(
+            signal: K,
+            callback: BaseTransform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseTransform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseTransform.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3638,7 +3662,6 @@ export namespace GstBase {
      */
     class CollectPads extends Gst.Object {
         static $gtype: GObject.GType<CollectPads>;
-        declare static readonly __signalSignatures: CollectPads.SignalSignatures;
 
         // Fields
 
@@ -3651,6 +3674,21 @@ export namespace GstBase {
         _init(...args: any[]): void;
 
         static ['new'](): CollectPads;
+
+        // Signals
+
+        connect<K extends keyof CollectPads.SignalSignatures>(
+            signal: K,
+            callback: CollectPads.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CollectPads.SignalSignatures>(
+            signal: K,
+            callback: CollectPads.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CollectPads.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CollectPads.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3927,11 +3965,11 @@ export namespace GstBase {
         // Signal callback interfaces
 
         interface Empty {
-            (): void;
+            (_source: DataQueue): void;
         }
 
         interface Full {
-            (): void;
+            (_source: DataQueue): void;
         }
 
         // Signal signatures
@@ -3959,7 +3997,6 @@ export namespace GstBase {
      */
     class DataQueue extends GObject.Object {
         static $gtype: GObject.GType<DataQueue>;
-        declare static readonly __signalSignatures: DataQueue.SignalSignatures;
 
         // Properties
 
@@ -3991,15 +4028,6 @@ export namespace GstBase {
             signal: K,
             ...args: Parameters<DataQueue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'empty', callback: (_source: this) => void): number;
-        connect_after(signal: 'empty', callback: (_source: this) => void): number;
-        emit(signal: 'empty'): void;
-        connect(signal: 'full', callback: (_source: this) => void): number;
-        connect_after(signal: 'full', callback: (_source: this) => void): number;
-        emit(signal: 'full'): void;
 
         // Virtual methods
 
@@ -4039,13 +4067,24 @@ export namespace GstBase {
      */
     class PushSrc extends BaseSrc {
         static $gtype: GObject.GType<PushSrc>;
-        declare static readonly __signalSignatures: PushSrc.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PushSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PushSrc.SignalSignatures>(signal: K, callback: PushSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof PushSrc.SignalSignatures>(
+            signal: K,
+            callback: PushSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PushSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PushSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

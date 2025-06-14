@@ -439,7 +439,6 @@ export namespace Modulemd {
 
     class BuildConfig extends GObject.Object {
         static $gtype: GObject.GType<BuildConfig>;
-        declare static readonly __signalSignatures: BuildConfig.SignalSignatures;
 
         // Constructors
 
@@ -448,6 +447,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](): BuildConfig;
+
+        // Signals
+
+        connect<K extends keyof BuildConfig.SignalSignatures>(
+            signal: K,
+            callback: BuildConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildConfig.SignalSignatures>(
+            signal: K,
+            callback: BuildConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildConfig.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -544,7 +558,6 @@ export namespace Modulemd {
 
     class Buildopts extends GObject.Object {
         static $gtype: GObject.GType<Buildopts>;
-        declare static readonly __signalSignatures: Buildopts.SignalSignatures;
 
         // Properties
 
@@ -560,6 +573,18 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](): Buildopts;
+
+        // Signals
+
+        connect<K extends keyof Buildopts.SignalSignatures>(signal: K, callback: Buildopts.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buildopts.SignalSignatures>(
+            signal: K,
+            callback: Buildopts.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Buildopts.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Buildopts.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -614,7 +639,6 @@ export namespace Modulemd {
 
     abstract class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
-        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Properties
 
@@ -631,6 +655,18 @@ export namespace Modulemd {
         constructor(properties?: Partial<Component.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect_after<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: Component.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Component.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -691,7 +727,6 @@ export namespace Modulemd {
 
     class ComponentModule extends Component {
         static $gtype: GObject.GType<ComponentModule>;
-        declare static readonly __signalSignatures: ComponentModule.SignalSignatures;
 
         // Properties
 
@@ -707,6 +742,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](key: string): ComponentModule;
+
+        // Signals
+
+        connect<K extends keyof ComponentModule.SignalSignatures>(
+            signal: K,
+            callback: ComponentModule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ComponentModule.SignalSignatures>(
+            signal: K,
+            callback: ComponentModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ComponentModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ComponentModule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -734,7 +784,6 @@ export namespace Modulemd {
 
     class ComponentRpm extends Component {
         static $gtype: GObject.GType<ComponentRpm>;
-        declare static readonly __signalSignatures: ComponentRpm.SignalSignatures;
 
         // Properties
 
@@ -758,6 +807,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](key: string): ComponentRpm;
+
+        // Signals
+
+        connect<K extends keyof ComponentRpm.SignalSignatures>(
+            signal: K,
+            callback: ComponentRpm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ComponentRpm.SignalSignatures>(
+            signal: K,
+            callback: ComponentRpm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ComponentRpm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ComponentRpm.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -821,7 +885,6 @@ export namespace Modulemd {
 
     abstract class Defaults extends GObject.Object {
         static $gtype: GObject.GType<Defaults>;
-        declare static readonly __signalSignatures: Defaults.SignalSignatures;
 
         // Properties
 
@@ -836,6 +899,18 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](version: number, module_name: string): Defaults;
+
+        // Signals
+
+        connect<K extends keyof Defaults.SignalSignatures>(signal: K, callback: Defaults.SignalSignatures[K]): number;
+        connect_after<K extends keyof Defaults.SignalSignatures>(
+            signal: K,
+            callback: Defaults.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Defaults.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Defaults.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -867,7 +942,6 @@ export namespace Modulemd {
 
     class DefaultsV1 extends Defaults {
         static $gtype: GObject.GType<DefaultsV1>;
-        declare static readonly __signalSignatures: DefaultsV1.SignalSignatures;
 
         // Constructors
 
@@ -879,6 +953,21 @@ export namespace Modulemd {
         // Conflicted with Modulemd.Defaults.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DefaultsV1.SignalSignatures>(
+            signal: K,
+            callback: DefaultsV1.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DefaultsV1.SignalSignatures>(
+            signal: K,
+            callback: DefaultsV1.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DefaultsV1.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DefaultsV1.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -927,7 +1016,6 @@ export namespace Modulemd {
 
     class Dependencies extends GObject.Object {
         static $gtype: GObject.GType<Dependencies>;
-        declare static readonly __signalSignatures: Dependencies.SignalSignatures;
 
         // Constructors
 
@@ -936,6 +1024,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](): Dependencies;
+
+        // Signals
+
+        connect<K extends keyof Dependencies.SignalSignatures>(
+            signal: K,
+            callback: Dependencies.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Dependencies.SignalSignatures>(
+            signal: K,
+            callback: Dependencies.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Dependencies.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Dependencies.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1006,7 +1109,6 @@ export namespace Modulemd {
 
     class Module extends GObject.Object {
         static $gtype: GObject.GType<Module>;
-        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -1018,6 +1120,12 @@ export namespace Modulemd {
         constructor(properties?: Partial<Module.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1094,7 +1202,6 @@ export namespace Modulemd {
 
     class ModuleIndex extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndex>;
-        declare static readonly __signalSignatures: ModuleIndex.SignalSignatures;
 
         // Constructors
 
@@ -1103,6 +1210,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](): ModuleIndex;
+
+        // Signals
+
+        connect<K extends keyof ModuleIndex.SignalSignatures>(
+            signal: K,
+            callback: ModuleIndex.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleIndex.SignalSignatures>(
+            signal: K,
+            callback: ModuleIndex.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleIndex.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleIndex.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1219,7 +1341,6 @@ export namespace Modulemd {
 
     class ModuleIndexMerger extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndexMerger>;
-        declare static readonly __signalSignatures: ModuleIndexMerger.SignalSignatures;
 
         // Constructors
 
@@ -1228,6 +1349,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](): ModuleIndexMerger;
+
+        // Signals
+
+        connect<K extends keyof ModuleIndexMerger.SignalSignatures>(
+            signal: K,
+            callback: ModuleIndexMerger.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleIndexMerger.SignalSignatures>(
+            signal: K,
+            callback: ModuleIndexMerger.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleIndexMerger.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleIndexMerger.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1291,7 +1427,6 @@ export namespace Modulemd {
 
     abstract class ModuleStream extends GObject.Object {
         static $gtype: GObject.GType<ModuleStream>;
-        declare static readonly __signalSignatures: ModuleStream.SignalSignatures;
 
         // Properties
 
@@ -1314,6 +1449,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](mdversion: number, module_name?: string | null, module_stream?: string | null): ModuleStream;
+
+        // Signals
+
+        connect<K extends keyof ModuleStream.SignalSignatures>(
+            signal: K,
+            callback: ModuleStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleStream.SignalSignatures>(
+            signal: K,
+            callback: ModuleStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleStream.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1457,7 +1607,6 @@ export namespace Modulemd {
 
     class ModuleStreamV1 extends ModuleStream {
         static $gtype: GObject.GType<ModuleStreamV1>;
-        declare static readonly __signalSignatures: ModuleStreamV1.SignalSignatures;
 
         // Properties
 
@@ -1482,6 +1631,21 @@ export namespace Modulemd {
         // Conflicted with Modulemd.ModuleStream.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ModuleStreamV1.SignalSignatures>(
+            signal: K,
+            callback: ModuleStreamV1.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleStreamV1.SignalSignatures>(
+            signal: K,
+            callback: ModuleStreamV1.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleStreamV1.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleStreamV1.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1691,7 +1855,6 @@ export namespace Modulemd {
 
     class ModuleStreamV2 extends ModuleStream {
         static $gtype: GObject.GType<ModuleStreamV2>;
-        declare static readonly __signalSignatures: ModuleStreamV2.SignalSignatures;
 
         // Properties
 
@@ -1720,6 +1883,21 @@ export namespace Modulemd {
         // Conflicted with Modulemd.ModuleStream.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ModuleStreamV2.SignalSignatures>(
+            signal: K,
+            callback: ModuleStreamV2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModuleStreamV2.SignalSignatures>(
+            signal: K,
+            callback: ModuleStreamV2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleStreamV2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleStreamV2.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1948,7 +2126,6 @@ export namespace Modulemd {
 
     class Obsoletes extends GObject.Object {
         static $gtype: GObject.GType<Obsoletes>;
-        declare static readonly __signalSignatures: Obsoletes.SignalSignatures;
 
         // Properties
 
@@ -1994,6 +2171,18 @@ export namespace Modulemd {
             module_stream: string,
             message: string,
         ): Obsoletes;
+
+        // Signals
+
+        connect<K extends keyof Obsoletes.SignalSignatures>(signal: K, callback: Obsoletes.SignalSignatures[K]): number;
+        connect_after<K extends keyof Obsoletes.SignalSignatures>(
+            signal: K,
+            callback: Obsoletes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Obsoletes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Obsoletes.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2046,7 +2235,6 @@ export namespace Modulemd {
 
     class PackagerV3 extends GObject.Object {
         static $gtype: GObject.GType<PackagerV3>;
-        declare static readonly __signalSignatures: PackagerV3.SignalSignatures;
 
         // Constructors
 
@@ -2055,6 +2243,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](): PackagerV3;
+
+        // Signals
+
+        connect<K extends keyof PackagerV3.SignalSignatures>(
+            signal: K,
+            callback: PackagerV3.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PackagerV3.SignalSignatures>(
+            signal: K,
+            callback: PackagerV3.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PackagerV3.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PackagerV3.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2228,7 +2431,6 @@ export namespace Modulemd {
 
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
-        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -2241,6 +2443,18 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Profile;
+
+        // Signals
+
+        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            callback: Profile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Profile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2293,7 +2507,6 @@ export namespace Modulemd {
 
     class RpmMapEntry extends GObject.Object {
         static $gtype: GObject.GType<RpmMapEntry>;
-        declare static readonly __signalSignatures: RpmMapEntry.SignalSignatures;
 
         // Properties
 
@@ -2316,6 +2529,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](name: string, epoch: number, version: string, release: string, arch: string): RpmMapEntry;
+
+        // Signals
+
+        connect<K extends keyof RpmMapEntry.SignalSignatures>(
+            signal: K,
+            callback: RpmMapEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RpmMapEntry.SignalSignatures>(
+            signal: K,
+            callback: RpmMapEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RpmMapEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RpmMapEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2348,7 +2576,6 @@ export namespace Modulemd {
 
     class ServiceLevel extends GObject.Object {
         static $gtype: GObject.GType<ServiceLevel>;
-        declare static readonly __signalSignatures: ServiceLevel.SignalSignatures;
 
         // Properties
 
@@ -2361,6 +2588,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](name: string): ServiceLevel;
+
+        // Signals
+
+        connect<K extends keyof ServiceLevel.SignalSignatures>(
+            signal: K,
+            callback: ServiceLevel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServiceLevel.SignalSignatures>(
+            signal: K,
+            callback: ServiceLevel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServiceLevel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServiceLevel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2401,13 +2643,27 @@ export namespace Modulemd {
 
     class SubdocumentInfo extends GObject.Object {
         static $gtype: GObject.GType<SubdocumentInfo>;
-        declare static readonly __signalSignatures: SubdocumentInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SubdocumentInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SubdocumentInfo.SignalSignatures>(
+            signal: K,
+            callback: SubdocumentInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubdocumentInfo.SignalSignatures>(
+            signal: K,
+            callback: SubdocumentInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubdocumentInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubdocumentInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2433,7 +2689,6 @@ export namespace Modulemd {
 
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
-        declare static readonly __signalSignatures: Translation.SignalSignatures;
 
         // Properties
 
@@ -2452,6 +2707,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](version: number, module_name: string, module_stream: string, modified: number): Translation;
+
+        // Signals
+
+        connect<K extends keyof Translation.SignalSignatures>(
+            signal: K,
+            callback: Translation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Translation.SignalSignatures>(
+            signal: K,
+            callback: Translation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Translation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Translation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2488,7 +2758,6 @@ export namespace Modulemd {
 
     class TranslationEntry extends GObject.Object {
         static $gtype: GObject.GType<TranslationEntry>;
-        declare static readonly __signalSignatures: TranslationEntry.SignalSignatures;
 
         // Properties
 
@@ -2505,6 +2774,21 @@ export namespace Modulemd {
         _init(...args: any[]): void;
 
         static ['new'](locale: string): TranslationEntry;
+
+        // Signals
+
+        connect<K extends keyof TranslationEntry.SignalSignatures>(
+            signal: K,
+            callback: TranslationEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TranslationEntry.SignalSignatures>(
+            signal: K,
+            callback: TranslationEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TranslationEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TranslationEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

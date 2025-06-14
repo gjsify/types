@@ -41,7 +41,6 @@ export namespace Govf {
 
     class Disk extends GObject.Object {
         static $gtype: GObject.GType<Disk>;
-        declare static readonly __signalSignatures: Disk.SignalSignatures;
 
         // Constructors
 
@@ -50,6 +49,12 @@ export namespace Govf {
         _init(...args: any[]): void;
 
         static ['new'](): Disk;
+
+        // Signals
+
+        connect<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
+        connect_after<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
+        emit<K extends keyof Disk.SignalSignatures>(signal: K, ...args: Parameters<Disk.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -106,7 +111,6 @@ export namespace Govf {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
-        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Constructors
 
@@ -115,6 +119,18 @@ export namespace Govf {
         _init(...args: any[]): void;
 
         static ['new'](): Package;
+
+        // Signals
+
+        connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect_after<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            callback: Package.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Package.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

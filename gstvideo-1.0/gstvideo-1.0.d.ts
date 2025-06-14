@@ -4586,7 +4586,7 @@ export namespace GstVideo {
         // Signal callback interfaces
 
         interface ValueChanged {
-            (value: number): void;
+            (_source: ColorBalanceChannel, value: number): void;
         }
 
         // Signal signatures
@@ -4606,7 +4606,6 @@ export namespace GstVideo {
      */
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
-        declare static readonly __signalSignatures: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -4634,12 +4633,6 @@ export namespace GstVideo {
             signal: K,
             ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'value-changed', callback: (_source: this, value: number) => void): number;
-        connect_after(signal: 'value-changed', callback: (_source: this, value: number) => void): number;
-        emit(signal: 'value-changed', value: number): void;
 
         // Virtual methods
 
@@ -4675,7 +4668,6 @@ export namespace GstVideo {
      */
     abstract class VideoAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<VideoAggregator>;
-        declare static readonly __signalSignatures: VideoAggregator.SignalSignatures;
 
         // Properties
 
@@ -4703,6 +4695,21 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoAggregator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoAggregator.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoAggregator.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoAggregator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoAggregator.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4764,7 +4771,6 @@ export namespace GstVideo {
      */
     class VideoAggregatorConvertPad extends VideoAggregatorPad {
         static $gtype: GObject.GType<VideoAggregatorConvertPad>;
-        declare static readonly __signalSignatures: VideoAggregatorConvertPad.SignalSignatures;
 
         // Properties
 
@@ -4778,6 +4784,21 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoAggregatorConvertPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregatorConvertPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregatorConvertPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoAggregatorConvertPad.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4809,7 +4830,6 @@ export namespace GstVideo {
 
     class VideoAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<VideoAggregatorPad>;
-        declare static readonly __signalSignatures: VideoAggregatorPad.SignalSignatures;
 
         // Properties
 
@@ -4829,6 +4849,21 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoAggregatorPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoAggregatorPad.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregatorPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoAggregatorPad.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregatorPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoAggregatorPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoAggregatorPad.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4932,13 +4967,27 @@ export namespace GstVideo {
      */
     class VideoAggregatorParallelConvertPad extends VideoAggregatorConvertPad {
         static $gtype: GObject.GType<VideoAggregatorParallelConvertPad>;
-        declare static readonly __signalSignatures: VideoAggregatorParallelConvertPad.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VideoAggregatorParallelConvertPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregatorParallelConvertPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
+            signal: K,
+            callback: VideoAggregatorParallelConvertPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoAggregatorParallelConvertPad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VideoBufferPool {
@@ -4952,7 +5001,6 @@ export namespace GstVideo {
 
     class VideoBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VideoBufferPool>;
-        declare static readonly __signalSignatures: VideoBufferPool.SignalSignatures;
 
         // Fields
 
@@ -4965,6 +5013,21 @@ export namespace GstVideo {
         _init(...args: any[]): void;
 
         static ['new'](): VideoBufferPool;
+
+        // Signals
+
+        connect<K extends keyof VideoBufferPool.SignalSignatures>(
+            signal: K,
+            callback: VideoBufferPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoBufferPool.SignalSignatures>(
+            signal: K,
+            callback: VideoBufferPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoBufferPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoBufferPool.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VideoDecoder {
@@ -5110,7 +5173,6 @@ export namespace GstVideo {
      */
     abstract class VideoDecoder extends Gst.Element {
         static $gtype: GObject.GType<VideoDecoder>;
-        declare static readonly __signalSignatures: VideoDecoder.SignalSignatures;
 
         // Properties
 
@@ -5198,6 +5260,21 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoDecoder.SignalSignatures>(
+            signal: K,
+            callback: VideoDecoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoDecoder.SignalSignatures>(
+            signal: K,
+            callback: VideoDecoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoDecoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoDecoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5793,7 +5870,6 @@ export namespace GstVideo {
      */
     abstract class VideoEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<VideoEncoder>;
-        declare static readonly __signalSignatures: VideoEncoder.SignalSignatures;
 
         // Properties
 
@@ -5817,6 +5893,21 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoEncoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoEncoder.SignalSignatures>(
+            signal: K,
+            callback: VideoEncoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoEncoder.SignalSignatures>(
+            signal: K,
+            callback: VideoEncoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoEncoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoEncoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -6727,7 +6818,6 @@ export namespace GstVideo {
      */
     abstract class VideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VideoFilter>;
-        declare static readonly __signalSignatures: VideoFilter.SignalSignatures;
 
         // Fields
 
@@ -6739,6 +6829,21 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoFilter.SignalSignatures>(
+            signal: K,
+            callback: VideoFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoFilter.SignalSignatures>(
+            signal: K,
+            callback: VideoFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoFilter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -6773,11 +6878,25 @@ export namespace GstVideo {
      */
     class VideoMultiviewFlagsSet extends Gst.FlagSet {
         static $gtype: GObject.GType<VideoMultiviewFlagsSet>;
-        declare static readonly __signalSignatures: VideoMultiviewFlagsSet.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
+            signal: K,
+            callback: VideoMultiviewFlagsSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
+            signal: K,
+            callback: VideoMultiviewFlagsSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoMultiviewFlagsSet.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VideoSink {
@@ -6801,7 +6920,6 @@ export namespace GstVideo {
      */
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
-        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -6829,6 +6947,18 @@ export namespace GstVideo {
         constructor(properties?: Partial<VideoSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: VideoSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoSink.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

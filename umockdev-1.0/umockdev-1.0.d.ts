@@ -44,7 +44,6 @@ export namespace UMockdev {
 
     class Testbed extends GObject.Object {
         static $gtype: GObject.GType<Testbed>;
-        declare static readonly __signalSignatures: Testbed.SignalSignatures;
 
         // Constructors
 
@@ -53,6 +52,18 @@ export namespace UMockdev {
         _init(...args: any[]): void;
 
         static ['new'](): Testbed;
+
+        // Signals
+
+        connect<K extends keyof Testbed.SignalSignatures>(signal: K, callback: Testbed.SignalSignatures[K]): number;
+        connect_after<K extends keyof Testbed.SignalSignatures>(
+            signal: K,
+            callback: Testbed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Testbed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Testbed.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -106,7 +117,6 @@ export namespace UMockdev {
 
     class IoctlData extends GObject.Object {
         static $gtype: GObject.GType<IoctlData>;
-        declare static readonly __signalSignatures: IoctlData.SignalSignatures;
 
         // Fields
 
@@ -119,6 +129,18 @@ export namespace UMockdev {
         constructor(properties?: Partial<IoctlData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: IoctlData.SignalSignatures[K]): number;
+        connect_after<K extends keyof IoctlData.SignalSignatures>(
+            signal: K,
+            callback: IoctlData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IoctlData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IoctlData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -147,7 +169,6 @@ export namespace UMockdev {
 
     class IoctlClient extends GObject.Object {
         static $gtype: GObject.GType<IoctlClient>;
-        declare static readonly __signalSignatures: IoctlClient.SignalSignatures;
 
         // Properties
 
@@ -161,6 +182,21 @@ export namespace UMockdev {
         constructor(properties?: Partial<IoctlClient.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IoctlClient.SignalSignatures>(
+            signal: K,
+            callback: IoctlClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IoctlClient.SignalSignatures>(
+            signal: K,
+            callback: IoctlClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IoctlClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IoctlClient.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -177,11 +213,11 @@ export namespace UMockdev {
         // Signal callback interfaces
 
         interface ClientConnected {
-            (client: IoctlClient): void;
+            (_source: IoctlBase, client: IoctlClient): void;
         }
 
         interface ClientVanished {
-            (client: IoctlClient): void;
+            (_source: IoctlBase, client: IoctlClient): void;
         }
 
         // Signal signatures
@@ -197,7 +233,6 @@ export namespace UMockdev {
 
     class IoctlBase extends GObject.Object {
         static $gtype: GObject.GType<IoctlBase>;
-        declare static readonly __signalSignatures: IoctlBase.SignalSignatures;
 
         // Constructors
 
@@ -218,15 +253,6 @@ export namespace UMockdev {
             signal: K,
             ...args: Parameters<IoctlBase.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'client-connected', callback: (_source: this, client: IoctlClient) => void): number;
-        connect_after(signal: 'client-connected', callback: (_source: this, client: IoctlClient) => void): number;
-        emit(signal: 'client-connected', client: IoctlClient): void;
-        connect(signal: 'client-vanished', callback: (_source: this, client: IoctlClient) => void): number;
-        connect_after(signal: 'client-vanished', callback: (_source: this, client: IoctlClient) => void): number;
-        emit(signal: 'client-vanished', client: IoctlClient): void;
 
         // Virtual methods
 

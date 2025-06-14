@@ -3108,7 +3108,6 @@ export namespace Pango {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -3117,6 +3116,18 @@ export namespace Pango {
         _init(...args: any[]): void;
 
         static ['new'](): Context;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3341,7 +3352,6 @@ export namespace Pango {
      */
     class Coverage extends GObject.Object {
         static $gtype: GObject.GType<Coverage>;
-        declare static readonly __signalSignatures: Coverage.SignalSignatures;
 
         // Constructors
 
@@ -3350,6 +3360,18 @@ export namespace Pango {
         _init(...args: any[]): void;
 
         static ['new'](): Coverage;
+
+        // Signals
+
+        connect<K extends keyof Coverage.SignalSignatures>(signal: K, callback: Coverage.SignalSignatures[K]): number;
+        connect_after<K extends keyof Coverage.SignalSignatures>(
+            signal: K,
+            callback: Coverage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Coverage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Coverage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3420,13 +3442,18 @@ export namespace Pango {
      */
     abstract class Font extends GObject.Object {
         static $gtype: GObject.GType<Font>;
-        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3648,13 +3675,24 @@ export namespace Pango {
      */
     abstract class FontFace extends GObject.Object {
         static $gtype: GObject.GType<FontFace>;
-        declare static readonly __signalSignatures: FontFace.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FontFace.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FontFace.SignalSignatures>(signal: K, callback: FontFace.SignalSignatures[K]): number;
+        connect_after<K extends keyof FontFace.SignalSignatures>(
+            signal: K,
+            callback: FontFace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontFace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontFace.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3774,7 +3812,6 @@ export namespace Pango {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontFamily>;
-        declare static readonly __signalSignatures: FontFamily.SignalSignatures;
 
         // Properties
 
@@ -3820,6 +3857,21 @@ export namespace Pango {
         constructor(properties?: Partial<FontFamily.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FontFamily.SignalSignatures>(
+            signal: K,
+            callback: FontFamily.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FontFamily.SignalSignatures>(
+            signal: K,
+            callback: FontFamily.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontFamily.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontFamily.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4470,7 +4522,6 @@ export namespace Pango {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
-        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Properties
 
@@ -4496,6 +4547,18 @@ export namespace Pango {
         constructor(properties?: Partial<FontMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            callback: FontMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5206,13 +5269,24 @@ export namespace Pango {
      */
     abstract class Fontset extends GObject.Object {
         static $gtype: GObject.GType<Fontset>;
-        declare static readonly __signalSignatures: Fontset.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Fontset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Fontset.SignalSignatures>(signal: K, callback: Fontset.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fontset.SignalSignatures>(
+            signal: K,
+            callback: Fontset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Fontset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Fontset.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5281,7 +5355,6 @@ export namespace Pango {
      */
     class FontsetSimple extends Fontset {
         static $gtype: GObject.GType<FontsetSimple>;
-        declare static readonly __signalSignatures: FontsetSimple.SignalSignatures;
 
         // Constructors
 
@@ -5290,6 +5363,21 @@ export namespace Pango {
         _init(...args: any[]): void;
 
         static ['new'](language: Language): FontsetSimple;
+
+        // Signals
+
+        connect<K extends keyof FontsetSimple.SignalSignatures>(
+            signal: K,
+            callback: FontsetSimple.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FontsetSimple.SignalSignatures>(
+            signal: K,
+            callback: FontsetSimple.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontsetSimple.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontsetSimple.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5358,7 +5446,6 @@ export namespace Pango {
      */
     class Layout extends GObject.Object {
         static $gtype: GObject.GType<Layout>;
-        declare static readonly __signalSignatures: Layout.SignalSignatures;
 
         // Constructors
 
@@ -5367,6 +5454,12 @@ export namespace Pango {
         _init(...args: any[]): void;
 
         static ['new'](context: Context): Layout;
+
+        // Signals
+
+        connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -6113,7 +6206,6 @@ export namespace Pango {
      */
     abstract class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
-        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Fields
 
@@ -6124,6 +6216,18 @@ export namespace Pango {
         constructor(properties?: Partial<Renderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            callback: Renderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Renderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Renderer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

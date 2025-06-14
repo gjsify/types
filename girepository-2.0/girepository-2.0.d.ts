@@ -1727,13 +1727,27 @@ export namespace GIRepository {
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
-        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Repository.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

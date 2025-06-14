@@ -242,7 +242,7 @@ export namespace Xfconf {
         // Signal callback interfaces
 
         interface PropertyChanged {
-            (property: string, value: GObject.Value | any): void;
+            (_source: Channel, property: string, value: GObject.Value | any): void;
         }
 
         // Signal signatures
@@ -267,7 +267,6 @@ export namespace Xfconf {
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -323,18 +322,6 @@ export namespace Xfconf {
             signal: K,
             ...args: Parameters<Channel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'property-changed',
-            callback: (_source: this, property: string, value: GObject.Value) => void,
-        ): number;
-        connect_after(
-            signal: 'property-changed',
-            callback: (_source: this, property: string, value: GObject.Value) => void,
-        ): number;
-        emit(signal: 'property-changed', property: string, value: GObject.Value | any): void;
 
         // Static methods
 
@@ -608,11 +595,16 @@ export namespace Xfconf {
 
     class Int16 {
         static $gtype: GObject.GType<Int16>;
-        declare static readonly __signalSignatures: Int16.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
+        connect_after<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
+        emit<K extends keyof Int16.SignalSignatures>(signal: K, ...args: Parameters<Int16.SignalSignatures[K]>): void;
     }
 
     namespace Uint16 {
@@ -622,11 +614,16 @@ export namespace Xfconf {
 
     class Uint16 {
         static $gtype: GObject.GType<Uint16>;
-        declare static readonly __signalSignatures: Uint16.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
+        connect_after<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
+        emit<K extends keyof Uint16.SignalSignatures>(signal: K, ...args: Parameters<Uint16.SignalSignatures[K]>): void;
     }
 
     /**

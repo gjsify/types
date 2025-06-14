@@ -104,7 +104,6 @@ export namespace GnomeRR {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -117,6 +116,12 @@ export namespace GnomeRR {
         _init(...args: any[]): void;
 
         static new_current(screen: Screen): Config;
+
+        // Signals
+
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -148,13 +153,27 @@ export namespace GnomeRR {
      */
     class OutputInfo extends GObject.Object {
         static $gtype: GObject.GType<OutputInfo>;
-        declare static readonly __signalSignatures: OutputInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OutputInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OutputInfo.SignalSignatures>(
+            signal: K,
+            callback: OutputInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputInfo.SignalSignatures>(
+            signal: K,
+            callback: OutputInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -205,15 +224,15 @@ export namespace GnomeRR {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface OutputConnected {
-            (output: Output): void;
+            (_source: Screen, output: Output): void;
         }
 
         interface OutputDisconnected {
-            (output: Output): void;
+            (_source: Screen, output: Output): void;
         }
 
         // Signal signatures
@@ -238,7 +257,6 @@ export namespace GnomeRR {
 
     class Screen extends GObject.Object implements Gio.AsyncInitable<Screen>, Gio.Initable {
         static $gtype: GObject.GType<Screen>;
-        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Properties
 
@@ -267,18 +285,6 @@ export namespace GnomeRR {
         connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'output-connected', callback: (_source: this, output: Output) => void): number;
-        connect_after(signal: 'output-connected', callback: (_source: this, output: Output) => void): number;
-        emit(signal: 'output-connected', output: Output): void;
-        connect(signal: 'output-disconnected', callback: (_source: this, output: Output) => void): number;
-        connect_after(signal: 'output-disconnected', callback: (_source: this, output: Output) => void): number;
-        emit(signal: 'output-disconnected', output: Output): void;
 
         // Static methods
 

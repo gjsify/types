@@ -93,7 +93,6 @@ export namespace Nemo {
 
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
-        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -122,6 +121,12 @@ export namespace Nemo {
         _init(...args: any[]): void;
 
         static ['new'](name: string, attribute: string, label: string, description: string): Column;
+
+        // Signals
+
+        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -158,7 +163,6 @@ export namespace Nemo {
 
     class DesktopPreferences extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DesktopPreferences>;
-        declare static readonly __signalSignatures: DesktopPreferences.SignalSignatures;
 
         // Constructors
 
@@ -167,6 +171,21 @@ export namespace Nemo {
         _init(...args: any[]): void;
 
         static ['new'](): DesktopPreferences;
+
+        // Signals
+
+        connect<K extends keyof DesktopPreferences.SignalSignatures>(
+            signal: K,
+            callback: DesktopPreferences.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopPreferences.SignalSignatures>(
+            signal: K,
+            callback: DesktopPreferences.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopPreferences.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopPreferences.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -621,7 +640,6 @@ export namespace Nemo {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
-        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -630,6 +648,12 @@ export namespace Nemo {
         _init(...args: any[]): void;
 
         static ['new'](): Menu;
+
+        // Signals
+
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -641,7 +665,7 @@ export namespace Nemo {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: MenuItem): void;
         }
 
         // Signal signatures
@@ -669,7 +693,6 @@ export namespace Nemo {
 
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
-        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -720,12 +743,6 @@ export namespace Nemo {
             signal: K,
             ...args: Parameters<MenuItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
 
         // Static methods
 
@@ -769,7 +786,6 @@ export namespace Nemo {
 
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
-        declare static readonly __signalSignatures: PropertyPage.SignalSignatures;
 
         // Properties
 
@@ -786,6 +802,21 @@ export namespace Nemo {
         _init(...args: any[]): void;
 
         static ['new'](name: string, label: Gtk.Widget, page: Gtk.Widget): PropertyPage;
+
+        // Signals
+
+        connect<K extends keyof PropertyPage.SignalSignatures>(
+            signal: K,
+            callback: PropertyPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyPage.SignalSignatures>(
+            signal: K,
+            callback: PropertyPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyPage.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SimpleButton {
@@ -807,7 +838,6 @@ export namespace Nemo {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<SimpleButton>;
-        declare static readonly __signalSignatures: SimpleButton.SignalSignatures;
 
         // Constructors
 
@@ -828,6 +858,21 @@ export namespace Nemo {
         // Conflicted with Gtk.Button.new_from_stock
 
         static new_from_stock(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SimpleButton.SignalSignatures>(
+            signal: K,
+            callback: SimpleButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleButton.SignalSignatures>(
+            signal: K,
+            callback: SimpleButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get action_name(): string;

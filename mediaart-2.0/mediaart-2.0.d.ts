@@ -355,7 +355,6 @@ export namespace MediaArt {
      */
     class Process extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Process>;
-        declare static readonly __signalSignatures: Process.SignalSignatures;
 
         // Constructors
 
@@ -364,6 +363,18 @@ export namespace MediaArt {
         _init(...args: any[]): void;
 
         static ['new'](): Process;
+
+        // Signals
+
+        connect<K extends keyof Process.SignalSignatures>(signal: K, callback: Process.SignalSignatures[K]): number;
+        connect_after<K extends keyof Process.SignalSignatures>(
+            signal: K,
+            callback: Process.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Process.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Process.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

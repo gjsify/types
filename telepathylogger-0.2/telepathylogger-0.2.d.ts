@@ -107,7 +107,6 @@ export namespace TelepathyLogger {
      */
     class CallEvent extends Event {
         static $gtype: GObject.GType<CallEvent>;
-        declare static readonly __signalSignatures: CallEvent.SignalSignatures;
 
         // Properties
 
@@ -124,6 +123,18 @@ export namespace TelepathyLogger {
         constructor(properties?: Partial<CallEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CallEvent.SignalSignatures>(signal: K, callback: CallEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof CallEvent.SignalSignatures>(
+            signal: K,
+            callback: CallEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -153,7 +164,6 @@ export namespace TelepathyLogger {
      */
     class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
-        declare static readonly __signalSignatures: Entity.SignalSignatures;
 
         // Properties
 
@@ -190,6 +200,12 @@ export namespace TelepathyLogger {
 
         static new_from_tp_contact(contact: TelepathyGLib.Contact, type: EntityType): Entity;
 
+        // Signals
+
+        connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: Parameters<Entity.SignalSignatures[K]>): void;
+
         // Methods
 
         get_alias(): string;
@@ -221,7 +237,6 @@ export namespace TelepathyLogger {
      */
     abstract class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
-        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -239,6 +254,12 @@ export namespace TelepathyLogger {
         constructor(properties?: Partial<Event.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -277,7 +298,6 @@ export namespace TelepathyLogger {
      */
     class LogManager extends GObject.Object {
         static $gtype: GObject.GType<LogManager>;
-        declare static readonly __signalSignatures: LogManager.SignalSignatures;
 
         // Fields
 
@@ -288,6 +308,21 @@ export namespace TelepathyLogger {
         constructor(properties?: Partial<LogManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LogManager.SignalSignatures>(
+            signal: K,
+            callback: LogManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LogManager.SignalSignatures>(
+            signal: K,
+            callback: LogManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LogManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LogManager.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -550,7 +585,6 @@ export namespace TelepathyLogger {
      */
     class LogWalker extends GObject.Object {
         static $gtype: GObject.GType<LogWalker>;
-        declare static readonly __signalSignatures: LogWalker.SignalSignatures;
 
         // Properties
 
@@ -563,6 +597,18 @@ export namespace TelepathyLogger {
         constructor(properties?: Partial<LogWalker.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LogWalker.SignalSignatures>(signal: K, callback: LogWalker.SignalSignatures[K]): number;
+        connect_after<K extends keyof LogWalker.SignalSignatures>(
+            signal: K,
+            callback: LogWalker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LogWalker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LogWalker.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -644,7 +690,6 @@ export namespace TelepathyLogger {
      */
     class TextEvent extends Event {
         static $gtype: GObject.GType<TextEvent>;
-        declare static readonly __signalSignatures: TextEvent.SignalSignatures;
 
         // Properties
 
@@ -663,6 +708,18 @@ export namespace TelepathyLogger {
         constructor(properties?: Partial<TextEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TextEvent.SignalSignatures>(signal: K, callback: TextEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextEvent.SignalSignatures>(
+            signal: K,
+            callback: TextEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

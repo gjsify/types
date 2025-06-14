@@ -792,11 +792,11 @@ export namespace Libxfce4ui {
         // Signal callback interfaces
 
         interface TextInvalid {
-            (): void;
+            (_source: FilenameInput): void;
         }
 
         interface TextValid {
-            (): void;
+            (_source: FilenameInput): void;
         }
 
         // Signal signatures
@@ -824,7 +824,6 @@ export namespace Libxfce4ui {
      */
     class FilenameInput extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilenameInput>;
-        declare static readonly __signalSignatures: FilenameInput.SignalSignatures;
 
         // Properties
 
@@ -871,15 +870,6 @@ export namespace Libxfce4ui {
             signal: K,
             ...args: Parameters<FilenameInput.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'text-invalid', callback: (_source: this) => void): number;
-        connect_after(signal: 'text-invalid', callback: (_source: this) => void): number;
-        emit(signal: 'text-invalid'): void;
-        connect(signal: 'text-valid', callback: (_source: this) => void): number;
-        connect_after(signal: 'text-valid', callback: (_source: this) => void): number;
-        emit(signal: 'text-valid'): void;
 
         // Static methods
 
@@ -1382,23 +1372,23 @@ export namespace Libxfce4ui {
         // Signal callback interfaces
 
         interface Quit {
-            (): void;
+            (_source: SMClient): void;
         }
 
         interface QuitCancelled {
-            (): void;
+            (_source: SMClient): void;
         }
 
         interface QuitRequested {
-            (): boolean;
+            (_source: SMClient): boolean;
         }
 
         interface SaveState {
-            (): void;
+            (_source: SMClient): void;
         }
 
         interface SaveStateExtended {
-            (): void;
+            (_source: SMClient): void;
         }
 
         // Signal signatures
@@ -1435,7 +1425,6 @@ export namespace Libxfce4ui {
      */
     class SMClient extends GObject.Object {
         static $gtype: GObject.GType<SMClient>;
-        declare static readonly __signalSignatures: SMClient.SignalSignatures;
 
         // Properties
 
@@ -1489,6 +1478,7 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        connect<K extends keyof SMClient.SignalSignatures>(signal: K, callback: SMClient.SignalSignatures[K]): number;
         connect_after<K extends keyof SMClient.SignalSignatures>(
             signal: K,
             callback: SMClient.SignalSignatures[K],
@@ -1497,18 +1487,6 @@ export namespace Libxfce4ui {
             signal: K,
             ...args: Parameters<SMClient.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'quit', callback: (_source: this) => void): number;
-        emit(signal: 'quit'): void;
-        connect_after(signal: 'quit-cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'quit-cancelled'): void;
-        connect_after(signal: 'quit-requested', callback: (_source: this) => boolean): number;
-        emit(signal: 'quit-requested'): void;
-        connect_after(signal: 'save-state', callback: (_source: this) => void): number;
-        emit(signal: 'save-state'): void;
-        connect_after(signal: 'save-state-extended', callback: (_source: this) => void): number;
-        emit(signal: 'save-state-extended'): void;
 
         // Static methods
 
@@ -1710,7 +1688,6 @@ export namespace Libxfce4ui {
 
     class Screensaver extends GObject.Object {
         static $gtype: GObject.GType<Screensaver>;
-        declare static readonly __signalSignatures: Screensaver.SignalSignatures;
 
         // Properties
 
@@ -1734,6 +1711,21 @@ export namespace Libxfce4ui {
         _init(...args: any[]): void;
 
         static ['new'](): Screensaver;
+
+        // Signals
+
+        connect<K extends keyof Screensaver.SignalSignatures>(
+            signal: K,
+            callback: Screensaver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Screensaver.SignalSignatures>(
+            signal: K,
+            callback: Screensaver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Screensaver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Screensaver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1775,7 +1767,6 @@ export namespace Libxfce4ui {
      */
     class TitledDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitledDialog>;
-        declare static readonly __signalSignatures: TitledDialog.SignalSignatures;
 
         // Properties
 
@@ -1792,6 +1783,21 @@ export namespace Libxfce4ui {
         _init(...args: any[]): void;
 
         static ['new'](): TitledDialog;
+
+        // Signals
+
+        connect<K extends keyof TitledDialog.SignalSignatures>(
+            signal: K,
+            callback: TitledDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TitledDialog.SignalSignatures>(
+            signal: K,
+            callback: TitledDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TitledDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TitledDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -39,7 +39,6 @@ export namespace GstVulkanWayland {
      */
     class VulkanDisplayWayland extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayWayland>;
-        declare static readonly __signalSignatures: VulkanDisplayWayland.SignalSignatures;
 
         // Fields
 
@@ -61,6 +60,21 @@ export namespace GstVulkanWayland {
         static ['new'](...args: never[]): any;
 
         static new_with_display(display?: any | null): VulkanDisplayWayland;
+
+        // Signals
+
+        connect<K extends keyof VulkanDisplayWayland.SignalSignatures>(
+            signal: K,
+            callback: VulkanDisplayWayland.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanDisplayWayland.SignalSignatures>(
+            signal: K,
+            callback: VulkanDisplayWayland.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanDisplayWayland.SignalSignatures[K]>
+        ): void;
     }
 
     type VulkanDisplayWaylandClass = typeof VulkanDisplayWayland;

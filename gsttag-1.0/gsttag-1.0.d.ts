@@ -893,7 +893,6 @@ export namespace GstTag {
      */
     abstract class TagDemux extends Gst.Element {
         static $gtype: GObject.GType<TagDemux>;
-        declare static readonly __signalSignatures: TagDemux.SignalSignatures;
 
         // Fields
 
@@ -904,6 +903,18 @@ export namespace GstTag {
         constructor(properties?: Partial<TagDemux.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TagDemux.SignalSignatures>(signal: K, callback: TagDemux.SignalSignatures[K]): number;
+        connect_after<K extends keyof TagDemux.SignalSignatures>(
+            signal: K,
+            callback: TagDemux.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TagDemux.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TagDemux.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -939,7 +950,6 @@ export namespace GstTag {
      */
     abstract class TagMux extends Gst.Element implements Gst.TagSetter {
         static $gtype: GObject.GType<TagMux>;
-        declare static readonly __signalSignatures: TagMux.SignalSignatures;
 
         // Fields
 
@@ -950,6 +960,12 @@ export namespace GstTag {
         constructor(properties?: Partial<TagMux.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
+        connect_after<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
+        emit<K extends keyof TagMux.SignalSignatures>(signal: K, ...args: Parameters<TagMux.SignalSignatures[K]>): void;
 
         // Virtual methods
 

@@ -127,7 +127,6 @@ export namespace MPID {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -261,6 +260,12 @@ export namespace MPID {
         static ['new'](path: string): Device;
 
         static new_from_mpi_file(path: string): Device;
+
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
     }
 
     type DeviceClass = typeof Device;

@@ -2784,7 +2784,6 @@ export namespace AppStream {
 
     class Agreement extends GObject.Object {
         static $gtype: GObject.GType<Agreement>;
-        declare static readonly __signalSignatures: Agreement.SignalSignatures;
 
         // Constructors
 
@@ -2793,6 +2792,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Agreement;
+
+        // Signals
+
+        connect<K extends keyof Agreement.SignalSignatures>(signal: K, callback: Agreement.SignalSignatures[K]): number;
+        connect_after<K extends keyof Agreement.SignalSignatures>(
+            signal: K,
+            callback: Agreement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Agreement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Agreement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2840,7 +2851,6 @@ export namespace AppStream {
 
     class AgreementSection extends GObject.Object {
         static $gtype: GObject.GType<AgreementSection>;
-        declare static readonly __signalSignatures: AgreementSection.SignalSignatures;
 
         // Constructors
 
@@ -2849,6 +2859,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): AgreementSection;
+
+        // Signals
+
+        connect<K extends keyof AgreementSection.SignalSignatures>(
+            signal: K,
+            callback: AgreementSection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AgreementSection.SignalSignatures>(
+            signal: K,
+            callback: AgreementSection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AgreementSection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AgreementSection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2909,7 +2934,6 @@ export namespace AppStream {
 
     class Artifact extends GObject.Object {
         static $gtype: GObject.GType<Artifact>;
-        declare static readonly __signalSignatures: Artifact.SignalSignatures;
 
         // Constructors
 
@@ -2918,6 +2942,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Artifact;
+
+        // Signals
+
+        connect<K extends keyof Artifact.SignalSignatures>(signal: K, callback: Artifact.SignalSignatures[K]): number;
+        connect_after<K extends keyof Artifact.SignalSignatures>(
+            signal: K,
+            callback: Artifact.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Artifact.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Artifact.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3013,7 +3049,6 @@ export namespace AppStream {
 
     class Branding extends GObject.Object {
         static $gtype: GObject.GType<Branding>;
-        declare static readonly __signalSignatures: Branding.SignalSignatures;
 
         // Constructors
 
@@ -3022,6 +3057,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Branding;
+
+        // Signals
+
+        connect<K extends keyof Branding.SignalSignatures>(signal: K, callback: Branding.SignalSignatures[K]): number;
+        connect_after<K extends keyof Branding.SignalSignatures>(
+            signal: K,
+            callback: Branding.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Branding.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Branding.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3061,7 +3108,6 @@ export namespace AppStream {
 
     class Bundle extends GObject.Object {
         static $gtype: GObject.GType<Bundle>;
-        declare static readonly __signalSignatures: Bundle.SignalSignatures;
 
         // Constructors
 
@@ -3070,6 +3116,12 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Bundle;
+
+        // Signals
+
+        connect<K extends keyof Bundle.SignalSignatures>(signal: K, callback: Bundle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bundle.SignalSignatures>(signal: K, callback: Bundle.SignalSignatures[K]): number;
+        emit<K extends keyof Bundle.SignalSignatures>(signal: K, ...args: Parameters<Bundle.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3112,7 +3164,6 @@ export namespace AppStream {
 
     class Category extends GObject.Object {
         static $gtype: GObject.GType<Category>;
-        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -3132,6 +3183,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Category;
+
+        // Signals
+
+        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect_after<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: Category.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Category.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3223,7 +3286,6 @@ export namespace AppStream {
 
     class Checksum extends GObject.Object {
         static $gtype: GObject.GType<Checksum>;
-        declare static readonly __signalSignatures: Checksum.SignalSignatures;
 
         // Constructors
 
@@ -3234,6 +3296,18 @@ export namespace AppStream {
         static ['new'](): Checksum;
 
         static new_with_value(kind: ChecksumKind, value: string): Checksum;
+
+        // Signals
+
+        connect<K extends keyof Checksum.SignalSignatures>(signal: K, callback: Checksum.SignalSignatures[K]): number;
+        connect_after<K extends keyof Checksum.SignalSignatures>(
+            signal: K,
+            callback: Checksum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Checksum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Checksum.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3286,7 +3360,6 @@ export namespace AppStream {
 
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
-        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Properties
 
@@ -3369,6 +3442,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Component;
+
+        // Signals
+
+        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect_after<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: Component.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Component.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4151,7 +4236,6 @@ export namespace AppStream {
 
     class ComponentBox extends GObject.Object {
         static $gtype: GObject.GType<ComponentBox>;
-        declare static readonly __signalSignatures: ComponentBox.SignalSignatures;
 
         // Properties
 
@@ -4166,6 +4250,21 @@ export namespace AppStream {
         static ['new'](flags: ComponentBoxFlags): ComponentBox;
 
         static new_simple(): ComponentBox;
+
+        // Signals
+
+        connect<K extends keyof ComponentBox.SignalSignatures>(
+            signal: K,
+            callback: ComponentBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ComponentBox.SignalSignatures>(
+            signal: K,
+            callback: ComponentBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ComponentBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ComponentBox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4235,7 +4334,6 @@ export namespace AppStream {
 
     class ContentRating extends GObject.Object {
         static $gtype: GObject.GType<ContentRating>;
-        declare static readonly __signalSignatures: ContentRating.SignalSignatures;
 
         // Constructors
 
@@ -4244,6 +4342,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): ContentRating;
+
+        // Signals
+
+        connect<K extends keyof ContentRating.SignalSignatures>(
+            signal: K,
+            callback: ContentRating.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContentRating.SignalSignatures>(
+            signal: K,
+            callback: ContentRating.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContentRating.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContentRating.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4347,7 +4460,6 @@ export namespace AppStream {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -4356,6 +4468,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Context;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4420,7 +4544,6 @@ export namespace AppStream {
 
     class Developer extends GObject.Object {
         static $gtype: GObject.GType<Developer>;
-        declare static readonly __signalSignatures: Developer.SignalSignatures;
 
         // Constructors
 
@@ -4429,6 +4552,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Developer;
+
+        // Signals
+
+        connect<K extends keyof Developer.SignalSignatures>(signal: K, callback: Developer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Developer.SignalSignatures>(
+            signal: K,
+            callback: Developer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Developer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Developer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4466,7 +4601,6 @@ export namespace AppStream {
 
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
-        declare static readonly __signalSignatures: Icon.SignalSignatures;
 
         // Constructors
 
@@ -4475,6 +4609,12 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Icon;
+
+        // Signals
+
+        connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4542,7 +4682,6 @@ export namespace AppStream {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -4551,6 +4690,12 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Image;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4627,7 +4772,6 @@ export namespace AppStream {
 
     class Issue extends GObject.Object {
         static $gtype: GObject.GType<Issue>;
-        declare static readonly __signalSignatures: Issue.SignalSignatures;
 
         // Constructors
 
@@ -4636,6 +4780,12 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Issue;
+
+        // Signals
+
+        connect<K extends keyof Issue.SignalSignatures>(signal: K, callback: Issue.SignalSignatures[K]): number;
+        connect_after<K extends keyof Issue.SignalSignatures>(signal: K, callback: Issue.SignalSignatures[K]): number;
+        emit<K extends keyof Issue.SignalSignatures>(signal: K, ...args: Parameters<Issue.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -4683,7 +4833,6 @@ export namespace AppStream {
 
     class Launchable extends GObject.Object {
         static $gtype: GObject.GType<Launchable>;
-        declare static readonly __signalSignatures: Launchable.SignalSignatures;
 
         // Constructors
 
@@ -4692,6 +4841,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Launchable;
+
+        // Signals
+
+        connect<K extends keyof Launchable.SignalSignatures>(
+            signal: K,
+            callback: Launchable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Launchable.SignalSignatures>(
+            signal: K,
+            callback: Launchable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Launchable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Launchable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4730,7 +4894,6 @@ export namespace AppStream {
 
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
-        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -4739,6 +4902,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Metadata;
+
+        // Signals
+
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: Metadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Metadata.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4962,7 +5137,7 @@ export namespace AppStream {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Pool): void;
         }
 
         // Signal signatures
@@ -4977,7 +5152,6 @@ export namespace AppStream {
 
     class Pool extends GObject.Object {
         static $gtype: GObject.GType<Pool>;
-        declare static readonly __signalSignatures: Pool.SignalSignatures;
 
         // Constructors
 
@@ -4992,12 +5166,6 @@ export namespace AppStream {
         connect<K extends keyof Pool.SignalSignatures>(signal: K, callback: Pool.SignalSignatures[K]): number;
         connect_after<K extends keyof Pool.SignalSignatures>(signal: K, callback: Pool.SignalSignatures[K]): number;
         emit<K extends keyof Pool.SignalSignatures>(signal: K, ...args: Parameters<Pool.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -5207,7 +5375,6 @@ export namespace AppStream {
 
     class Provided extends GObject.Object {
         static $gtype: GObject.GType<Provided>;
-        declare static readonly __signalSignatures: Provided.SignalSignatures;
 
         // Constructors
 
@@ -5216,6 +5383,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Provided;
+
+        // Signals
+
+        connect<K extends keyof Provided.SignalSignatures>(signal: K, callback: Provided.SignalSignatures[K]): number;
+        connect_after<K extends keyof Provided.SignalSignatures>(
+            signal: K,
+            callback: Provided.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Provided.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Provided.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5259,7 +5438,6 @@ export namespace AppStream {
 
     class Reference extends GObject.Object {
         static $gtype: GObject.GType<Reference>;
-        declare static readonly __signalSignatures: Reference.SignalSignatures;
 
         // Constructors
 
@@ -5268,6 +5446,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Reference;
+
+        // Signals
+
+        connect<K extends keyof Reference.SignalSignatures>(signal: K, callback: Reference.SignalSignatures[K]): number;
+        connect_after<K extends keyof Reference.SignalSignatures>(
+            signal: K,
+            callback: Reference.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Reference.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Reference.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5319,7 +5509,6 @@ export namespace AppStream {
 
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
-        declare static readonly __signalSignatures: Relation.SignalSignatures;
 
         // Constructors
 
@@ -5328,6 +5517,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Relation;
+
+        // Signals
+
+        connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: Relation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Relation.SignalSignatures>(
+            signal: K,
+            callback: Relation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Relation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Relation.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5482,7 +5683,6 @@ export namespace AppStream {
 
     class RelationCheckResult extends GObject.Object {
         static $gtype: GObject.GType<RelationCheckResult>;
-        declare static readonly __signalSignatures: RelationCheckResult.SignalSignatures;
 
         // Constructors
 
@@ -5491,6 +5691,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): RelationCheckResult;
+
+        // Signals
+
+        connect<K extends keyof RelationCheckResult.SignalSignatures>(
+            signal: K,
+            callback: RelationCheckResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RelationCheckResult.SignalSignatures>(
+            signal: K,
+            callback: RelationCheckResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RelationCheckResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RelationCheckResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5545,7 +5760,6 @@ export namespace AppStream {
 
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
-        declare static readonly __signalSignatures: Release.SignalSignatures;
 
         // Constructors
 
@@ -5554,6 +5768,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Release;
+
+        // Signals
+
+        connect<K extends keyof Release.SignalSignatures>(signal: K, callback: Release.SignalSignatures[K]): number;
+        connect_after<K extends keyof Release.SignalSignatures>(
+            signal: K,
+            callback: Release.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Release.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Release.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5726,7 +5952,6 @@ export namespace AppStream {
 
     class ReleaseList extends GObject.Object {
         static $gtype: GObject.GType<ReleaseList>;
-        declare static readonly __signalSignatures: ReleaseList.SignalSignatures;
 
         // Constructors
 
@@ -5735,6 +5960,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): ReleaseList;
+
+        // Signals
+
+        connect<K extends keyof ReleaseList.SignalSignatures>(
+            signal: K,
+            callback: ReleaseList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ReleaseList.SignalSignatures>(
+            signal: K,
+            callback: ReleaseList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReleaseList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReleaseList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5846,7 +6086,6 @@ export namespace AppStream {
 
     class Review extends GObject.Object {
         static $gtype: GObject.GType<Review>;
-        declare static readonly __signalSignatures: Review.SignalSignatures;
 
         // Properties
 
@@ -5888,6 +6127,12 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Review;
+
+        // Signals
+
+        connect<K extends keyof Review.SignalSignatures>(signal: K, callback: Review.SignalSignatures[K]): number;
+        connect_after<K extends keyof Review.SignalSignatures>(signal: K, callback: Review.SignalSignatures[K]): number;
+        emit<K extends keyof Review.SignalSignatures>(signal: K, ...args: Parameters<Review.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6045,7 +6290,6 @@ export namespace AppStream {
 
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
-        declare static readonly __signalSignatures: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -6054,6 +6298,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Screenshot;
+
+        // Signals
+
+        connect<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: Screenshot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: Screenshot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Screenshot.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6174,7 +6433,6 @@ export namespace AppStream {
 
     class Suggested extends GObject.Object {
         static $gtype: GObject.GType<Suggested>;
-        declare static readonly __signalSignatures: Suggested.SignalSignatures;
 
         // Constructors
 
@@ -6183,6 +6441,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Suggested;
+
+        // Signals
+
+        connect<K extends keyof Suggested.SignalSignatures>(signal: K, callback: Suggested.SignalSignatures[K]): number;
+        connect_after<K extends keyof Suggested.SignalSignatures>(
+            signal: K,
+            callback: Suggested.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Suggested.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Suggested.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6225,7 +6495,6 @@ export namespace AppStream {
 
     class SystemInfo extends GObject.Object {
         static $gtype: GObject.GType<SystemInfo>;
-        declare static readonly __signalSignatures: SystemInfo.SignalSignatures;
 
         // Constructors
 
@@ -6236,6 +6505,21 @@ export namespace AppStream {
         static ['new'](): SystemInfo;
 
         static new_template_for_chassis(chassis: ChassisKind): SystemInfo;
+
+        // Signals
+
+        connect<K extends keyof SystemInfo.SignalSignatures>(
+            signal: K,
+            callback: SystemInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemInfo.SignalSignatures>(
+            signal: K,
+            callback: SystemInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6360,7 +6644,6 @@ export namespace AppStream {
 
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
-        declare static readonly __signalSignatures: Translation.SignalSignatures;
 
         // Constructors
 
@@ -6369,6 +6652,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Translation;
+
+        // Signals
+
+        connect<K extends keyof Translation.SignalSignatures>(
+            signal: K,
+            callback: Translation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Translation.SignalSignatures>(
+            signal: K,
+            callback: Translation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Translation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Translation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6417,7 +6715,6 @@ export namespace AppStream {
 
     class Validator extends GObject.Object {
         static $gtype: GObject.GType<Validator>;
-        declare static readonly __signalSignatures: Validator.SignalSignatures;
 
         // Constructors
 
@@ -6426,6 +6723,18 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Validator;
+
+        // Signals
+
+        connect<K extends keyof Validator.SignalSignatures>(signal: K, callback: Validator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Validator.SignalSignatures>(
+            signal: K,
+            callback: Validator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Validator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Validator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6556,7 +6865,6 @@ export namespace AppStream {
 
     class ValidatorIssue extends GObject.Object {
         static $gtype: GObject.GType<ValidatorIssue>;
-        declare static readonly __signalSignatures: ValidatorIssue.SignalSignatures;
 
         // Constructors
 
@@ -6565,6 +6873,21 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): ValidatorIssue;
+
+        // Signals
+
+        connect<K extends keyof ValidatorIssue.SignalSignatures>(
+            signal: K,
+            callback: ValidatorIssue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValidatorIssue.SignalSignatures>(
+            signal: K,
+            callback: ValidatorIssue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValidatorIssue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValidatorIssue.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6658,7 +6981,6 @@ export namespace AppStream {
 
     class Video extends GObject.Object {
         static $gtype: GObject.GType<Video>;
-        declare static readonly __signalSignatures: Video.SignalSignatures;
 
         // Constructors
 
@@ -6667,6 +6989,12 @@ export namespace AppStream {
         _init(...args: any[]): void;
 
         static ['new'](): Video;
+
+        // Signals
+
+        connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
 
         // Methods
 

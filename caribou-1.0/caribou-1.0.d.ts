@@ -53,15 +53,15 @@ export namespace Caribou {
         // Signal callback interfaces
 
         interface ModifiersChanged {
-            (modifiers: number): void;
+            (_source: DisplayAdapter, modifiers: number): void;
         }
 
         interface GroupChanged {
-            (gid: number, group: string, variant: string): void;
+            (_source: DisplayAdapter, gid: number, group: string, variant: string): void;
         }
 
         interface ConfigChanged {
-            (): void;
+            (_source: DisplayAdapter): void;
         }
 
         // Signal signatures
@@ -80,7 +80,6 @@ export namespace Caribou {
 
     abstract class DisplayAdapter extends GObject.Object {
         static $gtype: GObject.GType<DisplayAdapter>;
-        declare static readonly __signalSignatures: DisplayAdapter.SignalSignatures;
 
         // Properties
 
@@ -106,24 +105,6 @@ export namespace Caribou {
             signal: K,
             ...args: Parameters<DisplayAdapter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'modifiers-changed', callback: (_source: this, modifiers: number) => void): number;
-        connect_after(signal: 'modifiers-changed', callback: (_source: this, modifiers: number) => void): number;
-        emit(signal: 'modifiers-changed', modifiers: number): void;
-        connect(
-            signal: 'group-changed',
-            callback: (_source: this, gid: number, group: string, variant: string) => void,
-        ): number;
-        connect_after(
-            signal: 'group-changed',
-            callback: (_source: this, gid: number, group: string, variant: string) => void,
-        ): number;
-        emit(signal: 'group-changed', gid: number, group: string, variant: string): void;
-        connect(signal: 'config-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'config-changed', callback: (_source: this) => void): number;
-        emit(signal: 'config-changed'): void;
 
         // Static methods
 
@@ -169,7 +150,6 @@ export namespace Caribou {
 
     class NullAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<NullAdapter>;
-        declare static readonly __signalSignatures: NullAdapter.SignalSignatures;
 
         // Constructors
 
@@ -178,6 +158,21 @@ export namespace Caribou {
         _init(...args: any[]): void;
 
         static ['new'](): NullAdapter;
+
+        // Signals
+
+        connect<K extends keyof NullAdapter.SignalSignatures>(
+            signal: K,
+            callback: NullAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NullAdapter.SignalSignatures>(
+            signal: K,
+            callback: NullAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullAdapter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace XAdapter {
@@ -191,7 +186,6 @@ export namespace Caribou {
 
     class XAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<XAdapter>;
-        declare static readonly __signalSignatures: XAdapter.SignalSignatures;
 
         // Constructors
 
@@ -200,17 +194,29 @@ export namespace Caribou {
         _init(...args: any[]): void;
 
         static ['new'](): XAdapter;
+
+        // Signals
+
+        connect<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: XAdapter.SignalSignatures[K]): number;
+        connect_after<K extends keyof XAdapter.SignalSignatures>(
+            signal: K,
+            callback: XAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XAdapter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace KeyboardModel {
         // Signal callback interfaces
 
         interface GroupAdded {
-            (name: string): void;
+            (_source: KeyboardModel, name: string): void;
         }
 
         interface GroupRemoved {
-            (name: string): void;
+            (_source: KeyboardModel, name: string): void;
         }
 
         // Signal signatures
@@ -233,7 +239,6 @@ export namespace Caribou {
 
     class KeyboardModel extends GObject.Object implements IKeyboardObject {
         static $gtype: GObject.GType<KeyboardModel>;
-        declare static readonly __signalSignatures: KeyboardModel.SignalSignatures;
 
         // Properties
 
@@ -268,15 +273,6 @@ export namespace Caribou {
             signal: K,
             ...args: Parameters<KeyboardModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'group-added', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'group-added', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'group-added', name: string): void;
-        connect(signal: 'group-removed', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'group-removed', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'group-removed', name: string): void;
 
         // Methods
 
@@ -743,13 +739,27 @@ export namespace Caribou {
 
     abstract class KeyboardService extends GObject.Object {
         static $gtype: GObject.GType<KeyboardService>;
-        declare static readonly __signalSignatures: KeyboardService.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<KeyboardService.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof KeyboardService.SignalSignatures>(
+            signal: K,
+            callback: KeyboardService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyboardService.SignalSignatures>(
+            signal: K,
+            callback: KeyboardService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyboardService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyboardService.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -783,7 +793,6 @@ export namespace Caribou {
 
     class GroupModel extends GObject.Object implements IKeyboardObject {
         static $gtype: GObject.GType<GroupModel>;
-        declare static readonly __signalSignatures: GroupModel.SignalSignatures;
 
         // Properties
 
@@ -804,6 +813,21 @@ export namespace Caribou {
         _init(...args: any[]): void;
 
         static ['new'](group: string, variant: string): GroupModel;
+
+        // Signals
+
+        connect<K extends keyof GroupModel.SignalSignatures>(
+            signal: K,
+            callback: GroupModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GroupModel.SignalSignatures>(
+            signal: K,
+            callback: GroupModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GroupModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GroupModel.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1265,7 +1289,7 @@ export namespace Caribou {
         // Signal callback interfaces
 
         interface LevelToggled {
-            (new_level: string): void;
+            (_source: LevelModel, new_level: string): void;
         }
 
         // Signal signatures
@@ -1282,7 +1306,6 @@ export namespace Caribou {
 
     class LevelModel extends ScannableGroup implements IKeyboardObject {
         static $gtype: GObject.GType<LevelModel>;
-        declare static readonly __signalSignatures: LevelModel.SignalSignatures;
 
         // Properties
 
@@ -1311,12 +1334,6 @@ export namespace Caribou {
             signal: K,
             ...args: Parameters<LevelModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'level-toggled', callback: (_source: this, new_level: string) => void): number;
-        connect_after(signal: 'level-toggled', callback: (_source: this, new_level: string) => void): number;
-        emit(signal: 'level-toggled', new_level: string): void;
 
         // Methods
 
@@ -1783,7 +1800,6 @@ export namespace Caribou {
 
     class RowModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<RowModel>;
-        declare static readonly __signalSignatures: RowModel.SignalSignatures;
 
         // Constructors
 
@@ -1792,6 +1808,18 @@ export namespace Caribou {
         _init(...args: any[]): void;
 
         static ['new'](): RowModel;
+
+        // Signals
+
+        connect<K extends keyof RowModel.SignalSignatures>(signal: K, callback: RowModel.SignalSignatures[K]): number;
+        connect_after<K extends keyof RowModel.SignalSignatures>(
+            signal: K,
+            callback: RowModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RowModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RowModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2265,11 +2293,11 @@ export namespace Caribou {
         // Signal callback interfaces
 
         interface KeyHoldEnd {
-            (): void;
+            (_source: KeyModel): void;
         }
 
         interface KeyHold {
-            (): void;
+            (_source: KeyModel): void;
         }
 
         // Signal signatures
@@ -2301,7 +2329,6 @@ export namespace Caribou {
 
     class KeyModel extends GObject.Object implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<KeyModel>;
-        declare static readonly __signalSignatures: KeyModel.SignalSignatures;
 
         // Properties
 
@@ -2353,15 +2380,6 @@ export namespace Caribou {
             signal: K,
             ...args: Parameters<KeyModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'key-hold-end', callback: (_source: this) => void): number;
-        connect_after(signal: 'key-hold-end', callback: (_source: this) => void): number;
-        emit(signal: 'key-hold-end'): void;
-        connect(signal: 'key-hold', callback: (_source: this) => void): number;
-        connect_after(signal: 'key-hold', callback: (_source: this) => void): number;
-        emit(signal: 'key-hold'): void;
 
         // Methods
 
@@ -2864,7 +2882,6 @@ export namespace Caribou {
 
     class ColumnModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<ColumnModel>;
-        declare static readonly __signalSignatures: ColumnModel.SignalSignatures;
 
         // Constructors
 
@@ -2873,6 +2890,21 @@ export namespace Caribou {
         _init(...args: any[]): void;
 
         static ['new'](): ColumnModel;
+
+        // Signals
+
+        connect<K extends keyof ColumnModel.SignalSignatures>(
+            signal: K,
+            callback: ColumnModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColumnModel.SignalSignatures>(
+            signal: K,
+            callback: ColumnModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColumnModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColumnModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3374,7 +3406,6 @@ export namespace Caribou {
 
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
-        declare static readonly __signalSignatures: Scanner.SignalSignatures;
 
         // Properties
 
@@ -3423,6 +3454,18 @@ export namespace Caribou {
 
         static ['new'](): Scanner;
 
+        // Signals
+
+        connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: Scanner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scanner.SignalSignatures>(
+            signal: K,
+            callback: Scanner.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Scanner.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Scanner.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_keyboard(keyboard: KeyboardModel): void;
@@ -3459,13 +3502,27 @@ export namespace Caribou {
 
     abstract class ScannableGroup extends GObject.Object implements IScannableGroup {
         static $gtype: GObject.GType<ScannableGroup>;
-        declare static readonly __signalSignatures: ScannableGroup.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScannableGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScannableGroup.SignalSignatures>(
+            signal: K,
+            callback: ScannableGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScannableGroup.SignalSignatures>(
+            signal: K,
+            callback: ScannableGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScannableGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScannableGroup.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

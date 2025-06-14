@@ -303,7 +303,6 @@ export namespace Rest {
      */
     class OAuth2Proxy extends Proxy {
         static $gtype: GObject.GType<OAuth2Proxy>;
-        declare static readonly __signalSignatures: OAuth2Proxy.SignalSignatures;
 
         // Properties
 
@@ -339,6 +338,21 @@ export namespace Rest {
             url_format: string,
             binding_required: boolean,
         ): OAuth2Proxy;
+
+        // Signals
+
+        connect<K extends keyof OAuth2Proxy.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Proxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2Proxy.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Proxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2Proxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -406,13 +420,27 @@ export namespace Rest {
      */
     class OAuth2ProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuth2ProxyCall>;
-        declare static readonly __signalSignatures: OAuth2ProxyCall.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OAuth2ProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OAuth2ProxyCall.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ProxyCall.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2ProxyCall.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ProxyCall.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2ProxyCall.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OAuthProxy {
@@ -441,7 +469,6 @@ export namespace Rest {
      */
     class OAuthProxy extends Proxy {
         static $gtype: GObject.GType<OAuthProxy>;
-        declare static readonly __signalSignatures: OAuthProxy.SignalSignatures;
 
         // Properties
 
@@ -488,6 +515,21 @@ export namespace Rest {
             url_format: string,
             binding_required: boolean,
         ): OAuthProxy;
+
+        // Signals
+
+        connect<K extends keyof OAuthProxy.SignalSignatures>(
+            signal: K,
+            callback: OAuthProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuthProxy.SignalSignatures>(
+            signal: K,
+            callback: OAuthProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuthProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuthProxy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -644,13 +686,27 @@ export namespace Rest {
      */
     class OAuthProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuthProxyCall>;
-        declare static readonly __signalSignatures: OAuthProxyCall.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OAuthProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OAuthProxyCall.SignalSignatures>(
+            signal: K,
+            callback: OAuthProxyCall.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuthProxyCall.SignalSignatures>(
+            signal: K,
+            callback: OAuthProxyCall.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuthProxyCall.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuthProxyCall.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -662,7 +718,7 @@ export namespace Rest {
         // Signal callback interfaces
 
         interface Authenticate {
-            (auth: ProxyAuth, retrying: boolean): boolean;
+            (_source: Proxy, auth: ProxyAuth, retrying: boolean): boolean;
         }
 
         // Signal signatures
@@ -695,7 +751,6 @@ export namespace Rest {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -746,18 +801,6 @@ export namespace Rest {
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'authenticate',
-            callback: (_source: this, auth: ProxyAuth, retrying: boolean) => boolean,
-        ): number;
-        connect_after(
-            signal: 'authenticate',
-            callback: (_source: this, auth: ProxyAuth, retrying: boolean) => boolean,
-        ): number;
-        emit(signal: 'authenticate', auth: ProxyAuth, retrying: boolean): void;
 
         // Virtual methods
 
@@ -812,13 +855,24 @@ export namespace Rest {
      */
     class ProxyAuth extends GObject.Object {
         static $gtype: GObject.GType<ProxyAuth>;
-        declare static readonly __signalSignatures: ProxyAuth.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ProxyAuth.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyAuth.SignalSignatures>(signal: K, callback: ProxyAuth.SignalSignatures[K]): number;
+        connect_after<K extends keyof ProxyAuth.SignalSignatures>(
+            signal: K,
+            callback: ProxyAuth.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyAuth.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyAuth.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -858,7 +912,6 @@ export namespace Rest {
      */
     class ProxyCall extends GObject.Object {
         static $gtype: GObject.GType<ProxyCall>;
-        declare static readonly __signalSignatures: ProxyCall.SignalSignatures;
 
         // Properties
 
@@ -869,6 +922,18 @@ export namespace Rest {
         constructor(properties?: Partial<ProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyCall.SignalSignatures>(signal: K, callback: ProxyCall.SignalSignatures[K]): number;
+        connect_after<K extends keyof ProxyCall.SignalSignatures>(
+            signal: K,
+            callback: ProxyCall.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyCall.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyCall.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1034,7 +1099,6 @@ export namespace Rest {
 
     class XmlParser extends GObject.Object {
         static $gtype: GObject.GType<XmlParser>;
-        declare static readonly __signalSignatures: XmlParser.SignalSignatures;
 
         // Constructors
 
@@ -1043,6 +1107,18 @@ export namespace Rest {
         _init(...args: any[]): void;
 
         static ['new'](): XmlParser;
+
+        // Signals
+
+        connect<K extends keyof XmlParser.SignalSignatures>(signal: K, callback: XmlParser.SignalSignatures[K]): number;
+        connect_after<K extends keyof XmlParser.SignalSignatures>(
+            signal: K,
+            callback: XmlParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XmlParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XmlParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

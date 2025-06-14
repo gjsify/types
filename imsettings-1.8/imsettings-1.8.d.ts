@@ -133,7 +133,6 @@ export namespace IMSettings {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -149,6 +148,12 @@ export namespace IMSettings {
         _init(...args: any[]): void;
 
         static ['new'](locale: string): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -657,7 +662,6 @@ export namespace IMSettings {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
-        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Constructors
 
@@ -666,6 +670,12 @@ export namespace IMSettings {
         _init(...args: any[]): void;
 
         static ['new'](parameters: GLib.Variant): Info;
+
+        // Signals
+
+        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
 
         // Static methods
 

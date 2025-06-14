@@ -40,11 +40,12 @@ export namespace GUPnPIgd {
         // Signal callback interfaces
 
         interface ContextAvailable {
-            (context: GObject.Object): boolean;
+            (_source: SimpleIgd, context: GObject.Object): boolean;
         }
 
         interface ErrorMappingPort {
             (
+                _source: SimpleIgd,
                 error: GLib.Error,
                 proto: string,
                 external_port: number,
@@ -56,6 +57,7 @@ export namespace GUPnPIgd {
 
         interface MappedExternalPort {
             (
+                _source: SimpleIgd,
                 proto: string,
                 external_ip: string,
                 replaces_external_ip: string,
@@ -86,7 +88,6 @@ export namespace GUPnPIgd {
      */
     class SimpleIgd extends GObject.Object {
         static $gtype: GObject.GType<SimpleIgd>;
-        declare static readonly __signalSignatures: SimpleIgd.SignalSignatures;
 
         // Properties
 
@@ -111,84 +112,6 @@ export namespace GUPnPIgd {
         emit<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
             ...args: Parameters<SimpleIgd.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'context-available', callback: (_source: this, context: GObject.Object) => boolean): number;
-        connect_after(
-            signal: 'context-available',
-            callback: (_source: this, context: GObject.Object) => boolean,
-        ): number;
-        emit(signal: 'context-available', context: GObject.Object): void;
-        connect(
-            signal: 'error-mapping-port',
-            callback: (
-                _source: this,
-                error: GLib.Error,
-                proto: string,
-                external_port: number,
-                local_ip: string,
-                local_port: number,
-                description: string,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'error-mapping-port',
-            callback: (
-                _source: this,
-                error: GLib.Error,
-                proto: string,
-                external_port: number,
-                local_ip: string,
-                local_port: number,
-                description: string,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'error-mapping-port',
-            error: GLib.Error,
-            proto: string,
-            external_port: number,
-            local_ip: string,
-            local_port: number,
-            description: string,
-        ): void;
-        connect(
-            signal: 'mapped-external-port',
-            callback: (
-                _source: this,
-                proto: string,
-                external_ip: string,
-                replaces_external_ip: string,
-                external_port: number,
-                local_ip: string,
-                local_port: number,
-                description: string,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'mapped-external-port',
-            callback: (
-                _source: this,
-                proto: string,
-                external_ip: string,
-                replaces_external_ip: string,
-                external_port: number,
-                local_ip: string,
-                local_port: number,
-                description: string,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'mapped-external-port',
-            proto: string,
-            external_ip: string,
-            replaces_external_ip: string,
-            external_port: number,
-            local_ip: string,
-            local_port: number,
-            description: string,
         ): void;
 
         // Static methods
@@ -263,7 +186,6 @@ export namespace GUPnPIgd {
      */
     class SimpleIgdThread extends SimpleIgd {
         static $gtype: GObject.GType<SimpleIgdThread>;
-        declare static readonly __signalSignatures: SimpleIgdThread.SignalSignatures;
 
         // Constructors
 
@@ -272,6 +194,21 @@ export namespace GUPnPIgd {
         _init(...args: any[]): void;
 
         static ['new'](): SimpleIgdThread;
+
+        // Signals
+
+        connect<K extends keyof SimpleIgdThread.SignalSignatures>(
+            signal: K,
+            callback: SimpleIgdThread.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(
+            signal: K,
+            callback: SimpleIgdThread.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleIgdThread.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleIgdThread.SignalSignatures[K]>
+        ): void;
     }
 
     type SimpleIgdClass = typeof SimpleIgd;

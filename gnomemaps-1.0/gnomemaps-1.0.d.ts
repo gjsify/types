@@ -79,7 +79,6 @@ export namespace GnomeMaps {
 
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
-        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Properties
 
@@ -115,6 +114,18 @@ export namespace GnomeMaps {
 
         static ['new'](): Contact;
 
+        // Signals
+
+        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect_after<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            callback: Contact.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Contact.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         add_place(place: GeocodeGlib.Place): void;
@@ -135,7 +146,6 @@ export namespace GnomeMaps {
 
     class ContactStore extends GObject.Object {
         static $gtype: GObject.GType<ContactStore>;
-        declare static readonly __signalSignatures: ContactStore.SignalSignatures;
 
         // Properties
 
@@ -151,6 +161,21 @@ export namespace GnomeMaps {
         _init(...args: any[]): void;
 
         static ['new'](): ContactStore;
+
+        // Signals
+
+        connect<K extends keyof ContactStore.SignalSignatures>(
+            signal: K,
+            callback: ContactStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContactStore.SignalSignatures>(
+            signal: K,
+            callback: ContactStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContactStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContactStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -184,7 +209,6 @@ export namespace GnomeMaps {
      */
     class FileTileSource extends Champlain.TileSource {
         static $gtype: GObject.GType<FileTileSource>;
-        declare static readonly __signalSignatures: FileTileSource.SignalSignatures;
 
         // Properties
 
@@ -222,6 +246,21 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof FileTileSource.SignalSignatures>(
+            signal: K,
+            callback: FileTileSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileTileSource.SignalSignatures>(
+            signal: K,
+            callback: FileTileSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileTileSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileTileSource.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         prepare(): boolean;
@@ -242,7 +281,6 @@ export namespace GnomeMaps {
 
     class OSMChangeset extends GObject.Object {
         static $gtype: GObject.GType<OSMChangeset>;
-        declare static readonly __signalSignatures: OSMChangeset.SignalSignatures;
 
         // Properties
 
@@ -264,6 +302,21 @@ export namespace GnomeMaps {
 
         static ['new'](comment?: string | null, created_by?: string | null): OSMChangeset;
 
+        // Signals
+
+        connect<K extends keyof OSMChangeset.SignalSignatures>(
+            signal: K,
+            callback: OSMChangeset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OSMChangeset.SignalSignatures>(
+            signal: K,
+            callback: OSMChangeset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OSMChangeset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OSMChangeset.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         serialize(): string;
@@ -283,7 +336,6 @@ export namespace GnomeMaps {
 
     class OSMNode extends OSMObject {
         static $gtype: GObject.GType<OSMNode>;
-        declare static readonly __signalSignatures: OSMNode.SignalSignatures;
 
         // Properties
 
@@ -305,6 +357,18 @@ export namespace GnomeMaps {
         _init(...args: any[]): void;
 
         static ['new'](id: number, version: number, changeset: number, longitude: number, latitude: number): OSMNode;
+
+        // Signals
+
+        connect<K extends keyof OSMNode.SignalSignatures>(signal: K, callback: OSMNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof OSMNode.SignalSignatures>(
+            signal: K,
+            callback: OSMNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OSMNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OSMNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OSMOAuthProxyCall {
@@ -318,7 +382,6 @@ export namespace GnomeMaps {
 
     class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
         static $gtype: GObject.GType<OSMOAuthProxyCall>;
-        declare static readonly __signalSignatures: OSMOAuthProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -327,6 +390,21 @@ export namespace GnomeMaps {
         _init(...args: any[]): void;
 
         static ['new'](proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall;
+
+        // Signals
+
+        connect<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
+            signal: K,
+            callback: OSMOAuthProxyCall.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
+            signal: K,
+            callback: OSMOAuthProxyCall.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OSMOAuthProxyCall.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OSMObject {
@@ -344,7 +422,6 @@ export namespace GnomeMaps {
 
     abstract class OSMObject extends GObject.Object {
         static $gtype: GObject.GType<OSMObject>;
-        declare static readonly __signalSignatures: OSMObject.SignalSignatures;
 
         // Properties
 
@@ -370,6 +447,18 @@ export namespace GnomeMaps {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof OSMObject.SignalSignatures>(signal: K, callback: OSMObject.SignalSignatures[K]): number;
+        connect_after<K extends keyof OSMObject.SignalSignatures>(
+            signal: K,
+            callback: OSMObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OSMObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OSMObject.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         delete_tag(key: string): void;
@@ -389,7 +478,6 @@ export namespace GnomeMaps {
 
     class OSMRelation extends OSMObject {
         static $gtype: GObject.GType<OSMRelation>;
-        declare static readonly __signalSignatures: OSMRelation.SignalSignatures;
 
         // Constructors
 
@@ -398,6 +486,21 @@ export namespace GnomeMaps {
         _init(...args: any[]): void;
 
         static ['new'](id: number, version: number, changeset: number): OSMRelation;
+
+        // Signals
+
+        connect<K extends keyof OSMRelation.SignalSignatures>(
+            signal: K,
+            callback: OSMRelation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OSMRelation.SignalSignatures>(
+            signal: K,
+            callback: OSMRelation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OSMRelation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OSMRelation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -415,7 +518,6 @@ export namespace GnomeMaps {
 
     class OSMWay extends OSMObject {
         static $gtype: GObject.GType<OSMWay>;
-        declare static readonly __signalSignatures: OSMWay.SignalSignatures;
 
         // Constructors
 
@@ -424,6 +526,12 @@ export namespace GnomeMaps {
         _init(...args: any[]): void;
 
         static ['new'](id: number, version: number, changeset: number): OSMWay;
+
+        // Signals
+
+        connect<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
+        connect_after<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
+        emit<K extends keyof OSMWay.SignalSignatures>(signal: K, ...args: Parameters<OSMWay.SignalSignatures[K]>): void;
 
         // Methods
 

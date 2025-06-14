@@ -48,7 +48,6 @@ export namespace GcrGtk3 {
 
     class CertificateWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CertificateWidget>;
-        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Properties
 
@@ -65,6 +64,21 @@ export namespace GcrGtk3 {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -564,7 +578,6 @@ export namespace GcrGtk3 {
      */
     class SecureEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SecureEntryBuffer>;
-        declare static readonly __signalSignatures: SecureEntryBuffer.SignalSignatures;
 
         // Constructors
 
@@ -573,6 +586,21 @@ export namespace GcrGtk3 {
         _init(...args: any[]): void;
 
         static ['new'](): SecureEntryBuffer;
+
+        // Signals
+
+        connect<K extends keyof SecureEntryBuffer.SignalSignatures>(
+            signal: K,
+            callback: SecureEntryBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecureEntryBuffer.SignalSignatures>(
+            signal: K,
+            callback: SecureEntryBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecureEntryBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecureEntryBuffer.SignalSignatures[K]>
+        ): void;
     }
 
     type CertificateWidgetClass = typeof CertificateWidget;

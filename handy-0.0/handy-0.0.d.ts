@@ -340,7 +340,6 @@ export namespace Handy {
 
     class ActionRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ActionRow>;
-        declare static readonly __signalSignatures: ActionRow.SignalSignatures;
 
         // Properties
 
@@ -394,6 +393,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): ActionRow;
+
+        // Signals
+
+        connect<K extends keyof ActionRow.SignalSignatures>(signal: K, callback: ActionRow.SignalSignatures[K]): number;
+        connect_after<K extends keyof ActionRow.SignalSignatures>(
+            signal: K,
+            callback: ActionRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionRow.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4762,7 +4773,6 @@ export namespace Handy {
 
     class Arrows extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Arrows>;
-        declare static readonly __signalSignatures: Arrows.SignalSignatures;
 
         // Properties
 
@@ -4780,6 +4790,12 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): Arrows;
+
+        // Signals
+
+        connect<K extends keyof Arrows.SignalSignatures>(signal: K, callback: Arrows.SignalSignatures[K]): number;
+        connect_after<K extends keyof Arrows.SignalSignatures>(signal: K, callback: Arrows.SignalSignatures[K]): number;
+        emit<K extends keyof Arrows.SignalSignatures>(signal: K, ...args: Parameters<Arrows.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5283,7 +5299,6 @@ export namespace Handy {
 
     class Column extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Column>;
-        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -5303,6 +5318,12 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): Column;
+
+        // Signals
+
+        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5793,7 +5814,6 @@ export namespace Handy {
 
     class ComboRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ComboRow>;
-        declare static readonly __signalSignatures: ComboRow.SignalSignatures;
 
         // Properties
 
@@ -5835,6 +5855,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): ComboRow;
+
+        // Signals
+
+        connect<K extends keyof ComboRow.SignalSignatures>(signal: K, callback: ComboRow.SignalSignatures[K]): number;
+        connect_after<K extends keyof ComboRow.SignalSignatures>(
+            signal: K,
+            callback: ComboRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ComboRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ComboRow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10203,15 +10235,15 @@ export namespace Handy {
         // Signal callback interfaces
 
         interface Deleted {
-            (): void;
+            (_source: Dialer): void;
         }
 
         interface Submitted {
-            (number: string): void;
+            (_source: Dialer, number: string): void;
         }
 
         interface SymbolClicked {
-            (button: number): void;
+            (_source: Dialer, button: number): void;
         }
 
         // Signal signatures
@@ -10240,7 +10272,6 @@ export namespace Handy {
 
     class Dialer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dialer>;
-        declare static readonly __signalSignatures: Dialer.SignalSignatures;
 
         // Properties
 
@@ -10277,18 +10308,6 @@ export namespace Handy {
         connect<K extends keyof Dialer.SignalSignatures>(signal: K, callback: Dialer.SignalSignatures[K]): number;
         connect_after<K extends keyof Dialer.SignalSignatures>(signal: K, callback: Dialer.SignalSignatures[K]): number;
         emit<K extends keyof Dialer.SignalSignatures>(signal: K, ...args: Parameters<Dialer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deleted', callback: (_source: this) => void): number;
-        connect_after(signal: 'deleted', callback: (_source: this) => void): number;
-        emit(signal: 'deleted'): void;
-        connect(signal: 'submitted', callback: (_source: this, number: string) => void): number;
-        connect_after(signal: 'submitted', callback: (_source: this, number: string) => void): number;
-        emit(signal: 'submitted', number: string): void;
-        connect(signal: 'symbol-clicked', callback: (_source: this, button: number) => void): number;
-        connect_after(signal: 'symbol-clicked', callback: (_source: this, button: number) => void): number;
-        emit(signal: 'symbol-clicked', button: number): void;
 
         // Virtual methods
 
@@ -10800,7 +10819,6 @@ export namespace Handy {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<DialerButton>;
-        declare static readonly __signalSignatures: DialerButton.SignalSignatures;
 
         // Properties
 
@@ -10818,6 +10836,21 @@ export namespace Handy {
         // Conflicted with Gtk.Button.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DialerButton.SignalSignatures>(
+            signal: K,
+            callback: DialerButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DialerButton.SignalSignatures>(
+            signal: K,
+            callback: DialerButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DialerButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DialerButton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15357,11 +15390,11 @@ export namespace Handy {
         // Signal callback interfaces
 
         interface CycleEnd {
-            (): void;
+            (_source: DialerCycleButton): void;
         }
 
         interface CycleStart {
-            (): void;
+            (_source: DialerCycleButton): void;
         }
 
         // Signal signatures
@@ -15388,7 +15421,6 @@ export namespace Handy {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<DialerCycleButton>;
-        declare static readonly __signalSignatures: DialerCycleButton.SignalSignatures;
 
         // Properties
 
@@ -15422,15 +15454,6 @@ export namespace Handy {
             signal: K,
             ...args: Parameters<DialerCycleButton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cycle-end', callback: (_source: this) => void): number;
-        connect_after(signal: 'cycle-end', callback: (_source: this) => void): number;
-        emit(signal: 'cycle-end'): void;
-        connect(signal: 'cycle-start', callback: (_source: this) => void): number;
-        connect_after(signal: 'cycle-start', callback: (_source: this) => void): number;
-        emit(signal: 'cycle-start'): void;
 
         // Virtual methods
 
@@ -19755,7 +19778,6 @@ export namespace Handy {
 
     class Dialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dialog>;
-        declare static readonly __signalSignatures: Dialog.SignalSignatures;
 
         // Properties
 
@@ -19774,6 +19796,12 @@ export namespace Handy {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
+        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: Parameters<Dialog.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -20236,7 +20264,6 @@ export namespace Handy {
 
     class EnumValueObject extends GObject.Object {
         static $gtype: GObject.GType<EnumValueObject>;
-        declare static readonly __signalSignatures: EnumValueObject.SignalSignatures;
 
         // Constructors
 
@@ -20245,6 +20272,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](enum_value: GObject.EnumValue): EnumValueObject;
+
+        // Signals
+
+        connect<K extends keyof EnumValueObject.SignalSignatures>(
+            signal: K,
+            callback: EnumValueObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EnumValueObject.SignalSignatures>(
+            signal: K,
+            callback: EnumValueObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EnumValueObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EnumValueObject.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20274,7 +20316,6 @@ export namespace Handy {
 
     class ExpanderRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ExpanderRow>;
-        declare static readonly __signalSignatures: ExpanderRow.SignalSignatures;
 
         // Properties
 
@@ -20311,6 +20352,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): ExpanderRow;
+
+        // Signals
+
+        connect<K extends keyof ExpanderRow.SignalSignatures>(
+            signal: K,
+            callback: ExpanderRow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpanderRow.SignalSignatures>(
+            signal: K,
+            callback: ExpanderRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpanderRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpanderRow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24651,7 +24707,6 @@ export namespace Handy {
 
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HeaderBar>;
-        declare static readonly __signalSignatures: HeaderBar.SignalSignatures;
 
         // Properties
 
@@ -24749,6 +24804,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderBar;
+
+        // Signals
+
+        connect<K extends keyof HeaderBar.SignalSignatures>(signal: K, callback: HeaderBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof HeaderBar.SignalSignatures>(
+            signal: K,
+            callback: HeaderBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -25362,7 +25429,6 @@ export namespace Handy {
 
     class HeaderGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<HeaderGroup>;
-        declare static readonly __signalSignatures: HeaderGroup.SignalSignatures;
 
         // Properties
 
@@ -25381,6 +25447,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): HeaderGroup;
+
+        // Signals
+
+        connect<K extends keyof HeaderGroup.SignalSignatures>(
+            signal: K,
+            callback: HeaderGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderGroup.SignalSignatures>(
+            signal: K,
+            callback: HeaderGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26059,7 +26140,6 @@ export namespace Handy {
 
     class Keypad extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Keypad>;
-        declare static readonly __signalSignatures: Keypad.SignalSignatures;
 
         // Properties
 
@@ -26088,6 +26168,12 @@ export namespace Handy {
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Keypad.SignalSignatures>(signal: K, callback: Keypad.SignalSignatures[K]): number;
+        connect_after<K extends keyof Keypad.SignalSignatures>(signal: K, callback: Keypad.SignalSignatures[K]): number;
+        emit<K extends keyof Keypad.SignalSignatures>(signal: K, ...args: Parameters<Keypad.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -26621,7 +26707,6 @@ export namespace Handy {
 
     class Leaflet extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Leaflet>;
-        declare static readonly __signalSignatures: Leaflet.SignalSignatures;
 
         // Properties
 
@@ -26753,6 +26838,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): Leaflet;
+
+        // Signals
+
+        connect<K extends keyof Leaflet.SignalSignatures>(signal: K, callback: Leaflet.SignalSignatures[K]): number;
+        connect_after<K extends keyof Leaflet.SignalSignatures>(
+            signal: K,
+            callback: Leaflet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Leaflet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Leaflet.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -31207,7 +31304,7 @@ export namespace Handy {
         // Signal callback interfaces
 
         interface PageChanged {
-            (index: number): void;
+            (_source: Paginator, index: number): void;
         }
 
         // Signal signatures
@@ -31243,7 +31340,6 @@ export namespace Handy {
 
     class Paginator extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Paginator>;
-        declare static readonly __signalSignatures: Paginator.SignalSignatures;
 
         // Properties
 
@@ -31359,12 +31455,6 @@ export namespace Handy {
             signal: K,
             ...args: Parameters<Paginator.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'page-changed', callback: (_source: this, index: number) => void): number;
-        connect_after(signal: 'page-changed', callback: (_source: this, index: number) => void): number;
-        emit(signal: 'page-changed', index: number): void;
 
         // Methods
 
@@ -35808,7 +35898,6 @@ export namespace Handy {
 
     class PreferencesGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PreferencesGroup>;
-        declare static readonly __signalSignatures: PreferencesGroup.SignalSignatures;
 
         // Properties
 
@@ -35830,6 +35919,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesGroup;
+
+        // Signals
+
+        connect<K extends keyof PreferencesGroup.SignalSignatures>(
+            signal: K,
+            callback: PreferencesGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesGroup.SignalSignatures>(
+            signal: K,
+            callback: PreferencesGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36327,7 +36431,6 @@ export namespace Handy {
 
     class PreferencesPage extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesPage>;
-        declare static readonly __signalSignatures: PreferencesPage.SignalSignatures;
 
         // Properties
 
@@ -36354,6 +36457,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesPage;
+
+        // Signals
+
+        connect<K extends keyof PreferencesPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesPage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -36839,7 +36957,6 @@ export namespace Handy {
 
     class PreferencesRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesRow>;
-        declare static readonly __signalSignatures: PreferencesRow.SignalSignatures;
 
         // Properties
 
@@ -36868,6 +36985,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesRow;
+
+        // Signals
+
+        connect<K extends keyof PreferencesRow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesRow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesRow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesRow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -41309,7 +41441,6 @@ export namespace Handy {
 
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
-        declare static readonly __signalSignatures: PreferencesWindow.SignalSignatures;
 
         // Constructors
 
@@ -41318,6 +41449,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesWindow;
+
+        // Signals
+
+        connect<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -41780,7 +41926,6 @@ export namespace Handy {
 
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
-        declare static readonly __signalSignatures: SearchBar.SignalSignatures;
 
         // Properties
 
@@ -41816,6 +41961,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): SearchBar;
+
+        // Signals
+
+        connect<K extends keyof SearchBar.SignalSignatures>(signal: K, callback: SearchBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof SearchBar.SignalSignatures>(
+            signal: K,
+            callback: SearchBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -42365,7 +42522,6 @@ export namespace Handy {
 
     class Squeezer extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Squeezer>;
-        declare static readonly __signalSignatures: Squeezer.SignalSignatures;
 
         // Properties
 
@@ -42395,6 +42551,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): Squeezer;
+
+        // Signals
+
+        connect<K extends keyof Squeezer.SignalSignatures>(signal: K, callback: Squeezer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Squeezer.SignalSignatures>(
+            signal: K,
+            callback: Squeezer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Squeezer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Squeezer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -42959,7 +43127,6 @@ export namespace Handy {
 
     class SwipeGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<SwipeGroup>;
-        declare static readonly __signalSignatures: SwipeGroup.SignalSignatures;
 
         // Constructors
 
@@ -42968,6 +43135,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): SwipeGroup;
+
+        // Signals
+
+        connect<K extends keyof SwipeGroup.SignalSignatures>(
+            signal: K,
+            callback: SwipeGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwipeGroup.SignalSignatures>(
+            signal: K,
+            callback: SwipeGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwipeGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwipeGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -43623,7 +43805,6 @@ export namespace Handy {
 
     class TitleBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitleBar>;
-        declare static readonly __signalSignatures: TitleBar.SignalSignatures;
 
         // Properties
 
@@ -43639,6 +43820,18 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): TitleBar;
+
+        // Signals
+
+        connect<K extends keyof TitleBar.SignalSignatures>(signal: K, callback: TitleBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof TitleBar.SignalSignatures>(
+            signal: K,
+            callback: TitleBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TitleBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TitleBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44108,7 +44301,6 @@ export namespace Handy {
 
     class ValueObject extends GObject.Object {
         static $gtype: GObject.GType<ValueObject>;
-        declare static readonly __signalSignatures: ValueObject.SignalSignatures;
 
         // Properties
 
@@ -44121,6 +44313,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](value: GObject.Value | any): ValueObject;
+
+        // Signals
+
+        connect<K extends keyof ValueObject.SignalSignatures>(
+            signal: K,
+            callback: ValueObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueObject.SignalSignatures>(
+            signal: K,
+            callback: ValueObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueObject.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44169,7 +44376,6 @@ export namespace Handy {
 
     class ViewSwitcher extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ViewSwitcher>;
-        declare static readonly __signalSignatures: ViewSwitcher.SignalSignatures;
 
         // Properties
 
@@ -44226,6 +44432,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): ViewSwitcher;
+
+        // Signals
+
+        connect<K extends keyof ViewSwitcher.SignalSignatures>(
+            signal: K,
+            callback: ViewSwitcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ViewSwitcher.SignalSignatures>(
+            signal: K,
+            callback: ViewSwitcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ViewSwitcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ViewSwitcher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -44755,7 +44976,6 @@ export namespace Handy {
 
     class ViewSwitcherBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewSwitcherBar>;
-        declare static readonly __signalSignatures: ViewSwitcherBar.SignalSignatures;
 
         // Properties
 
@@ -44795,6 +45015,21 @@ export namespace Handy {
         _init(...args: any[]): void;
 
         static ['new'](): ViewSwitcherBar;
+
+        // Signals
+
+        connect<K extends keyof ViewSwitcherBar.SignalSignatures>(
+            signal: K,
+            callback: ViewSwitcherBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ViewSwitcherBar.SignalSignatures>(
+            signal: K,
+            callback: ViewSwitcherBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ViewSwitcherBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ViewSwitcherBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

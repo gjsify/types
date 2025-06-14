@@ -78,7 +78,6 @@ export namespace Tracker {
 
     class SparqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SparqlBuilder>;
-        declare static readonly __signalSignatures: SparqlBuilder.SignalSignatures;
 
         // Properties
 
@@ -98,6 +97,21 @@ export namespace Tracker {
         static embedded_insert(): SparqlBuilder;
 
         static ['new'](): SparqlBuilder;
+
+        // Signals
+
+        connect<K extends keyof SparqlBuilder.SignalSignatures>(
+            signal: K,
+            callback: SparqlBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlBuilder.SignalSignatures>(
+            signal: K,
+            callback: SparqlBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -144,13 +158,27 @@ export namespace Tracker {
 
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
-        declare static readonly __signalSignatures: SparqlConnection.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SparqlConnection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SparqlConnection.SignalSignatures>(
+            signal: K,
+            callback: SparqlConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlConnection.SignalSignatures>(
+            signal: K,
+            callback: SparqlConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -289,7 +317,6 @@ export namespace Tracker {
 
     abstract class SparqlCursor extends GObject.Object {
         static $gtype: GObject.GType<SparqlCursor>;
-        declare static readonly __signalSignatures: SparqlCursor.SignalSignatures;
 
         // Properties
 
@@ -303,6 +330,21 @@ export namespace Tracker {
         constructor(properties?: Partial<SparqlCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SparqlCursor.SignalSignatures>(
+            signal: K,
+            callback: SparqlCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SparqlCursor.SignalSignatures>(
+            signal: K,
+            callback: SparqlCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SparqlCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

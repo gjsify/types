@@ -65,7 +65,6 @@ export namespace Anthy {
      */
     class GContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<GContext>;
-        declare static readonly __signalSignatures: GContext.SignalSignatures;
 
         // Constructors
 
@@ -74,6 +73,18 @@ export namespace Anthy {
         _init(...args: any[]): void;
 
         static ['new'](): GContext;
+
+        // Signals
+
+        connect<K extends keyof GContext.SignalSignatures>(signal: K, callback: GContext.SignalSignatures[K]): number;
+        connect_after<K extends keyof GContext.SignalSignatures>(
+            signal: K,
+            callback: GContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

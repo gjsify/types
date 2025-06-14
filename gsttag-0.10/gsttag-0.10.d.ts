@@ -146,7 +146,6 @@ export namespace GstTag {
      */
     abstract class Demux extends Gst.Element {
         static $gtype: GObject.GType<Demux>;
-        declare static readonly __signalSignatures: Demux.SignalSignatures;
 
         // Fields
 
@@ -158,6 +157,12 @@ export namespace GstTag {
         constructor(properties?: Partial<Demux.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
+        connect_after<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
+        emit<K extends keyof Demux.SignalSignatures>(signal: K, ...args: Parameters<Demux.SignalSignatures[K]>): void;
 
         // Virtual methods
 

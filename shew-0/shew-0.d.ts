@@ -43,7 +43,6 @@ export namespace Shew {
 
     class ExternalWindow extends GObject.Object {
         static $gtype: GObject.GType<ExternalWindow>;
-        declare static readonly __signalSignatures: ExternalWindow.SignalSignatures;
 
         // Properties
 
@@ -56,6 +55,21 @@ export namespace Shew {
         _init(...args: any[]): void;
 
         static new_from_handle(handle_str: string): ExternalWindow;
+
+        // Signals
+
+        connect<K extends keyof ExternalWindow.SignalSignatures>(
+            signal: K,
+            callback: ExternalWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExternalWindow.SignalSignatures>(
+            signal: K,
+            callback: ExternalWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExternalWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExternalWindow.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -80,7 +94,6 @@ export namespace Shew {
 
     class WindowExporter extends GObject.Object {
         static $gtype: GObject.GType<WindowExporter>;
-        declare static readonly __signalSignatures: WindowExporter.SignalSignatures;
 
         // Properties
 
@@ -93,6 +106,21 @@ export namespace Shew {
         _init(...args: any[]): void;
 
         static ['new'](window: Gtk.Window): WindowExporter;
+
+        // Signals
+
+        connect<K extends keyof WindowExporter.SignalSignatures>(
+            signal: K,
+            callback: WindowExporter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowExporter.SignalSignatures>(
+            signal: K,
+            callback: WindowExporter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowExporter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowExporter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -6516,7 +6516,6 @@ export namespace Gdk {
      */
     class AppLaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<AppLaunchContext>;
-        declare static readonly __signalSignatures: AppLaunchContext.SignalSignatures;
 
         // Properties
 
@@ -6529,6 +6528,21 @@ export namespace Gdk {
         _init(...args: any[]): void;
 
         static ['new'](): AppLaunchContext;
+
+        // Signals
+
+        connect<K extends keyof AppLaunchContext.SignalSignatures>(
+            signal: K,
+            callback: AppLaunchContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AppLaunchContext.SignalSignatures>(
+            signal: K,
+            callback: AppLaunchContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AppLaunchContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AppLaunchContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6617,7 +6631,6 @@ export namespace Gdk {
      */
     abstract class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
-        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -6640,6 +6653,12 @@ export namespace Gdk {
         static new_from_pixbuf(display: Display, pixbuf: GdkPixbuf.Pixbuf, x: number, y: number): Cursor;
 
         static new_from_surface(display: Display, surface: cairo.Surface, x: number, y: number): Cursor;
+
+        // Signals
+
+        connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6687,11 +6706,11 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Device): void;
         }
 
         interface ToolChanged {
-            (tool: DeviceTool): void;
+            (_source: Device, tool: DeviceTool): void;
         }
 
         // Signal signatures
@@ -6740,7 +6759,6 @@ export namespace Gdk {
      */
     abstract class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -6854,15 +6872,6 @@ export namespace Gdk {
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'tool-changed', callback: (_source: this, tool: DeviceTool) => void): number;
-        connect_after(signal: 'tool-changed', callback: (_source: this, tool: DeviceTool) => void): number;
-        emit(signal: 'tool-changed', tool: DeviceTool): void;
 
         // Static methods
 
@@ -7140,15 +7149,15 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (device: Device): void;
+            (_source: DeviceManager, device: Device): void;
         }
 
         interface DeviceChanged {
-            (device: Device): void;
+            (_source: DeviceManager, device: Device): void;
         }
 
         interface DeviceRemoved {
-            (device: Device): void;
+            (_source: DeviceManager, device: Device): void;
         }
 
         // Signal signatures
@@ -7285,7 +7294,6 @@ export namespace Gdk {
      */
     abstract class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
-        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Properties
 
@@ -7311,18 +7319,6 @@ export namespace Gdk {
             signal: K,
             ...args: Parameters<DeviceManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-added', device: Device): void;
-        connect(signal: 'device-changed', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-changed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-changed', device: Device): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-removed', device: Device): void;
 
         // Methods
 
@@ -7368,7 +7364,6 @@ export namespace Gdk {
 
     class DeviceTool extends GObject.Object {
         static $gtype: GObject.GType<DeviceTool>;
-        declare static readonly __signalSignatures: DeviceTool.SignalSignatures;
 
         // Properties
 
@@ -7384,6 +7379,21 @@ export namespace Gdk {
         constructor(properties?: Partial<DeviceTool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DeviceTool.SignalSignatures>(
+            signal: K,
+            callback: DeviceTool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceTool.SignalSignatures>(
+            signal: K,
+            callback: DeviceTool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceTool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceTool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7417,27 +7427,27 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface Closed {
-            (is_error: boolean): void;
+            (_source: Display, is_error: boolean): void;
         }
 
         interface MonitorAdded {
-            (monitor: Monitor): void;
+            (_source: Display, monitor: Monitor): void;
         }
 
         interface MonitorRemoved {
-            (monitor: Monitor): void;
+            (_source: Display, monitor: Monitor): void;
         }
 
         interface Opened {
-            (): void;
+            (_source: Display): void;
         }
 
         interface SeatAdded {
-            (seat: Seat): void;
+            (_source: Display, seat: Seat): void;
         }
 
         interface SeatRemoved {
-            (seat: Seat): void;
+            (_source: Display, seat: Seat): void;
         }
 
         // Signal signatures
@@ -7477,7 +7487,6 @@ export namespace Gdk {
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
-        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Constructors
 
@@ -7496,27 +7505,6 @@ export namespace Gdk {
             signal: K,
             ...args: Parameters<Display.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this, is_error: boolean) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this, is_error: boolean) => void): number;
-        emit(signal: 'closed', is_error: boolean): void;
-        connect(signal: 'monitor-added', callback: (_source: this, monitor: Monitor) => void): number;
-        connect_after(signal: 'monitor-added', callback: (_source: this, monitor: Monitor) => void): number;
-        emit(signal: 'monitor-added', monitor: Monitor): void;
-        connect(signal: 'monitor-removed', callback: (_source: this, monitor: Monitor) => void): number;
-        connect_after(signal: 'monitor-removed', callback: (_source: this, monitor: Monitor) => void): number;
-        emit(signal: 'monitor-removed', monitor: Monitor): void;
-        connect(signal: 'opened', callback: (_source: this) => void): number;
-        connect_after(signal: 'opened', callback: (_source: this) => void): number;
-        emit(signal: 'opened'): void;
-        connect(signal: 'seat-added', callback: (_source: this, seat: Seat) => void): number;
-        connect_after(signal: 'seat-added', callback: (_source: this, seat: Seat) => void): number;
-        emit(signal: 'seat-added', seat: Seat): void;
-        connect(signal: 'seat-removed', callback: (_source: this, seat: Seat) => void): number;
-        connect_after(signal: 'seat-removed', callback: (_source: this, seat: Seat) => void): number;
-        emit(signal: 'seat-removed', seat: Seat): void;
 
         // Static methods
 
@@ -7861,7 +7849,7 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface DisplayOpened {
-            (display: Display): void;
+            (_source: DisplayManager, display: Display): void;
         }
 
         // Signal signatures
@@ -7922,7 +7910,6 @@ export namespace Gdk {
      */
     class DisplayManager extends GObject.Object {
         static $gtype: GObject.GType<DisplayManager>;
-        declare static readonly __signalSignatures: DisplayManager.SignalSignatures;
 
         // Properties
 
@@ -7951,12 +7938,6 @@ export namespace Gdk {
             signal: K,
             ...args: Parameters<DisplayManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'display-opened', callback: (_source: this, display: Display) => void): number;
-        connect_after(signal: 'display-opened', callback: (_source: this, display: Display) => void): number;
-        emit(signal: 'display-opened', display: Display): void;
 
         // Static methods
 
@@ -8000,19 +7981,19 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface ActionChanged {
-            (action: DragAction): void;
+            (_source: DragContext, action: DragAction): void;
         }
 
         interface Cancel {
-            (reason: DragCancelReason): void;
+            (_source: DragContext, reason: DragCancelReason): void;
         }
 
         interface DndFinished {
-            (): void;
+            (_source: DragContext): void;
         }
 
         interface DropPerformed {
-            (time: number): void;
+            (_source: DragContext, time: number): void;
         }
 
         // Signal signatures
@@ -8030,7 +8011,6 @@ export namespace Gdk {
 
     class DragContext extends GObject.Object {
         static $gtype: GObject.GType<DragContext>;
-        declare static readonly __signalSignatures: DragContext.SignalSignatures;
 
         // Constructors
 
@@ -8052,21 +8032,6 @@ export namespace Gdk {
             signal: K,
             ...args: Parameters<DragContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action-changed', callback: (_source: this, action: DragAction) => void): number;
-        connect_after(signal: 'action-changed', callback: (_source: this, action: DragAction) => void): number;
-        emit(signal: 'action-changed', action: DragAction): void;
-        connect(signal: 'cancel', callback: (_source: this, reason: DragCancelReason) => void): number;
-        connect_after(signal: 'cancel', callback: (_source: this, reason: DragCancelReason) => void): number;
-        emit(signal: 'cancel', reason: DragCancelReason): void;
-        connect(signal: 'dnd-finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'dnd-finished', callback: (_source: this) => void): number;
-        emit(signal: 'dnd-finished'): void;
-        connect(signal: 'drop-performed', callback: (_source: this, time: number) => void): number;
-        connect_after(signal: 'drop-performed', callback: (_source: this, time: number) => void): number;
-        emit(signal: 'drop-performed', time: number): void;
 
         // Methods
 
@@ -8185,7 +8150,6 @@ export namespace Gdk {
      */
     class DrawingContext extends GObject.Object {
         static $gtype: GObject.GType<DrawingContext>;
-        declare static readonly __signalSignatures: DrawingContext.SignalSignatures;
 
         // Properties
 
@@ -8203,6 +8167,21 @@ export namespace Gdk {
         constructor(properties?: Partial<DrawingContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DrawingContext.SignalSignatures>(
+            signal: K,
+            callback: DrawingContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DrawingContext.SignalSignatures>(
+            signal: K,
+            callback: DrawingContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DrawingContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DrawingContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8237,31 +8216,31 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface AfterPaint {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         interface BeforePaint {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         interface FlushEvents {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         interface Layout {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         interface Paint {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         interface ResumeEvents {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         interface Update {
-            (): void;
+            (_source: FrameClock): void;
         }
 
         // Signal signatures
@@ -8317,7 +8296,6 @@ export namespace Gdk {
      */
     abstract class FrameClock extends GObject.Object {
         static $gtype: GObject.GType<FrameClock>;
-        declare static readonly __signalSignatures: FrameClock.SignalSignatures;
 
         // Constructors
 
@@ -8339,30 +8317,6 @@ export namespace Gdk {
             signal: K,
             ...args: Parameters<FrameClock.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'after-paint', callback: (_source: this) => void): number;
-        connect_after(signal: 'after-paint', callback: (_source: this) => void): number;
-        emit(signal: 'after-paint'): void;
-        connect(signal: 'before-paint', callback: (_source: this) => void): number;
-        connect_after(signal: 'before-paint', callback: (_source: this) => void): number;
-        emit(signal: 'before-paint'): void;
-        connect(signal: 'flush-events', callback: (_source: this) => void): number;
-        connect_after(signal: 'flush-events', callback: (_source: this) => void): number;
-        emit(signal: 'flush-events'): void;
-        connect(signal: 'layout', callback: (_source: this) => void): number;
-        connect_after(signal: 'layout', callback: (_source: this) => void): number;
-        emit(signal: 'layout'): void;
-        connect(signal: 'paint', callback: (_source: this) => void): number;
-        connect_after(signal: 'paint', callback: (_source: this) => void): number;
-        emit(signal: 'paint'): void;
-        connect(signal: 'resume-events', callback: (_source: this) => void): number;
-        connect_after(signal: 'resume-events', callback: (_source: this) => void): number;
-        emit(signal: 'resume-events'): void;
-        connect(signal: 'update', callback: (_source: this) => void): number;
-        connect_after(signal: 'update', callback: (_source: this) => void): number;
-        emit(signal: 'update'): void;
 
         // Methods
 
@@ -8515,7 +8469,6 @@ export namespace Gdk {
      */
     abstract class GLContext extends GObject.Object {
         static $gtype: GObject.GType<GLContext>;
-        declare static readonly __signalSignatures: GLContext.SignalSignatures;
 
         // Properties
 
@@ -8541,6 +8494,18 @@ export namespace Gdk {
         constructor(properties?: Partial<GLContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLContext.SignalSignatures>(signal: K, callback: GLContext.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLContext.SignalSignatures>(
+            signal: K,
+            callback: GLContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLContext.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8686,15 +8651,15 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface DirectionChanged {
-            (): void;
+            (_source: Keymap): void;
         }
 
         interface KeysChanged {
-            (): void;
+            (_source: Keymap): void;
         }
 
         interface StateChanged {
-            (): void;
+            (_source: Keymap): void;
         }
 
         // Signal signatures
@@ -8719,7 +8684,6 @@ export namespace Gdk {
      */
     class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
-        declare static readonly __signalSignatures: Keymap.SignalSignatures;
 
         // Constructors
 
@@ -8732,18 +8696,6 @@ export namespace Gdk {
         connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
         connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
         emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'direction-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'direction-changed', callback: (_source: this) => void): number;
-        emit(signal: 'direction-changed'): void;
-        connect(signal: 'keys-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'keys-changed', callback: (_source: this) => void): number;
-        emit(signal: 'keys-changed'): void;
-        connect(signal: 'state-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this) => void): number;
-        emit(signal: 'state-changed'): void;
 
         // Static methods
 
@@ -8934,7 +8886,7 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface Invalidate {
-            (): void;
+            (_source: Monitor): void;
         }
 
         // Signal signatures
@@ -8975,7 +8927,6 @@ export namespace Gdk {
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
-        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Properties
 
@@ -9012,12 +8963,6 @@ export namespace Gdk {
             signal: K,
             ...args: Parameters<Monitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'invalidate', callback: (_source: this) => void): number;
-        connect_after(signal: 'invalidate', callback: (_source: this) => void): number;
-        emit(signal: 'invalidate'): void;
 
         // Methods
 
@@ -9109,15 +9054,15 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface CompositedChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface MonitorsChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         interface SizeChanged {
-            (): void;
+            (_source: Screen): void;
         }
 
         // Signal signatures
@@ -9151,7 +9096,6 @@ export namespace Gdk {
      */
     class Screen extends GObject.Object {
         static $gtype: GObject.GType<Screen>;
-        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Properties
 
@@ -9173,18 +9117,6 @@ export namespace Gdk {
         connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'composited-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'composited-changed', callback: (_source: this) => void): number;
-        emit(signal: 'composited-changed'): void;
-        connect(signal: 'monitors-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'monitors-changed', callback: (_source: this) => void): number;
-        emit(signal: 'monitors-changed'): void;
-        connect(signal: 'size-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'size-changed', callback: (_source: this) => void): number;
-        emit(signal: 'size-changed'): void;
 
         // Static methods
 
@@ -9504,19 +9436,19 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (device: Device): void;
+            (_source: Seat, device: Device): void;
         }
 
         interface DeviceRemoved {
-            (device: Device): void;
+            (_source: Seat, device: Device): void;
         }
 
         interface ToolAdded {
-            (tool: DeviceTool): void;
+            (_source: Seat, tool: DeviceTool): void;
         }
 
         interface ToolRemoved {
-            (tool: DeviceTool): void;
+            (_source: Seat, tool: DeviceTool): void;
         }
 
         // Signal signatures
@@ -9540,7 +9472,6 @@ export namespace Gdk {
      */
     abstract class Seat extends GObject.Object {
         static $gtype: GObject.GType<Seat>;
-        declare static readonly __signalSignatures: Seat.SignalSignatures;
 
         // Properties
 
@@ -9560,21 +9491,6 @@ export namespace Gdk {
         connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
         connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
         emit<K extends keyof Seat.SignalSignatures>(signal: K, ...args: Parameters<Seat.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-added', device: Device): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-removed', device: Device): void;
-        connect(signal: 'tool-added', callback: (_source: this, tool: DeviceTool) => void): number;
-        connect_after(signal: 'tool-added', callback: (_source: this, tool: DeviceTool) => void): number;
-        emit(signal: 'tool-added', tool: DeviceTool): void;
-        connect(signal: 'tool-removed', callback: (_source: this, tool: DeviceTool) => void): number;
-        connect_after(signal: 'tool-removed', callback: (_source: this, tool: DeviceTool) => void): number;
-        emit(signal: 'tool-removed', tool: DeviceTool): void;
 
         // Methods
 
@@ -9666,13 +9582,18 @@ export namespace Gdk {
      */
     class Visual extends GObject.Object {
         static $gtype: GObject.GType<Visual>;
-        declare static readonly __signalSignatures: Visual.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Visual.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Visual.SignalSignatures>(signal: K, callback: Visual.SignalSignatures[K]): number;
+        connect_after<K extends keyof Visual.SignalSignatures>(signal: K, callback: Visual.SignalSignatures[K]): number;
+        emit<K extends keyof Visual.SignalSignatures>(signal: K, ...args: Parameters<Visual.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -9791,23 +9712,29 @@ export namespace Gdk {
         // Signal callback interfaces
 
         interface CreateSurface {
-            (width: number, height: number): cairo.Surface;
+            (_source: Window, width: number, height: number): cairo.Surface;
         }
 
         interface FromEmbedder {
-            (embedder_x: number, embedder_y: number, offscreen_x: number, offscreen_y: number): void;
+            (_source: Window, embedder_x: number, embedder_y: number, offscreen_x: number, offscreen_y: number): void;
         }
 
         interface MovedToRect {
-            (flipped_rect: any | null, final_rect: any | null, flipped_x: boolean, flipped_y: boolean): void;
+            (
+                _source: Window,
+                flipped_rect: any | null,
+                final_rect: any | null,
+                flipped_x: boolean,
+                flipped_y: boolean,
+            ): void;
         }
 
         interface PickEmbeddedChild {
-            (x: number, y: number): Window | null;
+            (_source: Window, x: number, y: number): Window | null;
         }
 
         interface ToEmbedder {
-            (offscreen_x: number, offscreen_y: number, embedder_x: number, embedder_y: number): void;
+            (_source: Window, offscreen_x: number, offscreen_y: number, embedder_x: number, embedder_y: number): void;
         }
 
         // Signal signatures
@@ -9828,7 +9755,6 @@ export namespace Gdk {
 
     abstract class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -9852,108 +9778,6 @@ export namespace Gdk {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'create-surface',
-            callback: (_source: this, width: number, height: number) => cairo.Surface,
-        ): number;
-        connect_after(
-            signal: 'create-surface',
-            callback: (_source: this, width: number, height: number) => cairo.Surface,
-        ): number;
-        emit(signal: 'create-surface', width: number, height: number): void;
-        connect(
-            signal: 'from-embedder',
-            callback: (
-                _source: this,
-                embedder_x: number,
-                embedder_y: number,
-                offscreen_x: number,
-                offscreen_y: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'from-embedder',
-            callback: (
-                _source: this,
-                embedder_x: number,
-                embedder_y: number,
-                offscreen_x: number,
-                offscreen_y: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'from-embedder',
-            embedder_x: number,
-            embedder_y: number,
-            offscreen_x: number,
-            offscreen_y: number,
-        ): void;
-        connect(
-            signal: 'moved-to-rect',
-            callback: (
-                _source: this,
-                flipped_rect: any | null,
-                final_rect: any | null,
-                flipped_x: boolean,
-                flipped_y: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'moved-to-rect',
-            callback: (
-                _source: this,
-                flipped_rect: any | null,
-                final_rect: any | null,
-                flipped_x: boolean,
-                flipped_y: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'moved-to-rect',
-            flipped_rect: any | null,
-            final_rect: any | null,
-            flipped_x: boolean,
-            flipped_y: boolean,
-        ): void;
-        connect(
-            signal: 'pick-embedded-child',
-            callback: (_source: this, x: number, y: number) => Window | null,
-        ): number;
-        connect_after(
-            signal: 'pick-embedded-child',
-            callback: (_source: this, x: number, y: number) => Window | null,
-        ): number;
-        emit(signal: 'pick-embedded-child', x: number, y: number): void;
-        connect(
-            signal: 'to-embedder',
-            callback: (
-                _source: this,
-                offscreen_x: number,
-                offscreen_y: number,
-                embedder_x: number,
-                embedder_y: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'to-embedder',
-            callback: (
-                _source: this,
-                offscreen_x: number,
-                offscreen_y: number,
-                embedder_x: number,
-                embedder_y: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'to-embedder',
-            offscreen_x: number,
-            offscreen_y: number,
-            embedder_x: number,
-            embedder_y: number,
-        ): void;
 
         // Static methods
 

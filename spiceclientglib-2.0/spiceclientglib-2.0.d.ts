@@ -680,7 +680,6 @@ export namespace SpiceClientGLib {
      */
     abstract class Audio extends GObject.Object {
         static $gtype: GObject.GType<Audio>;
-        declare static readonly __signalSignatures: Audio.SignalSignatures;
 
         // Properties
 
@@ -698,6 +697,12 @@ export namespace SpiceClientGLib {
         _init(...args: any[]): void;
 
         static ['new'](session: Session, context?: GLib.MainContext | null, name?: string | null): Audio;
+
+        // Signals
+
+        connect<K extends keyof Audio.SignalSignatures>(signal: K, callback: Audio.SignalSignatures[K]): number;
+        connect_after<K extends keyof Audio.SignalSignatures>(signal: K, callback: Audio.SignalSignatures[K]): number;
+        emit<K extends keyof Audio.SignalSignatures>(signal: K, ...args: Parameters<Audio.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -744,11 +749,11 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface ChannelEvent {
-            (event: ChannelEvent): void;
+            (_source: Channel, event: ChannelEvent): void;
         }
 
         interface OpenFd {
-            (with_tls: number): void;
+            (_source: Channel, with_tls: number): void;
         }
 
         // Signal signatures
@@ -777,7 +782,6 @@ export namespace SpiceClientGLib {
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -807,6 +811,7 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: Channel.SignalSignatures[K],
@@ -815,12 +820,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<Channel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'channel-event', callback: (_source: this, event: ChannelEvent) => void): number;
-        emit(signal: 'channel-event', event: ChannelEvent): void;
-        connect_after(signal: 'open-fd', callback: (_source: this, with_tls: number) => void): number;
-        emit(signal: 'open-fd', with_tls: number): void;
 
         // Static methods
 
@@ -946,19 +945,26 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface CursorHide {
-            (): void;
+            (_source: CursorChannel): void;
         }
 
         interface CursorMove {
-            (x: number, y: number): void;
+            (_source: CursorChannel, x: number, y: number): void;
         }
 
         interface CursorReset {
-            (): void;
+            (_source: CursorChannel): void;
         }
 
         interface CursorSet {
-            (width: number, height: number, hot_x: number, hot_y: number, rgba?: any | null): void;
+            (
+                _source: CursorChannel,
+                width: number,
+                height: number,
+                hot_x: number,
+                hot_y: number,
+                rgba?: any | null,
+            ): void;
         }
 
         // Signal signatures
@@ -981,7 +987,6 @@ export namespace SpiceClientGLib {
      */
     class CursorChannel extends Channel {
         static $gtype: GObject.GType<CursorChannel>;
-        declare static readonly __signalSignatures: CursorChannel.SignalSignatures;
 
         // Properties
 
@@ -1006,33 +1011,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<CursorChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'cursor-hide', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-hide'): void;
-        connect_after(signal: 'cursor-move', callback: (_source: this, x: number, y: number) => void): number;
-        emit(signal: 'cursor-move', x: number, y: number): void;
-        connect_after(signal: 'cursor-reset', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-reset'): void;
-        connect_after(
-            signal: 'cursor-set',
-            callback: (
-                _source: this,
-                width: number,
-                height: number,
-                hot_x: number,
-                hot_y: number,
-                rgba: any | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'cursor-set',
-            width: number,
-            height: number,
-            hot_x: number,
-            hot_y: number,
-            rgba?: any | null,
-        ): void;
 
         // Virtual methods
 
@@ -1046,31 +1024,39 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface DisplayInvalidate {
-            (x: number, y: number, width: number, height: number): void;
+            (_source: DisplayChannel, x: number, y: number, width: number, height: number): void;
         }
 
         interface DisplayMark {
-            (mark: number): void;
+            (_source: DisplayChannel, mark: number): void;
         }
 
         interface DisplayPrimaryCreate {
-            (format: number, width: number, height: number, stride: number, shmid: number, imgdata?: any | null): void;
+            (
+                _source: DisplayChannel,
+                format: number,
+                width: number,
+                height: number,
+                stride: number,
+                shmid: number,
+                imgdata?: any | null,
+            ): void;
         }
 
         interface DisplayPrimaryDestroy {
-            (): void;
+            (_source: DisplayChannel): void;
         }
 
         interface GlDraw {
-            (x: number, y: number, width: number, height: number): void;
+            (_source: DisplayChannel, x: number, y: number, width: number, height: number): void;
         }
 
         interface GstVideoOverlay {
-            (pipeline: Gst.Pipeline): boolean;
+            (_source: DisplayChannel, pipeline: Gst.Pipeline): boolean;
         }
 
         interface StreamingMode {
-            (streaming_mode: boolean): any | null;
+            (_source: DisplayChannel, streaming_mode: boolean): any | null;
         }
 
         // Signal signatures
@@ -1102,7 +1088,6 @@ export namespace SpiceClientGLib {
      */
     class DisplayChannel extends Channel {
         static $gtype: GObject.GType<DisplayChannel>;
-        declare static readonly __signalSignatures: DisplayChannel.SignalSignatures;
 
         // Properties
 
@@ -1149,53 +1134,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<DisplayChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(
-            signal: 'display-invalidate',
-            callback: (_source: this, x: number, y: number, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'display-invalidate', x: number, y: number, width: number, height: number): void;
-        connect_after(signal: 'display-mark', callback: (_source: this, mark: number) => void): number;
-        emit(signal: 'display-mark', mark: number): void;
-        connect_after(
-            signal: 'display-primary-create',
-            callback: (
-                _source: this,
-                format: number,
-                width: number,
-                height: number,
-                stride: number,
-                shmid: number,
-                imgdata: any | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'display-primary-create',
-            format: number,
-            width: number,
-            height: number,
-            stride: number,
-            shmid: number,
-            imgdata?: any | null,
-        ): void;
-        connect_after(signal: 'display-primary-destroy', callback: (_source: this) => void): number;
-        emit(signal: 'display-primary-destroy'): void;
-        connect_after(
-            signal: 'gl-draw',
-            callback: (_source: this, x: number, y: number, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'gl-draw', x: number, y: number, width: number, height: number): void;
-        connect_after(
-            signal: 'gst-video-overlay',
-            callback: (_source: this, pipeline: Gst.Pipeline) => boolean,
-        ): number;
-        emit(signal: 'gst-video-overlay', pipeline: Gst.Pipeline): void;
-        connect_after(
-            signal: 'streaming-mode',
-            callback: (_source: this, streaming_mode: boolean) => any | null,
-        ): number;
-        emit(signal: 'streaming-mode', streaming_mode: boolean): void;
 
         // Static methods
 
@@ -1242,7 +1180,7 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface Finished {
-            (object: GLib.Error): void;
+            (_source: FileTransferTask, object: GLib.Error): void;
         }
 
         // Signal signatures
@@ -1267,7 +1205,6 @@ export namespace SpiceClientGLib {
 
     class FileTransferTask extends GObject.Object {
         static $gtype: GObject.GType<FileTransferTask>;
-        declare static readonly __signalSignatures: FileTransferTask.SignalSignatures;
 
         // Properties
 
@@ -1301,12 +1238,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<FileTransferTask.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this, object: GLib.Error) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this, object: GLib.Error) => void): number;
-        emit(signal: 'finished', object: GLib.Error): void;
 
         // Methods
 
@@ -1321,7 +1252,7 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface InputsModifiers {
-            (): void;
+            (_source: InputsChannel): void;
         }
 
         // Signal signatures
@@ -1342,7 +1273,6 @@ export namespace SpiceClientGLib {
      */
     class InputsChannel extends Channel {
         static $gtype: GObject.GType<InputsChannel>;
-        declare static readonly __signalSignatures: InputsChannel.SignalSignatures;
 
         // Properties
 
@@ -1365,10 +1295,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<InputsChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'inputs-modifiers', callback: (_source: this) => void): number;
-        emit(signal: 'inputs-modifiers'): void;
 
         // Methods
 
@@ -1425,51 +1351,51 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface MainAgentUpdate {
-            (): void;
+            (_source: MainChannel): void;
         }
 
         interface MainClipboard {
-            (type: number, data: any | null, size: number): void;
+            (_source: MainChannel, type: number, data: any | null, size: number): void;
         }
 
         interface MainClipboardGrab {
-            (types: any | null, ntypes: number): boolean;
+            (_source: MainChannel, types: any | null, ntypes: number): boolean;
         }
 
         interface MainClipboardRelease {
-            (): void;
+            (_source: MainChannel): void;
         }
 
         interface MainClipboardRequest {
-            (types: number): boolean;
+            (_source: MainChannel, types: number): boolean;
         }
 
         interface MainClipboardSelection {
-            (selection: number, type: number, data: any | null, size: number): void;
+            (_source: MainChannel, selection: number, type: number, data: any | null, size: number): void;
         }
 
         interface MainClipboardSelectionGrab {
-            (selection: number, types: any | null, ntypes: number): boolean;
+            (_source: MainChannel, selection: number, types: any | null, ntypes: number): boolean;
         }
 
         interface MainClipboardSelectionRelease {
-            (selection: number): void;
+            (_source: MainChannel, selection: number): void;
         }
 
         interface MainClipboardSelectionRequest {
-            (selection: number, types: number): boolean;
+            (_source: MainChannel, selection: number, types: number): boolean;
         }
 
         interface MainMouseUpdate {
-            (): void;
+            (_source: MainChannel): void;
         }
 
         interface MigrationStarted {
-            (session: GObject.Object): void;
+            (_source: MainChannel, session: GObject.Object): void;
         }
 
         interface NewFileTransfer {
-            (task: GObject.Object): void;
+            (_source: MainChannel, task: GObject.Object): void;
         }
 
         // Signal signatures
@@ -1519,7 +1445,6 @@ export namespace SpiceClientGLib {
      */
     class MainChannel extends Channel {
         static $gtype: GObject.GType<MainChannel>;
-        declare static readonly __signalSignatures: MainChannel.SignalSignatures;
 
         // Properties
 
@@ -1606,50 +1531,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<MainChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'main-agent-update', callback: (_source: this) => void): number;
-        emit(signal: 'main-agent-update'): void;
-        connect_after(
-            signal: 'main-clipboard',
-            callback: (_source: this, type: number, data: any | null, size: number) => void,
-        ): number;
-        emit(signal: 'main-clipboard', type: number, data: any | null, size: number): void;
-        connect_after(
-            signal: 'main-clipboard-grab',
-            callback: (_source: this, types: any | null, ntypes: number) => boolean,
-        ): number;
-        emit(signal: 'main-clipboard-grab', types: any | null, ntypes: number): void;
-        connect_after(signal: 'main-clipboard-release', callback: (_source: this) => void): number;
-        emit(signal: 'main-clipboard-release'): void;
-        connect_after(signal: 'main-clipboard-request', callback: (_source: this, types: number) => boolean): number;
-        emit(signal: 'main-clipboard-request', types: number): void;
-        connect_after(
-            signal: 'main-clipboard-selection',
-            callback: (_source: this, selection: number, type: number, data: any | null, size: number) => void,
-        ): number;
-        emit(signal: 'main-clipboard-selection', selection: number, type: number, data: any | null, size: number): void;
-        connect_after(
-            signal: 'main-clipboard-selection-grab',
-            callback: (_source: this, selection: number, types: any | null, ntypes: number) => boolean,
-        ): number;
-        emit(signal: 'main-clipboard-selection-grab', selection: number, types: any | null, ntypes: number): void;
-        connect_after(
-            signal: 'main-clipboard-selection-release',
-            callback: (_source: this, selection: number) => void,
-        ): number;
-        emit(signal: 'main-clipboard-selection-release', selection: number): void;
-        connect_after(
-            signal: 'main-clipboard-selection-request',
-            callback: (_source: this, selection: number, types: number) => boolean,
-        ): number;
-        emit(signal: 'main-clipboard-selection-request', selection: number, types: number): void;
-        connect_after(signal: 'main-mouse-update', callback: (_source: this) => void): number;
-        emit(signal: 'main-mouse-update'): void;
-        connect_after(signal: 'migration-started', callback: (_source: this, session: GObject.Object) => void): number;
-        emit(signal: 'migration-started', session: GObject.Object): void;
-        connect_after(signal: 'new-file-transfer', callback: (_source: this, task: GObject.Object) => void): number;
-        emit(signal: 'new-file-transfer', task: GObject.Object): void;
 
         // Methods
 
@@ -1851,19 +1732,19 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface PlaybackData {
-            (data: any | null, data_size: number): void;
+            (_source: PlaybackChannel, data: any | null, data_size: number): void;
         }
 
         interface PlaybackGetDelay {
-            (): void;
+            (_source: PlaybackChannel): void;
         }
 
         interface PlaybackStart {
-            (format: number, channels: number, rate: number): void;
+            (_source: PlaybackChannel, format: number, channels: number, rate: number): void;
         }
 
         interface PlaybackStop {
-            (): void;
+            (_source: PlaybackChannel): void;
         }
 
         // Signal signatures
@@ -1890,7 +1771,6 @@ export namespace SpiceClientGLib {
      */
     class PlaybackChannel extends Channel {
         static $gtype: GObject.GType<PlaybackChannel>;
-        declare static readonly __signalSignatures: PlaybackChannel.SignalSignatures;
 
         // Properties
 
@@ -1921,22 +1801,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<PlaybackChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(
-            signal: 'playback-data',
-            callback: (_source: this, data: any | null, data_size: number) => void,
-        ): number;
-        emit(signal: 'playback-data', data: any | null, data_size: number): void;
-        connect_after(signal: 'playback-get-delay', callback: (_source: this) => void): number;
-        emit(signal: 'playback-get-delay'): void;
-        connect_after(
-            signal: 'playback-start',
-            callback: (_source: this, format: number, channels: number, rate: number) => void,
-        ): number;
-        emit(signal: 'playback-start', format: number, channels: number, rate: number): void;
-        connect_after(signal: 'playback-stop', callback: (_source: this) => void): number;
-        emit(signal: 'playback-stop'): void;
 
         // Virtual methods
 
@@ -1957,11 +1821,11 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface PortData {
-            (data: any | null, size: number): void;
+            (_source: PortChannel, data: any | null, size: number): void;
         }
 
         interface PortEvent {
-            (event: number): void;
+            (_source: PortChannel, event: number): void;
         }
 
         // Signal signatures
@@ -1985,7 +1849,6 @@ export namespace SpiceClientGLib {
      */
     class PortChannel extends Channel {
         static $gtype: GObject.GType<PortChannel>;
-        declare static readonly __signalSignatures: PortChannel.SignalSignatures;
 
         // Properties
 
@@ -2010,12 +1873,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<PortChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'port-data', callback: (_source: this, data: any | null, size: number) => void): number;
-        emit(signal: 'port-data', data: any | null, size: number): void;
-        connect_after(signal: 'port-event', callback: (_source: this, event: number) => void): number;
-        emit(signal: 'port-event', event: number): void;
 
         // Methods
 
@@ -2077,7 +1934,7 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface Event {
-            (name: string, node?: any | null): void;
+            (_source: QmpPort, name: string, node?: any | null): void;
         }
 
         // Signal signatures
@@ -2098,7 +1955,6 @@ export namespace SpiceClientGLib {
      */
     class QmpPort extends GObject.Object {
         static $gtype: GObject.GType<QmpPort>;
-        declare static readonly __signalSignatures: QmpPort.SignalSignatures;
 
         // Properties
 
@@ -2122,12 +1978,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<QmpPort.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'event', callback: (_source: this, name: string, node: any | null) => void): number;
-        connect_after(signal: 'event', callback: (_source: this, name: string, node: any | null) => void): number;
-        emit(signal: 'event', name: string, node?: any | null): void;
 
         // Static methods
 
@@ -2205,11 +2055,11 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface RecordStart {
-            (format: number, channels: number, rate: number): void;
+            (_source: RecordChannel, format: number, channels: number, rate: number): void;
         }
 
         interface RecordStop {
-            (): void;
+            (_source: RecordChannel): void;
         }
 
         // Signal signatures
@@ -2232,7 +2082,6 @@ export namespace SpiceClientGLib {
      */
     class RecordChannel extends Channel {
         static $gtype: GObject.GType<RecordChannel>;
-        declare static readonly __signalSignatures: RecordChannel.SignalSignatures;
 
         // Properties
 
@@ -2259,15 +2108,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<RecordChannel.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(
-            signal: 'record-start',
-            callback: (_source: this, format: number, channels: number, rate: number) => void,
-        ): number;
-        emit(signal: 'record-start', format: number, channels: number, rate: number): void;
-        connect_after(signal: 'record-stop', callback: (_source: this) => void): number;
-        emit(signal: 'record-stop'): void;
 
         // Virtual methods
 
@@ -2290,19 +2130,19 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface ChannelDestroy {
-            (channel: Channel): void;
+            (_source: Session, channel: Channel): void;
         }
 
         interface ChannelNew {
-            (channel: Channel): void;
+            (_source: Session, channel: Channel): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Session): void;
         }
 
         interface MmTimeReset {
-            (): void;
+            (_source: Session): void;
         }
 
         // Signal signatures
@@ -2379,7 +2219,6 @@ export namespace SpiceClientGLib {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -2679,6 +2518,7 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
@@ -2687,16 +2527,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'channel-destroy', callback: (_source: this, channel: Channel) => void): number;
-        emit(signal: 'channel-destroy', channel: Channel): void;
-        connect_after(signal: 'channel-new', callback: (_source: this, channel: Channel) => void): number;
-        emit(signal: 'channel-new', channel: Channel): void;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
-        connect_after(signal: 'mm-time-reset', callback: (_source: this) => void): number;
-        emit(signal: 'mm-time-reset'): void;
 
         // Virtual methods
 
@@ -2781,32 +2611,42 @@ export namespace SpiceClientGLib {
      */
     class SmartcardChannel extends Channel {
         static $gtype: GObject.GType<SmartcardChannel>;
-        declare static readonly __signalSignatures: SmartcardChannel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SmartcardChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect_after<K extends keyof SmartcardChannel.SignalSignatures>(
+            signal: K,
+            callback: SmartcardChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SmartcardChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SmartcardChannel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SmartcardManager {
         // Signal callback interfaces
 
         interface CardInserted {
-            (vreader: VReader): void;
+            (_source: SmartcardManager, vreader: VReader): void;
         }
 
         interface CardRemoved {
-            (vreader: VReader): void;
+            (_source: SmartcardManager, vreader: VReader): void;
         }
 
         interface ReaderAdded {
-            (vreader: VReader): void;
+            (_source: SmartcardManager, vreader: VReader): void;
         }
 
         interface ReaderRemoved {
-            (vreader: VReader): void;
+            (_source: SmartcardManager, vreader: VReader): void;
         }
 
         // Signal signatures
@@ -2827,7 +2667,6 @@ export namespace SpiceClientGLib {
      */
     class SmartcardManager extends GObject.Object {
         static $gtype: GObject.GType<SmartcardManager>;
-        declare static readonly __signalSignatures: SmartcardManager.SignalSignatures;
 
         // Constructors
 
@@ -2849,21 +2688,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<SmartcardManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'card-inserted', callback: (_source: this, vreader: VReader) => void): number;
-        connect_after(signal: 'card-inserted', callback: (_source: this, vreader: VReader) => void): number;
-        emit(signal: 'card-inserted', vreader: VReader): void;
-        connect(signal: 'card-removed', callback: (_source: this, vreader: VReader) => void): number;
-        connect_after(signal: 'card-removed', callback: (_source: this, vreader: VReader) => void): number;
-        emit(signal: 'card-removed', vreader: VReader): void;
-        connect(signal: 'reader-added', callback: (_source: this, vreader: VReader) => void): number;
-        connect_after(signal: 'reader-added', callback: (_source: this, vreader: VReader) => void): number;
-        emit(signal: 'reader-added', vreader: VReader): void;
-        connect(signal: 'reader-removed', callback: (_source: this, vreader: VReader) => void): number;
-        connect_after(signal: 'reader-removed', callback: (_source: this, vreader: VReader) => void): number;
-        emit(signal: 'reader-removed', vreader: VReader): void;
 
         // Static methods
 
@@ -2927,7 +2751,6 @@ export namespace SpiceClientGLib {
      */
     class URI extends GObject.Object {
         static $gtype: GObject.GType<URI>;
-        declare static readonly __signalSignatures: URI.SignalSignatures;
 
         // Properties
 
@@ -2948,6 +2771,12 @@ export namespace SpiceClientGLib {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof URI.SignalSignatures>(signal: K, callback: URI.SignalSignatures[K]): number;
+        connect_after<K extends keyof URI.SignalSignatures>(signal: K, callback: URI.SignalSignatures[K]): number;
+        emit<K extends keyof URI.SignalSignatures>(signal: K, ...args: Parameters<URI.SignalSignatures[K]>): void;
+
         // Methods
 
         get_hostname(): string;
@@ -2967,19 +2796,19 @@ export namespace SpiceClientGLib {
         // Signal callback interfaces
 
         interface AutoConnectFailed {
-            (device: UsbDevice, error: GLib.Error): void;
+            (_source: UsbDeviceManager, device: UsbDevice, error: GLib.Error): void;
         }
 
         interface DeviceAdded {
-            (device: UsbDevice): void;
+            (_source: UsbDeviceManager, device: UsbDevice): void;
         }
 
         interface DeviceError {
-            (device: UsbDevice, error: GLib.Error): void;
+            (_source: UsbDeviceManager, device: UsbDevice, error: GLib.Error): void;
         }
 
         interface DeviceRemoved {
-            (device: UsbDevice): void;
+            (_source: UsbDeviceManager, device: UsbDevice): void;
         }
 
         // Signal signatures
@@ -3010,7 +2839,6 @@ export namespace SpiceClientGLib {
      */
     class UsbDeviceManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<UsbDeviceManager>;
-        declare static readonly __signalSignatures: UsbDeviceManager.SignalSignatures;
 
         // Properties
 
@@ -3127,33 +2955,6 @@ export namespace SpiceClientGLib {
             signal: K,
             ...args: Parameters<UsbDeviceManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'auto-connect-failed',
-            callback: (_source: this, device: UsbDevice, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'auto-connect-failed',
-            callback: (_source: this, device: UsbDevice, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'auto-connect-failed', device: UsbDevice, error: GLib.Error): void;
-        connect(signal: 'device-added', callback: (_source: this, device: UsbDevice) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: UsbDevice) => void): number;
-        emit(signal: 'device-added', device: UsbDevice): void;
-        connect(
-            signal: 'device-error',
-            callback: (_source: this, device: UsbDevice, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'device-error',
-            callback: (_source: this, device: UsbDevice, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'device-error', device: UsbDevice, error: GLib.Error): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: UsbDevice) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: UsbDevice) => void): number;
-        emit(signal: 'device-removed', device: UsbDevice): void;
 
         // Static methods
 
@@ -3832,13 +3633,23 @@ export namespace SpiceClientGLib {
      */
     class UsbredirChannel extends Channel {
         static $gtype: GObject.GType<UsbredirChannel>;
-        declare static readonly __signalSignatures: UsbredirChannel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<UsbredirChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect_after<K extends keyof UsbredirChannel.SignalSignatures>(
+            signal: K,
+            callback: UsbredirChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UsbredirChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UsbredirChannel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WebdavChannel {
@@ -3855,13 +3666,23 @@ export namespace SpiceClientGLib {
      */
     class WebdavChannel extends PortChannel {
         static $gtype: GObject.GType<WebdavChannel>;
-        declare static readonly __signalSignatures: WebdavChannel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebdavChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect_after<K extends keyof WebdavChannel.SignalSignatures>(
+            signal: K,
+            callback: WebdavChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebdavChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebdavChannel.SignalSignatures[K]>
+        ): void;
     }
 
     type AudioClass = typeof Audio;

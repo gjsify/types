@@ -2816,7 +2816,6 @@ export namespace Soup {
 
     class Address extends GObject.Object implements Gio.SocketConnectable {
         static $gtype: GObject.GType<Address>;
-        declare static readonly __signalSignatures: Address.SignalSignatures;
 
         // Properties
 
@@ -2838,6 +2837,18 @@ export namespace Soup {
         static new_any(family: AddressFamily, port: number): Address;
 
         static new_from_sockaddr(sa: any | null, len: number): Address;
+
+        // Signals
+
+        connect<K extends keyof Address.SignalSignatures>(signal: K, callback: Address.SignalSignatures[K]): number;
+        connect_after<K extends keyof Address.SignalSignatures>(
+            signal: K,
+            callback: Address.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Address.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Address.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3506,7 +3517,6 @@ export namespace Soup {
      */
     abstract class Auth extends GObject.Object {
         static $gtype: GObject.GType<Auth>;
-        declare static readonly __signalSignatures: Auth.SignalSignatures;
 
         // Properties
 
@@ -3530,6 +3540,12 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](type: GObject.GType, msg: Message, auth_header: string): Auth;
+
+        // Signals
+
+        connect<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
+        connect_after<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
+        emit<K extends keyof Auth.SignalSignatures>(signal: K, ...args: Parameters<Auth.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -3674,13 +3690,24 @@ export namespace Soup {
 
     class AuthBasic extends Auth {
         static $gtype: GObject.GType<AuthBasic>;
-        declare static readonly __signalSignatures: AuthBasic.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AuthBasic.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthBasic.SignalSignatures>(signal: K, callback: AuthBasic.SignalSignatures[K]): number;
+        connect_after<K extends keyof AuthBasic.SignalSignatures>(
+            signal: K,
+            callback: AuthBasic.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthBasic.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthBasic.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AuthDigest {
@@ -3694,13 +3721,27 @@ export namespace Soup {
 
     class AuthDigest extends Auth {
         static $gtype: GObject.GType<AuthDigest>;
-        declare static readonly __signalSignatures: AuthDigest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AuthDigest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthDigest.SignalSignatures>(
+            signal: K,
+            callback: AuthDigest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthDigest.SignalSignatures>(
+            signal: K,
+            callback: AuthDigest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthDigest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthDigest.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AuthDomain {
@@ -3728,7 +3769,6 @@ export namespace Soup {
 
     abstract class AuthDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthDomain>;
-        declare static readonly __signalSignatures: AuthDomain.SignalSignatures;
 
         // Properties
 
@@ -3767,6 +3807,21 @@ export namespace Soup {
         constructor(properties?: Partial<AuthDomain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthDomain.SignalSignatures>(
+            signal: K,
+            callback: AuthDomain.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthDomain.SignalSignatures>(
+            signal: K,
+            callback: AuthDomain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthDomain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthDomain.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3899,7 +3954,6 @@ export namespace Soup {
 
     class AuthDomainBasic extends AuthDomain {
         static $gtype: GObject.GType<AuthDomainBasic>;
-        declare static readonly __signalSignatures: AuthDomainBasic.SignalSignatures;
 
         // Properties
 
@@ -3929,6 +3983,21 @@ export namespace Soup {
         constructor(properties?: Partial<AuthDomainBasic.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthDomainBasic.SignalSignatures>(
+            signal: K,
+            callback: AuthDomainBasic.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthDomainBasic.SignalSignatures>(
+            signal: K,
+            callback: AuthDomainBasic.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthDomainBasic.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthDomainBasic.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3963,7 +4032,6 @@ export namespace Soup {
 
     class AuthDomainDigest extends AuthDomain {
         static $gtype: GObject.GType<AuthDomainDigest>;
-        declare static readonly __signalSignatures: AuthDomainDigest.SignalSignatures;
 
         // Properties
 
@@ -3993,6 +4061,21 @@ export namespace Soup {
         constructor(properties?: Partial<AuthDomainDigest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthDomainDigest.SignalSignatures>(
+            signal: K,
+            callback: AuthDomainDigest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthDomainDigest.SignalSignatures>(
+            signal: K,
+            callback: AuthDomainDigest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthDomainDigest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthDomainDigest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4037,7 +4120,7 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface Authenticate {
-            (msg: Message, auth: Auth, retrying: boolean): void;
+            (_source: AuthManager, msg: Message, auth: Auth, retrying: boolean): void;
         }
 
         // Signal signatures
@@ -4052,7 +4135,6 @@ export namespace Soup {
 
     class AuthManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<AuthManager>;
-        declare static readonly __signalSignatures: AuthManager.SignalSignatures;
 
         // Constructors
 
@@ -4074,18 +4156,6 @@ export namespace Soup {
             signal: K,
             ...args: Parameters<AuthManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'authenticate',
-            callback: (_source: this, msg: Message, auth: Auth, retrying: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'authenticate',
-            callback: (_source: this, msg: Message, auth: Auth, retrying: boolean) => void,
-        ): number;
-        emit(signal: 'authenticate', msg: Message, auth: Auth, retrying: boolean): void;
 
         // Virtual methods
 
@@ -4639,13 +4709,24 @@ export namespace Soup {
 
     class AuthNTLM extends Auth {
         static $gtype: GObject.GType<AuthNTLM>;
-        declare static readonly __signalSignatures: AuthNTLM.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AuthNTLM.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthNTLM.SignalSignatures>(signal: K, callback: AuthNTLM.SignalSignatures[K]): number;
+        connect_after<K extends keyof AuthNTLM.SignalSignatures>(
+            signal: K,
+            callback: AuthNTLM.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthNTLM.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthNTLM.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AuthNegotiate {
@@ -4659,13 +4740,27 @@ export namespace Soup {
 
     class AuthNegotiate extends Auth {
         static $gtype: GObject.GType<AuthNegotiate>;
-        declare static readonly __signalSignatures: AuthNegotiate.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AuthNegotiate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthNegotiate.SignalSignatures>(
+            signal: K,
+            callback: AuthNegotiate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthNegotiate.SignalSignatures>(
+            signal: K,
+            callback: AuthNegotiate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthNegotiate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthNegotiate.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4694,7 +4789,6 @@ export namespace Soup {
 
     class Cache extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Cache>;
-        declare static readonly __signalSignatures: Cache.SignalSignatures;
 
         // Properties
 
@@ -4710,6 +4804,12 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](cache_dir: string | null, cache_type: CacheType): Cache;
+
+        // Signals
+
+        connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: Parameters<Cache.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -5281,13 +5381,27 @@ export namespace Soup {
 
     class ContentDecoder extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentDecoder>;
-        declare static readonly __signalSignatures: ContentDecoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ContentDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ContentDecoder.SignalSignatures>(
+            signal: K,
+            callback: ContentDecoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContentDecoder.SignalSignatures>(
+            signal: K,
+            callback: ContentDecoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContentDecoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContentDecoder.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5816,7 +5930,6 @@ export namespace Soup {
 
     class ContentSniffer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentSniffer>;
-        declare static readonly __signalSignatures: ContentSniffer.SignalSignatures;
 
         // Constructors
 
@@ -5825,6 +5938,21 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](): ContentSniffer;
+
+        // Signals
+
+        connect<K extends keyof ContentSniffer.SignalSignatures>(
+            signal: K,
+            callback: ContentSniffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContentSniffer.SignalSignatures>(
+            signal: K,
+            callback: ContentSniffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContentSniffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContentSniffer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -6380,7 +6508,7 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface Changed {
-            (old_cookie: Cookie, new_cookie: Cookie): void;
+            (_source: CookieJar, old_cookie: Cookie, new_cookie: Cookie): void;
         }
 
         // Signal signatures
@@ -6400,7 +6528,6 @@ export namespace Soup {
 
     class CookieJar extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<CookieJar>;
-        declare static readonly __signalSignatures: CookieJar.SignalSignatures;
 
         // Properties
 
@@ -6436,15 +6563,6 @@ export namespace Soup {
             signal: K,
             ...args: Parameters<CookieJar.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, old_cookie: Cookie, new_cookie: Cookie) => void): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, old_cookie: Cookie, new_cookie: Cookie) => void,
-        ): number;
-        emit(signal: 'changed', old_cookie: Cookie, new_cookie: Cookie): void;
 
         // Virtual methods
 
@@ -7144,7 +7262,6 @@ export namespace Soup {
 
     class CookieJarDB extends CookieJar implements SessionFeature {
         static $gtype: GObject.GType<CookieJarDB>;
-        declare static readonly __signalSignatures: CookieJarDB.SignalSignatures;
 
         // Properties
 
@@ -7160,6 +7277,21 @@ export namespace Soup {
         // Conflicted with Soup.CookieJar.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CookieJarDB.SignalSignatures>(
+            signal: K,
+            callback: CookieJarDB.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CookieJarDB.SignalSignatures>(
+            signal: K,
+            callback: CookieJarDB.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CookieJarDB.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CookieJarDB.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7690,7 +7822,6 @@ export namespace Soup {
 
     class CookieJarText extends CookieJar implements SessionFeature {
         static $gtype: GObject.GType<CookieJarText>;
-        declare static readonly __signalSignatures: CookieJarText.SignalSignatures;
 
         // Properties
 
@@ -7706,6 +7837,21 @@ export namespace Soup {
         // Conflicted with Soup.CookieJar.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CookieJarText.SignalSignatures>(
+            signal: K,
+            callback: CookieJarText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CookieJarText.SignalSignatures>(
+            signal: K,
+            callback: CookieJarText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CookieJarText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CookieJarText.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -8227,11 +8373,11 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface Changed {
-            (old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
+            (_source: HSTSEnforcer, old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
         }
 
         interface HstsEnforced {
-            (message: Message): void;
+            (_source: HSTSEnforcer, message: Message): void;
         }
 
         // Signal signatures
@@ -8247,7 +8393,6 @@ export namespace Soup {
 
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcer>;
-        declare static readonly __signalSignatures: HSTSEnforcer.SignalSignatures;
 
         // Constructors
 
@@ -8271,21 +8416,6 @@ export namespace Soup {
             signal: K,
             ...args: Parameters<HSTSEnforcer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'changed',
-            callback: (_source: this, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void,
-        ): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void,
-        ): number;
-        emit(signal: 'changed', old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
-        connect(signal: 'hsts-enforced', callback: (_source: this, message: Message) => void): number;
-        connect_after(signal: 'hsts-enforced', callback: (_source: this, message: Message) => void): number;
-        emit(signal: 'hsts-enforced', message: Message): void;
 
         // Virtual methods
 
@@ -8880,7 +9010,6 @@ export namespace Soup {
 
     class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcerDB>;
-        declare static readonly __signalSignatures: HSTSEnforcerDB.SignalSignatures;
 
         // Properties
 
@@ -8899,6 +9028,21 @@ export namespace Soup {
         // Conflicted with Soup.HSTSEnforcer.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof HSTSEnforcerDB.SignalSignatures>(
+            signal: K,
+            callback: HSTSEnforcerDB.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HSTSEnforcerDB.SignalSignatures>(
+            signal: K,
+            callback: HSTSEnforcerDB.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HSTSEnforcerDB.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -9431,7 +9575,6 @@ export namespace Soup {
 
     class Logger extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Logger>;
-        declare static readonly __signalSignatures: Logger.SignalSignatures;
 
         // Properties
 
@@ -9462,6 +9605,12 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](level: LoggerLogLevel, max_body_size: number): Logger;
+
+        // Signals
+
+        connect<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
+        connect_after<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
+        emit<K extends keyof Logger.SignalSignatures>(signal: K, ...args: Parameters<Logger.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -10023,59 +10172,59 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface ContentSniffed {
-            (type: string, params: { [key: string]: any } | GLib.HashTable<string, string>): void;
+            (_source: Message, type: string, params: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: Message): void;
         }
 
         interface GotBody {
-            (): void;
+            (_source: Message): void;
         }
 
         interface GotChunk {
-            (chunk: Buffer): void;
+            (_source: Message, chunk: Buffer): void;
         }
 
         interface GotHeaders {
-            (): void;
+            (_source: Message): void;
         }
 
         interface GotInformational {
-            (): void;
+            (_source: Message): void;
         }
 
         interface NetworkEvent {
-            (event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
+            (_source: Message, event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
         }
 
         interface Restarted {
-            (): void;
+            (_source: Message): void;
         }
 
         interface Starting {
-            (): void;
+            (_source: Message): void;
         }
 
         interface WroteBody {
-            (): void;
+            (_source: Message): void;
         }
 
         interface WroteBodyData {
-            (chunk: Buffer): void;
+            (_source: Message, chunk: Buffer): void;
         }
 
         interface WroteChunk {
-            (): void;
+            (_source: Message): void;
         }
 
         interface WroteHeaders {
-            (): void;
+            (_source: Message): void;
         }
 
         interface WroteInformational {
-            (): void;
+            (_source: Message): void;
         }
 
         // Signal signatures
@@ -10180,7 +10329,6 @@ export namespace Soup {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -10298,67 +10446,6 @@ export namespace Soup {
             signal: K,
             ...args: Parameters<Message.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'content-sniffed',
-            callback: (_source: this, type: string, params: GLib.HashTable<string, string>) => void,
-        ): number;
-        connect_after(
-            signal: 'content-sniffed',
-            callback: (_source: this, type: string, params: GLib.HashTable<string, string>) => void,
-        ): number;
-        emit(
-            signal: 'content-sniffed',
-            type: string,
-            params: { [key: string]: any } | GLib.HashTable<string, string>,
-        ): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'got-body', callback: (_source: this) => void): number;
-        connect_after(signal: 'got-body', callback: (_source: this) => void): number;
-        emit(signal: 'got-body'): void;
-        connect(signal: 'got-chunk', callback: (_source: this, chunk: Buffer) => void): number;
-        connect_after(signal: 'got-chunk', callback: (_source: this, chunk: Buffer) => void): number;
-        emit(signal: 'got-chunk', chunk: Buffer): void;
-        connect(signal: 'got-headers', callback: (_source: this) => void): number;
-        connect_after(signal: 'got-headers', callback: (_source: this) => void): number;
-        emit(signal: 'got-headers'): void;
-        connect(signal: 'got-informational', callback: (_source: this) => void): number;
-        connect_after(signal: 'got-informational', callback: (_source: this) => void): number;
-        emit(signal: 'got-informational'): void;
-        connect(
-            signal: 'network-event',
-            callback: (_source: this, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void,
-        ): number;
-        connect_after(
-            signal: 'network-event',
-            callback: (_source: this, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void,
-        ): number;
-        emit(signal: 'network-event', event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
-        connect(signal: 'restarted', callback: (_source: this) => void): number;
-        connect_after(signal: 'restarted', callback: (_source: this) => void): number;
-        emit(signal: 'restarted'): void;
-        connect(signal: 'starting', callback: (_source: this) => void): number;
-        connect_after(signal: 'starting', callback: (_source: this) => void): number;
-        emit(signal: 'starting'): void;
-        connect(signal: 'wrote-body', callback: (_source: this) => void): number;
-        connect_after(signal: 'wrote-body', callback: (_source: this) => void): number;
-        emit(signal: 'wrote-body'): void;
-        connect(signal: 'wrote-body-data', callback: (_source: this, chunk: Buffer) => void): number;
-        connect_after(signal: 'wrote-body-data', callback: (_source: this, chunk: Buffer) => void): number;
-        emit(signal: 'wrote-body-data', chunk: Buffer): void;
-        connect(signal: 'wrote-chunk', callback: (_source: this) => void): number;
-        connect_after(signal: 'wrote-chunk', callback: (_source: this) => void): number;
-        emit(signal: 'wrote-chunk'): void;
-        connect(signal: 'wrote-headers', callback: (_source: this) => void): number;
-        connect_after(signal: 'wrote-headers', callback: (_source: this) => void): number;
-        emit(signal: 'wrote-headers'): void;
-        connect(signal: 'wrote-informational', callback: (_source: this) => void): number;
-        connect_after(signal: 'wrote-informational', callback: (_source: this) => void): number;
-        emit(signal: 'wrote-informational'): void;
 
         // Virtual methods
 
@@ -10626,7 +10713,6 @@ export namespace Soup {
 
     class MultipartInputStream extends Gio.FilterInputStream implements Gio.PollableInputStream {
         static $gtype: GObject.GType<MultipartInputStream>;
-        declare static readonly __signalSignatures: MultipartInputStream.SignalSignatures;
 
         // Properties
 
@@ -10639,6 +10725,21 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](msg: Message, base_stream: Gio.InputStream): MultipartInputStream;
+
+        // Signals
+
+        connect<K extends keyof MultipartInputStream.SignalSignatures>(
+            signal: K,
+            callback: MultipartInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultipartInputStream.SignalSignatures>(
+            signal: K,
+            callback: MultipartInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultipartInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultipartInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11600,7 +11701,6 @@ export namespace Soup {
 
     class ProxyResolverDefault extends GObject.Object implements ProxyURIResolver, SessionFeature {
         static $gtype: GObject.GType<ProxyResolverDefault>;
-        declare static readonly __signalSignatures: ProxyResolverDefault.SignalSignatures;
 
         // Properties
 
@@ -11612,6 +11712,21 @@ export namespace Soup {
         constructor(properties?: Partial<ProxyResolverDefault.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProxyResolverDefault.SignalSignatures>(
+            signal: K,
+            callback: ProxyResolverDefault.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyResolverDefault.SignalSignatures>(
+            signal: K,
+            callback: ProxyResolverDefault.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyResolverDefault.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyResolverDefault.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -12191,7 +12306,6 @@ export namespace Soup {
      */
     class Request extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Request>;
-        declare static readonly __signalSignatures: Request.SignalSignatures;
 
         // Properties
 
@@ -12209,6 +12323,18 @@ export namespace Soup {
         constructor(properties?: Partial<Request.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Request.SignalSignatures>(signal: K, callback: Request.SignalSignatures[K]): number;
+        connect_after<K extends keyof Request.SignalSignatures>(
+            signal: K,
+            callback: Request.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Request.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Request.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -12869,13 +12995,27 @@ export namespace Soup {
 
     class RequestData extends Request implements Gio.Initable {
         static $gtype: GObject.GType<RequestData>;
-        declare static readonly __signalSignatures: RequestData.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RequestData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RequestData.SignalSignatures>(
+            signal: K,
+            callback: RequestData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RequestData.SignalSignatures>(
+            signal: K,
+            callback: RequestData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RequestData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RequestData.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -13415,13 +13555,27 @@ export namespace Soup {
 
     class RequestFile extends Request implements Gio.Initable {
         static $gtype: GObject.GType<RequestFile>;
-        declare static readonly __signalSignatures: RequestFile.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RequestFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RequestFile.SignalSignatures>(
+            signal: K,
+            callback: RequestFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RequestFile.SignalSignatures>(
+            signal: K,
+            callback: RequestFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RequestFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RequestFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13969,13 +14123,27 @@ export namespace Soup {
 
     class RequestHTTP extends Request implements Gio.Initable {
         static $gtype: GObject.GType<RequestHTTP>;
-        declare static readonly __signalSignatures: RequestHTTP.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RequestHTTP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RequestHTTP.SignalSignatures>(
+            signal: K,
+            callback: RequestHTTP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RequestHTTP.SignalSignatures>(
+            signal: K,
+            callback: RequestHTTP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RequestHTTP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RequestHTTP.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14523,7 +14691,6 @@ export namespace Soup {
 
     class Requester extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Requester>;
-        declare static readonly __signalSignatures: Requester.SignalSignatures;
 
         // Constructors
 
@@ -14532,6 +14699,18 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](): Requester;
+
+        // Signals
+
+        connect<K extends keyof Requester.SignalSignatures>(signal: K, callback: Requester.SignalSignatures[K]): number;
+        connect_after<K extends keyof Requester.SignalSignatures>(
+            signal: K,
+            callback: Requester.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Requester.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Requester.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15058,19 +15237,19 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface RequestAborted {
-            (message: Message, client: ClientContext): void;
+            (_source: Server, message: Message, client: ClientContext): void;
         }
 
         interface RequestFinished {
-            (message: Message, client: ClientContext): void;
+            (_source: Server, message: Message, client: ClientContext): void;
         }
 
         interface RequestRead {
-            (message: Message, client: ClientContext): void;
+            (_source: Server, message: Message, client: ClientContext): void;
         }
 
         interface RequestStarted {
-            (message: Message, client: ClientContext): void;
+            (_source: Server, message: Message, client: ClientContext): void;
         }
 
         // Signal signatures
@@ -15107,7 +15286,6 @@ export namespace Soup {
 
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
-        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -15318,45 +15496,6 @@ export namespace Soup {
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'request-aborted',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        connect_after(
-            signal: 'request-aborted',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        emit(signal: 'request-aborted', message: Message, client: ClientContext): void;
-        connect(
-            signal: 'request-finished',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        connect_after(
-            signal: 'request-finished',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        emit(signal: 'request-finished', message: Message, client: ClientContext): void;
-        connect(
-            signal: 'request-read',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        connect_after(
-            signal: 'request-read',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        emit(signal: 'request-read', message: Message, client: ClientContext): void;
-        connect(
-            signal: 'request-started',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        connect_after(
-            signal: 'request-started',
-            callback: (_source: this, message: Message, client: ClientContext) => void,
-        ): number;
-        emit(signal: 'request-started', message: Message, client: ClientContext): void;
 
         // Virtual methods
 
@@ -15739,27 +15878,27 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface Authenticate {
-            (msg: Message, auth: Auth, retrying: boolean): void;
+            (_source: Session, msg: Message, auth: Auth, retrying: boolean): void;
         }
 
         interface ConnectionCreated {
-            (connection: GObject.Object): void;
+            (_source: Session, connection: GObject.Object): void;
         }
 
         interface RequestQueued {
-            (msg: Message): void;
+            (_source: Session, msg: Message): void;
         }
 
         interface RequestStarted {
-            (msg: Message, socket: Socket): void;
+            (_source: Session, msg: Message, socket: Socket): void;
         }
 
         interface RequestUnqueued {
-            (msg: Message): void;
+            (_source: Session, msg: Message): void;
         }
 
         interface Tunneling {
-            (connection: GObject.Object): void;
+            (_source: Session, connection: GObject.Object): void;
         }
 
         // Signal signatures
@@ -15819,7 +15958,6 @@ export namespace Soup {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -16369,39 +16507,6 @@ export namespace Soup {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'authenticate',
-            callback: (_source: this, msg: Message, auth: Auth, retrying: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'authenticate',
-            callback: (_source: this, msg: Message, auth: Auth, retrying: boolean) => void,
-        ): number;
-        emit(signal: 'authenticate', msg: Message, auth: Auth, retrying: boolean): void;
-        connect(signal: 'connection-created', callback: (_source: this, connection: GObject.Object) => void): number;
-        connect_after(
-            signal: 'connection-created',
-            callback: (_source: this, connection: GObject.Object) => void,
-        ): number;
-        emit(signal: 'connection-created', connection: GObject.Object): void;
-        connect(signal: 'request-queued', callback: (_source: this, msg: Message) => void): number;
-        connect_after(signal: 'request-queued', callback: (_source: this, msg: Message) => void): number;
-        emit(signal: 'request-queued', msg: Message): void;
-        connect(signal: 'request-started', callback: (_source: this, msg: Message, socket: Socket) => void): number;
-        connect_after(
-            signal: 'request-started',
-            callback: (_source: this, msg: Message, socket: Socket) => void,
-        ): number;
-        emit(signal: 'request-started', msg: Message, socket: Socket): void;
-        connect(signal: 'request-unqueued', callback: (_source: this, msg: Message) => void): number;
-        connect_after(signal: 'request-unqueued', callback: (_source: this, msg: Message) => void): number;
-        emit(signal: 'request-unqueued', msg: Message): void;
-        connect(signal: 'tunneling', callback: (_source: this, connection: GObject.Object) => void): number;
-        connect_after(signal: 'tunneling', callback: (_source: this, connection: GObject.Object) => void): number;
-        emit(signal: 'tunneling', connection: GObject.Object): void;
 
         // Virtual methods
 
@@ -17026,7 +17131,6 @@ export namespace Soup {
 
     class SessionAsync extends Session {
         static $gtype: GObject.GType<SessionAsync>;
-        declare static readonly __signalSignatures: SessionAsync.SignalSignatures;
 
         // Constructors
 
@@ -17035,6 +17139,21 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](): SessionAsync;
+
+        // Signals
+
+        connect<K extends keyof SessionAsync.SignalSignatures>(
+            signal: K,
+            callback: SessionAsync.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionAsync.SignalSignatures>(
+            signal: K,
+            callback: SessionAsync.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionAsync.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionAsync.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SessionSync {
@@ -17048,7 +17167,6 @@ export namespace Soup {
 
     class SessionSync extends Session {
         static $gtype: GObject.GType<SessionSync>;
-        declare static readonly __signalSignatures: SessionSync.SignalSignatures;
 
         // Constructors
 
@@ -17057,29 +17175,44 @@ export namespace Soup {
         _init(...args: any[]): void;
 
         static ['new'](): SessionSync;
+
+        // Signals
+
+        connect<K extends keyof SessionSync.SignalSignatures>(
+            signal: K,
+            callback: SessionSync.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionSync.SignalSignatures>(
+            signal: K,
+            callback: SessionSync.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionSync.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionSync.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Socket {
         // Signal callback interfaces
 
         interface Disconnected {
-            (): void;
+            (_source: Socket): void;
         }
 
         interface Event {
-            (event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
+            (_source: Socket, event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
         }
 
         interface NewConnection {
-            (_new: Socket): void;
+            (_source: Socket, _new: Socket): void;
         }
 
         interface Readable {
-            (): void;
+            (_source: Socket): void;
         }
 
         interface Writable {
-            (): void;
+            (_source: Socket): void;
         }
 
         // Signal signatures
@@ -17129,7 +17262,6 @@ export namespace Soup {
 
     class Socket extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Socket>;
-        declare static readonly __signalSignatures: Socket.SignalSignatures;
 
         // Properties
 
@@ -17250,30 +17382,6 @@ export namespace Soup {
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
         emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
-        connect(
-            signal: 'event',
-            callback: (_source: this, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void,
-        ): number;
-        connect_after(
-            signal: 'event',
-            callback: (_source: this, event: Gio.SocketClientEvent, connection: Gio.IOStream) => void,
-        ): number;
-        emit(signal: 'event', event: Gio.SocketClientEvent, connection: Gio.IOStream): void;
-        connect(signal: 'new-connection', callback: (_source: this, _new: Socket) => void): number;
-        connect_after(signal: 'new-connection', callback: (_source: this, _new: Socket) => void): number;
-        emit(signal: 'new-connection', _new: Socket): void;
-        connect(signal: 'readable', callback: (_source: this) => void): number;
-        connect_after(signal: 'readable', callback: (_source: this) => void): number;
-        emit(signal: 'readable'): void;
-        connect(signal: 'writable', callback: (_source: this) => void): number;
-        connect_after(signal: 'writable', callback: (_source: this) => void): number;
-        emit(signal: 'writable'): void;
 
         // Virtual methods
 
@@ -17953,23 +18061,23 @@ export namespace Soup {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: WebsocketConnection): void;
         }
 
         interface Closing {
-            (): void;
+            (_source: WebsocketConnection): void;
         }
 
         interface Error {
-            (error: GLib.Error): void;
+            (_source: WebsocketConnection, error: GLib.Error): void;
         }
 
         interface Message {
-            (type: number, message: GLib.Bytes | Uint8Array): void;
+            (_source: WebsocketConnection, type: number, message: GLib.Bytes | Uint8Array): void;
         }
 
         interface Pong {
-            (message: GLib.Bytes | Uint8Array): void;
+            (_source: WebsocketConnection, message: GLib.Bytes | Uint8Array): void;
         }
 
         // Signal signatures
@@ -18005,7 +18113,6 @@ export namespace Soup {
      */
     class WebsocketConnection extends GObject.Object {
         static $gtype: GObject.GType<WebsocketConnection>;
-        declare static readonly __signalSignatures: WebsocketConnection.SignalSignatures;
 
         // Properties
 
@@ -18119,24 +18226,6 @@ export namespace Soup {
             signal: K,
             ...args: Parameters<WebsocketConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'closing', callback: (_source: this) => void): number;
-        connect_after(signal: 'closing', callback: (_source: this) => void): number;
-        emit(signal: 'closing'): void;
-        connect(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'error', error: GLib.Error): void;
-        connect(signal: 'message', callback: (_source: this, type: number, message: GLib.Bytes) => void): number;
-        connect_after(signal: 'message', callback: (_source: this, type: number, message: GLib.Bytes) => void): number;
-        emit(signal: 'message', type: number, message: GLib.Bytes | Uint8Array): void;
-        connect(signal: 'pong', callback: (_source: this, message: GLib.Bytes) => void): number;
-        connect_after(signal: 'pong', callback: (_source: this, message: GLib.Bytes) => void): number;
-        emit(signal: 'pong', message: GLib.Bytes | Uint8Array): void;
 
         // Virtual methods
 
@@ -18302,13 +18391,27 @@ export namespace Soup {
 
     abstract class WebsocketExtension extends GObject.Object {
         static $gtype: GObject.GType<WebsocketExtension>;
-        declare static readonly __signalSignatures: WebsocketExtension.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebsocketExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebsocketExtension.SignalSignatures>(
+            signal: K,
+            callback: WebsocketExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsocketExtension.SignalSignatures>(
+            signal: K,
+            callback: WebsocketExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsocketExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsocketExtension.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -18405,13 +18508,27 @@ export namespace Soup {
 
     class WebsocketExtensionDeflate extends WebsocketExtension {
         static $gtype: GObject.GType<WebsocketExtensionDeflate>;
-        declare static readonly __signalSignatures: WebsocketExtensionDeflate.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebsocketExtensionDeflate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
+            signal: K,
+            callback: WebsocketExtensionDeflate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
+            signal: K,
+            callback: WebsocketExtensionDeflate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsocketExtensionDeflate.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WebsocketExtensionManager {
@@ -18425,13 +18542,27 @@ export namespace Soup {
 
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<WebsocketExtensionManager>;
-        declare static readonly __signalSignatures: WebsocketExtensionManager.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<WebsocketExtensionManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WebsocketExtensionManager.SignalSignatures>(
+            signal: K,
+            callback: WebsocketExtensionManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsocketExtensionManager.SignalSignatures>(
+            signal: K,
+            callback: WebsocketExtensionManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsocketExtensionManager.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

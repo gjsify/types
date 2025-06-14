@@ -5451,7 +5451,6 @@ export namespace IBus {
      */
     class AttrList extends Serializable {
         static $gtype: GObject.GType<AttrList>;
-        declare static readonly __signalSignatures: AttrList.SignalSignatures;
 
         // Fields
 
@@ -5464,6 +5463,18 @@ export namespace IBus {
         _init(...args: any[]): void;
 
         static ['new'](): AttrList;
+
+        // Signals
+
+        connect<K extends keyof AttrList.SignalSignatures>(signal: K, callback: AttrList.SignalSignatures[K]): number;
+        connect_after<K extends keyof AttrList.SignalSignatures>(
+            signal: K,
+            callback: AttrList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AttrList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AttrList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5496,7 +5507,6 @@ export namespace IBus {
      */
     class Attribute extends Serializable {
         static $gtype: GObject.GType<Attribute>;
-        declare static readonly __signalSignatures: Attribute.SignalSignatures;
 
         // Fields
 
@@ -5515,6 +5525,18 @@ export namespace IBus {
         // Conflicted with IBus.Serializable.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Attribute.SignalSignatures>(signal: K, callback: Attribute.SignalSignatures[K]): number;
+        connect_after<K extends keyof Attribute.SignalSignatures>(
+            signal: K,
+            callback: Attribute.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Attribute.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Attribute.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5547,23 +5569,23 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface Connected {
-            (): void;
+            (_source: Bus): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Bus): void;
         }
 
         interface GlobalEngineChanged {
-            (name: string): void;
+            (_source: Bus, name: string): void;
         }
 
         interface GlobalShortcutKeyResponded {
-            (type: number, is_pressed: boolean, is_backward: boolean): void;
+            (_source: Bus, type: number, is_pressed: boolean, is_backward: boolean): void;
         }
 
         interface NameOwnerChanged {
-            (name: string, old_owner: string, new_owner: string): void;
+            (_source: Bus, name: string, old_owner: string, new_owner: string): void;
         }
 
         // Signal signatures
@@ -5590,7 +5612,6 @@ export namespace IBus {
      */
     class Bus extends Object {
         static $gtype: GObject.GType<Bus>;
-        declare static readonly __signalSignatures: Bus.SignalSignatures;
 
         // Properties
 
@@ -5628,36 +5649,6 @@ export namespace IBus {
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'connected', callback: (_source: this) => void): number;
-        emit(signal: 'connected'): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
-        connect(signal: 'global-engine-changed', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'global-engine-changed', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'global-engine-changed', name: string): void;
-        connect(
-            signal: 'global-shortcut-key-responded',
-            callback: (_source: this, type: number, is_pressed: boolean, is_backward: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'global-shortcut-key-responded',
-            callback: (_source: this, type: number, is_pressed: boolean, is_backward: boolean) => void,
-        ): number;
-        emit(signal: 'global-shortcut-key-responded', type: number, is_pressed: boolean, is_backward: boolean): void;
-        connect(
-            signal: 'name-owner-changed',
-            callback: (_source: this, name: string, old_owner: string, new_owner: string) => void,
-        ): number;
-        connect_after(
-            signal: 'name-owner-changed',
-            callback: (_source: this, name: string, old_owner: string, new_owner: string) => void,
-        ): number;
-        emit(signal: 'name-owner-changed', name: string, old_owner: string, new_owner: string): void;
 
         // Methods
 
@@ -6714,7 +6705,6 @@ export namespace IBus {
      */
     class Component extends Serializable {
         static $gtype: GObject.GType<Component>;
-        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Properties
 
@@ -6778,6 +6768,18 @@ export namespace IBus {
         static new_from_file(filename: string): Component;
 
         static new_from_xml_node(node: XML): Component;
+
+        // Signals
+
+        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect_after<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: Component.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Component.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6867,7 +6869,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface ValueChanged {
-            (section: string, name: string, value: GLib.Variant): void;
+            (_source: Config, section: string, name: string, value: GLib.Variant): void;
         }
 
         // Signal signatures
@@ -6892,7 +6894,6 @@ export namespace IBus {
      */
     class Config extends Proxy implements Gio.AsyncInitable<Config>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -6912,18 +6913,6 @@ export namespace IBus {
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'value-changed',
-            callback: (_source: this, section: string, name: string, value: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'value-changed',
-            callback: (_source: this, section: string, name: string, value: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'value-changed', section: string, name: string, value: GLib.Variant): void;
 
         // Static methods
 
@@ -7920,7 +7909,6 @@ export namespace IBus {
      */
     class ConfigService extends Service {
         static $gtype: GObject.GType<ConfigService>;
-        declare static readonly __signalSignatures: ConfigService.SignalSignatures;
 
         // Constructors
 
@@ -7932,6 +7920,21 @@ export namespace IBus {
         // Conflicted with IBus.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ConfigService.SignalSignatures>(
+            signal: K,
+            callback: ConfigService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConfigService.SignalSignatures>(
+            signal: K,
+            callback: ConfigService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConfigService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConfigService.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -7972,7 +7975,6 @@ export namespace IBus {
      */
     class EmojiData extends Serializable {
         static $gtype: GObject.GType<EmojiData>;
-        declare static readonly __signalSignatures: EmojiData.SignalSignatures;
 
         // Properties
 
@@ -8000,6 +8002,18 @@ export namespace IBus {
         constructor(properties?: Partial<EmojiData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EmojiData.SignalSignatures>(signal: K, callback: EmojiData.SignalSignatures[K]): number;
+        connect_after<K extends keyof EmojiData.SignalSignatures>(
+            signal: K,
+            callback: EmojiData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EmojiData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EmojiData.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8049,91 +8063,91 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface CancelHandWriting {
-            (n_strokes: number): void;
+            (_source: Engine, n_strokes: number): void;
         }
 
         interface CandidateClicked {
-            (index: number, button: number, state: number): void;
+            (_source: Engine, index: number, button: number, state: number): void;
         }
 
         interface CursorDown {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface CursorUp {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface Disable {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface Enable {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface FocusIn {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface FocusInId {
-            (object_path: string, client: string): void;
+            (_source: Engine, object_path: string, client: string): void;
         }
 
         interface FocusOut {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface FocusOutId {
-            (object_path: string): void;
+            (_source: Engine, object_path: string): void;
         }
 
         interface PageDown {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface PageUp {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface ProcessHandWritingEvent {
-            (coordinates: any | null, coordinates_len: number): void;
+            (_source: Engine, coordinates: any | null, coordinates_len: number): void;
         }
 
         interface ProcessKeyEvent {
-            (keyval: number, keycode: number, state: number): boolean;
+            (_source: Engine, keyval: number, keycode: number, state: number): boolean;
         }
 
         interface PropertyActivate {
-            (name: string, state: number): void;
+            (_source: Engine, name: string, state: number): void;
         }
 
         interface PropertyHide {
-            (name: string): void;
+            (_source: Engine, name: string): void;
         }
 
         interface PropertyShow {
-            (name: string): void;
+            (_source: Engine, name: string): void;
         }
 
         interface Reset {
-            (): void;
+            (_source: Engine): void;
         }
 
         interface SetCapabilities {
-            (caps: number): void;
+            (_source: Engine, caps: number): void;
         }
 
         interface SetContentType {
-            (purpose: number, hints: number): void;
+            (_source: Engine, purpose: number, hints: number): void;
         }
 
         interface SetCursorLocation {
-            (x: number, y: number, w: number, h: number): void;
+            (_source: Engine, x: number, y: number, w: number, h: number): void;
         }
 
         interface SetSurroundingText {
-            (text: GObject.Object, cursor_pos: number, anchor_pos: number): void;
+            (_source: Engine, text: GObject.Object, cursor_pos: number, anchor_pos: number): void;
         }
 
         // Signal signatures
@@ -8182,7 +8196,6 @@ export namespace IBus {
      */
     class Engine extends Service {
         static $gtype: GObject.GType<Engine>;
-        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -8257,114 +8270,6 @@ export namespace IBus {
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancel-hand-writing', callback: (_source: this, n_strokes: number) => void): number;
-        connect_after(signal: 'cancel-hand-writing', callback: (_source: this, n_strokes: number) => void): number;
-        emit(signal: 'cancel-hand-writing', n_strokes: number): void;
-        connect(
-            signal: 'candidate-clicked',
-            callback: (_source: this, index: number, button: number, state: number) => void,
-        ): number;
-        connect_after(
-            signal: 'candidate-clicked',
-            callback: (_source: this, index: number, button: number, state: number) => void,
-        ): number;
-        emit(signal: 'candidate-clicked', index: number, button: number, state: number): void;
-        connect(signal: 'cursor-down', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-down', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-down'): void;
-        connect(signal: 'cursor-up', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-up', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-up'): void;
-        connect(signal: 'disable', callback: (_source: this) => void): number;
-        connect_after(signal: 'disable', callback: (_source: this) => void): number;
-        emit(signal: 'disable'): void;
-        connect(signal: 'enable', callback: (_source: this) => void): number;
-        connect_after(signal: 'enable', callback: (_source: this) => void): number;
-        emit(signal: 'enable'): void;
-        connect(signal: 'focus-in', callback: (_source: this) => void): number;
-        connect_after(signal: 'focus-in', callback: (_source: this) => void): number;
-        emit(signal: 'focus-in'): void;
-        connect(signal: 'focus-in-id', callback: (_source: this, object_path: string, client: string) => void): number;
-        connect_after(
-            signal: 'focus-in-id',
-            callback: (_source: this, object_path: string, client: string) => void,
-        ): number;
-        emit(signal: 'focus-in-id', object_path: string, client: string): void;
-        connect(signal: 'focus-out', callback: (_source: this) => void): number;
-        connect_after(signal: 'focus-out', callback: (_source: this) => void): number;
-        emit(signal: 'focus-out'): void;
-        connect(signal: 'focus-out-id', callback: (_source: this, object_path: string) => void): number;
-        connect_after(signal: 'focus-out-id', callback: (_source: this, object_path: string) => void): number;
-        emit(signal: 'focus-out-id', object_path: string): void;
-        connect(signal: 'page-down', callback: (_source: this) => void): number;
-        connect_after(signal: 'page-down', callback: (_source: this) => void): number;
-        emit(signal: 'page-down'): void;
-        connect(signal: 'page-up', callback: (_source: this) => void): number;
-        connect_after(signal: 'page-up', callback: (_source: this) => void): number;
-        emit(signal: 'page-up'): void;
-        connect(
-            signal: 'process-hand-writing-event',
-            callback: (_source: this, coordinates: any | null, coordinates_len: number) => void,
-        ): number;
-        connect_after(
-            signal: 'process-hand-writing-event',
-            callback: (_source: this, coordinates: any | null, coordinates_len: number) => void,
-        ): number;
-        emit(signal: 'process-hand-writing-event', coordinates: any | null, coordinates_len: number): void;
-        connect(
-            signal: 'process-key-event',
-            callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'process-key-event',
-            callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
-        ): number;
-        emit(signal: 'process-key-event', keyval: number, keycode: number, state: number): void;
-        connect(signal: 'property-activate', callback: (_source: this, name: string, state: number) => void): number;
-        connect_after(
-            signal: 'property-activate',
-            callback: (_source: this, name: string, state: number) => void,
-        ): number;
-        emit(signal: 'property-activate', name: string, state: number): void;
-        connect(signal: 'property-hide', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'property-hide', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'property-hide', name: string): void;
-        connect(signal: 'property-show', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'property-show', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'property-show', name: string): void;
-        connect(signal: 'reset', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset', callback: (_source: this) => void): number;
-        emit(signal: 'reset'): void;
-        connect(signal: 'set-capabilities', callback: (_source: this, caps: number) => void): number;
-        connect_after(signal: 'set-capabilities', callback: (_source: this, caps: number) => void): number;
-        emit(signal: 'set-capabilities', caps: number): void;
-        connect(signal: 'set-content-type', callback: (_source: this, purpose: number, hints: number) => void): number;
-        connect_after(
-            signal: 'set-content-type',
-            callback: (_source: this, purpose: number, hints: number) => void,
-        ): number;
-        emit(signal: 'set-content-type', purpose: number, hints: number): void;
-        connect(
-            signal: 'set-cursor-location',
-            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
-        ): number;
-        connect_after(
-            signal: 'set-cursor-location',
-            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
-        ): number;
-        emit(signal: 'set-cursor-location', x: number, y: number, w: number, h: number): void;
-        connect(
-            signal: 'set-surrounding-text',
-            callback: (_source: this, text: GObject.Object, cursor_pos: number, anchor_pos: number) => void,
-        ): number;
-        connect_after(
-            signal: 'set-surrounding-text',
-            callback: (_source: this, text: GObject.Object, cursor_pos: number, anchor_pos: number) => void,
-        ): number;
-        emit(signal: 'set-surrounding-text', text: GObject.Object, cursor_pos: number, anchor_pos: number): void;
 
         // Virtual methods
 
@@ -8594,7 +8499,6 @@ export namespace IBus {
      */
     class EngineDesc extends Serializable {
         static $gtype: GObject.GType<EngineDesc>;
-        declare static readonly __signalSignatures: EngineDesc.SignalSignatures;
 
         // Properties
 
@@ -8700,6 +8604,21 @@ export namespace IBus {
         static ['new'](...args: never[]): any;
 
         static new_from_xml_node(node: XML): EngineDesc;
+
+        // Signals
+
+        connect<K extends keyof EngineDesc.SignalSignatures>(
+            signal: K,
+            callback: EngineDesc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EngineDesc.SignalSignatures>(
+            signal: K,
+            callback: EngineDesc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EngineDesc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EngineDesc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8814,13 +8733,27 @@ export namespace IBus {
      */
     class EngineSimple extends Engine {
         static $gtype: GObject.GType<EngineSimple>;
-        declare static readonly __signalSignatures: EngineSimple.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<EngineSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EngineSimple.SignalSignatures>(
+            signal: K,
+            callback: EngineSimple.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EngineSimple.SignalSignatures>(
+            signal: K,
+            callback: EngineSimple.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EngineSimple.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EngineSimple.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8873,7 +8806,6 @@ export namespace IBus {
      */
     class ExtensionEvent extends Serializable {
         static $gtype: GObject.GType<ExtensionEvent>;
-        declare static readonly __signalSignatures: ExtensionEvent.SignalSignatures;
 
         // Properties
 
@@ -8920,6 +8852,21 @@ export namespace IBus {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof ExtensionEvent.SignalSignatures>(
+            signal: K,
+            callback: ExtensionEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionEvent.SignalSignatures>(
+            signal: K,
+            callback: ExtensionEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionEvent.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_name(): string;
@@ -8931,7 +8878,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface CreateEngine {
-            (engine_name: string): Engine | null;
+            (_source: Factory, engine_name: string): Engine | null;
         }
 
         // Signal signatures
@@ -8953,7 +8900,6 @@ export namespace IBus {
      */
     class Factory extends Service {
         static $gtype: GObject.GType<Factory>;
-        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Constructors
 
@@ -8977,12 +8923,6 @@ export namespace IBus {
             signal: K,
             ...args: Parameters<Factory.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-engine', callback: (_source: this, engine_name: string) => Engine | null): number;
-        connect_after(signal: 'create-engine', callback: (_source: this, engine_name: string) => Engine | null): number;
-        emit(signal: 'create-engine', engine_name: string): void;
 
         // Virtual methods
 
@@ -9012,7 +8952,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface Trigger {
-            (event: number, user_data?: any | null): void;
+            (_source: HotkeyProfile, event: number, user_data?: any | null): void;
         }
 
         // Signal signatures
@@ -9030,7 +8970,6 @@ export namespace IBus {
      */
     class HotkeyProfile extends Serializable {
         static $gtype: GObject.GType<HotkeyProfile>;
-        declare static readonly __signalSignatures: HotkeyProfile.SignalSignatures;
 
         // Constructors
 
@@ -9054,15 +8993,6 @@ export namespace IBus {
             signal: K,
             ...args: Parameters<HotkeyProfile.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'trigger', callback: (_source: this, event: number, user_data: any | null) => void): number;
-        connect_after(
-            signal: 'trigger',
-            callback: (_source: this, event: number, user_data: any | null) => void,
-        ): number;
-        emit(signal: 'trigger', event: number, user_data?: any | null): void;
 
         // Virtual methods
 
@@ -9123,91 +9053,91 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface CommitText {
-            (text: Text): void;
+            (_source: InputContext, text: Text): void;
         }
 
         interface CursorDownLookupTable {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface CursorUpLookupTable {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface DeleteSurroundingText {
-            (offset: number, n_chars: number): void;
+            (_source: InputContext, offset: number, n_chars: number): void;
         }
 
         interface Disabled {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface Enabled {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface ForwardKeyEvent {
-            (keyval: number, keycode: number, modifiers: number): void;
+            (_source: InputContext, keyval: number, keycode: number, modifiers: number): void;
         }
 
         interface HideAuxiliaryText {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface HideLookupTable {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface HidePreeditText {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface PageDownLookupTable {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface PageUpLookupTable {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface RegisterProperties {
-            (props: PropList): void;
+            (_source: InputContext, props: PropList): void;
         }
 
         interface RequireSurroundingText {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface ShowAuxiliaryText {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface ShowLookupTable {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface ShowPreeditText {
-            (): void;
+            (_source: InputContext): void;
         }
 
         interface UpdateAuxiliaryText {
-            (text: Text, visible: boolean): void;
+            (_source: InputContext, text: Text, visible: boolean): void;
         }
 
         interface UpdateLookupTable {
-            (table: LookupTable, visible: boolean): void;
+            (_source: InputContext, table: LookupTable, visible: boolean): void;
         }
 
         interface UpdatePreeditText {
-            (text: Text, cursor_pos: number, visible: boolean): void;
+            (_source: InputContext, text: Text, cursor_pos: number, visible: boolean): void;
         }
 
         interface UpdatePreeditTextWithMode {
-            (text: Text, cursor_pos: number, visible: boolean, mode: number): void;
+            (_source: InputContext, text: Text, cursor_pos: number, visible: boolean, mode: number): void;
         }
 
         interface UpdateProperty {
-            (prop: Property): void;
+            (_source: InputContext, prop: Property): void;
         }
 
         // Signal signatures
@@ -9255,7 +9185,6 @@ export namespace IBus {
      */
     class InputContext extends Proxy implements Gio.AsyncInitable<InputContext>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputContext>;
-        declare static readonly __signalSignatures: InputContext.SignalSignatures;
 
         // Constructors
 
@@ -9288,117 +9217,6 @@ export namespace IBus {
             signal: K,
             ...args: Parameters<InputContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'commit-text', callback: (_source: this, text: Text) => void): number;
-        connect_after(signal: 'commit-text', callback: (_source: this, text: Text) => void): number;
-        emit(signal: 'commit-text', text: Text): void;
-        connect(signal: 'cursor-down-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-down-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-down-lookup-table'): void;
-        connect(signal: 'cursor-up-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-up-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-up-lookup-table'): void;
-        connect(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, offset: number, n_chars: number) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, offset: number, n_chars: number) => void,
-        ): number;
-        emit(signal: 'delete-surrounding-text', offset: number, n_chars: number): void;
-        connect(signal: 'disabled', callback: (_source: this) => void): number;
-        connect_after(signal: 'disabled', callback: (_source: this) => void): number;
-        emit(signal: 'disabled'): void;
-        connect(signal: 'enabled', callback: (_source: this) => void): number;
-        connect_after(signal: 'enabled', callback: (_source: this) => void): number;
-        emit(signal: 'enabled'): void;
-        connect(
-            signal: 'forward-key-event',
-            callback: (_source: this, keyval: number, keycode: number, modifiers: number) => void,
-        ): number;
-        connect_after(
-            signal: 'forward-key-event',
-            callback: (_source: this, keyval: number, keycode: number, modifiers: number) => void,
-        ): number;
-        emit(signal: 'forward-key-event', keyval: number, keycode: number, modifiers: number): void;
-        connect(signal: 'hide-auxiliary-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-auxiliary-text', callback: (_source: this) => void): number;
-        emit(signal: 'hide-auxiliary-text'): void;
-        connect(signal: 'hide-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'hide-lookup-table'): void;
-        connect(signal: 'hide-preedit-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-preedit-text', callback: (_source: this) => void): number;
-        emit(signal: 'hide-preedit-text'): void;
-        connect(signal: 'page-down-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'page-down-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'page-down-lookup-table'): void;
-        connect(signal: 'page-up-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'page-up-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'page-up-lookup-table'): void;
-        connect(signal: 'register-properties', callback: (_source: this, props: PropList) => void): number;
-        connect_after(signal: 'register-properties', callback: (_source: this, props: PropList) => void): number;
-        emit(signal: 'register-properties', props: PropList): void;
-        connect(signal: 'require-surrounding-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'require-surrounding-text', callback: (_source: this) => void): number;
-        emit(signal: 'require-surrounding-text'): void;
-        connect(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
-        emit(signal: 'show-auxiliary-text'): void;
-        connect(signal: 'show-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'show-lookup-table'): void;
-        connect(signal: 'show-preedit-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-preedit-text', callback: (_source: this) => void): number;
-        emit(signal: 'show-preedit-text'): void;
-        connect(
-            signal: 'update-auxiliary-text',
-            callback: (_source: this, text: Text, visible: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'update-auxiliary-text',
-            callback: (_source: this, text: Text, visible: boolean) => void,
-        ): number;
-        emit(signal: 'update-auxiliary-text', text: Text, visible: boolean): void;
-        connect(
-            signal: 'update-lookup-table',
-            callback: (_source: this, table: LookupTable, visible: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'update-lookup-table',
-            callback: (_source: this, table: LookupTable, visible: boolean) => void,
-        ): number;
-        emit(signal: 'update-lookup-table', table: LookupTable, visible: boolean): void;
-        connect(
-            signal: 'update-preedit-text',
-            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'update-preedit-text',
-            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean) => void,
-        ): number;
-        emit(signal: 'update-preedit-text', text: Text, cursor_pos: number, visible: boolean): void;
-        connect(
-            signal: 'update-preedit-text-with-mode',
-            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean, mode: number) => void,
-        ): number;
-        connect_after(
-            signal: 'update-preedit-text-with-mode',
-            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean, mode: number) => void,
-        ): number;
-        emit(
-            signal: 'update-preedit-text-with-mode',
-            text: Text,
-            cursor_pos: number,
-            visible: boolean,
-            mode: number,
-        ): void;
-        connect(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
-        connect_after(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
-        emit(signal: 'update-property', prop: Property): void;
 
         // Static methods
 
@@ -10395,7 +10213,6 @@ export namespace IBus {
      */
     class Keymap extends Object {
         static $gtype: GObject.GType<Keymap>;
-        declare static readonly __signalSignatures: Keymap.SignalSignatures;
 
         // Fields
 
@@ -10412,6 +10229,12 @@ export namespace IBus {
         // Conflicted with IBus.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -10456,7 +10279,6 @@ export namespace IBus {
      */
     class LookupTable extends Serializable {
         static $gtype: GObject.GType<LookupTable>;
-        declare static readonly __signalSignatures: LookupTable.SignalSignatures;
 
         // Fields
 
@@ -10478,6 +10300,21 @@ export namespace IBus {
         // Conflicted with IBus.Serializable.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LookupTable.SignalSignatures>(
+            signal: K,
+            callback: LookupTable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LookupTable.SignalSignatures>(
+            signal: K,
+            callback: LookupTable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LookupTable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LookupTable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10619,7 +10456,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface Destroy {
-            (): void;
+            (_source: Object): void;
         }
 
         // Signal signatures
@@ -10637,7 +10474,6 @@ export namespace IBus {
      */
     class Object extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Fields
 
@@ -10656,12 +10492,6 @@ export namespace IBus {
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
 
         // Virtual methods
 
@@ -10703,7 +10533,6 @@ export namespace IBus {
      */
     class ObservedPath extends Serializable {
         static $gtype: GObject.GType<ObservedPath>;
-        declare static readonly __signalSignatures: ObservedPath.SignalSignatures;
 
         // Fields
 
@@ -10724,6 +10553,21 @@ export namespace IBus {
         static ['new'](...args: never[]): any;
 
         static new_from_xml_node(node: XML, fill_stat: boolean): ObservedPath;
+
+        // Signals
+
+        connect<K extends keyof ObservedPath.SignalSignatures>(
+            signal: K,
+            callback: ObservedPath.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObservedPath.SignalSignatures>(
+            signal: K,
+            callback: ObservedPath.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObservedPath.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObservedPath.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10754,123 +10598,123 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface CandidateClickedLookupTable {
-            (object: number, p0: number, p1: number): void;
+            (_source: PanelService, object: number, p0: number, p1: number): void;
         }
 
         interface CommitTextReceived {
-            (text: Text): void;
+            (_source: PanelService, text: Text): void;
         }
 
         interface CursorDownLookupTable {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface CursorUpLookupTable {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface DestroyContext {
-            (input_context_path: string): void;
+            (_source: PanelService, input_context_path: string): void;
         }
 
         interface FocusIn {
-            (input_context_path: string): void;
+            (_source: PanelService, input_context_path: string): void;
         }
 
         interface FocusOut {
-            (input_context_path: string): void;
+            (_source: PanelService, input_context_path: string): void;
         }
 
         interface HideAuxiliaryText {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface HideLanguageBar {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface HideLookupTable {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface HidePreeditText {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface PageDownLookupTable {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface PageUpLookupTable {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface PanelExtensionReceived {
-            (data: ExtensionEvent): void;
+            (_source: PanelService, data: ExtensionEvent): void;
         }
 
         interface ProcessKeyEvent {
-            (keyval: number, keycode: number, state: number): boolean;
+            (_source: PanelService, keyval: number, keycode: number, state: number): boolean;
         }
 
         interface RegisterProperties {
-            (prop_list: PropList): void;
+            (_source: PanelService, prop_list: PropList): void;
         }
 
         interface Reset {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface SetContentType {
-            (purpose: number, hints: number): void;
+            (_source: PanelService, purpose: number, hints: number): void;
         }
 
         interface SetCursorLocation {
-            (x: number, y: number, w: number, h: number): void;
+            (_source: PanelService, x: number, y: number, w: number, h: number): void;
         }
 
         interface SetCursorLocationRelative {
-            (x: number, y: number, w: number, h: number): void;
+            (_source: PanelService, x: number, y: number, w: number, h: number): void;
         }
 
         interface ShowAuxiliaryText {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface ShowLanguageBar {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface ShowLookupTable {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface ShowPreeditText {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface StartSetup {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface StateChanged {
-            (): void;
+            (_source: PanelService): void;
         }
 
         interface UpdateAuxiliaryText {
-            (text: Text, visible: boolean): void;
+            (_source: PanelService, text: Text, visible: boolean): void;
         }
 
         interface UpdateLookupTable {
-            (lookup_table: LookupTable, visible: boolean): void;
+            (_source: PanelService, lookup_table: LookupTable, visible: boolean): void;
         }
 
         interface UpdatePreeditText {
-            (text: Text, cursor_pos: number, visible: boolean): void;
+            (_source: PanelService, text: Text, cursor_pos: number, visible: boolean): void;
         }
 
         interface UpdateProperty {
-            (prop: Property): void;
+            (_source: PanelService, prop: Property): void;
         }
 
         // Signal signatures
@@ -10918,7 +10762,6 @@ export namespace IBus {
      */
     class PanelService extends Service {
         static $gtype: GObject.GType<PanelService>;
-        declare static readonly __signalSignatures: PanelService.SignalSignatures;
 
         // Constructors
 
@@ -10945,147 +10788,6 @@ export namespace IBus {
             signal: K,
             ...args: Parameters<PanelService.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'candidate-clicked-lookup-table',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'candidate-clicked-lookup-table',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        emit(signal: 'candidate-clicked-lookup-table', object: number, p0: number, p1: number): void;
-        connect(signal: 'commit-text-received', callback: (_source: this, text: Text) => void): number;
-        connect_after(signal: 'commit-text-received', callback: (_source: this, text: Text) => void): number;
-        emit(signal: 'commit-text-received', text: Text): void;
-        connect(signal: 'cursor-down-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-down-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-down-lookup-table'): void;
-        connect(signal: 'cursor-up-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-up-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-up-lookup-table'): void;
-        connect(signal: 'destroy-context', callback: (_source: this, input_context_path: string) => void): number;
-        connect_after(signal: 'destroy-context', callback: (_source: this, input_context_path: string) => void): number;
-        emit(signal: 'destroy-context', input_context_path: string): void;
-        connect(signal: 'focus-in', callback: (_source: this, input_context_path: string) => void): number;
-        connect_after(signal: 'focus-in', callback: (_source: this, input_context_path: string) => void): number;
-        emit(signal: 'focus-in', input_context_path: string): void;
-        connect(signal: 'focus-out', callback: (_source: this, input_context_path: string) => void): number;
-        connect_after(signal: 'focus-out', callback: (_source: this, input_context_path: string) => void): number;
-        emit(signal: 'focus-out', input_context_path: string): void;
-        connect(signal: 'hide-auxiliary-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-auxiliary-text', callback: (_source: this) => void): number;
-        emit(signal: 'hide-auxiliary-text'): void;
-        connect(signal: 'hide-language-bar', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-language-bar', callback: (_source: this) => void): number;
-        emit(signal: 'hide-language-bar'): void;
-        connect(signal: 'hide-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'hide-lookup-table'): void;
-        connect(signal: 'hide-preedit-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-preedit-text', callback: (_source: this) => void): number;
-        emit(signal: 'hide-preedit-text'): void;
-        connect(signal: 'page-down-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'page-down-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'page-down-lookup-table'): void;
-        connect(signal: 'page-up-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'page-up-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'page-up-lookup-table'): void;
-        connect(signal: 'panel-extension-received', callback: (_source: this, data: ExtensionEvent) => void): number;
-        connect_after(
-            signal: 'panel-extension-received',
-            callback: (_source: this, data: ExtensionEvent) => void,
-        ): number;
-        emit(signal: 'panel-extension-received', data: ExtensionEvent): void;
-        connect(
-            signal: 'process-key-event',
-            callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'process-key-event',
-            callback: (_source: this, keyval: number, keycode: number, state: number) => boolean,
-        ): number;
-        emit(signal: 'process-key-event', keyval: number, keycode: number, state: number): void;
-        connect(signal: 'register-properties', callback: (_source: this, prop_list: PropList) => void): number;
-        connect_after(signal: 'register-properties', callback: (_source: this, prop_list: PropList) => void): number;
-        emit(signal: 'register-properties', prop_list: PropList): void;
-        connect(signal: 'reset', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset', callback: (_source: this) => void): number;
-        emit(signal: 'reset'): void;
-        connect(signal: 'set-content-type', callback: (_source: this, purpose: number, hints: number) => void): number;
-        connect_after(
-            signal: 'set-content-type',
-            callback: (_source: this, purpose: number, hints: number) => void,
-        ): number;
-        emit(signal: 'set-content-type', purpose: number, hints: number): void;
-        connect(
-            signal: 'set-cursor-location',
-            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
-        ): number;
-        connect_after(
-            signal: 'set-cursor-location',
-            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
-        ): number;
-        emit(signal: 'set-cursor-location', x: number, y: number, w: number, h: number): void;
-        connect(
-            signal: 'set-cursor-location-relative',
-            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
-        ): number;
-        connect_after(
-            signal: 'set-cursor-location-relative',
-            callback: (_source: this, x: number, y: number, w: number, h: number) => void,
-        ): number;
-        emit(signal: 'set-cursor-location-relative', x: number, y: number, w: number, h: number): void;
-        connect(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-auxiliary-text', callback: (_source: this) => void): number;
-        emit(signal: 'show-auxiliary-text'): void;
-        connect(signal: 'show-language-bar', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-language-bar', callback: (_source: this) => void): number;
-        emit(signal: 'show-language-bar'): void;
-        connect(signal: 'show-lookup-table', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-lookup-table', callback: (_source: this) => void): number;
-        emit(signal: 'show-lookup-table'): void;
-        connect(signal: 'show-preedit-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-preedit-text', callback: (_source: this) => void): number;
-        emit(signal: 'show-preedit-text'): void;
-        connect(signal: 'start-setup', callback: (_source: this) => void): number;
-        connect_after(signal: 'start-setup', callback: (_source: this) => void): number;
-        emit(signal: 'start-setup'): void;
-        connect(signal: 'state-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this) => void): number;
-        emit(signal: 'state-changed'): void;
-        connect(
-            signal: 'update-auxiliary-text',
-            callback: (_source: this, text: Text, visible: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'update-auxiliary-text',
-            callback: (_source: this, text: Text, visible: boolean) => void,
-        ): number;
-        emit(signal: 'update-auxiliary-text', text: Text, visible: boolean): void;
-        connect(
-            signal: 'update-lookup-table',
-            callback: (_source: this, lookup_table: LookupTable, visible: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'update-lookup-table',
-            callback: (_source: this, lookup_table: LookupTable, visible: boolean) => void,
-        ): number;
-        emit(signal: 'update-lookup-table', lookup_table: LookupTable, visible: boolean): void;
-        connect(
-            signal: 'update-preedit-text',
-            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'update-preedit-text',
-            callback: (_source: this, text: Text, cursor_pos: number, visible: boolean) => void,
-        ): number;
-        emit(signal: 'update-preedit-text', text: Text, cursor_pos: number, visible: boolean): void;
-        connect(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
-        connect_after(signal: 'update-property', callback: (_source: this, prop: Property) => void): number;
-        emit(signal: 'update-property', prop: Property): void;
 
         // Virtual methods
 
@@ -11237,7 +10939,6 @@ export namespace IBus {
      */
     class PropList extends Serializable {
         static $gtype: GObject.GType<PropList>;
-        declare static readonly __signalSignatures: PropList.SignalSignatures;
 
         // Fields
 
@@ -11250,6 +10951,18 @@ export namespace IBus {
         _init(...args: any[]): void;
 
         static ['new'](): PropList;
+
+        // Signals
+
+        connect<K extends keyof PropList.SignalSignatures>(signal: K, callback: PropList.SignalSignatures[K]): number;
+        connect_after<K extends keyof PropList.SignalSignatures>(
+            signal: K,
+            callback: PropList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11306,7 +11019,6 @@ export namespace IBus {
      */
     class Property extends Serializable {
         static $gtype: GObject.GType<Property>;
-        declare static readonly __signalSignatures: Property.SignalSignatures;
 
         // Properties
 
@@ -11352,6 +11064,18 @@ export namespace IBus {
         // Conflicted with IBus.Serializable.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Property.SignalSignatures>(signal: K, callback: Property.SignalSignatures[K]): number;
+        connect_after<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            callback: Property.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Property.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11455,7 +11179,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface Destroy {
-            (): void;
+            (_source: Proxy): void;
         }
 
         // Signal signatures
@@ -11485,7 +11209,6 @@ export namespace IBus {
      */
     class Proxy extends Gio.DBusProxy implements Gio.AsyncInitable<Proxy>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Fields
 
@@ -11503,12 +11226,6 @@ export namespace IBus {
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
 
         // Virtual methods
 
@@ -12302,7 +12019,7 @@ export namespace IBus {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Registry): void;
         }
 
         // Signal signatures
@@ -12322,7 +12039,6 @@ export namespace IBus {
      */
     class Registry extends Serializable {
         static $gtype: GObject.GType<Registry>;
-        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Constructors
 
@@ -12343,12 +12059,6 @@ export namespace IBus {
             signal: K,
             ...args: Parameters<Registry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 
@@ -12450,7 +12160,6 @@ export namespace IBus {
      */
     class Serializable extends Object {
         static $gtype: GObject.GType<Serializable>;
-        declare static readonly __signalSignatures: Serializable.SignalSignatures;
 
         // Constructors
 
@@ -12459,6 +12168,21 @@ export namespace IBus {
         _init(...args: any[]): void;
 
         static ['new'](): Serializable;
+
+        // Signals
+
+        connect<K extends keyof Serializable.SignalSignatures>(
+            signal: K,
+            callback: Serializable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Serializable.SignalSignatures>(
+            signal: K,
+            callback: Serializable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Serializable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Serializable.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12530,7 +12254,6 @@ export namespace IBus {
      */
     class Service extends Object {
         static $gtype: GObject.GType<Service>;
-        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -12558,6 +12281,18 @@ export namespace IBus {
         // Conflicted with IBus.Object.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12671,7 +12406,6 @@ export namespace IBus {
      */
     class Text extends Serializable {
         static $gtype: GObject.GType<Text>;
-        declare static readonly __signalSignatures: Text.SignalSignatures;
 
         // Fields
 
@@ -12690,6 +12424,12 @@ export namespace IBus {
         static new_from_ucs4(str: number): Text;
 
         static new_from_unichar(c: number): Text;
+
+        // Signals
+
+        connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -12736,7 +12476,6 @@ export namespace IBus {
 
     class UnicodeBlock extends Serializable {
         static $gtype: GObject.GType<UnicodeBlock>;
-        declare static readonly __signalSignatures: UnicodeBlock.SignalSignatures;
 
         // Properties
 
@@ -12759,6 +12498,21 @@ export namespace IBus {
         constructor(properties?: Partial<UnicodeBlock.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnicodeBlock.SignalSignatures>(
+            signal: K,
+            callback: UnicodeBlock.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnicodeBlock.SignalSignatures>(
+            signal: K,
+            callback: UnicodeBlock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnicodeBlock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnicodeBlock.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12810,7 +12564,6 @@ export namespace IBus {
      */
     class UnicodeData extends Serializable {
         static $gtype: GObject.GType<UnicodeData>;
-        declare static readonly __signalSignatures: UnicodeData.SignalSignatures;
 
         // Properties
 
@@ -12844,6 +12597,21 @@ export namespace IBus {
         constructor(properties?: Partial<UnicodeData.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnicodeData.SignalSignatures>(
+            signal: K,
+            callback: UnicodeData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnicodeData.SignalSignatures>(
+            signal: K,
+            callback: UnicodeData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnicodeData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnicodeData.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -12942,7 +12710,6 @@ export namespace IBus {
      */
     class XEvent extends Serializable {
         static $gtype: GObject.GType<XEvent>;
-        declare static readonly __signalSignatures: XEvent.SignalSignatures;
 
         // Properties
 
@@ -13064,6 +12831,12 @@ export namespace IBus {
         constructor(properties?: Partial<XEvent.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof XEvent.SignalSignatures>(signal: K, callback: XEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof XEvent.SignalSignatures>(signal: K, callback: XEvent.SignalSignatures[K]): number;
+        emit<K extends keyof XEvent.SignalSignatures>(signal: K, ...args: Parameters<XEvent.SignalSignatures[K]>): void;
 
         // Methods
 

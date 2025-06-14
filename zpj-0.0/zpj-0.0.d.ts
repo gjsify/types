@@ -161,7 +161,6 @@ export namespace Zpj {
 
     class AuthorizationDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationDomain>;
-        declare static readonly __signalSignatures: AuthorizationDomain.SignalSignatures;
 
         // Properties
 
@@ -174,6 +173,21 @@ export namespace Zpj {
         constructor(properties?: Partial<AuthorizationDomain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AuthorizationDomain.SignalSignatures>(
+            signal: K,
+            callback: AuthorizationDomain.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(
+            signal: K,
+            callback: AuthorizationDomain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthorizationDomain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthorizationDomain.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -196,13 +210,27 @@ export namespace Zpj {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
-        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -787,7 +815,6 @@ export namespace Zpj {
      */
     class Skydrive extends GObject.Object {
         static $gtype: GObject.GType<Skydrive>;
-        declare static readonly __signalSignatures: Skydrive.SignalSignatures;
 
         // Properties
 
@@ -801,6 +828,18 @@ export namespace Zpj {
         _init(...args: any[]): void;
 
         static ['new'](authorizer: Authorizer): Skydrive;
+
+        // Signals
+
+        connect<K extends keyof Skydrive.SignalSignatures>(signal: K, callback: Skydrive.SignalSignatures[K]): number;
+        connect_after<K extends keyof Skydrive.SignalSignatures>(
+            signal: K,
+            callback: Skydrive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Skydrive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Skydrive.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1219,7 +1258,6 @@ export namespace Zpj {
      */
     abstract class SkydriveEntry extends GObject.Object {
         static $gtype: GObject.GType<SkydriveEntry>;
-        declare static readonly __signalSignatures: SkydriveEntry.SignalSignatures;
 
         // Properties
 
@@ -1244,6 +1282,21 @@ export namespace Zpj {
         constructor(properties?: Partial<SkydriveEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SkydriveEntry.SignalSignatures>(
+            signal: K,
+            callback: SkydriveEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkydriveEntry.SignalSignatures>(
+            signal: K,
+            callback: SkydriveEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkydriveEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkydriveEntry.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1335,7 +1388,6 @@ export namespace Zpj {
      */
     class SkydriveFile extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFile>;
-        declare static readonly __signalSignatures: SkydriveFile.SignalSignatures;
 
         // Properties
 
@@ -1348,6 +1400,21 @@ export namespace Zpj {
         _init(...args: any[]): void;
 
         static ['new'](node: Json.Node): SkydriveFile;
+
+        // Signals
+
+        connect<K extends keyof SkydriveFile.SignalSignatures>(
+            signal: K,
+            callback: SkydriveFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkydriveFile.SignalSignatures>(
+            signal: K,
+            callback: SkydriveFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkydriveFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkydriveFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1375,7 +1442,6 @@ export namespace Zpj {
      */
     class SkydriveFolder extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFolder>;
-        declare static readonly __signalSignatures: SkydriveFolder.SignalSignatures;
 
         // Constructors
 
@@ -1384,6 +1450,21 @@ export namespace Zpj {
         _init(...args: any[]): void;
 
         static ['new'](node: Json.Node): SkydriveFolder;
+
+        // Signals
+
+        connect<K extends keyof SkydriveFolder.SignalSignatures>(
+            signal: K,
+            callback: SkydriveFolder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkydriveFolder.SignalSignatures>(
+            signal: K,
+            callback: SkydriveFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkydriveFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkydriveFolder.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SkydrivePhoto {
@@ -1401,7 +1482,6 @@ export namespace Zpj {
      */
     class SkydrivePhoto extends SkydriveFile {
         static $gtype: GObject.GType<SkydrivePhoto>;
-        declare static readonly __signalSignatures: SkydrivePhoto.SignalSignatures;
 
         // Constructors
 
@@ -1410,6 +1490,21 @@ export namespace Zpj {
         _init(...args: any[]): void;
 
         static ['new'](node: Json.Node): SkydrivePhoto;
+
+        // Signals
+
+        connect<K extends keyof SkydrivePhoto.SignalSignatures>(
+            signal: K,
+            callback: SkydrivePhoto.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkydrivePhoto.SignalSignatures>(
+            signal: K,
+            callback: SkydrivePhoto.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkydrivePhoto.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkydrivePhoto.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SkydriveVideo {
@@ -1432,7 +1527,6 @@ export namespace Zpj {
      */
     class SkydriveVideo extends SkydriveFile {
         static $gtype: GObject.GType<SkydriveVideo>;
-        declare static readonly __signalSignatures: SkydriveVideo.SignalSignatures;
 
         // Properties
 
@@ -1448,6 +1542,21 @@ export namespace Zpj {
         _init(...args: any[]): void;
 
         static ['new'](node: Json.Node): SkydriveVideo;
+
+        // Signals
+
+        connect<K extends keyof SkydriveVideo.SignalSignatures>(
+            signal: K,
+            callback: SkydriveVideo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SkydriveVideo.SignalSignatures>(
+            signal: K,
+            callback: SkydriveVideo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SkydriveVideo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SkydriveVideo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

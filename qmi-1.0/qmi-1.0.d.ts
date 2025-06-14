@@ -18924,7 +18924,6 @@ export namespace Qmi {
      */
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -18956,6 +18955,12 @@ export namespace Qmi {
         constructor(properties?: Partial<Client.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -19023,7 +19028,7 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface Received {
-            (output: IndicationAtrReceivedOutput): void;
+            (_source: ClientAtr, output: IndicationAtrReceivedOutput): void;
         }
 
         // Signal signatures
@@ -19042,7 +19047,6 @@ export namespace Qmi {
      */
     class ClientAtr extends Client {
         static $gtype: GObject.GType<ClientAtr>;
-        declare static readonly __signalSignatures: ClientAtr.SignalSignatures;
 
         // Constructors
 
@@ -19061,15 +19065,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientAtr.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'received', callback: (_source: this, output: IndicationAtrReceivedOutput) => void): number;
-        connect_after(
-            signal: 'received',
-            callback: (_source: this, output: IndicationAtrReceivedOutput) => void,
-        ): number;
-        emit(signal: 'received', output: IndicationAtrReceivedOutput): void;
 
         // Methods
 
@@ -19134,7 +19129,7 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface EventReport {
-            (output: IndicationDmsEventReportOutput): void;
+            (_source: ClientDms, output: IndicationDmsEventReportOutput): void;
         }
 
         // Signal signatures
@@ -19153,7 +19148,6 @@ export namespace Qmi {
      */
     class ClientDms extends Client {
         static $gtype: GObject.GType<ClientDms>;
-        declare static readonly __signalSignatures: ClientDms.SignalSignatures;
 
         // Constructors
 
@@ -19172,18 +19166,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientDms.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationDmsEventReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationDmsEventReportOutput) => void,
-        ): number;
-        emit(signal: 'event-report', output: IndicationDmsEventReportOutput): void;
 
         // Methods
 
@@ -22614,13 +22596,24 @@ export namespace Qmi {
      */
     class ClientDpm extends Client {
         static $gtype: GObject.GType<ClientDpm>;
-        declare static readonly __signalSignatures: ClientDpm.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientDpm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientDpm.SignalSignatures>(signal: K, callback: ClientDpm.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientDpm.SignalSignatures>(
+            signal: K,
+            callback: ClientDpm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientDpm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientDpm.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22740,7 +22733,7 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface SystemStatus {
-            (output: IndicationDsdSystemStatusOutput): void;
+            (_source: ClientDsd, output: IndicationDsdSystemStatusOutput): void;
         }
 
         // Signal signatures
@@ -22759,7 +22752,6 @@ export namespace Qmi {
      */
     class ClientDsd extends Client {
         static $gtype: GObject.GType<ClientDsd>;
-        declare static readonly __signalSignatures: ClientDsd.SignalSignatures;
 
         // Constructors
 
@@ -22778,18 +22770,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientDsd.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'system-status',
-            callback: (_source: this, output: IndicationDsdSystemStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'system-status',
-            callback: (_source: this, output: IndicationDsdSystemStatusOutput) => void,
-        ): number;
-        emit(signal: 'system-status', output: IndicationDsdSystemStatusOutput): void;
 
         // Methods
 
@@ -23030,13 +23010,24 @@ export namespace Qmi {
      */
     class ClientFox extends Client {
         static $gtype: GObject.GType<ClientFox>;
-        declare static readonly __signalSignatures: ClientFox.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientFox.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientFox.SignalSignatures>(signal: K, callback: ClientFox.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientFox.SignalSignatures>(
+            signal: K,
+            callback: ClientFox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientFox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientFox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23112,13 +23103,24 @@ export namespace Qmi {
      */
     class ClientGas extends Client {
         static $gtype: GObject.GType<ClientGas>;
-        declare static readonly __signalSignatures: ClientGas.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientGas.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientGas.SignalSignatures>(signal: K, callback: ClientGas.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientGas.SignalSignatures>(
+            signal: K,
+            callback: ClientGas.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientGas.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientGas.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23359,13 +23361,24 @@ export namespace Qmi {
      */
     class ClientGms extends Client {
         static $gtype: GObject.GType<ClientGms>;
-        declare static readonly __signalSignatures: ClientGms.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientGms.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientGms.SignalSignatures>(signal: K, callback: ClientGms.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientGms.SignalSignatures>(
+            signal: K,
+            callback: ClientGms.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientGms.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientGms.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23485,71 +23498,71 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface DeleteAssistanceData {
-            (output: IndicationLocDeleteAssistanceDataOutput): void;
+            (_source: ClientLoc, output: IndicationLocDeleteAssistanceDataOutput): void;
         }
 
         interface EngineState {
-            (output: IndicationLocEngineStateOutput): void;
+            (_source: ClientLoc, output: IndicationLocEngineStateOutput): void;
         }
 
         interface FixRecurrenceType {
-            (output: IndicationLocFixRecurrenceTypeOutput): void;
+            (_source: ClientLoc, output: IndicationLocFixRecurrenceTypeOutput): void;
         }
 
         interface GetEngineLock {
-            (output: IndicationLocGetEngineLockOutput): void;
+            (_source: ClientLoc, output: IndicationLocGetEngineLockOutput): void;
         }
 
         interface GetNmeaTypes {
-            (output: IndicationLocGetNmeaTypesOutput): void;
+            (_source: ClientLoc, output: IndicationLocGetNmeaTypesOutput): void;
         }
 
         interface GetOperationMode {
-            (output: IndicationLocGetOperationModeOutput): void;
+            (_source: ClientLoc, output: IndicationLocGetOperationModeOutput): void;
         }
 
         interface GetPredictedOrbitsDataSource {
-            (output: IndicationLocGetPredictedOrbitsDataSourceOutput): void;
+            (_source: ClientLoc, output: IndicationLocGetPredictedOrbitsDataSourceOutput): void;
         }
 
         interface GetServer {
-            (output: IndicationLocGetServerOutput): void;
+            (_source: ClientLoc, output: IndicationLocGetServerOutput): void;
         }
 
         interface GnssSvInfo {
-            (output: IndicationLocGnssSvInfoOutput): void;
+            (_source: ClientLoc, output: IndicationLocGnssSvInfoOutput): void;
         }
 
         interface InjectPredictedOrbitsData {
-            (output: IndicationLocInjectPredictedOrbitsDataOutput): void;
+            (_source: ClientLoc, output: IndicationLocInjectPredictedOrbitsDataOutput): void;
         }
 
         interface InjectXtraData {
-            (output: IndicationLocInjectXtraDataOutput): void;
+            (_source: ClientLoc, output: IndicationLocInjectXtraDataOutput): void;
         }
 
         interface Nmea {
-            (output: IndicationLocNmeaOutput): void;
+            (_source: ClientLoc, output: IndicationLocNmeaOutput): void;
         }
 
         interface PositionReport {
-            (output: IndicationLocPositionReportOutput): void;
+            (_source: ClientLoc, output: IndicationLocPositionReportOutput): void;
         }
 
         interface SetEngineLock {
-            (output: IndicationLocSetEngineLockOutput): void;
+            (_source: ClientLoc, output: IndicationLocSetEngineLockOutput): void;
         }
 
         interface SetNmeaTypes {
-            (output: IndicationLocSetNmeaTypesOutput): void;
+            (_source: ClientLoc, output: IndicationLocSetNmeaTypesOutput): void;
         }
 
         interface SetOperationMode {
-            (output: IndicationLocSetOperationModeOutput): void;
+            (_source: ClientLoc, output: IndicationLocSetOperationModeOutput): void;
         }
 
         interface SetServer {
-            (output: IndicationLocSetServerOutput): void;
+            (_source: ClientLoc, output: IndicationLocSetServerOutput): void;
         }
 
         // Signal signatures
@@ -23584,7 +23597,6 @@ export namespace Qmi {
      */
     class ClientLoc extends Client {
         static $gtype: GObject.GType<ClientLoc>;
-        declare static readonly __signalSignatures: ClientLoc.SignalSignatures;
 
         // Constructors
 
@@ -23603,150 +23615,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientLoc.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'delete-assistance-data',
-            callback: (_source: this, output: IndicationLocDeleteAssistanceDataOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-assistance-data',
-            callback: (_source: this, output: IndicationLocDeleteAssistanceDataOutput) => void,
-        ): number;
-        emit(signal: 'delete-assistance-data', output: IndicationLocDeleteAssistanceDataOutput): void;
-        connect(
-            signal: 'engine-state',
-            callback: (_source: this, output: IndicationLocEngineStateOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'engine-state',
-            callback: (_source: this, output: IndicationLocEngineStateOutput) => void,
-        ): number;
-        emit(signal: 'engine-state', output: IndicationLocEngineStateOutput): void;
-        connect(
-            signal: 'fix-recurrence-type',
-            callback: (_source: this, output: IndicationLocFixRecurrenceTypeOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'fix-recurrence-type',
-            callback: (_source: this, output: IndicationLocFixRecurrenceTypeOutput) => void,
-        ): number;
-        emit(signal: 'fix-recurrence-type', output: IndicationLocFixRecurrenceTypeOutput): void;
-        connect(
-            signal: 'get-engine-lock',
-            callback: (_source: this, output: IndicationLocGetEngineLockOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'get-engine-lock',
-            callback: (_source: this, output: IndicationLocGetEngineLockOutput) => void,
-        ): number;
-        emit(signal: 'get-engine-lock', output: IndicationLocGetEngineLockOutput): void;
-        connect(
-            signal: 'get-nmea-types',
-            callback: (_source: this, output: IndicationLocGetNmeaTypesOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'get-nmea-types',
-            callback: (_source: this, output: IndicationLocGetNmeaTypesOutput) => void,
-        ): number;
-        emit(signal: 'get-nmea-types', output: IndicationLocGetNmeaTypesOutput): void;
-        connect(
-            signal: 'get-operation-mode',
-            callback: (_source: this, output: IndicationLocGetOperationModeOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'get-operation-mode',
-            callback: (_source: this, output: IndicationLocGetOperationModeOutput) => void,
-        ): number;
-        emit(signal: 'get-operation-mode', output: IndicationLocGetOperationModeOutput): void;
-        connect(
-            signal: 'get-predicted-orbits-data-source',
-            callback: (_source: this, output: IndicationLocGetPredictedOrbitsDataSourceOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'get-predicted-orbits-data-source',
-            callback: (_source: this, output: IndicationLocGetPredictedOrbitsDataSourceOutput) => void,
-        ): number;
-        emit(signal: 'get-predicted-orbits-data-source', output: IndicationLocGetPredictedOrbitsDataSourceOutput): void;
-        connect(signal: 'get-server', callback: (_source: this, output: IndicationLocGetServerOutput) => void): number;
-        connect_after(
-            signal: 'get-server',
-            callback: (_source: this, output: IndicationLocGetServerOutput) => void,
-        ): number;
-        emit(signal: 'get-server', output: IndicationLocGetServerOutput): void;
-        connect(
-            signal: 'gnss-sv-info',
-            callback: (_source: this, output: IndicationLocGnssSvInfoOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'gnss-sv-info',
-            callback: (_source: this, output: IndicationLocGnssSvInfoOutput) => void,
-        ): number;
-        emit(signal: 'gnss-sv-info', output: IndicationLocGnssSvInfoOutput): void;
-        connect(
-            signal: 'inject-predicted-orbits-data',
-            callback: (_source: this, output: IndicationLocInjectPredictedOrbitsDataOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'inject-predicted-orbits-data',
-            callback: (_source: this, output: IndicationLocInjectPredictedOrbitsDataOutput) => void,
-        ): number;
-        emit(signal: 'inject-predicted-orbits-data', output: IndicationLocInjectPredictedOrbitsDataOutput): void;
-        connect(
-            signal: 'inject-xtra-data',
-            callback: (_source: this, output: IndicationLocInjectXtraDataOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'inject-xtra-data',
-            callback: (_source: this, output: IndicationLocInjectXtraDataOutput) => void,
-        ): number;
-        emit(signal: 'inject-xtra-data', output: IndicationLocInjectXtraDataOutput): void;
-        connect(signal: 'nmea', callback: (_source: this, output: IndicationLocNmeaOutput) => void): number;
-        connect_after(signal: 'nmea', callback: (_source: this, output: IndicationLocNmeaOutput) => void): number;
-        emit(signal: 'nmea', output: IndicationLocNmeaOutput): void;
-        connect(
-            signal: 'position-report',
-            callback: (_source: this, output: IndicationLocPositionReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'position-report',
-            callback: (_source: this, output: IndicationLocPositionReportOutput) => void,
-        ): number;
-        emit(signal: 'position-report', output: IndicationLocPositionReportOutput): void;
-        connect(
-            signal: 'set-engine-lock',
-            callback: (_source: this, output: IndicationLocSetEngineLockOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'set-engine-lock',
-            callback: (_source: this, output: IndicationLocSetEngineLockOutput) => void,
-        ): number;
-        emit(signal: 'set-engine-lock', output: IndicationLocSetEngineLockOutput): void;
-        connect(
-            signal: 'set-nmea-types',
-            callback: (_source: this, output: IndicationLocSetNmeaTypesOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'set-nmea-types',
-            callback: (_source: this, output: IndicationLocSetNmeaTypesOutput) => void,
-        ): number;
-        emit(signal: 'set-nmea-types', output: IndicationLocSetNmeaTypesOutput): void;
-        connect(
-            signal: 'set-operation-mode',
-            callback: (_source: this, output: IndicationLocSetOperationModeOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'set-operation-mode',
-            callback: (_source: this, output: IndicationLocSetOperationModeOutput) => void,
-        ): number;
-        emit(signal: 'set-operation-mode', output: IndicationLocSetOperationModeOutput): void;
-        connect(signal: 'set-server', callback: (_source: this, output: IndicationLocSetServerOutput) => void): number;
-        connect_after(
-            signal: 'set-server',
-            callback: (_source: this, output: IndicationLocSetServerOutput) => void,
-        ): number;
-        emit(signal: 'set-server', output: IndicationLocSetServerOutput): void;
 
         // Methods
 
@@ -24581,31 +24449,31 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface EventReport {
-            (output: IndicationNasEventReportOutput): void;
+            (_source: ClientNas, output: IndicationNasEventReportOutput): void;
         }
 
         interface NetworkReject {
-            (output: IndicationNasNetworkRejectOutput): void;
+            (_source: ClientNas, output: IndicationNasNetworkRejectOutput): void;
         }
 
         interface NetworkTime {
-            (output: IndicationNasNetworkTimeOutput): void;
+            (_source: ClientNas, output: IndicationNasNetworkTimeOutput): void;
         }
 
         interface OperatorName {
-            (output: IndicationNasOperatorNameOutput): void;
+            (_source: ClientNas, output: IndicationNasOperatorNameOutput): void;
         }
 
         interface ServingSystem {
-            (output: IndicationNasServingSystemOutput): void;
+            (_source: ClientNas, output: IndicationNasServingSystemOutput): void;
         }
 
         interface SignalInfo {
-            (output: IndicationNasSignalInfoOutput): void;
+            (_source: ClientNas, output: IndicationNasSignalInfoOutput): void;
         }
 
         interface SystemInfo {
-            (output: IndicationNasSystemInfoOutput): void;
+            (_source: ClientNas, output: IndicationNasSystemInfoOutput): void;
         }
 
         // Signal signatures
@@ -24630,7 +24498,6 @@ export namespace Qmi {
      */
     class ClientNas extends Client {
         static $gtype: GObject.GType<ClientNas>;
-        declare static readonly __signalSignatures: ClientNas.SignalSignatures;
 
         // Constructors
 
@@ -24649,72 +24516,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientNas.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationNasEventReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationNasEventReportOutput) => void,
-        ): number;
-        emit(signal: 'event-report', output: IndicationNasEventReportOutput): void;
-        connect(
-            signal: 'network-reject',
-            callback: (_source: this, output: IndicationNasNetworkRejectOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'network-reject',
-            callback: (_source: this, output: IndicationNasNetworkRejectOutput) => void,
-        ): number;
-        emit(signal: 'network-reject', output: IndicationNasNetworkRejectOutput): void;
-        connect(
-            signal: 'network-time',
-            callback: (_source: this, output: IndicationNasNetworkTimeOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'network-time',
-            callback: (_source: this, output: IndicationNasNetworkTimeOutput) => void,
-        ): number;
-        emit(signal: 'network-time', output: IndicationNasNetworkTimeOutput): void;
-        connect(
-            signal: 'operator-name',
-            callback: (_source: this, output: IndicationNasOperatorNameOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'operator-name',
-            callback: (_source: this, output: IndicationNasOperatorNameOutput) => void,
-        ): number;
-        emit(signal: 'operator-name', output: IndicationNasOperatorNameOutput): void;
-        connect(
-            signal: 'serving-system',
-            callback: (_source: this, output: IndicationNasServingSystemOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'serving-system',
-            callback: (_source: this, output: IndicationNasServingSystemOutput) => void,
-        ): number;
-        emit(signal: 'serving-system', output: IndicationNasServingSystemOutput): void;
-        connect(
-            signal: 'signal-info',
-            callback: (_source: this, output: IndicationNasSignalInfoOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'signal-info',
-            callback: (_source: this, output: IndicationNasSignalInfoOutput) => void,
-        ): number;
-        emit(signal: 'signal-info', output: IndicationNasSignalInfoOutput): void;
-        connect(
-            signal: 'system-info',
-            callback: (_source: this, output: IndicationNasSystemInfoOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'system-info',
-            callback: (_source: this, output: IndicationNasSystemInfoOutput) => void,
-        ): number;
-        emit(signal: 'system-info', output: IndicationNasSystemInfoOutput): void;
 
         // Methods
 
@@ -26395,7 +26196,7 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface EventReport {
-            (output: IndicationOmaEventReportOutput): void;
+            (_source: ClientOma, output: IndicationOmaEventReportOutput): void;
         }
 
         // Signal signatures
@@ -26414,7 +26215,6 @@ export namespace Qmi {
      */
     class ClientOma extends Client {
         static $gtype: GObject.GType<ClientOma>;
-        declare static readonly __signalSignatures: ClientOma.SignalSignatures;
 
         // Constructors
 
@@ -26433,18 +26233,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientOma.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationOmaEventReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationOmaEventReportOutput) => void,
-        ): number;
-        emit(signal: 'event-report', output: IndicationOmaEventReportOutput): void;
 
         // Methods
 
@@ -26905,13 +26693,24 @@ export namespace Qmi {
      */
     class ClientPbm extends Client {
         static $gtype: GObject.GType<ClientPbm>;
-        declare static readonly __signalSignatures: ClientPbm.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientPbm.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientPbm.SignalSignatures>(signal: K, callback: ClientPbm.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientPbm.SignalSignatures>(
+            signal: K,
+            callback: ClientPbm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientPbm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientPbm.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27086,35 +26885,35 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface ActivateConfig {
-            (output: IndicationPdcActivateConfigOutput): void;
+            (_source: ClientPdc, output: IndicationPdcActivateConfigOutput): void;
         }
 
         interface DeactivateConfig {
-            (output: IndicationPdcDeactivateConfigOutput): void;
+            (_source: ClientPdc, output: IndicationPdcDeactivateConfigOutput): void;
         }
 
         interface GetConfigInfo {
-            (output: IndicationPdcGetConfigInfoOutput): void;
+            (_source: ClientPdc, output: IndicationPdcGetConfigInfoOutput): void;
         }
 
         interface GetSelectedConfig {
-            (output: IndicationPdcGetSelectedConfigOutput): void;
+            (_source: ClientPdc, output: IndicationPdcGetSelectedConfigOutput): void;
         }
 
         interface ListConfigs {
-            (output: IndicationPdcListConfigsOutput): void;
+            (_source: ClientPdc, output: IndicationPdcListConfigsOutput): void;
         }
 
         interface LoadConfig {
-            (output: IndicationPdcLoadConfigOutput): void;
+            (_source: ClientPdc, output: IndicationPdcLoadConfigOutput): void;
         }
 
         interface Refresh {
-            (output: IndicationPdcRefreshOutput): void;
+            (_source: ClientPdc, output: IndicationPdcRefreshOutput): void;
         }
 
         interface SetSelectedConfig {
-            (output: IndicationPdcSetSelectedConfigOutput): void;
+            (_source: ClientPdc, output: IndicationPdcSetSelectedConfigOutput): void;
         }
 
         // Signal signatures
@@ -27140,7 +26939,6 @@ export namespace Qmi {
      */
     class ClientPdc extends Client {
         static $gtype: GObject.GType<ClientPdc>;
-        declare static readonly __signalSignatures: ClientPdc.SignalSignatures;
 
         // Constructors
 
@@ -27159,75 +26957,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientPdc.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'activate-config',
-            callback: (_source: this, output: IndicationPdcActivateConfigOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'activate-config',
-            callback: (_source: this, output: IndicationPdcActivateConfigOutput) => void,
-        ): number;
-        emit(signal: 'activate-config', output: IndicationPdcActivateConfigOutput): void;
-        connect(
-            signal: 'deactivate-config',
-            callback: (_source: this, output: IndicationPdcDeactivateConfigOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'deactivate-config',
-            callback: (_source: this, output: IndicationPdcDeactivateConfigOutput) => void,
-        ): number;
-        emit(signal: 'deactivate-config', output: IndicationPdcDeactivateConfigOutput): void;
-        connect(
-            signal: 'get-config-info',
-            callback: (_source: this, output: IndicationPdcGetConfigInfoOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'get-config-info',
-            callback: (_source: this, output: IndicationPdcGetConfigInfoOutput) => void,
-        ): number;
-        emit(signal: 'get-config-info', output: IndicationPdcGetConfigInfoOutput): void;
-        connect(
-            signal: 'get-selected-config',
-            callback: (_source: this, output: IndicationPdcGetSelectedConfigOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'get-selected-config',
-            callback: (_source: this, output: IndicationPdcGetSelectedConfigOutput) => void,
-        ): number;
-        emit(signal: 'get-selected-config', output: IndicationPdcGetSelectedConfigOutput): void;
-        connect(
-            signal: 'list-configs',
-            callback: (_source: this, output: IndicationPdcListConfigsOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'list-configs',
-            callback: (_source: this, output: IndicationPdcListConfigsOutput) => void,
-        ): number;
-        emit(signal: 'list-configs', output: IndicationPdcListConfigsOutput): void;
-        connect(
-            signal: 'load-config',
-            callback: (_source: this, output: IndicationPdcLoadConfigOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'load-config',
-            callback: (_source: this, output: IndicationPdcLoadConfigOutput) => void,
-        ): number;
-        emit(signal: 'load-config', output: IndicationPdcLoadConfigOutput): void;
-        connect(signal: 'refresh', callback: (_source: this, output: IndicationPdcRefreshOutput) => void): number;
-        connect_after(signal: 'refresh', callback: (_source: this, output: IndicationPdcRefreshOutput) => void): number;
-        emit(signal: 'refresh', output: IndicationPdcRefreshOutput): void;
-        connect(
-            signal: 'set-selected-config',
-            callback: (_source: this, output: IndicationPdcSetSelectedConfigOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'set-selected-config',
-            callback: (_source: this, output: IndicationPdcSetSelectedConfigOutput) => void,
-        ): number;
-        emit(signal: 'set-selected-config', output: IndicationPdcSetSelectedConfigOutput): void;
 
         // Methods
 
@@ -27952,11 +27681,11 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface EventReport {
-            (output: IndicationPdsEventReportOutput): void;
+            (_source: ClientPds, output: IndicationPdsEventReportOutput): void;
         }
 
         interface GpsReady {
-            (): void;
+            (_source: ClientPds): void;
         }
 
         // Signal signatures
@@ -27976,7 +27705,6 @@ export namespace Qmi {
      */
     class ClientPds extends Client {
         static $gtype: GObject.GType<ClientPds>;
-        declare static readonly __signalSignatures: ClientPds.SignalSignatures;
 
         // Constructors
 
@@ -27995,21 +27723,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientPds.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationPdsEventReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationPdsEventReportOutput) => void,
-        ): number;
-        emit(signal: 'event-report', output: IndicationPdsEventReportOutput): void;
-        connect(signal: 'gps-ready', callback: (_source: this) => void): number;
-        connect_after(signal: 'gps-ready', callback: (_source: this) => void): number;
-        emit(signal: 'gps-ready'): void;
 
         // Methods
 
@@ -28569,11 +28282,11 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface FlowStatus {
-            (output: IndicationQosFlowStatusOutput): void;
+            (_source: ClientQos, output: IndicationQosFlowStatusOutput): void;
         }
 
         interface NetworkStatus {
-            (output: IndicationQosNetworkStatusOutput): void;
+            (_source: ClientQos, output: IndicationQosNetworkStatusOutput): void;
         }
 
         // Signal signatures
@@ -28593,7 +28306,6 @@ export namespace Qmi {
      */
     class ClientQos extends Client {
         static $gtype: GObject.GType<ClientQos>;
-        declare static readonly __signalSignatures: ClientQos.SignalSignatures;
 
         // Constructors
 
@@ -28612,27 +28324,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientQos.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'flow-status',
-            callback: (_source: this, output: IndicationQosFlowStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'flow-status',
-            callback: (_source: this, output: IndicationQosFlowStatusOutput) => void,
-        ): number;
-        emit(signal: 'flow-status', output: IndicationQosFlowStatusOutput): void;
-        connect(
-            signal: 'network-status',
-            callback: (_source: this, output: IndicationQosNetworkStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'network-status',
-            callback: (_source: this, output: IndicationQosNetworkStatusOutput) => void,
-        ): number;
-        emit(signal: 'network-status', output: IndicationQosNetworkStatusOutput): void;
 
         // Methods
 
@@ -28873,13 +28564,24 @@ export namespace Qmi {
      */
     class ClientSar extends Client {
         static $gtype: GObject.GType<ClientSar>;
-        declare static readonly __signalSignatures: ClientSar.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientSar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientSar.SignalSignatures>(signal: K, callback: ClientSar.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientSar.SignalSignatures>(
+            signal: K,
+            callback: ClientSar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientSar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientSar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -28999,15 +28701,15 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface CardStatus {
-            (output: IndicationUimCardStatusOutput): void;
+            (_source: ClientUim, output: IndicationUimCardStatusOutput): void;
         }
 
         interface Refresh {
-            (output: IndicationUimRefreshOutput): void;
+            (_source: ClientUim, output: IndicationUimRefreshOutput): void;
         }
 
         interface SlotStatus {
-            (output: IndicationUimSlotStatusOutput): void;
+            (_source: ClientUim, output: IndicationUimSlotStatusOutput): void;
         }
 
         // Signal signatures
@@ -29028,7 +28730,6 @@ export namespace Qmi {
      */
     class ClientUim extends Client {
         static $gtype: GObject.GType<ClientUim>;
-        declare static readonly __signalSignatures: ClientUim.SignalSignatures;
 
         // Constructors
 
@@ -29047,30 +28748,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientUim.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'card-status',
-            callback: (_source: this, output: IndicationUimCardStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'card-status',
-            callback: (_source: this, output: IndicationUimCardStatusOutput) => void,
-        ): number;
-        emit(signal: 'card-status', output: IndicationUimCardStatusOutput): void;
-        connect(signal: 'refresh', callback: (_source: this, output: IndicationUimRefreshOutput) => void): number;
-        connect_after(signal: 'refresh', callback: (_source: this, output: IndicationUimRefreshOutput) => void): number;
-        emit(signal: 'refresh', output: IndicationUimRefreshOutput): void;
-        connect(
-            signal: 'slot-status',
-            callback: (_source: this, output: IndicationUimSlotStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'slot-status',
-            callback: (_source: this, output: IndicationUimSlotStatusOutput) => void,
-        ): number;
-        emit(signal: 'slot-status', output: IndicationUimSlotStatusOutput): void;
 
         // Methods
 
@@ -30290,23 +29967,23 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface AllCallStatus {
-            (output: IndicationVoiceAllCallStatusOutput): void;
+            (_source: ClientVoice, output: IndicationVoiceAllCallStatusOutput): void;
         }
 
         interface OriginateUssdNoWait {
-            (output: IndicationVoiceOriginateUssdNoWaitOutput): void;
+            (_source: ClientVoice, output: IndicationVoiceOriginateUssdNoWaitOutput): void;
         }
 
         interface ReleaseUssd {
-            (): void;
+            (_source: ClientVoice): void;
         }
 
         interface SupplementaryService {
-            (output: IndicationVoiceSupplementaryServiceOutput): void;
+            (_source: ClientVoice, output: IndicationVoiceSupplementaryServiceOutput): void;
         }
 
         interface Ussd {
-            (output: IndicationVoiceUssdOutput): void;
+            (_source: ClientVoice, output: IndicationVoiceUssdOutput): void;
         }
 
         // Signal signatures
@@ -30329,7 +30006,6 @@ export namespace Qmi {
      */
     class ClientVoice extends Client {
         static $gtype: GObject.GType<ClientVoice>;
-        declare static readonly __signalSignatures: ClientVoice.SignalSignatures;
 
         // Constructors
 
@@ -30351,42 +30027,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientVoice.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'all-call-status',
-            callback: (_source: this, output: IndicationVoiceAllCallStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'all-call-status',
-            callback: (_source: this, output: IndicationVoiceAllCallStatusOutput) => void,
-        ): number;
-        emit(signal: 'all-call-status', output: IndicationVoiceAllCallStatusOutput): void;
-        connect(
-            signal: 'originate-ussd-no-wait',
-            callback: (_source: this, output: IndicationVoiceOriginateUssdNoWaitOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'originate-ussd-no-wait',
-            callback: (_source: this, output: IndicationVoiceOriginateUssdNoWaitOutput) => void,
-        ): number;
-        emit(signal: 'originate-ussd-no-wait', output: IndicationVoiceOriginateUssdNoWaitOutput): void;
-        connect(signal: 'release-ussd', callback: (_source: this) => void): number;
-        connect_after(signal: 'release-ussd', callback: (_source: this) => void): number;
-        emit(signal: 'release-ussd'): void;
-        connect(
-            signal: 'supplementary-service',
-            callback: (_source: this, output: IndicationVoiceSupplementaryServiceOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'supplementary-service',
-            callback: (_source: this, output: IndicationVoiceSupplementaryServiceOutput) => void,
-        ): number;
-        emit(signal: 'supplementary-service', output: IndicationVoiceSupplementaryServiceOutput): void;
-        connect(signal: 'ussd', callback: (_source: this, output: IndicationVoiceUssdOutput) => void): number;
-        connect_after(signal: 'ussd', callback: (_source: this, output: IndicationVoiceUssdOutput) => void): number;
-        emit(signal: 'ussd', output: IndicationVoiceUssdOutput): void;
 
         // Methods
 
@@ -31342,13 +30982,24 @@ export namespace Qmi {
      */
     class ClientWda extends Client {
         static $gtype: GObject.GType<ClientWda>;
-        declare static readonly __signalSignatures: ClientWda.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ClientWda.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ClientWda.SignalSignatures>(signal: K, callback: ClientWda.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientWda.SignalSignatures>(
+            signal: K,
+            callback: ClientWda.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientWda.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientWda.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -31523,23 +31174,23 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface EventReport {
-            (output: IndicationWdsEventReportOutput): void;
+            (_source: ClientWds, output: IndicationWdsEventReportOutput): void;
         }
 
         interface ExtendedIpConfig {
-            (output: IndicationWdsExtendedIpConfigOutput): void;
+            (_source: ClientWds, output: IndicationWdsExtendedIpConfigOutput): void;
         }
 
         interface PacketServiceStatus {
-            (output: IndicationWdsPacketServiceStatusOutput): void;
+            (_source: ClientWds, output: IndicationWdsPacketServiceStatusOutput): void;
         }
 
         interface ProfileChanged {
-            (output: IndicationWdsProfileChangedOutput): void;
+            (_source: ClientWds, output: IndicationWdsProfileChangedOutput): void;
         }
 
         interface SetLteAttachPdnList {
-            (output: IndicationWdsSetLteAttachPdnListOutput): void;
+            (_source: ClientWds, output: IndicationWdsSetLteAttachPdnListOutput): void;
         }
 
         // Signal signatures
@@ -31562,7 +31213,6 @@ export namespace Qmi {
      */
     class ClientWds extends Client {
         static $gtype: GObject.GType<ClientWds>;
-        declare static readonly __signalSignatures: ClientWds.SignalSignatures;
 
         // Constructors
 
@@ -31581,54 +31231,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientWds.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationWdsEventReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationWdsEventReportOutput) => void,
-        ): number;
-        emit(signal: 'event-report', output: IndicationWdsEventReportOutput): void;
-        connect(
-            signal: 'extended-ip-config',
-            callback: (_source: this, output: IndicationWdsExtendedIpConfigOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'extended-ip-config',
-            callback: (_source: this, output: IndicationWdsExtendedIpConfigOutput) => void,
-        ): number;
-        emit(signal: 'extended-ip-config', output: IndicationWdsExtendedIpConfigOutput): void;
-        connect(
-            signal: 'packet-service-status',
-            callback: (_source: this, output: IndicationWdsPacketServiceStatusOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'packet-service-status',
-            callback: (_source: this, output: IndicationWdsPacketServiceStatusOutput) => void,
-        ): number;
-        emit(signal: 'packet-service-status', output: IndicationWdsPacketServiceStatusOutput): void;
-        connect(
-            signal: 'profile-changed',
-            callback: (_source: this, output: IndicationWdsProfileChangedOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'profile-changed',
-            callback: (_source: this, output: IndicationWdsProfileChangedOutput) => void,
-        ): number;
-        emit(signal: 'profile-changed', output: IndicationWdsProfileChangedOutput): void;
-        connect(
-            signal: 'set-lte-attach-pdn-list',
-            callback: (_source: this, output: IndicationWdsSetLteAttachPdnListOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'set-lte-attach-pdn-list',
-            callback: (_source: this, output: IndicationWdsSetLteAttachPdnListOutput) => void,
-        ): number;
-        emit(signal: 'set-lte-attach-pdn-list', output: IndicationWdsSetLteAttachPdnListOutput): void;
 
         // Methods
 
@@ -33584,11 +33186,11 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface EventReport {
-            (output: IndicationWmsEventReportOutput): void;
+            (_source: ClientWms, output: IndicationWmsEventReportOutput): void;
         }
 
         interface SmscAddress {
-            (output: IndicationWmsSmscAddressOutput): void;
+            (_source: ClientWms, output: IndicationWmsSmscAddressOutput): void;
         }
 
         // Signal signatures
@@ -33608,7 +33210,6 @@ export namespace Qmi {
      */
     class ClientWms extends Client {
         static $gtype: GObject.GType<ClientWms>;
-        declare static readonly __signalSignatures: ClientWms.SignalSignatures;
 
         // Constructors
 
@@ -33627,27 +33228,6 @@ export namespace Qmi {
             signal: K,
             ...args: Parameters<ClientWms.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationWmsEventReportOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'event-report',
-            callback: (_source: this, output: IndicationWmsEventReportOutput) => void,
-        ): number;
-        emit(signal: 'event-report', output: IndicationWmsEventReportOutput): void;
-        connect(
-            signal: 'smsc-address',
-            callback: (_source: this, output: IndicationWmsSmscAddressOutput) => void,
-        ): number;
-        connect_after(
-            signal: 'smsc-address',
-            callback: (_source: this, output: IndicationWmsSmscAddressOutput) => void,
-        ): number;
-        emit(signal: 'smsc-address', output: IndicationWmsSmscAddressOutput): void;
 
         // Methods
 
@@ -34427,11 +34007,11 @@ export namespace Qmi {
         // Signal callback interfaces
 
         interface DeviceRemoved {
-            (): void;
+            (_source: Device): void;
         }
 
         interface Indication {
-            (output: Uint8Array | string): void;
+            (_source: Device, output: Uint8Array | string): void;
         }
 
         // Signal signatures
@@ -34464,7 +34044,6 @@ export namespace Qmi {
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -34499,15 +34078,6 @@ export namespace Qmi {
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this) => void): number;
-        emit(signal: 'device-removed'): void;
-        connect(signal: 'indication', callback: (_source: this, output: Uint8Array) => void): number;
-        connect_after(signal: 'indication', callback: (_source: this, output: Uint8Array) => void): number;
-        emit(signal: 'indication', output: Uint8Array | string): void;
 
         // Static methods
 
@@ -36169,7 +35739,6 @@ export namespace Qmi {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -36183,6 +35752,12 @@ export namespace Qmi {
         _init(...args: any[]): void;
 
         static ['new'](): Proxy;
+
+        // Signals
+
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
 
         // Methods
 

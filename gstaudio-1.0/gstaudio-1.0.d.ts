@@ -1742,7 +1742,6 @@ export namespace GstAudio {
      */
     abstract class AudioAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<AudioAggregator>;
-        declare static readonly __signalSignatures: AudioAggregator.SignalSignatures;
 
         // Properties
 
@@ -1813,6 +1812,21 @@ export namespace GstAudio {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof AudioAggregator.SignalSignatures>(
+            signal: K,
+            callback: AudioAggregator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioAggregator.SignalSignatures>(
+            signal: K,
+            callback: AudioAggregator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioAggregator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioAggregator.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         vfunc_aggregate_one_buffer(
@@ -1849,7 +1863,6 @@ export namespace GstAudio {
      */
     class AudioAggregatorConvertPad extends AudioAggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorConvertPad>;
-        declare static readonly __signalSignatures: AudioAggregatorConvertPad.SignalSignatures;
 
         // Properties
 
@@ -1863,6 +1876,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioAggregatorConvertPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
+            signal: K,
+            callback: AudioAggregatorConvertPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
+            signal: K,
+            callback: AudioAggregatorConvertPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioAggregatorConvertPad.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AudioAggregatorPad {
@@ -1882,7 +1910,6 @@ export namespace GstAudio {
      */
     class AudioAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorPad>;
-        declare static readonly __signalSignatures: AudioAggregatorPad.SignalSignatures;
 
         // Properties
 
@@ -1902,6 +1929,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioAggregatorPad.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioAggregatorPad.SignalSignatures>(
+            signal: K,
+            callback: AudioAggregatorPad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioAggregatorPad.SignalSignatures>(
+            signal: K,
+            callback: AudioAggregatorPad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioAggregatorPad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioAggregatorPad.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1942,7 +1984,6 @@ export namespace GstAudio {
      */
     class AudioBaseSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<AudioBaseSink>;
-        declare static readonly __signalSignatures: AudioBaseSink.SignalSignatures;
 
         // Properties
 
@@ -2008,6 +2049,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioBaseSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioBaseSink.SignalSignatures>(
+            signal: K,
+            callback: AudioBaseSink.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioBaseSink.SignalSignatures>(
+            signal: K,
+            callback: AudioBaseSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioBaseSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioBaseSink.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2133,7 +2189,6 @@ export namespace GstAudio {
      */
     class AudioBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<AudioBaseSrc>;
-        declare static readonly __signalSignatures: AudioBaseSrc.SignalSignatures;
 
         // Properties
 
@@ -2182,6 +2237,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioBaseSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioBaseSrc.SignalSignatures>(
+            signal: K,
+            callback: AudioBaseSrc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioBaseSrc.SignalSignatures>(
+            signal: K,
+            callback: AudioBaseSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioBaseSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioBaseSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2286,7 +2356,6 @@ export namespace GstAudio {
      */
     class AudioCdSrc extends GstBase.PushSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AudioCdSrc>;
-        declare static readonly __signalSignatures: AudioCdSrc.SignalSignatures;
 
         // Properties
 
@@ -2306,6 +2375,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioCdSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioCdSrc.SignalSignatures>(
+            signal: K,
+            callback: AudioCdSrc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioCdSrc.SignalSignatures>(
+            signal: K,
+            callback: AudioCdSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioCdSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioCdSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2817,7 +2901,6 @@ export namespace GstAudio {
      */
     class AudioClock extends Gst.SystemClock {
         static $gtype: GObject.GType<AudioClock>;
-        declare static readonly __signalSignatures: AudioClock.SignalSignatures;
 
         // Fields
 
@@ -2833,6 +2916,21 @@ export namespace GstAudio {
         _init(...args: any[]): void;
 
         static ['new'](name: string, func: AudioClockGetTimeFunc): AudioClock;
+
+        // Signals
+
+        connect<K extends keyof AudioClock.SignalSignatures>(
+            signal: K,
+            callback: AudioClock.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioClock.SignalSignatures>(
+            signal: K,
+            callback: AudioClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioClock.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2976,7 +3074,6 @@ export namespace GstAudio {
      */
     abstract class AudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<AudioDecoder>;
-        declare static readonly __signalSignatures: AudioDecoder.SignalSignatures;
 
         // Properties
 
@@ -3012,6 +3109,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioDecoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioDecoder.SignalSignatures>(
+            signal: K,
+            callback: AudioDecoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioDecoder.SignalSignatures>(
+            signal: K,
+            callback: AudioDecoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioDecoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioDecoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3373,7 +3485,6 @@ export namespace GstAudio {
      */
     abstract class AudioEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<AudioEncoder>;
-        declare static readonly __signalSignatures: AudioEncoder.SignalSignatures;
 
         // Properties
 
@@ -3401,6 +3512,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioEncoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioEncoder.SignalSignatures>(
+            signal: K,
+            callback: AudioEncoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioEncoder.SignalSignatures>(
+            signal: K,
+            callback: AudioEncoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioEncoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioEncoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4212,7 +4338,6 @@ export namespace GstAudio {
      */
     abstract class AudioFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<AudioFilter>;
-        declare static readonly __signalSignatures: AudioFilter.SignalSignatures;
 
         // Fields
 
@@ -4223,6 +4348,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioFilter.SignalSignatures>(
+            signal: K,
+            callback: AudioFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioFilter.SignalSignatures>(
+            signal: K,
+            callback: AudioFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioFilter.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4254,7 +4394,6 @@ export namespace GstAudio {
      */
     abstract class AudioRingBuffer extends Gst.Object {
         static $gtype: GObject.GType<AudioRingBuffer>;
-        declare static readonly __signalSignatures: AudioRingBuffer.SignalSignatures;
 
         // Fields
 
@@ -4275,6 +4414,21 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioRingBuffer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioRingBuffer.SignalSignatures>(
+            signal: K,
+            callback: AudioRingBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AudioRingBuffer.SignalSignatures>(
+            signal: K,
+            callback: AudioRingBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioRingBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioRingBuffer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4643,7 +4797,6 @@ export namespace GstAudio {
      */
     class AudioSink extends AudioBaseSink {
         static $gtype: GObject.GType<AudioSink>;
-        declare static readonly __signalSignatures: AudioSink.SignalSignatures;
 
         // Fields
 
@@ -4654,6 +4807,18 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioSink.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioSink.SignalSignatures>(signal: K, callback: AudioSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof AudioSink.SignalSignatures>(
+            signal: K,
+            callback: AudioSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioSink.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4704,7 +4869,6 @@ export namespace GstAudio {
      */
     class AudioSrc extends AudioBaseSrc {
         static $gtype: GObject.GType<AudioSrc>;
-        declare static readonly __signalSignatures: AudioSrc.SignalSignatures;
 
         // Fields
 
@@ -4715,6 +4879,18 @@ export namespace GstAudio {
         constructor(properties?: Partial<AudioSrc.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AudioSrc.SignalSignatures>(signal: K, callback: AudioSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof AudioSrc.SignalSignatures>(
+            signal: K,
+            callback: AudioSrc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioSrc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioSrc.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

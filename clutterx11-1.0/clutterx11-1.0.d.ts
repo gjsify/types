@@ -232,11 +232,11 @@ export namespace ClutterX11 {
         // Signal callback interfaces
 
         interface QueueDamageRedraw {
-            (x: number, y: number, width: number, height: number): void;
+            (_source: TexturePixmap, x: number, y: number, width: number, height: number): void;
         }
 
         interface UpdateArea {
-            (x: number, y: number, width: number, height: number): void;
+            (_source: TexturePixmap, x: number, y: number, width: number, height: number): void;
         }
 
         // Signal signatures
@@ -285,7 +285,6 @@ export namespace ClutterX11 {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<TexturePixmap>;
-        declare static readonly __signalSignatures: TexturePixmap.SignalSignatures;
 
         // Properties
 
@@ -343,27 +342,6 @@ export namespace ClutterX11 {
             signal: K,
             ...args: Parameters<TexturePixmap.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'queue-damage-redraw',
-            callback: (_source: this, x: number, y: number, width: number, height: number) => void,
-        ): number;
-        connect_after(
-            signal: 'queue-damage-redraw',
-            callback: (_source: this, x: number, y: number, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'queue-damage-redraw', x: number, y: number, width: number, height: number): void;
-        connect(
-            signal: 'update-area',
-            callback: (_source: this, x: number, y: number, width: number, height: number) => void,
-        ): number;
-        connect_after(
-            signal: 'update-area',
-            callback: (_source: this, x: number, y: number, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'update-area', x: number, y: number, width: number, height: number): void;
 
         // Virtual methods
 

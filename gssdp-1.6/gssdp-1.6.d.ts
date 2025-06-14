@@ -83,7 +83,7 @@ export namespace GSSDP {
         // Signal callback interfaces
 
         interface MessageReceived {
-            (from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders): void;
+            (_source: Client, from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders): void;
         }
 
         // Signal signatures
@@ -131,7 +131,6 @@ export namespace GSSDP {
      */
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -297,36 +296,6 @@ export namespace GSSDP {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'message-received',
-            callback: (
-                _source: this,
-                from_ip: string,
-                from_port: number,
-                type: number,
-                headers: Soup.MessageHeaders,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'message-received',
-            callback: (
-                _source: this,
-                from_ip: string,
-                from_port: number,
-                type: number,
-                headers: Soup.MessageHeaders,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'message-received',
-            from_ip: string,
-            from_port: number,
-            type: number,
-            headers: Soup.MessageHeaders,
-        ): void;
 
         // Methods
 
@@ -967,15 +936,15 @@ export namespace GSSDP {
         // Signal callback interfaces
 
         interface ResourceAvailable {
-            (usn: string, locations: string[]): void;
+            (_source: ResourceBrowser, usn: string, locations: string[]): void;
         }
 
         interface ResourceUnavailable {
-            (usn: string): void;
+            (_source: ResourceBrowser, usn: string): void;
         }
 
         interface ResourceUpdate {
-            (usn: string, boot_id: number, next_boot_id: number): void;
+            (_source: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number): void;
         }
 
         // Signal signatures
@@ -1010,7 +979,6 @@ export namespace GSSDP {
      */
     class ResourceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ResourceBrowser>;
-        declare static readonly __signalSignatures: ResourceBrowser.SignalSignatures;
 
         // Properties
 
@@ -1057,30 +1025,6 @@ export namespace GSSDP {
             signal: K,
             ...args: Parameters<ResourceBrowser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'resource-available',
-            callback: (_source: this, usn: string, locations: string[]) => void,
-        ): number;
-        connect_after(
-            signal: 'resource-available',
-            callback: (_source: this, usn: string, locations: string[]) => void,
-        ): number;
-        emit(signal: 'resource-available', usn: string, locations: string[]): void;
-        connect(signal: 'resource-unavailable', callback: (_source: this, usn: string) => void): number;
-        connect_after(signal: 'resource-unavailable', callback: (_source: this, usn: string) => void): number;
-        emit(signal: 'resource-unavailable', usn: string): void;
-        connect(
-            signal: 'resource-update',
-            callback: (_source: this, usn: string, boot_id: number, next_boot_id: number) => void,
-        ): number;
-        connect_after(
-            signal: 'resource-update',
-            callback: (_source: this, usn: string, boot_id: number, next_boot_id: number) => void,
-        ): number;
-        emit(signal: 'resource-update', usn: string, boot_id: number, next_boot_id: number): void;
 
         // Virtual methods
 
@@ -1157,7 +1101,6 @@ export namespace GSSDP {
      */
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
-        declare static readonly __signalSignatures: ResourceGroup.SignalSignatures;
 
         // Properties
 
@@ -1200,6 +1143,21 @@ export namespace GSSDP {
         _init(...args: any[]): void;
 
         static ['new'](client: Client): ResourceGroup;
+
+        // Signals
+
+        connect<K extends keyof ResourceGroup.SignalSignatures>(
+            signal: K,
+            callback: ResourceGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourceGroup.SignalSignatures>(
+            signal: K,
+            callback: ResourceGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourceGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourceGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

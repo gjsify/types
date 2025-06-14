@@ -140,39 +140,39 @@ export namespace Hex {
         // Signal callback interfaces
 
         interface DocumentChanged {
-            (object: any | null, p0: boolean): void;
+            (_source: Document, object: any | null, p0: boolean): void;
         }
 
         interface FileLoaded {
-            (): void;
+            (_source: Document): void;
         }
 
         interface FileNameChanged {
-            (): void;
+            (_source: Document): void;
         }
 
         interface FileReadStarted {
-            (): void;
+            (_source: Document): void;
         }
 
         interface FileSaveStarted {
-            (): void;
+            (_source: Document): void;
         }
 
         interface FileSaved {
-            (): void;
+            (_source: Document): void;
         }
 
         interface Redo {
-            (): void;
+            (_source: Document): void;
         }
 
         interface Undo {
-            (): void;
+            (_source: Document): void;
         }
 
         interface UndoStackForget {
-            (): void;
+            (_source: Document): void;
         }
 
         // Signal signatures
@@ -203,7 +203,6 @@ export namespace Hex {
      */
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
-        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -233,39 +232,6 @@ export namespace Hex {
             signal: K,
             ...args: Parameters<Document.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'document-changed', callback: (_source: this, object: any | null, p0: boolean) => void): number;
-        connect_after(
-            signal: 'document-changed',
-            callback: (_source: this, object: any | null, p0: boolean) => void,
-        ): number;
-        emit(signal: 'document-changed', object: any | null, p0: boolean): void;
-        connect(signal: 'file-loaded', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-loaded', callback: (_source: this) => void): number;
-        emit(signal: 'file-loaded'): void;
-        connect(signal: 'file-name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'file-name-changed'): void;
-        connect(signal: 'file-read-started', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-read-started', callback: (_source: this) => void): number;
-        emit(signal: 'file-read-started'): void;
-        connect(signal: 'file-save-started', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-save-started', callback: (_source: this) => void): number;
-        emit(signal: 'file-save-started'): void;
-        connect(signal: 'file-saved', callback: (_source: this) => void): number;
-        connect_after(signal: 'file-saved', callback: (_source: this) => void): number;
-        emit(signal: 'file-saved'): void;
-        connect(signal: 'redo', callback: (_source: this) => void): number;
-        connect_after(signal: 'redo', callback: (_source: this) => void): number;
-        emit(signal: 'redo'): void;
-        connect(signal: 'undo', callback: (_source: this) => void): number;
-        connect_after(signal: 'undo', callback: (_source: this) => void): number;
-        emit(signal: 'undo'): void;
-        connect(signal: 'undo-stack-forget', callback: (_source: this) => void): number;
-        connect_after(signal: 'undo-stack-forget', callback: (_source: this) => void): number;
-        emit(signal: 'undo-stack-forget'): void;
 
         // Methods
 
@@ -658,27 +624,27 @@ export namespace Hex {
         // Signal callback interfaces
 
         interface CopyClipboard {
-            (): void;
+            (_source: Widget): void;
         }
 
         interface CursorMoved {
-            (): void;
+            (_source: Widget): void;
         }
 
         interface CutClipboard {
-            (): void;
+            (_source: Widget): void;
         }
 
         interface DataChanged {
-            (): void;
+            (_source: Widget): void;
         }
 
         interface DrawComplete {
-            (): void;
+            (_source: Widget): void;
         }
 
         interface PasteClipboard {
-            (): void;
+            (_source: Widget): void;
         }
 
         // Signal signatures
@@ -711,7 +677,6 @@ export namespace Hex {
      */
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
-        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -743,27 +708,6 @@ export namespace Hex {
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'copy-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'copy-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'copy-clipboard'): void;
-        connect(signal: 'cursor-moved', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-moved', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-moved'): void;
-        connect(signal: 'cut-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'cut-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'cut-clipboard'): void;
-        connect(signal: 'data-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'data-changed', callback: (_source: this) => void): number;
-        emit(signal: 'data-changed'): void;
-        connect(signal: 'draw-complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'draw-complete', callback: (_source: this) => void): number;
-        emit(signal: 'draw-complete'): void;
-        connect(signal: 'paste-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'paste-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'paste-clipboard'): void;
 
         // Methods
 
@@ -1701,7 +1645,6 @@ export namespace Hex {
      */
     class WidgetMark extends GObject.Object {
         static $gtype: GObject.GType<WidgetMark>;
-        declare static readonly __signalSignatures: WidgetMark.SignalSignatures;
 
         // Properties
 
@@ -1729,6 +1672,21 @@ export namespace Hex {
         constructor(properties?: Partial<WidgetMark.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WidgetMark.SignalSignatures>(
+            signal: K,
+            callback: WidgetMark.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetMark.SignalSignatures>(
+            signal: K,
+            callback: WidgetMark.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetMark.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetMark.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

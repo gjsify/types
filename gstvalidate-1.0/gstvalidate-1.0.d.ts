@@ -534,7 +534,6 @@ export namespace GstValidate {
      */
     class BinMonitor extends ElementMonitor implements Reporter {
         static $gtype: GObject.GType<BinMonitor>;
-        declare static readonly __signalSignatures: BinMonitor.SignalSignatures;
 
         // Properties
 
@@ -553,6 +552,21 @@ export namespace GstValidate {
         _init(...args: any[]): void;
 
         static ['new'](bin: Gst.Bin, runner: Runner, parent?: Monitor | null): BinMonitor;
+
+        // Signals
+
+        connect<K extends keyof BinMonitor.SignalSignatures>(
+            signal: K,
+            callback: BinMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BinMonitor.SignalSignatures>(
+            signal: K,
+            callback: BinMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinMonitor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1018,7 +1032,6 @@ export namespace GstValidate {
      */
     class ElementMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<ElementMonitor>;
-        declare static readonly __signalSignatures: ElementMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1027,6 +1040,21 @@ export namespace GstValidate {
         _init(...args: any[]): void;
 
         static ['new'](element: Gst.Element, runner: Runner, parent?: Monitor | null): ElementMonitor;
+
+        // Signals
+
+        connect<K extends keyof ElementMonitor.SignalSignatures>(
+            signal: K,
+            callback: ElementMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ElementMonitor.SignalSignatures>(
+            signal: K,
+            callback: ElementMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ElementMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ElementMonitor.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get validate_runner(): Runner;
@@ -1537,7 +1565,6 @@ export namespace GstValidate {
 
     abstract class MediaDescriptor extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<MediaDescriptor>;
-        declare static readonly __signalSignatures: MediaDescriptor.SignalSignatures;
 
         // Properties
 
@@ -1549,6 +1576,21 @@ export namespace GstValidate {
         constructor(properties?: Partial<MediaDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaDescriptor.SignalSignatures>(
+            signal: K,
+            callback: MediaDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaDescriptor.SignalSignatures>(
+            signal: K,
+            callback: MediaDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2060,7 +2102,6 @@ export namespace GstValidate {
 
     class MediaDescriptorParser extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorParser>;
-        declare static readonly __signalSignatures: MediaDescriptorParser.SignalSignatures;
 
         // Constructors
 
@@ -2071,6 +2112,21 @@ export namespace GstValidate {
         static ['new'](runner: Runner, xmlpath: string): MediaDescriptorParser;
 
         static new_from_xml(runner: Runner, xml: string): MediaDescriptorParser;
+
+        // Signals
+
+        connect<K extends keyof MediaDescriptorParser.SignalSignatures>(
+            signal: K,
+            callback: MediaDescriptorParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaDescriptorParser.SignalSignatures>(
+            signal: K,
+            callback: MediaDescriptorParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaDescriptorParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaDescriptorParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2586,7 +2642,6 @@ export namespace GstValidate {
 
     class MediaDescriptorWriter extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorWriter>;
-        declare static readonly __signalSignatures: MediaDescriptorWriter.SignalSignatures;
 
         // Constructors
 
@@ -2602,6 +2657,21 @@ export namespace GstValidate {
         ): MediaDescriptorWriter;
 
         static new_discover(runner: Runner, uri: string, flags: MediaDescriptorWriterFlags): MediaDescriptorWriter;
+
+        // Signals
+
+        connect<K extends keyof MediaDescriptorWriter.SignalSignatures>(
+            signal: K,
+            callback: MediaDescriptorWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaDescriptorWriter.SignalSignatures>(
+            signal: K,
+            callback: MediaDescriptorWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaDescriptorWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaDescriptorWriter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3135,7 +3205,6 @@ export namespace GstValidate {
      */
     abstract class Monitor extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Monitor>;
-        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Properties
 
@@ -3162,6 +3231,18 @@ export namespace GstValidate {
         constructor(properties?: Partial<Monitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: Monitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Monitor.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3692,7 +3773,6 @@ export namespace GstValidate {
 
     class Override extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Override>;
-        declare static readonly __signalSignatures: Override.SignalSignatures;
 
         // Properties
 
@@ -3706,6 +3786,18 @@ export namespace GstValidate {
         _init(...args: any[]): void;
 
         static ['new'](): Override;
+
+        // Signals
+
+        connect<K extends keyof Override.SignalSignatures>(signal: K, callback: Override.SignalSignatures[K]): number;
+        connect_after<K extends keyof Override.SignalSignatures>(
+            signal: K,
+            callback: Override.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Override.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Override.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4231,7 +4323,6 @@ export namespace GstValidate {
      */
     class PadMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<PadMonitor>;
-        declare static readonly __signalSignatures: PadMonitor.SignalSignatures;
 
         // Fields
 
@@ -4251,6 +4342,21 @@ export namespace GstValidate {
         _init(...args: any[]): void;
 
         static ['new'](pad: Gst.Pad, runner: Runner, parent?: ElementMonitor | null): PadMonitor;
+
+        // Signals
+
+        connect<K extends keyof PadMonitor.SignalSignatures>(
+            signal: K,
+            callback: PadMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PadMonitor.SignalSignatures>(
+            signal: K,
+            callback: PadMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PadMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PadMonitor.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get validate_runner(): Runner;
@@ -4763,7 +4869,6 @@ export namespace GstValidate {
      */
     class PipelineMonitor extends BinMonitor implements Reporter {
         static $gtype: GObject.GType<PipelineMonitor>;
-        declare static readonly __signalSignatures: PipelineMonitor.SignalSignatures;
 
         // Constructors
 
@@ -4772,6 +4877,21 @@ export namespace GstValidate {
         _init(...args: any[]): void;
 
         static ['new'](pipeline: Gst.Pipeline, runner: Runner, parent?: Monitor | null): PipelineMonitor;
+
+        // Signals
+
+        connect<K extends keyof PipelineMonitor.SignalSignatures>(
+            signal: K,
+            callback: PipelineMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PipelineMonitor.SignalSignatures>(
+            signal: K,
+            callback: PipelineMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PipelineMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PipelineMonitor.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5221,11 +5341,11 @@ export namespace GstValidate {
         // Signal callback interfaces
 
         interface ReportAdded {
-            (object: Report): void;
+            (_source: Runner, object: Report): void;
         }
 
         interface Stopping {
-            (): void;
+            (_source: Runner): void;
         }
 
         // Signal signatures
@@ -5248,7 +5368,6 @@ export namespace GstValidate {
      */
     class Runner extends Gst.Tracer {
         static $gtype: GObject.GType<Runner>;
-        declare static readonly __signalSignatures: Runner.SignalSignatures;
 
         // Properties
 
@@ -5272,15 +5391,6 @@ export namespace GstValidate {
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
         emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'report-added', callback: (_source: this, object: Report) => void): number;
-        connect_after(signal: 'report-added', callback: (_source: this, object: Report) => void): number;
-        emit(signal: 'report-added', object: Report): void;
-        connect(signal: 'stopping', callback: (_source: this) => void): number;
-        connect_after(signal: 'stopping', callback: (_source: this) => void): number;
-        emit(signal: 'stopping'): void;
 
         // Methods
 
@@ -5306,11 +5416,11 @@ export namespace GstValidate {
         // Signal callback interfaces
 
         interface ActionDone {
-            (action: Action): void;
+            (_source: Scenario, action: Action): void;
         }
 
         interface Done {
-            (): void;
+            (_source: Scenario): void;
         }
 
         // Signal signatures
@@ -5333,7 +5443,6 @@ export namespace GstValidate {
 
     class Scenario extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Scenario>;
-        declare static readonly __signalSignatures: Scenario.SignalSignatures;
 
         // Properties
 
@@ -5363,15 +5472,6 @@ export namespace GstValidate {
             signal: K,
             ...args: Parameters<Scenario.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action-done', callback: (_source: this, action: Action) => void): number;
-        connect_after(signal: 'action-done', callback: (_source: this, action: Action) => void): number;
-        emit(signal: 'action-done', action: Action): void;
-        connect(signal: 'done', callback: (_source: this) => void): number;
-        connect_after(signal: 'done', callback: (_source: this) => void): number;
-        emit(signal: 'done'): void;
 
         // Static methods
 

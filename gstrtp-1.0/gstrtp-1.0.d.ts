@@ -999,7 +999,6 @@ export namespace GstRtp {
      */
     class RTPBaseAudioPayload extends RTPBasePayload {
         static $gtype: GObject.GType<RTPBaseAudioPayload>;
-        declare static readonly __signalSignatures: RTPBaseAudioPayload.SignalSignatures;
 
         // Properties
 
@@ -1021,6 +1020,21 @@ export namespace GstRtp {
         constructor(properties?: Partial<RTPBaseAudioPayload.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
+            signal: K,
+            callback: RTPBaseAudioPayload.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
+            signal: K,
+            callback: RTPBaseAudioPayload.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTPBaseAudioPayload.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1084,15 +1098,15 @@ export namespace GstRtp {
         // Signal callback interfaces
 
         interface AddExtension {
-            (ext: RTPHeaderExtension): void;
+            (_source: RTPBaseDepayload, ext: RTPHeaderExtension): void;
         }
 
         interface ClearExtensions {
-            (): void;
+            (_source: RTPBaseDepayload): void;
         }
 
         interface RequestExtension {
-            (ext_id: number, ext_uri?: string | null): RTPHeaderExtension | null;
+            (_source: RTPBaseDepayload, ext_id: number, ext_uri?: string | null): RTPHeaderExtension | null;
         }
 
         // Signal signatures
@@ -1120,7 +1134,6 @@ export namespace GstRtp {
      */
     abstract class RTPBaseDepayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBaseDepayload>;
-        declare static readonly __signalSignatures: RTPBaseDepayload.SignalSignatures;
 
         // Properties
 
@@ -1213,24 +1226,6 @@ export namespace GstRtp {
             signal: K,
             ...args: Parameters<RTPBaseDepayload.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'add-extension', callback: (_source: this, ext: RTPHeaderExtension) => void): number;
-        connect_after(signal: 'add-extension', callback: (_source: this, ext: RTPHeaderExtension) => void): number;
-        emit(signal: 'add-extension', ext: RTPHeaderExtension): void;
-        connect(signal: 'clear-extensions', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-extensions', callback: (_source: this) => void): number;
-        emit(signal: 'clear-extensions'): void;
-        connect(
-            signal: 'request-extension',
-            callback: (_source: this, ext_id: number, ext_uri: string | null) => RTPHeaderExtension | null,
-        ): number;
-        connect_after(
-            signal: 'request-extension',
-            callback: (_source: this, ext_id: number, ext_uri: string | null) => RTPHeaderExtension | null,
-        ): number;
-        emit(signal: 'request-extension', ext_id: number, ext_uri?: string | null): void;
 
         // Virtual methods
 
@@ -1275,15 +1270,15 @@ export namespace GstRtp {
         // Signal callback interfaces
 
         interface AddExtension {
-            (ext: RTPHeaderExtension): void;
+            (_source: RTPBasePayload, ext: RTPHeaderExtension): void;
         }
 
         interface ClearExtensions {
-            (): void;
+            (_source: RTPBasePayload): void;
         }
 
         interface RequestExtension {
-            (ext_id: number, ext_uri: string): RTPHeaderExtension | null;
+            (_source: RTPBasePayload, ext_id: number, ext_uri: string): RTPHeaderExtension | null;
         }
 
         // Signal signatures
@@ -1330,7 +1325,6 @@ export namespace GstRtp {
      */
     abstract class RTPBasePayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBasePayload>;
-        declare static readonly __signalSignatures: RTPBasePayload.SignalSignatures;
 
         // Properties
 
@@ -1518,24 +1512,6 @@ export namespace GstRtp {
             signal: K,
             ...args: Parameters<RTPBasePayload.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'add-extension', callback: (_source: this, ext: RTPHeaderExtension) => void): number;
-        connect_after(signal: 'add-extension', callback: (_source: this, ext: RTPHeaderExtension) => void): number;
-        emit(signal: 'add-extension', ext: RTPHeaderExtension): void;
-        connect(signal: 'clear-extensions', callback: (_source: this) => void): number;
-        connect_after(signal: 'clear-extensions', callback: (_source: this) => void): number;
-        emit(signal: 'clear-extensions'): void;
-        connect(
-            signal: 'request-extension',
-            callback: (_source: this, ext_id: number, ext_uri: string) => RTPHeaderExtension | null,
-        ): number;
-        connect_after(
-            signal: 'request-extension',
-            callback: (_source: this, ext_id: number, ext_uri: string) => RTPHeaderExtension | null,
-        ): number;
-        emit(signal: 'request-extension', ext_id: number, ext_uri: string): void;
 
         // Virtual methods
 
@@ -1639,13 +1615,27 @@ export namespace GstRtp {
      */
     abstract class RTPHeaderExtension extends Gst.Element {
         static $gtype: GObject.GType<RTPHeaderExtension>;
-        declare static readonly __signalSignatures: RTPHeaderExtension.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RTPHeaderExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RTPHeaderExtension.SignalSignatures>(
+            signal: K,
+            callback: RTPHeaderExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTPHeaderExtension.SignalSignatures>(
+            signal: K,
+            callback: RTPHeaderExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTPHeaderExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTPHeaderExtension.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

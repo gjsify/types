@@ -1171,13 +1171,27 @@ export namespace EBookContacts {
      */
     abstract class BookIndicesUpdater extends GObject.Object {
         static $gtype: GObject.GType<BookIndicesUpdater>;
-        declare static readonly __signalSignatures: BookIndicesUpdater.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BookIndicesUpdater.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BookIndicesUpdater.SignalSignatures>(
+            signal: K,
+            callback: BookIndicesUpdater.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookIndicesUpdater.SignalSignatures>(
+            signal: K,
+            callback: BookIndicesUpdater.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookIndicesUpdater.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookIndicesUpdater.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1486,7 +1500,6 @@ export namespace EBookContacts {
 
     class Contact extends VCard {
         static $gtype: GObject.GType<Contact>;
-        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Properties
 
@@ -2005,6 +2018,18 @@ export namespace EBookContacts {
 
         static new_from_vcard_with_uid(vcard: string, uid: string): Contact;
 
+        // Signals
+
+        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect_after<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            callback: Contact.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Contact.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         /**
@@ -2125,7 +2150,6 @@ export namespace EBookContacts {
      */
     class SourceBackendSummarySetup extends EDataServer.SourceExtension {
         static $gtype: GObject.GType<SourceBackendSummarySetup>;
-        declare static readonly __signalSignatures: SourceBackendSummarySetup.SignalSignatures;
 
         // Properties
 
@@ -2143,6 +2167,21 @@ export namespace EBookContacts {
         constructor(properties?: Partial<SourceBackendSummarySetup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
+            signal: K,
+            callback: SourceBackendSummarySetup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
+            signal: K,
+            callback: SourceBackendSummarySetup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceBackendSummarySetup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2203,7 +2242,6 @@ export namespace EBookContacts {
 
     class VCard extends GObject.Object {
         static $gtype: GObject.GType<VCard>;
-        declare static readonly __signalSignatures: VCard.SignalSignatures;
 
         // Constructors
 
@@ -2214,6 +2252,12 @@ export namespace EBookContacts {
         static ['new'](): VCard;
 
         static new_from_string(str: string): VCard;
+
+        // Signals
+
+        connect<K extends keyof VCard.SignalSignatures>(signal: K, callback: VCard.SignalSignatures[K]): number;
+        connect_after<K extends keyof VCard.SignalSignatures>(signal: K, callback: VCard.SignalSignatures[K]): number;
+        emit<K extends keyof VCard.SignalSignatures>(signal: K, ...args: Parameters<VCard.SignalSignatures[K]>): void;
 
         // Static methods
 

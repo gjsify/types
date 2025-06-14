@@ -421,7 +421,6 @@ export namespace AppStreamCompose {
 
     class Canvas extends GObject.Object {
         static $gtype: GObject.GType<Canvas>;
-        declare static readonly __signalSignatures: Canvas.SignalSignatures;
 
         // Constructors
 
@@ -430,6 +429,12 @@ export namespace AppStreamCompose {
         _init(...args: any[]): void;
 
         static ['new'](width: number, height: number): Canvas;
+
+        // Signals
+
+        connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -464,7 +469,6 @@ export namespace AppStreamCompose {
 
     class Compose extends GObject.Object {
         static $gtype: GObject.GType<Compose>;
-        declare static readonly __signalSignatures: Compose.SignalSignatures;
 
         // Constructors
 
@@ -473,6 +477,18 @@ export namespace AppStreamCompose {
         _init(...args: any[]): void;
 
         static ['new'](): Compose;
+
+        // Signals
+
+        connect<K extends keyof Compose.SignalSignatures>(signal: K, callback: Compose.SignalSignatures[K]): number;
+        connect_after<K extends keyof Compose.SignalSignatures>(
+            signal: K,
+            callback: Compose.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Compose.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Compose.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -703,7 +719,6 @@ export namespace AppStreamCompose {
 
     class DirectoryUnit extends Unit {
         static $gtype: GObject.GType<DirectoryUnit>;
-        declare static readonly __signalSignatures: DirectoryUnit.SignalSignatures;
 
         // Constructors
 
@@ -715,6 +730,21 @@ export namespace AppStreamCompose {
         // Conflicted with AppStreamCompose.Unit.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DirectoryUnit.SignalSignatures>(
+            signal: K,
+            callback: DirectoryUnit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectoryUnit.SignalSignatures>(
+            signal: K,
+            callback: DirectoryUnit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectoryUnit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectoryUnit.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -740,7 +770,6 @@ export namespace AppStreamCompose {
 
     class Hint extends GObject.Object {
         static $gtype: GObject.GType<Hint>;
-        declare static readonly __signalSignatures: Hint.SignalSignatures;
 
         // Constructors
 
@@ -751,6 +780,12 @@ export namespace AppStreamCompose {
         static ['new'](): Hint;
 
         static new_for_tag(tag: string): Hint;
+
+        // Signals
+
+        connect<K extends keyof Hint.SignalSignatures>(signal: K, callback: Hint.SignalSignatures[K]): number;
+        connect_after<K extends keyof Hint.SignalSignatures>(signal: K, callback: Hint.SignalSignatures[K]): number;
+        emit<K extends keyof Hint.SignalSignatures>(signal: K, ...args: Parameters<Hint.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -819,7 +854,6 @@ export namespace AppStreamCompose {
 
     class IconPolicy extends GObject.Object {
         static $gtype: GObject.GType<IconPolicy>;
-        declare static readonly __signalSignatures: IconPolicy.SignalSignatures;
 
         // Constructors
 
@@ -828,6 +862,21 @@ export namespace AppStreamCompose {
         _init(...args: any[]): void;
 
         static ['new'](): IconPolicy;
+
+        // Signals
+
+        connect<K extends keyof IconPolicy.SignalSignatures>(
+            signal: K,
+            callback: IconPolicy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IconPolicy.SignalSignatures>(
+            signal: K,
+            callback: IconPolicy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IconPolicy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IconPolicy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -861,7 +910,6 @@ export namespace AppStreamCompose {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -880,6 +928,12 @@ export namespace AppStreamCompose {
         ): Image;
 
         static new_from_file(fname: string, dest_size: number, flags: ImageLoadFlags): Image;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -972,7 +1026,6 @@ export namespace AppStreamCompose {
 
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
-        declare static readonly __signalSignatures: Result.SignalSignatures;
 
         // Constructors
 
@@ -981,6 +1034,12 @@ export namespace AppStreamCompose {
         _init(...args: any[]): void;
 
         static ['new'](): Result;
+
+        // Signals
+
+        connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: Parameters<Result.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1142,7 +1201,6 @@ export namespace AppStreamCompose {
 
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
-        declare static readonly __signalSignatures: Unit.SignalSignatures;
 
         // Constructors
 
@@ -1151,6 +1209,12 @@ export namespace AppStreamCompose {
         _init(...args: any[]): void;
 
         static ['new'](): Unit;
+
+        // Signals
+
+        connect<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        connect_after<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        emit<K extends keyof Unit.SignalSignatures>(signal: K, ...args: Parameters<Unit.SignalSignatures[K]>): void;
 
         // Virtual methods
 

@@ -175,13 +175,27 @@ export namespace Polkit {
      */
     class ActionDescription extends GObject.Object {
         static $gtype: GObject.GType<ActionDescription>;
-        declare static readonly __signalSignatures: ActionDescription.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ActionDescription.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ActionDescription.SignalSignatures>(
+            signal: K,
+            callback: ActionDescription.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActionDescription.SignalSignatures>(
+            signal: K,
+            callback: ActionDescription.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionDescription.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionDescription.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -250,7 +264,7 @@ export namespace Polkit {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Authority): void;
         }
 
         // Signal signatures
@@ -288,7 +302,6 @@ export namespace Polkit {
      */
     class Authority extends GObject.Object implements Gio.AsyncInitable<Authority>, Gio.Initable {
         static $gtype: GObject.GType<Authority>;
-        declare static readonly __signalSignatures: Authority.SignalSignatures;
 
         // Properties
 
@@ -334,12 +347,6 @@ export namespace Polkit {
             signal: K,
             ...args: Parameters<Authority.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -1951,7 +1958,6 @@ export namespace Polkit {
      */
     class AuthorizationResult extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationResult>;
-        declare static readonly __signalSignatures: AuthorizationResult.SignalSignatures;
 
         // Constructors
 
@@ -1960,6 +1966,21 @@ export namespace Polkit {
         _init(...args: any[]): void;
 
         static ['new'](is_authorized: boolean, is_challenge: boolean, details?: Details | null): AuthorizationResult;
+
+        // Signals
+
+        connect<K extends keyof AuthorizationResult.SignalSignatures>(
+            signal: K,
+            callback: AuthorizationResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthorizationResult.SignalSignatures>(
+            signal: K,
+            callback: AuthorizationResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthorizationResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthorizationResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2037,7 +2058,6 @@ export namespace Polkit {
      */
     class Details extends GObject.Object {
         static $gtype: GObject.GType<Details>;
-        declare static readonly __signalSignatures: Details.SignalSignatures;
 
         // Constructors
 
@@ -2046,6 +2066,18 @@ export namespace Polkit {
         _init(...args: any[]): void;
 
         static ['new'](): Details;
+
+        // Signals
+
+        connect<K extends keyof Details.SignalSignatures>(signal: K, callback: Details.SignalSignatures[K]): number;
+        connect_after<K extends keyof Details.SignalSignatures>(
+            signal: K,
+            callback: Details.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Details.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Details.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2093,7 +2125,6 @@ export namespace Polkit {
      */
     class Permission extends Gio.Permission implements Gio.AsyncInitable<Permission>, Gio.Initable {
         static $gtype: GObject.GType<Permission>;
-        declare static readonly __signalSignatures: Permission.SignalSignatures;
 
         // Properties
 
@@ -2123,6 +2154,21 @@ export namespace Polkit {
         static new_finish(...args: never[]): any;
 
         static new_sync(action_id: string, subject?: Subject | null, cancellable?: Gio.Cancellable | null): Permission;
+
+        // Signals
+
+        connect<K extends keyof Permission.SignalSignatures>(
+            signal: K,
+            callback: Permission.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Permission.SignalSignatures>(
+            signal: K,
+            callback: Permission.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Permission.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Permission.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2903,7 +2949,6 @@ export namespace Polkit {
      */
     class SystemBusName extends GObject.Object implements Subject {
         static $gtype: GObject.GType<SystemBusName>;
-        declare static readonly __signalSignatures: SystemBusName.SignalSignatures;
 
         // Properties
 
@@ -2918,6 +2963,21 @@ export namespace Polkit {
         constructor(properties?: Partial<SystemBusName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SystemBusName.SignalSignatures>(
+            signal: K,
+            callback: SystemBusName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemBusName.SignalSignatures>(
+            signal: K,
+            callback: SystemBusName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemBusName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemBusName.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3529,13 +3589,27 @@ export namespace Polkit {
      */
     class TemporaryAuthorization extends GObject.Object {
         static $gtype: GObject.GType<TemporaryAuthorization>;
-        declare static readonly __signalSignatures: TemporaryAuthorization.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TemporaryAuthorization.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TemporaryAuthorization.SignalSignatures>(
+            signal: K,
+            callback: TemporaryAuthorization.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TemporaryAuthorization.SignalSignatures>(
+            signal: K,
+            callback: TemporaryAuthorization.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TemporaryAuthorization.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TemporaryAuthorization.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3588,7 +3662,6 @@ export namespace Polkit {
      */
     class UnixGroup extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixGroup>;
-        declare static readonly __signalSignatures: UnixGroup.SignalSignatures;
 
         // Properties
 
@@ -3603,6 +3676,18 @@ export namespace Polkit {
         constructor(properties?: Partial<UnixGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnixGroup.SignalSignatures>(signal: K, callback: UnixGroup.SignalSignatures[K]): number;
+        connect_after<K extends keyof UnixGroup.SignalSignatures>(
+            signal: K,
+            callback: UnixGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixGroup.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4124,7 +4209,6 @@ export namespace Polkit {
      */
     class UnixNetgroup extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixNetgroup>;
-        declare static readonly __signalSignatures: UnixNetgroup.SignalSignatures;
 
         // Properties
 
@@ -4139,6 +4223,21 @@ export namespace Polkit {
         constructor(properties?: Partial<UnixNetgroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnixNetgroup.SignalSignatures>(
+            signal: K,
+            callback: UnixNetgroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixNetgroup.SignalSignatures>(
+            signal: K,
+            callback: UnixNetgroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixNetgroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixNetgroup.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4672,7 +4771,6 @@ export namespace Polkit {
      */
     class UnixProcess extends GObject.Object implements Subject {
         static $gtype: GObject.GType<UnixProcess>;
-        declare static readonly __signalSignatures: UnixProcess.SignalSignatures;
 
         // Properties
 
@@ -4704,6 +4802,21 @@ export namespace Polkit {
         constructor(properties?: Partial<UnixProcess.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnixProcess.SignalSignatures>(
+            signal: K,
+            callback: UnixProcess.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixProcess.SignalSignatures>(
+            signal: K,
+            callback: UnixProcess.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixProcess.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixProcess.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5363,7 +5476,6 @@ export namespace Polkit {
      */
     class UnixSession extends GObject.Object implements Gio.AsyncInitable<UnixSession>, Gio.Initable, Subject {
         static $gtype: GObject.GType<UnixSession>;
-        declare static readonly __signalSignatures: UnixSession.SignalSignatures;
 
         // Properties
 
@@ -5387,6 +5499,21 @@ export namespace Polkit {
         constructor(properties?: Partial<UnixSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnixSession.SignalSignatures>(
+            signal: K,
+            callback: UnixSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixSession.SignalSignatures>(
+            signal: K,
+            callback: UnixSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixSession.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6307,7 +6434,6 @@ export namespace Polkit {
      */
     class UnixUser extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixUser>;
-        declare static readonly __signalSignatures: UnixUser.SignalSignatures;
 
         // Properties
 
@@ -6322,6 +6448,18 @@ export namespace Polkit {
         constructor(properties?: Partial<UnixUser.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnixUser.SignalSignatures>(signal: K, callback: UnixUser.SignalSignatures[K]): number;
+        connect_after<K extends keyof UnixUser.SignalSignatures>(
+            signal: K,
+            callback: UnixUser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixUser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixUser.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

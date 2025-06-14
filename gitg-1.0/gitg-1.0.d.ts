@@ -254,7 +254,6 @@ export namespace Gitg {
 
     class Async {
         static $gtype: GObject.GType<Async>;
-        declare static readonly __signalSignatures: Async.SignalSignatures;
 
         // Fields
 
@@ -265,6 +264,12 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): Async;
+
+        // Signals
+
+        connect<K extends keyof Async.SignalSignatures>(signal: K, callback: Async.SignalSignatures[K]): number;
+        connect_after<K extends keyof Async.SignalSignatures>(signal: K, callback: Async.SignalSignatures[K]): number;
+        emit<K extends keyof Async.SignalSignatures>(signal: K, ...args: Parameters<Async.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -290,7 +295,6 @@ export namespace Gitg {
 
     class AuthenticationDialog extends Gtk.Dialog {
         static $gtype: GObject.GType<AuthenticationDialog>;
-        declare static readonly __signalSignatures: AuthenticationDialog.SignalSignatures;
 
         // Properties
 
@@ -310,6 +314,21 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof AuthenticationDialog.SignalSignatures>(
+            signal: K,
+            callback: AuthenticationDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthenticationDialog.SignalSignatures>(
+            signal: K,
+            callback: AuthenticationDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthenticationDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthenticationDialog.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_username(): string;
@@ -328,13 +347,27 @@ export namespace Gitg {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
-        declare static readonly __signalSignatures: AvatarCache.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AvatarCache.SignalSignatures>(
+            signal: K,
+            callback: AvatarCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AvatarCache.SignalSignatures>(
+            signal: K,
+            callback: AvatarCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AvatarCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AvatarCache.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -372,7 +405,6 @@ export namespace Gitg {
 
     class BranchBase extends Ggit.Branch implements Ref, Branch {
         static $gtype: GObject.GType<BranchBase>;
-        declare static readonly __signalSignatures: BranchBase.SignalSignatures;
 
         // Constructors
 
@@ -381,6 +413,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): BranchBase;
+
+        // Signals
+
+        connect<K extends keyof BranchBase.SignalSignatures>(
+            signal: K,
+            callback: BranchBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BranchBase.SignalSignatures>(
+            signal: K,
+            callback: BranchBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BranchBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BranchBase.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get d_parsed_name(): ParsedRefName;
@@ -607,7 +654,6 @@ export namespace Gitg {
 
     class CellRendererLanes extends Gtk.CellRendererText {
         static $gtype: GObject.GType<CellRendererLanes>;
-        declare static readonly __signalSignatures: CellRendererLanes.SignalSignatures;
 
         // Properties
 
@@ -635,6 +681,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): CellRendererLanes;
+
+        // Signals
+
+        connect<K extends keyof CellRendererLanes.SignalSignatures>(
+            signal: K,
+            callback: CellRendererLanes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererLanes.SignalSignatures>(
+            signal: K,
+            callback: CellRendererLanes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererLanes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererLanes.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -666,7 +727,6 @@ export namespace Gitg {
 
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
-        declare static readonly __signalSignatures: Color.SignalSignatures;
 
         // Properties
 
@@ -685,6 +745,12 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): Color;
+
+        // Signals
+
+        connect<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        emit<K extends keyof Color.SignalSignatures>(signal: K, ...args: Parameters<Color.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -712,7 +778,6 @@ export namespace Gitg {
 
     class CommitListView extends Gtk.TreeView implements Gtk.Buildable {
         static $gtype: GObject.GType<CommitListView>;
-        declare static readonly __signalSignatures: CommitListView.SignalSignatures;
 
         // Constructors
 
@@ -726,6 +791,21 @@ export namespace Gitg {
         static ['new'](...args: never[]): any;
 
         static for_repository(repository: Repository): CommitListView;
+
+        // Signals
+
+        connect<K extends keyof CommitListView.SignalSignatures>(
+            signal: K,
+            callback: CommitListView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommitListView.SignalSignatures>(
+            signal: K,
+            callback: CommitListView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommitListView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommitListView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1177,23 +1257,23 @@ export namespace Gitg {
         // Signal callback interfaces
 
         interface Started {
-            (): void;
+            (_source: CommitModel): void;
         }
 
         interface Update {
-            (added: number): void;
+            (_source: CommitModel, added: number): void;
         }
 
         interface Finished {
-            (): void;
+            (_source: CommitModel): void;
         }
 
         interface BeginClear {
-            (): void;
+            (_source: CommitModel): void;
         }
 
         interface EndClear {
-            (): void;
+            (_source: CommitModel): void;
         }
 
         // Signal signatures
@@ -1217,7 +1297,6 @@ export namespace Gitg {
 
     class CommitModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<CommitModel>;
-        declare static readonly __signalSignatures: CommitModel.SignalSignatures;
 
         // Properties
 
@@ -1252,24 +1331,6 @@ export namespace Gitg {
             signal: K,
             ...args: Parameters<CommitModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
-        connect(signal: 'update', callback: (_source: this, added: number) => void): number;
-        connect_after(signal: 'update', callback: (_source: this, added: number) => void): number;
-        emit(signal: 'update', added: number): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'begin-clear', callback: (_source: this) => void): number;
-        connect_after(signal: 'begin-clear', callback: (_source: this) => void): number;
-        emit(signal: 'begin-clear'): void;
-        connect(signal: 'end-clear', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-clear', callback: (_source: this) => void): number;
-        emit(signal: 'end-clear'): void;
 
         // Methods
 
@@ -2155,7 +2216,6 @@ export namespace Gitg {
 
     class Commit extends Ggit.Commit {
         static $gtype: GObject.GType<Commit>;
-        declare static readonly __signalSignatures: Commit.SignalSignatures;
 
         // Properties
 
@@ -2178,6 +2238,12 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): Commit;
+
+        // Signals
+
+        connect<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
+        connect_after<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
+        emit<K extends keyof Commit.SignalSignatures>(signal: K, ...args: Parameters<Commit.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2204,7 +2270,6 @@ export namespace Gitg {
 
     class CredentialsManager {
         static $gtype: GObject.GType<CredentialsManager>;
-        declare static readonly __signalSignatures: CredentialsManager.SignalSignatures;
 
         // Fields
 
@@ -2219,6 +2284,21 @@ export namespace Gitg {
             window: Gtk.Window,
             save_user_in_config: boolean,
         ): CredentialsManager;
+
+        // Signals
+
+        connect<K extends keyof CredentialsManager.SignalSignatures>(
+            signal: K,
+            callback: CredentialsManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredentialsManager.SignalSignatures>(
+            signal: K,
+            callback: CredentialsManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredentialsManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredentialsManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2240,7 +2320,6 @@ export namespace Gitg {
 
     class Date extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Date>;
-        declare static readonly __signalSignatures: Date.SignalSignatures;
 
         // Properties
 
@@ -2259,6 +2338,12 @@ export namespace Gitg {
         static ['new'](date: string): Date;
 
         static for_date_time(dt: GLib.DateTime): Date;
+
+        // Signals
+
+        connect<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
+        connect_after<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
+        emit<K extends keyof Date.SignalSignatures>(signal: K, ...args: Parameters<Date.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2812,7 +2897,6 @@ export namespace Gitg {
 
     class DiffStat extends Gtk.DrawingArea {
         static $gtype: GObject.GType<DiffStat>;
-        declare static readonly __signalSignatures: DiffStat.SignalSignatures;
 
         // Properties
 
@@ -2828,6 +2912,18 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): DiffStat;
+
+        // Signals
+
+        connect<K extends keyof DiffStat.SignalSignatures>(signal: K, callback: DiffStat.SignalSignatures[K]): number;
+        connect_after<K extends keyof DiffStat.SignalSignatures>(
+            signal: K,
+            callback: DiffStat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiffStat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiffStat.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2852,7 +2948,6 @@ export namespace Gitg {
 
     class DiffViewOptions extends Gtk.Toolbar {
         static $gtype: GObject.GType<DiffViewOptions>;
-        declare static readonly __signalSignatures: DiffViewOptions.SignalSignatures;
 
         // Properties
 
@@ -2874,6 +2969,21 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof DiffViewOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffViewOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiffViewOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffViewOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiffViewOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiffViewOptions.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_context_lines(): number;
@@ -2886,7 +2996,7 @@ export namespace Gitg {
         // Signal callback interfaces
 
         interface OptionsChanged {
-            (): void;
+            (_source: DiffView): void;
         }
 
         // Signal signatures
@@ -2931,7 +3041,6 @@ export namespace Gitg {
 
     class DiffView extends Gtk.Grid {
         static $gtype: GObject.GType<DiffView>;
-        declare static readonly __signalSignatures: DiffView.SignalSignatures;
 
         // Properties
 
@@ -3012,12 +3121,6 @@ export namespace Gitg {
             signal: K,
             ...args: Parameters<DiffView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'options-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'options-changed', callback: (_source: this) => void): number;
-        emit(signal: 'options-changed'): void;
 
         // Virtual methods
 
@@ -3083,7 +3186,6 @@ export namespace Gitg {
 
     class FontManager extends GObject.Object {
         static $gtype: GObject.GType<FontManager>;
-        declare static readonly __signalSignatures: FontManager.SignalSignatures;
 
         // Constructors
 
@@ -3092,6 +3194,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](text_view: Gtk.TextView, plugin: boolean): FontManager;
+
+        // Signals
+
+        connect<K extends keyof FontManager.SignalSignatures>(
+            signal: K,
+            callback: FontManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FontManager.SignalSignatures>(
+            signal: K,
+            callback: FontManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontManager.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GPGUtils {
@@ -3101,7 +3218,6 @@ export namespace Gitg {
 
     class GPGUtils {
         static $gtype: GObject.GType<GPGUtils>;
-        declare static readonly __signalSignatures: GPGUtils.SignalSignatures;
 
         // Fields
 
@@ -3112,6 +3228,18 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): GPGUtils;
+
+        // Signals
+
+        connect<K extends keyof GPGUtils.SignalSignatures>(signal: K, callback: GPGUtils.SignalSignatures[K]): number;
+        connect_after<K extends keyof GPGUtils.SignalSignatures>(
+            signal: K,
+            callback: GPGUtils.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GPGUtils.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GPGUtils.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3135,7 +3263,6 @@ export namespace Gitg {
 
     class Hook extends GObject.Object {
         static $gtype: GObject.GType<Hook>;
-        declare static readonly __signalSignatures: Hook.SignalSignatures;
 
         // Properties
 
@@ -3156,6 +3283,12 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Hook;
+
+        // Signals
+
+        connect<K extends keyof Hook.SignalSignatures>(signal: K, callback: Hook.SignalSignatures[K]): number;
+        connect_after<K extends keyof Hook.SignalSignatures>(signal: K, callback: Hook.SignalSignatures[K]): number;
+        emit<K extends keyof Hook.SignalSignatures>(signal: K, ...args: Parameters<Hook.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3182,7 +3315,6 @@ export namespace Gitg {
 
     class LabelRenderer {
         static $gtype: GObject.GType<LabelRenderer>;
-        declare static readonly __signalSignatures: LabelRenderer.SignalSignatures;
 
         // Fields
 
@@ -3193,6 +3325,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): LabelRenderer;
+
+        // Signals
+
+        connect<K extends keyof LabelRenderer.SignalSignatures>(
+            signal: K,
+            callback: LabelRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LabelRenderer.SignalSignatures>(
+            signal: K,
+            callback: LabelRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LabelRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LabelRenderer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3241,7 +3388,6 @@ export namespace Gitg {
 
     class Lanes extends GObject.Object {
         static $gtype: GObject.GType<Lanes>;
-        declare static readonly __signalSignatures: Lanes.SignalSignatures;
 
         // Properties
 
@@ -3274,6 +3420,12 @@ export namespace Gitg {
 
         static ['new'](): Lanes;
 
+        // Signals
+
+        connect<K extends keyof Lanes.SignalSignatures>(signal: K, callback: Lanes.SignalSignatures[K]): number;
+        connect_after<K extends keyof Lanes.SignalSignatures>(signal: K, callback: Lanes.SignalSignatures[K]): number;
+        emit<K extends keyof Lanes.SignalSignatures>(signal: K, ...args: Parameters<Lanes.SignalSignatures[K]>): void;
+
         // Methods
 
         reset(reserved?: Ggit.OId[] | null, roots?: Gee.HashSet | null): void;
@@ -3301,7 +3453,6 @@ export namespace Gitg {
 
     class Lane extends GObject.Object {
         static $gtype: GObject.GType<Lane>;
-        declare static readonly __signalSignatures: Lane.SignalSignatures;
 
         // Fields
 
@@ -3318,6 +3469,12 @@ export namespace Gitg {
         static ['new'](): Lane;
 
         static with_color(color?: Color | null): Lane;
+
+        // Signals
+
+        connect<K extends keyof Lane.SignalSignatures>(signal: K, callback: Lane.SignalSignatures[K]): number;
+        connect_after<K extends keyof Lane.SignalSignatures>(signal: K, callback: Lane.SignalSignatures[K]): number;
+        emit<K extends keyof Lane.SignalSignatures>(signal: K, ...args: Parameters<Lane.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3338,7 +3495,6 @@ export namespace Gitg {
 
     class ProgressBin extends Gtk.Bin {
         static $gtype: GObject.GType<ProgressBin>;
-        declare static readonly __signalSignatures: ProgressBin.SignalSignatures;
 
         // Properties
 
@@ -3352,6 +3508,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): ProgressBin;
+
+        // Signals
+
+        connect<K extends keyof ProgressBin.SignalSignatures>(
+            signal: K,
+            callback: ProgressBin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProgressBin.SignalSignatures>(
+            signal: K,
+            callback: ProgressBin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProgressBin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProgressBin.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3370,7 +3541,6 @@ export namespace Gitg {
 
     class RefBase extends Ggit.Ref implements Ref {
         static $gtype: GObject.GType<RefBase>;
-        declare static readonly __signalSignatures: RefBase.SignalSignatures;
 
         // Constructors
 
@@ -3379,6 +3549,18 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): RefBase;
+
+        // Signals
+
+        connect<K extends keyof RefBase.SignalSignatures>(signal: K, callback: RefBase.SignalSignatures[K]): number;
+        connect_after<K extends keyof RefBase.SignalSignatures>(
+            signal: K,
+            callback: RefBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RefBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RefBase.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get d_parsed_name(): ParsedRefName;
@@ -3584,7 +3766,6 @@ export namespace Gitg {
 
     class ParsedRefName extends GObject.Object {
         static $gtype: GObject.GType<ParsedRefName>;
-        declare static readonly __signalSignatures: ParsedRefName.SignalSignatures;
 
         // Properties
 
@@ -3606,6 +3787,21 @@ export namespace Gitg {
 
         static ['new'](name: string): ParsedRefName;
 
+        // Signals
+
+        connect<K extends keyof ParsedRefName.SignalSignatures>(
+            signal: K,
+            callback: ParsedRefName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParsedRefName.SignalSignatures>(
+            signal: K,
+            callback: ParsedRefName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParsedRefName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParsedRefName.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_rtype(): RefType;
@@ -3620,7 +3816,7 @@ export namespace Gitg {
         // Signal callback interfaces
 
         interface TipUpdated {
-            (refname: string, a: Ggit.OId, b: Ggit.OId): void;
+            (_source: Remote, refname: string, a: Ggit.OId, b: Ggit.OId): void;
         }
 
         // Signal signatures
@@ -3645,7 +3841,6 @@ export namespace Gitg {
 
     class Remote extends Ggit.Remote {
         static $gtype: GObject.GType<Remote>;
-        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Properties
 
@@ -3676,15 +3871,9 @@ export namespace Gitg {
 
         // Signals
 
+        connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
         emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(
-            signal: 'tip-updated',
-            callback: (_source: this, refname: string, a: Ggit.OId, b: Ggit.OId) => void,
-        ): number;
-        emit(signal: 'tip-updated', refname: string, a: Ggit.OId, b: Ggit.OId): void;
 
         // Methods
 
@@ -3757,11 +3946,11 @@ export namespace Gitg {
         // Signal callback interfaces
 
         interface RepositoryActivated {
-            (repository: Repository): void;
+            (_source: RepositoryListBox, repository: Repository): void;
         }
 
         interface ShowError {
-            (primary_message: string, secondary_message: string): void;
+            (_source: RepositoryListBox, primary_message: string, secondary_message: string): void;
         }
 
         // Signal signatures
@@ -3784,7 +3973,6 @@ export namespace Gitg {
 
     class RepositoryListBox extends Gtk.ListBox {
         static $gtype: GObject.GType<RepositoryListBox>;
-        declare static readonly __signalSignatures: RepositoryListBox.SignalSignatures;
 
         // Properties
 
@@ -3821,24 +4009,6 @@ export namespace Gitg {
             signal: K,
             ...args: Parameters<RepositoryListBox.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'repository-activated', callback: (_source: this, repository: Repository) => void): number;
-        connect_after(
-            signal: 'repository-activated',
-            callback: (_source: this, repository: Repository) => void,
-        ): number;
-        emit(signal: 'repository-activated', repository: Repository): void;
-        connect(
-            signal: 'show-error',
-            callback: (_source: this, primary_message: string, secondary_message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'show-error',
-            callback: (_source: this, primary_message: string, secondary_message: string) => void,
-        ): number;
-        emit(signal: 'show-error', primary_message: string, secondary_message: string): void;
 
         // Methods
 
@@ -3861,11 +4031,11 @@ export namespace Gitg {
         // Signal callback interfaces
 
         interface RequestRemove {
-            (): void;
+            (_source: RepositoryListBoxRow): void;
         }
 
         interface RequestDeleteSource {
-            (): void;
+            (_source: RepositoryListBoxRow): void;
         }
 
         // Signal signatures
@@ -3895,7 +4065,6 @@ export namespace Gitg {
 
     class RepositoryListBoxRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<RepositoryListBoxRow>;
-        declare static readonly __signalSignatures: RepositoryListBoxRow.SignalSignatures;
 
         // Properties
 
@@ -3950,15 +4119,6 @@ export namespace Gitg {
             signal: K,
             ...args: Parameters<RepositoryListBoxRow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'request-remove', callback: (_source: this) => void): number;
-        connect_after(signal: 'request-remove', callback: (_source: this) => void): number;
-        emit(signal: 'request-remove'): void;
-        connect(signal: 'request-delete-source', callback: (_source: this) => void): number;
-        connect_after(signal: 'request-delete-source', callback: (_source: this) => void): number;
-        emit(signal: 'request-delete-source'): void;
 
         // Methods
 
@@ -3997,7 +4157,6 @@ export namespace Gitg {
 
     class Repository extends Ggit.Repository {
         static $gtype: GObject.GType<Repository>;
-        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Properties
 
@@ -4011,6 +4170,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](location: Gio.File, workdir?: Gio.File | null): Repository;
+
+        // Signals
+
+        connect<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Repository.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4055,7 +4229,6 @@ export namespace Gitg {
 
     class Resource {
         static $gtype: GObject.GType<Resource>;
-        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Fields
 
@@ -4066,6 +4239,18 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): Resource;
+
+        // Signals
+
+        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: Resource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resource.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4085,7 +4270,6 @@ export namespace Gitg {
 
     class SidebarStore extends Gtk.TreeStore {
         static $gtype: GObject.GType<SidebarStore>;
-        declare static readonly __signalSignatures: SidebarStore.SignalSignatures;
 
         // Properties
 
@@ -4098,6 +4282,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): SidebarStore;
+
+        // Signals
+
+        connect<K extends keyof SidebarStore.SignalSignatures>(
+            signal: K,
+            callback: SidebarStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SidebarStore.SignalSignatures>(
+            signal: K,
+            callback: SidebarStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SidebarStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SidebarStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4126,7 +4325,6 @@ export namespace Gitg {
 
     class SidebarStoreSidebarText extends GObject.Object implements SidebarItem {
         static $gtype: GObject.GType<SidebarStoreSidebarText>;
-        declare static readonly __signalSignatures: SidebarStoreSidebarText.SignalSignatures;
 
         // Constructors
 
@@ -4135,6 +4333,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](text: string): SidebarStoreSidebarText;
+
+        // Signals
+
+        connect<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
+            signal: K,
+            callback: SidebarStoreSidebarText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
+            signal: K,
+            callback: SidebarStoreSidebarText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SidebarStoreSidebarText.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get text(): string;
@@ -4602,7 +4815,6 @@ export namespace Gitg {
 
     class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
         static $gtype: GObject.GType<SidebarStoreSidebarHeader>;
-        declare static readonly __signalSignatures: SidebarStoreSidebarHeader.SignalSignatures;
 
         // Properties
 
@@ -4619,6 +4831,21 @@ export namespace Gitg {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
+            signal: K,
+            callback: SidebarStoreSidebarHeader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
+            signal: K,
+            callback: SidebarStoreSidebarHeader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SidebarStoreSidebarHeader.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_id(): number;
@@ -4628,11 +4855,11 @@ export namespace Gitg {
         // Signal callback interfaces
 
         interface Deselected {
-            (): void;
+            (_source: Sidebar): void;
         }
 
         interface PopulatePopup {
-            (menu: Gtk.Menu): void;
+            (_source: Sidebar, menu: Gtk.Menu): void;
         }
 
         // Signal signatures
@@ -4650,7 +4877,6 @@ export namespace Gitg {
 
     class Sidebar extends Gtk.TreeView {
         static $gtype: GObject.GType<Sidebar>;
-        declare static readonly __signalSignatures: Sidebar.SignalSignatures;
 
         // Properties
 
@@ -4676,15 +4902,6 @@ export namespace Gitg {
             signal: K,
             ...args: Parameters<Sidebar.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deselected', callback: (_source: this) => void): number;
-        connect_after(signal: 'deselected', callback: (_source: this) => void): number;
-        emit(signal: 'deselected'): void;
-        connect(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        connect_after(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        emit(signal: 'populate-popup', menu: Gtk.Menu): void;
 
         // Virtual methods
 
@@ -4722,7 +4939,6 @@ export namespace Gitg {
 
     class StageStatusFile extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusFile>;
-        declare static readonly __signalSignatures: StageStatusFile.SignalSignatures;
 
         // Properties
 
@@ -4735,6 +4951,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](path: string, flags: Ggit.StatusFlags): StageStatusFile;
+
+        // Signals
+
+        connect<K extends keyof StageStatusFile.SignalSignatures>(
+            signal: K,
+            callback: StageStatusFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StageStatusFile.SignalSignatures>(
+            signal: K,
+            callback: StageStatusFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StageStatusFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StageStatusFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5219,7 +5450,6 @@ export namespace Gitg {
 
     class StageStatusSubmodule extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusSubmodule>;
-        declare static readonly __signalSignatures: StageStatusSubmodule.SignalSignatures;
 
         // Properties
 
@@ -5235,6 +5465,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](submodule: Ggit.Submodule): StageStatusSubmodule;
+
+        // Signals
+
+        connect<K extends keyof StageStatusSubmodule.SignalSignatures>(
+            signal: K,
+            callback: StageStatusSubmodule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StageStatusSubmodule.SignalSignatures>(
+            signal: K,
+            callback: StageStatusSubmodule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StageStatusSubmodule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StageStatusSubmodule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5716,13 +5961,27 @@ export namespace Gitg {
 
     class StageStatusEnumerator extends GObject.Object {
         static $gtype: GObject.GType<StageStatusEnumerator>;
-        declare static readonly __signalSignatures: StageStatusEnumerator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<StageStatusEnumerator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StageStatusEnumerator.SignalSignatures>(
+            signal: K,
+            callback: StageStatusEnumerator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StageStatusEnumerator.SignalSignatures>(
+            signal: K,
+            callback: StageStatusEnumerator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StageStatusEnumerator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StageStatusEnumerator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5740,7 +5999,6 @@ export namespace Gitg {
 
     class PatchSet {
         static $gtype: GObject.GType<PatchSet>;
-        declare static readonly __signalSignatures: PatchSet.SignalSignatures;
 
         // Fields
 
@@ -5753,6 +6011,18 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): PatchSet;
+
+        // Signals
+
+        connect<K extends keyof PatchSet.SignalSignatures>(signal: K, callback: PatchSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof PatchSet.SignalSignatures>(
+            signal: K,
+            callback: PatchSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PatchSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PatchSet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5770,13 +6040,18 @@ export namespace Gitg {
 
     class Stage extends GObject.Object {
         static $gtype: GObject.GType<Stage>;
-        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Stage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5983,7 +6258,6 @@ export namespace Gitg {
 
     class TextConv {
         static $gtype: GObject.GType<TextConv>;
-        declare static readonly __signalSignatures: TextConv.SignalSignatures;
 
         // Fields
 
@@ -5994,6 +6268,18 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): TextConv;
+
+        // Signals
+
+        connect<K extends keyof TextConv.SignalSignatures>(signal: K, callback: TextConv.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextConv.SignalSignatures>(
+            signal: K,
+            callback: TextConv.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextConv.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextConv.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6017,7 +6303,6 @@ export namespace Gitg {
 
     class Theme extends Gtk.Widget {
         static $gtype: GObject.GType<Theme>;
-        declare static readonly __signalSignatures: Theme.SignalSignatures;
 
         // Constructors
 
@@ -6026,6 +6311,12 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): Theme;
+
+        // Signals
+
+        connect<K extends keyof Theme.SignalSignatures>(signal: K, callback: Theme.SignalSignatures[K]): number;
+        connect_after<K extends keyof Theme.SignalSignatures>(signal: K, callback: Theme.SignalSignatures[K]): number;
+        emit<K extends keyof Theme.SignalSignatures>(signal: K, ...args: Parameters<Theme.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -6043,7 +6334,6 @@ export namespace Gitg {
 
     class Utils {
         static $gtype: GObject.GType<Utils>;
-        declare static readonly __signalSignatures: Utils.SignalSignatures;
 
         // Fields
 
@@ -6054,6 +6344,12 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](): Utils;
+
+        // Signals
+
+        connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: Parameters<Utils.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -6072,7 +6368,6 @@ export namespace Gitg {
 
     class WhenMapped {
         static $gtype: GObject.GType<WhenMapped>;
-        declare static readonly __signalSignatures: WhenMapped.SignalSignatures;
 
         // Fields
 
@@ -6083,6 +6378,21 @@ export namespace Gitg {
         _init(...args: any[]): void;
 
         static ['new'](widget: Gtk.Widget): WhenMapped;
+
+        // Signals
+
+        connect<K extends keyof WhenMapped.SignalSignatures>(
+            signal: K,
+            callback: WhenMapped.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WhenMapped.SignalSignatures>(
+            signal: K,
+            callback: WhenMapped.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WhenMapped.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WhenMapped.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

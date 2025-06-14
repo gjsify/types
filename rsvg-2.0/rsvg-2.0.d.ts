@@ -510,7 +510,6 @@ export namespace Rsvg {
      */
     class Handle extends GObject.Object {
         static $gtype: GObject.GType<Handle>;
-        declare static readonly __signalSignatures: Handle.SignalSignatures;
 
         // Properties
 
@@ -617,6 +616,12 @@ export namespace Rsvg {
         ): Handle;
 
         static new_with_flags(flags: HandleFlags): Handle;
+
+        // Signals
+
+        connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: Parameters<Handle.SignalSignatures[K]>): void;
 
         // Methods
 

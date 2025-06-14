@@ -24,35 +24,36 @@ export namespace Fcitx {
         // Signal callback interfaces
 
         interface CloseIm {
-            (): void;
+            (_source: Client): void;
         }
 
         interface CommitString {
-            (string: string): void;
+            (_source: Client, string: string): void;
         }
 
         interface Connected {
-            (): void;
+            (_source: Client): void;
         }
 
         interface DeleteSurroundingText {
-            (cursor: number, len: number): void;
+            (_source: Client, cursor: number, len: number): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Client): void;
         }
 
         interface EnableIm {
-            (): void;
+            (_source: Client): void;
         }
 
         interface ForwardKey {
-            (keyval: number, state: number, type: number): void;
+            (_source: Client, keyval: number, state: number, type: number): void;
         }
 
         interface UpdateClientSideUi {
             (
+                _source: Client,
                 auxup: string,
                 auxdown: string,
                 preedit: string,
@@ -63,7 +64,7 @@ export namespace Fcitx {
         }
 
         interface UpdateFormattedPreedit {
-            (preedit: PreeditItem[], cursor: number): void;
+            (_source: Client, preedit: PreeditItem[], cursor: number): void;
         }
 
         // Signal signatures
@@ -91,7 +92,6 @@ export namespace Fcitx {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -112,84 +112,6 @@ export namespace Fcitx {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close-im', callback: (_source: this) => void): number;
-        connect_after(signal: 'close-im', callback: (_source: this) => void): number;
-        emit(signal: 'close-im'): void;
-        connect(signal: 'commit-string', callback: (_source: this, string: string) => void): number;
-        connect_after(signal: 'commit-string', callback: (_source: this, string: string) => void): number;
-        emit(signal: 'commit-string', string: string): void;
-        connect(signal: 'connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'connected', callback: (_source: this) => void): number;
-        emit(signal: 'connected'): void;
-        connect(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, cursor: number, len: number) => void,
-        ): number;
-        connect_after(
-            signal: 'delete-surrounding-text',
-            callback: (_source: this, cursor: number, len: number) => void,
-        ): number;
-        emit(signal: 'delete-surrounding-text', cursor: number, len: number): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
-        connect(signal: 'enable-im', callback: (_source: this) => void): number;
-        connect_after(signal: 'enable-im', callback: (_source: this) => void): number;
-        emit(signal: 'enable-im'): void;
-        connect(
-            signal: 'forward-key',
-            callback: (_source: this, keyval: number, state: number, type: number) => void,
-        ): number;
-        connect_after(
-            signal: 'forward-key',
-            callback: (_source: this, keyval: number, state: number, type: number) => void,
-        ): number;
-        emit(signal: 'forward-key', keyval: number, state: number, type: number): void;
-        connect(
-            signal: 'update-client-side-ui',
-            callback: (
-                _source: this,
-                auxup: string,
-                auxdown: string,
-                preedit: string,
-                candidateword: string,
-                imname: string,
-                cursor_pos: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'update-client-side-ui',
-            callback: (
-                _source: this,
-                auxup: string,
-                auxdown: string,
-                preedit: string,
-                candidateword: string,
-                imname: string,
-                cursor_pos: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'update-client-side-ui',
-            auxup: string,
-            auxdown: string,
-            preedit: string,
-            candidateword: string,
-            imname: string,
-            cursor_pos: number,
-        ): void;
-        connect(
-            signal: 'update-formatted-preedit',
-            callback: (_source: this, preedit: PreeditItem[], cursor: number) => void,
-        ): number;
-        connect_after(
-            signal: 'update-formatted-preedit',
-            callback: (_source: this, preedit: PreeditItem[], cursor: number) => void,
-        ): number;
-        emit(signal: 'update-formatted-preedit', preedit: PreeditItem[], cursor: number): void;
 
         // Methods
 
@@ -316,11 +238,11 @@ export namespace Fcitx {
         // Signal callback interfaces
 
         interface Connected {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Connection): void;
         }
 
         // Signal signatures
@@ -339,7 +261,6 @@ export namespace Fcitx {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Constructors
 
@@ -363,15 +284,6 @@ export namespace Fcitx {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'connected', callback: (_source: this) => void): number;
-        emit(signal: 'connected'): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
 
         // Methods
 
@@ -391,7 +303,7 @@ export namespace Fcitx {
         // Signal callback interfaces
 
         interface ImlistChanged {
-            (): void;
+            (_source: InputMethod): void;
         }
 
         // Signal signatures
@@ -416,7 +328,6 @@ export namespace Fcitx {
      */
     class InputMethod extends Gio.DBusProxy implements Gio.AsyncInitable<InputMethod>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputMethod>;
-        declare static readonly __signalSignatures: InputMethod.SignalSignatures;
 
         // Properties
 
@@ -461,12 +372,6 @@ export namespace Fcitx {
             signal: K,
             ...args: Parameters<InputMethod.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'imlist-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'imlist-changed', callback: (_source: this) => void): number;
-        emit(signal: 'imlist-changed'): void;
 
         // Methods
 
@@ -1325,7 +1230,6 @@ export namespace Fcitx {
      */
     class Kbd extends Gio.DBusProxy implements Gio.AsyncInitable<Kbd>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Kbd>;
-        declare static readonly __signalSignatures: Kbd.SignalSignatures;
 
         // Constructors
 
@@ -1342,6 +1246,12 @@ export namespace Fcitx {
         // Conflicted with Gio.DBusProxy.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
+        connect_after<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
+        emit<K extends keyof Kbd.SignalSignatures>(signal: K, ...args: Parameters<Kbd.SignalSignatures[K]>): void;
 
         // Methods
 

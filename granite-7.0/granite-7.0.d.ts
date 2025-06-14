@@ -176,7 +176,7 @@ export namespace Granite {
         // Signal callback interfaces
 
         interface ContractsChanged {
-            (): void;
+            (_source: ServicesContractorProxy): void;
         }
 
         // Signal signatures
@@ -191,7 +191,6 @@ export namespace Granite {
 
     class ServicesContractorProxy extends GObject.Object {
         static $gtype: GObject.GType<ServicesContractorProxy>;
-        declare static readonly __signalSignatures: ServicesContractorProxy.SignalSignatures;
 
         // Constructors
 
@@ -213,12 +212,6 @@ export namespace Granite {
             signal: K,
             ...args: Parameters<ServicesContractorProxy.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'contracts-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'contracts-changed', callback: (_source: this) => void): number;
-        emit(signal: 'contracts-changed'): void;
 
         // Static methods
 
@@ -241,7 +234,6 @@ export namespace Granite {
 
     class ServicesSystem extends GObject.Object {
         static $gtype: GObject.GType<ServicesSystem>;
-        declare static readonly __signalSignatures: ServicesSystem.SignalSignatures;
 
         // Constructors
 
@@ -250,6 +242,21 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](): ServicesSystem;
+
+        // Signals
+
+        connect<K extends keyof ServicesSystem.SignalSignatures>(
+            signal: K,
+            callback: ServicesSystem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServicesSystem.SignalSignatures>(
+            signal: K,
+            callback: ServicesSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServicesSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServicesSystem.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -278,7 +285,6 @@ export namespace Granite {
 
     abstract class SettingsPage extends Gtk.Box {
         static $gtype: GObject.GType<SettingsPage>;
-        declare static readonly __signalSignatures: SettingsPage.SignalSignatures;
 
         // Properties
 
@@ -305,6 +311,21 @@ export namespace Granite {
         constructor(properties?: Partial<SettingsPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SettingsPage.SignalSignatures>(
+            signal: K,
+            callback: SettingsPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsPage.SignalSignatures>(
+            signal: K,
+            callback: SettingsPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsPage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -342,7 +363,6 @@ export namespace Granite {
 
     abstract class SimpleSettingsPage extends SettingsPage {
         static $gtype: GObject.GType<SimpleSettingsPage>;
-        declare static readonly __signalSignatures: SimpleSettingsPage.SignalSignatures;
 
         // Properties
 
@@ -361,6 +381,21 @@ export namespace Granite {
         constructor(properties?: Partial<SimpleSettingsPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SimpleSettingsPage.SignalSignatures>(
+            signal: K,
+            callback: SimpleSettingsPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleSettingsPage.SignalSignatures>(
+            signal: K,
+            callback: SimpleSettingsPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleSettingsPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleSettingsPage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -389,7 +424,6 @@ export namespace Granite {
 
     class AccelLabel extends Gtk.Box {
         static $gtype: GObject.GType<AccelLabel>;
-        declare static readonly __signalSignatures: AccelLabel.SignalSignatures;
 
         // Properties
 
@@ -417,6 +451,21 @@ export namespace Granite {
 
         static from_action_name(label: string, action_name: string): AccelLabel;
 
+        // Signals
+
+        connect<K extends keyof AccelLabel.SignalSignatures>(
+            signal: K,
+            callback: AccelLabel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccelLabel.SignalSignatures>(
+            signal: K,
+            callback: AccelLabel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccelLabel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccelLabel.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_action_name(): string;
@@ -441,7 +490,6 @@ export namespace Granite {
 
     class DatePicker extends Gtk.Entry implements Gtk.Buildable {
         static $gtype: GObject.GType<DatePicker>;
-        declare static readonly __signalSignatures: DatePicker.SignalSignatures;
 
         // Properties
 
@@ -458,6 +506,21 @@ export namespace Granite {
         static with_format(format: string): DatePicker;
 
         static ['new'](): DatePicker;
+
+        // Signals
+
+        connect<K extends keyof DatePicker.SignalSignatures>(
+            signal: K,
+            callback: DatePicker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DatePicker.SignalSignatures>(
+            signal: K,
+            callback: DatePicker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DatePicker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DatePicker.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -918,7 +981,6 @@ export namespace Granite {
 
     class Dialog extends Gtk.Dialog {
         static $gtype: GObject.GType<Dialog>;
-        declare static readonly __signalSignatures: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -927,6 +989,12 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](): Dialog;
+
+        // Signals
+
+        connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
+        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: Parameters<Dialog.SignalSignatures[K]>): void;
     }
 
     namespace HeaderLabel {
@@ -944,7 +1012,6 @@ export namespace Granite {
 
     class HeaderLabel extends Gtk.Widget {
         static $gtype: GObject.GType<HeaderLabel>;
-        declare static readonly __signalSignatures: HeaderLabel.SignalSignatures;
 
         // Properties
 
@@ -962,6 +1029,21 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](label: string): HeaderLabel;
+
+        // Signals
+
+        connect<K extends keyof HeaderLabel.SignalSignatures>(
+            signal: K,
+            callback: HeaderLabel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderLabel.SignalSignatures>(
+            signal: K,
+            callback: HeaderLabel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderLabel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderLabel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -982,7 +1064,6 @@ export namespace Granite {
 
     class HyperTextView extends Gtk.TextView {
         static $gtype: GObject.GType<HyperTextView>;
-        declare static readonly __signalSignatures: HyperTextView.SignalSignatures;
 
         // Constructors
 
@@ -991,6 +1072,21 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](): HyperTextView;
+
+        // Signals
+
+        connect<K extends keyof HyperTextView.SignalSignatures>(
+            signal: K,
+            callback: HyperTextView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HyperTextView.SignalSignatures>(
+            signal: K,
+            callback: HyperTextView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HyperTextView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HyperTextView.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MessageDialog {
@@ -1020,7 +1116,6 @@ export namespace Granite {
 
     class MessageDialog extends Dialog {
         static $gtype: GObject.GType<MessageDialog>;
-        declare static readonly __signalSignatures: MessageDialog.SignalSignatures;
 
         // Properties
 
@@ -1071,6 +1166,21 @@ export namespace Granite {
             buttons: Gtk.ButtonsType,
         ): MessageDialog;
 
+        // Signals
+
+        connect<K extends keyof MessageDialog.SignalSignatures>(
+            signal: K,
+            callback: MessageDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MessageDialog.SignalSignatures>(
+            signal: K,
+            callback: MessageDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageDialog.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_primary_text(): string;
@@ -1112,7 +1222,6 @@ export namespace Granite {
 
     class ModeSwitch extends Gtk.Box {
         static $gtype: GObject.GType<ModeSwitch>;
-        declare static readonly __signalSignatures: ModeSwitch.SignalSignatures;
 
         // Properties
 
@@ -1156,6 +1265,21 @@ export namespace Granite {
 
         static from_icon_name(primary_icon_name: string, secondary_icon_name: string): ModeSwitch;
 
+        // Signals
+
+        connect<K extends keyof ModeSwitch.SignalSignatures>(
+            signal: K,
+            callback: ModeSwitch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ModeSwitch.SignalSignatures>(
+            signal: K,
+            callback: ModeSwitch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModeSwitch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModeSwitch.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_active(): boolean;
@@ -1189,7 +1313,6 @@ export namespace Granite {
 
     class OverlayBar extends Gtk.Widget {
         static $gtype: GObject.GType<OverlayBar>;
-        declare static readonly __signalSignatures: OverlayBar.SignalSignatures;
 
         // Properties
 
@@ -1206,6 +1329,21 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](overlay?: Gtk.Overlay | null): OverlayBar;
+
+        // Signals
+
+        connect<K extends keyof OverlayBar.SignalSignatures>(
+            signal: K,
+            callback: OverlayBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OverlayBar.SignalSignatures>(
+            signal: K,
+            callback: OverlayBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OverlayBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OverlayBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1231,7 +1369,6 @@ export namespace Granite {
 
     class Placeholder extends Gtk.Widget {
         static $gtype: GObject.GType<Placeholder>;
-        declare static readonly __signalSignatures: Placeholder.SignalSignatures;
 
         // Properties
 
@@ -1249,6 +1386,21 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](title: string): Placeholder;
+
+        // Signals
+
+        connect<K extends keyof Placeholder.SignalSignatures>(
+            signal: K,
+            callback: Placeholder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Placeholder.SignalSignatures>(
+            signal: K,
+            callback: Placeholder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Placeholder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Placeholder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1276,7 +1428,6 @@ export namespace Granite {
 
     class SettingsSidebar extends Gtk.Widget {
         static $gtype: GObject.GType<SettingsSidebar>;
-        declare static readonly __signalSignatures: SettingsSidebar.SignalSignatures;
 
         // Properties
 
@@ -1293,6 +1444,21 @@ export namespace Granite {
         _init(...args: any[]): void;
 
         static ['new'](stack: Gtk.Stack): SettingsSidebar;
+
+        // Signals
+
+        connect<K extends keyof SettingsSidebar.SignalSignatures>(
+            signal: K,
+            callback: SettingsSidebar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsSidebar.SignalSignatures>(
+            signal: K,
+            callback: SettingsSidebar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsSidebar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsSidebar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1315,7 +1481,6 @@ export namespace Granite {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -1329,6 +1494,18 @@ export namespace Granite {
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1353,7 +1530,6 @@ export namespace Granite {
 
     class SwitchModelButton extends Gtk.ToggleButton {
         static $gtype: GObject.GType<SwitchModelButton>;
-        declare static readonly __signalSignatures: SwitchModelButton.SignalSignatures;
 
         // Properties
 
@@ -1373,6 +1549,21 @@ export namespace Granite {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof SwitchModelButton.SignalSignatures>(
+            signal: K,
+            callback: SwitchModelButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwitchModelButton.SignalSignatures>(
+            signal: K,
+            callback: SwitchModelButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwitchModelButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwitchModelButton.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_text(): string;
@@ -1385,7 +1576,7 @@ export namespace Granite {
         // Signal callback interfaces
 
         interface TimeChanged {
-            (): void;
+            (_source: TimePicker): void;
         }
 
         // Signal signatures
@@ -1406,7 +1597,6 @@ export namespace Granite {
 
     class TimePicker extends Gtk.Entry {
         static $gtype: GObject.GType<TimePicker>;
-        declare static readonly __signalSignatures: TimePicker.SignalSignatures;
 
         // Properties
 
@@ -1441,12 +1631,6 @@ export namespace Granite {
             signal: K,
             ...args: Parameters<TimePicker.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'time-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'time-changed', callback: (_source: this) => void): number;
-        emit(signal: 'time-changed'): void;
 
         // Methods
 
@@ -1460,11 +1644,11 @@ export namespace Granite {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: Toast): void;
         }
 
         interface DefaultAction {
-            (): void;
+            (_source: Toast): void;
         }
 
         // Signal signatures
@@ -1482,7 +1666,6 @@ export namespace Granite {
 
     class Toast extends Gtk.Widget {
         static $gtype: GObject.GType<Toast>;
-        declare static readonly __signalSignatures: Toast.SignalSignatures;
 
         // Properties
 
@@ -1502,15 +1685,6 @@ export namespace Granite {
         connect<K extends keyof Toast.SignalSignatures>(signal: K, callback: Toast.SignalSignatures[K]): number;
         connect_after<K extends keyof Toast.SignalSignatures>(signal: K, callback: Toast.SignalSignatures[K]): number;
         emit<K extends keyof Toast.SignalSignatures>(signal: K, ...args: Parameters<Toast.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'default-action', callback: (_source: this) => void): number;
-        connect_after(signal: 'default-action', callback: (_source: this) => void): number;
-        emit(signal: 'default-action'): void;
 
         // Methods
 
@@ -1537,7 +1711,6 @@ export namespace Granite {
 
     class ValidatedEntry extends Gtk.Entry {
         static $gtype: GObject.GType<ValidatedEntry>;
-        declare static readonly __signalSignatures: ValidatedEntry.SignalSignatures;
 
         // Properties
 
@@ -1561,6 +1734,21 @@ export namespace Granite {
         static from_regex(regex_arg: GLib.Regex): ValidatedEntry;
 
         static ['new'](): ValidatedEntry;
+
+        // Signals
+
+        connect<K extends keyof ValidatedEntry.SignalSignatures>(
+            signal: K,
+            callback: ValidatedEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValidatedEntry.SignalSignatures>(
+            signal: K,
+            callback: ValidatedEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValidatedEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValidatedEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

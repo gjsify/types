@@ -265,7 +265,6 @@ export namespace GExiv2 {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
-        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -274,6 +273,18 @@ export namespace GExiv2 {
         _init(...args: any[]): void;
 
         static ['new'](): Metadata;
+
+        // Signals
+
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: Metadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Metadata.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1006,13 +1017,27 @@ export namespace GExiv2 {
 
     class PreviewImage extends GObject.Object {
         static $gtype: GObject.GType<PreviewImage>;
-        declare static readonly __signalSignatures: PreviewImage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PreviewImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PreviewImage.SignalSignatures>(
+            signal: K,
+            callback: PreviewImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreviewImage.SignalSignatures>(
+            signal: K,
+            callback: PreviewImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreviewImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreviewImage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1042,13 +1067,27 @@ export namespace GExiv2 {
 
     class PreviewProperties extends GObject.Object {
         static $gtype: GObject.GType<PreviewProperties>;
-        declare static readonly __signalSignatures: PreviewProperties.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PreviewProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PreviewProperties.SignalSignatures>(
+            signal: K,
+            callback: PreviewProperties.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreviewProperties.SignalSignatures>(
+            signal: K,
+            callback: PreviewProperties.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreviewProperties.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreviewProperties.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

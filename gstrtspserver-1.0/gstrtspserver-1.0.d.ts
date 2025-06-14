@@ -412,7 +412,6 @@ export namespace GstRtspServer {
      */
     class RTSPAddressPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPAddressPool>;
-        declare static readonly __signalSignatures: RTSPAddressPool.SignalSignatures;
 
         // Constructors
 
@@ -421,6 +420,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPAddressPool;
+
+        // Signals
+
+        connect<K extends keyof RTSPAddressPool.SignalSignatures>(
+            signal: K,
+            callback: RTSPAddressPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPAddressPool.SignalSignatures>(
+            signal: K,
+            callback: RTSPAddressPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPAddressPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPAddressPool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -491,7 +505,12 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface AcceptCertificate {
-            (connection: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
+            (
+                _source: RTSPAuth,
+                connection: Gio.TlsConnection,
+                peer_cert: Gio.TlsCertificate,
+                errors: Gio.TlsCertificateFlags,
+            ): boolean;
         }
 
         // Signal signatures
@@ -509,7 +528,6 @@ export namespace GstRtspServer {
      */
     class RTSPAuth extends GObject.Object {
         static $gtype: GObject.GType<RTSPAuth>;
-        declare static readonly __signalSignatures: RTSPAuth.SignalSignatures;
 
         // Constructors
 
@@ -529,33 +547,6 @@ export namespace GstRtspServer {
         emit<K extends keyof RTSPAuth.SignalSignatures>(
             signal: K,
             ...args: Parameters<RTSPAuth.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'accept-certificate',
-            callback: (
-                _source: this,
-                connection: Gio.TlsConnection,
-                peer_cert: Gio.TlsCertificate,
-                errors: Gio.TlsCertificateFlags,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'accept-certificate',
-            callback: (
-                _source: this,
-                connection: Gio.TlsConnection,
-                peer_cert: Gio.TlsCertificate,
-                errors: Gio.TlsCertificateFlags,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'accept-certificate',
-            connection: Gio.TlsConnection,
-            peer_cert: Gio.TlsCertificate,
-            errors: Gio.TlsCertificateFlags,
         ): void;
 
         // Static methods
@@ -691,103 +682,103 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface AnnounceRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface CheckRequirements {
-            (ctx: RTSPContext, arr: string[]): string;
+            (_source: RTSPClient, ctx: RTSPContext, arr: string[]): string;
         }
 
         interface Closed {
-            (): void;
+            (_source: RTSPClient): void;
         }
 
         interface DescribeRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface GetParameterRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface HandleResponse {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface NewSession {
-            (object: RTSPSession): void;
+            (_source: RTSPClient, object: RTSPSession): void;
         }
 
         interface OptionsRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface PauseRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface PlayRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface PreAnnounceRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreDescribeRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreGetParameterRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreOptionsRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PrePauseRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PrePlayRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreRecordRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreSetParameterRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreSetupRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface PreTeardownRequest {
-            (ctx: RTSPContext): GstRtsp.RTSPStatusCode;
+            (_source: RTSPClient, ctx: RTSPContext): GstRtsp.RTSPStatusCode;
         }
 
         interface RecordRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface SendMessage {
-            (session: RTSPSession, message: GstRtsp.RTSPMessage): void;
+            (_source: RTSPClient, session: RTSPSession, message: GstRtsp.RTSPMessage): void;
         }
 
         interface SetParameterRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface SetupRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         interface TeardownRequest {
-            (ctx: RTSPContext): void;
+            (_source: RTSPClient, ctx: RTSPContext): void;
         }
 
         // Signal signatures
@@ -838,7 +829,6 @@ export namespace GstRtspServer {
      */
     class RTSPClient extends GObject.Object {
         static $gtype: GObject.GType<RTSPClient>;
-        declare static readonly __signalSignatures: RTSPClient.SignalSignatures;
 
         // Properties
 
@@ -881,156 +871,6 @@ export namespace GstRtspServer {
             signal: K,
             ...args: Parameters<RTSPClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'announce-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'announce-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'announce-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'check-requirements',
-            callback: (_source: this, ctx: RTSPContext, arr: string[]) => string,
-        ): number;
-        connect_after(
-            signal: 'check-requirements',
-            callback: (_source: this, ctx: RTSPContext, arr: string[]) => string,
-        ): number;
-        emit(signal: 'check-requirements', ctx: RTSPContext, arr: string[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'describe-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'describe-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'describe-request', ctx: RTSPContext): void;
-        connect(signal: 'get-parameter-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'get-parameter-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'get-parameter-request', ctx: RTSPContext): void;
-        connect(signal: 'handle-response', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'handle-response', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'handle-response', ctx: RTSPContext): void;
-        connect(signal: 'new-session', callback: (_source: this, object: RTSPSession) => void): number;
-        connect_after(signal: 'new-session', callback: (_source: this, object: RTSPSession) => void): number;
-        emit(signal: 'new-session', object: RTSPSession): void;
-        connect(signal: 'options-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'options-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'options-request', ctx: RTSPContext): void;
-        connect(signal: 'pause-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'pause-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'pause-request', ctx: RTSPContext): void;
-        connect(signal: 'play-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'play-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'play-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-announce-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-announce-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-announce-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-describe-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-describe-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-describe-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-get-parameter-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-get-parameter-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-get-parameter-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-options-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-options-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-options-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-pause-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-pause-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-pause-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-play-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-play-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-play-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-record-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-record-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-record-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-set-parameter-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-set-parameter-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-set-parameter-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-setup-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-setup-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-setup-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'pre-teardown-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        connect_after(
-            signal: 'pre-teardown-request',
-            callback: (_source: this, ctx: RTSPContext) => GstRtsp.RTSPStatusCode,
-        ): number;
-        emit(signal: 'pre-teardown-request', ctx: RTSPContext): void;
-        connect(signal: 'record-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'record-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'record-request', ctx: RTSPContext): void;
-        connect(
-            signal: 'send-message',
-            callback: (_source: this, session: RTSPSession, message: GstRtsp.RTSPMessage) => void,
-        ): number;
-        connect_after(
-            signal: 'send-message',
-            callback: (_source: this, session: RTSPSession, message: GstRtsp.RTSPMessage) => void,
-        ): number;
-        emit(signal: 'send-message', session: RTSPSession, message: GstRtsp.RTSPMessage): void;
-        connect(signal: 'set-parameter-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'set-parameter-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'set-parameter-request', ctx: RTSPContext): void;
-        connect(signal: 'setup-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'setup-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'setup-request', ctx: RTSPContext): void;
-        connect(signal: 'teardown-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        connect_after(signal: 'teardown-request', callback: (_source: this, ctx: RTSPContext) => void): number;
-        emit(signal: 'teardown-request', ctx: RTSPContext): void;
 
         // Virtual methods
 
@@ -1246,31 +1086,31 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface HandleMessage {
-            (message: Gst.Message): boolean;
+            (_source: RTSPMedia, message: Gst.Message): boolean;
         }
 
         interface NewState {
-            (object: number): void;
+            (_source: RTSPMedia, object: number): void;
         }
 
         interface NewStream {
-            (object: RTSPStream): void;
+            (_source: RTSPMedia, object: RTSPStream): void;
         }
 
         interface Prepared {
-            (): void;
+            (_source: RTSPMedia): void;
         }
 
         interface RemovedStream {
-            (object: RTSPStream): void;
+            (_source: RTSPMedia, object: RTSPStream): void;
         }
 
         interface TargetState {
-            (object: number): void;
+            (_source: RTSPMedia, object: number): void;
         }
 
         interface Unprepared {
-            (): void;
+            (_source: RTSPMedia): void;
         }
 
         // Signal signatures
@@ -1323,7 +1163,6 @@ export namespace GstRtspServer {
      */
     class RTSPMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPMedia>;
-        declare static readonly __signalSignatures: RTSPMedia.SignalSignatures;
 
         // Properties
 
@@ -1396,30 +1235,6 @@ export namespace GstRtspServer {
             signal: K,
             ...args: Parameters<RTSPMedia.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'handle-message', callback: (_source: this, message: Gst.Message) => boolean): number;
-        connect_after(signal: 'handle-message', callback: (_source: this, message: Gst.Message) => boolean): number;
-        emit(signal: 'handle-message', message: Gst.Message): void;
-        connect(signal: 'new-state', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'new-state', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'new-state', object: number): void;
-        connect(signal: 'new-stream', callback: (_source: this, object: RTSPStream) => void): number;
-        connect_after(signal: 'new-stream', callback: (_source: this, object: RTSPStream) => void): number;
-        emit(signal: 'new-stream', object: RTSPStream): void;
-        connect(signal: 'prepared', callback: (_source: this) => void): number;
-        connect_after(signal: 'prepared', callback: (_source: this) => void): number;
-        emit(signal: 'prepared'): void;
-        connect(signal: 'removed-stream', callback: (_source: this, object: RTSPStream) => void): number;
-        connect_after(signal: 'removed-stream', callback: (_source: this, object: RTSPStream) => void): number;
-        emit(signal: 'removed-stream', object: RTSPStream): void;
-        connect(signal: 'target-state', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'target-state', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'target-state', object: number): void;
-        connect(signal: 'unprepared', callback: (_source: this) => void): number;
-        connect_after(signal: 'unprepared', callback: (_source: this) => void): number;
-        emit(signal: 'unprepared'): void;
 
         // Virtual methods
 
@@ -1938,11 +1753,11 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface MediaConfigure {
-            (object: RTSPMedia): void;
+            (_source: RTSPMediaFactory, object: RTSPMedia): void;
         }
 
         interface MediaConstructed {
-            (object: RTSPMedia): void;
+            (_source: RTSPMediaFactory, object: RTSPMedia): void;
         }
 
         // Signal signatures
@@ -1987,7 +1802,6 @@ export namespace GstRtspServer {
      */
     class RTSPMediaFactory extends GObject.Object {
         static $gtype: GObject.GType<RTSPMediaFactory>;
-        declare static readonly __signalSignatures: RTSPMediaFactory.SignalSignatures;
 
         // Properties
 
@@ -2068,15 +1882,6 @@ export namespace GstRtspServer {
             signal: K,
             ...args: Parameters<RTSPMediaFactory.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'media-configure', callback: (_source: this, object: RTSPMedia) => void): number;
-        connect_after(signal: 'media-configure', callback: (_source: this, object: RTSPMedia) => void): number;
-        emit(signal: 'media-configure', object: RTSPMedia): void;
-        connect(signal: 'media-constructed', callback: (_source: this, object: RTSPMedia) => void): number;
-        connect_after(signal: 'media-constructed', callback: (_source: this, object: RTSPMedia) => void): number;
-        emit(signal: 'media-constructed', object: RTSPMedia): void;
 
         // Virtual methods
 
@@ -2398,7 +2203,6 @@ export namespace GstRtspServer {
      */
     class RTSPMediaFactoryURI extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPMediaFactoryURI>;
-        declare static readonly __signalSignatures: RTSPMediaFactoryURI.SignalSignatures;
 
         // Properties
 
@@ -2416,6 +2220,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPMediaFactoryURI;
+
+        // Signals
+
+        connect<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(
+            signal: K,
+            callback: RTSPMediaFactoryURI.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(
+            signal: K,
+            callback: RTSPMediaFactoryURI.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPMediaFactoryURI.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2445,7 +2264,6 @@ export namespace GstRtspServer {
      */
     class RTSPMountPoints extends GObject.Object {
         static $gtype: GObject.GType<RTSPMountPoints>;
-        declare static readonly __signalSignatures: RTSPMountPoints.SignalSignatures;
 
         // Constructors
 
@@ -2454,6 +2272,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPMountPoints;
+
+        // Signals
+
+        connect<K extends keyof RTSPMountPoints.SignalSignatures>(
+            signal: K,
+            callback: RTSPMountPoints.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPMountPoints.SignalSignatures>(
+            signal: K,
+            callback: RTSPMountPoints.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPMountPoints.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPMountPoints.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2510,7 +2343,6 @@ export namespace GstRtspServer {
 
     class RTSPOnvifClient extends RTSPClient {
         static $gtype: GObject.GType<RTSPOnvifClient>;
-        declare static readonly __signalSignatures: RTSPOnvifClient.SignalSignatures;
 
         // Constructors
 
@@ -2519,6 +2351,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPOnvifClient;
+
+        // Signals
+
+        connect<K extends keyof RTSPOnvifClient.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPOnvifClient.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPOnvifClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPOnvifClient.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RTSPOnvifMedia {
@@ -2532,13 +2379,27 @@ export namespace GstRtspServer {
 
     class RTSPOnvifMedia extends RTSPMedia {
         static $gtype: GObject.GType<RTSPOnvifMedia>;
-        declare static readonly __signalSignatures: RTSPOnvifMedia.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RTSPOnvifMedia.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RTSPOnvifMedia.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifMedia.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPOnvifMedia.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifMedia.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPOnvifMedia.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPOnvifMedia.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2577,7 +2438,6 @@ export namespace GstRtspServer {
 
     class RTSPOnvifMediaFactory extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPOnvifMediaFactory>;
-        declare static readonly __signalSignatures: RTSPOnvifMediaFactory.SignalSignatures;
 
         // Constructors
 
@@ -2586,6 +2446,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPOnvifMediaFactory;
+
+        // Signals
+
+        connect<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifMediaFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifMediaFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPOnvifMediaFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2667,7 +2542,6 @@ export namespace GstRtspServer {
 
     class RTSPOnvifServer extends RTSPServer {
         static $gtype: GObject.GType<RTSPOnvifServer>;
-        declare static readonly __signalSignatures: RTSPOnvifServer.SignalSignatures;
 
         // Constructors
 
@@ -2676,13 +2550,28 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPOnvifServer;
+
+        // Signals
+
+        connect<K extends keyof RTSPOnvifServer.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifServer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPOnvifServer.SignalSignatures>(
+            signal: K,
+            callback: RTSPOnvifServer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPOnvifServer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPOnvifServer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RTSPServer {
         // Signal callback interfaces
 
         interface ClientConnected {
-            (object: RTSPClient): void;
+            (_source: RTSPServer, object: RTSPClient): void;
         }
 
         // Signal signatures
@@ -2713,7 +2602,6 @@ export namespace GstRtspServer {
      */
     class RTSPServer extends GObject.Object {
         static $gtype: GObject.GType<RTSPServer>;
-        declare static readonly __signalSignatures: RTSPServer.SignalSignatures;
 
         // Properties
 
@@ -2760,12 +2648,6 @@ export namespace GstRtspServer {
             signal: K,
             ...args: Parameters<RTSPServer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'client-connected', callback: (_source: this, object: RTSPClient) => void): number;
-        connect_after(signal: 'client-connected', callback: (_source: this, object: RTSPClient) => void): number;
-        emit(signal: 'client-connected', object: RTSPClient): void;
 
         // Static methods
 
@@ -2977,7 +2859,6 @@ export namespace GstRtspServer {
      */
     class RTSPSession extends GObject.Object {
         static $gtype: GObject.GType<RTSPSession>;
-        declare static readonly __signalSignatures: RTSPSession.SignalSignatures;
 
         // Properties
 
@@ -3000,6 +2881,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](sessionid: string): RTSPSession;
+
+        // Signals
+
+        connect<K extends keyof RTSPSession.SignalSignatures>(
+            signal: K,
+            callback: RTSPSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPSession.SignalSignatures>(
+            signal: K,
+            callback: RTSPSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPSession.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3126,7 +3022,6 @@ export namespace GstRtspServer {
      */
     class RTSPSessionMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionMedia>;
-        declare static readonly __signalSignatures: RTSPSessionMedia.SignalSignatures;
 
         // Constructors
 
@@ -3135,6 +3030,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](path: string, media: RTSPMedia): RTSPSessionMedia;
+
+        // Signals
+
+        connect<K extends keyof RTSPSessionMedia.SignalSignatures>(
+            signal: K,
+            callback: RTSPSessionMedia.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPSessionMedia.SignalSignatures>(
+            signal: K,
+            callback: RTSPSessionMedia.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPSessionMedia.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPSessionMedia.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3207,7 +3117,7 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface SessionRemoved {
-            (object: RTSPSession): void;
+            (_source: RTSPSessionPool, object: RTSPSession): void;
         }
 
         // Signal signatures
@@ -3229,7 +3139,6 @@ export namespace GstRtspServer {
      */
     class RTSPSessionPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionPool>;
-        declare static readonly __signalSignatures: RTSPSessionPool.SignalSignatures;
 
         // Properties
 
@@ -3260,12 +3169,6 @@ export namespace GstRtspServer {
             signal: K,
             ...args: Parameters<RTSPSessionPool.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'session-removed', callback: (_source: this, object: RTSPSession) => void): number;
-        connect_after(signal: 'session-removed', callback: (_source: this, object: RTSPSession) => void): number;
-        emit(signal: 'session-removed', object: RTSPSession): void;
 
         // Virtual methods
 
@@ -3346,15 +3249,15 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface NewRtcpEncoder {
-            (object: Gst.Element): void;
+            (_source: RTSPStream, object: Gst.Element): void;
         }
 
         interface NewRtpEncoder {
-            (object: Gst.Element): void;
+            (_source: RTSPStream, object: Gst.Element): void;
         }
 
         interface NewRtpRtcpDecoder {
-            (object: Gst.Element): void;
+            (_source: RTSPStream, object: Gst.Element): void;
         }
 
         // Signal signatures
@@ -3378,7 +3281,6 @@ export namespace GstRtspServer {
      */
     class RTSPStream extends GObject.Object {
         static $gtype: GObject.GType<RTSPStream>;
-        declare static readonly __signalSignatures: RTSPStream.SignalSignatures;
 
         // Properties
 
@@ -3411,18 +3313,6 @@ export namespace GstRtspServer {
             signal: K,
             ...args: Parameters<RTSPStream.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'new-rtcp-encoder', callback: (_source: this, object: Gst.Element) => void): number;
-        connect_after(signal: 'new-rtcp-encoder', callback: (_source: this, object: Gst.Element) => void): number;
-        emit(signal: 'new-rtcp-encoder', object: Gst.Element): void;
-        connect(signal: 'new-rtp-encoder', callback: (_source: this, object: Gst.Element) => void): number;
-        connect_after(signal: 'new-rtp-encoder', callback: (_source: this, object: Gst.Element) => void): number;
-        emit(signal: 'new-rtp-encoder', object: Gst.Element): void;
-        connect(signal: 'new-rtp-rtcp-decoder', callback: (_source: this, object: Gst.Element) => void): number;
-        connect_after(signal: 'new-rtp-rtcp-decoder', callback: (_source: this, object: Gst.Element) => void): number;
-        emit(signal: 'new-rtp-rtcp-decoder', object: Gst.Element): void;
 
         // Methods
 
@@ -3956,7 +3846,6 @@ export namespace GstRtspServer {
      */
     class RTSPStreamTransport extends GObject.Object {
         static $gtype: GObject.GType<RTSPStreamTransport>;
-        declare static readonly __signalSignatures: RTSPStreamTransport.SignalSignatures;
 
         // Constructors
 
@@ -3965,6 +3854,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](stream: RTSPStream, tr: GstRtsp.RTSPTransport): RTSPStreamTransport;
+
+        // Signals
+
+        connect<K extends keyof RTSPStreamTransport.SignalSignatures>(
+            signal: K,
+            callback: RTSPStreamTransport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPStreamTransport.SignalSignatures>(
+            signal: K,
+            callback: RTSPStreamTransport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPStreamTransport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPStreamTransport.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4113,7 +4017,6 @@ export namespace GstRtspServer {
      */
     class RTSPThreadPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPThreadPool>;
-        declare static readonly __signalSignatures: RTSPThreadPool.SignalSignatures;
 
         // Properties
 
@@ -4129,6 +4032,21 @@ export namespace GstRtspServer {
         _init(...args: any[]): void;
 
         static ['new'](): RTSPThreadPool;
+
+        // Signals
+
+        connect<K extends keyof RTSPThreadPool.SignalSignatures>(
+            signal: K,
+            callback: RTSPThreadPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPThreadPool.SignalSignatures>(
+            signal: K,
+            callback: RTSPThreadPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPThreadPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPThreadPool.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

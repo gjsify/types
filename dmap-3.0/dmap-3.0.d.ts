@@ -319,23 +319,23 @@ export namespace DMAP {
         // Signal callback interfaces
 
         interface Authenticate {
-            (object: string, p0: Soup.Session, p1: Soup.Message, p2: Soup.Auth, p3: boolean): void;
+            (_source: Connection, object: string, p0: Soup.Session, p1: Soup.Message, p2: Soup.Auth, p3: boolean): void;
         }
 
         interface Connected {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface Connecting {
-            (object: number, p0: number): void;
+            (_source: Connection, object: number, p0: number): void;
         }
 
         interface Disconnected {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface OperationDone {
-            (): void;
+            (_source: Connection): void;
         }
 
         // Signal signatures
@@ -372,7 +372,6 @@ export namespace DMAP {
 
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -424,51 +423,6 @@ export namespace DMAP {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'authenticate',
-            callback: (
-                _source: this,
-                object: string,
-                p0: Soup.Session,
-                p1: Soup.Message,
-                p2: Soup.Auth,
-                p3: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'authenticate',
-            callback: (
-                _source: this,
-                object: string,
-                p0: Soup.Session,
-                p1: Soup.Message,
-                p2: Soup.Auth,
-                p3: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'authenticate',
-            object: string,
-            p0: Soup.Session,
-            p1: Soup.Message,
-            p2: Soup.Auth,
-            p3: boolean,
-        ): void;
-        connect(signal: 'connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'connected', callback: (_source: this) => void): number;
-        emit(signal: 'connected'): void;
-        connect(signal: 'connecting', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'connecting', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'connecting', object: number, p0: number): void;
-        connect(signal: 'disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'disconnected'): void;
-        connect(signal: 'operation-done', callback: (_source: this) => void): number;
-        connect_after(signal: 'operation-done', callback: (_source: this) => void): number;
-        emit(signal: 'operation-done'): void;
 
         // Virtual methods
 
@@ -510,7 +464,6 @@ export namespace DMAP {
 
     class GstInputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<GstInputStream>;
-        declare static readonly __signalSignatures: GstInputStream.SignalSignatures;
 
         // Constructors
 
@@ -519,6 +472,21 @@ export namespace DMAP {
         _init(...args: any[]): void;
 
         static ['new'](transcode_mimetype: string, src_stream: Gio.InputStream): GstInputStream;
+
+        // Signals
+
+        connect<K extends keyof GstInputStream.SignalSignatures>(
+            signal: K,
+            callback: GstInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GstInputStream.SignalSignatures>(
+            signal: K,
+            callback: GstInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GstInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GstInputStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1069,11 +1037,11 @@ export namespace DMAP {
         // Signal callback interfaces
 
         interface ServiceAdded {
-            (service: any): void;
+            (_source: MdnsBrowser, service: any): void;
         }
 
         interface ServiceRemoved {
-            (object: string): void;
+            (_source: MdnsBrowser, object: string): void;
         }
 
         // Signal signatures
@@ -1089,7 +1057,6 @@ export namespace DMAP {
 
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
-        declare static readonly __signalSignatures: MdnsBrowser.SignalSignatures;
 
         // Fields
 
@@ -1117,15 +1084,6 @@ export namespace DMAP {
             signal: K,
             ...args: Parameters<MdnsBrowser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'service-added', callback: (_source: this, service: any) => void): number;
-        connect_after(signal: 'service-added', callback: (_source: this, service: any) => void): number;
-        emit(signal: 'service-added', service: any): void;
-        connect(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'service-removed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'service-removed', object: string): void;
 
         // Virtual methods
 
@@ -1151,11 +1109,11 @@ export namespace DMAP {
         // Signal callback interfaces
 
         interface NameCollision {
-            (object: string): void;
+            (_source: MdnsPublisher, object: string): void;
         }
 
         interface Published {
-            (object: string): void;
+            (_source: MdnsPublisher, object: string): void;
         }
 
         // Signal signatures
@@ -1171,7 +1129,6 @@ export namespace DMAP {
 
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
-        declare static readonly __signalSignatures: MdnsPublisher.SignalSignatures;
 
         // Fields
 
@@ -1199,15 +1156,6 @@ export namespace DMAP {
             signal: K,
             ...args: Parameters<MdnsPublisher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'name-collision', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'name-collision', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'name-collision', object: string): void;
-        connect(signal: 'published', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'published', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'published', object: string): void;
 
         // Virtual methods
 
@@ -1256,7 +1204,6 @@ export namespace DMAP {
 
     abstract class Share extends GObject.Object {
         static $gtype: GObject.GType<Share>;
-        declare static readonly __signalSignatures: Share.SignalSignatures;
 
         // Properties
 
@@ -1291,6 +1238,12 @@ export namespace DMAP {
         constructor(properties?: Partial<Share.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
+        connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
+        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: Parameters<Share.SignalSignatures[K]>): void;
 
         // Virtual methods
 

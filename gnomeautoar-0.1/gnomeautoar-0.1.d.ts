@@ -313,23 +313,23 @@ export namespace GnomeAutoar {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: Compressor): void;
         }
 
         interface Completed {
-            (): void;
+            (_source: Compressor): void;
         }
 
         interface DecideDest {
-            (destination: Gio.File): void;
+            (_source: Compressor, destination: Gio.File): void;
         }
 
         interface Error {
-            (error: GLib.Error): void;
+            (_source: Compressor, error: GLib.Error): void;
         }
 
         interface Progress {
-            (completed_size: number, completed_files: number): void;
+            (_source: Compressor, completed_size: number, completed_files: number): void;
         }
 
         // Signal signatures
@@ -365,7 +365,6 @@ export namespace GnomeAutoar {
 
     class Compressor extends GObject.Object {
         static $gtype: GObject.GType<Compressor>;
-        declare static readonly __signalSignatures: Compressor.SignalSignatures;
 
         // Properties
 
@@ -420,30 +419,6 @@ export namespace GnomeAutoar {
             signal: K,
             ...args: Parameters<Compressor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
-        connect(signal: 'decide-dest', callback: (_source: this, destination: Gio.File) => void): number;
-        connect_after(signal: 'decide-dest', callback: (_source: this, destination: Gio.File) => void): number;
-        emit(signal: 'decide-dest', destination: Gio.File): void;
-        connect(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'error', error: GLib.Error): void;
-        connect(
-            signal: 'progress',
-            callback: (_source: this, completed_size: number, completed_files: number) => void,
-        ): number;
-        connect_after(
-            signal: 'progress',
-            callback: (_source: this, completed_size: number, completed_files: number) => void,
-        ): number;
-        emit(signal: 'progress', completed_size: number, completed_files: number): void;
 
         // Static methods
 
@@ -563,35 +538,35 @@ export namespace GnomeAutoar {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: Extractor): void;
         }
 
         interface Completed {
-            (): void;
+            (_source: Extractor): void;
         }
 
         interface Conflict {
-            (file: Gio.File, new_file?: any | null): number;
+            (_source: Extractor, file: Gio.File, new_file?: any | null): number;
         }
 
         interface DecideDestination {
-            (destination: Gio.File, files?: any | null): GObject.Object;
+            (_source: Extractor, destination: Gio.File, files?: any | null): GObject.Object;
         }
 
         interface Error {
-            (error: GLib.Error): void;
+            (_source: Extractor, error: GLib.Error): void;
         }
 
         interface Progress {
-            (completed_size: number, completed_files: number): void;
+            (_source: Extractor, completed_size: number, completed_files: number): void;
         }
 
         interface RequestPassphrase {
-            (): string;
+            (_source: Extractor): string;
         }
 
         interface Scanned {
-            (files: number): void;
+            (_source: Extractor, files: number): void;
         }
 
         // Signal signatures
@@ -632,7 +607,6 @@ export namespace GnomeAutoar {
 
     class Extractor extends GObject.Object {
         static $gtype: GObject.GType<Extractor>;
-        declare static readonly __signalSignatures: Extractor.SignalSignatures;
 
         // Properties
 
@@ -680,48 +654,6 @@ export namespace GnomeAutoar {
             signal: K,
             ...args: Parameters<Extractor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
-        connect(signal: 'conflict', callback: (_source: this, file: Gio.File, new_file: any | null) => number): number;
-        connect_after(
-            signal: 'conflict',
-            callback: (_source: this, file: Gio.File, new_file: any | null) => number,
-        ): number;
-        emit(signal: 'conflict', file: Gio.File, new_file?: any | null): void;
-        connect(
-            signal: 'decide-destination',
-            callback: (_source: this, destination: Gio.File, files: any | null) => GObject.Object,
-        ): number;
-        connect_after(
-            signal: 'decide-destination',
-            callback: (_source: this, destination: Gio.File, files: any | null) => GObject.Object,
-        ): number;
-        emit(signal: 'decide-destination', destination: Gio.File, files?: any | null): void;
-        connect(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'error', error: GLib.Error): void;
-        connect(
-            signal: 'progress',
-            callback: (_source: this, completed_size: number, completed_files: number) => void,
-        ): number;
-        connect_after(
-            signal: 'progress',
-            callback: (_source: this, completed_size: number, completed_files: number) => void,
-        ): number;
-        emit(signal: 'progress', completed_size: number, completed_files: number): void;
-        connect(signal: 'request-passphrase', callback: (_source: this) => string): number;
-        connect_after(signal: 'request-passphrase', callback: (_source: this) => string): number;
-        emit(signal: 'request-passphrase'): void;
-        connect(signal: 'scanned', callback: (_source: this, files: number) => void): number;
-        connect_after(signal: 'scanned', callback: (_source: this, files: number) => void): number;
-        emit(signal: 'scanned', files: number): void;
 
         // Static methods
 

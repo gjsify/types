@@ -283,13 +283,24 @@ export namespace Dex {
 
     class AsyncPair extends Future {
         static $gtype: GObject.GType<AsyncPair>;
-        declare static readonly __signalSignatures: AsyncPair.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](instance: any | null, info: AsyncPairInfo): AsyncPair;
+
+        // Signals
+
+        connect<K extends keyof AsyncPair.SignalSignatures>(signal: K, callback: AsyncPair.SignalSignatures[K]): number;
+        connect_after<K extends keyof AsyncPair.SignalSignatures>(
+            signal: K,
+            callback: AsyncPair.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncPair.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncPair.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -354,7 +365,6 @@ export namespace Dex {
 
     class AsyncResult extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<AsyncResult>;
-        declare static readonly __signalSignatures: AsyncResult.SignalSignatures;
 
         // Constructors
 
@@ -367,6 +377,21 @@ export namespace Dex {
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback | null,
         ): AsyncResult;
+
+        // Signals
+
+        connect<K extends keyof AsyncResult.SignalSignatures>(
+            signal: K,
+            callback: AsyncResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AsyncResult.SignalSignatures>(
+            signal: K,
+            callback: AsyncResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -885,11 +910,16 @@ export namespace Dex {
 
     class Block extends Future {
         static $gtype: GObject.GType<Block>;
-        declare static readonly __signalSignatures: Block.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Block.SignalSignatures>(signal: K, callback: Block.SignalSignatures[K]): number;
+        connect_after<K extends keyof Block.SignalSignatures>(signal: K, callback: Block.SignalSignatures[K]): number;
+        emit<K extends keyof Block.SignalSignatures>(signal: K, ...args: Parameters<Block.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -916,7 +946,6 @@ export namespace Dex {
 
     class Cancellable extends Future {
         static $gtype: GObject.GType<Cancellable>;
-        declare static readonly __signalSignatures: Cancellable.SignalSignatures;
 
         // Constructors
 
@@ -925,6 +954,21 @@ export namespace Dex {
         static ['new'](): Cancellable;
 
         static new_from_cancellable(cancellable?: Gio.Cancellable | null): Cancellable;
+
+        // Signals
+
+        connect<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            callback: Cancellable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            callback: Cancellable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Cancellable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -938,13 +982,24 @@ export namespace Dex {
 
     class Channel extends Object {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](capacity: number): Channel;
+
+        // Signals
+
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -999,13 +1054,24 @@ export namespace Dex {
 
     class Delayed extends Future {
         static $gtype: GObject.GType<Delayed>;
-        declare static readonly __signalSignatures: Delayed.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](future: Future): Delayed;
+
+        // Signals
+
+        connect<K extends keyof Delayed.SignalSignatures>(signal: K, callback: Delayed.SignalSignatures[K]): number;
+        connect_after<K extends keyof Delayed.SignalSignatures>(
+            signal: K,
+            callback: Delayed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Delayed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Delayed.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1028,11 +1094,16 @@ export namespace Dex {
 
     class Fiber extends Future {
         static $gtype: GObject.GType<Fiber>;
-        declare static readonly __signalSignatures: Fiber.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Fiber.SignalSignatures>(signal: K, callback: Fiber.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fiber.SignalSignatures>(signal: K, callback: Fiber.SignalSignatures[K]): number;
+        emit<K extends keyof Fiber.SignalSignatures>(signal: K, ...args: Parameters<Fiber.SignalSignatures[K]>): void;
     }
 
     namespace Future {
@@ -1042,7 +1113,6 @@ export namespace Dex {
 
     class Future extends Object {
         static $gtype: GObject.GType<Future>;
-        declare static readonly __signalSignatures: Future.SignalSignatures;
 
         // Constructors
 
@@ -1099,6 +1169,12 @@ export namespace Dex {
         static then(future: Future, callback: FutureCallback): Future;
 
         static then_loop(future: Future, callback: FutureCallback): Future;
+
+        // Signals
+
+        connect<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: Parameters<Future.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1227,11 +1303,22 @@ export namespace Dex {
 
     class FutureSet extends Future {
         static $gtype: GObject.GType<FutureSet>;
-        declare static readonly __signalSignatures: FutureSet.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FutureSet.SignalSignatures>(signal: K, callback: FutureSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof FutureSet.SignalSignatures>(
+            signal: K,
+            callback: FutureSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FutureSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FutureSet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1266,11 +1353,25 @@ export namespace Dex {
 
     class MainScheduler extends Scheduler {
         static $gtype: GObject.GType<MainScheduler>;
-        declare static readonly __signalSignatures: MainScheduler.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MainScheduler.SignalSignatures>(
+            signal: K,
+            callback: MainScheduler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MainScheduler.SignalSignatures>(
+            signal: K,
+            callback: MainScheduler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainScheduler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainScheduler.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
@@ -1289,11 +1390,16 @@ export namespace Dex {
      */
     abstract class Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1317,7 +1423,6 @@ export namespace Dex {
 
     class Promise extends Future {
         static $gtype: GObject.GType<Promise>;
-        declare static readonly __signalSignatures: Promise.SignalSignatures;
 
         // Constructors
 
@@ -1326,6 +1431,18 @@ export namespace Dex {
         static ['new'](): Promise;
 
         static new_cancellable(): Promise;
+
+        // Signals
+
+        connect<K extends keyof Promise.SignalSignatures>(signal: K, callback: Promise.SignalSignatures[K]): number;
+        connect_after<K extends keyof Promise.SignalSignatures>(
+            signal: K,
+            callback: Promise.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Promise.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Promise.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1370,11 +1487,22 @@ export namespace Dex {
 
     abstract class Scheduler extends Object {
         static $gtype: GObject.GType<Scheduler>;
-        declare static readonly __signalSignatures: Scheduler.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Scheduler.SignalSignatures>(signal: K, callback: Scheduler.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scheduler.SignalSignatures>(
+            signal: K,
+            callback: Scheduler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Scheduler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Scheduler.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1436,11 +1564,25 @@ export namespace Dex {
 
     class StaticFuture extends Future {
         static $gtype: GObject.GType<StaticFuture>;
-        declare static readonly __signalSignatures: StaticFuture.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StaticFuture.SignalSignatures>(
+            signal: K,
+            callback: StaticFuture.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StaticFuture.SignalSignatures>(
+            signal: K,
+            callback: StaticFuture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StaticFuture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StaticFuture.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ThreadPoolScheduler {
@@ -1450,13 +1592,27 @@ export namespace Dex {
 
     class ThreadPoolScheduler extends Scheduler {
         static $gtype: GObject.GType<ThreadPoolScheduler>;
-        declare static readonly __signalSignatures: ThreadPoolScheduler.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): ThreadPoolScheduler;
+
+        // Signals
+
+        connect<K extends keyof ThreadPoolScheduler.SignalSignatures>(
+            signal: K,
+            callback: ThreadPoolScheduler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThreadPoolScheduler.SignalSignatures>(
+            signal: K,
+            callback: ThreadPoolScheduler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThreadPoolScheduler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThreadPoolScheduler.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1477,7 +1633,6 @@ export namespace Dex {
 
     class Timeout extends Future {
         static $gtype: GObject.GType<Timeout>;
-        declare static readonly __signalSignatures: Timeout.SignalSignatures;
 
         // Constructors
 
@@ -1491,6 +1646,18 @@ export namespace Dex {
 
         static new_usec(usec: number): Timeout;
 
+        // Signals
+
+        connect<K extends keyof Timeout.SignalSignatures>(signal: K, callback: Timeout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Timeout.SignalSignatures>(
+            signal: K,
+            callback: Timeout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Timeout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Timeout.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         postpone_until(deadline: number): void;
@@ -1503,13 +1670,27 @@ export namespace Dex {
 
     class UnixSignal extends Future {
         static $gtype: GObject.GType<UnixSignal>;
-        declare static readonly __signalSignatures: UnixSignal.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](signum: number): UnixSignal;
+
+        // Signals
+
+        connect<K extends keyof UnixSignal.SignalSignatures>(
+            signal: K,
+            callback: UnixSignal.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnixSignal.SignalSignatures>(
+            signal: K,
+            callback: UnixSignal.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnixSignal.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnixSignal.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -81,11 +81,11 @@ export namespace Qrtr {
         // Signal callback interfaces
 
         interface NodeAdded {
-            (node: number): void;
+            (_source: Bus, node: number): void;
         }
 
         interface NodeRemoved {
-            (node: number): void;
+            (_source: Bus, node: number): void;
         }
 
         // Signal signatures
@@ -108,7 +108,6 @@ export namespace Qrtr {
      */
     class Bus extends GObject.Object implements Gio.AsyncInitable<Bus> {
         static $gtype: GObject.GType<Bus>;
-        declare static readonly __signalSignatures: Bus.SignalSignatures;
 
         // Properties
 
@@ -131,15 +130,6 @@ export namespace Qrtr {
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'node-added', callback: (_source: this, node: number) => void): number;
-        connect_after(signal: 'node-added', callback: (_source: this, node: number) => void): number;
-        emit(signal: 'node-added', node: number): void;
-        connect(signal: 'node-removed', callback: (_source: this, node: number) => void): number;
-        connect_after(signal: 'node-removed', callback: (_source: this, node: number) => void): number;
-        emit(signal: 'node-removed', node: number): void;
 
         // Static methods
 
@@ -893,7 +883,7 @@ export namespace Qrtr {
         // Signal callback interfaces
 
         interface ClientMessage {
-            (message: Uint8Array | string): void;
+            (_source: Client, message: Uint8Array | string): void;
         }
 
         // Signal signatures
@@ -917,7 +907,6 @@ export namespace Qrtr {
      */
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -939,12 +928,6 @@ export namespace Qrtr {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'client-message', callback: (_source: this, message: Uint8Array) => void): number;
-        connect_after(signal: 'client-message', callback: (_source: this, message: Uint8Array) => void): number;
-        emit(signal: 'client-message', message: Uint8Array | string): void;
 
         // Methods
 
@@ -1503,15 +1486,15 @@ export namespace Qrtr {
         // Signal callback interfaces
 
         interface NodeRemoved {
-            (): void;
+            (_source: Node): void;
         }
 
         interface ServiceAdded {
-            (service: number): void;
+            (_source: Node, service: number): void;
         }
 
         interface ServiceRemoved {
-            (service: number): void;
+            (_source: Node, service: number): void;
         }
 
         // Signal signatures
@@ -1536,7 +1519,6 @@ export namespace Qrtr {
      */
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
-        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -1555,18 +1537,6 @@ export namespace Qrtr {
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'node-removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'node-removed', callback: (_source: this) => void): number;
-        emit(signal: 'node-removed'): void;
-        connect(signal: 'service-added', callback: (_source: this, service: number) => void): number;
-        connect_after(signal: 'service-added', callback: (_source: this, service: number) => void): number;
-        emit(signal: 'service-added', service: number): void;
-        connect(signal: 'service-removed', callback: (_source: this, service: number) => void): number;
-        connect_after(signal: 'service-removed', callback: (_source: this, service: number) => void): number;
-        emit(signal: 'service-removed', service: number): void;
 
         // Methods
 

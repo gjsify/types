@@ -169,7 +169,6 @@ export namespace Template {
 
     class Template extends GObject.Object {
         static $gtype: GObject.GType<Template>;
-        declare static readonly __signalSignatures: Template.SignalSignatures;
 
         // Properties
 
@@ -183,6 +182,18 @@ export namespace Template {
         _init(...args: any[]): void;
 
         static ['new'](locator?: TemplateLocator | null): Template;
+
+        // Signals
+
+        connect<K extends keyof Template.SignalSignatures>(signal: K, callback: Template.SignalSignatures[K]): number;
+        connect_after<K extends keyof Template.SignalSignatures>(
+            signal: K,
+            callback: Template.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Template.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Template.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -240,7 +251,6 @@ export namespace Template {
      */
     class TemplateLocator extends GObject.Object {
         static $gtype: GObject.GType<TemplateLocator>;
-        declare static readonly __signalSignatures: TemplateLocator.SignalSignatures;
 
         // Constructors
 
@@ -249,6 +259,21 @@ export namespace Template {
         _init(...args: any[]): void;
 
         static ['new'](): TemplateLocator;
+
+        // Signals
+
+        connect<K extends keyof TemplateLocator.SignalSignatures>(
+            signal: K,
+            callback: TemplateLocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TemplateLocator.SignalSignatures>(
+            signal: K,
+            callback: TemplateLocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TemplateLocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TemplateLocator.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 

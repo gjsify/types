@@ -552,7 +552,7 @@ export namespace GooCanvas {
         // Signal callback interfaces
 
         interface ItemCreated {
-            (item: CanvasItem, model: CanvasItemModel): void;
+            (_source: Canvas, item: CanvasItem, model: CanvasItemModel): void;
         }
 
         // Signal signatures
@@ -695,7 +695,6 @@ export namespace GooCanvas {
      */
     class Canvas extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Canvas>;
-        declare static readonly __signalSignatures: Canvas.SignalSignatures;
 
         // Properties
 
@@ -808,18 +807,6 @@ export namespace GooCanvas {
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'item-created',
-            callback: (_source: this, item: CanvasItem, model: CanvasItemModel) => void,
-        ): number;
-        connect_after(
-            signal: 'item-created',
-            callback: (_source: this, item: CanvasItem, model: CanvasItemModel) => void,
-        ): number;
-        emit(signal: 'item-created', item: CanvasItem, model: CanvasItemModel): void;
 
         // Static methods
 
@@ -1823,13 +1810,27 @@ export namespace GooCanvas {
 
     class CanvasAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasAccessibleFactory>;
-        declare static readonly __signalSignatures: CanvasAccessibleFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CanvasAccessibleFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
+            signal: K,
+            callback: CanvasAccessibleFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
+            signal: K,
+            callback: CanvasAccessibleFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasAccessibleFactory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CanvasEllipse {
@@ -1875,7 +1876,6 @@ export namespace GooCanvas {
      */
     class CanvasEllipse extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasEllipse>;
-        declare static readonly __signalSignatures: CanvasEllipse.SignalSignatures;
 
         // Properties
 
@@ -1914,6 +1914,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasEllipse.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasEllipse.SignalSignatures>(
+            signal: K,
+            callback: CanvasEllipse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasEllipse.SignalSignatures>(
+            signal: K,
+            callback: CanvasEllipse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasEllipse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasEllipse.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -3069,7 +3084,6 @@ export namespace GooCanvas {
      */
     class CanvasEllipseModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasEllipseModel>;
-        declare static readonly __signalSignatures: CanvasEllipseModel.SignalSignatures;
 
         // Properties
 
@@ -3108,6 +3122,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasEllipseModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasEllipseModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasEllipseModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasEllipseModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasEllipseModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasEllipseModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasEllipseModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -3957,7 +3986,6 @@ export namespace GooCanvas {
      */
     class CanvasGrid extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasGrid>;
-        declare static readonly __signalSignatures: CanvasGrid.SignalSignatures;
 
         // Properties
 
@@ -4085,6 +4113,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasGrid.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasGrid.SignalSignatures>(
+            signal: K,
+            callback: CanvasGrid.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasGrid.SignalSignatures>(
+            signal: K,
+            callback: CanvasGrid.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasGrid.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasGrid.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -5304,7 +5347,6 @@ export namespace GooCanvas {
      */
     class CanvasGridModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasGridModel>;
-        declare static readonly __signalSignatures: CanvasGridModel.SignalSignatures;
 
         // Properties
 
@@ -5414,6 +5456,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasGridModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasGridModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasGridModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasGridModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasGridModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasGridModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasGridModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -6198,7 +6255,6 @@ export namespace GooCanvas {
      */
     class CanvasGroup extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasGroup>;
-        declare static readonly __signalSignatures: CanvasGroup.SignalSignatures;
 
         // Properties
 
@@ -6221,6 +6277,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasGroup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasGroup.SignalSignatures>(
+            signal: K,
+            callback: CanvasGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasGroup.SignalSignatures>(
+            signal: K,
+            callback: CanvasGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasGroup.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -7370,7 +7441,6 @@ export namespace GooCanvas {
      */
     class CanvasGroupModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasGroupModel>;
-        declare static readonly __signalSignatures: CanvasGroupModel.SignalSignatures;
 
         // Properties
 
@@ -7393,6 +7463,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasGroupModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasGroupModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasGroupModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasGroupModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasGroupModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasGroupModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasGroupModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -8178,7 +8263,6 @@ export namespace GooCanvas {
      */
     class CanvasImage extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasImage>;
-        declare static readonly __signalSignatures: CanvasImage.SignalSignatures;
 
         // Properties
 
@@ -8209,6 +8293,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasImage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasImage.SignalSignatures>(
+            signal: K,
+            callback: CanvasImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasImage.SignalSignatures>(
+            signal: K,
+            callback: CanvasImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasImage.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -9364,7 +9463,6 @@ export namespace GooCanvas {
      */
     class CanvasImageModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasImageModel>;
-        declare static readonly __signalSignatures: CanvasImageModel.SignalSignatures;
 
         // Properties
 
@@ -9395,6 +9493,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasImageModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasImageModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasImageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasImageModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasImageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasImageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasImageModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -10150,13 +10263,27 @@ export namespace GooCanvas {
 
     class CanvasItemAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasItemAccessibleFactory>;
-        declare static readonly __signalSignatures: CanvasItemAccessibleFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CanvasItemAccessibleFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
+            signal: K,
+            callback: CanvasItemAccessibleFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
+            signal: K,
+            callback: CanvasItemAccessibleFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasItemAccessibleFactory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CanvasItemModelSimple {
@@ -10231,7 +10358,6 @@ export namespace GooCanvas {
      */
     class CanvasItemModelSimple extends GObject.Object implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasItemModelSimple>;
-        declare static readonly __signalSignatures: CanvasItemModelSimple.SignalSignatures;
 
         // Properties
 
@@ -10333,6 +10459,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasItemModelSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasItemModelSimple.SignalSignatures>(
+            signal: K,
+            callback: CanvasItemModelSimple.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasItemModelSimple.SignalSignatures>(
+            signal: K,
+            callback: CanvasItemModelSimple.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasItemModelSimple.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -11150,7 +11291,6 @@ export namespace GooCanvas {
      */
     class CanvasItemSimple extends GObject.Object implements CanvasItem {
         static $gtype: GObject.GType<CanvasItemSimple>;
-        declare static readonly __signalSignatures: CanvasItemSimple.SignalSignatures;
 
         // Properties
 
@@ -11268,6 +11408,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasItemSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasItemSimple.SignalSignatures>(
+            signal: K,
+            callback: CanvasItemSimple.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasItemSimple.SignalSignatures>(
+            signal: K,
+            callback: CanvasItemSimple.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasItemSimple.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasItemSimple.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -12501,7 +12656,6 @@ export namespace GooCanvas {
      */
     class CanvasPath extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasPath>;
-        declare static readonly __signalSignatures: CanvasPath.SignalSignatures;
 
         // Properties
 
@@ -12529,6 +12683,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasPath.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasPath.SignalSignatures>(
+            signal: K,
+            callback: CanvasPath.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasPath.SignalSignatures>(
+            signal: K,
+            callback: CanvasPath.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasPath.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasPath.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -13678,7 +13847,6 @@ export namespace GooCanvas {
      */
     class CanvasPathModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasPathModel>;
-        declare static readonly __signalSignatures: CanvasPathModel.SignalSignatures;
 
         // Properties
 
@@ -13702,6 +13870,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasPathModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasPathModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasPathModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasPathModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasPathModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasPathModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasPathModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -14492,7 +14675,6 @@ export namespace GooCanvas {
      */
     class CanvasPolyline extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasPolyline>;
-        declare static readonly __signalSignatures: CanvasPolyline.SignalSignatures;
 
         // Properties
 
@@ -14540,6 +14722,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasPolyline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasPolyline.SignalSignatures>(
+            signal: K,
+            callback: CanvasPolyline.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasPolyline.SignalSignatures>(
+            signal: K,
+            callback: CanvasPolyline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasPolyline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasPolyline.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -15698,7 +15895,6 @@ export namespace GooCanvas {
      */
     class CanvasPolylineModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasPolylineModel>;
-        declare static readonly __signalSignatures: CanvasPolylineModel.SignalSignatures;
 
         // Properties
 
@@ -15747,6 +15943,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasPolylineModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasPolylineModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasPolylineModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasPolylineModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasPolylineModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasPolylineModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasPolylineModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -16542,7 +16753,6 @@ export namespace GooCanvas {
      */
     class CanvasRect extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasRect>;
-        declare static readonly __signalSignatures: CanvasRect.SignalSignatures;
 
         // Properties
 
@@ -16604,6 +16814,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasRect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasRect.SignalSignatures>(
+            signal: K,
+            callback: CanvasRect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasRect.SignalSignatures>(
+            signal: K,
+            callback: CanvasRect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasRect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasRect.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -17767,7 +17992,6 @@ export namespace GooCanvas {
      */
     class CanvasRectModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasRectModel>;
-        declare static readonly __signalSignatures: CanvasRectModel.SignalSignatures;
 
         // Properties
 
@@ -17830,6 +18054,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasRectModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasRectModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasRectModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasRectModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasRectModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasRectModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasRectModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -18602,7 +18841,6 @@ export namespace GooCanvas {
      */
     class CanvasStyle extends GObject.Object {
         static $gtype: GObject.GType<CanvasStyle>;
-        declare static readonly __signalSignatures: CanvasStyle.SignalSignatures;
 
         // Fields
 
@@ -18615,6 +18853,21 @@ export namespace GooCanvas {
         _init(...args: any[]): void;
 
         static ['new'](): CanvasStyle;
+
+        // Signals
+
+        connect<K extends keyof CanvasStyle.SignalSignatures>(
+            signal: K,
+            callback: CanvasStyle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasStyle.SignalSignatures>(
+            signal: K,
+            callback: CanvasStyle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasStyle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasStyle.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18728,7 +18981,6 @@ export namespace GooCanvas {
      */
     class CanvasTable extends CanvasGroup implements CanvasItem {
         static $gtype: GObject.GType<CanvasTable>;
-        declare static readonly __signalSignatures: CanvasTable.SignalSignatures;
 
         // Properties
 
@@ -18770,6 +19022,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasTable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasTable.SignalSignatures>(
+            signal: K,
+            callback: CanvasTable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasTable.SignalSignatures>(
+            signal: K,
+            callback: CanvasTable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasTable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasTable.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -19268,7 +19535,6 @@ export namespace GooCanvas {
      */
     class CanvasTableModel extends CanvasGroupModel implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasTableModel>;
-        declare static readonly __signalSignatures: CanvasTableModel.SignalSignatures;
 
         // Properties
 
@@ -19314,6 +19580,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasTableModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasTableModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasTableModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasTableModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasTableModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasTableModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasTableModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -19799,7 +20080,6 @@ export namespace GooCanvas {
      */
     class CanvasText extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasText>;
-        declare static readonly __signalSignatures: CanvasText.SignalSignatures;
 
         // Properties
 
@@ -19836,6 +20116,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasText.SignalSignatures>(
+            signal: K,
+            callback: CanvasText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasText.SignalSignatures>(
+            signal: K,
+            callback: CanvasText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasText.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20996,7 +21291,6 @@ export namespace GooCanvas {
      */
     class CanvasTextModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasTextModel>;
-        declare static readonly __signalSignatures: CanvasTextModel.SignalSignatures;
 
         // Properties
 
@@ -21033,6 +21327,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasTextModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasTextModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasTextModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasTextModel.SignalSignatures>(
+            signal: K,
+            callback: CanvasTextModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasTextModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasTextModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -21820,7 +22129,6 @@ export namespace GooCanvas {
      */
     class CanvasWidget extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasWidget>;
-        declare static readonly __signalSignatures: CanvasWidget.SignalSignatures;
 
         // Properties
 
@@ -21846,6 +22154,21 @@ export namespace GooCanvas {
         constructor(properties?: Partial<CanvasWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasWidget.SignalSignatures>(
+            signal: K,
+            callback: CanvasWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasWidget.SignalSignatures>(
+            signal: K,
+            callback: CanvasWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasWidget.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -22965,13 +23288,27 @@ export namespace GooCanvas {
 
     class CanvasWidgetAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasWidgetAccessibleFactory>;
-        declare static readonly __signalSignatures: CanvasWidgetAccessibleFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CanvasWidgetAccessibleFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
+            signal: K,
+            callback: CanvasWidgetAccessibleFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
+            signal: K,
+            callback: CanvasWidgetAccessibleFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]>
+        ): void;
     }
 
     /**

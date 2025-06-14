@@ -256,7 +256,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface Changed {
-            (id: string, new_appinfo: Gio.AppInfo): void;
+            (_source: AppInfoManager, id: string, new_appinfo: Gio.AppInfo): void;
         }
 
         // Signal signatures
@@ -271,7 +271,6 @@ export namespace Unity {
 
     class AppInfoManager extends GObject.Object {
         static $gtype: GObject.GType<AppInfoManager>;
-        declare static readonly __signalSignatures: AppInfoManager.SignalSignatures;
 
         // Constructors
 
@@ -293,15 +292,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<AppInfoManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, id: string, new_appinfo: Gio.AppInfo) => void): number;
-        connect_after(
-            signal: 'changed',
-            callback: (_source: this, id: string, new_appinfo: Gio.AppInfo) => void,
-        ): number;
-        emit(signal: 'changed', id: string, new_appinfo: Gio.AppInfo): void;
 
         // Static methods
 
@@ -338,7 +328,6 @@ export namespace Unity {
 
     class AnnotatedIcon extends GObject.Object {
         static $gtype: GObject.GType<AnnotatedIcon>;
-        declare static readonly __signalSignatures: AnnotatedIcon.SignalSignatures;
 
         // Properties
 
@@ -360,6 +349,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](base_icon: Gio.Icon): AnnotatedIcon;
+
+        // Signals
+
+        connect<K extends keyof AnnotatedIcon.SignalSignatures>(
+            signal: K,
+            callback: AnnotatedIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotatedIcon.SignalSignatures>(
+            signal: K,
+            callback: AnnotatedIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotatedIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotatedIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -391,7 +395,6 @@ export namespace Unity {
 
     class Inspector extends GObject.Object {
         static $gtype: GObject.GType<Inspector>;
-        declare static readonly __signalSignatures: Inspector.SignalSignatures;
 
         // Properties
 
@@ -405,6 +408,18 @@ export namespace Unity {
         constructor(properties?: Partial<Inspector.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Inspector.SignalSignatures>(signal: K, callback: Inspector.SignalSignatures[K]): number;
+        connect_after<K extends keyof Inspector.SignalSignatures>(
+            signal: K,
+            callback: Inspector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Inspector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Inspector.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -438,7 +453,6 @@ export namespace Unity {
 
     class LauncherEntry extends GObject.Object implements Dee.Serializable {
         static $gtype: GObject.GType<LauncherEntry>;
-        declare static readonly __signalSignatures: LauncherEntry.SignalSignatures;
 
         // Properties
 
@@ -468,6 +482,21 @@ export namespace Unity {
         constructor(properties?: Partial<LauncherEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LauncherEntry.SignalSignatures>(
+            signal: K,
+            callback: LauncherEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LauncherEntry.SignalSignatures>(
+            signal: K,
+            callback: LauncherEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LauncherEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LauncherEntry.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -965,7 +994,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: LauncherFavorites): void;
         }
 
         // Signal signatures
@@ -980,7 +1009,6 @@ export namespace Unity {
 
     class LauncherFavorites extends GObject.Object {
         static $gtype: GObject.GType<LauncherFavorites>;
-        declare static readonly __signalSignatures: LauncherFavorites.SignalSignatures;
 
         // Constructors
 
@@ -1002,12 +1030,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<LauncherFavorites.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -1033,13 +1055,27 @@ export namespace Unity {
 
     abstract class MetadataProvider extends GObject.Object {
         static $gtype: GObject.GType<MetadataProvider>;
-        declare static readonly __signalSignatures: MetadataProvider.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MetadataProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MetadataProvider.SignalSignatures>(
+            signal: K,
+            callback: MetadataProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetadataProvider.SignalSignatures>(
+            signal: K,
+            callback: MetadataProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetadataProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetadataProvider.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ProgressSourceProvider {
@@ -1058,7 +1094,6 @@ export namespace Unity {
 
     class ProgressSourceProvider extends MetadataProvider {
         static $gtype: GObject.GType<ProgressSourceProvider>;
-        declare static readonly __signalSignatures: ProgressSourceProvider.SignalSignatures;
 
         // Properties
 
@@ -1074,6 +1109,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](dbus_name: string, dbus_path: string): ProgressSourceProvider;
+
+        // Signals
+
+        connect<K extends keyof ProgressSourceProvider.SignalSignatures>(
+            signal: K,
+            callback: ProgressSourceProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProgressSourceProvider.SignalSignatures>(
+            signal: K,
+            callback: ProgressSourceProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProgressSourceProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProgressSourceProvider.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1104,7 +1154,6 @@ export namespace Unity {
 
     class Category extends GObject.Object {
         static $gtype: GObject.GType<Category>;
-        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -1132,6 +1181,18 @@ export namespace Unity {
 
         static ['new'](id: string, name: string, icon_hint: Gio.Icon, renderer: CategoryRenderer): Category;
 
+        // Signals
+
+        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect_after<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: Category.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Category.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         add_metadata_provider(provider: MetadataProvider): void;
@@ -1150,7 +1211,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Filter): void;
         }
 
         // Signal signatures
@@ -1175,7 +1236,6 @@ export namespace Unity {
 
     abstract class Filter extends GObject.Object implements Dee.Serializable {
         static $gtype: GObject.GType<Filter>;
-        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Properties
 
@@ -1205,12 +1265,6 @@ export namespace Unity {
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
         emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Methods
 
@@ -1710,7 +1764,6 @@ export namespace Unity {
 
     class FilterOption extends GObject.Object {
         static $gtype: GObject.GType<FilterOption>;
-        declare static readonly __signalSignatures: FilterOption.SignalSignatures;
 
         // Properties
 
@@ -1729,6 +1782,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, active: boolean): FilterOption;
+
+        // Signals
+
+        connect<K extends keyof FilterOption.SignalSignatures>(
+            signal: K,
+            callback: FilterOption.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterOption.SignalSignatures>(
+            signal: K,
+            callback: FilterOption.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterOption.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterOption.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1755,7 +1823,6 @@ export namespace Unity {
 
     class OptionsFilter extends Filter {
         static $gtype: GObject.GType<OptionsFilter>;
-        declare static readonly __signalSignatures: OptionsFilter.SignalSignatures;
 
         // Properties
 
@@ -1780,6 +1847,21 @@ export namespace Unity {
 
         static ['new'](): OptionsFilter;
 
+        // Signals
+
+        connect<K extends keyof OptionsFilter.SignalSignatures>(
+            signal: K,
+            callback: OptionsFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OptionsFilter.SignalSignatures>(
+            signal: K,
+            callback: OptionsFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OptionsFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OptionsFilter.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         add_option(id: string, display_name: string, icon_hint: Gio.Icon): FilterOption;
@@ -1802,7 +1884,6 @@ export namespace Unity {
 
     class RadioOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<RadioOptionFilter>;
-        declare static readonly __signalSignatures: RadioOptionFilter.SignalSignatures;
 
         // Constructors
 
@@ -1814,6 +1895,21 @@ export namespace Unity {
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof RadioOptionFilter.SignalSignatures>(
+            signal: K,
+            callback: RadioOptionFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RadioOptionFilter.SignalSignatures>(
+            signal: K,
+            callback: RadioOptionFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RadioOptionFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RadioOptionFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1831,7 +1927,6 @@ export namespace Unity {
 
     class CheckOptionFilter extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilter>;
-        declare static readonly __signalSignatures: CheckOptionFilter.SignalSignatures;
 
         // Constructors
 
@@ -1843,6 +1938,21 @@ export namespace Unity {
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CheckOptionFilter.SignalSignatures>(
+            signal: K,
+            callback: CheckOptionFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CheckOptionFilter.SignalSignatures>(
+            signal: K,
+            callback: CheckOptionFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CheckOptionFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CheckOptionFilter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CheckOptionFilterCompact {
@@ -1856,7 +1966,6 @@ export namespace Unity {
 
     class CheckOptionFilterCompact extends OptionsFilter {
         static $gtype: GObject.GType<CheckOptionFilterCompact>;
-        declare static readonly __signalSignatures: CheckOptionFilterCompact.SignalSignatures;
 
         // Constructors
 
@@ -1873,6 +1982,21 @@ export namespace Unity {
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
+            signal: K,
+            callback: CheckOptionFilterCompact.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
+            signal: K,
+            callback: CheckOptionFilterCompact.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CheckOptionFilterCompact.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RatingsFilter {
@@ -1888,7 +2012,6 @@ export namespace Unity {
 
     class RatingsFilter extends Filter {
         static $gtype: GObject.GType<RatingsFilter>;
-        declare static readonly __signalSignatures: RatingsFilter.SignalSignatures;
 
         // Properties
 
@@ -1902,6 +2025,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, collapsed: boolean): RatingsFilter;
+
+        // Signals
+
+        connect<K extends keyof RatingsFilter.SignalSignatures>(
+            signal: K,
+            callback: RatingsFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RatingsFilter.SignalSignatures>(
+            signal: K,
+            callback: RatingsFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RatingsFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RatingsFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1919,7 +2057,6 @@ export namespace Unity {
 
     class MultiRangeFilter extends OptionsFilter {
         static $gtype: GObject.GType<MultiRangeFilter>;
-        declare static readonly __signalSignatures: MultiRangeFilter.SignalSignatures;
 
         // Constructors
 
@@ -1931,6 +2068,21 @@ export namespace Unity {
         // Conflicted with Unity.OptionsFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MultiRangeFilter.SignalSignatures>(
+            signal: K,
+            callback: MultiRangeFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultiRangeFilter.SignalSignatures>(
+            signal: K,
+            callback: MultiRangeFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultiRangeFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultiRangeFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1960,7 +2112,6 @@ export namespace Unity {
 
     class PreferencesManager extends GObject.Object {
         static $gtype: GObject.GType<PreferencesManager>;
-        declare static readonly __signalSignatures: PreferencesManager.SignalSignatures;
 
         // Properties
 
@@ -1991,6 +2142,21 @@ export namespace Unity {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof PreferencesManager.SignalSignatures>(
+            signal: K,
+            callback: PreferencesManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesManager.SignalSignatures>(
+            signal: K,
+            callback: PreferencesManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesManager.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static get_default(): PreferencesManager;
@@ -2013,7 +2179,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: DeprecatedScopeSearch): void;
         }
 
         // Signal signatures
@@ -2039,7 +2205,6 @@ export namespace Unity {
 
     class DeprecatedScopeSearch extends ScopeSearchBase {
         static $gtype: GObject.GType<DeprecatedScopeSearch>;
-        declare static readonly __signalSignatures: DeprecatedScopeSearch.SignalSignatures;
 
         // Properties
 
@@ -2074,12 +2239,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<DeprecatedScopeSearch.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Methods
 
@@ -2098,11 +2257,11 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface TransactionComplete {
-            (origin_scope_id: string): void;
+            (_source: AggregatedScopeSearch, origin_scope_id: string): void;
         }
 
         interface CategoryOrderChanged {
-            (category_indices: number[]): void;
+            (_source: AggregatedScopeSearch, category_indices: number[]): void;
         }
 
         // Signal signatures
@@ -2118,7 +2277,6 @@ export namespace Unity {
 
     class AggregatedScopeSearch extends DeprecatedScopeSearch {
         static $gtype: GObject.GType<AggregatedScopeSearch>;
-        declare static readonly __signalSignatures: AggregatedScopeSearch.SignalSignatures;
 
         // Constructors
 
@@ -2147,24 +2305,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<AggregatedScopeSearch.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'transaction-complete', callback: (_source: this, origin_scope_id: string) => void): number;
-        connect_after(
-            signal: 'transaction-complete',
-            callback: (_source: this, origin_scope_id: string) => void,
-        ): number;
-        emit(signal: 'transaction-complete', origin_scope_id: string): void;
-        connect(
-            signal: 'category-order-changed',
-            callback: (_source: this, category_indices: number[]) => void,
-        ): number;
-        connect_after(
-            signal: 'category-order-changed',
-            callback: (_source: this, category_indices: number[]) => void,
-        ): number;
-        emit(signal: 'category-order-changed', category_indices: number[]): void;
 
         // Methods
 
@@ -2225,7 +2365,6 @@ export namespace Unity {
 
     abstract class Preview extends AbstractPreview implements Dee.Serializable {
         static $gtype: GObject.GType<Preview>;
-        declare static readonly __signalSignatures: Preview.SignalSignatures;
 
         // Properties
 
@@ -2249,6 +2388,18 @@ export namespace Unity {
         constructor(properties?: Partial<Preview.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Preview.SignalSignatures>(signal: K, callback: Preview.SignalSignatures[K]): number;
+        connect_after<K extends keyof Preview.SignalSignatures>(
+            signal: K,
+            callback: Preview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Preview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Preview.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2738,7 +2889,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface Activated {
-            (uri: string): ActivationResponse;
+            (_source: PreviewAction, uri: string): ActivationResponse;
         }
 
         // Signal signatures
@@ -2764,7 +2915,6 @@ export namespace Unity {
 
     class PreviewAction extends GObject.Object implements Dee.Serializable {
         static $gtype: GObject.GType<PreviewAction>;
-        declare static readonly __signalSignatures: PreviewAction.SignalSignatures;
 
         // Properties
 
@@ -2812,12 +2962,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<PreviewAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activated', callback: (_source: this, uri: string) => ActivationResponse): number;
-        connect_after(signal: 'activated', callback: (_source: this, uri: string) => ActivationResponse): number;
-        emit(signal: 'activated', uri: string): void;
 
         // Methods
 
@@ -3316,7 +3460,6 @@ export namespace Unity {
 
     class InfoHint extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<InfoHint>;
-        declare static readonly __signalSignatures: InfoHint.SignalSignatures;
 
         // Properties
 
@@ -3336,6 +3479,18 @@ export namespace Unity {
         static ['new'](id: string, display_name: string, icon_hint: Gio.Icon, data: string): InfoHint;
 
         static with_variant(id: string, display_name: string, icon_hint: Gio.Icon, data: GLib.Variant): InfoHint;
+
+        // Signals
+
+        connect<K extends keyof InfoHint.SignalSignatures>(signal: K, callback: InfoHint.SignalSignatures[K]): number;
+        connect_after<K extends keyof InfoHint.SignalSignatures>(
+            signal: K,
+            callback: InfoHint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfoHint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfoHint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3358,7 +3513,6 @@ export namespace Unity {
 
     class GenericPreview extends Preview {
         static $gtype: GObject.GType<GenericPreview>;
-        declare static readonly __signalSignatures: GenericPreview.SignalSignatures;
 
         // Constructors
 
@@ -3367,6 +3521,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](title: string, description: string, image: Gio.Icon): GenericPreview;
+
+        // Signals
+
+        connect<K extends keyof GenericPreview.SignalSignatures>(
+            signal: K,
+            callback: GenericPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GenericPreview.SignalSignatures>(
+            signal: K,
+            callback: GenericPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GenericPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GenericPreview.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ApplicationPreview {
@@ -3387,7 +3556,6 @@ export namespace Unity {
 
     class ApplicationPreview extends Preview {
         static $gtype: GObject.GType<ApplicationPreview>;
-        declare static readonly __signalSignatures: ApplicationPreview.SignalSignatures;
 
         // Properties
 
@@ -3418,6 +3586,21 @@ export namespace Unity {
             screenshot: Gio.Icon,
         ): ApplicationPreview;
 
+        // Signals
+
+        connect<K extends keyof ApplicationPreview.SignalSignatures>(
+            signal: K,
+            callback: ApplicationPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationPreview.SignalSignatures>(
+            signal: K,
+            callback: ApplicationPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationPreview.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_rating(rating: number, num_ratings: number): void;
@@ -3442,7 +3625,6 @@ export namespace Unity {
 
     class MusicPreview extends Preview {
         static $gtype: GObject.GType<MusicPreview>;
-        declare static readonly __signalSignatures: MusicPreview.SignalSignatures;
 
         // Constructors
 
@@ -3451,6 +3633,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](title: string, subtitle: string, image: Gio.Icon): MusicPreview;
+
+        // Signals
+
+        connect<K extends keyof MusicPreview.SignalSignatures>(
+            signal: K,
+            callback: MusicPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MusicPreview.SignalSignatures>(
+            signal: K,
+            callback: MusicPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MusicPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MusicPreview.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3479,7 +3676,6 @@ export namespace Unity {
 
     class PaymentPreview extends Preview {
         static $gtype: GObject.GType<PaymentPreview>;
-        declare static readonly __signalSignatures: PaymentPreview.SignalSignatures;
 
         // Properties
 
@@ -3520,6 +3716,21 @@ export namespace Unity {
 
         static for_error(title: string, subtitle: string, image: Gio.Icon): PaymentPreview;
 
+        // Signals
+
+        connect<K extends keyof PaymentPreview.SignalSignatures>(
+            signal: K,
+            callback: PaymentPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PaymentPreview.SignalSignatures>(
+            signal: K,
+            callback: PaymentPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PaymentPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PaymentPreview.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_header(): string;
@@ -3549,7 +3760,6 @@ export namespace Unity {
 
     class MoviePreview extends Preview {
         static $gtype: GObject.GType<MoviePreview>;
-        declare static readonly __signalSignatures: MoviePreview.SignalSignatures;
 
         // Properties
 
@@ -3563,6 +3773,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](title: string, subtitle: string, description: string, image: Gio.Icon): MoviePreview;
+
+        // Signals
+
+        connect<K extends keyof MoviePreview.SignalSignatures>(
+            signal: K,
+            callback: MoviePreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MoviePreview.SignalSignatures>(
+            signal: K,
+            callback: MoviePreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MoviePreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MoviePreview.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3586,7 +3811,6 @@ export namespace Unity {
 
     class SocialPreview extends Preview {
         static $gtype: GObject.GType<SocialPreview>;
-        declare static readonly __signalSignatures: SocialPreview.SignalSignatures;
 
         // Properties
 
@@ -3604,6 +3828,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](sender: string, subtitle: string, content: string, avatar: Gio.Icon): SocialPreview;
+
+        // Signals
+
+        connect<K extends keyof SocialPreview.SignalSignatures>(
+            signal: K,
+            callback: SocialPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SocialPreview.SignalSignatures>(
+            signal: K,
+            callback: SocialPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SocialPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SocialPreview.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3632,7 +3871,6 @@ export namespace Unity {
 
     class SocialPreviewComment extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<SocialPreviewComment>;
-        declare static readonly __signalSignatures: SocialPreviewComment.SignalSignatures;
 
         // Properties
 
@@ -3648,6 +3886,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](id: string, name: string, text: string, time: string): SocialPreviewComment;
+
+        // Signals
+
+        connect<K extends keyof SocialPreviewComment.SignalSignatures>(
+            signal: K,
+            callback: SocialPreviewComment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SocialPreviewComment.SignalSignatures>(
+            signal: K,
+            callback: SocialPreviewComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SocialPreviewComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SocialPreviewComment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3672,7 +3925,6 @@ export namespace Unity {
 
     class ActivationResponse extends GObject.Object {
         static $gtype: GObject.GType<ActivationResponse>;
-        declare static readonly __signalSignatures: ActivationResponse.SignalSignatures;
 
         // Properties
 
@@ -3697,6 +3949,21 @@ export namespace Unity {
         ): ActivationResponse;
 
         static with_preview(preview: Preview): ActivationResponse;
+
+        // Signals
+
+        connect<K extends keyof ActivationResponse.SignalSignatures>(
+            signal: K,
+            callback: ActivationResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActivationResponse.SignalSignatures>(
+            signal: K,
+            callback: ActivationResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActivationResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActivationResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3726,7 +3993,6 @@ export namespace Unity {
 
     class AggregatorActivation extends GObject.Object {
         static $gtype: GObject.GType<AggregatorActivation>;
-        declare static readonly __signalSignatures: AggregatorActivation.SignalSignatures;
 
         // Properties
 
@@ -3762,6 +4028,21 @@ export namespace Unity {
             result: ScopeResult,
         ): AggregatorActivation;
 
+        // Signals
+
+        connect<K extends keyof AggregatorActivation.SignalSignatures>(
+            signal: K,
+            callback: AggregatorActivation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AggregatorActivation.SignalSignatures>(
+            signal: K,
+            callback: AggregatorActivation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AggregatorActivation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AggregatorActivation.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_channel_id(): string;
@@ -3786,7 +4067,6 @@ export namespace Unity {
 
     class FilterSet extends GObject.Object {
         static $gtype: GObject.GType<FilterSet>;
-        declare static readonly __signalSignatures: FilterSet.SignalSignatures;
 
         // Constructors
 
@@ -3795,6 +4075,18 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](): FilterSet;
+
+        // Signals
+
+        connect<K extends keyof FilterSet.SignalSignatures>(signal: K, callback: FilterSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof FilterSet.SignalSignatures>(
+            signal: K,
+            callback: FilterSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterSet.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3820,7 +4112,6 @@ export namespace Unity {
 
     class CategorySet extends GObject.Object {
         static $gtype: GObject.GType<CategorySet>;
-        declare static readonly __signalSignatures: CategorySet.SignalSignatures;
 
         // Constructors
 
@@ -3829,6 +4120,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](): CategorySet;
+
+        // Signals
+
+        connect<K extends keyof CategorySet.SignalSignatures>(
+            signal: K,
+            callback: CategorySet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CategorySet.SignalSignatures>(
+            signal: K,
+            callback: CategorySet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CategorySet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CategorySet.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3852,7 +4158,6 @@ export namespace Unity {
 
     class Schema extends GObject.Object {
         static $gtype: GObject.GType<Schema>;
-        declare static readonly __signalSignatures: Schema.SignalSignatures;
 
         // Constructors
 
@@ -3861,6 +4166,12 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](): Schema;
+
+        // Signals
+
+        connect<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
+        connect_after<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
+        emit<K extends keyof Schema.SignalSignatures>(signal: K, ...args: Parameters<Schema.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -3884,13 +4195,27 @@ export namespace Unity {
 
     abstract class Cancellable extends GObject.Object {
         static $gtype: GObject.GType<Cancellable>;
-        declare static readonly __signalSignatures: Cancellable.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Cancellable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            callback: Cancellable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            callback: Cancellable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Cancellable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Cancellable.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3920,13 +4245,27 @@ export namespace Unity {
 
     abstract class ScopeSearchBase extends GObject.Object {
         static $gtype: GObject.GType<ScopeSearchBase>;
-        declare static readonly __signalSignatures: ScopeSearchBase.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScopeSearchBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScopeSearchBase.SignalSignatures>(
+            signal: K,
+            callback: ScopeSearchBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScopeSearchBase.SignalSignatures>(
+            signal: K,
+            callback: ScopeSearchBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScopeSearchBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScopeSearchBase.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3952,7 +4291,6 @@ export namespace Unity {
 
     abstract class ResultSet extends GObject.Object {
         static $gtype: GObject.GType<ResultSet>;
-        declare static readonly __signalSignatures: ResultSet.SignalSignatures;
 
         // Fields
 
@@ -3963,6 +4301,18 @@ export namespace Unity {
         constructor(properties?: Partial<ResultSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ResultSet.SignalSignatures>(signal: K, callback: ResultSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof ResultSet.SignalSignatures>(
+            signal: K,
+            callback: ResultSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResultSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResultSet.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3988,13 +4338,27 @@ export namespace Unity {
 
     abstract class AbstractPreview extends GObject.Object {
         static $gtype: GObject.GType<AbstractPreview>;
-        declare static readonly __signalSignatures: AbstractPreview.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AbstractPreview.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractPreview.SignalSignatures>(
+            signal: K,
+            callback: AbstractPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractPreview.SignalSignatures>(
+            signal: K,
+            callback: AbstractPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractPreview.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4016,7 +4380,6 @@ export namespace Unity {
 
     abstract class ResultPreviewer extends GObject.Object {
         static $gtype: GObject.GType<ResultPreviewer>;
-        declare static readonly __signalSignatures: ResultPreviewer.SignalSignatures;
 
         // Fields
 
@@ -4028,6 +4391,21 @@ export namespace Unity {
         constructor(properties?: Partial<ResultPreviewer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ResultPreviewer.SignalSignatures>(
+            signal: K,
+            callback: ResultPreviewer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResultPreviewer.SignalSignatures>(
+            signal: K,
+            callback: ResultPreviewer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResultPreviewer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResultPreviewer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4058,7 +4436,6 @@ export namespace Unity {
 
     class SearchMetadata extends GObject.Object {
         static $gtype: GObject.GType<SearchMetadata>;
-        declare static readonly __signalSignatures: SearchMetadata.SignalSignatures;
 
         // Properties
 
@@ -4074,6 +4451,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](): SearchMetadata;
+
+        // Signals
+
+        connect<K extends keyof SearchMetadata.SignalSignatures>(
+            signal: K,
+            callback: SearchMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchMetadata.SignalSignatures>(
+            signal: K,
+            callback: SearchMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchMetadata.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4098,7 +4490,6 @@ export namespace Unity {
 
     class GeoCoordinate extends GObject.Object {
         static $gtype: GObject.GType<GeoCoordinate>;
-        declare static readonly __signalSignatures: GeoCoordinate.SignalSignatures;
 
         // Fields
 
@@ -4116,6 +4507,21 @@ export namespace Unity {
 
         static with_altitude(latitude_: number, longitude_: number, altitude_: number): GeoCoordinate;
 
+        // Signals
+
+        connect<K extends keyof GeoCoordinate.SignalSignatures>(
+            signal: K,
+            callback: GeoCoordinate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GeoCoordinate.SignalSignatures>(
+            signal: K,
+            callback: GeoCoordinate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GeoCoordinate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GeoCoordinate.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         has_valid_altitude(): boolean;
@@ -4125,7 +4531,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface ResultsInvalidatedInternal {
-            (search_type: SearchType): void;
+            (_source: AbstractScope, search_type: SearchType): void;
         }
 
         // Signal signatures
@@ -4140,7 +4546,6 @@ export namespace Unity {
 
     abstract class AbstractScope extends GObject.Object {
         static $gtype: GObject.GType<AbstractScope>;
-        declare static readonly __signalSignatures: AbstractScope.SignalSignatures;
 
         // Constructors
 
@@ -4162,18 +4567,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<AbstractScope.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'results-invalidated-internal',
-            callback: (_source: this, search_type: SearchType) => void,
-        ): number;
-        connect_after(
-            signal: 'results-invalidated-internal',
-            callback: (_source: this, search_type: SearchType) => void,
-        ): number;
-        emit(signal: 'results-invalidated-internal', search_type: SearchType): void;
 
         // Virtual methods
 
@@ -4216,7 +4609,6 @@ export namespace Unity {
 
     class ScopeDBusConnector extends GObject.Object {
         static $gtype: GObject.GType<ScopeDBusConnector>;
-        declare static readonly __signalSignatures: ScopeDBusConnector.SignalSignatures;
 
         // Properties
 
@@ -4229,6 +4621,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](scope: AbstractScope): ScopeDBusConnector;
+
+        // Signals
+
+        connect<K extends keyof ScopeDBusConnector.SignalSignatures>(
+            signal: K,
+            callback: ScopeDBusConnector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScopeDBusConnector.SignalSignatures>(
+            signal: K,
+            callback: ScopeDBusConnector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScopeDBusConnector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScopeDBusConnector.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4246,7 +4653,7 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface ActiveSourcesChanged {
-            (active_ids: string[]): void;
+            (_source: DeprecatedScopeBase, active_ids: string[]): void;
         }
 
         // Signal signatures
@@ -4276,7 +4683,6 @@ export namespace Unity {
 
     abstract class DeprecatedScopeBase extends GObject.Object {
         static $gtype: GObject.GType<DeprecatedScopeBase>;
-        declare static readonly __signalSignatures: DeprecatedScopeBase.SignalSignatures;
 
         // Properties
 
@@ -4324,15 +4730,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<DeprecatedScopeBase.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-sources-changed', callback: (_source: this, active_ids: string[]) => void): number;
-        connect_after(
-            signal: 'active-sources-changed',
-            callback: (_source: this, active_ids: string[]) => void,
-        ): number;
-        emit(signal: 'active-sources-changed', active_ids: string[]): void;
 
         // Methods
 
@@ -4360,19 +4757,24 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface ActivateUri {
-            (uri: string): ActivationResponse;
+            (_source: DeprecatedScope, uri: string): ActivationResponse;
         }
 
         interface PreviewUri {
-            (uri: string): Preview;
+            (_source: DeprecatedScope, uri: string): Preview;
         }
 
         interface GenerateSearchKey {
-            (search: DeprecatedScopeSearch): string;
+            (_source: DeprecatedScope, search: DeprecatedScopeSearch): string;
         }
 
         interface SearchChanged {
-            (search: DeprecatedScopeSearch, search_type: SearchType, cancellable: Gio.Cancellable): void;
+            (
+                _source: DeprecatedScope,
+                search: DeprecatedScopeSearch,
+                search_type: SearchType,
+                cancellable: Gio.Cancellable,
+            ): void;
         }
 
         // Signal signatures
@@ -4390,7 +4792,6 @@ export namespace Unity {
 
     class DeprecatedScope extends DeprecatedScopeBase {
         static $gtype: GObject.GType<DeprecatedScope>;
-        declare static readonly __signalSignatures: DeprecatedScope.SignalSignatures;
 
         // Constructors
 
@@ -4413,48 +4814,6 @@ export namespace Unity {
         emit<K extends keyof DeprecatedScope.SignalSignatures>(
             signal: K,
             ...args: Parameters<DeprecatedScope.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate-uri', callback: (_source: this, uri: string) => ActivationResponse): number;
-        connect_after(signal: 'activate-uri', callback: (_source: this, uri: string) => ActivationResponse): number;
-        emit(signal: 'activate-uri', uri: string): void;
-        connect(signal: 'preview-uri', callback: (_source: this, uri: string) => Preview): number;
-        connect_after(signal: 'preview-uri', callback: (_source: this, uri: string) => Preview): number;
-        emit(signal: 'preview-uri', uri: string): void;
-        connect(
-            signal: 'generate-search-key',
-            callback: (_source: this, search: DeprecatedScopeSearch) => string,
-        ): number;
-        connect_after(
-            signal: 'generate-search-key',
-            callback: (_source: this, search: DeprecatedScopeSearch) => string,
-        ): number;
-        emit(signal: 'generate-search-key', search: DeprecatedScopeSearch): void;
-        connect(
-            signal: 'search-changed',
-            callback: (
-                _source: this,
-                search: DeprecatedScopeSearch,
-                search_type: SearchType,
-                cancellable: Gio.Cancellable,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'search-changed',
-            callback: (
-                _source: this,
-                search: DeprecatedScopeSearch,
-                search_type: SearchType,
-                cancellable: Gio.Cancellable,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'search-changed',
-            search: DeprecatedScopeSearch,
-            search_type: SearchType,
-            cancellable: Gio.Cancellable,
         ): void;
 
         // Virtual methods
@@ -4498,7 +4857,6 @@ export namespace Unity {
 
     abstract class AggregatorScope extends DeprecatedScopeBase {
         static $gtype: GObject.GType<AggregatorScope>;
-        declare static readonly __signalSignatures: AggregatorScope.SignalSignatures;
 
         // Properties
 
@@ -4520,6 +4878,21 @@ export namespace Unity {
         constructor(properties?: Partial<AggregatorScope.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AggregatorScope.SignalSignatures>(
+            signal: K,
+            callback: AggregatorScope.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AggregatorScope.SignalSignatures>(
+            signal: K,
+            callback: AggregatorScope.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AggregatorScope.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AggregatorScope.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4567,7 +4940,6 @@ export namespace Unity {
 
     class MasterScope extends AggregatorScope {
         static $gtype: GObject.GType<MasterScope>;
-        declare static readonly __signalSignatures: MasterScope.SignalSignatures;
 
         // Properties
 
@@ -4583,6 +4955,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](dbus_path_: string, id_: string): MasterScope;
+
+        // Signals
+
+        connect<K extends keyof MasterScope.SignalSignatures>(
+            signal: K,
+            callback: MasterScope.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MasterScope.SignalSignatures>(
+            signal: K,
+            callback: MasterScope.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MasterScope.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MasterScope.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4629,7 +5016,6 @@ export namespace Unity {
 
     class SimpleScope extends AbstractScope {
         static $gtype: GObject.GType<SimpleScope>;
-        declare static readonly __signalSignatures: SimpleScope.SignalSignatures;
 
         // Properties
 
@@ -4664,6 +5050,21 @@ export namespace Unity {
 
         static ['new'](): SimpleScope;
 
+        // Signals
+
+        connect<K extends keyof SimpleScope.SignalSignatures>(
+            signal: K,
+            callback: SimpleScope.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleScope.SignalSignatures>(
+            signal: K,
+            callback: SimpleScope.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleScope.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleScope.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         set_search_func(func: SimpleScope.SearchRunFunc): void;
@@ -4696,7 +5097,6 @@ export namespace Unity {
 
     class ScopeLoader extends GObject.Object {
         static $gtype: GObject.GType<ScopeLoader>;
-        declare static readonly __signalSignatures: ScopeLoader.SignalSignatures;
 
         // Constructors
 
@@ -4705,6 +5105,21 @@ export namespace Unity {
         _init(...args: any[]): void;
 
         static ['new'](): ScopeLoader;
+
+        // Signals
+
+        connect<K extends keyof ScopeLoader.SignalSignatures>(
+            signal: K,
+            callback: ScopeLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScopeLoader.SignalSignatures>(
+            signal: K,
+            callback: ScopeLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScopeLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScopeLoader.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4743,7 +5158,6 @@ export namespace Unity {
 
     class TrackMetadata extends GObject.Object {
         static $gtype: GObject.GType<TrackMetadata>;
-        declare static readonly __signalSignatures: TrackMetadata.SignalSignatures;
 
         // Properties
 
@@ -4787,6 +5201,21 @@ export namespace Unity {
             length: number,
         ): TrackMetadata;
 
+        // Signals
+
+        connect<K extends keyof TrackMetadata.SignalSignatures>(
+            signal: K,
+            callback: TrackMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackMetadata.SignalSignatures>(
+            signal: K,
+            callback: TrackMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackMetadata.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_uri(): string;
@@ -4828,7 +5257,6 @@ export namespace Unity {
 
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
-        declare static readonly __signalSignatures: Playlist.SignalSignatures;
 
         // Properties
 
@@ -4858,6 +5286,18 @@ export namespace Unity {
 
         static ['new'](id: string): Playlist;
 
+        // Signals
+
+        connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: Playlist.SignalSignatures[K]): number;
+        connect_after<K extends keyof Playlist.SignalSignatures>(
+            signal: K,
+            callback: Playlist.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Playlist.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Playlist.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_id(): string;
@@ -4877,23 +5317,23 @@ export namespace Unity {
         // Signal callback interfaces
 
         interface Raise {
-            (): void;
+            (_source: MusicPlayer): void;
         }
 
         interface PlayPause {
-            (): void;
+            (_source: MusicPlayer): void;
         }
 
         interface Previous {
-            (): void;
+            (_source: MusicPlayer): void;
         }
 
         interface Next {
-            (): void;
+            (_source: MusicPlayer): void;
         }
 
         interface ActivatePlaylist {
-            (playlist_id: never): void;
+            (_source: MusicPlayer, playlist_id: never): void;
         }
 
         // Signal signatures
@@ -4938,7 +5378,6 @@ export namespace Unity {
 
     class MusicPlayer extends GObject.Object {
         static $gtype: GObject.GType<MusicPlayer>;
-        declare static readonly __signalSignatures: MusicPlayer.SignalSignatures;
 
         // Properties
 
@@ -5011,24 +5450,6 @@ export namespace Unity {
             signal: K,
             ...args: Parameters<MusicPlayer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'raise', callback: (_source: this) => void): number;
-        connect_after(signal: 'raise', callback: (_source: this) => void): number;
-        emit(signal: 'raise'): void;
-        connect(signal: 'play-pause', callback: (_source: this) => void): number;
-        connect_after(signal: 'play-pause', callback: (_source: this) => void): number;
-        emit(signal: 'play-pause'): void;
-        connect(signal: 'previous', callback: (_source: this) => void): number;
-        connect_after(signal: 'previous', callback: (_source: this) => void): number;
-        emit(signal: 'previous'): void;
-        connect(signal: 'next', callback: (_source: this) => void): number;
-        connect_after(signal: 'next', callback: (_source: this) => void): number;
-        emit(signal: 'next'): void;
-        connect(signal: 'activate-playlist', callback: (_source: this, playlist_id: never) => void): number;
-        connect_after(signal: 'activate-playlist', callback: (_source: this, playlist_id: never) => void): number;
-        emit(signal: 'activate-playlist', playlist_id: never): void;
 
         // Methods
 

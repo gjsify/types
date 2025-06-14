@@ -181,7 +181,6 @@ export namespace SecretUnstable {
      */
     class Collection extends Gio.DBusProxy implements Gio.AsyncInitable<Collection>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Collection>;
-        declare static readonly __signalSignatures: Collection.SignalSignatures;
 
         // Properties
 
@@ -233,6 +232,21 @@ export namespace SecretUnstable {
             flags: CollectionFlags,
             cancellable: Gio.Cancellable,
         ): Collection;
+
+        // Signals
+
+        connect<K extends keyof Collection.SignalSignatures>(
+            signal: K,
+            callback: Collection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Collection.SignalSignatures>(
+            signal: K,
+            callback: Collection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Collection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Collection.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1575,7 +1589,6 @@ export namespace SecretUnstable {
      */
     class Item extends Gio.DBusProxy implements Gio.AsyncInitable<Item>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Item>;
-        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Properties
 
@@ -1634,6 +1647,12 @@ export namespace SecretUnstable {
             flags: ItemFlags,
             cancellable: Gio.Cancellable,
         ): Item;
+
+        // Signals
+
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2898,13 +2917,18 @@ export namespace SecretUnstable {
      */
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Prompt>;
-        declare static readonly __signalSignatures: Prompt.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Prompt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
+        connect_after<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
+        emit<K extends keyof Prompt.SignalSignatures>(signal: K, ...args: Parameters<Prompt.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3796,13 +3820,24 @@ export namespace SecretUnstable {
      */
     class Service extends Gio.DBusProxy implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Service>;
-        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

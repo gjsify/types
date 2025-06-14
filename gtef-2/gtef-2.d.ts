@@ -325,13 +325,27 @@ export namespace Gtef {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
-        declare static readonly __signalSignatures: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ActionInfoCentralStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ActionInfoCentralStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoCentralStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoCentralStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionInfoCentralStore.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -355,7 +369,6 @@ export namespace Gtef {
 
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
-        declare static readonly __signalSignatures: ActionInfoStore.SignalSignatures;
 
         // Properties
 
@@ -372,6 +385,21 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](application?: Gtk.Application | null): ActionInfoStore;
+
+        // Signals
+
+        connect<K extends keyof ActionInfoStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActionInfoStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionInfoStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionInfoStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -439,7 +467,6 @@ export namespace Gtef {
 
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -453,6 +480,21 @@ export namespace Gtef {
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -502,7 +544,6 @@ export namespace Gtef {
 
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
-        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Properties
 
@@ -525,6 +566,21 @@ export namespace Gtef {
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -592,7 +648,7 @@ export namespace Gtef {
         // Signal callback interfaces
 
         interface GtefCursorMoved {
-            (): void;
+            (_source: Buffer): void;
         }
 
         // Signal signatures
@@ -612,7 +668,6 @@ export namespace Gtef {
 
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -656,12 +711,6 @@ export namespace Gtef {
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'gtef-cursor-moved', callback: (_source: this) => void): number;
-        connect_after(signal: 'gtef-cursor-moved', callback: (_source: this) => void): number;
-        emit(signal: 'gtef-cursor-moved'): void;
 
         // Virtual methods
 
@@ -731,7 +780,6 @@ export namespace Gtef {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
-        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -787,6 +835,12 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](): File;
+
+        // Signals
+
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -880,7 +934,6 @@ export namespace Gtef {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
-        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -945,6 +998,21 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Buffer, file: File): FileLoader;
+
+        // Signals
+
+        connect<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            callback: FileLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            callback: FileLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileLoader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1027,7 +1095,6 @@ export namespace Gtef {
 
     class FileMetadata extends GObject.Object {
         static $gtype: GObject.GType<FileMetadata>;
-        declare static readonly __signalSignatures: FileMetadata.SignalSignatures;
 
         // Properties
 
@@ -1043,6 +1110,21 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](file: File): FileMetadata;
+
+        // Signals
+
+        connect<K extends keyof FileMetadata.SignalSignatures>(
+            signal: K,
+            callback: FileMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileMetadata.SignalSignatures>(
+            signal: K,
+            callback: FileMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileMetadata.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1215,7 +1297,6 @@ export namespace Gtef {
 
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
-        declare static readonly __signalSignatures: FileSaver.SignalSignatures;
 
         // Properties
 
@@ -1278,6 +1359,18 @@ export namespace Gtef {
         static ['new'](buffer: Buffer, file: File): FileSaver;
 
         static new_with_target(buffer: Buffer, file: File, target_location: Gio.File): FileSaver;
+
+        // Signals
+
+        connect<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: FileSaver.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileSaver.SignalSignatures>(
+            signal: K,
+            callback: FileSaver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSaver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSaver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1382,7 +1475,6 @@ export namespace Gtef {
 
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
-        declare static readonly __signalSignatures: FoldRegion.SignalSignatures;
 
         // Properties
 
@@ -1404,6 +1496,21 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Gtk.TextBuffer, start: Gtk.TextIter, end: Gtk.TextIter): FoldRegion;
+
+        // Signals
+
+        connect<K extends keyof FoldRegion.SignalSignatures>(
+            signal: K,
+            callback: FoldRegion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FoldRegion.SignalSignatures>(
+            signal: K,
+            callback: FoldRegion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FoldRegion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FoldRegion.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1438,7 +1545,6 @@ export namespace Gtef {
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
-        declare static readonly __signalSignatures: GutterRendererFolds.SignalSignatures;
 
         // Constructors
 
@@ -1447,6 +1553,21 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](): GutterRendererFolds;
+
+        // Signals
+
+        connect<K extends keyof GutterRendererFolds.SignalSignatures>(
+            signal: K,
+            callback: GutterRendererFolds.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(
+            signal: K,
+            callback: GutterRendererFolds.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GutterRendererFolds.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GutterRendererFolds.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1475,7 +1596,6 @@ export namespace Gtef {
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
-        declare static readonly __signalSignatures: InfoBar.SignalSignatures;
 
         // Constructors
 
@@ -1486,6 +1606,18 @@ export namespace Gtef {
         static ['new'](): InfoBar;
 
         static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
+
+        // Signals
+
+        connect<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: InfoBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof InfoBar.SignalSignatures>(
+            signal: K,
+            callback: InfoBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfoBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfoBar.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1980,11 +2112,11 @@ export namespace Gtef {
         // Signal callback interfaces
 
         interface MenuItemDeselected {
-            (menu_item: Gtk.MenuItem): void;
+            (_source: MenuShell, menu_item: Gtk.MenuItem): void;
         }
 
         interface MenuItemSelected {
-            (menu_item: Gtk.MenuItem): void;
+            (_source: MenuShell, menu_item: Gtk.MenuItem): void;
         }
 
         // Signal signatures
@@ -2003,7 +2135,6 @@ export namespace Gtef {
 
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
-        declare static readonly __signalSignatures: MenuShell.SignalSignatures;
 
         // Properties
 
@@ -2033,18 +2164,6 @@ export namespace Gtef {
             signal: K,
             ...args: Parameters<MenuShell.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'menu-item-deselected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
-        connect_after(
-            signal: 'menu-item-deselected',
-            callback: (_source: this, menu_item: Gtk.MenuItem) => void,
-        ): number;
-        emit(signal: 'menu-item-deselected', menu_item: Gtk.MenuItem): void;
-        connect(signal: 'menu-item-selected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
-        connect_after(signal: 'menu-item-selected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
-        emit(signal: 'menu-item-selected', menu_item: Gtk.MenuItem): void;
 
         // Static methods
 
@@ -2080,7 +2199,6 @@ export namespace Gtef {
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
-        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Constructors
 
@@ -2092,6 +2210,12 @@ export namespace Gtef {
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2579,7 +2703,6 @@ export namespace Gtef {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 
@@ -2588,6 +2711,12 @@ export namespace Gtef {
         _init(...args: any[]): void;
 
         static ['new'](): View;
+
+        // Signals
+
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
 
         // Methods
 

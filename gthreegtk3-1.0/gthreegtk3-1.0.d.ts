@@ -49,7 +49,6 @@ export namespace GthreeGtk3 {
 
     class Area extends Gtk.GLArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Area>;
-        declare static readonly __signalSignatures: Area.SignalSignatures;
 
         // Properties
 
@@ -70,6 +69,12 @@ export namespace GthreeGtk3 {
         // Conflicted with Gtk.GLArea.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Area.SignalSignatures>(signal: K, callback: Area.SignalSignatures[K]): number;
+        connect_after<K extends keyof Area.SignalSignatures>(signal: K, callback: Area.SignalSignatures[K]): number;
+        emit<K extends keyof Area.SignalSignatures>(signal: K, ...args: Parameters<Area.SignalSignatures[K]>): void;
 
         // Methods
 

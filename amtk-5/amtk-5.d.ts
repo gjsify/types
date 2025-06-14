@@ -278,13 +278,27 @@ export namespace Amtk {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
-        declare static readonly __signalSignatures: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ActionInfoCentralStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ActionInfoCentralStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoCentralStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoCentralStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionInfoCentralStore.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -306,7 +320,6 @@ export namespace Amtk {
 
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
-        declare static readonly __signalSignatures: ActionInfoStore.SignalSignatures;
 
         // Constructors
 
@@ -315,6 +328,21 @@ export namespace Amtk {
         _init(...args: any[]): void;
 
         static ['new'](): ActionInfoStore;
+
+        // Signals
+
+        connect<K extends keyof ActionInfoStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActionInfoStore.SignalSignatures>(
+            signal: K,
+            callback: ActionInfoStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionInfoStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionInfoStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -391,7 +419,6 @@ export namespace Amtk {
 
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
-        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Properties
 
@@ -414,6 +441,21 @@ export namespace Amtk {
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -502,7 +544,6 @@ export namespace Amtk {
 
     class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
-        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Properties
 
@@ -531,6 +572,18 @@ export namespace Amtk {
         static ['new'](application?: Gtk.Application | null): Factory;
 
         static new_with_default_application(): Factory;
+
+        // Signals
+
+        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect_after<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            callback: Factory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Factory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -699,11 +752,11 @@ export namespace Amtk {
         // Signal callback interfaces
 
         interface MenuItemDeselected {
-            (menu_item: Gtk.MenuItem): void;
+            (_source: MenuShell, menu_item: Gtk.MenuItem): void;
         }
 
         interface MenuItemSelected {
-            (menu_item: Gtk.MenuItem): void;
+            (_source: MenuShell, menu_item: Gtk.MenuItem): void;
         }
 
         // Signal signatures
@@ -722,7 +775,6 @@ export namespace Amtk {
 
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
-        declare static readonly __signalSignatures: MenuShell.SignalSignatures;
 
         // Properties
 
@@ -752,18 +804,6 @@ export namespace Amtk {
             signal: K,
             ...args: Parameters<MenuShell.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'menu-item-deselected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
-        connect_after(
-            signal: 'menu-item-deselected',
-            callback: (_source: this, menu_item: Gtk.MenuItem) => void,
-        ): number;
-        emit(signal: 'menu-item-deselected', menu_item: Gtk.MenuItem): void;
-        connect(signal: 'menu-item-selected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
-        connect_after(signal: 'menu-item-selected', callback: (_source: this, menu_item: Gtk.MenuItem) => void): number;
-        emit(signal: 'menu-item-selected', menu_item: Gtk.MenuItem): void;
 
         // Static methods
 

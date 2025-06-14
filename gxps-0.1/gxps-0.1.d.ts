@@ -127,7 +127,6 @@ export namespace GXPS {
      */
     class CoreProperties extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<CoreProperties>;
-        declare static readonly __signalSignatures: CoreProperties.SignalSignatures;
 
         // Properties
 
@@ -138,6 +137,21 @@ export namespace GXPS {
         constructor(properties?: Partial<CoreProperties.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CoreProperties.SignalSignatures>(
+            signal: K,
+            callback: CoreProperties.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CoreProperties.SignalSignatures>(
+            signal: K,
+            callback: CoreProperties.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CoreProperties.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CoreProperties.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -767,7 +781,6 @@ export namespace GXPS {
      */
     class Document extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Document>;
-        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -778,6 +791,18 @@ export namespace GXPS {
         constructor(properties?: Partial<Document.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1364,7 +1389,6 @@ export namespace GXPS {
      */
     class DocumentStructure extends GObject.Object {
         static $gtype: GObject.GType<DocumentStructure>;
-        declare static readonly __signalSignatures: DocumentStructure.SignalSignatures;
 
         // Properties
 
@@ -1375,6 +1399,21 @@ export namespace GXPS {
         constructor(properties?: Partial<DocumentStructure.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DocumentStructure.SignalSignatures>(
+            signal: K,
+            callback: DocumentStructure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentStructure.SignalSignatures>(
+            signal: K,
+            callback: DocumentStructure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentStructure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentStructure.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1436,7 +1475,6 @@ export namespace GXPS {
      */
     class File extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<File>;
-        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -1449,6 +1487,12 @@ export namespace GXPS {
         _init(...args: any[]): void;
 
         static ['new'](filename: Gio.File): File;
+
+        // Signals
+
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2032,7 +2076,6 @@ export namespace GXPS {
      */
     class Page extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Page>;
-        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Properties
 
@@ -2043,6 +2086,12 @@ export namespace GXPS {
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
 
         // Static methods
 

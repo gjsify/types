@@ -104,7 +104,6 @@ export namespace Msg {
      */
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
-        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Constructors
 
@@ -115,6 +114,18 @@ export namespace Msg {
         static ['new'](): Contact;
 
         static new_from_json(json_object: Json.Object): Contact;
+
+        // Signals
+
+        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect_after<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            callback: Contact.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Contact.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -157,7 +168,6 @@ export namespace Msg {
 
     class ContactService extends Service {
         static $gtype: GObject.GType<ContactService>;
-        declare static readonly __signalSignatures: ContactService.SignalSignatures;
 
         // Constructors
 
@@ -166,6 +176,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](authorizer: Authorizer): ContactService;
+
+        // Signals
+
+        connect<K extends keyof ContactService.SignalSignatures>(
+            signal: K,
+            callback: ContactService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContactService.SignalSignatures>(
+            signal: K,
+            callback: ContactService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContactService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContactService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -207,7 +232,6 @@ export namespace Msg {
      */
     class Drive extends GObject.Object {
         static $gtype: GObject.GType<Drive>;
-        declare static readonly __signalSignatures: Drive.SignalSignatures;
 
         // Constructors
 
@@ -218,6 +242,12 @@ export namespace Msg {
         static ['new'](): Drive;
 
         static new_from_json(object: Json.Object): Drive;
+
+        // Signals
+
+        connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: Parameters<Drive.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -274,7 +304,6 @@ export namespace Msg {
 
     class DriveItem extends GObject.Object {
         static $gtype: GObject.GType<DriveItem>;
-        declare static readonly __signalSignatures: DriveItem.SignalSignatures;
 
         // Constructors
 
@@ -283,6 +312,18 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static new_from_json(object: Json.Object): DriveItem;
+
+        // Signals
+
+        connect<K extends keyof DriveItem.SignalSignatures>(signal: K, callback: DriveItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof DriveItem.SignalSignatures>(
+            signal: K,
+            callback: DriveItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DriveItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DriveItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -364,7 +405,6 @@ export namespace Msg {
 
     class DriveItemFile extends DriveItem {
         static $gtype: GObject.GType<DriveItemFile>;
-        declare static readonly __signalSignatures: DriveItemFile.SignalSignatures;
 
         // Constructors
 
@@ -375,6 +415,21 @@ export namespace Msg {
         static ['new'](): DriveItemFile;
 
         static new_from_json(object: Json.Object): DriveItemFile;
+
+        // Signals
+
+        connect<K extends keyof DriveItemFile.SignalSignatures>(
+            signal: K,
+            callback: DriveItemFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DriveItemFile.SignalSignatures>(
+            signal: K,
+            callback: DriveItemFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DriveItemFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DriveItemFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -401,7 +456,6 @@ export namespace Msg {
 
     class DriveItemFolder extends DriveItem {
         static $gtype: GObject.GType<DriveItemFolder>;
-        declare static readonly __signalSignatures: DriveItemFolder.SignalSignatures;
 
         // Constructors
 
@@ -412,6 +466,21 @@ export namespace Msg {
         static ['new'](): DriveItemFolder;
 
         static new_from_json(object: Json.Object): DriveItemFolder;
+
+        // Signals
+
+        connect<K extends keyof DriveItemFolder.SignalSignatures>(
+            signal: K,
+            callback: DriveItemFolder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DriveItemFolder.SignalSignatures>(
+            signal: K,
+            callback: DriveItemFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DriveItemFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DriveItemFolder.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DriveService {
@@ -425,7 +494,6 @@ export namespace Msg {
 
     class DriveService extends Service {
         static $gtype: GObject.GType<DriveService>;
-        declare static readonly __signalSignatures: DriveService.SignalSignatures;
 
         // Constructors
 
@@ -434,6 +502,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](authorizer: Authorizer): DriveService;
+
+        // Signals
+
+        connect<K extends keyof DriveService.SignalSignatures>(
+            signal: K,
+            callback: DriveService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DriveService.SignalSignatures>(
+            signal: K,
+            callback: DriveService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DriveService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DriveService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -559,7 +642,6 @@ export namespace Msg {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
-        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Properties
 
@@ -573,6 +655,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](goa_object: Goa.Object): GoaAuthorizer;
+
+        // Signals
+
+        connect<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1070,7 +1167,6 @@ export namespace Msg {
 
     class InputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
-        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -1079,6 +1175,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](service: Service, uri: string): InputStream;
+
+        // Signals
+
+        connect<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputStream.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1650,7 +1761,6 @@ export namespace Msg {
      */
     class MailFolder extends GObject.Object {
         static $gtype: GObject.GType<MailFolder>;
-        declare static readonly __signalSignatures: MailFolder.SignalSignatures;
 
         // Constructors
 
@@ -1661,6 +1771,21 @@ export namespace Msg {
         static ['new'](): MailFolder;
 
         static new_from_json(json_object: Json.Object): MailFolder;
+
+        // Signals
+
+        connect<K extends keyof MailFolder.SignalSignatures>(
+            signal: K,
+            callback: MailFolder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MailFolder.SignalSignatures>(
+            signal: K,
+            callback: MailFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MailFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MailFolder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1685,7 +1810,6 @@ export namespace Msg {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Constructors
 
@@ -1696,6 +1820,18 @@ export namespace Msg {
         static ['new'](): Message;
 
         static new_from_json(json_object: Json.Object): Message;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1717,7 +1853,6 @@ export namespace Msg {
 
     class MessageService extends Service {
         static $gtype: GObject.GType<MessageService>;
-        declare static readonly __signalSignatures: MessageService.SignalSignatures;
 
         // Constructors
 
@@ -1726,6 +1861,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](authorizer: Authorizer): MessageService;
+
+        // Signals
+
+        connect<K extends keyof MessageService.SignalSignatures>(
+            signal: K,
+            callback: MessageService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MessageService.SignalSignatures>(
+            signal: K,
+            callback: MessageService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1782,7 +1932,6 @@ export namespace Msg {
 
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<OAuth2Authorizer>;
-        declare static readonly __signalSignatures: OAuth2Authorizer.SignalSignatures;
 
         // Properties
 
@@ -1802,6 +1951,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](client_id: string, redirect_uri: string): OAuth2Authorizer;
+
+        // Signals
+
+        connect<K extends keyof OAuth2Authorizer.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Authorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Authorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2Authorizer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2303,7 +2467,6 @@ export namespace Msg {
 
     class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
-        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -2314,6 +2477,18 @@ export namespace Msg {
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2401,7 +2576,6 @@ export namespace Msg {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
-        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Constructors
 
@@ -2412,6 +2586,12 @@ export namespace Msg {
         static ['new'](): User;
 
         static new_from_json(json_object: Json.Object): User;
+
+        // Signals
+
+        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2429,7 +2609,6 @@ export namespace Msg {
 
     class UserService extends Service {
         static $gtype: GObject.GType<UserService>;
-        declare static readonly __signalSignatures: UserService.SignalSignatures;
 
         // Constructors
 
@@ -2438,6 +2617,21 @@ export namespace Msg {
         _init(...args: any[]): void;
 
         static ['new'](authorizer: Authorizer): UserService;
+
+        // Signals
+
+        connect<K extends keyof UserService.SignalSignatures>(
+            signal: K,
+            callback: UserService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserService.SignalSignatures>(
+            signal: K,
+            callback: UserService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserService.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

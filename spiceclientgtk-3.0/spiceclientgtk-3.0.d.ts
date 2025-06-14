@@ -61,15 +61,15 @@ export namespace SpiceClientGtk {
         // Signal callback interfaces
 
         interface GrabKeysPressed {
-            (): void;
+            (_source: Display): void;
         }
 
         interface KeyboardGrab {
-            (status: number): void;
+            (_source: Display, status: number): void;
         }
 
         interface MouseGrab {
-            (status: number): void;
+            (_source: Display, status: number): void;
         }
 
         // Signal signatures
@@ -114,7 +114,6 @@ export namespace SpiceClientGtk {
      */
     class Display extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
-        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -241,18 +240,6 @@ export namespace SpiceClientGtk {
             signal: K,
             ...args: Parameters<Display.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'grab-keys-pressed', callback: (_source: this) => void): number;
-        connect_after(signal: 'grab-keys-pressed', callback: (_source: this) => void): number;
-        emit(signal: 'grab-keys-pressed'): void;
-        connect(signal: 'keyboard-grab', callback: (_source: this, status: number) => void): number;
-        connect_after(signal: 'keyboard-grab', callback: (_source: this, status: number) => void): number;
-        emit(signal: 'keyboard-grab', status: number): void;
-        connect(signal: 'mouse-grab', callback: (_source: this, status: number) => void): number;
-        connect_after(signal: 'mouse-grab', callback: (_source: this, status: number) => void): number;
-        emit(signal: 'mouse-grab', status: number): void;
 
         // Methods
 
@@ -749,7 +736,6 @@ export namespace SpiceClientGtk {
      */
     class GtkSession extends GObject.Object {
         static $gtype: GObject.GType<GtkSession>;
-        declare static readonly __signalSignatures: GtkSession.SignalSignatures;
 
         // Properties
 
@@ -808,6 +794,21 @@ export namespace SpiceClientGtk {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof GtkSession.SignalSignatures>(
+            signal: K,
+            callback: GtkSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GtkSession.SignalSignatures>(
+            signal: K,
+            callback: GtkSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkSession.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         /**
@@ -841,7 +842,7 @@ export namespace SpiceClientGtk {
         // Signal callback interfaces
 
         interface ConnectFailed {
-            (device: SpiceClientGLib.UsbDevice, error: GLib.Error): void;
+            (_source: UsbDeviceWidget, device: SpiceClientGLib.UsbDevice, error: GLib.Error): void;
         }
 
         // Signal signatures
@@ -867,7 +868,6 @@ export namespace SpiceClientGtk {
      */
     class UsbDeviceWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<UsbDeviceWidget>;
-        declare static readonly __signalSignatures: UsbDeviceWidget.SignalSignatures;
 
         // Properties
 
@@ -911,18 +911,6 @@ export namespace SpiceClientGtk {
             signal: K,
             ...args: Parameters<UsbDeviceWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'connect-failed',
-            callback: (_source: this, device: SpiceClientGLib.UsbDevice, error: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'connect-failed',
-            callback: (_source: this, device: SpiceClientGLib.UsbDevice, error: GLib.Error) => void,
-        ): number;
-        emit(signal: 'connect-failed', device: SpiceClientGLib.UsbDevice, error: GLib.Error): void;
 
         // Inherited properties
         /**

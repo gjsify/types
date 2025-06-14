@@ -39,7 +39,6 @@ export namespace GstVulkanXCB {
      */
     class VulkanDisplayXCB extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayXCB>;
-        declare static readonly __signalSignatures: VulkanDisplayXCB.SignalSignatures;
 
         // Constructors
 
@@ -51,6 +50,21 @@ export namespace GstVulkanXCB {
         // Conflicted with GstVulkan.VulkanDisplay.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VulkanDisplayXCB.SignalSignatures>(
+            signal: K,
+            callback: VulkanDisplayXCB.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanDisplayXCB.SignalSignatures>(
+            signal: K,
+            callback: VulkanDisplayXCB.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanDisplayXCB.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanDisplayXCB.SignalSignatures[K]>
+        ): void;
     }
 
     type VulkanDisplayXCBClass = typeof VulkanDisplayXCB;

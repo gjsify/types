@@ -138,13 +138,18 @@ export namespace PangoOT {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
-        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Info.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -261,7 +266,6 @@ export namespace PangoOT {
      */
     class Ruleset extends GObject.Object {
         static $gtype: GObject.GType<Ruleset>;
-        declare static readonly __signalSignatures: Ruleset.SignalSignatures;
 
         // Constructors
 
@@ -274,6 +278,18 @@ export namespace PangoOT {
         static new_for(info: Info, script: Pango.Script, language: Pango.Language): Ruleset;
 
         static new_from_description(info: Info, desc: RulesetDescription): Ruleset;
+
+        // Signals
+
+        connect<K extends keyof Ruleset.SignalSignatures>(signal: K, callback: Ruleset.SignalSignatures[K]): number;
+        connect_after<K extends keyof Ruleset.SignalSignatures>(
+            signal: K,
+            callback: Ruleset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Ruleset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Ruleset.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

@@ -164,7 +164,6 @@ export namespace RygelServer {
 
     class AudioItem extends MediaFileItem {
         static $gtype: GObject.GType<AudioItem>;
-        declare static readonly __signalSignatures: AudioItem.SignalSignatures;
 
         // Properties
 
@@ -193,6 +192,18 @@ export namespace RygelServer {
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): AudioItem;
 
+        // Signals
+
+        connect<K extends keyof AudioItem.SignalSignatures>(signal: K, callback: AudioItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof AudioItem.SignalSignatures>(
+            signal: K,
+            callback: AudioItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AudioItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AudioItem.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_duration(): number;
@@ -220,7 +231,6 @@ export namespace RygelServer {
 
     class ImageItem extends MediaFileItem implements VisualItem {
         static $gtype: GObject.GType<ImageItem>;
-        declare static readonly __signalSignatures: ImageItem.SignalSignatures;
 
         // Constructors
 
@@ -229,6 +239,18 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): ImageItem;
+
+        // Signals
+
+        connect<K extends keyof ImageItem.SignalSignatures>(signal: K, callback: ImageItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof ImageItem.SignalSignatures>(
+            signal: K,
+            callback: ImageItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageItem.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get width(): number;
@@ -303,13 +325,27 @@ export namespace RygelServer {
 
     class LogicalExpression extends SearchExpression {
         static $gtype: GObject.GType<LogicalExpression>;
-        declare static readonly __signalSignatures: LogicalExpression.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): LogicalExpression;
+
+        // Signals
+
+        connect<K extends keyof LogicalExpression.SignalSignatures>(
+            signal: K,
+            callback: LogicalExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LogicalExpression.SignalSignatures>(
+            signal: K,
+            callback: LogicalExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LogicalExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LogicalExpression.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MediaArtStore {
@@ -323,13 +359,27 @@ export namespace RygelServer {
 
     class MediaArtStore extends GObject.Object {
         static $gtype: GObject.GType<MediaArtStore>;
-        declare static readonly __signalSignatures: MediaArtStore.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MediaArtStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaArtStore.SignalSignatures>(
+            signal: K,
+            callback: MediaArtStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaArtStore.SignalSignatures>(
+            signal: K,
+            callback: MediaArtStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaArtStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaArtStore.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -353,7 +403,6 @@ export namespace RygelServer {
 
     class MediaObjects extends Gee.ArrayList {
         static $gtype: GObject.GType<MediaObjects>;
-        declare static readonly __signalSignatures: MediaObjects.SignalSignatures;
 
         // Constructors
 
@@ -362,6 +411,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](): MediaObjects;
+
+        // Signals
+
+        connect<K extends keyof MediaObjects.SignalSignatures>(
+            signal: K,
+            callback: MediaObjects.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaObjects.SignalSignatures>(
+            signal: K,
+            callback: MediaObjects.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaObjects.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaObjects.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -384,7 +448,6 @@ export namespace RygelServer {
 
     class MusicItem extends AudioItem {
         static $gtype: GObject.GType<MusicItem>;
-        declare static readonly __signalSignatures: MusicItem.SignalSignatures;
 
         // Properties
 
@@ -404,6 +467,18 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): MusicItem;
+
+        // Signals
+
+        connect<K extends keyof MusicItem.SignalSignatures>(signal: K, callback: MusicItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MusicItem.SignalSignatures>(
+            signal: K,
+            callback: MusicItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MusicItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MusicItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -425,7 +500,6 @@ export namespace RygelServer {
 
     class PhotoItem extends ImageItem {
         static $gtype: GObject.GType<PhotoItem>;
-        declare static readonly __signalSignatures: PhotoItem.SignalSignatures;
 
         // Constructors
 
@@ -434,6 +508,18 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): PhotoItem;
+
+        // Signals
+
+        connect<K extends keyof PhotoItem.SignalSignatures>(signal: K, callback: PhotoItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof PhotoItem.SignalSignatures>(
+            signal: K,
+            callback: PhotoItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PhotoItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PhotoItem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RelationalExpression {
@@ -443,13 +529,27 @@ export namespace RygelServer {
 
     class RelationalExpression extends SearchExpression {
         static $gtype: GObject.GType<RelationalExpression>;
-        declare static readonly __signalSignatures: RelationalExpression.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): RelationalExpression;
+
+        // Signals
+
+        connect<K extends keyof RelationalExpression.SignalSignatures>(
+            signal: K,
+            callback: RelationalExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RelationalExpression.SignalSignatures>(
+            signal: K,
+            callback: RelationalExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RelationalExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RelationalExpression.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -469,7 +569,6 @@ export namespace RygelServer {
 
     class SimpleContainer extends MediaContainer implements SearchableContainer {
         static $gtype: GObject.GType<SimpleContainer>;
-        declare static readonly __signalSignatures: SimpleContainer.SignalSignatures;
 
         // Fields
 
@@ -484,6 +583,21 @@ export namespace RygelServer {
         static ['new'](id: string, parent: MediaContainer | null, title: string): SimpleContainer;
 
         static root(title: string): SimpleContainer;
+
+        // Signals
+
+        connect<K extends keyof SimpleContainer.SignalSignatures>(
+            signal: K,
+            callback: SimpleContainer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleContainer.SignalSignatures>(
+            signal: K,
+            callback: SimpleContainer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleContainer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleContainer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -646,7 +760,6 @@ export namespace RygelServer {
 
     class Subtitle {
         static $gtype: GObject.GType<Subtitle>;
-        declare static readonly __signalSignatures: Subtitle.SignalSignatures;
 
         // Fields
 
@@ -662,6 +775,18 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](mime_type: string, caption_type: string, file_extension: string): Subtitle;
+
+        // Signals
+
+        connect<K extends keyof Subtitle.SignalSignatures>(signal: K, callback: Subtitle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Subtitle.SignalSignatures>(
+            signal: K,
+            callback: Subtitle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Subtitle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Subtitle.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -679,7 +804,6 @@ export namespace RygelServer {
 
     class Thumbnail extends RygelCore.IconInfo {
         static $gtype: GObject.GType<Thumbnail>;
-        declare static readonly __signalSignatures: Thumbnail.SignalSignatures;
 
         // Fields
 
@@ -693,6 +817,18 @@ export namespace RygelServer {
         // Conflicted with RygelCore.IconInfo.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Thumbnail.SignalSignatures>(signal: K, callback: Thumbnail.SignalSignatures[K]): number;
+        connect_after<K extends keyof Thumbnail.SignalSignatures>(
+            signal: K,
+            callback: Thumbnail.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Thumbnail.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Thumbnail.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -717,7 +853,6 @@ export namespace RygelServer {
 
     class VideoItem extends AudioItem implements VisualItem {
         static $gtype: GObject.GType<VideoItem>;
-        declare static readonly __signalSignatures: VideoItem.SignalSignatures;
 
         // Properties
 
@@ -733,6 +868,18 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): VideoItem;
+
+        // Signals
+
+        connect<K extends keyof VideoItem.SignalSignatures>(signal: K, callback: VideoItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof VideoItem.SignalSignatures>(
+            signal: K,
+            callback: VideoItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoItem.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -817,6 +964,7 @@ export namespace RygelServer {
 
         interface ContainerUpdated {
             (
+                _source: MediaContainer,
                 container: MediaContainer,
                 object: MediaObject,
                 event_type: ObjectEventType,
@@ -825,7 +973,7 @@ export namespace RygelServer {
         }
 
         interface SubTreeUpdatesFinished {
-            (sub_tree_root: MediaObject): void;
+            (_source: MediaContainer, sub_tree_root: MediaObject): void;
         }
 
         // Signal signatures
@@ -852,7 +1000,6 @@ export namespace RygelServer {
 
     abstract class MediaContainer extends MediaObject {
         static $gtype: GObject.GType<MediaContainer>;
-        declare static readonly __signalSignatures: MediaContainer.SignalSignatures;
 
         // Properties
 
@@ -901,45 +1048,6 @@ export namespace RygelServer {
             signal: K,
             ...args: Parameters<MediaContainer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'container-updated',
-            callback: (
-                _source: this,
-                container: MediaContainer,
-                object: MediaObject,
-                event_type: ObjectEventType,
-                sub_tree_update: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'container-updated',
-            callback: (
-                _source: this,
-                container: MediaContainer,
-                object: MediaObject,
-                event_type: ObjectEventType,
-                sub_tree_update: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'container-updated',
-            container: MediaContainer,
-            object: MediaObject,
-            event_type: ObjectEventType,
-            sub_tree_update: boolean,
-        ): void;
-        connect(
-            signal: 'sub-tree-updates-finished',
-            callback: (_source: this, sub_tree_root: MediaObject) => void,
-        ): number;
-        connect_after(
-            signal: 'sub-tree-updates-finished',
-            callback: (_source: this, sub_tree_root: MediaObject) => void,
-        ): number;
-        emit(signal: 'sub-tree-updates-finished', sub_tree_root: MediaObject): void;
 
         // Static methods
 
@@ -1022,7 +1130,6 @@ export namespace RygelServer {
 
     abstract class MediaItem extends MediaObject {
         static $gtype: GObject.GType<MediaItem>;
-        declare static readonly __signalSignatures: MediaItem.SignalSignatures;
 
         // Properties
 
@@ -1034,6 +1141,18 @@ export namespace RygelServer {
         constructor(properties?: Partial<MediaItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaItem.SignalSignatures>(signal: K, callback: MediaItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MediaItem.SignalSignatures>(
+            signal: K,
+            callback: MediaItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1060,7 +1179,6 @@ export namespace RygelServer {
 
     abstract class MediaFileItem extends MediaItem {
         static $gtype: GObject.GType<MediaFileItem>;
-        declare static readonly __signalSignatures: MediaFileItem.SignalSignatures;
 
         // Properties
 
@@ -1088,6 +1206,21 @@ export namespace RygelServer {
         constructor(properties?: Partial<MediaFileItem.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaFileItem.SignalSignatures>(
+            signal: K,
+            callback: MediaFileItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaFileItem.SignalSignatures>(
+            signal: K,
+            callback: MediaFileItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaFileItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaFileItem.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1147,7 +1280,6 @@ export namespace RygelServer {
 
     abstract class MediaObject extends GObject.Object {
         static $gtype: GObject.GType<MediaObject>;
-        declare static readonly __signalSignatures: MediaObject.SignalSignatures;
 
         // Properties
 
@@ -1195,6 +1327,21 @@ export namespace RygelServer {
         constructor(properties?: Partial<MediaObject.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaObject.SignalSignatures>(
+            signal: K,
+            callback: MediaObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaObject.SignalSignatures>(
+            signal: K,
+            callback: MediaObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaObject.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1310,7 +1457,6 @@ export namespace RygelServer {
 
     class MediaResource extends GObject.Object {
         static $gtype: GObject.GType<MediaResource>;
-        declare static readonly __signalSignatures: MediaResource.SignalSignatures;
 
         // Properties
 
@@ -1393,6 +1539,21 @@ export namespace RygelServer {
         static from_resource(name: string, that: MediaResource): MediaResource;
 
         static from_didl_lite_resource(name: string, didl_resource: GUPnPAV.DIDLLiteResource): MediaResource;
+
+        // Signals
+
+        connect<K extends keyof MediaResource.SignalSignatures>(
+            signal: K,
+            callback: MediaResource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaResource.SignalSignatures>(
+            signal: K,
+            callback: MediaResource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaResource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaResource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1482,7 +1643,6 @@ export namespace RygelServer {
 
     abstract class MediaServerPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaServerPlugin>;
-        declare static readonly __signalSignatures: MediaServerPlugin.SignalSignatures;
 
         // Properties
 
@@ -1505,6 +1665,21 @@ export namespace RygelServer {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof MediaServerPlugin.SignalSignatures>(
+            signal: K,
+            callback: MediaServerPlugin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaServerPlugin.SignalSignatures>(
+            signal: K,
+            callback: MediaServerPlugin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaServerPlugin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaServerPlugin.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         vfunc_get_search_caps(): string;
@@ -1526,7 +1701,6 @@ export namespace RygelServer {
 
     abstract class SearchExpression {
         static $gtype: GObject.GType<SearchExpression>;
-        declare static readonly __signalSignatures: SearchExpression.SignalSignatures;
 
         // Fields
 
@@ -1538,6 +1712,21 @@ export namespace RygelServer {
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SearchExpression.SignalSignatures>(
+            signal: K,
+            callback: SearchExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchExpression.SignalSignatures>(
+            signal: K,
+            callback: SearchExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchExpression.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1564,7 +1753,6 @@ export namespace RygelServer {
 
     class MediaServer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaServer>;
-        declare static readonly __signalSignatures: MediaServer.SignalSignatures;
 
         // Properties
 
@@ -1582,13 +1770,28 @@ export namespace RygelServer {
             root_container: MediaContainer,
             capabilities: RygelCore.PluginCapabilities,
         ): MediaServer;
+
+        // Signals
+
+        connect<K extends keyof MediaServer.SignalSignatures>(
+            signal: K,
+            callback: MediaServer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaServer.SignalSignatures>(
+            signal: K,
+            callback: MediaServer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaServer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaServer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MediaEngine {
         // Signal callback interfaces
 
         interface ResourceChanged {
-            (media_object_uri: string): void;
+            (_source: MediaEngine, media_object_uri: string): void;
         }
 
         // Signal signatures
@@ -1603,7 +1806,6 @@ export namespace RygelServer {
 
     abstract class MediaEngine extends GObject.Object {
         static $gtype: GObject.GType<MediaEngine>;
-        declare static readonly __signalSignatures: MediaEngine.SignalSignatures;
 
         // Constructors
 
@@ -1625,12 +1827,6 @@ export namespace RygelServer {
             signal: K,
             ...args: Parameters<MediaEngine.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'resource-changed', callback: (_source: this, media_object_uri: string) => void): number;
-        connect_after(signal: 'resource-changed', callback: (_source: this, media_object_uri: string) => void): number;
-        emit(signal: 'resource-changed', media_object_uri: string): void;
 
         // Static methods
 
@@ -1680,13 +1876,27 @@ export namespace RygelServer {
 
     abstract class HTTPSeekRequest extends GObject.Object {
         static $gtype: GObject.GType<HTTPSeekRequest>;
-        declare static readonly __signalSignatures: HTTPSeekRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<HTTPSeekRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HTTPSeekRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPSeekRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPSeekRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPSeekRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPSeekRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPSeekRequest.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PlaylistItem {
@@ -1700,7 +1910,6 @@ export namespace RygelServer {
 
     class PlaylistItem extends MediaFileItem {
         static $gtype: GObject.GType<PlaylistItem>;
-        declare static readonly __signalSignatures: PlaylistItem.SignalSignatures;
 
         // Constructors
 
@@ -1709,6 +1918,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): PlaylistItem;
+
+        // Signals
+
+        connect<K extends keyof PlaylistItem.SignalSignatures>(
+            signal: K,
+            callback: PlaylistItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaylistItem.SignalSignatures>(
+            signal: K,
+            callback: PlaylistItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaylistItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaylistItem.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ContentDirectory {
@@ -1722,7 +1946,6 @@ export namespace RygelServer {
 
     class ContentDirectory extends GUPnP.Service {
         static $gtype: GObject.GType<ContentDirectory>;
-        declare static readonly __signalSignatures: ContentDirectory.SignalSignatures;
 
         // Fields
 
@@ -1739,6 +1962,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](): ContentDirectory;
+
+        // Signals
+
+        connect<K extends keyof ContentDirectory.SignalSignatures>(
+            signal: K,
+            callback: ContentDirectory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContentDirectory.SignalSignatures>(
+            signal: K,
+            callback: ContentDirectory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContentDirectory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContentDirectory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HTTPByteSeekRequest {
@@ -1761,7 +1999,6 @@ export namespace RygelServer {
 
     class HTTPByteSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPByteSeekRequest>;
-        declare static readonly __signalSignatures: HTTPByteSeekRequest.SignalSignatures;
 
         // Properties
 
@@ -1789,6 +2026,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](msg: Soup.Message, handler: HTTPGetHandler): HTTPByteSeekRequest;
+
+        // Signals
+
+        connect<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPByteSeekRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPByteSeekRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPByteSeekRequest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1826,7 +2078,6 @@ export namespace RygelServer {
 
     class HTTPByteSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPByteSeekResponse>;
-        declare static readonly __signalSignatures: HTTPByteSeekResponse.SignalSignatures;
 
         // Properties
 
@@ -1857,6 +2108,21 @@ export namespace RygelServer {
 
         static from_request(request: HTTPByteSeekRequest): HTTPByteSeekResponse;
 
+        // Signals
+
+        connect<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
+            signal: K,
+            callback: HTTPByteSeekResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
+            signal: K,
+            callback: HTTPByteSeekResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPByteSeekResponse.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_start_byte(): number;
@@ -1881,7 +2147,6 @@ export namespace RygelServer {
 
     abstract class HTTPGetHandler extends GObject.Object {
         static $gtype: GObject.GType<HTTPGetHandler>;
-        declare static readonly __signalSignatures: HTTPGetHandler.SignalSignatures;
 
         // Properties
 
@@ -1893,6 +2158,21 @@ export namespace RygelServer {
         constructor(properties?: Partial<HTTPGetHandler.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HTTPGetHandler.SignalSignatures>(
+            signal: K,
+            callback: HTTPGetHandler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPGetHandler.SignalSignatures>(
+            signal: K,
+            callback: HTTPGetHandler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPGetHandler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPGetHandler.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1932,7 +2212,6 @@ export namespace RygelServer {
 
     class HTTPGet extends HTTPRequest {
         static $gtype: GObject.GType<HTTPGet>;
-        declare static readonly __signalSignatures: HTTPGet.SignalSignatures;
 
         // Fields
 
@@ -1947,6 +2226,18 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](http_server: HTTPServer, server: Soup.Server, msg: Soup.Message): HTTPGet;
+
+        // Signals
+
+        connect<K extends keyof HTTPGet.SignalSignatures>(signal: K, callback: HTTPGet.SignalSignatures[K]): number;
+        connect_after<K extends keyof HTTPGet.SignalSignatures>(
+            signal: K,
+            callback: HTTPGet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPGet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPGet.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HTTPItemURI {
@@ -1972,7 +2263,6 @@ export namespace RygelServer {
 
     class HTTPItemURI extends GObject.Object {
         static $gtype: GObject.GType<HTTPItemURI>;
-        declare static readonly __signalSignatures: HTTPItemURI.SignalSignatures;
 
         // Properties
 
@@ -2019,6 +2309,21 @@ export namespace RygelServer {
 
         static from_string(uri: string, http_server: HTTPServer): HTTPItemURI;
 
+        // Signals
+
+        connect<K extends keyof HTTPItemURI.SignalSignatures>(
+            signal: K,
+            callback: HTTPItemURI.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPItemURI.SignalSignatures>(
+            signal: K,
+            callback: HTTPItemURI.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPItemURI.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPItemURI.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         to_string(): string;
@@ -2047,7 +2352,6 @@ export namespace RygelServer {
 
     abstract class HTTPRequest extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPRequest>;
-        declare static readonly __signalSignatures: HTTPRequest.SignalSignatures;
 
         // Fields
 
@@ -2063,6 +2367,21 @@ export namespace RygelServer {
         constructor(properties?: Partial<HTTPRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HTTPRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPRequest.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2554,7 +2873,6 @@ export namespace RygelServer {
 
     class HTTPResponse extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPResponse>;
-        declare static readonly __signalSignatures: HTTPResponse.SignalSignatures;
 
         // Properties
 
@@ -2575,6 +2893,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](request: HTTPGet, request_handler: HTTPGetHandler, src: DataSource): HTTPResponse;
+
+        // Signals
+
+        connect<K extends keyof HTTPResponse.SignalSignatures>(
+            signal: K,
+            callback: HTTPResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPResponse.SignalSignatures>(
+            signal: K,
+            callback: HTTPResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPResponse.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3054,13 +3387,27 @@ export namespace RygelServer {
 
     abstract class HTTPResponseElement extends GObject.Object {
         static $gtype: GObject.GType<HTTPResponseElement>;
-        declare static readonly __signalSignatures: HTTPResponseElement.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<HTTPResponseElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HTTPResponseElement.SignalSignatures>(
+            signal: K,
+            callback: HTTPResponseElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPResponseElement.SignalSignatures>(
+            signal: K,
+            callback: HTTPResponseElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPResponseElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPResponseElement.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3089,7 +3436,6 @@ export namespace RygelServer {
 
     class HTTPServer extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPServer>;
-        declare static readonly __signalSignatures: HTTPServer.SignalSignatures;
 
         // Properties
 
@@ -3114,6 +3460,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](content_dir: ContentDirectory, name: string): HTTPServer;
+
+        // Signals
+
+        connect<K extends keyof HTTPServer.SignalSignatures>(
+            signal: K,
+            callback: HTTPServer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPServer.SignalSignatures>(
+            signal: K,
+            callback: HTTPServer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPServer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPServer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3599,7 +3960,6 @@ export namespace RygelServer {
 
     class HTTPTimeSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPTimeSeekRequest>;
-        declare static readonly __signalSignatures: HTTPTimeSeekRequest.SignalSignatures;
 
         // Fields
 
@@ -3613,6 +3973,21 @@ export namespace RygelServer {
         constructor(properties?: Partial<HTTPTimeSeekRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPTimeSeekRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
+            signal: K,
+            callback: HTTPTimeSeekRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPTimeSeekRequest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3652,7 +4027,6 @@ export namespace RygelServer {
 
     class HTTPTimeSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPTimeSeekResponse>;
-        declare static readonly __signalSignatures: HTTPTimeSeekResponse.SignalSignatures;
 
         // Properties
 
@@ -3718,6 +4092,21 @@ export namespace RygelServer {
 
         static from_request(time_seek_request: HTTPTimeSeekRequest, total_duration: number): HTTPTimeSeekResponse;
 
+        // Signals
+
+        connect<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
+            signal: K,
+            callback: HTTPTimeSeekResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
+            signal: K,
+            callback: HTTPTimeSeekResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTTPTimeSeekResponse.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_start_time(): number;
@@ -3744,7 +4133,6 @@ export namespace RygelServer {
 
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
-        declare static readonly __signalSignatures: Serializer.SignalSignatures;
 
         // Properties
 
@@ -3758,6 +4146,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](type: SerializerType): Serializer;
+
+        // Signals
+
+        connect<K extends keyof Serializer.SignalSignatures>(
+            signal: K,
+            callback: Serializer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Serializer.SignalSignatures>(
+            signal: K,
+            callback: Serializer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Serializer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Serializer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3774,7 +4177,6 @@ export namespace RygelServer {
 
     class PlaySpeed {
         static $gtype: GObject.GType<PlaySpeed>;
-        declare static readonly __signalSignatures: PlaySpeed.SignalSignatures;
 
         // Fields
 
@@ -3789,6 +4191,18 @@ export namespace RygelServer {
         static ['new'](numerator: number, denominator: number): PlaySpeed;
 
         static from_string(speed: string): PlaySpeed;
+
+        // Signals
+
+        connect<K extends keyof PlaySpeed.SignalSignatures>(signal: K, callback: PlaySpeed.SignalSignatures[K]): number;
+        connect_after<K extends keyof PlaySpeed.SignalSignatures>(
+            signal: K,
+            callback: PlaySpeed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaySpeed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaySpeed.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3813,7 +4227,6 @@ export namespace RygelServer {
 
     class PlaySpeedRequest extends GObject.Object {
         static $gtype: GObject.GType<PlaySpeedRequest>;
-        declare static readonly __signalSignatures: PlaySpeedRequest.SignalSignatures;
 
         // Properties
 
@@ -3829,6 +4242,21 @@ export namespace RygelServer {
         static ['new'](numerator: number, denominator: number): PlaySpeedRequest;
 
         static from_string(speed: string): PlaySpeedRequest;
+
+        // Signals
+
+        connect<K extends keyof PlaySpeedRequest.SignalSignatures>(
+            signal: K,
+            callback: PlaySpeedRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaySpeedRequest.SignalSignatures>(
+            signal: K,
+            callback: PlaySpeedRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaySpeedRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaySpeedRequest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3851,7 +4279,6 @@ export namespace RygelServer {
 
     class PlaySpeedResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<PlaySpeedResponse>;
-        declare static readonly __signalSignatures: PlaySpeedResponse.SignalSignatures;
 
         // Fields
 
@@ -3868,6 +4295,21 @@ export namespace RygelServer {
         static from_speed(speed: PlaySpeed, framerate: number): PlaySpeedResponse;
 
         static from_string(speed: string, framerate: number): PlaySpeedResponse;
+
+        // Signals
+
+        connect<K extends keyof PlaySpeedResponse.SignalSignatures>(
+            signal: K,
+            callback: PlaySpeedResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaySpeedResponse.SignalSignatures>(
+            signal: K,
+            callback: PlaySpeedResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaySpeedResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaySpeedResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3894,7 +4336,6 @@ export namespace RygelServer {
 
     class DTCPCleartextRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DTCPCleartextRequest>;
-        declare static readonly __signalSignatures: DTCPCleartextRequest.SignalSignatures;
 
         // Properties
 
@@ -3922,6 +4363,21 @@ export namespace RygelServer {
         _init(...args: any[]): void;
 
         static ['new'](message: Soup.Message, handler: HTTPGetHandler): DTCPCleartextRequest;
+
+        // Signals
+
+        connect<K extends keyof DTCPCleartextRequest.SignalSignatures>(
+            signal: K,
+            callback: DTCPCleartextRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DTCPCleartextRequest.SignalSignatures>(
+            signal: K,
+            callback: DTCPCleartextRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DTCPCleartextRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DTCPCleartextRequest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3958,7 +4414,6 @@ export namespace RygelServer {
 
     class DTCPCleartextResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DTCPCleartextResponse>;
-        declare static readonly __signalSignatures: DTCPCleartextResponse.SignalSignatures;
 
         // Properties
 
@@ -3998,6 +4453,21 @@ export namespace RygelServer {
 
         static from_request(request: DTCPCleartextRequest, encrypted_length: number): DTCPCleartextResponse;
 
+        // Signals
+
+        connect<K extends keyof DTCPCleartextResponse.SignalSignatures>(
+            signal: K,
+            callback: DTCPCleartextResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DTCPCleartextResponse.SignalSignatures>(
+            signal: K,
+            callback: DTCPCleartextResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DTCPCleartextResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DTCPCleartextResponse.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_start_byte(): number;
@@ -4019,13 +4489,27 @@ export namespace RygelServer {
 
     class DLNAAvailableSeekRangeRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequest>;
-        declare static readonly __signalSignatures: DLNAAvailableSeekRangeRequest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DLNAAvailableSeekRangeRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
+            signal: K,
+            callback: DLNAAvailableSeekRangeRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
+            signal: K,
+            callback: DLNAAvailableSeekRangeRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DLNAAvailableSeekRangeRequest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4056,7 +4540,6 @@ export namespace RygelServer {
 
     class DLNAAvailableSeekRangeResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponse>;
-        declare static readonly __signalSignatures: DLNAAvailableSeekRangeResponse.SignalSignatures;
 
         // Properties
 
@@ -4098,6 +4581,21 @@ export namespace RygelServer {
         ): DLNAAvailableSeekRangeResponse;
 
         static time_only(mode: number, start_time: number, end_time: number): DLNAAvailableSeekRangeResponse;
+
+        // Signals
+
+        connect<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
+            signal: K,
+            callback: DLNAAvailableSeekRangeResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
+            signal: K,
+            callback: DLNAAvailableSeekRangeResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DLNAAvailableSeekRangeResponse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

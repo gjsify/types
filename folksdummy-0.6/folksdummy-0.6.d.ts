@@ -33,7 +33,6 @@ export namespace FolksDummy {
 
     class Backend extends Folks.Backend {
         static $gtype: GObject.GType<Backend>;
-        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
@@ -42,6 +41,18 @@ export namespace FolksDummy {
         _init(...args: any[]): void;
 
         static ['new'](): Backend;
+
+        // Signals
+
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -96,7 +107,6 @@ export namespace FolksDummy {
             Folks.WebServiceDetails
     {
         static $gtype: GObject.GType<FullPersona>;
-        declare static readonly __signalSignatures: FullPersona.SignalSignatures;
 
         // Constructors
 
@@ -110,6 +120,21 @@ export namespace FolksDummy {
             is_user: boolean,
             linkable_properties: string[],
         ): FullPersona;
+
+        // Signals
+
+        connect<K extends keyof FullPersona.SignalSignatures>(
+            signal: K,
+            callback: FullPersona.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FullPersona.SignalSignatures>(
+            signal: K,
+            callback: FullPersona.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FullPersona.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FullPersona.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -925,7 +950,6 @@ export namespace FolksDummy {
 
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
-        declare static readonly __signalSignatures: PersonaStore.SignalSignatures;
 
         // Properties
 
@@ -941,6 +965,21 @@ export namespace FolksDummy {
         _init(...args: any[]): void;
 
         static ['new'](id: string, display_name: string, always_writeable_properties: string[]): PersonaStore;
+
+        // Signals
+
+        connect<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            callback: PersonaStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            callback: PersonaStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -981,7 +1020,6 @@ export namespace FolksDummy {
 
     class Persona extends Folks.Persona {
         static $gtype: GObject.GType<Persona>;
-        declare static readonly __signalSignatures: Persona.SignalSignatures;
 
         // Properties
 
@@ -1002,6 +1040,18 @@ export namespace FolksDummy {
             is_user: boolean,
             linkable_properties: string[],
         ): Persona;
+
+        // Signals
+
+        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect_after<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            callback: Persona.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Persona.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

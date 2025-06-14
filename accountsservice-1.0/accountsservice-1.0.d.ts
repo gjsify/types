@@ -110,11 +110,11 @@ export namespace AccountsService {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: User): void;
         }
 
         interface SessionsChanged {
-            (): void;
+            (_source: User): void;
         }
 
         // Signal signatures
@@ -171,7 +171,6 @@ export namespace AccountsService {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
-        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Properties
 
@@ -237,15 +236,6 @@ export namespace AccountsService {
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'sessions-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'sessions-changed', callback: (_source: this) => void): number;
-        emit(signal: 'sessions-changed'): void;
 
         // Methods
 
@@ -574,19 +564,19 @@ export namespace AccountsService {
         // Signal callback interfaces
 
         interface UserAdded {
-            (user: User): void;
+            (_source: UserManager, user: User): void;
         }
 
         interface UserChanged {
-            (user: User): void;
+            (_source: UserManager, user: User): void;
         }
 
         interface UserIsLoggedInChanged {
-            (user: User): void;
+            (_source: UserManager, user: User): void;
         }
 
         interface UserRemoved {
-            (user: User): void;
+            (_source: UserManager, user: User): void;
         }
 
         // Signal signatures
@@ -616,7 +606,6 @@ export namespace AccountsService {
      */
     class UserManager extends GObject.Object {
         static $gtype: GObject.GType<UserManager>;
-        declare static readonly __signalSignatures: UserManager.SignalSignatures;
 
         // Properties
 
@@ -655,21 +644,6 @@ export namespace AccountsService {
             signal: K,
             ...args: Parameters<UserManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'user-added', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-added', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-added', user: User): void;
-        connect(signal: 'user-changed', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-changed', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-changed', user: User): void;
-        connect(signal: 'user-is-logged-in-changed', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-is-logged-in-changed', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-is-logged-in-changed', user: User): void;
-        connect(signal: 'user-removed', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-removed', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-removed', user: User): void;
 
         // Static methods
 

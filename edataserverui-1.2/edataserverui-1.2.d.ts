@@ -237,7 +237,6 @@ export namespace EDataServerUI {
 
     class CellRendererColor extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererColor>;
-        declare static readonly __signalSignatures: CellRendererColor.SignalSignatures;
 
         // Properties
 
@@ -251,6 +250,21 @@ export namespace EDataServerUI {
         _init(...args: any[]): void;
 
         static ['new'](): CellRendererColor;
+
+        // Signals
+
+        connect<K extends keyof CellRendererColor.SignalSignatures>(
+            signal: K,
+            callback: CellRendererColor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererColor.SignalSignatures>(
+            signal: K,
+            callback: CellRendererColor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererColor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererColor.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CertificateWidget {
@@ -267,7 +281,6 @@ export namespace EDataServerUI {
 
     class CertificateWidget extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CertificateWidget>;
-        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Constructors
 
@@ -276,6 +289,21 @@ export namespace EDataServerUI {
         _init(...args: any[]): void;
 
         static ['new'](): CertificateWidget;
+
+        // Signals
+
+        connect<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            callback: CertificateWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -744,11 +772,11 @@ export namespace EDataServerUI {
         // Signal callback interfaces
 
         interface GetDialogParent {
-            (): Gtk.Window | null;
+            (_source: CredentialsPrompter): Gtk.Window | null;
         }
 
         interface GetDialogParentFull {
-            (auth_source?: EDataServer.Source | null): Gtk.Window | null;
+            (_source: CredentialsPrompter, auth_source?: EDataServer.Source | null): Gtk.Window | null;
         }
 
         // Signal signatures
@@ -773,7 +801,6 @@ export namespace EDataServerUI {
      */
     class CredentialsPrompter extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<CredentialsPrompter>;
-        declare static readonly __signalSignatures: CredentialsPrompter.SignalSignatures;
 
         // Properties
 
@@ -820,21 +847,6 @@ export namespace EDataServerUI {
             signal: K,
             ...args: Parameters<CredentialsPrompter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'get-dialog-parent', callback: (_source: this) => Gtk.Window | null): number;
-        connect_after(signal: 'get-dialog-parent', callback: (_source: this) => Gtk.Window | null): number;
-        emit(signal: 'get-dialog-parent'): void;
-        connect(
-            signal: 'get-dialog-parent-full',
-            callback: (_source: this, auth_source: EDataServer.Source | null) => Gtk.Window | null,
-        ): number;
-        connect_after(
-            signal: 'get-dialog-parent-full',
-            callback: (_source: this, auth_source: EDataServer.Source | null) => Gtk.Window | null,
-        ): number;
-        emit(signal: 'get-dialog-parent-full', auth_source?: EDataServer.Source | null): void;
 
         // Virtual methods
 
@@ -1532,7 +1544,11 @@ export namespace EDataServerUI {
         // Signal callback interfaces
 
         interface PromptFinished {
-            (prompt_id?: any | null, credentials?: EDataServer.NamedParameters | null): void;
+            (
+                _source: CredentialsPrompterImpl,
+                prompt_id?: any | null,
+                credentials?: EDataServer.NamedParameters | null,
+            ): void;
         }
 
         // Signal signatures
@@ -1553,7 +1569,6 @@ export namespace EDataServerUI {
      */
     abstract class CredentialsPrompterImpl extends EDataServer.Extension {
         static $gtype: GObject.GType<CredentialsPrompterImpl>;
-        declare static readonly __signalSignatures: CredentialsPrompterImpl.SignalSignatures;
 
         // Constructors
 
@@ -1575,18 +1590,6 @@ export namespace EDataServerUI {
             signal: K,
             ...args: Parameters<CredentialsPrompterImpl.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'prompt-finished',
-            callback: (_source: this, prompt_id: any | null, credentials: EDataServer.NamedParameters | null) => void,
-        ): number;
-        connect_after(
-            signal: 'prompt-finished',
-            callback: (_source: this, prompt_id: any | null, credentials: EDataServer.NamedParameters | null) => void,
-        ): number;
-        emit(signal: 'prompt-finished', prompt_id?: any | null, credentials?: EDataServer.NamedParameters | null): void;
 
         // Virtual methods
 
@@ -1670,7 +1673,6 @@ export namespace EDataServerUI {
      */
     class CredentialsPrompterImplOAuth2 extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplOAuth2>;
-        declare static readonly __signalSignatures: CredentialsPrompterImplOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -1679,6 +1681,21 @@ export namespace EDataServerUI {
         _init(...args: any[]): void;
 
         static ['new'](): CredentialsPrompterImplOAuth2;
+
+        // Signals
+
+        connect<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompterImplOAuth2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompterImplOAuth2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredentialsPrompterImplOAuth2.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CredentialsPrompterImplPassword {
@@ -1696,7 +1713,6 @@ export namespace EDataServerUI {
      */
     class CredentialsPrompterImplPassword extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplPassword>;
-        declare static readonly __signalSignatures: CredentialsPrompterImplPassword.SignalSignatures;
 
         // Constructors
 
@@ -1705,17 +1721,32 @@ export namespace EDataServerUI {
         _init(...args: any[]): void;
 
         static ['new'](): CredentialsPrompterImplPassword;
+
+        // Signals
+
+        connect<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompterImplPassword.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompterImplPassword.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredentialsPrompterImplPassword.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RemindersWidget {
         // Signal callback interfaces
 
         interface Activated {
-            (object: ECal.ReminderData): boolean;
+            (_source: RemindersWidget, object: ECal.ReminderData): boolean;
         }
 
         interface Changed {
-            (): void;
+            (_source: RemindersWidget): void;
         }
 
         // Signal signatures
@@ -1746,7 +1777,6 @@ export namespace EDataServerUI {
         implements Atk.ImplementorIface, EDataServer.Extensible, Gtk.Buildable, Gtk.Orientable
     {
         static $gtype: GObject.GType<RemindersWidget>;
-        declare static readonly __signalSignatures: RemindersWidget.SignalSignatures;
 
         // Properties
 
@@ -1778,15 +1808,6 @@ export namespace EDataServerUI {
             signal: K,
             ...args: Parameters<RemindersWidget.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activated', callback: (_source: this, object: ECal.ReminderData) => boolean): number;
-        connect_after(signal: 'activated', callback: (_source: this, object: ECal.ReminderData) => boolean): number;
-        emit(signal: 'activated', object: ECal.ReminderData): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -2309,7 +2330,6 @@ export namespace EDataServerUI {
 
     class WebDAVDiscoverContent extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<WebDAVDiscoverContent>;
-        declare static readonly __signalSignatures: WebDAVDiscoverContent.SignalSignatures;
 
         // Constructors
 
@@ -2326,6 +2346,21 @@ export namespace EDataServerUI {
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof WebDAVDiscoverContent.SignalSignatures>(
+            signal: K,
+            callback: WebDAVDiscoverContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebDAVDiscoverContent.SignalSignatures>(
+            signal: K,
+            callback: WebDAVDiscoverContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebDAVDiscoverContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebDAVDiscoverContent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2915,7 +2950,6 @@ export namespace EDataServerUI {
 
     class WebDAVDiscoverDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebDAVDiscoverDialog>;
-        declare static readonly __signalSignatures: WebDAVDiscoverDialog.SignalSignatures;
 
         // Constructors
 
@@ -2934,6 +2968,21 @@ export namespace EDataServerUI {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(
+            signal: K,
+            callback: WebDAVDiscoverDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(
+            signal: K,
+            callback: WebDAVDiscoverDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebDAVDiscoverDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

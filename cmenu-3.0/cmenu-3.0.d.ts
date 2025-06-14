@@ -58,7 +58,6 @@ export namespace CMenu {
 
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
-        declare static readonly __signalSignatures: DesktopAppInfo.SignalSignatures;
 
         // Constructors
 
@@ -71,6 +70,21 @@ export namespace CMenu {
         static new_from_filename(filename: string): DesktopAppInfo;
 
         static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
+
+        // Signals
+
+        connect<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            callback: DesktopAppInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            callback: DesktopAppInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1130,7 +1144,7 @@ export namespace CMenu {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Tree): void;
         }
 
         // Signal signatures
@@ -1151,7 +1165,6 @@ export namespace CMenu {
 
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
-        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -1197,12 +1210,6 @@ export namespace CMenu {
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 

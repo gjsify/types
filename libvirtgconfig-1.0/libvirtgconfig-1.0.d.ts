@@ -513,7 +513,6 @@ export namespace LibvirtGConfig {
 
     class Capabilities extends Object {
         static $gtype: GObject.GType<Capabilities>;
-        declare static readonly __signalSignatures: Capabilities.SignalSignatures;
 
         // Constructors
 
@@ -527,6 +526,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Capabilities.SignalSignatures>(
+            signal: K,
+            callback: Capabilities.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Capabilities.SignalSignatures>(
+            signal: K,
+            callback: Capabilities.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Capabilities.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Capabilities.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -553,13 +567,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpu extends Object {
         static $gtype: GObject.GType<CapabilitiesCpu>;
-        declare static readonly __signalSignatures: CapabilitiesCpu.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesCpu.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesCpu.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesCpu.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesCpu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesCpu.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -609,13 +637,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuFeature>;
-        declare static readonly __signalSignatures: CapabilitiesCpuFeature.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesCpuFeature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpuFeature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpuFeature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesCpuFeature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -634,7 +676,6 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuModel extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuModel>;
-        declare static readonly __signalSignatures: CapabilitiesCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -648,6 +689,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpuModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpuModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesCpuModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -666,7 +722,6 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuTopology extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuTopology>;
-        declare static readonly __signalSignatures: CapabilitiesCpuTopology.SignalSignatures;
 
         // Constructors
 
@@ -680,6 +735,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpuTopology.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesCpuTopology.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesCpuTopology.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -702,13 +772,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuest extends Object {
         static $gtype: GObject.GType<CapabilitiesGuest>;
-        declare static readonly __signalSignatures: CapabilitiesGuest.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesGuest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesGuest.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesGuest.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesGuest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesGuest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -736,13 +820,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestArch extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestArch>;
-        declare static readonly __signalSignatures: CapabilitiesGuestArch.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesGuestArch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuestArch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuestArch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesGuestArch.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -766,13 +864,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestDomain extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestDomain>;
-        declare static readonly __signalSignatures: CapabilitiesGuestDomain.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesGuestDomain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuestDomain.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuestDomain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesGuestDomain.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -791,13 +903,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestFeature>;
-        declare static readonly __signalSignatures: CapabilitiesGuestFeature.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesGuestFeature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuestFeature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesGuestFeature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesGuestFeature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -815,13 +941,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHost extends Object {
         static $gtype: GObject.GType<CapabilitiesHost>;
-        declare static readonly __signalSignatures: CapabilitiesHost.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesHost.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesHost.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesHost.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesHost.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesHost.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesHost.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesHost.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -849,13 +989,27 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHostSecModel extends Object {
         static $gtype: GObject.GType<CapabilitiesHostSecModel>;
-        declare static readonly __signalSignatures: CapabilitiesHostSecModel.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CapabilitiesHostSecModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesHostSecModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
+            signal: K,
+            callback: CapabilitiesHostSecModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CapabilitiesHostSecModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -884,7 +1038,6 @@ export namespace LibvirtGConfig {
 
     class Domain extends Object {
         static $gtype: GObject.GType<Domain>;
-        declare static readonly __signalSignatures: Domain.SignalSignatures;
 
         // Properties
 
@@ -919,6 +1072,12 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: Parameters<Domain.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1005,13 +1164,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainAddress extends Object {
         static $gtype: GObject.GType<DomainAddress>;
-        declare static readonly __signalSignatures: DomainAddress.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainAddress.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainAddress.SignalSignatures>(
+            signal: K,
+            callback: DomainAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainAddress.SignalSignatures>(
+            signal: K,
+            callback: DomainAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainAddress.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainAddressPci {
@@ -1025,7 +1198,6 @@ export namespace LibvirtGConfig {
 
     class DomainAddressPci extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressPci>;
-        declare static readonly __signalSignatures: DomainAddressPci.SignalSignatures;
 
         // Constructors
 
@@ -1039,6 +1211,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainAddressPci.SignalSignatures>(
+            signal: K,
+            callback: DomainAddressPci.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainAddressPci.SignalSignatures>(
+            signal: K,
+            callback: DomainAddressPci.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainAddressPci.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainAddressPci.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1065,7 +1252,6 @@ export namespace LibvirtGConfig {
 
     class DomainAddressUsb extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressUsb>;
-        declare static readonly __signalSignatures: DomainAddressUsb.SignalSignatures;
 
         // Constructors
 
@@ -1079,6 +1265,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainAddressUsb.SignalSignatures>(
+            signal: K,
+            callback: DomainAddressUsb.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainAddressUsb.SignalSignatures>(
+            signal: K,
+            callback: DomainAddressUsb.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainAddressUsb.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainAddressUsb.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1097,7 +1298,6 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilities extends Object {
         static $gtype: GObject.GType<DomainCapabilities>;
-        declare static readonly __signalSignatures: DomainCapabilities.SignalSignatures;
 
         // Constructors
 
@@ -1111,6 +1311,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainCapabilities.SignalSignatures>(
+            signal: K,
+            callback: DomainCapabilities.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainCapabilities.SignalSignatures>(
+            signal: K,
+            callback: DomainCapabilities.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainCapabilities.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainCapabilities.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1132,13 +1347,27 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilitiesOs extends Object {
         static $gtype: GObject.GType<DomainCapabilitiesOs>;
-        declare static readonly __signalSignatures: DomainCapabilitiesOs.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainCapabilitiesOs.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
+            signal: K,
+            callback: DomainCapabilitiesOs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
+            signal: K,
+            callback: DomainCapabilitiesOs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainCapabilitiesOs.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1169,7 +1398,6 @@ export namespace LibvirtGConfig {
 
     class DomainChannel extends DomainChardev {
         static $gtype: GObject.GType<DomainChannel>;
-        declare static readonly __signalSignatures: DomainChannel.SignalSignatures;
 
         // Constructors
 
@@ -1183,6 +1411,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainChannel.SignalSignatures>(
+            signal: K,
+            callback: DomainChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChannel.SignalSignatures>(
+            signal: K,
+            callback: DomainChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChannel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1203,13 +1446,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardev extends DomainDevice {
         static $gtype: GObject.GType<DomainChardev>;
-        declare static readonly __signalSignatures: DomainChardev.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainChardev.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainChardev.SignalSignatures>(
+            signal: K,
+            callback: DomainChardev.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChardev.SignalSignatures>(
+            signal: K,
+            callback: DomainChardev.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChardev.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChardev.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1232,13 +1489,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardevSource extends Object {
         static $gtype: GObject.GType<DomainChardevSource>;
-        declare static readonly __signalSignatures: DomainChardevSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainChardevSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainChardevSource.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChardevSource.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChardevSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChardevSource.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainChardevSourcePty {
@@ -1252,7 +1523,6 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourcePty extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourcePty>;
-        declare static readonly __signalSignatures: DomainChardevSourcePty.SignalSignatures;
 
         // Constructors
 
@@ -1266,6 +1536,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainChardevSourcePty.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourcePty.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChardevSourcePty.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourcePty.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChardevSourcePty.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChardevSourcePty.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1284,7 +1569,6 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpicePort extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpicePort>;
-        declare static readonly __signalSignatures: DomainChardevSourceSpicePort.SignalSignatures;
 
         // Constructors
 
@@ -1298,6 +1582,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourceSpicePort.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourceSpicePort.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChardevSourceSpicePort.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1316,7 +1615,6 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpiceVmc extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpiceVmc>;
-        declare static readonly __signalSignatures: DomainChardevSourceSpiceVmc.SignalSignatures;
 
         // Constructors
 
@@ -1330,6 +1628,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourceSpiceVmc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourceSpiceVmc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChardevSourceSpiceVmc.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainChardevSourceUnix {
@@ -1343,7 +1656,6 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceUnix extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceUnix>;
-        declare static readonly __signalSignatures: DomainChardevSourceUnix.SignalSignatures;
 
         // Constructors
 
@@ -1357,6 +1669,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourceUnix.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
+            signal: K,
+            callback: DomainChardevSourceUnix.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainChardevSourceUnix.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainClock {
@@ -1370,7 +1697,6 @@ export namespace LibvirtGConfig {
 
     class DomainClock extends Object {
         static $gtype: GObject.GType<DomainClock>;
-        declare static readonly __signalSignatures: DomainClock.SignalSignatures;
 
         // Constructors
 
@@ -1384,6 +1710,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainClock.SignalSignatures>(
+            signal: K,
+            callback: DomainClock.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainClock.SignalSignatures>(
+            signal: K,
+            callback: DomainClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainClock.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1407,7 +1748,6 @@ export namespace LibvirtGConfig {
 
     class DomainConsole extends DomainChardev {
         static $gtype: GObject.GType<DomainConsole>;
-        declare static readonly __signalSignatures: DomainConsole.SignalSignatures;
 
         // Constructors
 
@@ -1421,6 +1761,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainConsole.SignalSignatures>(
+            signal: K,
+            callback: DomainConsole.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainConsole.SignalSignatures>(
+            signal: K,
+            callback: DomainConsole.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainConsole.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainConsole.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1438,13 +1793,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainController extends DomainDevice {
         static $gtype: GObject.GType<DomainController>;
-        declare static readonly __signalSignatures: DomainController.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainController.SignalSignatures>(
+            signal: K,
+            callback: DomainController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainController.SignalSignatures>(
+            signal: K,
+            callback: DomainController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainController.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1471,7 +1840,6 @@ export namespace LibvirtGConfig {
      */
     class DomainControllerUsb extends DomainController {
         static $gtype: GObject.GType<DomainControllerUsb>;
-        declare static readonly __signalSignatures: DomainControllerUsb.SignalSignatures;
 
         // Constructors
 
@@ -1485,6 +1853,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainControllerUsb.SignalSignatures>(
+            signal: K,
+            callback: DomainControllerUsb.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainControllerUsb.SignalSignatures>(
+            signal: K,
+            callback: DomainControllerUsb.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainControllerUsb.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainControllerUsb.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1514,7 +1897,6 @@ export namespace LibvirtGConfig {
 
     class DomainCpu extends CapabilitiesCpu {
         static $gtype: GObject.GType<DomainCpu>;
-        declare static readonly __signalSignatures: DomainCpu.SignalSignatures;
 
         // Constructors
 
@@ -1528,6 +1910,18 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainCpu.SignalSignatures>(signal: K, callback: DomainCpu.SignalSignatures[K]): number;
+        connect_after<K extends keyof DomainCpu.SignalSignatures>(
+            signal: K,
+            callback: DomainCpu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainCpu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainCpu.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1549,7 +1943,6 @@ export namespace LibvirtGConfig {
 
     class DomainCpuFeature extends CapabilitiesCpuFeature {
         static $gtype: GObject.GType<DomainCpuFeature>;
-        declare static readonly __signalSignatures: DomainCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -1563,6 +1956,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainCpuFeature.SignalSignatures>(
+            signal: K,
+            callback: DomainCpuFeature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainCpuFeature.SignalSignatures>(
+            signal: K,
+            callback: DomainCpuFeature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainCpuFeature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainCpuFeature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1581,7 +1989,6 @@ export namespace LibvirtGConfig {
 
     class DomainCpuModel extends CapabilitiesCpuModel {
         static $gtype: GObject.GType<DomainCpuModel>;
-        declare static readonly __signalSignatures: DomainCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -1595,6 +2002,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainCpuModel.SignalSignatures>(
+            signal: K,
+            callback: DomainCpuModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainCpuModel.SignalSignatures>(
+            signal: K,
+            callback: DomainCpuModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainCpuModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainCpuModel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainDevice {
@@ -1608,13 +2030,27 @@ export namespace LibvirtGConfig {
 
     class DomainDevice extends Object {
         static $gtype: GObject.GType<DomainDevice>;
-        declare static readonly __signalSignatures: DomainDevice.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainDevice.SignalSignatures>(
+            signal: K,
+            callback: DomainDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainDevice.SignalSignatures>(
+            signal: K,
+            callback: DomainDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1632,7 +2068,6 @@ export namespace LibvirtGConfig {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
-        declare static readonly __signalSignatures: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -1646,6 +2081,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainDisk.SignalSignatures>(
+            signal: K,
+            callback: DomainDisk.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainDisk.SignalSignatures>(
+            signal: K,
+            callback: DomainDisk.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainDisk.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainDisk.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1695,7 +2145,6 @@ export namespace LibvirtGConfig {
 
     class DomainDiskDriver extends Object {
         static $gtype: GObject.GType<DomainDiskDriver>;
-        declare static readonly __signalSignatures: DomainDiskDriver.SignalSignatures;
 
         // Constructors
 
@@ -1709,6 +2158,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainDiskDriver.SignalSignatures>(
+            signal: K,
+            callback: DomainDiskDriver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainDiskDriver.SignalSignatures>(
+            signal: K,
+            callback: DomainDiskDriver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainDiskDriver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainDiskDriver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1739,7 +2203,6 @@ export namespace LibvirtGConfig {
 
     class DomainFilesys extends DomainDevice {
         static $gtype: GObject.GType<DomainFilesys>;
-        declare static readonly __signalSignatures: DomainFilesys.SignalSignatures;
 
         // Constructors
 
@@ -1753,6 +2216,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainFilesys.SignalSignatures>(
+            signal: K,
+            callback: DomainFilesys.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainFilesys.SignalSignatures>(
+            signal: K,
+            callback: DomainFilesys.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainFilesys.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainFilesys.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1777,13 +2255,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainGraphics extends DomainDevice {
         static $gtype: GObject.GType<DomainGraphics>;
-        declare static readonly __signalSignatures: DomainGraphics.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainGraphics.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainGraphics.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphics.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainGraphics.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphics.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainGraphics.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainGraphics.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainGraphicsDesktop {
@@ -1797,7 +2289,6 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsDesktop extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsDesktop>;
-        declare static readonly __signalSignatures: DomainGraphicsDesktop.SignalSignatures;
 
         // Constructors
 
@@ -1811,6 +2302,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsDesktop.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsDesktop.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainGraphicsDesktop.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1831,7 +2337,6 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsRdp extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsRdp>;
-        declare static readonly __signalSignatures: DomainGraphicsRdp.SignalSignatures;
 
         // Constructors
 
@@ -1845,6 +2350,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainGraphicsRdp.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsRdp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainGraphicsRdp.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsRdp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainGraphicsRdp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainGraphicsRdp.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1868,7 +2388,6 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSdl extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSdl>;
-        declare static readonly __signalSignatures: DomainGraphicsSdl.SignalSignatures;
 
         // Constructors
 
@@ -1882,6 +2401,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainGraphicsSdl.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsSdl.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainGraphicsSdl.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsSdl.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainGraphicsSdl.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainGraphicsSdl.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1901,7 +2435,6 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSpice extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSpice>;
-        declare static readonly __signalSignatures: DomainGraphicsSpice.SignalSignatures;
 
         // Constructors
 
@@ -1915,6 +2448,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainGraphicsSpice.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsSpice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainGraphicsSpice.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsSpice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainGraphicsSpice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainGraphicsSpice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1939,7 +2487,6 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsVnc extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsVnc>;
-        declare static readonly __signalSignatures: DomainGraphicsVnc.SignalSignatures;
 
         // Constructors
 
@@ -1953,6 +2500,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainGraphicsVnc.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsVnc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainGraphicsVnc.SignalSignatures>(
+            signal: K,
+            callback: DomainGraphicsVnc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainGraphicsVnc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainGraphicsVnc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1975,13 +2537,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainHostdev extends DomainDevice {
         static $gtype: GObject.GType<DomainHostdev>;
-        declare static readonly __signalSignatures: DomainHostdev.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainHostdev.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainHostdev.SignalSignatures>(
+            signal: K,
+            callback: DomainHostdev.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainHostdev.SignalSignatures>(
+            signal: K,
+            callback: DomainHostdev.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainHostdev.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainHostdev.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2017,7 +2593,6 @@ export namespace LibvirtGConfig {
 
     class DomainHostdevPci extends DomainHostdev {
         static $gtype: GObject.GType<DomainHostdevPci>;
-        declare static readonly __signalSignatures: DomainHostdevPci.SignalSignatures;
 
         // Constructors
 
@@ -2031,6 +2606,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainHostdevPci.SignalSignatures>(
+            signal: K,
+            callback: DomainHostdevPci.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainHostdevPci.SignalSignatures>(
+            signal: K,
+            callback: DomainHostdevPci.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainHostdevPci.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainHostdevPci.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2059,7 +2649,6 @@ export namespace LibvirtGConfig {
 
     class DomainInput extends DomainDevice {
         static $gtype: GObject.GType<DomainInput>;
-        declare static readonly __signalSignatures: DomainInput.SignalSignatures;
 
         // Constructors
 
@@ -2073,6 +2662,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainInput.SignalSignatures>(
+            signal: K,
+            callback: DomainInput.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInput.SignalSignatures>(
+            signal: K,
+            callback: DomainInput.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInput.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInput.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2093,13 +2697,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
-        declare static readonly __signalSignatures: DomainInterface.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainInterface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainInterface.SignalSignatures>(
+            signal: K,
+            callback: DomainInterface.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterface.SignalSignatures>(
+            signal: K,
+            callback: DomainInterface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterface.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2130,7 +2748,6 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceBridge extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceBridge>;
-        declare static readonly __signalSignatures: DomainInterfaceBridge.SignalSignatures;
 
         // Constructors
 
@@ -2144,6 +2761,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainInterfaceBridge.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceBridge.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterfaceBridge.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceBridge.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterfaceBridge.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterfaceBridge.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2161,7 +2793,6 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterref extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterref>;
-        declare static readonly __signalSignatures: DomainInterfaceFilterref.SignalSignatures;
 
         // Constructors
 
@@ -2175,6 +2806,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceFilterref.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceFilterref.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterfaceFilterref.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2201,7 +2847,6 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterrefParameter extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterrefParameter>;
-        declare static readonly __signalSignatures: DomainInterfaceFilterrefParameter.SignalSignatures;
 
         // Constructors
 
@@ -2215,6 +2860,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceFilterrefParameter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceFilterrefParameter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterfaceFilterrefParameter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2235,7 +2895,6 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceNetwork extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceNetwork>;
-        declare static readonly __signalSignatures: DomainInterfaceNetwork.SignalSignatures;
 
         // Constructors
 
@@ -2249,6 +2908,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceNetwork.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceNetwork.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterfaceNetwork.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2266,7 +2940,6 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceUser extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceUser>;
-        declare static readonly __signalSignatures: DomainInterfaceUser.SignalSignatures;
 
         // Constructors
 
@@ -2280,6 +2953,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainInterfaceUser.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceUser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainInterfaceUser.SignalSignatures>(
+            signal: K,
+            callback: DomainInterfaceUser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainInterfaceUser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainInterfaceUser.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainMemballoon {
@@ -2293,7 +2981,6 @@ export namespace LibvirtGConfig {
 
     class DomainMemballoon extends DomainDevice {
         static $gtype: GObject.GType<DomainMemballoon>;
-        declare static readonly __signalSignatures: DomainMemballoon.SignalSignatures;
 
         // Constructors
 
@@ -2307,6 +2994,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainMemballoon.SignalSignatures>(
+            signal: K,
+            callback: DomainMemballoon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainMemballoon.SignalSignatures>(
+            signal: K,
+            callback: DomainMemballoon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainMemballoon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainMemballoon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2324,7 +3026,6 @@ export namespace LibvirtGConfig {
 
     class DomainOs extends Object {
         static $gtype: GObject.GType<DomainOs>;
-        declare static readonly __signalSignatures: DomainOs.SignalSignatures;
 
         // Constructors
 
@@ -2338,6 +3039,18 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainOs.SignalSignatures>(signal: K, callback: DomainOs.SignalSignatures[K]): number;
+        connect_after<K extends keyof DomainOs.SignalSignatures>(
+            signal: K,
+            callback: DomainOs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainOs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainOs.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2377,7 +3090,6 @@ export namespace LibvirtGConfig {
 
     class DomainParallel extends DomainChardev {
         static $gtype: GObject.GType<DomainParallel>;
-        declare static readonly __signalSignatures: DomainParallel.SignalSignatures;
 
         // Constructors
 
@@ -2391,6 +3103,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainParallel.SignalSignatures>(
+            signal: K,
+            callback: DomainParallel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainParallel.SignalSignatures>(
+            signal: K,
+            callback: DomainParallel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainParallel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainParallel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainPowerManagement {
@@ -2404,7 +3131,6 @@ export namespace LibvirtGConfig {
 
     class DomainPowerManagement extends Object {
         static $gtype: GObject.GType<DomainPowerManagement>;
-        declare static readonly __signalSignatures: DomainPowerManagement.SignalSignatures;
 
         // Constructors
 
@@ -2418,6 +3144,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainPowerManagement.SignalSignatures>(
+            signal: K,
+            callback: DomainPowerManagement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainPowerManagement.SignalSignatures>(
+            signal: K,
+            callback: DomainPowerManagement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainPowerManagement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainPowerManagement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2436,7 +3177,6 @@ export namespace LibvirtGConfig {
 
     class DomainRedirdev extends DomainChardev {
         static $gtype: GObject.GType<DomainRedirdev>;
-        declare static readonly __signalSignatures: DomainRedirdev.SignalSignatures;
 
         // Constructors
 
@@ -2450,6 +3190,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainRedirdev.SignalSignatures>(
+            signal: K,
+            callback: DomainRedirdev.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainRedirdev.SignalSignatures>(
+            signal: K,
+            callback: DomainRedirdev.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainRedirdev.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainRedirdev.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2468,7 +3223,6 @@ export namespace LibvirtGConfig {
 
     class DomainSeclabel extends Object {
         static $gtype: GObject.GType<DomainSeclabel>;
-        declare static readonly __signalSignatures: DomainSeclabel.SignalSignatures;
 
         // Constructors
 
@@ -2482,6 +3236,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSeclabel.SignalSignatures>(
+            signal: K,
+            callback: DomainSeclabel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSeclabel.SignalSignatures>(
+            signal: K,
+            callback: DomainSeclabel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSeclabel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSeclabel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2502,7 +3271,6 @@ export namespace LibvirtGConfig {
 
     class DomainSerial extends DomainChardev {
         static $gtype: GObject.GType<DomainSerial>;
-        declare static readonly __signalSignatures: DomainSerial.SignalSignatures;
 
         // Constructors
 
@@ -2516,6 +3284,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSerial.SignalSignatures>(
+            signal: K,
+            callback: DomainSerial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSerial.SignalSignatures>(
+            signal: K,
+            callback: DomainSerial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSerial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSerial.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainSmartcard {
@@ -2529,13 +3312,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainSmartcard extends DomainDevice {
         static $gtype: GObject.GType<DomainSmartcard>;
-        declare static readonly __signalSignatures: DomainSmartcard.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainSmartcard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainSmartcard.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcard.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSmartcard.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcard.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSmartcard.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSmartcard.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2553,7 +3350,6 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHost extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHost>;
-        declare static readonly __signalSignatures: DomainSmartcardHost.SignalSignatures;
 
         // Constructors
 
@@ -2567,6 +3363,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSmartcardHost.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcardHost.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSmartcardHost.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcardHost.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSmartcardHost.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSmartcardHost.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainSmartcardHostCertificates {
@@ -2580,7 +3391,6 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHostCertificates extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHostCertificates>;
-        declare static readonly __signalSignatures: DomainSmartcardHostCertificates.SignalSignatures;
 
         // Constructors
 
@@ -2594,6 +3404,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcardHostCertificates.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcardHostCertificates.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSmartcardHostCertificates.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2612,7 +3437,6 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardPassthrough extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardPassthrough>;
-        declare static readonly __signalSignatures: DomainSmartcardPassthrough.SignalSignatures;
 
         // Constructors
 
@@ -2626,6 +3450,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcardPassthrough.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
+            signal: K,
+            callback: DomainSmartcardPassthrough.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSmartcardPassthrough.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2643,7 +3482,6 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshot extends Object {
         static $gtype: GObject.GType<DomainSnapshot>;
-        declare static readonly __signalSignatures: DomainSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -2657,6 +3495,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSnapshot.SignalSignatures>(
+            signal: K,
+            callback: DomainSnapshot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSnapshot.SignalSignatures>(
+            signal: K,
+            callback: DomainSnapshot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSnapshot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSnapshot.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2698,7 +3551,6 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshotDisk extends Object {
         static $gtype: GObject.GType<DomainSnapshotDisk>;
-        declare static readonly __signalSignatures: DomainSnapshotDisk.SignalSignatures;
 
         // Constructors
 
@@ -2712,6 +3564,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSnapshotDisk.SignalSignatures>(
+            signal: K,
+            callback: DomainSnapshotDisk.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSnapshotDisk.SignalSignatures>(
+            signal: K,
+            callback: DomainSnapshotDisk.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSnapshotDisk.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSnapshotDisk.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2736,7 +3603,6 @@ export namespace LibvirtGConfig {
 
     class DomainSound extends DomainDevice {
         static $gtype: GObject.GType<DomainSound>;
-        declare static readonly __signalSignatures: DomainSound.SignalSignatures;
 
         // Constructors
 
@@ -2750,6 +3616,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainSound.SignalSignatures>(
+            signal: K,
+            callback: DomainSound.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainSound.SignalSignatures>(
+            signal: K,
+            callback: DomainSound.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainSound.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainSound.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2767,13 +3648,27 @@ export namespace LibvirtGConfig {
 
     abstract class DomainTimer extends Object {
         static $gtype: GObject.GType<DomainTimer>;
-        declare static readonly __signalSignatures: DomainTimer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DomainTimer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DomainTimer.SignalSignatures>(
+            signal: K,
+            callback: DomainTimer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainTimer.SignalSignatures>(
+            signal: K,
+            callback: DomainTimer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainTimer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainTimer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2794,7 +3689,6 @@ export namespace LibvirtGConfig {
 
     class DomainTimerHpet extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerHpet>;
-        declare static readonly __signalSignatures: DomainTimerHpet.SignalSignatures;
 
         // Constructors
 
@@ -2808,6 +3702,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainTimerHpet.SignalSignatures>(
+            signal: K,
+            callback: DomainTimerHpet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainTimerHpet.SignalSignatures>(
+            signal: K,
+            callback: DomainTimerHpet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainTimerHpet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainTimerHpet.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainTimerPit {
@@ -2821,7 +3730,6 @@ export namespace LibvirtGConfig {
 
     class DomainTimerPit extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerPit>;
-        declare static readonly __signalSignatures: DomainTimerPit.SignalSignatures;
 
         // Constructors
 
@@ -2835,6 +3743,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainTimerPit.SignalSignatures>(
+            signal: K,
+            callback: DomainTimerPit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainTimerPit.SignalSignatures>(
+            signal: K,
+            callback: DomainTimerPit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainTimerPit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainTimerPit.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainTimerRtc {
@@ -2848,7 +3771,6 @@ export namespace LibvirtGConfig {
 
     class DomainTimerRtc extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerRtc>;
-        declare static readonly __signalSignatures: DomainTimerRtc.SignalSignatures;
 
         // Constructors
 
@@ -2862,6 +3784,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainTimerRtc.SignalSignatures>(
+            signal: K,
+            callback: DomainTimerRtc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainTimerRtc.SignalSignatures>(
+            signal: K,
+            callback: DomainTimerRtc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainTimerRtc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainTimerRtc.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomainVideo {
@@ -2875,7 +3812,6 @@ export namespace LibvirtGConfig {
 
     class DomainVideo extends DomainDevice {
         static $gtype: GObject.GType<DomainVideo>;
-        declare static readonly __signalSignatures: DomainVideo.SignalSignatures;
 
         // Constructors
 
@@ -2889,6 +3825,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DomainVideo.SignalSignatures>(
+            signal: K,
+            callback: DomainVideo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomainVideo.SignalSignatures>(
+            signal: K,
+            callback: DomainVideo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomainVideo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomainVideo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2912,7 +3863,6 @@ export namespace LibvirtGConfig {
 
     class Interface extends Object {
         static $gtype: GObject.GType<Interface>;
-        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Constructors
 
@@ -2926,6 +3876,18 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect_after<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: Interface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Interface.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Network {
@@ -2939,7 +3901,6 @@ export namespace LibvirtGConfig {
 
     class Network extends Object {
         static $gtype: GObject.GType<Network>;
-        declare static readonly __signalSignatures: Network.SignalSignatures;
 
         // Constructors
 
@@ -2953,6 +3914,18 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Network.SignalSignatures>(signal: K, callback: Network.SignalSignatures[K]): number;
+        connect_after<K extends keyof Network.SignalSignatures>(
+            signal: K,
+            callback: Network.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Network.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Network.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NetworkFilter {
@@ -2966,7 +3939,6 @@ export namespace LibvirtGConfig {
 
     class NetworkFilter extends Object {
         static $gtype: GObject.GType<NetworkFilter>;
-        declare static readonly __signalSignatures: NetworkFilter.SignalSignatures;
 
         // Constructors
 
@@ -2980,6 +3952,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof NetworkFilter.SignalSignatures>(
+            signal: K,
+            callback: NetworkFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkFilter.SignalSignatures>(
+            signal: K,
+            callback: NetworkFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkFilter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace NodeDevice {
@@ -2993,7 +3980,6 @@ export namespace LibvirtGConfig {
 
     class NodeDevice extends Object {
         static $gtype: GObject.GType<NodeDevice>;
-        declare static readonly __signalSignatures: NodeDevice.SignalSignatures;
 
         // Constructors
 
@@ -3007,6 +3993,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof NodeDevice.SignalSignatures>(
+            signal: K,
+            callback: NodeDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NodeDevice.SignalSignatures>(
+            signal: K,
+            callback: NodeDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NodeDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NodeDevice.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Object {
@@ -3023,7 +4024,6 @@ export namespace LibvirtGConfig {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -3039,6 +4039,12 @@ export namespace LibvirtGConfig {
         static ['new'](type: GObject.GType, root_name: string, schema: string): Object;
 
         static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3062,7 +4068,6 @@ export namespace LibvirtGConfig {
 
     class Secret extends Object {
         static $gtype: GObject.GType<Secret>;
-        declare static readonly __signalSignatures: Secret.SignalSignatures;
 
         // Constructors
 
@@ -3076,6 +4081,12 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
+        emit<K extends keyof Secret.SignalSignatures>(signal: K, ...args: Parameters<Secret.SignalSignatures[K]>): void;
     }
 
     namespace StoragePermissions {
@@ -3089,7 +4100,6 @@ export namespace LibvirtGConfig {
 
     class StoragePermissions extends Object {
         static $gtype: GObject.GType<StoragePermissions>;
-        declare static readonly __signalSignatures: StoragePermissions.SignalSignatures;
 
         // Constructors
 
@@ -3103,6 +4113,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StoragePermissions.SignalSignatures>(
+            signal: K,
+            callback: StoragePermissions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoragePermissions.SignalSignatures>(
+            signal: K,
+            callback: StoragePermissions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoragePermissions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoragePermissions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3143,7 +4168,6 @@ export namespace LibvirtGConfig {
 
     class StoragePool extends Object {
         static $gtype: GObject.GType<StoragePool>;
-        declare static readonly __signalSignatures: StoragePool.SignalSignatures;
 
         // Constructors
 
@@ -3157,6 +4181,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StoragePool.SignalSignatures>(
+            signal: K,
+            callback: StoragePool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoragePool.SignalSignatures>(
+            signal: K,
+            callback: StoragePool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoragePool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoragePool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3221,7 +4260,6 @@ export namespace LibvirtGConfig {
 
     class StoragePoolSource extends Object {
         static $gtype: GObject.GType<StoragePoolSource>;
-        declare static readonly __signalSignatures: StoragePoolSource.SignalSignatures;
 
         // Constructors
 
@@ -3235,6 +4273,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StoragePoolSource.SignalSignatures>(
+            signal: K,
+            callback: StoragePoolSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoragePoolSource.SignalSignatures>(
+            signal: K,
+            callback: StoragePoolSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoragePoolSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoragePoolSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3304,7 +4357,6 @@ export namespace LibvirtGConfig {
 
     class StoragePoolTarget extends Object {
         static $gtype: GObject.GType<StoragePoolTarget>;
-        declare static readonly __signalSignatures: StoragePoolTarget.SignalSignatures;
 
         // Constructors
 
@@ -3318,6 +4370,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StoragePoolTarget.SignalSignatures>(
+            signal: K,
+            callback: StoragePoolTarget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoragePoolTarget.SignalSignatures>(
+            signal: K,
+            callback: StoragePoolTarget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoragePoolTarget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoragePoolTarget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3347,7 +4414,6 @@ export namespace LibvirtGConfig {
 
     class StorageVol extends Object {
         static $gtype: GObject.GType<StorageVol>;
-        declare static readonly __signalSignatures: StorageVol.SignalSignatures;
 
         // Constructors
 
@@ -3361,6 +4427,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StorageVol.SignalSignatures>(
+            signal: K,
+            callback: StorageVol.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StorageVol.SignalSignatures>(
+            signal: K,
+            callback: StorageVol.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StorageVol.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StorageVol.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3382,7 +4463,6 @@ export namespace LibvirtGConfig {
 
     class StorageVolBackingStore extends Object {
         static $gtype: GObject.GType<StorageVolBackingStore>;
-        declare static readonly __signalSignatures: StorageVolBackingStore.SignalSignatures;
 
         // Constructors
 
@@ -3396,6 +4476,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StorageVolBackingStore.SignalSignatures>(
+            signal: K,
+            callback: StorageVolBackingStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StorageVolBackingStore.SignalSignatures>(
+            signal: K,
+            callback: StorageVolBackingStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StorageVolBackingStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StorageVolBackingStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3414,7 +4509,6 @@ export namespace LibvirtGConfig {
 
     class StorageVolTarget extends Object {
         static $gtype: GObject.GType<StorageVolTarget>;
-        declare static readonly __signalSignatures: StorageVolTarget.SignalSignatures;
 
         // Constructors
 
@@ -3428,6 +4522,21 @@ export namespace LibvirtGConfig {
         // Conflicted with LibvirtGConfig.Object.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StorageVolTarget.SignalSignatures>(
+            signal: K,
+            callback: StorageVolTarget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StorageVolTarget.SignalSignatures>(
+            signal: K,
+            callback: StorageVolTarget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StorageVolTarget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StorageVolTarget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

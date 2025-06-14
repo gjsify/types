@@ -102,7 +102,6 @@ export namespace Geoclue {
         implements Client, Gio.AsyncInitable<ClientProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ClientProxy>;
-        declare static readonly __signalSignatures: ClientProxy.SignalSignatures;
 
         // Constructors
 
@@ -138,6 +137,21 @@ export namespace Geoclue {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ClientProxy.SignalSignatures>(
+            signal: K,
+            callback: ClientProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientProxy.SignalSignatures>(
+            signal: K,
+            callback: ClientProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1245,7 +1259,6 @@ export namespace Geoclue {
      */
     class ClientSkeleton extends Gio.DBusInterfaceSkeleton implements Client, Gio.DBusInterface {
         static $gtype: GObject.GType<ClientSkeleton>;
-        declare static readonly __signalSignatures: ClientSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1254,6 +1267,21 @@ export namespace Geoclue {
         _init(...args: any[]): void;
 
         static ['new'](): ClientSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ClientSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ClientSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ClientSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -1940,7 +1968,6 @@ export namespace Geoclue {
         implements Location, Gio.AsyncInitable<LocationProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<LocationProxy>;
-        declare static readonly __signalSignatures: LocationProxy.SignalSignatures;
 
         // Constructors
 
@@ -1976,6 +2003,21 @@ export namespace Geoclue {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LocationProxy.SignalSignatures>(
+            signal: K,
+            callback: LocationProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocationProxy.SignalSignatures>(
+            signal: K,
+            callback: LocationProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocationProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocationProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2865,7 +2907,6 @@ export namespace Geoclue {
      */
     class LocationSkeleton extends Gio.DBusInterfaceSkeleton implements Location, Gio.DBusInterface {
         static $gtype: GObject.GType<LocationSkeleton>;
-        declare static readonly __signalSignatures: LocationSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2874,6 +2915,21 @@ export namespace Geoclue {
         _init(...args: any[]): void;
 
         static ['new'](): LocationSkeleton;
+
+        // Signals
+
+        connect<K extends keyof LocationSkeleton.SignalSignatures>(
+            signal: K,
+            callback: LocationSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocationSkeleton.SignalSignatures>(
+            signal: K,
+            callback: LocationSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocationSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocationSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -3431,7 +3487,6 @@ export namespace Geoclue {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
-        declare static readonly __signalSignatures: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -3467,6 +3522,21 @@ export namespace Geoclue {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: ManagerProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            callback: ManagerProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ManagerProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4564,7 +4634,6 @@ export namespace Geoclue {
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
-        declare static readonly __signalSignatures: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4573,6 +4642,21 @@ export namespace Geoclue {
         _init(...args: any[]): void;
 
         static ['new'](): ManagerSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ManagerSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ManagerSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ManagerSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5338,7 +5422,6 @@ export namespace Geoclue {
 
     class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> {
         static $gtype: GObject.GType<Simple>;
-        declare static readonly __signalSignatures: Simple.SignalSignatures;
 
         // Properties
 
@@ -5426,6 +5509,12 @@ export namespace Geoclue {
             distance_threshold: number,
             cancellable?: Gio.Cancellable | null,
         ): Simple;
+
+        // Signals
+
+        connect<K extends keyof Simple.SignalSignatures>(signal: K, callback: Simple.SignalSignatures[K]): number;
+        connect_after<K extends keyof Simple.SignalSignatures>(signal: K, callback: Simple.SignalSignatures[K]): number;
+        emit<K extends keyof Simple.SignalSignatures>(signal: K, ...args: Parameters<Simple.SignalSignatures[K]>): void;
 
         // Static methods
 

@@ -1129,13 +1129,27 @@ export namespace Gcr {
      */
     class AccessDescription extends GObject.Object {
         static $gtype: GObject.GType<AccessDescription>;
-        declare static readonly __signalSignatures: AccessDescription.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AccessDescription.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AccessDescription.SignalSignatures>(
+            signal: K,
+            callback: AccessDescription.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccessDescription.SignalSignatures>(
+            signal: K,
+            callback: AccessDescription.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccessDescription.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccessDescription.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1201,7 +1215,6 @@ export namespace Gcr {
      */
     class CertificateChain extends GObject.Object {
         static $gtype: GObject.GType<CertificateChain>;
-        declare static readonly __signalSignatures: CertificateChain.SignalSignatures;
 
         // Properties
 
@@ -1217,6 +1230,21 @@ export namespace Gcr {
         _init(...args: any[]): void;
 
         static ['new'](): CertificateChain;
+
+        // Signals
+
+        connect<K extends keyof CertificateChain.SignalSignatures>(
+            signal: K,
+            callback: CertificateChain.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateChain.SignalSignatures>(
+            signal: K,
+            callback: CertificateChain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateChain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateChain.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1476,7 +1504,6 @@ export namespace Gcr {
      */
     class CertificateExtension extends GObject.Object {
         static $gtype: GObject.GType<CertificateExtension>;
-        declare static readonly __signalSignatures: CertificateExtension.SignalSignatures;
 
         // Properties
 
@@ -1498,6 +1525,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtension.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtension.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtension.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1552,7 +1594,6 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionAuthorityInfoAccess>;
-        declare static readonly __signalSignatures: CertificateExtensionAuthorityInfoAccess.SignalSignatures;
 
         // Properties
 
@@ -1570,6 +1611,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateExtensionAuthorityInfoAccess.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionAuthorityInfoAccess.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionAuthorityInfoAccess.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionAuthorityInfoAccess.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2138,13 +2194,27 @@ export namespace Gcr {
      */
     class CertificateExtensionAuthorityKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionAuthorityKeyIdentifier>;
-        declare static readonly __signalSignatures: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificateExtensionAuthorityKeyIdentifier.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2181,13 +2251,27 @@ export namespace Gcr {
      */
     class CertificateExtensionBasicConstraints extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionBasicConstraints>;
-        declare static readonly __signalSignatures: CertificateExtensionBasicConstraints.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificateExtensionBasicConstraints.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionBasicConstraints.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionBasicConstraints.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionBasicConstraints.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2235,7 +2319,6 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionCertificatePolicies>;
-        declare static readonly __signalSignatures: CertificateExtensionCertificatePolicies.SignalSignatures;
 
         // Properties
 
@@ -2253,6 +2336,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateExtensionCertificatePolicies.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionCertificatePolicies.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionCertificatePolicies.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionCertificatePolicies.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2824,7 +2922,6 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionCrlDistributionPoints>;
-        declare static readonly __signalSignatures: CertificateExtensionCrlDistributionPoints.SignalSignatures;
 
         // Properties
 
@@ -2842,6 +2939,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateExtensionCrlDistributionPoints.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionCrlDistributionPoints.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionCrlDistributionPoints.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionCrlDistributionPoints.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3408,13 +3520,27 @@ export namespace Gcr {
      */
     class CertificateExtensionExtendedKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionExtendedKeyUsage>;
-        declare static readonly __signalSignatures: CertificateExtensionExtendedKeyUsage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificateExtensionExtendedKeyUsage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionExtendedKeyUsage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionExtendedKeyUsage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionExtendedKeyUsage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3448,13 +3574,27 @@ export namespace Gcr {
      */
     class CertificateExtensionKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionKeyUsage>;
-        declare static readonly __signalSignatures: CertificateExtensionKeyUsage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificateExtensionKeyUsage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionKeyUsage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionKeyUsage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionKeyUsage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3491,7 +3631,6 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionList>;
-        declare static readonly __signalSignatures: CertificateExtensionList.SignalSignatures;
 
         // Properties
 
@@ -3503,6 +3642,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateExtensionList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionList.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionList.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4081,13 +4235,27 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionSubjectAltName>;
-        declare static readonly __signalSignatures: CertificateExtensionSubjectAltName.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificateExtensionSubjectAltName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionSubjectAltName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionSubjectAltName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionSubjectAltName.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4648,13 +4816,27 @@ export namespace Gcr {
      */
     class CertificateExtensionSubjectKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionSubjectKeyIdentifier>;
-        declare static readonly __signalSignatures: CertificateExtensionSubjectKeyIdentifier.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificateExtensionSubjectKeyIdentifier.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
+            signal: K,
+            callback: CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4680,7 +4862,6 @@ export namespace Gcr {
 
     class CertificateField extends GObject.Object {
         static $gtype: GObject.GType<CertificateField>;
-        declare static readonly __signalSignatures: CertificateField.SignalSignatures;
 
         // Properties
 
@@ -4693,6 +4874,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateField.SignalSignatures>(
+            signal: K,
+            callback: CertificateField.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateField.SignalSignatures>(
+            signal: K,
+            callback: CertificateField.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateField.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateField.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4746,13 +4942,27 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificatePolicy>;
-        declare static readonly __signalSignatures: CertificatePolicy.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificatePolicy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificatePolicy.SignalSignatures>(
+            signal: K,
+            callback: CertificatePolicy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificatePolicy.SignalSignatures>(
+            signal: K,
+            callback: CertificatePolicy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificatePolicy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificatePolicy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5320,13 +5530,27 @@ export namespace Gcr {
      */
     class CertificatePolicyQualifier extends GObject.Object {
         static $gtype: GObject.GType<CertificatePolicyQualifier>;
-        declare static readonly __signalSignatures: CertificatePolicyQualifier.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CertificatePolicyQualifier.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
+            signal: K,
+            callback: CertificatePolicyQualifier.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
+            signal: K,
+            callback: CertificatePolicyQualifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificatePolicyQualifier.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5365,7 +5589,6 @@ export namespace Gcr {
      */
     class CertificateRequest extends GObject.Object {
         static $gtype: GObject.GType<CertificateRequest>;
-        declare static readonly __signalSignatures: CertificateRequest.SignalSignatures;
 
         // Properties
 
@@ -5383,6 +5606,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateRequest.SignalSignatures>(
+            signal: K,
+            callback: CertificateRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateRequest.SignalSignatures>(
+            signal: K,
+            callback: CertificateRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateRequest.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5509,7 +5747,6 @@ export namespace Gcr {
 
     class CertificateSection extends GObject.Object {
         static $gtype: GObject.GType<CertificateSection>;
-        declare static readonly __signalSignatures: CertificateSection.SignalSignatures;
 
         // Properties
 
@@ -5521,6 +5758,21 @@ export namespace Gcr {
         constructor(properties?: Partial<CertificateSection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CertificateSection.SignalSignatures>(
+            signal: K,
+            callback: CertificateSection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertificateSection.SignalSignatures>(
+            signal: K,
+            callback: CertificateSection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertificateSection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertificateSection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5561,13 +5813,27 @@ export namespace Gcr {
      */
     class DistributionPoint extends GObject.Object {
         static $gtype: GObject.GType<DistributionPoint>;
-        declare static readonly __signalSignatures: DistributionPoint.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DistributionPoint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DistributionPoint.SignalSignatures>(
+            signal: K,
+            callback: DistributionPoint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DistributionPoint.SignalSignatures>(
+            signal: K,
+            callback: DistributionPoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DistributionPoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DistributionPoint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5604,13 +5870,27 @@ export namespace Gcr {
      */
     class GeneralName extends GObject.Object {
         static $gtype: GObject.GType<GeneralName>;
-        declare static readonly __signalSignatures: GeneralName.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GeneralName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GeneralName.SignalSignatures>(
+            signal: K,
+            callback: GeneralName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GeneralName.SignalSignatures>(
+            signal: K,
+            callback: GeneralName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GeneralName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GeneralName.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5644,13 +5924,27 @@ export namespace Gcr {
      */
     class GeneralNames<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<GeneralNames>;
-        declare static readonly __signalSignatures: GeneralNames.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GeneralNames.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GeneralNames.SignalSignatures>(
+            signal: K,
+            callback: GeneralNames.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GeneralNames.SignalSignatures>(
+            signal: K,
+            callback: GeneralNames.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GeneralNames.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GeneralNames.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6204,11 +6498,11 @@ export namespace Gcr {
         // Signal callback interfaces
 
         interface Authenticate {
-            (count: number): boolean;
+            (_source: Parser, count: number): boolean;
         }
 
         interface Parsed {
-            (): void;
+            (_source: Parser): void;
         }
 
         // Signal signatures
@@ -6247,7 +6541,6 @@ export namespace Gcr {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -6295,15 +6588,6 @@ export namespace Gcr {
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authenticate', callback: (_source: this, count: number) => boolean): number;
-        connect_after(signal: 'authenticate', callback: (_source: this, count: number) => boolean): number;
-        emit(signal: 'authenticate', count: number): void;
-        connect(signal: 'parsed', callback: (_source: this) => void): number;
-        connect_after(signal: 'parsed', callback: (_source: this) => void): number;
-        emit(signal: 'parsed'): void;
 
         // Virtual methods
 
@@ -6495,7 +6779,6 @@ export namespace Gcr {
      */
     class Pkcs11Certificate extends Gck.Object implements Certificate {
         static $gtype: GObject.GType<Pkcs11Certificate>;
-        declare static readonly __signalSignatures: Pkcs11Certificate.SignalSignatures;
 
         // Properties
 
@@ -6509,6 +6792,21 @@ export namespace Gcr {
         constructor(properties?: Partial<Pkcs11Certificate.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Pkcs11Certificate.SignalSignatures>(
+            signal: K,
+            callback: Pkcs11Certificate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Pkcs11Certificate.SignalSignatures>(
+            signal: K,
+            callback: Pkcs11Certificate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Pkcs11Certificate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Pkcs11Certificate.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7302,7 +7600,6 @@ export namespace Gcr {
      */
     class SecretExchange extends GObject.Object {
         static $gtype: GObject.GType<SecretExchange>;
-        declare static readonly __signalSignatures: SecretExchange.SignalSignatures;
 
         // Properties
 
@@ -7322,6 +7619,21 @@ export namespace Gcr {
         _init(...args: any[]): void;
 
         static ['new'](protocol?: string | null): SecretExchange;
+
+        // Signals
+
+        connect<K extends keyof SecretExchange.SignalSignatures>(
+            signal: K,
+            callback: SecretExchange.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecretExchange.SignalSignatures>(
+            signal: K,
+            callback: SecretExchange.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecretExchange.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecretExchange.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -7400,7 +7712,6 @@ export namespace Gcr {
      */
     class SimpleCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<SimpleCertificate>;
-        declare static readonly __signalSignatures: SimpleCertificate.SignalSignatures;
 
         // Constructors
 
@@ -7409,6 +7720,21 @@ export namespace Gcr {
         _init(...args: any[]): void;
 
         static ['new'](data: Uint8Array | string): SimpleCertificate;
+
+        // Signals
+
+        connect<K extends keyof SimpleCertificate.SignalSignatures>(
+            signal: K,
+            callback: SimpleCertificate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleCertificate.SignalSignatures>(
+            signal: K,
+            callback: SimpleCertificate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleCertificate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleCertificate.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -8091,7 +8417,6 @@ export namespace Gcr {
      */
     class SshAskpass extends GObject.Object {
         static $gtype: GObject.GType<SshAskpass>;
-        declare static readonly __signalSignatures: SshAskpass.SignalSignatures;
 
         // Properties
 
@@ -8107,6 +8432,21 @@ export namespace Gcr {
         _init(...args: any[]): void;
 
         static ['new'](interaction: Gio.TlsInteraction): SshAskpass;
+
+        // Signals
+
+        connect<K extends keyof SshAskpass.SignalSignatures>(
+            signal: K,
+            callback: SshAskpass.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SshAskpass.SignalSignatures>(
+            signal: K,
+            callback: SshAskpass.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SshAskpass.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SshAskpass.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8161,7 +8501,6 @@ export namespace Gcr {
      */
     class SystemPrompt extends GObject.Object implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable {
         static $gtype: GObject.GType<SystemPrompt>;
-        declare static readonly __signalSignatures: SystemPrompt.SignalSignatures;
 
         // Properties
 
@@ -8201,6 +8540,21 @@ export namespace Gcr {
         constructor(properties?: Partial<SystemPrompt.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SystemPrompt.SignalSignatures>(
+            signal: K,
+            callback: SystemPrompt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemPrompt.SignalSignatures>(
+            signal: K,
+            callback: SystemPrompt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemPrompt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemPrompt.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9612,7 +9966,7 @@ export namespace Gcr {
         // Signal callback interfaces
 
         interface NewPrompt {
-            (): Prompt;
+            (_source: SystemPrompter): Prompt;
         }
 
         // Signal signatures
@@ -9643,7 +9997,6 @@ export namespace Gcr {
      */
     class SystemPrompter extends GObject.Object {
         static $gtype: GObject.GType<SystemPrompter>;
-        declare static readonly __signalSignatures: SystemPrompter.SignalSignatures;
 
         // Properties
 
@@ -9684,12 +10037,6 @@ export namespace Gcr {
             signal: K,
             ...args: Parameters<SystemPrompter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'new-prompt', callback: (_source: this) => Prompt): number;
-        connect_after(signal: 'new-prompt', callback: (_source: this) => Prompt): number;
-        emit(signal: 'new-prompt'): void;
 
         // Methods
 

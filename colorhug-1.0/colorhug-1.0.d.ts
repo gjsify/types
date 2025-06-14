@@ -1802,11 +1802,11 @@ export namespace ColorHug {
         // Signal callback interfaces
 
         interface DeviceFailed {
-            (object: GObject.Object, p0: string): void;
+            (_source: DeviceQueue, object: GObject.Object, p0: string): void;
         }
 
         interface ProgressChanged {
-            (object: number): void;
+            (_source: DeviceQueue, object: number): void;
         }
 
         // Signal signatures
@@ -1822,7 +1822,6 @@ export namespace ColorHug {
 
     class DeviceQueue extends GObject.Object {
         static $gtype: GObject.GType<DeviceQueue>;
-        declare static readonly __signalSignatures: DeviceQueue.SignalSignatures;
 
         // Constructors
 
@@ -1846,18 +1845,6 @@ export namespace ColorHug {
             signal: K,
             ...args: Parameters<DeviceQueue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-failed', callback: (_source: this, object: GObject.Object, p0: string) => void): number;
-        connect_after(
-            signal: 'device-failed',
-            callback: (_source: this, object: GObject.Object, p0: string) => void,
-        ): number;
-        emit(signal: 'device-failed', object: GObject.Object, p0: string): void;
-        connect(signal: 'progress-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'progress-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'progress-changed', object: number): void;
 
         // Virtual methods
 

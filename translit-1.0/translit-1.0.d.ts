@@ -45,7 +45,6 @@ export namespace Translit {
 
     class Transliterator extends GObject.Object {
         static $gtype: GObject.GType<Transliterator>;
-        declare static readonly __signalSignatures: Transliterator.SignalSignatures;
 
         // Properties
 
@@ -59,6 +58,21 @@ export namespace Translit {
         constructor(properties?: Partial<Transliterator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Transliterator.SignalSignatures>(
+            signal: K,
+            callback: Transliterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transliterator.SignalSignatures>(
+            signal: K,
+            callback: Transliterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transliterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transliterator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

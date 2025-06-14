@@ -73,7 +73,7 @@ export namespace OsmGpsMap {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Map): void;
         }
 
         // Signal signatures
@@ -139,7 +139,6 @@ export namespace OsmGpsMap {
 
     class Map extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Map>;
-        declare static readonly __signalSignatures: Map.SignalSignatures;
 
         // Properties
 
@@ -448,12 +447,6 @@ export namespace OsmGpsMap {
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -1037,7 +1030,6 @@ export namespace OsmGpsMap {
 
     class MapImage extends GObject.Object {
         static $gtype: GObject.GType<MapImage>;
-        declare static readonly __signalSignatures: MapImage.SignalSignatures;
 
         // Properties
 
@@ -1067,6 +1059,18 @@ export namespace OsmGpsMap {
         _init(...args: any[]): void;
 
         static ['new'](): MapImage;
+
+        // Signals
+
+        connect<K extends keyof MapImage.SignalSignatures>(signal: K, callback: MapImage.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapImage.SignalSignatures>(
+            signal: K,
+            callback: MapImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapImage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1109,7 +1113,6 @@ export namespace OsmGpsMap {
 
     class MapOsd extends GObject.Object implements MapLayer {
         static $gtype: GObject.GType<MapOsd>;
-        declare static readonly __signalSignatures: MapOsd.SignalSignatures;
 
         // Properties
 
@@ -1221,6 +1224,12 @@ export namespace OsmGpsMap {
         _init(...args: any[]): void;
 
         static ['new'](): MapOsd;
+
+        // Signals
+
+        connect<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: MapOsd.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: MapOsd.SignalSignatures[K]): number;
+        emit<K extends keyof MapOsd.SignalSignatures>(signal: K, ...args: Parameters<MapOsd.SignalSignatures[K]>): void;
 
         // Inherited methods
         busy(): boolean;
@@ -1688,7 +1697,6 @@ export namespace OsmGpsMap {
 
     class MapPolygon extends GObject.Object {
         static $gtype: GObject.GType<MapPolygon>;
-        declare static readonly __signalSignatures: MapPolygon.SignalSignatures;
 
         // Properties
 
@@ -1708,25 +1716,40 @@ export namespace OsmGpsMap {
         _init(...args: any[]): void;
 
         static ['new'](): MapPolygon;
+
+        // Signals
+
+        connect<K extends keyof MapPolygon.SignalSignatures>(
+            signal: K,
+            callback: MapPolygon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MapPolygon.SignalSignatures>(
+            signal: K,
+            callback: MapPolygon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapPolygon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapPolygon.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MapTrack {
         // Signal callback interfaces
 
         interface PointAdded {
-            (object: MapPoint): void;
+            (_source: MapTrack, object: MapPoint): void;
         }
 
         interface PointChanged {
-            (object: number): void;
+            (_source: MapTrack, object: number): void;
         }
 
         interface PointInserted {
-            (object: number): void;
+            (_source: MapTrack, object: number): void;
         }
 
         interface PointRemoved {
-            (object: number): void;
+            (_source: MapTrack, object: number): void;
         }
 
         // Signal signatures
@@ -1752,7 +1775,6 @@ export namespace OsmGpsMap {
 
     class MapTrack extends GObject.Object {
         static $gtype: GObject.GType<MapTrack>;
-        declare static readonly __signalSignatures: MapTrack.SignalSignatures;
 
         // Properties
 
@@ -1789,21 +1811,6 @@ export namespace OsmGpsMap {
             signal: K,
             ...args: Parameters<MapTrack.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'point-added', callback: (_source: this, object: MapPoint) => void): number;
-        connect_after(signal: 'point-added', callback: (_source: this, object: MapPoint) => void): number;
-        emit(signal: 'point-added', object: MapPoint): void;
-        connect(signal: 'point-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'point-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'point-changed', object: number): void;
-        connect(signal: 'point-inserted', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'point-inserted', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'point-inserted', object: number): void;
-        connect(signal: 'point-removed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'point-removed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'point-removed', object: number): void;
 
         // Methods
 

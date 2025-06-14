@@ -56,7 +56,6 @@ export namespace Gtd {
 
     class BinLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
-        declare static readonly __signalSignatures: BinLayout.SignalSignatures;
 
         // Constructors
 
@@ -65,21 +64,33 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): BinLayout;
+
+        // Signals
+
+        connect<K extends keyof BinLayout.SignalSignatures>(signal: K, callback: BinLayout.SignalSignatures[K]): number;
+        connect_after<K extends keyof BinLayout.SignalSignatures>(
+            signal: K,
+            callback: BinLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinLayout.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Clock {
         // Signal callback interfaces
 
         interface DayChanged {
-            (): void;
+            (_source: Clock): void;
         }
 
         interface HourChanged {
-            (): void;
+            (_source: Clock): void;
         }
 
         interface MinuteChanged {
-            (): void;
+            (_source: Clock): void;
         }
 
         // Signal signatures
@@ -96,7 +107,6 @@ export namespace Gtd {
 
     class Clock extends Object {
         static $gtype: GObject.GType<Clock>;
-        declare static readonly __signalSignatures: Clock.SignalSignatures;
 
         // Constructors
 
@@ -111,18 +121,6 @@ export namespace Gtd {
         connect<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
         connect_after<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
         emit<K extends keyof Clock.SignalSignatures>(signal: K, ...args: Parameters<Clock.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'day-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'day-changed', callback: (_source: this) => void): number;
-        emit(signal: 'day-changed'): void;
-        connect(signal: 'hour-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'hour-changed', callback: (_source: this) => void): number;
-        emit(signal: 'hour-changed'): void;
-        connect(signal: 'minute-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'minute-changed', callback: (_source: this) => void): number;
-        emit(signal: 'minute-changed'): void;
     }
 
     namespace ListModelFilter {
@@ -144,7 +142,6 @@ export namespace Gtd {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<ListModelFilter>;
-        declare static readonly __signalSignatures: ListModelFilter.SignalSignatures;
 
         // Properties
 
@@ -158,6 +155,21 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](child_model: Gio.ListModel): ListModelFilter;
+
+        // Signals
+
+        connect<K extends keyof ListModelFilter.SignalSignatures>(
+            signal: K,
+            callback: ListModelFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ListModelFilter.SignalSignatures>(
+            signal: K,
+            callback: ListModelFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListModelFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListModelFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -728,7 +740,6 @@ export namespace Gtd {
      */
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ListStore>;
-        declare static readonly __signalSignatures: ListStore.SignalSignatures;
 
         // Properties
 
@@ -750,6 +761,18 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](item_type: GObject.GType): ListStore;
+
+        // Signals
+
+        connect<K extends keyof ListStore.SignalSignatures>(signal: K, callback: ListStore.SignalSignatures[K]): number;
+        connect_after<K extends keyof ListStore.SignalSignatures>(
+            signal: K,
+            callback: ListStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1383,31 +1406,37 @@ export namespace Gtd {
         // Signal callback interfaces
 
         interface ListAdded {
-            (list: TaskList): void;
+            (_source: Manager, list: TaskList): void;
         }
 
         interface ListChanged {
-            (list: TaskList): void;
+            (_source: Manager, list: TaskList): void;
         }
 
         interface ListRemoved {
-            (list: TaskList): void;
+            (_source: Manager, list: TaskList): void;
         }
 
         interface ProviderAdded {
-            (provider: Provider): void;
+            (_source: Manager, provider: Provider): void;
         }
 
         interface ProviderRemoved {
-            (provider: Provider): void;
+            (_source: Manager, provider: Provider): void;
         }
 
         interface ShowErrorMessage {
-            (primary_text: string, secondary_text: string, action?: any | null, user_data?: any | null): void;
+            (
+                _source: Manager,
+                primary_text: string,
+                secondary_text: string,
+                action?: any | null,
+                user_data?: any | null,
+            ): void;
         }
 
         interface ShowNotification {
-            (notification: Notification): void;
+            (_source: Manager, notification: Notification): void;
         }
 
         // Signal signatures
@@ -1432,7 +1461,6 @@ export namespace Gtd {
 
     class Manager extends Object {
         static $gtype: GObject.GType<Manager>;
-        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Properties
 
@@ -1461,57 +1489,6 @@ export namespace Gtd {
             signal: K,
             ...args: Parameters<Manager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'list-added', callback: (_source: this, list: TaskList) => void): number;
-        connect_after(signal: 'list-added', callback: (_source: this, list: TaskList) => void): number;
-        emit(signal: 'list-added', list: TaskList): void;
-        connect(signal: 'list-changed', callback: (_source: this, list: TaskList) => void): number;
-        connect_after(signal: 'list-changed', callback: (_source: this, list: TaskList) => void): number;
-        emit(signal: 'list-changed', list: TaskList): void;
-        connect(signal: 'list-removed', callback: (_source: this, list: TaskList) => void): number;
-        connect_after(signal: 'list-removed', callback: (_source: this, list: TaskList) => void): number;
-        emit(signal: 'list-removed', list: TaskList): void;
-        connect(signal: 'provider-added', callback: (_source: this, provider: Provider) => void): number;
-        connect_after(signal: 'provider-added', callback: (_source: this, provider: Provider) => void): number;
-        emit(signal: 'provider-added', provider: Provider): void;
-        connect(signal: 'provider-removed', callback: (_source: this, provider: Provider) => void): number;
-        connect_after(signal: 'provider-removed', callback: (_source: this, provider: Provider) => void): number;
-        emit(signal: 'provider-removed', provider: Provider): void;
-        connect(
-            signal: 'show-error-message',
-            callback: (
-                _source: this,
-                primary_text: string,
-                secondary_text: string,
-                action: any | null,
-                user_data: any | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'show-error-message',
-            callback: (
-                _source: this,
-                primary_text: string,
-                secondary_text: string,
-                action: any | null,
-                user_data: any | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'show-error-message',
-            primary_text: string,
-            secondary_text: string,
-            action?: any | null,
-            user_data?: any | null,
-        ): void;
-        connect(signal: 'show-notification', callback: (_source: this, notification: Notification) => void): number;
-        connect_after(
-            signal: 'show-notification',
-            callback: (_source: this, notification: Notification) => void,
-        ): number;
-        emit(signal: 'show-notification', notification: Notification): void;
 
         // Static methods
 
@@ -1643,7 +1620,6 @@ export namespace Gtd {
 
     class MaxSizeLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<MaxSizeLayout>;
-        declare static readonly __signalSignatures: MaxSizeLayout.SignalSignatures;
 
         // Properties
 
@@ -1695,6 +1671,21 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): MaxSizeLayout;
+
+        // Signals
+
+        connect<K extends keyof MaxSizeLayout.SignalSignatures>(
+            signal: K,
+            callback: MaxSizeLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MaxSizeLayout.SignalSignatures>(
+            signal: K,
+            callback: MaxSizeLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MaxSizeLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MaxSizeLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1770,7 +1761,6 @@ export namespace Gtd {
 
     class MenuButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MenuButton>;
-        declare static readonly __signalSignatures: MenuButton.SignalSignatures;
 
         // Properties
 
@@ -1831,6 +1821,21 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): MenuButton;
+
+        // Signals
+
+        connect<K extends keyof MenuButton.SignalSignatures>(
+            signal: K,
+            callback: MenuButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MenuButton.SignalSignatures>(
+            signal: K,
+            callback: MenuButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuButton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2696,7 +2701,7 @@ export namespace Gtd {
         // Signal callback interfaces
 
         interface Executed {
-            (): void;
+            (_source: Notification): void;
         }
 
         // Signal signatures
@@ -2720,7 +2725,6 @@ export namespace Gtd {
 
     class Notification extends Object {
         static $gtype: GObject.GType<Notification>;
-        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Properties
 
@@ -2762,12 +2766,6 @@ export namespace Gtd {
             signal: K,
             ...args: Parameters<Notification.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'executed', callback: (_source: this) => void): number;
-        connect_after(signal: 'executed', callback: (_source: this) => void): number;
-        emit(signal: 'executed'): void;
 
         // Methods
 
@@ -2839,7 +2837,6 @@ export namespace Gtd {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -2854,6 +2851,12 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](uid: string): Object;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2916,13 +2919,24 @@ export namespace Gtd {
 
     class OmniArea extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<OmniArea>;
-        declare static readonly __signalSignatures: OmniArea.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OmniArea.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OmniArea.SignalSignatures>(signal: K, callback: OmniArea.SignalSignatures[K]): number;
+        connect_after<K extends keyof OmniArea.SignalSignatures>(
+            signal: K,
+            callback: OmniArea.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OmniArea.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OmniArea.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3402,7 +3416,6 @@ export namespace Gtd {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<ProviderPopover>;
-        declare static readonly __signalSignatures: ProviderPopover.SignalSignatures;
 
         // Constructors
 
@@ -3411,6 +3424,21 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): ProviderPopover;
+
+        // Signals
+
+        connect<K extends keyof ProviderPopover.SignalSignatures>(
+            signal: K,
+            callback: ProviderPopover.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProviderPopover.SignalSignatures>(
+            signal: K,
+            callback: ProviderPopover.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProviderPopover.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProviderPopover.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -6363,7 +6391,6 @@ export namespace Gtd {
 
     class StarWidget extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<StarWidget>;
-        declare static readonly __signalSignatures: StarWidget.SignalSignatures;
 
         // Properties
 
@@ -6381,6 +6408,21 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): StarWidget;
+
+        // Signals
+
+        connect<K extends keyof StarWidget.SignalSignatures>(
+            signal: K,
+            callback: StarWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StarWidget.SignalSignatures>(
+            signal: K,
+            callback: StarWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StarWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StarWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6851,7 +6893,6 @@ export namespace Gtd {
 
     class Task extends Object {
         static $gtype: GObject.GType<Task>;
-        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -6883,6 +6924,12 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): Task;
+
+        // Signals
+
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -7091,15 +7138,15 @@ export namespace Gtd {
         // Signal callback interfaces
 
         interface TaskAdded {
-            (task: Task): void;
+            (_source: TaskList, task: Task): void;
         }
 
         interface TaskRemoved {
-            (task: Task): void;
+            (_source: TaskList, task: Task): void;
         }
 
         interface TaskUpdated {
-            (task: Task): void;
+            (_source: TaskList, task: Task): void;
         }
 
         // Signal signatures
@@ -7125,7 +7172,6 @@ export namespace Gtd {
 
     class TaskList<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<TaskList>;
-        declare static readonly __signalSignatures: TaskList.SignalSignatures;
 
         // Properties
 
@@ -7164,18 +7210,6 @@ export namespace Gtd {
             signal: K,
             ...args: Parameters<TaskList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'task-added', callback: (_source: this, task: Task) => void): number;
-        connect_after(signal: 'task-added', callback: (_source: this, task: Task) => void): number;
-        emit(signal: 'task-added', task: Task): void;
-        connect(signal: 'task-removed', callback: (_source: this, task: Task) => void): number;
-        connect_after(signal: 'task-removed', callback: (_source: this, task: Task) => void): number;
-        emit(signal: 'task-removed', task: Task): void;
-        connect(signal: 'task-updated', callback: (_source: this, task: Task) => void): number;
-        connect_after(signal: 'task-updated', callback: (_source: this, task: Task) => void): number;
-        emit(signal: 'task-updated', task: Task): void;
 
         // Virtual methods
 
@@ -7841,7 +7875,6 @@ export namespace Gtd {
 
     class TaskListView extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<TaskListView>;
-        declare static readonly __signalSignatures: TaskListView.SignalSignatures;
 
         // Properties
 
@@ -7861,6 +7894,21 @@ export namespace Gtd {
         _init(...args: any[]): void;
 
         static ['new'](): TaskListView;
+
+        // Signals
+
+        connect<K extends keyof TaskListView.SignalSignatures>(
+            signal: K,
+            callback: TaskListView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TaskListView.SignalSignatures>(
+            signal: K,
+            callback: TaskListView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskListView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskListView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8378,11 +8426,11 @@ export namespace Gtd {
         // Signal callback interfaces
 
         interface TransitionStopped {
-            (name: string, is_finished: boolean): void;
+            (_source: Widget, name: string, is_finished: boolean): void;
         }
 
         interface TransitionsCompleted {
-            (): void;
+            (_source: Widget): void;
         }
 
         // Signal signatures
@@ -8423,7 +8471,6 @@ export namespace Gtd {
 
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
-        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -8481,21 +8528,6 @@ export namespace Gtd {
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'transition-stopped',
-            callback: (_source: this, name: string, is_finished: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'transition-stopped',
-            callback: (_source: this, name: string, is_finished: boolean) => void,
-        ): number;
-        emit(signal: 'transition-stopped', name: string, is_finished: boolean): void;
-        connect(signal: 'transitions-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'transitions-completed', callback: (_source: this) => void): number;
-        emit(signal: 'transitions-completed'): void;
 
         // Methods
 
@@ -9366,7 +9398,6 @@ export namespace Gtd {
             Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -9383,6 +9414,12 @@ export namespace Gtd {
         // Conflicted with Gtk.ApplicationWindow.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
 
         // Methods
 

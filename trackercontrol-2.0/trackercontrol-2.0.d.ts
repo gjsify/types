@@ -49,23 +49,23 @@ export namespace TrackerControl {
         // Signal callback interfaces
 
         interface MinerActivated {
-            (miner: string): void;
+            (_source: MinerManager, miner: string): void;
         }
 
         interface MinerDeactivated {
-            (miner: string): void;
+            (_source: MinerManager, miner: string): void;
         }
 
         interface MinerPaused {
-            (miner: string): void;
+            (_source: MinerManager, miner: string): void;
         }
 
         interface MinerProgress {
-            (miner: string, status: string, progress: number, remaining_time: number): void;
+            (_source: MinerManager, miner: string, status: string, progress: number, remaining_time: number): void;
         }
 
         interface MinerResumed {
-            (miner: string): void;
+            (_source: MinerManager, miner: string): void;
         }
 
         // Signal signatures
@@ -92,7 +92,6 @@ export namespace TrackerControl {
      */
     class MinerManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MinerManager>;
-        declare static readonly __signalSignatures: MinerManager.SignalSignatures;
 
         // Properties
 
@@ -125,30 +124,6 @@ export namespace TrackerControl {
             signal: K,
             ...args: Parameters<MinerManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'miner-activated', callback: (_source: this, miner: string) => void): number;
-        connect_after(signal: 'miner-activated', callback: (_source: this, miner: string) => void): number;
-        emit(signal: 'miner-activated', miner: string): void;
-        connect(signal: 'miner-deactivated', callback: (_source: this, miner: string) => void): number;
-        connect_after(signal: 'miner-deactivated', callback: (_source: this, miner: string) => void): number;
-        emit(signal: 'miner-deactivated', miner: string): void;
-        connect(signal: 'miner-paused', callback: (_source: this, miner: string) => void): number;
-        connect_after(signal: 'miner-paused', callback: (_source: this, miner: string) => void): number;
-        emit(signal: 'miner-paused', miner: string): void;
-        connect(
-            signal: 'miner-progress',
-            callback: (_source: this, miner: string, status: string, progress: number, remaining_time: number) => void,
-        ): number;
-        connect_after(
-            signal: 'miner-progress',
-            callback: (_source: this, miner: string, status: string, progress: number, remaining_time: number) => void,
-        ): number;
-        emit(signal: 'miner-progress', miner: string, status: string, progress: number, remaining_time: number): void;
-        connect(signal: 'miner-resumed', callback: (_source: this, miner: string) => void): number;
-        connect_after(signal: 'miner-resumed', callback: (_source: this, miner: string) => void): number;
-        emit(signal: 'miner-resumed', miner: string): void;
 
         // Static methods
 

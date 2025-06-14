@@ -613,47 +613,53 @@ export namespace Nice {
         // Signal callback interfaces
 
         interface CandidateGatheringDone {
-            (stream_id: number): void;
+            (_source: Agent, stream_id: number): void;
         }
 
         interface ComponentStateChanged {
-            (stream_id: number, component_id: number, state: number): void;
+            (_source: Agent, stream_id: number, component_id: number, state: number): void;
         }
 
         interface InitialBindingRequestReceived {
-            (stream_id: number): void;
+            (_source: Agent, stream_id: number): void;
         }
 
         interface NewCandidate {
-            (stream_id: number, component_id: number, foundation: string): void;
+            (_source: Agent, stream_id: number, component_id: number, foundation: string): void;
         }
 
         interface NewCandidateFull {
-            (candidate: Candidate): void;
+            (_source: Agent, candidate: Candidate): void;
         }
 
         interface NewRemoteCandidate {
-            (stream_id: number, component_id: number, foundation: string): void;
+            (_source: Agent, stream_id: number, component_id: number, foundation: string): void;
         }
 
         interface NewRemoteCandidateFull {
-            (candidate: Candidate): void;
+            (_source: Agent, candidate: Candidate): void;
         }
 
         interface NewSelectedPair {
-            (stream_id: number, component_id: number, lfoundation: string, rfoundation: string): void;
+            (_source: Agent, stream_id: number, component_id: number, lfoundation: string, rfoundation: string): void;
         }
 
         interface NewSelectedPairFull {
-            (stream_id: number, component_id: number, lcandidate: Candidate, rcandidate: Candidate): void;
+            (
+                _source: Agent,
+                stream_id: number,
+                component_id: number,
+                lcandidate: Candidate,
+                rcandidate: Candidate,
+            ): void;
         }
 
         interface ReliableTransportWritable {
-            (stream_id: number, component_id: number): void;
+            (_source: Agent, stream_id: number, component_id: number): void;
         }
 
         interface StreamsRemoved {
-            (stream_ids: number[]): void;
+            (_source: Agent, stream_ids: number[]): void;
         }
 
         // Signal signatures
@@ -736,7 +742,6 @@ export namespace Nice {
      */
     class Agent extends GObject.Object {
         static $gtype: GObject.GType<Agent>;
-        declare static readonly __signalSignatures: Agent.SignalSignatures;
 
         // Properties
 
@@ -1227,123 +1232,6 @@ export namespace Nice {
         connect<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
         connect_after<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
         emit<K extends keyof Agent.SignalSignatures>(signal: K, ...args: Parameters<Agent.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'candidate-gathering-done', callback: (_source: this, stream_id: number) => void): number;
-        connect_after(signal: 'candidate-gathering-done', callback: (_source: this, stream_id: number) => void): number;
-        emit(signal: 'candidate-gathering-done', stream_id: number): void;
-        connect(
-            signal: 'component-state-changed',
-            callback: (_source: this, stream_id: number, component_id: number, state: number) => void,
-        ): number;
-        connect_after(
-            signal: 'component-state-changed',
-            callback: (_source: this, stream_id: number, component_id: number, state: number) => void,
-        ): number;
-        emit(signal: 'component-state-changed', stream_id: number, component_id: number, state: number): void;
-        connect(
-            signal: 'initial-binding-request-received',
-            callback: (_source: this, stream_id: number) => void,
-        ): number;
-        connect_after(
-            signal: 'initial-binding-request-received',
-            callback: (_source: this, stream_id: number) => void,
-        ): number;
-        emit(signal: 'initial-binding-request-received', stream_id: number): void;
-        connect(
-            signal: 'new-candidate',
-            callback: (_source: this, stream_id: number, component_id: number, foundation: string) => void,
-        ): number;
-        connect_after(
-            signal: 'new-candidate',
-            callback: (_source: this, stream_id: number, component_id: number, foundation: string) => void,
-        ): number;
-        emit(signal: 'new-candidate', stream_id: number, component_id: number, foundation: string): void;
-        connect(signal: 'new-candidate-full', callback: (_source: this, candidate: Candidate) => void): number;
-        connect_after(signal: 'new-candidate-full', callback: (_source: this, candidate: Candidate) => void): number;
-        emit(signal: 'new-candidate-full', candidate: Candidate): void;
-        connect(
-            signal: 'new-remote-candidate',
-            callback: (_source: this, stream_id: number, component_id: number, foundation: string) => void,
-        ): number;
-        connect_after(
-            signal: 'new-remote-candidate',
-            callback: (_source: this, stream_id: number, component_id: number, foundation: string) => void,
-        ): number;
-        emit(signal: 'new-remote-candidate', stream_id: number, component_id: number, foundation: string): void;
-        connect(signal: 'new-remote-candidate-full', callback: (_source: this, candidate: Candidate) => void): number;
-        connect_after(
-            signal: 'new-remote-candidate-full',
-            callback: (_source: this, candidate: Candidate) => void,
-        ): number;
-        emit(signal: 'new-remote-candidate-full', candidate: Candidate): void;
-        connect(
-            signal: 'new-selected-pair',
-            callback: (
-                _source: this,
-                stream_id: number,
-                component_id: number,
-                lfoundation: string,
-                rfoundation: string,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'new-selected-pair',
-            callback: (
-                _source: this,
-                stream_id: number,
-                component_id: number,
-                lfoundation: string,
-                rfoundation: string,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'new-selected-pair',
-            stream_id: number,
-            component_id: number,
-            lfoundation: string,
-            rfoundation: string,
-        ): void;
-        connect(
-            signal: 'new-selected-pair-full',
-            callback: (
-                _source: this,
-                stream_id: number,
-                component_id: number,
-                lcandidate: Candidate,
-                rcandidate: Candidate,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'new-selected-pair-full',
-            callback: (
-                _source: this,
-                stream_id: number,
-                component_id: number,
-                lcandidate: Candidate,
-                rcandidate: Candidate,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'new-selected-pair-full',
-            stream_id: number,
-            component_id: number,
-            lcandidate: Candidate,
-            rcandidate: Candidate,
-        ): void;
-        connect(
-            signal: 'reliable-transport-writable',
-            callback: (_source: this, stream_id: number, component_id: number) => void,
-        ): number;
-        connect_after(
-            signal: 'reliable-transport-writable',
-            callback: (_source: this, stream_id: number, component_id: number) => void,
-        ): number;
-        emit(signal: 'reliable-transport-writable', stream_id: number, component_id: number): void;
-        connect(signal: 'streams-removed', callback: (_source: this, stream_ids: number[]) => void): number;
-        connect_after(signal: 'streams-removed', callback: (_source: this, stream_ids: number[]) => void): number;
-        emit(signal: 'streams-removed', stream_ids: number[]): void;
 
         // Methods
 
@@ -2077,7 +1965,6 @@ export namespace Nice {
      */
     class PseudoTcpSocket extends GObject.Object {
         static $gtype: GObject.GType<PseudoTcpSocket>;
-        declare static readonly __signalSignatures: PseudoTcpSocket.SignalSignatures;
 
         // Properties
 
@@ -2131,6 +2018,21 @@ export namespace Nice {
         _init(...args: any[]): void;
 
         static ['new'](conversation: number, callbacks: PseudoTcpCallbacks): PseudoTcpSocket;
+
+        // Signals
+
+        connect<K extends keyof PseudoTcpSocket.SignalSignatures>(
+            signal: K,
+            callback: PseudoTcpSocket.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PseudoTcpSocket.SignalSignatures>(
+            signal: K,
+            callback: PseudoTcpSocket.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PseudoTcpSocket.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PseudoTcpSocket.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

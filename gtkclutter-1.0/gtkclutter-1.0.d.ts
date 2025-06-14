@@ -98,7 +98,6 @@ export namespace GtkClutter {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Actor>;
-        declare static readonly __signalSignatures: Actor.SignalSignatures;
 
         // Properties
 
@@ -117,6 +116,12 @@ export namespace GtkClutter {
         static ['new'](): Actor;
 
         static new_with_contents(contents: Gtk.Widget): Actor;
+
+        // Signals
+
+        connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1048,7 +1053,6 @@ export namespace GtkClutter {
      */
     class Embed extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Embed>;
-        declare static readonly __signalSignatures: Embed.SignalSignatures;
 
         // Properties
 
@@ -1072,6 +1076,12 @@ export namespace GtkClutter {
         _init(...args: any[]): void;
 
         static ['new'](): Embed;
+
+        // Signals
+
+        connect<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
+        connect_after<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
+        emit<K extends keyof Embed.SignalSignatures>(signal: K, ...args: Parameters<Embed.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1569,7 +1579,6 @@ export namespace GtkClutter {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Texture>;
-        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Constructors
 
@@ -1578,6 +1587,18 @@ export namespace GtkClutter {
         _init(...args: any[]): void;
 
         static ['new'](): Texture;
+
+        // Signals
+
+        connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect_after<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            callback: Texture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Texture.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2072,7 +2093,6 @@ export namespace GtkClutter {
      */
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 
@@ -2081,6 +2101,12 @@ export namespace GtkClutter {
         _init(...args: any[]): void;
 
         static ['new'](): Window;
+
+        // Signals
+
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
 
         // Methods
 

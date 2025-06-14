@@ -57,7 +57,6 @@ export namespace GtkChamplain {
      */
     class Embed extends Gtk.Alignment implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Embed>;
-        declare static readonly __signalSignatures: Embed.SignalSignatures;
 
         // Properties
 
@@ -81,6 +80,12 @@ export namespace GtkChamplain {
         _init(...args: any[]): void;
 
         static ['new'](): Embed;
+
+        // Signals
+
+        connect<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
+        connect_after<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
+        emit<K extends keyof Embed.SignalSignatures>(signal: K, ...args: Parameters<Embed.SignalSignatures[K]>): void;
 
         // Methods
 

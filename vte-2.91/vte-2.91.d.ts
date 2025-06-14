@@ -746,7 +746,6 @@ export namespace Vte {
 
     class Pty extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Pty>;
-        declare static readonly __signalSignatures: Pty.SignalSignatures;
 
         // Properties
 
@@ -768,6 +767,12 @@ export namespace Vte {
         static new_foreign_sync(fd: number, cancellable?: Gio.Cancellable | null): Pty;
 
         static new_sync(flags: PtyFlags, cancellable?: Gio.Cancellable | null): Pty;
+
+        // Signals
+
+        connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        emit<K extends keyof Pty.SignalSignatures>(signal: K, ...args: Parameters<Pty.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1465,139 +1470,139 @@ export namespace Vte {
         // Signal callback interfaces
 
         interface Bell {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface CharSizeChanged {
-            (width: number, height: number): void;
+            (_source: Terminal, width: number, height: number): void;
         }
 
         interface ChildExited {
-            (status: number): void;
+            (_source: Terminal, status: number): void;
         }
 
         interface Commit {
-            (text: string, size: number): void;
+            (_source: Terminal, text: string, size: number): void;
         }
 
         interface ContentsChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface CopyClipboard {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface CurrentDirectoryUriChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface CurrentFileUriChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface CursorMoved {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface DecreaseFontSize {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface DeiconifyWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface EncodingChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface Eof {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface HyperlinkHoverUriChanged {
-            (uri: string, bbox: Gdk.Rectangle): void;
+            (_source: Terminal, uri: string, bbox: Gdk.Rectangle): void;
         }
 
         interface IconTitleChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface IconifyWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface IncreaseFontSize {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface LowerWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface MaximizeWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface MoveWindow {
-            (x: number, y: number): void;
+            (_source: Terminal, x: number, y: number): void;
         }
 
         interface PasteClipboard {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface RaiseWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface RefreshWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface ResizeWindow {
-            (width: number, height: number): void;
+            (_source: Terminal, width: number, height: number): void;
         }
 
         interface RestoreWindow {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface SelectionChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface SetupContextMenu {
-            (context?: EventContext | null): void;
+            (_source: Terminal, context?: EventContext | null): void;
         }
 
         interface TermpropChanged {
-            (name: string): void;
+            (_source: Terminal, name: string): void;
         }
 
         interface TermpropsChanged {
-            (props: number[]): boolean;
+            (_source: Terminal, props: number[]): boolean;
         }
 
         interface TextDeleted {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface TextInserted {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface TextModified {
-            (): void;
+            (_source: Terminal): void;
         }
 
         interface TextScrolled {
-            (delta: number): void;
+            (_source: Terminal, delta: number): void;
         }
 
         interface WindowTitleChanged {
-            (): void;
+            (_source: Terminal): void;
         }
 
         // Signal signatures
@@ -1730,7 +1735,6 @@ export namespace Vte {
 
     class Terminal extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Terminal>;
-        declare static readonly __signalSignatures: Terminal.SignalSignatures;
 
         // Properties
 
@@ -2234,126 +2238,6 @@ export namespace Vte {
             signal: K,
             ...args: Parameters<Terminal.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'bell', callback: (_source: this) => void): number;
-        connect_after(signal: 'bell', callback: (_source: this) => void): number;
-        emit(signal: 'bell'): void;
-        connect(signal: 'char-size-changed', callback: (_source: this, width: number, height: number) => void): number;
-        connect_after(
-            signal: 'char-size-changed',
-            callback: (_source: this, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'char-size-changed', width: number, height: number): void;
-        connect(signal: 'child-exited', callback: (_source: this, status: number) => void): number;
-        connect_after(signal: 'child-exited', callback: (_source: this, status: number) => void): number;
-        emit(signal: 'child-exited', status: number): void;
-        connect(signal: 'commit', callback: (_source: this, text: string, size: number) => void): number;
-        connect_after(signal: 'commit', callback: (_source: this, text: string, size: number) => void): number;
-        emit(signal: 'commit', text: string, size: number): void;
-        connect(signal: 'contents-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'contents-changed', callback: (_source: this) => void): number;
-        emit(signal: 'contents-changed'): void;
-        connect(signal: 'copy-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'copy-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'copy-clipboard'): void;
-        connect(signal: 'current-directory-uri-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'current-directory-uri-changed', callback: (_source: this) => void): number;
-        emit(signal: 'current-directory-uri-changed'): void;
-        connect(signal: 'current-file-uri-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'current-file-uri-changed', callback: (_source: this) => void): number;
-        emit(signal: 'current-file-uri-changed'): void;
-        connect(signal: 'cursor-moved', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-moved', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-moved'): void;
-        connect(signal: 'decrease-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'decrease-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'decrease-font-size'): void;
-        connect(signal: 'deiconify-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'deiconify-window', callback: (_source: this) => void): number;
-        emit(signal: 'deiconify-window'): void;
-        connect(signal: 'encoding-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'encoding-changed', callback: (_source: this) => void): number;
-        emit(signal: 'encoding-changed'): void;
-        connect(signal: 'eof', callback: (_source: this) => void): number;
-        connect_after(signal: 'eof', callback: (_source: this) => void): number;
-        emit(signal: 'eof'): void;
-        connect(
-            signal: 'hyperlink-hover-uri-changed',
-            callback: (_source: this, uri: string, bbox: Gdk.Rectangle) => void,
-        ): number;
-        connect_after(
-            signal: 'hyperlink-hover-uri-changed',
-            callback: (_source: this, uri: string, bbox: Gdk.Rectangle) => void,
-        ): number;
-        emit(signal: 'hyperlink-hover-uri-changed', uri: string, bbox: Gdk.Rectangle): void;
-        connect(signal: 'icon-title-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-title-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-title-changed'): void;
-        connect(signal: 'iconify-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'iconify-window', callback: (_source: this) => void): number;
-        emit(signal: 'iconify-window'): void;
-        connect(signal: 'increase-font-size', callback: (_source: this) => void): number;
-        connect_after(signal: 'increase-font-size', callback: (_source: this) => void): number;
-        emit(signal: 'increase-font-size'): void;
-        connect(signal: 'lower-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'lower-window', callback: (_source: this) => void): number;
-        emit(signal: 'lower-window'): void;
-        connect(signal: 'maximize-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'maximize-window', callback: (_source: this) => void): number;
-        emit(signal: 'maximize-window'): void;
-        connect(signal: 'move-window', callback: (_source: this, x: number, y: number) => void): number;
-        connect_after(signal: 'move-window', callback: (_source: this, x: number, y: number) => void): number;
-        emit(signal: 'move-window', x: number, y: number): void;
-        connect(signal: 'paste-clipboard', callback: (_source: this) => void): number;
-        connect_after(signal: 'paste-clipboard', callback: (_source: this) => void): number;
-        emit(signal: 'paste-clipboard'): void;
-        connect(signal: 'raise-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'raise-window', callback: (_source: this) => void): number;
-        emit(signal: 'raise-window'): void;
-        connect(signal: 'refresh-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'refresh-window', callback: (_source: this) => void): number;
-        emit(signal: 'refresh-window'): void;
-        connect(signal: 'resize-window', callback: (_source: this, width: number, height: number) => void): number;
-        connect_after(
-            signal: 'resize-window',
-            callback: (_source: this, width: number, height: number) => void,
-        ): number;
-        emit(signal: 'resize-window', width: number, height: number): void;
-        connect(signal: 'restore-window', callback: (_source: this) => void): number;
-        connect_after(signal: 'restore-window', callback: (_source: this) => void): number;
-        emit(signal: 'restore-window'): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
-        connect(signal: 'setup-context-menu', callback: (_source: this, context: EventContext | null) => void): number;
-        connect_after(
-            signal: 'setup-context-menu',
-            callback: (_source: this, context: EventContext | null) => void,
-        ): number;
-        emit(signal: 'setup-context-menu', context?: EventContext | null): void;
-        connect(signal: 'termprop-changed', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'termprop-changed', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'termprop-changed', name: string): void;
-        connect(signal: 'termprops-changed', callback: (_source: this, props: number[]) => boolean): number;
-        connect_after(signal: 'termprops-changed', callback: (_source: this, props: number[]) => boolean): number;
-        emit(signal: 'termprops-changed', props: number[]): void;
-        connect(signal: 'text-deleted', callback: (_source: this) => void): number;
-        connect_after(signal: 'text-deleted', callback: (_source: this) => void): number;
-        emit(signal: 'text-deleted'): void;
-        connect(signal: 'text-inserted', callback: (_source: this) => void): number;
-        connect_after(signal: 'text-inserted', callback: (_source: this) => void): number;
-        emit(signal: 'text-inserted'): void;
-        connect(signal: 'text-modified', callback: (_source: this) => void): number;
-        connect_after(signal: 'text-modified', callback: (_source: this) => void): number;
-        emit(signal: 'text-modified'): void;
-        connect(signal: 'text-scrolled', callback: (_source: this, delta: number) => void): number;
-        connect_after(signal: 'text-scrolled', callback: (_source: this, delta: number) => void): number;
-        emit(signal: 'text-scrolled', delta: number): void;
-        connect(signal: 'window-title-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'window-title-changed', callback: (_source: this) => void): number;
-        emit(signal: 'window-title-changed'): void;
 
         // Virtual methods
 

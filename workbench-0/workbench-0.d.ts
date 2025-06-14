@@ -60,7 +60,7 @@ export namespace Workbench {
         // Signal callback interfaces
 
         interface CompletionRequest {
-            (request: CompletionRequest): void;
+            (_source: CompletionProvider, request: CompletionRequest): void;
         }
 
         // Signal signatures
@@ -80,7 +80,6 @@ export namespace Workbench {
      */
     class CompletionProvider extends GObject.Object implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionProvider>;
-        declare static readonly __signalSignatures: CompletionProvider.SignalSignatures;
 
         // Constructors
 
@@ -102,15 +101,6 @@ export namespace Workbench {
             signal: K,
             ...args: Parameters<CompletionProvider.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completion-request', callback: (_source: this, request: CompletionRequest) => void): number;
-        connect_after(
-            signal: 'completion-request',
-            callback: (_source: this, request: CompletionRequest) => void,
-        ): number;
-        emit(signal: 'completion-request', request: CompletionRequest): void;
 
         // Virtual methods
 
@@ -890,7 +880,6 @@ export namespace Workbench {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CompletionRequest>;
-        declare static readonly __signalSignatures: CompletionRequest.SignalSignatures;
 
         // Properties
 
@@ -935,6 +924,21 @@ export namespace Workbench {
         constructor(properties?: Partial<CompletionRequest.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CompletionRequest.SignalSignatures>(
+            signal: K,
+            callback: CompletionRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionRequest.SignalSignatures>(
+            signal: K,
+            callback: CompletionRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionRequest.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1539,7 +1543,6 @@ export namespace Workbench {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<PreviewWindow>;
-        declare static readonly __signalSignatures: PreviewWindow.SignalSignatures;
 
         // Constructors
 
@@ -1548,6 +1551,21 @@ export namespace Workbench {
         _init(...args: any[]): void;
 
         static ['new'](): PreviewWindow;
+
+        // Signals
+
+        connect<K extends keyof PreviewWindow.SignalSignatures>(
+            signal: K,
+            callback: PreviewWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreviewWindow.SignalSignatures>(
+            signal: K,
+            callback: PreviewWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreviewWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreviewWindow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

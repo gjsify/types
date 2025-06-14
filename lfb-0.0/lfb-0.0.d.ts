@@ -144,7 +144,7 @@ export namespace Lfb {
         // Signal callback interfaces
 
         interface FeedbackEnded {
-            (): void;
+            (_source: Event): void;
         }
 
         // Signal signatures
@@ -230,7 +230,6 @@ export namespace Lfb {
      */
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
-        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -292,12 +291,6 @@ export namespace Lfb {
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'feedback-ended', callback: (_source: this) => void): number;
-        connect_after(signal: 'feedback-ended', callback: (_source: this) => void): number;
-        emit(signal: 'feedback-ended'): void;
 
         // Methods
 
@@ -488,7 +481,6 @@ export namespace Lfb {
         implements Gio.AsyncInitable<GdbusFeedbackProxy>, Gio.DBusInterface, Gio.Initable, GdbusFeedback
     {
         static $gtype: GObject.GType<GdbusFeedbackProxy>;
-        declare static readonly __signalSignatures: GdbusFeedbackProxy.SignalSignatures;
 
         // Constructors
 
@@ -524,6 +516,21 @@ export namespace Lfb {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
+            signal: K,
+            callback: GdbusFeedbackProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
+            signal: K,
+            callback: GdbusFeedbackProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GdbusFeedbackProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1552,7 +1559,6 @@ export namespace Lfb {
      */
     class GdbusFeedbackSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusFeedback {
         static $gtype: GObject.GType<GdbusFeedbackSkeleton>;
-        declare static readonly __signalSignatures: GdbusFeedbackSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1561,6 +1567,21 @@ export namespace Lfb {
         _init(...args: any[]): void;
 
         static ['new'](): GdbusFeedbackSkeleton;
+
+        // Signals
+
+        connect<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
+            signal: K,
+            callback: GdbusFeedbackSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
+            signal: K,
+            callback: GdbusFeedbackSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GdbusFeedbackSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**

@@ -513,11 +513,22 @@ export namespace GIRepository {
      */
     class ArgInfo extends BaseInfo {
         static $gtype: GObject.GType<ArgInfo>;
-        declare static readonly __signalSignatures: ArgInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ArgInfo.SignalSignatures>(signal: K, callback: ArgInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof ArgInfo.SignalSignatures>(
+            signal: K,
+            callback: ArgInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArgInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArgInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -649,11 +660,22 @@ export namespace GIRepository {
      */
     abstract class BaseInfo {
         static $gtype: GObject.GType<BaseInfo>;
-        declare static readonly __signalSignatures: BaseInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseInfo.SignalSignatures>(signal: K, callback: BaseInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseInfo.SignalSignatures>(
+            signal: K,
+            callback: BaseInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -782,11 +804,25 @@ export namespace GIRepository {
      */
     abstract class CallableInfo extends BaseInfo {
         static $gtype: GObject.GType<CallableInfo>;
-        declare static readonly __signalSignatures: CallableInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CallableInfo.SignalSignatures>(
+            signal: K,
+            callback: CallableInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallableInfo.SignalSignatures>(
+            signal: K,
+            callback: CallableInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallableInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallableInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -944,11 +980,25 @@ export namespace GIRepository {
      */
     class CallbackInfo extends CallableInfo {
         static $gtype: GObject.GType<CallbackInfo>;
-        declare static readonly __signalSignatures: CallbackInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CallbackInfo.SignalSignatures>(
+            signal: K,
+            callback: CallbackInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallbackInfo.SignalSignatures>(
+            signal: K,
+            callback: CallbackInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallbackInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallbackInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ConstantInfo {
@@ -965,11 +1015,25 @@ export namespace GIRepository {
      */
     class ConstantInfo extends BaseInfo {
         static $gtype: GObject.GType<ConstantInfo>;
-        declare static readonly __signalSignatures: ConstantInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ConstantInfo.SignalSignatures>(
+            signal: K,
+            callback: ConstantInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConstantInfo.SignalSignatures>(
+            signal: K,
+            callback: ConstantInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConstantInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConstantInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -996,11 +1060,22 @@ export namespace GIRepository {
      */
     class EnumInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<EnumInfo>;
-        declare static readonly __signalSignatures: EnumInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof EnumInfo.SignalSignatures>(signal: K, callback: EnumInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof EnumInfo.SignalSignatures>(
+            signal: K,
+            callback: EnumInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EnumInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EnumInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1065,11 +1140,22 @@ export namespace GIRepository {
      */
     class FieldInfo extends BaseInfo {
         static $gtype: GObject.GType<FieldInfo>;
-        declare static readonly __signalSignatures: FieldInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FieldInfo.SignalSignatures>(signal: K, callback: FieldInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof FieldInfo.SignalSignatures>(
+            signal: K,
+            callback: FieldInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FieldInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FieldInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1115,11 +1201,22 @@ export namespace GIRepository {
      */
     class FlagsInfo extends EnumInfo {
         static $gtype: GObject.GType<FlagsInfo>;
-        declare static readonly __signalSignatures: FlagsInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FlagsInfo.SignalSignatures>(signal: K, callback: FlagsInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof FlagsInfo.SignalSignatures>(
+            signal: K,
+            callback: FlagsInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FlagsInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FlagsInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionInfo {
@@ -1138,11 +1235,25 @@ export namespace GIRepository {
      */
     class FunctionInfo extends CallableInfo {
         static $gtype: GObject.GType<FunctionInfo>;
-        declare static readonly __signalSignatures: FunctionInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FunctionInfo.SignalSignatures>(
+            signal: K,
+            callback: FunctionInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionInfo.SignalSignatures>(
+            signal: K,
+            callback: FunctionInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1191,11 +1302,25 @@ export namespace GIRepository {
      */
     class InterfaceInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<InterfaceInfo>;
-        declare static readonly __signalSignatures: InterfaceInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InterfaceInfo.SignalSignatures>(
+            signal: K,
+            callback: InterfaceInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InterfaceInfo.SignalSignatures>(
+            signal: K,
+            callback: InterfaceInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InterfaceInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InterfaceInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1319,11 +1444,25 @@ export namespace GIRepository {
      */
     class ObjectInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<ObjectInfo>;
-        declare static readonly __signalSignatures: ObjectInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObjectInfo.SignalSignatures>(
+            signal: K,
+            callback: ObjectInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectInfo.SignalSignatures>(
+            signal: K,
+            callback: ObjectInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1565,11 +1704,25 @@ export namespace GIRepository {
      */
     class PropertyInfo extends BaseInfo {
         static $gtype: GObject.GType<PropertyInfo>;
-        declare static readonly __signalSignatures: PropertyInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PropertyInfo.SignalSignatures>(
+            signal: K,
+            callback: PropertyInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyInfo.SignalSignatures>(
+            signal: K,
+            callback: PropertyInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1638,11 +1791,25 @@ export namespace GIRepository {
      */
     abstract class RegisteredTypeInfo extends BaseInfo {
         static $gtype: GObject.GType<RegisteredTypeInfo>;
-        declare static readonly __signalSignatures: RegisteredTypeInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RegisteredTypeInfo.SignalSignatures>(
+            signal: K,
+            callback: RegisteredTypeInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RegisteredTypeInfo.SignalSignatures>(
+            signal: K,
+            callback: RegisteredTypeInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RegisteredTypeInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RegisteredTypeInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1749,7 +1916,6 @@ export namespace GIRepository {
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
-        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Constructors
 
@@ -1758,6 +1924,21 @@ export namespace GIRepository {
         _init(...args: any[]): void;
 
         static ['new'](): Repository;
+
+        // Signals
+
+        connect<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Repository.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2088,11 +2269,25 @@ export namespace GIRepository {
      */
     class SignalInfo extends CallableInfo {
         static $gtype: GObject.GType<SignalInfo>;
-        declare static readonly __signalSignatures: SignalInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SignalInfo.SignalSignatures>(
+            signal: K,
+            callback: SignalInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignalInfo.SignalSignatures>(
+            signal: K,
+            callback: SignalInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignalInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignalInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2132,11 +2327,25 @@ export namespace GIRepository {
      */
     class StructInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<StructInfo>;
-        declare static readonly __signalSignatures: StructInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StructInfo.SignalSignatures>(
+            signal: K,
+            callback: StructInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructInfo.SignalSignatures>(
+            signal: K,
+            callback: StructInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2235,11 +2444,22 @@ export namespace GIRepository {
      */
     class TypeInfo extends BaseInfo {
         static $gtype: GObject.GType<TypeInfo>;
-        declare static readonly __signalSignatures: TypeInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TypeInfo.SignalSignatures>(signal: K, callback: TypeInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof TypeInfo.SignalSignatures>(
+            signal: K,
+            callback: TypeInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TypeInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TypeInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2375,11 +2595,22 @@ export namespace GIRepository {
      */
     class UnionInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<UnionInfo>;
-        declare static readonly __signalSignatures: UnionInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnionInfo.SignalSignatures>(signal: K, callback: UnionInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof UnionInfo.SignalSignatures>(
+            signal: K,
+            callback: UnionInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnionInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnionInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2470,11 +2701,25 @@ export namespace GIRepository {
      */
     class UnresolvedInfo extends BaseInfo {
         static $gtype: GObject.GType<UnresolvedInfo>;
-        declare static readonly __signalSignatures: UnresolvedInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UnresolvedInfo.SignalSignatures>(
+            signal: K,
+            callback: UnresolvedInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnresolvedInfo.SignalSignatures>(
+            signal: K,
+            callback: UnresolvedInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnresolvedInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnresolvedInfo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VFuncInfo {
@@ -2490,11 +2735,22 @@ export namespace GIRepository {
      */
     class VFuncInfo extends CallableInfo {
         static $gtype: GObject.GType<VFuncInfo>;
-        declare static readonly __signalSignatures: VFuncInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VFuncInfo.SignalSignatures>(signal: K, callback: VFuncInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof VFuncInfo.SignalSignatures>(
+            signal: K,
+            callback: VFuncInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VFuncInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VFuncInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2551,11 +2807,22 @@ export namespace GIRepository {
      */
     class ValueInfo extends BaseInfo {
         static $gtype: GObject.GType<ValueInfo>;
-        declare static readonly __signalSignatures: ValueInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ValueInfo.SignalSignatures>(signal: K, callback: ValueInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueInfo.SignalSignatures>(
+            signal: K,
+            callback: ValueInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

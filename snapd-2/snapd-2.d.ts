@@ -904,7 +904,6 @@ export namespace Snapd {
      */
     class Alias extends GObject.Object {
         static $gtype: GObject.GType<Alias>;
-        declare static readonly __signalSignatures: Alias.SignalSignatures;
 
         // Properties
 
@@ -922,6 +921,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Alias.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
+        connect_after<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
+        emit<K extends keyof Alias.SignalSignatures>(signal: K, ...args: Parameters<Alias.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -992,7 +997,6 @@ export namespace Snapd {
      */
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
-        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -1013,6 +1017,12 @@ export namespace Snapd {
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1077,7 +1087,6 @@ export namespace Snapd {
      */
     class Assertion extends GObject.Object {
         static $gtype: GObject.GType<Assertion>;
-        declare static readonly __signalSignatures: Assertion.SignalSignatures;
 
         // Properties
 
@@ -1090,6 +1099,18 @@ export namespace Snapd {
         _init(...args: any[]): void;
 
         static ['new'](content: string): Assertion;
+
+        // Signals
+
+        connect<K extends keyof Assertion.SignalSignatures>(signal: K, callback: Assertion.SignalSignatures[K]): number;
+        connect_after<K extends keyof Assertion.SignalSignatures>(
+            signal: K,
+            callback: Assertion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Assertion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Assertion.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1135,7 +1156,6 @@ export namespace Snapd {
      */
     class AuthData extends GObject.Object {
         static $gtype: GObject.GType<AuthData>;
-        declare static readonly __signalSignatures: AuthData.SignalSignatures;
 
         // Properties
 
@@ -1151,6 +1171,18 @@ export namespace Snapd {
         _init(...args: any[]): void;
 
         static ['new'](macaroon: string, discharges: string[]): AuthData;
+
+        // Signals
+
+        connect<K extends keyof AuthData.SignalSignatures>(signal: K, callback: AuthData.SignalSignatures[K]): number;
+        connect_after<K extends keyof AuthData.SignalSignatures>(
+            signal: K,
+            callback: AuthData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1184,7 +1216,6 @@ export namespace Snapd {
      */
     class Category extends GObject.Object {
         static $gtype: GObject.GType<Category>;
-        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -1196,6 +1227,18 @@ export namespace Snapd {
         constructor(properties?: Partial<Category.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect_after<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            callback: Category.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Category.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Category.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1228,7 +1271,6 @@ export namespace Snapd {
      */
     class CategoryDetails extends GObject.Object {
         static $gtype: GObject.GType<CategoryDetails>;
-        declare static readonly __signalSignatures: CategoryDetails.SignalSignatures;
 
         // Properties
 
@@ -1239,6 +1281,21 @@ export namespace Snapd {
         constructor(properties?: Partial<CategoryDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CategoryDetails.SignalSignatures>(
+            signal: K,
+            callback: CategoryDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CategoryDetails.SignalSignatures>(
+            signal: K,
+            callback: CategoryDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CategoryDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CategoryDetails.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1275,7 +1332,6 @@ export namespace Snapd {
      */
     class Change extends GObject.Object {
         static $gtype: GObject.GType<Change>;
-        declare static readonly __signalSignatures: Change.SignalSignatures;
 
         // Properties
 
@@ -1296,6 +1352,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Change.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
+        connect_after<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
+        emit<K extends keyof Change.SignalSignatures>(signal: K, ...args: Parameters<Change.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1370,7 +1432,6 @@ export namespace Snapd {
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -1388,6 +1449,18 @@ export namespace Snapd {
         constructor(properties?: Partial<Channel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1471,7 +1544,6 @@ export namespace Snapd {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -1482,6 +1554,12 @@ export namespace Snapd {
         static ['new'](): Client;
 
         static new_from_socket(socket: Gio.Socket): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5035,7 +5113,6 @@ export namespace Snapd {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -5056,6 +5133,21 @@ export namespace Snapd {
         constructor(properties?: Partial<Connection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5148,7 +5240,6 @@ export namespace Snapd {
      */
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
-        declare static readonly __signalSignatures: Icon.SignalSignatures;
 
         // Properties
 
@@ -5161,6 +5252,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Icon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5199,7 +5296,6 @@ export namespace Snapd {
      */
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
-        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Properties
 
@@ -5215,6 +5311,18 @@ export namespace Snapd {
         constructor(properties?: Partial<Interface.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect_after<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            callback: Interface.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Interface.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Interface.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5270,7 +5378,6 @@ export namespace Snapd {
      */
     class Log extends GObject.Object {
         static $gtype: GObject.GType<Log>;
-        declare static readonly __signalSignatures: Log.SignalSignatures;
 
         // Properties
 
@@ -5284,6 +5391,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Log.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: Parameters<Log.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5326,7 +5439,6 @@ export namespace Snapd {
      */
     class Maintenance extends GObject.Object {
         static $gtype: GObject.GType<Maintenance>;
-        declare static readonly __signalSignatures: Maintenance.SignalSignatures;
 
         // Properties
 
@@ -5338,6 +5450,21 @@ export namespace Snapd {
         constructor(properties?: Partial<Maintenance.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Maintenance.SignalSignatures>(
+            signal: K,
+            callback: Maintenance.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Maintenance.SignalSignatures>(
+            signal: K,
+            callback: Maintenance.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Maintenance.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Maintenance.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5373,7 +5500,6 @@ export namespace Snapd {
      */
     class MarkdownNode extends GObject.Object {
         static $gtype: GObject.GType<MarkdownNode>;
-        declare static readonly __signalSignatures: MarkdownNode.SignalSignatures;
 
         // Properties
 
@@ -5387,6 +5513,21 @@ export namespace Snapd {
         constructor(properties?: Partial<MarkdownNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MarkdownNode.SignalSignatures>(
+            signal: K,
+            callback: MarkdownNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MarkdownNode.SignalSignatures>(
+            signal: K,
+            callback: MarkdownNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MarkdownNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MarkdownNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5423,7 +5564,6 @@ export namespace Snapd {
      */
     class MarkdownParser extends GObject.Object {
         static $gtype: GObject.GType<MarkdownParser>;
-        declare static readonly __signalSignatures: MarkdownParser.SignalSignatures;
 
         // Constructors
 
@@ -5432,6 +5572,21 @@ export namespace Snapd {
         _init(...args: any[]): void;
 
         static ['new'](version: MarkdownVersion): MarkdownParser;
+
+        // Signals
+
+        connect<K extends keyof MarkdownParser.SignalSignatures>(
+            signal: K,
+            callback: MarkdownParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MarkdownParser.SignalSignatures>(
+            signal: K,
+            callback: MarkdownParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MarkdownParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MarkdownParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5475,7 +5630,6 @@ export namespace Snapd {
      */
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
-        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -5489,6 +5643,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5535,7 +5695,6 @@ export namespace Snapd {
      */
     class Plug extends GObject.Object {
         static $gtype: GObject.GType<Plug>;
-        declare static readonly __signalSignatures: Plug.SignalSignatures;
 
         // Properties
 
@@ -5551,6 +5710,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Plug.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: Parameters<Plug.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5620,7 +5785,6 @@ export namespace Snapd {
      */
     class PlugRef extends GObject.Object {
         static $gtype: GObject.GType<PlugRef>;
-        declare static readonly __signalSignatures: PlugRef.SignalSignatures;
 
         // Properties
 
@@ -5632,6 +5796,18 @@ export namespace Snapd {
         constructor(properties?: Partial<PlugRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlugRef.SignalSignatures>(signal: K, callback: PlugRef.SignalSignatures[K]): number;
+        connect_after<K extends keyof PlugRef.SignalSignatures>(
+            signal: K,
+            callback: PlugRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlugRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlugRef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5664,7 +5840,6 @@ export namespace Snapd {
      */
     class Price extends GObject.Object {
         static $gtype: GObject.GType<Price>;
-        declare static readonly __signalSignatures: Price.SignalSignatures;
 
         // Properties
 
@@ -5676,6 +5851,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Price.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
+        connect_after<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
+        emit<K extends keyof Price.SignalSignatures>(signal: K, ...args: Parameters<Price.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5709,7 +5890,6 @@ export namespace Snapd {
      */
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
-        declare static readonly __signalSignatures: Screenshot.SignalSignatures;
 
         // Properties
 
@@ -5722,6 +5902,21 @@ export namespace Snapd {
         constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: Screenshot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: Screenshot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Screenshot.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5763,7 +5958,6 @@ export namespace Snapd {
      */
     class Slot extends GObject.Object {
         static $gtype: GObject.GType<Slot>;
-        declare static readonly __signalSignatures: Slot.SignalSignatures;
 
         // Properties
 
@@ -5779,6 +5973,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Slot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        emit<K extends keyof Slot.SignalSignatures>(signal: K, ...args: Parameters<Slot.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5848,7 +6048,6 @@ export namespace Snapd {
      */
     class SlotRef extends GObject.Object {
         static $gtype: GObject.GType<SlotRef>;
-        declare static readonly __signalSignatures: SlotRef.SignalSignatures;
 
         // Properties
 
@@ -5860,6 +6059,18 @@ export namespace Snapd {
         constructor(properties?: Partial<SlotRef.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SlotRef.SignalSignatures>(signal: K, callback: SlotRef.SignalSignatures[K]): number;
+        connect_after<K extends keyof SlotRef.SignalSignatures>(
+            signal: K,
+            callback: SlotRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SlotRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SlotRef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5943,7 +6154,6 @@ export namespace Snapd {
      */
     class Snap extends GObject.Object {
         static $gtype: GObject.GType<Snap>;
-        declare static readonly __signalSignatures: Snap.SignalSignatures;
 
         // Properties
 
@@ -6006,6 +6216,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Snap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
+        emit<K extends keyof Snap.SignalSignatures>(signal: K, ...args: Parameters<Snap.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6277,7 +6493,6 @@ export namespace Snapd {
      */
     class SystemInformation extends GObject.Object {
         static $gtype: GObject.GType<SystemInformation>;
-        declare static readonly __signalSignatures: SystemInformation.SignalSignatures;
 
         // Properties
 
@@ -6319,6 +6534,21 @@ export namespace Snapd {
         constructor(properties?: Partial<SystemInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SystemInformation.SignalSignatures>(
+            signal: K,
+            callback: SystemInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemInformation.SignalSignatures>(
+            signal: K,
+            callback: SystemInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemInformation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6451,7 +6681,6 @@ export namespace Snapd {
      */
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
-        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -6476,6 +6705,12 @@ export namespace Snapd {
         constructor(properties?: Partial<Task.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6554,7 +6789,6 @@ export namespace Snapd {
      */
     class UserInformation extends GObject.Object {
         static $gtype: GObject.GType<UserInformation>;
-        declare static readonly __signalSignatures: UserInformation.SignalSignatures;
 
         // Properties
 
@@ -6571,6 +6805,21 @@ export namespace Snapd {
         constructor(properties?: Partial<UserInformation.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof UserInformation.SignalSignatures>(
+            signal: K,
+            callback: UserInformation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserInformation.SignalSignatures>(
+            signal: K,
+            callback: UserInformation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserInformation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserInformation.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -42,7 +42,6 @@ export namespace Gee {
 
     abstract class AbstractCollection extends GObject.Object implements Iterable, Collection {
         static $gtype: GObject.GType<AbstractCollection>;
-        declare static readonly __signalSignatures: AbstractCollection.SignalSignatures;
 
         // Properties
 
@@ -57,6 +56,21 @@ export namespace Gee {
         constructor(properties?: Partial<AbstractCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractCollection.SignalSignatures>(
+            signal: K,
+            callback: AbstractCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractCollection.SignalSignatures>(
+            signal: K,
+            callback: AbstractCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractCollection.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -544,7 +558,6 @@ export namespace Gee {
 
     abstract class AbstractList extends AbstractCollection implements List {
         static $gtype: GObject.GType<AbstractList>;
-        declare static readonly __signalSignatures: AbstractList.SignalSignatures;
 
         // Properties
 
@@ -556,6 +569,21 @@ export namespace Gee {
         constructor(properties?: Partial<AbstractList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractList.SignalSignatures>(
+            signal: K,
+            callback: AbstractList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractList.SignalSignatures>(
+            signal: K,
+            callback: AbstractList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractList.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -640,7 +668,6 @@ export namespace Gee {
 
     abstract class AbstractMap extends GObject.Object implements Iterable, Map {
         static $gtype: GObject.GType<AbstractMap>;
-        declare static readonly __signalSignatures: AbstractMap.SignalSignatures;
 
         // Properties
 
@@ -658,6 +685,21 @@ export namespace Gee {
         constructor(properties?: Partial<AbstractMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractMap.SignalSignatures>(
+            signal: K,
+            callback: AbstractMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractMap.SignalSignatures>(
+            signal: K,
+            callback: AbstractMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1153,13 +1195,27 @@ export namespace Gee {
 
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
         static $gtype: GObject.GType<AbstractMultiMap>;
-        declare static readonly __signalSignatures: AbstractMultiMap.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AbstractMultiMap.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractMultiMap.SignalSignatures>(
+            signal: K,
+            callback: AbstractMultiMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(
+            signal: K,
+            callback: AbstractMultiMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractMultiMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractMultiMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1644,13 +1700,27 @@ export namespace Gee {
 
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
         static $gtype: GObject.GType<AbstractMultiSet>;
-        declare static readonly __signalSignatures: AbstractMultiSet.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AbstractMultiSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractMultiSet.SignalSignatures>(
+            signal: K,
+            callback: AbstractMultiSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(
+            signal: K,
+            callback: AbstractMultiSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractMultiSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractMultiSet.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get size(): number;
@@ -1703,7 +1773,6 @@ export namespace Gee {
 
     abstract class AbstractQueue extends AbstractCollection implements Queue {
         static $gtype: GObject.GType<AbstractQueue>;
-        declare static readonly __signalSignatures: AbstractQueue.SignalSignatures;
 
         // Properties
 
@@ -1718,6 +1787,21 @@ export namespace Gee {
         constructor(properties?: Partial<AbstractQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractQueue.SignalSignatures>(
+            signal: K,
+            callback: AbstractQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractQueue.SignalSignatures>(
+            signal: K,
+            callback: AbstractQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractQueue.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1779,7 +1863,6 @@ export namespace Gee {
 
     abstract class AbstractSet extends AbstractCollection implements Set {
         static $gtype: GObject.GType<AbstractSet>;
-        declare static readonly __signalSignatures: AbstractSet.SignalSignatures;
 
         // Properties
 
@@ -1791,6 +1874,21 @@ export namespace Gee {
         constructor(properties?: Partial<AbstractSet.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractSet.SignalSignatures>(
+            signal: K,
+            callback: AbstractSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractSet.SignalSignatures>(
+            signal: K,
+            callback: AbstractSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractSet.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get size(): number;
@@ -1836,7 +1934,6 @@ export namespace Gee {
 
     class ArrayList extends AbstractList {
         static $gtype: GObject.GType<ArrayList>;
-        declare static readonly __signalSignatures: ArrayList.SignalSignatures;
 
         // Properties
 
@@ -1852,6 +1949,18 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](equal_func: GLib.EqualFunc): ArrayList;
+
+        // Signals
+
+        connect<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: ArrayList.SignalSignatures[K]): number;
+        connect_after<K extends keyof ArrayList.SignalSignatures>(
+            signal: K,
+            callback: ArrayList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArrayList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArrayList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1876,7 +1985,6 @@ export namespace Gee {
 
     class HashMap extends AbstractMap {
         static $gtype: GObject.GType<HashMap>;
-        declare static readonly __signalSignatures: HashMap.SignalSignatures;
 
         // Properties
 
@@ -1904,6 +2012,18 @@ export namespace Gee {
             key_equal_func: GLib.EqualFunc,
             value_equal_func: GLib.EqualFunc,
         ): HashMap;
+
+        // Signals
+
+        connect<K extends keyof HashMap.SignalSignatures>(signal: K, callback: HashMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof HashMap.SignalSignatures>(
+            signal: K,
+            callback: HashMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashMap.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HashMultiMap {
@@ -1926,7 +2046,6 @@ export namespace Gee {
 
     class HashMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<HashMultiMap>;
-        declare static readonly __signalSignatures: HashMultiMap.SignalSignatures;
 
         // Properties
 
@@ -1955,6 +2074,21 @@ export namespace Gee {
             value_hash_func: GLib.HashFunc,
             value_equal_func: GLib.EqualFunc,
         ): HashMultiMap;
+
+        // Signals
+
+        connect<K extends keyof HashMultiMap.SignalSignatures>(
+            signal: K,
+            callback: HashMultiMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HashMultiMap.SignalSignatures>(
+            signal: K,
+            callback: HashMultiMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashMultiMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashMultiMap.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HashMultiSet {
@@ -1973,7 +2107,6 @@ export namespace Gee {
 
     class HashMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<HashMultiSet>;
-        declare static readonly __signalSignatures: HashMultiSet.SignalSignatures;
 
         // Properties
 
@@ -1989,6 +2122,21 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashMultiSet;
+
+        // Signals
+
+        connect<K extends keyof HashMultiSet.SignalSignatures>(
+            signal: K,
+            callback: HashMultiSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HashMultiSet.SignalSignatures>(
+            signal: K,
+            callback: HashMultiSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashMultiSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashMultiSet.SignalSignatures[K]>
+        ): void;
     }
 
     namespace HashSet {
@@ -2007,7 +2155,6 @@ export namespace Gee {
 
     class HashSet extends AbstractSet {
         static $gtype: GObject.GType<HashSet>;
-        declare static readonly __signalSignatures: HashSet.SignalSignatures;
 
         // Properties
 
@@ -2027,6 +2174,18 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](hash_func: GLib.HashFunc, equal_func: GLib.EqualFunc): HashSet;
+
+        // Signals
+
+        connect<K extends keyof HashSet.SignalSignatures>(signal: K, callback: HashSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof HashSet.SignalSignatures>(
+            signal: K,
+            callback: HashSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashSet.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LinkedList {
@@ -2048,7 +2207,6 @@ export namespace Gee {
 
     class LinkedList extends AbstractList implements Queue, Deque {
         static $gtype: GObject.GType<LinkedList>;
-        declare static readonly __signalSignatures: LinkedList.SignalSignatures;
 
         // Properties
 
@@ -2066,6 +2224,21 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](equal_func: GLib.EqualFunc): LinkedList;
+
+        // Signals
+
+        connect<K extends keyof LinkedList.SignalSignatures>(
+            signal: K,
+            callback: LinkedList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LinkedList.SignalSignatures>(
+            signal: K,
+            callback: LinkedList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LinkedList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LinkedList.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get capacity(): number;
@@ -2115,7 +2288,6 @@ export namespace Gee {
 
     class PriorityQueue extends AbstractQueue {
         static $gtype: GObject.GType<PriorityQueue>;
-        declare static readonly __signalSignatures: PriorityQueue.SignalSignatures;
 
         // Properties
 
@@ -2131,6 +2303,21 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](compare_func: GLib.CompareFunc): PriorityQueue;
+
+        // Signals
+
+        connect<K extends keyof PriorityQueue.SignalSignatures>(
+            signal: K,
+            callback: PriorityQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PriorityQueue.SignalSignatures>(
+            signal: K,
+            callback: PriorityQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PriorityQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PriorityQueue.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMap {
@@ -2149,7 +2336,6 @@ export namespace Gee {
 
     class TreeMap extends AbstractMap {
         static $gtype: GObject.GType<TreeMap>;
-        declare static readonly __signalSignatures: TreeMap.SignalSignatures;
 
         // Properties
 
@@ -2169,6 +2355,18 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](key_compare_func: GLib.CompareFunc, value_equal_func: GLib.EqualFunc): TreeMap;
+
+        // Signals
+
+        connect<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: TreeMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeMap.SignalSignatures>(
+            signal: K,
+            callback: TreeMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMap.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMultiMap {
@@ -2187,7 +2385,6 @@ export namespace Gee {
 
     class TreeMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<TreeMultiMap>;
-        declare static readonly __signalSignatures: TreeMultiMap.SignalSignatures;
 
         // Properties
 
@@ -2205,6 +2402,21 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](key_compare_func: GLib.CompareFunc, value_compare_func: GLib.CompareFunc): TreeMultiMap;
+
+        // Signals
+
+        connect<K extends keyof TreeMultiMap.SignalSignatures>(
+            signal: K,
+            callback: TreeMultiMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMultiMap.SignalSignatures>(
+            signal: K,
+            callback: TreeMultiMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMultiMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMultiMap.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeMultiSet {
@@ -2221,7 +2433,6 @@ export namespace Gee {
 
     class TreeMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<TreeMultiSet>;
-        declare static readonly __signalSignatures: TreeMultiSet.SignalSignatures;
 
         // Properties
 
@@ -2235,6 +2446,21 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](compare_func: GLib.CompareFunc): TreeMultiSet;
+
+        // Signals
+
+        connect<K extends keyof TreeMultiSet.SignalSignatures>(
+            signal: K,
+            callback: TreeMultiSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeMultiSet.SignalSignatures>(
+            signal: K,
+            callback: TreeMultiSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeMultiSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeMultiSet.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TreeSet {
@@ -2251,7 +2477,6 @@ export namespace Gee {
 
     class TreeSet extends AbstractSet implements SortedSet {
         static $gtype: GObject.GType<TreeSet>;
-        declare static readonly __signalSignatures: TreeSet.SignalSignatures;
 
         // Properties
 
@@ -2267,6 +2492,18 @@ export namespace Gee {
         _init(...args: any[]): void;
 
         static ['new'](compare_func: GLib.CompareFunc): TreeSet;
+
+        // Signals
+
+        connect<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: TreeSet.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeSet.SignalSignatures>(
+            signal: K,
+            callback: TreeSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeSet.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get read_only_view(): Set;
@@ -2311,7 +2548,6 @@ export namespace Gee {
 
     abstract class MapEntry extends GObject.Object {
         static $gtype: GObject.GType<MapEntry>;
-        declare static readonly __signalSignatures: MapEntry.SignalSignatures;
 
         // Properties
 
@@ -2324,6 +2560,18 @@ export namespace Gee {
         constructor(properties?: Partial<MapEntry.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: MapEntry.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapEntry.SignalSignatures>(
+            signal: K,
+            callback: MapEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapEntry.SignalSignatures[K]>
+        ): void;
     }
 
     type AbstractCollectionClass = typeof AbstractCollection;

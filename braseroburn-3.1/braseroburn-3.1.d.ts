@@ -296,55 +296,55 @@ export namespace BraseroBurn {
         // Signal callback interfaces
 
         interface ActionChanged {
-            (object: number): void;
+            (_source: Burn, object: number): void;
         }
 
         interface BlankFailure {
-            (): number;
+            (_source: Burn): number;
         }
 
         interface DisableJoliet {
-            (): number;
+            (_source: Burn): number;
         }
 
         interface DummySuccess {
-            (): number;
+            (_source: Burn): number;
         }
 
         interface EjectFailure {
-            (object: unknown): number;
+            (_source: Burn, object: unknown): number;
         }
 
         interface InsertMedia {
-            (object: unknown, p0: number, p1: number): number;
+            (_source: Burn, object: unknown, p0: number, p1: number): number;
         }
 
         interface InstallMissing {
-            (object: number, p0: string): number;
+            (_source: Burn, object: number, p0: string): number;
         }
 
         interface LocationRequest {
-            (object: any | null, p0: number): number;
+            (_source: Burn, object: any | null, p0: number): number;
         }
 
         interface ProgressChanged {
-            (object: number, p0: number, p1: number): void;
+            (_source: Burn, object: number, p0: number, p1: number): void;
         }
 
         interface WarnAudioToAppendable {
-            (): number;
+            (_source: Burn): number;
         }
 
         interface WarnDataLoss {
-            (): number;
+            (_source: Burn): number;
         }
 
         interface WarnPreviousSessionLoss {
-            (): number;
+            (_source: Burn): number;
         }
 
         interface WarnRewritable {
-            (): number;
+            (_source: Burn): number;
         }
 
         // Signal signatures
@@ -371,7 +371,6 @@ export namespace BraseroBurn {
 
     class Burn extends GObject.Object {
         static $gtype: GObject.GType<Burn>;
-        declare static readonly __signalSignatures: Burn.SignalSignatures;
 
         // Constructors
 
@@ -386,69 +385,6 @@ export namespace BraseroBurn {
         connect<K extends keyof Burn.SignalSignatures>(signal: K, callback: Burn.SignalSignatures[K]): number;
         connect_after<K extends keyof Burn.SignalSignatures>(signal: K, callback: Burn.SignalSignatures[K]): number;
         emit<K extends keyof Burn.SignalSignatures>(signal: K, ...args: Parameters<Burn.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'action-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'action-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'action-changed', object: number): void;
-        connect(signal: 'blank-failure', callback: (_source: this) => number): number;
-        connect_after(signal: 'blank-failure', callback: (_source: this) => number): number;
-        emit(signal: 'blank-failure'): void;
-        connect(signal: 'disable-joliet', callback: (_source: this) => number): number;
-        connect_after(signal: 'disable-joliet', callback: (_source: this) => number): number;
-        emit(signal: 'disable-joliet'): void;
-        connect(signal: 'dummy-success', callback: (_source: this) => number): number;
-        connect_after(signal: 'dummy-success', callback: (_source: this) => number): number;
-        emit(signal: 'dummy-success'): void;
-        connect(signal: 'eject-failure', callback: (_source: this, object: unknown) => number): number;
-        connect_after(signal: 'eject-failure', callback: (_source: this, object: unknown) => number): number;
-        emit(signal: 'eject-failure', object: unknown): void;
-        connect(
-            signal: 'insert-media',
-            callback: (_source: this, object: unknown, p0: number, p1: number) => number,
-        ): number;
-        connect_after(
-            signal: 'insert-media',
-            callback: (_source: this, object: unknown, p0: number, p1: number) => number,
-        ): number;
-        emit(signal: 'insert-media', object: unknown, p0: number, p1: number): void;
-        connect(signal: 'install-missing', callback: (_source: this, object: number, p0: string) => number): number;
-        connect_after(
-            signal: 'install-missing',
-            callback: (_source: this, object: number, p0: string) => number,
-        ): number;
-        emit(signal: 'install-missing', object: number, p0: string): void;
-        connect(
-            signal: 'location-request',
-            callback: (_source: this, object: any | null, p0: number) => number,
-        ): number;
-        connect_after(
-            signal: 'location-request',
-            callback: (_source: this, object: any | null, p0: number) => number,
-        ): number;
-        emit(signal: 'location-request', object: any | null, p0: number): void;
-        connect(
-            signal: 'progress-changed',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'progress-changed',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        emit(signal: 'progress-changed', object: number, p0: number, p1: number): void;
-        connect(signal: 'warn-audio-to-appendable', callback: (_source: this) => number): number;
-        connect_after(signal: 'warn-audio-to-appendable', callback: (_source: this) => number): number;
-        emit(signal: 'warn-audio-to-appendable'): void;
-        connect(signal: 'warn-data-loss', callback: (_source: this) => number): number;
-        connect_after(signal: 'warn-data-loss', callback: (_source: this) => number): number;
-        emit(signal: 'warn-data-loss'): void;
-        connect(signal: 'warn-previous-session-loss', callback: (_source: this) => number): number;
-        connect_after(signal: 'warn-previous-session-loss', callback: (_source: this) => number): number;
-        emit(signal: 'warn-previous-session-loss'): void;
-        connect(signal: 'warn-rewritable', callback: (_source: this) => number): number;
-        connect_after(signal: 'warn-rewritable', callback: (_source: this) => number): number;
-        emit(signal: 'warn-rewritable'): void;
 
         // Static methods
 
@@ -532,7 +468,6 @@ export namespace BraseroBurn {
 
     class BurnDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnDialog>;
-        declare static readonly __signalSignatures: BurnDialog.SignalSignatures;
 
         // Constructors
 
@@ -541,6 +476,21 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): BurnDialog;
+
+        // Signals
+
+        connect<K extends keyof BurnDialog.SignalSignatures>(
+            signal: K,
+            callback: BurnDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BurnDialog.SignalSignatures>(
+            signal: K,
+            callback: BurnDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BurnDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BurnDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1026,7 +976,6 @@ export namespace BraseroBurn {
 
     class BurnOptions extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnOptions>;
-        declare static readonly __signalSignatures: BurnOptions.SignalSignatures;
 
         // Properties
 
@@ -1042,6 +991,21 @@ export namespace BraseroBurn {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof BurnOptions.SignalSignatures>(
+            signal: K,
+            callback: BurnOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BurnOptions.SignalSignatures>(
+            signal: K,
+            callback: BurnOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BurnOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BurnOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1497,23 +1461,23 @@ export namespace BraseroBurn {
         // Signal callback interfaces
 
         interface OutputChanged {
-            (former_medium: unknown): void;
+            (_source: BurnSession, former_medium: unknown): void;
         }
 
         interface TagChanged {
-            (object: string): void;
+            (_source: BurnSession, object: string): void;
         }
 
         interface TrackAdded {
-            (track: Track): void;
+            (_source: BurnSession, track: Track): void;
         }
 
         interface TrackChanged {
-            (track: Track): void;
+            (_source: BurnSession, track: Track): void;
         }
 
         interface TrackRemoved {
-            (track: Track, former_position: number): void;
+            (_source: BurnSession, track: Track, former_position: number): void;
         }
 
         // Signal signatures
@@ -1536,7 +1500,6 @@ export namespace BraseroBurn {
 
     class BurnSession extends GObject.Object {
         static $gtype: GObject.GType<BurnSession>;
-        declare static readonly __signalSignatures: BurnSession.SignalSignatures;
 
         // Properties
 
@@ -1569,30 +1532,6 @@ export namespace BraseroBurn {
             signal: K,
             ...args: Parameters<BurnSession.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'output-changed', callback: (_source: this, former_medium: unknown) => void): number;
-        connect_after(signal: 'output-changed', callback: (_source: this, former_medium: unknown) => void): number;
-        emit(signal: 'output-changed', former_medium: unknown): void;
-        connect(signal: 'tag-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'tag-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'tag-changed', object: string): void;
-        connect(signal: 'track-added', callback: (_source: this, track: Track) => void): number;
-        connect_after(signal: 'track-added', callback: (_source: this, track: Track) => void): number;
-        emit(signal: 'track-added', track: Track): void;
-        connect(signal: 'track-changed', callback: (_source: this, track: Track) => void): number;
-        connect_after(signal: 'track-changed', callback: (_source: this, track: Track) => void): number;
-        emit(signal: 'track-changed', track: Track): void;
-        connect(
-            signal: 'track-removed',
-            callback: (_source: this, track: Track, former_position: number) => void,
-        ): number;
-        connect_after(
-            signal: 'track-removed',
-            callback: (_source: this, track: Track, former_position: number) => void,
-        ): number;
-        emit(signal: 'track-removed', track: Track, former_position: number): void;
 
         // Virtual methods
 
@@ -1857,11 +1796,11 @@ export namespace BraseroBurn {
         // Signal callback interfaces
 
         interface IsValid {
-            (): void;
+            (_source: SessionCfg): void;
         }
 
         interface WrongExtension {
-            (): boolean;
+            (_source: SessionCfg): boolean;
         }
 
         // Signal signatures
@@ -1877,7 +1816,6 @@ export namespace BraseroBurn {
 
     class SessionCfg extends SessionSpan {
         static $gtype: GObject.GType<SessionCfg>;
-        declare static readonly __signalSignatures: SessionCfg.SignalSignatures;
 
         // Constructors
 
@@ -1901,15 +1839,6 @@ export namespace BraseroBurn {
             signal: K,
             ...args: Parameters<SessionCfg.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'is-valid', callback: (_source: this) => void): number;
-        connect_after(signal: 'is-valid', callback: (_source: this) => void): number;
-        emit(signal: 'is-valid'): void;
-        connect(signal: 'wrong-extension', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'wrong-extension', callback: (_source: this) => boolean): number;
-        emit(signal: 'wrong-extension'): void;
 
         // Methods
 
@@ -1969,7 +1898,6 @@ export namespace BraseroBurn {
 
     class SessionSpan extends BurnSession {
         static $gtype: GObject.GType<SessionSpan>;
-        declare static readonly __signalSignatures: SessionSpan.SignalSignatures;
 
         // Constructors
 
@@ -1978,6 +1906,21 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): SessionSpan;
+
+        // Signals
+
+        connect<K extends keyof SessionSpan.SignalSignatures>(
+            signal: K,
+            callback: SessionSpan.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionSpan.SignalSignatures>(
+            signal: K,
+            callback: SessionSpan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionSpan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionSpan.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2033,7 +1976,6 @@ export namespace BraseroBurn {
 
     class Status extends GObject.Object {
         static $gtype: GObject.GType<Status>;
-        declare static readonly __signalSignatures: Status.SignalSignatures;
 
         // Constructors
 
@@ -2042,6 +1984,12 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): Status;
+
+        // Signals
+
+        connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
+        connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2111,7 +2059,6 @@ export namespace BraseroBurn {
 
     class SumDialog extends ToolDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SumDialog>;
-        declare static readonly __signalSignatures: SumDialog.SignalSignatures;
 
         // Constructors
 
@@ -2120,6 +2067,18 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): SumDialog;
+
+        // Signals
+
+        connect<K extends keyof SumDialog.SignalSignatures>(signal: K, callback: SumDialog.SignalSignatures[K]): number;
+        connect_after<K extends keyof SumDialog.SignalSignatures>(
+            signal: K,
+            callback: SumDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SumDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SumDialog.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2577,13 +2536,27 @@ export namespace BraseroBurn {
 
     class ToolDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ToolDialog>;
-        declare static readonly __signalSignatures: ToolDialog.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ToolDialog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ToolDialog.SignalSignatures>(
+            signal: K,
+            callback: ToolDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ToolDialog.SignalSignatures>(
+            signal: K,
+            callback: ToolDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ToolDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ToolDialog.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3046,7 +3019,7 @@ export namespace BraseroBurn {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Track): void;
         }
 
         // Signal signatures
@@ -3061,7 +3034,6 @@ export namespace BraseroBurn {
 
     class Track extends GObject.Object {
         static $gtype: GObject.GType<Track>;
-        declare static readonly __signalSignatures: Track.SignalSignatures;
 
         // Constructors
 
@@ -3074,12 +3046,6 @@ export namespace BraseroBurn {
         connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
         connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
         emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -3214,7 +3180,6 @@ export namespace BraseroBurn {
 
     class TrackData extends Track {
         static $gtype: GObject.GType<TrackData>;
-        declare static readonly __signalSignatures: TrackData.SignalSignatures;
 
         // Constructors
 
@@ -3223,6 +3188,18 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): TrackData;
+
+        // Signals
+
+        connect<K extends keyof TrackData.SignalSignatures>(signal: K, callback: TrackData.SignalSignatures[K]): number;
+        connect_after<K extends keyof TrackData.SignalSignatures>(
+            signal: K,
+            callback: TrackData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackData.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3355,51 +3332,51 @@ export namespace BraseroBurn {
         // Signal callback interfaces
 
         interface DeepDirectory {
-            (object: string): boolean;
+            (_source: TrackDataCfg, object: string): boolean;
         }
 
         interface IconChanged {
-            (): void;
+            (_source: TrackDataCfg): void;
         }
 
         interface ImageUri {
-            (object: string): number;
+            (_source: TrackDataCfg, object: string): number;
         }
 
         interface JolietRename {
-            (): void;
+            (_source: TrackDataCfg): void;
         }
 
         interface NameCollision {
-            (object: string): boolean;
+            (_source: TrackDataCfg, object: string): boolean;
         }
 
         interface RecursiveSym {
-            (object: string): void;
+            (_source: TrackDataCfg, object: string): void;
         }
 
         interface SessionAvailable {
-            (object: GObject.Object, p0: boolean): void;
+            (_source: TrackDataCfg, object: GObject.Object, p0: boolean): void;
         }
 
         interface SessionLoaded {
-            (object: GObject.Object, p0: boolean): void;
+            (_source: TrackDataCfg, object: GObject.Object, p0: boolean): void;
         }
 
         interface SourceLoaded {
-            (object?: any | null): void;
+            (_source: TrackDataCfg, object?: any | null): void;
         }
 
         interface SourceLoading {
-            (object: number): void;
+            (_source: TrackDataCfg, object: number): void;
         }
 
         interface UnknownUri {
-            (object: string): void;
+            (_source: TrackDataCfg, object: string): void;
         }
 
         interface UnreadableUri {
-            (object: any | null, p0: string): void;
+            (_source: TrackDataCfg, object: any | null, p0: string): void;
         }
 
         // Signal signatures
@@ -3433,7 +3410,6 @@ export namespace BraseroBurn {
         implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<TrackDataCfg>;
-        declare static readonly __signalSignatures: TrackDataCfg.SignalSignatures;
 
         // Constructors
 
@@ -3457,60 +3433,6 @@ export namespace BraseroBurn {
             signal: K,
             ...args: Parameters<TrackDataCfg.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deep-directory', callback: (_source: this, object: string) => boolean): number;
-        connect_after(signal: 'deep-directory', callback: (_source: this, object: string) => boolean): number;
-        emit(signal: 'deep-directory', object: string): void;
-        connect(signal: 'icon-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this) => void): number;
-        emit(signal: 'icon-changed'): void;
-        connect(signal: 'image-uri', callback: (_source: this, object: string) => number): number;
-        connect_after(signal: 'image-uri', callback: (_source: this, object: string) => number): number;
-        emit(signal: 'image-uri', object: string): void;
-        connect(signal: 'joliet-rename', callback: (_source: this) => void): number;
-        connect_after(signal: 'joliet-rename', callback: (_source: this) => void): number;
-        emit(signal: 'joliet-rename'): void;
-        connect(signal: 'name-collision', callback: (_source: this, object: string) => boolean): number;
-        connect_after(signal: 'name-collision', callback: (_source: this, object: string) => boolean): number;
-        emit(signal: 'name-collision', object: string): void;
-        connect(signal: 'recursive-sym', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'recursive-sym', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'recursive-sym', object: string): void;
-        connect(
-            signal: 'session-available',
-            callback: (_source: this, object: GObject.Object, p0: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'session-available',
-            callback: (_source: this, object: GObject.Object, p0: boolean) => void,
-        ): number;
-        emit(signal: 'session-available', object: GObject.Object, p0: boolean): void;
-        connect(
-            signal: 'session-loaded',
-            callback: (_source: this, object: GObject.Object, p0: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'session-loaded',
-            callback: (_source: this, object: GObject.Object, p0: boolean) => void,
-        ): number;
-        emit(signal: 'session-loaded', object: GObject.Object, p0: boolean): void;
-        connect(signal: 'source-loaded', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'source-loaded', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'source-loaded', object?: any | null): void;
-        connect(signal: 'source-loading', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'source-loading', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'source-loading', object: number): void;
-        connect(signal: 'unknown-uri', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'unknown-uri', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'unknown-uri', object: string): void;
-        connect(signal: 'unreadable-uri', callback: (_source: this, object: any | null, p0: string) => void): number;
-        connect_after(
-            signal: 'unreadable-uri',
-            callback: (_source: this, object: any | null, p0: string) => void,
-        ): number;
-        emit(signal: 'unreadable-uri', object: any | null, p0: string): void;
 
         // Methods
 
@@ -4687,7 +4609,6 @@ export namespace BraseroBurn {
 
     class TrackDisc extends Track {
         static $gtype: GObject.GType<TrackDisc>;
-        declare static readonly __signalSignatures: TrackDisc.SignalSignatures;
 
         // Constructors
 
@@ -4696,6 +4617,18 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): TrackDisc;
+
+        // Signals
+
+        connect<K extends keyof TrackDisc.SignalSignatures>(signal: K, callback: TrackDisc.SignalSignatures[K]): number;
+        connect_after<K extends keyof TrackDisc.SignalSignatures>(
+            signal: K,
+            callback: TrackDisc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackDisc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackDisc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4725,7 +4658,6 @@ export namespace BraseroBurn {
 
     class TrackImage extends Track {
         static $gtype: GObject.GType<TrackImage>;
-        declare static readonly __signalSignatures: TrackImage.SignalSignatures;
 
         // Constructors
 
@@ -4734,6 +4666,21 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): TrackImage;
+
+        // Signals
+
+        connect<K extends keyof TrackImage.SignalSignatures>(
+            signal: K,
+            callback: TrackImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackImage.SignalSignatures>(
+            signal: K,
+            callback: TrackImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackImage.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4808,7 +4755,6 @@ export namespace BraseroBurn {
 
     class TrackImageCfg extends TrackImage {
         static $gtype: GObject.GType<TrackImageCfg>;
-        declare static readonly __signalSignatures: TrackImageCfg.SignalSignatures;
 
         // Constructors
 
@@ -4817,6 +4763,21 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): TrackImageCfg;
+
+        // Signals
+
+        connect<K extends keyof TrackImageCfg.SignalSignatures>(
+            signal: K,
+            callback: TrackImageCfg.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackImageCfg.SignalSignatures>(
+            signal: K,
+            callback: TrackImageCfg.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackImageCfg.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackImageCfg.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4854,7 +4815,6 @@ export namespace BraseroBurn {
 
     class TrackStream extends Track {
         static $gtype: GObject.GType<TrackStream>;
-        declare static readonly __signalSignatures: TrackStream.SignalSignatures;
 
         // Constructors
 
@@ -4863,6 +4823,21 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): TrackStream;
+
+        // Signals
+
+        connect<K extends keyof TrackStream.SignalSignatures>(
+            signal: K,
+            callback: TrackStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackStream.SignalSignatures>(
+            signal: K,
+            callback: TrackStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackStream.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4964,7 +4939,6 @@ export namespace BraseroBurn {
 
     class TrackStreamCfg extends TrackStream {
         static $gtype: GObject.GType<TrackStreamCfg>;
-        declare static readonly __signalSignatures: TrackStreamCfg.SignalSignatures;
 
         // Constructors
 
@@ -4973,6 +4947,21 @@ export namespace BraseroBurn {
         _init(...args: any[]): void;
 
         static ['new'](): TrackStreamCfg;
+
+        // Signals
+
+        connect<K extends keyof TrackStreamCfg.SignalSignatures>(
+            signal: K,
+            callback: TrackStreamCfg.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackStreamCfg.SignalSignatures>(
+            signal: K,
+            callback: TrackStreamCfg.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackStreamCfg.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackStreamCfg.SignalSignatures[K]>
+        ): void;
     }
 
     type BurnClass = typeof Burn;

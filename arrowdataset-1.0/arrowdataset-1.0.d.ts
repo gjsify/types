@@ -53,7 +53,6 @@ export namespace ArrowDataset {
 
     class CSVFileFormat extends FileFormat {
         static $gtype: GObject.GType<CSVFileFormat>;
-        declare static readonly __signalSignatures: CSVFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -62,6 +61,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](): CSVFileFormat;
+
+        // Signals
+
+        connect<K extends keyof CSVFileFormat.SignalSignatures>(
+            signal: K,
+            callback: CSVFileFormat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CSVFileFormat.SignalSignatures>(
+            signal: K,
+            callback: CSVFileFormat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CSVFileFormat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CSVFileFormat.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Dataset {
@@ -77,7 +91,6 @@ export namespace ArrowDataset {
 
     abstract class Dataset extends GObject.Object {
         static $gtype: GObject.GType<Dataset>;
-        declare static readonly __signalSignatures: Dataset.SignalSignatures;
 
         // Properties
 
@@ -88,6 +101,18 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<Dataset.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Dataset.SignalSignatures>(signal: K, callback: Dataset.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dataset.SignalSignatures>(
+            signal: K,
+            callback: Dataset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Dataset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Dataset.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -110,7 +135,6 @@ export namespace ArrowDataset {
 
     abstract class DatasetFactory extends GObject.Object {
         static $gtype: GObject.GType<DatasetFactory>;
-        declare static readonly __signalSignatures: DatasetFactory.SignalSignatures;
 
         // Properties
 
@@ -122,6 +146,21 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<DatasetFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DatasetFactory.SignalSignatures>(
+            signal: K,
+            callback: DatasetFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DatasetFactory.SignalSignatures>(
+            signal: K,
+            callback: DatasetFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DatasetFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DatasetFactory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -139,7 +178,6 @@ export namespace ArrowDataset {
 
     class DirectoryPartitioning extends KeyValuePartitioning {
         static $gtype: GObject.GType<DirectoryPartitioning>;
-        declare static readonly __signalSignatures: DirectoryPartitioning.SignalSignatures;
 
         // Constructors
 
@@ -155,6 +193,21 @@ export namespace ArrowDataset {
         // Conflicted with ArrowDataset.Partitioning.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DirectoryPartitioning.SignalSignatures>(
+            signal: K,
+            callback: DirectoryPartitioning.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DirectoryPartitioning.SignalSignatures>(
+            signal: K,
+            callback: DirectoryPartitioning.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DirectoryPartitioning.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DirectoryPartitioning.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileFormat {
@@ -170,7 +223,6 @@ export namespace ArrowDataset {
 
     class FileFormat extends GObject.Object {
         static $gtype: GObject.GType<FileFormat>;
-        declare static readonly __signalSignatures: FileFormat.SignalSignatures;
 
         // Properties
 
@@ -181,6 +233,21 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<FileFormat.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileFormat.SignalSignatures>(
+            signal: K,
+            callback: FileFormat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileFormat.SignalSignatures>(
+            signal: K,
+            callback: FileFormat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileFormat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileFormat.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -212,7 +279,6 @@ export namespace ArrowDataset {
 
     class FileSystemDataset extends Dataset {
         static $gtype: GObject.GType<FileSystemDataset>;
-        declare static readonly __signalSignatures: FileSystemDataset.SignalSignatures;
 
         // Properties
 
@@ -239,6 +305,21 @@ export namespace ArrowDataset {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof FileSystemDataset.SignalSignatures>(
+            signal: K,
+            callback: FileSystemDataset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSystemDataset.SignalSignatures>(
+            signal: K,
+            callback: FileSystemDataset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSystemDataset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSystemDataset.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static write_scanner(scanner: Scanner, options: FileSystemDatasetWriteOptions): boolean;
@@ -262,7 +343,6 @@ export namespace ArrowDataset {
 
     class FileSystemDatasetFactory extends DatasetFactory {
         static $gtype: GObject.GType<FileSystemDatasetFactory>;
-        declare static readonly __signalSignatures: FileSystemDatasetFactory.SignalSignatures;
 
         // Properties
 
@@ -302,6 +382,21 @@ export namespace ArrowDataset {
 
         static ['new'](file_format: FileFormat): FileSystemDatasetFactory;
 
+        // Signals
+
+        connect<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
+            signal: K,
+            callback: FileSystemDatasetFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
+            signal: K,
+            callback: FileSystemDatasetFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSystemDatasetFactory.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         add_path(path: string): boolean;
@@ -333,7 +428,6 @@ export namespace ArrowDataset {
 
     class FileSystemDatasetWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileSystemDatasetWriteOptions>;
-        declare static readonly __signalSignatures: FileSystemDatasetWriteOptions.SignalSignatures;
 
         // Properties
 
@@ -384,6 +478,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](): FileSystemDatasetWriteOptions;
+
+        // Signals
+
+        connect<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
+            signal: K,
+            callback: FileSystemDatasetWriteOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
+            signal: K,
+            callback: FileSystemDatasetWriteOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSystemDatasetWriteOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileWriteOptions {
@@ -399,7 +508,6 @@ export namespace ArrowDataset {
 
     class FileWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileWriteOptions>;
-        declare static readonly __signalSignatures: FileWriteOptions.SignalSignatures;
 
         // Properties
 
@@ -410,6 +518,21 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<FileWriteOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileWriteOptions.SignalSignatures>(
+            signal: K,
+            callback: FileWriteOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileWriteOptions.SignalSignatures>(
+            signal: K,
+            callback: FileWriteOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileWriteOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileWriteOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FileWriter {
@@ -425,7 +548,6 @@ export namespace ArrowDataset {
 
     class FileWriter extends GObject.Object {
         static $gtype: GObject.GType<FileWriter>;
-        declare static readonly __signalSignatures: FileWriter.SignalSignatures;
 
         // Properties
 
@@ -436,6 +558,21 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<FileWriter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileWriter.SignalSignatures>(
+            signal: K,
+            callback: FileWriter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileWriter.SignalSignatures>(
+            signal: K,
+            callback: FileWriter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileWriter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileWriter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -457,7 +594,6 @@ export namespace ArrowDataset {
 
     abstract class Fragment extends GObject.Object {
         static $gtype: GObject.GType<Fragment>;
-        declare static readonly __signalSignatures: Fragment.SignalSignatures;
 
         // Properties
 
@@ -468,6 +604,18 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<Fragment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Fragment.SignalSignatures>(signal: K, callback: Fragment.SignalSignatures[K]): number;
+        connect_after<K extends keyof Fragment.SignalSignatures>(
+            signal: K,
+            callback: Fragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Fragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Fragment.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IPCFileFormat {
@@ -481,7 +629,6 @@ export namespace ArrowDataset {
 
     class IPCFileFormat extends FileFormat {
         static $gtype: GObject.GType<IPCFileFormat>;
-        declare static readonly __signalSignatures: IPCFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -490,6 +637,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](): IPCFileFormat;
+
+        // Signals
+
+        connect<K extends keyof IPCFileFormat.SignalSignatures>(
+            signal: K,
+            callback: IPCFileFormat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IPCFileFormat.SignalSignatures>(
+            signal: K,
+            callback: IPCFileFormat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IPCFileFormat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IPCFileFormat.SignalSignatures[K]>
+        ): void;
     }
 
     namespace InMemoryFragment {
@@ -503,7 +665,6 @@ export namespace ArrowDataset {
 
     class InMemoryFragment extends Fragment {
         static $gtype: GObject.GType<InMemoryFragment>;
-        declare static readonly __signalSignatures: InMemoryFragment.SignalSignatures;
 
         // Constructors
 
@@ -512,6 +673,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](schema: Arrow.Schema, record_batches: Arrow.RecordBatch[]): InMemoryFragment;
+
+        // Signals
+
+        connect<K extends keyof InMemoryFragment.SignalSignatures>(
+            signal: K,
+            callback: InMemoryFragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InMemoryFragment.SignalSignatures>(
+            signal: K,
+            callback: InMemoryFragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InMemoryFragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InMemoryFragment.SignalSignatures[K]>
+        ): void;
     }
 
     namespace KeyValuePartitioning {
@@ -525,13 +701,27 @@ export namespace ArrowDataset {
 
     class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
-        declare static readonly __signalSignatures: KeyValuePartitioning.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<KeyValuePartitioning.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof KeyValuePartitioning.SignalSignatures>(
+            signal: K,
+            callback: KeyValuePartitioning.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyValuePartitioning.SignalSignatures>(
+            signal: K,
+            callback: KeyValuePartitioning.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyValuePartitioning.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyValuePartitioning.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParquetFileFormat {
@@ -545,7 +735,6 @@ export namespace ArrowDataset {
 
     class ParquetFileFormat extends FileFormat {
         static $gtype: GObject.GType<ParquetFileFormat>;
-        declare static readonly __signalSignatures: ParquetFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -554,6 +743,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](): ParquetFileFormat;
+
+        // Signals
+
+        connect<K extends keyof ParquetFileFormat.SignalSignatures>(
+            signal: K,
+            callback: ParquetFileFormat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParquetFileFormat.SignalSignatures>(
+            signal: K,
+            callback: ParquetFileFormat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParquetFileFormat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParquetFileFormat.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Partitioning {
@@ -569,7 +773,6 @@ export namespace ArrowDataset {
 
     class Partitioning extends GObject.Object {
         static $gtype: GObject.GType<Partitioning>;
-        declare static readonly __signalSignatures: Partitioning.SignalSignatures;
 
         // Properties
 
@@ -582,6 +785,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](): Partitioning;
+
+        // Signals
+
+        connect<K extends keyof Partitioning.SignalSignatures>(
+            signal: K,
+            callback: Partitioning.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Partitioning.SignalSignatures>(
+            signal: K,
+            callback: Partitioning.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Partitioning.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Partitioning.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -605,7 +823,6 @@ export namespace ArrowDataset {
 
     class PartitioningOptions extends GObject.Object {
         static $gtype: GObject.GType<PartitioningOptions>;
-        declare static readonly __signalSignatures: PartitioningOptions.SignalSignatures;
 
         // Properties
 
@@ -654,6 +871,21 @@ export namespace ArrowDataset {
         _init(...args: any[]): void;
 
         static ['new'](): PartitioningOptions;
+
+        // Signals
+
+        connect<K extends keyof PartitioningOptions.SignalSignatures>(
+            signal: K,
+            callback: PartitioningOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PartitioningOptions.SignalSignatures>(
+            signal: K,
+            callback: PartitioningOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PartitioningOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PartitioningOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Scanner {
@@ -669,7 +901,6 @@ export namespace ArrowDataset {
 
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
-        declare static readonly __signalSignatures: Scanner.SignalSignatures;
 
         // Properties
 
@@ -680,6 +911,18 @@ export namespace ArrowDataset {
         constructor(properties?: Partial<Scanner.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: Scanner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scanner.SignalSignatures>(
+            signal: K,
+            callback: Scanner.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Scanner.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Scanner.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -700,7 +943,6 @@ export namespace ArrowDataset {
 
     class ScannerBuilder extends GObject.Object {
         static $gtype: GObject.GType<ScannerBuilder>;
-        declare static readonly __signalSignatures: ScannerBuilder.SignalSignatures;
 
         // Properties
 
@@ -716,6 +958,21 @@ export namespace ArrowDataset {
         static ['new'](dataset: Dataset): ScannerBuilder;
 
         static new_record_batch_reader(reader: Arrow.RecordBatchReader): ScannerBuilder;
+
+        // Signals
+
+        connect<K extends keyof ScannerBuilder.SignalSignatures>(
+            signal: K,
+            callback: ScannerBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScannerBuilder.SignalSignatures>(
+            signal: K,
+            callback: ScannerBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScannerBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScannerBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -43,7 +43,6 @@ export namespace GCi {
 
     class EntryController extends GObject.Object {
         static $gtype: GObject.GType<EntryController>;
-        declare static readonly __signalSignatures: EntryController.SignalSignatures;
 
         // Properties
 
@@ -59,6 +58,21 @@ export namespace GCi {
         static for_entry(entry: Gtk.Entry): EntryController;
 
         static ['new'](): EntryController;
+
+        // Signals
+
+        connect<K extends keyof EntryController.SignalSignatures>(
+            signal: K,
+            callback: EntryController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryController.SignalSignatures>(
+            signal: K,
+            callback: EntryController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryController.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

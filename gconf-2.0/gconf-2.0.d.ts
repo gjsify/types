@@ -147,15 +147,15 @@ export namespace GConf {
         // Signal callback interfaces
 
         interface Error {
-            (object?: any | null): void;
+            (_source: Client, object?: any | null): void;
         }
 
         interface UnreturnedError {
-            (object?: any | null): void;
+            (_source: Client, object?: any | null): void;
         }
 
         interface ValueChanged {
-            (object: string, p0?: any | null): void;
+            (_source: Client, object: string, p0?: any | null): void;
         }
 
         // Signal signatures
@@ -172,7 +172,6 @@ export namespace GConf {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Fields
 
@@ -189,21 +188,6 @@ export namespace GConf {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'error', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'error', object?: any | null): void;
-        connect(signal: 'unreturned-error', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'unreturned-error', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'unreturned-error', object?: any | null): void;
-        connect(signal: 'value-changed', callback: (_source: this, object: string, p0: any | null) => void): number;
-        connect_after(
-            signal: 'value-changed',
-            callback: (_source: this, object: string, p0: any | null) => void,
-        ): number;
-        emit(signal: 'value-changed', object: string, p0?: any | null): void;
 
         // Static methods
 

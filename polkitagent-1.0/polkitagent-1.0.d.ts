@@ -73,13 +73,24 @@ export namespace PolkitAgent {
      */
     abstract class Listener extends GObject.Object {
         static $gtype: GObject.GType<Listener>;
-        declare static readonly __signalSignatures: Listener.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Listener.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Listener.SignalSignatures>(signal: K, callback: Listener.SignalSignatures[K]): number;
+        connect_after<K extends keyof Listener.SignalSignatures>(
+            signal: K,
+            callback: Listener.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Listener.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Listener.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -305,19 +316,19 @@ export namespace PolkitAgent {
         // Signal callback interfaces
 
         interface Completed {
-            (gained_authorization: boolean): void;
+            (_source: Session, gained_authorization: boolean): void;
         }
 
         interface Request {
-            (request: string, echo_on: boolean): void;
+            (_source: Session, request: string, echo_on: boolean): void;
         }
 
         interface ShowError {
-            (text: string): void;
+            (_source: Session, text: string): void;
         }
 
         interface ShowInfo {
-            (text: string): void;
+            (_source: Session, text: string): void;
         }
 
         // Signal signatures
@@ -362,7 +373,6 @@ export namespace PolkitAgent {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -394,21 +404,6 @@ export namespace PolkitAgent {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completed', callback: (_source: this, gained_authorization: boolean) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this, gained_authorization: boolean) => void): number;
-        emit(signal: 'completed', gained_authorization: boolean): void;
-        connect(signal: 'request', callback: (_source: this, request: string, echo_on: boolean) => void): number;
-        connect_after(signal: 'request', callback: (_source: this, request: string, echo_on: boolean) => void): number;
-        emit(signal: 'request', request: string, echo_on: boolean): void;
-        connect(signal: 'show-error', callback: (_source: this, text: string) => void): number;
-        connect_after(signal: 'show-error', callback: (_source: this, text: string) => void): number;
-        emit(signal: 'show-error', text: string): void;
-        connect(signal: 'show-info', callback: (_source: this, text: string) => void): number;
-        connect_after(signal: 'show-info', callback: (_source: this, text: string) => void): number;
-        emit(signal: 'show-info', text: string): void;
 
         // Methods
 
@@ -450,7 +445,6 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
-        declare static readonly __signalSignatures: TextListener.SignalSignatures;
 
         // Constructors
 
@@ -459,6 +453,21 @@ export namespace PolkitAgent {
         _init(...args: any[]): void;
 
         static ['new'](cancellable?: Gio.Cancellable | null): TextListener;
+
+        // Signals
+
+        connect<K extends keyof TextListener.SignalSignatures>(
+            signal: K,
+            callback: TextListener.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextListener.SignalSignatures>(
+            signal: K,
+            callback: TextListener.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextListener.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextListener.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

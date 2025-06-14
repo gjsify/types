@@ -267,7 +267,6 @@ export namespace XApp {
 
     class DarkModeManager extends GObject.Object {
         static $gtype: GObject.GType<DarkModeManager>;
-        declare static readonly __signalSignatures: DarkModeManager.SignalSignatures;
 
         // Constructors
 
@@ -276,13 +275,28 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](prefer_dark_mode: boolean): DarkModeManager;
+
+        // Signals
+
+        connect<K extends keyof DarkModeManager.SignalSignatures>(
+            signal: K,
+            callback: DarkModeManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DarkModeManager.SignalSignatures>(
+            signal: K,
+            callback: DarkModeManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DarkModeManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DarkModeManager.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Favorites {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Favorites): void;
         }
 
         // Signal signatures
@@ -297,7 +311,6 @@ export namespace XApp {
 
     class Favorites extends GObject.Object {
         static $gtype: GObject.GType<Favorites>;
-        declare static readonly __signalSignatures: Favorites.SignalSignatures;
 
         // Constructors
 
@@ -316,12 +329,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<Favorites.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -396,7 +403,7 @@ export namespace XApp {
         // Signal callback interfaces
 
         interface Ready {
-            (success: boolean): void;
+            (_source: GpuOffloadHelper, success: boolean): void;
         }
 
         // Signal signatures
@@ -411,7 +418,6 @@ export namespace XApp {
 
     class GpuOffloadHelper extends GObject.Object {
         static $gtype: GObject.GType<GpuOffloadHelper>;
-        declare static readonly __signalSignatures: GpuOffloadHelper.SignalSignatures;
 
         // Constructors
 
@@ -433,12 +439,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<GpuOffloadHelper.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'ready', callback: (_source: this, success: boolean) => void): number;
-        connect_after(signal: 'ready', callback: (_source: this, success: boolean) => void): number;
-        emit(signal: 'ready', success: boolean): void;
 
         // Static methods
 
@@ -506,7 +506,6 @@ export namespace XApp {
 
     class GtkWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<GtkWindow>;
-        declare static readonly __signalSignatures: GtkWindow.SignalSignatures;
 
         // Constructors
 
@@ -515,6 +514,18 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](type: Gtk.WindowType): GtkWindow;
+
+        // Signals
+
+        connect<K extends keyof GtkWindow.SignalSignatures>(signal: K, callback: GtkWindow.SignalSignatures[K]): number;
+        connect_after<K extends keyof GtkWindow.SignalSignatures>(
+            signal: K,
+            callback: GtkWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkWindow.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1033,7 +1044,6 @@ export namespace XApp {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<IconChooserButton>;
-        declare static readonly __signalSignatures: IconChooserButton.SignalSignatures;
 
         // Properties
 
@@ -1069,6 +1079,21 @@ export namespace XApp {
         static ['new'](): IconChooserButton;
 
         static new_with_size(icon_size: Gtk.IconSize): IconChooserButton;
+
+        // Signals
+
+        connect<K extends keyof IconChooserButton.SignalSignatures>(
+            signal: K,
+            callback: IconChooserButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IconChooserButton.SignalSignatures>(
+            signal: K,
+            callback: IconChooserButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IconChooserButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IconChooserButton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5624,11 +5649,11 @@ export namespace XApp {
         // Signal callback interfaces
 
         interface Close {
-            (): void;
+            (_source: IconChooserDialog): void;
         }
 
         interface Select {
-            (): void;
+            (_source: IconChooserDialog): void;
         }
 
         // Signal signatures
@@ -5654,7 +5679,6 @@ export namespace XApp {
 
     class IconChooserDialog extends GtkWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<IconChooserDialog>;
-        declare static readonly __signalSignatures: IconChooserDialog.SignalSignatures;
 
         // Properties
 
@@ -5715,15 +5739,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<IconChooserDialog.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
-        connect(signal: 'select', callback: (_source: this) => void): number;
-        connect_after(signal: 'select', callback: (_source: this) => void): number;
-        emit(signal: 'select'): void;
 
         // Methods
 
@@ -6246,11 +6261,11 @@ export namespace XApp {
         // Signal callback interfaces
 
         interface ConfigChanged {
-            (): void;
+            (_source: KbdLayoutController): void;
         }
 
         interface LayoutChanged {
-            (object: number): void;
+            (_source: KbdLayoutController, object: number): void;
         }
 
         // Signal signatures
@@ -6268,7 +6283,6 @@ export namespace XApp {
 
     class KbdLayoutController extends GObject.Object {
         static $gtype: GObject.GType<KbdLayoutController>;
-        declare static readonly __signalSignatures: KbdLayoutController.SignalSignatures;
 
         // Properties
 
@@ -6300,15 +6314,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<KbdLayoutController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'config-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'config-changed', callback: (_source: this) => void): number;
-        emit(signal: 'config-changed'): void;
-        connect(signal: 'layout-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'layout-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'layout-changed', object: number): void;
 
         // Static methods
 
@@ -6417,7 +6422,6 @@ export namespace XApp {
 
     class MonitorBlanker extends GObject.Object {
         static $gtype: GObject.GType<MonitorBlanker>;
-        declare static readonly __signalSignatures: MonitorBlanker.SignalSignatures;
 
         // Constructors
 
@@ -6426,6 +6430,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](): MonitorBlanker;
+
+        // Signals
+
+        connect<K extends keyof MonitorBlanker.SignalSignatures>(
+            signal: K,
+            callback: MonitorBlanker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonitorBlanker.SignalSignatures>(
+            signal: K,
+            callback: MonitorBlanker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonitorBlanker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonitorBlanker.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6468,7 +6487,6 @@ export namespace XApp {
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
-        declare static readonly __signalSignatures: ObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -6504,6 +6522,21 @@ export namespace XApp {
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ObjectManagerClient.SignalSignatures>(
+            signal: K,
+            callback: ObjectManagerClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectManagerClient.SignalSignatures>(
+            signal: K,
+            callback: ObjectManagerClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectManagerClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectManagerClient.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7380,7 +7413,6 @@ export namespace XApp {
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
-        declare static readonly __signalSignatures: ObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -7389,6 +7421,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](connection: Gio.DBusConnection, object_path: string): ObjectProxy;
+
+        // Signals
+
+        connect<K extends keyof ObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: ObjectProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: ObjectProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectProxy.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -7911,7 +7958,6 @@ export namespace XApp {
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
-        declare static readonly __signalSignatures: ObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7920,6 +7966,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](object_path: string): ObjectSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ObjectSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ObjectSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ObjectSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8437,7 +8498,7 @@ export namespace XApp {
         // Signal callback interfaces
 
         interface Close {
-            (): void;
+            (_source: PreferencesWindow): void;
         }
 
         // Signal signatures
@@ -8455,7 +8516,6 @@ export namespace XApp {
 
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
-        declare static readonly __signalSignatures: PreferencesWindow.SignalSignatures;
 
         // Constructors
 
@@ -8479,12 +8539,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
 
         // Virtual methods
 
@@ -8969,7 +9023,6 @@ export namespace XApp {
 
     class StackSidebar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StackSidebar>;
-        declare static readonly __signalSignatures: StackSidebar.SignalSignatures;
 
         // Properties
 
@@ -8983,6 +9036,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](): StackSidebar;
+
+        // Signals
+
+        connect<K extends keyof StackSidebar.SignalSignatures>(
+            signal: K,
+            callback: StackSidebar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StackSidebar.SignalSignatures>(
+            signal: K,
+            callback: StackSidebar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StackSidebar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StackSidebar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9447,23 +9515,23 @@ export namespace XApp {
         // Signal callback interfaces
 
         interface Activate {
-            (button: number, time: number): void;
+            (_source: StatusIcon, button: number, time: number): void;
         }
 
         interface ButtonPressEvent {
-            (x: number, y: number, button: number, time: number, panel_position: number): void;
+            (_source: StatusIcon, x: number, y: number, button: number, time: number, panel_position: number): void;
         }
 
         interface ButtonReleaseEvent {
-            (x: number, y: number, button: number, time: number, panel_position: number): void;
+            (_source: StatusIcon, x: number, y: number, button: number, time: number, panel_position: number): void;
         }
 
         interface ScrollEvent {
-            (amount: number, direction: ScrollDirection, time: number): void;
+            (_source: StatusIcon, amount: number, direction: ScrollDirection, time: number): void;
         }
 
         interface StateChanged {
-            (new_state: StatusIconState): void;
+            (_source: StatusIcon, new_state: StatusIconState): void;
         }
 
         // Signal signatures
@@ -9490,7 +9558,6 @@ export namespace XApp {
 
     class StatusIcon extends GObject.Object {
         static $gtype: GObject.GType<StatusIcon>;
-        declare static readonly __signalSignatures: StatusIcon.SignalSignatures;
 
         // Properties
 
@@ -9633,84 +9700,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<StatusIcon.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this, button: number, time: number) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this, button: number, time: number) => void): number;
-        emit(signal: 'activate', button: number, time: number): void;
-        connect(
-            signal: 'button-press-event',
-            callback: (
-                _source: this,
-                x: number,
-                y: number,
-                button: number,
-                time: number,
-                panel_position: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'button-press-event',
-            callback: (
-                _source: this,
-                x: number,
-                y: number,
-                button: number,
-                time: number,
-                panel_position: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'button-press-event',
-            x: number,
-            y: number,
-            button: number,
-            time: number,
-            panel_position: number,
-        ): void;
-        connect(
-            signal: 'button-release-event',
-            callback: (
-                _source: this,
-                x: number,
-                y: number,
-                button: number,
-                time: number,
-                panel_position: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'button-release-event',
-            callback: (
-                _source: this,
-                x: number,
-                y: number,
-                button: number,
-                time: number,
-                panel_position: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'button-release-event',
-            x: number,
-            y: number,
-            button: number,
-            time: number,
-            panel_position: number,
-        ): void;
-        connect(
-            signal: 'scroll-event',
-            callback: (_source: this, amount: number, direction: ScrollDirection, time: number) => void,
-        ): number;
-        connect_after(
-            signal: 'scroll-event',
-            callback: (_source: this, amount: number, direction: ScrollDirection, time: number) => void,
-        ): number;
-        emit(signal: 'scroll-event', amount: number, direction: ScrollDirection, time: number): void;
-        connect(signal: 'state-changed', callback: (_source: this, new_state: StatusIconState) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this, new_state: StatusIconState) => void): number;
-        emit(signal: 'state-changed', new_state: StatusIconState): void;
 
         // Static methods
 
@@ -9832,7 +9821,6 @@ export namespace XApp {
         implements Gio.AsyncInitable<StatusIconInterfaceProxy>, Gio.DBusInterface, Gio.Initable, StatusIconInterface
     {
         static $gtype: GObject.GType<StatusIconInterfaceProxy>;
-        declare static readonly __signalSignatures: StatusIconInterfaceProxy.SignalSignatures;
 
         // Constructors
 
@@ -9868,6 +9856,21 @@ export namespace XApp {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StatusIconInterfaceProxy.SignalSignatures>(
+            signal: K,
+            callback: StatusIconInterfaceProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StatusIconInterfaceProxy.SignalSignatures>(
+            signal: K,
+            callback: StatusIconInterfaceProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StatusIconInterfaceProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StatusIconInterfaceProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11133,7 +11136,6 @@ export namespace XApp {
         implements Gio.DBusInterface, StatusIconInterface
     {
         static $gtype: GObject.GType<StatusIconInterfaceSkeleton>;
-        declare static readonly __signalSignatures: StatusIconInterfaceSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -11142,6 +11144,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](): StatusIconInterfaceSkeleton;
+
+        // Signals
+
+        connect<K extends keyof StatusIconInterfaceSkeleton.SignalSignatures>(
+            signal: K,
+            callback: StatusIconInterfaceSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StatusIconInterfaceSkeleton.SignalSignatures>(
+            signal: K,
+            callback: StatusIconInterfaceSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StatusIconInterfaceSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StatusIconInterfaceSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -12054,11 +12071,11 @@ export namespace XApp {
         // Signal callback interfaces
 
         interface IconAdded {
-            (proxy: StatusIconInterfaceProxy): void;
+            (_source: StatusIconMonitor, proxy: StatusIconInterfaceProxy): void;
         }
 
         interface IconRemoved {
-            (proxy: StatusIconInterfaceProxy): void;
+            (_source: StatusIconMonitor, proxy: StatusIconInterfaceProxy): void;
         }
 
         // Signal signatures
@@ -12074,7 +12091,6 @@ export namespace XApp {
 
     class StatusIconMonitor extends GObject.Object {
         static $gtype: GObject.GType<StatusIconMonitor>;
-        declare static readonly __signalSignatures: StatusIconMonitor.SignalSignatures;
 
         // Constructors
 
@@ -12098,18 +12114,6 @@ export namespace XApp {
             signal: K,
             ...args: Parameters<StatusIconMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'icon-added', callback: (_source: this, proxy: StatusIconInterfaceProxy) => void): number;
-        connect_after(signal: 'icon-added', callback: (_source: this, proxy: StatusIconInterfaceProxy) => void): number;
-        emit(signal: 'icon-added', proxy: StatusIconInterfaceProxy): void;
-        connect(signal: 'icon-removed', callback: (_source: this, proxy: StatusIconInterfaceProxy) => void): number;
-        connect_after(
-            signal: 'icon-removed',
-            callback: (_source: this, proxy: StatusIconInterfaceProxy) => void,
-        ): number;
-        emit(signal: 'icon-removed', proxy: StatusIconInterfaceProxy): void;
 
         // Methods
 
@@ -12133,7 +12137,6 @@ export namespace XApp {
 
     class StyleManager extends GObject.Object {
         static $gtype: GObject.GType<StyleManager>;
-        declare static readonly __signalSignatures: StyleManager.SignalSignatures;
 
         // Properties
 
@@ -12150,6 +12153,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](): StyleManager;
+
+        // Signals
+
+        connect<K extends keyof StyleManager.SignalSignatures>(
+            signal: K,
+            callback: StyleManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StyleManager.SignalSignatures>(
+            signal: K,
+            callback: StyleManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StyleManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StyleManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12203,7 +12221,6 @@ export namespace XApp {
         implements Gio.AsyncInitable<SwitcherooControlProxy>, Gio.DBusInterface, Gio.Initable, SwitcherooControl
     {
         static $gtype: GObject.GType<SwitcherooControlProxy>;
-        declare static readonly __signalSignatures: SwitcherooControlProxy.SignalSignatures;
 
         // Constructors
 
@@ -12239,6 +12256,21 @@ export namespace XApp {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SwitcherooControlProxy.SignalSignatures>(
+            signal: K,
+            callback: SwitcherooControlProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwitcherooControlProxy.SignalSignatures>(
+            signal: K,
+            callback: SwitcherooControlProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwitcherooControlProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwitcherooControlProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -13107,7 +13139,6 @@ export namespace XApp {
      */
     class SwitcherooControlSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, SwitcherooControl {
         static $gtype: GObject.GType<SwitcherooControlSkeleton>;
-        declare static readonly __signalSignatures: SwitcherooControlSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -13116,6 +13147,21 @@ export namespace XApp {
         _init(...args: any[]): void;
 
         static ['new'](): SwitcherooControlSkeleton;
+
+        // Signals
+
+        connect<K extends keyof SwitcherooControlSkeleton.SignalSignatures>(
+            signal: K,
+            callback: SwitcherooControlSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwitcherooControlSkeleton.SignalSignatures>(
+            signal: K,
+            callback: SwitcherooControlSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwitcherooControlSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwitcherooControlSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**

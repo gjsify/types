@@ -485,7 +485,6 @@ export namespace GstCheck {
      */
     class TestClock extends Gst.Clock {
         static $gtype: GObject.GType<TestClock>;
-        declare static readonly __signalSignatures: TestClock.SignalSignatures;
 
         // Properties
 
@@ -519,6 +518,18 @@ export namespace GstCheck {
         static ['new'](): TestClock;
 
         static new_with_start_time(start_time: Gst.ClockTime): TestClock;
+
+        // Signals
+
+        connect<K extends keyof TestClock.SignalSignatures>(signal: K, callback: TestClock.SignalSignatures[K]): number;
+        connect_after<K extends keyof TestClock.SignalSignatures>(
+            signal: K,
+            callback: TestClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TestClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TestClock.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

@@ -146,7 +146,6 @@ export namespace Entangle {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -163,6 +162,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): Application;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -633,35 +647,35 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface CameraClosed {
-            (): void;
+            (_source: Camera): void;
         }
 
         interface CameraControlsChanged {
-            (): void;
+            (_source: Camera): void;
         }
 
         interface CameraFileAdded {
-            (object: CameraFile): void;
+            (_source: Camera, object: CameraFile): void;
         }
 
         interface CameraFileCaptured {
-            (object: CameraFile): void;
+            (_source: Camera, object: CameraFile): void;
         }
 
         interface CameraFileDeleted {
-            (object: CameraFile): void;
+            (_source: Camera, object: CameraFile): void;
         }
 
         interface CameraFileDownloaded {
-            (object: CameraFile): void;
+            (_source: Camera, object: CameraFile): void;
         }
 
         interface CameraFilePreviewed {
-            (object: CameraFile): void;
+            (_source: Camera, object: CameraFile): void;
         }
 
         interface CameraOpened {
-            (): void;
+            (_source: Camera): void;
         }
 
         // Signal signatures
@@ -699,7 +713,6 @@ export namespace Entangle {
 
     class Camera extends GObject.Object {
         static $gtype: GObject.GType<Camera>;
-        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -740,33 +753,6 @@ export namespace Entangle {
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'camera-closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'camera-closed', callback: (_source: this) => void): number;
-        emit(signal: 'camera-closed'): void;
-        connect(signal: 'camera-controls-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'camera-controls-changed', callback: (_source: this) => void): number;
-        emit(signal: 'camera-controls-changed'): void;
-        connect(signal: 'camera-file-added', callback: (_source: this, object: CameraFile) => void): number;
-        connect_after(signal: 'camera-file-added', callback: (_source: this, object: CameraFile) => void): number;
-        emit(signal: 'camera-file-added', object: CameraFile): void;
-        connect(signal: 'camera-file-captured', callback: (_source: this, object: CameraFile) => void): number;
-        connect_after(signal: 'camera-file-captured', callback: (_source: this, object: CameraFile) => void): number;
-        emit(signal: 'camera-file-captured', object: CameraFile): void;
-        connect(signal: 'camera-file-deleted', callback: (_source: this, object: CameraFile) => void): number;
-        connect_after(signal: 'camera-file-deleted', callback: (_source: this, object: CameraFile) => void): number;
-        emit(signal: 'camera-file-deleted', object: CameraFile): void;
-        connect(signal: 'camera-file-downloaded', callback: (_source: this, object: CameraFile) => void): number;
-        connect_after(signal: 'camera-file-downloaded', callback: (_source: this, object: CameraFile) => void): number;
-        emit(signal: 'camera-file-downloaded', object: CameraFile): void;
-        connect(signal: 'camera-file-previewed', callback: (_source: this, object: CameraFile) => void): number;
-        connect_after(signal: 'camera-file-previewed', callback: (_source: this, object: CameraFile) => void): number;
-        emit(signal: 'camera-file-previewed', object: CameraFile): void;
-        connect(signal: 'camera-opened', callback: (_source: this) => void): number;
-        connect_after(signal: 'camera-opened', callback: (_source: this) => void): number;
-        emit(signal: 'camera-opened'): void;
 
         // Methods
 
@@ -1779,11 +1765,11 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface CameraCaptureBegin {
-            (): void;
+            (_source: CameraAutomata): void;
         }
 
         interface CameraCaptureEnd {
-            (): void;
+            (_source: CameraAutomata): void;
         }
 
         // Signal signatures
@@ -1804,7 +1790,6 @@ export namespace Entangle {
 
     class CameraAutomata extends GObject.Object {
         static $gtype: GObject.GType<CameraAutomata>;
-        declare static readonly __signalSignatures: CameraAutomata.SignalSignatures;
 
         // Properties
 
@@ -1839,15 +1824,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<CameraAutomata.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'camera-capture-begin', callback: (_source: this) => void): number;
-        connect_after(signal: 'camera-capture-begin', callback: (_source: this) => void): number;
-        emit(signal: 'camera-capture-begin'): void;
-        connect(signal: 'camera-capture-end', callback: (_source: this) => void): number;
-        connect_after(signal: 'camera-capture-end', callback: (_source: this) => void): number;
-        emit(signal: 'camera-capture-end'): void;
 
         // Methods
 
@@ -1902,7 +1878,6 @@ export namespace Entangle {
 
     class CameraFile extends GObject.Object {
         static $gtype: GObject.GType<CameraFile>;
-        declare static readonly __signalSignatures: CameraFile.SignalSignatures;
 
         // Properties
 
@@ -1920,6 +1895,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](folder: string, name: string): CameraFile;
+
+        // Signals
+
+        connect<K extends keyof CameraFile.SignalSignatures>(
+            signal: K,
+            callback: CameraFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraFile.SignalSignatures>(
+            signal: K,
+            callback: CameraFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1984,11 +1974,11 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface CameraAdded {
-            (object: Camera): void;
+            (_source: CameraList, object: Camera): void;
         }
 
         interface CameraRemoved {
-            (object: Camera): void;
+            (_source: CameraList, object: Camera): void;
         }
 
         // Signal signatures
@@ -2008,7 +1998,6 @@ export namespace Entangle {
 
     class CameraList extends GObject.Object {
         static $gtype: GObject.GType<CameraList>;
-        declare static readonly __signalSignatures: CameraList.SignalSignatures;
 
         // Properties
 
@@ -2040,15 +2029,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<CameraList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'camera-added', callback: (_source: this, object: Camera) => void): number;
-        connect_after(signal: 'camera-added', callback: (_source: this, object: Camera) => void): number;
-        emit(signal: 'camera-added', object: Camera): void;
-        connect(signal: 'camera-removed', callback: (_source: this, object: Camera) => void): number;
-        connect_after(signal: 'camera-removed', callback: (_source: this, object: Camera) => void): number;
-        emit(signal: 'camera-removed', object: Camera): void;
 
         // Methods
 
@@ -2095,7 +2075,7 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: CameraManager): void;
         }
 
         // Signal signatures
@@ -2121,7 +2101,6 @@ export namespace Entangle {
         implements Atk.ImplementorIface, Progress, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<CameraManager>;
-        declare static readonly __signalSignatures: CameraManager.SignalSignatures;
 
         // Properties
 
@@ -2153,12 +2132,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<CameraManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
 
         // Methods
 
@@ -3147,11 +3120,11 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface PickerConnect {
-            (object: GObject.Object): void;
+            (_source: CameraPicker, object: GObject.Object): void;
         }
 
         interface PickerRefresh {
-            (): void;
+            (_source: CameraPicker): void;
         }
 
         // Signal signatures
@@ -3172,7 +3145,6 @@ export namespace Entangle {
 
     class CameraPicker extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CameraPicker>;
-        declare static readonly __signalSignatures: CameraPicker.SignalSignatures;
 
         // Properties
 
@@ -3201,15 +3173,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<CameraPicker.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'picker-connect', callback: (_source: this, object: GObject.Object) => void): number;
-        connect_after(signal: 'picker-connect', callback: (_source: this, object: GObject.Object) => void): number;
-        emit(signal: 'picker-connect', object: GObject.Object): void;
-        connect(signal: 'picker-refresh', callback: (_source: this) => void): number;
-        connect_after(signal: 'picker-refresh', callback: (_source: this) => void): number;
-        emit(signal: 'picker-refresh'): void;
 
         // Methods
 
@@ -3670,7 +3633,6 @@ export namespace Entangle {
 
     class CameraPreferences extends GObject.Object {
         static $gtype: GObject.GType<CameraPreferences>;
-        declare static readonly __signalSignatures: CameraPreferences.SignalSignatures;
 
         // Properties
 
@@ -3684,6 +3646,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): CameraPreferences;
+
+        // Signals
+
+        connect<K extends keyof CameraPreferences.SignalSignatures>(
+            signal: K,
+            callback: CameraPreferences.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraPreferences.SignalSignatures>(
+            signal: K,
+            callback: CameraPreferences.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraPreferences.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraPreferences.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3718,7 +3695,6 @@ export namespace Entangle {
 
     class CameraSupport extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CameraSupport>;
-        declare static readonly __signalSignatures: CameraSupport.SignalSignatures;
 
         // Properties
 
@@ -3734,6 +3710,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): CameraSupport;
+
+        // Signals
+
+        connect<K extends keyof CameraSupport.SignalSignatures>(
+            signal: K,
+            callback: CameraSupport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraSupport.SignalSignatures>(
+            signal: K,
+            callback: CameraSupport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraSupport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraSupport.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4204,7 +4195,6 @@ export namespace Entangle {
 
     class ColourProfile extends GObject.Object {
         static $gtype: GObject.GType<ColourProfile>;
-        declare static readonly __signalSignatures: ColourProfile.SignalSignatures;
 
         // Properties
 
@@ -4220,6 +4210,21 @@ export namespace Entangle {
         static new_data(data: Uint8Array | string): ColourProfile;
 
         static new_file(filename: string): ColourProfile;
+
+        // Signals
+
+        connect<K extends keyof ColourProfile.SignalSignatures>(
+            signal: K,
+            callback: ColourProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColourProfile.SignalSignatures>(
+            signal: K,
+            callback: ColourProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColourProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColourProfile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4261,7 +4266,6 @@ export namespace Entangle {
 
     class ColourProfileTransform extends GObject.Object {
         static $gtype: GObject.GType<ColourProfileTransform>;
-        declare static readonly __signalSignatures: ColourProfileTransform.SignalSignatures;
 
         // Properties
 
@@ -4277,6 +4281,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](src: ColourProfile, dst: ColourProfile, intent: ColourProfileIntent): ColourProfileTransform;
+
+        // Signals
+
+        connect<K extends keyof ColourProfileTransform.SignalSignatures>(
+            signal: K,
+            callback: ColourProfileTransform.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColourProfileTransform.SignalSignatures>(
+            signal: K,
+            callback: ColourProfileTransform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColourProfileTransform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColourProfileTransform.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4309,7 +4328,6 @@ export namespace Entangle {
 
     abstract class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
-        declare static readonly __signalSignatures: Control.SignalSignatures;
 
         // Properties
 
@@ -4327,6 +4345,18 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): Control;
+
+        // Signals
+
+        connect<K extends keyof Control.SignalSignatures>(signal: K, callback: Control.SignalSignatures[K]): number;
+        connect_after<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            callback: Control.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Control.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4351,7 +4381,6 @@ export namespace Entangle {
 
     class ControlButton extends Control {
         static $gtype: GObject.GType<ControlButton>;
-        declare static readonly __signalSignatures: ControlButton.SignalSignatures;
 
         // Constructors
 
@@ -4360,6 +4389,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlButton;
+
+        // Signals
+
+        connect<K extends keyof ControlButton.SignalSignatures>(
+            signal: K,
+            callback: ControlButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlButton.SignalSignatures>(
+            signal: K,
+            callback: ControlButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlButton.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ControlChoice {
@@ -4375,7 +4419,6 @@ export namespace Entangle {
 
     class ControlChoice extends Control {
         static $gtype: GObject.GType<ControlChoice>;
-        declare static readonly __signalSignatures: ControlChoice.SignalSignatures;
 
         // Properties
 
@@ -4389,6 +4432,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlChoice;
+
+        // Signals
+
+        connect<K extends keyof ControlChoice.SignalSignatures>(
+            signal: K,
+            callback: ControlChoice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlChoice.SignalSignatures>(
+            signal: K,
+            callback: ControlChoice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlChoice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlChoice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4411,7 +4469,6 @@ export namespace Entangle {
 
     class ControlDate extends Control {
         static $gtype: GObject.GType<ControlDate>;
-        declare static readonly __signalSignatures: ControlDate.SignalSignatures;
 
         // Properties
 
@@ -4425,6 +4482,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlDate;
+
+        // Signals
+
+        connect<K extends keyof ControlDate.SignalSignatures>(
+            signal: K,
+            callback: ControlDate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlDate.SignalSignatures>(
+            signal: K,
+            callback: ControlDate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlDate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlDate.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ControlGroup {
@@ -4438,7 +4510,6 @@ export namespace Entangle {
 
     class ControlGroup extends Control {
         static $gtype: GObject.GType<ControlGroup>;
-        declare static readonly __signalSignatures: ControlGroup.SignalSignatures;
 
         // Constructors
 
@@ -4447,6 +4518,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlGroup;
+
+        // Signals
+
+        connect<K extends keyof ControlGroup.SignalSignatures>(
+            signal: K,
+            callback: ControlGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlGroup.SignalSignatures>(
+            signal: K,
+            callback: ControlGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4490,7 +4576,6 @@ export namespace Entangle {
 
     class ControlPanel extends Gtk.Expander implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ControlPanel>;
-        declare static readonly __signalSignatures: ControlPanel.SignalSignatures;
 
         // Properties
 
@@ -4510,6 +4595,21 @@ export namespace Entangle {
         // Conflicted with Gtk.Expander.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ControlPanel.SignalSignatures>(
+            signal: K,
+            callback: ControlPanel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlPanel.SignalSignatures>(
+            signal: K,
+            callback: ControlPanel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlPanel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlPanel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4981,7 +5081,6 @@ export namespace Entangle {
 
     class ControlRange extends Control {
         static $gtype: GObject.GType<ControlRange>;
-        declare static readonly __signalSignatures: ControlRange.SignalSignatures;
 
         // Properties
 
@@ -5014,6 +5113,21 @@ export namespace Entangle {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof ControlRange.SignalSignatures>(
+            signal: K,
+            callback: ControlRange.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlRange.SignalSignatures>(
+            signal: K,
+            callback: ControlRange.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlRange.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlRange.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_max(): number;
@@ -5034,7 +5148,6 @@ export namespace Entangle {
 
     class ControlText extends Control {
         static $gtype: GObject.GType<ControlText>;
-        declare static readonly __signalSignatures: ControlText.SignalSignatures;
 
         // Properties
 
@@ -5048,6 +5161,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlText;
+
+        // Signals
+
+        connect<K extends keyof ControlText.SignalSignatures>(
+            signal: K,
+            callback: ControlText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlText.SignalSignatures>(
+            signal: K,
+            callback: ControlText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlText.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ControlToggle {
@@ -5063,7 +5191,6 @@ export namespace Entangle {
 
     class ControlToggle extends Control {
         static $gtype: GObject.GType<ControlToggle>;
-        declare static readonly __signalSignatures: ControlToggle.SignalSignatures;
 
         // Properties
 
@@ -5077,17 +5204,32 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](path: string, id: number, label: string, info: string, readonly: boolean): ControlToggle;
+
+        // Signals
+
+        connect<K extends keyof ControlToggle.SignalSignatures>(
+            signal: K,
+            callback: ControlToggle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlToggle.SignalSignatures>(
+            signal: K,
+            callback: ControlToggle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlToggle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlToggle.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DeviceManager {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (object: string): void;
+            (_source: DeviceManager, object: string): void;
         }
 
         interface DeviceRemoved {
-            (object: string): void;
+            (_source: DeviceManager, object: string): void;
         }
 
         // Signal signatures
@@ -5103,7 +5245,6 @@ export namespace Entangle {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
-        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -5127,15 +5268,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<DeviceManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'device-added', object: string): void;
-        connect(signal: 'device-removed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'device-removed', object: string): void;
 
         // Methods
 
@@ -5156,7 +5288,6 @@ export namespace Entangle {
 
     class HelpAbout extends Gtk.AboutDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HelpAbout>;
-        declare static readonly __signalSignatures: HelpAbout.SignalSignatures;
 
         // Constructors
 
@@ -5165,6 +5296,18 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): HelpAbout;
+
+        // Signals
+
+        connect<K extends keyof HelpAbout.SignalSignatures>(signal: K, callback: HelpAbout.SignalSignatures[K]): number;
+        connect_after<K extends keyof HelpAbout.SignalSignatures>(
+            signal: K,
+            callback: HelpAbout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HelpAbout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HelpAbout.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5621,7 +5764,6 @@ export namespace Entangle {
 
     class Image extends Media {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -5637,6 +5779,12 @@ export namespace Entangle {
         static new_file(filename: string): Image;
 
         static new_pixbuf(pixbuf: GdkPixbuf.Pixbuf): Image;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5684,7 +5832,6 @@ export namespace Entangle {
 
     class ImageDisplay extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ImageDisplay>;
-        declare static readonly __signalSignatures: ImageDisplay.SignalSignatures;
 
         // Properties
 
@@ -5730,6 +5877,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): ImageDisplay;
+
+        // Signals
+
+        connect<K extends keyof ImageDisplay.SignalSignatures>(
+            signal: K,
+            callback: ImageDisplay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageDisplay.SignalSignatures>(
+            signal: K,
+            callback: ImageDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageDisplay.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6244,7 +6406,6 @@ export namespace Entangle {
 
     class ImageHistogram extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ImageHistogram>;
-        declare static readonly __signalSignatures: ImageHistogram.SignalSignatures;
 
         // Properties
 
@@ -6258,6 +6419,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): ImageHistogram;
+
+        // Signals
+
+        connect<K extends keyof ImageHistogram.SignalSignatures>(
+            signal: K,
+            callback: ImageHistogram.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageHistogram.SignalSignatures>(
+            signal: K,
+            callback: ImageHistogram.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageHistogram.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageHistogram.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6730,7 +6906,6 @@ export namespace Entangle {
 
     class ImageLoader extends PixbufLoader {
         static $gtype: GObject.GType<ImageLoader>;
-        declare static readonly __signalSignatures: ImageLoader.SignalSignatures;
 
         // Properties
 
@@ -6744,6 +6919,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): ImageLoader;
+
+        // Signals
+
+        connect<K extends keyof ImageLoader.SignalSignatures>(
+            signal: K,
+            callback: ImageLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageLoader.SignalSignatures>(
+            signal: K,
+            callback: ImageLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageLoader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6767,7 +6957,6 @@ export namespace Entangle {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
-        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -6780,6 +6969,12 @@ export namespace Entangle {
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6817,7 +7012,7 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface PopupClose {
-            (): void;
+            (_source: MediaPopup): void;
         }
 
         // Signal signatures
@@ -6837,7 +7032,6 @@ export namespace Entangle {
 
     class MediaPopup extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<MediaPopup>;
-        declare static readonly __signalSignatures: MediaPopup.SignalSignatures;
 
         // Properties
 
@@ -6866,12 +7060,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<MediaPopup.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'popup-close', callback: (_source: this) => void): number;
-        connect_after(signal: 'popup-close', callback: (_source: this) => void): number;
-        emit(signal: 'popup-close'): void;
 
         // Methods
 
@@ -7352,7 +7540,6 @@ export namespace Entangle {
 
     class MediaStatusbar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MediaStatusbar>;
-        declare static readonly __signalSignatures: MediaStatusbar.SignalSignatures;
 
         // Properties
 
@@ -7366,6 +7553,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): MediaStatusbar;
+
+        // Signals
+
+        connect<K extends keyof MediaStatusbar.SignalSignatures>(
+            signal: K,
+            callback: MediaStatusbar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaStatusbar.SignalSignatures>(
+            signal: K,
+            callback: MediaStatusbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaStatusbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaStatusbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7843,19 +8045,19 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface MetadataLoaded {
-            (object: Image): void;
+            (_source: PixbufLoader, object: Image): void;
         }
 
         interface MetadataUnloaded {
-            (object: Image): void;
+            (_source: PixbufLoader, object: Image): void;
         }
 
         interface PixbufLoaded {
-            (object: Image): void;
+            (_source: PixbufLoader, object: Image): void;
         }
 
         interface PixbufUnloaded {
-            (object: Image): void;
+            (_source: PixbufLoader, object: Image): void;
         }
 
         // Signal signatures
@@ -7879,7 +8081,6 @@ export namespace Entangle {
 
     abstract class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
-        declare static readonly __signalSignatures: PixbufLoader.SignalSignatures;
 
         // Properties
 
@@ -7911,21 +8112,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<PixbufLoader.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'metadata-loaded', callback: (_source: this, object: Image) => void): number;
-        connect_after(signal: 'metadata-loaded', callback: (_source: this, object: Image) => void): number;
-        emit(signal: 'metadata-loaded', object: Image): void;
-        connect(signal: 'metadata-unloaded', callback: (_source: this, object: Image) => void): number;
-        connect_after(signal: 'metadata-unloaded', callback: (_source: this, object: Image) => void): number;
-        emit(signal: 'metadata-unloaded', object: Image): void;
-        connect(signal: 'pixbuf-loaded', callback: (_source: this, object: Image) => void): number;
-        connect_after(signal: 'pixbuf-loaded', callback: (_source: this, object: Image) => void): number;
-        emit(signal: 'pixbuf-loaded', object: Image): void;
-        connect(signal: 'pixbuf-unloaded', callback: (_source: this, object: Image) => void): number;
-        connect_after(signal: 'pixbuf-unloaded', callback: (_source: this, object: Image) => void): number;
-        emit(signal: 'pixbuf-unloaded', object: Image): void;
 
         // Methods
 
@@ -8067,7 +8253,6 @@ export namespace Entangle {
 
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
-        declare static readonly __signalSignatures: Preferences.SignalSignatures;
 
         // Properties
 
@@ -8183,6 +8368,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): Preferences;
+
+        // Signals
+
+        connect<K extends keyof Preferences.SignalSignatures>(
+            signal: K,
+            callback: Preferences.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Preferences.SignalSignatures>(
+            signal: K,
+            callback: Preferences.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Preferences.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Preferences.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8528,7 +8728,6 @@ export namespace Entangle {
 
     class PreferencesDisplay extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDisplay>;
-        declare static readonly __signalSignatures: PreferencesDisplay.SignalSignatures;
 
         // Constructors
 
@@ -8537,6 +8736,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesDisplay;
+
+        // Signals
+
+        connect<K extends keyof PreferencesDisplay.SignalSignatures>(
+            signal: K,
+            callback: PreferencesDisplay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesDisplay.SignalSignatures>(
+            signal: K,
+            callback: PreferencesDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesDisplay.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -8993,7 +9207,6 @@ export namespace Entangle {
 
     abstract class Script extends GObject.Object {
         static $gtype: GObject.GType<Script>;
-        declare static readonly __signalSignatures: Script.SignalSignatures;
 
         // Properties
 
@@ -9005,6 +9218,12 @@ export namespace Entangle {
         constructor(properties?: Partial<Script.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
+        connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
+        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: Parameters<Script.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -9060,7 +9279,6 @@ export namespace Entangle {
 
     class ScriptConfig extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ScriptConfig>;
-        declare static readonly __signalSignatures: ScriptConfig.SignalSignatures;
 
         // Constructors
 
@@ -9069,6 +9287,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](): ScriptConfig;
+
+        // Signals
+
+        connect<K extends keyof ScriptConfig.SignalSignatures>(
+            signal: K,
+            callback: ScriptConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScriptConfig.SignalSignatures>(
+            signal: K,
+            callback: ScriptConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScriptConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScriptConfig.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9551,13 +9784,27 @@ export namespace Entangle {
 
     class ScriptSimple extends Script {
         static $gtype: GObject.GType<ScriptSimple>;
-        declare static readonly __signalSignatures: ScriptSimple.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScriptSimple.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScriptSimple.SignalSignatures>(
+            signal: K,
+            callback: ScriptSimple.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScriptSimple.SignalSignatures>(
+            signal: K,
+            callback: ScriptSimple.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScriptSimple.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScriptSimple.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9589,11 +9836,11 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface SessionMediaAdded {
-            (object: Media): void;
+            (_source: Session, object: Media): void;
         }
 
         interface SessionMediaRemoved {
-            (object: Media): void;
+            (_source: Session, object: Media): void;
         }
 
         // Signal signatures
@@ -9613,7 +9860,6 @@ export namespace Entangle {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -9640,15 +9886,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'session-media-added', callback: (_source: this, object: Media) => void): number;
-        connect_after(signal: 'session-media-added', callback: (_source: this, object: Media) => void): number;
-        emit(signal: 'session-media-added', object: Media): void;
-        connect(signal: 'session-media-removed', callback: (_source: this, object: Media) => void): number;
-        connect_after(signal: 'session-media-removed', callback: (_source: this, object: Media) => void): number;
-        emit(signal: 'session-media-removed', object: Media): void;
 
         // Methods
 
@@ -9693,7 +9930,7 @@ export namespace Entangle {
         // Signal callback interfaces
 
         interface SelectionChanged {
-            (): void;
+            (_source: SessionBrowser): void;
         }
 
         // Signal signatures
@@ -9716,7 +9953,6 @@ export namespace Entangle {
 
     class SessionBrowser extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SessionBrowser>;
-        declare static readonly __signalSignatures: SessionBrowser.SignalSignatures;
 
         // Properties
 
@@ -9749,12 +9985,6 @@ export namespace Entangle {
             signal: K,
             ...args: Parameters<SessionBrowser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
 
         // Methods
 
@@ -10356,7 +10586,6 @@ export namespace Entangle {
 
     class ThumbnailLoader extends PixbufLoader {
         static $gtype: GObject.GType<ThumbnailLoader>;
-        declare static readonly __signalSignatures: ThumbnailLoader.SignalSignatures;
 
         // Properties
 
@@ -10370,6 +10599,21 @@ export namespace Entangle {
         _init(...args: any[]): void;
 
         static ['new'](width: number, height: number): ThumbnailLoader;
+
+        // Signals
+
+        connect<K extends keyof ThumbnailLoader.SignalSignatures>(
+            signal: K,
+            callback: ThumbnailLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThumbnailLoader.SignalSignatures>(
+            signal: K,
+            callback: ThumbnailLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThumbnailLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThumbnailLoader.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Video {
@@ -10385,7 +10629,6 @@ export namespace Entangle {
 
     class Video extends Media {
         static $gtype: GObject.GType<Video>;
-        declare static readonly __signalSignatures: Video.SignalSignatures;
 
         // Properties
 
@@ -10401,6 +10644,12 @@ export namespace Entangle {
         static new_file(filename: string): Video;
 
         static new_source(source: GstBase.BaseSrc): Video;
+
+        // Signals
+
+        connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
 
         // Methods
 

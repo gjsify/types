@@ -270,15 +270,15 @@ export namespace Zeitgeist {
         // Signal callback interfaces
 
         interface SourceDisconnected {
-            (data_source: DataSource): void;
+            (_source: DataSourceRegistry, data_source: DataSource): void;
         }
 
         interface SourceEnabled {
-            (unique_id: string, enabled: boolean): void;
+            (_source: DataSourceRegistry, unique_id: string, enabled: boolean): void;
         }
 
         interface SourceRegistered {
-            (data_source: DataSource): void;
+            (_source: DataSourceRegistry, data_source: DataSource): void;
         }
 
         // Signal signatures
@@ -295,7 +295,6 @@ export namespace Zeitgeist {
 
     class DataSourceRegistry extends QueuedProxyWrapper {
         static $gtype: GObject.GType<DataSourceRegistry>;
-        declare static readonly __signalSignatures: DataSourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -319,27 +318,6 @@ export namespace Zeitgeist {
             signal: K,
             ...args: Parameters<DataSourceRegistry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'source-disconnected', callback: (_source: this, data_source: DataSource) => void): number;
-        connect_after(
-            signal: 'source-disconnected',
-            callback: (_source: this, data_source: DataSource) => void,
-        ): number;
-        emit(signal: 'source-disconnected', data_source: DataSource): void;
-        connect(
-            signal: 'source-enabled',
-            callback: (_source: this, unique_id: string, enabled: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'source-enabled',
-            callback: (_source: this, unique_id: string, enabled: boolean) => void,
-        ): number;
-        emit(signal: 'source-enabled', unique_id: string, enabled: boolean): void;
-        connect(signal: 'source-registered', callback: (_source: this, data_source: DataSource) => void): number;
-        connect_after(signal: 'source-registered', callback: (_source: this, data_source: DataSource) => void): number;
-        emit(signal: 'source-registered', data_source: DataSource): void;
 
         // Methods
 
@@ -405,7 +383,6 @@ export namespace Zeitgeist {
 
     class Index extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Index>;
-        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Constructors
 
@@ -414,6 +391,12 @@ export namespace Zeitgeist {
         _init(...args: any[]): void;
 
         static ['new'](): Index;
+
+        // Signals
+
+        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -493,7 +476,6 @@ export namespace Zeitgeist {
 
     class Log extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Log>;
-        declare static readonly __signalSignatures: Log.SignalSignatures;
 
         // Constructors
 
@@ -502,6 +484,12 @@ export namespace Zeitgeist {
         _init(...args: any[]): void;
 
         static ['new'](): Log;
+
+        // Signals
+
+        connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: Parameters<Log.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -661,11 +649,11 @@ export namespace Zeitgeist {
         // Signal callback interfaces
 
         interface EventsInserted {
-            (time_range: TimeRange, events: ResultSet): void;
+            (_source: Monitor, time_range: TimeRange, events: ResultSet): void;
         }
 
         interface EventsDeleted {
-            (time_range: TimeRange, event_ids: number[]): void;
+            (_source: Monitor, time_range: TimeRange, event_ids: number[]): void;
         }
 
         // Signal signatures
@@ -686,7 +674,6 @@ export namespace Zeitgeist {
 
     class Monitor extends GObject.Object implements RemoteMonitor {
         static $gtype: GObject.GType<Monitor>;
-        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Properties
 
@@ -718,27 +705,6 @@ export namespace Zeitgeist {
             signal: K,
             ...args: Parameters<Monitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'events-inserted',
-            callback: (_source: this, time_range: TimeRange, events: ResultSet) => void,
-        ): number;
-        connect_after(
-            signal: 'events-inserted',
-            callback: (_source: this, time_range: TimeRange, events: ResultSet) => void,
-        ): number;
-        emit(signal: 'events-inserted', time_range: TimeRange, events: ResultSet): void;
-        connect(
-            signal: 'events-deleted',
-            callback: (_source: this, time_range: TimeRange, event_ids: number[]) => void,
-        ): number;
-        connect_after(
-            signal: 'events-deleted',
-            callback: (_source: this, time_range: TimeRange, event_ids: number[]) => void,
-        ): number;
-        emit(signal: 'events-deleted', time_range: TimeRange, event_ids: number[]): void;
 
         // Methods
 
@@ -1243,7 +1209,6 @@ export namespace Zeitgeist {
 
     abstract class QueuedProxyWrapper extends GObject.Object {
         static $gtype: GObject.GType<QueuedProxyWrapper>;
-        declare static readonly __signalSignatures: QueuedProxyWrapper.SignalSignatures;
 
         // Properties
 
@@ -1261,6 +1226,21 @@ export namespace Zeitgeist {
         constructor(properties?: Partial<QueuedProxyWrapper.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof QueuedProxyWrapper.SignalSignatures>(
+            signal: K,
+            callback: QueuedProxyWrapper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof QueuedProxyWrapper.SignalSignatures>(
+            signal: K,
+            callback: QueuedProxyWrapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<QueuedProxyWrapper.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1290,7 +1270,6 @@ export namespace Zeitgeist {
 
     class QueuedProxyWrapperQueuedMethod {
         static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethod>;
-        declare static readonly __signalSignatures: QueuedProxyWrapperQueuedMethod.SignalSignatures;
 
         // Fields
 
@@ -1301,6 +1280,21 @@ export namespace Zeitgeist {
         _init(...args: any[]): void;
 
         static ['new'](callback: GLib.SourceFunc): QueuedProxyWrapperQueuedMethod;
+
+        // Signals
+
+        connect<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
+            signal: K,
+            callback: QueuedProxyWrapperQueuedMethod.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
+            signal: K,
+            callback: QueuedProxyWrapperQueuedMethod.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1328,7 +1322,6 @@ export namespace Zeitgeist {
 
     class DataSource extends GObject.Object {
         static $gtype: GObject.GType<DataSource>;
-        declare static readonly __signalSignatures: DataSource.SignalSignatures;
 
         // Properties
 
@@ -1362,6 +1355,21 @@ export namespace Zeitgeist {
         static full(unique_id: string, name: string, description: string, templates?: Event[] | null): DataSource;
 
         static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource;
+
+        // Signals
+
+        connect<K extends keyof DataSource.SignalSignatures>(
+            signal: K,
+            callback: DataSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataSource.SignalSignatures>(
+            signal: K,
+            callback: DataSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1402,7 +1410,6 @@ export namespace Zeitgeist {
 
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
-        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -1432,6 +1439,12 @@ export namespace Zeitgeist {
         static from_variant(event_variant: GLib.Variant): Event;
 
         static ['new'](): Event;
+
+        // Signals
+
+        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1484,7 +1497,6 @@ export namespace Zeitgeist {
 
     class Subject extends GObject.Object {
         static $gtype: GObject.GType<Subject>;
-        declare static readonly __signalSignatures: Subject.SignalSignatures;
 
         // Properties
 
@@ -1543,6 +1555,18 @@ export namespace Zeitgeist {
 
         static ['new'](): Subject;
 
+        // Signals
+
+        connect<K extends keyof Subject.SignalSignatures>(signal: K, callback: Subject.SignalSignatures[K]): number;
+        connect_after<K extends keyof Subject.SignalSignatures>(
+            signal: K,
+            callback: Subject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Subject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Subject.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         to_variant(): GLib.Variant;
@@ -1581,7 +1605,6 @@ export namespace Zeitgeist {
 
     class TimeRange extends GObject.Object {
         static $gtype: GObject.GType<TimeRange>;
-        declare static readonly __signalSignatures: TimeRange.SignalSignatures;
 
         // Properties
 
@@ -1606,6 +1629,18 @@ export namespace Zeitgeist {
 
         static from_variant(variant: GLib.Variant): TimeRange;
 
+        // Signals
+
+        connect<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: TimeRange.SignalSignatures[K]): number;
+        connect_after<K extends keyof TimeRange.SignalSignatures>(
+            signal: K,
+            callback: TimeRange.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimeRange.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimeRange.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         to_variant(): GLib.Variant;
@@ -1625,7 +1660,6 @@ export namespace Zeitgeist {
 
     class SimpleResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<SimpleResultSet>;
-        declare static readonly __signalSignatures: SimpleResultSet.SignalSignatures;
 
         // Constructors
 
@@ -1636,6 +1670,21 @@ export namespace Zeitgeist {
         static ['new'](events: Event[]): SimpleResultSet;
 
         static with_num_matches(events: Event[], matches: number): SimpleResultSet;
+
+        // Signals
+
+        connect<K extends keyof SimpleResultSet.SignalSignatures>(
+            signal: K,
+            callback: SimpleResultSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleResultSet.SignalSignatures>(
+            signal: K,
+            callback: SimpleResultSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleResultSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleResultSet.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         size(): number;

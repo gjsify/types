@@ -443,7 +443,6 @@ export namespace JavaScriptCore {
      */
     class Class extends GObject.Object {
         static $gtype: GObject.GType<Class>;
-        declare static readonly __signalSignatures: Class.SignalSignatures;
 
         // Properties
 
@@ -465,6 +464,12 @@ export namespace JavaScriptCore {
         constructor(properties?: Partial<Class.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Class.SignalSignatures>(signal: K, callback: Class.SignalSignatures[K]): number;
+        connect_after<K extends keyof Class.SignalSignatures>(signal: K, callback: Class.SignalSignatures[K]): number;
+        emit<K extends keyof Class.SignalSignatures>(signal: K, ...args: Parameters<Class.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -619,7 +624,6 @@ export namespace JavaScriptCore {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -641,6 +645,18 @@ export namespace JavaScriptCore {
         static ['new'](): Context;
 
         static new_with_virtual_machine(vm: VirtualMachine): Context;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -813,7 +829,6 @@ export namespace JavaScriptCore {
      */
     class Exception extends GObject.Object {
         static $gtype: GObject.GType<Exception>;
-        declare static readonly __signalSignatures: Exception.SignalSignatures;
 
         // Constructors
 
@@ -824,6 +839,18 @@ export namespace JavaScriptCore {
         static ['new'](context: Context, message: string): Exception;
 
         static new_with_name(context: Context, name: string, message: string): Exception;
+
+        // Signals
+
+        connect<K extends keyof Exception.SignalSignatures>(signal: K, callback: Exception.SignalSignatures[K]): number;
+        connect_after<K extends keyof Exception.SignalSignatures>(
+            signal: K,
+            callback: Exception.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Exception.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Exception.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -887,7 +914,6 @@ export namespace JavaScriptCore {
      */
     class Value extends GObject.Object {
         static $gtype: GObject.GType<Value>;
-        declare static readonly __signalSignatures: Value.SignalSignatures;
 
         // Properties
 
@@ -949,6 +975,12 @@ export namespace JavaScriptCore {
         static new_typed_array(context: Context, type: TypedArrayType, length: number): Value;
 
         static new_undefined(context: Context): Value;
+
+        // Signals
+
+        connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1291,7 +1323,6 @@ export namespace JavaScriptCore {
      */
     class VirtualMachine extends GObject.Object {
         static $gtype: GObject.GType<VirtualMachine>;
-        declare static readonly __signalSignatures: VirtualMachine.SignalSignatures;
 
         // Constructors
 
@@ -1300,13 +1331,28 @@ export namespace JavaScriptCore {
         _init(...args: any[]): void;
 
         static ['new'](): VirtualMachine;
+
+        // Signals
+
+        connect<K extends keyof VirtualMachine.SignalSignatures>(
+            signal: K,
+            callback: VirtualMachine.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VirtualMachine.SignalSignatures>(
+            signal: K,
+            callback: VirtualMachine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VirtualMachine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VirtualMachine.SignalSignatures[K]>
+        ): void;
     }
 
     namespace WeakValue {
         // Signal callback interfaces
 
         interface Cleared {
-            (): void;
+            (_source: WeakValue): void;
         }
 
         // Signal signatures
@@ -1328,7 +1374,6 @@ export namespace JavaScriptCore {
      */
     class WeakValue extends GObject.Object {
         static $gtype: GObject.GType<WeakValue>;
-        declare static readonly __signalSignatures: WeakValue.SignalSignatures;
 
         // Properties
 
@@ -1356,12 +1401,6 @@ export namespace JavaScriptCore {
             signal: K,
             ...args: Parameters<WeakValue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cleared', callback: (_source: this) => void): number;
-        connect_after(signal: 'cleared', callback: (_source: this) => void): number;
-        emit(signal: 'cleared'): void;
 
         // Methods
 

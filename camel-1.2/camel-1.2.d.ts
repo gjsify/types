@@ -3026,7 +3026,6 @@ export namespace Camel {
 
     class Address extends GObject.Object {
         static $gtype: GObject.GType<Address>;
-        declare static readonly __signalSignatures: Address.SignalSignatures;
 
         // Constructors
 
@@ -3035,6 +3034,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): Address;
+
+        // Signals
+
+        connect<K extends keyof Address.SignalSignatures>(signal: K, callback: Address.SignalSignatures[K]): number;
+        connect_after<K extends keyof Address.SignalSignatures>(
+            signal: K,
+            callback: Address.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Address.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Address.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3139,7 +3150,6 @@ export namespace Camel {
 
     class BlockFile extends GObject.Object {
         static $gtype: GObject.GType<BlockFile>;
-        declare static readonly __signalSignatures: BlockFile.SignalSignatures;
 
         // Constructors
 
@@ -3148,6 +3158,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](path: string, flags: number, version: string, block_size: number): BlockFile;
+
+        // Signals
+
+        connect<K extends keyof BlockFile.SignalSignatures>(signal: K, callback: BlockFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof BlockFile.SignalSignatures>(
+            signal: K,
+            callback: BlockFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BlockFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BlockFile.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3229,7 +3251,6 @@ export namespace Camel {
 
     class CertDB extends GObject.Object {
         static $gtype: GObject.GType<CertDB>;
-        declare static readonly __signalSignatures: CertDB.SignalSignatures;
 
         // Constructors
 
@@ -3238,6 +3259,12 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): CertDB;
+
+        // Signals
+
+        connect<K extends keyof CertDB.SignalSignatures>(signal: K, callback: CertDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof CertDB.SignalSignatures>(signal: K, callback: CertDB.SignalSignatures[K]): number;
+        emit<K extends keyof CertDB.SignalSignatures>(signal: K, ...args: Parameters<CertDB.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3297,7 +3324,6 @@ export namespace Camel {
 
     class CipherContext extends GObject.Object {
         static $gtype: GObject.GType<CipherContext>;
-        declare static readonly __signalSignatures: CipherContext.SignalSignatures;
 
         // Properties
 
@@ -3310,6 +3336,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](session?: Session | null): CipherContext;
+
+        // Signals
+
+        connect<K extends keyof CipherContext.SignalSignatures>(
+            signal: K,
+            callback: CipherContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CipherContext.SignalSignatures>(
+            signal: K,
+            callback: CipherContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CipherContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CipherContext.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3706,7 +3747,6 @@ export namespace Camel {
 
     class DB extends GObject.Object {
         static $gtype: GObject.GType<DB>;
-        declare static readonly __signalSignatures: DB.SignalSignatures;
 
         // Constructors
 
@@ -3715,6 +3755,12 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): DB;
+
+        // Signals
+
+        connect<K extends keyof DB.SignalSignatures>(signal: K, callback: DB.SignalSignatures[K]): number;
+        connect_after<K extends keyof DB.SignalSignatures>(signal: K, callback: DB.SignalSignatures[K]): number;
+        emit<K extends keyof DB.SignalSignatures>(signal: K, ...args: Parameters<DB.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3994,7 +4040,6 @@ export namespace Camel {
 
     class DataCache extends GObject.Object {
         static $gtype: GObject.GType<DataCache>;
-        declare static readonly __signalSignatures: DataCache.SignalSignatures;
 
         // Properties
 
@@ -4012,6 +4057,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](path: string): DataCache;
+
+        // Signals
+
+        connect<K extends keyof DataCache.SignalSignatures>(signal: K, callback: DataCache.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataCache.SignalSignatures>(
+            signal: K,
+            callback: DataCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4137,7 +4194,6 @@ export namespace Camel {
 
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
-        declare static readonly __signalSignatures: DataWrapper.SignalSignatures;
 
         // Constructors
 
@@ -4146,6 +4202,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): DataWrapper;
+
+        // Signals
+
+        connect<K extends keyof DataWrapper.SignalSignatures>(
+            signal: K,
+            callback: DataWrapper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataWrapper.SignalSignatures>(
+            signal: K,
+            callback: DataWrapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataWrapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataWrapper.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4762,7 +4833,6 @@ export namespace Camel {
 
     class FilterDriver extends GObject.Object {
         static $gtype: GObject.GType<FilterDriver>;
-        declare static readonly __signalSignatures: FilterDriver.SignalSignatures;
 
         // Constructors
 
@@ -4771,6 +4841,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](session: Session): FilterDriver;
+
+        // Signals
+
+        connect<K extends keyof FilterDriver.SignalSignatures>(
+            signal: K,
+            callback: FilterDriver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterDriver.SignalSignatures>(
+            signal: K,
+            callback: FilterDriver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterDriver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterDriver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4889,7 +4974,6 @@ export namespace Camel {
 
     class FilterInputStream extends Gio.FilterInputStream {
         static $gtype: GObject.GType<FilterInputStream>;
-        declare static readonly __signalSignatures: FilterInputStream.SignalSignatures;
 
         // Properties
 
@@ -4902,6 +4986,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: Gio.InputStream, filter: MimeFilter): FilterInputStream;
+
+        // Signals
+
+        connect<K extends keyof FilterInputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterInputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterInputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterInputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterInputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterInputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4925,7 +5024,6 @@ export namespace Camel {
 
     class FilterOutputStream extends Gio.FilterOutputStream {
         static $gtype: GObject.GType<FilterOutputStream>;
-        declare static readonly __signalSignatures: FilterOutputStream.SignalSignatures;
 
         // Properties
 
@@ -4938,6 +5036,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: Gio.OutputStream, filter: MimeFilter): FilterOutputStream;
+
+        // Signals
+
+        connect<K extends keyof FilterOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilterOutputStream.SignalSignatures>(
+            signal: K,
+            callback: FilterOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilterOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilterOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4952,15 +5065,15 @@ export namespace Camel {
         // Signal callback interfaces
 
         interface Changed {
-            (changes: FolderChangeInfo): void;
+            (_source: Folder, changes: FolderChangeInfo): void;
         }
 
         interface Deleted {
-            (): void;
+            (_source: Folder): void;
         }
 
         interface Renamed {
-            (old_name: string): void;
+            (_source: Folder, old_name: string): void;
         }
 
         // Signal signatures
@@ -4989,7 +5102,6 @@ export namespace Camel {
 
     abstract class Folder extends Object {
         static $gtype: GObject.GType<Folder>;
-        declare static readonly __signalSignatures: Folder.SignalSignatures;
 
         // Properties
 
@@ -5062,18 +5174,6 @@ export namespace Camel {
         connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
         connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
         emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: Parameters<Folder.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, changes: FolderChangeInfo) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, changes: FolderChangeInfo) => void): number;
-        emit(signal: 'changed', changes: FolderChangeInfo): void;
-        connect(signal: 'deleted', callback: (_source: this) => void): number;
-        connect_after(signal: 'deleted', callback: (_source: this) => void): number;
-        emit(signal: 'deleted'): void;
-        connect(signal: 'renamed', callback: (_source: this, old_name: string) => void): number;
-        connect_after(signal: 'renamed', callback: (_source: this, old_name: string) => void): number;
-        emit(signal: 'renamed', old_name: string): void;
 
         // Static methods
 
@@ -6199,7 +6299,6 @@ export namespace Camel {
 
     class FolderSearch extends GObject.Object {
         static $gtype: GObject.GType<FolderSearch>;
-        declare static readonly __signalSignatures: FolderSearch.SignalSignatures;
 
         // Constructors
 
@@ -6208,6 +6307,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): FolderSearch;
+
+        // Signals
+
+        connect<K extends keyof FolderSearch.SignalSignatures>(
+            signal: K,
+            callback: FolderSearch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FolderSearch.SignalSignatures>(
+            signal: K,
+            callback: FolderSearch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FolderSearch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FolderSearch.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6317,7 +6431,7 @@ export namespace Camel {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: FolderSummary): void;
         }
 
         // Signal signatures
@@ -6346,7 +6460,6 @@ export namespace Camel {
 
     class FolderSummary extends GObject.Object {
         static $gtype: GObject.GType<FolderSummary>;
-        declare static readonly __signalSignatures: FolderSummary.SignalSignatures;
 
         // Properties
 
@@ -6425,12 +6538,6 @@ export namespace Camel {
             signal: K,
             ...args: Parameters<FolderSummary.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -6726,7 +6833,6 @@ export namespace Camel {
 
     class GpgContext extends CipherContext {
         static $gtype: GObject.GType<GpgContext>;
-        declare static readonly __signalSignatures: GpgContext.SignalSignatures;
 
         // Properties
 
@@ -6750,6 +6856,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](session?: Session | null): GpgContext;
+
+        // Signals
+
+        connect<K extends keyof GpgContext.SignalSignatures>(
+            signal: K,
+            callback: GpgContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GpgContext.SignalSignatures>(
+            signal: K,
+            callback: GpgContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GpgContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GpgContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6878,7 +6999,6 @@ export namespace Camel {
 
     class HTMLParser extends GObject.Object {
         static $gtype: GObject.GType<HTMLParser>;
-        declare static readonly __signalSignatures: HTMLParser.SignalSignatures;
 
         // Constructors
 
@@ -6887,6 +7007,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): HTMLParser;
+
+        // Signals
+
+        connect<K extends keyof HTMLParser.SignalSignatures>(
+            signal: K,
+            callback: HTMLParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HTMLParser.SignalSignatures>(
+            signal: K,
+            callback: HTMLParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HTMLParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HTMLParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6917,7 +7052,6 @@ export namespace Camel {
 
     class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
-        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Fields
 
@@ -6933,6 +7067,12 @@ export namespace Camel {
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -6984,7 +7124,6 @@ export namespace Camel {
 
     class IndexCursor extends GObject.Object {
         static $gtype: GObject.GType<IndexCursor>;
-        declare static readonly __signalSignatures: IndexCursor.SignalSignatures;
 
         // Fields
 
@@ -6995,6 +7134,21 @@ export namespace Camel {
         constructor(properties?: Partial<IndexCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IndexCursor.SignalSignatures>(
+            signal: K,
+            callback: IndexCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IndexCursor.SignalSignatures>(
+            signal: K,
+            callback: IndexCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IndexCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IndexCursor.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -7016,7 +7170,6 @@ export namespace Camel {
 
     class IndexName extends GObject.Object {
         static $gtype: GObject.GType<IndexName>;
-        declare static readonly __signalSignatures: IndexName.SignalSignatures;
 
         // Fields
 
@@ -7029,6 +7182,18 @@ export namespace Camel {
         constructor(properties?: Partial<IndexName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof IndexName.SignalSignatures>(signal: K, callback: IndexName.SignalSignatures[K]): number;
+        connect_after<K extends keyof IndexName.SignalSignatures>(
+            signal: K,
+            callback: IndexName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IndexName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IndexName.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -7052,7 +7217,6 @@ export namespace Camel {
 
     class InternetAddress extends Address {
         static $gtype: GObject.GType<InternetAddress>;
-        declare static readonly __signalSignatures: InternetAddress.SignalSignatures;
 
         // Constructors
 
@@ -7061,6 +7225,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): InternetAddress;
+
+        // Signals
+
+        connect<K extends keyof InternetAddress.SignalSignatures>(
+            signal: K,
+            callback: InternetAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InternetAddress.SignalSignatures>(
+            signal: K,
+            callback: InternetAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InternetAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InternetAddress.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7136,7 +7315,6 @@ export namespace Camel {
 
     class KeyFile extends GObject.Object {
         static $gtype: GObject.GType<KeyFile>;
-        declare static readonly __signalSignatures: KeyFile.SignalSignatures;
 
         // Constructors
 
@@ -7145,6 +7323,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](path: string, flags: number, version: string): KeyFile;
+
+        // Signals
+
+        connect<K extends keyof KeyFile.SignalSignatures>(signal: K, callback: KeyFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof KeyFile.SignalSignatures>(
+            signal: K,
+            callback: KeyFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7178,7 +7368,6 @@ export namespace Camel {
 
     class KeyTable extends GObject.Object {
         static $gtype: GObject.GType<KeyTable>;
-        declare static readonly __signalSignatures: KeyTable.SignalSignatures;
 
         // Constructors
 
@@ -7187,6 +7376,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](bs: BlockFile, root: _block_t): KeyTable;
+
+        // Signals
+
+        connect<K extends keyof KeyTable.SignalSignatures>(signal: K, callback: KeyTable.SignalSignatures[K]): number;
+        connect_after<K extends keyof KeyTable.SignalSignatures>(
+            signal: K,
+            callback: KeyTable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyTable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyTable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7223,7 +7424,6 @@ export namespace Camel {
      */
     class LocalSettings extends StoreSettings {
         static $gtype: GObject.GType<LocalSettings>;
-        declare static readonly __signalSignatures: LocalSettings.SignalSignatures;
 
         // Properties
 
@@ -7247,6 +7447,21 @@ export namespace Camel {
         constructor(properties?: Partial<LocalSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LocalSettings.SignalSignatures>(
+            signal: K,
+            callback: LocalSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LocalSettings.SignalSignatures>(
+            signal: K,
+            callback: LocalSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LocalSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LocalSettings.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7324,7 +7539,6 @@ export namespace Camel {
 
     abstract class Medium extends DataWrapper {
         static $gtype: GObject.GType<Medium>;
-        declare static readonly __signalSignatures: Medium.SignalSignatures;
 
         // Properties
 
@@ -7336,6 +7550,12 @@ export namespace Camel {
         constructor(properties?: Partial<Medium.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: Parameters<Medium.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -7495,7 +7715,6 @@ export namespace Camel {
 
     abstract class MessageInfo extends GObject.Object {
         static $gtype: GObject.GType<MessageInfo>;
-        declare static readonly __signalSignatures: MessageInfo.SignalSignatures;
 
         // Properties
 
@@ -7693,6 +7912,21 @@ export namespace Camel {
         static ['new'](summary?: FolderSummary | null): MessageInfo;
 
         static new_from_headers(summary: FolderSummary | null, headers: NameValueArray): MessageInfo;
+
+        // Signals
+
+        connect<K extends keyof MessageInfo.SignalSignatures>(
+            signal: K,
+            callback: MessageInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MessageInfo.SignalSignatures>(
+            signal: K,
+            callback: MessageInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageInfo.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -8454,13 +8688,27 @@ export namespace Camel {
 
     class MessageInfoBase extends MessageInfo {
         static $gtype: GObject.GType<MessageInfoBase>;
-        declare static readonly __signalSignatures: MessageInfoBase.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MessageInfoBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MessageInfoBase.SignalSignatures>(
+            signal: K,
+            callback: MessageInfoBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MessageInfoBase.SignalSignatures>(
+            signal: K,
+            callback: MessageInfoBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageInfoBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageInfoBase.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilter {
@@ -8474,7 +8722,6 @@ export namespace Camel {
 
     abstract class MimeFilter extends GObject.Object {
         static $gtype: GObject.GType<MimeFilter>;
-        declare static readonly __signalSignatures: MimeFilter.SignalSignatures;
 
         // Fields
 
@@ -8494,6 +8741,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeFilter;
+
+        // Signals
+
+        connect<K extends keyof MimeFilter.SignalSignatures>(
+            signal: K,
+            callback: MimeFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilter.SignalSignatures>(
+            signal: K,
+            callback: MimeFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -8570,7 +8832,6 @@ export namespace Camel {
 
     class MimeFilterBasic extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBasic>;
-        declare static readonly __signalSignatures: MimeFilterBasic.SignalSignatures;
 
         // Constructors
 
@@ -8582,6 +8843,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterBasic.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterBasic.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterBasic.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterBasic.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterBasic.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterBasic.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterBestenc {
@@ -8595,7 +8871,6 @@ export namespace Camel {
 
     class MimeFilterBestenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBestenc>;
-        declare static readonly __signalSignatures: MimeFilterBestenc.SignalSignatures;
 
         // Constructors
 
@@ -8607,6 +8882,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterBestenc.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterBestenc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterBestenc.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterBestenc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterBestenc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterBestenc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8640,7 +8930,6 @@ export namespace Camel {
 
     class MimeFilterCRLF extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCRLF>;
-        declare static readonly __signalSignatures: MimeFilterCRLF.SignalSignatures;
 
         // Constructors
 
@@ -8652,6 +8941,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterCRLF.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterCRLF.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterCRLF.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterCRLF.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterCRLF.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterCRLF.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8676,7 +8980,6 @@ export namespace Camel {
 
     class MimeFilterCanon extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCanon>;
-        declare static readonly __signalSignatures: MimeFilterCanon.SignalSignatures;
 
         // Constructors
 
@@ -8688,6 +8991,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterCanon.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterCanon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterCanon.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterCanon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterCanon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterCanon.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterCharset {
@@ -8701,7 +9019,6 @@ export namespace Camel {
 
     class MimeFilterCharset extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCharset>;
-        declare static readonly __signalSignatures: MimeFilterCharset.SignalSignatures;
 
         // Constructors
 
@@ -8713,6 +9030,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterCharset.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterCharset.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterCharset.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterCharset.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterCharset.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterCharset.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterEnriched {
@@ -8726,7 +9058,6 @@ export namespace Camel {
 
     class MimeFilterEnriched extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterEnriched>;
-        declare static readonly __signalSignatures: MimeFilterEnriched.SignalSignatures;
 
         // Constructors
 
@@ -8738,6 +9069,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterEnriched.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterEnriched.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterEnriched.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterEnriched.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterEnriched.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterEnriched.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterFrom {
@@ -8751,7 +9097,6 @@ export namespace Camel {
 
     class MimeFilterFrom extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterFrom>;
-        declare static readonly __signalSignatures: MimeFilterFrom.SignalSignatures;
 
         // Constructors
 
@@ -8760,6 +9105,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeFilterFrom;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterFrom.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterFrom.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterFrom.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterFrom.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterFrom.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterFrom.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterGZip {
@@ -8773,7 +9133,6 @@ export namespace Camel {
 
     class MimeFilterGZip extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterGZip>;
-        declare static readonly __signalSignatures: MimeFilterGZip.SignalSignatures;
 
         // Constructors
 
@@ -8785,6 +9144,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterGZip.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterGZip.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterGZip.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterGZip.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterGZip.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterGZip.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterHTML {
@@ -8798,7 +9172,6 @@ export namespace Camel {
 
     class MimeFilterHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterHTML>;
-        declare static readonly __signalSignatures: MimeFilterHTML.SignalSignatures;
 
         // Constructors
 
@@ -8807,6 +9180,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeFilterHTML;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterHTML.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterHTML.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterHTML.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterHTML.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterHTML.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterHTML.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterIndex {
@@ -8820,7 +9208,6 @@ export namespace Camel {
 
     class MimeFilterIndex extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterIndex>;
-        declare static readonly __signalSignatures: MimeFilterIndex.SignalSignatures;
 
         // Constructors
 
@@ -8832,6 +9219,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterIndex.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterIndex.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterIndex.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterIndex.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterIndex.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterIndex.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8858,7 +9260,6 @@ export namespace Camel {
 
     class MimeFilterLinewrap extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterLinewrap>;
-        declare static readonly __signalSignatures: MimeFilterLinewrap.SignalSignatures;
 
         // Constructors
 
@@ -8870,6 +9271,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterLinewrap.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterLinewrap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterLinewrap.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterLinewrap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterLinewrap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterLinewrap.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterPgp {
@@ -8883,7 +9299,6 @@ export namespace Camel {
 
     class MimeFilterPgp extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterPgp>;
-        declare static readonly __signalSignatures: MimeFilterPgp.SignalSignatures;
 
         // Constructors
 
@@ -8892,6 +9307,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeFilterPgp;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterPgp.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterPgp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterPgp.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterPgp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterPgp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterPgp.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterProgress {
@@ -8905,7 +9335,6 @@ export namespace Camel {
 
     class MimeFilterProgress extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterProgress>;
-        declare static readonly __signalSignatures: MimeFilterProgress.SignalSignatures;
 
         // Constructors
 
@@ -8917,6 +9346,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterProgress.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterProgress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterProgress.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterProgress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterProgress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterProgress.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterToHTML {
@@ -8930,7 +9374,6 @@ export namespace Camel {
 
     class MimeFilterToHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterToHTML>;
-        declare static readonly __signalSignatures: MimeFilterToHTML.SignalSignatures;
 
         // Constructors
 
@@ -8942,6 +9385,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterToHTML.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterToHTML.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterToHTML.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterToHTML.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterToHTML.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterToHTML.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MimeFilterWindows {
@@ -8955,7 +9413,6 @@ export namespace Camel {
 
     class MimeFilterWindows extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterWindows>;
-        declare static readonly __signalSignatures: MimeFilterWindows.SignalSignatures;
 
         // Constructors
 
@@ -8967,6 +9424,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterWindows.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterWindows.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterWindows.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterWindows.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterWindows.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterWindows.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8998,7 +9470,6 @@ export namespace Camel {
 
     class MimeFilterYenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterYenc>;
-        declare static readonly __signalSignatures: MimeFilterYenc.SignalSignatures;
 
         // Constructors
 
@@ -9010,6 +9481,21 @@ export namespace Camel {
         // Conflicted with Camel.MimeFilter.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MimeFilterYenc.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterYenc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeFilterYenc.SignalSignatures>(
+            signal: K,
+            callback: MimeFilterYenc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeFilterYenc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeFilterYenc.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9046,7 +9532,6 @@ export namespace Camel {
 
     class MimeMessage extends MimePart {
         static $gtype: GObject.GType<MimeMessage>;
-        declare static readonly __signalSignatures: MimeMessage.SignalSignatures;
 
         // Constructors
 
@@ -9055,6 +9540,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeMessage;
+
+        // Signals
+
+        connect<K extends keyof MimeMessage.SignalSignatures>(
+            signal: K,
+            callback: MimeMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeMessage.SignalSignatures>(
+            signal: K,
+            callback: MimeMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeMessage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9207,7 +9707,6 @@ export namespace Camel {
 
     class MimeParser extends GObject.Object {
         static $gtype: GObject.GType<MimeParser>;
-        declare static readonly __signalSignatures: MimeParser.SignalSignatures;
 
         // Constructors
 
@@ -9216,6 +9715,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimeParser;
+
+        // Signals
+
+        connect<K extends keyof MimeParser.SignalSignatures>(
+            signal: K,
+            callback: MimeParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MimeParser.SignalSignatures>(
+            signal: K,
+            callback: MimeParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimeParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimeParser.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9479,7 +9993,6 @@ export namespace Camel {
 
     class MimePart extends Medium {
         static $gtype: GObject.GType<MimePart>;
-        declare static readonly __signalSignatures: MimePart.SignalSignatures;
 
         // Properties
 
@@ -9503,6 +10016,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MimePart;
+
+        // Signals
+
+        connect<K extends keyof MimePart.SignalSignatures>(signal: K, callback: MimePart.SignalSignatures[K]): number;
+        connect_after<K extends keyof MimePart.SignalSignatures>(
+            signal: K,
+            callback: MimePart.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MimePart.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MimePart.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9704,7 +10229,6 @@ export namespace Camel {
 
     class Multipart extends DataWrapper {
         static $gtype: GObject.GType<Multipart>;
-        declare static readonly __signalSignatures: Multipart.SignalSignatures;
 
         // Constructors
 
@@ -9713,6 +10237,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): Multipart;
+
+        // Signals
+
+        connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: Multipart.SignalSignatures[K]): number;
+        connect_after<K extends keyof Multipart.SignalSignatures>(
+            signal: K,
+            callback: Multipart.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Multipart.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Multipart.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9801,7 +10337,6 @@ export namespace Camel {
 
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
-        declare static readonly __signalSignatures: MultipartEncrypted.SignalSignatures;
 
         // Constructors
 
@@ -9810,6 +10345,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MultipartEncrypted;
+
+        // Signals
+
+        connect<K extends keyof MultipartEncrypted.SignalSignatures>(
+            signal: K,
+            callback: MultipartEncrypted.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
+            signal: K,
+            callback: MultipartEncrypted.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultipartEncrypted.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultipartEncrypted.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MultipartSigned {
@@ -9823,7 +10373,6 @@ export namespace Camel {
 
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
-        declare static readonly __signalSignatures: MultipartSigned.SignalSignatures;
 
         // Constructors
 
@@ -9832,6 +10381,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): MultipartSigned;
+
+        // Signals
+
+        connect<K extends keyof MultipartSigned.SignalSignatures>(
+            signal: K,
+            callback: MultipartSigned.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultipartSigned.SignalSignatures>(
+            signal: K,
+            callback: MultipartSigned.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultipartSigned.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultipartSigned.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9865,7 +10429,6 @@ export namespace Camel {
 
     class NNTPAddress extends Address {
         static $gtype: GObject.GType<NNTPAddress>;
-        declare static readonly __signalSignatures: NNTPAddress.SignalSignatures;
 
         // Constructors
 
@@ -9874,6 +10437,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): NNTPAddress;
+
+        // Signals
+
+        connect<K extends keyof NNTPAddress.SignalSignatures>(
+            signal: K,
+            callback: NNTPAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NNTPAddress.SignalSignatures>(
+            signal: K,
+            callback: NNTPAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NNTPAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NNTPAddress.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9903,7 +10481,6 @@ export namespace Camel {
 
     class NullOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<NullOutputStream>;
-        declare static readonly __signalSignatures: NullOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -9912,6 +10489,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): NullOutputStream;
+
+        // Signals
+
+        connect<K extends keyof NullOutputStream.SignalSignatures>(
+            signal: K,
+            callback: NullOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NullOutputStream.SignalSignatures>(
+            signal: K,
+            callback: NullOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NullOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NullOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9937,7 +10529,6 @@ export namespace Camel {
 
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -9959,6 +10550,12 @@ export namespace Camel {
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -10007,7 +10604,6 @@ export namespace Camel {
 
     class OfflineFolder extends Folder {
         static $gtype: GObject.GType<OfflineFolder>;
-        declare static readonly __signalSignatures: OfflineFolder.SignalSignatures;
 
         // Properties
 
@@ -10021,6 +10617,21 @@ export namespace Camel {
         constructor(properties?: Partial<OfflineFolder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OfflineFolder.SignalSignatures>(
+            signal: K,
+            callback: OfflineFolder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OfflineFolder.SignalSignatures>(
+            signal: K,
+            callback: OfflineFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OfflineFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OfflineFolder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -10139,7 +10750,6 @@ export namespace Camel {
      */
     class OfflineSettings extends StoreSettings {
         static $gtype: GObject.GType<OfflineSettings>;
-        declare static readonly __signalSignatures: OfflineSettings.SignalSignatures;
 
         // Properties
 
@@ -10165,6 +10775,21 @@ export namespace Camel {
         constructor(properties?: Partial<OfflineSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OfflineSettings.SignalSignatures>(
+            signal: K,
+            callback: OfflineSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OfflineSettings.SignalSignatures>(
+            signal: K,
+            callback: OfflineSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OfflineSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OfflineSettings.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10231,7 +10856,6 @@ export namespace Camel {
 
     class OfflineStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<OfflineStore>;
-        declare static readonly __signalSignatures: OfflineStore.SignalSignatures;
 
         // Properties
 
@@ -10242,6 +10866,21 @@ export namespace Camel {
         constructor(properties?: Partial<OfflineStore.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OfflineStore.SignalSignatures>(
+            signal: K,
+            callback: OfflineStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OfflineStore.SignalSignatures>(
+            signal: K,
+            callback: OfflineStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OfflineStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OfflineStore.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -10792,19 +11431,19 @@ export namespace Camel {
         // Signal callback interfaces
 
         interface PopMessage {
-            (): void;
+            (_source: Operation): void;
         }
 
         interface Progress {
-            (object: number): void;
+            (_source: Operation, object: number): void;
         }
 
         interface PushMessage {
-            (object: string): void;
+            (_source: Operation, object: string): void;
         }
 
         interface Status {
-            (object: string, p0: number): void;
+            (_source: Operation, object: string, p0: number): void;
         }
 
         // Signal signatures
@@ -10822,7 +11461,6 @@ export namespace Camel {
 
     class Operation extends Gio.Cancellable {
         static $gtype: GObject.GType<Operation>;
-        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Constructors
 
@@ -10844,16 +11482,6 @@ export namespace Camel {
             signal: K,
             ...args: Parameters<Operation.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'pop-message', callback: (_source: this) => void): number;
-        emit(signal: 'pop-message'): void;
-        connect_after(signal: 'progress', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'progress', object: number): void;
-        connect_after(signal: 'push-message', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'push-message', object: string): void;
-        connect_after(signal: 'status', callback: (_source: this, object: string, p0: number) => void): number;
-        emit(signal: 'status', object: string, p0: number): void;
 
         // Static methods
 
@@ -10898,7 +11526,6 @@ export namespace Camel {
 
     class PartitionTable extends GObject.Object {
         static $gtype: GObject.GType<PartitionTable>;
-        declare static readonly __signalSignatures: PartitionTable.SignalSignatures;
 
         // Constructors
 
@@ -10907,6 +11534,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](bs: BlockFile, root: _block_t): PartitionTable;
+
+        // Signals
+
+        connect<K extends keyof PartitionTable.SignalSignatures>(
+            signal: K,
+            callback: PartitionTable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PartitionTable.SignalSignatures>(
+            signal: K,
+            callback: PartitionTable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PartitionTable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PartitionTable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10927,7 +11569,6 @@ export namespace Camel {
 
     class SExp extends GObject.Object {
         static $gtype: GObject.GType<SExp>;
-        declare static readonly __signalSignatures: SExp.SignalSignatures;
 
         // Constructors
 
@@ -10936,6 +11577,12 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): SExp;
+
+        // Signals
+
+        connect<K extends keyof SExp.SignalSignatures>(signal: K, callback: SExp.SignalSignatures[K]): number;
+        connect_after<K extends keyof SExp.SignalSignatures>(signal: K, callback: SExp.SignalSignatures[K]): number;
+        emit<K extends keyof SExp.SignalSignatures>(signal: K, ...args: Parameters<SExp.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -11020,7 +11667,6 @@ export namespace Camel {
 
     class SMIMEContext extends CipherContext {
         static $gtype: GObject.GType<SMIMEContext>;
-        declare static readonly __signalSignatures: SMIMEContext.SignalSignatures;
 
         // Constructors
 
@@ -11032,6 +11678,21 @@ export namespace Camel {
         // Conflicted with Camel.CipherContext.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SMIMEContext.SignalSignatures>(
+            signal: K,
+            callback: SMIMEContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SMIMEContext.SignalSignatures>(
+            signal: K,
+            callback: SMIMEContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SMIMEContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SMIMEContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11057,7 +11718,6 @@ export namespace Camel {
 
     abstract class Sasl extends GObject.Object {
         static $gtype: GObject.GType<Sasl>;
-        declare static readonly __signalSignatures: Sasl.SignalSignatures;
 
         // Properties
 
@@ -11075,6 +11735,12 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](service_name: string, mechanism: string, service: Service): Sasl;
+
+        // Signals
+
+        connect<K extends keyof Sasl.SignalSignatures>(signal: K, callback: Sasl.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sasl.SignalSignatures>(signal: K, callback: Sasl.SignalSignatures[K]): number;
+        emit<K extends keyof Sasl.SignalSignatures>(signal: K, ...args: Parameters<Sasl.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -11309,7 +11975,6 @@ export namespace Camel {
 
     class SaslAnonymous extends Sasl {
         static $gtype: GObject.GType<SaslAnonymous>;
-        declare static readonly __signalSignatures: SaslAnonymous.SignalSignatures;
 
         // Constructors
 
@@ -11321,6 +11986,21 @@ export namespace Camel {
         // Conflicted with Camel.Sasl.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SaslAnonymous.SignalSignatures>(
+            signal: K,
+            callback: SaslAnonymous.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslAnonymous.SignalSignatures>(
+            signal: K,
+            callback: SaslAnonymous.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslAnonymous.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslAnonymous.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslCramMd5 {
@@ -11334,13 +12014,27 @@ export namespace Camel {
 
     class SaslCramMd5 extends Sasl {
         static $gtype: GObject.GType<SaslCramMd5>;
-        declare static readonly __signalSignatures: SaslCramMd5.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslCramMd5.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslCramMd5.SignalSignatures>(
+            signal: K,
+            callback: SaslCramMd5.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslCramMd5.SignalSignatures>(
+            signal: K,
+            callback: SaslCramMd5.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslCramMd5.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslCramMd5.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslDigestMd5 {
@@ -11354,13 +12048,27 @@ export namespace Camel {
 
     class SaslDigestMd5 extends Sasl {
         static $gtype: GObject.GType<SaslDigestMd5>;
-        declare static readonly __signalSignatures: SaslDigestMd5.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslDigestMd5.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslDigestMd5.SignalSignatures>(
+            signal: K,
+            callback: SaslDigestMd5.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslDigestMd5.SignalSignatures>(
+            signal: K,
+            callback: SaslDigestMd5.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslDigestMd5.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslDigestMd5.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslGssapi {
@@ -11374,13 +12082,27 @@ export namespace Camel {
 
     class SaslGssapi extends Sasl {
         static $gtype: GObject.GType<SaslGssapi>;
-        declare static readonly __signalSignatures: SaslGssapi.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslGssapi.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslGssapi.SignalSignatures>(
+            signal: K,
+            callback: SaslGssapi.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslGssapi.SignalSignatures>(
+            signal: K,
+            callback: SaslGssapi.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslGssapi.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslGssapi.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11409,13 +12131,24 @@ export namespace Camel {
 
     class SaslLogin extends Sasl {
         static $gtype: GObject.GType<SaslLogin>;
-        declare static readonly __signalSignatures: SaslLogin.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslLogin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslLogin.SignalSignatures>(signal: K, callback: SaslLogin.SignalSignatures[K]): number;
+        connect_after<K extends keyof SaslLogin.SignalSignatures>(
+            signal: K,
+            callback: SaslLogin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslLogin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslLogin.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslNTLM {
@@ -11429,13 +12162,24 @@ export namespace Camel {
 
     class SaslNTLM extends Sasl {
         static $gtype: GObject.GType<SaslNTLM>;
-        declare static readonly __signalSignatures: SaslNTLM.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslNTLM.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslNTLM.SignalSignatures>(signal: K, callback: SaslNTLM.SignalSignatures[K]): number;
+        connect_after<K extends keyof SaslNTLM.SignalSignatures>(
+            signal: K,
+            callback: SaslNTLM.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslNTLM.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslNTLM.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslPOPB4SMTP {
@@ -11449,13 +12193,27 @@ export namespace Camel {
 
     class SaslPOPB4SMTP extends Sasl {
         static $gtype: GObject.GType<SaslPOPB4SMTP>;
-        declare static readonly __signalSignatures: SaslPOPB4SMTP.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslPOPB4SMTP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
+            signal: K,
+            callback: SaslPOPB4SMTP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
+            signal: K,
+            callback: SaslPOPB4SMTP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslPOPB4SMTP.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslPlain {
@@ -11469,13 +12227,24 @@ export namespace Camel {
 
     class SaslPlain extends Sasl {
         static $gtype: GObject.GType<SaslPlain>;
-        declare static readonly __signalSignatures: SaslPlain.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslPlain.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslPlain.SignalSignatures>(signal: K, callback: SaslPlain.SignalSignatures[K]): number;
+        connect_after<K extends keyof SaslPlain.SignalSignatures>(
+            signal: K,
+            callback: SaslPlain.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslPlain.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslPlain.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslXOAuth2 {
@@ -11489,13 +12258,27 @@ export namespace Camel {
 
     class SaslXOAuth2 extends Sasl {
         static $gtype: GObject.GType<SaslXOAuth2>;
-        declare static readonly __signalSignatures: SaslXOAuth2.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslXOAuth2.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslXOAuth2.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslXOAuth2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslXOAuth2.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslXOAuth2Google {
@@ -11509,13 +12292,27 @@ export namespace Camel {
 
     class SaslXOAuth2Google extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Google>;
-        declare static readonly __signalSignatures: SaslXOAuth2Google.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2Google.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslXOAuth2Google.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2Google.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslXOAuth2Google.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2Google.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslXOAuth2Google.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslXOAuth2Google.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslXOAuth2Outlook {
@@ -11529,13 +12326,27 @@ export namespace Camel {
 
     class SaslXOAuth2Outlook extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Outlook>;
-        declare static readonly __signalSignatures: SaslXOAuth2Outlook.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2Outlook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2Outlook.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2Outlook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslXOAuth2Outlook.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SaslXOAuth2Yahoo {
@@ -11549,13 +12360,27 @@ export namespace Camel {
 
     class SaslXOAuth2Yahoo extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Yahoo>;
-        declare static readonly __signalSignatures: SaslXOAuth2Yahoo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SaslXOAuth2Yahoo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2Yahoo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
+            signal: K,
+            callback: SaslXOAuth2Yahoo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaslXOAuth2Yahoo.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Service {
@@ -11581,7 +12406,6 @@ export namespace Camel {
 
     abstract class Service extends Object implements Gio.Initable {
         static $gtype: GObject.GType<Service>;
-        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -11608,6 +12432,18 @@ export namespace Camel {
         constructor(properties?: Partial<Service.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -12670,15 +13506,15 @@ export namespace Camel {
         // Signal callback interfaces
 
         interface JobFinished {
-            (object: Gio.Cancellable | null, p0: GLib.Error): void;
+            (_source: Session, object: Gio.Cancellable | null, p0: GLib.Error): void;
         }
 
         interface JobStarted {
-            (object?: Gio.Cancellable | null): void;
+            (_source: Session, object?: Gio.Cancellable | null): void;
         }
 
         interface UserAlert {
-            (service: Service, type: SessionAlertType, message: string): void;
+            (_source: Session, service: Service, type: SessionAlertType, message: string): void;
         }
 
         // Signal signatures
@@ -12707,7 +13543,6 @@ export namespace Camel {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -12749,30 +13584,6 @@ export namespace Camel {
             signal: K,
             ...args: Parameters<Session.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'job-finished',
-            callback: (_source: this, object: Gio.Cancellable | null, p0: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'job-finished',
-            callback: (_source: this, object: Gio.Cancellable | null, p0: GLib.Error) => void,
-        ): number;
-        emit(signal: 'job-finished', object: Gio.Cancellable | null, p0: GLib.Error): void;
-        connect(signal: 'job-started', callback: (_source: this, object: Gio.Cancellable | null) => void): number;
-        connect_after(signal: 'job-started', callback: (_source: this, object: Gio.Cancellable | null) => void): number;
-        emit(signal: 'job-started', object?: Gio.Cancellable | null): void;
-        connect(
-            signal: 'user-alert',
-            callback: (_source: this, service: Service, type: SessionAlertType, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'user-alert',
-            callback: (_source: this, service: Service, type: SessionAlertType, message: string) => void,
-        ): number;
-        emit(signal: 'user-alert', service: Service, type: SessionAlertType, message: string): void;
 
         // Virtual methods
 
@@ -13491,13 +14302,24 @@ export namespace Camel {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Settings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -13552,23 +14374,23 @@ export namespace Camel {
         // Signal callback interfaces
 
         interface FolderCreated {
-            (object: FolderInfo): void;
+            (_source: Store, object: FolderInfo): void;
         }
 
         interface FolderDeleted {
-            (object: FolderInfo): void;
+            (_source: Store, object: FolderInfo): void;
         }
 
         interface FolderInfoStale {
-            (): void;
+            (_source: Store): void;
         }
 
         interface FolderOpened {
-            (object: Folder): void;
+            (_source: Store, object: Folder): void;
         }
 
         interface FolderRenamed {
-            (object: string, p0: FolderInfo): void;
+            (_source: Store, object: string, p0: FolderInfo): void;
         }
 
         // Signal signatures
@@ -13587,7 +14409,6 @@ export namespace Camel {
 
     abstract class Store extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Store>;
-        declare static readonly __signalSignatures: Store.SignalSignatures;
 
         // Constructors
 
@@ -13597,23 +14418,9 @@ export namespace Camel {
 
         // Signals
 
+        connect<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
         connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
         emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: Parameters<Store.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'folder-created', callback: (_source: this, object: FolderInfo) => void): number;
-        emit(signal: 'folder-created', object: FolderInfo): void;
-        connect_after(signal: 'folder-deleted', callback: (_source: this, object: FolderInfo) => void): number;
-        emit(signal: 'folder-deleted', object: FolderInfo): void;
-        connect_after(signal: 'folder-info-stale', callback: (_source: this) => void): number;
-        emit(signal: 'folder-info-stale'): void;
-        connect_after(signal: 'folder-opened', callback: (_source: this, object: Folder) => void): number;
-        emit(signal: 'folder-opened', object: Folder): void;
-        connect_after(
-            signal: 'folder-renamed',
-            callback: (_source: this, object: string, p0: FolderInfo) => void,
-        ): number;
-        emit(signal: 'folder-renamed', object: string, p0: FolderInfo): void;
 
         // Virtual methods
 
@@ -15102,7 +15909,6 @@ export namespace Camel {
      */
     class StoreSettings extends Settings {
         static $gtype: GObject.GType<StoreSettings>;
-        declare static readonly __signalSignatures: StoreSettings.SignalSignatures;
 
         // Properties
 
@@ -15120,6 +15926,21 @@ export namespace Camel {
         constructor(properties?: Partial<StoreSettings.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StoreSettings.SignalSignatures>(
+            signal: K,
+            callback: StoreSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoreSettings.SignalSignatures>(
+            signal: K,
+            callback: StoreSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoreSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoreSettings.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15162,7 +15983,6 @@ export namespace Camel {
 
     class StoreSummary extends GObject.Object {
         static $gtype: GObject.GType<StoreSummary>;
-        declare static readonly __signalSignatures: StoreSummary.SignalSignatures;
 
         // Constructors
 
@@ -15171,6 +15991,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): StoreSummary;
+
+        // Signals
+
+        connect<K extends keyof StoreSummary.SignalSignatures>(
+            signal: K,
+            callback: StoreSummary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StoreSummary.SignalSignatures>(
+            signal: K,
+            callback: StoreSummary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StoreSummary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StoreSummary.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -15296,7 +16131,6 @@ export namespace Camel {
 
     class Stream extends GObject.Object implements Gio.Seekable {
         static $gtype: GObject.GType<Stream>;
-        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -15312,6 +16146,12 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](base_stream: Gio.IOStream): Stream;
+
+        // Signals
+
+        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -15962,7 +16802,6 @@ export namespace Camel {
 
     class StreamBuffer extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamBuffer>;
-        declare static readonly __signalSignatures: StreamBuffer.SignalSignatures;
 
         // Constructors
 
@@ -15974,6 +16813,21 @@ export namespace Camel {
         // Conflicted with Camel.Stream.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StreamBuffer.SignalSignatures>(
+            signal: K,
+            callback: StreamBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamBuffer.SignalSignatures>(
+            signal: K,
+            callback: StreamBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamBuffer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -16559,7 +17413,6 @@ export namespace Camel {
 
     class StreamFilter extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFilter>;
-        declare static readonly __signalSignatures: StreamFilter.SignalSignatures;
 
         // Constructors
 
@@ -16571,6 +17424,21 @@ export namespace Camel {
         // Conflicted with Camel.Stream.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StreamFilter.SignalSignatures>(
+            signal: K,
+            callback: StreamFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamFilter.SignalSignatures>(
+            signal: K,
+            callback: StreamFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamFilter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17143,7 +18011,6 @@ export namespace Camel {
 
     class StreamFs extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFs>;
-        declare static readonly __signalSignatures: StreamFs.SignalSignatures;
 
         // Constructors
 
@@ -17154,6 +18021,18 @@ export namespace Camel {
         static new_with_fd(fd: number): StreamFs;
 
         static new_with_name(name: string, flags: number, mode: number): StreamFs;
+
+        // Signals
+
+        connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: StreamFs.SignalSignatures[K]): number;
+        connect_after<K extends keyof StreamFs.SignalSignatures>(
+            signal: K,
+            callback: StreamFs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamFs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamFs.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17711,7 +18590,6 @@ export namespace Camel {
 
     class StreamMem extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamMem>;
-        declare static readonly __signalSignatures: StreamMem.SignalSignatures;
 
         // Constructors
 
@@ -17724,6 +18602,18 @@ export namespace Camel {
         static new_with_buffer(buffer: Uint8Array | string): StreamMem;
 
         static new_with_byte_array(buffer: Uint8Array | string): StreamMem;
+
+        // Signals
+
+        connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: StreamMem.SignalSignatures[K]): number;
+        connect_after<K extends keyof StreamMem.SignalSignatures>(
+            signal: K,
+            callback: StreamMem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamMem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamMem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18303,7 +19193,6 @@ export namespace Camel {
 
     class StreamNull extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamNull>;
-        declare static readonly __signalSignatures: StreamNull.SignalSignatures;
 
         // Constructors
 
@@ -18312,6 +19201,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): StreamNull;
+
+        // Signals
+
+        connect<K extends keyof StreamNull.SignalSignatures>(
+            signal: K,
+            callback: StreamNull.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamNull.SignalSignatures>(
+            signal: K,
+            callback: StreamNull.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamNull.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamNull.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18870,7 +19774,6 @@ export namespace Camel {
 
     class StreamProcess extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamProcess>;
-        declare static readonly __signalSignatures: StreamProcess.SignalSignatures;
 
         // Constructors
 
@@ -18879,6 +19782,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): StreamProcess;
+
+        // Signals
+
+        connect<K extends keyof StreamProcess.SignalSignatures>(
+            signal: K,
+            callback: StreamProcess.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamProcess.SignalSignatures>(
+            signal: K,
+            callback: StreamProcess.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamProcess.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamProcess.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19437,7 +20355,6 @@ export namespace Camel {
 
     class TextIndex extends Index {
         static $gtype: GObject.GType<TextIndex>;
-        declare static readonly __signalSignatures: TextIndex.SignalSignatures;
 
         // Constructors
 
@@ -19446,6 +20363,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](path: string, flags: number): TextIndex;
+
+        // Signals
+
+        connect<K extends keyof TextIndex.SignalSignatures>(signal: K, callback: TextIndex.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextIndex.SignalSignatures>(
+            signal: K,
+            callback: TextIndex.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextIndex.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextIndex.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -19471,13 +20400,27 @@ export namespace Camel {
 
     class TextIndexCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexCursor>;
-        declare static readonly __signalSignatures: TextIndexCursor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TextIndexCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TextIndexCursor.SignalSignatures>(
+            signal: K,
+            callback: TextIndexCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextIndexCursor.SignalSignatures>(
+            signal: K,
+            callback: TextIndexCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextIndexCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextIndexCursor.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TextIndexKeyCursor {
@@ -19491,13 +20434,27 @@ export namespace Camel {
 
     class TextIndexKeyCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexKeyCursor>;
-        declare static readonly __signalSignatures: TextIndexKeyCursor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TextIndexKeyCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TextIndexKeyCursor.SignalSignatures>(
+            signal: K,
+            callback: TextIndexKeyCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextIndexKeyCursor.SignalSignatures>(
+            signal: K,
+            callback: TextIndexKeyCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextIndexKeyCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextIndexKeyCursor.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TextIndexName {
@@ -19511,13 +20468,27 @@ export namespace Camel {
 
     class TextIndexName extends IndexName {
         static $gtype: GObject.GType<TextIndexName>;
-        declare static readonly __signalSignatures: TextIndexName.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TextIndexName.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TextIndexName.SignalSignatures>(
+            signal: K,
+            callback: TextIndexName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextIndexName.SignalSignatures>(
+            signal: K,
+            callback: TextIndexName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextIndexName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextIndexName.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Transport {
@@ -19531,13 +20502,24 @@ export namespace Camel {
 
     abstract class Transport extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Transport>;
-        declare static readonly __signalSignatures: Transport.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Transport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Transport.SignalSignatures>(signal: K, callback: Transport.SignalSignatures[K]): number;
+        connect_after<K extends keyof Transport.SignalSignatures>(
+            signal: K,
+            callback: Transport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transport.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -20198,7 +21180,6 @@ export namespace Camel {
 
     class VTrashFolder extends VeeFolder {
         static $gtype: GObject.GType<VTrashFolder>;
-        declare static readonly __signalSignatures: VTrashFolder.SignalSignatures;
 
         // Constructors
 
@@ -20210,6 +21191,21 @@ export namespace Camel {
         // Conflicted with Camel.VeeFolder.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VTrashFolder.SignalSignatures>(
+            signal: K,
+            callback: VTrashFolder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VTrashFolder.SignalSignatures>(
+            signal: K,
+            callback: VTrashFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VTrashFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VTrashFolder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20231,7 +21227,6 @@ export namespace Camel {
      */
     class VeeDataCache extends GObject.Object {
         static $gtype: GObject.GType<VeeDataCache>;
-        declare static readonly __signalSignatures: VeeDataCache.SignalSignatures;
 
         // Constructors
 
@@ -20240,6 +21235,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): VeeDataCache;
+
+        // Signals
+
+        connect<K extends keyof VeeDataCache.SignalSignatures>(
+            signal: K,
+            callback: VeeDataCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VeeDataCache.SignalSignatures>(
+            signal: K,
+            callback: VeeDataCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeDataCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeDataCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20312,7 +21322,6 @@ export namespace Camel {
 
     class VeeFolder extends Folder {
         static $gtype: GObject.GType<VeeFolder>;
-        declare static readonly __signalSignatures: VeeFolder.SignalSignatures;
 
         // Properties
 
@@ -20328,6 +21337,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](parent_store: Store, full: string, flags: number): VeeFolder;
+
+        // Signals
+
+        connect<K extends keyof VeeFolder.SignalSignatures>(signal: K, callback: VeeFolder.SignalSignatures[K]): number;
+        connect_after<K extends keyof VeeFolder.SignalSignatures>(
+            signal: K,
+            callback: VeeFolder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeFolder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeFolder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -20476,7 +21497,6 @@ export namespace Camel {
 
     class VeeMessageInfo extends MessageInfo {
         static $gtype: GObject.GType<VeeMessageInfo>;
-        declare static readonly __signalSignatures: VeeMessageInfo.SignalSignatures;
 
         // Constructors
 
@@ -20488,6 +21508,21 @@ export namespace Camel {
         // Conflicted with Camel.MessageInfo.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VeeMessageInfo.SignalSignatures>(
+            signal: K,
+            callback: VeeMessageInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VeeMessageInfo.SignalSignatures>(
+            signal: K,
+            callback: VeeMessageInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeMessageInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeMessageInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20510,7 +21545,6 @@ export namespace Camel {
      */
     class VeeMessageInfoData extends GObject.Object {
         static $gtype: GObject.GType<VeeMessageInfoData>;
-        declare static readonly __signalSignatures: VeeMessageInfoData.SignalSignatures;
 
         // Constructors
 
@@ -20519,6 +21553,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](subfolder_data: VeeSubfolderData, orig_message_uid: string): VeeMessageInfoData;
+
+        // Signals
+
+        connect<K extends keyof VeeMessageInfoData.SignalSignatures>(
+            signal: K,
+            callback: VeeMessageInfoData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VeeMessageInfoData.SignalSignatures>(
+            signal: K,
+            callback: VeeMessageInfoData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeMessageInfoData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeMessageInfoData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20541,7 +21590,6 @@ export namespace Camel {
 
     class VeeStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<VeeStore>;
-        declare static readonly __signalSignatures: VeeStore.SignalSignatures;
 
         // Properties
 
@@ -20557,6 +21605,18 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](): VeeStore;
+
+        // Signals
+
+        connect<K extends keyof VeeStore.SignalSignatures>(signal: K, callback: VeeStore.SignalSignatures[K]): number;
+        connect_after<K extends keyof VeeStore.SignalSignatures>(
+            signal: K,
+            callback: VeeStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeStore.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21066,7 +22126,6 @@ export namespace Camel {
      */
     class VeeSubfolderData extends GObject.Object {
         static $gtype: GObject.GType<VeeSubfolderData>;
-        declare static readonly __signalSignatures: VeeSubfolderData.SignalSignatures;
 
         // Constructors
 
@@ -21075,6 +22134,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](folder: Folder): VeeSubfolderData;
+
+        // Signals
+
+        connect<K extends keyof VeeSubfolderData.SignalSignatures>(
+            signal: K,
+            callback: VeeSubfolderData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VeeSubfolderData.SignalSignatures>(
+            signal: K,
+            callback: VeeSubfolderData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeSubfolderData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeSubfolderData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21093,7 +22167,6 @@ export namespace Camel {
 
     class VeeSummary extends FolderSummary {
         static $gtype: GObject.GType<VeeSummary>;
-        declare static readonly __signalSignatures: VeeSummary.SignalSignatures;
 
         // Constructors
 
@@ -21102,6 +22175,21 @@ export namespace Camel {
         _init(...args: any[]): void;
 
         static ['new'](parent: Folder): VeeSummary;
+
+        // Signals
+
+        connect<K extends keyof VeeSummary.SignalSignatures>(
+            signal: K,
+            callback: VeeSummary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VeeSummary.SignalSignatures>(
+            signal: K,
+            callback: VeeSummary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VeeSummary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VeeSummary.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

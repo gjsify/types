@@ -221,27 +221,27 @@ export namespace LightDM {
         // Signal callback interfaces
 
         interface AuthenticationComplete {
-            (): void;
+            (_source: Greeter): void;
         }
 
         interface AutologinTimerExpired {
-            (): void;
+            (_source: Greeter): void;
         }
 
         interface Idle {
-            (): void;
+            (_source: Greeter): void;
         }
 
         interface Reset {
-            (): void;
+            (_source: Greeter): void;
         }
 
         interface ShowMessage {
-            (text: string, type: MessageType): void;
+            (_source: Greeter, text: string, type: MessageType): void;
         }
 
         interface ShowPrompt {
-            (text: string, type: PromptType): void;
+            (_source: Greeter, text: string, type: PromptType): void;
         }
 
         // Signal signatures
@@ -296,7 +296,6 @@ export namespace LightDM {
      */
     class Greeter extends GObject.Object {
         static $gtype: GObject.GType<Greeter>;
-        declare static readonly __signalSignatures: Greeter.SignalSignatures;
 
         // Properties
 
@@ -350,30 +349,6 @@ export namespace LightDM {
             signal: K,
             ...args: Parameters<Greeter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authentication-complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'authentication-complete', callback: (_source: this) => void): number;
-        emit(signal: 'authentication-complete'): void;
-        connect(signal: 'autologin-timer-expired', callback: (_source: this) => void): number;
-        connect_after(signal: 'autologin-timer-expired', callback: (_source: this) => void): number;
-        emit(signal: 'autologin-timer-expired'): void;
-        connect(signal: 'idle', callback: (_source: this) => void): number;
-        connect_after(signal: 'idle', callback: (_source: this) => void): number;
-        emit(signal: 'idle'): void;
-        connect(signal: 'reset', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset', callback: (_source: this) => void): number;
-        emit(signal: 'reset'): void;
-        connect(signal: 'show-message', callback: (_source: this, text: string, type: MessageType) => void): number;
-        connect_after(
-            signal: 'show-message',
-            callback: (_source: this, text: string, type: MessageType) => void,
-        ): number;
-        emit(signal: 'show-message', text: string, type: MessageType): void;
-        connect(signal: 'show-prompt', callback: (_source: this, text: string, type: PromptType) => void): number;
-        connect_after(signal: 'show-prompt', callback: (_source: this, text: string, type: PromptType) => void): number;
-        emit(signal: 'show-prompt', text: string, type: PromptType): void;
 
         // Virtual methods
 
@@ -724,7 +699,6 @@ export namespace LightDM {
      */
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
-        declare static readonly __signalSignatures: Language.SignalSignatures;
 
         // Properties
 
@@ -737,6 +711,18 @@ export namespace LightDM {
         constructor(properties?: Partial<Language.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect_after<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            callback: Language.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Language.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Language.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -783,7 +769,6 @@ export namespace LightDM {
      */
     class Layout extends GObject.Object {
         static $gtype: GObject.GType<Layout>;
-        declare static readonly __signalSignatures: Layout.SignalSignatures;
 
         // Properties
 
@@ -797,6 +782,12 @@ export namespace LightDM {
         constructor(properties?: Partial<Layout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -836,7 +827,6 @@ export namespace LightDM {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -849,6 +839,18 @@ export namespace LightDM {
         constructor(properties?: Partial<Session.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -878,7 +880,7 @@ export namespace LightDM {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: User): void;
         }
 
         // Signal signatures
@@ -918,7 +920,6 @@ export namespace LightDM {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
-        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Properties
 
@@ -954,12 +955,6 @@ export namespace LightDM {
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -1043,15 +1038,15 @@ export namespace LightDM {
         // Signal callback interfaces
 
         interface UserAdded {
-            (user: User): void;
+            (_source: UserList, user: User): void;
         }
 
         interface UserChanged {
-            (user: User): void;
+            (_source: UserList, user: User): void;
         }
 
         interface UserRemoved {
-            (user: User): void;
+            (_source: UserList, user: User): void;
         }
 
         // Signal signatures
@@ -1076,7 +1071,6 @@ export namespace LightDM {
      */
     class UserList extends GObject.Object {
         static $gtype: GObject.GType<UserList>;
-        declare static readonly __signalSignatures: UserList.SignalSignatures;
 
         // Properties
 
@@ -1101,18 +1095,6 @@ export namespace LightDM {
             signal: K,
             ...args: Parameters<UserList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'user-added', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-added', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-added', user: User): void;
-        connect(signal: 'user-changed', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-changed', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-changed', user: User): void;
-        connect(signal: 'user-removed', callback: (_source: this, user: User) => void): number;
-        connect_after(signal: 'user-removed', callback: (_source: this, user: User) => void): number;
-        emit(signal: 'user-removed', user: User): void;
 
         // Static methods
 

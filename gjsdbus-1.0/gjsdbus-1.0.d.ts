@@ -24,15 +24,15 @@ export namespace GjsDBus {
         // Signal callback interfaces
 
         interface HandleMethodCall {
-            (object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation): void;
+            (_source: Implementation, object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation): void;
         }
 
         interface HandlePropertyGet {
-            (object: string): GLib.Variant;
+            (_source: Implementation, object: string): GLib.Variant;
         }
 
         interface HandlePropertySet {
-            (object: string, p0: GLib.Variant): void;
+            (_source: Implementation, object: string, p0: GLib.Variant): void;
         }
 
         // Signal signatures
@@ -54,7 +54,6 @@ export namespace GjsDBus {
 
     class Implementation extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface {
         static $gtype: GObject.GType<Implementation>;
-        declare static readonly __signalSignatures: Implementation.SignalSignatures;
 
         // Properties
 
@@ -81,30 +80,6 @@ export namespace GjsDBus {
             signal: K,
             ...args: Parameters<Implementation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'handle-method-call',
-            callback: (_source: this, object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation) => void,
-        ): number;
-        connect_after(
-            signal: 'handle-method-call',
-            callback: (_source: this, object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation) => void,
-        ): number;
-        emit(signal: 'handle-method-call', object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation): void;
-        connect(signal: 'handle-property-get', callback: (_source: this, object: string) => GLib.Variant): number;
-        connect_after(signal: 'handle-property-get', callback: (_source: this, object: string) => GLib.Variant): number;
-        emit(signal: 'handle-property-get', object: string): void;
-        connect(
-            signal: 'handle-property-set',
-            callback: (_source: this, object: string, p0: GLib.Variant) => void,
-        ): number;
-        connect_after(
-            signal: 'handle-property-set',
-            callback: (_source: this, object: string, p0: GLib.Variant) => void,
-        ): number;
-        emit(signal: 'handle-property-set', object: string, p0: GLib.Variant): void;
 
         // Methods
 

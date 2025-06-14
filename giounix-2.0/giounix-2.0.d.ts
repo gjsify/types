@@ -604,7 +604,6 @@ export namespace GioUnix {
      */
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
-        declare static readonly __signalSignatures: DesktopAppInfo.SignalSignatures;
 
         // Properties
 
@@ -624,6 +623,21 @@ export namespace GioUnix {
         static new_from_filename(filename: string): DesktopAppInfo;
 
         static new_from_keyfile(key_file: GLib.KeyFile): DesktopAppInfo;
+
+        // Signals
+
+        connect<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            callback: DesktopAppInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            callback: DesktopAppInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesktopAppInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1792,7 +1806,6 @@ export namespace GioUnix {
      */
     class FDMessage extends Gio.SocketControlMessage {
         static $gtype: GObject.GType<FDMessage>;
-        declare static readonly __signalSignatures: FDMessage.SignalSignatures;
 
         // Properties
 
@@ -1814,6 +1827,18 @@ export namespace GioUnix {
         static ['new'](): FDMessage;
 
         static new_with_fd_list(fd_list: Gio.UnixFDList): FDMessage;
+
+        // Signals
+
+        connect<K extends keyof FDMessage.SignalSignatures>(signal: K, callback: FDMessage.SignalSignatures[K]): number;
+        connect_after<K extends keyof FDMessage.SignalSignatures>(
+            signal: K,
+            callback: FDMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FDMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FDMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1889,7 +1914,6 @@ export namespace GioUnix {
      */
     class InputStream extends Gio.InputStream implements Gio.PollableInputStream, FileDescriptorBased {
         static $gtype: GObject.GType<InputStream>;
-        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Properties
 
@@ -1915,6 +1939,21 @@ export namespace GioUnix {
         _init(...args: any[]): void;
 
         static ['new'](fd: number, close_fd: boolean): InputStream;
+
+        // Signals
+
+        connect<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            callback: InputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputStream.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3251,11 +3290,11 @@ export namespace GioUnix {
         // Signal callback interfaces
 
         interface MountpointsChanged {
-            (): void;
+            (_source: MountMonitor): void;
         }
 
         interface MountsChanged {
-            (): void;
+            (_source: MountMonitor): void;
         }
 
         // Signal signatures
@@ -3281,7 +3320,6 @@ export namespace GioUnix {
      */
     class MountMonitor extends GObject.Object {
         static $gtype: GObject.GType<MountMonitor>;
-        declare static readonly __signalSignatures: MountMonitor.SignalSignatures;
 
         // Constructors
 
@@ -3305,15 +3343,6 @@ export namespace GioUnix {
             signal: K,
             ...args: Parameters<MountMonitor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'mountpoints-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'mountpoints-changed', callback: (_source: this) => void): number;
-        emit(signal: 'mountpoints-changed'): void;
-        connect(signal: 'mounts-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'mounts-changed', callback: (_source: this) => void): number;
-        emit(signal: 'mounts-changed'): void;
 
         // Static methods
 
@@ -3372,7 +3401,6 @@ export namespace GioUnix {
      */
     class OutputStream extends Gio.OutputStream implements Gio.PollableOutputStream, FileDescriptorBased {
         static $gtype: GObject.GType<OutputStream>;
-        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Properties
 
@@ -3398,6 +3426,21 @@ export namespace GioUnix {
         _init(...args: any[]): void;
 
         static ['new'](fd: number, close_fd: boolean): OutputStream;
+
+        // Signals
+
+        connect<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            callback: OutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OutputStream.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

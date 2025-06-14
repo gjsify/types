@@ -169,7 +169,6 @@ export namespace NMA {
 
     class BarCode extends GObject.Object {
         static $gtype: GObject.GType<BarCode>;
-        declare static readonly __signalSignatures: BarCode.SignalSignatures;
 
         // Properties
 
@@ -183,6 +182,18 @@ export namespace NMA {
         _init(...args: any[]): void;
 
         static ['new'](text: string): BarCode;
+
+        // Signals
+
+        connect<K extends keyof BarCode.SignalSignatures>(signal: K, callback: BarCode.SignalSignatures[K]): number;
+        connect_after<K extends keyof BarCode.SignalSignatures>(
+            signal: K,
+            callback: BarCode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BarCode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BarCode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -216,7 +227,6 @@ export namespace NMA {
 
     class BarCodeWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BarCodeWidget>;
-        declare static readonly __signalSignatures: BarCodeWidget.SignalSignatures;
 
         // Properties
 
@@ -228,6 +238,21 @@ export namespace NMA {
         constructor(properties?: Partial<BarCodeWidget.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BarCodeWidget.SignalSignatures>(
+            signal: K,
+            callback: BarCodeWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BarCodeWidget.SignalSignatures>(
+            signal: K,
+            callback: BarCodeWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BarCodeWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BarCodeWidget.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -692,23 +717,23 @@ export namespace NMA {
         // Signal callback interfaces
 
         interface CertPasswordValidate {
-            (): GLib.Error;
+            (_source: CertChooser): GLib.Error;
         }
 
         interface CertValidate {
-            (): GLib.Error;
+            (_source: CertChooser): GLib.Error;
         }
 
         interface Changed {
-            (): void;
+            (_source: CertChooser): void;
         }
 
         interface KeyPasswordValidate {
-            (): GLib.Error;
+            (_source: CertChooser): GLib.Error;
         }
 
         interface KeyValidate {
-            (): GLib.Error;
+            (_source: CertChooser): GLib.Error;
         }
 
         // Signal signatures
@@ -734,7 +759,6 @@ export namespace NMA {
 
     class CertChooser extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CertChooser>;
-        declare static readonly __signalSignatures: CertChooser.SignalSignatures;
 
         // Properties
 
@@ -766,24 +790,6 @@ export namespace NMA {
             signal: K,
             ...args: Parameters<CertChooser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cert-password-validate', callback: (_source: this) => GLib.Error): number;
-        connect_after(signal: 'cert-password-validate', callback: (_source: this) => GLib.Error): number;
-        emit(signal: 'cert-password-validate'): void;
-        connect(signal: 'cert-validate', callback: (_source: this) => GLib.Error): number;
-        connect_after(signal: 'cert-validate', callback: (_source: this) => GLib.Error): number;
-        emit(signal: 'cert-validate'): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'key-password-validate', callback: (_source: this) => GLib.Error): number;
-        connect_after(signal: 'key-password-validate', callback: (_source: this) => GLib.Error): number;
-        emit(signal: 'key-password-validate'): void;
-        connect(signal: 'key-validate', callback: (_source: this) => GLib.Error): number;
-        connect_after(signal: 'key-validate', callback: (_source: this) => GLib.Error): number;
-        emit(signal: 'key-validate'): void;
 
         // Methods
 
@@ -1419,7 +1425,6 @@ export namespace NMA {
         implements Gio.AsyncInitable<MobileProvidersDatabase>, Gio.Initable
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
-        declare static readonly __signalSignatures: MobileProvidersDatabase.SignalSignatures;
 
         // Properties
 
@@ -1444,6 +1449,21 @@ export namespace NMA {
             service_providers?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): MobileProvidersDatabase;
+
+        // Signals
+
+        connect<K extends keyof MobileProvidersDatabase.SignalSignatures>(
+            signal: K,
+            callback: MobileProvidersDatabase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MobileProvidersDatabase.SignalSignatures>(
+            signal: K,
+            callback: MobileProvidersDatabase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MobileProvidersDatabase.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2199,13 +2219,27 @@ export namespace NMA {
 
     class MobileWizard extends GObject.Object {
         static $gtype: GObject.GType<MobileWizard>;
-        declare static readonly __signalSignatures: MobileWizard.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MobileWizard.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MobileWizard.SignalSignatures>(
+            signal: K,
+            callback: MobileWizard.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MobileWizard.SignalSignatures>(
+            signal: K,
+            callback: MobileWizard.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MobileWizard.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MobileWizard.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2227,7 +2261,6 @@ export namespace NMA {
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
-        declare static readonly __signalSignatures: VpnPasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -2239,6 +2272,21 @@ export namespace NMA {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VpnPasswordDialog.SignalSignatures>(
+            signal: K,
+            callback: VpnPasswordDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VpnPasswordDialog.SignalSignatures>(
+            signal: K,
+            callback: VpnPasswordDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VpnPasswordDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VpnPasswordDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2715,7 +2763,6 @@ export namespace NMA {
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
-        declare static readonly __signalSignatures: WifiDialog.SignalSignatures;
 
         // Constructors
 
@@ -2746,6 +2793,21 @@ export namespace NMA {
             secrets_setting_name: string,
             secrets_hints: string,
         ): WifiDialog;
+
+        // Signals
+
+        connect<K extends keyof WifiDialog.SignalSignatures>(
+            signal: K,
+            callback: WifiDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WifiDialog.SignalSignatures>(
+            signal: K,
+            callback: WifiDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WifiDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WifiDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

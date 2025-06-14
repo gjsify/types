@@ -1766,7 +1766,6 @@ export namespace RB {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -1779,6 +1778,21 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): Application;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2305,7 +2319,6 @@ export namespace RB {
 
     class AsyncCopy extends GObject.Object {
         static $gtype: GObject.GType<AsyncCopy>;
-        declare static readonly __signalSignatures: AsyncCopy.SignalSignatures;
 
         // Constructors
 
@@ -2314,6 +2327,18 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): AsyncCopy;
+
+        // Signals
+
+        connect<K extends keyof AsyncCopy.SignalSignatures>(signal: K, callback: AsyncCopy.SignalSignatures[K]): number;
+        connect_after<K extends keyof AsyncCopy.SignalSignatures>(
+            signal: K,
+            callback: AsyncCopy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncCopy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncCopy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2353,7 +2378,6 @@ export namespace RB {
 
     class AutoPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<AutoPlaylistSource>;
-        declare static readonly __signalSignatures: AutoPlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -2370,6 +2394,21 @@ export namespace RB {
         // Conflicted with RB.PlaylistSource.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof AutoPlaylistSource.SignalSignatures>(
+            signal: K,
+            callback: AutoPlaylistSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AutoPlaylistSource.SignalSignatures>(
+            signal: K,
+            callback: AutoPlaylistSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AutoPlaylistSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AutoPlaylistSource.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2830,7 +2869,6 @@ export namespace RB {
 
     abstract class BrowserSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BrowserSource>;
-        declare static readonly __signalSignatures: BrowserSource.SignalSignatures;
 
         // Properties
 
@@ -2842,6 +2880,21 @@ export namespace RB {
         constructor(properties?: Partial<BrowserSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BrowserSource.SignalSignatures>(
+            signal: K,
+            callback: BrowserSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BrowserSource.SignalSignatures>(
+            signal: K,
+            callback: BrowserSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BrowserSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BrowserSource.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3322,7 +3375,6 @@ export namespace RB {
 
     class ButtonBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ButtonBar>;
-        declare static readonly __signalSignatures: ButtonBar.SignalSignatures;
 
         // Properties
 
@@ -3339,6 +3391,18 @@ export namespace RB {
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ButtonBar.SignalSignatures>(signal: K, callback: ButtonBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof ButtonBar.SignalSignatures>(
+            signal: K,
+            callback: ButtonBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ButtonBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ButtonBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3817,7 +3881,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface PixbufClicked {
-            (path: string): void;
+            (_source: CellRendererPixbuf, path: string): void;
         }
 
         // Signal signatures
@@ -3832,7 +3896,6 @@ export namespace RB {
 
     class CellRendererPixbuf extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<CellRendererPixbuf>;
-        declare static readonly __signalSignatures: CellRendererPixbuf.SignalSignatures;
 
         // Constructors
 
@@ -3856,12 +3919,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<CellRendererPixbuf.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pixbuf-clicked', callback: (_source: this, path: string) => void): number;
-        connect_after(signal: 'pixbuf-clicked', callback: (_source: this, path: string) => void): number;
-        emit(signal: 'pixbuf-clicked', path: string): void;
 
         // Virtual methods
 
@@ -3872,7 +3929,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Rated {
-            (score: string, path: number): void;
+            (_source: CellRendererRating, score: string, path: number): void;
         }
 
         // Signal signatures
@@ -3889,7 +3946,6 @@ export namespace RB {
 
     class CellRendererRating extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererRating>;
-        declare static readonly __signalSignatures: CellRendererRating.SignalSignatures;
 
         // Properties
 
@@ -3922,12 +3978,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<CellRendererRating.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'rated', callback: (_source: this, score: string, path: number) => void): number;
-        connect_after(signal: 'rated', callback: (_source: this, score: string, path: number) => void): number;
-        emit(signal: 'rated', score: string, path: number): void;
 
         // Virtual methods
 
@@ -3945,7 +3995,6 @@ export namespace RB {
 
     class ChunkLoader extends GObject.Object {
         static $gtype: GObject.GType<ChunkLoader>;
-        declare static readonly __signalSignatures: ChunkLoader.SignalSignatures;
 
         // Constructors
 
@@ -3954,6 +4003,21 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): ChunkLoader;
+
+        // Signals
+
+        connect<K extends keyof ChunkLoader.SignalSignatures>(
+            signal: K,
+            callback: ChunkLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChunkLoader.SignalSignatures>(
+            signal: K,
+            callback: ChunkLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChunkLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChunkLoader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3992,11 +4056,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Deleted {
-            (): void;
+            (_source: DisplayPage): void;
         }
 
         interface StatusChanged {
-            (): void;
+            (_source: DisplayPage): void;
         }
 
         // Signal signatures
@@ -4024,7 +4088,6 @@ export namespace RB {
 
     abstract class DisplayPage extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPage>;
-        declare static readonly __signalSignatures: DisplayPage.SignalSignatures;
 
         // Properties
 
@@ -4081,15 +4144,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<DisplayPage.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deleted', callback: (_source: this) => void): number;
-        connect_after(signal: 'deleted', callback: (_source: this) => void): number;
-        emit(signal: 'deleted'): void;
-        connect(signal: 'status-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'status-changed', callback: (_source: this) => void): number;
-        emit(signal: 'status-changed'): void;
 
         // Virtual methods
 
@@ -4679,7 +4733,6 @@ export namespace RB {
 
     class DisplayPageGroup extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPageGroup>;
-        declare static readonly __signalSignatures: DisplayPageGroup.SignalSignatures;
 
         // Properties
 
@@ -4708,6 +4761,21 @@ export namespace RB {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DisplayPageGroup.SignalSignatures>(
+            signal: K,
+            callback: DisplayPageGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DisplayPageGroup.SignalSignatures>(
+            signal: K,
+            callback: DisplayPageGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayPageGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayPageGroup.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5170,11 +5238,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface DropReceived {
-            (target: DisplayPage, pos: number, data?: any | null): void;
+            (_source: DisplayPageModel, target: DisplayPage, pos: number, data?: any | null): void;
         }
 
         interface PageInserted {
-            (page: DisplayPage, iter: Gtk.TreeIter): void;
+            (_source: DisplayPageModel, page: DisplayPage, iter: Gtk.TreeIter): void;
         }
 
         // Signal signatures
@@ -5193,7 +5261,6 @@ export namespace RB {
 
     class DisplayPageModel extends Gtk.TreeModelFilter implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<DisplayPageModel>;
-        declare static readonly __signalSignatures: DisplayPageModel.SignalSignatures;
 
         // Constructors
 
@@ -5217,27 +5284,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<DisplayPageModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'drop-received',
-            callback: (_source: this, target: DisplayPage, pos: number, data: any | null) => void,
-        ): number;
-        connect_after(
-            signal: 'drop-received',
-            callback: (_source: this, target: DisplayPage, pos: number, data: any | null) => void,
-        ): number;
-        emit(signal: 'drop-received', target: DisplayPage, pos: number, data?: any | null): void;
-        connect(
-            signal: 'page-inserted',
-            callback: (_source: this, page: DisplayPage, iter: Gtk.TreeIter) => void,
-        ): number;
-        connect_after(
-            signal: 'page-inserted',
-            callback: (_source: this, page: DisplayPage, iter: Gtk.TreeIter) => void,
-        ): number;
-        emit(signal: 'page-inserted', page: DisplayPage, iter: Gtk.TreeIter): void;
 
         // Virtual methods
 
@@ -6188,11 +6234,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface DropReceived {
-            (page?: any | null, data?: any | null): void;
+            (_source: DisplayPageTree, page?: any | null, data?: any | null): void;
         }
 
         interface Selected {
-            (page: GObject.Object): void;
+            (_source: DisplayPageTree, page: GObject.Object): void;
         }
 
         // Signal signatures
@@ -6215,7 +6261,6 @@ export namespace RB {
 
     class DisplayPageTree extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPageTree>;
-        declare static readonly __signalSignatures: DisplayPageTree.SignalSignatures;
 
         // Properties
 
@@ -6253,18 +6298,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<DisplayPageTree.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'drop-received', callback: (_source: this, page: any | null, data: any | null) => void): number;
-        connect_after(
-            signal: 'drop-received',
-            callback: (_source: this, page: any | null, data: any | null) => void,
-        ): number;
-        emit(signal: 'drop-received', page?: any | null, data?: any | null): void;
-        connect(signal: 'selected', callback: (_source: this, page: GObject.Object) => void): number;
-        connect_after(signal: 'selected', callback: (_source: this, page: GObject.Object) => void): number;
-        emit(signal: 'selected', page: GObject.Object): void;
 
         // Virtual methods
 
@@ -6755,11 +6788,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface PrepareSink {
-            (uri: string, sink: GObject.Object): void;
+            (_source: EncoderFactory, uri: string, sink: GObject.Object): void;
         }
 
         interface PrepareSource {
-            (uri: string, source: GObject.Object): void;
+            (_source: EncoderFactory, uri: string, source: GObject.Object): void;
         }
 
         // Signal signatures
@@ -6775,7 +6808,6 @@ export namespace RB {
 
     class EncoderFactory extends GObject.Object {
         static $gtype: GObject.GType<EncoderFactory>;
-        declare static readonly __signalSignatures: EncoderFactory.SignalSignatures;
 
         // Fields
 
@@ -6801,24 +6833,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<EncoderFactory.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'prepare-sink', callback: (_source: this, uri: string, sink: GObject.Object) => void): number;
-        connect_after(
-            signal: 'prepare-sink',
-            callback: (_source: this, uri: string, sink: GObject.Object) => void,
-        ): number;
-        emit(signal: 'prepare-sink', uri: string, sink: GObject.Object): void;
-        connect(
-            signal: 'prepare-source',
-            callback: (_source: this, uri: string, source: GObject.Object) => void,
-        ): number;
-        connect_after(
-            signal: 'prepare-source',
-            callback: (_source: this, uri: string, source: GObject.Object) => void,
-        ): number;
-        emit(signal: 'prepare-source', uri: string, source: GObject.Object): void;
 
         // Static methods
 
@@ -6837,31 +6851,31 @@ export namespace RB {
         // Signal callback interfaces
 
         interface EntriesReplaced {
-            (): void;
+            (_source: EntryView): void;
         }
 
         interface EntryActivated {
-            (entry: RhythmDBEntry): void;
+            (_source: EntryView, entry: RhythmDBEntry): void;
         }
 
         interface EntryAdded {
-            (entry: RhythmDBEntry): void;
+            (_source: EntryView, entry: RhythmDBEntry): void;
         }
 
         interface EntryDeleted {
-            (entry: RhythmDBEntry): void;
+            (_source: EntryView, entry: RhythmDBEntry): void;
         }
 
         interface HaveSelectionChanged {
-            (have_selection: boolean): void;
+            (_source: EntryView, have_selection: boolean): void;
         }
 
         interface SelectionChanged {
-            (): void;
+            (_source: EntryView): void;
         }
 
         interface ShowPopup {
-            (over_entry: boolean): void;
+            (_source: EntryView, over_entry: boolean): void;
         }
 
         // Signal signatures
@@ -6901,7 +6915,6 @@ export namespace RB {
 
     class EntryView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EntryView>;
-        declare static readonly __signalSignatures: EntryView.SignalSignatures;
 
         // Properties
 
@@ -6998,33 +7011,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<EntryView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'entries-replaced', callback: (_source: this) => void): number;
-        connect_after(signal: 'entries-replaced', callback: (_source: this) => void): number;
-        emit(signal: 'entries-replaced'): void;
-        connect(signal: 'entry-activated', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-activated', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-activated', entry: RhythmDBEntry): void;
-        connect(signal: 'entry-added', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-added', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-added', entry: RhythmDBEntry): void;
-        connect(signal: 'entry-deleted', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-deleted', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-deleted', entry: RhythmDBEntry): void;
-        connect(signal: 'have-selection-changed', callback: (_source: this, have_selection: boolean) => void): number;
-        connect_after(
-            signal: 'have-selection-changed',
-            callback: (_source: this, have_selection: boolean) => void,
-        ): number;
-        emit(signal: 'have-selection-changed', have_selection: boolean): void;
-        connect(signal: 'selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'selection-changed'): void;
-        connect(signal: 'show-popup', callback: (_source: this, over_entry: boolean) => void): number;
-        connect_after(signal: 'show-popup', callback: (_source: this, over_entry: boolean) => void): number;
-        emit(signal: 'show-popup', over_entry: boolean): void;
 
         // Static methods
 
@@ -7684,19 +7670,19 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Added {
-            (key: ExtDBKey, filename: string, data: GObject.Value | any): void;
+            (_source: ExtDB, key: ExtDBKey, filename: string, data: GObject.Value | any): void;
         }
 
         interface Load {
-            (data: GObject.Value | any): any | null;
+            (_source: ExtDB, data: GObject.Value | any): any | null;
         }
 
         interface Request {
-            (key: ExtDBKey, last_time: number): boolean;
+            (_source: ExtDB, key: ExtDBKey, last_time: number): boolean;
         }
 
         interface Store {
-            (data: GObject.Value | any): any | null;
+            (_source: ExtDB, data: GObject.Value | any): any | null;
         }
 
         // Signal signatures
@@ -7716,7 +7702,6 @@ export namespace RB {
 
     class ExtDB extends GObject.Object {
         static $gtype: GObject.GType<ExtDB>;
-        declare static readonly __signalSignatures: ExtDB.SignalSignatures;
 
         // Properties
 
@@ -7738,30 +7723,6 @@ export namespace RB {
         connect<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: ExtDB.SignalSignatures[K]): number;
         connect_after<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: ExtDB.SignalSignatures[K]): number;
         emit<K extends keyof ExtDB.SignalSignatures>(signal: K, ...args: Parameters<ExtDB.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'added',
-            callback: (_source: this, key: ExtDBKey, filename: string, data: GObject.Value) => void,
-        ): number;
-        connect_after(
-            signal: 'added',
-            callback: (_source: this, key: ExtDBKey, filename: string, data: GObject.Value) => void,
-        ): number;
-        emit(signal: 'added', key: ExtDBKey, filename: string, data: GObject.Value | any): void;
-        connect(signal: 'load', callback: (_source: this, data: GObject.Value) => any | null): number;
-        connect_after(signal: 'load', callback: (_source: this, data: GObject.Value) => any | null): number;
-        emit(signal: 'load', data: GObject.Value | any): void;
-        connect(signal: 'request', callback: (_source: this, key: ExtDBKey, last_time: number) => boolean): number;
-        connect_after(
-            signal: 'request',
-            callback: (_source: this, key: ExtDBKey, last_time: number) => boolean,
-        ): number;
-        emit(signal: 'request', key: ExtDBKey, last_time: number): void;
-        connect(signal: 'store', callback: (_source: this, data: GObject.Value) => any | null): number;
-        connect_after(signal: 'store', callback: (_source: this, data: GObject.Value) => any | null): number;
-        emit(signal: 'store', data: GObject.Value | any): void;
 
         // Virtual methods
 
@@ -7825,11 +7786,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface PixbufDropped {
-            (pixbuf: GdkPixbuf.Pixbuf): void;
+            (_source: FadingImage, pixbuf: GdkPixbuf.Pixbuf): void;
         }
 
         interface UriDropped {
-            (uri: string): void;
+            (_source: FadingImage, uri: string): void;
         }
 
         // Signal signatures
@@ -7852,7 +7813,6 @@ export namespace RB {
 
     class FadingImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FadingImage>;
-        declare static readonly __signalSignatures: FadingImage.SignalSignatures;
 
         // Properties
 
@@ -7889,15 +7849,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<FadingImage.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pixbuf-dropped', callback: (_source: this, pixbuf: GdkPixbuf.Pixbuf) => void): number;
-        connect_after(signal: 'pixbuf-dropped', callback: (_source: this, pixbuf: GdkPixbuf.Pixbuf) => void): number;
-        emit(signal: 'pixbuf-dropped', pixbuf: GdkPixbuf.Pixbuf): void;
-        connect(signal: 'uri-dropped', callback: (_source: this, uri: string) => void): number;
-        connect_after(signal: 'uri-dropped', callback: (_source: this, uri: string) => void): number;
-        emit(signal: 'uri-dropped', uri: string): void;
 
         // Methods
 
@@ -8550,7 +8501,6 @@ export namespace RB {
 
     class History extends GObject.Object {
         static $gtype: GObject.GType<History>;
-        declare static readonly __signalSignatures: History.SignalSignatures;
 
         // Properties
 
@@ -8582,6 +8532,18 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](truncate_on_play: boolean, destroyer: GLib.Func): History;
+
+        // Signals
+
+        connect<K extends keyof History.SignalSignatures>(signal: K, callback: History.SignalSignatures[K]): number;
+        connect_after<K extends keyof History.SignalSignatures>(
+            signal: K,
+            callback: History.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof History.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<History.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8723,7 +8685,6 @@ export namespace RB {
 
     class LibraryBrowser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<LibraryBrowser>;
-        declare static readonly __signalSignatures: LibraryBrowser.SignalSignatures;
 
         // Properties
 
@@ -8796,6 +8757,21 @@ export namespace RB {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LibraryBrowser.SignalSignatures>(
+            signal: K,
+            callback: LibraryBrowser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LibraryBrowser.SignalSignatures>(
+            signal: K,
+            callback: LibraryBrowser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LibraryBrowser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LibraryBrowser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9305,7 +9281,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface ItemsChanged {
-            (object: number, p0: number, p1: number): void;
+            (_source: ListModel, object: number, p0: number, p1: number): void;
         }
 
         // Signal signatures
@@ -9320,7 +9296,6 @@ export namespace RB {
 
     class ListModel extends GObject.Object {
         static $gtype: GObject.GType<ListModel>;
-        declare static readonly __signalSignatures: ListModel.SignalSignatures;
 
         // Constructors
 
@@ -9341,18 +9316,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<ListModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'items-changed',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'items-changed',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        emit(signal: 'items-changed', object: number, p0: number, p1: number): void;
 
         // Methods
 
@@ -9426,7 +9389,6 @@ export namespace RB {
 
     class MediaPlayerEntryType extends RhythmDBEntryType {
         static $gtype: GObject.GType<MediaPlayerEntryType>;
-        declare static readonly __signalSignatures: MediaPlayerEntryType.SignalSignatures;
 
         // Properties
 
@@ -9440,6 +9402,21 @@ export namespace RB {
         constructor(properties?: Partial<MediaPlayerEntryType.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaPlayerEntryType.SignalSignatures>(
+            signal: K,
+            callback: MediaPlayerEntryType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaPlayerEntryType.SignalSignatures>(
+            signal: K,
+            callback: MediaPlayerEntryType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaPlayerEntryType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaPlayerEntryType.SignalSignatures[K]>
+        ): void;
     }
 
     namespace MediaPlayerSource {
@@ -9463,7 +9440,6 @@ export namespace RB {
 
     class MediaPlayerSource extends BrowserSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MediaPlayerSource>;
-        declare static readonly __signalSignatures: MediaPlayerSource.SignalSignatures;
 
         // Properties
 
@@ -9494,6 +9470,21 @@ export namespace RB {
         constructor(properties?: Partial<MediaPlayerSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MediaPlayerSource.SignalSignatures>(
+            signal: K,
+            callback: MediaPlayerSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaPlayerSource.SignalSignatures>(
+            signal: K,
+            callback: MediaPlayerSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaPlayerSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaPlayerSource.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9968,7 +9959,6 @@ export namespace RB {
 
     class MetaData extends GObject.Object {
         static $gtype: GObject.GType<MetaData>;
-        declare static readonly __signalSignatures: MetaData.SignalSignatures;
 
         // Constructors
 
@@ -9977,6 +9967,18 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): MetaData;
+
+        // Signals
+
+        connect<K extends keyof MetaData.SignalSignatures>(signal: K, callback: MetaData.SignalSignatures[K]): number;
+        connect_after<K extends keyof MetaData.SignalSignatures>(
+            signal: K,
+            callback: MetaData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetaData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetaData.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -10072,7 +10074,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface HaveNextPreviousChanged {
-            (have_next: boolean, have_previous: boolean): void;
+            (_source: PlayOrder, have_next: boolean, have_previous: boolean): void;
         }
 
         // Signal signatures
@@ -10091,7 +10093,6 @@ export namespace RB {
 
     class PlayOrder extends GObject.Object {
         static $gtype: GObject.GType<PlayOrder>;
-        declare static readonly __signalSignatures: PlayOrder.SignalSignatures;
 
         // Properties
 
@@ -10127,18 +10128,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<PlayOrder.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'have-next-previous-changed',
-            callback: (_source: this, have_next: boolean, have_previous: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'have-next-previous-changed',
-            callback: (_source: this, have_next: boolean, have_previous: boolean) => void,
-        ): number;
-        emit(signal: 'have-next-previous-changed', have_next: boolean, have_previous: boolean): void;
 
         // Virtual methods
 
@@ -10281,19 +10270,19 @@ export namespace RB {
         // Signal callback interfaces
 
         interface LoadFinish {
-            (): void;
+            (_source: PlaylistManager): void;
         }
 
         interface LoadStart {
-            (): void;
+            (_source: PlaylistManager): void;
         }
 
         interface PlaylistAdded {
-            (source: GObject.Object): void;
+            (_source: PlaylistManager, source: GObject.Object): void;
         }
 
         interface PlaylistCreated {
-            (source: GObject.Object): void;
+            (_source: PlaylistManager, source: GObject.Object): void;
         }
 
         // Signal signatures
@@ -10316,7 +10305,6 @@ export namespace RB {
 
     class PlaylistManager extends GObject.Object {
         static $gtype: GObject.GType<PlaylistManager>;
-        declare static readonly __signalSignatures: PlaylistManager.SignalSignatures;
 
         // Properties
 
@@ -10351,21 +10339,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<PlaylistManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'load-finish', callback: (_source: this) => void): number;
-        connect_after(signal: 'load-finish', callback: (_source: this) => void): number;
-        emit(signal: 'load-finish'): void;
-        connect(signal: 'load-start', callback: (_source: this) => void): number;
-        connect_after(signal: 'load-start', callback: (_source: this) => void): number;
-        emit(signal: 'load-start'): void;
-        connect(signal: 'playlist-added', callback: (_source: this, source: GObject.Object) => void): number;
-        connect_after(signal: 'playlist-added', callback: (_source: this, source: GObject.Object) => void): number;
-        emit(signal: 'playlist-added', source: GObject.Object): void;
-        connect(signal: 'playlist-created', callback: (_source: this, source: GObject.Object) => void): number;
-        connect_after(signal: 'playlist-created', callback: (_source: this, source: GObject.Object) => void): number;
-        emit(signal: 'playlist-created', source: GObject.Object): void;
 
         // Static methods
 
@@ -10499,7 +10472,6 @@ export namespace RB {
 
     abstract class PlaylistSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PlaylistSource>;
-        declare static readonly __signalSignatures: PlaylistSource.SignalSignatures;
 
         // Properties
 
@@ -10530,6 +10502,21 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static new_from_xml(shell: Shell, node: libxml2.NodePtr): PlaylistSource;
+
+        // Signals
+
+        connect<K extends keyof PlaylistSource.SignalSignatures>(
+            signal: K,
+            callback: PlaylistSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaylistSource.SignalSignatures>(
+            signal: K,
+            callback: PlaylistSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaylistSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaylistSource.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -11053,15 +11040,15 @@ export namespace RB {
         // Signal callback interfaces
 
         interface FeedUpdateStatus {
-            (object: string, p0: PodcastFeedUpdateStatus, p1: string): void;
+            (_source: PodcastManager, object: string, p0: PodcastFeedUpdateStatus, p1: string): void;
         }
 
         interface FinishDownload {
-            (object: RhythmDBEntry, p0: GLib.Error): void;
+            (_source: PodcastManager, object: RhythmDBEntry, p0: GLib.Error): void;
         }
 
         interface StartDownload {
-            (object: RhythmDBEntry): void;
+            (_source: PodcastManager, object: RhythmDBEntry): void;
         }
 
         // Signal signatures
@@ -11081,7 +11068,6 @@ export namespace RB {
 
     class PodcastManager extends GObject.Object {
         static $gtype: GObject.GType<PodcastManager>;
-        declare static readonly __signalSignatures: PodcastManager.SignalSignatures;
 
         // Properties
 
@@ -11111,30 +11097,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<PodcastManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'feed-update-status',
-            callback: (_source: this, object: string, p0: PodcastFeedUpdateStatus, p1: string) => void,
-        ): number;
-        connect_after(
-            signal: 'feed-update-status',
-            callback: (_source: this, object: string, p0: PodcastFeedUpdateStatus, p1: string) => void,
-        ): number;
-        emit(signal: 'feed-update-status', object: string, p0: PodcastFeedUpdateStatus, p1: string): void;
-        connect(
-            signal: 'finish-download',
-            callback: (_source: this, object: RhythmDBEntry, p0: GLib.Error) => void,
-        ): number;
-        connect_after(
-            signal: 'finish-download',
-            callback: (_source: this, object: RhythmDBEntry, p0: GLib.Error) => void,
-        ): number;
-        emit(signal: 'finish-download', object: RhythmDBEntry, p0: GLib.Error): void;
-        connect(signal: 'start-download', callback: (_source: this, object: RhythmDBEntry) => void): number;
-        connect_after(signal: 'start-download', callback: (_source: this, object: RhythmDBEntry) => void): number;
-        emit(signal: 'start-download', object: RhythmDBEntry): void;
 
         // Static methods
 
@@ -11183,11 +11145,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Finished {
-            (object: boolean): void;
+            (_source: PodcastSearch, object: boolean): void;
         }
 
         interface Result {
-            (object?: any | null): void;
+            (_source: PodcastSearch, object?: any | null): void;
         }
 
         // Signal signatures
@@ -11203,7 +11165,6 @@ export namespace RB {
 
     class PodcastSearch extends GObject.Object {
         static $gtype: GObject.GType<PodcastSearch>;
-        declare static readonly __signalSignatures: PodcastSearch.SignalSignatures;
 
         // Constructors
 
@@ -11225,15 +11186,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<PodcastSearch.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'finished', object: boolean): void;
-        connect(signal: 'result', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'result', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'result', object?: any | null): void;
 
         // Virtual methods
 
@@ -11259,36 +11211,50 @@ export namespace RB {
 
     class PodcastSearchITunes extends PodcastSearch {
         static $gtype: GObject.GType<PodcastSearchITunes>;
-        declare static readonly __signalSignatures: PodcastSearchITunes.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PodcastSearchITunes.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PodcastSearchITunes.SignalSignatures>(
+            signal: K,
+            callback: PodcastSearchITunes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PodcastSearchITunes.SignalSignatures>(
+            signal: K,
+            callback: PodcastSearchITunes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PodcastSearchITunes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PodcastSearchITunes.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PropertyView {
         // Signal callback interfaces
 
         interface PropertiesSelected {
-            (properties?: any | null): void;
+            (_source: PropertyView, properties?: any | null): void;
         }
 
         interface PropertyActivated {
-            (name: string): void;
+            (_source: PropertyView, name: string): void;
         }
 
         interface PropertySelected {
-            (name: string): void;
+            (_source: PropertyView, name: string): void;
         }
 
         interface PropertySelectionReset {
-            (): void;
+            (_source: PropertyView): void;
         }
 
         interface ShowPopup {
-            (): void;
+            (_source: PropertyView): void;
         }
 
         // Signal signatures
@@ -11317,7 +11283,6 @@ export namespace RB {
 
     class PropertyView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyView>;
-        declare static readonly __signalSignatures: PropertyView.SignalSignatures;
 
         // Properties
 
@@ -11373,24 +11338,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<PropertyView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'properties-selected', callback: (_source: this, properties: any | null) => void): number;
-        connect_after(signal: 'properties-selected', callback: (_source: this, properties: any | null) => void): number;
-        emit(signal: 'properties-selected', properties?: any | null): void;
-        connect(signal: 'property-activated', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'property-activated', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'property-activated', name: string): void;
-        connect(signal: 'property-selected', callback: (_source: this, name: string) => void): number;
-        connect_after(signal: 'property-selected', callback: (_source: this, name: string) => void): number;
-        emit(signal: 'property-selected', name: string): void;
-        connect(signal: 'property-selection-reset', callback: (_source: this) => void): number;
-        connect_after(signal: 'property-selection-reset', callback: (_source: this) => void): number;
-        emit(signal: 'property-selection-reset'): void;
-        connect(signal: 'show-popup', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-popup', callback: (_source: this) => void): number;
-        emit(signal: 'show-popup'): void;
 
         // Virtual methods
 
@@ -11903,15 +11850,15 @@ export namespace RB {
         // Signal callback interfaces
 
         interface AdjustRating {
-            (adjust: number): void;
+            (_source: Rating, adjust: number): void;
         }
 
         interface Rated {
-            (score: number): void;
+            (_source: Rating, score: number): void;
         }
 
         interface SetRating {
-            (score: number): void;
+            (_source: Rating, score: number): void;
         }
 
         // Signal signatures
@@ -11933,7 +11880,6 @@ export namespace RB {
 
     class Rating extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Rating>;
-        declare static readonly __signalSignatures: Rating.SignalSignatures;
 
         // Properties
 
@@ -11957,18 +11903,6 @@ export namespace RB {
         connect<K extends keyof Rating.SignalSignatures>(signal: K, callback: Rating.SignalSignatures[K]): number;
         connect_after<K extends keyof Rating.SignalSignatures>(signal: K, callback: Rating.SignalSignatures[K]): number;
         emit<K extends keyof Rating.SignalSignatures>(signal: K, ...args: Parameters<Rating.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'adjust-rating', callback: (_source: this, adjust: number) => void): number;
-        connect_after(signal: 'adjust-rating', callback: (_source: this, adjust: number) => void): number;
-        emit(signal: 'adjust-rating', adjust: number): void;
-        connect(signal: 'rated', callback: (_source: this, score: number) => void): number;
-        connect_after(signal: 'rated', callback: (_source: this, score: number) => void): number;
-        emit(signal: 'rated', score: number): void;
-        connect(signal: 'set-rating', callback: (_source: this, score: number) => void): number;
-        connect_after(signal: 'set-rating', callback: (_source: this, score: number) => void): number;
-        emit(signal: 'set-rating', score: number): void;
 
         // Virtual methods
 
@@ -12598,19 +12532,19 @@ export namespace RB {
         // Signal callback interfaces
 
         interface CreateSourceDevice {
-            (device: GObject.Object): Source;
+            (_source: RemovableMediaManager, device: GObject.Object): Source;
         }
 
         interface CreateSourceMount {
-            (device_info: Gio.Mount, mount: MPID.Device): Source;
+            (_source: RemovableMediaManager, device_info: Gio.Mount, mount: MPID.Device): Source;
         }
 
         interface CreateSourceVolume {
-            (volume: Gio.Volume): Source;
+            (_source: RemovableMediaManager, volume: Gio.Volume): Source;
         }
 
         interface MediumAdded {
-            (source: GObject.Object): void;
+            (_source: RemovableMediaManager, source: GObject.Object): void;
         }
 
         // Signal signatures
@@ -12631,7 +12565,6 @@ export namespace RB {
 
     class RemovableMediaManager extends GObject.Object {
         static $gtype: GObject.GType<RemovableMediaManager>;
-        declare static readonly __signalSignatures: RemovableMediaManager.SignalSignatures;
 
         // Properties
 
@@ -12669,30 +12602,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<RemovableMediaManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-source-device', callback: (_source: this, device: GObject.Object) => Source): number;
-        connect_after(
-            signal: 'create-source-device',
-            callback: (_source: this, device: GObject.Object) => Source,
-        ): number;
-        emit(signal: 'create-source-device', device: GObject.Object): void;
-        connect(
-            signal: 'create-source-mount',
-            callback: (_source: this, device_info: Gio.Mount, mount: MPID.Device) => Source,
-        ): number;
-        connect_after(
-            signal: 'create-source-mount',
-            callback: (_source: this, device_info: Gio.Mount, mount: MPID.Device) => Source,
-        ): number;
-        emit(signal: 'create-source-mount', device_info: Gio.Mount, mount: MPID.Device): void;
-        connect(signal: 'create-source-volume', callback: (_source: this, volume: Gio.Volume) => Source): number;
-        connect_after(signal: 'create-source-volume', callback: (_source: this, volume: Gio.Volume) => Source): number;
-        emit(signal: 'create-source-volume', volume: Gio.Volume): void;
-        connect(signal: 'medium-added', callback: (_source: this, source: GObject.Object) => void): number;
-        connect_after(signal: 'medium-added', callback: (_source: this, source: GObject.Object) => void): number;
-        emit(signal: 'medium-added', source: GObject.Object): void;
 
         // Virtual methods
 
@@ -12725,55 +12634,55 @@ export namespace RB {
         // Signal callback interfaces
 
         interface CreateMountOp {
-            (): Gio.MountOperation;
+            (_source: RhythmDB): Gio.MountOperation;
         }
 
         interface EntryAdded {
-            (entry: RhythmDBEntry): void;
+            (_source: RhythmDB, entry: RhythmDBEntry): void;
         }
 
         interface EntryChanged {
-            (entry: RhythmDBEntry, changes: RhythmDBEntryChange[]): void;
+            (_source: RhythmDB, entry: RhythmDBEntry, changes: RhythmDBEntryChange[]): void;
         }
 
         interface EntryDeleted {
-            (entry: RhythmDBEntry): void;
+            (_source: RhythmDB, entry: RhythmDBEntry): void;
         }
 
         interface EntryExtraMetadataGather {
-            (entry: RhythmDBEntry, data: StringValueMap): void;
+            (_source: RhythmDB, entry: RhythmDBEntry, data: StringValueMap): void;
         }
 
         interface EntryExtraMetadataNotify {
-            (entry: RhythmDBEntry, field: string, metadata: GObject.Value | any): void;
+            (_source: RhythmDB, entry: RhythmDBEntry, field: string, metadata: GObject.Value | any): void;
         }
 
         interface EntryExtraMetadataRequest {
-            (entry: RhythmDBEntry): GObject.Value;
+            (_source: RhythmDB, entry: RhythmDBEntry): GObject.Value;
         }
 
         interface EntryKeywordAdded {
-            (entry: RhythmDBEntry, keyword: RefString): void;
+            (_source: RhythmDB, entry: RhythmDBEntry, keyword: RefString): void;
         }
 
         interface EntryKeywordRemoved {
-            (entry: RhythmDBEntry, keyword: RefString): void;
+            (_source: RhythmDB, entry: RhythmDBEntry, keyword: RefString): void;
         }
 
         interface LoadComplete {
-            (): void;
+            (_source: RhythmDB): void;
         }
 
         interface ReadOnly {
-            (readonly: boolean): void;
+            (_source: RhythmDB, readonly: boolean): void;
         }
 
         interface SaveComplete {
-            (): void;
+            (_source: RhythmDB): void;
         }
 
         interface SaveError {
-            (uri: string, error?: any | null): void;
+            (_source: RhythmDB, uri: string, error?: any | null): void;
         }
 
         // Signal signatures
@@ -12815,7 +12724,6 @@ export namespace RB {
      */
     abstract class RhythmDB extends GObject.Object {
         static $gtype: GObject.GType<RhythmDB>;
-        declare static readonly __signalSignatures: RhythmDB.SignalSignatures;
 
         // Properties
 
@@ -12862,89 +12770,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<RhythmDB.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-mount-op', callback: (_source: this) => Gio.MountOperation): number;
-        connect_after(signal: 'create-mount-op', callback: (_source: this) => Gio.MountOperation): number;
-        emit(signal: 'create-mount-op'): void;
-        connect(signal: 'entry-added', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-added', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-added', entry: RhythmDBEntry): void;
-        connect(
-            signal: 'entry-changed',
-            callback: (_source: this, entry: RhythmDBEntry, changes: RhythmDBEntryChange[]) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-changed',
-            callback: (_source: this, entry: RhythmDBEntry, changes: RhythmDBEntryChange[]) => void,
-        ): number;
-        emit(signal: 'entry-changed', entry: RhythmDBEntry, changes: RhythmDBEntryChange[]): void;
-        connect(signal: 'entry-deleted', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-deleted', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-deleted', entry: RhythmDBEntry): void;
-        connect(
-            signal: 'entry-extra-metadata-gather',
-            callback: (_source: this, entry: RhythmDBEntry, data: StringValueMap) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-extra-metadata-gather',
-            callback: (_source: this, entry: RhythmDBEntry, data: StringValueMap) => void,
-        ): number;
-        emit(signal: 'entry-extra-metadata-gather', entry: RhythmDBEntry, data: StringValueMap): void;
-        connect(
-            signal: 'entry-extra-metadata-notify',
-            callback: (_source: this, entry: RhythmDBEntry, field: string, metadata: GObject.Value) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-extra-metadata-notify',
-            callback: (_source: this, entry: RhythmDBEntry, field: string, metadata: GObject.Value) => void,
-        ): number;
-        emit(
-            signal: 'entry-extra-metadata-notify',
-            entry: RhythmDBEntry,
-            field: string,
-            metadata: GObject.Value | any,
-        ): void;
-        connect(
-            signal: 'entry-extra-metadata-request',
-            callback: (_source: this, entry: RhythmDBEntry) => GObject.Value,
-        ): number;
-        connect_after(
-            signal: 'entry-extra-metadata-request',
-            callback: (_source: this, entry: RhythmDBEntry) => GObject.Value,
-        ): number;
-        emit(signal: 'entry-extra-metadata-request', entry: RhythmDBEntry): void;
-        connect(
-            signal: 'entry-keyword-added',
-            callback: (_source: this, entry: RhythmDBEntry, keyword: RefString) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-keyword-added',
-            callback: (_source: this, entry: RhythmDBEntry, keyword: RefString) => void,
-        ): number;
-        emit(signal: 'entry-keyword-added', entry: RhythmDBEntry, keyword: RefString): void;
-        connect(
-            signal: 'entry-keyword-removed',
-            callback: (_source: this, entry: RhythmDBEntry, keyword: RefString) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-keyword-removed',
-            callback: (_source: this, entry: RhythmDBEntry, keyword: RefString) => void,
-        ): number;
-        emit(signal: 'entry-keyword-removed', entry: RhythmDBEntry, keyword: RefString): void;
-        connect(signal: 'load-complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'load-complete', callback: (_source: this) => void): number;
-        emit(signal: 'load-complete'): void;
-        connect(signal: 'read-only', callback: (_source: this, readonly: boolean) => void): number;
-        connect_after(signal: 'read-only', callback: (_source: this, readonly: boolean) => void): number;
-        emit(signal: 'read-only', readonly: boolean): void;
-        connect(signal: 'save-complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'save-complete', callback: (_source: this) => void): number;
-        emit(signal: 'save-complete'): void;
-        connect(signal: 'save-error', callback: (_source: this, uri: string, error: any | null) => void): number;
-        connect_after(signal: 'save-error', callback: (_source: this, uri: string, error: any | null) => void): number;
-        emit(signal: 'save-error', uri: string, error?: any | null): void;
 
         // Static methods
 
@@ -13417,7 +13242,6 @@ export namespace RB {
 
     class RhythmDBEntryType extends GObject.Object {
         static $gtype: GObject.GType<RhythmDBEntryType>;
-        declare static readonly __signalSignatures: RhythmDBEntryType.SignalSignatures;
 
         // Properties
 
@@ -13470,6 +13294,21 @@ export namespace RB {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof RhythmDBEntryType.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBEntryType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RhythmDBEntryType.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBEntryType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RhythmDBEntryType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RhythmDBEntryType.SignalSignatures[K]>
+        ): void;
+
         // Virtual methods
 
         vfunc_cache_key_to_uri(key: string): string;
@@ -13503,19 +13342,19 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Complete {
-            (total: number): void;
+            (_source: RhythmDBImportJob, total: number): void;
         }
 
         interface EntryAdded {
-            (entry: RhythmDBEntry): void;
+            (_source: RhythmDBImportJob, entry: RhythmDBEntry): void;
         }
 
         interface ScanComplete {
-            (total: number): void;
+            (_source: RhythmDBImportJob, total: number): void;
         }
 
         interface StatusChanged {
-            (total: number, imported: number): void;
+            (_source: RhythmDBImportJob, total: number, imported: number): void;
         }
 
         // Signal signatures
@@ -13541,7 +13380,6 @@ export namespace RB {
 
     class RhythmDBImportJob extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<RhythmDBImportJob>;
-        declare static readonly __signalSignatures: RhythmDBImportJob.SignalSignatures;
 
         // Properties
 
@@ -13580,24 +13418,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<RhythmDBImportJob.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'complete', callback: (_source: this, total: number) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this, total: number) => void): number;
-        emit(signal: 'complete', total: number): void;
-        connect(signal: 'entry-added', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-added', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-added', entry: RhythmDBEntry): void;
-        connect(signal: 'scan-complete', callback: (_source: this, total: number) => void): number;
-        connect_after(signal: 'scan-complete', callback: (_source: this, total: number) => void): number;
-        emit(signal: 'scan-complete', total: number): void;
-        connect(signal: 'status-changed', callback: (_source: this, total: number, imported: number) => void): number;
-        connect_after(
-            signal: 'status-changed',
-            callback: (_source: this, total: number, imported: number) => void,
-        ): number;
-        emit(signal: 'status-changed', total: number, imported: number): void;
 
         // Virtual methods
 
@@ -14134,7 +13954,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface PreRowDeletion {
-            (): void;
+            (_source: RhythmDBPropertyModel): void;
         }
 
         // Signal signatures
@@ -14154,7 +13974,6 @@ export namespace RB {
 
     class RhythmDBPropertyModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<RhythmDBPropertyModel>;
-        declare static readonly __signalSignatures: RhythmDBPropertyModel.SignalSignatures;
 
         // Properties
 
@@ -14199,12 +14018,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<RhythmDBPropertyModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pre-row-deletion', callback: (_source: this) => void): number;
-        connect_after(signal: 'pre-row-deletion', callback: (_source: this) => void): number;
-        emit(signal: 'pre-row-deletion'): void;
 
         // Virtual methods
 
@@ -15074,27 +14887,33 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Complete {
-            (): void;
+            (_source: RhythmDBQueryModel): void;
         }
 
         interface EntryPropChanged {
-            (entry: RhythmDBEntry, prop: number, old?: any | null, new_value?: any | null): void;
+            (
+                _source: RhythmDBQueryModel,
+                entry: RhythmDBEntry,
+                prop: number,
+                old?: any | null,
+                new_value?: any | null,
+            ): void;
         }
 
         interface EntryRemoved {
-            (entry: RhythmDBEntry): void;
+            (_source: RhythmDBQueryModel, entry: RhythmDBEntry): void;
         }
 
         interface FilterEntryDrop {
-            (entry: RhythmDBEntry): boolean;
+            (_source: RhythmDBQueryModel, entry: RhythmDBEntry): boolean;
         }
 
         interface NonEntryDropped {
-            (uri: string, position: number): void;
+            (_source: RhythmDBQueryModel, uri: string, position: number): void;
         }
 
         interface PostEntryDelete {
-            (entry: RhythmDBEntry): void;
+            (_source: RhythmDBQueryModel, entry: RhythmDBEntry): void;
         }
 
         // Signal signatures
@@ -15136,7 +14955,6 @@ export namespace RB {
 
     class RhythmDBQueryModel extends GObject.Object implements Gtk.TreeModel, RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryModel>;
-        declare static readonly __signalSignatures: RhythmDBQueryModel.SignalSignatures;
 
         // Properties
 
@@ -15200,54 +15018,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<RhythmDBQueryModel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this) => void): number;
-        emit(signal: 'complete'): void;
-        connect(
-            signal: 'entry-prop-changed',
-            callback: (
-                _source: this,
-                entry: RhythmDBEntry,
-                prop: number,
-                old: any | null,
-                new_value: any | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'entry-prop-changed',
-            callback: (
-                _source: this,
-                entry: RhythmDBEntry,
-                prop: number,
-                old: any | null,
-                new_value: any | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'entry-prop-changed',
-            entry: RhythmDBEntry,
-            prop: number,
-            old?: any | null,
-            new_value?: any | null,
-        ): void;
-        connect(signal: 'entry-removed', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'entry-removed', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'entry-removed', entry: RhythmDBEntry): void;
-        connect(signal: 'filter-entry-drop', callback: (_source: this, entry: RhythmDBEntry) => boolean): number;
-        connect_after(signal: 'filter-entry-drop', callback: (_source: this, entry: RhythmDBEntry) => boolean): number;
-        emit(signal: 'filter-entry-drop', entry: RhythmDBEntry): void;
-        connect(signal: 'non-entry-dropped', callback: (_source: this, uri: string, position: number) => void): number;
-        connect_after(
-            signal: 'non-entry-dropped',
-            callback: (_source: this, uri: string, position: number) => void,
-        ): number;
-        emit(signal: 'non-entry-dropped', uri: string, position: number): void;
-        connect(signal: 'post-entry-delete', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'post-entry-delete', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'post-entry-delete', entry: RhythmDBEntry): void;
 
         // Static methods
 
@@ -16356,7 +16126,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Complete {
-            (): void;
+            (_source: RhythmDBQueryResultList): void;
         }
 
         // Signal signatures
@@ -16371,7 +16141,6 @@ export namespace RB {
 
     class RhythmDBQueryResultList extends GObject.Object implements RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryResultList>;
-        declare static readonly __signalSignatures: RhythmDBQueryResultList.SignalSignatures;
 
         // Constructors
 
@@ -16395,12 +16164,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<RhythmDBQueryResultList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this) => void): number;
-        emit(signal: 'complete'): void;
 
         // Virtual methods
 
@@ -16888,15 +16651,15 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Activate {
-            (text: string): void;
+            (_source: SearchEntry, text: string): void;
         }
 
         interface Search {
-            (text: string): void;
+            (_source: SearchEntry, text: string): void;
         }
 
         interface ShowPopup {
-            (): void;
+            (_source: SearchEntry): void;
         }
 
         // Signal signatures
@@ -16922,7 +16685,6 @@ export namespace RB {
 
     class SearchEntry extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SearchEntry>;
-        declare static readonly __signalSignatures: SearchEntry.SignalSignatures;
 
         // Properties
 
@@ -16972,18 +16734,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<SearchEntry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this, text: string) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this, text: string) => void): number;
-        emit(signal: 'activate', text: string): void;
-        connect(signal: 'search', callback: (_source: this, text: string) => void): number;
-        connect_after(signal: 'search', callback: (_source: this, text: string) => void): number;
-        emit(signal: 'search', text: string): void;
-        connect(signal: 'show-popup', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-popup', callback: (_source: this) => void): number;
-        emit(signal: 'show-popup'): void;
 
         // Virtual methods
 
@@ -17505,7 +17255,6 @@ export namespace RB {
 
     class SegmentedBar extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SegmentedBar>;
-        declare static readonly __signalSignatures: SegmentedBar.SignalSignatures;
 
         // Properties
 
@@ -17551,6 +17300,21 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): SegmentedBar;
+
+        // Signals
+
+        connect<K extends keyof SegmentedBar.SignalSignatures>(
+            signal: K,
+            callback: SegmentedBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SegmentedBar.SignalSignatures>(
+            signal: K,
+            callback: SegmentedBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SegmentedBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SegmentedBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18185,23 +17949,30 @@ export namespace RB {
         // Signal callback interfaces
 
         interface CreateSongInfo {
-            (song_info: SongInfo, multi: boolean): void;
+            (_source: Shell, song_info: SongInfo, multi: boolean): void;
         }
 
         interface NotifyCustom {
-            (timeout: number, primary: string, secondary: string, image_uri: string, requested: boolean): void;
+            (
+                _source: Shell,
+                timeout: number,
+                primary: string,
+                secondary: string,
+                image_uri: string,
+                requested: boolean,
+            ): void;
         }
 
         interface NotifyPlayingEntry {
-            (requested: boolean): void;
+            (_source: Shell, requested: boolean): void;
         }
 
         interface VisibilityChanged {
-            (visibile: boolean): void;
+            (_source: Shell, visibile: boolean): void;
         }
 
         interface VisibilityChanging {
-            (initial: boolean, visible: boolean): boolean;
+            (_source: Shell, initial: boolean, visible: boolean): boolean;
         }
 
         // Signal signatures
@@ -18257,7 +18028,6 @@ export namespace RB {
 
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
-        declare static readonly __signalSignatures: Shell.SignalSignatures;
 
         // Properties
 
@@ -18415,63 +18185,6 @@ export namespace RB {
         connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
         connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
         emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: Parameters<Shell.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'create-song-info',
-            callback: (_source: this, song_info: SongInfo, multi: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'create-song-info',
-            callback: (_source: this, song_info: SongInfo, multi: boolean) => void,
-        ): number;
-        emit(signal: 'create-song-info', song_info: SongInfo, multi: boolean): void;
-        connect(
-            signal: 'notify-custom',
-            callback: (
-                _source: this,
-                timeout: number,
-                primary: string,
-                secondary: string,
-                image_uri: string,
-                requested: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'notify-custom',
-            callback: (
-                _source: this,
-                timeout: number,
-                primary: string,
-                secondary: string,
-                image_uri: string,
-                requested: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'notify-custom',
-            timeout: number,
-            primary: string,
-            secondary: string,
-            image_uri: string,
-            requested: boolean,
-        ): void;
-        connect(signal: 'notify-playing-entry', callback: (_source: this, requested: boolean) => void): number;
-        connect_after(signal: 'notify-playing-entry', callback: (_source: this, requested: boolean) => void): number;
-        emit(signal: 'notify-playing-entry', requested: boolean): void;
-        connect(signal: 'visibility-changed', callback: (_source: this, visibile: boolean) => void): number;
-        connect_after(signal: 'visibility-changed', callback: (_source: this, visibile: boolean) => void): number;
-        emit(signal: 'visibility-changed', visibile: boolean): void;
-        connect(
-            signal: 'visibility-changing',
-            callback: (_source: this, initial: boolean, visible: boolean) => boolean,
-        ): number;
-        connect_after(
-            signal: 'visibility-changing',
-            callback: (_source: this, initial: boolean, visible: boolean) => boolean,
-        ): number;
-        emit(signal: 'visibility-changing', initial: boolean, visible: boolean): void;
 
         // Virtual methods
 
@@ -18612,35 +18325,41 @@ export namespace RB {
         // Signal callback interfaces
 
         interface ElapsedChanged {
-            (elapsed: number): void;
+            (_source: ShellPlayer, elapsed: number): void;
         }
 
         interface ElapsedNanoChanged {
-            (elapsed: number): void;
+            (_source: ShellPlayer, elapsed: number): void;
         }
 
         interface PlayingChanged {
-            (playing: boolean): void;
+            (_source: ShellPlayer, playing: boolean): void;
         }
 
         interface PlayingSongChanged {
-            (entry: RhythmDBEntry): void;
+            (_source: ShellPlayer, entry: RhythmDBEntry): void;
         }
 
         interface PlayingSongPropertyChanged {
-            (uri: string, property: string, old: GObject.Value | any, newvalue: GObject.Value | any): void;
+            (
+                _source: ShellPlayer,
+                uri: string,
+                property: string,
+                old: GObject.Value | any,
+                newvalue: GObject.Value | any,
+            ): void;
         }
 
         interface PlayingSourceChanged {
-            (source: Source): void;
+            (_source: ShellPlayer, source: Source): void;
         }
 
         interface PlayingUriChanged {
-            (uri: string): void;
+            (_source: ShellPlayer, uri: string): void;
         }
 
         interface WindowTitleChanged {
-            (title: string): void;
+            (_source: ShellPlayer, title: string): void;
         }
 
         // Signal signatures
@@ -18681,7 +18400,6 @@ export namespace RB {
 
     class ShellPlayer extends GObject.Object {
         static $gtype: GObject.GType<ShellPlayer>;
-        declare static readonly __signalSignatures: ShellPlayer.SignalSignatures;
 
         // Properties
 
@@ -18787,57 +18505,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<ShellPlayer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'elapsed-changed', callback: (_source: this, elapsed: number) => void): number;
-        connect_after(signal: 'elapsed-changed', callback: (_source: this, elapsed: number) => void): number;
-        emit(signal: 'elapsed-changed', elapsed: number): void;
-        connect(signal: 'elapsed-nano-changed', callback: (_source: this, elapsed: number) => void): number;
-        connect_after(signal: 'elapsed-nano-changed', callback: (_source: this, elapsed: number) => void): number;
-        emit(signal: 'elapsed-nano-changed', elapsed: number): void;
-        connect(signal: 'playing-changed', callback: (_source: this, playing: boolean) => void): number;
-        connect_after(signal: 'playing-changed', callback: (_source: this, playing: boolean) => void): number;
-        emit(signal: 'playing-changed', playing: boolean): void;
-        connect(signal: 'playing-song-changed', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'playing-song-changed', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'playing-song-changed', entry: RhythmDBEntry): void;
-        connect(
-            signal: 'playing-song-property-changed',
-            callback: (
-                _source: this,
-                uri: string,
-                property: string,
-                old: GObject.Value,
-                newvalue: GObject.Value,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'playing-song-property-changed',
-            callback: (
-                _source: this,
-                uri: string,
-                property: string,
-                old: GObject.Value,
-                newvalue: GObject.Value,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'playing-song-property-changed',
-            uri: string,
-            property: string,
-            old: GObject.Value | any,
-            newvalue: GObject.Value | any,
-        ): void;
-        connect(signal: 'playing-source-changed', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'playing-source-changed', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'playing-source-changed', source: Source): void;
-        connect(signal: 'playing-uri-changed', callback: (_source: this, uri: string) => void): number;
-        connect_after(signal: 'playing-uri-changed', callback: (_source: this, uri: string) => void): number;
-        emit(signal: 'playing-uri-changed', uri: string): void;
-        connect(signal: 'window-title-changed', callback: (_source: this, title: string) => void): number;
-        connect_after(signal: 'window-title-changed', callback: (_source: this, title: string) => void): number;
-        emit(signal: 'window-title-changed', title: string): void;
 
         // Virtual methods
 
@@ -19046,7 +18713,6 @@ export namespace RB {
 
     class ShellPreferences extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ShellPreferences>;
-        declare static readonly __signalSignatures: ShellPreferences.SignalSignatures;
 
         // Constructors
 
@@ -19058,6 +18724,21 @@ export namespace RB {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ShellPreferences.SignalSignatures>(
+            signal: K,
+            callback: ShellPreferences.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShellPreferences.SignalSignatures>(
+            signal: K,
+            callback: ShellPreferences.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShellPreferences.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShellPreferences.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19530,11 +19211,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface PostMetadataChange {
-            (entry: RhythmDBEntry): void;
+            (_source: SongInfo, entry: RhythmDBEntry): void;
         }
 
         interface PreMetadataChange {
-            (entry: RhythmDBEntry): void;
+            (_source: SongInfo, entry: RhythmDBEntry): void;
         }
 
         // Signal signatures
@@ -19561,7 +19242,6 @@ export namespace RB {
 
     class SongInfo extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SongInfo>;
-        declare static readonly __signalSignatures: SongInfo.SignalSignatures;
 
         // Properties
 
@@ -19626,15 +19306,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<SongInfo.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'post-metadata-change', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'post-metadata-change', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'post-metadata-change', entry: RhythmDBEntry): void;
-        connect(signal: 'pre-metadata-change', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        connect_after(signal: 'pre-metadata-change', callback: (_source: this, entry: RhythmDBEntry) => void): number;
-        emit(signal: 'pre-metadata-change', entry: RhythmDBEntry): void;
 
         // Virtual methods
 
@@ -20098,15 +19769,15 @@ export namespace RB {
         // Signal callback interfaces
 
         interface FilterChanged {
-            (): void;
+            (_source: Source): void;
         }
 
         interface PlaybackStatusChanged {
-            (): void;
+            (_source: Source): void;
         }
 
         interface ResetFilters {
-            (): void;
+            (_source: Source): void;
         }
 
         // Signal signatures
@@ -20147,7 +19818,6 @@ export namespace RB {
 
     abstract class Source extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Source>;
-        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -20273,18 +19943,6 @@ export namespace RB {
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'filter-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'filter-changed', callback: (_source: this) => void): number;
-        emit(signal: 'filter-changed'): void;
-        connect(signal: 'playback-status-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'playback-status-changed', callback: (_source: this) => void): number;
-        emit(signal: 'playback-status-changed'): void;
-        connect(signal: 'reset-filters', callback: (_source: this) => void): number;
-        connect_after(signal: 'reset-filters', callback: (_source: this) => void): number;
-        emit(signal: 'reset-filters'): void;
 
         // Virtual methods
 
@@ -21116,13 +20774,27 @@ export namespace RB {
 
     class SourceSearch extends GObject.Object {
         static $gtype: GObject.GType<SourceSearch>;
-        declare static readonly __signalSignatures: SourceSearch.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceSearch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceSearch.SignalSignatures>(
+            signal: K,
+            callback: SourceSearch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSearch.SignalSignatures>(
+            signal: K,
+            callback: SourceSearch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSearch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSearch.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -21206,7 +20878,6 @@ export namespace RB {
 
     class SourceSearchBasic extends SourceSearch {
         static $gtype: GObject.GType<SourceSearchBasic>;
-        declare static readonly __signalSignatures: SourceSearchBasic.SignalSignatures;
 
         // Properties
 
@@ -21224,6 +20895,21 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](prop: RhythmDBPropType, description: string): SourceSearchBasic;
+
+        // Signals
+
+        connect<K extends keyof SourceSearchBasic.SignalSignatures>(
+            signal: K,
+            callback: SourceSearchBasic.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSearchBasic.SignalSignatures>(
+            signal: K,
+            callback: SourceSearchBasic.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSearchBasic.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSearchBasic.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -21276,7 +20962,6 @@ export namespace RB {
 
     class SourceToolbar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SourceToolbar>;
-        declare static readonly __signalSignatures: SourceToolbar.SignalSignatures;
 
         // Properties
 
@@ -21303,6 +20988,21 @@ export namespace RB {
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SourceToolbar.SignalSignatures>(
+            signal: K,
+            callback: SourceToolbar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceToolbar.SignalSignatures>(
+            signal: K,
+            callback: SourceToolbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceToolbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceToolbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21796,7 +21496,6 @@ export namespace RB {
 
     class StaticPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StaticPlaylistSource>;
-        declare static readonly __signalSignatures: StaticPlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -21819,6 +21518,21 @@ export namespace RB {
         // Conflicted with RB.PlaylistSource.new_from_xml
 
         static new_from_xml(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof StaticPlaylistSource.SignalSignatures>(
+            signal: K,
+            callback: StaticPlaylistSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StaticPlaylistSource.SignalSignatures>(
+            signal: K,
+            callback: StaticPlaylistSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StaticPlaylistSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StaticPlaylistSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22323,13 +22037,27 @@ export namespace RB {
 
     class StreamingSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StreamingSource>;
-        declare static readonly __signalSignatures: StreamingSource.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<StreamingSource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StreamingSource.SignalSignatures>(
+            signal: K,
+            callback: StreamingSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamingSource.SignalSignatures>(
+            signal: K,
+            callback: StreamingSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamingSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamingSource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22810,7 +22538,6 @@ export namespace RB {
 
     class StringValueMap extends GObject.Object {
         static $gtype: GObject.GType<StringValueMap>;
-        declare static readonly __signalSignatures: StringValueMap.SignalSignatures;
 
         // Constructors
 
@@ -22819,6 +22546,21 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): StringValueMap;
+
+        // Signals
+
+        connect<K extends keyof StringValueMap.SignalSignatures>(
+            signal: K,
+            callback: StringValueMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StringValueMap.SignalSignatures>(
+            signal: K,
+            callback: StringValueMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StringValueMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StringValueMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22876,7 +22618,6 @@ export namespace RB {
 
     class TaskList extends GObject.Object {
         static $gtype: GObject.GType<TaskList>;
-        declare static readonly __signalSignatures: TaskList.SignalSignatures;
 
         // Properties
 
@@ -22889,6 +22630,18 @@ export namespace RB {
         _init(...args: any[]): void;
 
         static ['new'](): TaskList;
+
+        // Signals
+
+        connect<K extends keyof TaskList.SignalSignatures>(signal: K, callback: TaskList.SignalSignatures[K]): number;
+        connect_after<K extends keyof TaskList.SignalSignatures>(
+            signal: K,
+            callback: TaskList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22905,7 +22658,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface CancelTask {
-            (): void;
+            (_source: TaskProgressSimple): void;
         }
 
         // Signal signatures
@@ -22920,7 +22673,6 @@ export namespace RB {
 
     class TaskProgressSimple extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TaskProgressSimple>;
-        declare static readonly __signalSignatures: TaskProgressSimple.SignalSignatures;
 
         // Constructors
 
@@ -22942,12 +22694,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<TaskProgressSimple.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancel-task', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancel-task', callback: (_source: this) => void): number;
-        emit(signal: 'cancel-task'): void;
 
         // Static methods
 
@@ -23430,43 +23176,64 @@ export namespace RB {
         // Signal callback interfaces
 
         interface Cancelled {
-            (): void;
+            (_source: TrackTransferBatch): void;
         }
 
         interface Complete {
-            (): void;
+            (_source: TrackTransferBatch): void;
         }
 
         interface GetDestUri {
-            (entry: RhythmDBEntry, mediatype: string, extension: string): string;
+            (_source: TrackTransferBatch, entry: RhythmDBEntry, mediatype: string, extension: string): string;
         }
 
         interface OverwritePrompt {
-            (uri: string): void;
+            (_source: TrackTransferBatch, uri: string): void;
         }
 
         interface Started {
-            (): void;
+            (_source: TrackTransferBatch): void;
         }
 
         interface TrackDone {
-            (entry: RhythmDBEntry, dest: string, dest_size: number, dest_mediatype: string, error?: any | null): void;
+            (
+                _source: TrackTransferBatch,
+                entry: RhythmDBEntry,
+                dest: string,
+                dest_size: number,
+                dest_mediatype: string,
+                error?: any | null,
+            ): void;
         }
 
         interface TrackPostprocess {
-            (task: Gio.Task, entry: RhythmDBEntry, dest: string, dest_size: number, dest_mediatype: string): void;
+            (
+                _source: TrackTransferBatch,
+                task: Gio.Task,
+                entry: RhythmDBEntry,
+                dest: string,
+                dest_size: number,
+                dest_mediatype: string,
+            ): void;
         }
 
         interface TrackPrepare {
-            (task: Gio.Task, entry: RhythmDBEntry, dest: string): void;
+            (_source: TrackTransferBatch, task: Gio.Task, entry: RhythmDBEntry, dest: string): void;
         }
 
         interface TrackProgress {
-            (entry: RhythmDBEntry, dest: string, done: number, total: number, fraction: number): void;
+            (
+                _source: TrackTransferBatch,
+                entry: RhythmDBEntry,
+                dest: string,
+                done: number,
+                total: number,
+                fraction: number,
+            ): void;
         }
 
         interface TrackStarted {
-            (entry: RhythmDBEntry, dest: string): void;
+            (_source: TrackTransferBatch, entry: RhythmDBEntry, dest: string): void;
         }
 
         // Signal signatures
@@ -23504,7 +23271,6 @@ export namespace RB {
 
     class TrackTransferBatch extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TrackTransferBatch>;
-        declare static readonly __signalSignatures: TrackTransferBatch.SignalSignatures;
 
         // Properties
 
@@ -23593,135 +23359,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<TrackTransferBatch.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancelled', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancelled', callback: (_source: this) => void): number;
-        emit(signal: 'cancelled'): void;
-        connect(signal: 'complete', callback: (_source: this) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this) => void): number;
-        emit(signal: 'complete'): void;
-        connect(
-            signal: 'get-dest-uri',
-            callback: (_source: this, entry: RhythmDBEntry, mediatype: string, extension: string) => string,
-        ): number;
-        connect_after(
-            signal: 'get-dest-uri',
-            callback: (_source: this, entry: RhythmDBEntry, mediatype: string, extension: string) => string,
-        ): number;
-        emit(signal: 'get-dest-uri', entry: RhythmDBEntry, mediatype: string, extension: string): void;
-        connect(signal: 'overwrite-prompt', callback: (_source: this, uri: string) => void): number;
-        connect_after(signal: 'overwrite-prompt', callback: (_source: this, uri: string) => void): number;
-        emit(signal: 'overwrite-prompt', uri: string): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
-        connect(
-            signal: 'track-done',
-            callback: (
-                _source: this,
-                entry: RhythmDBEntry,
-                dest: string,
-                dest_size: number,
-                dest_mediatype: string,
-                error: any | null,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'track-done',
-            callback: (
-                _source: this,
-                entry: RhythmDBEntry,
-                dest: string,
-                dest_size: number,
-                dest_mediatype: string,
-                error: any | null,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'track-done',
-            entry: RhythmDBEntry,
-            dest: string,
-            dest_size: number,
-            dest_mediatype: string,
-            error?: any | null,
-        ): void;
-        connect(
-            signal: 'track-postprocess',
-            callback: (
-                _source: this,
-                task: Gio.Task,
-                entry: RhythmDBEntry,
-                dest: string,
-                dest_size: number,
-                dest_mediatype: string,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'track-postprocess',
-            callback: (
-                _source: this,
-                task: Gio.Task,
-                entry: RhythmDBEntry,
-                dest: string,
-                dest_size: number,
-                dest_mediatype: string,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'track-postprocess',
-            task: Gio.Task,
-            entry: RhythmDBEntry,
-            dest: string,
-            dest_size: number,
-            dest_mediatype: string,
-        ): void;
-        connect(
-            signal: 'track-prepare',
-            callback: (_source: this, task: Gio.Task, entry: RhythmDBEntry, dest: string) => void,
-        ): number;
-        connect_after(
-            signal: 'track-prepare',
-            callback: (_source: this, task: Gio.Task, entry: RhythmDBEntry, dest: string) => void,
-        ): number;
-        emit(signal: 'track-prepare', task: Gio.Task, entry: RhythmDBEntry, dest: string): void;
-        connect(
-            signal: 'track-progress',
-            callback: (
-                _source: this,
-                entry: RhythmDBEntry,
-                dest: string,
-                done: number,
-                total: number,
-                fraction: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'track-progress',
-            callback: (
-                _source: this,
-                entry: RhythmDBEntry,
-                dest: string,
-                done: number,
-                total: number,
-                fraction: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'track-progress',
-            entry: RhythmDBEntry,
-            dest: string,
-            done: number,
-            total: number,
-            fraction: number,
-        ): void;
-        connect(signal: 'track-started', callback: (_source: this, entry: RhythmDBEntry, dest: string) => void): number;
-        connect_after(
-            signal: 'track-started',
-            callback: (_source: this, entry: RhythmDBEntry, dest: string) => void,
-        ): number;
-        emit(signal: 'track-started', entry: RhythmDBEntry, dest: string): void;
 
         // Virtual methods
 
@@ -24242,11 +23879,11 @@ export namespace RB {
         // Signal callback interfaces
 
         interface MissingPlugins {
-            (details: string[], descriptions: string[], closure: GObject.Closure): boolean;
+            (_source: TrackTransferQueue, details: string[], descriptions: string[], closure: GObject.Closure): boolean;
         }
 
         interface TransferProgress {
-            (done: number, total: number, fraction: number, time_left: number): void;
+            (_source: TrackTransferQueue, done: number, total: number, fraction: number, time_left: number): void;
         }
 
         // Signal signatures
@@ -24265,7 +23902,6 @@ export namespace RB {
 
     class TrackTransferQueue extends GObject.Object {
         static $gtype: GObject.GType<TrackTransferQueue>;
-        declare static readonly __signalSignatures: TrackTransferQueue.SignalSignatures;
 
         // Properties
 
@@ -24300,27 +23936,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<TrackTransferQueue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'missing-plugins',
-            callback: (_source: this, details: string[], descriptions: string[], closure: GObject.Closure) => boolean,
-        ): number;
-        connect_after(
-            signal: 'missing-plugins',
-            callback: (_source: this, details: string[], descriptions: string[], closure: GObject.Closure) => boolean,
-        ): number;
-        emit(signal: 'missing-plugins', details: string[], descriptions: string[], closure: GObject.Closure): void;
-        connect(
-            signal: 'transfer-progress',
-            callback: (_source: this, done: number, total: number, fraction: number, time_left: number) => void,
-        ): number;
-        connect_after(
-            signal: 'transfer-progress',
-            callback: (_source: this, done: number, total: number, fraction: number, time_left: number) => void,
-        ): number;
-        emit(signal: 'transfer-progress', done: number, total: number, fraction: number, time_left: number): void;
 
         // Virtual methods
 
@@ -24362,7 +23977,7 @@ export namespace RB {
         // Signal callback interfaces
 
         interface LocationAdded {
-            (uri: string): void;
+            (_source: URIDialog, uri: string): void;
         }
 
         // Signal signatures
@@ -24382,7 +23997,6 @@ export namespace RB {
 
     class URIDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<URIDialog>;
-        declare static readonly __signalSignatures: URIDialog.SignalSignatures;
 
         // Properties
 
@@ -24413,12 +24027,6 @@ export namespace RB {
             signal: K,
             ...args: Parameters<URIDialog.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'location-added', callback: (_source: this, uri: string) => void): number;
-        connect_after(signal: 'location-added', callback: (_source: this, uri: string) => void): number;
-        emit(signal: 'location-added', uri: string): void;
 
         // Virtual methods
 

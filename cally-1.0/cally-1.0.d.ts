@@ -65,7 +65,6 @@ export namespace Cally {
      */
     class Actor extends Atk.GObjectAccessible implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Actor>;
-        declare static readonly __signalSignatures: Actor.SignalSignatures;
 
         // Constructors
 
@@ -74,6 +73,12 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Actor;
+
+        // Signals
+
+        connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -960,7 +965,6 @@ export namespace Cally {
      */
     class Clone extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Clone>;
-        declare static readonly __signalSignatures: Clone.SignalSignatures;
 
         // Constructors
 
@@ -969,6 +973,12 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Clone;
+
+        // Signals
+
+        connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: Parameters<Clone.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -1825,7 +1835,6 @@ export namespace Cally {
      */
     class Group extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Group>;
-        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -1834,6 +1843,12 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Group;
+
+        // Signals
+
+        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -2690,7 +2705,6 @@ export namespace Cally {
      */
     class Rectangle extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Rectangle>;
-        declare static readonly __signalSignatures: Rectangle.SignalSignatures;
 
         // Constructors
 
@@ -2699,6 +2713,18 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Rectangle;
+
+        // Signals
+
+        connect<K extends keyof Rectangle.SignalSignatures>(signal: K, callback: Rectangle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rectangle.SignalSignatures>(
+            signal: K,
+            callback: Rectangle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Rectangle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Rectangle.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3552,7 +3578,6 @@ export namespace Cally {
      */
     class Root extends Atk.GObjectAccessible {
         static $gtype: GObject.GType<Root>;
-        declare static readonly __signalSignatures: Root.SignalSignatures;
 
         // Constructors
 
@@ -3561,6 +3586,12 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](): Root;
+
+        // Signals
+
+        connect<K extends keyof Root.SignalSignatures>(signal: K, callback: Root.SignalSignatures[K]): number;
+        connect_after<K extends keyof Root.SignalSignatures>(signal: K, callback: Root.SignalSignatures[K]): number;
+        emit<K extends keyof Root.SignalSignatures>(signal: K, ...args: Parameters<Root.SignalSignatures[K]>): void;
     }
 
     namespace Stage {
@@ -3582,7 +3613,6 @@ export namespace Cally {
      */
     class Stage extends Group implements Atk.Action, Atk.Component, Atk.Window {
         static $gtype: GObject.GType<Stage>;
-        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Constructors
 
@@ -3591,6 +3621,12 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Stage;
+
+        // Signals
+
+        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
 
         // Inherited properties
         get accessible_component_layer(): number;
@@ -4460,7 +4496,6 @@ export namespace Cally {
      */
     class Text extends Actor implements Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
         static $gtype: GObject.GType<Text>;
-        declare static readonly __signalSignatures: Text.SignalSignatures;
 
         // Constructors
 
@@ -4469,6 +4504,12 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Text;
+
+        // Signals
+
+        connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -5907,7 +5948,6 @@ export namespace Cally {
      */
     class Texture extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Texture>;
-        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Constructors
 
@@ -5916,6 +5956,18 @@ export namespace Cally {
         _init(...args: any[]): void;
 
         static ['new'](actor: Clutter.Actor): Texture;
+
+        // Signals
+
+        connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect_after<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            callback: Texture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Texture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Texture.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6769,13 +6821,18 @@ export namespace Cally {
      */
     class Util extends Atk.Util {
         static $gtype: GObject.GType<Util>;
-        declare static readonly __signalSignatures: Util.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Util.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: Parameters<Util.SignalSignatures[K]>): void;
     }
 
     type ActorClass = typeof Actor;

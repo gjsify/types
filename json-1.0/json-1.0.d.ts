@@ -492,7 +492,6 @@ export namespace Json {
      */
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
-        declare static readonly __signalSignatures: Builder.SignalSignatures;
 
         // Properties
 
@@ -513,6 +512,18 @@ export namespace Json {
         static ['new'](): Builder;
 
         static new_immutable(): Builder;
+
+        // Signals
+
+        connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: Builder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Builder.SignalSignatures>(
+            signal: K,
+            callback: Builder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Builder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Builder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -677,7 +688,6 @@ export namespace Json {
      */
     class Generator extends GObject.Object {
         static $gtype: GObject.GType<Generator>;
-        declare static readonly __signalSignatures: Generator.SignalSignatures;
 
         // Properties
 
@@ -719,6 +729,18 @@ export namespace Json {
         _init(...args: any[]): void;
 
         static ['new'](): Generator;
+
+        // Signals
+
+        connect<K extends keyof Generator.SignalSignatures>(signal: K, callback: Generator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Generator.SignalSignatures>(
+            signal: K,
+            callback: Generator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Generator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Generator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -814,39 +836,39 @@ export namespace Json {
         // Signal callback interfaces
 
         interface ArrayElement {
-            (array: Array, index_: number): void;
+            (_source: Parser, array: Array, index_: number): void;
         }
 
         interface ArrayEnd {
-            (array: Array): void;
+            (_source: Parser, array: Array): void;
         }
 
         interface ArrayStart {
-            (): void;
+            (_source: Parser): void;
         }
 
         interface Error {
-            (error?: any | null): void;
+            (_source: Parser, error?: any | null): void;
         }
 
         interface ObjectEnd {
-            (object: Object): void;
+            (_source: Parser, object: Object): void;
         }
 
         interface ObjectMember {
-            (object: Object, member_name: string): void;
+            (_source: Parser, object: Object, member_name: string): void;
         }
 
         interface ObjectStart {
-            (): void;
+            (_source: Parser): void;
         }
 
         interface ParseEnd {
-            (): void;
+            (_source: Parser): void;
         }
 
         interface ParseStart {
-            (): void;
+            (_source: Parser): void;
         }
 
         // Signal signatures
@@ -910,7 +932,6 @@ export namespace Json {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -944,42 +965,6 @@ export namespace Json {
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'array-element', callback: (_source: this, array: Array, index_: number) => void): number;
-        connect_after(signal: 'array-element', callback: (_source: this, array: Array, index_: number) => void): number;
-        emit(signal: 'array-element', array: Array, index_: number): void;
-        connect(signal: 'array-end', callback: (_source: this, array: Array) => void): number;
-        connect_after(signal: 'array-end', callback: (_source: this, array: Array) => void): number;
-        emit(signal: 'array-end', array: Array): void;
-        connect(signal: 'array-start', callback: (_source: this) => void): number;
-        connect_after(signal: 'array-start', callback: (_source: this) => void): number;
-        emit(signal: 'array-start'): void;
-        connect(signal: 'error', callback: (_source: this, error: any | null) => void): number;
-        connect_after(signal: 'error', callback: (_source: this, error: any | null) => void): number;
-        emit(signal: 'error', error?: any | null): void;
-        connect(signal: 'object-end', callback: (_source: this, object: Object) => void): number;
-        connect_after(signal: 'object-end', callback: (_source: this, object: Object) => void): number;
-        emit(signal: 'object-end', object: Object): void;
-        connect(
-            signal: 'object-member',
-            callback: (_source: this, object: Object, member_name: string) => void,
-        ): number;
-        connect_after(
-            signal: 'object-member',
-            callback: (_source: this, object: Object, member_name: string) => void,
-        ): number;
-        emit(signal: 'object-member', object: Object, member_name: string): void;
-        connect(signal: 'object-start', callback: (_source: this) => void): number;
-        connect_after(signal: 'object-start', callback: (_source: this) => void): number;
-        emit(signal: 'object-start'): void;
-        connect(signal: 'parse-end', callback: (_source: this) => void): number;
-        connect_after(signal: 'parse-end', callback: (_source: this) => void): number;
-        emit(signal: 'parse-end'): void;
-        connect(signal: 'parse-start', callback: (_source: this) => void): number;
-        connect_after(signal: 'parse-start', callback: (_source: this) => void): number;
-        emit(signal: 'parse-start'): void;
 
         // Virtual methods
 
@@ -1341,7 +1326,6 @@ export namespace Json {
      */
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
-        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Constructors
 
@@ -1350,6 +1334,12 @@ export namespace Json {
         _init(...args: any[]): void;
 
         static ['new'](): Path;
+
+        // Signals
+
+        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1477,7 +1467,6 @@ export namespace Json {
      */
     class Reader extends GObject.Object {
         static $gtype: GObject.GType<Reader>;
-        declare static readonly __signalSignatures: Reader.SignalSignatures;
 
         // Properties
 
@@ -1494,6 +1483,12 @@ export namespace Json {
         _init(...args: any[]): void;
 
         static ['new'](node?: Node | null): Reader;
+
+        // Signals
+
+        connect<K extends keyof Reader.SignalSignatures>(signal: K, callback: Reader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Reader.SignalSignatures>(signal: K, callback: Reader.SignalSignatures[K]): number;
+        emit<K extends keyof Reader.SignalSignatures>(signal: K, ...args: Parameters<Reader.SignalSignatures[K]>): void;
 
         // Methods
 

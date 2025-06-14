@@ -1182,13 +1182,18 @@ export namespace ICalGLib {
      */
     class Array extends Object {
         static $gtype: GObject.GType<Array>;
-        declare static readonly __signalSignatures: Array.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Array.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        emit<K extends keyof Array.SignalSignatures>(signal: K, ...args: Parameters<Array.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1223,7 +1228,6 @@ export namespace ICalGLib {
      */
     class Attach extends Object {
         static $gtype: GObject.GType<Attach>;
-        declare static readonly __signalSignatures: Attach.SignalSignatures;
 
         // Constructors
 
@@ -1236,6 +1240,12 @@ export namespace ICalGLib {
         static new_from_data(data: string, free_fn?: GLib.Func | null): Attach;
 
         static new_from_url(url: string): Attach;
+
+        // Signals
+
+        connect<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
+        connect_after<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
+        emit<K extends keyof Attach.SignalSignatures>(signal: K, ...args: Parameters<Attach.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1272,13 +1282,24 @@ export namespace ICalGLib {
      */
     class CompIter extends Object {
         static $gtype: GObject.GType<CompIter>;
-        declare static readonly __signalSignatures: CompIter.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CompIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CompIter.SignalSignatures>(signal: K, callback: CompIter.SignalSignatures[K]): number;
+        connect_after<K extends keyof CompIter.SignalSignatures>(
+            signal: K,
+            callback: CompIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompIter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1313,7 +1334,6 @@ export namespace ICalGLib {
      */
     class Component extends Object {
         static $gtype: GObject.GType<Component>;
-        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Constructors
 
@@ -1358,6 +1378,18 @@ export namespace ICalGLib {
         static new_xstandard(): Component;
 
         static new_xvote(): Component;
+
+        // Signals
+
+        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect_after<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: Component.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Component.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1718,7 +1750,6 @@ export namespace ICalGLib {
      */
     class Datetimeperiod extends Object {
         static $gtype: GObject.GType<Datetimeperiod>;
-        declare static readonly __signalSignatures: Datetimeperiod.SignalSignatures;
 
         // Constructors
 
@@ -1727,6 +1758,21 @@ export namespace ICalGLib {
         _init(...args: any[]): void;
 
         static ['new'](): Datetimeperiod;
+
+        // Signals
+
+        connect<K extends keyof Datetimeperiod.SignalSignatures>(
+            signal: K,
+            callback: Datetimeperiod.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Datetimeperiod.SignalSignatures>(
+            signal: K,
+            callback: Datetimeperiod.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Datetimeperiod.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Datetimeperiod.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1766,7 +1812,6 @@ export namespace ICalGLib {
      */
     class Duration extends Object {
         static $gtype: GObject.GType<Duration>;
-        declare static readonly __signalSignatures: Duration.SignalSignatures;
 
         // Constructors
 
@@ -1781,6 +1826,18 @@ export namespace ICalGLib {
         static new_from_string(str: string): Duration;
 
         static new_null_duration(): Duration;
+
+        // Signals
+
+        connect<K extends keyof Duration.SignalSignatures>(signal: K, callback: Duration.SignalSignatures[K]): number;
+        connect_after<K extends keyof Duration.SignalSignatures>(
+            signal: K,
+            callback: Duration.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Duration.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Duration.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1880,7 +1937,6 @@ export namespace ICalGLib {
      */
     class Geo extends Object {
         static $gtype: GObject.GType<Geo>;
-        declare static readonly __signalSignatures: Geo.SignalSignatures;
 
         // Constructors
 
@@ -1889,6 +1945,12 @@ export namespace ICalGLib {
         _init(...args: any[]): void;
 
         static ['new'](lat: number, lon: number): Geo;
+
+        // Signals
+
+        connect<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
+        emit<K extends keyof Geo.SignalSignatures>(signal: K, ...args: Parameters<Geo.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1942,7 +2004,6 @@ export namespace ICalGLib {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -1994,6 +2055,12 @@ export namespace ICalGLib {
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2080,7 +2147,6 @@ export namespace ICalGLib {
      */
     class Parameter extends Object {
         static $gtype: GObject.GType<Parameter>;
-        declare static readonly __signalSignatures: Parameter.SignalSignatures;
 
         // Constructors
 
@@ -2193,6 +2259,18 @@ export namespace ICalGLib {
         static new_xliccomparetype(v: ParameterXliccomparetype): Parameter;
 
         static new_xlicerrortype(v: ParameterXlicerrortype): Parameter;
+
+        // Signals
+
+        connect<K extends keyof Parameter.SignalSignatures>(signal: K, callback: Parameter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parameter.SignalSignatures>(
+            signal: K,
+            callback: Parameter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Parameter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Parameter.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2411,7 +2489,6 @@ export namespace ICalGLib {
      */
     class Parser extends Object {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Constructors
 
@@ -2420,6 +2497,12 @@ export namespace ICalGLib {
         _init(...args: any[]): void;
 
         static ['new'](): Parser;
+
+        // Signals
+
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2483,7 +2566,6 @@ export namespace ICalGLib {
      */
     class Period extends Object {
         static $gtype: GObject.GType<Period>;
-        declare static readonly __signalSignatures: Period.SignalSignatures;
 
         // Constructors
 
@@ -2494,6 +2576,12 @@ export namespace ICalGLib {
         static new_from_string(str: string): Period;
 
         static new_null_period(): Period;
+
+        // Signals
+
+        connect<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
+        connect_after<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
+        emit<K extends keyof Period.SignalSignatures>(signal: K, ...args: Parameters<Period.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2558,7 +2646,6 @@ export namespace ICalGLib {
      */
     class Property extends Object {
         static $gtype: GObject.GType<Property>;
-        declare static readonly __signalSignatures: Property.SignalSignatures;
 
         // Constructors
 
@@ -2797,6 +2884,18 @@ export namespace ICalGLib {
         static new_xlicmimefilename(v: string): Property;
 
         static new_xlicmimeoptinfo(v: string): Property;
+
+        // Signals
+
+        connect<K extends keyof Property.SignalSignatures>(signal: K, callback: Property.SignalSignatures[K]): number;
+        connect_after<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            callback: Property.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Property.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4162,7 +4261,6 @@ export namespace ICalGLib {
      */
     class RecurIterator extends Object {
         static $gtype: GObject.GType<RecurIterator>;
-        declare static readonly __signalSignatures: RecurIterator.SignalSignatures;
 
         // Constructors
 
@@ -4171,6 +4269,21 @@ export namespace ICalGLib {
         _init(...args: any[]): void;
 
         static ['new'](rule: Recurrence, dtstart: Time): RecurIterator;
+
+        // Signals
+
+        connect<K extends keyof RecurIterator.SignalSignatures>(
+            signal: K,
+            callback: RecurIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecurIterator.SignalSignatures>(
+            signal: K,
+            callback: RecurIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecurIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecurIterator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4203,7 +4316,6 @@ export namespace ICalGLib {
      */
     class Recurrence extends Object {
         static $gtype: GObject.GType<Recurrence>;
-        declare static readonly __signalSignatures: Recurrence.SignalSignatures;
 
         // Constructors
 
@@ -4214,6 +4326,21 @@ export namespace ICalGLib {
         static ['new'](): Recurrence;
 
         static new_from_string(str: string): Recurrence;
+
+        // Signals
+
+        connect<K extends keyof Recurrence.SignalSignatures>(
+            signal: K,
+            callback: Recurrence.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Recurrence.SignalSignatures>(
+            signal: K,
+            callback: Recurrence.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Recurrence.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Recurrence.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4556,7 +4683,6 @@ export namespace ICalGLib {
      */
     class Reqstat extends Object {
         static $gtype: GObject.GType<Reqstat>;
-        declare static readonly __signalSignatures: Reqstat.SignalSignatures;
 
         // Constructors
 
@@ -4565,6 +4691,18 @@ export namespace ICalGLib {
         _init(...args: any[]): void;
 
         static new_from_string(str: string): Reqstat;
+
+        // Signals
+
+        connect<K extends keyof Reqstat.SignalSignatures>(signal: K, callback: Reqstat.SignalSignatures[K]): number;
+        connect_after<K extends keyof Reqstat.SignalSignatures>(
+            signal: K,
+            callback: Reqstat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Reqstat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Reqstat.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4609,7 +4747,6 @@ export namespace ICalGLib {
      */
     class Time extends Object {
         static $gtype: GObject.GType<Time>;
-        declare static readonly __signalSignatures: Time.SignalSignatures;
 
         // Constructors
 
@@ -4632,6 +4769,12 @@ export namespace ICalGLib {
         static new_null_time(): Time;
 
         static new_today(): Time;
+
+        // Signals
+
+        connect<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
+        connect_after<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
+        emit<K extends keyof Time.SignalSignatures>(signal: K, ...args: Parameters<Time.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4920,7 +5063,6 @@ export namespace ICalGLib {
      */
     class TimeSpan extends Object {
         static $gtype: GObject.GType<TimeSpan>;
-        declare static readonly __signalSignatures: TimeSpan.SignalSignatures;
 
         // Constructors
 
@@ -4931,6 +5073,18 @@ export namespace ICalGLib {
         static ['new'](dtstart: Time, dtend: Time, is_busy: number): TimeSpan;
 
         static new_timet(start: never, end: never, is_busy: boolean): TimeSpan;
+
+        // Signals
+
+        connect<K extends keyof TimeSpan.SignalSignatures>(signal: K, callback: TimeSpan.SignalSignatures[K]): number;
+        connect_after<K extends keyof TimeSpan.SignalSignatures>(
+            signal: K,
+            callback: TimeSpan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimeSpan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimeSpan.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4997,7 +5151,6 @@ export namespace ICalGLib {
      */
     class Timezone extends Object {
         static $gtype: GObject.GType<Timezone>;
-        declare static readonly __signalSignatures: Timezone.SignalSignatures;
 
         // Constructors
 
@@ -5008,6 +5161,18 @@ export namespace ICalGLib {
         static array_new(): Timezone;
 
         static ['new'](): Timezone;
+
+        // Signals
+
+        connect<K extends keyof Timezone.SignalSignatures>(signal: K, callback: Timezone.SignalSignatures[K]): number;
+        connect_after<K extends keyof Timezone.SignalSignatures>(
+            signal: K,
+            callback: Timezone.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Timezone.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Timezone.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5189,7 +5354,6 @@ export namespace ICalGLib {
      */
     class Trigger extends Object {
         static $gtype: GObject.GType<Trigger>;
-        declare static readonly __signalSignatures: Trigger.SignalSignatures;
 
         // Constructors
 
@@ -5200,6 +5364,18 @@ export namespace ICalGLib {
         static new_from_int(reltime: number): Trigger;
 
         static new_from_string(str: string): Trigger;
+
+        // Signals
+
+        connect<K extends keyof Trigger.SignalSignatures>(signal: K, callback: Trigger.SignalSignatures[K]): number;
+        connect_after<K extends keyof Trigger.SignalSignatures>(
+            signal: K,
+            callback: Trigger.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Trigger.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Trigger.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5249,7 +5425,6 @@ export namespace ICalGLib {
      */
     class Value extends Object {
         static $gtype: GObject.GType<Value>;
-        declare static readonly __signalSignatures: Value.SignalSignatures;
 
         // Constructors
 
@@ -5330,6 +5505,12 @@ export namespace ICalGLib {
         static new_x(v: string): Value;
 
         static new_xlicclass(v: PropertyXlicclass): Value;
+
+        // Signals
+
+        connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
 
         // Static methods
 

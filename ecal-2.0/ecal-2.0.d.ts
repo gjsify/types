@@ -1551,7 +1551,7 @@ export namespace ECal {
         // Signal callback interfaces
 
         interface FreeBusyData {
-            (free_busy_ecalcomps: Component[]): void;
+            (_source: Client, free_busy_ecalcomps: Component[]): void;
         }
 
         // Signal signatures
@@ -1579,7 +1579,6 @@ export namespace ECal {
      */
     class Client extends EDataServer.Client implements TimezoneCache, Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -1598,15 +1597,9 @@ export namespace ECal {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(
-            signal: 'free-busy-data',
-            callback: (_source: this, free_busy_ecalcomps: Component[]) => void,
-        ): number;
-        emit(signal: 'free-busy-data', free_busy_ecalcomps: Component[]): void;
 
         // Static methods
 
@@ -3999,23 +3992,23 @@ export namespace ECal {
         // Signal callback interfaces
 
         interface Complete {
-            (object: GLib.Error): void;
+            (_source: ClientView, object: GLib.Error): void;
         }
 
         interface ObjectsAdded {
-            (objects: ICalGLib.Component[]): void;
+            (_source: ClientView, objects: ICalGLib.Component[]): void;
         }
 
         interface ObjectsModified {
-            (objects: ICalGLib.Component[]): void;
+            (_source: ClientView, objects: ICalGLib.Component[]): void;
         }
 
         interface ObjectsRemoved {
-            (uids: ComponentId[]): void;
+            (_source: ClientView, uids: ComponentId[]): void;
         }
 
         interface Progress {
-            (object: number, p0: string): void;
+            (_source: ClientView, object: number, p0: string): void;
         }
 
         // Signal signatures
@@ -4043,7 +4036,6 @@ export namespace ECal {
      */
     class ClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<ClientView>;
-        declare static readonly __signalSignatures: ClientView.SignalSignatures;
 
         // Properties
 
@@ -4084,30 +4076,6 @@ export namespace ECal {
             signal: K,
             ...args: Parameters<ClientView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'complete', callback: (_source: this, object: GLib.Error) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this, object: GLib.Error) => void): number;
-        emit(signal: 'complete', object: GLib.Error): void;
-        connect(signal: 'objects-added', callback: (_source: this, objects: ICalGLib.Component[]) => void): number;
-        connect_after(
-            signal: 'objects-added',
-            callback: (_source: this, objects: ICalGLib.Component[]) => void,
-        ): number;
-        emit(signal: 'objects-added', objects: ICalGLib.Component[]): void;
-        connect(signal: 'objects-modified', callback: (_source: this, objects: ICalGLib.Component[]) => void): number;
-        connect_after(
-            signal: 'objects-modified',
-            callback: (_source: this, objects: ICalGLib.Component[]) => void,
-        ): number;
-        emit(signal: 'objects-modified', objects: ICalGLib.Component[]): void;
-        connect(signal: 'objects-removed', callback: (_source: this, uids: ComponentId[]) => void): number;
-        connect_after(signal: 'objects-removed', callback: (_source: this, uids: ComponentId[]) => void): number;
-        emit(signal: 'objects-removed', uids: ComponentId[]): void;
-        connect(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
-        emit(signal: 'progress', object: number, p0: string): void;
 
         // Virtual methods
 
@@ -4705,7 +4673,6 @@ export namespace ECal {
 
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
-        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Constructors
 
@@ -4720,6 +4687,18 @@ export namespace ECal {
         static new_from_string(calobj: string): Component;
 
         static new_vtype(vtype: ComponentVType): Component;
+
+        // Signals
+
+        connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect_after<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            callback: Component.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Component.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Component.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5377,15 +5356,21 @@ export namespace ECal {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: ReminderWatcher): void;
         }
 
         interface FormatTime {
-            (rd: ReminderData, itt: ICalGLib.Time, inout_buffer: any, buffer_size: number): void;
+            (
+                _source: ReminderWatcher,
+                rd: ReminderData,
+                itt: ICalGLib.Time,
+                inout_buffer: any,
+                buffer_size: number,
+            ): void;
         }
 
         interface Triggered {
-            (reminders: ReminderData[], snoozed: boolean): void;
+            (_source: ReminderWatcher, reminders: ReminderData[], snoozed: boolean): void;
         }
 
         // Signal signatures
@@ -5412,7 +5397,6 @@ export namespace ECal {
      */
     class ReminderWatcher extends GObject.Object {
         static $gtype: GObject.GType<ReminderWatcher>;
-        declare static readonly __signalSignatures: ReminderWatcher.SignalSignatures;
 
         // Properties
 
@@ -5471,42 +5455,6 @@ export namespace ECal {
             signal: K,
             ...args: Parameters<ReminderWatcher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(
-            signal: 'format-time',
-            callback: (
-                _source: this,
-                rd: ReminderData,
-                itt: ICalGLib.Time,
-                inout_buffer: any,
-                buffer_size: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'format-time',
-            callback: (
-                _source: this,
-                rd: ReminderData,
-                itt: ICalGLib.Time,
-                inout_buffer: any,
-                buffer_size: number,
-            ) => void,
-        ): number;
-        emit(signal: 'format-time', rd: ReminderData, itt: ICalGLib.Time, inout_buffer: any, buffer_size: number): void;
-        connect(
-            signal: 'triggered',
-            callback: (_source: this, reminders: ReminderData[], snoozed: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'triggered',
-            callback: (_source: this, reminders: ReminderData[], snoozed: boolean) => void,
-        ): number;
-        emit(signal: 'triggered', reminders: ReminderData[], snoozed: boolean): void;
 
         // Virtual methods
 

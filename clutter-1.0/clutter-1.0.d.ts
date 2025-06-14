@@ -8220,120 +8220,125 @@ export namespace Clutter {
      */
     abstract class Action extends ActorMeta {
         static $gtype: GObject.GType<Action>;
-        declare static readonly __signalSignatures: Action.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Action.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
+        connect_after<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
+        emit<K extends keyof Action.SignalSignatures>(signal: K, ...args: Parameters<Action.SignalSignatures[K]>): void;
     }
 
     namespace Actor {
         // Signal callback interfaces
 
         interface AllocationChanged {
-            (box: ActorBox, flags: AllocationFlags): void;
+            (_source: Actor, box: ActorBox, flags: AllocationFlags): void;
         }
 
         interface ButtonPressEvent {
-            (event: ButtonEvent): boolean;
+            (_source: Actor, event: ButtonEvent): boolean;
         }
 
         interface ButtonReleaseEvent {
-            (event: ButtonEvent): boolean;
+            (_source: Actor, event: ButtonEvent): boolean;
         }
 
         interface CapturedEvent {
-            (event: Event): boolean;
+            (_source: Actor, event: Event): boolean;
         }
 
         interface Destroy {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface EnterEvent {
-            (event: CrossingEvent): boolean;
+            (_source: Actor, event: CrossingEvent): boolean;
         }
 
         interface Event {
-            (event: Event): boolean;
+            (_source: Actor, event: Event): boolean;
         }
 
         interface Hide {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface KeyFocusIn {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface KeyFocusOut {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface KeyPressEvent {
-            (event: KeyEvent): boolean;
+            (_source: Actor, event: KeyEvent): boolean;
         }
 
         interface KeyReleaseEvent {
-            (event: KeyEvent): boolean;
+            (_source: Actor, event: KeyEvent): boolean;
         }
 
         interface LeaveEvent {
-            (event: CrossingEvent): boolean;
+            (_source: Actor, event: CrossingEvent): boolean;
         }
 
         interface MotionEvent {
-            (event: MotionEvent): boolean;
+            (_source: Actor, event: MotionEvent): boolean;
         }
 
         interface Paint {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface ParentSet {
-            (old_parent?: Actor | null): void;
+            (_source: Actor, old_parent?: Actor | null): void;
         }
 
         interface Pick {
-            (color: Color): void;
+            (_source: Actor, color: Color): void;
         }
 
         interface QueueRedraw {
-            (origin: Actor): void;
+            (_source: Actor, origin: Actor): void;
         }
 
         interface QueueRelayout {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface Realize {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface ScrollEvent {
-            (event: ScrollEvent): boolean;
+            (_source: Actor, event: ScrollEvent): boolean;
         }
 
         interface Show {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface TouchEvent {
-            (event: Event): boolean;
+            (_source: Actor, event: Event): boolean;
         }
 
         interface TransitionStopped {
-            (name: string, is_finished: boolean): void;
+            (_source: Actor, name: string, is_finished: boolean): void;
         }
 
         interface TransitionsCompleted {
-            (): void;
+            (_source: Actor): void;
         }
 
         interface Unrealize {
-            (): void;
+            (_source: Actor): void;
         }
 
         // Signal signatures
@@ -8526,7 +8531,6 @@ export namespace Clutter {
      */
     class Actor extends GObject.InitiallyUnowned implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Actor>;
-        declare static readonly __signalSignatures: Actor.SignalSignatures;
 
         // Properties
 
@@ -9745,99 +9749,6 @@ export namespace Clutter {
         connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
         connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
         emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'allocation-changed',
-            callback: (_source: this, box: ActorBox, flags: AllocationFlags) => void,
-        ): number;
-        connect_after(
-            signal: 'allocation-changed',
-            callback: (_source: this, box: ActorBox, flags: AllocationFlags) => void,
-        ): number;
-        emit(signal: 'allocation-changed', box: ActorBox, flags: AllocationFlags): void;
-        connect(signal: 'button-press-event', callback: (_source: this, event: ButtonEvent) => boolean): number;
-        connect_after(signal: 'button-press-event', callback: (_source: this, event: ButtonEvent) => boolean): number;
-        emit(signal: 'button-press-event', event: ButtonEvent): void;
-        connect(signal: 'button-release-event', callback: (_source: this, event: ButtonEvent) => boolean): number;
-        connect_after(signal: 'button-release-event', callback: (_source: this, event: ButtonEvent) => boolean): number;
-        emit(signal: 'button-release-event', event: ButtonEvent): void;
-        connect(signal: 'captured-event', callback: (_source: this, event: Event) => boolean): number;
-        connect_after(signal: 'captured-event', callback: (_source: this, event: Event) => boolean): number;
-        emit(signal: 'captured-event', event: Event): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
-        connect(signal: 'enter-event', callback: (_source: this, event: CrossingEvent) => boolean): number;
-        connect_after(signal: 'enter-event', callback: (_source: this, event: CrossingEvent) => boolean): number;
-        emit(signal: 'enter-event', event: CrossingEvent): void;
-        connect(signal: 'event', callback: (_source: this, event: Event) => boolean): number;
-        connect_after(signal: 'event', callback: (_source: this, event: Event) => boolean): number;
-        emit(signal: 'event', event: Event): void;
-        connect(signal: 'hide', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide', callback: (_source: this) => void): number;
-        emit(signal: 'hide'): void;
-        connect(signal: 'key-focus-in', callback: (_source: this) => void): number;
-        connect_after(signal: 'key-focus-in', callback: (_source: this) => void): number;
-        emit(signal: 'key-focus-in'): void;
-        connect(signal: 'key-focus-out', callback: (_source: this) => void): number;
-        connect_after(signal: 'key-focus-out', callback: (_source: this) => void): number;
-        emit(signal: 'key-focus-out'): void;
-        connect(signal: 'key-press-event', callback: (_source: this, event: KeyEvent) => boolean): number;
-        connect_after(signal: 'key-press-event', callback: (_source: this, event: KeyEvent) => boolean): number;
-        emit(signal: 'key-press-event', event: KeyEvent): void;
-        connect(signal: 'key-release-event', callback: (_source: this, event: KeyEvent) => boolean): number;
-        connect_after(signal: 'key-release-event', callback: (_source: this, event: KeyEvent) => boolean): number;
-        emit(signal: 'key-release-event', event: KeyEvent): void;
-        connect(signal: 'leave-event', callback: (_source: this, event: CrossingEvent) => boolean): number;
-        connect_after(signal: 'leave-event', callback: (_source: this, event: CrossingEvent) => boolean): number;
-        emit(signal: 'leave-event', event: CrossingEvent): void;
-        connect(signal: 'motion-event', callback: (_source: this, event: MotionEvent) => boolean): number;
-        connect_after(signal: 'motion-event', callback: (_source: this, event: MotionEvent) => boolean): number;
-        emit(signal: 'motion-event', event: MotionEvent): void;
-        connect(signal: 'paint', callback: (_source: this) => void): number;
-        connect_after(signal: 'paint', callback: (_source: this) => void): number;
-        emit(signal: 'paint'): void;
-        connect(signal: 'parent-set', callback: (_source: this, old_parent: Actor | null) => void): number;
-        connect_after(signal: 'parent-set', callback: (_source: this, old_parent: Actor | null) => void): number;
-        emit(signal: 'parent-set', old_parent?: Actor | null): void;
-        connect(signal: 'pick', callback: (_source: this, color: Color) => void): number;
-        connect_after(signal: 'pick', callback: (_source: this, color: Color) => void): number;
-        emit(signal: 'pick', color: Color): void;
-        connect(signal: 'queue-redraw', callback: (_source: this, origin: Actor) => void): number;
-        connect_after(signal: 'queue-redraw', callback: (_source: this, origin: Actor) => void): number;
-        emit(signal: 'queue-redraw', origin: Actor): void;
-        connect(signal: 'queue-relayout', callback: (_source: this) => void): number;
-        connect_after(signal: 'queue-relayout', callback: (_source: this) => void): number;
-        emit(signal: 'queue-relayout'): void;
-        connect(signal: 'realize', callback: (_source: this) => void): number;
-        connect_after(signal: 'realize', callback: (_source: this) => void): number;
-        emit(signal: 'realize'): void;
-        connect(signal: 'scroll-event', callback: (_source: this, event: ScrollEvent) => boolean): number;
-        connect_after(signal: 'scroll-event', callback: (_source: this, event: ScrollEvent) => boolean): number;
-        emit(signal: 'scroll-event', event: ScrollEvent): void;
-        connect(signal: 'show', callback: (_source: this) => void): number;
-        connect_after(signal: 'show', callback: (_source: this) => void): number;
-        emit(signal: 'show'): void;
-        connect(signal: 'touch-event', callback: (_source: this, event: Event) => boolean): number;
-        connect_after(signal: 'touch-event', callback: (_source: this, event: Event) => boolean): number;
-        emit(signal: 'touch-event', event: Event): void;
-        connect(
-            signal: 'transition-stopped',
-            callback: (_source: this, name: string, is_finished: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'transition-stopped',
-            callback: (_source: this, name: string, is_finished: boolean) => void,
-        ): number;
-        emit(signal: 'transition-stopped', name: string, is_finished: boolean): void;
-        connect(signal: 'transitions-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'transitions-completed', callback: (_source: this) => void): number;
-        emit(signal: 'transitions-completed'): void;
-        connect(signal: 'unrealize', callback: (_source: this) => void): number;
-        connect_after(signal: 'unrealize', callback: (_source: this) => void): number;
-        emit(signal: 'unrealize'): void;
 
         // Virtual methods
 
@@ -13467,7 +13378,6 @@ export namespace Clutter {
      */
     abstract class ActorMeta extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ActorMeta>;
-        declare static readonly __signalSignatures: ActorMeta.SignalSignatures;
 
         // Properties
 
@@ -13491,6 +13401,18 @@ export namespace Clutter {
         constructor(properties?: Partial<ActorMeta.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ActorMeta.SignalSignatures>(signal: K, callback: ActorMeta.SignalSignatures[K]): number;
+        connect_after<K extends keyof ActorMeta.SignalSignatures>(
+            signal: K,
+            callback: ActorMeta.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActorMeta.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActorMeta.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -13552,7 +13474,6 @@ export namespace Clutter {
      */
     class AlignConstraint extends Constraint {
         static $gtype: GObject.GType<AlignConstraint>;
-        declare static readonly __signalSignatures: AlignConstraint.SignalSignatures;
 
         // Properties
 
@@ -13592,6 +13513,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](source: Actor | null, axis: AlignAxis, factor: number): AlignConstraint;
+
+        // Signals
+
+        connect<K extends keyof AlignConstraint.SignalSignatures>(
+            signal: K,
+            callback: AlignConstraint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AlignConstraint.SignalSignatures>(
+            signal: K,
+            callback: AlignConstraint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AlignConstraint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AlignConstraint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13657,7 +13593,6 @@ export namespace Clutter {
      */
     class Alpha extends GObject.InitiallyUnowned implements Scriptable {
         static $gtype: GObject.GType<Alpha>;
-        declare static readonly __signalSignatures: Alpha.SignalSignatures;
 
         // Properties
 
@@ -13695,6 +13630,12 @@ export namespace Clutter {
         static new_full(timeline: Timeline, mode: number): Alpha;
 
         static new_with_func(timeline: Timeline, func: AlphaFunc): Alpha;
+
+        // Signals
+
+        connect<K extends keyof Alpha.SignalSignatures>(signal: K, callback: Alpha.SignalSignatures[K]): number;
+        connect_after<K extends keyof Alpha.SignalSignatures>(signal: K, callback: Alpha.SignalSignatures[K]): number;
+        emit<K extends keyof Alpha.SignalSignatures>(signal: K, ...args: Parameters<Alpha.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -14264,11 +14205,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Completed {
-            (): void;
+            (_source: Animation): void;
         }
 
         interface Started {
-            (): void;
+            (_source: Animation): void;
         }
 
         // Signal signatures
@@ -14295,7 +14236,6 @@ export namespace Clutter {
      */
     class Animation extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Animation>;
-        declare static readonly __signalSignatures: Animation.SignalSignatures;
 
         // Properties
 
@@ -14351,15 +14291,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<Animation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
 
         // Virtual methods
 
@@ -15051,7 +14982,6 @@ export namespace Clutter {
      */
     class Animator extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Animator>;
-        declare static readonly __signalSignatures: Animator.SignalSignatures;
 
         // Properties
 
@@ -15075,6 +15005,18 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): Animator;
+
+        // Signals
+
+        connect<K extends keyof Animator.SignalSignatures>(signal: K, callback: Animator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Animator.SignalSignatures>(
+            signal: K,
+            callback: Animator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Animator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Animator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15704,15 +15646,15 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface FontChanged {
-            (): void;
+            (_source: Backend): void;
         }
 
         interface ResolutionChanged {
-            (): void;
+            (_source: Backend): void;
         }
 
         interface SettingsChanged {
-            (): void;
+            (_source: Backend): void;
         }
 
         // Signal signatures
@@ -15733,7 +15675,6 @@ export namespace Clutter {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
-        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
@@ -15752,18 +15693,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<Backend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'font-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'font-changed', callback: (_source: this) => void): number;
-        emit(signal: 'font-changed'): void;
-        connect(signal: 'resolution-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'resolution-changed', callback: (_source: this) => void): number;
-        emit(signal: 'resolution-changed'): void;
-        connect(signal: 'settings-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'settings-changed', callback: (_source: this) => void): number;
-        emit(signal: 'settings-changed'): void;
 
         // Methods
 
@@ -15851,11 +15780,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Applied {
-            (actor: Actor): void;
+            (_source: Behaviour, actor: Actor): void;
         }
 
         interface Removed {
-            (actor: Actor): void;
+            (_source: Behaviour, actor: Actor): void;
         }
 
         // Signal signatures
@@ -15877,7 +15806,6 @@ export namespace Clutter {
      */
     abstract class Behaviour extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Behaviour>;
-        declare static readonly __signalSignatures: Behaviour.SignalSignatures;
 
         // Properties
 
@@ -15907,15 +15835,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<Behaviour.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'applied', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'applied', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'applied', actor: Actor): void;
-        connect(signal: 'removed', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'removed', actor: Actor): void;
 
         // Virtual methods
 
@@ -16515,7 +16434,6 @@ export namespace Clutter {
      */
     class BehaviourDepth extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourDepth>;
-        declare static readonly __signalSignatures: BehaviourDepth.SignalSignatures;
 
         // Properties
 
@@ -16547,6 +16465,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](alpha: Alpha | null, depth_start: number, depth_end: number): BehaviourDepth;
+
+        // Signals
+
+        connect<K extends keyof BehaviourDepth.SignalSignatures>(
+            signal: K,
+            callback: BehaviourDepth.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BehaviourDepth.SignalSignatures>(
+            signal: K,
+            callback: BehaviourDepth.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BehaviourDepth.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BehaviourDepth.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17097,7 +17030,6 @@ export namespace Clutter {
      */
     class BehaviourEllipse extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourEllipse>;
-        declare static readonly __signalSignatures: BehaviourEllipse.SignalSignatures;
 
         // Properties
 
@@ -17188,6 +17120,21 @@ export namespace Clutter {
             start: number,
             end: number,
         ): BehaviourEllipse;
+
+        // Signals
+
+        connect<K extends keyof BehaviourEllipse.SignalSignatures>(
+            signal: K,
+            callback: BehaviourEllipse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BehaviourEllipse.SignalSignatures>(
+            signal: K,
+            callback: BehaviourEllipse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BehaviourEllipse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BehaviourEllipse.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17803,7 +17750,6 @@ export namespace Clutter {
      */
     class BehaviourOpacity extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourOpacity>;
-        declare static readonly __signalSignatures: BehaviourOpacity.SignalSignatures;
 
         // Properties
 
@@ -17835,6 +17781,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](alpha: Alpha | null, opacity_start: number, opacity_end: number): BehaviourOpacity;
+
+        // Signals
+
+        connect<K extends keyof BehaviourOpacity.SignalSignatures>(
+            signal: K,
+            callback: BehaviourOpacity.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BehaviourOpacity.SignalSignatures>(
+            signal: K,
+            callback: BehaviourOpacity.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BehaviourOpacity.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BehaviourOpacity.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18361,7 +18322,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface KnotReached {
-            (knot_num: number): void;
+            (_source: BehaviourPath, knot_num: number): void;
         }
 
         // Signal signatures
@@ -18382,7 +18343,6 @@ export namespace Clutter {
      */
     class BehaviourPath extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourPath>;
-        declare static readonly __signalSignatures: BehaviourPath.SignalSignatures;
 
         // Properties
 
@@ -18415,12 +18375,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<BehaviourPath.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'knot-reached', callback: (_source: this, knot_num: number) => void): number;
-        connect_after(signal: 'knot-reached', callback: (_source: this, knot_num: number) => void): number;
-        emit(signal: 'knot-reached', knot_num: number): void;
 
         // Virtual methods
 
@@ -18975,7 +18929,6 @@ export namespace Clutter {
      */
     class BehaviourRotate extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourRotate>;
-        declare static readonly __signalSignatures: BehaviourRotate.SignalSignatures;
 
         // Properties
 
@@ -19053,6 +19006,21 @@ export namespace Clutter {
             angle_start: number,
             angle_end: number,
         ): BehaviourRotate;
+
+        // Signals
+
+        connect<K extends keyof BehaviourRotate.SignalSignatures>(
+            signal: K,
+            callback: BehaviourRotate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BehaviourRotate.SignalSignatures>(
+            signal: K,
+            callback: BehaviourRotate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BehaviourRotate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BehaviourRotate.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19631,7 +19599,6 @@ export namespace Clutter {
      */
     class BehaviourScale extends Behaviour implements Scriptable {
         static $gtype: GObject.GType<BehaviourScale>;
-        declare static readonly __signalSignatures: BehaviourScale.SignalSignatures;
 
         // Properties
 
@@ -19689,6 +19656,21 @@ export namespace Clutter {
             x_scale_end: number,
             y_scale_end: number,
         ): BehaviourScale;
+
+        // Signals
+
+        connect<K extends keyof BehaviourScale.SignalSignatures>(
+            signal: K,
+            callback: BehaviourScale.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BehaviourScale.SignalSignatures>(
+            signal: K,
+            callback: BehaviourScale.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BehaviourScale.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BehaviourScale.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20231,7 +20213,6 @@ export namespace Clutter {
      */
     class BinLayout extends LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
-        declare static readonly __signalSignatures: BinLayout.SignalSignatures;
 
         // Properties
 
@@ -20267,6 +20248,18 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](x_align: BinAlignment, y_align: BinAlignment): BinLayout;
+
+        // Signals
+
+        connect<K extends keyof BinLayout.SignalSignatures>(signal: K, callback: BinLayout.SignalSignatures[K]): number;
+        connect_after<K extends keyof BinLayout.SignalSignatures>(
+            signal: K,
+            callback: BinLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BinLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BinLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20324,7 +20317,6 @@ export namespace Clutter {
      */
     class BindConstraint extends Constraint {
         static $gtype: GObject.GType<BindConstraint>;
-        declare static readonly __signalSignatures: BindConstraint.SignalSignatures;
 
         // Properties
 
@@ -20354,6 +20346,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](source: Actor | null, coordinate: BindCoordinate, offset: number): BindConstraint;
+
+        // Signals
+
+        connect<K extends keyof BindConstraint.SignalSignatures>(
+            signal: K,
+            callback: BindConstraint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BindConstraint.SignalSignatures>(
+            signal: K,
+            callback: BindConstraint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BindConstraint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BindConstraint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20406,7 +20413,6 @@ export namespace Clutter {
      */
     class BindingPool extends GObject.Object {
         static $gtype: GObject.GType<BindingPool>;
-        declare static readonly __signalSignatures: BindingPool.SignalSignatures;
 
         // Properties
 
@@ -20422,6 +20428,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](name: string): BindingPool;
+
+        // Signals
+
+        connect<K extends keyof BindingPool.SignalSignatures>(
+            signal: K,
+            callback: BindingPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BindingPool.SignalSignatures>(
+            signal: K,
+            callback: BindingPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BindingPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BindingPool.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -20606,7 +20627,6 @@ export namespace Clutter {
      */
     class BlurEffect extends OffscreenEffect {
         static $gtype: GObject.GType<BlurEffect>;
-        declare static readonly __signalSignatures: BlurEffect.SignalSignatures;
 
         // Constructors
 
@@ -20615,6 +20635,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): BlurEffect;
+
+        // Signals
+
+        connect<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            callback: BlurEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            callback: BlurEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BlurEffect.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Box {
@@ -20641,7 +20676,6 @@ export namespace Clutter {
      */
     class Box extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Box>;
-        declare static readonly __signalSignatures: Box.SignalSignatures;
 
         // Properties
 
@@ -20682,6 +20716,12 @@ export namespace Clutter {
         // Conflicted with Clutter.Actor.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Box.SignalSignatures>(signal: K, callback: Box.SignalSignatures[K]): number;
+        connect_after<K extends keyof Box.SignalSignatures>(signal: K, callback: Box.SignalSignatures[K]): number;
+        emit<K extends keyof Box.SignalSignatures>(signal: K, ...args: Parameters<Box.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -21623,7 +21663,6 @@ export namespace Clutter {
      */
     class BoxLayout extends LayoutManager {
         static $gtype: GObject.GType<BoxLayout>;
-        declare static readonly __signalSignatures: BoxLayout.SignalSignatures;
 
         // Properties
 
@@ -21724,6 +21763,18 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): BoxLayout;
+
+        // Signals
+
+        connect<K extends keyof BoxLayout.SignalSignatures>(signal: K, callback: BoxLayout.SignalSignatures[K]): number;
+        connect_after<K extends keyof BoxLayout.SignalSignatures>(
+            signal: K,
+            callback: BoxLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BoxLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BoxLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21899,7 +21950,6 @@ export namespace Clutter {
      */
     class BrightnessContrastEffect extends OffscreenEffect {
         static $gtype: GObject.GType<BrightnessContrastEffect>;
-        declare static readonly __signalSignatures: BrightnessContrastEffect.SignalSignatures;
 
         // Properties
 
@@ -21933,6 +21983,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): BrightnessContrastEffect;
+
+        // Signals
+
+        connect<K extends keyof BrightnessContrastEffect.SignalSignatures>(
+            signal: K,
+            callback: BrightnessContrastEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BrightnessContrastEffect.SignalSignatures>(
+            signal: K,
+            callback: BrightnessContrastEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BrightnessContrastEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BrightnessContrastEffect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21982,11 +22047,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface CreateSurface {
-            (width: number, height: number): cairo.Surface;
+            (_source: CairoTexture, width: number, height: number): cairo.Surface;
         }
 
         interface Draw {
-            (cr: cairo.Context): boolean;
+            (_source: CairoTexture, cr: cairo.Context): boolean;
         }
 
         // Signal signatures
@@ -22017,7 +22082,6 @@ export namespace Clutter {
      */
     class CairoTexture extends Texture implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<CairoTexture>;
-        declare static readonly __signalSignatures: CairoTexture.SignalSignatures;
 
         // Properties
 
@@ -22087,21 +22151,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<CairoTexture.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'create-surface',
-            callback: (_source: this, width: number, height: number) => cairo.Surface,
-        ): number;
-        connect_after(
-            signal: 'create-surface',
-            callback: (_source: this, width: number, height: number) => cairo.Surface,
-        ): number;
-        emit(signal: 'create-surface', width: number, height: number): void;
-        connect(signal: 'draw', callback: (_source: this, cr: cairo.Context) => boolean): number;
-        connect_after(signal: 'draw', callback: (_source: this, cr: cairo.Context) => boolean): number;
-        emit(signal: 'draw', cr: cairo.Context): void;
 
         // Virtual methods
 
@@ -22639,7 +22688,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Draw {
-            (cr: cairo.Context, width: number, height: number): boolean;
+            (_source: Canvas, cr: cairo.Context, width: number, height: number): boolean;
         }
 
         // Signal signatures
@@ -22666,7 +22715,6 @@ export namespace Clutter {
      */
     class Canvas extends GObject.Object implements Content {
         static $gtype: GObject.GType<Canvas>;
-        declare static readonly __signalSignatures: Canvas.SignalSignatures;
 
         // Properties
 
@@ -22734,18 +22782,6 @@ export namespace Clutter {
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'draw',
-            callback: (_source: this, cr: cairo.Context, width: number, height: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'draw',
-            callback: (_source: this, cr: cairo.Context, width: number, height: number) => boolean,
-        ): number;
-        emit(signal: 'draw', cr: cairo.Context, width: number, height: number): void;
 
         // Static methods
 
@@ -23335,7 +23371,6 @@ export namespace Clutter {
      */
     abstract class ChildMeta extends GObject.Object {
         static $gtype: GObject.GType<ChildMeta>;
-        declare static readonly __signalSignatures: ChildMeta.SignalSignatures;
 
         // Properties
 
@@ -23353,6 +23388,18 @@ export namespace Clutter {
         constructor(properties?: Partial<ChildMeta.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ChildMeta.SignalSignatures>(signal: K, callback: ChildMeta.SignalSignatures[K]): number;
+        connect_after<K extends keyof ChildMeta.SignalSignatures>(
+            signal: K,
+            callback: ChildMeta.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChildMeta.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChildMeta.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23372,11 +23419,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Clicked {
-            (actor: Actor): void;
+            (_source: ClickAction, actor: Actor): void;
         }
 
         interface LongPress {
-            (actor: Actor, state: LongPressState): boolean;
+            (_source: ClickAction, actor: Actor, state: LongPressState): boolean;
         }
 
         // Signal signatures
@@ -23403,7 +23450,6 @@ export namespace Clutter {
      */
     class ClickAction extends Action {
         static $gtype: GObject.GType<ClickAction>;
-        declare static readonly __signalSignatures: ClickAction.SignalSignatures;
 
         // Properties
 
@@ -23474,21 +23520,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<ClickAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'clicked', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'clicked', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'clicked', actor: Actor): void;
-        connect(
-            signal: 'long-press',
-            callback: (_source: this, actor: Actor, state: LongPressState) => boolean,
-        ): number;
-        connect_after(
-            signal: 'long-press',
-            callback: (_source: this, actor: Actor, state: LongPressState) => boolean,
-        ): number;
-        emit(signal: 'long-press', actor: Actor, state: LongPressState): void;
 
         // Virtual methods
 
@@ -23535,13 +23566,24 @@ export namespace Clutter {
      */
     class ClipNode extends PaintNode {
         static $gtype: GObject.GType<ClipNode>;
-        declare static readonly __signalSignatures: ClipNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](): ClipNode;
+
+        // Signals
+
+        connect<K extends keyof ClipNode.SignalSignatures>(signal: K, callback: ClipNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClipNode.SignalSignatures>(
+            signal: K,
+            callback: ClipNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClipNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClipNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Clone {
@@ -23566,7 +23608,6 @@ export namespace Clutter {
      */
     class Clone extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Clone>;
-        declare static readonly __signalSignatures: Clone.SignalSignatures;
 
         // Properties
 
@@ -23586,6 +23627,12 @@ export namespace Clutter {
         // Conflicted with Clutter.Actor.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: Parameters<Clone.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -24485,13 +24532,24 @@ export namespace Clutter {
      */
     class ColorNode extends PipelineNode {
         static $gtype: GObject.GType<ColorNode>;
-        declare static readonly __signalSignatures: ColorNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](color?: Color | null): ColorNode;
+
+        // Signals
+
+        connect<K extends keyof ColorNode.SignalSignatures>(signal: K, callback: ColorNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof ColorNode.SignalSignatures>(
+            signal: K,
+            callback: ColorNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ColorizeEffect {
@@ -24511,7 +24569,6 @@ export namespace Clutter {
      */
     class ColorizeEffect extends OffscreenEffect {
         static $gtype: GObject.GType<ColorizeEffect>;
-        declare static readonly __signalSignatures: ColorizeEffect.SignalSignatures;
 
         // Properties
 
@@ -24528,6 +24585,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](tint: Color): ColorizeEffect;
+
+        // Signals
+
+        connect<K extends keyof ColorizeEffect.SignalSignatures>(
+            signal: K,
+            callback: ColorizeEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorizeEffect.SignalSignatures>(
+            signal: K,
+            callback: ColorizeEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorizeEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorizeEffect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24557,13 +24629,27 @@ export namespace Clutter {
      */
     abstract class Constraint extends ActorMeta {
         static $gtype: GObject.GType<Constraint>;
-        declare static readonly __signalSignatures: Constraint.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Constraint.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Constraint.SignalSignatures>(
+            signal: K,
+            callback: Constraint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Constraint.SignalSignatures>(
+            signal: K,
+            callback: Constraint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Constraint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Constraint.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -24597,7 +24683,6 @@ export namespace Clutter {
      */
     abstract class DeformEffect extends OffscreenEffect {
         static $gtype: GObject.GType<DeformEffect>;
-        declare static readonly __signalSignatures: DeformEffect.SignalSignatures;
 
         // Properties
 
@@ -24631,6 +24716,21 @@ export namespace Clutter {
         constructor(properties?: Partial<DeformEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DeformEffect.SignalSignatures>(
+            signal: K,
+            callback: DeformEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeformEffect.SignalSignatures>(
+            signal: K,
+            callback: DeformEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeformEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeformEffect.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -24691,7 +24791,6 @@ export namespace Clutter {
      */
     class DesaturateEffect extends OffscreenEffect {
         static $gtype: GObject.GType<DesaturateEffect>;
-        declare static readonly __signalSignatures: DesaturateEffect.SignalSignatures;
 
         // Properties
 
@@ -24709,6 +24808,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](factor: number): DesaturateEffect;
+
+        // Signals
+
+        connect<K extends keyof DesaturateEffect.SignalSignatures>(
+            signal: K,
+            callback: DesaturateEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DesaturateEffect.SignalSignatures>(
+            signal: K,
+            callback: DesaturateEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DesaturateEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DesaturateEffect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24729,11 +24843,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (device: InputDevice): void;
+            (_source: DeviceManager, device: InputDevice): void;
         }
 
         interface DeviceRemoved {
-            (device: InputDevice): void;
+            (_source: DeviceManager, device: InputDevice): void;
         }
 
         // Signal signatures
@@ -24754,7 +24868,6 @@ export namespace Clutter {
      */
     abstract class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
-        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Properties
 
@@ -24780,15 +24893,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<DeviceManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, device: InputDevice) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: InputDevice) => void): number;
-        emit(signal: 'device-added', device: InputDevice): void;
-        connect(signal: 'device-removed', callback: (_source: this, device: InputDevice) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: InputDevice) => void): number;
-        emit(signal: 'device-removed', device: InputDevice): void;
 
         // Static methods
 
@@ -24849,19 +24953,19 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface DragBegin {
-            (actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
+            (_source: DragAction, actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
         }
 
         interface DragEnd {
-            (actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
+            (_source: DragAction, actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
         }
 
         interface DragMotion {
-            (actor: Actor, delta_x: number, delta_y: number): void;
+            (_source: DragAction, actor: Actor, delta_x: number, delta_y: number): void;
         }
 
         interface DragProgress {
-            (actor: Actor, delta_x: number, delta_y: number): boolean;
+            (_source: DragAction, actor: Actor, delta_x: number, delta_y: number): boolean;
         }
 
         // Signal signatures
@@ -24896,7 +25000,6 @@ export namespace Clutter {
      */
     class DragAction extends Action {
         static $gtype: GObject.GType<DragAction>;
-        declare static readonly __signalSignatures: DragAction.SignalSignatures;
 
         // Properties
 
@@ -25051,45 +25154,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<DragAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'drag-begin',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number, modifiers: ModifierType) => void,
-        ): number;
-        connect_after(
-            signal: 'drag-begin',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number, modifiers: ModifierType) => void,
-        ): number;
-        emit(signal: 'drag-begin', actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
-        connect(
-            signal: 'drag-end',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number, modifiers: ModifierType) => void,
-        ): number;
-        connect_after(
-            signal: 'drag-end',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number, modifiers: ModifierType) => void,
-        ): number;
-        emit(signal: 'drag-end', actor: Actor, event_x: number, event_y: number, modifiers: ModifierType): void;
-        connect(
-            signal: 'drag-motion',
-            callback: (_source: this, actor: Actor, delta_x: number, delta_y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'drag-motion',
-            callback: (_source: this, actor: Actor, delta_x: number, delta_y: number) => void,
-        ): number;
-        emit(signal: 'drag-motion', actor: Actor, delta_x: number, delta_y: number): void;
-        connect(
-            signal: 'drag-progress',
-            callback: (_source: this, actor: Actor, delta_x: number, delta_y: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'drag-progress',
-            callback: (_source: this, actor: Actor, delta_x: number, delta_y: number) => boolean,
-        ): number;
-        emit(signal: 'drag-progress', actor: Actor, delta_x: number, delta_y: number): void;
 
         // Virtual methods
 
@@ -25171,23 +25235,23 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface CanDrop {
-            (actor: Actor, event_x: number, event_y: number): boolean;
+            (_source: DropAction, actor: Actor, event_x: number, event_y: number): boolean;
         }
 
         interface Drop {
-            (actor: Actor, event_x: number, event_y: number): void;
+            (_source: DropAction, actor: Actor, event_x: number, event_y: number): void;
         }
 
         interface DropCancel {
-            (actor: Actor, event_x: number, event_y: number): void;
+            (_source: DropAction, actor: Actor, event_x: number, event_y: number): void;
         }
 
         interface OverIn {
-            (actor: Actor): void;
+            (_source: DropAction, actor: Actor): void;
         }
 
         interface OverOut {
-            (actor: Actor): void;
+            (_source: DropAction, actor: Actor): void;
         }
 
         // Signal signatures
@@ -25210,7 +25274,6 @@ export namespace Clutter {
      */
     class DropAction extends Action {
         static $gtype: GObject.GType<DropAction>;
-        declare static readonly __signalSignatures: DropAction.SignalSignatures;
 
         // Constructors
 
@@ -25234,42 +25297,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<DropAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'can-drop',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'can-drop',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number) => boolean,
-        ): number;
-        emit(signal: 'can-drop', actor: Actor, event_x: number, event_y: number): void;
-        connect(
-            signal: 'drop',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'drop',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number) => void,
-        ): number;
-        emit(signal: 'drop', actor: Actor, event_x: number, event_y: number): void;
-        connect(
-            signal: 'drop-cancel',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'drop-cancel',
-            callback: (_source: this, actor: Actor, event_x: number, event_y: number) => void,
-        ): number;
-        emit(signal: 'drop-cancel', actor: Actor, event_x: number, event_y: number): void;
-        connect(signal: 'over-in', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'over-in', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'over-in', actor: Actor): void;
-        connect(signal: 'over-out', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'over-out', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'over-out', actor: Actor): void;
 
         // Virtual methods
 
@@ -25294,13 +25321,18 @@ export namespace Clutter {
      */
     abstract class Effect extends ActorMeta {
         static $gtype: GObject.GType<Effect>;
-        declare static readonly __signalSignatures: Effect.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Effect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -25367,7 +25399,6 @@ export namespace Clutter {
      */
     class FixedLayout extends LayoutManager {
         static $gtype: GObject.GType<FixedLayout>;
-        declare static readonly __signalSignatures: FixedLayout.SignalSignatures;
 
         // Constructors
 
@@ -25376,6 +25407,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): FixedLayout;
+
+        // Signals
+
+        connect<K extends keyof FixedLayout.SignalSignatures>(
+            signal: K,
+            callback: FixedLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FixedLayout.SignalSignatures>(
+            signal: K,
+            callback: FixedLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FixedLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FixedLayout.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FlowLayout {
@@ -25410,7 +25456,6 @@ export namespace Clutter {
      */
     class FlowLayout extends LayoutManager {
         static $gtype: GObject.GType<FlowLayout>;
-        declare static readonly __signalSignatures: FlowLayout.SignalSignatures;
 
         // Properties
 
@@ -25521,6 +25566,21 @@ export namespace Clutter {
 
         static ['new'](orientation: FlowOrientation): FlowLayout;
 
+        // Signals
+
+        connect<K extends keyof FlowLayout.SignalSignatures>(
+            signal: K,
+            callback: FlowLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FlowLayout.SignalSignatures>(
+            signal: K,
+            callback: FlowLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FlowLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FlowLayout.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -25604,19 +25664,19 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface GestureBegin {
-            (actor: Actor): boolean;
+            (_source: GestureAction, actor: Actor): boolean;
         }
 
         interface GestureCancel {
-            (actor: Actor): void;
+            (_source: GestureAction, actor: Actor): void;
         }
 
         interface GestureEnd {
-            (actor: Actor): void;
+            (_source: GestureAction, actor: Actor): void;
         }
 
         interface GestureProgress {
-            (actor: Actor): boolean;
+            (_source: GestureAction, actor: Actor): boolean;
         }
 
         // Signal signatures
@@ -25647,7 +25707,6 @@ export namespace Clutter {
      */
     class GestureAction extends Action {
         static $gtype: GObject.GType<GestureAction>;
-        declare static readonly __signalSignatures: GestureAction.SignalSignatures;
 
         // Properties
 
@@ -25728,21 +25787,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<GestureAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'gesture-begin', callback: (_source: this, actor: Actor) => boolean): number;
-        connect_after(signal: 'gesture-begin', callback: (_source: this, actor: Actor) => boolean): number;
-        emit(signal: 'gesture-begin', actor: Actor): void;
-        connect(signal: 'gesture-cancel', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'gesture-cancel', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'gesture-cancel', actor: Actor): void;
-        connect(signal: 'gesture-end', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'gesture-end', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'gesture-end', actor: Actor): void;
-        connect(signal: 'gesture-progress', callback: (_source: this, actor: Actor) => boolean): number;
-        connect_after(signal: 'gesture-progress', callback: (_source: this, actor: Actor) => boolean): number;
-        emit(signal: 'gesture-progress', actor: Actor): void;
 
         // Virtual methods
 
@@ -25884,7 +25928,6 @@ export namespace Clutter {
      */
     class GridLayout extends LayoutManager {
         static $gtype: GObject.GType<GridLayout>;
-        declare static readonly __signalSignatures: GridLayout.SignalSignatures;
 
         // Properties
 
@@ -25941,6 +25984,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): GridLayout;
+
+        // Signals
+
+        connect<K extends keyof GridLayout.SignalSignatures>(
+            signal: K,
+            callback: GridLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GridLayout.SignalSignatures>(
+            signal: K,
+            callback: GridLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GridLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GridLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26095,7 +26153,6 @@ export namespace Clutter {
      */
     class Group extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Group>;
-        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -26104,6 +26161,12 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): Group;
+
+        // Signals
+
+        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -27013,13 +27076,18 @@ export namespace Clutter {
      */
     class Image extends GObject.Object implements Content {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Image.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -27628,7 +27696,6 @@ export namespace Clutter {
      */
     class InputDevice extends GObject.Object {
         static $gtype: GObject.GType<InputDevice>;
-        declare static readonly __signalSignatures: InputDevice.SignalSignatures;
 
         // Properties
 
@@ -27710,6 +27777,21 @@ export namespace Clutter {
         constructor(properties?: Partial<InputDevice.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof InputDevice.SignalSignatures>(
+            signal: K,
+            callback: InputDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputDevice.SignalSignatures>(
+            signal: K,
+            callback: InputDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputDevice.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -28005,7 +28087,6 @@ export namespace Clutter {
      */
     class Interval extends GObject.InitiallyUnowned implements Scriptable {
         static $gtype: GObject.GType<Interval>;
-        declare static readonly __signalSignatures: Interval.SignalSignatures;
 
         // Properties
 
@@ -28039,6 +28120,18 @@ export namespace Clutter {
             initial?: GObject.Value | null,
             _final?: GObject.Value | null,
         ): Interval;
+
+        // Signals
+
+        connect<K extends keyof Interval.SignalSignatures>(signal: K, callback: Interval.SignalSignatures[K]): number;
+        connect_after<K extends keyof Interval.SignalSignatures>(
+            signal: K,
+            callback: Interval.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Interval.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Interval.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -28660,7 +28753,6 @@ export namespace Clutter {
      */
     class KeyframeTransition extends PropertyTransition implements Scriptable {
         static $gtype: GObject.GType<KeyframeTransition>;
-        declare static readonly __signalSignatures: KeyframeTransition.SignalSignatures;
 
         // Constructors
 
@@ -28672,6 +28764,21 @@ export namespace Clutter {
         // Conflicted with Clutter.PropertyTransition.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof KeyframeTransition.SignalSignatures>(
+            signal: K,
+            callback: KeyframeTransition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyframeTransition.SignalSignatures>(
+            signal: K,
+            callback: KeyframeTransition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyframeTransition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyframeTransition.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -29177,7 +29284,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface LayoutChanged {
-            (): void;
+            (_source: LayoutManager): void;
         }
 
         // Signal signatures
@@ -29196,7 +29303,6 @@ export namespace Clutter {
      */
     abstract class LayoutManager extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<LayoutManager>;
-        declare static readonly __signalSignatures: LayoutManager.SignalSignatures;
 
         // Constructors
 
@@ -29218,12 +29324,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<LayoutManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'layout-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'layout-changed', callback: (_source: this) => void): number;
-        emit(signal: 'layout-changed'): void;
 
         // Virtual methods
 
@@ -29439,7 +29539,6 @@ export namespace Clutter {
      */
     abstract class LayoutMeta extends ChildMeta {
         static $gtype: GObject.GType<LayoutMeta>;
-        declare static readonly __signalSignatures: LayoutMeta.SignalSignatures;
 
         // Properties
 
@@ -29453,6 +29552,21 @@ export namespace Clutter {
         constructor(properties?: Partial<LayoutMeta.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LayoutMeta.SignalSignatures>(
+            signal: K,
+            callback: LayoutMeta.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayoutMeta.SignalSignatures>(
+            signal: K,
+            callback: LayoutMeta.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayoutMeta.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayoutMeta.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -29477,7 +29591,6 @@ export namespace Clutter {
      */
     class ListModel extends Model implements Scriptable {
         static $gtype: GObject.GType<ListModel>;
-        declare static readonly __signalSignatures: ListModel.SignalSignatures;
 
         // Constructors
 
@@ -29489,6 +29602,18 @@ export namespace Clutter {
         // Conflicted with GObject.Object.newv
 
         static newv(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ListModel.SignalSignatures>(signal: K, callback: ListModel.SignalSignatures[K]): number;
+        connect_after<K extends keyof ListModel.SignalSignatures>(
+            signal: K,
+            callback: ListModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -30000,23 +30125,23 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface FilterChanged {
-            (): void;
+            (_source: Model): void;
         }
 
         interface RowAdded {
-            (iter: ModelIter): void;
+            (_source: Model, iter: ModelIter): void;
         }
 
         interface RowChanged {
-            (iter: ModelIter): void;
+            (_source: Model, iter: ModelIter): void;
         }
 
         interface RowRemoved {
-            (iter: ModelIter): void;
+            (_source: Model, iter: ModelIter): void;
         }
 
         interface SortChanged {
-            (): void;
+            (_source: Model): void;
         }
 
         // Signal signatures
@@ -30043,7 +30168,6 @@ export namespace Clutter {
      */
     abstract class Model extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Model>;
-        declare static readonly __signalSignatures: Model.SignalSignatures;
 
         // Properties
 
@@ -30073,24 +30197,6 @@ export namespace Clutter {
         connect<K extends keyof Model.SignalSignatures>(signal: K, callback: Model.SignalSignatures[K]): number;
         connect_after<K extends keyof Model.SignalSignatures>(signal: K, callback: Model.SignalSignatures[K]): number;
         emit<K extends keyof Model.SignalSignatures>(signal: K, ...args: Parameters<Model.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'filter-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'filter-changed', callback: (_source: this) => void): number;
-        emit(signal: 'filter-changed'): void;
-        connect(signal: 'row-added', callback: (_source: this, iter: ModelIter) => void): number;
-        connect_after(signal: 'row-added', callback: (_source: this, iter: ModelIter) => void): number;
-        emit(signal: 'row-added', iter: ModelIter): void;
-        connect(signal: 'row-changed', callback: (_source: this, iter: ModelIter) => void): number;
-        connect_after(signal: 'row-changed', callback: (_source: this, iter: ModelIter) => void): number;
-        emit(signal: 'row-changed', iter: ModelIter): void;
-        connect(signal: 'row-removed', callback: (_source: this, iter: ModelIter) => void): number;
-        connect_after(signal: 'row-removed', callback: (_source: this, iter: ModelIter) => void): number;
-        emit(signal: 'row-removed', iter: ModelIter): void;
-        connect(signal: 'sort-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'sort-changed', callback: (_source: this) => void): number;
-        emit(signal: 'sort-changed'): void;
 
         // Virtual methods
 
@@ -30812,7 +30918,6 @@ export namespace Clutter {
      */
     abstract class ModelIter extends GObject.Object {
         static $gtype: GObject.GType<ModelIter>;
-        declare static readonly __signalSignatures: ModelIter.SignalSignatures;
 
         // Properties
 
@@ -30832,6 +30937,18 @@ export namespace Clutter {
         constructor(properties?: Partial<ModelIter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ModelIter.SignalSignatures>(signal: K, callback: ModelIter.SignalSignatures[K]): number;
+        connect_after<K extends keyof ModelIter.SignalSignatures>(
+            signal: K,
+            callback: ModelIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModelIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModelIter.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -30956,13 +31073,27 @@ export namespace Clutter {
      */
     abstract class OffscreenEffect extends Effect {
         static $gtype: GObject.GType<OffscreenEffect>;
-        declare static readonly __signalSignatures: OffscreenEffect.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OffscreenEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OffscreenEffect.SignalSignatures>(
+            signal: K,
+            callback: OffscreenEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OffscreenEffect.SignalSignatures>(
+            signal: K,
+            callback: OffscreenEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OffscreenEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OffscreenEffect.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -31053,7 +31184,6 @@ export namespace Clutter {
      */
     class PageTurnEffect extends DeformEffect {
         static $gtype: GObject.GType<PageTurnEffect>;
-        declare static readonly __signalSignatures: PageTurnEffect.SignalSignatures;
 
         // Properties
 
@@ -31081,6 +31211,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](period: number, angle: number, radius: number): PageTurnEffect;
+
+        // Signals
+
+        connect<K extends keyof PageTurnEffect.SignalSignatures>(
+            signal: K,
+            callback: PageTurnEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PageTurnEffect.SignalSignatures>(
+            signal: K,
+            callback: PageTurnEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PageTurnEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PageTurnEffect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -31128,11 +31273,22 @@ export namespace Clutter {
      */
     abstract class PaintNode {
         static $gtype: GObject.GType<PaintNode>;
-        declare static readonly __signalSignatures: PaintNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PaintNode.SignalSignatures>(signal: K, callback: PaintNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof PaintNode.SignalSignatures>(
+            signal: K,
+            callback: PaintNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PaintNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PaintNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -31182,11 +31338,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Pan {
-            (actor: Actor, is_interpolated: boolean): boolean;
+            (_source: PanAction, actor: Actor, is_interpolated: boolean): boolean;
         }
 
         interface PanStopped {
-            (actor: Actor): void;
+            (_source: PanAction, actor: Actor): void;
         }
 
         // Signal signatures
@@ -31213,7 +31369,6 @@ export namespace Clutter {
      */
     class PanAction extends GestureAction {
         static $gtype: GObject.GType<PanAction>;
-        declare static readonly __signalSignatures: PanAction.SignalSignatures;
 
         // Properties
 
@@ -31278,18 +31433,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<PanAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pan', callback: (_source: this, actor: Actor, is_interpolated: boolean) => boolean): number;
-        connect_after(
-            signal: 'pan',
-            callback: (_source: this, actor: Actor, is_interpolated: boolean) => boolean,
-        ): number;
-        emit(signal: 'pan', actor: Actor, is_interpolated: boolean): void;
-        connect(signal: 'pan-stopped', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'pan-stopped', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'pan-stopped', actor: Actor): void;
 
         // Virtual methods
 
@@ -31407,7 +31550,6 @@ export namespace Clutter {
      */
     class Path extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Path>;
-        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Properties
 
@@ -31424,6 +31566,12 @@ export namespace Clutter {
         static ['new'](): Path;
 
         static new_with_description(desc: string): Path;
+
+        // Signals
+
+        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -31611,7 +31759,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface NodeReached {
-            (actor: Actor, index: number): void;
+            (_source: PathConstraint, actor: Actor, index: number): void;
         }
 
         // Signal signatures
@@ -31633,7 +31781,6 @@ export namespace Clutter {
      */
     class PathConstraint extends Constraint {
         static $gtype: GObject.GType<PathConstraint>;
-        declare static readonly __signalSignatures: PathConstraint.SignalSignatures;
 
         // Properties
 
@@ -31670,12 +31817,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<PathConstraint.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'node-reached', callback: (_source: this, actor: Actor, index: number) => void): number;
-        connect_after(signal: 'node-reached', callback: (_source: this, actor: Actor, index: number) => void): number;
-        emit(signal: 'node-reached', actor: Actor, index: number): void;
 
         // Methods
 
@@ -31715,11 +31856,25 @@ export namespace Clutter {
      */
     class PipelineNode extends PaintNode {
         static $gtype: GObject.GType<PipelineNode>;
-        declare static readonly __signalSignatures: PipelineNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PipelineNode.SignalSignatures>(
+            signal: K,
+            callback: PipelineNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PipelineNode.SignalSignatures>(
+            signal: K,
+            callback: PipelineNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PipelineNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PipelineNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PropertyTransition {
@@ -31740,7 +31895,6 @@ export namespace Clutter {
      */
     class PropertyTransition extends Transition implements Scriptable {
         static $gtype: GObject.GType<PropertyTransition>;
-        declare static readonly __signalSignatures: PropertyTransition.SignalSignatures;
 
         // Properties
 
@@ -31765,6 +31919,21 @@ export namespace Clutter {
         // Conflicted with Clutter.Timeline.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PropertyTransition.SignalSignatures>(
+            signal: K,
+            callback: PropertyTransition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyTransition.SignalSignatures>(
+            signal: K,
+            callback: PropertyTransition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyTransition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyTransition.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32250,7 +32419,6 @@ export namespace Clutter {
      */
     class Rectangle extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Rectangle>;
-        declare static readonly __signalSignatures: Rectangle.SignalSignatures;
 
         // Properties
 
@@ -32299,6 +32467,18 @@ export namespace Clutter {
         static ['new'](): Rectangle;
 
         static new_with_color(color: Color): Rectangle;
+
+        // Signals
+
+        connect<K extends keyof Rectangle.SignalSignatures>(signal: K, callback: Rectangle.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rectangle.SignalSignatures>(
+            signal: K,
+            callback: Rectangle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Rectangle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Rectangle.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -33211,7 +33391,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Rotate {
-            (actor: Actor, angle: number): boolean;
+            (_source: RotateAction, actor: Actor, angle: number): boolean;
         }
 
         // Signal signatures
@@ -33230,7 +33410,6 @@ export namespace Clutter {
      */
     class RotateAction extends GestureAction {
         static $gtype: GObject.GType<RotateAction>;
-        declare static readonly __signalSignatures: RotateAction.SignalSignatures;
 
         // Constructors
 
@@ -33254,12 +33433,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<RotateAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'rotate', callback: (_source: this, actor: Actor, angle: number) => boolean): number;
-        connect_after(signal: 'rotate', callback: (_source: this, actor: Actor, angle: number) => boolean): number;
-        emit(signal: 'rotate', actor: Actor, angle: number): void;
 
         // Virtual methods
 
@@ -33270,23 +33443,23 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Completed {
-            (): void;
+            (_source: Score): void;
         }
 
         interface Paused {
-            (): void;
+            (_source: Score): void;
         }
 
         interface Started {
-            (): void;
+            (_source: Score): void;
         }
 
         interface TimelineCompleted {
-            (timeline: Timeline): void;
+            (_source: Score, timeline: Timeline): void;
         }
 
         interface TimelineStarted {
-            (timeline: Timeline): void;
+            (_source: Score, timeline: Timeline): void;
         }
 
         // Signal signatures
@@ -33311,7 +33484,6 @@ export namespace Clutter {
      */
     class Score extends GObject.Object {
         static $gtype: GObject.GType<Score>;
-        declare static readonly __signalSignatures: Score.SignalSignatures;
 
         // Properties
 
@@ -33334,24 +33506,6 @@ export namespace Clutter {
         connect<K extends keyof Score.SignalSignatures>(signal: K, callback: Score.SignalSignatures[K]): number;
         connect_after<K extends keyof Score.SignalSignatures>(signal: K, callback: Score.SignalSignatures[K]): number;
         emit<K extends keyof Score.SignalSignatures>(signal: K, ...args: Parameters<Score.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
-        connect(signal: 'paused', callback: (_source: this) => void): number;
-        connect_after(signal: 'paused', callback: (_source: this) => void): number;
-        emit(signal: 'paused'): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
-        connect(signal: 'timeline-completed', callback: (_source: this, timeline: Timeline) => void): number;
-        connect_after(signal: 'timeline-completed', callback: (_source: this, timeline: Timeline) => void): number;
-        emit(signal: 'timeline-completed', timeline: Timeline): void;
-        connect(signal: 'timeline-started', callback: (_source: this, timeline: Timeline) => void): number;
-        connect_after(signal: 'timeline-started', callback: (_source: this, timeline: Timeline) => void): number;
-        emit(signal: 'timeline-started', timeline: Timeline): void;
 
         // Virtual methods
 
@@ -33467,7 +33621,6 @@ export namespace Clutter {
      */
     class Script extends GObject.Object {
         static $gtype: GObject.GType<Script>;
-        declare static readonly __signalSignatures: Script.SignalSignatures;
 
         // Properties
 
@@ -33514,6 +33667,12 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): Script;
+
+        // Signals
+
+        connect<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
+        connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
+        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: Parameters<Script.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -33683,7 +33842,6 @@ export namespace Clutter {
      */
     class ScrollActor extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<ScrollActor>;
-        declare static readonly __signalSignatures: ScrollActor.SignalSignatures;
 
         // Properties
 
@@ -33705,6 +33863,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): ScrollActor;
+
+        // Signals
+
+        connect<K extends keyof ScrollActor.SignalSignatures>(
+            signal: K,
+            callback: ScrollActor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScrollActor.SignalSignatures>(
+            signal: K,
+            callback: ScrollActor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScrollActor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScrollActor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -34654,7 +34827,6 @@ export namespace Clutter {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
-        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -34833,6 +35005,18 @@ export namespace Clutter {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         /**
@@ -34863,7 +35047,6 @@ export namespace Clutter {
      */
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
-        declare static readonly __signalSignatures: Shader.SignalSignatures;
 
         // Properties
 
@@ -34907,6 +35090,12 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): Shader;
+
+        // Signals
+
+        connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        emit<K extends keyof Shader.SignalSignatures>(signal: K, ...args: Parameters<Shader.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -35007,7 +35196,6 @@ export namespace Clutter {
      */
     class ShaderEffect extends OffscreenEffect {
         static $gtype: GObject.GType<ShaderEffect>;
-        declare static readonly __signalSignatures: ShaderEffect.SignalSignatures;
 
         // Properties
 
@@ -35031,6 +35219,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](shader_type: ShaderType): ShaderEffect;
+
+        // Signals
+
+        connect<K extends keyof ShaderEffect.SignalSignatures>(
+            signal: K,
+            callback: ShaderEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShaderEffect.SignalSignatures>(
+            signal: K,
+            callback: ShaderEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShaderEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShaderEffect.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -35084,11 +35287,25 @@ export namespace Clutter {
 
     class ShaderFloat {
         static $gtype: GObject.GType<ShaderFloat>;
-        declare static readonly __signalSignatures: ShaderFloat.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ShaderFloat.SignalSignatures>(
+            signal: K,
+            callback: ShaderFloat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShaderFloat.SignalSignatures>(
+            signal: K,
+            callback: ShaderFloat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShaderFloat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShaderFloat.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ShaderInt {
@@ -35098,11 +35315,22 @@ export namespace Clutter {
 
     class ShaderInt {
         static $gtype: GObject.GType<ShaderInt>;
-        declare static readonly __signalSignatures: ShaderInt.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ShaderInt.SignalSignatures>(signal: K, callback: ShaderInt.SignalSignatures[K]): number;
+        connect_after<K extends keyof ShaderInt.SignalSignatures>(
+            signal: K,
+            callback: ShaderInt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShaderInt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShaderInt.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ShaderMatrix {
@@ -35112,11 +35340,25 @@ export namespace Clutter {
 
     class ShaderMatrix {
         static $gtype: GObject.GType<ShaderMatrix>;
-        declare static readonly __signalSignatures: ShaderMatrix.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ShaderMatrix.SignalSignatures>(
+            signal: K,
+            callback: ShaderMatrix.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShaderMatrix.SignalSignatures>(
+            signal: K,
+            callback: ShaderMatrix.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShaderMatrix.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShaderMatrix.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SnapConstraint {
@@ -35141,7 +35383,6 @@ export namespace Clutter {
      */
     class SnapConstraint extends Constraint {
         static $gtype: GObject.GType<SnapConstraint>;
-        declare static readonly __signalSignatures: SnapConstraint.SignalSignatures;
 
         // Properties
 
@@ -35185,6 +35426,21 @@ export namespace Clutter {
 
         static ['new'](source: Actor | null, from_edge: SnapEdge, to_edge: SnapEdge, offset: number): SnapConstraint;
 
+        // Signals
+
+        connect<K extends keyof SnapConstraint.SignalSignatures>(
+            signal: K,
+            callback: SnapConstraint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SnapConstraint.SignalSignatures>(
+            signal: K,
+            callback: SnapConstraint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SnapConstraint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SnapConstraint.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -35227,27 +35483,27 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: Stage): void;
         }
 
         interface AfterPaint {
-            (): void;
+            (_source: Stage): void;
         }
 
         interface Deactivate {
-            (): void;
+            (_source: Stage): void;
         }
 
         interface DeleteEvent {
-            (event: Event): boolean;
+            (_source: Stage, event: Event): boolean;
         }
 
         interface Fullscreen {
-            (): void;
+            (_source: Stage): void;
         }
 
         interface Unfullscreen {
-            (): void;
+            (_source: Stage): void;
         }
 
         // Signal signatures
@@ -35298,7 +35554,6 @@ export namespace Clutter {
      */
     class Stage extends Group implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Stage>;
-        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Properties
 
@@ -35437,27 +35692,6 @@ export namespace Clutter {
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
         emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
-        connect(signal: 'after-paint', callback: (_source: this) => void): number;
-        connect_after(signal: 'after-paint', callback: (_source: this) => void): number;
-        emit(signal: 'after-paint'): void;
-        connect(signal: 'deactivate', callback: (_source: this) => void): number;
-        connect_after(signal: 'deactivate', callback: (_source: this) => void): number;
-        emit(signal: 'deactivate'): void;
-        connect(signal: 'delete-event', callback: (_source: this, event: Event) => boolean): number;
-        connect_after(signal: 'delete-event', callback: (_source: this, event: Event) => boolean): number;
-        emit(signal: 'delete-event', event: Event): void;
-        connect(signal: 'fullscreen', callback: (_source: this) => void): number;
-        connect_after(signal: 'fullscreen', callback: (_source: this) => void): number;
-        emit(signal: 'fullscreen'): void;
-        connect(signal: 'unfullscreen', callback: (_source: this) => void): number;
-        connect_after(signal: 'unfullscreen', callback: (_source: this) => void): number;
-        emit(signal: 'unfullscreen'): void;
 
         // Static methods
 
@@ -36298,11 +36532,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface StageAdded {
-            (stage: Stage): void;
+            (_source: StageManager, stage: Stage): void;
         }
 
         interface StageRemoved {
-            (stage: Stage): void;
+            (_source: StageManager, stage: Stage): void;
         }
 
         // Signal signatures
@@ -36324,7 +36558,6 @@ export namespace Clutter {
      */
     class StageManager extends GObject.Object {
         static $gtype: GObject.GType<StageManager>;
-        declare static readonly __signalSignatures: StageManager.SignalSignatures;
 
         // Properties
 
@@ -36357,15 +36590,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<StageManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'stage-added', callback: (_source: this, stage: Stage) => void): number;
-        connect_after(signal: 'stage-added', callback: (_source: this, stage: Stage) => void): number;
-        emit(signal: 'stage-added', stage: Stage): void;
-        connect(signal: 'stage-removed', callback: (_source: this, stage: Stage) => void): number;
-        connect_after(signal: 'stage-removed', callback: (_source: this, stage: Stage) => void): number;
-        emit(signal: 'stage-removed', stage: Stage): void;
 
         // Static methods
 
@@ -36407,7 +36631,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Completed {
-            (): void;
+            (_source: State): void;
         }
 
         // Signal signatures
@@ -36429,7 +36653,6 @@ export namespace Clutter {
      */
     class State extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<State>;
-        declare static readonly __signalSignatures: State.SignalSignatures;
 
         // Properties
 
@@ -36461,12 +36684,6 @@ export namespace Clutter {
         connect<K extends keyof State.SignalSignatures>(signal: K, callback: State.SignalSignatures[K]): number;
         connect_after<K extends keyof State.SignalSignatures>(signal: K, callback: State.SignalSignatures[K]): number;
         emit<K extends keyof State.SignalSignatures>(signal: K, ...args: Parameters<State.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
 
         // Virtual methods
 
@@ -37126,11 +37343,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Swept {
-            (actor: Actor, direction: SwipeDirection): void;
+            (_source: SwipeAction, actor: Actor, direction: SwipeDirection): void;
         }
 
         interface Swipe {
-            (actor: Actor, direction: SwipeDirection): boolean;
+            (_source: SwipeAction, actor: Actor, direction: SwipeDirection): boolean;
         }
 
         // Signal signatures
@@ -37150,7 +37367,6 @@ export namespace Clutter {
      */
     class SwipeAction extends GestureAction {
         static $gtype: GObject.GType<SwipeAction>;
-        declare static readonly __signalSignatures: SwipeAction.SignalSignatures;
 
         // Constructors
 
@@ -37174,21 +37390,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<SwipeAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'swept', callback: (_source: this, actor: Actor, direction: SwipeDirection) => void): number;
-        connect_after(
-            signal: 'swept',
-            callback: (_source: this, actor: Actor, direction: SwipeDirection) => void,
-        ): number;
-        emit(signal: 'swept', actor: Actor, direction: SwipeDirection): void;
-        connect(signal: 'swipe', callback: (_source: this, actor: Actor, direction: SwipeDirection) => boolean): number;
-        connect_after(
-            signal: 'swipe',
-            callback: (_source: this, actor: Actor, direction: SwipeDirection) => boolean,
-        ): number;
-        emit(signal: 'swipe', actor: Actor, direction: SwipeDirection): void;
 
         // Virtual methods
 
@@ -37222,7 +37423,6 @@ export namespace Clutter {
      */
     class TableLayout extends LayoutManager {
         static $gtype: GObject.GType<TableLayout>;
-        declare static readonly __signalSignatures: TableLayout.SignalSignatures;
 
         // Properties
 
@@ -37320,6 +37520,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): TableLayout;
+
+        // Signals
+
+        connect<K extends keyof TableLayout.SignalSignatures>(
+            signal: K,
+            callback: TableLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TableLayout.SignalSignatures>(
+            signal: K,
+            callback: TableLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TableLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TableLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -37468,7 +37683,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Tap {
-            (actor: Actor): void;
+            (_source: TapAction, actor: Actor): void;
         }
 
         // Signal signatures
@@ -37487,7 +37702,6 @@ export namespace Clutter {
      */
     class TapAction extends GestureAction {
         static $gtype: GObject.GType<TapAction>;
-        declare static readonly __signalSignatures: TapAction.SignalSignatures;
 
         // Constructors
 
@@ -37508,12 +37722,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<TapAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'tap', callback: (_source: this, actor: Actor) => void): number;
-        connect_after(signal: 'tap', callback: (_source: this, actor: Actor) => void): number;
-        emit(signal: 'tap', actor: Actor): void;
 
         // Virtual methods
 
@@ -37524,27 +37732,27 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: Text): void;
         }
 
         interface CursorChanged {
-            (): void;
+            (_source: Text): void;
         }
 
         interface CursorEvent {
-            (geometry: Geometry): void;
+            (_source: Text, geometry: Geometry): void;
         }
 
         interface DeleteText {
-            (start_pos: number, end_pos: number): void;
+            (_source: Text, start_pos: number, end_pos: number): void;
         }
 
         interface InsertText {
-            (new_text: string, new_text_length: number, position?: any | null): void;
+            (_source: Text, new_text: string, new_text_length: number, position?: any | null): void;
         }
 
         interface TextChanged {
-            (): void;
+            (_source: Text): void;
         }
 
         // Signal signatures
@@ -37621,7 +37829,6 @@ export namespace Clutter {
      */
     class Text extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Text>;
-        declare static readonly __signalSignatures: Text.SignalSignatures;
 
         // Properties
 
@@ -37955,36 +38162,6 @@ export namespace Clutter {
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
         emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
-        connect(signal: 'cursor-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-changed', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-changed'): void;
-        connect(signal: 'cursor-event', callback: (_source: this, geometry: Geometry) => void): number;
-        connect_after(signal: 'cursor-event', callback: (_source: this, geometry: Geometry) => void): number;
-        emit(signal: 'cursor-event', geometry: Geometry): void;
-        connect(signal: 'delete-text', callback: (_source: this, start_pos: number, end_pos: number) => void): number;
-        connect_after(
-            signal: 'delete-text',
-            callback: (_source: this, start_pos: number, end_pos: number) => void,
-        ): number;
-        emit(signal: 'delete-text', start_pos: number, end_pos: number): void;
-        connect(
-            signal: 'insert-text',
-            callback: (_source: this, new_text: string, new_text_length: number, position: any | null) => void,
-        ): number;
-        connect_after(
-            signal: 'insert-text',
-            callback: (_source: this, new_text: string, new_text_length: number, position: any | null) => void,
-        ): number;
-        emit(signal: 'insert-text', new_text: string, new_text_length: number, position?: any | null): void;
-        connect(signal: 'text-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'text-changed', callback: (_source: this) => void): number;
-        emit(signal: 'text-changed'): void;
 
         // Virtual methods
 
@@ -39398,11 +39575,11 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface DeletedText {
-            (position: number, n_chars: number): void;
+            (_source: TextBuffer, position: number, n_chars: number): void;
         }
 
         interface InsertedText {
-            (position: number, chars: string, n_chars: number): void;
+            (_source: TextBuffer, position: number, chars: string, n_chars: number): void;
         }
 
         // Signal signatures
@@ -39427,7 +39604,6 @@ export namespace Clutter {
      */
     class TextBuffer extends GObject.Object {
         static $gtype: GObject.GType<TextBuffer>;
-        declare static readonly __signalSignatures: TextBuffer.SignalSignatures;
 
         // Properties
 
@@ -39474,24 +39650,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<TextBuffer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deleted-text', callback: (_source: this, position: number, n_chars: number) => void): number;
-        connect_after(
-            signal: 'deleted-text',
-            callback: (_source: this, position: number, n_chars: number) => void,
-        ): number;
-        emit(signal: 'deleted-text', position: number, n_chars: number): void;
-        connect(
-            signal: 'inserted-text',
-            callback: (_source: this, position: number, chars: string, n_chars: number) => void,
-        ): number;
-        connect_after(
-            signal: 'inserted-text',
-            callback: (_source: this, position: number, chars: string, n_chars: number) => void,
-        ): number;
-        emit(signal: 'inserted-text', position: number, chars: string, n_chars: number): void;
 
         // Virtual methods
 
@@ -39636,28 +39794,39 @@ export namespace Clutter {
      */
     class TextNode extends PaintNode {
         static $gtype: GObject.GType<TextNode>;
-        declare static readonly __signalSignatures: TextNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](layout?: Pango.Layout | null, color?: Color | null): TextNode;
+
+        // Signals
+
+        connect<K extends keyof TextNode.SignalSignatures>(signal: K, callback: TextNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextNode.SignalSignatures>(
+            signal: K,
+            callback: TextNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Texture {
         // Signal callback interfaces
 
         interface LoadFinished {
-            (error: GLib.Error): void;
+            (_source: Texture, error: GLib.Error): void;
         }
 
         interface PixbufChange {
-            (): void;
+            (_source: Texture): void;
         }
 
         interface SizeChange {
-            (width: number, height: number): void;
+            (_source: Texture, width: number, height: number): void;
         }
 
         // Signal signatures
@@ -39707,7 +39876,6 @@ export namespace Clutter {
      */
     class Texture extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Texture>;
-        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Properties
 
@@ -39816,18 +39984,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<Texture.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'load-finished', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'load-finished', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'load-finished', error: GLib.Error): void;
-        connect(signal: 'pixbuf-change', callback: (_source: this) => void): number;
-        connect_after(signal: 'pixbuf-change', callback: (_source: this) => void): number;
-        emit(signal: 'pixbuf-change'): void;
-        connect(signal: 'size-change', callback: (_source: this, width: number, height: number) => void): number;
-        connect_after(signal: 'size-change', callback: (_source: this, width: number, height: number) => void): number;
-        emit(signal: 'size-change', width: number, height: number): void;
 
         // Virtual methods
 
@@ -40967,7 +41123,6 @@ export namespace Clutter {
      */
     class TextureNode extends PipelineNode {
         static $gtype: GObject.GType<TextureNode>;
-        declare static readonly __signalSignatures: TextureNode.SignalSignatures;
 
         // Constructors
 
@@ -40979,33 +41134,48 @@ export namespace Clutter {
             min_filter: ScalingFilter,
             mag_filter: ScalingFilter,
         ): TextureNode;
+
+        // Signals
+
+        connect<K extends keyof TextureNode.SignalSignatures>(
+            signal: K,
+            callback: TextureNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextureNode.SignalSignatures>(
+            signal: K,
+            callback: TextureNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextureNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextureNode.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Timeline {
         // Signal callback interfaces
 
         interface Completed {
-            (): void;
+            (_source: Timeline): void;
         }
 
         interface MarkerReached {
-            (marker_name: string, msecs: number): void;
+            (_source: Timeline, marker_name: string, msecs: number): void;
         }
 
         interface NewFrame {
-            (msecs: number): void;
+            (_source: Timeline, msecs: number): void;
         }
 
         interface Paused {
-            (): void;
+            (_source: Timeline): void;
         }
 
         interface Started {
-            (): void;
+            (_source: Timeline): void;
         }
 
         interface Stopped {
-            (is_finished: boolean): void;
+            (_source: Timeline, is_finished: boolean): void;
         }
 
         // Signal signatures
@@ -41040,7 +41210,6 @@ export namespace Clutter {
      */
     class Timeline extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Timeline>;
-        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -41134,33 +41303,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<Timeline.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'completed', callback: (_source: this) => void): number;
-        emit(signal: 'completed'): void;
-        connect(
-            signal: 'marker-reached',
-            callback: (_source: this, marker_name: string, msecs: number) => void,
-        ): number;
-        connect_after(
-            signal: 'marker-reached',
-            callback: (_source: this, marker_name: string, msecs: number) => void,
-        ): number;
-        emit(signal: 'marker-reached', marker_name: string, msecs: number): void;
-        connect(signal: 'new-frame', callback: (_source: this, msecs: number) => void): number;
-        connect_after(signal: 'new-frame', callback: (_source: this, msecs: number) => void): number;
-        emit(signal: 'new-frame', msecs: number): void;
-        connect(signal: 'paused', callback: (_source: this) => void): number;
-        connect_after(signal: 'paused', callback: (_source: this) => void): number;
-        emit(signal: 'paused'): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
-        connect(signal: 'stopped', callback: (_source: this, is_finished: boolean) => void): number;
-        connect_after(signal: 'stopped', callback: (_source: this, is_finished: boolean) => void): number;
-        emit(signal: 'stopped', is_finished: boolean): void;
 
         // Virtual methods
 
@@ -42028,7 +42170,6 @@ export namespace Clutter {
      */
     abstract class Transition extends Timeline implements Scriptable {
         static $gtype: GObject.GType<Transition>;
-        declare static readonly __signalSignatures: Transition.SignalSignatures;
 
         // Properties
 
@@ -42073,6 +42214,21 @@ export namespace Clutter {
         constructor(properties?: Partial<Transition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            callback: Transition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            callback: Transition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transition.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -42682,7 +42838,6 @@ export namespace Clutter {
      */
     class TransitionGroup extends Transition implements Scriptable {
         static $gtype: GObject.GType<TransitionGroup>;
-        declare static readonly __signalSignatures: TransitionGroup.SignalSignatures;
 
         // Constructors
 
@@ -42691,6 +42846,21 @@ export namespace Clutter {
         _init(...args: any[]): void;
 
         static ['new'](): TransitionGroup;
+
+        // Signals
+
+        connect<K extends keyof TransitionGroup.SignalSignatures>(
+            signal: K,
+            callback: TransitionGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransitionGroup.SignalSignatures>(
+            signal: K,
+            callback: TransitionGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransitionGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransitionGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -43164,7 +43334,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Zoom {
-            (actor: Actor, focal_point: Point, factor: number): boolean;
+            (_source: ZoomAction, actor: Actor, focal_point: Point, factor: number): boolean;
         }
 
         // Signal signatures
@@ -43186,7 +43356,6 @@ export namespace Clutter {
      */
     class ZoomAction extends GestureAction {
         static $gtype: GObject.GType<ZoomAction>;
-        declare static readonly __signalSignatures: ZoomAction.SignalSignatures;
 
         // Properties
 
@@ -43223,18 +43392,6 @@ export namespace Clutter {
             signal: K,
             ...args: Parameters<ZoomAction.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'zoom',
-            callback: (_source: this, actor: Actor, focal_point: Point, factor: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'zoom',
-            callback: (_source: this, actor: Actor, focal_point: Point, factor: number) => boolean,
-        ): number;
-        emit(signal: 'zoom', actor: Actor, focal_point: Point, factor: number): void;
 
         // Virtual methods
 

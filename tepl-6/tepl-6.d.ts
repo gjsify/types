@@ -536,13 +536,27 @@ export namespace Tepl {
 
     class AbstractFactory extends GObject.Object {
         static $gtype: GObject.GType<AbstractFactory>;
-        declare static readonly __signalSignatures: AbstractFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AbstractFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractFactory.SignalSignatures>(
+            signal: K,
+            callback: AbstractFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractFactory.SignalSignatures>(
+            signal: K,
+            callback: AbstractFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -627,7 +641,6 @@ export namespace Tepl {
 
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -641,6 +654,21 @@ export namespace Tepl {
         constructor(properties?: Partial<Application.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -734,7 +762,6 @@ export namespace Tepl {
 
     class ApplicationWindow extends GObject.Object implements TabGroup {
         static $gtype: GObject.GType<ApplicationWindow>;
-        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Properties
 
@@ -784,6 +811,21 @@ export namespace Tepl {
         constructor(properties?: Partial<ApplicationWindow.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            callback: ApplicationWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1375,7 +1417,7 @@ export namespace Tepl {
         // Signal callback interfaces
 
         interface TeplCursorMoved {
-            (): void;
+            (_source: Buffer): void;
         }
 
         // Signal signatures
@@ -1397,7 +1439,6 @@ export namespace Tepl {
 
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
-        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -1449,12 +1490,6 @@ export namespace Tepl {
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'tepl-cursor-moved', callback: (_source: this) => void): number;
-        connect_after(signal: 'tepl-cursor-moved', callback: (_source: this) => void): number;
-        emit(signal: 'tepl-cursor-moved'): void;
 
         // Virtual methods
 
@@ -1543,7 +1578,6 @@ export namespace Tepl {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
-        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -1611,6 +1645,12 @@ export namespace Tepl {
 
         static ['new'](): File;
 
+        // Signals
+
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+
         // Static methods
 
         /**
@@ -1666,7 +1706,6 @@ export namespace Tepl {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
-        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -1693,6 +1732,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Buffer, file: File): FileLoader;
+
+        // Signals
+
+        connect<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            callback: FileLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            callback: FileLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileLoader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1759,7 +1813,6 @@ export namespace Tepl {
 
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
-        declare static readonly __signalSignatures: FileSaver.SignalSignatures;
 
         // Properties
 
@@ -1807,6 +1860,18 @@ export namespace Tepl {
         static ['new'](buffer: Buffer, file: File): FileSaver;
 
         static new_with_target(buffer: Buffer, file: File, target_location: Gio.File): FileSaver;
+
+        // Signals
+
+        connect<K extends keyof FileSaver.SignalSignatures>(signal: K, callback: FileSaver.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileSaver.SignalSignatures>(
+            signal: K,
+            callback: FileSaver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileSaver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileSaver.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1881,7 +1946,6 @@ export namespace Tepl {
 
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
-        declare static readonly __signalSignatures: FoldRegion.SignalSignatures;
 
         // Properties
 
@@ -1903,6 +1967,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](buffer: Gtk.TextBuffer, start: Gtk.TextIter, end: Gtk.TextIter): FoldRegion;
+
+        // Signals
+
+        connect<K extends keyof FoldRegion.SignalSignatures>(
+            signal: K,
+            callback: FoldRegion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FoldRegion.SignalSignatures>(
+            signal: K,
+            callback: FoldRegion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FoldRegion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FoldRegion.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1941,7 +2020,6 @@ export namespace Tepl {
 
     class GotoLineBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<GotoLineBar>;
-        declare static readonly __signalSignatures: GotoLineBar.SignalSignatures;
 
         // Constructors
 
@@ -1950,6 +2028,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): GotoLineBar;
+
+        // Signals
+
+        connect<K extends keyof GotoLineBar.SignalSignatures>(
+            signal: K,
+            callback: GotoLineBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GotoLineBar.SignalSignatures>(
+            signal: K,
+            callback: GotoLineBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GotoLineBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GotoLineBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2436,7 +2529,6 @@ export namespace Tepl {
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
-        declare static readonly __signalSignatures: GutterRendererFolds.SignalSignatures;
 
         // Constructors
 
@@ -2445,6 +2537,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): GutterRendererFolds;
+
+        // Signals
+
+        connect<K extends keyof GutterRendererFolds.SignalSignatures>(
+            signal: K,
+            callback: GutterRendererFolds.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(
+            signal: K,
+            callback: GutterRendererFolds.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GutterRendererFolds.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GutterRendererFolds.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2480,7 +2587,6 @@ export namespace Tepl {
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
-        declare static readonly __signalSignatures: InfoBar.SignalSignatures;
 
         // Properties
 
@@ -2552,6 +2658,18 @@ export namespace Tepl {
         static ['new'](): InfoBar;
 
         static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg?: string | null): InfoBar;
+
+        // Signals
+
+        connect<K extends keyof InfoBar.SignalSignatures>(signal: K, callback: InfoBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof InfoBar.SignalSignatures>(
+            signal: K,
+            callback: InfoBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InfoBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InfoBar.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3083,7 +3201,6 @@ export namespace Tepl {
 
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable, LanguageChooser {
         static $gtype: GObject.GType<LanguageChooserDialog>;
-        declare static readonly __signalSignatures: LanguageChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -3095,6 +3212,21 @@ export namespace Tepl {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LanguageChooserDialog.SignalSignatures>(
+            signal: K,
+            callback: LanguageChooserDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LanguageChooserDialog.SignalSignatures>(
+            signal: K,
+            callback: LanguageChooserDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LanguageChooserDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LanguageChooserDialog.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3568,7 +3700,6 @@ export namespace Tepl {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, LanguageChooser
     {
         static $gtype: GObject.GType<LanguageChooserWidget>;
-        declare static readonly __signalSignatures: LanguageChooserWidget.SignalSignatures;
 
         // Constructors
 
@@ -3577,6 +3708,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): LanguageChooserWidget;
+
+        // Signals
+
+        connect<K extends keyof LanguageChooserWidget.SignalSignatures>(
+            signal: K,
+            callback: LanguageChooserWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LanguageChooserWidget.SignalSignatures>(
+            signal: K,
+            callback: LanguageChooserWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LanguageChooserWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LanguageChooserWidget.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -4059,7 +4205,6 @@ export namespace Tepl {
 
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
-        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -4068,6 +4213,18 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): Metadata;
+
+        // Signals
+
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: Metadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Metadata.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4105,13 +4262,27 @@ export namespace Tepl {
 
     class MetadataManager extends GObject.Object {
         static $gtype: GObject.GType<MetadataManager>;
-        declare static readonly __signalSignatures: MetadataManager.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<MetadataManager.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MetadataManager.SignalSignatures>(
+            signal: K,
+            callback: MetadataManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetadataManager.SignalSignatures>(
+            signal: K,
+            callback: MetadataManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetadataManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetadataManager.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4196,7 +4367,6 @@ export namespace Tepl {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable, TabGroup {
         static $gtype: GObject.GType<Notebook>;
-        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Constructors
 
@@ -4205,6 +4375,18 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): Notebook;
+
+        // Signals
+
+        connect<K extends keyof Notebook.SignalSignatures>(signal: K, callback: Notebook.SignalSignatures[K]): number;
+        connect_after<K extends keyof Notebook.SignalSignatures>(
+            signal: K,
+            callback: Notebook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notebook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notebook.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -4749,7 +4931,6 @@ export namespace Tepl {
 
     class Panel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
-        declare static readonly __signalSignatures: Panel.SignalSignatures;
 
         // Constructors
 
@@ -4760,6 +4941,12 @@ export namespace Tepl {
         static ['new'](): Panel;
 
         static new_for_left_side_panel(): Panel;
+
+        // Signals
+
+        connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
+        emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: Parameters<Panel.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5277,7 +5464,6 @@ export namespace Tepl {
 
     class ProgressInfoBar extends InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressInfoBar>;
-        declare static readonly __signalSignatures: ProgressInfoBar.SignalSignatures;
 
         // Properties
 
@@ -5302,6 +5488,21 @@ export namespace Tepl {
         // Conflicted with Tepl.InfoBar.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ProgressInfoBar.SignalSignatures>(
+            signal: K,
+            callback: ProgressInfoBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProgressInfoBar.SignalSignatures>(
+            signal: K,
+            callback: ProgressInfoBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProgressInfoBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProgressInfoBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5784,7 +5985,6 @@ export namespace Tepl {
 
     class SpaceDrawerPrefs extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SpaceDrawerPrefs>;
-        declare static readonly __signalSignatures: SpaceDrawerPrefs.SignalSignatures;
 
         // Constructors
 
@@ -5793,6 +5993,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): SpaceDrawerPrefs;
+
+        // Signals
+
+        connect<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
+            signal: K,
+            callback: SpaceDrawerPrefs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
+            signal: K,
+            callback: SpaceDrawerPrefs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpaceDrawerPrefs.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6278,7 +6493,6 @@ export namespace Tepl {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
-        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -6287,6 +6501,18 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): Statusbar;
+
+        // Signals
+
+        connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: Statusbar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            callback: Statusbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Statusbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6782,7 +7008,6 @@ export namespace Tepl {
         implements Atk.ImplementorIface, Gtk.Buildable, GtkSource.StyleSchemeChooser
     {
         static $gtype: GObject.GType<StyleSchemeChooserWidget>;
-        declare static readonly __signalSignatures: StyleSchemeChooserWidget.SignalSignatures;
 
         // Properties
 
@@ -6812,6 +7037,21 @@ export namespace Tepl {
         _init(...args: any[]): void;
 
         static ['new'](): StyleSchemeChooserWidget;
+
+        // Signals
+
+        connect<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
+            signal: K,
+            callback: StyleSchemeChooserWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
+            signal: K,
+            callback: StyleSchemeChooserWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StyleSchemeChooserWidget.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7307,7 +7547,7 @@ export namespace Tepl {
         // Signal callback interfaces
 
         interface CloseRequest {
-            (): void;
+            (_source: Tab): void;
         }
 
         // Signal signatures
@@ -7329,7 +7569,6 @@ export namespace Tepl {
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGroup {
         static $gtype: GObject.GType<Tab>;
-        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -7354,12 +7593,6 @@ export namespace Tepl {
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close-request', callback: (_source: this) => void): number;
-        connect_after(signal: 'close-request', callback: (_source: this) => void): number;
-        emit(signal: 'close-request'): void;
 
         // Virtual methods
 
@@ -8035,7 +8268,6 @@ export namespace Tepl {
 
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabLabel>;
-        declare static readonly __signalSignatures: TabLabel.SignalSignatures;
 
         // Properties
 
@@ -8055,6 +8287,18 @@ export namespace Tepl {
         // Conflicted with Gtk.Grid.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TabLabel.SignalSignatures>(signal: K, callback: TabLabel.SignalSignatures[K]): number;
+        connect_after<K extends keyof TabLabel.SignalSignatures>(
+            signal: K,
+            callback: TabLabel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TabLabel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TabLabel.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -8544,7 +8788,6 @@ export namespace Tepl {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 
@@ -8555,6 +8798,12 @@ export namespace Tepl {
         static ['new'](): View;
 
         static new_with_buffer(buffer: GtkSource.Buffer): View;
+
+        // Signals
+
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
 
         // Methods
 

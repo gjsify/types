@@ -60,7 +60,7 @@ export namespace Abi {
         // Signal callback interfaces
 
         interface Selected {
-            (object: number, p0: number): void;
+            (_source: Table, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -80,7 +80,6 @@ export namespace Abi {
 
     class Table extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<Table>;
-        declare static readonly __signalSignatures: Table.SignalSignatures;
 
         // Fields
 
@@ -99,12 +98,6 @@ export namespace Abi {
         connect<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
         connect_after<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
         emit<K extends keyof Table.SignalSignatures>(signal: K, ...args: Parameters<Table.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'selected', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'selected', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'selected', object: number, p0: number): void;
 
         // Virtual methods
 
@@ -4647,123 +4640,123 @@ export namespace Abi {
         // Signal callback interfaces
 
         interface Bold {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Bottomline {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface CanRedo {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface CanUndo {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface CenterAlign {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Changed {
-            (): void;
+            (_source: Widget): void;
         }
 
         interface Color {
-            (object: number, p0: number, p1: number): void;
+            (_source: Widget, object: number, p0: number, p1: number): void;
         }
 
         interface CurrentPage {
-            (object: number): void;
+            (_source: Widget, object: number): void;
         }
 
         interface EnterSelection {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface FontFamily {
-            (object: string): void;
+            (_source: Widget, object: string): void;
         }
 
         interface FontSize {
-            (object: number): void;
+            (_source: Widget, object: number): void;
         }
 
         interface ImageSelected {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface IsDirty {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Italic {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface JustifyAlign {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface LeaveSelection {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface LeftAlign {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface LineThrough {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Overline {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface PageCount {
-            (object: number): void;
+            (_source: Widget, object: number): void;
         }
 
         interface RightAlign {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface SelectionCleared {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface StyleName {
-            (object: string): void;
+            (_source: Widget, object: string): void;
         }
 
         interface Subscript {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Superscript {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface TableState {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface TextSelected {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Topline {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Underline {
-            (object: boolean): void;
+            (_source: Widget, object: boolean): void;
         }
 
         interface Zoom {
-            (object: number): void;
+            (_source: Widget, object: number): void;
         }
 
         // Signal signatures
@@ -4831,7 +4824,6 @@ export namespace Abi {
 
     class Widget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
-        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -4892,102 +4884,6 @@ export namespace Abi {
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'bold', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'bold', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'bold', object: boolean): void;
-        connect(signal: 'bottomline', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'bottomline', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'bottomline', object: boolean): void;
-        connect(signal: 'can-redo', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'can-redo', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'can-redo', object: boolean): void;
-        connect(signal: 'can-undo', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'can-undo', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'can-undo', object: boolean): void;
-        connect(signal: 'center-align', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'center-align', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'center-align', object: boolean): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'color', callback: (_source: this, object: number, p0: number, p1: number) => void): number;
-        connect_after(
-            signal: 'color',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        emit(signal: 'color', object: number, p0: number, p1: number): void;
-        connect(signal: 'current-page', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'current-page', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'current-page', object: number): void;
-        connect(signal: 'enter-selection', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'enter-selection', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'enter-selection', object: boolean): void;
-        connect(signal: 'font-family', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'font-family', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'font-family', object: string): void;
-        connect(signal: 'font-size', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'font-size', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'font-size', object: number): void;
-        connect(signal: 'image-selected', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'image-selected', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'image-selected', object: boolean): void;
-        connect(signal: 'is-dirty', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'is-dirty', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'is-dirty', object: boolean): void;
-        connect(signal: 'italic', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'italic', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'italic', object: boolean): void;
-        connect(signal: 'justify-align', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'justify-align', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'justify-align', object: boolean): void;
-        connect(signal: 'leave-selection', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'leave-selection', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'leave-selection', object: boolean): void;
-        connect(signal: 'left-align', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'left-align', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'left-align', object: boolean): void;
-        connect(signal: 'line-through', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'line-through', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'line-through', object: boolean): void;
-        connect(signal: 'overline', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'overline', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'overline', object: boolean): void;
-        connect(signal: 'page-count', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'page-count', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'page-count', object: number): void;
-        connect(signal: 'right-align', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'right-align', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'right-align', object: boolean): void;
-        connect(signal: 'selection-cleared', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'selection-cleared', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'selection-cleared', object: boolean): void;
-        connect(signal: 'style-name', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'style-name', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'style-name', object: string): void;
-        connect(signal: 'subscript', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'subscript', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'subscript', object: boolean): void;
-        connect(signal: 'superscript', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'superscript', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'superscript', object: boolean): void;
-        connect(signal: 'table-state', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'table-state', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'table-state', object: boolean): void;
-        connect(signal: 'text-selected', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'text-selected', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'text-selected', object: boolean): void;
-        connect(signal: 'topline', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'topline', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'topline', object: boolean): void;
-        connect(signal: 'underline', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'underline', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'underline', object: boolean): void;
-        connect(signal: 'zoom', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'zoom', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'zoom', object: number): void;
 
         // Static methods
 

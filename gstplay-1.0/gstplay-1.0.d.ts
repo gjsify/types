@@ -295,7 +295,6 @@ export namespace GstPlay {
 
     class Play extends Gst.Object {
         static $gtype: GObject.GType<Play>;
-        declare static readonly __signalSignatures: Play.SignalSignatures;
 
         // Properties
 
@@ -348,6 +347,12 @@ export namespace GstPlay {
         _init(...args: any[]): void;
 
         static ['new'](video_renderer?: PlayVideoRenderer | null): Play;
+
+        // Signals
+
+        connect<K extends keyof Play.SignalSignatures>(signal: K, callback: Play.SignalSignatures[K]): number;
+        connect_after<K extends keyof Play.SignalSignatures>(signal: K, callback: Play.SignalSignatures[K]): number;
+        emit<K extends keyof Play.SignalSignatures>(signal: K, ...args: Parameters<Play.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -641,13 +646,27 @@ export namespace GstPlay {
      */
     class PlayAudioInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayAudioInfo>;
-        declare static readonly __signalSignatures: PlayAudioInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PlayAudioInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlayAudioInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayAudioInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlayAudioInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayAudioInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayAudioInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayAudioInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -672,13 +691,27 @@ export namespace GstPlay {
      */
     class PlayMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayMediaInfo>;
-        declare static readonly __signalSignatures: PlayMediaInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PlayMediaInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlayMediaInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayMediaInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlayMediaInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayMediaInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayMediaInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayMediaInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -709,55 +742,55 @@ export namespace GstPlay {
         // Signal callback interfaces
 
         interface Buffering {
-            (object: number): void;
+            (_source: PlaySignalAdapter, object: number): void;
         }
 
         interface DurationChanged {
-            (object: number): void;
+            (_source: PlaySignalAdapter, object: number): void;
         }
 
         interface EndOfStream {
-            (): void;
+            (_source: PlaySignalAdapter): void;
         }
 
         interface Error {
-            (error: GLib.Error, details?: Gst.Structure | null): void;
+            (_source: PlaySignalAdapter, error: GLib.Error, details?: Gst.Structure | null): void;
         }
 
         interface MediaInfoUpdated {
-            (object: PlayMediaInfo): void;
+            (_source: PlaySignalAdapter, object: PlayMediaInfo): void;
         }
 
         interface MuteChanged {
-            (object: boolean): void;
+            (_source: PlaySignalAdapter, object: boolean): void;
         }
 
         interface PositionUpdated {
-            (object: number): void;
+            (_source: PlaySignalAdapter, object: number): void;
         }
 
         interface SeekDone {
-            (object: number): void;
+            (_source: PlaySignalAdapter, object: number): void;
         }
 
         interface StateChanged {
-            (object: PlayState): void;
+            (_source: PlaySignalAdapter, object: PlayState): void;
         }
 
         interface UriLoaded {
-            (object: string): void;
+            (_source: PlaySignalAdapter, object: string): void;
         }
 
         interface VideoDimensionsChanged {
-            (object: number, p0: number): void;
+            (_source: PlaySignalAdapter, object: number, p0: number): void;
         }
 
         interface VolumeChanged {
-            (object: number): void;
+            (_source: PlaySignalAdapter, object: number): void;
         }
 
         interface Warning {
-            (error: GLib.Error, details?: Gst.Structure | null): void;
+            (_source: PlaySignalAdapter, error: GLib.Error, details?: Gst.Structure | null): void;
         }
 
         // Signal signatures
@@ -786,7 +819,6 @@ export namespace GstPlay {
 
     class PlaySignalAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlaySignalAdapter>;
-        declare static readonly __signalSignatures: PlaySignalAdapter.SignalSignatures;
 
         // Properties
 
@@ -818,66 +850,6 @@ export namespace GstPlay {
             signal: K,
             ...args: Parameters<PlaySignalAdapter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'buffering', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'buffering', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'buffering', object: number): void;
-        connect(signal: 'duration-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'duration-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'duration-changed', object: number): void;
-        connect(signal: 'end-of-stream', callback: (_source: this) => void): number;
-        connect_after(signal: 'end-of-stream', callback: (_source: this) => void): number;
-        emit(signal: 'end-of-stream'): void;
-        connect(
-            signal: 'error',
-            callback: (_source: this, error: GLib.Error, details: Gst.Structure | null) => void,
-        ): number;
-        connect_after(
-            signal: 'error',
-            callback: (_source: this, error: GLib.Error, details: Gst.Structure | null) => void,
-        ): number;
-        emit(signal: 'error', error: GLib.Error, details?: Gst.Structure | null): void;
-        connect(signal: 'media-info-updated', callback: (_source: this, object: PlayMediaInfo) => void): number;
-        connect_after(signal: 'media-info-updated', callback: (_source: this, object: PlayMediaInfo) => void): number;
-        emit(signal: 'media-info-updated', object: PlayMediaInfo): void;
-        connect(signal: 'mute-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'mute-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'mute-changed', object: boolean): void;
-        connect(signal: 'position-updated', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'position-updated', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'position-updated', object: number): void;
-        connect(signal: 'seek-done', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'seek-done', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'seek-done', object: number): void;
-        connect(signal: 'state-changed', callback: (_source: this, object: PlayState) => void): number;
-        connect_after(signal: 'state-changed', callback: (_source: this, object: PlayState) => void): number;
-        emit(signal: 'state-changed', object: PlayState): void;
-        connect(signal: 'uri-loaded', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'uri-loaded', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'uri-loaded', object: string): void;
-        connect(
-            signal: 'video-dimensions-changed',
-            callback: (_source: this, object: number, p0: number) => void,
-        ): number;
-        connect_after(
-            signal: 'video-dimensions-changed',
-            callback: (_source: this, object: number, p0: number) => void,
-        ): number;
-        emit(signal: 'video-dimensions-changed', object: number, p0: number): void;
-        connect(signal: 'volume-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'volume-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'volume-changed', object: number): void;
-        connect(
-            signal: 'warning',
-            callback: (_source: this, error: GLib.Error, details: Gst.Structure | null) => void,
-        ): number;
-        connect_after(
-            signal: 'warning',
-            callback: (_source: this, error: GLib.Error, details: Gst.Structure | null) => void,
-        ): number;
-        emit(signal: 'warning', error: GLib.Error, details?: Gst.Structure | null): void;
 
         // Methods
 
@@ -900,13 +872,27 @@ export namespace GstPlay {
      */
     abstract class PlayStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayStreamInfo>;
-        declare static readonly __signalSignatures: PlayStreamInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PlayStreamInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlayStreamInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayStreamInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlayStreamInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayStreamInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayStreamInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayStreamInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -945,13 +931,27 @@ export namespace GstPlay {
      */
     class PlaySubtitleInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlaySubtitleInfo>;
-        declare static readonly __signalSignatures: PlaySubtitleInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PlaySubtitleInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlaySubtitleInfo.SignalSignatures>(
+            signal: K,
+            callback: PlaySubtitleInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaySubtitleInfo.SignalSignatures>(
+            signal: K,
+            callback: PlaySubtitleInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaySubtitleInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaySubtitleInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -972,13 +972,27 @@ export namespace GstPlay {
      */
     class PlayVideoInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayVideoInfo>;
-        declare static readonly __signalSignatures: PlayVideoInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PlayVideoInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlayVideoInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayVideoInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlayVideoInfo.SignalSignatures>(
+            signal: K,
+            callback: PlayVideoInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayVideoInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayVideoInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1009,7 +1023,6 @@ export namespace GstPlay {
 
     class PlayVideoOverlayVideoRenderer extends GObject.Object implements PlayVideoRenderer {
         static $gtype: GObject.GType<PlayVideoOverlayVideoRenderer>;
-        declare static readonly __signalSignatures: PlayVideoOverlayVideoRenderer.SignalSignatures;
 
         // Properties
 
@@ -1027,6 +1040,21 @@ export namespace GstPlay {
         constructor(properties?: Partial<PlayVideoOverlayVideoRenderer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlayVideoOverlayVideoRenderer.SignalSignatures>(
+            signal: K,
+            callback: PlayVideoOverlayVideoRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlayVideoOverlayVideoRenderer.SignalSignatures>(
+            signal: K,
+            callback: PlayVideoOverlayVideoRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayVideoOverlayVideoRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayVideoOverlayVideoRenderer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

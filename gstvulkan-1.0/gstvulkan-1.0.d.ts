@@ -410,13 +410,27 @@ export namespace GstVulkan {
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
-        declare static readonly __signalSignatures: VulkanBufferMemoryAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VulkanBufferMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: VulkanBufferMemoryAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: VulkanBufferMemoryAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanBufferMemoryAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanBufferPool {
@@ -433,7 +447,6 @@ export namespace GstVulkan {
      */
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
-        declare static readonly __signalSignatures: VulkanBufferPool.SignalSignatures;
 
         // Fields
 
@@ -450,6 +463,21 @@ export namespace GstVulkan {
         // Conflicted with Gst.BufferPool.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VulkanBufferPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanBufferPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanBufferPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanBufferPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanBufferPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanBufferPool.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanCommandPool {
@@ -463,7 +491,6 @@ export namespace GstVulkan {
 
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
-        declare static readonly __signalSignatures: VulkanCommandPool.SignalSignatures;
 
         // Fields
 
@@ -474,6 +501,21 @@ export namespace GstVulkan {
         constructor(properties?: Partial<VulkanCommandPool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanCommandPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanCommandPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanCommandPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanCommandPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanCommandPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanCommandPool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -506,7 +548,6 @@ export namespace GstVulkan {
 
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
-        declare static readonly __signalSignatures: VulkanDescriptorCache.SignalSignatures;
 
         // Fields
 
@@ -519,6 +560,21 @@ export namespace GstVulkan {
         _init(...args: any[]): void;
 
         static ['new'](pool: VulkanDescriptorPool, n_layouts: number, layouts: VulkanHandle): VulkanDescriptorCache;
+
+        // Signals
+
+        connect<K extends keyof VulkanDescriptorCache.SignalSignatures>(
+            signal: K,
+            callback: VulkanDescriptorCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanDescriptorCache.SignalSignatures>(
+            signal: K,
+            callback: VulkanDescriptorCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanDescriptorCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanDescriptorCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -538,7 +594,6 @@ export namespace GstVulkan {
 
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
-        declare static readonly __signalSignatures: VulkanDescriptorPool.SignalSignatures;
 
         // Fields
 
@@ -551,6 +606,21 @@ export namespace GstVulkan {
         _init(...args: any[]): void;
 
         static new_wrapped(device: VulkanDevice, pool: Vulkan.DescriptorPool, max_sets: number): VulkanDescriptorPool;
+
+        // Signals
+
+        connect<K extends keyof VulkanDescriptorPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanDescriptorPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanDescriptorPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanDescriptorPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanDescriptorPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanDescriptorPool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -574,7 +644,6 @@ export namespace GstVulkan {
 
     class VulkanDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanDevice>;
-        declare static readonly __signalSignatures: VulkanDevice.SignalSignatures;
 
         // Properties
 
@@ -591,6 +660,21 @@ export namespace GstVulkan {
         static ['new'](physical_device: VulkanPhysicalDevice): VulkanDevice;
 
         static new_with_index(instance: VulkanInstance, device_index: number): VulkanDevice;
+
+        // Signals
+
+        connect<K extends keyof VulkanDevice.SignalSignatures>(
+            signal: K,
+            callback: VulkanDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanDevice.SignalSignatures>(
+            signal: K,
+            callback: VulkanDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanDevice.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -649,7 +733,6 @@ export namespace GstVulkan {
      */
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
-        declare static readonly __signalSignatures: VulkanDisplay.SignalSignatures;
 
         // Constructors
 
@@ -660,6 +743,21 @@ export namespace GstVulkan {
         static ['new'](instance: VulkanInstance): VulkanDisplay;
 
         static new_with_type(instance: VulkanInstance, type: VulkanDisplayType): VulkanDisplay;
+
+        // Signals
+
+        connect<K extends keyof VulkanDisplay.SignalSignatures>(
+            signal: K,
+            callback: VulkanDisplay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanDisplay.SignalSignatures>(
+            signal: K,
+            callback: VulkanDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanDisplay.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -720,7 +818,6 @@ export namespace GstVulkan {
 
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
-        declare static readonly __signalSignatures: VulkanFenceCache.SignalSignatures;
 
         // Constructors
 
@@ -729,6 +826,21 @@ export namespace GstVulkan {
         _init(...args: any[]): void;
 
         static ['new'](device: VulkanDevice): VulkanFenceCache;
+
+        // Signals
+
+        connect<K extends keyof VulkanFenceCache.SignalSignatures>(
+            signal: K,
+            callback: VulkanFenceCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanFenceCache.SignalSignatures>(
+            signal: K,
+            callback: VulkanFenceCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanFenceCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanFenceCache.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanFullScreenQuad {
@@ -742,7 +854,6 @@ export namespace GstVulkan {
 
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
-        declare static readonly __signalSignatures: VulkanFullScreenQuad.SignalSignatures;
 
         // Fields
 
@@ -758,6 +869,21 @@ export namespace GstVulkan {
         _init(...args: any[]): void;
 
         static ['new'](queue: VulkanQueue): VulkanFullScreenQuad;
+
+        // Signals
+
+        connect<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
+            signal: K,
+            callback: VulkanFullScreenQuad.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
+            signal: K,
+            callback: VulkanFullScreenQuad.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanFullScreenQuad.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -786,7 +912,6 @@ export namespace GstVulkan {
 
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
-        declare static readonly __signalSignatures: VulkanHandlePool.SignalSignatures;
 
         // Fields
 
@@ -799,6 +924,21 @@ export namespace GstVulkan {
         constructor(properties?: Partial<VulkanHandlePool.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanHandlePool.SignalSignatures>(
+            signal: K,
+            callback: VulkanHandlePool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanHandlePool.SignalSignatures>(
+            signal: K,
+            callback: VulkanHandlePool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanHandlePool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanHandlePool.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -828,7 +968,6 @@ export namespace GstVulkan {
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
-        declare static readonly __signalSignatures: VulkanImageBufferPool.SignalSignatures;
 
         // Fields
 
@@ -845,6 +984,21 @@ export namespace GstVulkan {
         // Conflicted with Gst.BufferPool.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VulkanImageBufferPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanImageBufferPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanImageBufferPool.SignalSignatures>(
+            signal: K,
+            callback: VulkanImageBufferPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanImageBufferPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanImageBufferPool.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanImageMemoryAllocator {
@@ -861,20 +1015,34 @@ export namespace GstVulkan {
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
-        declare static readonly __signalSignatures: VulkanImageMemoryAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VulkanImageMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: VulkanImageMemoryAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: VulkanImageMemoryAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanImageMemoryAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanInstance {
         // Signal callback interfaces
 
         interface CreateDevice {
-            (): VulkanDevice;
+            (_source: VulkanInstance): VulkanDevice;
         }
 
         // Signal signatures
@@ -889,7 +1057,6 @@ export namespace GstVulkan {
 
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
-        declare static readonly __signalSignatures: VulkanInstance.SignalSignatures;
 
         // Fields
 
@@ -917,12 +1084,6 @@ export namespace GstVulkan {
             signal: K,
             ...args: Parameters<VulkanInstance.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'create-device', callback: (_source: this) => VulkanDevice): number;
-        connect_after(signal: 'create-device', callback: (_source: this) => VulkanDevice): number;
-        emit(signal: 'create-device'): void;
 
         // Static methods
 
@@ -970,13 +1131,27 @@ export namespace GstVulkan {
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
-        declare static readonly __signalSignatures: VulkanMemoryAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VulkanMemoryAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: VulkanMemoryAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
+            signal: K,
+            callback: VulkanMemoryAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanMemoryAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanPhysicalDevice {
@@ -995,7 +1170,6 @@ export namespace GstVulkan {
 
     class VulkanPhysicalDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanPhysicalDevice>;
-        declare static readonly __signalSignatures: VulkanPhysicalDevice.SignalSignatures;
 
         // Properties
 
@@ -1018,6 +1192,21 @@ export namespace GstVulkan {
 
         static ['new'](instance: VulkanInstance, device_index: number): VulkanPhysicalDevice;
 
+        // Signals
+
+        connect<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
+            signal: K,
+            callback: VulkanPhysicalDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
+            signal: K,
+            callback: VulkanPhysicalDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanPhysicalDevice.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static type_to_string(type: Vulkan.PhysicalDeviceType): string;
@@ -1038,7 +1227,6 @@ export namespace GstVulkan {
 
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
-        declare static readonly __signalSignatures: VulkanQueue.SignalSignatures;
 
         // Fields
 
@@ -1051,6 +1239,21 @@ export namespace GstVulkan {
         constructor(properties?: Partial<VulkanQueue.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanQueue.SignalSignatures>(
+            signal: K,
+            callback: VulkanQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanQueue.SignalSignatures>(
+            signal: K,
+            callback: VulkanQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanQueue.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1106,7 +1309,6 @@ export namespace GstVulkan {
 
     class VulkanSwapper extends Gst.Object {
         static $gtype: GObject.GType<VulkanSwapper>;
-        declare static readonly __signalSignatures: VulkanSwapper.SignalSignatures;
 
         // Properties
 
@@ -1134,6 +1336,21 @@ export namespace GstVulkan {
 
         static ['new'](device: VulkanDevice, window: VulkanWindow): VulkanSwapper;
 
+        // Signals
+
+        connect<K extends keyof VulkanSwapper.SignalSignatures>(
+            signal: K,
+            callback: VulkanSwapper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanSwapper.SignalSignatures>(
+            signal: K,
+            callback: VulkanSwapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanSwapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanSwapper.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         choose_queue(available_queue: VulkanQueue): boolean;
@@ -1158,7 +1375,6 @@ export namespace GstVulkan {
 
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
-        declare static readonly __signalSignatures: VulkanTrashFenceList.SignalSignatures;
 
         // Constructors
 
@@ -1167,6 +1383,21 @@ export namespace GstVulkan {
         _init(...args: any[]): void;
 
         static ['new'](): VulkanTrashFenceList;
+
+        // Signals
+
+        connect<K extends keyof VulkanTrashFenceList.SignalSignatures>(
+            signal: K,
+            callback: VulkanTrashFenceList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanTrashFenceList.SignalSignatures>(
+            signal: K,
+            callback: VulkanTrashFenceList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanTrashFenceList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanTrashFenceList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanTrashList {
@@ -1180,13 +1411,27 @@ export namespace GstVulkan {
 
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
-        declare static readonly __signalSignatures: VulkanTrashList.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<VulkanTrashList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanTrashList.SignalSignatures>(
+            signal: K,
+            callback: VulkanTrashList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanTrashList.SignalSignatures>(
+            signal: K,
+            callback: VulkanTrashList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanTrashList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanTrashList.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1215,7 +1460,6 @@ export namespace GstVulkan {
 
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
-        declare static readonly __signalSignatures: VulkanVideoFilter.SignalSignatures;
 
         // Fields
 
@@ -1228,29 +1472,44 @@ export namespace GstVulkan {
         constructor(properties?: Partial<VulkanVideoFilter.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VulkanVideoFilter.SignalSignatures>(
+            signal: K,
+            callback: VulkanVideoFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanVideoFilter.SignalSignatures>(
+            signal: K,
+            callback: VulkanVideoFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanVideoFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanVideoFilter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VulkanWindow {
         // Signal callback interfaces
 
         interface Close {
-            (): boolean;
+            (_source: VulkanWindow): boolean;
         }
 
         interface Draw {
-            (): void;
+            (_source: VulkanWindow): void;
         }
 
         interface KeyEvent {
-            (id: string, key: string): void;
+            (_source: VulkanWindow, id: string, key: string): void;
         }
 
         interface MouseEvent {
-            (id: string, button: number, x: number, y: number): void;
+            (_source: VulkanWindow, id: string, button: number, x: number, y: number): void;
         }
 
         interface Resize {
-            (object: number, p0: number): void;
+            (_source: VulkanWindow, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -1275,7 +1534,6 @@ export namespace GstVulkan {
      */
     abstract class VulkanWindow extends Gst.Object {
         static $gtype: GObject.GType<VulkanWindow>;
-        declare static readonly __signalSignatures: VulkanWindow.SignalSignatures;
 
         // Properties
 
@@ -1303,30 +1561,6 @@ export namespace GstVulkan {
             signal: K,
             ...args: Parameters<VulkanWindow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'close', callback: (_source: this) => boolean): number;
-        emit(signal: 'close'): void;
-        connect(signal: 'draw', callback: (_source: this) => void): number;
-        connect_after(signal: 'draw', callback: (_source: this) => void): number;
-        emit(signal: 'draw'): void;
-        connect(signal: 'key-event', callback: (_source: this, id: string, key: string) => void): number;
-        connect_after(signal: 'key-event', callback: (_source: this, id: string, key: string) => void): number;
-        emit(signal: 'key-event', id: string, key: string): void;
-        connect(
-            signal: 'mouse-event',
-            callback: (_source: this, id: string, button: number, x: number, y: number) => void,
-        ): number;
-        connect_after(
-            signal: 'mouse-event',
-            callback: (_source: this, id: string, button: number, x: number, y: number) => void,
-        ): number;
-        emit(signal: 'mouse-event', id: string, button: number, x: number, y: number): void;
-        connect(signal: 'resize', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'resize', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'resize', object: number, p0: number): void;
 
         // Virtual methods
 

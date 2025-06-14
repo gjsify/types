@@ -80,11 +80,11 @@ export namespace EDataCal {
         // Signal callback interfaces
 
         interface Closed {
-            (sender: string): void;
+            (_source: CalBackend, sender: string): void;
         }
 
         interface Shutdown {
-            (): void;
+            (_source: CalBackend): void;
         }
 
         // Signal signatures
@@ -112,7 +112,6 @@ export namespace EDataCal {
      */
     class CalBackend extends EBackend.Backend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackend>;
-        declare static readonly __signalSignatures: CalBackend.SignalSignatures;
 
         // Properties
 
@@ -147,15 +146,6 @@ export namespace EDataCal {
             signal: K,
             ...args: Parameters<CalBackend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this, sender: string) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this, sender: string) => void): number;
-        emit(signal: 'closed', sender: string): void;
-        connect(signal: 'shutdown', callback: (_source: this) => void): number;
-        connect_after(signal: 'shutdown', callback: (_source: this) => void): number;
-        emit(signal: 'shutdown'): void;
 
         // Static methods
 
@@ -1976,13 +1966,27 @@ export namespace EDataCal {
      */
     abstract class CalBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<CalBackendFactory>;
-        declare static readonly __signalSignatures: CalBackendFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CalBackendFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CalBackendFactory.SignalSignatures>(
+            signal: K,
+            callback: CalBackendFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalBackendFactory.SignalSignatures>(
+            signal: K,
+            callback: CalBackendFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalBackendFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalBackendFactory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CalBackendSExp {
@@ -1996,7 +2000,6 @@ export namespace EDataCal {
 
     class CalBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<CalBackendSExp>;
-        declare static readonly __signalSignatures: CalBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -2005,6 +2008,21 @@ export namespace EDataCal {
         _init(...args: any[]): void;
 
         static ['new'](text: string): CalBackendSExp;
+
+        // Signals
+
+        connect<K extends keyof CalBackendSExp.SignalSignatures>(
+            signal: K,
+            callback: CalBackendSExp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalBackendSExp.SignalSignatures>(
+            signal: K,
+            callback: CalBackendSExp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalBackendSExp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalBackendSExp.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2060,13 +2078,27 @@ export namespace EDataCal {
      */
     class CalBackendSync extends CalBackend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackendSync>;
-        declare static readonly __signalSignatures: CalBackendSync.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<CalBackendSync.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof CalBackendSync.SignalSignatures>(
+            signal: K,
+            callback: CalBackendSync.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalBackendSync.SignalSignatures>(
+            signal: K,
+            callback: CalBackendSync.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalBackendSync.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalBackendSync.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2757,11 +2789,11 @@ export namespace EDataCal {
         // Signal callback interfaces
 
         interface DupComponentRevision {
-            (object: ICalGLib.Component): string;
+            (_source: CalCache, object: ICalGLib.Component): string;
         }
 
         interface GetTimezone {
-            (tzid: string): ICalGLib.Timezone;
+            (_source: CalCache, tzid: string): ICalGLib.Timezone;
         }
 
         // Signal signatures
@@ -2784,7 +2816,6 @@ export namespace EDataCal {
      */
     class CalCache extends EBackend.Cache implements ECal.TimezoneCache, EDataServer.Extensible {
         static $gtype: GObject.GType<CalCache>;
-        declare static readonly __signalSignatures: CalCache.SignalSignatures;
 
         // Constructors
 
@@ -2805,21 +2836,6 @@ export namespace EDataCal {
             signal: K,
             ...args: Parameters<CalCache.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'dup-component-revision',
-            callback: (_source: this, object: ICalGLib.Component) => string,
-        ): number;
-        connect_after(
-            signal: 'dup-component-revision',
-            callback: (_source: this, object: ICalGLib.Component) => string,
-        ): number;
-        emit(signal: 'dup-component-revision', object: ICalGLib.Component): void;
-        connect(signal: 'get-timezone', callback: (_source: this, tzid: string) => ICalGLib.Timezone): number;
-        connect_after(signal: 'get-timezone', callback: (_source: this, tzid: string) => ICalGLib.Timezone): number;
-        emit(signal: 'get-timezone', tzid: string): void;
 
         // Static methods
 
@@ -3707,11 +3723,11 @@ export namespace EDataCal {
         // Signal callback interfaces
 
         interface RefreshCompleted {
-            (): void;
+            (_source: CalMetaBackend): void;
         }
 
         interface SourceChanged {
-            (): void;
+            (_source: CalMetaBackend): void;
         }
 
         // Signal signatures
@@ -3733,7 +3749,6 @@ export namespace EDataCal {
      */
     abstract class CalMetaBackend extends CalBackendSync implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalMetaBackend>;
-        declare static readonly __signalSignatures: CalMetaBackend.SignalSignatures;
 
         // Properties
 
@@ -3763,15 +3778,6 @@ export namespace EDataCal {
             signal: K,
             ...args: Parameters<CalMetaBackend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'refresh-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'refresh-completed', callback: (_source: this) => void): number;
-        emit(signal: 'refresh-completed'): void;
-        connect(signal: 'source-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'source-changed', callback: (_source: this) => void): number;
-        emit(signal: 'source-changed'): void;
 
         // Virtual methods
 
@@ -4893,7 +4899,6 @@ export namespace EDataCal {
 
     class DataCal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataCal>;
-        declare static readonly __signalSignatures: DataCal.SignalSignatures;
 
         // Properties
 
@@ -4909,6 +4914,18 @@ export namespace EDataCal {
         _init(...args: any[]): void;
 
         static ['new'](backend: CalBackend, connection: Gio.DBusConnection, object_path: string): DataCal;
+
+        // Signals
+
+        connect<K extends keyof DataCal.SignalSignatures>(signal: K, callback: DataCal.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataCal.SignalSignatures>(
+            signal: K,
+            callback: DataCal.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCal.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCal.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5603,7 +5620,6 @@ export namespace EDataCal {
 
     class DataCalFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataCalFactory>;
-        declare static readonly __signalSignatures: DataCalFactory.SignalSignatures;
 
         // Constructors
 
@@ -5612,6 +5628,21 @@ export namespace EDataCal {
         _init(...args: any[]): void;
 
         static ['new'](backend_per_process: number, cancellable?: Gio.Cancellable | null): DataCalFactory;
+
+        // Signals
+
+        connect<K extends keyof DataCalFactory.SignalSignatures>(
+            signal: K,
+            callback: DataCalFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCalFactory.SignalSignatures>(
+            signal: K,
+            callback: DataCalFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCalFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCalFactory.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6157,7 +6188,6 @@ export namespace EDataCal {
 
     class DataCalView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataCalView>;
-        declare static readonly __signalSignatures: DataCalView.SignalSignatures;
 
         // Properties
 
@@ -6179,6 +6209,21 @@ export namespace EDataCal {
             connection: Gio.DBusConnection,
             object_path: string,
         ): DataCalView;
+
+        // Signals
+
+        connect<K extends keyof DataCalView.SignalSignatures>(
+            signal: K,
+            callback: DataCalView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCalView.SignalSignatures>(
+            signal: K,
+            callback: DataCalView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCalView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCalView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6848,7 +6893,6 @@ export namespace EDataCal {
      */
     class IntervalTree extends GObject.Object {
         static $gtype: GObject.GType<IntervalTree>;
-        declare static readonly __signalSignatures: IntervalTree.SignalSignatures;
 
         // Constructors
 
@@ -6857,6 +6901,21 @@ export namespace EDataCal {
         _init(...args: any[]): void;
 
         static ['new'](): IntervalTree;
+
+        // Signals
+
+        connect<K extends keyof IntervalTree.SignalSignatures>(
+            signal: K,
+            callback: IntervalTree.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IntervalTree.SignalSignatures>(
+            signal: K,
+            callback: IntervalTree.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IntervalTree.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IntervalTree.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6878,7 +6937,6 @@ export namespace EDataCal {
 
     class SubprocessCalFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessCalFactory>;
-        declare static readonly __signalSignatures: SubprocessCalFactory.SignalSignatures;
 
         // Constructors
 
@@ -6887,6 +6945,21 @@ export namespace EDataCal {
         _init(...args: any[]): void;
 
         static ['new'](cancellable?: Gio.Cancellable | null): SubprocessCalFactory;
+
+        // Signals
+
+        connect<K extends keyof SubprocessCalFactory.SignalSignatures>(
+            signal: K,
+            callback: SubprocessCalFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessCalFactory.SignalSignatures>(
+            signal: K,
+            callback: SubprocessCalFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessCalFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessCalFactory.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

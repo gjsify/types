@@ -74,15 +74,15 @@ export namespace SugarGestures {
         // Signal callback interfaces
 
         interface Began {
-            (): void;
+            (_source: EventController): void;
         }
 
         interface Ended {
-            (): void;
+            (_source: EventController): void;
         }
 
         interface Updated {
-            (): void;
+            (_source: EventController): void;
         }
 
         // Signal signatures
@@ -102,7 +102,6 @@ export namespace SugarGestures {
 
     abstract class EventController extends GObject.Object {
         static $gtype: GObject.GType<EventController>;
-        declare static readonly __signalSignatures: EventController.SignalSignatures;
 
         // Properties
 
@@ -130,18 +129,6 @@ export namespace SugarGestures {
             signal: K,
             ...args: Parameters<EventController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'began', callback: (_source: this) => void): number;
-        connect_after(signal: 'began', callback: (_source: this) => void): number;
-        emit(signal: 'began'): void;
-        connect(signal: 'ended', callback: (_source: this) => void): number;
-        connect_after(signal: 'ended', callback: (_source: this) => void): number;
-        emit(signal: 'ended'): void;
-        connect(signal: 'updated', callback: (_source: this) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this) => void): number;
-        emit(signal: 'updated'): void;
 
         // Virtual methods
 
@@ -165,7 +152,7 @@ export namespace SugarGestures {
         // Signal callback interfaces
 
         interface Pressed {
-            (object: number, p0: number): void;
+            (_source: LongPressController, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -184,7 +171,6 @@ export namespace SugarGestures {
 
     class LongPressController extends EventController {
         static $gtype: GObject.GType<LongPressController>;
-        declare static readonly __signalSignatures: LongPressController.SignalSignatures;
 
         // Properties
 
@@ -217,12 +203,6 @@ export namespace SugarGestures {
             signal: K,
             ...args: Parameters<LongPressController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pressed', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'pressed', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'pressed', object: number, p0: number): void;
 
         // Virtual methods
 
@@ -233,7 +213,7 @@ export namespace SugarGestures {
         // Signal callback interfaces
 
         interface AngleChanged {
-            (angle: number, angle_delta: number): void;
+            (_source: RotateController, angle: number, angle_delta: number): void;
         }
 
         // Signal signatures
@@ -248,7 +228,6 @@ export namespace SugarGestures {
 
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
-        declare static readonly __signalSignatures: RotateController.SignalSignatures;
 
         // Fields
 
@@ -276,15 +255,6 @@ export namespace SugarGestures {
             signal: K,
             ...args: Parameters<RotateController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'angle-changed', callback: (_source: this, angle: number, angle_delta: number) => void): number;
-        connect_after(
-            signal: 'angle-changed',
-            callback: (_source: this, angle: number, angle_delta: number) => void,
-        ): number;
-        emit(signal: 'angle-changed', angle: number, angle_delta: number): void;
 
         // Virtual methods
 
@@ -305,7 +275,7 @@ export namespace SugarGestures {
         // Signal callback interfaces
 
         interface SwipeEnded {
-            (object: SwipeDirection): void;
+            (_source: SwipeController, object: SwipeDirection): void;
         }
 
         // Signal signatures
@@ -322,7 +292,6 @@ export namespace SugarGestures {
 
     class SwipeController extends EventController {
         static $gtype: GObject.GType<SwipeController>;
-        declare static readonly __signalSignatures: SwipeController.SignalSignatures;
 
         // Properties
 
@@ -350,12 +319,6 @@ export namespace SugarGestures {
             signal: K,
             ...args: Parameters<SwipeController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'swipe-ended', callback: (_source: this, object: SwipeDirection) => void): number;
-        connect_after(signal: 'swipe-ended', callback: (_source: this, object: SwipeDirection) => void): number;
-        emit(signal: 'swipe-ended', object: SwipeDirection): void;
 
         // Virtual methods
 
@@ -378,7 +341,6 @@ export namespace SugarGestures {
 
     abstract class TouchController extends EventController {
         static $gtype: GObject.GType<TouchController>;
-        declare static readonly __signalSignatures: TouchController.SignalSignatures;
 
         // Properties
 
@@ -396,6 +358,21 @@ export namespace SugarGestures {
         constructor(properties?: Partial<TouchController.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TouchController.SignalSignatures>(
+            signal: K,
+            callback: TouchController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TouchController.SignalSignatures>(
+            signal: K,
+            callback: TouchController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TouchController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TouchController.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -428,7 +405,7 @@ export namespace SugarGestures {
         // Signal callback interfaces
 
         interface ScaleChanged {
-            (scale: number): void;
+            (_source: ZoomController, scale: number): void;
         }
 
         // Signal signatures
@@ -443,7 +420,6 @@ export namespace SugarGestures {
 
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
-        declare static readonly __signalSignatures: ZoomController.SignalSignatures;
 
         // Fields
 
@@ -471,12 +447,6 @@ export namespace SugarGestures {
             signal: K,
             ...args: Parameters<ZoomController.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'scale-changed', callback: (_source: this, scale: number) => void): number;
-        connect_after(signal: 'scale-changed', callback: (_source: this, scale: number) => void): number;
-        emit(signal: 'scale-changed', scale: number): void;
 
         // Virtual methods
 

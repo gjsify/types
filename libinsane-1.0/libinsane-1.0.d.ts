@@ -166,7 +166,6 @@ export namespace Libinsane {
 
     class Api extends GObject.Object {
         static $gtype: GObject.GType<Api>;
-        declare static readonly __signalSignatures: Api.SignalSignatures;
 
         // Constructors
 
@@ -177,6 +176,12 @@ export namespace Libinsane {
         static new_from_string(desc: string): Api;
 
         static new_safebet(): Api;
+
+        // Signals
+
+        connect<K extends keyof Api.SignalSignatures>(signal: K, callback: Api.SignalSignatures[K]): number;
+        connect_after<K extends keyof Api.SignalSignatures>(signal: K, callback: Api.SignalSignatures[K]): number;
+        emit<K extends keyof Api.SignalSignatures>(signal: K, ...args: Parameters<Api.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -200,13 +205,27 @@ export namespace Libinsane {
 
     class DeviceDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DeviceDescriptor>;
-        declare static readonly __signalSignatures: DeviceDescriptor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DeviceDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DeviceDescriptor.SignalSignatures>(
+            signal: K,
+            callback: DeviceDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceDescriptor.SignalSignatures>(
+            signal: K,
+            callback: DeviceDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -232,13 +251,18 @@ export namespace Libinsane {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
-        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -269,13 +293,27 @@ export namespace Libinsane {
 
     class OptionDescriptor extends GObject.Object {
         static $gtype: GObject.GType<OptionDescriptor>;
-        declare static readonly __signalSignatures: OptionDescriptor.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OptionDescriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OptionDescriptor.SignalSignatures>(
+            signal: K,
+            callback: OptionDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OptionDescriptor.SignalSignatures>(
+            signal: K,
+            callback: OptionDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OptionDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OptionDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -308,13 +346,27 @@ export namespace Libinsane {
 
     class ScanParameters extends GObject.Object {
         static $gtype: GObject.GType<ScanParameters>;
-        declare static readonly __signalSignatures: ScanParameters.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScanParameters.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScanParameters.SignalSignatures>(
+            signal: K,
+            callback: ScanParameters.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScanParameters.SignalSignatures>(
+            signal: K,
+            callback: ScanParameters.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScanParameters.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScanParameters.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -335,13 +387,27 @@ export namespace Libinsane {
 
     class ScanSession extends GObject.Object {
         static $gtype: GObject.GType<ScanSession>;
-        declare static readonly __signalSignatures: ScanSession.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ScanSession.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ScanSession.SignalSignatures>(
+            signal: K,
+            callback: ScanSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScanSession.SignalSignatures>(
+            signal: K,
+            callback: ScanSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScanSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScanSession.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

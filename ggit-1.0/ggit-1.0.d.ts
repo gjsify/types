@@ -1393,13 +1393,18 @@ export namespace Ggit {
      */
     class Blame extends Native {
         static $gtype: GObject.GType<Blame>;
-        declare static readonly __signalSignatures: Blame.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Blame.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Blame.SignalSignatures>(signal: K, callback: Blame.SignalSignatures[K]): number;
+        connect_after<K extends keyof Blame.SignalSignatures>(signal: K, callback: Blame.SignalSignatures[K]): number;
+        emit<K extends keyof Blame.SignalSignatures>(signal: K, ...args: Parameters<Blame.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1448,13 +1453,18 @@ export namespace Ggit {
      */
     class Blob extends Object {
         static $gtype: GObject.GType<Blob>;
-        declare static readonly __signalSignatures: Blob.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Blob.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1491,7 +1501,6 @@ export namespace Ggit {
      */
     class BlobOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<BlobOutputStream>;
-        declare static readonly __signalSignatures: BlobOutputStream.SignalSignatures;
 
         // Properties
 
@@ -1502,6 +1511,21 @@ export namespace Ggit {
         constructor(properties?: Partial<BlobOutputStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BlobOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BlobOutputStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BlobOutputStream.SignalSignatures>(
+            signal: K,
+            callback: BlobOutputStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BlobOutputStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BlobOutputStream.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1528,13 +1552,18 @@ export namespace Ggit {
      */
     class Branch extends Ref {
         static $gtype: GObject.GType<Branch>;
-        declare static readonly __signalSignatures: Branch.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Branch.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Branch.SignalSignatures>(signal: K, callback: Branch.SignalSignatures[K]): number;
+        connect_after<K extends keyof Branch.SignalSignatures>(signal: K, callback: Branch.SignalSignatures[K]): number;
+        emit<K extends keyof Branch.SignalSignatures>(signal: K, ...args: Parameters<Branch.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1610,7 +1639,6 @@ export namespace Ggit {
      */
     class CheckoutOptions extends GObject.Object {
         static $gtype: GObject.GType<CheckoutOptions>;
-        declare static readonly __signalSignatures: CheckoutOptions.SignalSignatures;
 
         // Properties
 
@@ -1668,6 +1696,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): CheckoutOptions;
+
+        // Signals
+
+        connect<K extends keyof CheckoutOptions.SignalSignatures>(
+            signal: K,
+            callback: CheckoutOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CheckoutOptions.SignalSignatures>(
+            signal: K,
+            callback: CheckoutOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CheckoutOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CheckoutOptions.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1830,7 +1873,6 @@ export namespace Ggit {
      */
     class CherryPickOptions extends GObject.Object {
         static $gtype: GObject.GType<CherryPickOptions>;
-        declare static readonly __signalSignatures: CherryPickOptions.SignalSignatures;
 
         // Properties
 
@@ -1852,6 +1894,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): CherryPickOptions;
+
+        // Signals
+
+        connect<K extends keyof CherryPickOptions.SignalSignatures>(
+            signal: K,
+            callback: CherryPickOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CherryPickOptions.SignalSignatures>(
+            signal: K,
+            callback: CherryPickOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CherryPickOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CherryPickOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1901,7 +1958,6 @@ export namespace Ggit {
      */
     class CloneOptions extends GObject.Object {
         static $gtype: GObject.GType<CloneOptions>;
-        declare static readonly __signalSignatures: CloneOptions.SignalSignatures;
 
         // Constructors
 
@@ -1910,6 +1966,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): CloneOptions;
+
+        // Signals
+
+        connect<K extends keyof CloneOptions.SignalSignatures>(
+            signal: K,
+            callback: CloneOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CloneOptions.SignalSignatures>(
+            signal: K,
+            callback: CloneOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CloneOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CloneOptions.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1979,13 +2050,18 @@ export namespace Ggit {
      */
     class Commit extends Object {
         static $gtype: GObject.GType<Commit>;
-        declare static readonly __signalSignatures: Commit.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Commit.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
+        connect_after<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
+        emit<K extends keyof Commit.SignalSignatures>(signal: K, ...args: Parameters<Commit.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2091,7 +2167,6 @@ export namespace Ggit {
      */
     class CommitParents extends GObject.Object {
         static $gtype: GObject.GType<CommitParents>;
-        declare static readonly __signalSignatures: CommitParents.SignalSignatures;
 
         // Properties
 
@@ -2105,6 +2180,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](commit: Commit): CommitParents;
+
+        // Signals
+
+        connect<K extends keyof CommitParents.SignalSignatures>(
+            signal: K,
+            callback: CommitParents.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommitParents.SignalSignatures>(
+            signal: K,
+            callback: CommitParents.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommitParents.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommitParents.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2141,7 +2231,6 @@ export namespace Ggit {
      */
     class Config extends Native {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -2154,6 +2243,12 @@ export namespace Ggit {
         static new_default(): Config;
 
         static new_from_file(file: Gio.File): Config;
+
+        // Signals
+
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2306,13 +2401,18 @@ export namespace Ggit {
      */
     class Cred extends Native {
         static $gtype: GObject.GType<Cred>;
-        declare static readonly __signalSignatures: Cred.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Cred.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Cred.SignalSignatures>(signal: K, callback: Cred.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cred.SignalSignatures>(signal: K, callback: Cred.SignalSignatures[K]): number;
+        emit<K extends keyof Cred.SignalSignatures>(signal: K, ...args: Parameters<Cred.SignalSignatures[K]>): void;
     }
 
     namespace CredPlaintext {
@@ -2332,7 +2432,6 @@ export namespace Ggit {
      */
     class CredPlaintext extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredPlaintext>;
-        declare static readonly __signalSignatures: CredPlaintext.SignalSignatures;
 
         // Properties
 
@@ -2346,6 +2445,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](username: string, password: string): CredPlaintext;
+
+        // Signals
+
+        connect<K extends keyof CredPlaintext.SignalSignatures>(
+            signal: K,
+            callback: CredPlaintext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredPlaintext.SignalSignatures>(
+            signal: K,
+            callback: CredPlaintext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredPlaintext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredPlaintext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2895,7 +3009,6 @@ export namespace Ggit {
      */
     class CredSshInteractive extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredSshInteractive>;
-        declare static readonly __signalSignatures: CredSshInteractive.SignalSignatures;
 
         // Properties
 
@@ -2908,6 +3021,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](username: string): CredSshInteractive;
+
+        // Signals
+
+        connect<K extends keyof CredSshInteractive.SignalSignatures>(
+            signal: K,
+            callback: CredSshInteractive.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredSshInteractive.SignalSignatures>(
+            signal: K,
+            callback: CredSshInteractive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredSshInteractive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredSshInteractive.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3460,7 +3588,6 @@ export namespace Ggit {
      */
     class CredSshKeyFromAgent extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredSshKeyFromAgent>;
-        declare static readonly __signalSignatures: CredSshKeyFromAgent.SignalSignatures;
 
         // Properties
 
@@ -3473,6 +3600,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](username: string): CredSshKeyFromAgent;
+
+        // Signals
+
+        connect<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
+            signal: K,
+            callback: CredSshKeyFromAgent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
+            signal: K,
+            callback: CredSshKeyFromAgent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredSshKeyFromAgent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4025,7 +4167,6 @@ export namespace Ggit {
      */
     class Diff extends Native {
         static $gtype: GObject.GType<Diff>;
-        declare static readonly __signalSignatures: Diff.SignalSignatures;
 
         // Properties
 
@@ -4070,6 +4211,12 @@ export namespace Ggit {
             old_tree?: Tree | null,
             diff_options?: DiffOptions | null,
         ): Diff;
+
+        // Signals
+
+        connect<K extends keyof Diff.SignalSignatures>(signal: K, callback: Diff.SignalSignatures[K]): number;
+        connect_after<K extends keyof Diff.SignalSignatures>(signal: K, callback: Diff.SignalSignatures[K]): number;
+        emit<K extends keyof Diff.SignalSignatures>(signal: K, ...args: Parameters<Diff.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4203,7 +4350,6 @@ export namespace Ggit {
      */
     class DiffFindOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffFindOptions>;
-        declare static readonly __signalSignatures: DiffFindOptions.SignalSignatures;
 
         // Properties
 
@@ -4238,6 +4384,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): DiffFindOptions;
+
+        // Signals
+
+        connect<K extends keyof DiffFindOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffFindOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiffFindOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffFindOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiffFindOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiffFindOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4324,7 +4485,6 @@ export namespace Ggit {
 
     class DiffFormatEmailOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffFormatEmailOptions>;
-        declare static readonly __signalSignatures: DiffFormatEmailOptions.SignalSignatures;
 
         // Properties
 
@@ -4354,6 +4514,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): DiffFormatEmailOptions;
+
+        // Signals
+
+        connect<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffFormatEmailOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffFormatEmailOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiffFormatEmailOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4454,7 +4629,6 @@ export namespace Ggit {
      */
     class DiffOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffOptions>;
-        declare static readonly __signalSignatures: DiffOptions.SignalSignatures;
 
         // Properties
 
@@ -4489,6 +4663,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): DiffOptions;
+
+        // Signals
+
+        connect<K extends keyof DiffOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiffOptions.SignalSignatures>(
+            signal: K,
+            callback: DiffOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiffOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiffOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4570,7 +4759,6 @@ export namespace Ggit {
      */
     class Index extends Native implements Gio.Initable {
         static $gtype: GObject.GType<Index>;
-        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Properties
 
@@ -4581,6 +4769,12 @@ export namespace Ggit {
         constructor(properties?: Partial<Index.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -5222,7 +5416,6 @@ export namespace Ggit {
      */
     class Mailmap extends Native {
         static $gtype: GObject.GType<Mailmap>;
-        declare static readonly __signalSignatures: Mailmap.SignalSignatures;
 
         // Constructors
 
@@ -5233,6 +5426,18 @@ export namespace Ggit {
         static ['new'](): Mailmap;
 
         static new_from_repository(repository: Repository): Mailmap;
+
+        // Signals
+
+        connect<K extends keyof Mailmap.SignalSignatures>(signal: K, callback: Mailmap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Mailmap.SignalSignatures>(
+            signal: K,
+            callback: Mailmap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Mailmap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Mailmap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5285,7 +5490,6 @@ export namespace Ggit {
      */
     abstract class Native extends ObjectFactoryBase {
         static $gtype: GObject.GType<Native>;
-        declare static readonly __signalSignatures: Native.SignalSignatures;
 
         // Properties
 
@@ -5296,6 +5500,12 @@ export namespace Ggit {
         constructor(properties?: Partial<Native.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Native.SignalSignatures>(signal: K, callback: Native.SignalSignatures[K]): number;
+        connect_after<K extends keyof Native.SignalSignatures>(signal: K, callback: Native.SignalSignatures[K]): number;
+        emit<K extends keyof Native.SignalSignatures>(signal: K, ...args: Parameters<Native.SignalSignatures[K]>): void;
     }
 
     namespace Object {
@@ -5312,13 +5522,18 @@ export namespace Ggit {
      */
     abstract class Object extends Native {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5348,13 +5563,27 @@ export namespace Ggit {
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
-        declare static readonly __signalSignatures: ObjectFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ObjectFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObjectFactory.SignalSignatures>(
+            signal: K,
+            callback: ObjectFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectFactory.SignalSignatures>(
+            signal: K,
+            callback: ObjectFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5407,13 +5636,27 @@ export namespace Ggit {
      */
     abstract class ObjectFactoryBase extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactoryBase>;
-        declare static readonly __signalSignatures: ObjectFactoryBase.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ObjectFactoryBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObjectFactoryBase.SignalSignatures>(
+            signal: K,
+            callback: ObjectFactoryBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectFactoryBase.SignalSignatures>(
+            signal: K,
+            callback: ObjectFactoryBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectFactoryBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectFactoryBase.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ProxyOptions {
@@ -5430,7 +5673,6 @@ export namespace Ggit {
      */
     class ProxyOptions extends GObject.Object {
         static $gtype: GObject.GType<ProxyOptions>;
-        declare static readonly __signalSignatures: ProxyOptions.SignalSignatures;
 
         // Constructors
 
@@ -5439,6 +5681,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): ProxyOptions;
+
+        // Signals
+
+        connect<K extends keyof ProxyOptions.SignalSignatures>(
+            signal: K,
+            callback: ProxyOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProxyOptions.SignalSignatures>(
+            signal: K,
+            callback: ProxyOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProxyOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProxyOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PushOptions {
@@ -5458,7 +5715,6 @@ export namespace Ggit {
      */
     class PushOptions extends GObject.Object {
         static $gtype: GObject.GType<PushOptions>;
-        declare static readonly __signalSignatures: PushOptions.SignalSignatures;
 
         // Properties
 
@@ -5474,6 +5730,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): PushOptions;
+
+        // Signals
+
+        connect<K extends keyof PushOptions.SignalSignatures>(
+            signal: K,
+            callback: PushOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PushOptions.SignalSignatures>(
+            signal: K,
+            callback: PushOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PushOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PushOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5517,13 +5788,18 @@ export namespace Ggit {
      */
     class Rebase extends Native {
         static $gtype: GObject.GType<Rebase>;
-        declare static readonly __signalSignatures: Rebase.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Rebase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Rebase.SignalSignatures>(signal: K, callback: Rebase.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rebase.SignalSignatures>(signal: K, callback: Rebase.SignalSignatures[K]): number;
+        emit<K extends keyof Rebase.SignalSignatures>(signal: K, ...args: Parameters<Rebase.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5592,13 +5868,18 @@ export namespace Ggit {
      */
     class Ref extends Native {
         static $gtype: GObject.GType<Ref>;
-        declare static readonly __signalSignatures: Ref.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Ref.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
+        connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
+        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: Parameters<Ref.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -5783,7 +6064,6 @@ export namespace Ggit {
      */
     class Remote extends Native {
         static $gtype: GObject.GType<Remote>;
-        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Constructors
 
@@ -5794,6 +6074,12 @@ export namespace Ggit {
         static ['new'](repository: Repository, name: string, url: string): Remote;
 
         static new_anonymous(repository: Repository, url: string): Remote;
+
+        // Signals
+
+        connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -5904,19 +6190,19 @@ export namespace Ggit {
         // Signal callback interfaces
 
         interface Completion {
-            (object: RemoteCompletionType): void;
+            (_source: RemoteCallbacks, object: RemoteCompletionType): void;
         }
 
         interface Progress {
-            (object: string): void;
+            (_source: RemoteCallbacks, object: string): void;
         }
 
         interface TransferProgress {
-            (object: TransferProgress): void;
+            (_source: RemoteCallbacks, object: TransferProgress): void;
         }
 
         interface UpdateTips {
-            (object: string, p0: OId, p1: OId): void;
+            (_source: RemoteCallbacks, object: string, p0: OId, p1: OId): void;
         }
 
         // Signal signatures
@@ -5937,7 +6223,6 @@ export namespace Ggit {
      */
     class RemoteCallbacks extends GObject.Object {
         static $gtype: GObject.GType<RemoteCallbacks>;
-        declare static readonly __signalSignatures: RemoteCallbacks.SignalSignatures;
 
         // Constructors
 
@@ -5959,24 +6244,6 @@ export namespace Ggit {
             signal: K,
             ...args: Parameters<RemoteCallbacks.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'completion', callback: (_source: this, object: RemoteCompletionType) => void): number;
-        connect_after(signal: 'completion', callback: (_source: this, object: RemoteCompletionType) => void): number;
-        emit(signal: 'completion', object: RemoteCompletionType): void;
-        connect(signal: 'progress', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'progress', object: string): void;
-        connect(signal: 'transfer-progress', callback: (_source: this, object: TransferProgress) => void): number;
-        connect_after(signal: 'transfer-progress', callback: (_source: this, object: TransferProgress) => void): number;
-        emit(signal: 'transfer-progress', object: TransferProgress): void;
-        connect(signal: 'update-tips', callback: (_source: this, object: string, p0: OId, p1: OId) => void): number;
-        connect_after(
-            signal: 'update-tips',
-            callback: (_source: this, object: string, p0: OId, p1: OId) => void,
-        ): number;
-        emit(signal: 'update-tips', object: string, p0: OId, p1: OId): void;
 
         // Virtual methods
 
@@ -6012,7 +6279,6 @@ export namespace Ggit {
      */
     class Repository extends Native implements Gio.Initable {
         static $gtype: GObject.GType<Repository>;
-        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Properties
 
@@ -6033,6 +6299,21 @@ export namespace Ggit {
         constructor(properties?: Partial<Repository.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            callback: Repository.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Repository.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Repository.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -7390,7 +7671,6 @@ export namespace Ggit {
      */
     class RevisionWalker extends Native implements Gio.Initable {
         static $gtype: GObject.GType<RevisionWalker>;
-        declare static readonly __signalSignatures: RevisionWalker.SignalSignatures;
 
         // Properties
 
@@ -7404,6 +7684,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](repository: Repository): RevisionWalker;
+
+        // Signals
+
+        connect<K extends keyof RevisionWalker.SignalSignatures>(
+            signal: K,
+            callback: RevisionWalker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RevisionWalker.SignalSignatures>(
+            signal: K,
+            callback: RevisionWalker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RevisionWalker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RevisionWalker.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8055,7 +8350,6 @@ export namespace Ggit {
      */
     class Signature extends Native {
         static $gtype: GObject.GType<Signature>;
-        declare static readonly __signalSignatures: Signature.SignalSignatures;
 
         // Properties
 
@@ -8070,6 +8364,18 @@ export namespace Ggit {
         static ['new'](name: string, email: string, signature_time: GLib.DateTime): Signature;
 
         static new_now(name: string, email: string): Signature;
+
+        // Signals
+
+        connect<K extends keyof Signature.SignalSignatures>(signal: K, callback: Signature.SignalSignatures[K]): number;
+        connect_after<K extends keyof Signature.SignalSignatures>(
+            signal: K,
+            callback: Signature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Signature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Signature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8120,7 +8426,6 @@ export namespace Ggit {
      */
     class SubmoduleUpdateOptions extends GObject.Object {
         static $gtype: GObject.GType<SubmoduleUpdateOptions>;
-        declare static readonly __signalSignatures: SubmoduleUpdateOptions.SignalSignatures;
 
         // Properties
 
@@ -8140,6 +8445,21 @@ export namespace Ggit {
         _init(...args: any[]): void;
 
         static ['new'](): SubmoduleUpdateOptions;
+
+        // Signals
+
+        connect<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
+            signal: K,
+            callback: SubmoduleUpdateOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
+            signal: K,
+            callback: SubmoduleUpdateOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubmoduleUpdateOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8175,13 +8495,18 @@ export namespace Ggit {
      */
     class Tag extends Object {
         static $gtype: GObject.GType<Tag>;
-        declare static readonly __signalSignatures: Tag.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Tag.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
+        emit<K extends keyof Tag.SignalSignatures>(signal: K, ...args: Parameters<Tag.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -8240,13 +8565,18 @@ export namespace Ggit {
      */
     class Tree extends Object {
         static $gtype: GObject.GType<Tree>;
-        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Tree.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -8303,13 +8633,27 @@ export namespace Ggit {
      */
     class TreeBuilder extends Native {
         static $gtype: GObject.GType<TreeBuilder>;
-        declare static readonly __signalSignatures: TreeBuilder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<TreeBuilder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TreeBuilder.SignalSignatures>(
+            signal: K,
+            callback: TreeBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeBuilder.SignalSignatures>(
+            signal: K,
+            callback: TreeBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeBuilder.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

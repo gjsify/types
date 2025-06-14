@@ -91,7 +91,6 @@ export namespace Thunarx {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
-        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -100,6 +99,12 @@ export namespace Thunarx {
         _init(...args: any[]): void;
 
         static ['new'](): Menu;
+
+        // Signals
+
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -112,7 +117,7 @@ export namespace Thunarx {
         // Signal callback interfaces
 
         interface Activate {
-            (): void;
+            (_source: MenuItem): void;
         }
 
         // Signal signatures
@@ -135,7 +140,6 @@ export namespace Thunarx {
 
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
-        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -172,12 +176,6 @@ export namespace Thunarx {
             signal: K,
             ...args: Parameters<MenuItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activate', callback: (_source: this) => void): number;
-        connect_after(signal: 'activate', callback: (_source: this) => void): number;
-        emit(signal: 'activate'): void;
 
         // Static methods
 
@@ -227,7 +225,6 @@ export namespace Thunarx {
 
     class PropertyPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyPage>;
-        declare static readonly __signalSignatures: PropertyPage.SignalSignatures;
 
         // Properties
 
@@ -247,6 +244,21 @@ export namespace Thunarx {
         static ['new'](label: string): PropertyPage;
 
         static new_with_label_widget(label_widget: Gtk.Widget): PropertyPage;
+
+        // Signals
+
+        connect<K extends keyof PropertyPage.SignalSignatures>(
+            signal: K,
+            callback: PropertyPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyPage.SignalSignatures>(
+            signal: K,
+            callback: PropertyPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyPage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -729,13 +741,27 @@ export namespace Thunarx {
 
     class ProviderFactory extends GObject.Object {
         static $gtype: GObject.GType<ProviderFactory>;
-        declare static readonly __signalSignatures: ProviderFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<ProviderFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProviderFactory.SignalSignatures>(
+            signal: K,
+            callback: ProviderFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProviderFactory.SignalSignatures>(
+            signal: K,
+            callback: ProviderFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProviderFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProviderFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -778,7 +804,6 @@ export namespace Thunarx {
 
     class ProviderModule extends GObject.TypeModule implements GObject.TypePlugin, ProviderPlugin {
         static $gtype: GObject.GType<ProviderModule>;
-        declare static readonly __signalSignatures: ProviderModule.SignalSignatures;
 
         // Constructors
 
@@ -787,6 +812,21 @@ export namespace Thunarx {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): ProviderModule;
+
+        // Signals
+
+        connect<K extends keyof ProviderModule.SignalSignatures>(
+            signal: K,
+            callback: ProviderModule.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProviderModule.SignalSignatures>(
+            signal: K,
+            callback: ProviderModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProviderModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProviderModule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1437,7 +1477,7 @@ export namespace Thunarx {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Renamer): void;
         }
 
         // Signal signatures
@@ -1460,7 +1500,6 @@ export namespace Thunarx {
 
     abstract class Renamer extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Renamer>;
-        declare static readonly __signalSignatures: Renamer.SignalSignatures;
 
         // Properties
 
@@ -1514,12 +1553,6 @@ export namespace Thunarx {
             signal: K,
             ...args: Parameters<Renamer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 

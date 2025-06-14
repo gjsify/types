@@ -338,7 +338,6 @@ export namespace Pluma {
 
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
-        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -353,6 +352,12 @@ export namespace Pluma {
         constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -402,35 +407,35 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface CursorMoved {
-            (): void;
+            (_source: Document): void;
         }
 
         interface Load {
-            (uri: string, encoding: Encoding, line_pos: number, create: boolean): void;
+            (_source: Document, uri: string, encoding: Encoding, line_pos: number, create: boolean): void;
         }
 
         interface Loaded {
-            (object?: any | null): void;
+            (_source: Document, object?: any | null): void;
         }
 
         interface Loading {
-            (object: number, p0: number): void;
+            (_source: Document, object: number, p0: number): void;
         }
 
         interface Save {
-            (uri: string, encoding: Encoding, flags: DocumentSaveFlags): void;
+            (_source: Document, uri: string, encoding: Encoding, flags: DocumentSaveFlags): void;
         }
 
         interface Saved {
-            (object?: any | null): void;
+            (_source: Document, object?: any | null): void;
         }
 
         interface Saving {
-            (object: number, p0: number): void;
+            (_source: Document, object: number, p0: number): void;
         }
 
         interface SearchHighlightUpdated {
-            (object: Gtk.TextIter, p0: Gtk.TextIter): void;
+            (_source: Document, object: Gtk.TextIter, p0: Gtk.TextIter): void;
         }
 
         // Signal signatures
@@ -468,7 +473,6 @@ export namespace Pluma {
 
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
-        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -526,51 +530,6 @@ export namespace Pluma {
             signal: K,
             ...args: Parameters<Document.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cursor-moved', callback: (_source: this) => void): number;
-        connect_after(signal: 'cursor-moved', callback: (_source: this) => void): number;
-        emit(signal: 'cursor-moved'): void;
-        connect(
-            signal: 'load',
-            callback: (_source: this, uri: string, encoding: Encoding, line_pos: number, create: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'load',
-            callback: (_source: this, uri: string, encoding: Encoding, line_pos: number, create: boolean) => void,
-        ): number;
-        emit(signal: 'load', uri: string, encoding: Encoding, line_pos: number, create: boolean): void;
-        connect(signal: 'loaded', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'loaded', object?: any | null): void;
-        connect(signal: 'loading', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'loading', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'loading', object: number, p0: number): void;
-        connect(
-            signal: 'save',
-            callback: (_source: this, uri: string, encoding: Encoding, flags: DocumentSaveFlags) => void,
-        ): number;
-        connect_after(
-            signal: 'save',
-            callback: (_source: this, uri: string, encoding: Encoding, flags: DocumentSaveFlags) => void,
-        ): number;
-        emit(signal: 'save', uri: string, encoding: Encoding, flags: DocumentSaveFlags): void;
-        connect(signal: 'saved', callback: (_source: this, object: any | null) => void): number;
-        connect_after(signal: 'saved', callback: (_source: this, object: any | null) => void): number;
-        emit(signal: 'saved', object?: any | null): void;
-        connect(signal: 'saving', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'saving', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'saving', object: number, p0: number): void;
-        connect(
-            signal: 'search-highlight-updated',
-            callback: (_source: this, object: Gtk.TextIter, p0: Gtk.TextIter) => void,
-        ): number;
-        connect_after(
-            signal: 'search-highlight-updated',
-            callback: (_source: this, object: Gtk.TextIter, p0: Gtk.TextIter) => void,
-        ): number;
-        emit(signal: 'search-highlight-updated', object: Gtk.TextIter, p0: Gtk.TextIter): void;
 
         // Static methods
 
@@ -705,7 +664,6 @@ export namespace Pluma {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
-        declare static readonly __signalSignatures: EncodingsComboBox.SignalSignatures;
 
         // Properties
 
@@ -724,6 +682,21 @@ export namespace Pluma {
         // Conflicted with Gtk.ComboBox.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof EncodingsComboBox.SignalSignatures>(
+            signal: K,
+            callback: EncodingsComboBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncodingsComboBox.SignalSignatures>(
+            signal: K,
+            callback: EncodingsComboBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncodingsComboBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncodingsComboBox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5226,7 +5199,6 @@ export namespace Pluma {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -5243,6 +5215,18 @@ export namespace Pluma {
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5297,15 +5281,15 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface Dispatch {
-            (message: Message): void;
+            (_source: MessageBus, message: Message): void;
         }
 
         interface Registered {
-            (message_type: MessageType): void;
+            (_source: MessageBus, message_type: MessageType): void;
         }
 
         interface Unregistered {
-            (message_type: MessageType): void;
+            (_source: MessageBus, message_type: MessageType): void;
         }
 
         // Signal signatures
@@ -5322,7 +5306,6 @@ export namespace Pluma {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
-        declare static readonly __signalSignatures: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -5334,6 +5317,10 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            callback: MessageBus.SignalSignatures[K],
+        ): number;
         connect_after<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
             callback: MessageBus.SignalSignatures[K],
@@ -5342,14 +5329,6 @@ export namespace Pluma {
             signal: K,
             ...args: Parameters<MessageBus.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
-        emit(signal: 'dispatch', message: Message): void;
-        connect_after(signal: 'registered', callback: (_source: this, message_type: MessageType) => void): number;
-        emit(signal: 'registered', message_type: MessageType): void;
-        connect_after(signal: 'unregistered', callback: (_source: this, message_type: MessageType) => void): number;
-        emit(signal: 'unregistered', message_type: MessageType): void;
 
         // Static methods
 
@@ -5476,23 +5455,23 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface TabAdded {
-            (object: Tab): void;
+            (_source: Notebook, object: Tab): void;
         }
 
         interface TabCloseRequest {
-            (object: Tab): void;
+            (_source: Notebook, object: Tab): void;
         }
 
         interface TabDetached {
-            (object: Tab): void;
+            (_source: Notebook, object: Tab): void;
         }
 
         interface TabRemoved {
-            (object: Tab): void;
+            (_source: Notebook, object: Tab): void;
         }
 
         interface TabsReordered {
-            (): void;
+            (_source: Notebook): void;
         }
 
         // Signal signatures
@@ -5514,7 +5493,6 @@ export namespace Pluma {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
-        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Fields
 
@@ -5539,24 +5517,6 @@ export namespace Pluma {
             signal: K,
             ...args: Parameters<Notebook.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'tab-added', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-added', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-added', object: Tab): void;
-        connect(signal: 'tab-close-request', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-close-request', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-close-request', object: Tab): void;
-        connect(signal: 'tab-detached', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-detached', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-detached', object: Tab): void;
-        connect(signal: 'tab-removed', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-removed', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-removed', object: Tab): void;
-        connect(signal: 'tabs-reordered', callback: (_source: this) => void): number;
-        connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
-        emit(signal: 'tabs-reordered'): void;
 
         // Virtual methods
 
@@ -6070,19 +6030,19 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface Close {
-            (): void;
+            (_source: Panel): void;
         }
 
         interface FocusDocument {
-            (): void;
+            (_source: Panel): void;
         }
 
         interface ItemAdded {
-            (object: Gtk.Widget): void;
+            (_source: Panel, object: Gtk.Widget): void;
         }
 
         interface ItemRemoved {
-            (object: Gtk.Widget): void;
+            (_source: Panel, object: Gtk.Widget): void;
         }
 
         // Signal signatures
@@ -6107,7 +6067,6 @@ export namespace Pluma {
 
     class Panel extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
-        declare static readonly __signalSignatures: Panel.SignalSignatures;
 
         // Properties
 
@@ -6131,21 +6090,6 @@ export namespace Pluma {
         connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
         connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
         emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: Parameters<Panel.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'close', callback: (_source: this) => void): number;
-        connect_after(signal: 'close', callback: (_source: this) => void): number;
-        emit(signal: 'close'): void;
-        connect(signal: 'focus-document', callback: (_source: this) => void): number;
-        connect_after(signal: 'focus-document', callback: (_source: this) => void): number;
-        emit(signal: 'focus-document'): void;
-        connect(signal: 'item-added', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'item-added', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'item-added', object: Gtk.Widget): void;
-        connect(signal: 'item-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
-        connect_after(signal: 'item-removed', callback: (_source: this, object: Gtk.Widget) => void): number;
-        emit(signal: 'item-removed', object: Gtk.Widget): void;
 
         // Virtual methods
 
@@ -6672,7 +6616,6 @@ export namespace Pluma {
 
     class ProgressMessageArea extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressMessageArea>;
-        declare static readonly __signalSignatures: ProgressMessageArea.SignalSignatures;
 
         // Properties
 
@@ -6689,6 +6632,21 @@ export namespace Pluma {
         // Conflicted with Gtk.InfoBar.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ProgressMessageArea.SignalSignatures>(
+            signal: K,
+            callback: ProgressMessageArea.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProgressMessageArea.SignalSignatures>(
+            signal: K,
+            callback: ProgressMessageArea.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProgressMessageArea.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProgressMessageArea.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7144,7 +7102,7 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface Changed {
-            (object: Gtk.MenuItem): void;
+            (_source: StatusComboBox, object: Gtk.MenuItem): void;
         }
 
         // Signal signatures
@@ -7164,7 +7122,6 @@ export namespace Pluma {
 
     class StatusComboBox extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StatusComboBox>;
-        declare static readonly __signalSignatures: StatusComboBox.SignalSignatures;
 
         // Properties
 
@@ -7196,12 +7153,6 @@ export namespace Pluma {
             signal: K,
             ...args: Parameters<StatusComboBox.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this, object: Gtk.MenuItem) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this, object: Gtk.MenuItem) => void): number;
-        emit(signal: 'changed', object: Gtk.MenuItem): void;
 
         // Virtual methods
 
@@ -7675,7 +7626,6 @@ export namespace Pluma {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
-        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -7684,6 +7634,18 @@ export namespace Pluma {
         _init(...args: any[]): void;
 
         static ['new'](): Statusbar;
+
+        // Signals
+
+        connect<K extends keyof Statusbar.SignalSignatures>(signal: K, callback: Statusbar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            callback: Statusbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Statusbar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8159,7 +8121,6 @@ export namespace Pluma {
 
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
-        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -8181,6 +8142,12 @@ export namespace Pluma {
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -8698,19 +8665,19 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface DropUris {
-            (object: string[]): void;
+            (_source: View, object: string[]): void;
         }
 
         interface ResetSearchedText {
-            (): boolean;
+            (_source: View): boolean;
         }
 
         interface StartInteractiveGotoLine {
-            (): boolean;
+            (_source: View): boolean;
         }
 
         interface StartInteractiveSearch {
-            (): boolean;
+            (_source: View): boolean;
         }
 
         // Signal signatures
@@ -8732,7 +8699,6 @@ export namespace Pluma {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Fields
 
@@ -8754,21 +8720,6 @@ export namespace Pluma {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'drop-uris', callback: (_source: this, object: string[]) => void): number;
-        connect_after(signal: 'drop-uris', callback: (_source: this, object: string[]) => void): number;
-        emit(signal: 'drop-uris', object: string[]): void;
-        connect(signal: 'reset-searched-text', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'reset-searched-text', callback: (_source: this) => boolean): number;
-        emit(signal: 'reset-searched-text'): void;
-        connect(signal: 'start-interactive-goto-line', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'start-interactive-goto-line', callback: (_source: this) => boolean): number;
-        emit(signal: 'start-interactive-goto-line'): void;
-        connect(signal: 'start-interactive-search', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'start-interactive-search', callback: (_source: this) => boolean): number;
-        emit(signal: 'start-interactive-search'): void;
 
         // Virtual methods
 
@@ -9253,23 +9204,23 @@ export namespace Pluma {
         // Signal callback interfaces
 
         interface ActiveTabChanged {
-            (object: Tab): void;
+            (_source: Window, object: Tab): void;
         }
 
         interface ActiveTabStateChanged {
-            (): void;
+            (_source: Window): void;
         }
 
         interface TabAdded {
-            (object: Tab): void;
+            (_source: Window, object: Tab): void;
         }
 
         interface TabRemoved {
-            (object: Tab): void;
+            (_source: Window, object: Tab): void;
         }
 
         interface TabsReordered {
-            (): void;
+            (_source: Window): void;
         }
 
         // Signal signatures
@@ -9293,7 +9244,6 @@ export namespace Pluma {
 
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -9315,24 +9265,6 @@ export namespace Pluma {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-tab-changed', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'active-tab-changed', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'active-tab-changed', object: Tab): void;
-        connect(signal: 'active-tab-state-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'active-tab-state-changed', callback: (_source: this) => void): number;
-        emit(signal: 'active-tab-state-changed'): void;
-        connect(signal: 'tab-added', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-added', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-added', object: Tab): void;
-        connect(signal: 'tab-removed', callback: (_source: this, object: Tab) => void): number;
-        connect_after(signal: 'tab-removed', callback: (_source: this, object: Tab) => void): number;
-        emit(signal: 'tab-removed', object: Tab): void;
-        connect(signal: 'tabs-reordered', callback: (_source: this) => void): number;
-        connect_after(signal: 'tabs-reordered', callback: (_source: this) => void): number;
-        emit(signal: 'tabs-reordered'): void;
 
         // Virtual methods
 

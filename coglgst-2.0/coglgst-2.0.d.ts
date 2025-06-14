@@ -27,11 +27,11 @@ export namespace CoglGst {
         // Signal callback interfaces
 
         interface NewFrame {
-            (): void;
+            (_source: VideoSink): void;
         }
 
         interface PipelineReady {
-            (): void;
+            (_source: VideoSink): void;
         }
 
         // Signal signatures
@@ -54,7 +54,6 @@ export namespace CoglGst {
      */
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
-        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -82,15 +81,6 @@ export namespace CoglGst {
             signal: K,
             ...args: Parameters<VideoSink.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'new-frame', callback: (_source: this) => void): number;
-        connect_after(signal: 'new-frame', callback: (_source: this) => void): number;
-        emit(signal: 'new-frame'): void;
-        connect(signal: 'pipeline-ready', callback: (_source: this) => void): number;
-        connect_after(signal: 'pipeline-ready', callback: (_source: this) => void): number;
-        emit(signal: 'pipeline-ready'): void;
 
         // Virtual methods
 

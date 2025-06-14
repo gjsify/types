@@ -32,7 +32,6 @@ export namespace ArrowFlight {
 
     class CallOptions extends GObject.Object {
         static $gtype: GObject.GType<CallOptions>;
-        declare static readonly __signalSignatures: CallOptions.SignalSignatures;
 
         // Constructors
 
@@ -41,6 +40,21 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](): CallOptions;
+
+        // Signals
+
+        connect<K extends keyof CallOptions.SignalSignatures>(
+            signal: K,
+            callback: CallOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallOptions.SignalSignatures>(
+            signal: K,
+            callback: CallOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Client {
@@ -56,7 +70,6 @@ export namespace ArrowFlight {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -69,6 +82,12 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](location: Location, options?: ClientOptions | null): Client;
+
+        // Signals
+
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -87,7 +106,6 @@ export namespace ArrowFlight {
 
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
-        declare static readonly __signalSignatures: ClientOptions.SignalSignatures;
 
         // Constructors
 
@@ -96,6 +114,21 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](): ClientOptions;
+
+        // Signals
+
+        connect<K extends keyof ClientOptions.SignalSignatures>(
+            signal: K,
+            callback: ClientOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientOptions.SignalSignatures>(
+            signal: K,
+            callback: ClientOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CommandDescriptor {
@@ -109,7 +142,6 @@ export namespace ArrowFlight {
 
     class CommandDescriptor extends Descriptor {
         static $gtype: GObject.GType<CommandDescriptor>;
-        declare static readonly __signalSignatures: CommandDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -118,6 +150,21 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](command: string): CommandDescriptor;
+
+        // Signals
+
+        connect<K extends keyof CommandDescriptor.SignalSignatures>(
+            signal: K,
+            callback: CommandDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandDescriptor.SignalSignatures>(
+            signal: K,
+            callback: CommandDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -137,7 +184,6 @@ export namespace ArrowFlight {
 
     class Criteria extends GObject.Object {
         static $gtype: GObject.GType<Criteria>;
-        declare static readonly __signalSignatures: Criteria.SignalSignatures;
 
         // Properties
 
@@ -154,6 +200,18 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](expression: GLib.Bytes | Uint8Array): Criteria;
+
+        // Signals
+
+        connect<K extends keyof Criteria.SignalSignatures>(signal: K, callback: Criteria.SignalSignatures[K]): number;
+        connect_after<K extends keyof Criteria.SignalSignatures>(
+            signal: K,
+            callback: Criteria.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Criteria.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Criteria.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DataStream {
@@ -169,7 +227,6 @@ export namespace ArrowFlight {
 
     class DataStream extends GObject.Object {
         static $gtype: GObject.GType<DataStream>;
-        declare static readonly __signalSignatures: DataStream.SignalSignatures;
 
         // Properties
 
@@ -180,6 +237,21 @@ export namespace ArrowFlight {
         constructor(properties?: Partial<DataStream.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataStream.SignalSignatures>(
+            signal: K,
+            callback: DataStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataStream.SignalSignatures>(
+            signal: K,
+            callback: DataStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataStream.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Descriptor {
@@ -195,7 +267,6 @@ export namespace ArrowFlight {
 
     abstract class Descriptor extends GObject.Object {
         static $gtype: GObject.GType<Descriptor>;
-        declare static readonly __signalSignatures: Descriptor.SignalSignatures;
 
         // Properties
 
@@ -206,6 +277,21 @@ export namespace ArrowFlight {
         constructor(properties?: Partial<Descriptor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Descriptor.SignalSignatures>(
+            signal: K,
+            callback: Descriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Descriptor.SignalSignatures>(
+            signal: K,
+            callback: Descriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Descriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Descriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -226,7 +312,6 @@ export namespace ArrowFlight {
 
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
-        declare static readonly __signalSignatures: Endpoint.SignalSignatures;
 
         // Properties
 
@@ -242,6 +327,18 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](ticket: Ticket, locations: Location[]): Endpoint;
+
+        // Signals
+
+        connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect_after<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            callback: Endpoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Endpoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Endpoint.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -262,7 +359,6 @@ export namespace ArrowFlight {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
-        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Properties
 
@@ -281,6 +377,12 @@ export namespace ArrowFlight {
             total_records: number,
             total_bytes: number,
         ): Info;
+
+        // Signals
+
+        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -303,7 +405,6 @@ export namespace ArrowFlight {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
-        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Constructors
 
@@ -312,6 +413,18 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](uri: string): Location;
+
+        // Signals
+
+        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect_after<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: Location.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Location.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -331,7 +444,6 @@ export namespace ArrowFlight {
 
     class PathDescriptor extends Descriptor {
         static $gtype: GObject.GType<PathDescriptor>;
-        declare static readonly __signalSignatures: PathDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -340,6 +452,21 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](paths: string[]): PathDescriptor;
+
+        // Signals
+
+        connect<K extends keyof PathDescriptor.SignalSignatures>(
+            signal: K,
+            callback: PathDescriptor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PathDescriptor.SignalSignatures>(
+            signal: K,
+            callback: PathDescriptor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PathDescriptor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PathDescriptor.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -359,7 +486,6 @@ export namespace ArrowFlight {
 
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
-        declare static readonly __signalSignatures: RecordBatchReader.SignalSignatures;
 
         // Properties
 
@@ -370,6 +496,21 @@ export namespace ArrowFlight {
         constructor(properties?: Partial<RecordBatchReader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchReader.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -390,7 +531,6 @@ export namespace ArrowFlight {
 
     class RecordBatchStream extends DataStream {
         static $gtype: GObject.GType<RecordBatchStream>;
-        declare static readonly __signalSignatures: RecordBatchStream.SignalSignatures;
 
         // Properties
 
@@ -406,6 +546,21 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](reader: Arrow.RecordBatchReader, options?: Arrow.WriteOptions | null): RecordBatchStream;
+
+        // Signals
+
+        connect<K extends keyof RecordBatchStream.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBatchStream.SignalSignatures>(
+            signal: K,
+            callback: RecordBatchStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBatchStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBatchStream.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Server {
@@ -419,13 +574,18 @@ export namespace ArrowFlight {
 
     abstract class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
-        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Server.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -461,7 +621,6 @@ export namespace ArrowFlight {
 
     class ServerCallContext extends GObject.Object {
         static $gtype: GObject.GType<ServerCallContext>;
-        declare static readonly __signalSignatures: ServerCallContext.SignalSignatures;
 
         // Properties
 
@@ -473,6 +632,21 @@ export namespace ArrowFlight {
         constructor(properties?: Partial<ServerCallContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ServerCallContext.SignalSignatures>(
+            signal: K,
+            callback: ServerCallContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerCallContext.SignalSignatures>(
+            signal: K,
+            callback: ServerCallContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerCallContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerCallContext.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ServerOptions {
@@ -488,7 +662,6 @@ export namespace ArrowFlight {
 
     class ServerOptions extends GObject.Object {
         static $gtype: GObject.GType<ServerOptions>;
-        declare static readonly __signalSignatures: ServerOptions.SignalSignatures;
 
         // Properties
 
@@ -501,6 +674,21 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](location: Location): ServerOptions;
+
+        // Signals
+
+        connect<K extends keyof ServerOptions.SignalSignatures>(
+            signal: K,
+            callback: ServerOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerOptions.SignalSignatures>(
+            signal: K,
+            callback: ServerOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerOptions.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StreamChunk {
@@ -516,7 +704,6 @@ export namespace ArrowFlight {
 
     class StreamChunk extends GObject.Object {
         static $gtype: GObject.GType<StreamChunk>;
-        declare static readonly __signalSignatures: StreamChunk.SignalSignatures;
 
         // Properties
 
@@ -527,6 +714,21 @@ export namespace ArrowFlight {
         constructor(properties?: Partial<StreamChunk.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StreamChunk.SignalSignatures>(
+            signal: K,
+            callback: StreamChunk.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamChunk.SignalSignatures>(
+            signal: K,
+            callback: StreamChunk.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamChunk.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamChunk.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -547,13 +749,27 @@ export namespace ArrowFlight {
 
     class StreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<StreamReader>;
-        declare static readonly __signalSignatures: StreamReader.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<StreamReader.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StreamReader.SignalSignatures>(
+            signal: K,
+            callback: StreamReader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamReader.SignalSignatures>(
+            signal: K,
+            callback: StreamReader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamReader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamReader.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Ticket {
@@ -569,7 +785,6 @@ export namespace ArrowFlight {
 
     class Ticket extends GObject.Object {
         static $gtype: GObject.GType<Ticket>;
-        declare static readonly __signalSignatures: Ticket.SignalSignatures;
 
         // Properties
 
@@ -587,6 +802,12 @@ export namespace ArrowFlight {
         _init(...args: any[]): void;
 
         static ['new'](data: GLib.Bytes | Uint8Array): Ticket;
+
+        // Signals
+
+        connect<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
+        connect_after<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
+        emit<K extends keyof Ticket.SignalSignatures>(signal: K, ...args: Parameters<Ticket.SignalSignatures[K]>): void;
 
         // Methods
 

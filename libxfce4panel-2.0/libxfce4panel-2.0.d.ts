@@ -322,7 +322,7 @@ export namespace Libxfce4panel {
         // Signal callback interfaces
 
         interface ArrowTypeChanged {
-            (type: Gtk.ArrowType): void;
+            (_source: ArrowButton, type: Gtk.ArrowType): void;
         }
 
         // Signal signatures
@@ -352,7 +352,6 @@ export namespace Libxfce4panel {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ArrowButton>;
-        declare static readonly __signalSignatures: ArrowButton.SignalSignatures;
 
         // Properties
 
@@ -394,12 +393,6 @@ export namespace Libxfce4panel {
             signal: K,
             ...args: Parameters<ArrowButton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'arrow-type-changed', callback: (_source: this, type: Gtk.ArrowType) => void): number;
-        connect_after(signal: 'arrow-type-changed', callback: (_source: this, type: Gtk.ArrowType) => void): number;
-        emit(signal: 'arrow-type-changed', type: Gtk.ArrowType): void;
 
         // Virtual methods
 
@@ -4727,7 +4720,6 @@ export namespace Libxfce4panel {
      */
     class PanelImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PanelImage>;
-        declare static readonly __signalSignatures: PanelImage.SignalSignatures;
 
         // Properties
 
@@ -4749,6 +4741,21 @@ export namespace Libxfce4panel {
         static new_from_pixbuf(pixbuf?: GdkPixbuf.Pixbuf | null): PanelImage;
 
         static new_from_source(source?: string | null): PanelImage;
+
+        // Signals
+
+        connect<K extends keyof PanelImage.SignalSignatures>(
+            signal: K,
+            callback: PanelImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PanelImage.SignalSignatures>(
+            signal: K,
+            callback: PanelImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PanelImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PanelImage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5402,47 +5409,47 @@ export namespace Libxfce4panel {
         // Signal callback interfaces
 
         interface About {
-            (): void;
+            (_source: PanelPlugin): void;
         }
 
         interface ConfigurePlugin {
-            (): void;
+            (_source: PanelPlugin): void;
         }
 
         interface FreeData {
-            (): void;
+            (_source: PanelPlugin): void;
         }
 
         interface ModeChanged {
-            (mode: PanelPluginMode): void;
+            (_source: PanelPlugin, mode: PanelPluginMode): void;
         }
 
         interface NrowsChanged {
-            (rows: number): void;
+            (_source: PanelPlugin, rows: number): void;
         }
 
         interface OrientationChanged {
-            (orientation: Gtk.Orientation): void;
+            (_source: PanelPlugin, orientation: Gtk.Orientation): void;
         }
 
         interface RemoteEvent {
-            (name: string, value: GObject.Value | any): boolean;
+            (_source: PanelPlugin, name: string, value: GObject.Value | any): boolean;
         }
 
         interface Removed {
-            (): void;
+            (_source: PanelPlugin): void;
         }
 
         interface Save {
-            (): void;
+            (_source: PanelPlugin): void;
         }
 
         interface ScreenPositionChanged {
-            (position: ScreenPosition): void;
+            (_source: PanelPlugin, position: ScreenPosition): void;
         }
 
         interface SizeChanged {
-            (size: number): boolean;
+            (_source: PanelPlugin, size: number): boolean;
         }
 
         // Signal signatures
@@ -5496,7 +5503,6 @@ export namespace Libxfce4panel {
      */
     class PanelPlugin extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, PanelPluginProvider {
         static $gtype: GObject.GType<PanelPlugin>;
-        declare static readonly __signalSignatures: PanelPlugin.SignalSignatures;
 
         // Properties
 
@@ -5631,54 +5637,6 @@ export namespace Libxfce4panel {
             signal: K,
             ...args: Parameters<PanelPlugin.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'about', callback: (_source: this) => void): number;
-        connect_after(signal: 'about', callback: (_source: this) => void): number;
-        emit(signal: 'about'): void;
-        connect(signal: 'configure-plugin', callback: (_source: this) => void): number;
-        connect_after(signal: 'configure-plugin', callback: (_source: this) => void): number;
-        emit(signal: 'configure-plugin'): void;
-        connect(signal: 'free-data', callback: (_source: this) => void): number;
-        connect_after(signal: 'free-data', callback: (_source: this) => void): number;
-        emit(signal: 'free-data'): void;
-        connect(signal: 'mode-changed', callback: (_source: this, mode: PanelPluginMode) => void): number;
-        connect_after(signal: 'mode-changed', callback: (_source: this, mode: PanelPluginMode) => void): number;
-        emit(signal: 'mode-changed', mode: PanelPluginMode): void;
-        connect(signal: 'nrows-changed', callback: (_source: this, rows: number) => void): number;
-        connect_after(signal: 'nrows-changed', callback: (_source: this, rows: number) => void): number;
-        emit(signal: 'nrows-changed', rows: number): void;
-        connect(signal: 'orientation-changed', callback: (_source: this, orientation: Gtk.Orientation) => void): number;
-        connect_after(
-            signal: 'orientation-changed',
-            callback: (_source: this, orientation: Gtk.Orientation) => void,
-        ): number;
-        emit(signal: 'orientation-changed', orientation: Gtk.Orientation): void;
-        connect(
-            signal: 'remote-event',
-            callback: (_source: this, name: string, value: GObject.Value) => boolean,
-        ): number;
-        connect_after(
-            signal: 'remote-event',
-            callback: (_source: this, name: string, value: GObject.Value) => boolean,
-        ): number;
-        emit(signal: 'remote-event', name: string, value: GObject.Value | any): void;
-        connect(signal: 'removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this) => void): number;
-        emit(signal: 'removed'): void;
-        connect(signal: 'save', callback: (_source: this) => void): number;
-        connect_after(signal: 'save', callback: (_source: this) => void): number;
-        emit(signal: 'save'): void;
-        connect(signal: 'screen-position-changed', callback: (_source: this, position: ScreenPosition) => void): number;
-        connect_after(
-            signal: 'screen-position-changed',
-            callback: (_source: this, position: ScreenPosition) => void,
-        ): number;
-        emit(signal: 'screen-position-changed', position: ScreenPosition): void;
-        connect(signal: 'size-changed', callback: (_source: this, size: number) => boolean): number;
-        connect_after(signal: 'size-changed', callback: (_source: this, size: number) => boolean): number;
-        emit(signal: 'size-changed', size: number): void;
 
         // Static methods
 

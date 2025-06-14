@@ -85,7 +85,6 @@ export namespace CloudProviders {
      */
     class Account extends GObject.Object {
         static $gtype: GObject.GType<Account>;
-        declare static readonly __signalSignatures: Account.SignalSignatures;
 
         // Properties
 
@@ -106,6 +105,18 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
 
         static ['new'](proxy: Gio.DBusProxy): Account;
+
+        // Signals
+
+        connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect_after<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            callback: Account.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Account.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -171,7 +182,6 @@ export namespace CloudProviders {
 
     class AccountExporter extends GObject.Object {
         static $gtype: GObject.GType<AccountExporter>;
-        declare static readonly __signalSignatures: AccountExporter.SignalSignatures;
 
         // Properties
 
@@ -205,6 +215,21 @@ export namespace CloudProviders {
 
         static ['new'](provider: ProviderExporter, bus_name: string): AccountExporter;
 
+        // Signals
+
+        connect<K extends keyof AccountExporter.SignalSignatures>(
+            signal: K,
+            callback: AccountExporter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountExporter.SignalSignatures>(
+            signal: K,
+            callback: AccountExporter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountExporter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountExporter.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -232,7 +257,7 @@ export namespace CloudProviders {
         // Signal callback interfaces
 
         interface ProvidersChanged {
-            (): void;
+            (_source: Collector): void;
         }
 
         // Signal signatures
@@ -253,7 +278,6 @@ export namespace CloudProviders {
      */
     class Collector extends GObject.Object {
         static $gtype: GObject.GType<Collector>;
-        declare static readonly __signalSignatures: Collector.SignalSignatures;
 
         // Constructors
 
@@ -272,12 +296,6 @@ export namespace CloudProviders {
             signal: K,
             ...args: Parameters<Collector.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'providers-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'providers-changed', callback: (_source: this) => void): number;
-        emit(signal: 'providers-changed'): void;
 
         // Static methods
 
@@ -314,7 +332,6 @@ export namespace CloudProviders {
         implements DbusAccount, Gio.AsyncInitable<DbusAccountProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<DbusAccountProxy>;
-        declare static readonly __signalSignatures: DbusAccountProxy.SignalSignatures;
 
         // Constructors
 
@@ -350,6 +367,21 @@ export namespace CloudProviders {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DbusAccountProxy.SignalSignatures>(
+            signal: K,
+            callback: DbusAccountProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusAccountProxy.SignalSignatures>(
+            signal: K,
+            callback: DbusAccountProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusAccountProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusAccountProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1225,7 +1257,6 @@ export namespace CloudProviders {
      */
     class DbusAccountSkeleton extends Gio.DBusInterfaceSkeleton implements DbusAccount, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusAccountSkeleton>;
-        declare static readonly __signalSignatures: DbusAccountSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1234,6 +1265,21 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
 
         static ['new'](): DbusAccountSkeleton;
+
+        // Signals
+
+        connect<K extends keyof DbusAccountSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DbusAccountSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusAccountSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DbusAccountSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusAccountSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusAccountSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -1776,7 +1822,6 @@ export namespace CloudProviders {
         implements Gio.AsyncInitable<DbusObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<DbusObjectManagerClient>;
-        declare static readonly __signalSignatures: DbusObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -1812,6 +1857,21 @@ export namespace CloudProviders {
         // Conflicted with Gio.DBusObjectManagerClient.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DbusObjectManagerClient.SignalSignatures>(
+            signal: K,
+            callback: DbusObjectManagerClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusObjectManagerClient.SignalSignatures>(
+            signal: K,
+            callback: DbusObjectManagerClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusObjectManagerClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusObjectManagerClient.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2688,7 +2748,6 @@ export namespace CloudProviders {
      */
     class DbusObjectProxy extends Gio.DBusObjectProxy implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectProxy>;
-        declare static readonly __signalSignatures: DbusObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -2697,6 +2756,21 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
 
         static ['new'](connection: Gio.DBusConnection, object_path: string): DbusObjectProxy;
+
+        // Signals
+
+        connect<K extends keyof DbusObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: DbusObjectProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusObjectProxy.SignalSignatures>(
+            signal: K,
+            callback: DbusObjectProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusObjectProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusObjectProxy.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -3224,7 +3298,6 @@ export namespace CloudProviders {
      */
     class DbusObjectSkeleton extends Gio.DBusObjectSkeleton implements DbusObject, Gio.DBusObject {
         static $gtype: GObject.GType<DbusObjectSkeleton>;
-        declare static readonly __signalSignatures: DbusObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3233,6 +3306,21 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
 
         static ['new'](object_path: string): DbusObjectSkeleton;
+
+        // Signals
+
+        connect<K extends keyof DbusObjectSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DbusObjectSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusObjectSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DbusObjectSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusObjectSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusObjectSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3778,7 +3866,6 @@ export namespace CloudProviders {
         implements DbusProvider, Gio.AsyncInitable<DbusProviderProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<DbusProviderProxy>;
-        declare static readonly __signalSignatures: DbusProviderProxy.SignalSignatures;
 
         // Constructors
 
@@ -3814,6 +3901,21 @@ export namespace CloudProviders {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DbusProviderProxy.SignalSignatures>(
+            signal: K,
+            callback: DbusProviderProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusProviderProxy.SignalSignatures>(
+            signal: K,
+            callback: DbusProviderProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusProviderProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusProviderProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4654,7 +4756,6 @@ export namespace CloudProviders {
      */
     class DbusProviderSkeleton extends Gio.DBusInterfaceSkeleton implements DbusProvider, Gio.DBusInterface {
         static $gtype: GObject.GType<DbusProviderSkeleton>;
-        declare static readonly __signalSignatures: DbusProviderSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4663,6 +4764,21 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
 
         static ['new'](): DbusProviderSkeleton;
+
+        // Signals
+
+        connect<K extends keyof DbusProviderSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DbusProviderSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DbusProviderSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DbusProviderSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DbusProviderSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DbusProviderSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -5153,11 +5269,11 @@ export namespace CloudProviders {
         // Signal callback interfaces
 
         interface AccountsChanged {
-            (): void;
+            (_source: Provider): void;
         }
 
         interface Removed {
-            (): void;
+            (_source: Provider): void;
         }
 
         // Signal signatures
@@ -5180,7 +5296,6 @@ export namespace CloudProviders {
      */
     class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
-        declare static readonly __signalSignatures: Provider.SignalSignatures;
 
         // Properties
 
@@ -5205,15 +5320,6 @@ export namespace CloudProviders {
             signal: K,
             ...args: Parameters<Provider.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'accounts-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'accounts-changed', callback: (_source: this) => void): number;
-        emit(signal: 'accounts-changed'): void;
-        connect(signal: 'removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this) => void): number;
-        emit(signal: 'removed'): void;
 
         // Methods
 
@@ -5244,7 +5350,6 @@ export namespace CloudProviders {
      */
     class ProviderExporter extends GObject.Object {
         static $gtype: GObject.GType<ProviderExporter>;
-        declare static readonly __signalSignatures: ProviderExporter.SignalSignatures;
 
         // Properties
 
@@ -5263,6 +5368,21 @@ export namespace CloudProviders {
         _init(...args: any[]): void;
 
         static ['new'](bus: Gio.DBusConnection, bus_name: string, bus_path: string): ProviderExporter;
+
+        // Signals
+
+        connect<K extends keyof ProviderExporter.SignalSignatures>(
+            signal: K,
+            callback: ProviderExporter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProviderExporter.SignalSignatures>(
+            signal: K,
+            callback: ProviderExporter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProviderExporter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProviderExporter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

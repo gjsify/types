@@ -635,13 +635,27 @@ export namespace Anjuta {
 
     class AsyncCommand extends Command {
         static $gtype: GObject.GType<AsyncCommand>;
-        declare static readonly __signalSignatures: AsyncCommand.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AsyncCommand.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AsyncCommand.SignalSignatures>(
+            signal: K,
+            callback: AsyncCommand.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AsyncCommand.SignalSignatures>(
+            signal: K,
+            callback: AsyncCommand.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncCommand.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncCommand.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -669,7 +683,7 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: AsyncNotify): void;
         }
 
         // Signal signatures
@@ -684,7 +698,6 @@ export namespace Anjuta {
 
     class AsyncNotify extends GObject.Object {
         static $gtype: GObject.GType<AsyncNotify>;
-        declare static readonly __signalSignatures: AsyncNotify.SignalSignatures;
 
         // Constructors
 
@@ -708,12 +721,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<AsyncNotify.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Virtual methods
 
@@ -752,7 +759,6 @@ export namespace Anjuta {
      */
     class Autogen extends GObject.Object {
         static $gtype: GObject.GType<Autogen>;
-        declare static readonly __signalSignatures: Autogen.SignalSignatures;
 
         // Constructors
 
@@ -761,6 +767,18 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): Autogen;
+
+        // Signals
+
+        connect<K extends keyof Autogen.SignalSignatures>(signal: K, callback: Autogen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Autogen.SignalSignatures>(
+            signal: K,
+            callback: Autogen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Autogen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Autogen.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -850,7 +868,6 @@ export namespace Anjuta {
 
     class CModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<CModule>;
-        declare static readonly __signalSignatures: CModule.SignalSignatures;
 
         // Constructors
 
@@ -859,6 +876,18 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](path: string, name: string): CModule;
+
+        // Signals
+
+        connect<K extends keyof CModule.SignalSignatures>(signal: K, callback: CModule.SignalSignatures[K]): number;
+        connect_after<K extends keyof CModule.SignalSignatures>(
+            signal: K,
+            callback: CModule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CModule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CModule.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1357,7 +1386,6 @@ export namespace Anjuta {
 
     class CPluginFactory extends GObject.Object {
         static $gtype: GObject.GType<CPluginFactory>;
-        declare static readonly __signalSignatures: CPluginFactory.SignalSignatures;
 
         // Constructors
 
@@ -1366,6 +1394,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): CPluginFactory;
+
+        // Signals
+
+        connect<K extends keyof CPluginFactory.SignalSignatures>(
+            signal: K,
+            callback: CPluginFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CPluginFactory.SignalSignatures>(
+            signal: K,
+            callback: CPluginFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CPluginFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CPluginFactory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1389,7 +1432,6 @@ export namespace Anjuta {
 
     class CellRendererCaptionedImage extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererCaptionedImage>;
-        declare static readonly __signalSignatures: CellRendererCaptionedImage.SignalSignatures;
 
         // Properties
 
@@ -1410,6 +1452,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): CellRendererCaptionedImage;
+
+        // Signals
+
+        connect<K extends keyof CellRendererCaptionedImage.SignalSignatures>(
+            signal: K,
+            callback: CellRendererCaptionedImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererCaptionedImage.SignalSignatures>(
+            signal: K,
+            callback: CellRendererCaptionedImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererCaptionedImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererCaptionedImage.SignalSignatures[K]>
+        ): void;
     }
 
     namespace CellRendererDiff {
@@ -1425,7 +1482,6 @@ export namespace Anjuta {
 
     class CellRendererDiff extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererDiff>;
-        declare static readonly __signalSignatures: CellRendererDiff.SignalSignatures;
 
         // Properties
 
@@ -1438,6 +1494,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): CellRendererDiff;
+
+        // Signals
+
+        connect<K extends keyof CellRendererDiff.SignalSignatures>(
+            signal: K,
+            callback: CellRendererDiff.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererDiff.SignalSignatures>(
+            signal: K,
+            callback: CellRendererDiff.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererDiff.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererDiff.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1463,7 +1534,6 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<CloseButton>;
-        declare static readonly __signalSignatures: CloseButton.SignalSignatures;
 
         // Constructors
 
@@ -1472,6 +1542,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): CloseButton;
+
+        // Signals
+
+        connect<K extends keyof CloseButton.SignalSignatures>(
+            signal: K,
+            callback: CloseButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CloseButton.SignalSignatures>(
+            signal: K,
+            callback: CloseButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CloseButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CloseButton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get action_name(): string;
@@ -6009,7 +6094,6 @@ export namespace Anjuta {
 
     class ColumnTextView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColumnTextView>;
-        declare static readonly __signalSignatures: ColumnTextView.SignalSignatures;
 
         // Constructors
 
@@ -6018,6 +6102,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): ColumnTextView;
+
+        // Signals
+
+        connect<K extends keyof ColumnTextView.SignalSignatures>(
+            signal: K,
+            callback: ColumnTextView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColumnTextView.SignalSignatures>(
+            signal: K,
+            callback: ColumnTextView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColumnTextView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColumnTextView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6486,19 +6585,19 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface CommandFinished {
-            (return_code: number): void;
+            (_source: Command, return_code: number): void;
         }
 
         interface CommandStarted {
-            (): void;
+            (_source: Command): void;
         }
 
         interface DataArrived {
-            (): void;
+            (_source: Command): void;
         }
 
         interface Progress {
-            (progress: number): void;
+            (_source: Command, progress: number): void;
         }
 
         // Signal signatures
@@ -6516,7 +6615,6 @@ export namespace Anjuta {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
-        declare static readonly __signalSignatures: Command.SignalSignatures;
 
         // Constructors
 
@@ -6535,21 +6633,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<Command.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'command-finished', callback: (_source: this, return_code: number) => void): number;
-        connect_after(signal: 'command-finished', callback: (_source: this, return_code: number) => void): number;
-        emit(signal: 'command-finished', return_code: number): void;
-        connect(signal: 'command-started', callback: (_source: this) => void): number;
-        connect_after(signal: 'command-started', callback: (_source: this) => void): number;
-        emit(signal: 'command-started'): void;
-        connect(signal: 'data-arrived', callback: (_source: this) => void): number;
-        connect_after(signal: 'data-arrived', callback: (_source: this) => void): number;
-        emit(signal: 'data-arrived'): void;
-        connect(signal: 'progress', callback: (_source: this, progress: number) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, progress: number) => void): number;
-        emit(signal: 'progress', progress: number): void;
 
         // Virtual methods
 
@@ -6689,7 +6772,6 @@ export namespace Anjuta {
 
     class CommandBar extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CommandBar>;
-        declare static readonly __signalSignatures: CommandBar.SignalSignatures;
 
         // Properties
 
@@ -6703,6 +6785,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): CommandBar;
+
+        // Signals
+
+        connect<K extends keyof CommandBar.SignalSignatures>(
+            signal: K,
+            callback: CommandBar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandBar.SignalSignatures>(
+            signal: K,
+            callback: CommandBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandBar.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7171,7 +7268,7 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: CommandQueue): void;
         }
 
         // Signal signatures
@@ -7186,7 +7283,6 @@ export namespace Anjuta {
 
     class CommandQueue extends GObject.Object {
         static $gtype: GObject.GType<CommandQueue>;
-        declare static readonly __signalSignatures: CommandQueue.SignalSignatures;
 
         // Constructors
 
@@ -7210,12 +7306,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<CommandQueue.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
 
         // Virtual methods
 
@@ -7246,7 +7336,6 @@ export namespace Anjuta {
 
     class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
-        declare static readonly __signalSignatures: Completion.SignalSignatures;
 
         // Properties
 
@@ -7260,6 +7349,21 @@ export namespace Anjuta {
         constructor(properties?: Partial<Completion.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Completion.SignalSignatures>(
+            signal: K,
+            callback: Completion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Completion.SignalSignatures>(
+            signal: K,
+            callback: Completion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Completion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Completion.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7291,7 +7395,6 @@ export namespace Anjuta {
 
     class Dock extends Gdl.Dock implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dock>;
-        declare static readonly __signalSignatures: Dock.SignalSignatures;
 
         // Constructors
 
@@ -7300,6 +7403,12 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): Dock;
+
+        // Signals
+
+        connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
+        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: Parameters<Dock.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -7844,11 +7953,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface MultipleSelectionChanged {
-            (): void;
+            (_source: DockPane): void;
         }
 
         interface SingleSelectionChanged {
-            (): void;
+            (_source: DockPane): void;
         }
 
         // Signal signatures
@@ -7866,7 +7975,6 @@ export namespace Anjuta {
 
     abstract class DockPane extends GObject.Object {
         static $gtype: GObject.GType<DockPane>;
-        declare static readonly __signalSignatures: DockPane.SignalSignatures;
 
         // Properties
 
@@ -7890,15 +7998,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<DockPane.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'multiple-selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'multiple-selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'multiple-selection-changed'): void;
-        connect(signal: 'single-selection-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'single-selection-changed', callback: (_source: this) => void): number;
-        emit(signal: 'single-selection-changed'): void;
 
         // Virtual methods
 
@@ -7943,7 +8042,6 @@ export namespace Anjuta {
 
     class DropEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<DropEntry>;
-        declare static readonly __signalSignatures: DropEntry.SignalSignatures;
 
         // Constructors
 
@@ -7952,6 +8050,18 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): DropEntry;
+
+        // Signals
+
+        connect<K extends keyof DropEntry.SignalSignatures>(signal: K, callback: DropEntry.SignalSignatures[K]): number;
+        connect_after<K extends keyof DropEntry.SignalSignatures>(
+            signal: K,
+            callback: DropEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DropEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DropEntry.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -12246,7 +12356,6 @@ export namespace Anjuta {
 
     class Entry extends Gtk.Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<Entry>;
-        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -12262,6 +12371,12 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): Entry;
+
+        // Signals
+
+        connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -16806,7 +16921,7 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: EnvironmentEditor): void;
         }
 
         // Signal signatures
@@ -16824,7 +16939,6 @@ export namespace Anjuta {
 
     class EnvironmentEditor extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<EnvironmentEditor>;
-        declare static readonly __signalSignatures: EnvironmentEditor.SignalSignatures;
 
         // Constructors
 
@@ -16848,12 +16962,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<EnvironmentEditor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Virtual methods
 
@@ -17328,7 +17436,6 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<FileDropEntry>;
-        declare static readonly __signalSignatures: FileDropEntry.SignalSignatures;
 
         // Properties
 
@@ -17344,6 +17451,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): FileDropEntry;
+
+        // Signals
+
+        connect<K extends keyof FileDropEntry.SignalSignatures>(
+            signal: K,
+            callback: FileDropEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileDropEntry.SignalSignatures>(
+            signal: K,
+            callback: FileDropEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileDropEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileDropEntry.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -21643,7 +21765,6 @@ export namespace Anjuta {
 
     class FileList extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FileList>;
-        declare static readonly __signalSignatures: FileList.SignalSignatures;
 
         // Properties
 
@@ -21663,6 +21784,18 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): FileList;
+
+        // Signals
+
+        connect<K extends keyof FileList.SignalSignatures>(signal: K, callback: FileList.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileList.SignalSignatures>(
+            signal: K,
+            callback: FileList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22139,13 +22272,27 @@ export namespace Anjuta {
 
     class LanguageProvider extends GObject.Object {
         static $gtype: GObject.GType<LanguageProvider>;
-        declare static readonly __signalSignatures: LanguageProvider.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LanguageProvider.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LanguageProvider.SignalSignatures>(
+            signal: K,
+            callback: LanguageProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LanguageProvider.SignalSignatures>(
+            signal: K,
+            callback: LanguageProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LanguageProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LanguageProvider.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22197,11 +22344,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Busy {
-            (busy: boolean): void;
+            (_source: Launcher, busy: boolean): void;
         }
 
         interface ChildExited {
-            (child_pid: number, status: number, time: number): void;
+            (_source: Launcher, child_pid: number, status: number, time: number): void;
         }
 
         // Signal signatures
@@ -22217,7 +22364,6 @@ export namespace Anjuta {
 
     class Launcher extends GObject.Object {
         static $gtype: GObject.GType<Launcher>;
-        declare static readonly __signalSignatures: Launcher.SignalSignatures;
 
         // Constructors
 
@@ -22238,21 +22384,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<Launcher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'busy', callback: (_source: this, busy: boolean) => void): number;
-        connect_after(signal: 'busy', callback: (_source: this, busy: boolean) => void): number;
-        emit(signal: 'busy', busy: boolean): void;
-        connect(
-            signal: 'child-exited',
-            callback: (_source: this, child_pid: number, status: number, time: number) => void,
-        ): number;
-        connect_after(
-            signal: 'child-exited',
-            callback: (_source: this, child_pid: number, status: number, time: number) => void,
-        ): number;
-        emit(signal: 'child-exited', child_pid: number, status: number, time: number): void;
 
         // Virtual methods
 
@@ -22337,11 +22468,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface PackageActivated {
-            (_package: string): void;
+            (_source: PkgConfigChooser, _package: string): void;
         }
 
         interface PackageDeactivated {
-            (_package: string): void;
+            (_source: PkgConfigChooser, _package: string): void;
         }
 
         // Signal signatures
@@ -22361,7 +22492,6 @@ export namespace Anjuta {
 
     class PkgConfigChooser extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PkgConfigChooser>;
-        declare static readonly __signalSignatures: PkgConfigChooser.SignalSignatures;
 
         // Constructors
 
@@ -22385,15 +22515,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<PkgConfigChooser.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'package-activated', callback: (_source: this, _package: string) => void): number;
-        connect_after(signal: 'package-activated', callback: (_source: this, _package: string) => void): number;
-        emit(signal: 'package-activated', _package: string): void;
-        connect(signal: 'package-deactivated', callback: (_source: this, _package: string) => void): number;
-        connect_after(signal: 'package-deactivated', callback: (_source: this, _package: string) => void): number;
-        emit(signal: 'package-deactivated', _package: string): void;
 
         // Virtual methods
 
@@ -22961,7 +23082,6 @@ export namespace Anjuta {
 
     class PkgScanner extends AsyncCommand {
         static $gtype: GObject.GType<PkgScanner>;
-        declare static readonly __signalSignatures: PkgScanner.SignalSignatures;
 
         // Properties
 
@@ -22978,6 +23098,21 @@ export namespace Anjuta {
 
         static ['new'](_package: string, version: string): PkgScanner;
 
+        // Signals
+
+        connect<K extends keyof PkgScanner.SignalSignatures>(
+            signal: K,
+            callback: PkgScanner.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PkgScanner.SignalSignatures>(
+            signal: K,
+            callback: PkgScanner.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PkgScanner.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PkgScanner.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_package(): string;
@@ -22988,11 +23123,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Activated {
-            (): void;
+            (_source: Plugin): void;
         }
 
         interface Deactivated {
-            (): void;
+            (_source: Plugin): void;
         }
 
         // Signal signatures
@@ -23010,7 +23145,6 @@ export namespace Anjuta {
 
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -23031,15 +23165,6 @@ export namespace Anjuta {
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activated', callback: (_source: this) => void): number;
-        connect_after(signal: 'activated', callback: (_source: this) => void): number;
-        emit(signal: 'activated'): void;
-        connect(signal: 'deactivated', callback: (_source: this) => void): number;
-        connect_after(signal: 'deactivated', callback: (_source: this) => void): number;
-        emit(signal: 'deactivated'): void;
 
         // Virtual methods
 
@@ -23138,7 +23263,6 @@ export namespace Anjuta {
 
     class PluginHandle extends GObject.Object {
         static $gtype: GObject.GType<PluginHandle>;
-        declare static readonly __signalSignatures: PluginHandle.SignalSignatures;
 
         // Properties
 
@@ -23174,6 +23298,21 @@ export namespace Anjuta {
 
         static ['new'](plugin_desc_path: string): PluginHandle;
 
+        // Signals
+
+        connect<K extends keyof PluginHandle.SignalSignatures>(
+            signal: K,
+            callback: PluginHandle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginHandle.SignalSignatures>(
+            signal: K,
+            callback: PluginHandle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginHandle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginHandle.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_about(): string;
@@ -23200,11 +23339,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface PluginActivated {
-            (object: any | null, p0: Plugin): void;
+            (_source: PluginManager, object: any | null, p0: Plugin): void;
         }
 
         interface PluginDeactivated {
-            (object: any | null, p0: Plugin): void;
+            (_source: PluginManager, object: any | null, p0: Plugin): void;
         }
 
         // Signal signatures
@@ -23228,7 +23367,6 @@ export namespace Anjuta {
 
     class PluginManager extends GObject.Object {
         static $gtype: GObject.GType<PluginManager>;
-        declare static readonly __signalSignatures: PluginManager.SignalSignatures;
 
         // Properties
 
@@ -23262,24 +23400,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<PluginManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'plugin-activated', callback: (_source: this, object: any | null, p0: Plugin) => void): number;
-        connect_after(
-            signal: 'plugin-activated',
-            callback: (_source: this, object: any | null, p0: Plugin) => void,
-        ): number;
-        emit(signal: 'plugin-activated', object: any | null, p0: Plugin): void;
-        connect(
-            signal: 'plugin-deactivated',
-            callback: (_source: this, object: any | null, p0: Plugin) => void,
-        ): number;
-        connect_after(
-            signal: 'plugin-deactivated',
-            callback: (_source: this, object: any | null, p0: Plugin) => void,
-        ): number;
-        emit(signal: 'plugin-deactivated', object: any | null, p0: Plugin): void;
 
         // Virtual methods
 
@@ -23351,7 +23471,6 @@ export namespace Anjuta {
 
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
-        declare static readonly __signalSignatures: Preferences.SignalSignatures;
 
         // Constructors
 
@@ -23360,6 +23479,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](plugin_manager: PluginManager, common_schema_id: string): Preferences;
+
+        // Signals
+
+        connect<K extends keyof Preferences.SignalSignatures>(
+            signal: K,
+            callback: Preferences.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Preferences.SignalSignatures>(
+            signal: K,
+            callback: Preferences.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Preferences.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Preferences.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23411,7 +23545,6 @@ export namespace Anjuta {
 
     class PreferencesDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDialog>;
-        declare static readonly __signalSignatures: PreferencesDialog.SignalSignatures;
 
         // Constructors
 
@@ -23420,6 +23553,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesDialog;
+
+        // Signals
+
+        connect<K extends keyof PreferencesDialog.SignalSignatures>(
+            signal: K,
+            callback: PreferencesDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesDialog.SignalSignatures>(
+            signal: K,
+            callback: PreferencesDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesDialog.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23884,23 +24032,23 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Profile): void;
         }
 
         interface Descoped {
-            (): void;
+            (_source: Profile): void;
         }
 
         interface PluginAdded {
-            (plugin?: any | null): void;
+            (_source: Profile, plugin?: any | null): void;
         }
 
         interface PluginRemoved {
-            (plugin?: any | null): void;
+            (_source: Profile, plugin?: any | null): void;
         }
 
         interface Scoped {
-            (): void;
+            (_source: Profile): void;
         }
 
         // Signal signatures
@@ -23929,7 +24077,6 @@ export namespace Anjuta {
      */
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
-        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -23965,24 +24112,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<Profile.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'descoped', callback: (_source: this) => void): number;
-        connect_after(signal: 'descoped', callback: (_source: this) => void): number;
-        emit(signal: 'descoped'): void;
-        connect(signal: 'plugin-added', callback: (_source: this, plugin: any | null) => void): number;
-        connect_after(signal: 'plugin-added', callback: (_source: this, plugin: any | null) => void): number;
-        emit(signal: 'plugin-added', plugin?: any | null): void;
-        connect(signal: 'plugin-removed', callback: (_source: this, plugin: any | null) => void): number;
-        connect_after(signal: 'plugin-removed', callback: (_source: this, plugin: any | null) => void): number;
-        emit(signal: 'plugin-removed', plugin?: any | null): void;
-        connect(signal: 'scoped', callback: (_source: this) => void): number;
-        connect_after(signal: 'scoped', callback: (_source: this) => void): number;
-        emit(signal: 'scoped'): void;
 
         // Virtual methods
 
@@ -24048,11 +24177,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface ProfilePopped {
-            (profile: Profile): void;
+            (_source: ProfileManager, profile: Profile): void;
         }
 
         interface ProfilePushed {
-            (profile: Profile): void;
+            (_source: ProfileManager, profile: Profile): void;
         }
 
         // Signal signatures
@@ -24074,7 +24203,6 @@ export namespace Anjuta {
      */
     class ProfileManager extends GObject.Object {
         static $gtype: GObject.GType<ProfileManager>;
-        declare static readonly __signalSignatures: ProfileManager.SignalSignatures;
 
         // Properties
 
@@ -24105,15 +24233,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<ProfileManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'profile-popped', callback: (_source: this, profile: Profile) => void): number;
-        connect_after(signal: 'profile-popped', callback: (_source: this, profile: Profile) => void): number;
-        emit(signal: 'profile-popped', profile: Profile): void;
-        connect(signal: 'profile-pushed', callback: (_source: this, profile: Profile) => void): number;
-        connect_after(signal: 'profile-pushed', callback: (_source: this, profile: Profile) => void): number;
-        emit(signal: 'profile-pushed', profile: Profile): void;
 
         // Virtual methods
 
@@ -24171,11 +24290,11 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Loaded {
-            (object: any | null, p0: GLib.Error): void;
+            (_source: ProjectNode, object: any | null, p0: GLib.Error): void;
         }
 
         interface Updated {
-            (object: any | null, p0: GLib.Error): void;
+            (_source: ProjectNode, object: any | null, p0: GLib.Error): void;
         }
 
         // Signal signatures
@@ -24200,7 +24319,6 @@ export namespace Anjuta {
      */
     class ProjectNode extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ProjectNode>;
-        declare static readonly __signalSignatures: ProjectNode.SignalSignatures;
 
         // Properties
 
@@ -24233,15 +24351,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<ProjectNode.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'loaded', callback: (_source: this, object: any | null, p0: GLib.Error) => void): number;
-        connect_after(signal: 'loaded', callback: (_source: this, object: any | null, p0: GLib.Error) => void): number;
-        emit(signal: 'loaded', object: any | null, p0: GLib.Error): void;
-        connect(signal: 'updated', callback: (_source: this, object: any | null, p0: GLib.Error) => void): number;
-        connect_after(signal: 'updated', callback: (_source: this, object: any | null, p0: GLib.Error) => void): number;
-        emit(signal: 'updated', object: any | null, p0: GLib.Error): void;
 
         // Methods
 
@@ -24299,7 +24408,6 @@ export namespace Anjuta {
 
     class SavePrompt extends Gtk.MessageDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SavePrompt>;
-        declare static readonly __signalSignatures: SavePrompt.SignalSignatures;
 
         // Constructors
 
@@ -24311,6 +24419,21 @@ export namespace Anjuta {
         // Conflicted with Gtk.Dialog.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SavePrompt.SignalSignatures>(
+            signal: K,
+            callback: SavePrompt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SavePrompt.SignalSignatures>(
+            signal: K,
+            callback: SavePrompt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SavePrompt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SavePrompt.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24772,7 +24895,6 @@ export namespace Anjuta {
 
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
-        declare static readonly __signalSignatures: Serializer.SignalSignatures;
 
         // Properties
 
@@ -24786,6 +24908,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](filepath: string, mode: SerializerMode): Serializer;
+
+        // Signals
+
+        connect<K extends keyof Serializer.SignalSignatures>(
+            signal: K,
+            callback: Serializer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Serializer.SignalSignatures>(
+            signal: K,
+            callback: Serializer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Serializer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Serializer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24808,7 +24945,6 @@ export namespace Anjuta {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
-        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -24817,6 +24953,18 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](session_directory: string): Session;
+
+        // Signals
+
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -24914,7 +25062,7 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Busy {
-            (object: boolean): void;
+            (_source: Status, object: boolean): void;
         }
 
         // Signal signatures
@@ -24933,7 +25081,6 @@ export namespace Anjuta {
 
     class Status extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Status>;
-        declare static readonly __signalSignatures: Status.SignalSignatures;
 
         // Constructors
 
@@ -24948,12 +25095,6 @@ export namespace Anjuta {
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
         emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'busy', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'busy', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'busy', object: boolean): void;
 
         // Virtual methods
 
@@ -25446,13 +25587,27 @@ export namespace Anjuta {
 
     class SyncCommand extends Command {
         static $gtype: GObject.GType<SyncCommand>;
-        declare static readonly __signalSignatures: SyncCommand.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SyncCommand.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SyncCommand.SignalSignatures>(
+            signal: K,
+            callback: SyncCommand.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SyncCommand.SignalSignatures>(
+            signal: K,
+            callback: SyncCommand.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SyncCommand.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SyncCommand.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Tabber {
@@ -25471,7 +25626,6 @@ export namespace Anjuta {
 
     class Tabber extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tabber>;
-        declare static readonly __signalSignatures: Tabber.SignalSignatures;
 
         // Properties
 
@@ -25484,6 +25638,12 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](notebook: Gtk.Notebook): Tabber;
+
+        // Signals
+
+        connect<K extends keyof Tabber.SignalSignatures>(signal: K, callback: Tabber.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tabber.SignalSignatures>(signal: K, callback: Tabber.SignalSignatures[K]): number;
+        emit<K extends keyof Tabber.SignalSignatures>(signal: K, ...args: Parameters<Tabber.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -25951,7 +26111,6 @@ export namespace Anjuta {
 
     class TokenFile extends GObject.Object {
         static $gtype: GObject.GType<TokenFile>;
-        declare static readonly __signalSignatures: TokenFile.SignalSignatures;
 
         // Constructors
 
@@ -25960,6 +26119,18 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](file: Gio.File): TokenFile;
+
+        // Signals
+
+        connect<K extends keyof TokenFile.SignalSignatures>(signal: K, callback: TokenFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof TokenFile.SignalSignatures>(
+            signal: K,
+            callback: TokenFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TokenFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TokenFile.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -25990,15 +26161,15 @@ export namespace Anjuta {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: TreeComboBox): void;
         }
 
         interface Popdown {
-            (): void;
+            (_source: TreeComboBox): void;
         }
 
         interface Popup {
-            (): void;
+            (_source: TreeComboBox): void;
         }
 
         // Signal signatures
@@ -26026,7 +26197,6 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<TreeComboBox>;
-        declare static readonly __signalSignatures: TreeComboBox.SignalSignatures;
 
         // Properties
 
@@ -26055,18 +26225,6 @@ export namespace Anjuta {
             signal: K,
             ...args: Parameters<TreeComboBox.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'popdown', callback: (_source: this) => void): number;
-        connect_after(signal: 'popdown', callback: (_source: this) => void): number;
-        emit(signal: 'popdown'): void;
-        connect(signal: 'popup', callback: (_source: this) => void): number;
-        connect_after(signal: 'popup', callback: (_source: this) => void): number;
-        emit(signal: 'popup'): void;
 
         // Virtual methods
 
@@ -30520,7 +30678,6 @@ export namespace Anjuta {
 
     class UI extends Gtk.UIManager implements Gtk.Buildable {
         static $gtype: GObject.GType<UI>;
-        declare static readonly __signalSignatures: UI.SignalSignatures;
 
         // Constructors
 
@@ -30529,6 +30686,12 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): UI;
+
+        // Signals
+
+        connect<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
+        connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
+        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: Parameters<UI.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -31310,7 +31473,6 @@ export namespace Anjuta {
 
     class VcsStatusTreeView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<VcsStatusTreeView>;
-        declare static readonly __signalSignatures: VcsStatusTreeView.SignalSignatures;
 
         // Properties
 
@@ -31330,6 +31492,21 @@ export namespace Anjuta {
         _init(...args: any[]): void;
 
         static ['new'](): VcsStatusTreeView;
+
+        // Signals
+
+        connect<K extends keyof VcsStatusTreeView.SignalSignatures>(
+            signal: K,
+            callback: VcsStatusTreeView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VcsStatusTreeView.SignalSignatures>(
+            signal: K,
+            callback: VcsStatusTreeView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VcsStatusTreeView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VcsStatusTreeView.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

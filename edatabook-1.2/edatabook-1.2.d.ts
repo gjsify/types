@@ -422,11 +422,11 @@ export namespace EDataBook {
         // Signal callback interfaces
 
         interface Closed {
-            (sender: string): void;
+            (_source: BookBackend, sender: string): void;
         }
 
         interface Shutdown {
-            (): void;
+            (_source: BookBackend): void;
         }
 
         // Signal signatures
@@ -453,7 +453,6 @@ export namespace EDataBook {
      */
     class BookBackend extends EBackend.Backend {
         static $gtype: GObject.GType<BookBackend>;
-        declare static readonly __signalSignatures: BookBackend.SignalSignatures;
 
         // Properties
 
@@ -487,15 +486,6 @@ export namespace EDataBook {
             signal: K,
             ...args: Parameters<BookBackend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this, sender: string) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this, sender: string) => void): number;
-        emit(signal: 'closed', sender: string): void;
-        connect(signal: 'shutdown', callback: (_source: this) => void): number;
-        connect_after(signal: 'shutdown', callback: (_source: this) => void): number;
-        emit(signal: 'shutdown'): void;
 
         // Virtual methods
 
@@ -1573,13 +1563,27 @@ export namespace EDataBook {
      */
     abstract class BookBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<BookBackendFactory>;
-        declare static readonly __signalSignatures: BookBackendFactory.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BookBackendFactory.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BookBackendFactory.SignalSignatures>(
+            signal: K,
+            callback: BookBackendFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookBackendFactory.SignalSignatures>(
+            signal: K,
+            callback: BookBackendFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookBackendFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookBackendFactory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace BookBackendSExp {
@@ -1593,7 +1597,6 @@ export namespace EDataBook {
 
     class BookBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<BookBackendSExp>;
-        declare static readonly __signalSignatures: BookBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -1602,6 +1605,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](text: string): BookBackendSExp;
+
+        // Signals
+
+        connect<K extends keyof BookBackendSExp.SignalSignatures>(
+            signal: K,
+            callback: BookBackendSExp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookBackendSExp.SignalSignatures>(
+            signal: K,
+            callback: BookBackendSExp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookBackendSExp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookBackendSExp.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1663,13 +1681,27 @@ export namespace EDataBook {
      */
     class BookBackendSync extends BookBackend {
         static $gtype: GObject.GType<BookBackendSync>;
-        declare static readonly __signalSignatures: BookBackendSync.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<BookBackendSync.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BookBackendSync.SignalSignatures>(
+            signal: K,
+            callback: BookBackendSync.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookBackendSync.SignalSignatures>(
+            signal: K,
+            callback: BookBackendSync.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookBackendSync.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookBackendSync.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -1820,15 +1852,15 @@ export namespace EDataBook {
         // Signal callback interfaces
 
         interface CategoriesChanged {
-            (object: string): void;
+            (_source: BookCache, object: string): void;
         }
 
         interface DupContactRevision {
-            (object: EBookContacts.Contact): string;
+            (_source: BookCache, object: EBookContacts.Contact): string;
         }
 
         interface E164Changed {
-            (object: EBookContacts.Contact, p0: boolean): void;
+            (_source: BookCache, object: EBookContacts.Contact, p0: boolean): void;
         }
 
         // Signal signatures
@@ -1851,7 +1883,6 @@ export namespace EDataBook {
      */
     class BookCache extends EBackend.Cache implements EDataServer.Extensible {
         static $gtype: GObject.GType<BookCache>;
-        declare static readonly __signalSignatures: BookCache.SignalSignatures;
 
         // Properties
 
@@ -1887,30 +1918,6 @@ export namespace EDataBook {
             signal: K,
             ...args: Parameters<BookCache.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'categories-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'categories-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'categories-changed', object: string): void;
-        connect(
-            signal: 'dup-contact-revision',
-            callback: (_source: this, object: EBookContacts.Contact) => string,
-        ): number;
-        connect_after(
-            signal: 'dup-contact-revision',
-            callback: (_source: this, object: EBookContacts.Contact) => string,
-        ): number;
-        emit(signal: 'dup-contact-revision', object: EBookContacts.Contact): void;
-        connect(
-            signal: 'e164-changed',
-            callback: (_source: this, object: EBookContacts.Contact, p0: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'e164-changed',
-            callback: (_source: this, object: EBookContacts.Contact, p0: boolean) => void,
-        ): number;
-        emit(signal: 'e164-changed', object: EBookContacts.Contact, p0: boolean): void;
 
         // Virtual methods
 
@@ -2799,11 +2806,11 @@ export namespace EDataBook {
         // Signal callback interfaces
 
         interface RefreshCompleted {
-            (): void;
+            (_source: BookMetaBackend): void;
         }
 
         interface SourceChanged {
-            (): void;
+            (_source: BookMetaBackend): void;
         }
 
         // Signal signatures
@@ -2825,7 +2832,6 @@ export namespace EDataBook {
      */
     abstract class BookMetaBackend extends BookBackendSync {
         static $gtype: GObject.GType<BookMetaBackend>;
-        declare static readonly __signalSignatures: BookMetaBackend.SignalSignatures;
 
         // Properties
 
@@ -2855,15 +2861,6 @@ export namespace EDataBook {
             signal: K,
             ...args: Parameters<BookMetaBackend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'refresh-completed', callback: (_source: this) => void): number;
-        connect_after(signal: 'refresh-completed', callback: (_source: this) => void): number;
-        emit(signal: 'refresh-completed'): void;
-        connect(signal: 'source-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'source-changed', callback: (_source: this) => void): number;
-        emit(signal: 'source-changed'): void;
 
         // Virtual methods
 
@@ -3484,6 +3481,7 @@ export namespace EDataBook {
 
         interface BeforeInsertContact {
             (
+                _source: BookSqlite,
                 object: any | null,
                 p0: EBookContacts.Contact,
                 p1: string,
@@ -3494,7 +3492,13 @@ export namespace EDataBook {
         }
 
         interface BeforeRemoveContact {
-            (object: any | null, p0: string, p1?: Gio.Cancellable | null, p2?: any | null): boolean;
+            (
+                _source: BookSqlite,
+                object: any | null,
+                p0: string,
+                p1?: Gio.Cancellable | null,
+                p2?: any | null,
+            ): boolean;
         }
 
         // Signal signatures
@@ -3514,7 +3518,6 @@ export namespace EDataBook {
      */
     class BookSqlite extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<BookSqlite>;
-        declare static readonly __signalSignatures: BookSqlite.SignalSignatures;
 
         // Constructors
 
@@ -3551,69 +3554,6 @@ export namespace EDataBook {
         emit<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
             ...args: Parameters<BookSqlite.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'before-insert-contact',
-            callback: (
-                _source: this,
-                object: any | null,
-                p0: EBookContacts.Contact,
-                p1: string,
-                p2: boolean,
-                p3: GObject.Object,
-                p4: any | null,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'before-insert-contact',
-            callback: (
-                _source: this,
-                object: any | null,
-                p0: EBookContacts.Contact,
-                p1: string,
-                p2: boolean,
-                p3: GObject.Object,
-                p4: any | null,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'before-insert-contact',
-            object: any | null,
-            p0: EBookContacts.Contact,
-            p1: string,
-            p2: boolean,
-            p3: GObject.Object,
-            p4?: any | null,
-        ): void;
-        connect(
-            signal: 'before-remove-contact',
-            callback: (
-                _source: this,
-                object: any | null,
-                p0: string,
-                p1: Gio.Cancellable | null,
-                p2: any | null,
-            ) => boolean,
-        ): number;
-        connect_after(
-            signal: 'before-remove-contact',
-            callback: (
-                _source: this,
-                object: any | null,
-                p0: string,
-                p1: Gio.Cancellable | null,
-                p2: any | null,
-            ) => boolean,
-        ): number;
-        emit(
-            signal: 'before-remove-contact',
-            object: any | null,
-            p0: string,
-            p1?: Gio.Cancellable | null,
-            p2?: any | null,
         ): void;
 
         // Static methods
@@ -4427,7 +4367,6 @@ export namespace EDataBook {
 
     class DataBook extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataBook>;
-        declare static readonly __signalSignatures: DataBook.SignalSignatures;
 
         // Properties
 
@@ -4443,6 +4382,18 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](backend: BookBackend, connection: Gio.DBusConnection, object_path: string): DataBook;
+
+        // Signals
+
+        connect<K extends keyof DataBook.SignalSignatures>(signal: K, callback: DataBook.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataBook.SignalSignatures>(
+            signal: K,
+            callback: DataBook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBook.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5103,7 +5054,6 @@ export namespace EDataBook {
      */
     abstract class DataBookCursor extends GObject.Object {
         static $gtype: GObject.GType<DataBookCursor>;
-        declare static readonly __signalSignatures: DataBookCursor.SignalSignatures;
 
         // Properties
 
@@ -5116,6 +5066,21 @@ export namespace EDataBook {
         constructor(properties?: Partial<DataBookCursor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DataBookCursor.SignalSignatures>(
+            signal: K,
+            callback: DataBookCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookCursor.SignalSignatures>(
+            signal: K,
+            callback: DataBookCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookCursor.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -5305,7 +5270,6 @@ export namespace EDataBook {
      */
     class DataBookCursorCache extends DataBookCursor {
         static $gtype: GObject.GType<DataBookCursorCache>;
-        declare static readonly __signalSignatures: DataBookCursorCache.SignalSignatures;
 
         // Properties
 
@@ -5325,6 +5289,21 @@ export namespace EDataBook {
             sort_fields: EBookContacts.ContactField[],
             sort_types: EBookContacts.BookCursorSortType[],
         ): DataBookCursorCache;
+
+        // Signals
+
+        connect<K extends keyof DataBookCursorCache.SignalSignatures>(
+            signal: K,
+            callback: DataBookCursorCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookCursorCache.SignalSignatures>(
+            signal: K,
+            callback: DataBookCursorCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookCursorCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookCursorCache.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DataBookCursorSqlite {
@@ -5346,7 +5325,6 @@ export namespace EDataBook {
      */
     class DataBookCursorSqlite extends DataBookCursor {
         static $gtype: GObject.GType<DataBookCursorSqlite>;
-        declare static readonly __signalSignatures: DataBookCursorSqlite.SignalSignatures;
 
         // Properties
 
@@ -5368,6 +5346,21 @@ export namespace EDataBook {
             sort_fields: EBookContacts.ContactField[],
             sort_types: EBookContacts.BookCursorSortType[],
         ): DataBookCursorSqlite;
+
+        // Signals
+
+        connect<K extends keyof DataBookCursorSqlite.SignalSignatures>(
+            signal: K,
+            callback: DataBookCursorSqlite.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookCursorSqlite.SignalSignatures>(
+            signal: K,
+            callback: DataBookCursorSqlite.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookCursorSqlite.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookCursorSqlite.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DataBookDirect {
@@ -5381,7 +5374,6 @@ export namespace EDataBook {
 
     class DataBookDirect extends GObject.Object {
         static $gtype: GObject.GType<DataBookDirect>;
-        declare static readonly __signalSignatures: DataBookDirect.SignalSignatures;
 
         // Constructors
 
@@ -5390,6 +5382,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](backend_path: string, backend_factory_name: string, config: string): DataBookDirect;
+
+        // Signals
+
+        connect<K extends keyof DataBookDirect.SignalSignatures>(
+            signal: K,
+            callback: DataBookDirect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookDirect.SignalSignatures>(
+            signal: K,
+            callback: DataBookDirect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookDirect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookDirect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5415,7 +5422,6 @@ export namespace EDataBook {
 
     class DataBookFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataBookFactory>;
-        declare static readonly __signalSignatures: DataBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -5424,6 +5430,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](backend_per_process: number, cancellable?: Gio.Cancellable | null): DataBookFactory;
+
+        // Signals
+
+        connect<K extends keyof DataBookFactory.SignalSignatures>(
+            signal: K,
+            callback: DataBookFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookFactory.SignalSignatures>(
+            signal: K,
+            callback: DataBookFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookFactory.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5956,15 +5977,15 @@ export namespace EDataBook {
         // Signal callback interfaces
 
         interface ObjectsAdded {
-            (vcards: string[]): void;
+            (_source: DataBookView, vcards: string[]): void;
         }
 
         interface ObjectsModified {
-            (vcards: string[]): void;
+            (_source: DataBookView, vcards: string[]): void;
         }
 
         interface ObjectsRemoved {
-            (uids: string[]): void;
+            (_source: DataBookView, uids: string[]): void;
         }
 
         // Signal signatures
@@ -5990,7 +6011,6 @@ export namespace EDataBook {
 
     class DataBookView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataBookView>;
-        declare static readonly __signalSignatures: DataBookView.SignalSignatures;
 
         // Properties
 
@@ -6033,18 +6053,6 @@ export namespace EDataBook {
             signal: K,
             ...args: Parameters<DataBookView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'objects-added', callback: (_source: this, vcards: string[]) => void): number;
-        connect_after(signal: 'objects-added', callback: (_source: this, vcards: string[]) => void): number;
-        emit(signal: 'objects-added', vcards: string[]): void;
-        connect(signal: 'objects-modified', callback: (_source: this, vcards: string[]) => void): number;
-        connect_after(signal: 'objects-modified', callback: (_source: this, vcards: string[]) => void): number;
-        emit(signal: 'objects-modified', vcards: string[]): void;
-        connect(signal: 'objects-removed', callback: (_source: this, uids: string[]) => void): number;
-        connect_after(signal: 'objects-removed', callback: (_source: this, uids: string[]) => void): number;
-        emit(signal: 'objects-removed', uids: string[]): void;
 
         // Methods
 
@@ -6781,7 +6789,6 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherCache extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherCache>;
-        declare static readonly __signalSignatures: DataBookViewWatcherCache.SignalSignatures;
 
         // Constructors
 
@@ -6790,6 +6797,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](backend: BookBackend, cache: BookCache, view: DataBookView): DataBookViewWatcherCache;
+
+        // Signals
+
+        connect<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
+            signal: K,
+            callback: DataBookViewWatcherCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
+            signal: K,
+            callback: DataBookViewWatcherCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookViewWatcherCache.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6827,7 +6849,6 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherMemory extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherMemory>;
-        declare static readonly __signalSignatures: DataBookViewWatcherMemory.SignalSignatures;
 
         // Constructors
 
@@ -6836,6 +6857,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](backend: BookBackend, view: DataBookView): DataBookViewWatcherMemory;
+
+        // Signals
+
+        connect<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
+            signal: K,
+            callback: DataBookViewWatcherMemory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
+            signal: K,
+            callback: DataBookViewWatcherMemory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookViewWatcherMemory.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6879,7 +6915,6 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherSqlite extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherSqlite>;
-        declare static readonly __signalSignatures: DataBookViewWatcherSqlite.SignalSignatures;
 
         // Constructors
 
@@ -6888,6 +6923,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](backend: BookBackend, ebsql: BookSqlite, view: DataBookView): DataBookViewWatcherSqlite;
+
+        // Signals
+
+        connect<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
+            signal: K,
+            callback: DataBookViewWatcherSqlite.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
+            signal: K,
+            callback: DataBookViewWatcherSqlite.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookViewWatcherSqlite.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6921,7 +6971,6 @@ export namespace EDataBook {
 
     class SubprocessBookFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessBookFactory>;
-        declare static readonly __signalSignatures: SubprocessBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -6930,6 +6979,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](cancellable?: Gio.Cancellable | null): SubprocessBookFactory;
+
+        // Signals
+
+        connect<K extends keyof SubprocessBookFactory.SignalSignatures>(
+            signal: K,
+            callback: SubprocessBookFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessBookFactory.SignalSignatures>(
+            signal: K,
+            callback: SubprocessBookFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessBookFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessBookFactory.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7475,7 +7539,6 @@ export namespace EDataBook {
      */
     class SystemLocaleWatcher extends GObject.Object {
         static $gtype: GObject.GType<SystemLocaleWatcher>;
-        declare static readonly __signalSignatures: SystemLocaleWatcher.SignalSignatures;
 
         // Properties
 
@@ -7492,6 +7555,21 @@ export namespace EDataBook {
         _init(...args: any[]): void;
 
         static ['new'](): SystemLocaleWatcher;
+
+        // Signals
+
+        connect<K extends keyof SystemLocaleWatcher.SignalSignatures>(
+            signal: K,
+            callback: SystemLocaleWatcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemLocaleWatcher.SignalSignatures>(
+            signal: K,
+            callback: SystemLocaleWatcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemLocaleWatcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemLocaleWatcher.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

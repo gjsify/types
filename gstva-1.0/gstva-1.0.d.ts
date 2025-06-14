@@ -216,7 +216,6 @@ export namespace GstVa {
      */
     class VaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaAllocator>;
-        declare static readonly __signalSignatures: VaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -225,6 +224,21 @@ export namespace GstVa {
         _init(...args: any[]): void;
 
         static ['new'](display: VaDisplay, surface_formats: number[]): VaAllocator;
+
+        // Signals
+
+        connect<K extends keyof VaAllocator.SignalSignatures>(
+            signal: K,
+            callback: VaAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VaAllocator.SignalSignatures>(
+            signal: K,
+            callback: VaAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VaAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VaAllocator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -304,7 +318,6 @@ export namespace GstVa {
      */
     class VaDisplay extends Gst.Object {
         static $gtype: GObject.GType<VaDisplay>;
-        declare static readonly __signalSignatures: VaDisplay.SignalSignatures;
 
         // Properties
 
@@ -317,6 +330,18 @@ export namespace GstVa {
         constructor(properties?: Partial<VaDisplay.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: VaDisplay.SignalSignatures[K]): number;
+        connect_after<K extends keyof VaDisplay.SignalSignatures>(
+            signal: K,
+            callback: VaDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VaDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VaDisplay.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -369,7 +394,6 @@ export namespace GstVa {
      */
     class VaDisplayDrm extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayDrm>;
-        declare static readonly __signalSignatures: VaDisplayDrm.SignalSignatures;
 
         // Properties
 
@@ -382,6 +406,21 @@ export namespace GstVa {
         _init(...args: any[]): void;
 
         static new_from_path(path: string): VaDisplayDrm;
+
+        // Signals
+
+        connect<K extends keyof VaDisplayDrm.SignalSignatures>(
+            signal: K,
+            callback: VaDisplayDrm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VaDisplayDrm.SignalSignatures>(
+            signal: K,
+            callback: VaDisplayDrm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VaDisplayDrm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VaDisplayDrm.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VaDisplayWrapped {
@@ -399,7 +438,6 @@ export namespace GstVa {
      */
     class VaDisplayWrapped extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayWrapped>;
-        declare static readonly __signalSignatures: VaDisplayWrapped.SignalSignatures;
 
         // Constructors
 
@@ -408,6 +446,21 @@ export namespace GstVa {
         _init(...args: any[]): void;
 
         static ['new'](handle?: any | null): VaDisplayWrapped;
+
+        // Signals
+
+        connect<K extends keyof VaDisplayWrapped.SignalSignatures>(
+            signal: K,
+            callback: VaDisplayWrapped.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VaDisplayWrapped.SignalSignatures>(
+            signal: K,
+            callback: VaDisplayWrapped.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VaDisplayWrapped.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VaDisplayWrapped.SignalSignatures[K]>
+        ): void;
     }
 
     namespace VaDmabufAllocator {
@@ -426,7 +479,6 @@ export namespace GstVa {
      */
     class VaDmabufAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaDmabufAllocator>;
-        declare static readonly __signalSignatures: VaDmabufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -435,6 +487,21 @@ export namespace GstVa {
         _init(...args: any[]): void;
 
         static ['new'](display: VaDisplay): VaDmabufAllocator;
+
+        // Signals
+
+        connect<K extends keyof VaDmabufAllocator.SignalSignatures>(
+            signal: K,
+            callback: VaDmabufAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VaDmabufAllocator.SignalSignatures>(
+            signal: K,
+            callback: VaDmabufAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VaDmabufAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VaDmabufAllocator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -490,7 +557,6 @@ export namespace GstVa {
      */
     class VaPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VaPool>;
-        declare static readonly __signalSignatures: VaPool.SignalSignatures;
 
         // Constructors
 
@@ -509,6 +575,12 @@ export namespace GstVa {
             allocator: Gst.Allocator,
             alloc_params: Gst.AllocationParams,
         ): VaPool;
+
+        // Signals
+
+        connect<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
+        connect_after<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
+        emit<K extends keyof VaPool.SignalSignatures>(signal: K, ...args: Parameters<VaPool.SignalSignatures[K]>): void;
 
         // Static methods
 

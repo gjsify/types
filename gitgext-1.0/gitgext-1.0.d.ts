@@ -70,7 +70,6 @@ export namespace GitgExt {
 
     class CommandLines extends GObject.Object {
         static $gtype: GObject.GType<CommandLines>;
-        declare static readonly __signalSignatures: CommandLines.SignalSignatures;
 
         // Constructors
 
@@ -79,6 +78,21 @@ export namespace GitgExt {
         _init(...args: any[]): void;
 
         static ['new'](command_lines: CommandLine[]): CommandLines;
+
+        // Signals
+
+        connect<K extends keyof CommandLines.SignalSignatures>(
+            signal: K,
+            callback: CommandLines.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandLines.SignalSignatures>(
+            signal: K,
+            callback: CommandLines.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandLines.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandLines.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -91,15 +105,15 @@ export namespace GitgExt {
         // Signal callback interfaces
 
         interface Registered {
-            (id: MessageId): void;
+            (_source: MessageBus, id: MessageId): void;
         }
 
         interface Unregistered {
-            (id: MessageId): void;
+            (_source: MessageBus, id: MessageId): void;
         }
 
         interface Dispatch {
-            (message: Message): void;
+            (_source: MessageBus, message: Message): void;
         }
 
         // Signal signatures
@@ -116,7 +130,6 @@ export namespace GitgExt {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
-        declare static readonly __signalSignatures: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -128,6 +141,10 @@ export namespace GitgExt {
 
         // Signals
 
+        connect<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            callback: MessageBus.SignalSignatures[K],
+        ): number;
         connect_after<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
             callback: MessageBus.SignalSignatures[K],
@@ -136,14 +153,6 @@ export namespace GitgExt {
             signal: K,
             ...args: Parameters<MessageBus.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'registered', callback: (_source: this, id: MessageId) => void): number;
-        emit(signal: 'registered', id: MessageId): void;
-        connect_after(signal: 'unregistered', callback: (_source: this, id: MessageId) => void): number;
-        emit(signal: 'unregistered', id: MessageId): void;
-        connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
-        emit(signal: 'dispatch', message: Message): void;
 
         // Static methods
 
@@ -184,7 +193,6 @@ export namespace GitgExt {
 
     class MessageId extends GObject.Object {
         static $gtype: GObject.GType<MessageId>;
-        declare static readonly __signalSignatures: MessageId.SignalSignatures;
 
         // Properties
 
@@ -203,6 +211,18 @@ export namespace GitgExt {
         _init(...args: any[]): void;
 
         static ['new'](object_path: string, method: string): MessageId;
+
+        // Signals
+
+        connect<K extends keyof MessageId.SignalSignatures>(signal: K, callback: MessageId.SignalSignatures[K]): number;
+        connect_after<K extends keyof MessageId.SignalSignatures>(
+            signal: K,
+            callback: MessageId.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageId.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageId.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -233,7 +253,6 @@ export namespace GitgExt {
 
     abstract class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -245,6 +264,18 @@ export namespace GitgExt {
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -265,7 +296,6 @@ export namespace GitgExt {
 
     class UI {
         static $gtype: GObject.GType<UI>;
-        declare static readonly __signalSignatures: UI.SignalSignatures;
 
         // Fields
 
@@ -276,6 +306,12 @@ export namespace GitgExt {
         _init(...args: any[]): void;
 
         static ['new'](): UI;
+
+        // Signals
+
+        connect<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
+        connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
+        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: Parameters<UI.SignalSignatures[K]>): void;
     }
 
     namespace UserQueryResponse {
@@ -289,7 +325,6 @@ export namespace GitgExt {
 
     class UserQueryResponse extends GObject.Object {
         static $gtype: GObject.GType<UserQueryResponse>;
-        declare static readonly __signalSignatures: UserQueryResponse.SignalSignatures;
 
         // Fields
 
@@ -303,17 +338,32 @@ export namespace GitgExt {
         _init(...args: any[]): void;
 
         static ['new'](text: string, response_type: Gtk.ResponseType): UserQueryResponse;
+
+        // Signals
+
+        connect<K extends keyof UserQueryResponse.SignalSignatures>(
+            signal: K,
+            callback: UserQueryResponse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserQueryResponse.SignalSignatures>(
+            signal: K,
+            callback: UserQueryResponse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserQueryResponse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserQueryResponse.SignalSignatures[K]>
+        ): void;
     }
 
     namespace UserQuery {
         // Signal callback interfaces
 
         interface Quit {
-            (): void;
+            (_source: UserQuery): void;
         }
 
         interface Response {
-            (response_type: Gtk.ResponseType): boolean;
+            (_source: UserQuery, response_type: Gtk.ResponseType): boolean;
         }
 
         // Signal signatures
@@ -340,7 +390,6 @@ export namespace GitgExt {
 
     class UserQuery extends GObject.Object {
         static $gtype: GObject.GType<UserQuery>;
-        declare static readonly __signalSignatures: UserQuery.SignalSignatures;
 
         // Properties
 
@@ -384,18 +433,6 @@ export namespace GitgExt {
             signal: K,
             ...args: Parameters<UserQuery.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'quit', callback: (_source: this) => void): number;
-        connect_after(signal: 'quit', callback: (_source: this) => void): number;
-        emit(signal: 'quit'): void;
-        connect(signal: 'response', callback: (_source: this, response_type: Gtk.ResponseType) => boolean): number;
-        connect_after(
-            signal: 'response',
-            callback: (_source: this, response_type: Gtk.ResponseType) => boolean,
-        ): number;
-        emit(signal: 'response', response_type: Gtk.ResponseType): void;
 
         // Methods
 

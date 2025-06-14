@@ -133,7 +133,7 @@ export namespace InputPad {
         // Signal callback interfaces
 
         interface Activated {
-            (): void;
+            (_source: GtkApplication): void;
         }
 
         // Signal signatures
@@ -151,7 +151,6 @@ export namespace InputPad {
 
     class GtkApplication extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<GtkApplication>;
-        declare static readonly __signalSignatures: GtkApplication.SignalSignatures;
 
         // Constructors
 
@@ -175,12 +174,6 @@ export namespace InputPad {
             signal: K,
             ...args: Parameters<GtkApplication.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activated', callback: (_source: this) => void): number;
-        connect_after(signal: 'activated', callback: (_source: this) => void): number;
-        emit(signal: 'activated'): void;
 
         // Methods
 
@@ -632,7 +625,7 @@ export namespace InputPad {
         // Signal callback interfaces
 
         interface PressedRepeat {
-            (): void;
+            (_source: GtkButton): void;
         }
 
         // Signal signatures
@@ -652,7 +645,6 @@ export namespace InputPad {
 
     class GtkButton extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<GtkButton>;
-        declare static readonly __signalSignatures: GtkButton.SignalSignatures;
 
         // Constructors
 
@@ -677,12 +669,6 @@ export namespace InputPad {
             signal: K,
             ...args: Parameters<GtkButton.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'pressed-repeat', callback: (_source: this) => void): number;
-        connect_after(signal: 'pressed-repeat', callback: (_source: this) => void): number;
-        emit(signal: 'pressed-repeat'): void;
 
         // Virtual methods
 
@@ -5242,7 +5228,6 @@ export namespace InputPad {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<GtkComboBox>;
-        declare static readonly __signalSignatures: GtkComboBox.SignalSignatures;
 
         // Constructors
 
@@ -5251,6 +5236,21 @@ export namespace InputPad {
         _init(...args: any[]): void;
 
         static ['new'](): GtkComboBox;
+
+        // Signals
+
+        connect<K extends keyof GtkComboBox.SignalSignatures>(
+            signal: K,
+            callback: GtkComboBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GtkComboBox.SignalSignatures>(
+            signal: K,
+            callback: GtkComboBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkComboBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkComboBox.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9741,11 +9741,11 @@ export namespace InputPad {
         // Signal callback interfaces
 
         interface CreateKeyboardLayout {
-            (object: Gtk.Widget, p0: GtkWindow): void;
+            (_source: GtkKbdui, object: Gtk.Widget, p0: GtkWindow): void;
         }
 
         interface DestroyKeyboardLayout {
-            (object: Gtk.Widget, p0: GtkWindow): void;
+            (_source: GtkKbdui, object: Gtk.Widget, p0: GtkWindow): void;
         }
 
         // Signal signatures
@@ -9761,7 +9761,6 @@ export namespace InputPad {
 
     abstract class GtkKbdui extends GObject.Object {
         static $gtype: GObject.GType<GtkKbdui>;
-        declare static readonly __signalSignatures: GtkKbdui.SignalSignatures;
 
         // Constructors
 
@@ -9780,27 +9779,6 @@ export namespace InputPad {
             signal: K,
             ...args: Parameters<GtkKbdui.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'create-keyboard-layout',
-            callback: (_source: this, object: Gtk.Widget, p0: GtkWindow) => void,
-        ): number;
-        connect_after(
-            signal: 'create-keyboard-layout',
-            callback: (_source: this, object: Gtk.Widget, p0: GtkWindow) => void,
-        ): number;
-        emit(signal: 'create-keyboard-layout', object: Gtk.Widget, p0: GtkWindow): void;
-        connect(
-            signal: 'destroy-keyboard-layout',
-            callback: (_source: this, object: Gtk.Widget, p0: GtkWindow) => void,
-        ): number;
-        connect_after(
-            signal: 'destroy-keyboard-layout',
-            callback: (_source: this, object: Gtk.Widget, p0: GtkWindow) => void,
-        ): number;
-        emit(signal: 'destroy-keyboard-layout', object: Gtk.Widget, p0: GtkWindow): void;
 
         // Virtual methods
 
@@ -9823,7 +9801,6 @@ export namespace InputPad {
 
     class GtkViewport extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<GtkViewport>;
-        declare static readonly __signalSignatures: GtkViewport.SignalSignatures;
 
         // Fields
 
@@ -9836,6 +9813,21 @@ export namespace InputPad {
         _init(...args: any[]): void;
 
         static ['new'](): GtkViewport;
+
+        // Signals
+
+        connect<K extends keyof GtkViewport.SignalSignatures>(
+            signal: K,
+            callback: GtkViewport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GtkViewport.SignalSignatures>(
+            signal: K,
+            callback: GtkViewport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkViewport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkViewport.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10386,27 +10378,27 @@ export namespace InputPad {
         // Signal callback interfaces
 
         interface ButtonPressed {
-            (object: string, p0: number, p1: number, p2: number, p3: number): boolean;
+            (_source: GtkWindow, object: string, p0: number, p1: number, p2: number, p3: number): boolean;
         }
 
         interface CharButtonSensitive {
-            (object: boolean): void;
+            (_source: GtkWindow, object: boolean): void;
         }
 
         interface GroupAppended {
-            (object: string, p0: string): void;
+            (_source: GtkWindow, object: string, p0: string): void;
         }
 
         interface GroupChanged {
-            (object: string, p0: string): void;
+            (_source: GtkWindow, object: string, p0: string): void;
         }
 
         interface KeyboardChanged {
-            (object: number): void;
+            (_source: GtkWindow, object: number): void;
         }
 
         interface ReorderButtonPressed {
-            (): void;
+            (_source: GtkWindow): void;
         }
 
         // Signal signatures
@@ -10434,7 +10426,6 @@ export namespace InputPad {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<GtkWindow>;
-        declare static readonly __signalSignatures: GtkWindow.SignalSignatures;
 
         // Fields
 
@@ -10465,33 +10456,6 @@ export namespace InputPad {
             signal: K,
             ...args: Parameters<GtkWindow.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'button-pressed',
-            callback: (_source: this, object: string, p0: number, p1: number, p2: number, p3: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'button-pressed',
-            callback: (_source: this, object: string, p0: number, p1: number, p2: number, p3: number) => boolean,
-        ): number;
-        emit(signal: 'button-pressed', object: string, p0: number, p1: number, p2: number, p3: number): void;
-        connect(signal: 'char-button-sensitive', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'char-button-sensitive', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'char-button-sensitive', object: boolean): void;
-        connect(signal: 'group-appended', callback: (_source: this, object: string, p0: string) => void): number;
-        connect_after(signal: 'group-appended', callback: (_source: this, object: string, p0: string) => void): number;
-        emit(signal: 'group-appended', object: string, p0: string): void;
-        connect(signal: 'group-changed', callback: (_source: this, object: string, p0: string) => void): number;
-        connect_after(signal: 'group-changed', callback: (_source: this, object: string, p0: string) => void): number;
-        emit(signal: 'group-changed', object: string, p0: string): void;
-        connect(signal: 'keyboard-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'keyboard-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'keyboard-changed', object: number): void;
-        connect(signal: 'reorder-button-pressed', callback: (_source: this) => void): number;
-        connect_after(signal: 'reorder-button-pressed', callback: (_source: this) => void): number;
-        emit(signal: 'reorder-button-pressed'): void;
 
         // Static methods
 

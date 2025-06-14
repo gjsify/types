@@ -230,7 +230,6 @@ export namespace Folks {
 
     abstract class AbstractFieldDetails extends GObject.Object {
         static $gtype: GObject.GType<AbstractFieldDetails>;
-        declare static readonly __signalSignatures: AbstractFieldDetails.SignalSignatures;
 
         // Properties
 
@@ -254,6 +253,21 @@ export namespace Folks {
         constructor(properties?: Partial<AbstractFieldDetails.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AbstractFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: AbstractFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AbstractFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: AbstractFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AbstractFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AbstractFieldDetails.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -304,13 +318,27 @@ export namespace Folks {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
-        declare static readonly __signalSignatures: AvatarCache.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AvatarCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AvatarCache.SignalSignatures>(
+            signal: K,
+            callback: AvatarCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AvatarCache.SignalSignatures>(
+            signal: K,
+            callback: AvatarCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AvatarCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AvatarCache.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -344,7 +372,7 @@ export namespace Folks {
         // Signal callback interfaces
 
         interface BackendAvailable {
-            (backend: Backend): void;
+            (_source: BackendStore, backend: Backend): void;
         }
 
         // Signal signatures
@@ -364,7 +392,6 @@ export namespace Folks {
 
     class BackendStore extends GObject.Object {
         static $gtype: GObject.GType<BackendStore>;
-        declare static readonly __signalSignatures: BackendStore.SignalSignatures;
 
         // Properties
 
@@ -401,12 +428,6 @@ export namespace Folks {
             signal: K,
             ...args: Parameters<BackendStore.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'backend-available', callback: (_source: this, backend: Backend) => void): number;
-        connect_after(signal: 'backend-available', callback: (_source: this, backend: Backend) => void): number;
-        emit(signal: 'backend-available', backend: Backend): void;
 
         // Static methods
 
@@ -441,11 +462,11 @@ export namespace Folks {
         // Signal callback interfaces
 
         interface PersonaStoreAdded {
-            (store: PersonaStore): void;
+            (_source: Backend, store: PersonaStore): void;
         }
 
         interface PersonaStoreRemoved {
-            (store: PersonaStore): void;
+            (_source: Backend, store: PersonaStore): void;
         }
 
         // Signal signatures
@@ -469,7 +490,6 @@ export namespace Folks {
 
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
-        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Properties
 
@@ -498,15 +518,6 @@ export namespace Folks {
             signal: K,
             ...args: Parameters<Backend.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'persona-store-added', callback: (_source: this, store: PersonaStore) => void): number;
-        connect_after(signal: 'persona-store-added', callback: (_source: this, store: PersonaStore) => void): number;
-        emit(signal: 'persona-store-added', store: PersonaStore): void;
-        connect(signal: 'persona-store-removed', callback: (_source: this, store: PersonaStore) => void): number;
-        connect_after(signal: 'persona-store-removed', callback: (_source: this, store: PersonaStore) => void): number;
-        emit(signal: 'persona-store-removed', store: PersonaStore): void;
 
         // Virtual methods
 
@@ -545,7 +556,7 @@ export namespace Folks {
         // Signal callback interfaces
 
         interface PrintStatus {
-            (): void;
+            (_source: Debug): void;
         }
 
         // Signal signatures
@@ -565,7 +576,6 @@ export namespace Folks {
 
     class Debug extends GObject.Object {
         static $gtype: GObject.GType<Debug>;
-        declare static readonly __signalSignatures: Debug.SignalSignatures;
 
         // Properties
 
@@ -589,12 +599,6 @@ export namespace Folks {
         connect<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
         connect_after<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
         emit<K extends keyof Debug.SignalSignatures>(signal: K, ...args: Parameters<Debug.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'print-status', callback: (_source: this) => void): number;
-        connect_after(signal: 'print-status', callback: (_source: this) => void): number;
-        emit(signal: 'print-status'): void;
 
         // Static methods
 
@@ -623,7 +627,6 @@ export namespace Folks {
 
     class EmailFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<EmailFieldDetails>;
-        declare static readonly __signalSignatures: EmailFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -632,6 +635,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null): EmailFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof EmailFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: EmailFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EmailFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: EmailFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EmailFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EmailFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ExtendedFieldDetails {
@@ -645,7 +663,6 @@ export namespace Folks {
 
     class ExtendedFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ExtendedFieldDetails>;
-        declare static readonly __signalSignatures: ExtendedFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -654,6 +671,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null): ExtendedFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof ExtendedFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: ExtendedFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtendedFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: ExtendedFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtendedFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtendedFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ImFieldDetails {
@@ -667,7 +699,6 @@ export namespace Folks {
 
     class ImFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ImFieldDetails>;
-        declare static readonly __signalSignatures: ImFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -676,6 +707,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null): ImFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof ImFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: ImFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: ImFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     namespace IndividualAggregator {
@@ -683,6 +729,7 @@ export namespace Folks {
 
         interface IndividualsChanged {
             (
+                _source: IndividualAggregator,
                 added: Gee.Set,
                 removed: Gee.Set,
                 message: string | null,
@@ -692,7 +739,7 @@ export namespace Folks {
         }
 
         interface IndividualsChangedDetailed {
-            (changes: Gee.MultiMap): void;
+            (_source: IndividualAggregator, changes: Gee.MultiMap): void;
         }
 
         // Signal signatures
@@ -719,7 +766,6 @@ export namespace Folks {
 
     class IndividualAggregator extends GObject.Object {
         static $gtype: GObject.GType<IndividualAggregator>;
-        declare static readonly __signalSignatures: IndividualAggregator.SignalSignatures;
 
         // Properties
 
@@ -760,48 +806,6 @@ export namespace Folks {
             signal: K,
             ...args: Parameters<IndividualAggregator.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'individuals-changed',
-            callback: (
-                _source: this,
-                added: Gee.Set,
-                removed: Gee.Set,
-                message: string | null,
-                actor: Persona | null,
-                reason: GroupDetailsChangeReason,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'individuals-changed',
-            callback: (
-                _source: this,
-                added: Gee.Set,
-                removed: Gee.Set,
-                message: string | null,
-                actor: Persona | null,
-                reason: GroupDetailsChangeReason,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'individuals-changed',
-            added: Gee.Set,
-            removed: Gee.Set,
-            message: string | null,
-            actor: Persona | null,
-            reason: GroupDetailsChangeReason,
-        ): void;
-        connect(
-            signal: 'individuals-changed-detailed',
-            callback: (_source: this, changes: Gee.MultiMap) => void,
-        ): number;
-        connect_after(
-            signal: 'individuals-changed-detailed',
-            callback: (_source: this, changes: Gee.MultiMap) => void,
-        ): number;
-        emit(signal: 'individuals-changed-detailed', changes: Gee.MultiMap): void;
 
         // Static methods
 
@@ -891,11 +895,11 @@ export namespace Folks {
         // Signal callback interfaces
 
         interface Removed {
-            (replacement_individual?: Individual | null): void;
+            (_source: Individual, replacement_individual?: Individual | null): void;
         }
 
         interface PersonasChanged {
-            (added: Gee.Set, removed: Gee.Set): void;
+            (_source: Individual, added: Gee.Set, removed: Gee.Set): void;
         }
 
         // Signal signatures
@@ -964,7 +968,6 @@ export namespace Folks {
             WebServiceDetails
     {
         static $gtype: GObject.GType<Individual>;
-        declare static readonly __signalSignatures: Individual.SignalSignatures;
 
         // Properties
 
@@ -1005,27 +1008,6 @@ export namespace Folks {
             signal: K,
             ...args: Parameters<Individual.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'removed',
-            callback: (_source: this, replacement_individual: Individual | null) => void,
-        ): number;
-        connect_after(
-            signal: 'removed',
-            callback: (_source: this, replacement_individual: Individual | null) => void,
-        ): number;
-        emit(signal: 'removed', replacement_individual?: Individual | null): void;
-        connect(
-            signal: 'personas-changed',
-            callback: (_source: this, added: Gee.Set, removed: Gee.Set) => void,
-        ): number;
-        connect_after(
-            signal: 'personas-changed',
-            callback: (_source: this, added: Gee.Set, removed: Gee.Set) => void,
-        ): number;
-        emit(signal: 'personas-changed', added: Gee.Set, removed: Gee.Set): void;
 
         // Methods
 
@@ -1886,7 +1868,6 @@ export namespace Folks {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
-        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Fields
 
@@ -1900,6 +1881,18 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](latitude: number, longitude: number): Location;
+
+        // Signals
+
+        connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect_after<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            callback: Location.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Location.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Location.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1927,7 +1920,6 @@ export namespace Folks {
 
     class StructuredName extends GObject.Object {
         static $gtype: GObject.GType<StructuredName>;
-        declare static readonly __signalSignatures: StructuredName.SignalSignatures;
 
         // Properties
 
@@ -1964,6 +1956,21 @@ export namespace Folks {
 
         static simple(family_name?: string | null, given_name?: string | null): StructuredName;
 
+        // Signals
+
+        connect<K extends keyof StructuredName.SignalSignatures>(
+            signal: K,
+            callback: StructuredName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructuredName.SignalSignatures>(
+            signal: K,
+            callback: StructuredName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructuredName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructuredName.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         is_empty(): boolean;
@@ -1995,7 +2002,6 @@ export namespace Folks {
 
     class NoteFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<NoteFieldDetails>;
-        declare static readonly __signalSignatures: NoteFieldDetails.SignalSignatures;
 
         // Properties
 
@@ -2009,6 +2015,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null, uid?: string | null): NoteFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof NoteFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: NoteFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NoteFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: NoteFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NoteFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NoteFieldDetails.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2037,7 +2058,6 @@ export namespace Folks {
 
     abstract class ObjectCache extends GObject.Object {
         static $gtype: GObject.GType<ObjectCache>;
-        declare static readonly __signalSignatures: ObjectCache.SignalSignatures;
 
         // Properties
 
@@ -2056,6 +2076,21 @@ export namespace Folks {
         constructor(properties?: Partial<ObjectCache.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObjectCache.SignalSignatures>(
+            signal: K,
+            callback: ObjectCache.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectCache.SignalSignatures>(
+            signal: K,
+            callback: ObjectCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectCache.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2102,6 +2137,7 @@ export namespace Folks {
 
         interface PersonasChanged {
             (
+                _source: PersonaStore,
                 added: Gee.Set,
                 removed: Gee.Set,
                 message: string | null,
@@ -2111,7 +2147,7 @@ export namespace Folks {
         }
 
         interface Removed {
-            (): void;
+            (_source: PersonaStore): void;
         }
 
         // Signal signatures
@@ -2156,7 +2192,6 @@ export namespace Folks {
 
     abstract class PersonaStore extends GObject.Object {
         static $gtype: GObject.GType<PersonaStore>;
-        declare static readonly __signalSignatures: PersonaStore.SignalSignatures;
 
         // Properties
 
@@ -2217,42 +2252,6 @@ export namespace Folks {
             signal: K,
             ...args: Parameters<PersonaStore.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'personas-changed',
-            callback: (
-                _source: this,
-                added: Gee.Set,
-                removed: Gee.Set,
-                message: string | null,
-                actor: Persona | null,
-                reason: GroupDetailsChangeReason,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'personas-changed',
-            callback: (
-                _source: this,
-                added: Gee.Set,
-                removed: Gee.Set,
-                message: string | null,
-                actor: Persona | null,
-                reason: GroupDetailsChangeReason,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'personas-changed',
-            added: Gee.Set,
-            removed: Gee.Set,
-            message: string | null,
-            actor: Persona | null,
-            reason: GroupDetailsChangeReason,
-        ): void;
-        connect(signal: 'removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this) => void): number;
-        emit(signal: 'removed'): void;
 
         // Static methods
 
@@ -2361,7 +2360,6 @@ export namespace Folks {
 
     abstract class Persona extends GObject.Object {
         static $gtype: GObject.GType<Persona>;
-        declare static readonly __signalSignatures: Persona.SignalSignatures;
 
         // Properties
 
@@ -2384,6 +2382,18 @@ export namespace Folks {
         constructor(properties?: Partial<Persona.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect_after<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            callback: Persona.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Persona.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Persona.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2420,7 +2430,6 @@ export namespace Folks {
 
     class PhoneFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PhoneFieldDetails>;
-        declare static readonly __signalSignatures: PhoneFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2429,6 +2438,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null): PhoneFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof PhoneFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: PhoneFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PhoneFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: PhoneFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PhoneFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PhoneFieldDetails.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2459,7 +2483,6 @@ export namespace Folks {
 
     class PostalAddress extends GObject.Object {
         static $gtype: GObject.GType<PostalAddress>;
-        declare static readonly __signalSignatures: PostalAddress.SignalSignatures;
 
         // Properties
 
@@ -2506,6 +2529,21 @@ export namespace Folks {
             uid?: string | null,
         ): PostalAddress;
 
+        // Signals
+
+        connect<K extends keyof PostalAddress.SignalSignatures>(
+            signal: K,
+            callback: PostalAddress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PostalAddress.SignalSignatures>(
+            signal: K,
+            callback: PostalAddress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PostalAddress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PostalAddress.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         is_empty(): boolean;
@@ -2542,7 +2580,6 @@ export namespace Folks {
 
     class PostalAddressFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PostalAddressFieldDetails>;
-        declare static readonly __signalSignatures: PostalAddressFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2551,6 +2588,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: PostalAddress, parameters?: Gee.MultiMap | null): PostalAddressFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: PostalAddressFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: PostalAddressFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PostalAddressFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     namespace PotentialMatch {
@@ -2564,7 +2616,6 @@ export namespace Folks {
 
     class PotentialMatch extends GObject.Object {
         static $gtype: GObject.GType<PotentialMatch>;
-        declare static readonly __signalSignatures: PotentialMatch.SignalSignatures;
 
         // Fields
 
@@ -2577,6 +2628,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](): PotentialMatch;
+
+        // Signals
+
+        connect<K extends keyof PotentialMatch.SignalSignatures>(
+            signal: K,
+            callback: PotentialMatch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PotentialMatch.SignalSignatures>(
+            signal: K,
+            callback: PotentialMatch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PotentialMatch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PotentialMatch.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2597,7 +2663,6 @@ export namespace Folks {
 
     abstract class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
-        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Properties
 
@@ -2609,6 +2674,12 @@ export namespace Folks {
         constructor(properties?: Partial<Query.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -2638,7 +2709,6 @@ export namespace Folks {
 
     class Role extends GObject.Object {
         static $gtype: GObject.GType<Role>;
-        declare static readonly __signalSignatures: Role.SignalSignatures;
 
         // Properties
 
@@ -2660,6 +2730,12 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](title?: string | null, organisation_name?: string | null, uid?: string | null): Role;
+
+        // Signals
+
+        connect<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
+        connect_after<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
+        emit<K extends keyof Role.SignalSignatures>(signal: K, ...args: Parameters<Role.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2691,7 +2767,6 @@ export namespace Folks {
 
     class RoleFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<RoleFieldDetails>;
-        declare static readonly __signalSignatures: RoleFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2700,13 +2775,28 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: Role, parameters?: Gee.MultiMap | null): RoleFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof RoleFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: RoleFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RoleFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: RoleFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RoleFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RoleFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SearchView {
         // Signal callback interfaces
 
         interface IndividualsChangedDetailed {
-            (added: Gee.SortedSet, removed: Gee.SortedSet): void;
+            (_source: SearchView, added: Gee.SortedSet, removed: Gee.SortedSet): void;
         }
 
         // Signal signatures
@@ -2729,7 +2819,6 @@ export namespace Folks {
 
     class SearchView extends GObject.Object {
         static $gtype: GObject.GType<SearchView>;
-        declare static readonly __signalSignatures: SearchView.SignalSignatures;
 
         // Properties
 
@@ -2764,18 +2853,6 @@ export namespace Folks {
             signal: K,
             ...args: Parameters<SearchView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'individuals-changed-detailed',
-            callback: (_source: this, added: Gee.SortedSet, removed: Gee.SortedSet) => void,
-        ): number;
-        connect_after(
-            signal: 'individuals-changed-detailed',
-            callback: (_source: this, added: Gee.SortedSet, removed: Gee.SortedSet) => void,
-        ): number;
-        emit(signal: 'individuals-changed-detailed', added: Gee.SortedSet, removed: Gee.SortedSet): void;
 
         // Methods
 
@@ -2815,7 +2892,6 @@ export namespace Folks {
 
     class SimpleQuery extends Query {
         static $gtype: GObject.GType<SimpleQuery>;
-        declare static readonly __signalSignatures: SimpleQuery.SignalSignatures;
 
         // Properties
 
@@ -2836,6 +2912,21 @@ export namespace Folks {
 
         static ['new'](query_string: string, match_fields: string[]): SimpleQuery;
 
+        // Signals
+
+        connect<K extends keyof SimpleQuery.SignalSignatures>(
+            signal: K,
+            callback: SimpleQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleQuery.SignalSignatures>(
+            signal: K,
+            callback: SimpleQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleQuery.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_query_string(): string;
@@ -2855,7 +2946,6 @@ export namespace Folks {
 
     class UrlFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<UrlFieldDetails>;
-        declare static readonly __signalSignatures: UrlFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2864,6 +2954,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null): UrlFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof UrlFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: UrlFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UrlFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: UrlFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UrlFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UrlFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Utils {
@@ -2877,7 +2982,6 @@ export namespace Folks {
 
     class Utils extends GObject.Object {
         static $gtype: GObject.GType<Utils>;
-        declare static readonly __signalSignatures: Utils.SignalSignatures;
 
         // Constructors
 
@@ -2886,6 +2990,12 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](): Utils;
+
+        // Signals
+
+        connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: Parameters<Utils.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2906,7 +3016,6 @@ export namespace Folks {
 
     class WebServiceFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<WebServiceFieldDetails>;
-        declare static readonly __signalSignatures: WebServiceFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2915,6 +3024,21 @@ export namespace Folks {
         _init(...args: any[]): void;
 
         static ['new'](value: string, parameters?: Gee.MultiMap | null): WebServiceFieldDetails;
+
+        // Signals
+
+        connect<K extends keyof WebServiceFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: WebServiceFieldDetails.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebServiceFieldDetails.SignalSignatures>(
+            signal: K,
+            callback: WebServiceFieldDetails.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebServiceFieldDetails.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebServiceFieldDetails.SignalSignatures[K]>
+        ): void;
     }
 
     type AbstractFieldDetailsClass = typeof AbstractFieldDetails;

@@ -286,7 +286,6 @@ export namespace Vda {
 
     class AffectedRows extends GObject.Object implements Result, SqlAffectedRows {
         static $gtype: GObject.GType<AffectedRows>;
-        declare static readonly __signalSignatures: AffectedRows.SignalSignatures;
 
         // Constructors
 
@@ -295,6 +294,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](rows: number): AffectedRows;
+
+        // Signals
+
+        connect<K extends keyof AffectedRows.SignalSignatures>(
+            signal: K,
+            callback: AffectedRows.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AffectedRows.SignalSignatures>(
+            signal: K,
+            callback: AffectedRows.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AffectedRows.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AffectedRows.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get number(): number;
@@ -770,7 +784,6 @@ export namespace Vda {
             SqlCommandDelete
     {
         static $gtype: GObject.GType<CommandDelete>;
-        declare static readonly __signalSignatures: CommandDelete.SignalSignatures;
 
         // Constructors
 
@@ -779,6 +792,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection): CommandDelete;
+
+        // Signals
+
+        connect<K extends keyof CommandDelete.SignalSignatures>(
+            signal: K,
+            callback: CommandDelete.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandDelete.SignalSignatures>(
+            signal: K,
+            callback: CommandDelete.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandDelete.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandDelete.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -1267,7 +1295,6 @@ export namespace Vda {
 
     class CommandInsert extends CommandModification implements Stringifiable, SqlCommandInsert {
         static $gtype: GObject.GType<CommandInsert>;
-        declare static readonly __signalSignatures: CommandInsert.SignalSignatures;
 
         // Constructors
 
@@ -1276,6 +1303,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection): CommandInsert;
+
+        // Signals
+
+        connect<K extends keyof CommandInsert.SignalSignatures>(
+            signal: K,
+            callback: CommandInsert.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandInsert.SignalSignatures>(
+            signal: K,
+            callback: CommandInsert.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandInsert.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandInsert.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         to_string(): string;
@@ -1746,7 +1788,6 @@ export namespace Vda {
         implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized
     {
         static $gtype: GObject.GType<CommandModification>;
-        declare static readonly __signalSignatures: CommandModification.SignalSignatures;
 
         // Constructors
 
@@ -1755,6 +1796,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection): CommandModification;
+
+        // Signals
+
+        connect<K extends keyof CommandModification.SignalSignatures>(
+            signal: K,
+            callback: CommandModification.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandModification.SignalSignatures>(
+            signal: K,
+            callback: CommandModification.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandModification.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandModification.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -2254,7 +2310,6 @@ export namespace Vda {
         implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect
     {
         static $gtype: GObject.GType<CommandSelect>;
-        declare static readonly __signalSignatures: CommandSelect.SignalSignatures;
 
         // Constructors
 
@@ -2263,6 +2318,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection): CommandSelect;
+
+        // Signals
+
+        connect<K extends keyof CommandSelect.SignalSignatures>(
+            signal: K,
+            callback: CommandSelect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandSelect.SignalSignatures>(
+            signal: K,
+            callback: CommandSelect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandSelect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandSelect.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -2754,7 +2824,6 @@ export namespace Vda {
 
     class CommandUpdate extends CommandModification implements SqlCommandConditional, Stringifiable, SqlCommandUpdate {
         static $gtype: GObject.GType<CommandUpdate>;
-        declare static readonly __signalSignatures: CommandUpdate.SignalSignatures;
 
         // Constructors
 
@@ -2763,6 +2832,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](cnc: Connection): CommandUpdate;
+
+        // Signals
+
+        connect<K extends keyof CommandUpdate.SignalSignatures>(
+            signal: K,
+            callback: CommandUpdate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandUpdate.SignalSignatures>(
+            signal: K,
+            callback: CommandUpdate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandUpdate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandUpdate.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get condition(): SqlExpression;
@@ -3233,7 +3317,6 @@ export namespace Vda {
 
     class ConnectionParameter extends GObject.Object {
         static $gtype: GObject.GType<ConnectionParameter>;
-        declare static readonly __signalSignatures: ConnectionParameter.SignalSignatures;
 
         // Properties
 
@@ -3249,6 +3332,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionParameter;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameter.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameter.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3269,7 +3367,6 @@ export namespace Vda {
 
     class ConnectionParameterDbName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterDbName>;
-        declare static readonly __signalSignatures: ConnectionParameterDbName.SignalSignatures;
 
         // Constructors
 
@@ -3278,6 +3375,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionParameterDbName;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameterDbName.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterDbName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameterDbName.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterDbName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameterDbName.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ConnectionParameterHost {
@@ -3291,7 +3403,6 @@ export namespace Vda {
 
     class ConnectionParameterHost extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterHost>;
-        declare static readonly __signalSignatures: ConnectionParameterHost.SignalSignatures;
 
         // Constructors
 
@@ -3300,6 +3411,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionParameterHost;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameterHost.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterHost.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameterHost.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterHost.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameterHost.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameterHost.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ConnectionParameterPort {
@@ -3313,7 +3439,6 @@ export namespace Vda {
 
     class ConnectionParameterPort extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPort>;
-        declare static readonly __signalSignatures: ConnectionParameterPort.SignalSignatures;
 
         // Constructors
 
@@ -3322,6 +3447,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionParameterPort;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameterPort.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterPort.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameterPort.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterPort.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameterPort.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameterPort.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ConnectionParameterUserName {
@@ -3335,7 +3475,6 @@ export namespace Vda {
 
     class ConnectionParameterUserName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterUserName>;
-        declare static readonly __signalSignatures: ConnectionParameterUserName.SignalSignatures;
 
         // Constructors
 
@@ -3344,6 +3483,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionParameterUserName;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameterUserName.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterUserName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameterUserName.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterUserName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameterUserName.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ConnectionParameterPassword {
@@ -3357,7 +3511,6 @@ export namespace Vda {
 
     class ConnectionParameterPassword extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPassword>;
-        declare static readonly __signalSignatures: ConnectionParameterPassword.SignalSignatures;
 
         // Constructors
 
@@ -3366,6 +3519,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ConnectionParameterPassword;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameterPassword.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterPassword.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameterPassword.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameterPassword.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameterPassword.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ConnectionParameters {
@@ -3379,7 +3547,6 @@ export namespace Vda {
 
     class ConnectionParameters extends Gee.HashMap {
         static $gtype: GObject.GType<ConnectionParameters>;
-        declare static readonly __signalSignatures: ConnectionParameters.SignalSignatures;
 
         // Constructors
 
@@ -3391,6 +3558,21 @@ export namespace Vda {
         // Conflicted with Gee.HashMap.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ConnectionParameters.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameters.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionParameters.SignalSignatures>(
+            signal: K,
+            callback: ConnectionParameters.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionParameters.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionParameters.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3420,7 +3602,6 @@ export namespace Vda {
         implements Gio.ListModel<A>, SqlExpression
     {
         static $gtype: GObject.GType<Expression>;
-        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Constructors
 
@@ -3429,6 +3610,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): Expression;
+
+        // Signals
+
+        connect<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Expression.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3998,7 +4194,6 @@ export namespace Vda {
         implements SqlExpressionField
     {
         static $gtype: GObject.GType<ExpressionField>;
-        declare static readonly __signalSignatures: ExpressionField.SignalSignatures;
 
         // Constructors
 
@@ -4007,6 +4202,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionField;
+
+        // Signals
+
+        connect<K extends keyof ExpressionField.SignalSignatures>(
+            signal: K,
+            callback: ExpressionField.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionField.SignalSignatures>(
+            signal: K,
+            callback: ExpressionField.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionField.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionField.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get table_ref(): string;
@@ -4490,7 +4700,6 @@ export namespace Vda {
         implements SqlExpressionOperator
     {
         static $gtype: GObject.GType<ExpressionOperator>;
-        declare static readonly __signalSignatures: ExpressionOperator.SignalSignatures;
 
         // Constructors
 
@@ -4499,6 +4708,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperator;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperator.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperator.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get operator_type(): SqlExpressionOperatorType;
@@ -5060,7 +5284,6 @@ export namespace Vda {
         implements SqlExpressionOperatorGroup
     {
         static $gtype: GObject.GType<ExpressionOperatorGroup>;
-        declare static readonly __signalSignatures: ExpressionOperatorGroup.SignalSignatures;
 
         // Constructors
 
@@ -5069,6 +5292,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorGroup;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorGroup.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -5530,7 +5768,6 @@ export namespace Vda {
         implements SqlExpressionOperatorMultiterm
     {
         static $gtype: GObject.GType<ExpressionOperatorMultiterm>;
-        declare static readonly __signalSignatures: ExpressionOperatorMultiterm.SignalSignatures;
 
         // Constructors
 
@@ -5539,6 +5776,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorMultiterm;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorMultiterm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorMultiterm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorMultiterm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6000,7 +6252,6 @@ export namespace Vda {
         implements SqlExpressionOperatorAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorAnd>;
-        declare static readonly __signalSignatures: ExpressionOperatorAnd.SignalSignatures;
 
         // Constructors
 
@@ -6009,6 +6260,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorAnd;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorAnd.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorAnd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorAnd.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6470,7 +6736,6 @@ export namespace Vda {
         implements SqlExpressionOperatorOr
     {
         static $gtype: GObject.GType<ExpressionOperatorOr>;
-        declare static readonly __signalSignatures: ExpressionOperatorOr.SignalSignatures;
 
         // Constructors
 
@@ -6479,6 +6744,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorOr;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorOr.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorOr.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorOr.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorOr.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorOr.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6940,7 +7220,6 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryterm>;
-        declare static readonly __signalSignatures: ExpressionOperatorBinaryterm.SignalSignatures;
 
         // Constructors
 
@@ -6949,6 +7228,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorBinaryterm;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBinaryterm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBinaryterm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorBinaryterm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7410,7 +7704,6 @@ export namespace Vda {
         implements SqlExpressionOperatorEq
     {
         static $gtype: GObject.GType<ExpressionOperatorEq>;
-        declare static readonly __signalSignatures: ExpressionOperatorEq.SignalSignatures;
 
         // Constructors
 
@@ -7419,6 +7712,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorEq;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorEq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorEq.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorEq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorEq.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorEq.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7880,7 +8188,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotEq
     {
         static $gtype: GObject.GType<ExpressionOperatorNotEq>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotEq.SignalSignatures;
 
         // Constructors
 
@@ -7889,6 +8196,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotEq;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotEq.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotEq.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotEq.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -8350,7 +8672,6 @@ export namespace Vda {
         implements SqlExpressionOperatorDiff
     {
         static $gtype: GObject.GType<ExpressionOperatorDiff>;
-        declare static readonly __signalSignatures: ExpressionOperatorDiff.SignalSignatures;
 
         // Constructors
 
@@ -8359,6 +8680,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorDiff;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorDiff.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorDiff.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorDiff.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -8820,7 +9156,6 @@ export namespace Vda {
         implements SqlExpressionOperatorGt
     {
         static $gtype: GObject.GType<ExpressionOperatorGt>;
-        declare static readonly __signalSignatures: ExpressionOperatorGt.SignalSignatures;
 
         // Constructors
 
@@ -8829,6 +9164,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorGt;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorGt.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorGt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorGt.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorGt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorGt.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -9290,7 +9640,6 @@ export namespace Vda {
         implements SqlExpressionOperatorLt
     {
         static $gtype: GObject.GType<ExpressionOperatorLt>;
-        declare static readonly __signalSignatures: ExpressionOperatorLt.SignalSignatures;
 
         // Constructors
 
@@ -9299,6 +9648,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorLt;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorLt.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorLt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorLt.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorLt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorLt.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -9760,7 +10124,6 @@ export namespace Vda {
         implements SqlExpressionOperatorGeq
     {
         static $gtype: GObject.GType<ExpressionOperatorGeq>;
-        declare static readonly __signalSignatures: ExpressionOperatorGeq.SignalSignatures;
 
         // Constructors
 
@@ -9769,6 +10132,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorGeq;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorGeq.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorGeq.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorGeq.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -10230,7 +10608,6 @@ export namespace Vda {
         implements SqlExpressionOperatorLeq
     {
         static $gtype: GObject.GType<ExpressionOperatorLeq>;
-        declare static readonly __signalSignatures: ExpressionOperatorLeq.SignalSignatures;
 
         // Constructors
 
@@ -10239,6 +10616,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorLeq;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorLeq.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorLeq.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorLeq.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -10700,7 +11092,6 @@ export namespace Vda {
         implements SqlExpressionOperatorRegexp
     {
         static $gtype: GObject.GType<ExpressionOperatorRegexp>;
-        declare static readonly __signalSignatures: ExpressionOperatorRegexp.SignalSignatures;
 
         // Constructors
 
@@ -10709,6 +11100,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorRegexp;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorRegexp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorRegexp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorRegexp.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -11170,7 +11576,6 @@ export namespace Vda {
         implements SqlExpressionOperatorStar
     {
         static $gtype: GObject.GType<ExpressionOperatorStar>;
-        declare static readonly __signalSignatures: ExpressionOperatorStar.SignalSignatures;
 
         // Constructors
 
@@ -11179,6 +11584,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorStar;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorStar.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorStar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorStar.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorStar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorStar.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -11640,7 +12060,6 @@ export namespace Vda {
         implements SqlExpressionOperatorDiv
     {
         static $gtype: GObject.GType<ExpressionOperatorDiv>;
-        declare static readonly __signalSignatures: ExpressionOperatorDiv.SignalSignatures;
 
         // Constructors
 
@@ -11649,6 +12068,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorDiv;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorDiv.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorDiv.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorDiv.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -12110,7 +12544,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIn
     {
         static $gtype: GObject.GType<ExpressionOperatorIn>;
-        declare static readonly __signalSignatures: ExpressionOperatorIn.SignalSignatures;
 
         // Constructors
 
@@ -12119,6 +12552,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIn;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIn.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIn.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIn.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIn.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIn.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -12580,7 +13028,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIn
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIn>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotIn.SignalSignatures;
 
         // Constructors
 
@@ -12589,6 +13036,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotIn;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotIn.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotIn.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotIn.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -13050,7 +13512,6 @@ export namespace Vda {
         implements SqlExpressionOperatorConcatenate
     {
         static $gtype: GObject.GType<ExpressionOperatorConcatenate>;
-        declare static readonly __signalSignatures: ExpressionOperatorConcatenate.SignalSignatures;
 
         // Constructors
 
@@ -13059,6 +13520,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorConcatenate;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorConcatenate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorConcatenate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorConcatenate.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -13520,7 +13996,6 @@ export namespace Vda {
         implements SqlExpressionOperatorSimilarTo
     {
         static $gtype: GObject.GType<ExpressionOperatorSimilarTo>;
-        declare static readonly __signalSignatures: ExpressionOperatorSimilarTo.SignalSignatures;
 
         // Constructors
 
@@ -13529,6 +14004,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorSimilarTo;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorSimilarTo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorSimilarTo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorSimilarTo.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -13990,7 +14480,6 @@ export namespace Vda {
         implements SqlExpressionOperatorLike
     {
         static $gtype: GObject.GType<ExpressionOperatorLike>;
-        declare static readonly __signalSignatures: ExpressionOperatorLike.SignalSignatures;
 
         // Constructors
 
@@ -13999,6 +14488,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorLike;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorLike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorLike.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorLike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorLike.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorLike.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -14460,7 +14964,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotLike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotLike>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotLike.SignalSignatures;
 
         // Constructors
 
@@ -14469,6 +14972,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotLike;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotLike.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotLike.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotLike.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -14930,7 +15448,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorIlike>;
-        declare static readonly __signalSignatures: ExpressionOperatorIlike.SignalSignatures;
 
         // Constructors
 
@@ -14939,6 +15456,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIlike;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIlike.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIlike.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIlike.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -15400,7 +15932,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIlike>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotIlike.SignalSignatures;
 
         // Constructors
 
@@ -15409,6 +15940,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotIlike;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotIlike.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotIlike.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotIlike.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -15870,7 +16416,6 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnaryterm>;
-        declare static readonly __signalSignatures: ExpressionOperatorBinaryUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -15879,6 +16424,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorBinaryUnaryterm;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -16340,7 +16900,6 @@ export namespace Vda {
         implements SqlExpressionOperatorMinus
     {
         static $gtype: GObject.GType<ExpressionOperatorMinus>;
-        declare static readonly __signalSignatures: ExpressionOperatorMinus.SignalSignatures;
 
         // Constructors
 
@@ -16349,6 +16908,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorMinus;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorMinus.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorMinus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorMinus.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -16810,7 +17384,6 @@ export namespace Vda {
         implements SqlExpressionOperatorPlus
     {
         static $gtype: GObject.GType<ExpressionOperatorPlus>;
-        declare static readonly __signalSignatures: ExpressionOperatorPlus.SignalSignatures;
 
         // Constructors
 
@@ -16819,6 +17392,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorPlus;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorPlus.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorPlus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorPlus.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -17280,7 +17868,6 @@ export namespace Vda {
         implements SqlExpressionOperatorInitialUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnaryterm>;
-        declare static readonly __signalSignatures: ExpressionOperatorInitialUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -17289,6 +17876,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorInitialUnaryterm;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorInitialUnaryterm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorInitialUnaryterm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -17750,7 +18352,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNot
     {
         static $gtype: GObject.GType<ExpressionOperatorNot>;
-        declare static readonly __signalSignatures: ExpressionOperatorNot.SignalSignatures;
 
         // Constructors
 
@@ -17759,6 +18360,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNot;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNot.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNot.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNot.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -18220,7 +18836,6 @@ export namespace Vda {
         implements SqlExpressionOperatorFinalUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnaryterm>;
-        declare static readonly __signalSignatures: ExpressionOperatorFinalUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -18229,6 +18844,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorFinalUnaryterm;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorFinalUnaryterm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorFinalUnaryterm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -18690,7 +19320,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIs
     {
         static $gtype: GObject.GType<ExpressionOperatorIs>;
-        declare static readonly __signalSignatures: ExpressionOperatorIs.SignalSignatures;
 
         // Constructors
 
@@ -18699,6 +19328,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIs;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIs.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIs.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIs.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIs.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIs.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -19160,7 +19804,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNot
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNot>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNot.SignalSignatures;
 
         // Constructors
 
@@ -19169,6 +19812,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNot;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNot.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -19630,7 +20288,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNull>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNull.SignalSignatures;
 
         // Constructors
 
@@ -19639,6 +20296,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNull;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNull.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNull.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNull.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -20100,7 +20772,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNull>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNotNull.SignalSignatures;
 
         // Constructors
 
@@ -20109,6 +20780,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNotNull;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotNull.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotNull.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNotNull.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -20570,7 +21256,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsTrue>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsTrue.SignalSignatures;
 
         // Constructors
 
@@ -20579,6 +21264,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsTrue;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsTrue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsTrue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsTrue.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -21040,7 +21740,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTrue>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNotTrue.SignalSignatures;
 
         // Constructors
 
@@ -21049,6 +21748,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNotTrue;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotTrue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotTrue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -21510,7 +22224,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsFalse>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsFalse.SignalSignatures;
 
         // Constructors
 
@@ -21519,6 +22232,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsFalse;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsFalse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsFalse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsFalse.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -21980,7 +22708,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalse>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNotFalse.SignalSignatures;
 
         // Constructors
 
@@ -21989,6 +22716,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNotFalse;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotFalse.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotFalse.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -22450,7 +23192,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknown>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNotUnknown.SignalSignatures;
 
         // Constructors
 
@@ -22459,6 +23200,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNotUnknown;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotUnknown.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotUnknown.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -22920,7 +23676,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknown>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsUnknown.SignalSignatures;
 
         // Constructors
 
@@ -22929,6 +23684,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsUnknown;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsUnknown.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsUnknown.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsUnknown.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -23390,7 +24160,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinct>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsDistinct.SignalSignatures;
 
         // Constructors
 
@@ -23399,6 +24168,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsDistinct;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsDistinct.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsDistinct.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsDistinct.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -23860,7 +24644,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinct>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNotDistinct.SignalSignatures;
 
         // Constructors
 
@@ -23869,6 +24652,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNotDistinct;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotDistinct.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotDistinct.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -24330,7 +25128,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFrom>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -24339,6 +25136,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsDistinctFrom;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsDistinctFrom.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsDistinctFrom.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -24800,7 +25612,6 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFrom>;
-        declare static readonly __signalSignatures: ExpressionOperatorIsNotDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -24809,6 +25620,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorIsNotDistinctFrom;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -25270,7 +26096,6 @@ export namespace Vda {
         implements SqlExpressionOperatorThreeterm
     {
         static $gtype: GObject.GType<ExpressionOperatorThreeterm>;
-        declare static readonly __signalSignatures: ExpressionOperatorThreeterm.SignalSignatures;
 
         // Constructors
 
@@ -25279,6 +26104,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorThreeterm;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorThreeterm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorThreeterm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorThreeterm.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -25740,7 +26580,6 @@ export namespace Vda {
         implements SqlExpressionOperatorBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorBetween>;
-        declare static readonly __signalSignatures: ExpressionOperatorBetween.SignalSignatures;
 
         // Constructors
 
@@ -25749,6 +26588,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorBetween;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetween.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetween.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorBetween.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -26210,7 +27064,6 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAnd>;
-        declare static readonly __signalSignatures: ExpressionOperatorBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -26219,6 +27072,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorBetweenAnd;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetweenAnd.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetweenAnd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -26680,7 +27548,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetween>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotBetween.SignalSignatures;
 
         // Constructors
 
@@ -26689,6 +27556,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotBetween;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetween.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetween.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotBetween.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -27150,7 +28032,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAnd>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -27159,6 +28040,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotBetweenAnd;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetweenAnd.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetweenAnd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -27620,7 +28516,6 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetric>;
-        declare static readonly __signalSignatures: ExpressionOperatorBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -27629,6 +28524,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorBetweenSymmetric;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetweenSymmetric.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetweenSymmetric.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -28090,7 +29000,6 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAnd>;
-        declare static readonly __signalSignatures: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -28099,6 +29008,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorBetweenSymmetricAnd;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -28560,7 +29484,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetric>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -28569,6 +29492,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotBetweenSymmetric;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -29030,7 +29968,6 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAnd>;
-        declare static readonly __signalSignatures: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -29039,6 +29976,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionOperatorNotBetweenSymmetricAnd;
+
+        // Signals
+
+        connect<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
+            signal: K,
+            callback: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -29500,7 +30452,6 @@ export namespace Vda {
         implements SqlExpressionValue
     {
         static $gtype: GObject.GType<ExpressionValue>;
-        declare static readonly __signalSignatures: ExpressionValue.SignalSignatures;
 
         // Constructors
 
@@ -29509,6 +30460,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionValue;
+
+        // Signals
+
+        connect<K extends keyof ExpressionValue.SignalSignatures>(
+            signal: K,
+            callback: ExpressionValue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionValue.SignalSignatures>(
+            signal: K,
+            callback: ExpressionValue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionValue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionValue.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -29986,7 +30952,6 @@ export namespace Vda {
         implements SqlExpressionValueParameter
     {
         static $gtype: GObject.GType<ExpressionValueParameter>;
-        declare static readonly __signalSignatures: ExpressionValueParameter.SignalSignatures;
 
         // Constructors
 
@@ -29995,6 +30960,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionValueParameter;
+
+        // Signals
+
+        connect<K extends keyof ExpressionValueParameter.SignalSignatures>(
+            signal: K,
+            callback: ExpressionValueParameter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionValueParameter.SignalSignatures>(
+            signal: K,
+            callback: ExpressionValueParameter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionValueParameter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionValueParameter.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get parameters(): SqlParameters;
@@ -30479,7 +31459,6 @@ export namespace Vda {
         implements Gio.ListModel<A>, HashModel
     {
         static $gtype: GObject.GType<HashList>;
-        declare static readonly __signalSignatures: HashList.SignalSignatures;
 
         // Constructors
 
@@ -30488,6 +31467,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): HashList;
+
+        // Signals
+
+        connect<K extends keyof HashList.SignalSignatures>(signal: K, callback: HashList.SignalSignatures[K]): number;
+        connect_after<K extends keyof HashList.SignalSignatures>(
+            signal: K,
+            callback: HashList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HashList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HashList.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -31054,7 +32045,6 @@ export namespace Vda {
 
     class InvalidQuery extends GObject.Object implements Query {
         static $gtype: GObject.GType<InvalidQuery>;
-        declare static readonly __signalSignatures: InvalidQuery.SignalSignatures;
 
         // Properties
 
@@ -31068,6 +32058,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](msg: string): InvalidQuery;
+
+        // Signals
+
+        connect<K extends keyof InvalidQuery.SignalSignatures>(
+            signal: K,
+            callback: InvalidQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InvalidQuery.SignalSignatures>(
+            signal: K,
+            callback: InvalidQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InvalidQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InvalidQuery.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -31549,7 +32554,6 @@ export namespace Vda {
 
     class InvalidPreparedQuery extends InvalidQuery implements PreparedQuery {
         static $gtype: GObject.GType<InvalidPreparedQuery>;
-        declare static readonly __signalSignatures: InvalidPreparedQuery.SignalSignatures;
 
         // Constructors
 
@@ -31558,6 +32562,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](msg: string): InvalidPreparedQuery;
+
+        // Signals
+
+        connect<K extends keyof InvalidPreparedQuery.SignalSignatures>(
+            signal: K,
+            callback: InvalidPreparedQuery.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InvalidPreparedQuery.SignalSignatures>(
+            signal: K,
+            callback: InvalidPreparedQuery.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InvalidPreparedQuery.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;
@@ -32022,7 +33041,6 @@ export namespace Vda {
 
     class InvalidResult extends GObject.Object implements Result {
         static $gtype: GObject.GType<InvalidResult>;
-        declare static readonly __signalSignatures: InvalidResult.SignalSignatures;
 
         // Properties
 
@@ -32036,6 +33054,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](msg: string): InvalidResult;
+
+        // Signals
+
+        connect<K extends keyof InvalidResult.SignalSignatures>(
+            signal: K,
+            callback: InvalidResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InvalidResult.SignalSignatures>(
+            signal: K,
+            callback: InvalidResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InvalidResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InvalidResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -32495,7 +33528,6 @@ export namespace Vda {
 
     class Parameters extends Gee.HashMap implements SqlParameters {
         static $gtype: GObject.GType<Parameters>;
-        declare static readonly __signalSignatures: Parameters.SignalSignatures;
 
         // Constructors
 
@@ -32504,6 +33536,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): Parameters;
+
+        // Signals
+
+        connect<K extends keyof Parameters.SignalSignatures>(
+            signal: K,
+            callback: Parameters.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Parameters.SignalSignatures>(
+            signal: K,
+            callback: Parameters.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Parameters.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Parameters.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         set_value(name: string, val: GObject.Value | any): void;
@@ -32970,7 +34017,6 @@ export namespace Vda {
 
     class Parser extends GObject.Object implements SqlParser {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Constructors
 
@@ -32979,6 +34025,12 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): Parser;
+
+        // Signals
+
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
 
         // Inherited methods
         parse(str: string, cnc: Connection): SqlCommandParametrized;
@@ -33435,7 +34487,6 @@ export namespace Vda {
 
     class TableReference extends GObject.Object implements SqlTableReference {
         static $gtype: GObject.GType<TableReference>;
-        declare static readonly __signalSignatures: TableReference.SignalSignatures;
 
         // Constructors
 
@@ -33444,6 +34495,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): TableReference;
+
+        // Signals
+
+        connect<K extends keyof TableReference.SignalSignatures>(
+            signal: K,
+            callback: TableReference.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TableReference.SignalSignatures>(
+            signal: K,
+            callback: TableReference.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TableReference.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TableReference.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;
@@ -33915,7 +34981,6 @@ export namespace Vda {
 
     class Value extends GObject.Object implements Stringifiable, SqlValue {
         static $gtype: GObject.GType<Value>;
-        declare static readonly __signalSignatures: Value.SignalSignatures;
 
         // Constructors
 
@@ -33924,6 +34989,12 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): Value;
+
+        // Signals
+
+        connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -34407,7 +35478,6 @@ export namespace Vda {
 
     class ValueNull extends Value implements SqlValueNull {
         static $gtype: GObject.GType<ValueNull>;
-        declare static readonly __signalSignatures: ValueNull.SignalSignatures;
 
         // Constructors
 
@@ -34416,6 +35486,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueNull;
+
+        // Signals
+
+        connect<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: ValueNull.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueNull.SignalSignatures>(
+            signal: K,
+            callback: ValueNull.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueNull.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueNull.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -34870,7 +35952,6 @@ export namespace Vda {
 
     class ValueString extends Value implements SqlValueString {
         static $gtype: GObject.GType<ValueString>;
-        declare static readonly __signalSignatures: ValueString.SignalSignatures;
 
         // Constructors
 
@@ -34879,6 +35960,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueString;
+
+        // Signals
+
+        connect<K extends keyof ValueString.SignalSignatures>(
+            signal: K,
+            callback: ValueString.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueString.SignalSignatures>(
+            signal: K,
+            callback: ValueString.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueString.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueString.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -35333,7 +36429,6 @@ export namespace Vda {
 
     class ValueXml extends ValueString implements SqlValueXml {
         static $gtype: GObject.GType<ValueXml>;
-        declare static readonly __signalSignatures: ValueXml.SignalSignatures;
 
         // Constructors
 
@@ -35342,6 +36437,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueXml;
+
+        // Signals
+
+        connect<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: ValueXml.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueXml.SignalSignatures>(
+            signal: K,
+            callback: ValueXml.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueXml.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueXml.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get document(): GXml.DomDocument;
@@ -35801,7 +36908,6 @@ export namespace Vda {
 
     class ValueJson extends ValueString implements SqlValueJson {
         static $gtype: GObject.GType<ValueJson>;
-        declare static readonly __signalSignatures: ValueJson.SignalSignatures;
 
         // Constructors
 
@@ -35810,6 +36916,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueJson;
+
+        // Signals
+
+        connect<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: ValueJson.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueJson.SignalSignatures>(
+            signal: K,
+            callback: ValueJson.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueJson.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueJson.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get document(): Json.Node;
@@ -36269,7 +37387,6 @@ export namespace Vda {
 
     class ValueText extends ValueString implements SqlValueText {
         static $gtype: GObject.GType<ValueText>;
-        declare static readonly __signalSignatures: ValueText.SignalSignatures;
 
         // Constructors
 
@@ -36278,6 +37395,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueText;
+
+        // Signals
+
+        connect<K extends keyof ValueText.SignalSignatures>(signal: K, callback: ValueText.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueText.SignalSignatures>(
+            signal: K,
+            callback: ValueText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueText.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -36732,7 +37861,6 @@ export namespace Vda {
 
     class ValueName extends ValueString implements SqlValueName {
         static $gtype: GObject.GType<ValueName>;
-        declare static readonly __signalSignatures: ValueName.SignalSignatures;
 
         // Constructors
 
@@ -36741,6 +37869,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueName;
+
+        // Signals
+
+        connect<K extends keyof ValueName.SignalSignatures>(signal: K, callback: ValueName.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueName.SignalSignatures>(
+            signal: K,
+            callback: ValueName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueName.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -37195,7 +38335,6 @@ export namespace Vda {
 
     class ValueBool extends Value implements SqlValueBool {
         static $gtype: GObject.GType<ValueBool>;
-        declare static readonly __signalSignatures: ValueBool.SignalSignatures;
 
         // Constructors
 
@@ -37204,6 +38343,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueBool;
+
+        // Signals
+
+        connect<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: ValueBool.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueBool.SignalSignatures>(
+            signal: K,
+            callback: ValueBool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueBool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueBool.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -37658,7 +38809,6 @@ export namespace Vda {
 
     class ValueBit extends ValueBool implements SqlValueBit {
         static $gtype: GObject.GType<ValueBit>;
-        declare static readonly __signalSignatures: ValueBit.SignalSignatures;
 
         // Constructors
 
@@ -37667,6 +38817,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueBit;
+
+        // Signals
+
+        connect<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: ValueBit.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueBit.SignalSignatures>(
+            signal: K,
+            callback: ValueBit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueBit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueBit.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -38124,7 +39286,6 @@ export namespace Vda {
 
     class ValueInteger extends Value implements SqlValue, SqlValueInteger {
         static $gtype: GObject.GType<ValueInteger>;
-        declare static readonly __signalSignatures: ValueInteger.SignalSignatures;
 
         // Constructors
 
@@ -38133,6 +39294,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueInteger;
+
+        // Signals
+
+        connect<K extends keyof ValueInteger.SignalSignatures>(
+            signal: K,
+            callback: ValueInteger.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueInteger.SignalSignatures>(
+            signal: K,
+            callback: ValueInteger.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueInteger.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueInteger.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;
@@ -38606,7 +39782,6 @@ export namespace Vda {
 
     class ValueByte extends ValueInteger implements SqlValueByte {
         static $gtype: GObject.GType<ValueByte>;
-        declare static readonly __signalSignatures: ValueByte.SignalSignatures;
 
         // Constructors
 
@@ -38615,6 +39790,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueByte;
+
+        // Signals
+
+        connect<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: ValueByte.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueByte.SignalSignatures>(
+            signal: K,
+            callback: ValueByte.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueByte.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueByte.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -39069,7 +40256,6 @@ export namespace Vda {
 
     class ValueInt2 extends ValueInteger implements SqlValueInt2 {
         static $gtype: GObject.GType<ValueInt2>;
-        declare static readonly __signalSignatures: ValueInt2.SignalSignatures;
 
         // Constructors
 
@@ -39078,6 +40264,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueInt2;
+
+        // Signals
+
+        connect<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: ValueInt2.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueInt2.SignalSignatures>(
+            signal: K,
+            callback: ValueInt2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueInt2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueInt2.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -39532,7 +40730,6 @@ export namespace Vda {
 
     class ValueInt4 extends ValueInteger implements SqlValueInt4 {
         static $gtype: GObject.GType<ValueInt4>;
-        declare static readonly __signalSignatures: ValueInt4.SignalSignatures;
 
         // Constructors
 
@@ -39541,6 +40738,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueInt4;
+
+        // Signals
+
+        connect<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: ValueInt4.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueInt4.SignalSignatures>(
+            signal: K,
+            callback: ValueInt4.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueInt4.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueInt4.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -39995,7 +41204,6 @@ export namespace Vda {
 
     class ValueInt8 extends ValueInteger implements SqlValueInt8 {
         static $gtype: GObject.GType<ValueInt8>;
-        declare static readonly __signalSignatures: ValueInt8.SignalSignatures;
 
         // Constructors
 
@@ -40004,6 +41212,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueInt8;
+
+        // Signals
+
+        connect<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: ValueInt8.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueInt8.SignalSignatures>(
+            signal: K,
+            callback: ValueInt8.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueInt8.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueInt8.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -40461,7 +41681,6 @@ export namespace Vda {
 
     class ValueUnsignedInteger extends Value implements SqlValue, SqlValueUnsignedInteger {
         static $gtype: GObject.GType<ValueUnsignedInteger>;
-        declare static readonly __signalSignatures: ValueUnsignedInteger.SignalSignatures;
 
         // Constructors
 
@@ -40470,6 +41689,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueUnsignedInteger;
+
+        // Signals
+
+        connect<K extends keyof ValueUnsignedInteger.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInteger.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueUnsignedInteger.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInteger.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueUnsignedInteger.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;
@@ -40945,7 +42179,6 @@ export namespace Vda {
 
     class ValueUnsignedByte extends ValueUnsignedInteger implements SqlValueUnsignedByte {
         static $gtype: GObject.GType<ValueUnsignedByte>;
-        declare static readonly __signalSignatures: ValueUnsignedByte.SignalSignatures;
 
         // Constructors
 
@@ -40954,6 +42187,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueUnsignedByte;
+
+        // Signals
+
+        connect<K extends keyof ValueUnsignedByte.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedByte.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueUnsignedByte.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedByte.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueUnsignedByte.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueUnsignedByte.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -41410,7 +42658,6 @@ export namespace Vda {
 
     class ValueUnsignedInt2 extends ValueUnsignedInteger implements SqlValueUnsignedInt2 {
         static $gtype: GObject.GType<ValueUnsignedInt2>;
-        declare static readonly __signalSignatures: ValueUnsignedInt2.SignalSignatures;
 
         // Constructors
 
@@ -41419,6 +42666,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueUnsignedInt2;
+
+        // Signals
+
+        connect<K extends keyof ValueUnsignedInt2.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInt2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueUnsignedInt2.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInt2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueUnsignedInt2.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -41875,7 +43137,6 @@ export namespace Vda {
 
     class ValueUnsignedInt4 extends ValueUnsignedInteger implements SqlValueUnsignedInt4 {
         static $gtype: GObject.GType<ValueUnsignedInt4>;
-        declare static readonly __signalSignatures: ValueUnsignedInt4.SignalSignatures;
 
         // Constructors
 
@@ -41884,6 +43145,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueUnsignedInt4;
+
+        // Signals
+
+        connect<K extends keyof ValueUnsignedInt4.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInt4.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueUnsignedInt4.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInt4.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueUnsignedInt4.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -42340,7 +43616,6 @@ export namespace Vda {
 
     class ValueUnsignedInt8 extends ValueUnsignedInteger implements SqlValueUnsignedInt8 {
         static $gtype: GObject.GType<ValueUnsignedInt8>;
-        declare static readonly __signalSignatures: ValueUnsignedInt8.SignalSignatures;
 
         // Constructors
 
@@ -42349,6 +43624,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueUnsignedInt8;
+
+        // Signals
+
+        connect<K extends keyof ValueUnsignedInt8.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInt8.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueUnsignedInt8.SignalSignatures>(
+            signal: K,
+            callback: ValueUnsignedInt8.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueUnsignedInt8.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -42803,7 +44093,6 @@ export namespace Vda {
 
     class ValueOid extends ValueInteger implements SqlValueOid {
         static $gtype: GObject.GType<ValueOid>;
-        declare static readonly __signalSignatures: ValueOid.SignalSignatures;
 
         // Constructors
 
@@ -42812,6 +44101,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueOid;
+
+        // Signals
+
+        connect<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: ValueOid.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueOid.SignalSignatures>(
+            signal: K,
+            callback: ValueOid.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueOid.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueOid.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -43266,7 +44567,6 @@ export namespace Vda {
 
     class ValueNumeric extends Value implements SqlValueNumeric {
         static $gtype: GObject.GType<ValueNumeric>;
-        declare static readonly __signalSignatures: ValueNumeric.SignalSignatures;
 
         // Constructors
 
@@ -43275,6 +44575,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueNumeric;
+
+        // Signals
+
+        connect<K extends keyof ValueNumeric.SignalSignatures>(
+            signal: K,
+            callback: ValueNumeric.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueNumeric.SignalSignatures>(
+            signal: K,
+            callback: ValueNumeric.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueNumeric.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueNumeric.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -43753,7 +45068,6 @@ export namespace Vda {
 
     class ValueFloat extends ValueNumeric implements SqlValueFloat {
         static $gtype: GObject.GType<ValueFloat>;
-        declare static readonly __signalSignatures: ValueFloat.SignalSignatures;
 
         // Constructors
 
@@ -43762,6 +45076,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueFloat;
+
+        // Signals
+
+        connect<K extends keyof ValueFloat.SignalSignatures>(
+            signal: K,
+            callback: ValueFloat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueFloat.SignalSignatures>(
+            signal: K,
+            callback: ValueFloat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueFloat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueFloat.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         get_float(): number;
@@ -44218,7 +45547,6 @@ export namespace Vda {
 
     class ValueDouble extends ValueNumeric implements SqlValueDouble {
         static $gtype: GObject.GType<ValueDouble>;
-        declare static readonly __signalSignatures: ValueDouble.SignalSignatures;
 
         // Constructors
 
@@ -44227,6 +45555,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueDouble;
+
+        // Signals
+
+        connect<K extends keyof ValueDouble.SignalSignatures>(
+            signal: K,
+            callback: ValueDouble.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueDouble.SignalSignatures>(
+            signal: K,
+            callback: ValueDouble.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueDouble.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueDouble.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -44681,7 +46024,6 @@ export namespace Vda {
 
     class ValueMoney extends ValueNumeric implements SqlValueMoney {
         static $gtype: GObject.GType<ValueMoney>;
-        declare static readonly __signalSignatures: ValueMoney.SignalSignatures;
 
         // Constructors
 
@@ -44690,6 +46032,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueMoney;
+
+        // Signals
+
+        connect<K extends keyof ValueMoney.SignalSignatures>(
+            signal: K,
+            callback: ValueMoney.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueMoney.SignalSignatures>(
+            signal: K,
+            callback: ValueMoney.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueMoney.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueMoney.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         locale(): string;
@@ -45152,7 +46509,6 @@ export namespace Vda {
 
     class ValueTimestamp extends Value implements SqlValueTimestamp {
         static $gtype: GObject.GType<ValueTimestamp>;
-        declare static readonly __signalSignatures: ValueTimestamp.SignalSignatures;
 
         // Constructors
 
@@ -45161,6 +46517,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueTimestamp;
+
+        // Signals
+
+        connect<K extends keyof ValueTimestamp.SignalSignatures>(
+            signal: K,
+            callback: ValueTimestamp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueTimestamp.SignalSignatures>(
+            signal: K,
+            callback: ValueTimestamp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueTimestamp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueTimestamp.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -45641,7 +47012,6 @@ export namespace Vda {
 
     class ValueTimestampNtz extends ValueTimestamp implements SqlValueTimestampNtz {
         static $gtype: GObject.GType<ValueTimestampNtz>;
-        declare static readonly __signalSignatures: ValueTimestampNtz.SignalSignatures;
 
         // Constructors
 
@@ -45650,6 +47020,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueTimestampNtz;
+
+        // Signals
+
+        connect<K extends keyof ValueTimestampNtz.SignalSignatures>(
+            signal: K,
+            callback: ValueTimestampNtz.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueTimestampNtz.SignalSignatures>(
+            signal: K,
+            callback: ValueTimestampNtz.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueTimestampNtz.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueTimestampNtz.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -46104,7 +47489,6 @@ export namespace Vda {
 
     class ValueTime extends ValueTimestamp implements SqlValueTime {
         static $gtype: GObject.GType<ValueTime>;
-        declare static readonly __signalSignatures: ValueTime.SignalSignatures;
 
         // Constructors
 
@@ -46113,6 +47497,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueTime;
+
+        // Signals
+
+        connect<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: ValueTime.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueTime.SignalSignatures>(
+            signal: K,
+            callback: ValueTime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueTime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueTime.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -46567,7 +47963,6 @@ export namespace Vda {
 
     class ValueTimeNtz extends ValueTimestampNtz implements SqlValueTimeNtz {
         static $gtype: GObject.GType<ValueTimeNtz>;
-        declare static readonly __signalSignatures: ValueTimeNtz.SignalSignatures;
 
         // Constructors
 
@@ -46576,6 +47971,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueTimeNtz;
+
+        // Signals
+
+        connect<K extends keyof ValueTimeNtz.SignalSignatures>(
+            signal: K,
+            callback: ValueTimeNtz.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueTimeNtz.SignalSignatures>(
+            signal: K,
+            callback: ValueTimeNtz.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueTimeNtz.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueTimeNtz.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -47030,7 +48440,6 @@ export namespace Vda {
 
     class ValueDate extends Value implements SqlValueDate {
         static $gtype: GObject.GType<ValueDate>;
-        declare static readonly __signalSignatures: ValueDate.SignalSignatures;
 
         // Fields
 
@@ -47043,6 +48452,18 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueDate;
+
+        // Signals
+
+        connect<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: ValueDate.SignalSignatures[K]): number;
+        connect_after<K extends keyof ValueDate.SignalSignatures>(
+            signal: K,
+            callback: ValueDate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueDate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueDate.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         get_date(): GLib.Date;
@@ -47501,7 +48922,6 @@ export namespace Vda {
 
     class ValueBinary extends Value implements SqlValueBinary {
         static $gtype: GObject.GType<ValueBinary>;
-        declare static readonly __signalSignatures: ValueBinary.SignalSignatures;
 
         // Constructors
 
@@ -47514,6 +48934,21 @@ export namespace Vda {
         static take(d: Uint8Array | string): ValueBinary;
 
         static ['new'](): ValueBinary;
+
+        // Signals
+
+        connect<K extends keyof ValueBinary.SignalSignatures>(
+            signal: K,
+            callback: ValueBinary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueBinary.SignalSignatures>(
+            signal: K,
+            callback: ValueBinary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueBinary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueBinary.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get size(): number;
@@ -47985,7 +49420,6 @@ export namespace Vda {
 
     class ValueMathExp extends GObject.Object implements Stringifiable, SqlValue, SqlValueMathExp {
         static $gtype: GObject.GType<ValueMathExp>;
-        declare static readonly __signalSignatures: ValueMathExp.SignalSignatures;
 
         // Properties
 
@@ -47999,6 +49433,21 @@ export namespace Vda {
         _init(...args: any[]): void;
 
         static ['new'](): ValueMathExp;
+
+        // Signals
+
+        connect<K extends keyof ValueMathExp.SignalSignatures>(
+            signal: K,
+            callback: ValueMathExp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ValueMathExp.SignalSignatures>(
+            signal: K,
+            callback: ValueMathExp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ValueMathExp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ValueMathExp.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

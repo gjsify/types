@@ -53,7 +53,6 @@ export namespace PeasGtk {
      */
     class PluginManager extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PluginManager>;
-        declare static readonly __signalSignatures: PluginManager.SignalSignatures;
 
         // Properties
 
@@ -80,6 +79,21 @@ export namespace PeasGtk {
         // Conflicted with Gtk.Box.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PluginManager.SignalSignatures>(
+            signal: K,
+            callback: PluginManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginManager.SignalSignatures>(
+            signal: K,
+            callback: PluginManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -552,7 +566,7 @@ export namespace PeasGtk {
         // Signal callback interfaces
 
         interface PopulatePopup {
-            (menu: Gtk.Menu): void;
+            (_source: PluginManagerView, menu: Gtk.Menu): void;
         }
 
         // Signal signatures
@@ -579,7 +593,6 @@ export namespace PeasGtk {
      */
     class PluginManagerView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PluginManagerView>;
-        declare static readonly __signalSignatures: PluginManagerView.SignalSignatures;
 
         // Properties
 
@@ -620,12 +633,6 @@ export namespace PeasGtk {
             signal: K,
             ...args: Parameters<PluginManagerView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        connect_after(signal: 'populate-popup', callback: (_source: this, menu: Gtk.Menu) => void): number;
-        emit(signal: 'populate-popup', menu: Gtk.Menu): void;
 
         // Virtual methods
 

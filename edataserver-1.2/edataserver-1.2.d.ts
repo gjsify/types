@@ -2647,19 +2647,19 @@ export namespace EDataServer {
         // Signal callback interfaces
 
         interface BackendDied {
-            (): void;
+            (_source: Client): void;
         }
 
         interface BackendError {
-            (object: string): void;
+            (_source: Client, object: string): void;
         }
 
         interface BackendPropertyChanged {
-            (object: string, p0: string): void;
+            (_source: Client, object: string, p0: string): void;
         }
 
         interface Opened {
-            (object: GLib.Error): void;
+            (_source: Client, object: GLib.Error): void;
         }
 
         // Signal signatures
@@ -2689,7 +2689,6 @@ export namespace EDataServer {
      */
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -2736,27 +2735,6 @@ export namespace EDataServer {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'backend-died', callback: (_source: this) => void): number;
-        connect_after(signal: 'backend-died', callback: (_source: this) => void): number;
-        emit(signal: 'backend-died'): void;
-        connect(signal: 'backend-error', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'backend-error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'backend-error', object: string): void;
-        connect(
-            signal: 'backend-property-changed',
-            callback: (_source: this, object: string, p0: string) => void,
-        ): number;
-        connect_after(
-            signal: 'backend-property-changed',
-            callback: (_source: this, object: string, p0: string) => void,
-        ): number;
-        emit(signal: 'backend-property-changed', object: string, p0: string): void;
-        connect(signal: 'opened', callback: (_source: this, object: GLib.Error) => void): number;
-        connect_after(signal: 'opened', callback: (_source: this, object: GLib.Error) => void): number;
-        emit(signal: 'opened', object: GLib.Error): void;
 
         // Static methods
 
@@ -3493,7 +3471,6 @@ export namespace EDataServer {
      */
     abstract class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
-        declare static readonly __signalSignatures: Extension.SignalSignatures;
 
         // Properties
 
@@ -3504,6 +3481,18 @@ export namespace EDataServer {
         constructor(properties?: Partial<Extension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Extension.SignalSignatures>(signal: K, callback: Extension.SignalSignatures[K]): number;
+        connect_after<K extends keyof Extension.SignalSignatures>(
+            signal: K,
+            callback: Extension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Extension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Extension.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3529,7 +3518,6 @@ export namespace EDataServer {
      */
     class GDataSession extends SoupSession {
         static $gtype: GObject.GType<GDataSession>;
-        declare static readonly __signalSignatures: GDataSession.SignalSignatures;
 
         // Constructors
 
@@ -3541,6 +3529,21 @@ export namespace EDataServer {
         // Conflicted with Soup.Session.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GDataSession.SignalSignatures>(
+            signal: K,
+            callback: GDataSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDataSession.SignalSignatures>(
+            signal: K,
+            callback: GDataSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDataSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDataSession.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3732,7 +3735,6 @@ export namespace EDataServer {
      */
     class Module extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Module>;
-        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -3748,6 +3750,12 @@ export namespace EDataServer {
         _init(...args: any[]): void;
 
         static ['new'](filename: string): Module;
+
+        // Signals
+
+        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4288,7 +4296,6 @@ export namespace EDataServer {
      */
     class NetworkMonitor extends GObject.Object implements Gio.Initable, Gio.NetworkMonitor {
         static $gtype: GObject.GType<NetworkMonitor>;
-        declare static readonly __signalSignatures: NetworkMonitor.SignalSignatures;
 
         // Properties
 
@@ -4308,6 +4315,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<NetworkMonitor.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof NetworkMonitor.SignalSignatures>(
+            signal: K,
+            callback: NetworkMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkMonitor.SignalSignatures>(
+            signal: K,
+            callback: NetworkMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5148,13 +5170,27 @@ export namespace EDataServer {
 
     abstract class OAuth2ServiceBase extends Extension {
         static $gtype: GObject.GType<OAuth2ServiceBase>;
-        declare static readonly __signalSignatures: OAuth2ServiceBase.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceBase.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OAuth2ServiceBase.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceBase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2ServiceBase.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2ServiceBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2ServiceBase.SignalSignatures[K]>
+        ): void;
     }
 
     namespace OAuth2ServiceGoogle {
@@ -5168,13 +5204,27 @@ export namespace EDataServer {
 
     class OAuth2ServiceGoogle extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceGoogle>;
-        declare static readonly __signalSignatures: OAuth2ServiceGoogle.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceGoogle.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceGoogle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceGoogle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2ServiceGoogle.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6067,13 +6117,27 @@ export namespace EDataServer {
 
     class OAuth2ServiceOutlook extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceOutlook>;
-        declare static readonly __signalSignatures: OAuth2ServiceOutlook.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceOutlook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceOutlook.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceOutlook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2ServiceOutlook.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6966,13 +7030,27 @@ export namespace EDataServer {
 
     class OAuth2ServiceYahoo extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceYahoo>;
-        declare static readonly __signalSignatures: OAuth2ServiceYahoo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<OAuth2ServiceYahoo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceYahoo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(
+            signal: K,
+            callback: OAuth2ServiceYahoo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2ServiceYahoo.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -7869,7 +7947,6 @@ export namespace EDataServer {
      */
     class OAuth2Services extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<OAuth2Services>;
-        declare static readonly __signalSignatures: OAuth2Services.SignalSignatures;
 
         // Constructors
 
@@ -7878,6 +7955,21 @@ export namespace EDataServer {
         _init(...args: any[]): void;
 
         static ['new'](): OAuth2Services;
+
+        // Signals
+
+        connect<K extends keyof OAuth2Services.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Services.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OAuth2Services.SignalSignatures>(
+            signal: K,
+            callback: OAuth2Services.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OAuth2Services.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OAuth2Services.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8419,13 +8511,27 @@ export namespace EDataServer {
      */
     class SoupAuthBearer extends Soup.Auth {
         static $gtype: GObject.GType<SoupAuthBearer>;
-        declare static readonly __signalSignatures: SoupAuthBearer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SoupAuthBearer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SoupAuthBearer.SignalSignatures>(
+            signal: K,
+            callback: SoupAuthBearer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SoupAuthBearer.SignalSignatures>(
+            signal: K,
+            callback: SoupAuthBearer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SoupAuthBearer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SoupAuthBearer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8463,7 +8569,6 @@ export namespace EDataServer {
      */
     class SoupSession extends Soup.Session {
         static $gtype: GObject.GType<SoupSession>;
-        declare static readonly __signalSignatures: SoupSession.SignalSignatures;
 
         // Properties
 
@@ -8505,6 +8610,21 @@ export namespace EDataServer {
         // Conflicted with Soup.Session.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof SoupSession.SignalSignatures>(
+            signal: K,
+            callback: SoupSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SoupSession.SignalSignatures>(
+            signal: K,
+            callback: SoupSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SoupSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SoupSession.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8812,15 +8932,16 @@ export namespace EDataServer {
         // Signal callback interfaces
 
         interface Authenticate {
-            (credentials: NamedParameters): void;
+            (_source: Source, credentials: NamedParameters): void;
         }
 
         interface Changed {
-            (): void;
+            (_source: Source): void;
         }
 
         interface CredentialsRequired {
             (
+                _source: Source,
                 reason: SourceCredentialsReason,
                 certificate_pem: string,
                 certificate_errors: Gio.TlsCertificateFlags,
@@ -8865,7 +8986,6 @@ export namespace EDataServer {
      */
     class Source extends GObject.Object implements Gio.Initable, Gio.ProxyResolver {
         static $gtype: GObject.GType<Source>;
-        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -8904,42 +9024,6 @@ export namespace EDataServer {
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'authenticate', callback: (_source: this, credentials: NamedParameters) => void): number;
-        connect_after(signal: 'authenticate', callback: (_source: this, credentials: NamedParameters) => void): number;
-        emit(signal: 'authenticate', credentials: NamedParameters): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(
-            signal: 'credentials-required',
-            callback: (
-                _source: this,
-                reason: SourceCredentialsReason,
-                certificate_pem: string,
-                certificate_errors: Gio.TlsCertificateFlags,
-                error: GLib.Error,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'credentials-required',
-            callback: (
-                _source: this,
-                reason: SourceCredentialsReason,
-                certificate_pem: string,
-                certificate_errors: Gio.TlsCertificateFlags,
-                error: GLib.Error,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'credentials-required',
-            reason: SourceCredentialsReason,
-            certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
-            error: GLib.Error,
-        ): void;
 
         // Static methods
 
@@ -11182,7 +11266,6 @@ export namespace EDataServer {
      */
     class SourceAddressBook extends SourceBackend {
         static $gtype: GObject.GType<SourceAddressBook>;
-        declare static readonly __signalSignatures: SourceAddressBook.SignalSignatures;
 
         // Properties
 
@@ -11194,6 +11277,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceAddressBook.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceAddressBook.SignalSignatures>(
+            signal: K,
+            callback: SourceAddressBook.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceAddressBook.SignalSignatures>(
+            signal: K,
+            callback: SourceAddressBook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceAddressBook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceAddressBook.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11225,7 +11323,6 @@ export namespace EDataServer {
      */
     class SourceAlarms extends SourceExtension {
         static $gtype: GObject.GType<SourceAlarms>;
-        declare static readonly __signalSignatures: SourceAlarms.SignalSignatures;
 
         // Properties
 
@@ -11243,6 +11340,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceAlarms.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceAlarms.SignalSignatures>(
+            signal: K,
+            callback: SourceAlarms.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceAlarms.SignalSignatures>(
+            signal: K,
+            callback: SourceAlarms.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceAlarms.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceAlarms.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11325,7 +11437,6 @@ export namespace EDataServer {
      */
     class SourceAuthentication extends SourceExtension {
         static $gtype: GObject.GType<SourceAuthentication>;
-        declare static readonly __signalSignatures: SourceAuthentication.SignalSignatures;
 
         // Properties
 
@@ -11360,6 +11471,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceAuthentication.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceAuthentication.SignalSignatures>(
+            signal: K,
+            callback: SourceAuthentication.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceAuthentication.SignalSignatures>(
+            signal: K,
+            callback: SourceAuthentication.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceAuthentication.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceAuthentication.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11555,7 +11681,6 @@ export namespace EDataServer {
      */
     class SourceAutocomplete extends SourceExtension {
         static $gtype: GObject.GType<SourceAutocomplete>;
-        declare static readonly __signalSignatures: SourceAutocomplete.SignalSignatures;
 
         // Properties
 
@@ -11569,6 +11694,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceAutocomplete.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceAutocomplete.SignalSignatures>(
+            signal: K,
+            callback: SourceAutocomplete.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceAutocomplete.SignalSignatures>(
+            signal: K,
+            callback: SourceAutocomplete.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceAutocomplete.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceAutocomplete.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11605,7 +11745,6 @@ export namespace EDataServer {
      */
     class SourceAutoconfig extends SourceExtension {
         static $gtype: GObject.GType<SourceAutoconfig>;
-        declare static readonly __signalSignatures: SourceAutoconfig.SignalSignatures;
 
         // Properties
 
@@ -11617,6 +11756,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceAutoconfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceAutoconfig.SignalSignatures>(
+            signal: K,
+            callback: SourceAutoconfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceAutoconfig.SignalSignatures>(
+            signal: K,
+            callback: SourceAutoconfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceAutoconfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceAutoconfig.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11675,7 +11829,6 @@ export namespace EDataServer {
      */
     abstract class SourceBackend extends SourceExtension {
         static $gtype: GObject.GType<SourceBackend>;
-        declare static readonly __signalSignatures: SourceBackend.SignalSignatures;
 
         // Properties
 
@@ -11689,6 +11842,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceBackend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceBackend.SignalSignatures>(
+            signal: K,
+            callback: SourceBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceBackend.SignalSignatures>(
+            signal: K,
+            callback: SourceBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceBackend.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11731,13 +11899,27 @@ export namespace EDataServer {
      */
     class SourceCalendar extends SourceSelectable {
         static $gtype: GObject.GType<SourceCalendar>;
-        declare static readonly __signalSignatures: SourceCalendar.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceCalendar.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceCalendar.SignalSignatures>(
+            signal: K,
+            callback: SourceCalendar.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCalendar.SignalSignatures>(
+            signal: K,
+            callback: SourceCalendar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCalendar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCalendar.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceCamel {
@@ -11757,7 +11939,6 @@ export namespace EDataServer {
      */
     abstract class SourceCamel extends SourceExtension {
         static $gtype: GObject.GType<SourceCamel>;
-        declare static readonly __signalSignatures: SourceCamel.SignalSignatures;
 
         // Properties
 
@@ -11768,6 +11949,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceCamel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceCamel.SignalSignatures>(
+            signal: K,
+            callback: SourceCamel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCamel.SignalSignatures>(
+            signal: K,
+            callback: SourceCamel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCamel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCamel.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11858,7 +12054,6 @@ export namespace EDataServer {
      */
     class SourceCollection extends SourceBackend {
         static $gtype: GObject.GType<SourceCollection>;
-        declare static readonly __signalSignatures: SourceCollection.SignalSignatures;
 
         // Properties
 
@@ -11894,6 +12089,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceCollection.SignalSignatures>(
+            signal: K,
+            callback: SourceCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCollection.SignalSignatures>(
+            signal: K,
+            callback: SourceCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCollection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12061,7 +12271,6 @@ export namespace EDataServer {
 
     class SourceContacts extends SourceExtension {
         static $gtype: GObject.GType<SourceContacts>;
-        declare static readonly __signalSignatures: SourceContacts.SignalSignatures;
 
         // Properties
 
@@ -12075,6 +12284,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceContacts.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceContacts.SignalSignatures>(
+            signal: K,
+            callback: SourceContacts.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceContacts.SignalSignatures>(
+            signal: K,
+            callback: SourceContacts.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceContacts.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceContacts.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -12099,7 +12323,6 @@ export namespace EDataServer {
      */
     class SourceCredentialsProvider extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<SourceCredentialsProvider>;
-        declare static readonly __signalSignatures: SourceCredentialsProvider.SignalSignatures;
 
         // Properties
 
@@ -12115,6 +12338,21 @@ export namespace EDataServer {
         _init(...args: any[]): void;
 
         static ['new'](registry: SourceRegistry): SourceCredentialsProvider;
+
+        // Signals
+
+        connect<K extends keyof SourceCredentialsProvider.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCredentialsProvider.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCredentialsProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCredentialsProvider.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -12859,13 +13097,27 @@ export namespace EDataServer {
      */
     abstract class SourceCredentialsProviderImpl extends Extension {
         static $gtype: GObject.GType<SourceCredentialsProviderImpl>;
-        declare static readonly __signalSignatures: SourceCredentialsProviderImpl.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProviderImpl.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProviderImpl.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProviderImpl.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCredentialsProviderImpl.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -13005,13 +13257,27 @@ export namespace EDataServer {
      */
     class SourceCredentialsProviderImplOAuth2 extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplOAuth2>;
-        declare static readonly __signalSignatures: SourceCredentialsProviderImplOAuth2.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProviderImplOAuth2.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProviderImplOAuth2.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProviderImplOAuth2.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCredentialsProviderImplOAuth2.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceCredentialsProviderImplPassword {
@@ -13028,13 +13294,27 @@ export namespace EDataServer {
      */
     class SourceCredentialsProviderImplPassword extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPassword>;
-        declare static readonly __signalSignatures: SourceCredentialsProviderImplPassword.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceCredentialsProviderImplPassword.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProviderImplPassword.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(
+            signal: K,
+            callback: SourceCredentialsProviderImplPassword.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceCredentialsProviderImplPassword.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceExtension {
@@ -13054,7 +13334,6 @@ export namespace EDataServer {
      */
     abstract class SourceExtension extends GObject.Object {
         static $gtype: GObject.GType<SourceExtension>;
-        declare static readonly __signalSignatures: SourceExtension.SignalSignatures;
 
         // Properties
 
@@ -13065,6 +13344,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceExtension.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceExtension.SignalSignatures>(
+            signal: K,
+            callback: SourceExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceExtension.SignalSignatures>(
+            signal: K,
+            callback: SourceExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceExtension.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13120,7 +13414,6 @@ export namespace EDataServer {
      */
     class SourceGoa extends SourceExtension {
         static $gtype: GObject.GType<SourceGoa>;
-        declare static readonly __signalSignatures: SourceGoa.SignalSignatures;
 
         // Properties
 
@@ -13146,6 +13439,18 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceGoa.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceGoa.SignalSignatures>(signal: K, callback: SourceGoa.SignalSignatures[K]): number;
+        connect_after<K extends keyof SourceGoa.SignalSignatures>(
+            signal: K,
+            callback: SourceGoa.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceGoa.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceGoa.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13296,7 +13601,6 @@ export namespace EDataServer {
 
     class SourceLDAP extends SourceExtension {
         static $gtype: GObject.GType<SourceLDAP>;
-        declare static readonly __signalSignatures: SourceLDAP.SignalSignatures;
 
         // Properties
 
@@ -13324,6 +13628,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceLDAP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceLDAP.SignalSignatures>(
+            signal: K,
+            callback: SourceLDAP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceLDAP.SignalSignatures>(
+            signal: K,
+            callback: SourceLDAP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceLDAP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceLDAP.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13362,7 +13681,6 @@ export namespace EDataServer {
 
     class SourceLocal extends SourceExtension {
         static $gtype: GObject.GType<SourceLocal>;
-        declare static readonly __signalSignatures: SourceLocal.SignalSignatures;
 
         // Properties
 
@@ -13382,6 +13700,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceLocal.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceLocal.SignalSignatures>(
+            signal: K,
+            callback: SourceLocal.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceLocal.SignalSignatures>(
+            signal: K,
+            callback: SourceLocal.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceLocal.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceLocal.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13458,7 +13791,6 @@ export namespace EDataServer {
      */
     class SourceMDN extends SourceExtension {
         static $gtype: GObject.GType<SourceMDN>;
-        declare static readonly __signalSignatures: SourceMDN.SignalSignatures;
 
         // Properties
 
@@ -13472,6 +13804,18 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceMDN.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMDN.SignalSignatures>(signal: K, callback: SourceMDN.SignalSignatures[K]): number;
+        connect_after<K extends keyof SourceMDN.SignalSignatures>(
+            signal: K,
+            callback: SourceMDN.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMDN.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMDN.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13516,7 +13860,6 @@ export namespace EDataServer {
      */
     class SourceMailAccount extends SourceBackend {
         static $gtype: GObject.GType<SourceMailAccount>;
-        declare static readonly __signalSignatures: SourceMailAccount.SignalSignatures;
 
         // Properties
 
@@ -13548,6 +13891,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceMailAccount.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMailAccount.SignalSignatures>(
+            signal: K,
+            callback: SourceMailAccount.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMailAccount.SignalSignatures>(
+            signal: K,
+            callback: SourceMailAccount.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMailAccount.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMailAccount.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13666,7 +14024,6 @@ export namespace EDataServer {
      */
     class SourceMailComposition extends SourceExtension {
         static $gtype: GObject.GType<SourceMailComposition>;
-        declare static readonly __signalSignatures: SourceMailComposition.SignalSignatures;
 
         // Properties
 
@@ -13706,6 +14063,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceMailComposition.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMailComposition.SignalSignatures>(
+            signal: K,
+            callback: SourceMailComposition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMailComposition.SignalSignatures>(
+            signal: K,
+            callback: SourceMailComposition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMailComposition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMailComposition.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -13910,7 +14282,6 @@ export namespace EDataServer {
      */
     class SourceMailIdentity extends SourceExtension {
         static $gtype: GObject.GType<SourceMailIdentity>;
-        declare static readonly __signalSignatures: SourceMailIdentity.SignalSignatures;
 
         // Properties
 
@@ -13936,6 +14307,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceMailIdentity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMailIdentity.SignalSignatures>(
+            signal: K,
+            callback: SourceMailIdentity.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMailIdentity.SignalSignatures>(
+            signal: K,
+            callback: SourceMailIdentity.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMailIdentity.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMailIdentity.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14116,7 +14502,6 @@ export namespace EDataServer {
      */
     class SourceMailSignature extends SourceExtension {
         static $gtype: GObject.GType<SourceMailSignature>;
-        declare static readonly __signalSignatures: SourceMailSignature.SignalSignatures;
 
         // Properties
 
@@ -14131,6 +14516,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceMailSignature.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMailSignature.SignalSignatures>(
+            signal: K,
+            callback: SourceMailSignature.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMailSignature.SignalSignatures>(
+            signal: K,
+            callback: SourceMailSignature.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMailSignature.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMailSignature.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14199,7 +14599,6 @@ export namespace EDataServer {
      */
     class SourceMailSubmission extends SourceExtension {
         static $gtype: GObject.GType<SourceMailSubmission>;
-        declare static readonly __signalSignatures: SourceMailSubmission.SignalSignatures;
 
         // Properties
 
@@ -14225,6 +14624,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceMailSubmission.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMailSubmission.SignalSignatures>(
+            signal: K,
+            callback: SourceMailSubmission.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMailSubmission.SignalSignatures>(
+            signal: K,
+            callback: SourceMailSubmission.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMailSubmission.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMailSubmission.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14307,13 +14721,27 @@ export namespace EDataServer {
      */
     class SourceMailTransport extends SourceBackend {
         static $gtype: GObject.GType<SourceMailTransport>;
-        declare static readonly __signalSignatures: SourceMailTransport.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceMailTransport.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMailTransport.SignalSignatures>(
+            signal: K,
+            callback: SourceMailTransport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMailTransport.SignalSignatures>(
+            signal: K,
+            callback: SourceMailTransport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMailTransport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMailTransport.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceMemoList {
@@ -14331,13 +14759,27 @@ export namespace EDataServer {
      */
     class SourceMemoList extends SourceSelectable {
         static $gtype: GObject.GType<SourceMemoList>;
-        declare static readonly __signalSignatures: SourceMemoList.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceMemoList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceMemoList.SignalSignatures>(
+            signal: K,
+            callback: SourceMemoList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceMemoList.SignalSignatures>(
+            signal: K,
+            callback: SourceMemoList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMemoList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMemoList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceOffline {
@@ -14358,7 +14800,6 @@ export namespace EDataServer {
      */
     class SourceOffline extends SourceExtension {
         static $gtype: GObject.GType<SourceOffline>;
-        declare static readonly __signalSignatures: SourceOffline.SignalSignatures;
 
         // Properties
 
@@ -14372,6 +14813,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceOffline.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceOffline.SignalSignatures>(
+            signal: K,
+            callback: SourceOffline.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceOffline.SignalSignatures>(
+            signal: K,
+            callback: SourceOffline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceOffline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceOffline.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14427,7 +14883,6 @@ export namespace EDataServer {
      */
     class SourceOpenPGP extends SourceExtension {
         static $gtype: GObject.GType<SourceOpenPGP>;
-        declare static readonly __signalSignatures: SourceOpenPGP.SignalSignatures;
 
         // Properties
 
@@ -14477,6 +14932,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceOpenPGP.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceOpenPGP.SignalSignatures>(
+            signal: K,
+            callback: SourceOpenPGP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceOpenPGP.SignalSignatures>(
+            signal: K,
+            callback: SourceOpenPGP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceOpenPGP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceOpenPGP.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14664,7 +15134,6 @@ export namespace EDataServer {
      */
     class SourceProxy extends SourceExtension {
         static $gtype: GObject.GType<SourceProxy>;
-        declare static readonly __signalSignatures: SourceProxy.SignalSignatures;
 
         // Properties
 
@@ -14728,6 +15197,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceProxy.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceProxy.SignalSignatures>(
+            signal: K,
+            callback: SourceProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceProxy.SignalSignatures>(
+            signal: K,
+            callback: SourceProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceProxy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15009,7 +15493,6 @@ export namespace EDataServer {
      */
     class SourceRefresh extends SourceExtension {
         static $gtype: GObject.GType<SourceRefresh>;
-        declare static readonly __signalSignatures: SourceRefresh.SignalSignatures;
 
         // Properties
 
@@ -15029,6 +15512,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceRefresh.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceRefresh.SignalSignatures>(
+            signal: K,
+            callback: SourceRefresh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceRefresh.SignalSignatures>(
+            signal: K,
+            callback: SourceRefresh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceRefresh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceRefresh.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -15089,6 +15587,7 @@ export namespace EDataServer {
 
         interface CredentialsRequired {
             (
+                _source: SourceRegistry,
                 source: Source,
                 reason: SourceCredentialsReason,
                 certificate_pem: string,
@@ -15098,23 +15597,23 @@ export namespace EDataServer {
         }
 
         interface SourceAdded {
-            (source: Source): void;
+            (_source: SourceRegistry, source: Source): void;
         }
 
         interface SourceChanged {
-            (source: Source): void;
+            (_source: SourceRegistry, source: Source): void;
         }
 
         interface SourceDisabled {
-            (source: Source): void;
+            (_source: SourceRegistry, source: Source): void;
         }
 
         interface SourceEnabled {
-            (source: Source): void;
+            (_source: SourceRegistry, source: Source): void;
         }
 
         interface SourceRemoved {
-            (source: Source): void;
+            (_source: SourceRegistry, source: Source): void;
         }
 
         // Signal signatures
@@ -15154,7 +15653,6 @@ export namespace EDataServer {
      */
     class SourceRegistry extends GObject.Object implements Gio.AsyncInitable<SourceRegistry>, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistry>;
-        declare static readonly __signalSignatures: SourceRegistry.SignalSignatures;
 
         // Properties
 
@@ -15246,54 +15744,6 @@ export namespace EDataServer {
             signal: K,
             ...args: Parameters<SourceRegistry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'credentials-required',
-            callback: (
-                _source: this,
-                source: Source,
-                reason: SourceCredentialsReason,
-                certificate_pem: string,
-                certificate_errors: Gio.TlsCertificateFlags,
-                op_error: GLib.Error,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'credentials-required',
-            callback: (
-                _source: this,
-                source: Source,
-                reason: SourceCredentialsReason,
-                certificate_pem: string,
-                certificate_errors: Gio.TlsCertificateFlags,
-                op_error: GLib.Error,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'credentials-required',
-            source: Source,
-            reason: SourceCredentialsReason,
-            certificate_pem: string,
-            certificate_errors: Gio.TlsCertificateFlags,
-            op_error: GLib.Error,
-        ): void;
-        connect(signal: 'source-added', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-added', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-added', source: Source): void;
-        connect(signal: 'source-changed', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-changed', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-changed', source: Source): void;
-        connect(signal: 'source-disabled', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-disabled', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-disabled', source: Source): void;
-        connect(signal: 'source-enabled', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-enabled', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-enabled', source: Source): void;
-        connect(signal: 'source-removed', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-removed', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-removed', source: Source): void;
 
         // Static methods
 
@@ -16616,15 +17066,15 @@ export namespace EDataServer {
         // Signal callback interfaces
 
         interface Appeared {
-            (source: Source): void;
+            (_source: SourceRegistryWatcher, source: Source): void;
         }
 
         interface Disappeared {
-            (source: Source): void;
+            (_source: SourceRegistryWatcher, source: Source): void;
         }
 
         interface Filter {
-            (source: Source): boolean;
+            (_source: SourceRegistryWatcher, source: Source): boolean;
         }
 
         // Signal signatures
@@ -16649,7 +17099,6 @@ export namespace EDataServer {
      */
     class SourceRegistryWatcher extends GObject.Object {
         static $gtype: GObject.GType<SourceRegistryWatcher>;
-        declare static readonly __signalSignatures: SourceRegistryWatcher.SignalSignatures;
 
         // Properties
 
@@ -16694,18 +17143,6 @@ export namespace EDataServer {
             signal: K,
             ...args: Parameters<SourceRegistryWatcher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'appeared', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'appeared', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'appeared', source: Source): void;
-        connect(signal: 'disappeared', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'disappeared', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'disappeared', source: Source): void;
-        connect(signal: 'filter', callback: (_source: this, source: Source) => boolean): number;
-        connect_after(signal: 'filter', callback: (_source: this, source: Source) => boolean): number;
-        emit(signal: 'filter', source: Source): void;
 
         // Virtual methods
 
@@ -16746,7 +17183,6 @@ export namespace EDataServer {
      */
     class SourceResource extends SourceExtension {
         static $gtype: GObject.GType<SourceResource>;
-        declare static readonly __signalSignatures: SourceResource.SignalSignatures;
 
         // Properties
 
@@ -16758,6 +17194,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceResource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceResource.SignalSignatures>(
+            signal: K,
+            callback: SourceResource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceResource.SignalSignatures>(
+            signal: K,
+            callback: SourceResource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceResource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceResource.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16804,7 +17255,6 @@ export namespace EDataServer {
      */
     class SourceRevisionGuards extends SourceExtension {
         static $gtype: GObject.GType<SourceRevisionGuards>;
-        declare static readonly __signalSignatures: SourceRevisionGuards.SignalSignatures;
 
         // Properties
 
@@ -16816,6 +17266,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceRevisionGuards.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceRevisionGuards.SignalSignatures>(
+            signal: K,
+            callback: SourceRevisionGuards.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceRevisionGuards.SignalSignatures>(
+            signal: K,
+            callback: SourceRevisionGuards.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceRevisionGuards.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceRevisionGuards.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16861,7 +17326,6 @@ export namespace EDataServer {
      */
     class SourceSMIME extends SourceExtension {
         static $gtype: GObject.GType<SourceSMIME>;
-        declare static readonly __signalSignatures: SourceSMIME.SignalSignatures;
 
         // Properties
 
@@ -16895,6 +17359,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceSMIME.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceSMIME.SignalSignatures>(
+            signal: K,
+            callback: SourceSMIME.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSMIME.SignalSignatures>(
+            signal: K,
+            callback: SourceSMIME.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSMIME.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSMIME.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17016,7 +17495,6 @@ export namespace EDataServer {
      */
     class SourceSecurity extends SourceExtension {
         static $gtype: GObject.GType<SourceSecurity>;
-        declare static readonly __signalSignatures: SourceSecurity.SignalSignatures;
 
         // Properties
 
@@ -17030,6 +17508,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceSecurity.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceSecurity.SignalSignatures>(
+            signal: K,
+            callback: SourceSecurity.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSecurity.SignalSignatures>(
+            signal: K,
+            callback: SourceSecurity.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSecurity.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSecurity.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17098,7 +17591,6 @@ export namespace EDataServer {
      */
     abstract class SourceSelectable extends SourceBackend {
         static $gtype: GObject.GType<SourceSelectable>;
-        declare static readonly __signalSignatures: SourceSelectable.SignalSignatures;
 
         // Properties
 
@@ -17114,6 +17606,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceSelectable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceSelectable.SignalSignatures>(
+            signal: K,
+            callback: SourceSelectable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSelectable.SignalSignatures>(
+            signal: K,
+            callback: SourceSelectable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSelectable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSelectable.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17185,13 +17692,27 @@ export namespace EDataServer {
      */
     class SourceTaskList extends SourceSelectable {
         static $gtype: GObject.GType<SourceTaskList>;
-        declare static readonly __signalSignatures: SourceTaskList.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SourceTaskList.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceTaskList.SignalSignatures>(
+            signal: K,
+            callback: SourceTaskList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceTaskList.SignalSignatures>(
+            signal: K,
+            callback: SourceTaskList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceTaskList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceTaskList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SourceUoa {
@@ -17212,7 +17733,6 @@ export namespace EDataServer {
      */
     class SourceUoa extends SourceExtension {
         static $gtype: GObject.GType<SourceUoa>;
-        declare static readonly __signalSignatures: SourceUoa.SignalSignatures;
 
         // Properties
 
@@ -17226,6 +17746,18 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceUoa.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceUoa.SignalSignatures>(signal: K, callback: SourceUoa.SignalSignatures[K]): number;
+        connect_after<K extends keyof SourceUoa.SignalSignatures>(
+            signal: K,
+            callback: SourceUoa.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceUoa.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceUoa.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17257,7 +17789,6 @@ export namespace EDataServer {
 
     class SourceWeather extends SourceExtension {
         static $gtype: GObject.GType<SourceWeather>;
-        declare static readonly __signalSignatures: SourceWeather.SignalSignatures;
 
         // Properties
 
@@ -17271,6 +17802,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceWeather.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceWeather.SignalSignatures>(
+            signal: K,
+            callback: SourceWeather.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceWeather.SignalSignatures>(
+            signal: K,
+            callback: SourceWeather.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceWeather.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceWeather.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17299,7 +17845,6 @@ export namespace EDataServer {
      */
     class SourceWebDAVNotes extends SourceExtension {
         static $gtype: GObject.GType<SourceWebDAVNotes>;
-        declare static readonly __signalSignatures: SourceWebDAVNotes.SignalSignatures;
 
         // Properties
 
@@ -17313,6 +17858,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceWebDAVNotes.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceWebDAVNotes.SignalSignatures>(
+            signal: K,
+            callback: SourceWebDAVNotes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceWebDAVNotes.SignalSignatures>(
+            signal: K,
+            callback: SourceWebDAVNotes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceWebDAVNotes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceWebDAVNotes.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17373,7 +17933,6 @@ export namespace EDataServer {
      */
     class SourceWebdav extends SourceExtension {
         static $gtype: GObject.GType<SourceWebdav>;
-        declare static readonly __signalSignatures: SourceWebdav.SignalSignatures;
 
         // Properties
 
@@ -17417,6 +17976,21 @@ export namespace EDataServer {
         constructor(properties?: Partial<SourceWebdav.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SourceWebdav.SignalSignatures>(
+            signal: K,
+            callback: SourceWebdav.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceWebdav.SignalSignatures>(
+            signal: K,
+            callback: SourceWebdav.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceWebdav.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceWebdav.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17685,7 +18259,6 @@ export namespace EDataServer {
      */
     class WebDAVSession extends SoupSession {
         static $gtype: GObject.GType<WebDAVSession>;
-        declare static readonly __signalSignatures: WebDAVSession.SignalSignatures;
 
         // Constructors
 
@@ -17697,6 +18270,21 @@ export namespace EDataServer {
         // Conflicted with Soup.Session.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof WebDAVSession.SignalSignatures>(
+            signal: K,
+            callback: WebDAVSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebDAVSession.SignalSignatures>(
+            signal: K,
+            callback: WebDAVSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebDAVSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebDAVSession.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -18518,7 +19106,6 @@ export namespace EDataServer {
      */
     class XmlDocument extends GObject.Object {
         static $gtype: GObject.GType<XmlDocument>;
-        declare static readonly __signalSignatures: XmlDocument.SignalSignatures;
 
         // Constructors
 
@@ -18527,6 +19114,21 @@ export namespace EDataServer {
         _init(...args: any[]): void;
 
         static ['new'](ns_href: string | null, root_element: string): XmlDocument;
+
+        // Signals
+
+        connect<K extends keyof XmlDocument.SignalSignatures>(
+            signal: K,
+            callback: XmlDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof XmlDocument.SignalSignatures>(
+            signal: K,
+            callback: XmlDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XmlDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XmlDocument.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

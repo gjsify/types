@@ -1601,13 +1601,18 @@ export namespace Poppler {
 
     class Annot extends GObject.Object {
         static $gtype: GObject.GType<Annot>;
-        declare static readonly __signalSignatures: Annot.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Annot.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Annot.SignalSignatures>(signal: K, callback: Annot.SignalSignatures[K]): number;
+        connect_after<K extends keyof Annot.SignalSignatures>(signal: K, callback: Annot.SignalSignatures[K]): number;
+        emit<K extends keyof Annot.SignalSignatures>(signal: K, ...args: Parameters<Annot.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1690,7 +1695,6 @@ export namespace Poppler {
 
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
-        declare static readonly __signalSignatures: AnnotCircle.SignalSignatures;
 
         // Constructors
 
@@ -1699,6 +1703,21 @@ export namespace Poppler {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, rect: Rectangle): AnnotCircle;
+
+        // Signals
+
+        connect<K extends keyof AnnotCircle.SignalSignatures>(
+            signal: K,
+            callback: AnnotCircle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotCircle.SignalSignatures>(
+            signal: K,
+            callback: AnnotCircle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotCircle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotCircle.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1725,13 +1744,27 @@ export namespace Poppler {
 
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
-        declare static readonly __signalSignatures: AnnotFileAttachment.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AnnotFileAttachment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AnnotFileAttachment.SignalSignatures>(
+            signal: K,
+            callback: AnnotFileAttachment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotFileAttachment.SignalSignatures>(
+            signal: K,
+            callback: AnnotFileAttachment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotFileAttachment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotFileAttachment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1759,13 +1792,27 @@ export namespace Poppler {
 
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
-        declare static readonly __signalSignatures: AnnotFreeText.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AnnotFreeText.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AnnotFreeText.SignalSignatures>(
+            signal: K,
+            callback: AnnotFreeText.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotFreeText.SignalSignatures>(
+            signal: K,
+            callback: AnnotFreeText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotFreeText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotFreeText.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1793,7 +1840,6 @@ export namespace Poppler {
 
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
-        declare static readonly __signalSignatures: AnnotLine.SignalSignatures;
 
         // Constructors
 
@@ -1802,6 +1848,18 @@ export namespace Poppler {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, rect: Rectangle, start: Point, end: Point): AnnotLine;
+
+        // Signals
+
+        connect<K extends keyof AnnotLine.SignalSignatures>(signal: K, callback: AnnotLine.SignalSignatures[K]): number;
+        connect_after<K extends keyof AnnotLine.SignalSignatures>(
+            signal: K,
+            callback: AnnotLine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotLine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotLine.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1824,13 +1882,27 @@ export namespace Poppler {
 
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
-        declare static readonly __signalSignatures: AnnotMarkup.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AnnotMarkup.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AnnotMarkup.SignalSignatures>(
+            signal: K,
+            callback: AnnotMarkup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotMarkup.SignalSignatures>(
+            signal: K,
+            callback: AnnotMarkup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotMarkup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotMarkup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1923,13 +1995,27 @@ export namespace Poppler {
 
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
-        declare static readonly __signalSignatures: AnnotMovie.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AnnotMovie.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AnnotMovie.SignalSignatures>(
+            signal: K,
+            callback: AnnotMovie.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotMovie.SignalSignatures>(
+            signal: K,
+            callback: AnnotMovie.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotMovie.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotMovie.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1956,13 +2042,27 @@ export namespace Poppler {
 
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
-        declare static readonly __signalSignatures: AnnotScreen.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AnnotScreen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AnnotScreen.SignalSignatures>(
+            signal: K,
+            callback: AnnotScreen.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotScreen.SignalSignatures>(
+            signal: K,
+            callback: AnnotScreen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotScreen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotScreen.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1984,7 +2084,6 @@ export namespace Poppler {
 
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
-        declare static readonly __signalSignatures: AnnotSquare.SignalSignatures;
 
         // Constructors
 
@@ -1993,6 +2092,21 @@ export namespace Poppler {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, rect: Rectangle): AnnotSquare;
+
+        // Signals
+
+        connect<K extends keyof AnnotSquare.SignalSignatures>(
+            signal: K,
+            callback: AnnotSquare.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotSquare.SignalSignatures>(
+            signal: K,
+            callback: AnnotSquare.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotSquare.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotSquare.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2019,7 +2133,6 @@ export namespace Poppler {
 
     class AnnotStamp extends Annot {
         static $gtype: GObject.GType<AnnotStamp>;
-        declare static readonly __signalSignatures: AnnotStamp.SignalSignatures;
 
         // Constructors
 
@@ -2028,6 +2141,21 @@ export namespace Poppler {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, rect: Rectangle): AnnotStamp;
+
+        // Signals
+
+        connect<K extends keyof AnnotStamp.SignalSignatures>(
+            signal: K,
+            callback: AnnotStamp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotStamp.SignalSignatures>(
+            signal: K,
+            callback: AnnotStamp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotStamp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotStamp.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2056,7 +2184,6 @@ export namespace Poppler {
 
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
-        declare static readonly __signalSignatures: AnnotText.SignalSignatures;
 
         // Constructors
 
@@ -2065,6 +2192,18 @@ export namespace Poppler {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, rect: Rectangle): AnnotText;
+
+        // Signals
+
+        connect<K extends keyof AnnotText.SignalSignatures>(signal: K, callback: AnnotText.SignalSignatures[K]): number;
+        connect_after<K extends keyof AnnotText.SignalSignatures>(
+            signal: K,
+            callback: AnnotText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotText.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2136,7 +2275,6 @@ export namespace Poppler {
 
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
-        declare static readonly __signalSignatures: AnnotTextMarkup.SignalSignatures;
 
         // Constructors
 
@@ -2151,6 +2289,21 @@ export namespace Poppler {
         static new_strikeout(doc: Document, rect: Rectangle, quadrilaterals: Quadrilateral[]): AnnotTextMarkup;
 
         static new_underline(doc: Document, rect: Rectangle, quadrilaterals: Quadrilateral[]): AnnotTextMarkup;
+
+        // Signals
+
+        connect<K extends keyof AnnotTextMarkup.SignalSignatures>(
+            signal: K,
+            callback: AnnotTextMarkup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnnotTextMarkup.SignalSignatures>(
+            signal: K,
+            callback: AnnotTextMarkup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnnotTextMarkup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnnotTextMarkup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2179,7 +2332,6 @@ export namespace Poppler {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
-        declare static readonly __signalSignatures: Attachment.SignalSignatures;
 
         // Fields
 
@@ -2195,6 +2347,21 @@ export namespace Poppler {
         constructor(properties?: Partial<Attachment.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Attachment.SignalSignatures>(
+            signal: K,
+            callback: Attachment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Attachment.SignalSignatures>(
+            signal: K,
+            callback: Attachment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Attachment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Attachment.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2287,7 +2454,6 @@ export namespace Poppler {
 
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
-        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -2474,6 +2640,18 @@ export namespace Poppler {
             password?: string | null,
             cancellable?: Gio.Cancellable | null,
         ): Document;
+
+        // Signals
+
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2868,7 +3046,6 @@ export namespace Poppler {
 
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
-        declare static readonly __signalSignatures: FontInfo.SignalSignatures;
 
         // Constructors
 
@@ -2877,6 +3054,18 @@ export namespace Poppler {
         _init(...args: any[]): void;
 
         static ['new'](document: Document): FontInfo;
+
+        // Signals
+
+        connect<K extends keyof FontInfo.SignalSignatures>(signal: K, callback: FontInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof FontInfo.SignalSignatures>(
+            signal: K,
+            callback: FontInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2920,13 +3109,24 @@ export namespace Poppler {
 
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
-        declare static readonly __signalSignatures: FormField.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FormField.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: FormField.SignalSignatures[K]): number;
+        connect_after<K extends keyof FormField.SignalSignatures>(
+            signal: K,
+            callback: FormField.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FormField.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FormField.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3166,13 +3366,18 @@ export namespace Poppler {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
-        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Layer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3220,13 +3425,18 @@ export namespace Poppler {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
-        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Media.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3307,13 +3517,18 @@ export namespace Poppler {
 
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
-        declare static readonly __signalSignatures: Movie.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Movie.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Movie.SignalSignatures>(signal: K, callback: Movie.SignalSignatures[K]): number;
+        connect_after<K extends keyof Movie.SignalSignatures>(signal: K, callback: Movie.SignalSignatures[K]): number;
+        emit<K extends keyof Movie.SignalSignatures>(signal: K, ...args: Parameters<Movie.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3391,7 +3606,6 @@ export namespace Poppler {
 
     class PSFile extends GObject.Object {
         static $gtype: GObject.GType<PSFile>;
-        declare static readonly __signalSignatures: PSFile.SignalSignatures;
 
         // Constructors
 
@@ -3402,6 +3616,12 @@ export namespace Poppler {
         static ['new'](document: Document, filename: string, first_page: number, n_pages: number): PSFile;
 
         static new_fd(document: Document, fd: number, first_page: number, n_pages: number): PSFile;
+
+        // Signals
+
+        connect<K extends keyof PSFile.SignalSignatures>(signal: K, callback: PSFile.SignalSignatures[K]): number;
+        connect_after<K extends keyof PSFile.SignalSignatures>(signal: K, callback: PSFile.SignalSignatures[K]): number;
+        emit<K extends keyof PSFile.SignalSignatures>(signal: K, ...args: Parameters<PSFile.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -3437,7 +3657,6 @@ export namespace Poppler {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
-        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Properties
 
@@ -3451,6 +3670,12 @@ export namespace Poppler {
         constructor(properties?: Partial<Page.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3795,13 +4020,27 @@ export namespace Poppler {
 
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
-        declare static readonly __signalSignatures: StructureElement.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<StructureElement.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof StructureElement.SignalSignatures>(
+            signal: K,
+            callback: StructureElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StructureElement.SignalSignatures>(
+            signal: K,
+            callback: StructureElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StructureElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StructureElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -222,15 +222,15 @@ export namespace GVnc {
         // Signal callback interfaces
 
         interface VncAudioPlaybackData {
-            (object: AudioSample): void;
+            (_source: BaseAudio, object: AudioSample): void;
         }
 
         interface VncAudioPlaybackStart {
-            (object: AudioFormat): void;
+            (_source: BaseAudio, object: AudioFormat): void;
         }
 
         interface VncAudioPlaybackStop {
-            (): void;
+            (_source: BaseAudio): void;
         }
 
         // Signal signatures
@@ -247,7 +247,6 @@ export namespace GVnc {
 
     class BaseAudio extends GObject.Object implements Audio {
         static $gtype: GObject.GType<BaseAudio>;
-        declare static readonly __signalSignatures: BaseAudio.SignalSignatures;
 
         // Constructors
 
@@ -268,24 +267,6 @@ export namespace GVnc {
             signal: K,
             ...args: Parameters<BaseAudio.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'vnc-audio-playback-data', callback: (_source: this, object: AudioSample) => void): number;
-        connect_after(
-            signal: 'vnc-audio-playback-data',
-            callback: (_source: this, object: AudioSample) => void,
-        ): number;
-        emit(signal: 'vnc-audio-playback-data', object: AudioSample): void;
-        connect(signal: 'vnc-audio-playback-start', callback: (_source: this, object: AudioFormat) => void): number;
-        connect_after(
-            signal: 'vnc-audio-playback-start',
-            callback: (_source: this, object: AudioFormat) => void,
-        ): number;
-        emit(signal: 'vnc-audio-playback-start', object: AudioFormat): void;
-        connect(signal: 'vnc-audio-playback-stop', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-audio-playback-stop', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-audio-playback-stop'): void;
 
         // Virtual methods
 
@@ -773,7 +754,6 @@ export namespace GVnc {
 
     class BaseFramebuffer extends GObject.Object implements Framebuffer {
         static $gtype: GObject.GType<BaseFramebuffer>;
-        declare static readonly __signalSignatures: BaseFramebuffer.SignalSignatures;
 
         // Properties
 
@@ -804,6 +784,21 @@ export namespace GVnc {
             localFormat: PixelFormat,
             remoteFormat: PixelFormat,
         ): BaseFramebuffer;
+
+        // Signals
+
+        connect<K extends keyof BaseFramebuffer.SignalSignatures>(
+            signal: K,
+            callback: BaseFramebuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseFramebuffer.SignalSignatures>(
+            signal: K,
+            callback: BaseFramebuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseFramebuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseFramebuffer.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
@@ -1422,83 +1417,83 @@ export namespace GVnc {
         // Signal callback interfaces
 
         interface VncAuthChooseSubtype {
-            (object: number, p0: GObject.ValueArray): void;
+            (_source: Connection, object: number, p0: GObject.ValueArray): void;
         }
 
         interface VncAuthChooseType {
-            (object: GObject.ValueArray): void;
+            (_source: Connection, object: GObject.ValueArray): void;
         }
 
         interface VncAuthCredential {
-            (object: GObject.ValueArray): void;
+            (_source: Connection, object: GObject.ValueArray): void;
         }
 
         interface VncAuthFailure {
-            (object: string): void;
+            (_source: Connection, object: string): void;
         }
 
         interface VncAuthUnsupported {
-            (object: number): void;
+            (_source: Connection, object: number): void;
         }
 
         interface VncBell {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncConnected {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncCursorChanged {
-            (cursor?: Cursor | null): void;
+            (_source: Connection, cursor?: Cursor | null): void;
         }
 
         interface VncDesktopRename {
-            (object: string): void;
+            (_source: Connection, object: string): void;
         }
 
         interface VncDesktopResize {
-            (object: number, p0: number): void;
+            (_source: Connection, object: number, p0: number): void;
         }
 
         interface VncDisconnected {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncError {
-            (object: string): void;
+            (_source: Connection, object: string): void;
         }
 
         interface VncFramebufferUpdate {
-            (object: number, p0: number, p1: number, p2: number): void;
+            (_source: Connection, object: number, p0: number, p1: number, p2: number): void;
         }
 
         interface VncInitialized {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncLedState {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncPixelFormatChanged {
-            (object: PixelFormat): void;
+            (_source: Connection, object: PixelFormat): void;
         }
 
         interface VncPointerModeChanged {
-            (object: boolean): void;
+            (_source: Connection, object: boolean): void;
         }
 
         interface VncPowerControlFailed {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncPowerControlInitialized {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface VncServerCutText {
-            (object: string): void;
+            (_source: Connection, object: string): void;
         }
 
         // Signal signatures
@@ -1534,7 +1529,6 @@ export namespace GVnc {
 
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -1563,93 +1557,6 @@ export namespace GVnc {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'vnc-auth-choose-subtype',
-            callback: (_source: this, object: number, p0: GObject.ValueArray) => void,
-        ): number;
-        connect_after(
-            signal: 'vnc-auth-choose-subtype',
-            callback: (_source: this, object: number, p0: GObject.ValueArray) => void,
-        ): number;
-        emit(signal: 'vnc-auth-choose-subtype', object: number, p0: GObject.ValueArray): void;
-        connect(signal: 'vnc-auth-choose-type', callback: (_source: this, object: GObject.ValueArray) => void): number;
-        connect_after(
-            signal: 'vnc-auth-choose-type',
-            callback: (_source: this, object: GObject.ValueArray) => void,
-        ): number;
-        emit(signal: 'vnc-auth-choose-type', object: GObject.ValueArray): void;
-        connect(signal: 'vnc-auth-credential', callback: (_source: this, object: GObject.ValueArray) => void): number;
-        connect_after(
-            signal: 'vnc-auth-credential',
-            callback: (_source: this, object: GObject.ValueArray) => void,
-        ): number;
-        emit(signal: 'vnc-auth-credential', object: GObject.ValueArray): void;
-        connect(signal: 'vnc-auth-failure', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-auth-failure', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-auth-failure', object: string): void;
-        connect(signal: 'vnc-auth-unsupported', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'vnc-auth-unsupported', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'vnc-auth-unsupported', object: number): void;
-        connect(signal: 'vnc-bell', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-bell', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-bell'): void;
-        connect(signal: 'vnc-connected', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-connected', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-connected'): void;
-        connect(signal: 'vnc-cursor-changed', callback: (_source: this, cursor: Cursor | null) => void): number;
-        connect_after(signal: 'vnc-cursor-changed', callback: (_source: this, cursor: Cursor | null) => void): number;
-        emit(signal: 'vnc-cursor-changed', cursor?: Cursor | null): void;
-        connect(signal: 'vnc-desktop-rename', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-desktop-rename', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-desktop-rename', object: string): void;
-        connect(signal: 'vnc-desktop-resize', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(
-            signal: 'vnc-desktop-resize',
-            callback: (_source: this, object: number, p0: number) => void,
-        ): number;
-        emit(signal: 'vnc-desktop-resize', object: number, p0: number): void;
-        connect(signal: 'vnc-disconnected', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-disconnected', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-disconnected'): void;
-        connect(signal: 'vnc-error', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-error', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-error', object: string): void;
-        connect(
-            signal: 'vnc-framebuffer-update',
-            callback: (_source: this, object: number, p0: number, p1: number, p2: number) => void,
-        ): number;
-        connect_after(
-            signal: 'vnc-framebuffer-update',
-            callback: (_source: this, object: number, p0: number, p1: number, p2: number) => void,
-        ): number;
-        emit(signal: 'vnc-framebuffer-update', object: number, p0: number, p1: number, p2: number): void;
-        connect(signal: 'vnc-initialized', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-initialized', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-initialized'): void;
-        connect(signal: 'vnc-led-state', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-led-state', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-led-state'): void;
-        connect(signal: 'vnc-pixel-format-changed', callback: (_source: this, object: PixelFormat) => void): number;
-        connect_after(
-            signal: 'vnc-pixel-format-changed',
-            callback: (_source: this, object: PixelFormat) => void,
-        ): number;
-        emit(signal: 'vnc-pixel-format-changed', object: PixelFormat): void;
-        connect(signal: 'vnc-pointer-mode-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'vnc-pointer-mode-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'vnc-pointer-mode-changed', object: boolean): void;
-        connect(signal: 'vnc-power-control-failed', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-power-control-failed', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-power-control-failed'): void;
-        connect(signal: 'vnc-power-control-initialized', callback: (_source: this) => void): number;
-        connect_after(signal: 'vnc-power-control-initialized', callback: (_source: this) => void): number;
-        emit(signal: 'vnc-power-control-initialized'): void;
-        connect(signal: 'vnc-server-cut-text', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'vnc-server-cut-text', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'vnc-server-cut-text', object: string): void;
 
         // Virtual methods
 
@@ -1972,7 +1879,6 @@ export namespace GVnc {
 
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
-        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -1994,6 +1900,12 @@ export namespace GVnc {
         _init(...args: any[]): void;
 
         static ['new'](data: Uint8Array | string, hotx: number, hoty: number, width: number, height: number): Cursor;
+
+        // Signals
+
+        connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
 
         // Methods
 

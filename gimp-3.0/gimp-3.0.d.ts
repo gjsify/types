@@ -7279,7 +7279,6 @@ export namespace Gimp {
      */
     class BatchProcedure extends Procedure {
         static $gtype: GObject.GType<BatchProcedure>;
-        declare static readonly __signalSignatures: BatchProcedure.SignalSignatures;
 
         // Constructors
 
@@ -7298,6 +7297,21 @@ export namespace Gimp {
         // Conflicted with Gimp.Procedure.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof BatchProcedure.SignalSignatures>(
+            signal: K,
+            callback: BatchProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BatchProcedure.SignalSignatures>(
+            signal: K,
+            callback: BatchProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BatchProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BatchProcedure.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7344,7 +7358,6 @@ export namespace Gimp {
      */
     class Brush extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Brush>;
-        declare static readonly __signalSignatures: Brush.SignalSignatures;
 
         // Constructors
 
@@ -7353,6 +7366,12 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Brush;
+
+        // Signals
+
+        connect<K extends keyof Brush.SignalSignatures>(signal: K, callback: Brush.SignalSignatures[K]): number;
+        connect_after<K extends keyof Brush.SignalSignatures>(signal: K, callback: Brush.SignalSignatures[K]): number;
+        emit<K extends keyof Brush.SignalSignatures>(signal: K, ...args: Parameters<Brush.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -8015,7 +8034,6 @@ export namespace Gimp {
      */
     class Channel extends Drawable {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Constructors
 
@@ -8033,6 +8051,18 @@ export namespace Gimp {
         ): Channel;
 
         static new_from_component(image: Image, component: ChannelType, name: string): Channel;
+
+        // Signals
+
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8122,7 +8152,7 @@ export namespace Gimp {
         // Signal callback interfaces
 
         interface SensitivityChanged {
-            (object: string): void;
+            (_source: Choice, object: string): void;
         }
 
         // Signal signatures
@@ -8137,7 +8167,6 @@ export namespace Gimp {
 
     class Choice extends GObject.Object {
         static $gtype: GObject.GType<Choice>;
-        declare static readonly __signalSignatures: Choice.SignalSignatures;
 
         // Constructors
 
@@ -8152,12 +8181,6 @@ export namespace Gimp {
         connect<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
         connect_after<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
         emit<K extends keyof Choice.SignalSignatures>(signal: K, ...args: Parameters<Choice.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'sensitivity-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'sensitivity-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'sensitivity-changed', object: string): void;
 
         // Methods
 
@@ -8258,7 +8281,6 @@ export namespace Gimp {
      */
     class ColorConfig extends GObject.Object implements ConfigInterface {
         static $gtype: GObject.GType<ColorConfig>;
-        declare static readonly __signalSignatures: ColorConfig.SignalSignatures;
 
         // Properties
 
@@ -8334,6 +8356,21 @@ export namespace Gimp {
         constructor(properties?: Partial<ColorConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ColorConfig.SignalSignatures>(
+            signal: K,
+            callback: ColorConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorConfig.SignalSignatures>(
+            signal: K,
+            callback: ColorConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorConfig.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8809,7 +8846,6 @@ export namespace Gimp {
      */
     class ColorProfile extends GObject.Object {
         static $gtype: GObject.GType<ColorProfile>;
-        declare static readonly __signalSignatures: ColorProfile.SignalSignatures;
 
         // Constructors
 
@@ -8834,6 +8870,21 @@ export namespace Gimp {
         static new_rgb_srgb(): ColorProfile;
 
         static new_rgb_srgb_linear(): ColorProfile;
+
+        // Signals
+
+        connect<K extends keyof ColorProfile.SignalSignatures>(
+            signal: K,
+            callback: ColorProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorProfile.SignalSignatures>(
+            signal: K,
+            callback: ColorProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorProfile.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -8940,7 +8991,7 @@ export namespace Gimp {
         // Signal callback interfaces
 
         interface Progress {
-            (object: number): void;
+            (_source: ColorTransform, object: number): void;
         }
 
         // Signal signatures
@@ -8958,7 +9009,6 @@ export namespace Gimp {
      */
     class ColorTransform extends GObject.Object {
         static $gtype: GObject.GType<ColorTransform>;
-        declare static readonly __signalSignatures: ColorTransform.SignalSignatures;
 
         // Constructors
 
@@ -9000,12 +9050,6 @@ export namespace Gimp {
             signal: K,
             ...args: Parameters<ColorTransform.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'progress', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'progress', object: number): void;
 
         // Static methods
 
@@ -9069,11 +9113,25 @@ export namespace Gimp {
 
     class ConfigPath {
         static $gtype: GObject.GType<ConfigPath>;
-        declare static readonly __signalSignatures: ConfigPath.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ConfigPath.SignalSignatures>(
+            signal: K,
+            callback: ConfigPath.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConfigPath.SignalSignatures>(
+            signal: K,
+            callback: ConfigPath.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConfigPath.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConfigPath.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9136,7 +9194,6 @@ export namespace Gimp {
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
-        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -9149,6 +9206,18 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](image: Image): Display;
+
+        // Signals
+
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect_after<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: Display.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Display.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9247,13 +9316,24 @@ export namespace Gimp {
      */
     abstract class Drawable extends Item {
         static $gtype: GObject.GType<Drawable>;
-        declare static readonly __signalSignatures: Drawable.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Drawable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Drawable.SignalSignatures>(signal: K, callback: Drawable.SignalSignatures[K]): number;
+        connect_after<K extends keyof Drawable.SignalSignatures>(
+            signal: K,
+            callback: Drawable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Drawable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Drawable.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9991,7 +10071,6 @@ export namespace Gimp {
      */
     class ExportOptions extends GObject.Object {
         static $gtype: GObject.GType<ExportOptions>;
-        declare static readonly __signalSignatures: ExportOptions.SignalSignatures;
 
         // Properties
 
@@ -10006,6 +10085,21 @@ export namespace Gimp {
         constructor(properties?: Partial<ExportOptions.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ExportOptions.SignalSignatures>(
+            signal: K,
+            callback: ExportOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExportOptions.SignalSignatures>(
+            signal: K,
+            callback: ExportOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExportOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExportOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10066,7 +10160,6 @@ export namespace Gimp {
      */
     class ExportProcedure extends FileProcedure {
         static $gtype: GObject.GType<ExportProcedure>;
-        declare static readonly __signalSignatures: ExportProcedure.SignalSignatures;
 
         // Properties
 
@@ -10153,6 +10246,21 @@ export namespace Gimp {
         // Conflicted with Gimp.Procedure.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ExportProcedure.SignalSignatures>(
+            signal: K,
+            callback: ExportProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExportProcedure.SignalSignatures>(
+            signal: K,
+            callback: ExportProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExportProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExportProcedure.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10338,13 +10446,27 @@ export namespace Gimp {
      */
     abstract class FileProcedure extends Procedure {
         static $gtype: GObject.GType<FileProcedure>;
-        declare static readonly __signalSignatures: FileProcedure.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<FileProcedure.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FileProcedure.SignalSignatures>(
+            signal: K,
+            callback: FileProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileProcedure.SignalSignatures>(
+            signal: K,
+            callback: FileProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileProcedure.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10478,13 +10600,18 @@ export namespace Gimp {
      */
     class Font extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Font>;
-        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Font.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -10968,7 +11095,6 @@ export namespace Gimp {
      */
     class Gradient extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Gradient>;
-        declare static readonly __signalSignatures: Gradient.SignalSignatures;
 
         // Constructors
 
@@ -10977,6 +11103,18 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Gradient;
+
+        // Signals
+
+        connect<K extends keyof Gradient.SignalSignatures>(signal: K, callback: Gradient.SignalSignatures[K]): number;
+        connect_after<K extends keyof Gradient.SignalSignatures>(
+            signal: K,
+            callback: Gradient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Gradient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Gradient.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11764,7 +11902,6 @@ export namespace Gimp {
      */
     class GroupLayer extends Layer {
         static $gtype: GObject.GType<GroupLayer>;
-        declare static readonly __signalSignatures: GroupLayer.SignalSignatures;
 
         // Constructors
 
@@ -11773,6 +11910,21 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](image: Image, name?: string | null): GroupLayer;
+
+        // Signals
+
+        connect<K extends keyof GroupLayer.SignalSignatures>(
+            signal: K,
+            callback: GroupLayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GroupLayer.SignalSignatures>(
+            signal: K,
+            callback: GroupLayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GroupLayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GroupLayer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -11814,7 +11966,6 @@ export namespace Gimp {
      */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
-        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -11829,6 +11980,12 @@ export namespace Gimp {
         static ['new'](width: number, height: number, type: ImageBaseType): Image;
 
         static new_with_precision(width: number, height: number, type: ImageBaseType, precision: Precision): Image;
+
+        // Signals
+
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -13627,7 +13784,6 @@ export namespace Gimp {
      */
     class ImageProcedure extends Procedure {
         static $gtype: GObject.GType<ImageProcedure>;
-        declare static readonly __signalSignatures: ImageProcedure.SignalSignatures;
 
         // Constructors
 
@@ -13645,6 +13801,21 @@ export namespace Gimp {
         // Conflicted with Gimp.Procedure.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ImageProcedure.SignalSignatures>(
+            signal: K,
+            callback: ImageProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageProcedure.SignalSignatures>(
+            signal: K,
+            callback: ImageProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageProcedure.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Item {
@@ -13663,7 +13834,6 @@ export namespace Gimp {
      */
     abstract class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
-        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Properties
 
@@ -13674,6 +13844,12 @@ export namespace Gimp {
         constructor(properties?: Partial<Item.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -14408,7 +14584,6 @@ export namespace Gimp {
      */
     class Layer extends Drawable {
         static $gtype: GObject.GType<Layer>;
-        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Constructors
 
@@ -14447,6 +14622,12 @@ export namespace Gimp {
         ): Layer;
 
         static new_from_visible(image: Image, dest_image: Image, name: string): Layer;
+
+        // Signals
+
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -14790,13 +14971,24 @@ export namespace Gimp {
 
     class LayerMask extends Channel {
         static $gtype: GObject.GType<LayerMask>;
-        declare static readonly __signalSignatures: LayerMask.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LayerMask.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LayerMask.SignalSignatures>(signal: K, callback: LayerMask.SignalSignatures[K]): number;
+        connect_after<K extends keyof LayerMask.SignalSignatures>(
+            signal: K,
+            callback: LayerMask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayerMask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayerMask.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -14840,7 +15032,6 @@ export namespace Gimp {
      */
     class LoadProcedure extends FileProcedure {
         static $gtype: GObject.GType<LoadProcedure>;
-        declare static readonly __signalSignatures: LoadProcedure.SignalSignatures;
 
         // Constructors
 
@@ -14858,6 +15049,21 @@ export namespace Gimp {
         // Conflicted with Gimp.Procedure.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof LoadProcedure.SignalSignatures>(
+            signal: K,
+            callback: LoadProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LoadProcedure.SignalSignatures>(
+            signal: K,
+            callback: LoadProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LoadProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LoadProcedure.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -14905,11 +15111,22 @@ export namespace Gimp {
      */
     class Memsize {
         static $gtype: GObject.GType<Memsize>;
-        declare static readonly __signalSignatures: Memsize.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Memsize.SignalSignatures>(signal: K, callback: Memsize.SignalSignatures[K]): number;
+        connect_after<K extends keyof Memsize.SignalSignatures>(
+            signal: K,
+            callback: Memsize.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Memsize.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Memsize.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -14943,7 +15160,6 @@ export namespace Gimp {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
-        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -14952,6 +15168,18 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](): Metadata;
+
+        // Signals
+
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: Metadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Metadata.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -15081,7 +15309,6 @@ export namespace Gimp {
      */
     class Module extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Module>;
-        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -15099,6 +15326,12 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](file: Gio.File, auto_load: boolean, verbose: boolean): Module;
+
+        // Signals
+
+        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -15637,7 +15870,6 @@ export namespace Gimp {
      */
     class ModuleDB<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ModuleDB>;
-        declare static readonly __signalSignatures: ModuleDB.SignalSignatures;
 
         // Constructors
 
@@ -15646,6 +15878,18 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](verbose: boolean): ModuleDB;
+
+        // Signals
+
+        connect<K extends keyof ModuleDB.SignalSignatures>(signal: K, callback: ModuleDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof ModuleDB.SignalSignatures>(
+            signal: K,
+            callback: ModuleDB.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ModuleDB.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ModuleDB.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -16239,13 +16483,18 @@ export namespace Gimp {
      */
     class PDB extends GObject.Object {
         static $gtype: GObject.GType<PDB>;
-        declare static readonly __signalSignatures: PDB.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PDB.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PDB.SignalSignatures>(signal: K, callback: PDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof PDB.SignalSignatures>(signal: K, callback: PDB.SignalSignatures[K]): number;
+        emit<K extends keyof PDB.SignalSignatures>(signal: K, ...args: Parameters<PDB.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -16356,7 +16605,6 @@ export namespace Gimp {
      */
     class Palette extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Palette>;
-        declare static readonly __signalSignatures: Palette.SignalSignatures;
 
         // Constructors
 
@@ -16365,6 +16613,18 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](name: string): Palette;
+
+        // Signals
+
+        connect<K extends keyof Palette.SignalSignatures>(signal: K, callback: Palette.SignalSignatures[K]): number;
+        connect_after<K extends keyof Palette.SignalSignatures>(
+            signal: K,
+            callback: Palette.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Palette.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Palette.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -16926,11 +17186,25 @@ export namespace Gimp {
 
     class ParamBrush extends ParamResource {
         static $gtype: GObject.GType<ParamBrush>;
-        declare static readonly __signalSignatures: ParamBrush.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamBrush.SignalSignatures>(
+            signal: K,
+            callback: ParamBrush.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamBrush.SignalSignatures>(
+            signal: K,
+            callback: ParamBrush.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamBrush.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamBrush.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamChannel {
@@ -16940,11 +17214,25 @@ export namespace Gimp {
 
     class ParamChannel extends ParamDrawable {
         static $gtype: GObject.GType<ParamChannel>;
-        declare static readonly __signalSignatures: ParamChannel.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamChannel.SignalSignatures>(
+            signal: K,
+            callback: ParamChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamChannel.SignalSignatures>(
+            signal: K,
+            callback: ParamChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamChannel.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamColor {
@@ -16954,11 +17242,25 @@ export namespace Gimp {
 
     class ParamColor extends ParamObject {
         static $gtype: GObject.GType<ParamColor>;
-        declare static readonly __signalSignatures: ParamColor.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamColor.SignalSignatures>(
+            signal: K,
+            callback: ParamColor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamColor.SignalSignatures>(
+            signal: K,
+            callback: ParamColor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamColor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamColor.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamDrawable {
@@ -16968,11 +17270,25 @@ export namespace Gimp {
 
     class ParamDrawable extends ParamItem {
         static $gtype: GObject.GType<ParamDrawable>;
-        declare static readonly __signalSignatures: ParamDrawable.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamDrawable.SignalSignatures>(
+            signal: K,
+            callback: ParamDrawable.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamDrawable.SignalSignatures>(
+            signal: K,
+            callback: ParamDrawable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamDrawable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamDrawable.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamFloatArray {
@@ -16982,11 +17298,25 @@ export namespace Gimp {
 
     class ParamFloatArray extends ParamArray {
         static $gtype: GObject.GType<ParamFloatArray>;
-        declare static readonly __signalSignatures: ParamFloatArray.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamFloatArray.SignalSignatures>(
+            signal: K,
+            callback: ParamFloatArray.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamFloatArray.SignalSignatures>(
+            signal: K,
+            callback: ParamFloatArray.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamFloatArray.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamFloatArray.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamFont {
@@ -16996,11 +17326,22 @@ export namespace Gimp {
 
     class ParamFont extends ParamResource {
         static $gtype: GObject.GType<ParamFont>;
-        declare static readonly __signalSignatures: ParamFont.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamFont.SignalSignatures>(signal: K, callback: ParamFont.SignalSignatures[K]): number;
+        connect_after<K extends keyof ParamFont.SignalSignatures>(
+            signal: K,
+            callback: ParamFont.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamFont.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamFont.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamGradient {
@@ -17010,11 +17351,25 @@ export namespace Gimp {
 
     class ParamGradient extends ParamResource {
         static $gtype: GObject.GType<ParamGradient>;
-        declare static readonly __signalSignatures: ParamGradient.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamGradient.SignalSignatures>(
+            signal: K,
+            callback: ParamGradient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamGradient.SignalSignatures>(
+            signal: K,
+            callback: ParamGradient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamGradient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamGradient.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamGroupLayer {
@@ -17024,11 +17379,25 @@ export namespace Gimp {
 
     class ParamGroupLayer extends ParamLayer {
         static $gtype: GObject.GType<ParamGroupLayer>;
-        declare static readonly __signalSignatures: ParamGroupLayer.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamGroupLayer.SignalSignatures>(
+            signal: K,
+            callback: ParamGroupLayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamGroupLayer.SignalSignatures>(
+            signal: K,
+            callback: ParamGroupLayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamGroupLayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamGroupLayer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamInt32Array {
@@ -17038,11 +17407,25 @@ export namespace Gimp {
 
     class ParamInt32Array extends ParamArray {
         static $gtype: GObject.GType<ParamInt32Array>;
-        declare static readonly __signalSignatures: ParamInt32Array.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamInt32Array.SignalSignatures>(
+            signal: K,
+            callback: ParamInt32Array.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamInt32Array.SignalSignatures>(
+            signal: K,
+            callback: ParamInt32Array.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamInt32Array.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamInt32Array.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamLayer {
@@ -17052,11 +17435,25 @@ export namespace Gimp {
 
     class ParamLayer extends ParamDrawable {
         static $gtype: GObject.GType<ParamLayer>;
-        declare static readonly __signalSignatures: ParamLayer.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamLayer.SignalSignatures>(
+            signal: K,
+            callback: ParamLayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamLayer.SignalSignatures>(
+            signal: K,
+            callback: ParamLayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamLayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamLayer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamLayerMask {
@@ -17066,11 +17463,25 @@ export namespace Gimp {
 
     class ParamLayerMask extends ParamChannel {
         static $gtype: GObject.GType<ParamLayerMask>;
-        declare static readonly __signalSignatures: ParamLayerMask.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamLayerMask.SignalSignatures>(
+            signal: K,
+            callback: ParamLayerMask.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamLayerMask.SignalSignatures>(
+            signal: K,
+            callback: ParamLayerMask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamLayerMask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamLayerMask.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamPalette {
@@ -17080,11 +17491,25 @@ export namespace Gimp {
 
     class ParamPalette extends ParamResource {
         static $gtype: GObject.GType<ParamPalette>;
-        declare static readonly __signalSignatures: ParamPalette.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamPalette.SignalSignatures>(
+            signal: K,
+            callback: ParamPalette.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamPalette.SignalSignatures>(
+            signal: K,
+            callback: ParamPalette.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamPalette.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamPalette.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamPath {
@@ -17094,11 +17519,22 @@ export namespace Gimp {
 
     class ParamPath extends ParamItem {
         static $gtype: GObject.GType<ParamPath>;
-        declare static readonly __signalSignatures: ParamPath.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamPath.SignalSignatures>(signal: K, callback: ParamPath.SignalSignatures[K]): number;
+        connect_after<K extends keyof ParamPath.SignalSignatures>(
+            signal: K,
+            callback: ParamPath.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamPath.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamPath.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamPattern {
@@ -17108,11 +17544,25 @@ export namespace Gimp {
 
     class ParamPattern extends ParamResource {
         static $gtype: GObject.GType<ParamPattern>;
-        declare static readonly __signalSignatures: ParamPattern.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamPattern.SignalSignatures>(
+            signal: K,
+            callback: ParamPattern.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamPattern.SignalSignatures>(
+            signal: K,
+            callback: ParamPattern.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamPattern.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamPattern.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamResource {
@@ -17122,11 +17572,25 @@ export namespace Gimp {
 
     class ParamResource extends ParamObject {
         static $gtype: GObject.GType<ParamResource>;
-        declare static readonly __signalSignatures: ParamResource.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamResource.SignalSignatures>(
+            signal: K,
+            callback: ParamResource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamResource.SignalSignatures>(
+            signal: K,
+            callback: ParamResource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamResource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamResource.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamSelection {
@@ -17136,11 +17600,25 @@ export namespace Gimp {
 
     class ParamSelection extends ParamChannel {
         static $gtype: GObject.GType<ParamSelection>;
-        declare static readonly __signalSignatures: ParamSelection.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamSelection.SignalSignatures>(
+            signal: K,
+            callback: ParamSelection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamSelection.SignalSignatures>(
+            signal: K,
+            callback: ParamSelection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamSelection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamSelection.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamTextLayer {
@@ -17150,11 +17628,25 @@ export namespace Gimp {
 
     class ParamTextLayer extends ParamLayer {
         static $gtype: GObject.GType<ParamTextLayer>;
-        declare static readonly __signalSignatures: ParamTextLayer.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamTextLayer.SignalSignatures>(
+            signal: K,
+            callback: ParamTextLayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ParamTextLayer.SignalSignatures>(
+            signal: K,
+            callback: ParamTextLayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamTextLayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamTextLayer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ParamUnit {
@@ -17164,11 +17656,22 @@ export namespace Gimp {
 
     class ParamUnit extends ParamObject {
         static $gtype: GObject.GType<ParamUnit>;
-        declare static readonly __signalSignatures: ParamUnit.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ParamUnit.SignalSignatures>(signal: K, callback: ParamUnit.SignalSignatures[K]): number;
+        connect_after<K extends keyof ParamUnit.SignalSignatures>(
+            signal: K,
+            callback: ParamUnit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ParamUnit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ParamUnit.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Path {
@@ -17185,7 +17688,6 @@ export namespace Gimp {
      */
     class Path extends Item {
         static $gtype: GObject.GType<Path>;
-        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Constructors
 
@@ -17196,6 +17698,12 @@ export namespace Gimp {
         static ['new'](image: Image, name: string): Path;
 
         static new_from_text_layer(image: Image, layer: Layer): Path;
+
+        // Signals
+
+        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -17464,13 +17972,24 @@ export namespace Gimp {
      */
     class Pattern extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Pattern>;
-        declare static readonly __signalSignatures: Pattern.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Pattern.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Pattern.SignalSignatures>(signal: K, callback: Pattern.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pattern.SignalSignatures>(
+            signal: K,
+            callback: Pattern.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Pattern.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Pattern.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -18026,7 +18545,6 @@ export namespace Gimp {
      */
     class PlugIn extends GObject.Object {
         static $gtype: GObject.GType<PlugIn>;
-        declare static readonly __signalSignatures: PlugIn.SignalSignatures;
 
         // Properties
 
@@ -18060,6 +18578,12 @@ export namespace Gimp {
         constructor(properties?: Partial<PlugIn.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PlugIn.SignalSignatures>(signal: K, callback: PlugIn.SignalSignatures[K]): number;
+        connect_after<K extends keyof PlugIn.SignalSignatures>(signal: K, callback: PlugIn.SignalSignatures[K]): number;
+        emit<K extends keyof PlugIn.SignalSignatures>(signal: K, ...args: Parameters<PlugIn.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -18334,7 +18858,6 @@ export namespace Gimp {
      */
     class Procedure extends GObject.Object {
         static $gtype: GObject.GType<Procedure>;
-        declare static readonly __signalSignatures: Procedure.SignalSignatures;
 
         // Properties
 
@@ -18357,6 +18880,18 @@ export namespace Gimp {
             run_func: RunFunc,
             run_data_destroy?: GLib.DestroyNotify | null,
         ): Procedure;
+
+        // Signals
+
+        connect<K extends keyof Procedure.SignalSignatures>(signal: K, callback: Procedure.SignalSignatures[K]): number;
+        connect_after<K extends keyof Procedure.SignalSignatures>(
+            signal: K,
+            callback: Procedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Procedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Procedure.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -20166,7 +20701,6 @@ export namespace Gimp {
      */
     abstract class ProcedureConfig extends GObject.Object {
         static $gtype: GObject.GType<ProcedureConfig>;
-        declare static readonly __signalSignatures: ProcedureConfig.SignalSignatures;
 
         // Properties
 
@@ -20177,6 +20711,21 @@ export namespace Gimp {
         constructor(properties?: Partial<ProcedureConfig.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ProcedureConfig.SignalSignatures>(
+            signal: K,
+            callback: ProcedureConfig.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProcedureConfig.SignalSignatures>(
+            signal: K,
+            callback: ProcedureConfig.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProcedureConfig.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProcedureConfig.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20231,7 +20780,6 @@ export namespace Gimp {
      */
     abstract class Resource extends GObject.Object implements ConfigInterface {
         static $gtype: GObject.GType<Resource>;
-        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -20242,6 +20790,18 @@ export namespace Gimp {
         constructor(properties?: Partial<Resource.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect_after<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            callback: Resource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Resource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Resource.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -20880,13 +21440,24 @@ export namespace Gimp {
      */
     class Selection extends Channel {
         static $gtype: GObject.GType<Selection>;
-        declare static readonly __signalSignatures: Selection.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Selection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Selection.SignalSignatures>(signal: K, callback: Selection.SignalSignatures[K]): number;
+        connect_after<K extends keyof Selection.SignalSignatures>(
+            signal: K,
+            callback: Selection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Selection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Selection.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -21064,7 +21635,6 @@ export namespace Gimp {
      */
     class TextLayer extends Layer {
         static $gtype: GObject.GType<TextLayer>;
-        declare static readonly __signalSignatures: TextLayer.SignalSignatures;
 
         // Constructors
 
@@ -21076,6 +21646,18 @@ export namespace Gimp {
         // Conflicted with Gimp.Layer.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof TextLayer.SignalSignatures>(signal: K, callback: TextLayer.SignalSignatures[K]): number;
+        connect_after<K extends keyof TextLayer.SignalSignatures>(
+            signal: K,
+            callback: TextLayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextLayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextLayer.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -21354,7 +21936,6 @@ export namespace Gimp {
 
     class ThumbnailProcedure extends Procedure {
         static $gtype: GObject.GType<ThumbnailProcedure>;
-        declare static readonly __signalSignatures: ThumbnailProcedure.SignalSignatures;
 
         // Constructors
 
@@ -21372,6 +21953,21 @@ export namespace Gimp {
         // Conflicted with Gimp.Procedure.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ThumbnailProcedure.SignalSignatures>(
+            signal: K,
+            callback: ThumbnailProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThumbnailProcedure.SignalSignatures>(
+            signal: K,
+            callback: ThumbnailProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThumbnailProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThumbnailProcedure.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Unit {
@@ -21396,7 +21992,6 @@ export namespace Gimp {
      */
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
-        declare static readonly __signalSignatures: Unit.SignalSignatures;
 
         // Properties
 
@@ -21414,6 +22009,12 @@ export namespace Gimp {
         _init(...args: any[]): void;
 
         static ['new'](name: string, factor: number, digits: number, symbol: string, abbreviation: string): Unit;
+
+        // Signals
+
+        connect<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        connect_after<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
+        emit<K extends keyof Unit.SignalSignatures>(signal: K, ...args: Parameters<Unit.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -21608,7 +22209,6 @@ export namespace Gimp {
      */
     class VectorLoadProcedure extends LoadProcedure {
         static $gtype: GObject.GType<VectorLoadProcedure>;
-        declare static readonly __signalSignatures: VectorLoadProcedure.SignalSignatures;
 
         // Constructors
 
@@ -21627,6 +22227,21 @@ export namespace Gimp {
         // Conflicted with Gimp.LoadProcedure.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof VectorLoadProcedure.SignalSignatures>(
+            signal: K,
+            callback: VectorLoadProcedure.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VectorLoadProcedure.SignalSignatures>(
+            signal: K,
+            callback: VectorLoadProcedure.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VectorLoadProcedure.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VectorLoadProcedure.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

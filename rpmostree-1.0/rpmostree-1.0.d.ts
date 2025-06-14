@@ -112,13 +112,24 @@ export namespace RpmOstree {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
-        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Package.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect_after<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            callback: Package.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Package.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

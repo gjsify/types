@@ -200,7 +200,6 @@ export namespace GCalc {
 
     class Assign extends Expression implements MathOperator, MathBinaryOperator, MathAssign {
         static $gtype: GObject.GType<Assign>;
-        declare static readonly __signalSignatures: Assign.SignalSignatures;
 
         // Constructors
 
@@ -209,6 +208,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Assign;
+
+        // Signals
+
+        connect<K extends keyof Assign.SignalSignatures>(signal: K, callback: Assign.SignalSignatures[K]): number;
+        connect_after<K extends keyof Assign.SignalSignatures>(signal: K, callback: Assign.SignalSignatures[K]): number;
+        emit<K extends keyof Assign.SignalSignatures>(signal: K, ...args: Parameters<Assign.SignalSignatures[K]>): void;
 
         // Inherited methods
         evaluate(): MathExpression;
@@ -664,7 +669,6 @@ export namespace GCalc {
 
     class Calculator extends GObject.Object {
         static $gtype: GObject.GType<Calculator>;
-        declare static readonly __signalSignatures: Calculator.SignalSignatures;
 
         // Constructors
 
@@ -673,6 +677,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Calculator;
+
+        // Signals
+
+        connect<K extends keyof Calculator.SignalSignatures>(
+            signal: K,
+            callback: Calculator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Calculator.SignalSignatures>(
+            signal: K,
+            callback: Calculator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Calculator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Calculator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -719,7 +738,6 @@ export namespace GCalc {
         implements MathConstant, MathConstantNumber, MathConstantComplex, MathConstantVector
     {
         static $gtype: GObject.GType<Constant>;
-        declare static readonly __signalSignatures: Constant.SignalSignatures;
 
         // Constructors
 
@@ -738,6 +756,18 @@ export namespace GCalc {
         static assign(c: MathConstant): Constant;
 
         static ['new'](): Constant;
+
+        // Signals
+
+        connect<K extends keyof Constant.SignalSignatures>(signal: K, callback: Constant.SignalSignatures[K]): number;
+        connect_after<K extends keyof Constant.SignalSignatures>(
+            signal: K,
+            callback: Constant.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Constant.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Constant.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         add(c: MathConstant): MathConstant;
@@ -1224,7 +1254,6 @@ export namespace GCalc {
 
     class Division extends Expression implements MathOperator, MathBinaryOperator, MathDivision {
         static $gtype: GObject.GType<Division>;
-        declare static readonly __signalSignatures: Division.SignalSignatures;
 
         // Constructors
 
@@ -1233,6 +1262,18 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Division;
+
+        // Signals
+
+        connect<K extends keyof Division.SignalSignatures>(signal: K, callback: Division.SignalSignatures[K]): number;
+        connect_after<K extends keyof Division.SignalSignatures>(
+            signal: K,
+            callback: Division.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Division.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Division.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -1687,7 +1728,6 @@ export namespace GCalc {
 
     class Equation extends Expression implements MathEquation {
         static $gtype: GObject.GType<Equation>;
-        declare static readonly __signalSignatures: Equation.SignalSignatures;
 
         // Constructors
 
@@ -1696,6 +1736,18 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Equation;
+
+        // Signals
+
+        connect<K extends keyof Equation.SignalSignatures>(signal: K, callback: Equation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Equation.SignalSignatures>(
+            signal: K,
+            callback: Equation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Equation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Equation.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get variables(): ExpressionHashMap;
@@ -2155,7 +2207,6 @@ export namespace GCalc {
 
     class EquationManager extends GObject.Object implements MathEquationManager {
         static $gtype: GObject.GType<EquationManager>;
-        declare static readonly __signalSignatures: EquationManager.SignalSignatures;
 
         // Constructors
 
@@ -2164,6 +2215,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): EquationManager;
+
+        // Signals
+
+        connect<K extends keyof EquationManager.SignalSignatures>(
+            signal: K,
+            callback: EquationManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EquationManager.SignalSignatures>(
+            signal: K,
+            callback: EquationManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EquationManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EquationManager.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get equations(): ExpressionContainer;
@@ -2631,7 +2697,6 @@ export namespace GCalc {
 
     class ErrorResult extends GObject.Object implements MathResult, MathErrorResult {
         static $gtype: GObject.GType<ErrorResult>;
-        declare static readonly __signalSignatures: ErrorResult.SignalSignatures;
 
         // Constructors
 
@@ -2640,6 +2705,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](msg: string): ErrorResult;
+
+        // Signals
+
+        connect<K extends keyof ErrorResult.SignalSignatures>(
+            signal: K,
+            callback: ErrorResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ErrorResult.SignalSignatures>(
+            signal: K,
+            callback: ErrorResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ErrorResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ErrorResult.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get expression(): MathExpression;
@@ -3104,7 +3184,6 @@ export namespace GCalc {
 
     class Expression extends GObject.Object implements MathExpression {
         static $gtype: GObject.GType<Expression>;
-        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Constructors
 
@@ -3113,6 +3192,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Expression;
+
+        // Signals
+
+        connect<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            callback: Expression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Expression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Expression.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3588,7 +3682,6 @@ export namespace GCalc {
 
     class ErrorExpression extends Expression {
         static $gtype: GObject.GType<ErrorExpression>;
-        declare static readonly __signalSignatures: ErrorExpression.SignalSignatures;
 
         // Constructors
 
@@ -3597,6 +3690,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): ErrorExpression;
+
+        // Signals
+
+        connect<K extends keyof ErrorExpression.SignalSignatures>(
+            signal: K,
+            callback: ErrorExpression.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ErrorExpression.SignalSignatures>(
+            signal: K,
+            callback: ErrorExpression.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ErrorExpression.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ErrorExpression.SignalSignatures[K]>
+        ): void;
     }
 
     namespace ExpressionContainer {
@@ -3617,7 +3725,6 @@ export namespace GCalc {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<ExpressionContainer>;
-        declare static readonly __signalSignatures: ExpressionContainer.SignalSignatures;
 
         // Properties
 
@@ -3631,6 +3738,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionContainer;
+
+        // Signals
+
+        connect<K extends keyof ExpressionContainer.SignalSignatures>(
+            signal: K,
+            callback: ExpressionContainer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionContainer.SignalSignatures>(
+            signal: K,
+            callback: ExpressionContainer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionContainer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionContainer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4191,7 +4313,6 @@ export namespace GCalc {
 
     class ExpressionHashMap extends Gee.HashMap {
         static $gtype: GObject.GType<ExpressionHashMap>;
-        declare static readonly __signalSignatures: ExpressionHashMap.SignalSignatures;
 
         // Properties
 
@@ -4205,6 +4326,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): ExpressionHashMap;
+
+        // Signals
+
+        connect<K extends keyof ExpressionHashMap.SignalSignatures>(
+            signal: K,
+            callback: ExpressionHashMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExpressionHashMap.SignalSignatures>(
+            signal: K,
+            callback: ExpressionHashMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExpressionHashMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExpressionHashMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4231,7 +4367,6 @@ export namespace GCalc {
 
     class Function extends Expression implements MathFunction, Hashable {
         static $gtype: GObject.GType<Function>;
-        declare static readonly __signalSignatures: Function.SignalSignatures;
 
         // Constructors
 
@@ -4242,6 +4377,18 @@ export namespace GCalc {
         static with_name(name: string, nparams: number): Function;
 
         static ['new'](): Function;
+
+        // Signals
+
+        connect<K extends keyof Function.SignalSignatures>(signal: K, callback: Function.SignalSignatures[K]): number;
+        connect_after<K extends keyof Function.SignalSignatures>(
+            signal: K,
+            callback: Function.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Function.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Function.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4734,7 +4881,6 @@ export namespace GCalc {
 
     class FunctionAcos extends Function {
         static $gtype: GObject.GType<FunctionAcos>;
-        declare static readonly __signalSignatures: FunctionAcos.SignalSignatures;
 
         // Constructors
 
@@ -4743,6 +4889,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionAcos;
+
+        // Signals
+
+        connect<K extends keyof FunctionAcos.SignalSignatures>(
+            signal: K,
+            callback: FunctionAcos.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionAcos.SignalSignatures>(
+            signal: K,
+            callback: FunctionAcos.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionAcos.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionAcos.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionAcosh {
@@ -4756,7 +4917,6 @@ export namespace GCalc {
 
     class FunctionAcosh extends Function {
         static $gtype: GObject.GType<FunctionAcosh>;
-        declare static readonly __signalSignatures: FunctionAcosh.SignalSignatures;
 
         // Constructors
 
@@ -4765,6 +4925,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionAcosh;
+
+        // Signals
+
+        connect<K extends keyof FunctionAcosh.SignalSignatures>(
+            signal: K,
+            callback: FunctionAcosh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionAcosh.SignalSignatures>(
+            signal: K,
+            callback: FunctionAcosh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionAcosh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionAcosh.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionAsin {
@@ -4778,7 +4953,6 @@ export namespace GCalc {
 
     class FunctionAsin extends Function {
         static $gtype: GObject.GType<FunctionAsin>;
-        declare static readonly __signalSignatures: FunctionAsin.SignalSignatures;
 
         // Constructors
 
@@ -4787,6 +4961,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionAsin;
+
+        // Signals
+
+        connect<K extends keyof FunctionAsin.SignalSignatures>(
+            signal: K,
+            callback: FunctionAsin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionAsin.SignalSignatures>(
+            signal: K,
+            callback: FunctionAsin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionAsin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionAsin.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionAsinh {
@@ -4800,7 +4989,6 @@ export namespace GCalc {
 
     class FunctionAsinh extends Function {
         static $gtype: GObject.GType<FunctionAsinh>;
-        declare static readonly __signalSignatures: FunctionAsinh.SignalSignatures;
 
         // Constructors
 
@@ -4809,6 +4997,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionAsinh;
+
+        // Signals
+
+        connect<K extends keyof FunctionAsinh.SignalSignatures>(
+            signal: K,
+            callback: FunctionAsinh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionAsinh.SignalSignatures>(
+            signal: K,
+            callback: FunctionAsinh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionAsinh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionAsinh.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionAtan {
@@ -4822,7 +5025,6 @@ export namespace GCalc {
 
     class FunctionAtan extends Function {
         static $gtype: GObject.GType<FunctionAtan>;
-        declare static readonly __signalSignatures: FunctionAtan.SignalSignatures;
 
         // Constructors
 
@@ -4831,6 +5033,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionAtan;
+
+        // Signals
+
+        connect<K extends keyof FunctionAtan.SignalSignatures>(
+            signal: K,
+            callback: FunctionAtan.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionAtan.SignalSignatures>(
+            signal: K,
+            callback: FunctionAtan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionAtan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionAtan.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionAtanh {
@@ -4844,7 +5061,6 @@ export namespace GCalc {
 
     class FunctionAtanh extends Function {
         static $gtype: GObject.GType<FunctionAtanh>;
-        declare static readonly __signalSignatures: FunctionAtanh.SignalSignatures;
 
         // Constructors
 
@@ -4853,6 +5069,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionAtanh;
+
+        // Signals
+
+        connect<K extends keyof FunctionAtanh.SignalSignatures>(
+            signal: K,
+            callback: FunctionAtanh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionAtanh.SignalSignatures>(
+            signal: K,
+            callback: FunctionAtanh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionAtanh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionAtanh.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionCos {
@@ -4866,7 +5097,6 @@ export namespace GCalc {
 
     class FunctionCos extends Function {
         static $gtype: GObject.GType<FunctionCos>;
-        declare static readonly __signalSignatures: FunctionCos.SignalSignatures;
 
         // Constructors
 
@@ -4875,6 +5105,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionCos;
+
+        // Signals
+
+        connect<K extends keyof FunctionCos.SignalSignatures>(
+            signal: K,
+            callback: FunctionCos.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionCos.SignalSignatures>(
+            signal: K,
+            callback: FunctionCos.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionCos.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionCos.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionCosh {
@@ -4888,7 +5133,6 @@ export namespace GCalc {
 
     class FunctionCosh extends Function {
         static $gtype: GObject.GType<FunctionCosh>;
-        declare static readonly __signalSignatures: FunctionCosh.SignalSignatures;
 
         // Constructors
 
@@ -4897,6 +5141,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionCosh;
+
+        // Signals
+
+        connect<K extends keyof FunctionCosh.SignalSignatures>(
+            signal: K,
+            callback: FunctionCosh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionCosh.SignalSignatures>(
+            signal: K,
+            callback: FunctionCosh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionCosh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionCosh.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionExp {
@@ -4910,7 +5169,6 @@ export namespace GCalc {
 
     class FunctionExp extends Function {
         static $gtype: GObject.GType<FunctionExp>;
-        declare static readonly __signalSignatures: FunctionExp.SignalSignatures;
 
         // Constructors
 
@@ -4919,6 +5177,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionExp;
+
+        // Signals
+
+        connect<K extends keyof FunctionExp.SignalSignatures>(
+            signal: K,
+            callback: FunctionExp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionExp.SignalSignatures>(
+            signal: K,
+            callback: FunctionExp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionExp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionExp.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionLog {
@@ -4932,7 +5205,6 @@ export namespace GCalc {
 
     class FunctionLog extends Function {
         static $gtype: GObject.GType<FunctionLog>;
-        declare static readonly __signalSignatures: FunctionLog.SignalSignatures;
 
         // Constructors
 
@@ -4941,6 +5213,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionLog;
+
+        // Signals
+
+        connect<K extends keyof FunctionLog.SignalSignatures>(
+            signal: K,
+            callback: FunctionLog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionLog.SignalSignatures>(
+            signal: K,
+            callback: FunctionLog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionLog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionLog.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionSin {
@@ -4954,7 +5241,6 @@ export namespace GCalc {
 
     class FunctionSin extends Function {
         static $gtype: GObject.GType<FunctionSin>;
-        declare static readonly __signalSignatures: FunctionSin.SignalSignatures;
 
         // Constructors
 
@@ -4963,6 +5249,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionSin;
+
+        // Signals
+
+        connect<K extends keyof FunctionSin.SignalSignatures>(
+            signal: K,
+            callback: FunctionSin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionSin.SignalSignatures>(
+            signal: K,
+            callback: FunctionSin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionSin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionSin.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionSinh {
@@ -4976,7 +5277,6 @@ export namespace GCalc {
 
     class FunctionSinh extends Function {
         static $gtype: GObject.GType<FunctionSinh>;
-        declare static readonly __signalSignatures: FunctionSinh.SignalSignatures;
 
         // Constructors
 
@@ -4985,6 +5285,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionSinh;
+
+        // Signals
+
+        connect<K extends keyof FunctionSinh.SignalSignatures>(
+            signal: K,
+            callback: FunctionSinh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionSinh.SignalSignatures>(
+            signal: K,
+            callback: FunctionSinh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionSinh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionSinh.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionSqrt {
@@ -4998,7 +5313,6 @@ export namespace GCalc {
 
     class FunctionSqrt extends Function {
         static $gtype: GObject.GType<FunctionSqrt>;
-        declare static readonly __signalSignatures: FunctionSqrt.SignalSignatures;
 
         // Constructors
 
@@ -5007,6 +5321,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionSqrt;
+
+        // Signals
+
+        connect<K extends keyof FunctionSqrt.SignalSignatures>(
+            signal: K,
+            callback: FunctionSqrt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionSqrt.SignalSignatures>(
+            signal: K,
+            callback: FunctionSqrt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionSqrt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionSqrt.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionTan {
@@ -5020,7 +5349,6 @@ export namespace GCalc {
 
     class FunctionTan extends Function {
         static $gtype: GObject.GType<FunctionTan>;
-        declare static readonly __signalSignatures: FunctionTan.SignalSignatures;
 
         // Constructors
 
@@ -5029,6 +5357,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionTan;
+
+        // Signals
+
+        connect<K extends keyof FunctionTan.SignalSignatures>(
+            signal: K,
+            callback: FunctionTan.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionTan.SignalSignatures>(
+            signal: K,
+            callback: FunctionTan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionTan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionTan.SignalSignatures[K]>
+        ): void;
     }
 
     namespace FunctionTanh {
@@ -5042,7 +5385,6 @@ export namespace GCalc {
 
     class FunctionTanh extends Function {
         static $gtype: GObject.GType<FunctionTanh>;
-        declare static readonly __signalSignatures: FunctionTanh.SignalSignatures;
 
         // Constructors
 
@@ -5051,6 +5393,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): FunctionTanh;
+
+        // Signals
+
+        connect<K extends keyof FunctionTanh.SignalSignatures>(
+            signal: K,
+            callback: FunctionTanh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FunctionTanh.SignalSignatures>(
+            signal: K,
+            callback: FunctionTanh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FunctionTanh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FunctionTanh.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Group {
@@ -5064,7 +5421,6 @@ export namespace GCalc {
 
     class Group extends Expression implements MathGroup {
         static $gtype: GObject.GType<Group>;
-        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -5073,6 +5429,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Group;
+
+        // Signals
+
+        connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
 
         // Inherited properties
         get level(): MathGroupLevel;
@@ -5547,7 +5909,6 @@ export namespace GCalc {
 
     class Minus extends Expression implements MathOperator, MathBinaryOperator, MathMinus {
         static $gtype: GObject.GType<Minus>;
-        declare static readonly __signalSignatures: Minus.SignalSignatures;
 
         // Constructors
 
@@ -5556,6 +5917,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Minus;
+
+        // Signals
+
+        connect<K extends keyof Minus.SignalSignatures>(signal: K, callback: Minus.SignalSignatures[K]): number;
+        connect_after<K extends keyof Minus.SignalSignatures>(signal: K, callback: Minus.SignalSignatures[K]): number;
+        emit<K extends keyof Minus.SignalSignatures>(signal: K, ...args: Parameters<Minus.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -6014,7 +6381,6 @@ export namespace GCalc {
 
     class Multiply extends Expression implements MathOperator, MathBinaryOperator, MathMultiply {
         static $gtype: GObject.GType<Multiply>;
-        declare static readonly __signalSignatures: Multiply.SignalSignatures;
 
         // Constructors
 
@@ -6023,6 +6389,18 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Multiply;
+
+        // Signals
+
+        connect<K extends keyof Multiply.SignalSignatures>(signal: K, callback: Multiply.SignalSignatures[K]): number;
+        connect_after<K extends keyof Multiply.SignalSignatures>(
+            signal: K,
+            callback: Multiply.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Multiply.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Multiply.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6477,7 +6855,6 @@ export namespace GCalc {
 
     class Parameter extends Variable implements MathParameter {
         static $gtype: GObject.GType<Parameter>;
-        declare static readonly __signalSignatures: Parameter.SignalSignatures;
 
         // Constructors
 
@@ -6489,6 +6866,18 @@ export namespace GCalc {
         // Conflicted with GCalc.Expression.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Parameter.SignalSignatures>(signal: K, callback: Parameter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parameter.SignalSignatures>(
+            signal: K,
+            callback: Parameter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Parameter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Parameter.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         set_value(val?: GObject.Value | null): void;
@@ -6955,7 +7344,6 @@ export namespace GCalc {
 
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
-        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Constructors
 
@@ -6964,6 +7352,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Parser;
+
+        // Signals
+
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -6987,7 +7381,6 @@ export namespace GCalc {
 
     class Plus extends Expression implements MathOperator, MathBinaryOperator, MathPlus {
         static $gtype: GObject.GType<Plus>;
-        declare static readonly __signalSignatures: Plus.SignalSignatures;
 
         // Constructors
 
@@ -6996,6 +7389,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Plus;
+
+        // Signals
+
+        connect<K extends keyof Plus.SignalSignatures>(signal: K, callback: Plus.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plus.SignalSignatures>(signal: K, callback: Plus.SignalSignatures[K]): number;
+        emit<K extends keyof Plus.SignalSignatures>(signal: K, ...args: Parameters<Plus.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -7450,7 +7849,6 @@ export namespace GCalc {
 
     class Polynomial extends Expression implements MathPolynomial {
         static $gtype: GObject.GType<Polynomial>;
-        declare static readonly __signalSignatures: Polynomial.SignalSignatures;
 
         // Constructors
 
@@ -7459,6 +7857,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Polynomial;
+
+        // Signals
+
+        connect<K extends keyof Polynomial.SignalSignatures>(
+            signal: K,
+            callback: Polynomial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Polynomial.SignalSignatures>(
+            signal: K,
+            callback: Polynomial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Polynomial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Polynomial.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         evaluate(): MathExpression;
@@ -7918,7 +8331,6 @@ export namespace GCalc {
 
     class Pow extends Expression implements MathOperator, MathPow {
         static $gtype: GObject.GType<Pow>;
-        declare static readonly __signalSignatures: Pow.SignalSignatures;
 
         // Constructors
 
@@ -7927,6 +8339,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Pow;
+
+        // Signals
+
+        connect<K extends keyof Pow.SignalSignatures>(signal: K, callback: Pow.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pow.SignalSignatures>(signal: K, callback: Pow.SignalSignatures[K]): number;
+        emit<K extends keyof Pow.SignalSignatures>(signal: K, ...args: Parameters<Pow.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -8381,7 +8799,6 @@ export namespace GCalc {
 
     class Result extends GObject.Object implements MathResult {
         static $gtype: GObject.GType<Result>;
-        declare static readonly __signalSignatures: Result.SignalSignatures;
 
         // Constructors
 
@@ -8390,6 +8807,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](exp: MathExpression): Result;
+
+        // Signals
+
+        connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: Parameters<Result.SignalSignatures[K]>): void;
 
         // Inherited properties
         get expression(): MathExpression;
@@ -8854,7 +9277,6 @@ export namespace GCalc {
 
     class Solver extends GObject.Object {
         static $gtype: GObject.GType<Solver>;
-        declare static readonly __signalSignatures: Solver.SignalSignatures;
 
         // Properties
 
@@ -8870,6 +9292,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Solver;
+
+        // Signals
+
+        connect<K extends keyof Solver.SignalSignatures>(signal: K, callback: Solver.SignalSignatures[K]): number;
+        connect_after<K extends keyof Solver.SignalSignatures>(signal: K, callback: Solver.SignalSignatures[K]): number;
+        emit<K extends keyof Solver.SignalSignatures>(signal: K, ...args: Parameters<Solver.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -8890,7 +9318,6 @@ export namespace GCalc {
 
     class Term extends Expression implements MathTerm {
         static $gtype: GObject.GType<Term>;
-        declare static readonly __signalSignatures: Term.SignalSignatures;
 
         // Constructors
 
@@ -8899,6 +9326,12 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): Term;
+
+        // Signals
+
+        connect<K extends keyof Term.SignalSignatures>(signal: K, callback: Term.SignalSignatures[K]): number;
+        connect_after<K extends keyof Term.SignalSignatures>(signal: K, callback: Term.SignalSignatures[K]): number;
+        emit<K extends keyof Term.SignalSignatures>(signal: K, ...args: Parameters<Term.SignalSignatures[K]>): void;
 
         // Inherited methods
         add(t: MathTerm): MathExpression;
@@ -9357,7 +9790,6 @@ export namespace GCalc {
 
     class UnitConverter extends GObject.Object {
         static $gtype: GObject.GType<UnitConverter>;
-        declare static readonly __signalSignatures: UnitConverter.SignalSignatures;
 
         // Constructors
 
@@ -9366,6 +9798,21 @@ export namespace GCalc {
         _init(...args: any[]): void;
 
         static ['new'](): UnitConverter;
+
+        // Signals
+
+        connect<K extends keyof UnitConverter.SignalSignatures>(
+            signal: K,
+            callback: UnitConverter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnitConverter.SignalSignatures>(
+            signal: K,
+            callback: UnitConverter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnitConverter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnitConverter.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9386,13 +9833,24 @@ export namespace GCalc {
 
     class Variable extends Expression implements MathVariable, Hashable {
         static $gtype: GObject.GType<Variable>;
-        declare static readonly __signalSignatures: Variable.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Variable.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Variable.SignalSignatures>(signal: K, callback: Variable.SignalSignatures[K]): number;
+        connect_after<K extends keyof Variable.SignalSignatures>(
+            signal: K,
+            callback: Variable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Variable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Variable.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;

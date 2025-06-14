@@ -133,15 +133,15 @@ export namespace Accounts {
         // Signal callback interfaces
 
         interface Deleted {
-            (): void;
+            (_source: Account): void;
         }
 
         interface DisplayNameChanged {
-            (): void;
+            (_source: Account): void;
         }
 
         interface Enabled {
-            (service: string, enabled: boolean): void;
+            (_source: Account, service: string, enabled: boolean): void;
         }
 
         // Signal signatures
@@ -169,7 +169,6 @@ export namespace Accounts {
      */
     class Account extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Account>;
-        declare static readonly __signalSignatures: Account.SignalSignatures;
 
         // Properties
 
@@ -216,18 +215,6 @@ export namespace Accounts {
             signal: K,
             ...args: Parameters<Account.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'deleted', callback: (_source: this) => void): number;
-        connect_after(signal: 'deleted', callback: (_source: this) => void): number;
-        emit(signal: 'deleted'): void;
-        connect(signal: 'display-name-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'display-name-changed', callback: (_source: this) => void): number;
-        emit(signal: 'display-name-changed'): void;
-        connect(signal: 'enabled', callback: (_source: this, service: string, enabled: boolean) => void): number;
-        connect_after(signal: 'enabled', callback: (_source: this, service: string, enabled: boolean) => void): number;
-        emit(signal: 'enabled', service: string, enabled: boolean): void;
 
         // Methods
 
@@ -966,11 +953,11 @@ export namespace Accounts {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: AccountService): void;
         }
 
         interface Enabled {
-            (enabled: boolean): void;
+            (_source: AccountService, enabled: boolean): void;
         }
 
         // Signal signatures
@@ -993,7 +980,6 @@ export namespace Accounts {
      */
     class AccountService extends GObject.Object {
         static $gtype: GObject.GType<AccountService>;
-        declare static readonly __signalSignatures: AccountService.SignalSignatures;
 
         // Properties
 
@@ -1036,15 +1022,6 @@ export namespace Accounts {
             signal: K,
             ...args: Parameters<AccountService.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'enabled', callback: (_source: this, enabled: boolean) => void): number;
-        connect_after(signal: 'enabled', callback: (_source: this, enabled: boolean) => void): number;
-        emit(signal: 'enabled', enabled: boolean): void;
 
         // Static methods
 
@@ -1143,19 +1120,19 @@ export namespace Accounts {
         // Signal callback interfaces
 
         interface AccountCreated {
-            (account_id: number): void;
+            (_source: Manager, account_id: number): void;
         }
 
         interface AccountDeleted {
-            (account_id: number): void;
+            (_source: Manager, account_id: number): void;
         }
 
         interface AccountUpdated {
-            (account_id: number): void;
+            (_source: Manager, account_id: number): void;
         }
 
         interface EnabledEvent {
-            (account_id: number): void;
+            (_source: Manager, account_id: number): void;
         }
 
         // Signal signatures
@@ -1185,7 +1162,6 @@ export namespace Accounts {
      */
     class Manager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Manager>;
-        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Properties
 
@@ -1259,21 +1235,6 @@ export namespace Accounts {
             signal: K,
             ...args: Parameters<Manager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'account-created', callback: (_source: this, account_id: number) => void): number;
-        connect_after(signal: 'account-created', callback: (_source: this, account_id: number) => void): number;
-        emit(signal: 'account-created', account_id: number): void;
-        connect(signal: 'account-deleted', callback: (_source: this, account_id: number) => void): number;
-        connect_after(signal: 'account-deleted', callback: (_source: this, account_id: number) => void): number;
-        emit(signal: 'account-deleted', account_id: number): void;
-        connect(signal: 'account-updated', callback: (_source: this, account_id: number) => void): number;
-        connect_after(signal: 'account-updated', callback: (_source: this, account_id: number) => void): number;
-        emit(signal: 'account-updated', account_id: number): void;
-        connect(signal: 'enabled-event', callback: (_source: this, account_id: number) => void): number;
-        connect_after(signal: 'enabled-event', callback: (_source: this, account_id: number) => void): number;
-        emit(signal: 'enabled-event', account_id: number): void;
 
         // Static methods
 

@@ -50,7 +50,6 @@ export namespace Vsqlite {
 
     class Connection extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Constructors
 
@@ -59,6 +58,21 @@ export namespace Vsqlite {
         _init(...args: any[]): void;
 
         static ['new'](): Connection;
+
+        // Signals
+
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -106,7 +106,6 @@ export namespace EBook {
      */
     class BookClient extends EDataServer.Client implements Gio.AsyncInitable<BookClient>, Gio.Initable {
         static $gtype: GObject.GType<BookClient>;
-        declare static readonly __signalSignatures: BookClient.SignalSignatures;
 
         // Properties
 
@@ -122,6 +121,21 @@ export namespace EBook {
         _init(...args: any[]): void;
 
         static ['new'](source: EDataServer.Source): BookClient;
+
+        // Signals
+
+        connect<K extends keyof BookClient.SignalSignatures>(
+            signal: K,
+            callback: BookClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookClient.SignalSignatures>(
+            signal: K,
+            callback: BookClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookClient.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1849,7 +1863,7 @@ export namespace EBook {
         // Signal callback interfaces
 
         interface Refresh {
-            (): void;
+            (_source: BookClientCursor): void;
         }
 
         // Signal signatures
@@ -1878,7 +1892,6 @@ export namespace EBook {
      */
     class BookClientCursor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<BookClientCursor>;
-        declare static readonly __signalSignatures: BookClientCursor.SignalSignatures;
 
         // Properties
 
@@ -2001,12 +2014,6 @@ export namespace EBook {
             signal: K,
             ...args: Parameters<BookClientCursor.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'refresh', callback: (_source: this) => void): number;
-        connect_after(signal: 'refresh', callback: (_source: this) => void): number;
-        emit(signal: 'refresh'): void;
 
         // Virtual methods
 
@@ -2874,27 +2881,27 @@ export namespace EBook {
         // Signal callback interfaces
 
         interface Complete {
-            (object: GLib.Error): void;
+            (_source: BookClientView, object: GLib.Error): void;
         }
 
         interface ContentChanged {
-            (): void;
+            (_source: BookClientView): void;
         }
 
         interface ObjectsAdded {
-            (objects: EBookContacts.Contact[]): void;
+            (_source: BookClientView, objects: EBookContacts.Contact[]): void;
         }
 
         interface ObjectsModified {
-            (objects: EBookContacts.Contact[]): void;
+            (_source: BookClientView, objects: EBookContacts.Contact[]): void;
         }
 
         interface ObjectsRemoved {
-            (uids: string[]): void;
+            (_source: BookClientView, uids: string[]): void;
         }
 
         interface Progress {
-            (object: number, p0: string): void;
+            (_source: BookClientView, object: number, p0: string): void;
         }
 
         // Signal signatures
@@ -2926,7 +2933,6 @@ export namespace EBook {
      */
     class BookClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<BookClientView>;
-        declare static readonly __signalSignatures: BookClientView.SignalSignatures;
 
         // Properties
 
@@ -2976,36 +2982,6 @@ export namespace EBook {
             signal: K,
             ...args: Parameters<BookClientView.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'complete', callback: (_source: this, object: GLib.Error) => void): number;
-        connect_after(signal: 'complete', callback: (_source: this, object: GLib.Error) => void): number;
-        emit(signal: 'complete', object: GLib.Error): void;
-        connect(signal: 'content-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'content-changed', callback: (_source: this) => void): number;
-        emit(signal: 'content-changed'): void;
-        connect(signal: 'objects-added', callback: (_source: this, objects: EBookContacts.Contact[]) => void): number;
-        connect_after(
-            signal: 'objects-added',
-            callback: (_source: this, objects: EBookContacts.Contact[]) => void,
-        ): number;
-        emit(signal: 'objects-added', objects: EBookContacts.Contact[]): void;
-        connect(
-            signal: 'objects-modified',
-            callback: (_source: this, objects: EBookContacts.Contact[]) => void,
-        ): number;
-        connect_after(
-            signal: 'objects-modified',
-            callback: (_source: this, objects: EBookContacts.Contact[]) => void,
-        ): number;
-        emit(signal: 'objects-modified', objects: EBookContacts.Contact[]): void;
-        connect(signal: 'objects-removed', callback: (_source: this, uids: string[]) => void): number;
-        connect_after(signal: 'objects-removed', callback: (_source: this, uids: string[]) => void): number;
-        emit(signal: 'objects-removed', uids: string[]): void;
-        connect(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
-        connect_after(signal: 'progress', callback: (_source: this, object: number, p0: string) => void): number;
-        emit(signal: 'progress', object: number, p0: string): void;
 
         // Virtual methods
 
@@ -3670,7 +3646,7 @@ export namespace EBook {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Destination): void;
         }
 
         // Signal signatures
@@ -3685,7 +3661,6 @@ export namespace EBook {
 
     class Destination extends GObject.Object {
         static $gtype: GObject.GType<Destination>;
-        declare static readonly __signalSignatures: Destination.SignalSignatures;
 
         // Fields
 
@@ -3713,12 +3688,6 @@ export namespace EBook {
             signal: K,
             ...args: Parameters<Destination.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 

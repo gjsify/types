@@ -34,11 +34,11 @@ export namespace ZBar {
         // Signal callback interfaces
 
         interface Decoded {
-            (symbol_type: number, data: string): void;
+            (_source: Gtk, symbol_type: number, data: string): void;
         }
 
         interface DecodedText {
-            (text: string): void;
+            (_source: Gtk, text: string): void;
         }
 
         // Signal signatures
@@ -64,7 +64,6 @@ export namespace ZBar {
 
     class Gtk extends Gtk__.Widget implements Atk.ImplementorIface, Gtk__.Buildable {
         static $gtype: GObject.GType<Gtk>;
-        declare static readonly __signalSignatures: Gtk.SignalSignatures;
 
         // Properties
 
@@ -96,15 +95,6 @@ export namespace ZBar {
         connect<K extends keyof Gtk.SignalSignatures>(signal: K, callback: Gtk.SignalSignatures[K]): number;
         connect_after<K extends keyof Gtk.SignalSignatures>(signal: K, callback: Gtk.SignalSignatures[K]): number;
         emit<K extends keyof Gtk.SignalSignatures>(signal: K, ...args: Parameters<Gtk.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'decoded', callback: (_source: this, symbol_type: number, data: string) => void): number;
-        connect_after(signal: 'decoded', callback: (_source: this, symbol_type: number, data: string) => void): number;
-        emit(signal: 'decoded', symbol_type: number, data: string): void;
-        connect(signal: 'decoded-text', callback: (_source: this, text: string) => void): number;
-        connect_after(signal: 'decoded-text', callback: (_source: this, text: string) => void): number;
-        emit(signal: 'decoded-text', text: string): void;
 
         // Static methods
 

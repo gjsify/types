@@ -3688,15 +3688,15 @@ export namespace NetworkManager {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface SecretsCleared {
-            (): void;
+            (_source: Connection): void;
         }
 
         interface SecretsUpdated {
-            (setting_name: string): void;
+            (_source: Connection, setting_name: string): void;
         }
 
         // Signal signatures
@@ -3719,7 +3719,6 @@ export namespace NetworkManager {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -3754,18 +3753,6 @@ export namespace NetworkManager {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect(signal: 'secrets-cleared', callback: (_source: this) => void): number;
-        connect_after(signal: 'secrets-cleared', callback: (_source: this) => void): number;
-        emit(signal: 'secrets-cleared'): void;
-        connect(signal: 'secrets-updated', callback: (_source: this, setting_name: string) => void): number;
-        connect_after(signal: 'secrets-updated', callback: (_source: this, setting_name: string) => void): number;
-        emit(signal: 'secrets-updated', setting_name: string): void;
 
         // Static methods
 
@@ -4150,7 +4137,6 @@ export namespace NetworkManager {
      */
     abstract class Setting extends GObject.Object {
         static $gtype: GObject.GType<Setting>;
-        declare static readonly __signalSignatures: Setting.SignalSignatures;
 
         // Properties
 
@@ -4172,6 +4158,18 @@ export namespace NetworkManager {
             setting_type: GObject.GType,
             hash: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): Setting;
+
+        // Signals
+
+        connect<K extends keyof Setting.SignalSignatures>(signal: K, callback: Setting.SignalSignatures[K]): number;
+        connect_after<K extends keyof Setting.SignalSignatures>(
+            signal: K,
+            callback: Setting.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Setting.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Setting.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -4364,7 +4362,6 @@ export namespace NetworkManager {
 
     class Setting8021x extends Setting {
         static $gtype: GObject.GType<Setting8021x>;
-        declare static readonly __signalSignatures: Setting8021x.SignalSignatures;
 
         // Properties
 
@@ -4686,6 +4683,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): Setting8021x;
+
+        // Signals
+
+        connect<K extends keyof Setting8021x.SignalSignatures>(
+            signal: K,
+            callback: Setting8021x.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Setting8021x.SignalSignatures>(
+            signal: K,
+            callback: Setting8021x.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Setting8021x.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Setting8021x.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5174,7 +5186,6 @@ export namespace NetworkManager {
 
     class SettingAdsl extends Setting {
         static $gtype: GObject.GType<SettingAdsl>;
-        declare static readonly __signalSignatures: SettingAdsl.SignalSignatures;
 
         // Properties
 
@@ -5227,6 +5238,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingAdsl;
 
+        // Signals
+
+        connect<K extends keyof SettingAdsl.SignalSignatures>(
+            signal: K,
+            callback: SettingAdsl.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingAdsl.SignalSignatures>(
+            signal: K,
+            callback: SettingAdsl.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingAdsl.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingAdsl.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_encapsulation(): string;
@@ -5251,7 +5277,6 @@ export namespace NetworkManager {
 
     class SettingBluetooth extends Setting {
         static $gtype: GObject.GType<SettingBluetooth>;
-        declare static readonly __signalSignatures: SettingBluetooth.SignalSignatures;
 
         // Properties
 
@@ -5269,6 +5294,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingBluetooth;
+
+        // Signals
+
+        connect<K extends keyof SettingBluetooth.SignalSignatures>(
+            signal: K,
+            callback: SettingBluetooth.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingBluetooth.SignalSignatures>(
+            signal: K,
+            callback: SettingBluetooth.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingBluetooth.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingBluetooth.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5300,7 +5340,6 @@ export namespace NetworkManager {
 
     class SettingBond extends Setting {
         static $gtype: GObject.GType<SettingBond>;
-        declare static readonly __signalSignatures: SettingBond.SignalSignatures;
 
         // Properties
 
@@ -5322,6 +5361,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingBond;
+
+        // Signals
+
+        connect<K extends keyof SettingBond.SignalSignatures>(
+            signal: K,
+            callback: SettingBond.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingBond.SignalSignatures>(
+            signal: K,
+            callback: SettingBond.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingBond.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingBond.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -5412,7 +5466,6 @@ export namespace NetworkManager {
 
     class SettingBridge extends Setting {
         static $gtype: GObject.GType<SettingBridge>;
-        declare static readonly __signalSignatures: SettingBridge.SignalSignatures;
 
         // Properties
 
@@ -5487,6 +5540,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingBridge;
 
+        // Signals
+
+        connect<K extends keyof SettingBridge.SignalSignatures>(
+            signal: K,
+            callback: SettingBridge.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingBridge.SignalSignatures>(
+            signal: K,
+            callback: SettingBridge.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingBridge.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingBridge.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_ageing_time(): number;
@@ -5516,7 +5584,6 @@ export namespace NetworkManager {
 
     class SettingBridgePort extends Setting {
         static $gtype: GObject.GType<SettingBridgePort>;
-        declare static readonly __signalSignatures: SettingBridgePort.SignalSignatures;
 
         // Properties
 
@@ -5558,6 +5625,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingBridgePort;
 
+        // Signals
+
+        connect<K extends keyof SettingBridgePort.SignalSignatures>(
+            signal: K,
+            callback: SettingBridgePort.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingBridgePort.SignalSignatures>(
+            signal: K,
+            callback: SettingBridgePort.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingBridgePort.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingBridgePort.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_hairpin_mode(): boolean;
@@ -5582,7 +5664,6 @@ export namespace NetworkManager {
 
     class SettingCdma extends Setting {
         static $gtype: GObject.GType<SettingCdma>;
-        declare static readonly __signalSignatures: SettingCdma.SignalSignatures;
 
         // Properties
 
@@ -5626,6 +5707,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingCdma;
 
+        // Signals
+
+        connect<K extends keyof SettingCdma.SignalSignatures>(
+            signal: K,
+            callback: SettingCdma.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingCdma.SignalSignatures>(
+            signal: K,
+            callback: SettingCdma.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingCdma.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingCdma.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_number(): string;
@@ -5665,7 +5761,6 @@ export namespace NetworkManager {
      */
     class SettingConnection extends Setting {
         static $gtype: GObject.GType<SettingConnection>;
-        declare static readonly __signalSignatures: SettingConnection.SignalSignatures;
 
         // Properties
 
@@ -5810,6 +5905,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingConnection;
+
+        // Signals
+
+        connect<K extends keyof SettingConnection.SignalSignatures>(
+            signal: K,
+            callback: SettingConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingConnection.SignalSignatures>(
+            signal: K,
+            callback: SettingConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingConnection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5963,7 +6073,6 @@ export namespace NetworkManager {
 
     class SettingDcb extends Setting {
         static $gtype: GObject.GType<SettingDcb>;
-        declare static readonly __signalSignatures: SettingDcb.SignalSignatures;
 
         // Properties
 
@@ -6100,6 +6209,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingDcb;
 
+        // Signals
+
+        connect<K extends keyof SettingDcb.SignalSignatures>(
+            signal: K,
+            callback: SettingDcb.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingDcb.SignalSignatures>(
+            signal: K,
+            callback: SettingDcb.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingDcb.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingDcb.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_app_fcoe_flags(): SettingDcbFlags;
@@ -6166,7 +6290,6 @@ export namespace NetworkManager {
 
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
-        declare static readonly __signalSignatures: SettingGeneric.SignalSignatures;
 
         // Constructors
 
@@ -6175,6 +6298,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingGeneric;
+
+        // Signals
+
+        connect<K extends keyof SettingGeneric.SignalSignatures>(
+            signal: K,
+            callback: SettingGeneric.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingGeneric.SignalSignatures>(
+            signal: K,
+            callback: SettingGeneric.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingGeneric.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingGeneric.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SettingGsm {
@@ -6206,7 +6344,6 @@ export namespace NetworkManager {
 
     class SettingGsm extends Setting {
         static $gtype: GObject.GType<SettingGsm>;
-        declare static readonly __signalSignatures: SettingGsm.SignalSignatures;
 
         // Properties
 
@@ -6349,6 +6486,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingGsm;
 
+        // Signals
+
+        connect<K extends keyof SettingGsm.SignalSignatures>(
+            signal: K,
+            callback: SettingGsm.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingGsm.SignalSignatures>(
+            signal: K,
+            callback: SettingGsm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingGsm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingGsm.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_allowed_bands(): number;
@@ -6395,7 +6547,6 @@ export namespace NetworkManager {
 
     class SettingIP4Config extends Setting {
         static $gtype: GObject.GType<SettingIP4Config>;
-        declare static readonly __signalSignatures: SettingIP4Config.SignalSignatures;
 
         // Properties
 
@@ -6565,6 +6716,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingIP4Config;
+
+        // Signals
+
+        connect<K extends keyof SettingIP4Config.SignalSignatures>(
+            signal: K,
+            callback: SettingIP4Config.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingIP4Config.SignalSignatures>(
+            signal: K,
+            callback: SettingIP4Config.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingIP4Config.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingIP4Config.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6746,7 +6912,6 @@ export namespace NetworkManager {
 
     class SettingIP6Config extends Setting {
         static $gtype: GObject.GType<SettingIP6Config>;
-        declare static readonly __signalSignatures: SettingIP6Config.SignalSignatures;
 
         // Properties
 
@@ -6896,6 +7061,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingIP6Config;
+
+        // Signals
+
+        connect<K extends keyof SettingIP6Config.SignalSignatures>(
+            signal: K,
+            callback: SettingIP6Config.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingIP6Config.SignalSignatures>(
+            signal: K,
+            callback: SettingIP6Config.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingIP6Config.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingIP6Config.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7056,7 +7236,6 @@ export namespace NetworkManager {
 
     class SettingInfiniband extends Setting {
         static $gtype: GObject.GType<SettingInfiniband>;
-        declare static readonly __signalSignatures: SettingInfiniband.SignalSignatures;
 
         // Properties
 
@@ -7111,6 +7290,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingInfiniband;
 
+        // Signals
+
+        connect<K extends keyof SettingInfiniband.SignalSignatures>(
+            signal: K,
+            callback: SettingInfiniband.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingInfiniband.SignalSignatures>(
+            signal: K,
+            callback: SettingInfiniband.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingInfiniband.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingInfiniband.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_mac_address(): Uint8Array;
@@ -7148,7 +7342,6 @@ export namespace NetworkManager {
 
     class SettingOlpcMesh extends Setting {
         static $gtype: GObject.GType<SettingOlpcMesh>;
-        declare static readonly __signalSignatures: SettingOlpcMesh.SignalSignatures;
 
         // Properties
 
@@ -7165,6 +7358,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingOlpcMesh;
+
+        // Signals
+
+        connect<K extends keyof SettingOlpcMesh.SignalSignatures>(
+            signal: K,
+            callback: SettingOlpcMesh.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(
+            signal: K,
+            callback: SettingOlpcMesh.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingOlpcMesh.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7214,7 +7422,6 @@ export namespace NetworkManager {
 
     class SettingPPP extends Setting {
         static $gtype: GObject.GType<SettingPPP>;
-        declare static readonly __signalSignatures: SettingPPP.SignalSignatures;
 
         // Properties
 
@@ -7405,6 +7612,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingPPP;
 
+        // Signals
+
+        connect<K extends keyof SettingPPP.SignalSignatures>(
+            signal: K,
+            callback: SettingPPP.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingPPP.SignalSignatures>(
+            signal: K,
+            callback: SettingPPP.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingPPP.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingPPP.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_baud(): number;
@@ -7444,7 +7666,6 @@ export namespace NetworkManager {
 
     class SettingPPPOE extends Setting {
         static $gtype: GObject.GType<SettingPPPOE>;
-        declare static readonly __signalSignatures: SettingPPPOE.SignalSignatures;
 
         // Properties
 
@@ -7485,6 +7706,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingPPPOE;
 
+        // Signals
+
+        connect<K extends keyof SettingPPPOE.SignalSignatures>(
+            signal: K,
+            callback: SettingPPPOE.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingPPPOE.SignalSignatures>(
+            signal: K,
+            callback: SettingPPPOE.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingPPPOE.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingPPPOE.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_password(): string;
@@ -7511,7 +7747,6 @@ export namespace NetworkManager {
 
     class SettingSerial extends Setting {
         static $gtype: GObject.GType<SettingSerial>;
-        declare static readonly __signalSignatures: SettingSerial.SignalSignatures;
 
         // Properties
 
@@ -7558,6 +7793,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingSerial;
 
+        // Signals
+
+        connect<K extends keyof SettingSerial.SignalSignatures>(
+            signal: K,
+            callback: SettingSerial.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingSerial.SignalSignatures>(
+            signal: K,
+            callback: SettingSerial.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingSerial.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingSerial.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_baud(): number;
@@ -7582,7 +7832,6 @@ export namespace NetworkManager {
 
     class SettingTeam extends Setting {
         static $gtype: GObject.GType<SettingTeam>;
-        declare static readonly __signalSignatures: SettingTeam.SignalSignatures;
 
         // Properties
 
@@ -7613,6 +7862,21 @@ export namespace NetworkManager {
 
         static ['new'](): SettingTeam;
 
+        // Signals
+
+        connect<K extends keyof SettingTeam.SignalSignatures>(
+            signal: K,
+            callback: SettingTeam.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingTeam.SignalSignatures>(
+            signal: K,
+            callback: SettingTeam.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingTeam.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingTeam.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_config(): string;
@@ -7632,7 +7896,6 @@ export namespace NetworkManager {
 
     class SettingTeamPort extends Setting {
         static $gtype: GObject.GType<SettingTeamPort>;
-        declare static readonly __signalSignatures: SettingTeamPort.SignalSignatures;
 
         // Properties
 
@@ -7652,6 +7915,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingTeamPort;
+
+        // Signals
+
+        connect<K extends keyof SettingTeamPort.SignalSignatures>(
+            signal: K,
+            callback: SettingTeamPort.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingTeamPort.SignalSignatures>(
+            signal: K,
+            callback: SettingTeamPort.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingTeamPort.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingTeamPort.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7675,7 +7953,6 @@ export namespace NetworkManager {
 
     class SettingVPN extends Setting {
         static $gtype: GObject.GType<SettingVPN>;
-        declare static readonly __signalSignatures: SettingVPN.SignalSignatures;
 
         // Properties
 
@@ -7728,6 +8005,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingVPN;
+
+        // Signals
+
+        connect<K extends keyof SettingVPN.SignalSignatures>(
+            signal: K,
+            callback: SettingVPN.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingVPN.SignalSignatures>(
+            signal: K,
+            callback: SettingVPN.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingVPN.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingVPN.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7825,7 +8117,6 @@ export namespace NetworkManager {
 
     class SettingVlan extends Setting {
         static $gtype: GObject.GType<SettingVlan>;
-        declare static readonly __signalSignatures: SettingVlan.SignalSignatures;
 
         // Properties
 
@@ -7879,6 +8170,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingVlan;
+
+        // Signals
+
+        connect<K extends keyof SettingVlan.SignalSignatures>(
+            signal: K,
+            callback: SettingVlan.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingVlan.SignalSignatures>(
+            signal: K,
+            callback: SettingVlan.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingVlan.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingVlan.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7977,7 +8283,6 @@ export namespace NetworkManager {
 
     class SettingWimax extends Setting {
         static $gtype: GObject.GType<SettingWimax>;
-        declare static readonly __signalSignatures: SettingWimax.SignalSignatures;
 
         // Properties
 
@@ -8001,6 +8306,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingWimax;
+
+        // Signals
+
+        connect<K extends keyof SettingWimax.SignalSignatures>(
+            signal: K,
+            callback: SettingWimax.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingWimax.SignalSignatures>(
+            signal: K,
+            callback: SettingWimax.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingWimax.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingWimax.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8038,7 +8358,6 @@ export namespace NetworkManager {
 
     class SettingWired extends Setting {
         static $gtype: GObject.GType<SettingWired>;
-        declare static readonly __signalSignatures: SettingWired.SignalSignatures;
 
         // Properties
 
@@ -8102,6 +8421,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingWired;
+
+        // Signals
+
+        connect<K extends keyof SettingWired.SignalSignatures>(
+            signal: K,
+            callback: SettingWired.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingWired.SignalSignatures>(
+            signal: K,
+            callback: SettingWired.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingWired.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingWired.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8219,7 +8553,6 @@ export namespace NetworkManager {
 
     class SettingWireless extends Setting {
         static $gtype: GObject.GType<SettingWireless>;
-        declare static readonly __signalSignatures: SettingWireless.SignalSignatures;
 
         // Properties
 
@@ -8308,6 +8641,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingWireless;
+
+        // Signals
+
+        connect<K extends keyof SettingWireless.SignalSignatures>(
+            signal: K,
+            callback: SettingWireless.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingWireless.SignalSignatures>(
+            signal: K,
+            callback: SettingWireless.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingWireless.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingWireless.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -8421,7 +8769,6 @@ export namespace NetworkManager {
 
     class SettingWirelessSecurity extends Setting {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
-        declare static readonly __signalSignatures: SettingWirelessSecurity.SignalSignatures;
 
         // Properties
 
@@ -8623,6 +8970,21 @@ export namespace NetworkManager {
         _init(...args: any[]): void;
 
         static ['new'](): SettingWirelessSecurity;
+
+        // Signals
+
+        connect<K extends keyof SettingWirelessSecurity.SignalSignatures>(
+            signal: K,
+            callback: SettingWirelessSecurity.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(
+            signal: K,
+            callback: SettingWirelessSecurity.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingWirelessSecurity.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -997,43 +997,43 @@ export namespace Colord {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Client): void;
         }
 
         interface DeviceAdded {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface DeviceChanged {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface DeviceRemoved {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface ProfileAdded {
-            (profile: Profile): void;
+            (_source: Client, profile: Profile): void;
         }
 
         interface ProfileChanged {
-            (profile: Profile): void;
+            (_source: Client, profile: Profile): void;
         }
 
         interface ProfileRemoved {
-            (profile: Profile): void;
+            (_source: Client, profile: Profile): void;
         }
 
         interface SensorAdded {
-            (sensor: Sensor): void;
+            (_source: Client, sensor: Sensor): void;
         }
 
         interface SensorChanged {
-            (sensor: Sensor): void;
+            (_source: Client, sensor: Sensor): void;
         }
 
         interface SensorRemoved {
-            (sensor: Sensor): void;
+            (_source: Client, sensor: Sensor): void;
         }
 
         // Signal signatures
@@ -1065,7 +1065,6 @@ export namespace Colord {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -1108,30 +1107,9 @@ export namespace Colord {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
-        connect_after(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-added', device: Device): void;
-        connect_after(signal: 'device-changed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-changed', device: Device): void;
-        connect_after(signal: 'device-removed', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-removed', device: Device): void;
-        connect_after(signal: 'profile-added', callback: (_source: this, profile: Profile) => void): number;
-        emit(signal: 'profile-added', profile: Profile): void;
-        connect_after(signal: 'profile-changed', callback: (_source: this, profile: Profile) => void): number;
-        emit(signal: 'profile-changed', profile: Profile): void;
-        connect_after(signal: 'profile-removed', callback: (_source: this, profile: Profile) => void): number;
-        emit(signal: 'profile-removed', profile: Profile): void;
-        connect_after(signal: 'sensor-added', callback: (_source: this, sensor: Sensor) => void): number;
-        emit(signal: 'sensor-added', sensor: Sensor): void;
-        connect_after(signal: 'sensor-changed', callback: (_source: this, sensor: Sensor) => void): number;
-        emit(signal: 'sensor-changed', sensor: Sensor): void;
-        connect_after(signal: 'sensor-removed', callback: (_source: this, sensor: Sensor) => void): number;
-        emit(signal: 'sensor-removed', sensor: Sensor): void;
 
         // Static methods
 
@@ -2030,7 +2008,7 @@ export namespace Colord {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Device): void;
         }
 
         // Signal signatures
@@ -2066,7 +2044,6 @@ export namespace Colord {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -2159,12 +2136,9 @@ export namespace Colord {
 
         // Signals
 
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -2851,7 +2825,6 @@ export namespace Colord {
 
     class Edid extends GObject.Object {
         static $gtype: GObject.GType<Edid>;
-        declare static readonly __signalSignatures: Edid.SignalSignatures;
 
         // Constructors
 
@@ -2860,6 +2833,12 @@ export namespace Colord {
         _init(...args: any[]): void;
 
         static ['new'](): Edid;
+
+        // Signals
+
+        connect<K extends keyof Edid.SignalSignatures>(signal: K, callback: Edid.SignalSignatures[K]): number;
+        connect_after<K extends keyof Edid.SignalSignatures>(signal: K, callback: Edid.SignalSignatures[K]): number;
+        emit<K extends keyof Edid.SignalSignatures>(signal: K, ...args: Parameters<Edid.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2972,7 +2951,6 @@ export namespace Colord {
 
     class Icc extends GObject.Object {
         static $gtype: GObject.GType<Icc>;
-        declare static readonly __signalSignatures: Icc.SignalSignatures;
 
         // Properties
 
@@ -3000,6 +2978,12 @@ export namespace Colord {
         _init(...args: any[]): void;
 
         static ['new'](): Icc;
+
+        // Signals
+
+        connect<K extends keyof Icc.SignalSignatures>(signal: K, callback: Icc.SignalSignatures[K]): number;
+        connect_after<K extends keyof Icc.SignalSignatures>(signal: K, callback: Icc.SignalSignatures[K]): number;
+        emit<K extends keyof Icc.SignalSignatures>(signal: K, ...args: Parameters<Icc.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3401,7 +3385,6 @@ export namespace Colord {
 
     class It8 extends GObject.Object {
         static $gtype: GObject.GType<It8>;
-        declare static readonly __signalSignatures: It8.SignalSignatures;
 
         // Properties
 
@@ -3444,6 +3427,12 @@ export namespace Colord {
         static ['new'](): It8;
 
         static new_with_kind(kind: It8Kind): It8;
+
+        // Signals
+
+        connect<K extends keyof It8.SignalSignatures>(signal: K, callback: It8.SignalSignatures[K]): number;
+        connect_after<K extends keyof It8.SignalSignatures>(signal: K, callback: It8.SignalSignatures[K]): number;
+        emit<K extends keyof It8.SignalSignatures>(signal: K, ...args: Parameters<It8.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -3636,7 +3625,7 @@ export namespace Colord {
         // Signal callback interfaces
 
         interface Changed {
-            (): void;
+            (_source: Profile): void;
         }
 
         // Signal signatures
@@ -3670,7 +3659,6 @@ export namespace Colord {
 
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
-        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -3761,6 +3749,7 @@ export namespace Colord {
 
         // Signals
 
+        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
             callback: Profile.SignalSignatures[K],
@@ -3769,10 +3758,6 @@ export namespace Colord {
             signal: K,
             ...args: Parameters<Profile.SignalSignatures[K]>
         ): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'changed', callback: (_source: this) => void): number;
-        emit(signal: 'changed'): void;
 
         // Static methods
 
@@ -4065,7 +4050,7 @@ export namespace Colord {
         // Signal callback interfaces
 
         interface ButtonPressed {
-            (): void;
+            (_source: Sensor): void;
         }
 
         // Signal signatures
@@ -4094,7 +4079,6 @@ export namespace Colord {
 
     class Sensor extends GObject.Object {
         static $gtype: GObject.GType<Sensor>;
-        declare static readonly __signalSignatures: Sensor.SignalSignatures;
 
         // Properties
 
@@ -4165,12 +4149,9 @@ export namespace Colord {
 
         // Signals
 
+        connect<K extends keyof Sensor.SignalSignatures>(signal: K, callback: Sensor.SignalSignatures[K]): number;
         connect_after<K extends keyof Sensor.SignalSignatures>(signal: K, callback: Sensor.SignalSignatures[K]): number;
         emit<K extends keyof Sensor.SignalSignatures>(signal: K, ...args: Parameters<Sensor.SignalSignatures[K]>): void;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect_after(signal: 'button-pressed', callback: (_source: this) => void): number;
-        emit(signal: 'button-pressed'): void;
 
         // Static methods
 

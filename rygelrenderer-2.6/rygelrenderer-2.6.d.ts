@@ -41,7 +41,6 @@ export namespace RygelRenderer {
 
     class MediaRendererPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaRendererPlugin>;
-        declare static readonly __signalSignatures: MediaRendererPlugin.SignalSignatures;
 
         // Properties
 
@@ -65,6 +64,21 @@ export namespace RygelRenderer {
         // Conflicted with RygelCore.Plugin.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof MediaRendererPlugin.SignalSignatures>(
+            signal: K,
+            callback: MediaRendererPlugin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaRendererPlugin.SignalSignatures>(
+            signal: K,
+            callback: MediaRendererPlugin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaRendererPlugin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaRendererPlugin.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -93,7 +107,6 @@ export namespace RygelRenderer {
 
     class MediaRenderer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaRenderer>;
-        declare static readonly __signalSignatures: MediaRenderer.SignalSignatures;
 
         // Properties
 
@@ -106,6 +119,21 @@ export namespace RygelRenderer {
         _init(...args: any[]): void;
 
         static ['new'](title: string, player: MediaPlayer, capabilities: RygelCore.PluginCapabilities): MediaRenderer;
+
+        // Signals
+
+        connect<K extends keyof MediaRenderer.SignalSignatures>(
+            signal: K,
+            callback: MediaRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaRenderer.SignalSignatures>(
+            signal: K,
+            callback: MediaRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaRenderer.SignalSignatures[K]>
+        ): void;
     }
 
     type MediaRendererPluginClass = typeof MediaRendererPlugin;

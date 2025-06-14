@@ -75,7 +75,7 @@ export namespace Unique {
         // Signal callback interfaces
 
         interface MessageReceived {
-            (command: number, message_data: MessageData, time_: number): Response;
+            (_source: App, command: number, message_data: MessageData, time_: number): Response;
         }
 
         // Signal signatures
@@ -102,7 +102,6 @@ export namespace Unique {
      */
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
-        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -150,18 +149,6 @@ export namespace Unique {
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'message-received',
-            callback: (_source: this, command: number, message_data: MessageData, time_: number) => Response,
-        ): number;
-        connect_after(
-            signal: 'message-received',
-            callback: (_source: this, command: number, message_data: MessageData, time_: number) => Response,
-        ): number;
-        emit(signal: 'message-received', command: number, message_data: MessageData, time_: number): void;
 
         // Virtual methods
 
@@ -219,13 +206,24 @@ export namespace Unique {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
-        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Backend.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

@@ -27,23 +27,23 @@ export namespace TelepathyFarstream {
         // Signal callback interfaces
 
         interface Closed {
-            (): void;
+            (_source: Channel): void;
         }
 
         interface ContentAdded {
-            (content: Content): void;
+            (_source: Channel, content: Content): void;
         }
 
         interface ContentRemoved {
-            (content: Content): void;
+            (_source: Channel, content: Content): void;
         }
 
         interface FsConferenceAdded {
-            (conf: Farstream.Conference): void;
+            (_source: Channel, conf: Farstream.Conference): void;
         }
 
         interface FsConferenceRemoved {
-            (conf: Farstream.Conference): void;
+            (_source: Channel, conf: Farstream.Conference): void;
         }
 
         // Signal signatures
@@ -71,7 +71,6 @@ export namespace TelepathyFarstream {
      */
     class Channel extends GObject.Object implements Gio.AsyncInitable<Channel> {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -103,30 +102,6 @@ export namespace TelepathyFarstream {
             signal: K,
             ...args: Parameters<Channel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'content-added', callback: (_source: this, content: Content) => void): number;
-        connect_after(signal: 'content-added', callback: (_source: this, content: Content) => void): number;
-        emit(signal: 'content-added', content: Content): void;
-        connect(signal: 'content-removed', callback: (_source: this, content: Content) => void): number;
-        connect_after(signal: 'content-removed', callback: (_source: this, content: Content) => void): number;
-        emit(signal: 'content-removed', content: Content): void;
-        connect(signal: 'fs-conference-added', callback: (_source: this, conf: Farstream.Conference) => void): number;
-        connect_after(
-            signal: 'fs-conference-added',
-            callback: (_source: this, conf: Farstream.Conference) => void,
-        ): number;
-        emit(signal: 'fs-conference-added', conf: Farstream.Conference): void;
-        connect(signal: 'fs-conference-removed', callback: (_source: this, conf: Farstream.Conference) => void): number;
-        connect_after(
-            signal: 'fs-conference-removed',
-            callback: (_source: this, conf: Farstream.Conference) => void,
-        ): number;
-        emit(signal: 'fs-conference-removed', conf: Farstream.Conference): void;
 
         // Static methods
 
@@ -796,27 +771,27 @@ export namespace TelepathyFarstream {
         // Signal callback interfaces
 
         interface RestartSource {
-            (): void;
+            (_source: Content): void;
         }
 
         interface SrcPadAdded {
-            (handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec): void;
+            (_source: Content, handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec): void;
         }
 
         interface StartReceiving {
-            (handles: any, handle_count: number): boolean;
+            (_source: Content, handles: any, handle_count: number): boolean;
         }
 
         interface StartSending {
-            (): boolean;
+            (_source: Content): boolean;
         }
 
         interface StopReceiving {
-            (handles: any, handle_count: number): void;
+            (_source: Content, handles: any, handle_count: number): void;
         }
 
         interface StopSending {
-            (): void;
+            (_source: Content): void;
         }
 
         // Signal signatures
@@ -852,7 +827,6 @@ export namespace TelepathyFarstream {
      */
     abstract class Content extends GObject.Object {
         static $gtype: GObject.GType<Content>;
-        declare static readonly __signalSignatures: Content.SignalSignatures;
 
         // Properties
 
@@ -886,63 +860,6 @@ export namespace TelepathyFarstream {
             signal: K,
             ...args: Parameters<Content.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'restart-source', callback: (_source: this) => void): number;
-        connect_after(signal: 'restart-source', callback: (_source: this) => void): number;
-        emit(signal: 'restart-source'): void;
-        connect(
-            signal: 'src-pad-added',
-            callback: (
-                _source: this,
-                handle: number,
-                stream: Farstream.Stream,
-                pad: Gst.Pad,
-                codec: Farstream.Codec,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'src-pad-added',
-            callback: (
-                _source: this,
-                handle: number,
-                stream: Farstream.Stream,
-                pad: Gst.Pad,
-                codec: Farstream.Codec,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'src-pad-added',
-            handle: number,
-            stream: Farstream.Stream,
-            pad: Gst.Pad,
-            codec: Farstream.Codec,
-        ): void;
-        connect(
-            signal: 'start-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => boolean,
-        ): number;
-        connect_after(
-            signal: 'start-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => boolean,
-        ): number;
-        emit(signal: 'start-receiving', handles: any, handle_count: number): void;
-        connect(signal: 'start-sending', callback: (_source: this) => boolean): number;
-        connect_after(signal: 'start-sending', callback: (_source: this) => boolean): number;
-        emit(signal: 'start-sending'): void;
-        connect(
-            signal: 'stop-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => void,
-        ): number;
-        connect_after(
-            signal: 'stop-receiving',
-            callback: (_source: this, handles: any, handle_count: number) => void,
-        ): number;
-        emit(signal: 'stop-receiving', handles: any, handle_count: number): void;
-        connect(signal: 'stop-sending', callback: (_source: this) => void): number;
-        connect_after(signal: 'stop-sending', callback: (_source: this) => void): number;
-        emit(signal: 'stop-sending'): void;
 
         // Methods
 

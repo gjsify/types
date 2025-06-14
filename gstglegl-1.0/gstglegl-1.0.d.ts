@@ -166,7 +166,6 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGL extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGL>;
-        declare static readonly __signalSignatures: GLDisplayEGL.SignalSignatures;
 
         // Constructors
 
@@ -177,6 +176,21 @@ export namespace GstGLEGL {
         static ['new'](): GLDisplayEGL;
 
         static new_with_egl_display(display?: any | null): GLDisplayEGL;
+
+        // Signals
+
+        connect<K extends keyof GLDisplayEGL.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayEGL.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLDisplayEGL.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayEGL.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLDisplayEGL.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLDisplayEGL.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -213,7 +227,6 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGLDevice extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGLDevice>;
-        declare static readonly __signalSignatures: GLDisplayEGLDevice.SignalSignatures;
 
         // Fields
 
@@ -231,6 +244,21 @@ export namespace GstGLEGL {
         static ['new'](...args: never[]): any;
 
         static new_with_egl_device(device?: any | null): GLDisplayEGLDevice;
+
+        // Signals
+
+        connect<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayEGLDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
+            signal: K,
+            callback: GLDisplayEGLDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLDisplayEGLDevice.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GLMemoryEGLAllocator {
@@ -247,13 +275,27 @@ export namespace GstGLEGL {
      */
     class GLMemoryEGLAllocator extends GstGL.GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryEGLAllocator>;
-        declare static readonly __signalSignatures: GLMemoryEGLAllocator.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLMemoryEGLAllocator.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLMemoryEGLAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
+            signal: K,
+            callback: GLMemoryEGLAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLMemoryEGLAllocator.SignalSignatures[K]>
+        ): void;
     }
 
     /**

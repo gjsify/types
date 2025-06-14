@@ -2261,7 +2261,6 @@ export namespace Kkc {
 
     abstract class MetadataFile extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MetadataFile>;
-        declare static readonly __signalSignatures: MetadataFile.SignalSignatures;
 
         // Properties
 
@@ -2279,6 +2278,21 @@ export namespace Kkc {
         constructor(properties?: Partial<MetadataFile.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof MetadataFile.SignalSignatures>(
+            signal: K,
+            callback: MetadataFile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetadataFile.SignalSignatures>(
+            signal: K,
+            callback: MetadataFile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetadataFile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetadataFile.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2830,7 +2844,6 @@ export namespace Kkc {
 
     abstract class TrellisNode {
         static $gtype: GObject.GType<TrellisNode>;
-        declare static readonly __signalSignatures: TrellisNode.SignalSignatures;
 
         // Fields
 
@@ -2841,6 +2854,21 @@ export namespace Kkc {
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TrellisNode.SignalSignatures>(
+            signal: K,
+            callback: TrellisNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrellisNode.SignalSignatures>(
+            signal: K,
+            callback: TrellisNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrellisNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrellisNode.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2868,13 +2896,27 @@ export namespace Kkc {
 
     class UnigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<UnigramTrellisNode>;
-        declare static readonly __signalSignatures: UnigramTrellisNode.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](entry: LanguageModelEntry, endpos: number): UnigramTrellisNode;
+
+        // Signals
+
+        connect<K extends keyof UnigramTrellisNode.SignalSignatures>(
+            signal: K,
+            callback: UnigramTrellisNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UnigramTrellisNode.SignalSignatures>(
+            signal: K,
+            callback: UnigramTrellisNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UnigramTrellisNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UnigramTrellisNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2888,7 +2930,6 @@ export namespace Kkc {
 
     class BigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<BigramTrellisNode>;
-        declare static readonly __signalSignatures: BigramTrellisNode.SignalSignatures;
 
         // Constructors
 
@@ -2899,6 +2940,21 @@ export namespace Kkc {
             right_node: UnigramTrellisNode,
             endpos: number,
         ): BigramTrellisNode;
+
+        // Signals
+
+        connect<K extends keyof BigramTrellisNode.SignalSignatures>(
+            signal: K,
+            callback: BigramTrellisNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BigramTrellisNode.SignalSignatures>(
+            signal: K,
+            callback: BigramTrellisNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BigramTrellisNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BigramTrellisNode.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2920,7 +2976,6 @@ export namespace Kkc {
 
     class LanguageModelMetadata extends MetadataFile {
         static $gtype: GObject.GType<LanguageModelMetadata>;
-        declare static readonly __signalSignatures: LanguageModelMetadata.SignalSignatures;
 
         // Properties
 
@@ -2936,6 +2991,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](name: string, filename: string): LanguageModelMetadata;
+
+        // Signals
+
+        connect<K extends keyof LanguageModelMetadata.SignalSignatures>(
+            signal: K,
+            callback: LanguageModelMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LanguageModelMetadata.SignalSignatures>(
+            signal: K,
+            callback: LanguageModelMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LanguageModelMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LanguageModelMetadata.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2963,7 +3033,6 @@ export namespace Kkc {
 
     abstract class LanguageModel extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<LanguageModel>;
-        declare static readonly __signalSignatures: LanguageModel.SignalSignatures;
 
         // Properties
 
@@ -2977,6 +3046,21 @@ export namespace Kkc {
         constructor(properties?: Partial<LanguageModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LanguageModel.SignalSignatures>(
+            signal: K,
+            callback: LanguageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LanguageModel.SignalSignatures>(
+            signal: K,
+            callback: LanguageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LanguageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LanguageModel.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3543,7 +3627,6 @@ export namespace Kkc {
 
     class TextBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<TextBigramLanguageModel>;
-        declare static readonly __signalSignatures: TextBigramLanguageModel.SignalSignatures;
 
         // Fields
 
@@ -3559,6 +3642,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](metadata: LanguageModelMetadata): TextBigramLanguageModel;
+
+        // Signals
+
+        connect<K extends keyof TextBigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: TextBigramLanguageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextBigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: TextBigramLanguageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextBigramLanguageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextBigramLanguageModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3612,7 +3710,6 @@ export namespace Kkc {
 
     class TextTrigramLanguageModel extends TextBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<TextTrigramLanguageModel>;
-        declare static readonly __signalSignatures: TextTrigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3621,6 +3718,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](metadata: LanguageModelMetadata): TextTrigramLanguageModel;
+
+        // Signals
+
+        connect<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: TextTrigramLanguageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: TextTrigramLanguageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextTrigramLanguageModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
@@ -3662,7 +3774,6 @@ export namespace Kkc {
 
     class SortedBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<SortedBigramLanguageModel>;
-        declare static readonly __signalSignatures: SortedBigramLanguageModel.SignalSignatures;
 
         // Properties
 
@@ -3676,6 +3787,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](metadata: LanguageModelMetadata): SortedBigramLanguageModel;
+
+        // Signals
+
+        connect<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: SortedBigramLanguageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: SortedBigramLanguageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SortedBigramLanguageModel.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3729,7 +3855,6 @@ export namespace Kkc {
 
     class SortedTrigramLanguageModel extends SortedBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<SortedTrigramLanguageModel>;
-        declare static readonly __signalSignatures: SortedTrigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3738,6 +3863,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](metadata: LanguageModelMetadata): SortedTrigramLanguageModel;
+
+        // Signals
+
+        connect<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: SortedTrigramLanguageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
+            signal: K,
+            callback: SortedTrigramLanguageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SortedTrigramLanguageModel.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         has_trigram(ppentry: LanguageModelEntry, pentry: LanguageModelEntry, entry: LanguageModelEntry): boolean;
@@ -3773,13 +3913,24 @@ export namespace Kkc {
 
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
-        declare static readonly __signalSignatures: Decoder.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Decoder.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Decoder.SignalSignatures>(signal: K, callback: Decoder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Decoder.SignalSignatures>(
+            signal: K,
+            callback: Decoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decoder.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3821,7 +3972,6 @@ export namespace Kkc {
 
     class BigramDecoder extends Decoder {
         static $gtype: GObject.GType<BigramDecoder>;
-        declare static readonly __signalSignatures: BigramDecoder.SignalSignatures;
 
         // Properties
 
@@ -3834,6 +3984,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](model: BigramLanguageModel): BigramDecoder;
+
+        // Signals
+
+        connect<K extends keyof BigramDecoder.SignalSignatures>(
+            signal: K,
+            callback: BigramDecoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BigramDecoder.SignalSignatures>(
+            signal: K,
+            callback: BigramDecoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BigramDecoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BigramDecoder.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3865,7 +4030,6 @@ export namespace Kkc {
 
     class TrigramDecoder extends BigramDecoder {
         static $gtype: GObject.GType<TrigramDecoder>;
-        declare static readonly __signalSignatures: TrigramDecoder.SignalSignatures;
 
         // Constructors
 
@@ -3874,6 +4038,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](model: TrigramLanguageModel): TrigramDecoder;
+
+        // Signals
+
+        connect<K extends keyof TrigramDecoder.SignalSignatures>(
+            signal: K,
+            callback: TrigramDecoder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrigramDecoder.SignalSignatures>(
+            signal: K,
+            callback: TrigramDecoder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrigramDecoder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrigramDecoder.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SegmentList {
@@ -3891,7 +4070,6 @@ export namespace Kkc {
 
     class SegmentList extends GObject.Object {
         static $gtype: GObject.GType<SegmentList>;
-        declare static readonly __signalSignatures: SegmentList.SignalSignatures;
 
         // Properties
 
@@ -3908,6 +4086,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): SegmentList;
+
+        // Signals
+
+        connect<K extends keyof SegmentList.SignalSignatures>(
+            signal: K,
+            callback: SegmentList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SegmentList.SignalSignatures>(
+            signal: K,
+            callback: SegmentList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SegmentList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SegmentList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3942,7 +4135,6 @@ export namespace Kkc {
 
     class Segment extends GObject.Object {
         static $gtype: GObject.GType<Segment>;
-        declare static readonly __signalSignatures: Segment.SignalSignatures;
 
         // Properties
 
@@ -3963,6 +4155,18 @@ export namespace Kkc {
 
         static ['new'](input: string, output: string): Segment;
 
+        // Signals
+
+        connect<K extends keyof Segment.SignalSignatures>(signal: K, callback: Segment.SignalSignatures[K]): number;
+        connect_after<K extends keyof Segment.SignalSignatures>(
+            signal: K,
+            callback: Segment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Segment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Segment.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_input(): string;
@@ -3975,11 +4179,11 @@ export namespace Kkc {
         // Signal callback interfaces
 
         interface Populated {
-            (): void;
+            (_source: CandidateList): void;
         }
 
         interface Selected {
-            (candidate: Candidate): void;
+            (_source: CandidateList, candidate: Candidate): void;
         }
 
         // Signal signatures
@@ -4006,7 +4210,6 @@ export namespace Kkc {
 
     class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
-        declare static readonly __signalSignatures: CandidateList.SignalSignatures;
 
         // Properties
 
@@ -4050,15 +4253,6 @@ export namespace Kkc {
             signal: K,
             ...args: Parameters<CandidateList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'populated', callback: (_source: this) => void): number;
-        connect_after(signal: 'populated', callback: (_source: this) => void): number;
-        emit(signal: 'populated'): void;
-        connect(signal: 'selected', callback: (_source: this, candidate: Candidate) => void): number;
-        connect_after(signal: 'selected', callback: (_source: this, candidate: Candidate) => void): number;
-        emit(signal: 'selected', candidate: Candidate): void;
 
         // Virtual methods
 
@@ -4106,7 +4300,6 @@ export namespace Kkc {
 
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
-        declare static readonly __signalSignatures: Candidate.SignalSignatures;
 
         // Properties
 
@@ -4135,6 +4328,18 @@ export namespace Kkc {
             output?: string | null,
         ): Candidate;
 
+        // Signals
+
+        connect<K extends keyof Candidate.SignalSignatures>(signal: K, callback: Candidate.SignalSignatures[K]): number;
+        connect_after<K extends keyof Candidate.SignalSignatures>(
+            signal: K,
+            callback: Candidate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Candidate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Candidate.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         to_string(): string;
@@ -4154,7 +4359,7 @@ export namespace Kkc {
         // Signal callback interfaces
 
         interface Forwarded {
-            (key: KeyEvent): void;
+            (_source: KeyEventFilter, key: KeyEvent): void;
         }
 
         // Signal signatures
@@ -4169,7 +4374,6 @@ export namespace Kkc {
 
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
-        declare static readonly __signalSignatures: KeyEventFilter.SignalSignatures;
 
         // Constructors
 
@@ -4191,12 +4395,6 @@ export namespace Kkc {
             signal: K,
             ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'forwarded', callback: (_source: this, key: KeyEvent) => void): number;
-        connect_after(signal: 'forwarded', callback: (_source: this, key: KeyEvent) => void): number;
-        emit(signal: 'forwarded', key: KeyEvent): void;
 
         // Virtual methods
 
@@ -4226,7 +4424,6 @@ export namespace Kkc {
 
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
-        declare static readonly __signalSignatures: KeyEvent.SignalSignatures;
 
         // Properties
 
@@ -4252,6 +4449,18 @@ export namespace Kkc {
         static from_x_event(keyval: number, keycode: number, modifiers: ModifierType): KeyEvent;
 
         static ['new'](keyval: number, keycode: number, modifiers: ModifierType): KeyEvent;
+
+        // Signals
+
+        connect<K extends keyof KeyEvent.SignalSignatures>(signal: K, callback: KeyEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof KeyEvent.SignalSignatures>(
+            signal: K,
+            callback: KeyEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4281,7 +4490,6 @@ export namespace Kkc {
 
     class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
-        declare static readonly __signalSignatures: Keymap.SignalSignatures;
 
         // Properties
 
@@ -4295,6 +4503,12 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): Keymap;
+
+        // Signals
+
+        connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -4325,7 +4539,6 @@ export namespace Kkc {
 
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
-        declare static readonly __signalSignatures: NicolaKeyEventFilter.SignalSignatures;
 
         // Fields
 
@@ -4343,6 +4556,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): NicolaKeyEventFilter;
+
+        // Signals
+
+        connect<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: NicolaKeyEventFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: NicolaKeyEventFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NicolaKeyEventFilter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace RomKanaCharacterList {
@@ -4358,7 +4586,6 @@ export namespace Kkc {
 
     class RomKanaCharacterList extends GObject.Object {
         static $gtype: GObject.GType<RomKanaCharacterList>;
-        declare static readonly __signalSignatures: RomKanaCharacterList.SignalSignatures;
 
         // Properties
 
@@ -4371,6 +4598,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): RomKanaCharacterList;
+
+        // Signals
+
+        connect<K extends keyof RomKanaCharacterList.SignalSignatures>(
+            signal: K,
+            callback: RomKanaCharacterList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RomKanaCharacterList.SignalSignatures>(
+            signal: K,
+            callback: RomKanaCharacterList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RomKanaCharacterList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RomKanaCharacterList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4410,7 +4652,6 @@ export namespace Kkc {
 
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
-        declare static readonly __signalSignatures: RomKanaConverter.SignalSignatures;
 
         // Properties
 
@@ -4439,6 +4680,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): RomKanaConverter;
+
+        // Signals
+
+        connect<K extends keyof RomKanaConverter.SignalSignatures>(
+            signal: K,
+            callback: RomKanaConverter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RomKanaConverter.SignalSignatures>(
+            signal: K,
+            callback: RomKanaConverter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RomKanaConverter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RomKanaConverter.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4475,7 +4731,6 @@ export namespace Kkc {
 
     class RuleMetadata extends MetadataFile {
         static $gtype: GObject.GType<RuleMetadata>;
-        declare static readonly __signalSignatures: RuleMetadata.SignalSignatures;
 
         // Properties
 
@@ -4491,6 +4746,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](name: string, filename: string): RuleMetadata;
+
+        // Signals
+
+        connect<K extends keyof RuleMetadata.SignalSignatures>(
+            signal: K,
+            callback: RuleMetadata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RuleMetadata.SignalSignatures>(
+            signal: K,
+            callback: RuleMetadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RuleMetadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RuleMetadata.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -4520,7 +4790,6 @@ export namespace Kkc {
 
     class Rule extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Rule>;
-        declare static readonly __signalSignatures: Rule.SignalSignatures;
 
         // Properties
 
@@ -4540,6 +4809,12 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](metadata: RuleMetadata): Rule;
+
+        // Signals
+
+        connect<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
+        emit<K extends keyof Rule.SignalSignatures>(signal: K, ...args: Parameters<Rule.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -5091,7 +5366,6 @@ export namespace Kkc {
 
     class UserRule extends Rule {
         static $gtype: GObject.GType<UserRule>;
-        declare static readonly __signalSignatures: UserRule.SignalSignatures;
 
         // Constructors
 
@@ -5104,6 +5378,18 @@ export namespace Kkc {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof UserRule.SignalSignatures>(signal: K, callback: UserRule.SignalSignatures[K]): number;
+        connect_after<K extends keyof UserRule.SignalSignatures>(
+            signal: K,
+            callback: UserRule.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserRule.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserRule.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         write(input_mode: InputMode | null): void;
@@ -5113,7 +5399,7 @@ export namespace Kkc {
         // Signal callback interfaces
 
         interface RequestSelectionText {
-            (): void;
+            (_source: Context): void;
         }
 
         // Signal signatures
@@ -5147,7 +5433,6 @@ export namespace Kkc {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -5198,12 +5483,6 @@ export namespace Kkc {
             signal: K,
             ...args: Parameters<Context.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'request-selection-text', callback: (_source: this) => void): number;
-        connect_after(signal: 'request-selection-text', callback: (_source: this) => void): number;
-        emit(signal: 'request-selection-text'): void;
 
         // Methods
 
@@ -5247,7 +5526,6 @@ export namespace Kkc {
 
     class EmptySegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<EmptySegmentDictionary>;
-        declare static readonly __signalSignatures: EmptySegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -5256,6 +5534,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): EmptySegmentDictionary;
+
+        // Signals
+
+        connect<K extends keyof EmptySegmentDictionary.SignalSignatures>(
+            signal: K,
+            callback: EmptySegmentDictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EmptySegmentDictionary.SignalSignatures>(
+            signal: K,
+            callback: EmptySegmentDictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EmptySegmentDictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EmptySegmentDictionary.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         reload(): void;
@@ -5725,7 +6018,6 @@ export namespace Kkc {
 
     class SystemSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<SystemSegmentDictionary>;
-        declare static readonly __signalSignatures: SystemSegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -5734,6 +6026,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](path: string, encoding: string): SystemSegmentDictionary;
+
+        // Signals
+
+        connect<K extends keyof SystemSegmentDictionary.SignalSignatures>(
+            signal: K,
+            callback: SystemSegmentDictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemSegmentDictionary.SignalSignatures>(
+            signal: K,
+            callback: SystemSegmentDictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemSegmentDictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemSegmentDictionary.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         reload(): void;
@@ -6203,7 +6510,6 @@ export namespace Kkc {
 
     class UserSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<UserSegmentDictionary>;
-        declare static readonly __signalSignatures: UserSegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6212,6 +6518,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](path: string): UserSegmentDictionary;
+
+        // Signals
+
+        connect<K extends keyof UserSegmentDictionary.SignalSignatures>(
+            signal: K,
+            callback: UserSegmentDictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserSegmentDictionary.SignalSignatures>(
+            signal: K,
+            callback: UserSegmentDictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserSegmentDictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserSegmentDictionary.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         reload(): void;
@@ -6681,7 +7002,6 @@ export namespace Kkc {
 
     class UserSentenceDictionary extends GObject.Object implements Dictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserSentenceDictionary>;
-        declare static readonly __signalSignatures: UserSentenceDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6690,6 +7010,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](path: string): UserSentenceDictionary;
+
+        // Signals
+
+        connect<K extends keyof UserSentenceDictionary.SignalSignatures>(
+            signal: K,
+            callback: UserSentenceDictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserSentenceDictionary.SignalSignatures>(
+            signal: K,
+            callback: UserSentenceDictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserSentenceDictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserSentenceDictionary.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         reload(): void;
@@ -7158,7 +7493,6 @@ export namespace Kkc {
 
     class UserDictionary extends GObject.Object implements Dictionary, SegmentDictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserDictionary>;
-        declare static readonly __signalSignatures: UserDictionary.SignalSignatures;
 
         // Constructors
 
@@ -7167,6 +7501,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](basedir: string): UserDictionary;
+
+        // Signals
+
+        connect<K extends keyof UserDictionary.SignalSignatures>(
+            signal: K,
+            callback: UserDictionary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserDictionary.SignalSignatures>(
+            signal: K,
+            callback: UserDictionary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserDictionary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserDictionary.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         reload(): void;
@@ -7645,7 +7994,6 @@ export namespace Kkc {
 
     class DictionaryList extends GObject.Object {
         static $gtype: GObject.GType<DictionaryList>;
-        declare static readonly __signalSignatures: DictionaryList.SignalSignatures;
 
         // Properties
 
@@ -7658,6 +8006,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](): DictionaryList;
+
+        // Signals
+
+        connect<K extends keyof DictionaryList.SignalSignatures>(
+            signal: K,
+            callback: DictionaryList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DictionaryList.SignalSignatures>(
+            signal: K,
+            callback: DictionaryList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DictionaryList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DictionaryList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7673,11 +8036,11 @@ export namespace Kkc {
         // Signal callback interfaces
 
         interface Populated {
-            (): void;
+            (_source: DBusCandidateList): void;
         }
 
         interface Selected {
-            (midasi: string, okuri: boolean, text: string, annotation: string): void;
+            (_source: DBusCandidateList, midasi: string, okuri: boolean, text: string, annotation: string): void;
         }
 
         // Signal signatures
@@ -7704,7 +8067,6 @@ export namespace Kkc {
 
     class DBusCandidateList extends GObject.Object {
         static $gtype: GObject.GType<DBusCandidateList>;
-        declare static readonly __signalSignatures: DBusCandidateList.SignalSignatures;
 
         // Properties
 
@@ -7745,21 +8107,6 @@ export namespace Kkc {
             signal: K,
             ...args: Parameters<DBusCandidateList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'populated', callback: (_source: this) => void): number;
-        connect_after(signal: 'populated', callback: (_source: this) => void): number;
-        emit(signal: 'populated'): void;
-        connect(
-            signal: 'selected',
-            callback: (_source: this, midasi: string, okuri: boolean, text: string, annotation: string) => void,
-        ): number;
-        connect_after(
-            signal: 'selected',
-            callback: (_source: this, midasi: string, okuri: boolean, text: string, annotation: string) => void,
-        ): number;
-        emit(signal: 'selected', midasi: string, okuri: boolean, text: string, annotation: string): void;
 
         // Methods
 
@@ -7796,7 +8143,6 @@ export namespace Kkc {
 
     class DBusSegmentList extends GObject.Object {
         static $gtype: GObject.GType<DBusSegmentList>;
-        declare static readonly __signalSignatures: DBusSegmentList.SignalSignatures;
 
         // Properties
 
@@ -7811,6 +8157,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](connection: Gio.DBusConnection, object_path: string, segments: SegmentList): DBusSegmentList;
+
+        // Signals
+
+        connect<K extends keyof DBusSegmentList.SignalSignatures>(
+            signal: K,
+            callback: DBusSegmentList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusSegmentList.SignalSignatures>(
+            signal: K,
+            callback: DBusSegmentList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusSegmentList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusSegmentList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7846,7 +8207,6 @@ export namespace Kkc {
 
     class DBusContext extends GObject.Object {
         static $gtype: GObject.GType<DBusContext>;
-        declare static readonly __signalSignatures: DBusContext.SignalSignatures;
 
         // Properties
 
@@ -7873,6 +8233,21 @@ export namespace Kkc {
         _init(...args: any[]): void;
 
         static ['new'](connection: Gio.DBusConnection, object_path: string, context: Context): DBusContext;
+
+        // Signals
+
+        connect<K extends keyof DBusContext.SignalSignatures>(
+            signal: K,
+            callback: DBusContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusContext.SignalSignatures>(
+            signal: K,
+            callback: DBusContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7904,7 +8279,6 @@ export namespace Kkc {
 
     class DBusServer extends GObject.Object {
         static $gtype: GObject.GType<DBusServer>;
-        declare static readonly __signalSignatures: DBusServer.SignalSignatures;
 
         // Constructors
 
@@ -7918,6 +8292,21 @@ export namespace Kkc {
             dictionaries: DictionaryList,
             typing_rule?: Rule | null,
         ): DBusServer;
+
+        // Signals
+
+        connect<K extends keyof DBusServer.SignalSignatures>(
+            signal: K,
+            callback: DBusServer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusServer.SignalSignatures>(
+            signal: K,
+            callback: DBusServer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusServer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusServer.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -79,7 +79,7 @@ export namespace Matekbd {
         // Signal callback interfaces
 
         interface ReinitUi {
-            (): void;
+            (_source: Indicator): void;
         }
 
         // Signal signatures
@@ -97,7 +97,6 @@ export namespace Matekbd {
 
     class Indicator extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Indicator>;
-        declare static readonly __signalSignatures: Indicator.SignalSignatures;
 
         // Constructors
 
@@ -118,12 +117,6 @@ export namespace Matekbd {
             signal: K,
             ...args: Parameters<Indicator.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'reinit-ui', callback: (_source: this) => void): number;
-        connect_after(signal: 'reinit-ui', callback: (_source: this) => void): number;
-        emit(signal: 'reinit-ui'): void;
 
         // Static methods
 
@@ -589,7 +582,7 @@ export namespace Matekbd {
         // Signal callback interfaces
 
         interface BadKeycode {
-            (object: number): void;
+            (_source: KeyboardDrawing, object: number): void;
         }
 
         // Signal signatures
@@ -607,7 +600,6 @@ export namespace Matekbd {
 
     class KeyboardDrawing extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<KeyboardDrawing>;
-        declare static readonly __signalSignatures: KeyboardDrawing.SignalSignatures;
 
         // Constructors
 
@@ -633,12 +625,6 @@ export namespace Matekbd {
             signal: K,
             ...args: Parameters<KeyboardDrawing.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'bad-keycode', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'bad-keycode', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'bad-keycode', object: number): void;
 
         // Virtual methods
 
@@ -1133,7 +1119,6 @@ export namespace Matekbd {
 
     class Status extends Gtk.StatusIcon {
         static $gtype: GObject.GType<Status>;
-        declare static readonly __signalSignatures: Status.SignalSignatures;
 
         // Constructors
 
@@ -1142,6 +1127,12 @@ export namespace Matekbd {
         _init(...args: any[]): void;
 
         static ['new'](): Status;
+
+        // Signals
+
+        connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
+        connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
 
         // Static methods
 

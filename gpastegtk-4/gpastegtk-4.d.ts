@@ -102,7 +102,6 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesBehaviourPage>;
-        declare static readonly __signalSignatures: PreferencesBehaviourPage.SignalSignatures;
 
         // Constructors
 
@@ -114,6 +113,21 @@ export namespace GPasteGtk {
         // Conflicted with Adw.PreferencesPage.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PreferencesBehaviourPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesBehaviourPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesBehaviourPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesBehaviourPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesBehaviourPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesBehaviourPage.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -572,7 +586,6 @@ export namespace GPasteGtk {
 
     class PreferencesGroup extends Adw.PreferencesGroup implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesGroup>;
-        declare static readonly __signalSignatures: PreferencesGroup.SignalSignatures;
 
         // Constructors
 
@@ -584,6 +597,21 @@ export namespace GPasteGtk {
         // Conflicted with Adw.PreferencesGroup.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PreferencesGroup.SignalSignatures>(
+            signal: K,
+            callback: PreferencesGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesGroup.SignalSignatures>(
+            signal: K,
+            callback: PreferencesGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesGroup.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1096,7 +1124,6 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesHistorySettingsPage>;
-        declare static readonly __signalSignatures: PreferencesHistorySettingsPage.SignalSignatures;
 
         // Constructors
 
@@ -1108,6 +1135,21 @@ export namespace GPasteGtk {
         // Conflicted with Adw.PreferencesPage.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesHistorySettingsPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesHistorySettingsPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesHistorySettingsPage.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -1562,7 +1604,6 @@ export namespace GPasteGtk {
 
     class PreferencesManager extends GObject.Object {
         static $gtype: GObject.GType<PreferencesManager>;
-        declare static readonly __signalSignatures: PreferencesManager.SignalSignatures;
 
         // Constructors
 
@@ -1571,6 +1612,21 @@ export namespace GPasteGtk {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesManager;
+
+        // Signals
+
+        connect<K extends keyof PreferencesManager.SignalSignatures>(
+            signal: K,
+            callback: PreferencesManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesManager.SignalSignatures>(
+            signal: K,
+            callback: PreferencesManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesManager.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1606,13 +1662,27 @@ export namespace GPasteGtk {
 
     class PreferencesPage extends Adw.PreferencesPage implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesPage>;
-        declare static readonly __signalSignatures: PreferencesPage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PreferencesPage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PreferencesPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesPage.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2092,7 +2162,6 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesShortcutsPage>;
-        declare static readonly __signalSignatures: PreferencesShortcutsPage.SignalSignatures;
 
         // Constructors
 
@@ -2104,6 +2173,21 @@ export namespace GPasteGtk {
         // Conflicted with Adw.PreferencesPage.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof PreferencesShortcutsPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesShortcutsPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesShortcutsPage.SignalSignatures>(
+            signal: K,
+            callback: PreferencesShortcutsPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesShortcutsPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesShortcutsPage.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2562,7 +2646,6 @@ export namespace GPasteGtk {
 
     class PreferencesWidget extends Adw.Bin implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesWidget>;
-        declare static readonly __signalSignatures: PreferencesWidget.SignalSignatures;
 
         // Constructors
 
@@ -2571,6 +2654,21 @@ export namespace GPasteGtk {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesWidget;
+
+        // Signals
+
+        connect<K extends keyof PreferencesWidget.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesWidget.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesWidget.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -3035,7 +3133,6 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<PreferencesWindow>;
-        declare static readonly __signalSignatures: PreferencesWindow.SignalSignatures;
 
         // Constructors
 
@@ -3044,6 +3141,21 @@ export namespace GPasteGtk {
         _init(...args: any[]): void;
 
         static ['new'](): PreferencesWindow;
+
+        // Signals
+
+        connect<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**

@@ -33,7 +33,6 @@ export namespace Gamerzilla {
 
     class GamerzillaGobj extends GObject.Object {
         static $gtype: GObject.GType<GamerzillaGobj>;
-        declare static readonly __signalSignatures: GamerzillaGobj.SignalSignatures;
 
         // Properties
 
@@ -51,6 +50,21 @@ export namespace Gamerzilla {
         _init(...args: any[]): void;
 
         static ['new'](): GamerzillaGobj;
+
+        // Signals
+
+        connect<K extends keyof GamerzillaGobj.SignalSignatures>(
+            signal: K,
+            callback: GamerzillaGobj.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GamerzillaGobj.SignalSignatures>(
+            signal: K,
+            callback: GamerzillaGobj.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GamerzillaGobj.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GamerzillaGobj.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

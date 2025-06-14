@@ -763,7 +763,6 @@ export namespace Grl {
 
     class Caps extends GObject.Object {
         static $gtype: GObject.GType<Caps>;
-        declare static readonly __signalSignatures: Caps.SignalSignatures;
 
         // Constructors
 
@@ -772,6 +771,12 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): Caps;
+
+        // Signals
+
+        connect<K extends keyof Caps.SignalSignatures>(signal: K, callback: Caps.SignalSignatures[K]): number;
+        connect_after<K extends keyof Caps.SignalSignatures>(signal: K, callback: Caps.SignalSignatures[K]): number;
+        emit<K extends keyof Caps.SignalSignatures>(signal: K, ...args: Parameters<Caps.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -817,7 +822,6 @@ export namespace Grl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
-        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -826,6 +830,12 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](plugin: string, source?: string | null): Config;
+
+        // Signals
+
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -950,7 +960,6 @@ export namespace Grl {
 
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
-        declare static readonly __signalSignatures: Data.SignalSignatures;
 
         // Constructors
 
@@ -959,6 +968,12 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): Data;
+
+        // Signals
+
+        connect<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: Parameters<Data.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1249,7 +1264,6 @@ export namespace Grl {
 
     class Media extends Data {
         static $gtype: GObject.GType<Media>;
-        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -1273,6 +1287,12 @@ export namespace Grl {
         static ['new'](): Media;
 
         static video_new(): Media;
+
+        // Signals
+
+        connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -1866,7 +1886,6 @@ export namespace Grl {
 
     class OperationOptions extends GObject.Object {
         static $gtype: GObject.GType<OperationOptions>;
-        declare static readonly __signalSignatures: OperationOptions.SignalSignatures;
 
         // Constructors
 
@@ -1875,6 +1894,21 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](caps?: Caps | null): OperationOptions;
+
+        // Signals
+
+        connect<K extends keyof OperationOptions.SignalSignatures>(
+            signal: K,
+            callback: OperationOptions.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OperationOptions.SignalSignatures>(
+            signal: K,
+            callback: OperationOptions.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OperationOptions.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OperationOptions.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1984,7 +2018,6 @@ export namespace Grl {
 
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
-        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -1998,6 +2031,12 @@ export namespace Grl {
         constructor(properties?: Partial<Plugin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -2057,15 +2096,15 @@ export namespace Grl {
         // Signal callback interfaces
 
         interface MetadataKeyAdded {
-            (key: string): void;
+            (_source: Registry, key: string): void;
         }
 
         interface SourceAdded {
-            (source: Source): void;
+            (_source: Registry, source: Source): void;
         }
 
         interface SourceRemoved {
-            (source: Source): void;
+            (_source: Registry, source: Source): void;
         }
 
         // Signal signatures
@@ -2082,7 +2121,6 @@ export namespace Grl {
 
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
-        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Constructors
 
@@ -2101,18 +2139,6 @@ export namespace Grl {
             signal: K,
             ...args: Parameters<Registry.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'metadata-key-added', callback: (_source: this, key: string) => void): number;
-        connect_after(signal: 'metadata-key-added', callback: (_source: this, key: string) => void): number;
-        emit(signal: 'metadata-key-added', key: string): void;
-        connect(signal: 'source-added', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-added', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-added', source: Source): void;
-        connect(signal: 'source-removed', callback: (_source: this, source: Source) => void): number;
-        connect_after(signal: 'source-removed', callback: (_source: this, source: Source) => void): number;
-        emit(signal: 'source-removed', source: Source): void;
 
         // Static methods
 
@@ -2317,7 +2343,6 @@ export namespace Grl {
 
     class RelatedKeys extends GObject.Object {
         static $gtype: GObject.GType<RelatedKeys>;
-        declare static readonly __signalSignatures: RelatedKeys.SignalSignatures;
 
         // Constructors
 
@@ -2326,6 +2351,21 @@ export namespace Grl {
         _init(...args: any[]): void;
 
         static ['new'](): RelatedKeys;
+
+        // Signals
+
+        connect<K extends keyof RelatedKeys.SignalSignatures>(
+            signal: K,
+            callback: RelatedKeys.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RelatedKeys.SignalSignatures>(
+            signal: K,
+            callback: RelatedKeys.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RelatedKeys.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RelatedKeys.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2492,7 +2532,7 @@ export namespace Grl {
         // Signal callback interfaces
 
         interface ContentChanged {
-            (changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void;
+            (_source: Source, changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void;
         }
 
         // Signal signatures
@@ -2524,7 +2564,6 @@ export namespace Grl {
 
     abstract class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
-        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -2730,33 +2769,6 @@ export namespace Grl {
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'content-changed',
-            callback: (
-                _source: this,
-                changed_medias: Media[],
-                change_type: SourceChangeType,
-                location_unknown: boolean,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'content-changed',
-            callback: (
-                _source: this,
-                changed_medias: Media[],
-                change_type: SourceChangeType,
-                location_unknown: boolean,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'content-changed',
-            changed_medias: Media[],
-            change_type: SourceChangeType,
-            location_unknown: boolean,
-        ): void;
 
         // Virtual methods
 

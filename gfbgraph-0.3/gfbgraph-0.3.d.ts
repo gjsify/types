@@ -55,7 +55,6 @@ export namespace GFBGraph {
 
     class Album extends Node implements Connectable {
         static $gtype: GObject.GType<Album>;
-        declare static readonly __signalSignatures: Album.SignalSignatures;
 
         // Properties
 
@@ -88,6 +87,12 @@ export namespace GFBGraph {
         static ['new'](): Album;
 
         static new_from_id(authorizer: Authorizer, id: string): Album;
+
+        // Signals
+
+        connect<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
+        connect_after<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
+        emit<K extends keyof Album.SignalSignatures>(signal: K, ...args: Parameters<Album.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -286,13 +291,27 @@ export namespace GFBGraph {
 
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
-        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GoaAuthorizer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: GoaAuthorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GoaAuthorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -801,7 +820,6 @@ export namespace GFBGraph {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
-        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -833,6 +851,12 @@ export namespace GFBGraph {
         static ['new'](): Node;
 
         static new_from_id(authorizer: Authorizer, id: string, node_type: GObject.GType): Node;
+
+        // Signals
+
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -957,7 +981,6 @@ export namespace GFBGraph {
 
     class Photo extends Node implements Connectable, Json.Serializable {
         static $gtype: GObject.GType<Photo>;
-        declare static readonly __signalSignatures: Photo.SignalSignatures;
 
         // Properties
 
@@ -996,6 +1019,12 @@ export namespace GFBGraph {
         static ['new'](): Photo;
 
         static new_from_id(authorizer: Authorizer, id: string): Photo;
+
+        // Signals
+
+        connect<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
+        emit<K extends keyof Photo.SignalSignatures>(signal: K, ...args: Parameters<Photo.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -1789,7 +1818,6 @@ export namespace GFBGraph {
 
     class SimpleAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<SimpleAuthorizer>;
-        declare static readonly __signalSignatures: SimpleAuthorizer.SignalSignatures;
 
         // Properties
 
@@ -1805,6 +1833,21 @@ export namespace GFBGraph {
         _init(...args: any[]): void;
 
         static ['new'](access_token: string): SimpleAuthorizer;
+
+        // Signals
+
+        connect<K extends keyof SimpleAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: SimpleAuthorizer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleAuthorizer.SignalSignatures>(
+            signal: K,
+            callback: SimpleAuthorizer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleAuthorizer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleAuthorizer.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -2309,7 +2352,6 @@ export namespace GFBGraph {
 
     class User extends Node {
         static $gtype: GObject.GType<User>;
-        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Properties
 
@@ -2333,6 +2375,12 @@ export namespace GFBGraph {
         static ['new'](): User;
 
         static new_from_id(authorizer: Authorizer, id: string): User;
+
+        // Signals
+
+        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
 
         // Static methods
 

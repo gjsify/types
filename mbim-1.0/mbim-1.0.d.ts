@@ -5756,15 +5756,15 @@ export namespace Mbim {
         // Signal callback interfaces
 
         interface DeviceError {
-            (object: GLib.Error): void;
+            (_source: Device, object: GLib.Error): void;
         }
 
         interface DeviceIndicateStatus {
-            (object: Message): void;
+            (_source: Device, object: Message): void;
         }
 
         interface DeviceRemoved {
-            (): void;
+            (_source: Device): void;
         }
 
         // Signal signatures
@@ -5794,7 +5794,6 @@ export namespace Mbim {
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -5827,18 +5826,6 @@ export namespace Mbim {
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-error', callback: (_source: this, object: GLib.Error) => void): number;
-        connect_after(signal: 'device-error', callback: (_source: this, object: GLib.Error) => void): number;
-        emit(signal: 'device-error', object: GLib.Error): void;
-        connect(signal: 'device-indicate-status', callback: (_source: this, object: Message) => void): number;
-        connect_after(signal: 'device-indicate-status', callback: (_source: this, object: Message) => void): number;
-        emit(signal: 'device-indicate-status', object: Message): void;
-        connect(signal: 'device-removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this) => void): number;
-        emit(signal: 'device-removed'): void;
 
         // Static methods
 
@@ -7016,7 +7003,6 @@ export namespace Mbim {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -7032,6 +7018,12 @@ export namespace Mbim {
         _init(...args: any[]): void;
 
         static ['new'](): Proxy;
+
+        // Signals
+
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
     }
 
     /**

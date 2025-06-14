@@ -353,7 +353,7 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface WindowsChanged {
-            (): void;
+            (_source: App): void;
         }
 
         // Signal signatures
@@ -377,7 +377,6 @@ export namespace Shell {
 
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
-        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -429,12 +428,6 @@ export namespace Shell {
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'windows-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'windows-changed', callback: (_source: this) => void): number;
-        emit(signal: 'windows-changed'): void;
 
         // Methods
 
@@ -546,11 +539,11 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface AppStateChanged {
-            (object: App): void;
+            (_source: AppSystem, object: App): void;
         }
 
         interface InstalledChanged {
-            (): void;
+            (_source: AppSystem): void;
         }
 
         // Signal signatures
@@ -566,7 +559,6 @@ export namespace Shell {
 
     class AppSystem extends GObject.Object {
         static $gtype: GObject.GType<AppSystem>;
-        declare static readonly __signalSignatures: AppSystem.SignalSignatures;
 
         // Constructors
 
@@ -585,15 +577,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<AppSystem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'app-state-changed', callback: (_source: this, object: App) => void): number;
-        connect_after(signal: 'app-state-changed', callback: (_source: this, object: App) => void): number;
-        emit(signal: 'app-state-changed', object: App): void;
-        connect(signal: 'installed-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'installed-changed', callback: (_source: this) => void): number;
-        emit(signal: 'installed-changed'): void;
 
         // Static methods
 
@@ -659,13 +642,24 @@ export namespace Shell {
 
     class AppUsage extends GObject.Object {
         static $gtype: GObject.GType<AppUsage>;
-        declare static readonly __signalSignatures: AppUsage.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<AppUsage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof AppUsage.SignalSignatures>(signal: K, callback: AppUsage.SignalSignatures[K]): number;
+        connect_after<K extends keyof AppUsage.SignalSignatures>(
+            signal: K,
+            callback: AppUsage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AppUsage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AppUsage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -698,7 +692,6 @@ export namespace Shell {
 
     class BlurEffect extends Clutter.Effect {
         static $gtype: GObject.GType<BlurEffect>;
-        declare static readonly __signalSignatures: BlurEffect.SignalSignatures;
 
         // Properties
 
@@ -716,6 +709,21 @@ export namespace Shell {
         _init(...args: any[]): void;
 
         static ['new'](): BlurEffect;
+
+        // Signals
+
+        connect<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            callback: BlurEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            callback: BlurEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BlurEffect.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -738,13 +746,27 @@ export namespace Shell {
 
     class GLSLEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<GLSLEffect>;
-        declare static readonly __signalSignatures: GLSLEffect.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<GLSLEffect.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GLSLEffect.SignalSignatures>(
+            signal: K,
+            callback: GLSLEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GLSLEffect.SignalSignatures>(
+            signal: K,
+            callback: GLSLEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLSLEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLSLEffect.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -773,15 +795,15 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface LocatePointer {
-            (): void;
+            (_source: Global): void;
         }
 
         interface NotifyError {
-            (object: string, p0: string): void;
+            (_source: Global, object: string, p0: string): void;
         }
 
         interface Shutdown {
-            (): void;
+            (_source: Global): void;
         }
 
         // Signal signatures
@@ -832,7 +854,6 @@ export namespace Shell {
 
     class Global extends GObject.Object {
         static $gtype: GObject.GType<Global>;
-        declare static readonly __signalSignatures: Global.SignalSignatures;
 
         // Properties
 
@@ -887,18 +908,6 @@ export namespace Shell {
         connect<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
         connect_after<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
         emit<K extends keyof Global.SignalSignatures>(signal: K, ...args: Parameters<Global.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'locate-pointer', callback: (_source: this) => void): number;
-        connect_after(signal: 'locate-pointer', callback: (_source: this) => void): number;
-        emit(signal: 'locate-pointer'): void;
-        connect(signal: 'notify-error', callback: (_source: this, object: string, p0: string) => void): number;
-        connect_after(signal: 'notify-error', callback: (_source: this, object: string, p0: string) => void): number;
-        emit(signal: 'notify-error', object: string, p0: string): void;
-        connect(signal: 'shutdown', callback: (_source: this) => void): number;
-        connect_after(signal: 'shutdown', callback: (_source: this) => void): number;
-        emit(signal: 'shutdown'): void;
 
         // Static methods
 
@@ -1048,7 +1057,6 @@ export namespace Shell {
 
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<InvertLightnessEffect>;
-        declare static readonly __signalSignatures: InvertLightnessEffect.SignalSignatures;
 
         // Constructors
 
@@ -1057,17 +1065,32 @@ export namespace Shell {
         _init(...args: any[]): void;
 
         static ['new'](): InvertLightnessEffect;
+
+        // Signals
+
+        connect<K extends keyof InvertLightnessEffect.SignalSignatures>(
+            signal: K,
+            callback: InvertLightnessEffect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InvertLightnessEffect.SignalSignatures>(
+            signal: K,
+            callback: InvertLightnessEffect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InvertLightnessEffect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InvertLightnessEffect.SignalSignatures[K]>
+        ): void;
     }
 
     namespace KeyringPrompt {
         // Signal callback interfaces
 
         interface ShowConfirm {
-            (): void;
+            (_source: KeyringPrompt): void;
         }
 
         interface ShowPassword {
-            (): void;
+            (_source: KeyringPrompt): void;
         }
 
         // Signal signatures
@@ -1096,7 +1119,6 @@ export namespace Shell {
 
     class KeyringPrompt extends GObject.Object implements Gcr.Prompt {
         static $gtype: GObject.GType<KeyringPrompt>;
-        declare static readonly __signalSignatures: KeyringPrompt.SignalSignatures;
 
         // Properties
 
@@ -1175,15 +1197,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<KeyringPrompt.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'show-confirm', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-confirm', callback: (_source: this) => void): number;
-        emit(signal: 'show-confirm'): void;
-        connect(signal: 'show-password', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-password', callback: (_source: this) => void): number;
-        emit(signal: 'show-password'): void;
 
         // Methods
 
@@ -2208,7 +2221,7 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface ShowProcesses2 {
-            (): void;
+            (_source: MountOperation): void;
         }
 
         // Signal signatures
@@ -2223,7 +2236,6 @@ export namespace Shell {
 
     class MountOperation extends Gio.MountOperation {
         static $gtype: GObject.GType<MountOperation>;
-        declare static readonly __signalSignatures: MountOperation.SignalSignatures;
 
         // Constructors
 
@@ -2247,12 +2259,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<MountOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'show-processes-2', callback: (_source: this) => void): number;
-        connect_after(signal: 'show-processes-2', callback: (_source: this) => void): number;
-        emit(signal: 'show-processes-2'): void;
 
         // Methods
 
@@ -2265,11 +2271,11 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface CancelRequest {
-            (object: string): void;
+            (_source: NetworkAgent, object: string): void;
         }
 
         interface NewRequest {
-            (object: string, p0: NM.Connection, p1: string, p2: string[], p3: number): void;
+            (_source: NetworkAgent, object: string, p0: NM.Connection, p1: string, p2: string[], p3: number): void;
         }
 
         // Signal signatures
@@ -2288,7 +2294,6 @@ export namespace Shell {
 
     class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
         static $gtype: GObject.GType<NetworkAgent>;
-        declare static readonly __signalSignatures: NetworkAgent.SignalSignatures;
 
         // Constructors
 
@@ -2310,21 +2315,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<NetworkAgent.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancel-request', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'cancel-request', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'cancel-request', object: string): void;
-        connect(
-            signal: 'new-request',
-            callback: (_source: this, object: string, p0: NM.Connection, p1: string, p2: string[], p3: number) => void,
-        ): number;
-        connect_after(
-            signal: 'new-request',
-            callback: (_source: this, object: string, p0: NM.Connection, p1: string, p2: string[], p3: number) => void,
-        ): number;
-        emit(signal: 'new-request', object: string, p0: NM.Connection, p1: string, p2: string[], p3: number): void;
 
         // Methods
 
@@ -3076,13 +3066,24 @@ export namespace Shell {
 
     class PerfLog extends GObject.Object {
         static $gtype: GObject.GType<PerfLog>;
-        declare static readonly __signalSignatures: PerfLog.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<PerfLog.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof PerfLog.SignalSignatures>(signal: K, callback: PerfLog.SignalSignatures[K]): number;
+        connect_after<K extends keyof PerfLog.SignalSignatures>(
+            signal: K,
+            callback: PerfLog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PerfLog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PerfLog.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3206,11 +3207,18 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface Cancel {
-            (): void;
+            (_source: PolkitAuthenticationAgent): void;
         }
 
         interface Initiate {
-            (object: string, p0: string, p1: string, p2: string, p3: string[]): void;
+            (
+                _source: PolkitAuthenticationAgent,
+                object: string,
+                p0: string,
+                p1: string,
+                p2: string,
+                p3: string[],
+            ): void;
         }
 
         // Signal signatures
@@ -3226,7 +3234,6 @@ export namespace Shell {
 
     class PolkitAuthenticationAgent extends PolkitAgent.Listener {
         static $gtype: GObject.GType<PolkitAuthenticationAgent>;
-        declare static readonly __signalSignatures: PolkitAuthenticationAgent.SignalSignatures;
 
         // Constructors
 
@@ -3250,21 +3257,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<PolkitAuthenticationAgent.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'cancel', callback: (_source: this) => void): number;
-        connect_after(signal: 'cancel', callback: (_source: this) => void): number;
-        emit(signal: 'cancel'): void;
-        connect(
-            signal: 'initiate',
-            callback: (_source: this, object: string, p0: string, p1: string, p2: string, p3: string[]) => void,
-        ): number;
-        connect_after(
-            signal: 'initiate',
-            callback: (_source: this, object: string, p0: string, p1: string, p2: string, p3: string[]) => void,
-        ): number;
-        emit(signal: 'initiate', object: string, p0: string, p1: string, p2: string, p3: string[]): void;
 
         // Methods
 
@@ -3279,7 +3271,7 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface ScreenshotTaken {
-            (object: Meta.Rectangle): void;
+            (_source: Screenshot, object: Meta.Rectangle): void;
         }
 
         // Signal signatures
@@ -3294,7 +3286,6 @@ export namespace Shell {
 
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
-        declare static readonly __signalSignatures: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -3318,12 +3309,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<Screenshot.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'screenshot-taken', callback: (_source: this, object: Meta.Rectangle) => void): number;
-        connect_after(signal: 'screenshot-taken', callback: (_source: this, object: Meta.Rectangle) => void): number;
-        emit(signal: 'screenshot-taken', object: Meta.Rectangle): void;
 
         // Static methods
 
@@ -3577,7 +3562,6 @@ export namespace Shell {
 
     class SecureTextBuffer extends Clutter.TextBuffer {
         static $gtype: GObject.GType<SecureTextBuffer>;
-        declare static readonly __signalSignatures: SecureTextBuffer.SignalSignatures;
 
         // Constructors
 
@@ -3586,6 +3570,21 @@ export namespace Shell {
         _init(...args: any[]): void;
 
         static ['new'](): SecureTextBuffer;
+
+        // Signals
+
+        connect<K extends keyof SecureTextBuffer.SignalSignatures>(
+            signal: K,
+            callback: SecureTextBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecureTextBuffer.SignalSignatures>(
+            signal: K,
+            callback: SecureTextBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecureTextBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecureTextBuffer.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SquareBin {
@@ -3607,13 +3606,24 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<SquareBin>;
-        declare static readonly __signalSignatures: SquareBin.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SquareBin.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SquareBin.SignalSignatures>(signal: K, callback: SquareBin.SignalSignatures[K]): number;
+        connect_after<K extends keyof SquareBin.SignalSignatures>(
+            signal: K,
+            callback: SquareBin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SquareBin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SquareBin.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -4232,13 +4242,18 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Stack>;
-        declare static readonly __signalSignatures: Stack.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Stack.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
+        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: Parameters<Stack.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -4862,7 +4877,6 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<TrayIcon>;
-        declare static readonly __signalSignatures: TrayIcon.SignalSignatures;
 
         // Properties
 
@@ -4876,6 +4890,18 @@ export namespace Shell {
         constructor(properties?: Partial<TrayIcon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TrayIcon.SignalSignatures>(signal: K, callback: TrayIcon.SignalSignatures[K]): number;
+        connect_after<K extends keyof TrayIcon.SignalSignatures>(
+            signal: K,
+            callback: TrayIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrayIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrayIcon.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5491,11 +5517,11 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface TrayIconAdded {
-            (object: Clutter.Actor): void;
+            (_source: TrayManager, object: Clutter.Actor): void;
         }
 
         interface TrayIconRemoved {
-            (object: Clutter.Actor): void;
+            (_source: TrayManager, object: Clutter.Actor): void;
         }
 
         // Signal signatures
@@ -5514,7 +5540,6 @@ export namespace Shell {
 
     class TrayManager extends GObject.Object {
         static $gtype: GObject.GType<TrayManager>;
-        declare static readonly __signalSignatures: TrayManager.SignalSignatures;
 
         // Properties
 
@@ -5543,15 +5568,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<TrayManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'tray-icon-added', callback: (_source: this, object: Clutter.Actor) => void): number;
-        connect_after(signal: 'tray-icon-added', callback: (_source: this, object: Clutter.Actor) => void): number;
-        emit(signal: 'tray-icon-added', object: Clutter.Actor): void;
-        connect(signal: 'tray-icon-removed', callback: (_source: this, object: Clutter.Actor) => void): number;
-        connect_after(signal: 'tray-icon-removed', callback: (_source: this, object: Clutter.Actor) => void): number;
-        emit(signal: 'tray-icon-removed', object: Clutter.Actor): void;
 
         // Methods
 
@@ -5563,67 +5579,67 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface ConfirmDisplayChange {
-            (): void;
+            (_source: WM): void;
         }
 
         interface CreateCloseDialog {
-            (window: Meta.Window): Meta.CloseDialog;
+            (_source: WM, window: Meta.Window): Meta.CloseDialog;
         }
 
         interface CreateInhibitShortcutsDialog {
-            (window: Meta.Window): Meta.InhibitShortcutsDialog;
+            (_source: WM, window: Meta.Window): Meta.InhibitShortcutsDialog;
         }
 
         interface Destroy {
-            (object: Meta.WindowActor): void;
+            (_source: WM, object: Meta.WindowActor): void;
         }
 
         interface FilterKeybinding {
-            (object: Meta.KeyBinding): boolean;
+            (_source: WM, object: Meta.KeyBinding): boolean;
         }
 
         interface HideTilePreview {
-            (): void;
+            (_source: WM): void;
         }
 
         interface KillSwitchWorkspace {
-            (): void;
+            (_source: WM): void;
         }
 
         interface KillWindowEffects {
-            (object: Meta.WindowActor): void;
+            (_source: WM, object: Meta.WindowActor): void;
         }
 
         interface Map {
-            (object: Meta.WindowActor): void;
+            (_source: WM, object: Meta.WindowActor): void;
         }
 
         interface Minimize {
-            (object: Meta.WindowActor): void;
+            (_source: WM, object: Meta.WindowActor): void;
         }
 
         interface ShowTilePreview {
-            (object: Meta.Window, p0: Meta.Rectangle, p1: number): void;
+            (_source: WM, object: Meta.Window, p0: Meta.Rectangle, p1: number): void;
         }
 
         interface ShowWindowMenu {
-            (object: Meta.Window, p0: number, p1: Meta.Rectangle): void;
+            (_source: WM, object: Meta.Window, p0: number, p1: Meta.Rectangle): void;
         }
 
         interface SizeChange {
-            (object: Meta.WindowActor, p0: Meta.SizeChange, p1: Meta.Rectangle, p2: Meta.Rectangle): void;
+            (_source: WM, object: Meta.WindowActor, p0: Meta.SizeChange, p1: Meta.Rectangle, p2: Meta.Rectangle): void;
         }
 
         interface SizeChanged {
-            (object: Meta.WindowActor): void;
+            (_source: WM, object: Meta.WindowActor): void;
         }
 
         interface SwitchWorkspace {
-            (object: number, p0: number, p1: number): void;
+            (_source: WM, object: number, p0: number, p1: number): void;
         }
 
         interface Unminimize {
-            (object: Meta.WindowActor): void;
+            (_source: WM, object: Meta.WindowActor): void;
         }
 
         // Signal signatures
@@ -5653,7 +5669,6 @@ export namespace Shell {
 
     class WM extends GObject.Object {
         static $gtype: GObject.GType<WM>;
-        declare static readonly __signalSignatures: WM.SignalSignatures;
 
         // Constructors
 
@@ -5668,117 +5683,6 @@ export namespace Shell {
         connect<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
         connect_after<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
         emit<K extends keyof WM.SignalSignatures>(signal: K, ...args: Parameters<WM.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'confirm-display-change', callback: (_source: this) => void): number;
-        connect_after(signal: 'confirm-display-change', callback: (_source: this) => void): number;
-        emit(signal: 'confirm-display-change'): void;
-        connect(
-            signal: 'create-close-dialog',
-            callback: (_source: this, window: Meta.Window) => Meta.CloseDialog,
-        ): number;
-        connect_after(
-            signal: 'create-close-dialog',
-            callback: (_source: this, window: Meta.Window) => Meta.CloseDialog,
-        ): number;
-        emit(signal: 'create-close-dialog', window: Meta.Window): void;
-        connect(
-            signal: 'create-inhibit-shortcuts-dialog',
-            callback: (_source: this, window: Meta.Window) => Meta.InhibitShortcutsDialog,
-        ): number;
-        connect_after(
-            signal: 'create-inhibit-shortcuts-dialog',
-            callback: (_source: this, window: Meta.Window) => Meta.InhibitShortcutsDialog,
-        ): number;
-        emit(signal: 'create-inhibit-shortcuts-dialog', window: Meta.Window): void;
-        connect(signal: 'destroy', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        emit(signal: 'destroy', object: Meta.WindowActor): void;
-        connect(signal: 'filter-keybinding', callback: (_source: this, object: Meta.KeyBinding) => boolean): number;
-        connect_after(
-            signal: 'filter-keybinding',
-            callback: (_source: this, object: Meta.KeyBinding) => boolean,
-        ): number;
-        emit(signal: 'filter-keybinding', object: Meta.KeyBinding): void;
-        connect(signal: 'hide-tile-preview', callback: (_source: this) => void): number;
-        connect_after(signal: 'hide-tile-preview', callback: (_source: this) => void): number;
-        emit(signal: 'hide-tile-preview'): void;
-        connect(signal: 'kill-switch-workspace', callback: (_source: this) => void): number;
-        connect_after(signal: 'kill-switch-workspace', callback: (_source: this) => void): number;
-        emit(signal: 'kill-switch-workspace'): void;
-        connect(signal: 'kill-window-effects', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        connect_after(
-            signal: 'kill-window-effects',
-            callback: (_source: this, object: Meta.WindowActor) => void,
-        ): number;
-        emit(signal: 'kill-window-effects', object: Meta.WindowActor): void;
-        connect(signal: 'map', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        connect_after(signal: 'map', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        emit(signal: 'map', object: Meta.WindowActor): void;
-        connect(signal: 'minimize', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        connect_after(signal: 'minimize', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        emit(signal: 'minimize', object: Meta.WindowActor): void;
-        connect(
-            signal: 'show-tile-preview',
-            callback: (_source: this, object: Meta.Window, p0: Meta.Rectangle, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'show-tile-preview',
-            callback: (_source: this, object: Meta.Window, p0: Meta.Rectangle, p1: number) => void,
-        ): number;
-        emit(signal: 'show-tile-preview', object: Meta.Window, p0: Meta.Rectangle, p1: number): void;
-        connect(
-            signal: 'show-window-menu',
-            callback: (_source: this, object: Meta.Window, p0: number, p1: Meta.Rectangle) => void,
-        ): number;
-        connect_after(
-            signal: 'show-window-menu',
-            callback: (_source: this, object: Meta.Window, p0: number, p1: Meta.Rectangle) => void,
-        ): number;
-        emit(signal: 'show-window-menu', object: Meta.Window, p0: number, p1: Meta.Rectangle): void;
-        connect(
-            signal: 'size-change',
-            callback: (
-                _source: this,
-                object: Meta.WindowActor,
-                p0: Meta.SizeChange,
-                p1: Meta.Rectangle,
-                p2: Meta.Rectangle,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'size-change',
-            callback: (
-                _source: this,
-                object: Meta.WindowActor,
-                p0: Meta.SizeChange,
-                p1: Meta.Rectangle,
-                p2: Meta.Rectangle,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'size-change',
-            object: Meta.WindowActor,
-            p0: Meta.SizeChange,
-            p1: Meta.Rectangle,
-            p2: Meta.Rectangle,
-        ): void;
-        connect(signal: 'size-changed', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        connect_after(signal: 'size-changed', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        emit(signal: 'size-changed', object: Meta.WindowActor): void;
-        connect(
-            signal: 'switch-workspace',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        connect_after(
-            signal: 'switch-workspace',
-            callback: (_source: this, object: number, p0: number, p1: number) => void,
-        ): number;
-        emit(signal: 'switch-workspace', object: number, p0: number, p1: number): void;
-        connect(signal: 'unminimize', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        connect_after(signal: 'unminimize', callback: (_source: this, object: Meta.WindowActor) => void): number;
-        emit(signal: 'unminimize', object: Meta.WindowActor): void;
 
         // Methods
 
@@ -5837,7 +5741,6 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<WindowPreview>;
-        declare static readonly __signalSignatures: WindowPreview.SignalSignatures;
 
         // Properties
 
@@ -5851,6 +5754,21 @@ export namespace Shell {
         constructor(properties?: Partial<WindowPreview.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WindowPreview.SignalSignatures>(
+            signal: K,
+            callback: WindowPreview.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowPreview.SignalSignatures>(
+            signal: K,
+            callback: WindowPreview.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowPreview.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowPreview.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -6464,7 +6382,6 @@ export namespace Shell {
 
     class WindowPreviewLayout extends Clutter.LayoutManager {
         static $gtype: GObject.GType<WindowPreviewLayout>;
-        declare static readonly __signalSignatures: WindowPreviewLayout.SignalSignatures;
 
         // Properties
 
@@ -6476,6 +6393,21 @@ export namespace Shell {
         constructor(properties?: Partial<WindowPreviewLayout.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WindowPreviewLayout.SignalSignatures>(
+            signal: K,
+            callback: WindowPreviewLayout.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowPreviewLayout.SignalSignatures>(
+            signal: K,
+            callback: WindowPreviewLayout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowPreviewLayout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowPreviewLayout.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -6507,11 +6439,11 @@ export namespace Shell {
         // Signal callback interfaces
 
         interface StartupSequenceChanged {
-            (object: Meta.StartupSequence): void;
+            (_source: WindowTracker, object: Meta.StartupSequence): void;
         }
 
         interface TrackedWindowsChanged {
-            (): void;
+            (_source: WindowTracker): void;
         }
 
         // Signal signatures
@@ -6530,7 +6462,6 @@ export namespace Shell {
 
     class WindowTracker extends GObject.Object {
         static $gtype: GObject.GType<WindowTracker>;
-        declare static readonly __signalSignatures: WindowTracker.SignalSignatures;
 
         // Properties
 
@@ -6557,21 +6488,6 @@ export namespace Shell {
             signal: K,
             ...args: Parameters<WindowTracker.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'startup-sequence-changed',
-            callback: (_source: this, object: Meta.StartupSequence) => void,
-        ): number;
-        connect_after(
-            signal: 'startup-sequence-changed',
-            callback: (_source: this, object: Meta.StartupSequence) => void,
-        ): number;
-        emit(signal: 'startup-sequence-changed', object: Meta.StartupSequence): void;
-        connect(signal: 'tracked-windows-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'tracked-windows-changed', callback: (_source: this) => void): number;
-        emit(signal: 'tracked-windows-changed'): void;
 
         // Static methods
 
@@ -6613,7 +6529,6 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<WorkspaceBackground>;
-        declare static readonly __signalSignatures: WorkspaceBackground.SignalSignatures;
 
         // Properties
 
@@ -6629,6 +6544,21 @@ export namespace Shell {
         constructor(properties?: Partial<WorkspaceBackground.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof WorkspaceBackground.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceBackground.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceBackground.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceBackground.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceBackground.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceBackground.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

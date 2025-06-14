@@ -2181,13 +2181,18 @@ export namespace Cogl {
 
     class Bitmap extends Object {
         static $gtype: GObject.GType<Bitmap>;
-        declare static readonly __signalSignatures: Bitmap.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static new_from_file(filename: string): Bitmap;
+
+        // Signals
+
+        connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: Parameters<Bitmap.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -2214,11 +2219,22 @@ export namespace Cogl {
 
     class Context extends Object {
         static $gtype: GObject.GType<Context>;
-        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2253,11 +2269,22 @@ export namespace Cogl {
      */
     class FrameInfo extends Object {
         static $gtype: GObject.GType<FrameInfo>;
-        declare static readonly __signalSignatures: FrameInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FrameInfo.SignalSignatures>(signal: K, callback: FrameInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof FrameInfo.SignalSignatures>(
+            signal: K,
+            callback: FrameInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FrameInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FrameInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -2304,7 +2331,7 @@ export namespace Cogl {
         // Signal callback interfaces
 
         interface Destroy {
-            (): void;
+            (_source: Framebuffer): void;
         }
 
         // Signal signatures
@@ -2324,7 +2351,6 @@ export namespace Cogl {
 
     abstract class Framebuffer extends GObject.Object {
         static $gtype: GObject.GType<Framebuffer>;
-        declare static readonly __signalSignatures: Framebuffer.SignalSignatures;
 
         // Properties
 
@@ -2355,12 +2381,6 @@ export namespace Cogl {
             signal: K,
             ...args: Parameters<Framebuffer.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'destroy', callback: (_source: this) => void): number;
-        connect_after(signal: 'destroy', callback: (_source: this) => void): number;
-        emit(signal: 'destroy'): void;
 
         // Static methods
 
@@ -3101,11 +3121,16 @@ export namespace Cogl {
 
     abstract class Object {
         static $gtype: GObject.GType<Object>;
-        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
     }
 
     namespace Offscreen {
@@ -3119,7 +3144,6 @@ export namespace Cogl {
 
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
-        declare static readonly __signalSignatures: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -3128,6 +3152,18 @@ export namespace Cogl {
         _init(...args: any[]): void;
 
         static new_with_texture(texture: Texture): Offscreen;
+
+        // Signals
+
+        connect<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: Offscreen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Offscreen.SignalSignatures>(
+            signal: K,
+            callback: Offscreen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Offscreen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Offscreen.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Onscreen {
@@ -3141,13 +3177,24 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
-        declare static readonly __signalSignatures: Onscreen.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Onscreen.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Onscreen.SignalSignatures>(signal: K, callback: Onscreen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Onscreen.SignalSignatures>(
+            signal: K,
+            callback: Onscreen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Onscreen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Onscreen.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -3534,13 +3581,24 @@ export namespace Cogl {
 
     class Pipeline extends Object {
         static $gtype: GObject.GType<Pipeline>;
-        declare static readonly __signalSignatures: Pipeline.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](context: Context): Pipeline;
+
+        // Signals
+
+        connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            callback: Pipeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Pipeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Pipeline.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4153,13 +4211,24 @@ export namespace Cogl {
 
     class Snippet extends Object {
         static $gtype: GObject.GType<Snippet>;
-        declare static readonly __signalSignatures: Snippet.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static ['new'](hook: SnippetHook, declarations?: string | null, post?: string | null): Snippet;
+
+        // Signals
+
+        connect<K extends keyof Snippet.SignalSignatures>(signal: K, callback: Snippet.SignalSignatures[K]): number;
+        connect_after<K extends keyof Snippet.SignalSignatures>(
+            signal: K,
+            callback: Snippet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Snippet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Snippet.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4225,13 +4294,24 @@ export namespace Cogl {
 
     class Texture2D extends Object implements Texture {
         static $gtype: GObject.GType<Texture2D>;
-        declare static readonly __signalSignatures: Texture2D.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static new_from_bitmap(bitmap: Bitmap): Texture2D;
+
+        // Signals
+
+        connect<K extends keyof Texture2D.SignalSignatures>(signal: K, callback: Texture2D.SignalSignatures[K]): number;
+        connect_after<K extends keyof Texture2D.SignalSignatures>(
+            signal: K,
+            callback: Texture2D.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Texture2D.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Texture2D.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4475,13 +4555,27 @@ export namespace Cogl {
 
     class Texture2DSliced extends Object implements Texture {
         static $gtype: GObject.GType<Texture2DSliced>;
-        declare static readonly __signalSignatures: Texture2DSliced.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
 
         static new_from_bitmap(bmp: Bitmap, max_waste: number): Texture2DSliced;
+
+        // Signals
+
+        connect<K extends keyof Texture2DSliced.SignalSignatures>(
+            signal: K,
+            callback: Texture2DSliced.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Texture2DSliced.SignalSignatures>(
+            signal: K,
+            callback: Texture2DSliced.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Texture2DSliced.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Texture2DSliced.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**

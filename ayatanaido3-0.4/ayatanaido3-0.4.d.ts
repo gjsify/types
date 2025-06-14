@@ -71,15 +71,15 @@ export namespace AyatanaIdo3 {
         // Signal callback interfaces
 
         interface DaySelected {
-            (): void;
+            (_source: CalendarMenuItem): void;
         }
 
         interface DaySelectedDoubleClick {
-            (): void;
+            (_source: CalendarMenuItem): void;
         }
 
         interface MonthChanged {
-            (): void;
+            (_source: CalendarMenuItem): void;
         }
 
         // Signal signatures
@@ -104,7 +104,6 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<CalendarMenuItem>;
-        declare static readonly __signalSignatures: CalendarMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -130,18 +129,6 @@ export namespace AyatanaIdo3 {
             signal: K,
             ...args: Parameters<CalendarMenuItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'day-selected', callback: (_source: this) => void): number;
-        connect_after(signal: 'day-selected', callback: (_source: this) => void): number;
-        emit(signal: 'day-selected'): void;
-        connect(signal: 'day-selected-double-click', callback: (_source: this) => void): number;
-        connect_after(signal: 'day-selected-double-click', callback: (_source: this) => void): number;
-        emit(signal: 'day-selected-double-click'): void;
-        connect(signal: 'month-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'month-changed', callback: (_source: this) => void): number;
-        emit(signal: 'month-changed'): void;
 
         // Methods
 
@@ -4733,7 +4720,6 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<EntryMenuItem>;
-        declare static readonly __signalSignatures: EntryMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -4742,6 +4728,21 @@ export namespace AyatanaIdo3 {
         _init(...args: any[]): void;
 
         static ['new'](): EntryMenuItem;
+
+        // Signals
+
+        connect<K extends keyof EntryMenuItem.SignalSignatures>(
+            signal: K,
+            callback: EntryMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryMenuItem.SignalSignatures>(
+            signal: K,
+            callback: EntryMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9291,7 +9292,6 @@ export namespace AyatanaIdo3 {
 
     class Range extends Gtk.Scale implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Range>;
-        declare static readonly __signalSignatures: Range.SignalSignatures;
 
         // Constructors
 
@@ -9303,6 +9303,12 @@ export namespace AyatanaIdo3 {
         // Conflicted with Gtk.Scale.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
+        connect_after<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
+        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: Parameters<Range.SignalSignatures[K]>): void;
 
         // Inherited methods
         /**
@@ -9750,23 +9756,23 @@ export namespace AyatanaIdo3 {
         // Signal callback interfaces
 
         interface PrimaryClicked {
-            (): void;
+            (_source: ScaleMenuItem): void;
         }
 
         interface SecondaryClicked {
-            (): void;
+            (_source: ScaleMenuItem): void;
         }
 
         interface SliderGrabbed {
-            (): void;
+            (_source: ScaleMenuItem): void;
         }
 
         interface SliderReleased {
-            (): void;
+            (_source: ScaleMenuItem): void;
         }
 
         interface ValueChanged {
-            (value: number): void;
+            (_source: ScaleMenuItem, value: number): void;
         }
 
         // Signal signatures
@@ -9797,7 +9803,6 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ScaleMenuItem>;
-        declare static readonly __signalSignatures: ScaleMenuItem.SignalSignatures;
 
         // Properties
 
@@ -9844,24 +9849,6 @@ export namespace AyatanaIdo3 {
             signal: K,
             ...args: Parameters<ScaleMenuItem.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'primary-clicked', callback: (_source: this) => void): number;
-        connect_after(signal: 'primary-clicked', callback: (_source: this) => void): number;
-        emit(signal: 'primary-clicked'): void;
-        connect(signal: 'secondary-clicked', callback: (_source: this) => void): number;
-        connect_after(signal: 'secondary-clicked', callback: (_source: this) => void): number;
-        emit(signal: 'secondary-clicked'): void;
-        connect(signal: 'slider-grabbed', callback: (_source: this) => void): number;
-        connect_after(signal: 'slider-grabbed', callback: (_source: this) => void): number;
-        emit(signal: 'slider-grabbed'): void;
-        connect(signal: 'slider-released', callback: (_source: this) => void): number;
-        connect_after(signal: 'slider-released', callback: (_source: this) => void): number;
-        emit(signal: 'slider-released'): void;
-        connect(signal: 'value-changed', callback: (_source: this, value: number) => void): number;
-        connect_after(signal: 'value-changed', callback: (_source: this, value: number) => void): number;
-        emit(signal: 'value-changed', value: number): void;
 
         // Virtual methods
 
@@ -14493,7 +14480,6 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<SwitchMenuItem>;
-        declare static readonly __signalSignatures: SwitchMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -14504,6 +14490,21 @@ export namespace AyatanaIdo3 {
         static ['new'](): SwitchMenuItem;
 
         static new_from_menu_model(menuitem: Gio.MenuItem, actions: Gio.ActionGroup): SwitchMenuItem;
+
+        // Signals
+
+        connect<K extends keyof SwitchMenuItem.SignalSignatures>(
+            signal: K,
+            callback: SwitchMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwitchMenuItem.SignalSignatures>(
+            signal: K,
+            callback: SwitchMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwitchMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwitchMenuItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18809,19 +18810,19 @@ export namespace AyatanaIdo3 {
         // Signal callback interfaces
 
         interface Finished {
-            (): void;
+            (_source: Timeline): void;
         }
 
         interface Frame {
-            (progress: number): void;
+            (_source: Timeline, progress: number): void;
         }
 
         interface Paused {
-            (): void;
+            (_source: Timeline): void;
         }
 
         interface Started {
-            (): void;
+            (_source: Timeline): void;
         }
 
         // Signal signatures
@@ -18844,7 +18845,6 @@ export namespace AyatanaIdo3 {
 
     class Timeline extends GObject.Object {
         static $gtype: GObject.GType<Timeline>;
-        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -18878,21 +18878,6 @@ export namespace AyatanaIdo3 {
             signal: K,
             ...args: Parameters<Timeline.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'finished', callback: (_source: this) => void): number;
-        emit(signal: 'finished'): void;
-        connect(signal: 'frame', callback: (_source: this, progress: number) => void): number;
-        connect_after(signal: 'frame', callback: (_source: this, progress: number) => void): number;
-        emit(signal: 'frame', progress: number): void;
-        connect(signal: 'paused', callback: (_source: this) => void): number;
-        connect_after(signal: 'paused', callback: (_source: this) => void): number;
-        emit(signal: 'paused'): void;
-        connect(signal: 'started', callback: (_source: this) => void): number;
-        connect_after(signal: 'started', callback: (_source: this) => void): number;
-        emit(signal: 'started'): void;
 
         // Static methods
 

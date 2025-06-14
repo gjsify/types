@@ -367,7 +367,6 @@ export namespace GXml {
 
     class CssSelectorData extends GObject.Object {
         static $gtype: GObject.GType<CssSelectorData>;
-        declare static readonly __signalSignatures: CssSelectorData.SignalSignatures;
 
         // Properties
 
@@ -389,6 +388,21 @@ export namespace GXml {
         static with_values(t: CssSelectorType, data: string, val: string): CssSelectorData;
 
         static ['new'](): CssSelectorData;
+
+        // Signals
+
+        connect<K extends keyof CssSelectorData.SignalSignatures>(
+            signal: K,
+            callback: CssSelectorData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CssSelectorData.SignalSignatures>(
+            signal: K,
+            callback: CssSelectorData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CssSelectorData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CssSelectorData.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -415,7 +429,6 @@ export namespace GXml {
 
     class CssSelectorParser extends GObject.Object {
         static $gtype: GObject.GType<CssSelectorParser>;
-        declare static readonly __signalSignatures: CssSelectorParser.SignalSignatures;
 
         // Properties
 
@@ -428,6 +441,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): CssSelectorParser;
+
+        // Signals
+
+        connect<K extends keyof CssSelectorParser.SignalSignatures>(
+            signal: K,
+            callback: CssSelectorParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CssSelectorParser.SignalSignatures>(
+            signal: K,
+            callback: CssSelectorParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CssSelectorParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CssSelectorParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -451,7 +479,6 @@ export namespace GXml {
 
     class DomNodeFilter extends GObject.Object {
         static $gtype: GObject.GType<DomNodeFilter>;
-        declare static readonly __signalSignatures: DomNodeFilter.SignalSignatures;
 
         // Constructors
 
@@ -460,6 +487,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): DomNodeFilter;
+
+        // Signals
+
+        connect<K extends keyof DomNodeFilter.SignalSignatures>(
+            signal: K,
+            callback: DomNodeFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomNodeFilter.SignalSignatures>(
+            signal: K,
+            callback: DomNodeFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomNodeFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomNodeFilter.SignalSignatures[K]>
+        ): void;
     }
 
     namespace DomElementList {
@@ -473,7 +515,6 @@ export namespace GXml {
 
     class DomElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<DomElementList>;
-        declare static readonly __signalSignatures: DomElementList.SignalSignatures;
 
         // Constructors
 
@@ -482,6 +523,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): DomElementList;
+
+        // Signals
+
+        connect<K extends keyof DomElementList.SignalSignatures>(
+            signal: K,
+            callback: DomElementList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomElementList.SignalSignatures>(
+            signal: K,
+            callback: DomElementList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomElementList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomElementList.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -958,7 +1014,6 @@ export namespace GXml {
 
     class DomEventInit extends GObject.Object {
         static $gtype: GObject.GType<DomEventInit>;
-        declare static readonly __signalSignatures: DomEventInit.SignalSignatures;
 
         // Properties
 
@@ -974,6 +1029,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): DomEventInit;
+
+        // Signals
+
+        connect<K extends keyof DomEventInit.SignalSignatures>(
+            signal: K,
+            callback: DomEventInit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomEventInit.SignalSignatures>(
+            signal: K,
+            callback: DomEventInit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomEventInit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomEventInit.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -996,7 +1066,6 @@ export namespace GXml {
 
     class DomCustomEventInit extends DomEventInit {
         static $gtype: GObject.GType<DomCustomEventInit>;
-        declare static readonly __signalSignatures: DomCustomEventInit.SignalSignatures;
 
         // Properties
 
@@ -1010,6 +1079,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): DomCustomEventInit;
+
+        // Signals
+
+        connect<K extends keyof DomCustomEventInit.SignalSignatures>(
+            signal: K,
+            callback: DomCustomEventInit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomCustomEventInit.SignalSignatures>(
+            signal: K,
+            callback: DomCustomEventInit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomCustomEventInit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomCustomEventInit.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1030,7 +1114,6 @@ export namespace GXml {
 
     class DomTimeStamp extends GObject.Object {
         static $gtype: GObject.GType<DomTimeStamp>;
-        declare static readonly __signalSignatures: DomTimeStamp.SignalSignatures;
 
         // Properties
 
@@ -1044,6 +1127,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): DomTimeStamp;
+
+        // Signals
+
+        connect<K extends keyof DomTimeStamp.SignalSignatures>(
+            signal: K,
+            callback: DomTimeStamp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomTimeStamp.SignalSignatures>(
+            signal: K,
+            callback: DomTimeStamp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomTimeStamp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomTimeStamp.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1076,7 +1174,6 @@ export namespace GXml {
 
     class DomMutationObserverInit extends GObject.Object {
         static $gtype: GObject.GType<DomMutationObserverInit>;
-        declare static readonly __signalSignatures: DomMutationObserverInit.SignalSignatures;
 
         // Properties
 
@@ -1113,6 +1210,21 @@ export namespace GXml {
 
         static ['new'](): DomMutationObserverInit;
 
+        // Signals
+
+        connect<K extends keyof DomMutationObserverInit.SignalSignatures>(
+            signal: K,
+            callback: DomMutationObserverInit.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomMutationObserverInit.SignalSignatures>(
+            signal: K,
+            callback: DomMutationObserverInit.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomMutationObserverInit.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomMutationObserverInit.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_child_list(): boolean;
@@ -1142,7 +1254,6 @@ export namespace GXml {
 
     class DomErrorName extends GObject.Object {
         static $gtype: GObject.GType<DomErrorName>;
-        declare static readonly __signalSignatures: DomErrorName.SignalSignatures;
 
         // Constructors
 
@@ -1151,6 +1262,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): DomErrorName;
+
+        // Signals
+
+        connect<K extends keyof DomErrorName.SignalSignatures>(
+            signal: K,
+            callback: DomErrorName.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DomErrorName.SignalSignatures>(
+            signal: K,
+            callback: DomErrorName.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DomErrorName.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DomErrorName.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -1169,7 +1295,6 @@ export namespace GXml {
 
     class ElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<ElementList>;
-        declare static readonly __signalSignatures: ElementList.SignalSignatures;
 
         // Constructors
 
@@ -1178,6 +1303,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): ElementList;
+
+        // Signals
+
+        connect<K extends keyof ElementList.SignalSignatures>(
+            signal: K,
+            callback: ElementList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ElementList.SignalSignatures>(
+            signal: K,
+            callback: ElementList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ElementList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ElementList.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -1654,7 +1794,6 @@ export namespace GXml {
 
     class GHtmlDocument extends GDocument implements DomHtmlDocument {
         static $gtype: GObject.GType<GHtmlDocument>;
-        declare static readonly __signalSignatures: GHtmlDocument.SignalSignatures;
 
         // Properties
 
@@ -1680,6 +1819,21 @@ export namespace GXml {
         static from_string_doc(html: string, options: number): GHtmlDocument;
 
         static ['new'](): GHtmlDocument;
+
+        // Signals
+
+        connect<K extends keyof GHtmlDocument.SignalSignatures>(
+            signal: K,
+            callback: GHtmlDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GHtmlDocument.SignalSignatures>(
+            signal: K,
+            callback: GHtmlDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GHtmlDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GHtmlDocument.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -2144,7 +2298,6 @@ export namespace GXml {
 
     class GomAttr extends GomNode implements DomAttr {
         static $gtype: GObject.GType<GomAttr>;
-        declare static readonly __signalSignatures: GomAttr.SignalSignatures;
 
         // Constructors
 
@@ -2164,6 +2317,18 @@ export namespace GXml {
             name: string,
             value: string,
         ): GomAttr;
+
+        // Signals
+
+        connect<K extends keyof GomAttr.SignalSignatures>(signal: K, callback: GomAttr.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomAttr.SignalSignatures>(
+            signal: K,
+            callback: GomAttr.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomAttr.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomAttr.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get namespace_uri(): string;
@@ -2651,7 +2816,6 @@ export namespace GXml {
 
     abstract class BaseCollection extends GObject.Object {
         static $gtype: GObject.GType<BaseCollection>;
-        declare static readonly __signalSignatures: BaseCollection.SignalSignatures;
 
         // Properties
 
@@ -2671,6 +2835,21 @@ export namespace GXml {
         constructor(properties?: Partial<BaseCollection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof BaseCollection.SignalSignatures>(
+            signal: K,
+            callback: BaseCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseCollection.SignalSignatures>(
+            signal: K,
+            callback: BaseCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseCollection.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -2704,7 +2883,6 @@ export namespace GXml {
 
     class GomArrayList extends BaseCollection implements GomCollection {
         static $gtype: GObject.GType<GomArrayList>;
-        declare static readonly __signalSignatures: GomArrayList.SignalSignatures;
 
         // Constructors
 
@@ -2713,6 +2891,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomArrayList;
+
+        // Signals
+
+        connect<K extends keyof GomArrayList.SignalSignatures>(
+            signal: K,
+            callback: GomArrayList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomArrayList.SignalSignatures>(
+            signal: K,
+            callback: GomArrayList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomArrayList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomArrayList.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get nodes_index(): GLib.Queue;
@@ -3211,7 +3404,6 @@ export namespace GXml {
 
     class GomHashMap extends BaseCollection implements GomCollection {
         static $gtype: GObject.GType<GomHashMap>;
-        declare static readonly __signalSignatures: GomHashMap.SignalSignatures;
 
         // Properties
 
@@ -3227,6 +3419,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomHashMap;
+
+        // Signals
+
+        connect<K extends keyof GomHashMap.SignalSignatures>(
+            signal: K,
+            callback: GomHashMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomHashMap.SignalSignatures>(
+            signal: K,
+            callback: GomHashMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomHashMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomHashMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -3737,7 +3944,6 @@ export namespace GXml {
 
     class GomHashPairedMap extends BaseCollection implements GomCollection {
         static $gtype: GObject.GType<GomHashPairedMap>;
-        declare static readonly __signalSignatures: GomHashPairedMap.SignalSignatures;
 
         // Properties
 
@@ -3757,6 +3963,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomHashPairedMap;
+
+        // Signals
+
+        connect<K extends keyof GomHashPairedMap.SignalSignatures>(
+            signal: K,
+            callback: GomHashPairedMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomHashPairedMap.SignalSignatures>(
+            signal: K,
+            callback: GomHashPairedMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomHashPairedMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomHashPairedMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4282,7 +4503,6 @@ export namespace GXml {
 
     class GomHashThreeMap extends BaseCollection implements GomCollection {
         static $gtype: GObject.GType<GomHashThreeMap>;
-        declare static readonly __signalSignatures: GomHashThreeMap.SignalSignatures;
 
         // Properties
 
@@ -4306,6 +4526,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomHashThreeMap;
+
+        // Signals
+
+        connect<K extends keyof GomHashThreeMap.SignalSignatures>(
+            signal: K,
+            callback: GomHashThreeMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomHashThreeMap.SignalSignatures>(
+            signal: K,
+            callback: GomHashThreeMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomHashThreeMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomHashThreeMap.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -4835,7 +5070,6 @@ export namespace GXml {
 
     class GomDocument extends GomNode implements DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument {
         static $gtype: GObject.GType<GomDocument>;
-        declare static readonly __signalSignatures: GomDocument.SignalSignatures;
 
         // Constructors
 
@@ -4854,6 +5088,21 @@ export namespace GXml {
         static from_stream(stream: Gio.InputStream): GomDocument;
 
         static from_string(str: string): GomDocument;
+
+        // Signals
+
+        connect<K extends keyof GomDocument.SignalSignatures>(
+            signal: K,
+            callback: GomDocument.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomDocument.SignalSignatures>(
+            signal: K,
+            callback: GomDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomDocument.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5428,7 +5677,6 @@ export namespace GXml {
 
     class GomImplementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<GomImplementation>;
-        declare static readonly __signalSignatures: GomImplementation.SignalSignatures;
 
         // Constructors
 
@@ -5437,6 +5685,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomImplementation;
+
+        // Signals
+
+        connect<K extends keyof GomImplementation.SignalSignatures>(
+            signal: K,
+            callback: GomImplementation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomImplementation.SignalSignatures>(
+            signal: K,
+            callback: GomImplementation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomImplementation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomImplementation.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
@@ -5902,7 +6165,6 @@ export namespace GXml {
 
     class GomDocumentType extends GomNode implements DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<GomDocumentType>;
-        declare static readonly __signalSignatures: GomDocumentType.SignalSignatures;
 
         // Constructors
 
@@ -5918,6 +6180,21 @@ export namespace GXml {
         static with_name(doc: DomDocument, name: string): GomDocumentType;
 
         static with_ids(doc: DomDocument, name: string, public_id: string, system_id: string): GomDocumentType;
+
+        // Signals
+
+        connect<K extends keyof GomDocumentType.SignalSignatures>(
+            signal: K,
+            callback: GomDocumentType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomDocumentType.SignalSignatures>(
+            signal: K,
+            callback: GomDocumentType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomDocumentType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomDocumentType.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;
@@ -6391,7 +6668,6 @@ export namespace GXml {
 
     class GomDocumentFragment extends GomNode implements DomParentNode, DomNonElementParentNode, DomDocumentFragment {
         static $gtype: GObject.GType<GomDocumentFragment>;
-        declare static readonly __signalSignatures: GomDocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -6403,6 +6679,21 @@ export namespace GXml {
         // Conflicted with GXml.GomNode.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GomDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: GomDocumentFragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: GomDocumentFragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomDocumentFragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomDocumentFragment.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get children(): DomHTMLCollection;
@@ -6895,7 +7186,6 @@ export namespace GXml {
         implements DomChildNode, DomNonDocumentTypeChildNode, DomParentNode, DomElement, GomObject
     {
         static $gtype: GObject.GType<GomElement>;
-        declare static readonly __signalSignatures: GomElement.SignalSignatures;
 
         // Properties
 
@@ -6913,6 +7203,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomElement;
+
+        // Signals
+
+        connect<K extends keyof GomElement.SignalSignatures>(
+            signal: K,
+            callback: GomElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomElement.SignalSignatures>(
+            signal: K,
+            callback: GomElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomElement.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -7555,7 +7860,6 @@ export namespace GXml {
 
     class GomElementAttributes extends Gee.HashMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<GomElementAttributes>;
-        declare static readonly __signalSignatures: GomElementAttributes.SignalSignatures;
 
         // Constructors
 
@@ -7567,6 +7871,21 @@ export namespace GXml {
         // Conflicted with Gee.HashMap.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GomElementAttributes.SignalSignatures>(
+            signal: K,
+            callback: GomElementAttributes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomElementAttributes.SignalSignatures>(
+            signal: K,
+            callback: GomElementAttributes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomElementAttributes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomElementAttributes.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -8045,7 +8364,6 @@ export namespace GXml {
 
     class GomNode extends GObject.Object implements DomEventTarget, DomNode {
         static $gtype: GObject.GType<GomNode>;
-        declare static readonly __signalSignatures: GomNode.SignalSignatures;
 
         // Constructors
 
@@ -8054,6 +8372,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomNode;
+
+        // Signals
+
+        connect<K extends keyof GomNode.SignalSignatures>(signal: K, callback: GomNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomNode.SignalSignatures>(
+            signal: K,
+            callback: GomNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomNode.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get node_type(): DomNodeNodeType;
@@ -8606,7 +8936,6 @@ export namespace GXml {
 
     class GomNodeList extends Gee.ArrayList implements DomNodeList {
         static $gtype: GObject.GType<GomNodeList>;
-        declare static readonly __signalSignatures: GomNodeList.SignalSignatures;
 
         // Constructors
 
@@ -8615,6 +8944,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomNodeList;
+
+        // Signals
+
+        connect<K extends keyof GomNodeList.SignalSignatures>(
+            signal: K,
+            callback: GomNodeList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomNodeList.SignalSignatures>(
+            signal: K,
+            callback: GomNodeList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomNodeList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomNodeList.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -9080,7 +9424,6 @@ export namespace GXml {
 
     abstract class GomBaseProperty extends GObject.Object implements GomProperty {
         static $gtype: GObject.GType<GomBaseProperty>;
-        declare static readonly __signalSignatures: GomBaseProperty.SignalSignatures;
 
         // Properties
 
@@ -9092,6 +9435,21 @@ export namespace GXml {
         constructor(properties?: Partial<GomBaseProperty.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GomBaseProperty.SignalSignatures>(
+            signal: K,
+            callback: GomBaseProperty.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomBaseProperty.SignalSignatures>(
+            signal: K,
+            callback: GomBaseProperty.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomBaseProperty.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomBaseProperty.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -9558,7 +9916,6 @@ export namespace GXml {
 
     class GomString extends GomBaseProperty {
         static $gtype: GObject.GType<GomString>;
-        declare static readonly __signalSignatures: GomString.SignalSignatures;
 
         // Constructors
 
@@ -9567,6 +9924,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomString;
+
+        // Signals
+
+        connect<K extends keyof GomString.SignalSignatures>(signal: K, callback: GomString.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomString.SignalSignatures>(
+            signal: K,
+            callback: GomString.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomString.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomString.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomArrayString {
@@ -9580,7 +9949,6 @@ export namespace GXml {
 
     class GomArrayString extends GomBaseProperty {
         static $gtype: GObject.GType<GomArrayString>;
-        declare static readonly __signalSignatures: GomArrayString.SignalSignatures;
 
         // Constructors
 
@@ -9589,6 +9957,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomArrayString;
+
+        // Signals
+
+        connect<K extends keyof GomArrayString.SignalSignatures>(
+            signal: K,
+            callback: GomArrayString.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomArrayString.SignalSignatures>(
+            signal: K,
+            callback: GomArrayString.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomArrayString.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomArrayString.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9614,7 +9997,6 @@ export namespace GXml {
 
     class GomXsdArrayString extends GomArrayString {
         static $gtype: GObject.GType<GomXsdArrayString>;
-        declare static readonly __signalSignatures: GomXsdArrayString.SignalSignatures;
 
         // Properties
 
@@ -9632,6 +10014,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdArrayString;
+
+        // Signals
+
+        connect<K extends keyof GomXsdArrayString.SignalSignatures>(
+            signal: K,
+            callback: GomXsdArrayString.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdArrayString.SignalSignatures>(
+            signal: K,
+            callback: GomXsdArrayString.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdArrayString.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdArrayString.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9655,7 +10052,6 @@ export namespace GXml {
 
     class GomDouble extends GomBaseProperty {
         static $gtype: GObject.GType<GomDouble>;
-        declare static readonly __signalSignatures: GomDouble.SignalSignatures;
 
         // Properties
 
@@ -9669,6 +10065,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomDouble;
+
+        // Signals
+
+        connect<K extends keyof GomDouble.SignalSignatures>(signal: K, callback: GomDouble.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomDouble.SignalSignatures>(
+            signal: K,
+            callback: GomDouble.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomDouble.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomDouble.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9689,7 +10097,6 @@ export namespace GXml {
 
     class GomFloat extends GomDouble {
         static $gtype: GObject.GType<GomFloat>;
-        declare static readonly __signalSignatures: GomFloat.SignalSignatures;
 
         // Constructors
 
@@ -9698,6 +10105,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomFloat;
+
+        // Signals
+
+        connect<K extends keyof GomFloat.SignalSignatures>(signal: K, callback: GomFloat.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomFloat.SignalSignatures>(
+            signal: K,
+            callback: GomFloat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomFloat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomFloat.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9716,7 +10135,6 @@ export namespace GXml {
 
     class GomInt extends GomBaseProperty {
         static $gtype: GObject.GType<GomInt>;
-        declare static readonly __signalSignatures: GomInt.SignalSignatures;
 
         // Constructors
 
@@ -9725,6 +10143,12 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomInt;
+
+        // Signals
+
+        connect<K extends keyof GomInt.SignalSignatures>(signal: K, callback: GomInt.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomInt.SignalSignatures>(signal: K, callback: GomInt.SignalSignatures[K]): number;
+        emit<K extends keyof GomInt.SignalSignatures>(signal: K, ...args: Parameters<GomInt.SignalSignatures[K]>): void;
 
         // Methods
 
@@ -9743,7 +10167,6 @@ export namespace GXml {
 
     class GomBoolean extends GomBaseProperty {
         static $gtype: GObject.GType<GomBoolean>;
-        declare static readonly __signalSignatures: GomBoolean.SignalSignatures;
 
         // Constructors
 
@@ -9752,6 +10175,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomBoolean;
+
+        // Signals
+
+        connect<K extends keyof GomBoolean.SignalSignatures>(
+            signal: K,
+            callback: GomBoolean.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomBoolean.SignalSignatures>(
+            signal: K,
+            callback: GomBoolean.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomBoolean.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomBoolean.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9773,7 +10211,6 @@ export namespace GXml {
 
     class GomEnum extends GomBaseProperty {
         static $gtype: GObject.GType<GomEnum>;
-        declare static readonly __signalSignatures: GomEnum.SignalSignatures;
 
         // Properties
 
@@ -9789,6 +10226,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomEnum;
+
+        // Signals
+
+        connect<K extends keyof GomEnum.SignalSignatures>(signal: K, callback: GomEnum.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomEnum.SignalSignatures>(
+            signal: K,
+            callback: GomEnum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomEnum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomEnum.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9810,7 +10259,6 @@ export namespace GXml {
 
     class GomDate extends GomBaseProperty {
         static $gtype: GObject.GType<GomDate>;
-        declare static readonly __signalSignatures: GomDate.SignalSignatures;
 
         // Constructors
 
@@ -9819,6 +10267,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomDate;
+
+        // Signals
+
+        connect<K extends keyof GomDate.SignalSignatures>(signal: K, callback: GomDate.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomDate.SignalSignatures>(
+            signal: K,
+            callback: GomDate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomDate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomDate.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9839,7 +10299,6 @@ export namespace GXml {
 
     class GomDateTime extends GomBaseProperty {
         static $gtype: GObject.GType<GomDateTime>;
-        declare static readonly __signalSignatures: GomDateTime.SignalSignatures;
 
         // Properties
 
@@ -9853,6 +10312,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomDateTime;
+
+        // Signals
+
+        connect<K extends keyof GomDateTime.SignalSignatures>(
+            signal: K,
+            callback: GomDateTime.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomDateTime.SignalSignatures>(
+            signal: K,
+            callback: GomDateTime.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomDateTime.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomDateTime.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9880,7 +10354,6 @@ export namespace GXml {
 
     class GomXsdSchema extends GomElement {
         static $gtype: GObject.GType<GomXsdSchema>;
-        declare static readonly __signalSignatures: GomXsdSchema.SignalSignatures;
 
         // Properties
 
@@ -9904,6 +10377,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdSchema;
+
+        // Signals
+
+        connect<K extends keyof GomXsdSchema.SignalSignatures>(
+            signal: K,
+            callback: GomXsdSchema.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdSchema.SignalSignatures>(
+            signal: K,
+            callback: GomXsdSchema.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdSchema.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdSchema.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9933,7 +10421,6 @@ export namespace GXml {
 
     class GomXsdSimpleType extends GomElement {
         static $gtype: GObject.GType<GomXsdSimpleType>;
-        declare static readonly __signalSignatures: GomXsdSimpleType.SignalSignatures;
 
         // Properties
 
@@ -9957,6 +10444,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdSimpleType;
+
+        // Signals
+
+        connect<K extends keyof GomXsdSimpleType.SignalSignatures>(
+            signal: K,
+            callback: GomXsdSimpleType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdSimpleType.SignalSignatures>(
+            signal: K,
+            callback: GomXsdSimpleType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdSimpleType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdSimpleType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -9987,7 +10489,6 @@ export namespace GXml {
 
     class GomXsdTypeDefinition extends GomElement {
         static $gtype: GObject.GType<GomXsdTypeDefinition>;
-        declare static readonly __signalSignatures: GomXsdTypeDefinition.SignalSignatures;
 
         // Properties
 
@@ -10001,6 +10502,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeDefinition;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeDefinition.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeDefinition.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeDefinition.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeDefinition.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeDefinition.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeDefinition.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10019,7 +10535,6 @@ export namespace GXml {
 
     class GomXsdTypeList extends GomXsdTypeDefinition {
         static $gtype: GObject.GType<GomXsdTypeList>;
-        declare static readonly __signalSignatures: GomXsdTypeList.SignalSignatures;
 
         // Constructors
 
@@ -10028,6 +10543,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeList;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeList.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeList.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeUnion {
@@ -10041,7 +10571,6 @@ export namespace GXml {
 
     class GomXsdTypeUnion extends GomXsdTypeDefinition {
         static $gtype: GObject.GType<GomXsdTypeUnion>;
-        declare static readonly __signalSignatures: GomXsdTypeUnion.SignalSignatures;
 
         // Constructors
 
@@ -10050,6 +10579,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeUnion;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeUnion.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeUnion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeUnion.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeUnion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeUnion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeUnion.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestriction {
@@ -10070,7 +10614,6 @@ export namespace GXml {
 
     class GomXsdTypeRestriction extends GomXsdTypeDefinition {
         static $gtype: GObject.GType<GomXsdTypeRestriction>;
-        declare static readonly __signalSignatures: GomXsdTypeRestriction.SignalSignatures;
 
         // Properties
 
@@ -10094,6 +10637,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestriction;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestriction.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestriction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestriction.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestriction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestriction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestriction.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10120,7 +10678,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionDef extends GomElement {
         static $gtype: GObject.GType<GomXsdTypeRestrictionDef>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionDef.SignalSignatures;
 
         // Properties
 
@@ -10134,6 +10691,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionDef;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionDef.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionDef.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionDef.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionDef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionDef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionDef.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10152,7 +10724,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMinExclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinExclusive>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionMinExclusive.SignalSignatures;
 
         // Constructors
 
@@ -10161,6 +10732,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionMinExclusive;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionMinExclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMinExclusive.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionMinExclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMinExclusive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionMinExclusive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionMinExclusive.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionMinInclusive {
@@ -10174,7 +10760,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMinInclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinInclusive>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionMinInclusive.SignalSignatures;
 
         // Constructors
 
@@ -10183,6 +10768,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionMinInclusive;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionMinInclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMinInclusive.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionMinInclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMinInclusive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionMinInclusive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionMinInclusive.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionMaxExclusive {
@@ -10196,7 +10796,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMaxExclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxExclusive>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionMaxExclusive.SignalSignatures;
 
         // Constructors
 
@@ -10205,6 +10804,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionMaxExclusive;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionMaxExclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionMaxExclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionMaxExclusive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionMaxInclusive {
@@ -10218,7 +10832,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMaxInclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxInclusive>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionMaxInclusive.SignalSignatures;
 
         // Constructors
 
@@ -10227,6 +10840,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionMaxInclusive;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionMaxInclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionMaxInclusive.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionMaxInclusive.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionTotalDigits {
@@ -10240,7 +10868,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionTotalDigits extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionTotalDigits>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionTotalDigits.SignalSignatures;
 
         // Constructors
 
@@ -10249,6 +10876,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionTotalDigits;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionTotalDigits.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionTotalDigits.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionTotalDigits.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionTotalDigits.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionTotalDigits.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionTotalDigits.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionFractionDigits {
@@ -10262,7 +10904,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionFractionDigits extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionFractionDigits>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionFractionDigits.SignalSignatures;
 
         // Constructors
 
@@ -10271,6 +10912,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionFractionDigits;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionFractionDigits.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionFractionDigits.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionFractionDigits.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionFractionDigits.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionFractionDigits.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionFractionDigits.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionLength {
@@ -10284,7 +10940,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionLength extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionLength>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionLength.SignalSignatures;
 
         // Constructors
 
@@ -10293,6 +10948,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionLength;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionLength.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionLength.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionLength.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionLength.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionLength.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionLength.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionMinLength {
@@ -10306,7 +10976,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMinLength extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinLength>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionMinLength.SignalSignatures;
 
         // Constructors
 
@@ -10315,6 +10984,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionMinLength;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionMinLength.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMinLength.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionMinLength.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMinLength.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionMinLength.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionMinLength.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionMaxLength {
@@ -10328,7 +11012,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMaxLength extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxLength>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionMaxLength.SignalSignatures;
 
         // Constructors
 
@@ -10337,6 +11020,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionMaxLength;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionMaxLength.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMaxLength.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionMaxLength.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionMaxLength.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionMaxLength.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionMaxLength.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionEnumeration {
@@ -10352,7 +11050,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionEnumeration extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionEnumeration>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionEnumeration.SignalSignatures;
 
         // Properties
 
@@ -10366,6 +11063,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionEnumeration;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionEnumeration.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionEnumeration.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionEnumeration.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionEnumeration.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionEnumeration.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionEnumeration.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10387,7 +11099,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionWhiteSpace extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionWhiteSpace>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionWhiteSpace.SignalSignatures;
 
         // Properties
 
@@ -10403,6 +11114,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionWhiteSpace;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionWhiteSpace.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionWhiteSpace.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionWhiteSpace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10423,7 +11149,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionWhiteSpaceFixed extends GomBoolean {
         static $gtype: GObject.GType<GomXsdTypeRestrictionWhiteSpaceFixed>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures;
 
         // Constructors
 
@@ -10432,6 +11157,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionWhiteSpaceFixed;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionPattern {
@@ -10445,7 +11185,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionPattern extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionPattern>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionPattern.SignalSignatures;
 
         // Constructors
 
@@ -10454,6 +11193,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionPattern;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionPattern.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionPattern.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionPattern.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionPattern.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionPattern.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionPattern.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionAssertion {
@@ -10467,7 +11221,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionAssertion extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionAssertion>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionAssertion.SignalSignatures;
 
         // Constructors
 
@@ -10476,6 +11229,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionAssertion;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionAssertion.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionAssertion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionAssertion.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionAssertion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionAssertion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionAssertion.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdTypeRestrictionExplicitTimezone {
@@ -10489,7 +11257,6 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionExplicitTimezone extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionExplicitTimezone>;
-        declare static readonly __signalSignatures: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures;
 
         // Constructors
 
@@ -10498,6 +11265,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdTypeRestrictionExplicitTimezone;
+
+        // Signals
+
+        connect<K extends keyof GomXsdTypeRestrictionExplicitTimezone.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdTypeRestrictionExplicitTimezone.SignalSignatures>(
+            signal: K,
+            callback: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdTypeRestrictionExplicitTimezone.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdComplexType {
@@ -10525,7 +11307,6 @@ export namespace GXml {
 
     class GomXsdComplexType extends GomXsdBaseType {
         static $gtype: GObject.GType<GomXsdComplexType>;
-        declare static readonly __signalSignatures: GomXsdComplexType.SignalSignatures;
 
         // Properties
 
@@ -10560,6 +11341,21 @@ export namespace GXml {
 
         static ['new'](): GomXsdComplexType;
 
+        // Signals
+
+        connect<K extends keyof GomXsdComplexType.SignalSignatures>(
+            signal: K,
+            callback: GomXsdComplexType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdComplexType.SignalSignatures>(
+            signal: K,
+            callback: GomXsdComplexType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdComplexType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdComplexType.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_abstract(): boolean;
@@ -10593,7 +11389,6 @@ export namespace GXml {
 
     class GomXsdExtension extends GomElement {
         static $gtype: GObject.GType<GomXsdExtension>;
-        declare static readonly __signalSignatures: GomXsdExtension.SignalSignatures;
 
         // Properties
 
@@ -10607,6 +11402,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdExtension;
+
+        // Signals
+
+        connect<K extends keyof GomXsdExtension.SignalSignatures>(
+            signal: K,
+            callback: GomXsdExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdExtension.SignalSignatures>(
+            signal: K,
+            callback: GomXsdExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdExtension.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10650,7 +11460,6 @@ export namespace GXml {
 
     class GomXsdElement extends GomElement {
         static $gtype: GObject.GType<GomXsdElement>;
-        declare static readonly __signalSignatures: GomXsdElement.SignalSignatures;
 
         // Properties
 
@@ -10711,6 +11520,21 @@ export namespace GXml {
 
         static ['new'](): GomXsdElement;
 
+        // Signals
+
+        connect<K extends keyof GomXsdElement.SignalSignatures>(
+            signal: K,
+            callback: GomXsdElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdElement.SignalSignatures>(
+            signal: K,
+            callback: GomXsdElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdElement.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         get_abstract(): boolean;
@@ -10760,7 +11584,6 @@ export namespace GXml {
 
     class GomXsdAnnotation extends GomElement {
         static $gtype: GObject.GType<GomXsdAnnotation>;
-        declare static readonly __signalSignatures: GomXsdAnnotation.SignalSignatures;
 
         // Constructors
 
@@ -10769,6 +11592,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdAnnotation;
+
+        // Signals
+
+        connect<K extends keyof GomXsdAnnotation.SignalSignatures>(
+            signal: K,
+            callback: GomXsdAnnotation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdAnnotation.SignalSignatures>(
+            signal: K,
+            callback: GomXsdAnnotation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdAnnotation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdAnnotation.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdBaseType {
@@ -10784,7 +11622,6 @@ export namespace GXml {
 
     class GomXsdBaseType extends GomElement {
         static $gtype: GObject.GType<GomXsdBaseType>;
-        declare static readonly __signalSignatures: GomXsdBaseType.SignalSignatures;
 
         // Properties
 
@@ -10798,6 +11635,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdBaseType;
+
+        // Signals
+
+        connect<K extends keyof GomXsdBaseType.SignalSignatures>(
+            signal: K,
+            callback: GomXsdBaseType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdBaseType.SignalSignatures>(
+            signal: K,
+            callback: GomXsdBaseType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdBaseType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdBaseType.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10818,7 +11670,6 @@ export namespace GXml {
 
     class GomXsdBaseContent extends GomElement {
         static $gtype: GObject.GType<GomXsdBaseContent>;
-        declare static readonly __signalSignatures: GomXsdBaseContent.SignalSignatures;
 
         // Properties
 
@@ -10832,6 +11683,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdBaseContent;
+
+        // Signals
+
+        connect<K extends keyof GomXsdBaseContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdBaseContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdBaseContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdBaseContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdBaseContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdBaseContent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10850,7 +11716,6 @@ export namespace GXml {
 
     class GomXsdSimpleContent extends GomXsdBaseContent {
         static $gtype: GObject.GType<GomXsdSimpleContent>;
-        declare static readonly __signalSignatures: GomXsdSimpleContent.SignalSignatures;
 
         // Constructors
 
@@ -10859,6 +11724,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdSimpleContent;
+
+        // Signals
+
+        connect<K extends keyof GomXsdSimpleContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdSimpleContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdSimpleContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdSimpleContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdSimpleContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdSimpleContent.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdComplexContent {
@@ -10872,7 +11752,6 @@ export namespace GXml {
 
     class GomXsdComplexContent extends GomXsdBaseContent {
         static $gtype: GObject.GType<GomXsdComplexContent>;
-        declare static readonly __signalSignatures: GomXsdComplexContent.SignalSignatures;
 
         // Constructors
 
@@ -10881,6 +11760,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdComplexContent;
+
+        // Signals
+
+        connect<K extends keyof GomXsdComplexContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdComplexContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdComplexContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdComplexContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdComplexContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdComplexContent.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdOpenContent {
@@ -10894,7 +11788,6 @@ export namespace GXml {
 
     class GomXsdOpenContent extends GomXsdBaseContent {
         static $gtype: GObject.GType<GomXsdOpenContent>;
-        declare static readonly __signalSignatures: GomXsdOpenContent.SignalSignatures;
 
         // Constructors
 
@@ -10903,6 +11796,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdOpenContent;
+
+        // Signals
+
+        connect<K extends keyof GomXsdOpenContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdOpenContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdOpenContent.SignalSignatures>(
+            signal: K,
+            callback: GomXsdOpenContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdOpenContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdOpenContent.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdBaseAttribute {
@@ -10918,7 +11826,6 @@ export namespace GXml {
 
     class GomXsdBaseAttribute extends GomElement {
         static $gtype: GObject.GType<GomXsdBaseAttribute>;
-        declare static readonly __signalSignatures: GomXsdBaseAttribute.SignalSignatures;
 
         // Properties
 
@@ -10932,6 +11839,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdBaseAttribute;
+
+        // Signals
+
+        connect<K extends keyof GomXsdBaseAttribute.SignalSignatures>(
+            signal: K,
+            callback: GomXsdBaseAttribute.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdBaseAttribute.SignalSignatures>(
+            signal: K,
+            callback: GomXsdBaseAttribute.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdBaseAttribute.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdBaseAttribute.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -10950,7 +11872,6 @@ export namespace GXml {
 
     class GomXsdAttribute extends GomXsdBaseAttribute {
         static $gtype: GObject.GType<GomXsdAttribute>;
-        declare static readonly __signalSignatures: GomXsdAttribute.SignalSignatures;
 
         // Constructors
 
@@ -10959,6 +11880,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdAttribute;
+
+        // Signals
+
+        connect<K extends keyof GomXsdAttribute.SignalSignatures>(
+            signal: K,
+            callback: GomXsdAttribute.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdAttribute.SignalSignatures>(
+            signal: K,
+            callback: GomXsdAttribute.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdAttribute.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdAttribute.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdAttributeGroup {
@@ -10972,7 +11908,6 @@ export namespace GXml {
 
     class GomXsdAttributeGroup extends GomXsdBaseAttribute {
         static $gtype: GObject.GType<GomXsdAttributeGroup>;
-        declare static readonly __signalSignatures: GomXsdAttributeGroup.SignalSignatures;
 
         // Constructors
 
@@ -10981,6 +11916,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdAttributeGroup;
+
+        // Signals
+
+        connect<K extends keyof GomXsdAttributeGroup.SignalSignatures>(
+            signal: K,
+            callback: GomXsdAttributeGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdAttributeGroup.SignalSignatures>(
+            signal: K,
+            callback: GomXsdAttributeGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdAttributeGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdAttributeGroup.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdList {
@@ -10996,7 +11946,6 @@ export namespace GXml {
 
     class GomXsdList extends GomArrayList {
         static $gtype: GObject.GType<GomXsdList>;
-        declare static readonly __signalSignatures: GomXsdList.SignalSignatures;
 
         // Properties
 
@@ -11009,6 +11958,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdList;
+
+        // Signals
+
+        connect<K extends keyof GomXsdList.SignalSignatures>(
+            signal: K,
+            callback: GomXsdList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdList.SignalSignatures>(
+            signal: K,
+            callback: GomXsdList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11028,7 +11992,6 @@ export namespace GXml {
 
     class GomXsdListElements extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListElements>;
-        declare static readonly __signalSignatures: GomXsdListElements.SignalSignatures;
 
         // Constructors
 
@@ -11037,6 +12000,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdListElements;
+
+        // Signals
+
+        connect<K extends keyof GomXsdListElements.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListElements.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdListElements.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListElements.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdListElements.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdListElements.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdListSimpleTypes {
@@ -11050,7 +12028,6 @@ export namespace GXml {
 
     class GomXsdListSimpleTypes extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListSimpleTypes>;
-        declare static readonly __signalSignatures: GomXsdListSimpleTypes.SignalSignatures;
 
         // Constructors
 
@@ -11059,6 +12036,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdListSimpleTypes;
+
+        // Signals
+
+        connect<K extends keyof GomXsdListSimpleTypes.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListSimpleTypes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdListSimpleTypes.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListSimpleTypes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdListSimpleTypes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdListSimpleTypes.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdListComplexTypes {
@@ -11072,7 +12064,6 @@ export namespace GXml {
 
     class GomXsdListComplexTypes extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListComplexTypes>;
-        declare static readonly __signalSignatures: GomXsdListComplexTypes.SignalSignatures;
 
         // Constructors
 
@@ -11081,6 +12072,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdListComplexTypes;
+
+        // Signals
+
+        connect<K extends keyof GomXsdListComplexTypes.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListComplexTypes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdListComplexTypes.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListComplexTypes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdListComplexTypes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdListComplexTypes.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdListTypeRestrictionEnumerations {
@@ -11094,7 +12100,6 @@ export namespace GXml {
 
     class GomXsdListTypeRestrictionEnumerations extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListTypeRestrictionEnumerations>;
-        declare static readonly __signalSignatures: GomXsdListTypeRestrictionEnumerations.SignalSignatures;
 
         // Constructors
 
@@ -11103,6 +12108,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdListTypeRestrictionEnumerations;
+
+        // Signals
+
+        connect<K extends keyof GomXsdListTypeRestrictionEnumerations.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListTypeRestrictionEnumerations.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdListTypeRestrictionEnumerations.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListTypeRestrictionEnumerations.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdListTypeRestrictionEnumerations.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdListTypeRestrictionEnumerations.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomXsdListTypeRestrictionWhiteSpaces {
@@ -11116,7 +12136,6 @@ export namespace GXml {
 
     class GomXsdListTypeRestrictionWhiteSpaces extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListTypeRestrictionWhiteSpaces>;
-        declare static readonly __signalSignatures: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures;
 
         // Constructors
 
@@ -11125,6 +12144,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomXsdListTypeRestrictionWhiteSpaces;
+
+        // Signals
+
+        connect<K extends keyof GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
+            signal: K,
+            callback: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GomCharacterData {
@@ -11142,7 +12176,6 @@ export namespace GXml {
 
     class GomCharacterData extends GomNode implements DomNonDocumentTypeChildNode, DomChildNode, DomCharacterData {
         static $gtype: GObject.GType<GomCharacterData>;
-        declare static readonly __signalSignatures: GomCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -11151,6 +12184,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GomCharacterData;
+
+        // Signals
+
+        connect<K extends keyof GomCharacterData.SignalSignatures>(
+            signal: K,
+            callback: GomCharacterData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomCharacterData.SignalSignatures>(
+            signal: K,
+            callback: GomCharacterData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomCharacterData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomCharacterData.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get previous_element_sibling(): DomElement;
@@ -11617,7 +12665,6 @@ export namespace GXml {
 
     class GomText extends GomCharacterData implements DomText {
         static $gtype: GObject.GType<GomText>;
-        declare static readonly __signalSignatures: GomText.SignalSignatures;
 
         // Constructors
 
@@ -11629,6 +12676,18 @@ export namespace GXml {
         // Conflicted with GXml.GomCharacterData.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GomText.SignalSignatures>(signal: K, callback: GomText.SignalSignatures[K]): number;
+        connect_after<K extends keyof GomText.SignalSignatures>(
+            signal: K,
+            callback: GomText.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomText.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomText.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get whole_text(): string;
@@ -11675,7 +12734,6 @@ export namespace GXml {
 
     class GomProcessingInstruction extends GomCharacterData implements DomProcessingInstruction {
         static $gtype: GObject.GType<GomProcessingInstruction>;
-        declare static readonly __signalSignatures: GomProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -11687,6 +12745,21 @@ export namespace GXml {
         // Conflicted with GXml.GomCharacterData.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GomProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: GomProcessingInstruction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: GomProcessingInstruction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomProcessingInstruction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomProcessingInstruction.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get target(): string;
@@ -11728,7 +12801,6 @@ export namespace GXml {
 
     class GomComment extends GomCharacterData implements DomComment {
         static $gtype: GObject.GType<GomComment>;
-        declare static readonly __signalSignatures: GomComment.SignalSignatures;
 
         // Constructors
 
@@ -11740,6 +12812,21 @@ export namespace GXml {
         // Conflicted with GXml.GomCharacterData.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GomComment.SignalSignatures>(
+            signal: K,
+            callback: GomComment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GomComment.SignalSignatures>(
+            signal: K,
+            callback: GomComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GomComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GomComment.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get data(): string;
@@ -11781,7 +12868,6 @@ export namespace GXml {
 
     class GAttribute extends GNode implements Attribute, DomAttr {
         static $gtype: GObject.GType<GAttribute>;
-        declare static readonly __signalSignatures: GAttribute.SignalSignatures;
 
         // Constructors
 
@@ -11790,6 +12876,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GAttribute;
+
+        // Signals
+
+        connect<K extends keyof GAttribute.SignalSignatures>(
+            signal: K,
+            callback: GAttribute.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GAttribute.SignalSignatures>(
+            signal: K,
+            callback: GAttribute.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GAttribute.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GAttribute.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get namespace(): Namespace;
@@ -12279,7 +13380,6 @@ export namespace GXml {
 
     class GCDATA extends GNode implements CDATA {
         static $gtype: GObject.GType<GCDATA>;
-        declare static readonly __signalSignatures: GCDATA.SignalSignatures;
 
         // Constructors
 
@@ -12288,6 +13388,12 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GCDATA;
+
+        // Signals
+
+        connect<K extends keyof GCDATA.SignalSignatures>(signal: K, callback: GCDATA.SignalSignatures[K]): number;
+        connect_after<K extends keyof GCDATA.SignalSignatures>(signal: K, callback: GCDATA.SignalSignatures[K]): number;
+        emit<K extends keyof GCDATA.SignalSignatures>(signal: K, ...args: Parameters<GCDATA.SignalSignatures[K]>): void;
 
         // Inherited properties
         get str(): string;
@@ -12750,7 +13856,6 @@ export namespace GXml {
 
     class GCharacterData extends GNonDocumentChildNode implements Character, DomCharacterData {
         static $gtype: GObject.GType<GCharacterData>;
-        declare static readonly __signalSignatures: GCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -12759,6 +13864,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GCharacterData;
+
+        // Signals
+
+        connect<K extends keyof GCharacterData.SignalSignatures>(
+            signal: K,
+            callback: GCharacterData.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GCharacterData.SignalSignatures>(
+            signal: K,
+            callback: GCharacterData.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GCharacterData.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GCharacterData.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get str(): string;
@@ -13221,7 +14341,6 @@ export namespace GXml {
 
     class GChildNode extends GNode implements DomChildNode {
         static $gtype: GObject.GType<GChildNode>;
-        declare static readonly __signalSignatures: GChildNode.SignalSignatures;
 
         // Constructors
 
@@ -13230,6 +14349,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GChildNode;
+
+        // Signals
+
+        connect<K extends keyof GChildNode.SignalSignatures>(
+            signal: K,
+            callback: GChildNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GChildNode.SignalSignatures>(
+            signal: K,
+            callback: GChildNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GChildNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GChildNode.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         remove(): void;
@@ -13686,7 +14820,6 @@ export namespace GXml {
 
     class GNonDocumentChildNode extends GChildNode implements DomNonDocumentTypeChildNode {
         static $gtype: GObject.GType<GNonDocumentChildNode>;
-        declare static readonly __signalSignatures: GNonDocumentChildNode.SignalSignatures;
 
         // Constructors
 
@@ -13695,6 +14828,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GNonDocumentChildNode;
+
+        // Signals
+
+        connect<K extends keyof GNonDocumentChildNode.SignalSignatures>(
+            signal: K,
+            callback: GNonDocumentChildNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GNonDocumentChildNode.SignalSignatures>(
+            signal: K,
+            callback: GNonDocumentChildNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GNonDocumentChildNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GNonDocumentChildNode.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get previous_element_sibling(): DomElement;
@@ -14162,7 +15310,6 @@ export namespace GXml {
 
     class GComment extends GCharacterData implements Comment, DomComment {
         static $gtype: GObject.GType<GComment>;
-        declare static readonly __signalSignatures: GComment.SignalSignatures;
 
         // Constructors
 
@@ -14174,6 +15321,18 @@ export namespace GXml {
         // Conflicted with GXml.GCharacterData.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GComment.SignalSignatures>(signal: K, callback: GComment.SignalSignatures[K]): number;
+        connect_after<K extends keyof GComment.SignalSignatures>(
+            signal: K,
+            callback: GComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GComment.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get str(): string;
@@ -14646,7 +15805,6 @@ export namespace GXml {
         implements Document, DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument, XPathContext
     {
         static $gtype: GObject.GType<GDocument>;
-        declare static readonly __signalSignatures: GDocument.SignalSignatures;
 
         // Fields
 
@@ -14671,6 +15829,18 @@ export namespace GXml {
         static from_stream(istream: Gio.InputStream): GDocument;
 
         static from_doc(doc: libxml2.Doc): GDocument;
+
+        // Signals
+
+        connect<K extends keyof GDocument.SignalSignatures>(signal: K, callback: GDocument.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDocument.SignalSignatures>(
+            signal: K,
+            callback: GDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDocument.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -15280,7 +16450,6 @@ export namespace GXml {
 
     class GImplementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<GImplementation>;
-        declare static readonly __signalSignatures: GImplementation.SignalSignatures;
 
         // Constructors
 
@@ -15289,6 +16458,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GImplementation;
+
+        // Signals
+
+        connect<K extends keyof GImplementation.SignalSignatures>(
+            signal: K,
+            callback: GImplementation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GImplementation.SignalSignatures>(
+            signal: K,
+            callback: GImplementation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GImplementation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GImplementation.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
@@ -15755,7 +16939,6 @@ export namespace GXml {
 
     class GDocumentType extends GChildNode implements DomNode, DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<GDocumentType>;
-        declare static readonly __signalSignatures: GDocumentType.SignalSignatures;
 
         // Constructors
 
@@ -15768,6 +16951,21 @@ export namespace GXml {
         static with_ids(name: string, public_id: string, system_id: string): GDocumentType;
 
         static ['new'](): GDocumentType;
+
+        // Signals
+
+        connect<K extends keyof GDocumentType.SignalSignatures>(
+            signal: K,
+            callback: GDocumentType.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDocumentType.SignalSignatures>(
+            signal: K,
+            callback: GDocumentType.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDocumentType.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDocumentType.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get name(): string;
@@ -16237,7 +17435,6 @@ export namespace GXml {
 
     class GDocumentFragment extends GDocument implements DomDocumentFragment {
         static $gtype: GObject.GType<GDocumentFragment>;
-        declare static readonly __signalSignatures: GDocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -16249,6 +17446,21 @@ export namespace GXml {
         // Conflicted with GXml.GDocument.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: GDocumentFragment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDocumentFragment.SignalSignatures>(
+            signal: K,
+            callback: GDocumentFragment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDocumentFragment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDocumentFragment.SignalSignatures[K]>
+        ): void;
 
         // Inherited methods
         /**
@@ -16703,7 +17915,6 @@ export namespace GXml {
 
     class GDomNodeIterator extends GObject.Object implements DomNodeIterator {
         static $gtype: GObject.GType<GDomNodeIterator>;
-        declare static readonly __signalSignatures: GDomNodeIterator.SignalSignatures;
 
         // Constructors
 
@@ -16712,6 +17923,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](n: DomNode, what_to_show: number, filter: DomNodeFilter): GDomNodeIterator;
+
+        // Signals
+
+        connect<K extends keyof GDomNodeIterator.SignalSignatures>(
+            signal: K,
+            callback: GDomNodeIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDomNodeIterator.SignalSignatures>(
+            signal: K,
+            callback: GDomNodeIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomNodeIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomNodeIterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get root(): DomNode;
@@ -17192,7 +18418,6 @@ export namespace GXml {
 
     class GDomTreeWalker extends GObject.Object implements DomTreeWalker {
         static $gtype: GObject.GType<GDomTreeWalker>;
-        declare static readonly __signalSignatures: GDomTreeWalker.SignalSignatures;
 
         // Constructors
 
@@ -17201,6 +18426,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](r: DomNode, w: number, f: DomNodeFilter): GDomTreeWalker;
+
+        // Signals
+
+        connect<K extends keyof GDomTreeWalker.SignalSignatures>(
+            signal: K,
+            callback: GDomTreeWalker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDomTreeWalker.SignalSignatures>(
+            signal: K,
+            callback: GDomTreeWalker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomTreeWalker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomTreeWalker.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get root(): DomNode;
@@ -17685,7 +18925,6 @@ export namespace GXml {
 
     class GDomTokenList extends Gee.ArrayList implements DomTokenList {
         static $gtype: GObject.GType<GDomTokenList>;
-        declare static readonly __signalSignatures: GDomTokenList.SignalSignatures;
 
         // Constructors
 
@@ -17697,6 +18936,21 @@ export namespace GXml {
         // Conflicted with Gee.ArrayList.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GDomTokenList.SignalSignatures>(
+            signal: K,
+            callback: GDomTokenList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDomTokenList.SignalSignatures>(
+            signal: K,
+            callback: GDomTokenList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomTokenList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomTokenList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18186,7 +19440,6 @@ export namespace GXml {
 
     class GDomSettableTokenList extends GDomTokenList implements DomSettableTokenList {
         static $gtype: GObject.GType<GDomSettableTokenList>;
-        declare static readonly __signalSignatures: GDomSettableTokenList.SignalSignatures;
 
         // Constructors
 
@@ -18198,6 +19451,21 @@ export namespace GXml {
         // Conflicted with Gee.ArrayList.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GDomSettableTokenList.SignalSignatures>(
+            signal: K,
+            callback: GDomSettableTokenList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDomSettableTokenList.SignalSignatures>(
+            signal: K,
+            callback: GDomSettableTokenList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomSettableTokenList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomSettableTokenList.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get value(): string;
@@ -18248,7 +19516,6 @@ export namespace GXml {
 
     class GDomHTMLCollection extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<GDomHTMLCollection>;
-        declare static readonly __signalSignatures: GDomHTMLCollection.SignalSignatures;
 
         // Constructors
 
@@ -18257,6 +19524,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GDomHTMLCollection;
+
+        // Signals
+
+        connect<K extends keyof GDomHTMLCollection.SignalSignatures>(
+            signal: K,
+            callback: GDomHTMLCollection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDomHTMLCollection.SignalSignatures>(
+            signal: K,
+            callback: GDomHTMLCollection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomHTMLCollection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomHTMLCollection.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -18730,7 +20012,6 @@ export namespace GXml {
 
     class GDomEvent extends GObject.Object implements DomEvent {
         static $gtype: GObject.GType<GDomEvent>;
-        declare static readonly __signalSignatures: GDomEvent.SignalSignatures;
 
         // Constructors
 
@@ -18739,6 +20020,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GDomEvent;
+
+        // Signals
+
+        connect<K extends keyof GDomEvent.SignalSignatures>(signal: K, callback: GDomEvent.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDomEvent.SignalSignatures>(
+            signal: K,
+            callback: GDomEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomEvent.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get etype(): string;
@@ -19238,7 +20531,6 @@ export namespace GXml {
 
     class GDomCustomEvent extends GDomEvent {
         static $gtype: GObject.GType<GDomCustomEvent>;
-        declare static readonly __signalSignatures: GDomCustomEvent.SignalSignatures;
 
         // Properties
 
@@ -19251,6 +20543,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): GDomCustomEvent;
+
+        // Signals
+
+        connect<K extends keyof GDomCustomEvent.SignalSignatures>(
+            signal: K,
+            callback: GDomCustomEvent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GDomCustomEvent.SignalSignatures>(
+            signal: K,
+            callback: GDomCustomEvent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomCustomEvent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomCustomEvent.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19269,7 +20576,6 @@ export namespace GXml {
 
     class GDomRange extends GObject.Object implements DomRange {
         static $gtype: GObject.GType<GDomRange>;
-        declare static readonly __signalSignatures: GDomRange.SignalSignatures;
 
         // Constructors
 
@@ -19278,6 +20584,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: DomDocument): GDomRange;
+
+        // Signals
+
+        connect<K extends keyof GDomRange.SignalSignatures>(signal: K, callback: GDomRange.SignalSignatures[K]): number;
+        connect_after<K extends keyof GDomRange.SignalSignatures>(
+            signal: K,
+            callback: GDomRange.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GDomRange.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GDomRange.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get start_container(): DomNode;
@@ -19804,7 +21122,6 @@ export namespace GXml {
 
     class GElement extends GNonDocumentChildNode implements DomParentNode, DomElement, Element, XPathContext {
         static $gtype: GObject.GType<GElement>;
-        declare static readonly __signalSignatures: GElement.SignalSignatures;
 
         // Constructors
 
@@ -19816,6 +21133,18 @@ export namespace GXml {
         // Conflicted with GXml.GNonDocumentChildNode.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GElement.SignalSignatures>(signal: K, callback: GElement.SignalSignatures[K]): number;
+        connect_after<K extends keyof GElement.SignalSignatures>(
+            signal: K,
+            callback: GElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GElement.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get children(): DomHTMLCollection;
@@ -20377,7 +21706,6 @@ export namespace GXml {
 
     class GHashMapAttr extends Gee.AbstractMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<GHashMapAttr>;
-        declare static readonly __signalSignatures: GHashMapAttr.SignalSignatures;
 
         // Constructors
 
@@ -20386,6 +21714,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GHashMapAttr;
+
+        // Signals
+
+        connect<K extends keyof GHashMapAttr.SignalSignatures>(
+            signal: K,
+            callback: GHashMapAttr.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GHashMapAttr.SignalSignatures>(
+            signal: K,
+            callback: GHashMapAttr.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GHashMapAttr.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GHashMapAttr.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -20861,7 +22204,6 @@ export namespace GXml {
 
     class GHashMapAttrEntry extends Gee.MapEntry {
         static $gtype: GObject.GType<GHashMapAttrEntry>;
-        declare static readonly __signalSignatures: GHashMapAttrEntry.SignalSignatures;
 
         // Constructors
 
@@ -20870,6 +22212,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, attr: any): GHashMapAttrEntry;
+
+        // Signals
+
+        connect<K extends keyof GHashMapAttrEntry.SignalSignatures>(
+            signal: K,
+            callback: GHashMapAttrEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GHashMapAttrEntry.SignalSignatures>(
+            signal: K,
+            callback: GHashMapAttrEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GHashMapAttrEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GHashMapAttrEntry.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GHashMapAttrIterator {
@@ -20883,7 +22240,6 @@ export namespace GXml {
 
     class GHashMapAttrIterator extends GObject.Object implements Gee.MapIterator {
         static $gtype: GObject.GType<GHashMapAttrIterator>;
-        declare static readonly __signalSignatures: GHashMapAttrIterator.SignalSignatures;
 
         // Constructors
 
@@ -20892,6 +22248,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GHashMapAttrIterator;
+
+        // Signals
+
+        connect<K extends keyof GHashMapAttrIterator.SignalSignatures>(
+            signal: K,
+            callback: GHashMapAttrIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GHashMapAttrIterator.SignalSignatures>(
+            signal: K,
+            callback: GHashMapAttrIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GHashMapAttrIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GHashMapAttrIterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get valid(): boolean;
@@ -21377,7 +22748,6 @@ export namespace GXml {
 
     class GListChildren extends Gee.AbstractBidirList implements DomNodeList, DomHTMLCollection {
         static $gtype: GObject.GType<GListChildren>;
-        declare static readonly __signalSignatures: GListChildren.SignalSignatures;
 
         // Constructors
 
@@ -21386,6 +22756,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GListChildren;
+
+        // Signals
+
+        connect<K extends keyof GListChildren.SignalSignatures>(
+            signal: K,
+            callback: GListChildren.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GListChildren.SignalSignatures>(
+            signal: K,
+            callback: GListChildren.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GListChildren.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GListChildren.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get length(): number;
@@ -21872,7 +23257,6 @@ export namespace GXml {
         implements Gee.Traversable, Gee.Iterator, Gee.BidirIterator, Gee.ListIterator, Gee.BidirListIterator
     {
         static $gtype: GObject.GType<GListChildrenIterator>;
-        declare static readonly __signalSignatures: GListChildrenIterator.SignalSignatures;
 
         // Constructors
 
@@ -21881,6 +23265,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GListChildrenIterator;
+
+        // Signals
+
+        connect<K extends keyof GListChildrenIterator.SignalSignatures>(
+            signal: K,
+            callback: GListChildrenIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GListChildrenIterator.SignalSignatures>(
+            signal: K,
+            callback: GListChildrenIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GListChildrenIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GListChildrenIterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get valid(): boolean;
@@ -22397,7 +23796,6 @@ export namespace GXml {
 
     class GListNamespaces extends Gee.AbstractList {
         static $gtype: GObject.GType<GListNamespaces>;
-        declare static readonly __signalSignatures: GListNamespaces.SignalSignatures;
 
         // Constructors
 
@@ -22406,6 +23804,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: GDocument, node: any): GListNamespaces;
+
+        // Signals
+
+        connect<K extends keyof GListNamespaces.SignalSignatures>(
+            signal: K,
+            callback: GListNamespaces.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GListNamespaces.SignalSignatures>(
+            signal: K,
+            callback: GListNamespaces.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GListNamespaces.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GListNamespaces.SignalSignatures[K]>
+        ): void;
     }
 
     namespace GListNamespacesIterator {
@@ -22423,7 +23836,6 @@ export namespace GXml {
 
     class GListNamespacesIterator extends GObject.Object implements Gee.Traversable, Gee.Iterator, Gee.ListIterator {
         static $gtype: GObject.GType<GListNamespacesIterator>;
-        declare static readonly __signalSignatures: GListNamespacesIterator.SignalSignatures;
 
         // Constructors
 
@@ -22432,6 +23844,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](node: any): GListNamespacesIterator;
+
+        // Signals
+
+        connect<K extends keyof GListNamespacesIterator.SignalSignatures>(
+            signal: K,
+            callback: GListNamespacesIterator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GListNamespacesIterator.SignalSignatures>(
+            signal: K,
+            callback: GListNamespacesIterator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GListNamespacesIterator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GListNamespacesIterator.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get valid(): boolean;
@@ -22938,7 +24365,6 @@ export namespace GXml {
 
     class GNamespace extends GObject.Object implements Namespace {
         static $gtype: GObject.GType<GNamespace>;
-        declare static readonly __signalSignatures: GNamespace.SignalSignatures;
 
         // Constructors
 
@@ -22947,6 +24373,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](ns: any): GNamespace;
+
+        // Signals
+
+        connect<K extends keyof GNamespace.SignalSignatures>(
+            signal: K,
+            callback: GNamespace.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GNamespace.SignalSignatures>(
+            signal: K,
+            callback: GNamespace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GNamespace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GNamespace.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -23428,7 +24869,6 @@ export namespace GXml {
 
     abstract class GNode extends GObject.Object implements DomEventTarget, DomNode, Node {
         static $gtype: GObject.GType<GNode>;
-        declare static readonly __signalSignatures: GNode.SignalSignatures;
 
         // Properties
 
@@ -23449,6 +24889,12 @@ export namespace GXml {
         constructor(properties?: Partial<GNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof GNode.SignalSignatures>(signal: K, callback: GNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof GNode.SignalSignatures>(signal: K, callback: GNode.SignalSignatures[K]): number;
+        emit<K extends keyof GNode.SignalSignatures>(signal: K, ...args: Parameters<GNode.SignalSignatures[K]>): void;
 
         // Static methods
 
@@ -24049,7 +25495,6 @@ export namespace GXml {
 
     class GProcessingInstruction extends GCharacterData implements ProcessingInstruction, DomProcessingInstruction {
         static $gtype: GObject.GType<GProcessingInstruction>;
-        declare static readonly __signalSignatures: GProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -24061,6 +25506,21 @@ export namespace GXml {
         // Conflicted with GXml.GCharacterData.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: GProcessingInstruction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: GProcessingInstruction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GProcessingInstruction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GProcessingInstruction.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get target(): string;
@@ -24523,7 +25983,6 @@ export namespace GXml {
 
     class GText extends GCharacterData implements Text, DomText {
         static $gtype: GObject.GType<GText>;
-        declare static readonly __signalSignatures: GText.SignalSignatures;
 
         // Constructors
 
@@ -24535,6 +25994,12 @@ export namespace GXml {
         // Conflicted with GXml.GCharacterData.new
 
         static ['new'](...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof GText.SignalSignatures>(signal: K, callback: GText.SignalSignatures[K]): number;
+        connect_after<K extends keyof GText.SignalSignatures>(signal: K, callback: GText.SignalSignatures[K]): number;
+        emit<K extends keyof GText.SignalSignatures>(signal: K, ...args: Parameters<GText.SignalSignatures[K]>): void;
 
         // Inherited properties
         get str(): string;
@@ -25003,7 +26468,6 @@ export namespace GXml {
 
     class GXPathObject extends GObject.Object implements XPathObject {
         static $gtype: GObject.GType<GXPathObject>;
-        declare static readonly __signalSignatures: GXPathObject.SignalSignatures;
 
         // Constructors
 
@@ -25012,6 +26476,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](document: GDocument, pointer: any): GXPathObject;
+
+        // Signals
+
+        connect<K extends keyof GXPathObject.SignalSignatures>(
+            signal: K,
+            callback: GXPathObject.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GXPathObject.SignalSignatures>(
+            signal: K,
+            callback: GXPathObject.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GXPathObject.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GXPathObject.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get object_type(): XPathObjectType;
@@ -25487,7 +26966,6 @@ export namespace GXml {
 
     class NodeList extends Gee.ArrayList {
         static $gtype: GObject.GType<NodeList>;
-        declare static readonly __signalSignatures: NodeList.SignalSignatures;
 
         // Constructors
 
@@ -25496,6 +26974,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): NodeList;
+
+        // Signals
+
+        connect<K extends keyof NodeList.SignalSignatures>(signal: K, callback: NodeList.SignalSignatures[K]): number;
+        connect_after<K extends keyof NodeList.SignalSignatures>(
+            signal: K,
+            callback: NodeList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NodeList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NodeList.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -25518,7 +27008,6 @@ export namespace GXml {
 
     class SerializableBool extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableBool>;
-        declare static readonly __signalSignatures: SerializableBool.SignalSignatures;
 
         // Constructors
 
@@ -25527,6 +27016,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableBool;
+
+        // Signals
+
+        connect<K extends keyof SerializableBool.SignalSignatures>(
+            signal: K,
+            callback: SerializableBool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableBool.SignalSignatures>(
+            signal: K,
+            callback: SerializableBool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableBool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableBool.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26001,13 +27505,27 @@ export namespace GXml {
 
     abstract class SerializableContainer extends SerializableObjectModel {
         static $gtype: GObject.GType<SerializableContainer>;
-        declare static readonly __signalSignatures: SerializableContainer.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<SerializableContainer.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SerializableContainer.SignalSignatures>(
+            signal: K,
+            callback: SerializableContainer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableContainer.SignalSignatures>(
+            signal: K,
+            callback: SerializableContainer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableContainer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableContainer.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -26029,7 +27547,6 @@ export namespace GXml {
 
     class SerializableDouble extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableDouble>;
-        declare static readonly __signalSignatures: SerializableDouble.SignalSignatures;
 
         // Constructors
 
@@ -26038,6 +27555,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableDouble;
+
+        // Signals
+
+        connect<K extends keyof SerializableDouble.SignalSignatures>(
+            signal: K,
+            callback: SerializableDouble.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableDouble.SignalSignatures>(
+            signal: K,
+            callback: SerializableDouble.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableDouble.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableDouble.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -26515,7 +28047,6 @@ export namespace GXml {
 
     class SerializableEnum extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableEnum>;
-        declare static readonly __signalSignatures: SerializableEnum.SignalSignatures;
 
         // Constructors
 
@@ -26526,6 +28057,21 @@ export namespace GXml {
         static with_enum(type: GObject.GType): SerializableEnum;
 
         static ['new'](): SerializableEnum;
+
+        // Signals
+
+        connect<K extends keyof SerializableEnum.SignalSignatures>(
+            signal: K,
+            callback: SerializableEnum.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableEnum.SignalSignatures>(
+            signal: K,
+            callback: SerializableEnum.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableEnum.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableEnum.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27003,7 +28549,6 @@ export namespace GXml {
 
     class SerializableFloat extends SerializableDouble {
         static $gtype: GObject.GType<SerializableFloat>;
-        declare static readonly __signalSignatures: SerializableFloat.SignalSignatures;
 
         // Constructors
 
@@ -27012,6 +28557,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableFloat;
+
+        // Signals
+
+        connect<K extends keyof SerializableFloat.SignalSignatures>(
+            signal: K,
+            callback: SerializableFloat.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableFloat.SignalSignatures>(
+            signal: K,
+            callback: SerializableFloat.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableFloat.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableFloat.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -27036,7 +28596,6 @@ export namespace GXml {
 
     class SerializableArrayList extends Gee.ArrayList implements Serializable, SerializableCollection {
         static $gtype: GObject.GType<SerializableArrayList>;
-        declare static readonly __signalSignatures: SerializableArrayList.SignalSignatures;
 
         // Properties
 
@@ -27052,6 +28611,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableArrayList;
+
+        // Signals
+
+        connect<K extends keyof SerializableArrayList.SignalSignatures>(
+            signal: K,
+            callback: SerializableArrayList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableArrayList.SignalSignatures>(
+            signal: K,
+            callback: SerializableArrayList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableArrayList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableArrayList.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -27595,7 +29169,6 @@ export namespace GXml {
         implements Gee.Traversable, Serializable, SerializableCollection
     {
         static $gtype: GObject.GType<SerializableDualKeyMap>;
-        declare static readonly __signalSignatures: SerializableDualKeyMap.SignalSignatures;
 
         // Properties
 
@@ -27624,6 +29197,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableDualKeyMap;
+
+        // Signals
+
+        connect<K extends keyof SerializableDualKeyMap.SignalSignatures>(
+            signal: K,
+            callback: SerializableDualKeyMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableDualKeyMap.SignalSignatures>(
+            signal: K,
+            callback: SerializableDualKeyMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableDualKeyMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableDualKeyMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -28191,7 +29779,6 @@ export namespace GXml {
 
     class SerializableHashMap extends Gee.HashMap implements Serializable, SerializableCollection {
         static $gtype: GObject.GType<SerializableHashMap>;
-        declare static readonly __signalSignatures: SerializableHashMap.SignalSignatures;
 
         // Properties
 
@@ -28207,6 +29794,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableHashMap;
+
+        // Signals
+
+        connect<K extends keyof SerializableHashMap.SignalSignatures>(
+            signal: K,
+            callback: SerializableHashMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableHashMap.SignalSignatures>(
+            signal: K,
+            callback: SerializableHashMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableHashMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableHashMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -28737,7 +30339,6 @@ export namespace GXml {
 
     class SerializableTreeMap extends Gee.TreeMap implements Serializable, SerializableCollection {
         static $gtype: GObject.GType<SerializableTreeMap>;
-        declare static readonly __signalSignatures: SerializableTreeMap.SignalSignatures;
 
         // Properties
 
@@ -28753,6 +30354,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableTreeMap;
+
+        // Signals
+
+        connect<K extends keyof SerializableTreeMap.SignalSignatures>(
+            signal: K,
+            callback: SerializableTreeMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableTreeMap.SignalSignatures>(
+            signal: K,
+            callback: SerializableTreeMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableTreeMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableTreeMap.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -29277,7 +30893,6 @@ export namespace GXml {
 
     class SerializableInt extends SerializableDouble {
         static $gtype: GObject.GType<SerializableInt>;
-        declare static readonly __signalSignatures: SerializableInt.SignalSignatures;
 
         // Constructors
 
@@ -29286,6 +30901,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableInt;
+
+        // Signals
+
+        connect<K extends keyof SerializableInt.SignalSignatures>(
+            signal: K,
+            callback: SerializableInt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableInt.SignalSignatures>(
+            signal: K,
+            callback: SerializableInt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableInt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableInt.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -29307,7 +30937,6 @@ export namespace GXml {
 
     abstract class SerializableObjectModel extends GObject.Object implements Serializable {
         static $gtype: GObject.GType<SerializableObjectModel>;
-        declare static readonly __signalSignatures: SerializableObjectModel.SignalSignatures;
 
         // Properties
 
@@ -29321,6 +30950,21 @@ export namespace GXml {
         constructor(properties?: Partial<SerializableObjectModel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SerializableObjectModel.SignalSignatures>(
+            signal: K,
+            callback: SerializableObjectModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableObjectModel.SignalSignatures>(
+            signal: K,
+            callback: SerializableObjectModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableObjectModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableObjectModel.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -29836,7 +31480,6 @@ export namespace GXml {
 
     class SerializableValueList extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableValueList>;
-        declare static readonly __signalSignatures: SerializableValueList.SignalSignatures;
 
         // Fields
 
@@ -29849,6 +31492,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](): SerializableValueList;
+
+        // Signals
+
+        connect<K extends keyof SerializableValueList.SignalSignatures>(
+            signal: K,
+            callback: SerializableValueList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SerializableValueList.SignalSignatures>(
+            signal: K,
+            callback: SerializableValueList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SerializableValueList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SerializableValueList.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -30336,7 +31994,6 @@ export namespace GXml {
 
     class TAttribute extends TNode implements Attribute {
         static $gtype: GObject.GType<TAttribute>;
-        declare static readonly __signalSignatures: TAttribute.SignalSignatures;
 
         // Constructors
 
@@ -30345,6 +32002,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](d: Document, name: string, value: string): TAttribute;
+
+        // Signals
+
+        connect<K extends keyof TAttribute.SignalSignatures>(
+            signal: K,
+            callback: TAttribute.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TAttribute.SignalSignatures>(
+            signal: K,
+            callback: TAttribute.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TAttribute.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TAttribute.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get namespace(): Namespace;
@@ -30814,7 +32486,6 @@ export namespace GXml {
 
     class TCDATA extends TNode implements CDATA {
         static $gtype: GObject.GType<TCDATA>;
-        declare static readonly __signalSignatures: TCDATA.SignalSignatures;
 
         // Constructors
 
@@ -30823,6 +32494,12 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](d: Document, text: string): TCDATA;
+
+        // Signals
+
+        connect<K extends keyof TCDATA.SignalSignatures>(signal: K, callback: TCDATA.SignalSignatures[K]): number;
+        connect_after<K extends keyof TCDATA.SignalSignatures>(signal: K, callback: TCDATA.SignalSignatures[K]): number;
+        emit<K extends keyof TCDATA.SignalSignatures>(signal: K, ...args: Parameters<TCDATA.SignalSignatures[K]>): void;
 
         // Inherited properties
         get str(): string;
@@ -31282,7 +32959,6 @@ export namespace GXml {
 
     class TComment extends TNode implements Comment {
         static $gtype: GObject.GType<TComment>;
-        declare static readonly __signalSignatures: TComment.SignalSignatures;
 
         // Constructors
 
@@ -31291,6 +32967,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, text: string): TComment;
+
+        // Signals
+
+        connect<K extends keyof TComment.SignalSignatures>(signal: K, callback: TComment.SignalSignatures[K]): number;
+        connect_after<K extends keyof TComment.SignalSignatures>(
+            signal: K,
+            callback: TComment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TComment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TComment.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get str(): string;
@@ -31757,7 +33445,6 @@ export namespace GXml {
 
     class TDocument extends TNode implements Document {
         static $gtype: GObject.GType<TDocument>;
-        declare static readonly __signalSignatures: TDocument.SignalSignatures;
 
         // Constructors
 
@@ -31786,6 +33473,18 @@ export namespace GXml {
         static from_stream_with_readtype_func(stream: Gio.InputStream, func: TDocument.ReadTypeFunc): TDocument;
 
         static from_string_with_readtype_func(str: string, func: TDocument.ReadTypeFunc): TDocument;
+
+        // Signals
+
+        connect<K extends keyof TDocument.SignalSignatures>(signal: K, callback: TDocument.SignalSignatures[K]): number;
+        connect_after<K extends keyof TDocument.SignalSignatures>(
+            signal: K,
+            callback: TDocument.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TDocument.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TDocument.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -32312,7 +34011,6 @@ export namespace GXml {
 
     class TElement extends TNode implements Element {
         static $gtype: GObject.GType<TElement>;
-        declare static readonly __signalSignatures: TElement.SignalSignatures;
 
         // Constructors
 
@@ -32321,6 +34019,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](d: Document, name: string): TElement;
+
+        // Signals
+
+        connect<K extends keyof TElement.SignalSignatures>(signal: K, callback: TElement.SignalSignatures[K]): number;
+        connect_after<K extends keyof TElement.SignalSignatures>(
+            signal: K,
+            callback: TElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TElement.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get tag_name(): string;
@@ -32801,7 +34511,6 @@ export namespace GXml {
 
     class TNamespace extends TNode implements Namespace {
         static $gtype: GObject.GType<TNamespace>;
-        declare static readonly __signalSignatures: TNamespace.SignalSignatures;
 
         // Constructors
 
@@ -32810,6 +34519,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](d: Document, uri: string, prefix: string): TNamespace;
+
+        // Signals
+
+        connect<K extends keyof TNamespace.SignalSignatures>(
+            signal: K,
+            callback: TNamespace.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TNamespace.SignalSignatures>(
+            signal: K,
+            callback: TNamespace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TNamespace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TNamespace.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get uri(): string;
@@ -33283,7 +35007,6 @@ export namespace GXml {
 
     abstract class TNode extends GObject.Object implements Node {
         static $gtype: GObject.GType<TNode>;
-        declare static readonly __signalSignatures: TNode.SignalSignatures;
 
         // Properties
 
@@ -33304,6 +35027,12 @@ export namespace GXml {
         constructor(properties?: Partial<TNode.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TNode.SignalSignatures>(signal: K, callback: TNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof TNode.SignalSignatures>(signal: K, callback: TNode.SignalSignatures[K]): number;
+        emit<K extends keyof TNode.SignalSignatures>(signal: K, ...args: Parameters<TNode.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -33800,7 +35529,6 @@ export namespace GXml {
 
     class TNodeTChildrenList extends Gee.AbstractBidirList {
         static $gtype: GObject.GType<TNodeTChildrenList>;
-        declare static readonly __signalSignatures: TNodeTChildrenList.SignalSignatures;
 
         // Constructors
 
@@ -33809,6 +35537,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](e: Node): TNodeTChildrenList;
+
+        // Signals
+
+        connect<K extends keyof TNodeTChildrenList.SignalSignatures>(
+            signal: K,
+            callback: TNodeTChildrenList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TNodeTChildrenList.SignalSignatures>(
+            signal: K,
+            callback: TNodeTChildrenList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TNodeTChildrenList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TNodeTChildrenList.SignalSignatures[K]>
+        ): void;
     }
 
     namespace TProcessingInstruction {
@@ -33822,7 +35565,6 @@ export namespace GXml {
 
     class TProcessingInstruction extends TNode implements ProcessingInstruction {
         static $gtype: GObject.GType<TProcessingInstruction>;
-        declare static readonly __signalSignatures: TProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -33831,6 +35573,21 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document, target: string, data: string): TProcessingInstruction;
+
+        // Signals
+
+        connect<K extends keyof TProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: TProcessingInstruction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TProcessingInstruction.SignalSignatures>(
+            signal: K,
+            callback: TProcessingInstruction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TProcessingInstruction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TProcessingInstruction.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         get target(): string;
@@ -34277,7 +36034,6 @@ export namespace GXml {
 
     class TText extends TNode implements Text {
         static $gtype: GObject.GType<TText>;
-        declare static readonly __signalSignatures: TText.SignalSignatures;
 
         // Constructors
 
@@ -34286,6 +36042,12 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](d: Document, text: string): TText;
+
+        // Signals
+
+        connect<K extends keyof TText.SignalSignatures>(signal: K, callback: TText.SignalSignatures[K]): number;
+        connect_after<K extends keyof TText.SignalSignatures>(signal: K, callback: TText.SignalSignatures[K]): number;
+        emit<K extends keyof TText.SignalSignatures>(signal: K, ...args: Parameters<TText.SignalSignatures[K]>): void;
 
         // Inherited properties
         get str(): string;
@@ -34748,7 +36510,6 @@ export namespace GXml {
 
     class XParser extends GObject.Object implements Parser {
         static $gtype: GObject.GType<XParser>;
-        declare static readonly __signalSignatures: XParser.SignalSignatures;
 
         // Constructors
 
@@ -34757,6 +36518,18 @@ export namespace GXml {
         _init(...args: any[]): void;
 
         static ['new'](node: DomNode): XParser;
+
+        // Signals
+
+        connect<K extends keyof XParser.SignalSignatures>(signal: K, callback: XParser.SignalSignatures[K]): number;
+        connect_after<K extends keyof XParser.SignalSignatures>(
+            signal: K,
+            callback: XParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XParser.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

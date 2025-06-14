@@ -141,7 +141,6 @@ export namespace GstAllocators {
      */
     class DRMDumbAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<DRMDumbAllocator>;
-        declare static readonly __signalSignatures: DRMDumbAllocator.SignalSignatures;
 
         // Properties
 
@@ -159,6 +158,21 @@ export namespace GstAllocators {
         static new_with_device_path(drm_device_path: string): DRMDumbAllocator;
 
         static new_with_fd(drm_fd: number): DRMDumbAllocator;
+
+        // Signals
+
+        connect<K extends keyof DRMDumbAllocator.SignalSignatures>(
+            signal: K,
+            callback: DRMDumbAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DRMDumbAllocator.SignalSignatures>(
+            signal: K,
+            callback: DRMDumbAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DRMDumbAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DRMDumbAllocator.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -196,7 +210,6 @@ export namespace GstAllocators {
      */
     class DmaBufAllocator extends FdAllocator {
         static $gtype: GObject.GType<DmaBufAllocator>;
-        declare static readonly __signalSignatures: DmaBufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -205,6 +218,21 @@ export namespace GstAllocators {
         _init(...args: any[]): void;
 
         static ['new'](): DmaBufAllocator;
+
+        // Signals
+
+        connect<K extends keyof DmaBufAllocator.SignalSignatures>(
+            signal: K,
+            callback: DmaBufAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DmaBufAllocator.SignalSignatures>(
+            signal: K,
+            callback: DmaBufAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DmaBufAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DmaBufAllocator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -244,7 +272,6 @@ export namespace GstAllocators {
      */
     class FdAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<FdAllocator>;
-        declare static readonly __signalSignatures: FdAllocator.SignalSignatures;
 
         // Constructors
 
@@ -253,6 +280,21 @@ export namespace GstAllocators {
         _init(...args: any[]): void;
 
         static ['new'](): FdAllocator;
+
+        // Signals
+
+        connect<K extends keyof FdAllocator.SignalSignatures>(
+            signal: K,
+            callback: FdAllocator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FdAllocator.SignalSignatures>(
+            signal: K,
+            callback: FdAllocator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FdAllocator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FdAllocator.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 

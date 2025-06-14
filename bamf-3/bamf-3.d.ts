@@ -87,15 +87,15 @@ export namespace Bamf {
         // Signal callback interfaces
 
         interface DesktopFileUpdated {
-            (object: string): void;
+            (_source: Application, object: string): void;
         }
 
         interface WindowAdded {
-            (object: Window): void;
+            (_source: Application, object: Window): void;
         }
 
         interface WindowRemoved {
-            (object: Window): void;
+            (_source: Application, object: Window): void;
         }
 
         // Signal signatures
@@ -112,7 +112,6 @@ export namespace Bamf {
 
     class Application extends View {
         static $gtype: GObject.GType<Application>;
-        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -134,18 +133,6 @@ export namespace Bamf {
             signal: K,
             ...args: Parameters<Application.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'desktop-file-updated', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'desktop-file-updated', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'desktop-file-updated', object: string): void;
-        connect(signal: 'window-added', callback: (_source: this, object: Window) => void): number;
-        connect_after(signal: 'window-added', callback: (_source: this, object: Window) => void): number;
-        emit(signal: 'window-added', object: Window): void;
-        connect(signal: 'window-removed', callback: (_source: this, object: Window) => void): number;
-        connect_after(signal: 'window-removed', callback: (_source: this, object: Window) => void): number;
-        emit(signal: 'window-removed', object: Window): void;
 
         // Methods
 
@@ -197,13 +184,24 @@ export namespace Bamf {
 
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
-        declare static readonly __signalSignatures: Control.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Control.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Control.SignalSignatures>(signal: K, callback: Control.SignalSignatures[K]): number;
+        connect_after<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            callback: Control.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Control.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -221,23 +219,23 @@ export namespace Bamf {
         // Signal callback interfaces
 
         interface ActiveApplicationChanged {
-            (object: Application, p0: Application): void;
+            (_source: Matcher, object: Application, p0: Application): void;
         }
 
         interface ActiveWindowChanged {
-            (object: Window, p0: Window): void;
+            (_source: Matcher, object: Window, p0: Window): void;
         }
 
         interface StackingOrderChanged {
-            (): void;
+            (_source: Matcher): void;
         }
 
         interface ViewClosed {
-            (object: View): void;
+            (_source: Matcher, object: View): void;
         }
 
         interface ViewOpened {
-            (object: View): void;
+            (_source: Matcher, object: View): void;
         }
 
         // Signal signatures
@@ -256,7 +254,6 @@ export namespace Bamf {
 
     class Matcher extends GObject.Object {
         static $gtype: GObject.GType<Matcher>;
-        declare static readonly __signalSignatures: Matcher.SignalSignatures;
 
         // Constructors
 
@@ -275,33 +272,6 @@ export namespace Bamf {
             signal: K,
             ...args: Parameters<Matcher.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'active-application-changed',
-            callback: (_source: this, object: Application, p0: Application) => void,
-        ): number;
-        connect_after(
-            signal: 'active-application-changed',
-            callback: (_source: this, object: Application, p0: Application) => void,
-        ): number;
-        emit(signal: 'active-application-changed', object: Application, p0: Application): void;
-        connect(signal: 'active-window-changed', callback: (_source: this, object: Window, p0: Window) => void): number;
-        connect_after(
-            signal: 'active-window-changed',
-            callback: (_source: this, object: Window, p0: Window) => void,
-        ): number;
-        emit(signal: 'active-window-changed', object: Window, p0: Window): void;
-        connect(signal: 'stacking-order-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'stacking-order-changed', callback: (_source: this) => void): number;
-        emit(signal: 'stacking-order-changed'): void;
-        connect(signal: 'view-closed', callback: (_source: this, object: View) => void): number;
-        connect_after(signal: 'view-closed', callback: (_source: this, object: View) => void): number;
-        emit(signal: 'view-closed', object: View): void;
-        connect(signal: 'view-opened', callback: (_source: this, object: View) => void): number;
-        connect_after(signal: 'view-opened', callback: (_source: this, object: View) => void): number;
-        emit(signal: 'view-opened', object: View): void;
 
         // Static methods
 
@@ -405,7 +375,6 @@ export namespace Bamf {
 
     class Tab extends View {
         static $gtype: GObject.GType<Tab>;
-        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -421,6 +390,12 @@ export namespace Bamf {
         constructor(properties?: Partial<Tab.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
 
         // Virtual methods
 
@@ -466,47 +441,47 @@ export namespace Bamf {
         // Signal callback interfaces
 
         interface ActiveChanged {
-            (object: boolean): void;
+            (_source: View, object: boolean): void;
         }
 
         interface ChildAdded {
-            (object: View): void;
+            (_source: View, object: View): void;
         }
 
         interface ChildMoved {
-            (object: View): void;
+            (_source: View, object: View): void;
         }
 
         interface ChildRemoved {
-            (object: View): void;
+            (_source: View, object: View): void;
         }
 
         interface Closed {
-            (): void;
+            (_source: View): void;
         }
 
         interface IconChanged {
-            (object: string): void;
+            (_source: View, object: string): void;
         }
 
         interface NameChanged {
-            (object: string, p0: string): void;
+            (_source: View, object: string, p0: string): void;
         }
 
         interface RunningChanged {
-            (object: boolean): void;
+            (_source: View, object: boolean): void;
         }
 
         interface StartingChanged {
-            (object: boolean): void;
+            (_source: View, object: boolean): void;
         }
 
         interface UrgentChanged {
-            (object: boolean): void;
+            (_source: View, object: boolean): void;
         }
 
         interface UserVisibleChanged {
-            (object: boolean): void;
+            (_source: View, object: boolean): void;
         }
 
         // Signal signatures
@@ -539,7 +514,6 @@ export namespace Bamf {
 
     class View extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<View>;
-        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -562,42 +536,6 @@ export namespace Bamf {
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'active-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'active-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'active-changed', object: boolean): void;
-        connect(signal: 'child-added', callback: (_source: this, object: View) => void): number;
-        connect_after(signal: 'child-added', callback: (_source: this, object: View) => void): number;
-        emit(signal: 'child-added', object: View): void;
-        connect(signal: 'child-moved', callback: (_source: this, object: View) => void): number;
-        connect_after(signal: 'child-moved', callback: (_source: this, object: View) => void): number;
-        emit(signal: 'child-moved', object: View): void;
-        connect(signal: 'child-removed', callback: (_source: this, object: View) => void): number;
-        connect_after(signal: 'child-removed', callback: (_source: this, object: View) => void): number;
-        emit(signal: 'child-removed', object: View): void;
-        connect(signal: 'closed', callback: (_source: this) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this) => void): number;
-        emit(signal: 'closed'): void;
-        connect(signal: 'icon-changed', callback: (_source: this, object: string) => void): number;
-        connect_after(signal: 'icon-changed', callback: (_source: this, object: string) => void): number;
-        emit(signal: 'icon-changed', object: string): void;
-        connect(signal: 'name-changed', callback: (_source: this, object: string, p0: string) => void): number;
-        connect_after(signal: 'name-changed', callback: (_source: this, object: string, p0: string) => void): number;
-        emit(signal: 'name-changed', object: string, p0: string): void;
-        connect(signal: 'running-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'running-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'running-changed', object: boolean): void;
-        connect(signal: 'starting-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'starting-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'starting-changed', object: boolean): void;
-        connect(signal: 'urgent-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'urgent-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'urgent-changed', object: boolean): void;
-        connect(signal: 'user-visible-changed', callback: (_source: this, object: boolean) => void): number;
-        connect_after(signal: 'user-visible-changed', callback: (_source: this, object: boolean) => void): number;
-        emit(signal: 'user-visible-changed', object: boolean): void;
 
         // Virtual methods
 
@@ -707,11 +645,11 @@ export namespace Bamf {
         // Signal callback interfaces
 
         interface MaximizedChanged {
-            (object: number, p0: number): void;
+            (_source: Window, object: number, p0: number): void;
         }
 
         interface MonitorChanged {
-            (object: number, p0: number): void;
+            (_source: Window, object: number, p0: number): void;
         }
 
         // Signal signatures
@@ -727,7 +665,6 @@ export namespace Bamf {
 
     class Window extends View {
         static $gtype: GObject.GType<Window>;
-        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 
@@ -740,18 +677,6 @@ export namespace Bamf {
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'maximized-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(
-            signal: 'maximized-changed',
-            callback: (_source: this, object: number, p0: number) => void,
-        ): number;
-        emit(signal: 'maximized-changed', object: number, p0: number): void;
-        connect(signal: 'monitor-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        connect_after(signal: 'monitor-changed', callback: (_source: this, object: number, p0: number) => void): number;
-        emit(signal: 'monitor-changed', object: number, p0: number): void;
 
         // Virtual methods
 

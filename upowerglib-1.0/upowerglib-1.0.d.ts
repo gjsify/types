@@ -157,11 +157,11 @@ export namespace UPowerGlib {
         // Signal callback interfaces
 
         interface DeviceAdded {
-            (device: Device): void;
+            (_source: Client, device: Device): void;
         }
 
         interface DeviceRemoved {
-            (object_path: string): void;
+            (_source: Client, object_path: string): void;
         }
 
         // Signal signatures
@@ -186,7 +186,6 @@ export namespace UPowerGlib {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
-        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -236,15 +235,6 @@ export namespace UPowerGlib {
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        connect_after(signal: 'device-added', callback: (_source: this, device: Device) => void): number;
-        emit(signal: 'device-added', device: Device): void;
-        connect(signal: 'device-removed', callback: (_source: this, object_path: string) => void): number;
-        connect_after(signal: 'device-removed', callback: (_source: this, object_path: string) => void): number;
-        emit(signal: 'device-removed', object_path: string): void;
 
         // Virtual methods
 
@@ -313,7 +303,6 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<ClientGlueProxy>, Gio.DBusInterface, Gio.Initable, ClientGlue
     {
         static $gtype: GObject.GType<ClientGlueProxy>;
-        declare static readonly __signalSignatures: ClientGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -349,6 +338,21 @@ export namespace UPowerGlib {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof ClientGlueProxy.SignalSignatures>(
+            signal: K,
+            callback: ClientGlueProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientGlueProxy.SignalSignatures>(
+            signal: K,
+            callback: ClientGlueProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientGlueProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientGlueProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -1424,7 +1428,6 @@ export namespace UPowerGlib {
      */
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
         static $gtype: GObject.GType<ClientGlueSkeleton>;
-        declare static readonly __signalSignatures: ClientGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1433,6 +1436,21 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
 
         static ['new'](): ClientGlueSkeleton;
+
+        // Signals
+
+        connect<K extends keyof ClientGlueSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ClientGlueSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientGlueSkeleton.SignalSignatures>(
+            signal: K,
+            callback: ClientGlueSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientGlueSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientGlueSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -2209,7 +2227,6 @@ export namespace UPowerGlib {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
-        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -2444,6 +2461,12 @@ export namespace UPowerGlib {
 
         static ['new'](): Device;
 
+        // Signals
+
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+
         // Static methods
 
         /**
@@ -2558,7 +2581,6 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<DeviceGlueProxy>, Gio.DBusInterface, Gio.Initable, DeviceGlue
     {
         static $gtype: GObject.GType<DeviceGlueProxy>;
-        declare static readonly __signalSignatures: DeviceGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -2594,6 +2616,21 @@ export namespace UPowerGlib {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof DeviceGlueProxy.SignalSignatures>(
+            signal: K,
+            callback: DeviceGlueProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceGlueProxy.SignalSignatures>(
+            signal: K,
+            callback: DeviceGlueProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceGlueProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceGlueProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -3937,7 +3974,6 @@ export namespace UPowerGlib {
      */
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
         static $gtype: GObject.GType<DeviceGlueSkeleton>;
-        declare static readonly __signalSignatures: DeviceGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3946,6 +3982,21 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
 
         static ['new'](): DeviceGlueSkeleton;
+
+        // Signals
+
+        connect<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DeviceGlueSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
+            signal: K,
+            callback: DeviceGlueSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceGlueSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**
@@ -4950,7 +5001,6 @@ export namespace UPowerGlib {
 
     class HistoryItem extends GObject.Object {
         static $gtype: GObject.GType<HistoryItem>;
-        declare static readonly __signalSignatures: HistoryItem.SignalSignatures;
 
         // Properties
 
@@ -4968,6 +5018,21 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
 
         static ['new'](): HistoryItem;
+
+        // Signals
+
+        connect<K extends keyof HistoryItem.SignalSignatures>(
+            signal: K,
+            callback: HistoryItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HistoryItem.SignalSignatures>(
+            signal: K,
+            callback: HistoryItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HistoryItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HistoryItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5027,7 +5092,6 @@ export namespace UPowerGlib {
 
     class StatsItem extends GObject.Object {
         static $gtype: GObject.GType<StatsItem>;
-        declare static readonly __signalSignatures: StatsItem.SignalSignatures;
 
         // Properties
 
@@ -5043,6 +5107,18 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
 
         static ['new'](): StatsItem;
+
+        // Signals
+
+        connect<K extends keyof StatsItem.SignalSignatures>(signal: K, callback: StatsItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof StatsItem.SignalSignatures>(
+            signal: K,
+            callback: StatsItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StatsItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StatsItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5085,7 +5161,6 @@ export namespace UPowerGlib {
 
     class WakeupItem extends GObject.Object {
         static $gtype: GObject.GType<WakeupItem>;
-        declare static readonly __signalSignatures: WakeupItem.SignalSignatures;
 
         // Properties
 
@@ -5111,6 +5186,21 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
 
         static ['new'](): WakeupItem;
+
+        // Signals
+
+        connect<K extends keyof WakeupItem.SignalSignatures>(
+            signal: K,
+            callback: WakeupItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WakeupItem.SignalSignatures>(
+            signal: K,
+            callback: WakeupItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WakeupItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WakeupItem.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -5180,11 +5270,11 @@ export namespace UPowerGlib {
         // Signal callback interfaces
 
         interface DataChanged {
-            (): void;
+            (_source: Wakeups): void;
         }
 
         interface TotalChanged {
-            (object: number): void;
+            (_source: Wakeups, object: number): void;
         }
 
         // Signal signatures
@@ -5200,7 +5290,6 @@ export namespace UPowerGlib {
 
     class Wakeups extends GObject.Object {
         static $gtype: GObject.GType<Wakeups>;
-        declare static readonly __signalSignatures: Wakeups.SignalSignatures;
 
         // Constructors
 
@@ -5221,15 +5310,6 @@ export namespace UPowerGlib {
             signal: K,
             ...args: Parameters<Wakeups.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'data-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'data-changed', callback: (_source: this) => void): number;
-        emit(signal: 'data-changed'): void;
-        connect(signal: 'total-changed', callback: (_source: this, object: number) => void): number;
-        connect_after(signal: 'total-changed', callback: (_source: this, object: number) => void): number;
-        emit(signal: 'total-changed', object: number): void;
 
         // Virtual methods
 
@@ -5285,7 +5365,6 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<WakeupsGlueProxy>, Gio.DBusInterface, Gio.Initable, WakeupsGlue
     {
         static $gtype: GObject.GType<WakeupsGlueProxy>;
-        declare static readonly __signalSignatures: WakeupsGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -5321,6 +5400,21 @@ export namespace UPowerGlib {
         // Conflicted with Gio.DBusProxy.new_sync
 
         static new_sync(...args: never[]): any;
+
+        // Signals
+
+        connect<K extends keyof WakeupsGlueProxy.SignalSignatures>(
+            signal: K,
+            callback: WakeupsGlueProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WakeupsGlueProxy.SignalSignatures>(
+            signal: K,
+            callback: WakeupsGlueProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WakeupsGlueProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WakeupsGlueProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -6289,7 +6383,6 @@ export namespace UPowerGlib {
      */
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
         static $gtype: GObject.GType<WakeupsGlueSkeleton>;
-        declare static readonly __signalSignatures: WakeupsGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -6298,6 +6391,21 @@ export namespace UPowerGlib {
         _init(...args: any[]): void;
 
         static ['new'](): WakeupsGlueSkeleton;
+
+        // Signals
+
+        connect<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
+            signal: K,
+            callback: WakeupsGlueSkeleton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
+            signal: K,
+            callback: WakeupsGlueSkeleton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WakeupsGlueSkeleton.SignalSignatures[K]>
+        ): void;
 
         // Inherited properties
         /**

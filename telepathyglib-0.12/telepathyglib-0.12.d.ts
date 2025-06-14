@@ -4903,15 +4903,16 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface AvatarChanged {
-            (): void;
+            (_source: Account): void;
         }
 
         interface PresenceChanged {
-            (presence: number, status: string, status_message: string): void;
+            (_source: Account, presence: number, status: string, status_message: string): void;
         }
 
         interface StatusChanged {
             (
+                _source: Account,
                 old_status: number,
                 new_status: number,
                 reason: number,
@@ -5017,7 +5018,6 @@ export namespace TelepathyGLib {
      */
     class Account extends Proxy {
         static $gtype: GObject.GType<Account>;
-        declare static readonly __signalSignatures: Account.SignalSignatures;
 
         // Properties
 
@@ -5857,51 +5857,6 @@ export namespace TelepathyGLib {
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
             ...args: Parameters<Account.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'avatar-changed', callback: (_source: this) => void): number;
-        connect_after(signal: 'avatar-changed', callback: (_source: this) => void): number;
-        emit(signal: 'avatar-changed'): void;
-        connect(
-            signal: 'presence-changed',
-            callback: (_source: this, presence: number, status: string, status_message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'presence-changed',
-            callback: (_source: this, presence: number, status: string, status_message: string) => void,
-        ): number;
-        emit(signal: 'presence-changed', presence: number, status: string, status_message: string): void;
-        connect(
-            signal: 'status-changed',
-            callback: (
-                _source: this,
-                old_status: number,
-                new_status: number,
-                reason: number,
-                dbus_error_name: string | null,
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'status-changed',
-            callback: (
-                _source: this,
-                old_status: number,
-                new_status: number,
-                reason: number,
-                dbus_error_name: string | null,
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'status-changed',
-            old_status: number,
-            new_status: number,
-            reason: number,
-            dbus_error_name: string | null,
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
         // Static methods
@@ -6850,7 +6805,12 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ReHandled {
-            (channel: Channel, user_action_time: number, context: HandleChannelsContext): void;
+            (
+                _source: AccountChannelRequest,
+                channel: Channel,
+                user_action_time: number,
+                context: HandleChannelsContext,
+            ): void;
         }
 
         // Signal signatures
@@ -6876,7 +6836,6 @@ export namespace TelepathyGLib {
      */
     class AccountChannelRequest extends GObject.Object {
         static $gtype: GObject.GType<AccountChannelRequest>;
-        declare static readonly __signalSignatures: AccountChannelRequest.SignalSignatures;
 
         // Properties
 
@@ -7036,28 +6995,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<AccountChannelRequest.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 're-handled',
-            callback: (
-                _source: this,
-                channel: Channel,
-                user_action_time: number,
-                context: HandleChannelsContext,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 're-handled',
-            callback: (
-                _source: this,
-                channel: Channel,
-                user_action_time: number,
-                context: HandleChannelsContext,
-            ) => void,
-        ): number;
-        emit(signal: 're-handled', channel: Channel, user_action_time: number, context: HandleChannelsContext): void;
 
         // Methods
 
@@ -7798,23 +7735,23 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface AccountDisabled {
-            (account: Account): void;
+            (_source: AccountManager, account: Account): void;
         }
 
         interface AccountEnabled {
-            (account: Account): void;
+            (_source: AccountManager, account: Account): void;
         }
 
         interface AccountRemoved {
-            (account: Account): void;
+            (_source: AccountManager, account: Account): void;
         }
 
         interface AccountValidityChanged {
-            (account: Account, valid: boolean): void;
+            (_source: AccountManager, account: Account, valid: boolean): void;
         }
 
         interface MostAvailablePresenceChanged {
-            (presence: number, status: string, message: string): void;
+            (_source: AccountManager, presence: number, status: string, message: string): void;
         }
 
         // Signal signatures
@@ -7848,7 +7785,6 @@ export namespace TelepathyGLib {
      */
     class AccountManager extends Proxy {
         static $gtype: GObject.GType<AccountManager>;
-        declare static readonly __signalSignatures: AccountManager.SignalSignatures;
 
         // Constructors
 
@@ -7874,36 +7810,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<AccountManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'account-disabled', callback: (_source: this, account: Account) => void): number;
-        connect_after(signal: 'account-disabled', callback: (_source: this, account: Account) => void): number;
-        emit(signal: 'account-disabled', account: Account): void;
-        connect(signal: 'account-enabled', callback: (_source: this, account: Account) => void): number;
-        connect_after(signal: 'account-enabled', callback: (_source: this, account: Account) => void): number;
-        emit(signal: 'account-enabled', account: Account): void;
-        connect(signal: 'account-removed', callback: (_source: this, account: Account) => void): number;
-        connect_after(signal: 'account-removed', callback: (_source: this, account: Account) => void): number;
-        emit(signal: 'account-removed', account: Account): void;
-        connect(
-            signal: 'account-validity-changed',
-            callback: (_source: this, account: Account, valid: boolean) => void,
-        ): number;
-        connect_after(
-            signal: 'account-validity-changed',
-            callback: (_source: this, account: Account, valid: boolean) => void,
-        ): number;
-        emit(signal: 'account-validity-changed', account: Account, valid: boolean): void;
-        connect(
-            signal: 'most-available-presence-changed',
-            callback: (_source: this, presence: number, status: string, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'most-available-presence-changed',
-            callback: (_source: this, presence: number, status: string, message: string) => void,
-        ): number;
-        emit(signal: 'most-available-presence-changed', presence: number, status: string, message: string): void;
 
         // Static methods
 
@@ -8220,7 +8126,6 @@ export namespace TelepathyGLib {
      */
     class AccountRequest extends GObject.Object {
         static $gtype: GObject.GType<AccountRequest>;
-        declare static readonly __signalSignatures: AccountRequest.SignalSignatures;
 
         // Properties
 
@@ -8435,6 +8340,21 @@ export namespace TelepathyGLib {
             display_name: string,
         ): AccountRequest;
 
+        // Signals
+
+        connect<K extends keyof AccountRequest.SignalSignatures>(
+            signal: K,
+            callback: AccountRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountRequest.SignalSignatures>(
+            signal: K,
+            callback: AccountRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountRequest.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -8606,7 +8526,6 @@ export namespace TelepathyGLib {
      */
     class AddDispatchOperationContext extends GObject.Object {
         static $gtype: GObject.GType<AddDispatchOperationContext>;
-        declare static readonly __signalSignatures: AddDispatchOperationContext.SignalSignatures;
 
         // Properties
 
@@ -8657,6 +8576,21 @@ export namespace TelepathyGLib {
 
         _init(...args: any[]): void;
 
+        // Signals
+
+        connect<K extends keyof AddDispatchOperationContext.SignalSignatures>(
+            signal: K,
+            callback: AddDispatchOperationContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AddDispatchOperationContext.SignalSignatures>(
+            signal: K,
+            callback: AddDispatchOperationContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AddDispatchOperationContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AddDispatchOperationContext.SignalSignatures[K]>
+        ): void;
+
         // Methods
 
         /**
@@ -8694,7 +8628,6 @@ export namespace TelepathyGLib {
      */
     class AutomaticClientFactory extends SimpleClientFactory {
         static $gtype: GObject.GType<AutomaticClientFactory>;
-        declare static readonly __signalSignatures: AutomaticClientFactory.SignalSignatures;
 
         // Constructors
 
@@ -8703,6 +8636,21 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
 
         static ['new'](dbus?: DBusDaemon | null): AutomaticClientFactory;
+
+        // Signals
+
+        connect<K extends keyof AutomaticClientFactory.SignalSignatures>(
+            signal: K,
+            callback: AutomaticClientFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AutomaticClientFactory.SignalSignatures>(
+            signal: K,
+            callback: AutomaticClientFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AutomaticClientFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AutomaticClientFactory.SignalSignatures[K]>
+        ): void;
     }
 
     namespace AutomaticProxyFactory {
@@ -8719,7 +8667,6 @@ export namespace TelepathyGLib {
      */
     class AutomaticProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<AutomaticProxyFactory>;
-        declare static readonly __signalSignatures: AutomaticProxyFactory.SignalSignatures;
 
         // Constructors
 
@@ -8728,6 +8675,21 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
 
         static ['new'](): AutomaticProxyFactory;
+
+        // Signals
+
+        connect<K extends keyof AutomaticProxyFactory.SignalSignatures>(
+            signal: K,
+            callback: AutomaticProxyFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AutomaticProxyFactory.SignalSignatures>(
+            signal: K,
+            callback: AutomaticProxyFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AutomaticProxyFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AutomaticProxyFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -9212,11 +9174,11 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface RequestAdded {
-            (account: Account, request: ChannelRequest): void;
+            (_source: BaseClient, account: Account, request: ChannelRequest): void;
         }
 
         interface RequestRemoved {
-            (request: ChannelRequest, error: string, message: string): void;
+            (_source: BaseClient, request: ChannelRequest, error: string, message: string): void;
         }
 
         // Signal signatures
@@ -9246,7 +9208,6 @@ export namespace TelepathyGLib {
      */
     abstract class BaseClient extends GObject.Object {
         static $gtype: GObject.GType<BaseClient>;
-        declare static readonly __signalSignatures: BaseClient.SignalSignatures;
 
         // Properties
 
@@ -9389,27 +9350,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<BaseClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'request-added',
-            callback: (_source: this, account: Account, request: ChannelRequest) => void,
-        ): number;
-        connect_after(
-            signal: 'request-added',
-            callback: (_source: this, account: Account, request: ChannelRequest) => void,
-        ): number;
-        emit(signal: 'request-added', account: Account, request: ChannelRequest): void;
-        connect(
-            signal: 'request-removed',
-            callback: (_source: this, request: ChannelRequest, error: string, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'request-removed',
-            callback: (_source: this, request: ChannelRequest, error: string, message: string) => void,
-        ): number;
-        emit(signal: 'request-removed', request: ChannelRequest, error: string, message: string): void;
 
         // Virtual methods
 
@@ -9815,15 +9755,15 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ClientsInterested {
-            (token: string): void;
+            (_source: BaseConnection, token: string): void;
         }
 
         interface ClientsUninterested {
-            (token: string): void;
+            (_source: BaseConnection, token: string): void;
         }
 
         interface ShutdownFinished {
-            (): void;
+            (_source: BaseConnection): void;
         }
 
         // Signal signatures
@@ -9853,7 +9793,6 @@ export namespace TelepathyGLib {
      */
     abstract class BaseConnection extends GObject.Object {
         static $gtype: GObject.GType<BaseConnection>;
-        declare static readonly __signalSignatures: BaseConnection.SignalSignatures;
 
         // Properties
 
@@ -9910,18 +9849,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<BaseConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'clients-interested', callback: (_source: this, token: string) => void): number;
-        connect_after(signal: 'clients-interested', callback: (_source: this, token: string) => void): number;
-        emit(signal: 'clients-interested', token: string): void;
-        connect(signal: 'clients-uninterested', callback: (_source: this, token: string) => void): number;
-        connect_after(signal: 'clients-uninterested', callback: (_source: this, token: string) => void): number;
-        emit(signal: 'clients-uninterested', token: string): void;
-        connect(signal: 'shutdown-finished', callback: (_source: this) => void): number;
-        connect_after(signal: 'shutdown-finished', callback: (_source: this) => void): number;
-        emit(signal: 'shutdown-finished'): void;
 
         // Virtual methods
 
@@ -10114,7 +10041,6 @@ export namespace TelepathyGLib {
      */
     class BasicProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<BasicProxyFactory>;
-        declare static readonly __signalSignatures: BasicProxyFactory.SignalSignatures;
 
         // Constructors
 
@@ -10123,6 +10049,21 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
 
         static ['new'](): BasicProxyFactory;
+
+        // Signals
+
+        connect<K extends keyof BasicProxyFactory.SignalSignatures>(
+            signal: K,
+            callback: BasicProxyFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BasicProxyFactory.SignalSignatures>(
+            signal: K,
+            callback: BasicProxyFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BasicProxyFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BasicProxyFactory.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -10607,15 +10548,16 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ContentAdded {
-            (content: GObject.Object): void;
+            (_source: CallChannel, content: GObject.Object): void;
         }
 
         interface ContentRemoved {
-            (content: GObject.Object, reason: CallStateReason): void;
+            (_source: CallChannel, content: GObject.Object, reason: CallStateReason): void;
         }
 
         interface MembersChanged {
             (
+                _source: CallChannel,
                 updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
                 removed: Contact[],
                 reason: CallStateReason,
@@ -10624,6 +10566,7 @@ export namespace TelepathyGLib {
 
         interface StateChanged {
             (
+                _source: CallChannel,
                 state: number,
                 flags: number,
                 reason: CallStateReason,
@@ -10673,7 +10616,6 @@ export namespace TelepathyGLib {
      */
     class CallChannel extends Channel {
         static $gtype: GObject.GType<CallChannel>;
-        declare static readonly __signalSignatures: CallChannel.SignalSignatures;
 
         // Properties
 
@@ -10799,72 +10741,6 @@ export namespace TelepathyGLib {
         emit<K extends keyof CallChannel.SignalSignatures>(
             signal: K,
             ...args: Parameters<CallChannel.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'content-added', callback: (_source: this, content: GObject.Object) => void): number;
-        connect_after(signal: 'content-added', callback: (_source: this, content: GObject.Object) => void): number;
-        emit(signal: 'content-added', content: GObject.Object): void;
-        connect(
-            signal: 'content-removed',
-            callback: (_source: this, content: GObject.Object, reason: CallStateReason) => void,
-        ): number;
-        connect_after(
-            signal: 'content-removed',
-            callback: (_source: this, content: GObject.Object, reason: CallStateReason) => void,
-        ): number;
-        emit(signal: 'content-removed', content: GObject.Object, reason: CallStateReason): void;
-        connect(
-            signal: 'members-changed',
-            callback: (
-                _source: this,
-                updates: GLib.HashTable<Contact, number>,
-                removed: Contact[],
-                reason: CallStateReason,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'members-changed',
-            callback: (
-                _source: this,
-                updates: GLib.HashTable<Contact, number>,
-                removed: Contact[],
-                reason: CallStateReason,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'members-changed',
-            updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
-            removed: Contact[],
-            reason: CallStateReason,
-        ): void;
-        connect(
-            signal: 'state-changed',
-            callback: (
-                _source: this,
-                state: number,
-                flags: number,
-                reason: CallStateReason,
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'state-changed',
-            callback: (
-                _source: this,
-                state: number,
-                flags: number,
-                reason: CallStateReason,
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'state-changed',
-            state: number,
-            flags: number,
-            reason: CallStateReason,
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
         // Static methods
@@ -11180,15 +11056,15 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface Removed {
-            (): void;
+            (_source: CallContent): void;
         }
 
         interface StreamsAdded {
-            (streams: CallStream[]): void;
+            (_source: CallContent, streams: CallStream[]): void;
         }
 
         interface StreamsRemoved {
-            (streams: CallStream[], reason: CallStateReason): void;
+            (_source: CallContent, streams: CallStream[], reason: CallStateReason): void;
         }
 
         // Signal signatures
@@ -11216,7 +11092,6 @@ export namespace TelepathyGLib {
      */
     class CallContent extends Proxy {
         static $gtype: GObject.GType<CallContent>;
-        declare static readonly __signalSignatures: CallContent.SignalSignatures;
 
         // Properties
 
@@ -11273,24 +11148,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<CallContent.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'removed', callback: (_source: this) => void): number;
-        connect_after(signal: 'removed', callback: (_source: this) => void): number;
-        emit(signal: 'removed'): void;
-        connect(signal: 'streams-added', callback: (_source: this, streams: CallStream[]) => void): number;
-        connect_after(signal: 'streams-added', callback: (_source: this, streams: CallStream[]) => void): number;
-        emit(signal: 'streams-added', streams: CallStream[]): void;
-        connect(
-            signal: 'streams-removed',
-            callback: (_source: this, streams: CallStream[], reason: CallStateReason) => void,
-        ): number;
-        connect_after(
-            signal: 'streams-removed',
-            callback: (_source: this, streams: CallStream[], reason: CallStateReason) => void,
-        ): number;
-        emit(signal: 'streams-removed', streams: CallStream[], reason: CallStateReason): void;
 
         // Static methods
 
@@ -11398,11 +11255,12 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface LocalSendingStateChanged {
-            (state: number, reason: CallStateReason): void;
+            (_source: CallStream, state: number, reason: CallStateReason): void;
         }
 
         interface RemoteMembersChanged {
             (
+                _source: CallStream,
                 updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
                 removed: Contact[],
                 reason: CallStateReason,
@@ -11432,7 +11290,6 @@ export namespace TelepathyGLib {
      */
     class CallStream extends Proxy {
         static $gtype: GObject.GType<CallStream>;
-        declare static readonly __signalSignatures: CallStream.SignalSignatures;
 
         // Properties
 
@@ -11482,42 +11339,6 @@ export namespace TelepathyGLib {
         emit<K extends keyof CallStream.SignalSignatures>(
             signal: K,
             ...args: Parameters<CallStream.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'local-sending-state-changed',
-            callback: (_source: this, state: number, reason: CallStateReason) => void,
-        ): number;
-        connect_after(
-            signal: 'local-sending-state-changed',
-            callback: (_source: this, state: number, reason: CallStateReason) => void,
-        ): number;
-        emit(signal: 'local-sending-state-changed', state: number, reason: CallStateReason): void;
-        connect(
-            signal: 'remote-members-changed',
-            callback: (
-                _source: this,
-                updates: GLib.HashTable<Contact, number>,
-                removed: Contact[],
-                reason: CallStateReason,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'remote-members-changed',
-            callback: (
-                _source: this,
-                updates: GLib.HashTable<Contact, number>,
-                removed: Contact[],
-                reason: CallStateReason,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'remote-members-changed',
-            updates: { [key: string]: any } | GLib.HashTable<Contact, number>,
-            removed: Contact[],
-            reason: CallStateReason,
         ): void;
 
         // Static methods
@@ -11660,7 +11481,6 @@ export namespace TelepathyGLib {
      */
     class Capabilities extends GObject.Object {
         static $gtype: GObject.GType<Capabilities>;
-        declare static readonly __signalSignatures: Capabilities.SignalSignatures;
 
         // Properties
 
@@ -11710,6 +11530,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<Capabilities.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Capabilities.SignalSignatures>(
+            signal: K,
+            callback: Capabilities.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Capabilities.SignalSignatures>(
+            signal: K,
+            callback: Capabilities.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Capabilities.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Capabilities.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -11908,11 +11743,12 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ChatStateChanged {
-            (contact: number, state: number): void;
+            (_source: Channel, contact: number, state: number): void;
         }
 
         interface GroupContactsChanged {
             (
+                _source: Channel,
                 added: Contact[],
                 removed: Contact[],
                 local_pending: Contact[],
@@ -11923,11 +11759,12 @@ export namespace TelepathyGLib {
         }
 
         interface GroupFlagsChanged {
-            (added: number, removed: number): void;
+            (_source: Channel, added: number, removed: number): void;
         }
 
         interface GroupMembersChanged {
             (
+                _source: Channel,
                 message: string,
                 added: unknown,
                 removed: unknown,
@@ -11940,6 +11777,7 @@ export namespace TelepathyGLib {
 
         interface GroupMembersChangedDetailed {
             (
+                _source: Channel,
                 added: number[],
                 removed: number[],
                 local_pending: number[],
@@ -11994,7 +11832,6 @@ export namespace TelepathyGLib {
      */
     class Channel extends Proxy {
         static $gtype: GObject.GType<Channel>;
-        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -12309,126 +12146,6 @@ export namespace TelepathyGLib {
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
             ...args: Parameters<Channel.SignalSignatures[K]>
-        ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'chat-state-changed',
-            callback: (_source: this, contact: number, state: number) => void,
-        ): number;
-        connect_after(
-            signal: 'chat-state-changed',
-            callback: (_source: this, contact: number, state: number) => void,
-        ): number;
-        emit(signal: 'chat-state-changed', contact: number, state: number): void;
-        connect(
-            signal: 'group-contacts-changed',
-            callback: (
-                _source: this,
-                added: Contact[],
-                removed: Contact[],
-                local_pending: Contact[],
-                remote_pending: Contact[],
-                actor: Contact,
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'group-contacts-changed',
-            callback: (
-                _source: this,
-                added: Contact[],
-                removed: Contact[],
-                local_pending: Contact[],
-                remote_pending: Contact[],
-                actor: Contact,
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'group-contacts-changed',
-            added: Contact[],
-            removed: Contact[],
-            local_pending: Contact[],
-            remote_pending: Contact[],
-            actor: Contact,
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
-        ): void;
-        connect(
-            signal: 'group-flags-changed',
-            callback: (_source: this, added: number, removed: number) => void,
-        ): number;
-        connect_after(
-            signal: 'group-flags-changed',
-            callback: (_source: this, added: number, removed: number) => void,
-        ): number;
-        emit(signal: 'group-flags-changed', added: number, removed: number): void;
-        connect(
-            signal: 'group-members-changed',
-            callback: (
-                _source: this,
-                message: string,
-                added: unknown,
-                removed: unknown,
-                local_pending: unknown,
-                remote_pending: unknown,
-                actor: number,
-                reason: number,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'group-members-changed',
-            callback: (
-                _source: this,
-                message: string,
-                added: unknown,
-                removed: unknown,
-                local_pending: unknown,
-                remote_pending: unknown,
-                actor: number,
-                reason: number,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'group-members-changed',
-            message: string,
-            added: unknown,
-            removed: unknown,
-            local_pending: unknown,
-            remote_pending: unknown,
-            actor: number,
-            reason: number,
-        ): void;
-        connect(
-            signal: 'group-members-changed-detailed',
-            callback: (
-                _source: this,
-                added: number[],
-                removed: number[],
-                local_pending: number[],
-                remote_pending: number[],
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        connect_after(
-            signal: 'group-members-changed-detailed',
-            callback: (
-                _source: this,
-                added: number[],
-                removed: number[],
-                local_pending: number[],
-                remote_pending: number[],
-                details: GLib.HashTable<string, GObject.Value>,
-            ) => void,
-        ): number;
-        emit(
-            signal: 'group-members-changed-detailed',
-            added: number[],
-            removed: number[],
-            local_pending: number[],
-            remote_pending: number[],
-            details: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
         ): void;
 
         // Static methods
@@ -13000,7 +12717,7 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ChannelLost {
-            (channel: Channel, domain: number, code: number, message: string): void;
+            (_source: ChannelDispatchOperation, channel: Channel, domain: number, code: number, message: string): void;
         }
 
         // Signal signatures
@@ -13071,7 +12788,6 @@ export namespace TelepathyGLib {
      */
     class ChannelDispatchOperation extends Proxy {
         static $gtype: GObject.GType<ChannelDispatchOperation>;
-        declare static readonly __signalSignatures: ChannelDispatchOperation.SignalSignatures;
 
         // Properties
 
@@ -13151,18 +12867,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<ChannelDispatchOperation.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'channel-lost',
-            callback: (_source: this, channel: Channel, domain: number, code: number, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'channel-lost',
-            callback: (_source: this, channel: Channel, domain: number, code: number, message: string) => void,
-        ): number;
-        emit(signal: 'channel-lost', channel: Channel, domain: number, code: number, message: string): void;
 
         // Static methods
 
@@ -13686,7 +13390,6 @@ export namespace TelepathyGLib {
      */
     class ChannelDispatcher extends Proxy {
         static $gtype: GObject.GType<ChannelDispatcher>;
-        declare static readonly __signalSignatures: ChannelDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -13695,6 +13398,21 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
 
         static ['new'](bus_daemon: DBusDaemon): ChannelDispatcher;
+
+        // Signals
+
+        connect<K extends keyof ChannelDispatcher.SignalSignatures>(
+            signal: K,
+            callback: ChannelDispatcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChannelDispatcher.SignalSignatures>(
+            signal: K,
+            callback: ChannelDispatcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChannelDispatcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChannelDispatcher.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -13760,11 +13478,11 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface Succeeded {
-            (): void;
+            (_source: ChannelRequest): void;
         }
 
         interface SucceededWithChannel {
-            (connection: Connection, channel: Channel): void;
+            (_source: ChannelRequest, connection: Connection, channel: Channel): void;
         }
 
         // Signal signatures
@@ -13821,7 +13539,6 @@ export namespace TelepathyGLib {
      */
     class ChannelRequest extends Proxy {
         static $gtype: GObject.GType<ChannelRequest>;
-        declare static readonly __signalSignatures: ChannelRequest.SignalSignatures;
 
         // Properties
 
@@ -13951,21 +13668,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<ChannelRequest.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'succeeded', callback: (_source: this) => void): number;
-        connect_after(signal: 'succeeded', callback: (_source: this) => void): number;
-        emit(signal: 'succeeded'): void;
-        connect(
-            signal: 'succeeded-with-channel',
-            callback: (_source: this, connection: Connection, channel: Channel) => void,
-        ): number;
-        connect_after(
-            signal: 'succeeded-with-channel',
-            callback: (_source: this, connection: Connection, channel: Channel) => void,
-        ): number;
-        emit(signal: 'succeeded-with-channel', connection: Connection, channel: Channel): void;
 
         // Static methods
 
@@ -14038,7 +13740,6 @@ export namespace TelepathyGLib {
      */
     class ClientMessage extends Message {
         static $gtype: GObject.GType<ClientMessage>;
-        declare static readonly __signalSignatures: ClientMessage.SignalSignatures;
 
         // Constructors
 
@@ -14049,33 +13750,48 @@ export namespace TelepathyGLib {
         static ['new'](): ClientMessage;
 
         static new_text(type: ChannelTextMessageType, text: string): ClientMessage;
+
+        // Signals
+
+        connect<K extends keyof ClientMessage.SignalSignatures>(
+            signal: K,
+            callback: ClientMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientMessage.SignalSignatures>(
+            signal: K,
+            callback: ClientMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientMessage.SignalSignatures[K]>
+        ): void;
     }
 
     namespace Connection {
         // Signal callback interfaces
 
         interface BalanceChanged {
-            (balance: number, balance_scale: number, balance_currency: string): void;
+            (_source: Connection, balance: number, balance_scale: number, balance_currency: string): void;
         }
 
         interface BlockedContactsChanged {
-            (added: Contact[], removed: Contact[]): void;
+            (_source: Connection, added: Contact[], removed: Contact[]): void;
         }
 
         interface ContactListChanged {
-            (added: Contact[], removed: Contact[]): void;
+            (_source: Connection, added: Contact[], removed: Contact[]): void;
         }
 
         interface GroupRenamed {
-            (old_name: string, new_name: string): void;
+            (_source: Connection, old_name: string, new_name: string): void;
         }
 
         interface GroupsCreated {
-            (added: string[]): void;
+            (_source: Connection, added: string[]): void;
         }
 
         interface GroupsRemoved {
-            (added: string[]): void;
+            (_source: Connection, added: string[]): void;
         }
 
         // Signal signatures
@@ -14144,7 +13860,6 @@ export namespace TelepathyGLib {
      */
     class Connection extends Proxy {
         static $gtype: GObject.GType<Connection>;
-        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -14598,48 +14313,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<Connection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'balance-changed',
-            callback: (_source: this, balance: number, balance_scale: number, balance_currency: string) => void,
-        ): number;
-        connect_after(
-            signal: 'balance-changed',
-            callback: (_source: this, balance: number, balance_scale: number, balance_currency: string) => void,
-        ): number;
-        emit(signal: 'balance-changed', balance: number, balance_scale: number, balance_currency: string): void;
-        connect(
-            signal: 'blocked-contacts-changed',
-            callback: (_source: this, added: Contact[], removed: Contact[]) => void,
-        ): number;
-        connect_after(
-            signal: 'blocked-contacts-changed',
-            callback: (_source: this, added: Contact[], removed: Contact[]) => void,
-        ): number;
-        emit(signal: 'blocked-contacts-changed', added: Contact[], removed: Contact[]): void;
-        connect(
-            signal: 'contact-list-changed',
-            callback: (_source: this, added: Contact[], removed: Contact[]) => void,
-        ): number;
-        connect_after(
-            signal: 'contact-list-changed',
-            callback: (_source: this, added: Contact[], removed: Contact[]) => void,
-        ): number;
-        emit(signal: 'contact-list-changed', added: Contact[], removed: Contact[]): void;
-        connect(signal: 'group-renamed', callback: (_source: this, old_name: string, new_name: string) => void): number;
-        connect_after(
-            signal: 'group-renamed',
-            callback: (_source: this, old_name: string, new_name: string) => void,
-        ): number;
-        emit(signal: 'group-renamed', old_name: string, new_name: string): void;
-        connect(signal: 'groups-created', callback: (_source: this, added: string[]) => void): number;
-        connect_after(signal: 'groups-created', callback: (_source: this, added: string[]) => void): number;
-        emit(signal: 'groups-created', added: string[]): void;
-        connect(signal: 'groups-removed', callback: (_source: this, added: string[]) => void): number;
-        connect_after(signal: 'groups-removed', callback: (_source: this, added: string[]) => void): number;
-        emit(signal: 'groups-removed', added: string[]): void;
 
         // Static methods
 
@@ -15803,15 +15476,15 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface Activated {
-            (): void;
+            (_source: ConnectionManager): void;
         }
 
         interface Exited {
-            (): void;
+            (_source: ConnectionManager): void;
         }
 
         interface GotInfo {
-            (source: number): void;
+            (_source: ConnectionManager, source: number): void;
         }
 
         // Signal signatures
@@ -15860,7 +15533,6 @@ export namespace TelepathyGLib {
      */
     class ConnectionManager extends Proxy {
         static $gtype: GObject.GType<ConnectionManager>;
-        declare static readonly __signalSignatures: ConnectionManager.SignalSignatures;
 
         // Properties
 
@@ -15955,18 +15627,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<ConnectionManager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'activated', callback: (_source: this) => void): number;
-        connect_after(signal: 'activated', callback: (_source: this) => void): number;
-        emit(signal: 'activated'): void;
-        connect(signal: 'exited', callback: (_source: this) => void): number;
-        connect_after(signal: 'exited', callback: (_source: this) => void): number;
-        emit(signal: 'exited'): void;
-        connect(signal: 'got-info', callback: (_source: this, source: number) => void): number;
-        connect_after(signal: 'got-info', callback: (_source: this, source: number) => void): number;
-        emit(signal: 'got-info', source: number): void;
 
         // Static methods
 
@@ -16102,15 +15762,15 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ContactGroupsChanged {
-            (added: string[], removed: string[]): void;
+            (_source: Contact, added: string[], removed: string[]): void;
         }
 
         interface PresenceChanged {
-            (type: number, status: string, message: string): void;
+            (_source: Contact, type: number, status: string, message: string): void;
         }
 
         interface SubscriptionStatesChanged {
-            (subscribe: number, publish: number, publish_request: string): void;
+            (_source: Contact, subscribe: number, publish: number, publish_request: string): void;
         }
 
         // Signal signatures
@@ -16184,7 +15844,6 @@ export namespace TelepathyGLib {
      */
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
-        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Properties
 
@@ -16523,36 +16182,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<Contact.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'contact-groups-changed',
-            callback: (_source: this, added: string[], removed: string[]) => void,
-        ): number;
-        connect_after(
-            signal: 'contact-groups-changed',
-            callback: (_source: this, added: string[], removed: string[]) => void,
-        ): number;
-        emit(signal: 'contact-groups-changed', added: string[], removed: string[]): void;
-        connect(
-            signal: 'presence-changed',
-            callback: (_source: this, type: number, status: string, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'presence-changed',
-            callback: (_source: this, type: number, status: string, message: string) => void,
-        ): number;
-        emit(signal: 'presence-changed', type: number, status: string, message: string): void;
-        connect(
-            signal: 'subscription-states-changed',
-            callback: (_source: this, subscribe: number, publish: number, publish_request: string) => void,
-        ): number;
-        connect_after(
-            signal: 'subscription-states-changed',
-            callback: (_source: this, subscribe: number, publish: number, publish_request: string) => void,
-        ): number;
-        emit(signal: 'subscription-states-changed', subscribe: number, publish: number, publish_request: string): void;
 
         // Methods
 
@@ -17099,7 +16728,7 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface SearchResultsReceived {
-            (results: ContactSearchResult[]): void;
+            (_source: ContactSearch, results: ContactSearchResult[]): void;
         }
 
         // Signal signatures
@@ -17123,7 +16752,6 @@ export namespace TelepathyGLib {
      */
     class ContactSearch extends GObject.Object implements Gio.AsyncInitable<ContactSearch> {
         static $gtype: GObject.GType<ContactSearch>;
-        declare static readonly __signalSignatures: ContactSearch.SignalSignatures;
 
         // Properties
 
@@ -17181,18 +16809,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<ContactSearch.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'search-results-received',
-            callback: (_source: this, results: ContactSearchResult[]) => void,
-        ): number;
-        connect_after(
-            signal: 'search-results-received',
-            callback: (_source: this, results: ContactSearchResult[]) => void,
-        ): number;
-        emit(signal: 'search-results-received', results: ContactSearchResult[]): void;
 
         // Static methods
 
@@ -17947,7 +17563,6 @@ export namespace TelepathyGLib {
      */
     class ContactSearchResult extends GObject.Object {
         static $gtype: GObject.GType<ContactSearchResult>;
-        declare static readonly __signalSignatures: ContactSearchResult.SignalSignatures;
 
         // Properties
 
@@ -17958,6 +17573,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<ContactSearchResult.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ContactSearchResult.SignalSignatures>(
+            signal: K,
+            callback: ContactSearchResult.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContactSearchResult.SignalSignatures>(
+            signal: K,
+            callback: ContactSearchResult.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContactSearchResult.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContactSearchResult.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -17999,13 +17629,27 @@ export namespace TelepathyGLib {
      */
     class DBusDaemon extends Proxy {
         static $gtype: GObject.GType<DBusDaemon>;
-        declare static readonly __signalSignatures: DBusDaemon.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<DBusDaemon.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DBusDaemon.SignalSignatures>(
+            signal: K,
+            callback: DBusDaemon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusDaemon.SignalSignatures>(
+            signal: K,
+            callback: DBusDaemon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusDaemon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusDaemon.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -18126,7 +17770,6 @@ export namespace TelepathyGLib {
      */
     class DBusTubeChannel extends Channel {
         static $gtype: GObject.GType<DBusTubeChannel>;
-        declare static readonly __signalSignatures: DBusTubeChannel.SignalSignatures;
 
         // Properties
 
@@ -18156,6 +17799,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<DBusTubeChannel.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DBusTubeChannel.SignalSignatures>(
+            signal: K,
+            callback: DBusTubeChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusTubeChannel.SignalSignatures>(
+            signal: K,
+            callback: DBusTubeChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusTubeChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusTubeChannel.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -18254,7 +17912,7 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface NewDebugMessage {
-            (message: DebugMessage): void;
+            (_source: DebugClient, message: DebugMessage): void;
         }
 
         // Signal signatures
@@ -18274,7 +17932,6 @@ export namespace TelepathyGLib {
      */
     class DebugClient extends Proxy {
         static $gtype: GObject.GType<DebugClient>;
-        declare static readonly __signalSignatures: DebugClient.SignalSignatures;
 
         // Properties
 
@@ -18308,12 +17965,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<DebugClient.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'new-debug-message', callback: (_source: this, message: DebugMessage) => void): number;
-        connect_after(signal: 'new-debug-message', callback: (_source: this, message: DebugMessage) => void): number;
-        emit(signal: 'new-debug-message', message: DebugMessage): void;
 
         // Static methods
 
@@ -18409,7 +18060,6 @@ export namespace TelepathyGLib {
      */
     class DebugMessage extends GObject.Object {
         static $gtype: GObject.GType<DebugMessage>;
-        declare static readonly __signalSignatures: DebugMessage.SignalSignatures;
 
         // Properties
 
@@ -18439,6 +18089,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<DebugMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof DebugMessage.SignalSignatures>(
+            signal: K,
+            callback: DebugMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DebugMessage.SignalSignatures>(
+            signal: K,
+            callback: DebugMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DebugMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DebugMessage.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -18498,7 +18163,6 @@ export namespace TelepathyGLib {
      */
     class FileTransferChannel extends Channel {
         static $gtype: GObject.GType<FileTransferChannel>;
-        declare static readonly __signalSignatures: FileTransferChannel.SignalSignatures;
 
         // Properties
 
@@ -18667,6 +18331,21 @@ export namespace TelepathyGLib {
 
         static ['new'](...args: never[]): any;
 
+        // Signals
+
+        connect<K extends keyof FileTransferChannel.SignalSignatures>(
+            signal: K,
+            callback: FileTransferChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileTransferChannel.SignalSignatures>(
+            signal: K,
+            callback: FileTransferChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileTransferChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileTransferChannel.SignalSignatures[K]>
+        ): void;
+
         // Static methods
 
         static get_feature_quark_core(): GLib.Quark;
@@ -18827,7 +18506,7 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface Done {
-            (): void;
+            (_source: HandleChannelsContext): void;
         }
 
         // Signal signatures
@@ -18854,7 +18533,6 @@ export namespace TelepathyGLib {
      */
     class HandleChannelsContext extends GObject.Object {
         static $gtype: GObject.GType<HandleChannelsContext>;
-        declare static readonly __signalSignatures: HandleChannelsContext.SignalSignatures;
 
         // Properties
 
@@ -18937,12 +18615,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<HandleChannelsContext.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'done', callback: (_source: this) => void): number;
-        connect_after(signal: 'done', callback: (_source: this) => void): number;
-        emit(signal: 'done'): void;
 
         // Methods
 
@@ -19013,13 +18685,24 @@ export namespace TelepathyGLib {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
-        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<Message.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19281,7 +18964,6 @@ export namespace TelepathyGLib {
      */
     class ObserveChannelsContext extends GObject.Object {
         static $gtype: GObject.GType<ObserveChannelsContext>;
-        declare static readonly __signalSignatures: ObserveChannelsContext.SignalSignatures;
 
         // Properties
 
@@ -19337,6 +19019,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<ObserveChannelsContext.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof ObserveChannelsContext.SignalSignatures>(
+            signal: K,
+            callback: ObserveChannelsContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObserveChannelsContext.SignalSignatures>(
+            signal: K,
+            callback: ObserveChannelsContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObserveChannelsContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObserveChannelsContext.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -19413,7 +19110,6 @@ export namespace TelepathyGLib {
      */
     class Protocol extends Proxy {
         static $gtype: GObject.GType<Protocol>;
-        declare static readonly __signalSignatures: Protocol.SignalSignatures;
 
         // Properties
 
@@ -19617,6 +19313,18 @@ export namespace TelepathyGLib {
             protocol_name: string,
             immutable_properties: GLib.Variant,
         ): Protocol;
+
+        // Signals
+
+        connect<K extends keyof Protocol.SignalSignatures>(signal: K, callback: Protocol.SignalSignatures[K]): number;
+        connect_after<K extends keyof Protocol.SignalSignatures>(
+            signal: K,
+            callback: Protocol.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Protocol.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Protocol.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -19923,11 +19631,11 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface InterfaceAdded {
-            (id: number, proxy: unknown): void;
+            (_source: Proxy, id: number, proxy: unknown): void;
         }
 
         interface Invalidated {
-            (domain: number, code: number, message: string): void;
+            (_source: Proxy, domain: number, code: number, message: string): void;
         }
 
         // Signal signatures
@@ -19955,7 +19663,6 @@ export namespace TelepathyGLib {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
-        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -20008,21 +19715,6 @@ export namespace TelepathyGLib {
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'interface-added', callback: (_source: this, id: number, proxy: unknown) => void): number;
-        connect_after(signal: 'interface-added', callback: (_source: this, id: number, proxy: unknown) => void): number;
-        emit(signal: 'interface-added', id: number, proxy: unknown): void;
-        connect(
-            signal: 'invalidated',
-            callback: (_source: this, domain: number, code: number, message: string) => void,
-        ): number;
-        connect_after(
-            signal: 'invalidated',
-            callback: (_source: this, domain: number, code: number, message: string) => void,
-        ): number;
-        emit(signal: 'invalidated', domain: number, code: number, message: string): void;
 
         // Methods
 
@@ -20285,13 +19977,24 @@ export namespace TelepathyGLib {
      */
     class RoomInfo extends GObject.Object {
         static $gtype: GObject.GType<RoomInfo>;
-        declare static readonly __signalSignatures: RoomInfo.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<RoomInfo.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof RoomInfo.SignalSignatures>(signal: K, callback: RoomInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof RoomInfo.SignalSignatures>(
+            signal: K,
+            callback: RoomInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RoomInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RoomInfo.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -20359,11 +20062,11 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface Failed {
-            (error: GLib.Error): void;
+            (_source: RoomList, error: GLib.Error): void;
         }
 
         interface GotRoom {
-            (room: RoomInfo): void;
+            (_source: RoomList, room: RoomInfo): void;
         }
 
         // Signal signatures
@@ -20386,7 +20089,6 @@ export namespace TelepathyGLib {
      */
     class RoomList extends GObject.Object implements Gio.AsyncInitable<RoomList> {
         static $gtype: GObject.GType<RoomList>;
-        declare static readonly __signalSignatures: RoomList.SignalSignatures;
 
         // Properties
 
@@ -20429,15 +20131,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<RoomList.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'failed', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'failed', error: GLib.Error): void;
-        connect(signal: 'got-room', callback: (_source: this, room: RoomInfo) => void): number;
-        connect_after(signal: 'got-room', callback: (_source: this, room: RoomInfo) => void): number;
-        emit(signal: 'got-room', room: RoomInfo): void;
 
         // Static methods
 
@@ -21131,7 +20824,6 @@ export namespace TelepathyGLib {
      */
     class SignalledMessage extends Message {
         static $gtype: GObject.GType<SignalledMessage>;
-        declare static readonly __signalSignatures: SignalledMessage.SignalSignatures;
 
         // Properties
 
@@ -21146,6 +20838,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<SignalledMessage.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof SignalledMessage.SignalSignatures>(
+            signal: K,
+            callback: SignalledMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignalledMessage.SignalSignatures>(
+            signal: K,
+            callback: SignalledMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignalledMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignalledMessage.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -21176,7 +20883,6 @@ export namespace TelepathyGLib {
      */
     class SimpleApprover extends BaseClient {
         static $gtype: GObject.GType<SimpleApprover>;
-        declare static readonly __signalSignatures: SimpleApprover.SignalSignatures;
 
         // Properties
 
@@ -21227,6 +20933,21 @@ export namespace TelepathyGLib {
             uniquify: boolean,
             callback: SimpleApproverAddDispatchOperationImpl,
         ): SimpleApprover;
+
+        // Signals
+
+        connect<K extends keyof SimpleApprover.SignalSignatures>(
+            signal: K,
+            callback: SimpleApprover.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleApprover.SignalSignatures>(
+            signal: K,
+            callback: SimpleApprover.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleApprover.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleApprover.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SimpleClientFactory {
@@ -21246,7 +20967,6 @@ export namespace TelepathyGLib {
      */
     class SimpleClientFactory extends GObject.Object {
         static $gtype: GObject.GType<SimpleClientFactory>;
-        declare static readonly __signalSignatures: SimpleClientFactory.SignalSignatures;
 
         // Properties
 
@@ -21266,6 +20986,21 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
 
         static ['new'](dbus?: DBusDaemon | null): SimpleClientFactory;
+
+        // Signals
+
+        connect<K extends keyof SimpleClientFactory.SignalSignatures>(
+            signal: K,
+            callback: SimpleClientFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleClientFactory.SignalSignatures>(
+            signal: K,
+            callback: SimpleClientFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleClientFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleClientFactory.SignalSignatures[K]>
+        ): void;
 
         // Virtual methods
 
@@ -21563,7 +21298,6 @@ export namespace TelepathyGLib {
      */
     class SimpleHandler extends BaseClient {
         static $gtype: GObject.GType<SimpleHandler>;
-        declare static readonly __signalSignatures: SimpleHandler.SignalSignatures;
 
         // Properties
 
@@ -21632,6 +21366,21 @@ export namespace TelepathyGLib {
             uniquify: boolean,
             callback: SimpleHandlerHandleChannelsImpl,
         ): SimpleHandler;
+
+        // Signals
+
+        connect<K extends keyof SimpleHandler.SignalSignatures>(
+            signal: K,
+            callback: SimpleHandler.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleHandler.SignalSignatures>(
+            signal: K,
+            callback: SimpleHandler.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleHandler.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleHandler.SignalSignatures[K]>
+        ): void;
     }
 
     namespace SimpleObserver {
@@ -21654,7 +21403,6 @@ export namespace TelepathyGLib {
      */
     class SimpleObserver extends BaseClient {
         static $gtype: GObject.GType<SimpleObserver>;
-        declare static readonly __signalSignatures: SimpleObserver.SignalSignatures;
 
         // Properties
 
@@ -21714,13 +21462,28 @@ export namespace TelepathyGLib {
             uniquify: boolean,
             callback: SimpleObserverObserveChannelsImpl,
         ): SimpleObserver;
+
+        // Signals
+
+        connect<K extends keyof SimpleObserver.SignalSignatures>(
+            signal: K,
+            callback: SimpleObserver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimpleObserver.SignalSignatures>(
+            signal: K,
+            callback: SimpleObserver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleObserver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleObserver.SignalSignatures[K]>
+        ): void;
     }
 
     namespace StreamTubeChannel {
         // Signal callback interfaces
 
         interface Incoming {
-            (tube_connection: StreamTubeConnection): void;
+            (_source: StreamTubeChannel, tube_connection: StreamTubeConnection): void;
         }
 
         // Signal signatures
@@ -21742,7 +21505,6 @@ export namespace TelepathyGLib {
      */
     class StreamTubeChannel extends Channel {
         static $gtype: GObject.GType<StreamTubeChannel>;
-        declare static readonly __signalSignatures: StreamTubeChannel.SignalSignatures;
 
         // Properties
 
@@ -21792,15 +21554,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<StreamTubeChannel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'incoming', callback: (_source: this, tube_connection: StreamTubeConnection) => void): number;
-        connect_after(
-            signal: 'incoming',
-            callback: (_source: this, tube_connection: StreamTubeConnection) => void,
-        ): number;
-        emit(signal: 'incoming', tube_connection: StreamTubeConnection): void;
 
         // Methods
 
@@ -21900,7 +21653,7 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface Closed {
-            (error: GLib.Error): void;
+            (_source: StreamTubeConnection, error: GLib.Error): void;
         }
 
         // Signal signatures
@@ -21923,7 +21676,6 @@ export namespace TelepathyGLib {
      */
     class StreamTubeConnection extends GObject.Object {
         static $gtype: GObject.GType<StreamTubeConnection>;
-        declare static readonly __signalSignatures: StreamTubeConnection.SignalSignatures;
 
         // Properties
 
@@ -21977,12 +21729,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<StreamTubeConnection.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'closed', callback: (_source: this, error: GLib.Error) => void): number;
-        connect_after(signal: 'closed', callback: (_source: this, error: GLib.Error) => void): number;
-        emit(signal: 'closed', error: GLib.Error): void;
 
         // Methods
 
@@ -22025,7 +21771,6 @@ export namespace TelepathyGLib {
      */
     class TLSCertificate extends Proxy {
         static $gtype: GObject.GType<TLSCertificate>;
-        declare static readonly __signalSignatures: TLSCertificate.SignalSignatures;
 
         // Properties
 
@@ -22086,6 +21831,21 @@ export namespace TelepathyGLib {
         _init(...args: any[]): void;
 
         static ['new'](conn_or_chan: Proxy, object_path: string): TLSCertificate;
+
+        // Signals
+
+        connect<K extends keyof TLSCertificate.SignalSignatures>(
+            signal: K,
+            callback: TLSCertificate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TLSCertificate.SignalSignatures>(
+            signal: K,
+            callback: TLSCertificate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TLSCertificate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TLSCertificate.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -22265,7 +22025,6 @@ export namespace TelepathyGLib {
      */
     class TLSCertificateRejection extends GObject.Object {
         static $gtype: GObject.GType<TLSCertificateRejection>;
-        declare static readonly __signalSignatures: TLSCertificateRejection.SignalSignatures;
 
         // Properties
 
@@ -22296,6 +22055,21 @@ export namespace TelepathyGLib {
         constructor(properties?: Partial<TLSCertificateRejection.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof TLSCertificateRejection.SignalSignatures>(
+            signal: K,
+            callback: TLSCertificateRejection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TLSCertificateRejection.SignalSignatures>(
+            signal: K,
+            callback: TLSCertificateRejection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TLSCertificateRejection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TLSCertificateRejection.SignalSignatures[K]>
+        ): void;
 
         // Methods
 
@@ -22331,19 +22105,19 @@ export namespace TelepathyGLib {
         // Signal callback interfaces
 
         interface ContactChatStateChanged {
-            (contact: Contact, state: number): void;
+            (_source: TextChannel, contact: Contact, state: number): void;
         }
 
         interface MessageReceived {
-            (message: SignalledMessage): void;
+            (_source: TextChannel, message: SignalledMessage): void;
         }
 
         interface MessageSent {
-            (message: SignalledMessage, flags: number, token: string): void;
+            (_source: TextChannel, message: SignalledMessage, flags: number, token: string): void;
         }
 
         interface PendingMessageRemoved {
-            (message: SignalledMessage): void;
+            (_source: TextChannel, message: SignalledMessage): void;
         }
 
         // Signal signatures
@@ -22375,7 +22149,6 @@ export namespace TelepathyGLib {
      */
     class TextChannel extends Channel {
         static $gtype: GObject.GType<TextChannel>;
-        declare static readonly __signalSignatures: TextChannel.SignalSignatures;
 
         // Properties
 
@@ -22469,39 +22242,6 @@ export namespace TelepathyGLib {
             signal: K,
             ...args: Parameters<TextChannel.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(
-            signal: 'contact-chat-state-changed',
-            callback: (_source: this, contact: Contact, state: number) => void,
-        ): number;
-        connect_after(
-            signal: 'contact-chat-state-changed',
-            callback: (_source: this, contact: Contact, state: number) => void,
-        ): number;
-        emit(signal: 'contact-chat-state-changed', contact: Contact, state: number): void;
-        connect(signal: 'message-received', callback: (_source: this, message: SignalledMessage) => void): number;
-        connect_after(signal: 'message-received', callback: (_source: this, message: SignalledMessage) => void): number;
-        emit(signal: 'message-received', message: SignalledMessage): void;
-        connect(
-            signal: 'message-sent',
-            callback: (_source: this, message: SignalledMessage, flags: number, token: string) => void,
-        ): number;
-        connect_after(
-            signal: 'message-sent',
-            callback: (_source: this, message: SignalledMessage, flags: number, token: string) => void,
-        ): number;
-        emit(signal: 'message-sent', message: SignalledMessage, flags: number, token: string): void;
-        connect(
-            signal: 'pending-message-removed',
-            callback: (_source: this, message: SignalledMessage) => void,
-        ): number;
-        connect_after(
-            signal: 'pending-message-removed',
-            callback: (_source: this, message: SignalledMessage) => void,
-        ): number;
-        emit(signal: 'pending-message-removed', message: SignalledMessage): void;
 
         // Static methods
 

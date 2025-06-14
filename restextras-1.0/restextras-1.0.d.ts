@@ -49,7 +49,6 @@ export namespace RestExtras {
 
     class FlickrProxy extends Rest.Proxy {
         static $gtype: GObject.GType<FlickrProxy>;
-        declare static readonly __signalSignatures: FlickrProxy.SignalSignatures;
 
         // Properties
 
@@ -72,6 +71,21 @@ export namespace RestExtras {
         static ['new'](...args: never[]): any;
 
         static new_with_token(api_key: string, shared_secret: string, token: string): FlickrProxy;
+
+        // Signals
+
+        connect<K extends keyof FlickrProxy.SignalSignatures>(
+            signal: K,
+            callback: FlickrProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FlickrProxy.SignalSignatures>(
+            signal: K,
+            callback: FlickrProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FlickrProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FlickrProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -142,7 +156,6 @@ export namespace RestExtras {
 
     class FlickrProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<FlickrProxyCall>;
-        declare static readonly __signalSignatures: FlickrProxyCall.SignalSignatures;
 
         // Properties
 
@@ -158,6 +171,21 @@ export namespace RestExtras {
         constructor(properties?: Partial<FlickrProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof FlickrProxyCall.SignalSignatures>(
+            signal: K,
+            callback: FlickrProxyCall.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FlickrProxyCall.SignalSignatures>(
+            signal: K,
+            callback: FlickrProxyCall.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FlickrProxyCall.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FlickrProxyCall.SignalSignatures[K]>
+        ): void;
     }
 
     namespace LastfmProxy {
@@ -177,7 +205,6 @@ export namespace RestExtras {
 
     class LastfmProxy extends Rest.Proxy {
         static $gtype: GObject.GType<LastfmProxy>;
-        declare static readonly __signalSignatures: LastfmProxy.SignalSignatures;
 
         // Properties
 
@@ -201,6 +228,21 @@ export namespace RestExtras {
         static ['new'](...args: never[]): any;
 
         static new_with_session(api_key: string, secret: string, session_key: string): LastfmProxy;
+
+        // Signals
+
+        connect<K extends keyof LastfmProxy.SignalSignatures>(
+            signal: K,
+            callback: LastfmProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LastfmProxy.SignalSignatures>(
+            signal: K,
+            callback: LastfmProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LastfmProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LastfmProxy.SignalSignatures[K]>
+        ): void;
 
         // Static methods
 
@@ -251,13 +293,27 @@ export namespace RestExtras {
      */
     class LastfmProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<LastfmProxyCall>;
-        declare static readonly __signalSignatures: LastfmProxyCall.SignalSignatures;
 
         // Constructors
 
         constructor(properties?: Partial<LastfmProxyCall.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
+
+        // Signals
+
+        connect<K extends keyof LastfmProxyCall.SignalSignatures>(
+            signal: K,
+            callback: LastfmProxyCall.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LastfmProxyCall.SignalSignatures>(
+            signal: K,
+            callback: LastfmProxyCall.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LastfmProxyCall.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LastfmProxyCall.SignalSignatures[K]>
+        ): void;
     }
 
     namespace YoutubeProxy {
@@ -276,7 +332,6 @@ export namespace RestExtras {
 
     class YoutubeProxy extends Rest.Proxy {
         static $gtype: GObject.GType<YoutubeProxy>;
-        declare static readonly __signalSignatures: YoutubeProxy.SignalSignatures;
 
         // Properties
 
@@ -296,6 +351,21 @@ export namespace RestExtras {
         static ['new'](developer_key: string): YoutubeProxy;
 
         static new_with_auth(developer_key: string, user_auth: string): YoutubeProxy;
+
+        // Signals
+
+        connect<K extends keyof YoutubeProxy.SignalSignatures>(
+            signal: K,
+            callback: YoutubeProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof YoutubeProxy.SignalSignatures>(
+            signal: K,
+            callback: YoutubeProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof YoutubeProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<YoutubeProxy.SignalSignatures[K]>
+        ): void;
 
         // Methods
 

@@ -222,7 +222,7 @@ export namespace Malcontent {
         // Signal callback interfaces
 
         interface AppFilterChanged {
-            (user_id: number): void;
+            (_source: Manager, user_id: number): void;
         }
 
         // Signal signatures
@@ -243,7 +243,6 @@ export namespace Malcontent {
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
-        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Properties
 
@@ -273,12 +272,6 @@ export namespace Malcontent {
             signal: K,
             ...args: Parameters<Manager.SignalSignatures[K]>
         ): void;
-        connect(id: string, callback: (...args: any[]) => any): number;
-        connect_after(id: string, callback: (...args: any[]) => any): number;
-        emit(id: string, ...args: any[]): void;
-        connect(signal: 'app-filter-changed', callback: (_source: this, user_id: number) => void): number;
-        connect_after(signal: 'app-filter-changed', callback: (_source: this, user_id: number) => void): number;
-        emit(signal: 'app-filter-changed', user_id: number): void;
 
         // Methods
 
