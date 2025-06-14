@@ -350,7 +350,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof Clapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Clapper.SignalSignatures[K]>
+            ...args: Clapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -620,7 +620,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperAudioInfo.SignalSignatures[K]>
+            ...args: ClapperAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -670,7 +670,9 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperGMainContextSignalDispatcher.SignalSignatures[K]>
+            ...args: ClapperGMainContextSignalDispatcher.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Static methods
@@ -1168,7 +1170,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperGtk4Plugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperGtk4Plugin.SignalSignatures[K]>
+            ...args: ClapperGtk4Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1205,7 +1207,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperMediaInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperMediaInfo.SignalSignatures[K]>
+            ...args: ClapperMediaInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1297,7 +1299,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperMpris.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperMpris.SignalSignatures[K]>
+            ...args: ClapperMpris.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1336,7 +1338,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperStreamInfo.SignalSignatures[K]>
+            ...args: ClapperStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1394,7 +1396,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperSubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperSubtitleInfo.SignalSignatures[K]>
+            ...args: ClapperSubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1436,7 +1438,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperVideoInfo.SignalSignatures[K]>
+            ...args: ClapperVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1498,7 +1500,7 @@ export namespace GstClapper {
         ): number;
         emit<K extends keyof ClapperVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClapperVideoOverlayVideoRenderer.SignalSignatures[K]>
+            ...args: ClapperVideoOverlayVideoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

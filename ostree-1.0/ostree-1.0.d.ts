@@ -822,7 +822,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof AsyncProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncProgress.SignalSignatures[K]>
+            ...args: AsyncProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -877,7 +877,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof BootconfigParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BootconfigParser.SignalSignatures[K]>
+            ...args: BootconfigParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -937,7 +937,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof ChecksumInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChecksumInputStream.SignalSignatures[K]>
+            ...args: ChecksumInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -980,7 +980,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof Deployment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Deployment.SignalSignatures[K]>
+            ...args: Deployment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1044,7 +1044,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof GpgVerifyResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GpgVerifyResult.SignalSignatures[K]>
+            ...args: GpgVerifyResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1725,7 +1725,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof MutableTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MutableTree.SignalSignatures[K]>
+            ...args: MutableTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1805,7 +1805,10 @@ export namespace OSTree {
 
         connect<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
         connect_after<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
-        emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: Parameters<Repo.SignalSignatures[K]>): void;
+        emit<K extends keyof Repo.SignalSignatures>(
+            signal: K,
+            ...args: Repo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3015,7 +3018,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof RepoFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepoFile.SignalSignatures[K]>
+            ...args: RepoFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8387,7 +8390,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof SePolicy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SePolicy.SignalSignatures[K]>
+            ...args: SePolicy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8993,7 +8996,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof Sysroot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sysroot.SignalSignatures[K]>
+            ...args: Sysroot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9289,7 +9292,7 @@ export namespace OSTree {
         ): number;
         emit<K extends keyof SysrootUpgrader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SysrootUpgrader.SignalSignatures[K]>
+            ...args: SysrootUpgrader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

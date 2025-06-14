@@ -129,7 +129,7 @@ export namespace PangoFc {
         ): number;
         emit<K extends keyof Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decoder.SignalSignatures[K]>
+            ...args: Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -239,7 +239,10 @@ export namespace PangoFc {
 
         connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
         connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
-        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
+        emit<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            ...args: Font.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -348,7 +351,7 @@ export namespace PangoFc {
         ): number;
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontMap.SignalSignatures[K]>
+            ...args: FontMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

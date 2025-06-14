@@ -74,7 +74,10 @@ export namespace Cally {
 
         connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
         connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
-        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
+        emit<K extends keyof Actor.SignalSignatures>(
+            signal: K,
+            ...args: Actor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -784,7 +787,10 @@ export namespace Cally {
 
         connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
         connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
-        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: Parameters<Clone.SignalSignatures[K]>): void;
+        emit<K extends keyof Clone.SignalSignatures>(
+            signal: K,
+            ...args: Clone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -1498,7 +1504,10 @@ export namespace Cally {
 
         connect<K extends keyof Root.SignalSignatures>(signal: K, callback: Root.SignalSignatures[K]): number;
         connect_after<K extends keyof Root.SignalSignatures>(signal: K, callback: Root.SignalSignatures[K]): number;
-        emit<K extends keyof Root.SignalSignatures>(signal: K, ...args: Parameters<Root.SignalSignatures[K]>): void;
+        emit<K extends keyof Root.SignalSignatures>(
+            signal: K,
+            ...args: Root.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Stage {
@@ -1539,7 +1548,10 @@ export namespace Cally {
 
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
+        emit<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get accessible_component_layer(): number;
@@ -2626,7 +2638,10 @@ export namespace Cally {
 
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
+        emit<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -4080,7 +4095,10 @@ export namespace Cally {
 
         connect<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
         connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
-        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: Parameters<Util.SignalSignatures[K]>): void;
+        emit<K extends keyof Util.SignalSignatures>(
+            signal: K,
+            ...args: Util.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     type ActorClass = typeof Actor;

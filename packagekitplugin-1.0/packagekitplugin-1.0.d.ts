@@ -195,7 +195,7 @@ export namespace PackageKitPlugin {
         ): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -364,7 +364,7 @@ export namespace PackageKitPlugin {
         ): number;
         emit<K extends keyof BackendJob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackendJob.SignalSignatures[K]>
+            ...args: BackendJob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -541,7 +541,7 @@ export namespace PackageKitPlugin {
         ): number;
         emit<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transaction.SignalSignatures[K]>
+            ...args: Transaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

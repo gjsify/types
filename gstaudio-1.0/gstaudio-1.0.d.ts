@@ -1824,7 +1824,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioAggregator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioAggregator.SignalSignatures[K]>
+            ...args: AudioAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1889,7 +1889,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioAggregatorConvertPad.SignalSignatures[K]>
+            ...args: AudioAggregatorConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1942,7 +1942,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioAggregatorPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioAggregatorPad.SignalSignatures[K]>
+            ...args: AudioAggregatorPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2062,7 +2062,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioBaseSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioBaseSink.SignalSignatures[K]>
+            ...args: AudioBaseSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2250,7 +2250,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioBaseSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioBaseSrc.SignalSignatures[K]>
+            ...args: AudioBaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2388,7 +2388,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioCdSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioCdSrc.SignalSignatures[K]>
+            ...args: AudioCdSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2929,7 +2929,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioClock.SignalSignatures[K]>
+            ...args: AudioClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3122,7 +3122,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioDecoder.SignalSignatures[K]>
+            ...args: AudioDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3525,7 +3525,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioEncoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioEncoder.SignalSignatures[K]>
+            ...args: AudioEncoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4361,7 +4361,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioFilter.SignalSignatures[K]>
+            ...args: AudioFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4427,7 +4427,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioRingBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioRingBuffer.SignalSignatures[K]>
+            ...args: AudioRingBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4817,7 +4817,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioSink.SignalSignatures[K]>
+            ...args: AudioSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4889,7 +4889,7 @@ export namespace GstAudio {
         ): number;
         emit<K extends keyof AudioSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioSrc.SignalSignatures[K]>
+            ...args: AudioSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

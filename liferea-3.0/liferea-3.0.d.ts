@@ -293,7 +293,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -797,7 +797,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Browser.SignalSignatures[K]>
+            ...args: Browser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -907,7 +907,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BrowserTabs.SignalSignatures[K]>
+            ...args: BrowserTabs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -974,7 +974,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof FeedList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedList.SignalSignatures[K]>
+            ...args: FeedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1052,7 +1052,10 @@ export namespace Liferea {
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1097,7 +1100,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof ItemList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemList.SignalSignatures[K]>
+            ...args: ItemList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1144,7 +1147,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemListView.SignalSignatures[K]>
+            ...args: ItemListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1218,7 +1221,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof ItemView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemView.SignalSignatures[K]>
+            ...args: ItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1328,7 +1331,7 @@ export namespace Liferea {
         ): number;
         emit<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
+            ...args: NetworkMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1392,7 +1395,10 @@ export namespace Liferea {
 
         connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
         connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
-        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: Parameters<Shell.SignalSignatures[K]>): void;
+        emit<K extends keyof Shell.SignalSignatures>(
+            signal: K,
+            ...args: Shell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

@@ -93,7 +93,7 @@ export namespace ColordGtk {
         ): number;
         emit<K extends keyof SampleWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SampleWidget.SignalSignatures[K]>
+            ...args: SampleWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -581,7 +581,7 @@ export namespace ColordGtk {
         ): number;
         emit<K extends keyof SampleWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SampleWindow.SignalSignatures[K]>
+            ...args: SampleWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1077,7 +1077,10 @@ export namespace ColordGtk {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

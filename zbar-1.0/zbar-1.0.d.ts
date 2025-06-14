@@ -94,7 +94,10 @@ export namespace ZBar {
 
         connect<K extends keyof Gtk.SignalSignatures>(signal: K, callback: Gtk.SignalSignatures[K]): number;
         connect_after<K extends keyof Gtk.SignalSignatures>(signal: K, callback: Gtk.SignalSignatures[K]): number;
-        emit<K extends keyof Gtk.SignalSignatures>(signal: K, ...args: Parameters<Gtk.SignalSignatures[K]>): void;
+        emit<K extends keyof Gtk.SignalSignatures>(
+            signal: K,
+            ...args: Gtk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

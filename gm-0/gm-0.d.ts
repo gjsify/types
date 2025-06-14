@@ -154,7 +154,10 @@ export namespace Gm {
 
         connect<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
         connect_after<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
-        emit<K extends keyof Cutout.SignalSignatures>(signal: K, ...args: Parameters<Cutout.SignalSignatures[K]>): void;
+        emit<K extends keyof Cutout.SignalSignatures>(
+            signal: K,
+            ...args: Cutout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -225,7 +228,7 @@ export namespace Gm {
         ): number;
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfo.SignalSignatures[K]>
+            ...args: DeviceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -344,7 +347,7 @@ export namespace Gm {
         ): number;
         emit<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayPanel.SignalSignatures[K]>
+            ...args: DisplayPanel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

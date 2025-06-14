@@ -69,7 +69,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandDevice.SignalSignatures[K]>
+            ...args: WaylandDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -134,7 +134,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandDisplay.SignalSignatures[K]>
+            ...args: WaylandDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -211,7 +211,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandGLContext.SignalSignatures[K]>
+            ...args: WaylandGLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -252,7 +252,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandMonitor.SignalSignatures[K]>
+            ...args: WaylandMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -289,7 +289,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandPopup.SignalSignatures[K]>
+            ...args: WaylandPopup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -707,7 +707,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandSeat.SignalSignatures[K]>
+            ...args: WaylandSeat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -748,7 +748,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandSurface.SignalSignatures[K]>
+            ...args: WaylandSurface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -797,7 +797,7 @@ export namespace GdkWayland {
         ): number;
         emit<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandToplevel.SignalSignatures[K]>
+            ...args: WaylandToplevel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

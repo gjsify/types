@@ -110,7 +110,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlBuilder.SignalSignatures[K]>
+            ...args: SparqlBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -177,7 +177,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -343,7 +343,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

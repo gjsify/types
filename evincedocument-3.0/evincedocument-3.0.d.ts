@@ -536,7 +536,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof Annotation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Annotation.SignalSignatures[K]>
+            ...args: Annotation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -695,7 +695,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotationAttachment.SignalSignatures[K]>
+            ...args: AnnotationAttachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -917,7 +917,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotationText.SignalSignatures[K]>
+            ...args: AnnotationText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1141,7 +1141,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotationTextMarkup.SignalSignatures[K]>
+            ...args: AnnotationTextMarkup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1377,7 +1377,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attachment.SignalSignatures[K]>
+            ...args: Attachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1433,7 +1433,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1821,7 +1821,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormField.SignalSignatures[K]>
+            ...args: FormField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1862,7 +1862,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldButton.SignalSignatures[K]>
+            ...args: FormFieldButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1908,7 +1908,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldChoice.SignalSignatures[K]>
+            ...args: FormFieldChoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1944,7 +1944,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldSignature.SignalSignatures[K]>
+            ...args: FormFieldSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1991,7 +1991,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldText.SignalSignatures[K]>
+            ...args: FormFieldText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2025,7 +2025,10 @@ export namespace EvinceDocument {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2064,7 +2067,10 @@ export namespace EvinceDocument {
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2104,7 +2110,10 @@ export namespace EvinceDocument {
 
         connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
         connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
-        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
+        emit<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            ...args: Link.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2192,7 +2201,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinkAction.SignalSignatures[K]>
+            ...args: LinkAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2293,7 +2302,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinkDest.SignalSignatures[K]>
+            ...args: LinkDest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2343,7 +2352,10 @@ export namespace EvinceDocument {
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2384,7 +2396,10 @@ export namespace EvinceDocument {
 
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
+        emit<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace RenderContext {
@@ -2427,7 +2442,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderContext.SignalSignatures[K]>
+            ...args: RenderContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2512,7 +2527,7 @@ export namespace EvinceDocument {
         ): number;
         emit<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransitionEffect.SignalSignatures[K]>
+            ...args: TransitionEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

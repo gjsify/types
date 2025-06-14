@@ -2186,7 +2186,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2302,7 +2302,10 @@ export namespace PackageKitGlib {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3524,7 +3527,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof ClientHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientHelper.SignalSignatures[K]>
+            ...args: ClientHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3678,7 +3681,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Control.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Control.SignalSignatures[K]>
+            ...args: Control.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4062,7 +4065,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Desktop.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Desktop.SignalSignatures[K]>
+            ...args: Desktop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4158,7 +4161,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Details.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Details.SignalSignatures[K]>
+            ...args: Details.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4251,7 +4254,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof DistroUpgrade.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DistroUpgrade.SignalSignatures[K]>
+            ...args: DistroUpgrade.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4308,7 +4311,10 @@ export namespace PackageKitGlib {
 
         connect<K extends keyof Error.SignalSignatures>(signal: K, callback: Error.SignalSignatures[K]): number;
         connect_after<K extends keyof Error.SignalSignatures>(signal: K, callback: Error.SignalSignatures[K]): number;
-        emit<K extends keyof Error.SignalSignatures>(signal: K, ...args: Parameters<Error.SignalSignatures[K]>): void;
+        emit<K extends keyof Error.SignalSignatures>(
+            signal: K,
+            ...args: Error.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4408,7 +4414,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof EulaRequired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EulaRequired.SignalSignatures[K]>
+            ...args: EulaRequired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4472,7 +4478,10 @@ export namespace PackageKitGlib {
 
         connect<K extends keyof Files.SignalSignatures>(signal: K, callback: Files.SignalSignatures[K]): number;
         connect_after<K extends keyof Files.SignalSignatures>(signal: K, callback: Files.SignalSignatures[K]): number;
-        emit<K extends keyof Files.SignalSignatures>(signal: K, ...args: Parameters<Files.SignalSignatures[K]>): void;
+        emit<K extends keyof Files.SignalSignatures>(
+            signal: K,
+            ...args: Files.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4536,7 +4545,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof ItemProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemProgress.SignalSignatures[K]>
+            ...args: ItemProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4612,7 +4621,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof MediaChangeRequired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaChangeRequired.SignalSignatures[K]>
+            ...args: MediaChangeRequired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4762,7 +4771,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Package.SignalSignatures[K]>
+            ...args: Package.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4976,7 +4985,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof PackageSack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PackageSack.SignalSignatures[K]>
+            ...args: PackageSack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5334,7 +5343,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Progress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Progress.SignalSignatures[K]>
+            ...args: Progress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5565,7 +5574,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof RepoDetail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepoDetail.SignalSignatures[K]>
+            ...args: RepoDetail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5668,7 +5677,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof RepoSignatureRequired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepoSignatureRequired.SignalSignatures[K]>
+            ...args: RepoSignatureRequired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5717,7 +5726,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof RequireRestart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequireRestart.SignalSignatures[K]>
+            ...args: RequireRestart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5778,7 +5787,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof Results.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Results.SignalSignatures[K]>
+            ...args: Results.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6009,7 +6018,10 @@ export namespace PackageKitGlib {
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Task {
@@ -6094,7 +6106,10 @@ export namespace PackageKitGlib {
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -6912,7 +6927,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof TransactionList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionList.SignalSignatures[K]>
+            ...args: TransactionList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6989,7 +7004,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof TransactionPast.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionPast.SignalSignatures[K]>
+            ...args: TransactionPast.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7135,7 +7150,7 @@ export namespace PackageKitGlib {
         ): number;
         emit<K extends keyof UpdateDetail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UpdateDetail.SignalSignatures[K]>
+            ...args: UpdateDetail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

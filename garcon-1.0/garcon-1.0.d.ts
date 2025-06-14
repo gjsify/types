@@ -222,7 +222,10 @@ export namespace Garcon {
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -837,7 +840,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuDirectory.SignalSignatures[K]>
+            ...args: MenuDirectory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1101,7 +1104,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1657,7 +1660,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItemAction.SignalSignatures[K]>
+            ...args: MenuItemAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1710,7 +1713,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItemCache.SignalSignatures[K]>
+            ...args: MenuItemCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1753,7 +1756,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItemPool.SignalSignatures[K]>
+            ...args: MenuItemPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1807,7 +1810,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuMerger.SignalSignatures[K]>
+            ...args: MenuMerger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2297,7 +2300,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuNode.SignalSignatures[K]>
+            ...args: MenuNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2368,7 +2371,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuParser.SignalSignatures[K]>
+            ...args: MenuParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2851,7 +2854,7 @@ export namespace Garcon {
         ): number;
         emit<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuSeparator.SignalSignatures[K]>
+            ...args: MenuSeparator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

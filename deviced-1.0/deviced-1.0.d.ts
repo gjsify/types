@@ -101,7 +101,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof AppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppInfo.SignalSignatures[K]>
+            ...args: AppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -169,7 +169,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Browser.SignalSignatures[K]>
+            ...args: Browser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -316,7 +316,10 @@ export namespace Deviced {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -900,7 +903,10 @@ export namespace Deviced {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1012,7 +1018,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof FlatpakService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlatpakService.SignalSignatures[K]>
+            ...args: FlatpakService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1075,7 +1081,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof NetworkClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkClient.SignalSignatures[K]>
+            ...args: NetworkClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1130,7 +1136,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof NetworkDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkDevice.SignalSignatures[K]>
+            ...args: NetworkDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1197,7 +1203,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof ProcessService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProcessService.SignalSignatures[K]>
+            ...args: ProcessService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1390,7 +1396,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1496,7 +1502,7 @@ export namespace Deviced {
         ): number;
         emit<K extends keyof TransferService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferService.SignalSignatures[K]>
+            ...args: TransferService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

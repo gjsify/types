@@ -261,7 +261,10 @@ export namespace Jcat {
 
         connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
         connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
-        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
+        emit<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -369,7 +372,7 @@ export namespace Jcat {
         ): number;
         emit<K extends keyof BtCheckpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BtCheckpoint.SignalSignatures[K]>
+            ...args: BtCheckpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -449,7 +452,7 @@ export namespace Jcat {
         ): number;
         emit<K extends keyof BtVerifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BtVerifier.SignalSignatures[K]>
+            ...args: BtVerifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -510,7 +513,7 @@ export namespace Jcat {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -621,7 +624,10 @@ export namespace Jcat {
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -763,7 +769,10 @@ export namespace Jcat {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -883,7 +892,10 @@ export namespace Jcat {
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -978,7 +990,10 @@ export namespace Jcat {
 
         connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
         connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
-        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: Parameters<Result.SignalSignatures[K]>): void;
+        emit<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            ...args: Result.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

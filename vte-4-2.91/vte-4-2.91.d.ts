@@ -513,7 +513,10 @@ export namespace Vte {
 
         connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
         connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
-        emit<K extends keyof Pty.SignalSignatures>(signal: K, ...args: Parameters<Pty.SignalSignatures[K]>): void;
+        emit<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            ...args: Pty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1790,7 +1793,7 @@ export namespace Vte {
         ): number;
         emit<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Terminal.SignalSignatures[K]>
+            ...args: Terminal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

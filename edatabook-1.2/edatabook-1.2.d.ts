@@ -484,7 +484,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackend.SignalSignatures[K]>
+            ...args: BookBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1582,7 +1582,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackendFactory.SignalSignatures[K]>
+            ...args: BookBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1618,7 +1618,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookBackendSExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackendSExp.SignalSignatures[K]>
+            ...args: BookBackendSExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1700,7 +1700,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookBackendSync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackendSync.SignalSignatures[K]>
+            ...args: BookBackendSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1916,7 +1916,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookCache.SignalSignatures[K]>
+            ...args: BookCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2859,7 +2859,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookMetaBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookMetaBackend.SignalSignatures[K]>
+            ...args: BookMetaBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3553,7 +3553,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookSqlite.SignalSignatures[K]>
+            ...args: BookSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4392,7 +4392,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBook.SignalSignatures[K]>
+            ...args: DataBook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5079,7 +5079,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookCursor.SignalSignatures[K]>
+            ...args: DataBookCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5302,7 +5302,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookCursorCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookCursorCache.SignalSignatures[K]>
+            ...args: DataBookCursorCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5359,7 +5359,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookCursorSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookCursorSqlite.SignalSignatures[K]>
+            ...args: DataBookCursorSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5395,7 +5395,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookDirect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookDirect.SignalSignatures[K]>
+            ...args: DataBookDirect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5443,7 +5443,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookFactory.SignalSignatures[K]>
+            ...args: DataBookFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6051,7 +6051,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookView.SignalSignatures[K]>
+            ...args: DataBookView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6810,7 +6810,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookViewWatcherCache.SignalSignatures[K]>
+            ...args: DataBookViewWatcherCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6870,7 +6870,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookViewWatcherMemory.SignalSignatures[K]>
+            ...args: DataBookViewWatcherMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6936,7 +6936,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookViewWatcherSqlite.SignalSignatures[K]>
+            ...args: DataBookViewWatcherSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6992,7 +6992,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof SubprocessBookFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessBookFactory.SignalSignatures[K]>
+            ...args: SubprocessBookFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7568,7 +7568,7 @@ export namespace EDataBook {
         ): number;
         emit<K extends keyof SystemLocaleWatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemLocaleWatcher.SignalSignatures[K]>
+            ...args: SystemLocaleWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

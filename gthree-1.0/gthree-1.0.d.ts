@@ -355,7 +355,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AmbientLight.SignalSignatures[K]>
+            ...args: AmbientLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -391,7 +391,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnimationAction.SignalSignatures[K]>
+            ...args: AnimationAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -459,7 +459,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnimationClip.SignalSignatures[K]>
+            ...args: AnimationClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -518,7 +518,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnimationMixer.SignalSignatures[K]>
+            ...args: AnimationMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -586,7 +586,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attribute.SignalSignatures[K]>
+            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -683,7 +683,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BloomPass.SignalSignatures[K]>
+            ...args: BloomPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -711,7 +711,10 @@ export namespace Gthree {
 
         connect<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
         connect_after<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
-        emit<K extends keyof Bone.SignalSignatures>(signal: K, ...args: Parameters<Bone.SignalSignatures[K]>): void;
+        emit<K extends keyof Bone.SignalSignatures>(
+            signal: K,
+            ...args: Bone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Camera {
@@ -746,7 +749,10 @@ export namespace Gthree {
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -805,7 +811,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClearPass.SignalSignatures[K]>
+            ...args: ClearPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -845,7 +851,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorKeyframeTrack.SignalSignatures[K]>
+            ...args: ColorKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -893,7 +899,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CubeTexture.SignalSignatures[K]>
+            ...args: CubeTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -929,7 +935,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CubicInterpolant.SignalSignatures[K]>
+            ...args: CubicInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -975,7 +981,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectionalLight.SignalSignatures[K]>
+            ...args: DirectionalLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1013,7 +1019,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectionalLightShadow.SignalSignatures[K]>
+            ...args: DirectionalLightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1049,7 +1055,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscreteInterpolant.SignalSignatures[K]>
+            ...args: DiscreteInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1085,7 +1091,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EffectComposer.SignalSignatures[K]>
+            ...args: EffectComposer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1122,7 +1128,10 @@ export namespace Gthree {
 
         connect<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
         connect_after<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
-        emit<K extends keyof Fog.SignalSignatures>(signal: K, ...args: Parameters<Fog.SignalSignatures[K]>): void;
+        emit<K extends keyof Fog.SignalSignatures>(
+            signal: K,
+            ...args: Fog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1170,7 +1179,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FullscreenQuadPass.SignalSignatures[K]>
+            ...args: FullscreenQuadPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1285,7 +1294,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Geometry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Geometry.SignalSignatures[K]>
+            ...args: Geometry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1337,7 +1346,10 @@ export namespace Gthree {
 
         connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
         connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
-        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
+        emit<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace HemisphereLight {
@@ -1385,7 +1397,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HemisphereLight.SignalSignatures[K]>
+            ...args: HemisphereLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1419,7 +1431,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interpolant.SignalSignatures[K]>
+            ...args: Interpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1469,7 +1481,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InterpolantSettings.SignalSignatures[K]>
+            ...args: InterpolantSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1510,7 +1522,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyframeTrack.SignalSignatures[K]>
+            ...args: KeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1559,7 +1571,10 @@ export namespace Gthree {
 
         connect<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
         connect_after<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
-        emit<K extends keyof Light.SignalSignatures>(signal: K, ...args: Parameters<Light.SignalSignatures[K]>): void;
+        emit<K extends keyof Light.SignalSignatures>(
+            signal: K,
+            ...args: Light.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1603,7 +1618,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LightShadow.SignalSignatures[K]>
+            ...args: LightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1652,7 +1667,10 @@ export namespace Gthree {
 
         connect<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
         connect_after<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
-        emit<K extends keyof Line.SignalSignatures>(signal: K, ...args: Parameters<Line.SignalSignatures[K]>): void;
+        emit<K extends keyof Line.SignalSignatures>(
+            signal: K,
+            ...args: Line.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace LineBasicMaterial {
@@ -1700,7 +1718,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LineBasicMaterial.SignalSignatures[K]>
+            ...args: LineBasicMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1746,7 +1764,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LineSegments.SignalSignatures[K]>
+            ...args: LineSegments.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1782,7 +1800,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinearInterpolant.SignalSignatures[K]>
+            ...args: LinearInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1808,7 +1826,10 @@ export namespace Gthree {
 
         connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
         connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
-        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
+        emit<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1879,7 +1900,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Material.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Material.SignalSignatures[K]>
+            ...args: Material.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1967,7 +1988,10 @@ export namespace Gthree {
 
         connect<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
         connect_after<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
-        emit<K extends keyof Mesh.SignalSignatures>(signal: K, ...args: Parameters<Mesh.SignalSignatures[K]>): void;
+        emit<K extends keyof Mesh.SignalSignatures>(
+            signal: K,
+            ...args: Mesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2037,7 +2061,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshBasicMaterial.SignalSignatures[K]>
+            ...args: MeshBasicMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2086,7 +2110,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshDepthMaterial.SignalSignatures[K]>
+            ...args: MeshDepthMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2127,7 +2151,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshDistanceMaterial.SignalSignatures[K]>
+            ...args: MeshDistanceMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2203,7 +2227,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshLambertMaterial.SignalSignatures[K]>
+            ...args: MeshLambertMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2280,7 +2304,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshMaterial.SignalSignatures[K]>
+            ...args: MeshMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2329,7 +2353,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshNormalMaterial.SignalSignatures[K]>
+            ...args: MeshNormalMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2434,7 +2458,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshPhongMaterial.SignalSignatures[K]>
+            ...args: MeshPhongMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2636,7 +2660,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshSpecglosMaterial.SignalSignatures[K]>
+            ...args: MeshSpecglosMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2850,7 +2874,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshStandardMaterial.SignalSignatures[K]>
+            ...args: MeshStandardMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3034,7 +3058,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshToonMaterial.SignalSignatures[K]>
+            ...args: MeshToonMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3102,7 +3126,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumberKeyframeTrack.SignalSignatures[K]>
+            ...args: NumberKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3168,7 +3192,10 @@ export namespace Gthree {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3305,7 +3332,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OrthographicCamera.SignalSignatures[K]>
+            ...args: OrthographicCamera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3351,7 +3378,10 @@ export namespace Gthree {
 
         connect<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
         connect_after<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
-        emit<K extends keyof Pass.SignalSignatures>(signal: K, ...args: Parameters<Pass.SignalSignatures[K]>): void;
+        emit<K extends keyof Pass.SignalSignatures>(
+            signal: K,
+            ...args: Pass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3425,7 +3455,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PerspectiveCamera.SignalSignatures[K]>
+            ...args: PerspectiveCamera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3484,7 +3514,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaneHelper.SignalSignatures[K]>
+            ...args: PlaneHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3542,7 +3572,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof PointLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointLight.SignalSignatures[K]>
+            ...args: PointLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3589,7 +3619,10 @@ export namespace Gthree {
 
         connect<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
         connect_after<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
-        emit<K extends keyof Points.SignalSignatures>(signal: K, ...args: Parameters<Points.SignalSignatures[K]>): void;
+        emit<K extends keyof Points.SignalSignatures>(
+            signal: K,
+            ...args: Points.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3647,7 +3680,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointsMaterial.SignalSignatures[K]>
+            ...args: PointsMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3690,7 +3723,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Program.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Program.SignalSignatures[K]>
+            ...args: Program.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3734,7 +3767,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QuaternionInterpolant.SignalSignatures[K]>
+            ...args: QuaternionInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3770,7 +3803,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QuaternionKeyframeTrack.SignalSignatures[K]>
+            ...args: QuaternionKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3803,7 +3836,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Raycaster.SignalSignatures[K]>
+            ...args: Raycaster.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3849,7 +3882,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderPass.SignalSignatures[K]>
+            ...args: RenderPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3889,7 +3922,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderTarget.SignalSignatures[K]>
+            ...args: RenderTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3936,7 +3969,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4010,7 +4043,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4052,7 +4085,10 @@ export namespace Gthree {
 
         connect<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
         connect_after<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
-        emit<K extends keyof Scene.SignalSignatures>(signal: K, ...args: Parameters<Scene.SignalSignatures[K]>): void;
+        emit<K extends keyof Scene.SignalSignatures>(
+            signal: K,
+            ...args: Scene.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4087,7 +4123,10 @@ export namespace Gthree {
 
         connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
         connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
-        emit<K extends keyof Shader.SignalSignatures>(signal: K, ...args: Parameters<Shader.SignalSignatures[K]>): void;
+        emit<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            ...args: Shader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4150,7 +4189,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderMaterial.SignalSignatures[K]>
+            ...args: ShaderMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4195,7 +4234,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderPass.SignalSignatures[K]>
+            ...args: ShaderPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4228,7 +4267,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Skeleton.SignalSignatures[K]>
+            ...args: Skeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4279,7 +4318,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkeletonHelper.SignalSignatures[K]>
+            ...args: SkeletonHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4318,7 +4357,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkinnedMesh.SignalSignatures[K]>
+            ...args: SkinnedMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4388,7 +4427,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpotLight.SignalSignatures[K]>
+            ...args: SpotLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4434,7 +4473,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpotLightShadow.SignalSignatures[K]>
+            ...args: SpotLightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4472,7 +4511,10 @@ export namespace Gthree {
 
         connect<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
         connect_after<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
-        emit<K extends keyof Sprite.SignalSignatures>(signal: K, ...args: Parameters<Sprite.SignalSignatures[K]>): void;
+        emit<K extends keyof Sprite.SignalSignatures>(
+            signal: K,
+            ...args: Sprite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4532,7 +4574,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpriteMaterial.SignalSignatures[K]>
+            ...args: SpriteMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4585,7 +4627,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture.SignalSignatures[K]>
+            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4661,7 +4703,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Uniforms.SignalSignatures[K]>
+            ...args: Uniforms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4710,7 +4752,7 @@ export namespace Gthree {
         ): number;
         emit<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorKeyframeTrack.SignalSignatures[K]>
+            ...args: VectorKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

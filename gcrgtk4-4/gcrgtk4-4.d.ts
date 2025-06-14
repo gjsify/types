@@ -75,7 +75,7 @@ export namespace GcrGtk4 {
         ): number;
         emit<K extends keyof CertificateWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+            ...args: CertificateWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

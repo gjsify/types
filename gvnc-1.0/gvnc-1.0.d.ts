@@ -265,7 +265,7 @@ export namespace GVnc {
         ): number;
         emit<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseAudio.SignalSignatures[K]>
+            ...args: BaseAudio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -797,7 +797,7 @@ export namespace GVnc {
         ): number;
         emit<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseFramebuffer.SignalSignatures[K]>
+            ...args: BaseFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1555,7 +1555,7 @@ export namespace GVnc {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1905,7 +1905,10 @@ export namespace GVnc {
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

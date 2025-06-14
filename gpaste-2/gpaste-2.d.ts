@@ -398,7 +398,10 @@ export namespace GPaste {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2113,7 +2116,7 @@ export namespace GPaste {
         ): number;
         emit<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientItem.SignalSignatures[K]>
+            ...args: ClientItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2180,7 +2183,7 @@ export namespace GPaste {
         ): number;
         emit<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GnomeShellClient.SignalSignatures[K]>
+            ...args: GnomeShellClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3103,7 +3106,7 @@ export namespace GPaste {
         ): number;
         emit<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScreensaverClient.SignalSignatures[K]>
+            ...args: ScreensaverClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3925,7 +3928,7 @@ export namespace GPaste {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

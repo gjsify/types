@@ -72,7 +72,7 @@ export namespace GstGLWayland {
         ): number;
         emit<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplayWayland.SignalSignatures[K]>
+            ...args: GLDisplayWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

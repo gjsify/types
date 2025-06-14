@@ -192,7 +192,7 @@ export namespace Template {
         ): number;
         emit<K extends keyof Template.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Template.SignalSignatures[K]>
+            ...args: Template.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -272,7 +272,7 @@ export namespace Template {
         ): number;
         emit<K extends keyof TemplateLocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemplateLocator.SignalSignatures[K]>
+            ...args: TemplateLocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

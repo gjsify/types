@@ -268,7 +268,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof Adjustment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Adjustment.SignalSignatures[K]>
+            ...args: Adjustment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -324,7 +324,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof Coordinate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Coordinate.SignalSignatures[K]>
+            ...args: Coordinate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -856,7 +856,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof CustomMarker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CustomMarker.SignalSignatures[K]>
+            ...args: CustomMarker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1395,7 +1395,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof ErrorTileRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ErrorTileRenderer.SignalSignatures[K]>
+            ...args: ErrorTileRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1475,7 +1475,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof FileCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileCache.SignalSignatures[K]>
+            ...args: FileCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1552,7 +1552,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileTileSource.SignalSignatures[K]>
+            ...args: FileTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1600,7 +1600,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof ImageRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageRenderer.SignalSignatures[K]>
+            ...args: ImageRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1674,7 +1674,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof KineticScrollView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KineticScrollView.SignalSignatures[K]>
+            ...args: KineticScrollView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2738,7 +2738,10 @@ export namespace Champlain {
 
         connect<K extends keyof Label.SignalSignatures>(signal: K, callback: Label.SignalSignatures[K]): number;
         connect_after<K extends keyof Label.SignalSignatures>(signal: K, callback: Label.SignalSignatures[K]): number;
-        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: Parameters<Label.SignalSignatures[K]>): void;
+        emit<K extends keyof Label.SignalSignatures>(
+            signal: K,
+            ...args: Label.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3401,7 +3404,10 @@ export namespace Champlain {
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -4386,7 +4392,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof License.SignalSignatures>(
             signal: K,
-            ...args: Parameters<License.SignalSignatures[K]>
+            ...args: License.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5359,7 +5365,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof MapSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapSource.SignalSignatures[K]>
+            ...args: MapSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5562,7 +5568,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof MapSourceChain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapSourceChain.SignalSignatures[K]>
+            ...args: MapSourceChain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5691,7 +5697,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof MapSourceDesc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapSourceDesc.SignalSignatures[K]>
+            ...args: MapSourceDesc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5782,7 +5788,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof MapSourceFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapSourceFactory.SignalSignatures[K]>
+            ...args: MapSourceFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5917,7 +5923,10 @@ export namespace Champlain {
 
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
+        emit<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6984,7 +6993,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof MarkerLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkerLayer.SignalSignatures[K]>
+            ...args: MarkerLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7580,7 +7589,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof MemoryCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryCache.SignalSignatures[K]>
+            ...args: MemoryCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7692,7 +7701,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof NetworkBboxTileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkBboxTileSource.SignalSignatures[K]>
+            ...args: NetworkBboxTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7836,7 +7845,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof NetworkTileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkTileSource.SignalSignatures[K]>
+            ...args: NetworkTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7935,7 +7944,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof NullTileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullTileSource.SignalSignatures[K]>
+            ...args: NullTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8045,7 +8054,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof PathLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathLayer.SignalSignatures[K]>
+            ...args: PathLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8682,7 +8691,10 @@ export namespace Champlain {
 
         connect<K extends keyof Point.SignalSignatures>(signal: K, callback: Point.SignalSignatures[K]): number;
         connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: Point.SignalSignatures[K]): number;
-        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: Parameters<Point.SignalSignatures[K]>): void;
+        emit<K extends keyof Point.SignalSignatures>(
+            signal: K,
+            ...args: Point.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -9248,7 +9260,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9344,7 +9356,10 @@ export namespace Champlain {
 
         connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
         connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
-        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: Parameters<Scale.SignalSignatures[K]>): void;
+        emit<K extends keyof Scale.SignalSignatures>(
+            signal: K,
+            ...args: Scale.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -10380,7 +10395,10 @@ export namespace Champlain {
 
         connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
         connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
-        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: Parameters<Tile.SignalSignatures[K]>): void;
+        emit<K extends keyof Tile.SignalSignatures>(
+            signal: K,
+            ...args: Tile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11426,7 +11444,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof TileCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileCache.SignalSignatures[K]>
+            ...args: TileCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -11598,7 +11616,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof TileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileSource.SignalSignatures[K]>
+            ...args: TileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11900,7 +11918,10 @@ export namespace Champlain {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -13144,7 +13165,7 @@ export namespace Champlain {
         ): number;
         emit<K extends keyof Viewport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Viewport.SignalSignatures[K]>
+            ...args: Viewport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

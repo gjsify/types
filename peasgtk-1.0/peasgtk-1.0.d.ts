@@ -92,7 +92,7 @@ export namespace PeasGtk {
         ): number;
         emit<K extends keyof PluginManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginManager.SignalSignatures[K]>
+            ...args: PluginManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -631,7 +631,7 @@ export namespace PeasGtk {
         ): number;
         emit<K extends keyof PluginManagerView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginManagerView.SignalSignatures[K]>
+            ...args: PluginManagerView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

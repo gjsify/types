@@ -74,7 +74,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CSVFileFormat.SignalSignatures[K]>
+            ...args: CSVFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -111,7 +111,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof Dataset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dataset.SignalSignatures[K]>
+            ...args: Dataset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -159,7 +159,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DatasetFactory.SignalSignatures[K]>
+            ...args: DatasetFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -206,7 +206,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryPartitioning.SignalSignatures[K]>
+            ...args: DirectoryPartitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -246,7 +246,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileFormat.SignalSignatures[K]>
+            ...args: FileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -317,7 +317,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystemDataset.SignalSignatures[K]>
+            ...args: FileSystemDataset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -394,7 +394,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystemDatasetFactory.SignalSignatures[K]>
+            ...args: FileSystemDatasetFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -491,7 +491,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystemDatasetWriteOptions.SignalSignatures[K]>
+            ...args: FileSystemDatasetWriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -531,7 +531,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileWriteOptions.SignalSignatures[K]>
+            ...args: FileWriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -571,7 +571,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileWriter.SignalSignatures[K]>
+            ...args: FileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -614,7 +614,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof Fragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Fragment.SignalSignatures[K]>
+            ...args: Fragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -650,7 +650,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IPCFileFormat.SignalSignatures[K]>
+            ...args: IPCFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -686,7 +686,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InMemoryFragment.SignalSignatures[K]>
+            ...args: InMemoryFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -720,7 +720,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyValuePartitioning.SignalSignatures[K]>
+            ...args: KeyValuePartitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -756,7 +756,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParquetFileFormat.SignalSignatures[K]>
+            ...args: ParquetFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -798,7 +798,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Partitioning.SignalSignatures[K]>
+            ...args: Partitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -884,7 +884,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PartitioningOptions.SignalSignatures[K]>
+            ...args: PartitioningOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -921,7 +921,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scanner.SignalSignatures[K]>
+            ...args: Scanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -971,7 +971,7 @@ export namespace ArrowDataset {
         ): number;
         emit<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScannerBuilder.SignalSignatures[K]>
+            ...args: ScannerBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

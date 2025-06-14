@@ -307,7 +307,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof AffectedRows.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AffectedRows.SignalSignatures[K]>
+            ...args: AffectedRows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -805,7 +805,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof CommandDelete.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandDelete.SignalSignatures[K]>
+            ...args: CommandDelete.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1316,7 +1316,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof CommandInsert.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandInsert.SignalSignatures[K]>
+            ...args: CommandInsert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1809,7 +1809,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof CommandModification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandModification.SignalSignatures[K]>
+            ...args: CommandModification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -2331,7 +2331,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof CommandSelect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandSelect.SignalSignatures[K]>
+            ...args: CommandSelect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -2845,7 +2845,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof CommandUpdate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandUpdate.SignalSignatures[K]>
+            ...args: CommandUpdate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3345,7 +3345,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameter.SignalSignatures[K]>
+            ...args: ConnectionParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3388,7 +3388,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterDbName.SignalSignatures[K]>
+            ...args: ConnectionParameterDbName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3424,7 +3424,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameterHost.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterHost.SignalSignatures[K]>
+            ...args: ConnectionParameterHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3460,7 +3460,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameterPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterPort.SignalSignatures[K]>
+            ...args: ConnectionParameterPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3496,7 +3496,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterUserName.SignalSignatures[K]>
+            ...args: ConnectionParameterUserName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3532,7 +3532,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterPassword.SignalSignatures[K]>
+            ...args: ConnectionParameterPassword.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3571,7 +3571,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ConnectionParameters.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameters.SignalSignatures[K]>
+            ...args: ConnectionParameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3623,7 +3623,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4215,7 +4215,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionField.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionField.SignalSignatures[K]>
+            ...args: ExpressionField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4721,7 +4721,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperator.SignalSignatures[K]>
+            ...args: ExpressionOperator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5305,7 +5305,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorGroup.SignalSignatures[K]>
+            ...args: ExpressionOperatorGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5789,7 +5789,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorMultiterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorMultiterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6273,7 +6273,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6757,7 +6757,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorOr.SignalSignatures[K]>
+            ...args: ExpressionOperatorOr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7241,7 +7241,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBinaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorBinaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7725,7 +7725,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorEq.SignalSignatures[K]>
+            ...args: ExpressionOperatorEq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -8209,7 +8209,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotEq.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotEq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -8693,7 +8693,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorDiff.SignalSignatures[K]>
+            ...args: ExpressionOperatorDiff.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9177,7 +9177,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorGt.SignalSignatures[K]>
+            ...args: ExpressionOperatorGt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9661,7 +9661,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorLt.SignalSignatures[K]>
+            ...args: ExpressionOperatorLt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -10145,7 +10145,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorGeq.SignalSignatures[K]>
+            ...args: ExpressionOperatorGeq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -10629,7 +10629,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorLeq.SignalSignatures[K]>
+            ...args: ExpressionOperatorLeq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -11113,7 +11113,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorRegexp.SignalSignatures[K]>
+            ...args: ExpressionOperatorRegexp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -11597,7 +11597,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorStar.SignalSignatures[K]>
+            ...args: ExpressionOperatorStar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -12081,7 +12081,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorDiv.SignalSignatures[K]>
+            ...args: ExpressionOperatorDiv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -12565,7 +12565,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIn.SignalSignatures[K]>
+            ...args: ExpressionOperatorIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -13049,7 +13049,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotIn.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -13533,7 +13533,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorConcatenate.SignalSignatures[K]>
+            ...args: ExpressionOperatorConcatenate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -14017,7 +14017,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorSimilarTo.SignalSignatures[K]>
+            ...args: ExpressionOperatorSimilarTo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -14501,7 +14501,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorLike.SignalSignatures[K]>
+            ...args: ExpressionOperatorLike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -14985,7 +14985,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotLike.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotLike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -15469,7 +15469,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIlike.SignalSignatures[K]>
+            ...args: ExpressionOperatorIlike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -15953,7 +15953,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotIlike.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotIlike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -16437,7 +16437,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -16921,7 +16921,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorMinus.SignalSignatures[K]>
+            ...args: ExpressionOperatorMinus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -17405,7 +17405,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorPlus.SignalSignatures[K]>
+            ...args: ExpressionOperatorPlus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -17889,7 +17889,9 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorInitialUnaryterm.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -18373,7 +18375,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNot.SignalSignatures[K]>
+            ...args: ExpressionOperatorNot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -18857,7 +18859,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorFinalUnaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -19341,7 +19343,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIs.SignalSignatures[K]>
+            ...args: ExpressionOperatorIs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -19825,7 +19827,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNot.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -20309,7 +20311,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNull.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -20793,7 +20795,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotNull.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -21277,7 +21279,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsTrue.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsTrue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -21761,7 +21763,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotTrue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -22245,7 +22247,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsFalse.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsFalse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -22729,7 +22731,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotFalse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -23213,7 +23215,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotUnknown.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -23697,7 +23699,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsUnknown.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsUnknown.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -24181,7 +24183,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsDistinct.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsDistinct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -24665,7 +24667,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotDistinct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -25149,7 +25151,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsDistinctFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -25633,7 +25635,9 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -26117,7 +26121,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorThreeterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorThreeterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -26601,7 +26605,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetween.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetween.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -27085,7 +27089,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetweenAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -27569,7 +27573,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetween.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetween.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -28053,7 +28057,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetweenAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -28537,7 +28541,9 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetweenSymmetric.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -29021,7 +29027,9 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -29505,7 +29513,9 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -29989,7 +29999,9 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -30473,7 +30485,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionValue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionValue.SignalSignatures[K]>
+            ...args: ExpressionValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -30973,7 +30985,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ExpressionValueParameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionValueParameter.SignalSignatures[K]>
+            ...args: ExpressionValueParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -31477,7 +31489,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof HashList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashList.SignalSignatures[K]>
+            ...args: HashList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -32071,7 +32083,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof InvalidQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvalidQuery.SignalSignatures[K]>
+            ...args: InvalidQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32575,7 +32587,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvalidPreparedQuery.SignalSignatures[K]>
+            ...args: InvalidPreparedQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -33067,7 +33079,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof InvalidResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvalidResult.SignalSignatures[K]>
+            ...args: InvalidResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33549,7 +33561,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof Parameters.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Parameters.SignalSignatures[K]>
+            ...args: Parameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -34030,7 +34042,10 @@ export namespace Vda {
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         parse(str: string, cnc: Connection): SqlCommandParametrized;
@@ -34508,7 +34523,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof TableReference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableReference.SignalSignatures[K]>
+            ...args: TableReference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -34994,7 +35009,10 @@ export namespace Vda {
 
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
+        emit<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -35496,7 +35514,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueNull.SignalSignatures[K]>
+            ...args: ValueNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -35973,7 +35991,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueString.SignalSignatures[K]>
+            ...args: ValueString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -36447,7 +36465,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueXml.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueXml.SignalSignatures[K]>
+            ...args: ValueXml.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -36926,7 +36944,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueJson.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueJson.SignalSignatures[K]>
+            ...args: ValueJson.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -37405,7 +37423,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueText.SignalSignatures[K]>
+            ...args: ValueText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -37879,7 +37897,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueName.SignalSignatures[K]>
+            ...args: ValueName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -38353,7 +38371,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueBool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueBool.SignalSignatures[K]>
+            ...args: ValueBool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -38827,7 +38845,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueBit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueBit.SignalSignatures[K]>
+            ...args: ValueBit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -39307,7 +39325,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueInteger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInteger.SignalSignatures[K]>
+            ...args: ValueInteger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -39800,7 +39818,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueByte.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueByte.SignalSignatures[K]>
+            ...args: ValueByte.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -40274,7 +40292,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueInt2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInt2.SignalSignatures[K]>
+            ...args: ValueInt2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -40748,7 +40766,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueInt4.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInt4.SignalSignatures[K]>
+            ...args: ValueInt4.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -41222,7 +41240,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueInt8.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInt8.SignalSignatures[K]>
+            ...args: ValueInt8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -41702,7 +41720,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInteger.SignalSignatures[K]>
+            ...args: ValueUnsignedInteger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -42200,7 +42218,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueUnsignedByte.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedByte.SignalSignatures[K]>
+            ...args: ValueUnsignedByte.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -42679,7 +42697,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInt2.SignalSignatures[K]>
+            ...args: ValueUnsignedInt2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -43158,7 +43176,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInt4.SignalSignatures[K]>
+            ...args: ValueUnsignedInt4.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -43637,7 +43655,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInt8.SignalSignatures[K]>
+            ...args: ValueUnsignedInt8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -44111,7 +44129,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueOid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueOid.SignalSignatures[K]>
+            ...args: ValueOid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -44588,7 +44606,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueNumeric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueNumeric.SignalSignatures[K]>
+            ...args: ValueNumeric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -45089,7 +45107,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueFloat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueFloat.SignalSignatures[K]>
+            ...args: ValueFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -45568,7 +45586,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueDouble.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueDouble.SignalSignatures[K]>
+            ...args: ValueDouble.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -46045,7 +46063,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueMoney.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueMoney.SignalSignatures[K]>
+            ...args: ValueMoney.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -46530,7 +46548,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueTimestamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTimestamp.SignalSignatures[K]>
+            ...args: ValueTimestamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -47033,7 +47051,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueTimestampNtz.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTimestampNtz.SignalSignatures[K]>
+            ...args: ValueTimestampNtz.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -47507,7 +47525,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTime.SignalSignatures[K]>
+            ...args: ValueTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -47984,7 +48002,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueTimeNtz.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTimeNtz.SignalSignatures[K]>
+            ...args: ValueTimeNtz.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -48462,7 +48480,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueDate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueDate.SignalSignatures[K]>
+            ...args: ValueDate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -48947,7 +48965,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueBinary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueBinary.SignalSignatures[K]>
+            ...args: ValueBinary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -49446,7 +49464,7 @@ export namespace Vda {
         ): number;
         emit<K extends keyof ValueMathExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueMathExp.SignalSignatures[K]>
+            ...args: ValueMathExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

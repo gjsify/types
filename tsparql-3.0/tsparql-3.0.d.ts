@@ -468,7 +468,10 @@ export namespace Tsparql {
 
         connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
         connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
-        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: Parameters<Batch.SignalSignatures[K]>): void;
+        emit<K extends keyof Batch.SignalSignatures>(
+            signal: K,
+            ...args: Batch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -693,7 +696,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Endpoint.SignalSignatures[K]>
+            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -883,7 +886,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof EndpointDBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EndpointDBus.SignalSignatures[K]>
+            ...args: EndpointDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1523,7 +1526,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof EndpointHttp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EndpointHttp.SignalSignatures[K]>
+            ...args: EndpointHttp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2098,7 +2101,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NamespaceManager.SignalSignatures[K]>
+            ...args: NamespaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2247,7 +2250,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof Notifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notifier.SignalSignatures[K]>
+            ...args: Notifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2361,7 +2364,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2871,7 +2874,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3659,7 +3662,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3915,7 +3918,7 @@ export namespace Tsparql {
         ): number;
         emit<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlStatement.SignalSignatures[K]>
+            ...args: SparqlStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -58,7 +58,7 @@ export namespace SoupGNOME {
         ): number;
         emit<K extends keyof CookieJarSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJarSqlite.SignalSignatures[K]>
+            ...args: CookieJarSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -533,7 +533,7 @@ export namespace SoupGNOME {
         ): number;
         emit<K extends keyof PasswordManagerGNOME.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordManagerGNOME.SignalSignatures[K]>
+            ...args: PasswordManagerGNOME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1085,7 +1085,7 @@ export namespace SoupGNOME {
         ): number;
         emit<K extends keyof ProxyResolverGNOME.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyResolverGNOME.SignalSignatures[K]>
+            ...args: ProxyResolverGNOME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

@@ -152,7 +152,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof ActionMuxer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionMuxer.SignalSignatures[K]>
+            ...args: ActionMuxer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1092,7 +1092,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1593,7 +1593,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof ChangesDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChangesDialog.SignalSignatures[K]>
+            ...args: ChangesDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2188,7 +2188,10 @@ export namespace Panel {
 
         connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
         connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
-        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: Parameters<Dock.SignalSignatures[K]>): void;
+        emit<K extends keyof Dock.SignalSignatures>(
+            signal: K,
+            ...args: Dock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3107,7 +3110,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof DocumentWorkspace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentWorkspace.SignalSignatures[K]>
+            ...args: DocumentWorkspace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6142,7 +6145,10 @@ export namespace Panel {
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -7051,7 +7057,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof FrameHeaderBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameHeaderBar.SignalSignatures[K]>
+            ...args: FrameHeaderBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10384,7 +10390,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof FrameSwitcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameSwitcher.SignalSignatures[K]>
+            ...args: FrameSwitcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -13737,7 +13743,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof FrameTabBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameTabBar.SignalSignatures[K]>
+            ...args: FrameTabBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17075,7 +17081,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof GSettingsActionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GSettingsActionGroup.SignalSignatures[K]>
+            ...args: GSettingsActionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18006,7 +18012,10 @@ export namespace Panel {
 
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
+        emit<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            ...args: Grid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -18829,7 +18838,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof GridColumn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GridColumn.SignalSignatures[K]>
+            ...args: GridColumn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19605,7 +19614,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Inhibitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Inhibitor.SignalSignatures[K]>
+            ...args: Inhibitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19663,7 +19672,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof LayeredSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayeredSettings.SignalSignatures[K]>
+            ...args: LayeredSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19775,7 +19784,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof MenuManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuManager.SignalSignatures[K]>
+            ...args: MenuManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19923,7 +19932,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof OmniBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniBar.SignalSignatures[K]>
+            ...args: OmniBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23338,7 +23347,10 @@ export namespace Panel {
 
         connect<K extends keyof Paned.SignalSignatures>(signal: K, callback: Paned.SignalSignatures[K]): number;
         connect_after<K extends keyof Paned.SignalSignatures>(signal: K, callback: Paned.SignalSignatures[K]): number;
-        emit<K extends keyof Paned.SignalSignatures>(signal: K, ...args: Parameters<Paned.SignalSignatures[K]>): void;
+        emit<K extends keyof Paned.SignalSignatures>(
+            signal: K,
+            ...args: Paned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -24216,7 +24228,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Position.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Position.SignalSignatures[K]>
+            ...args: Position.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24395,7 +24407,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof SaveDelegate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaveDelegate.SignalSignatures[K]>
+            ...args: SaveDelegate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -24521,7 +24533,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof SaveDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaveDialog.SignalSignatures[K]>
+            ...args: SaveDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27489,7 +27501,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27581,7 +27593,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof SessionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionItem.SignalSignatures[K]>
+            ...args: SessionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27759,7 +27771,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -28729,7 +28741,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Statusbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Statusbar.SignalSignatures[K]>
+            ...args: Statusbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -29543,7 +29555,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof ThemeSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThemeSelector.SignalSignatures[K]>
+            ...args: ThemeSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -30347,7 +30359,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof ToggleButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ToggleButton.SignalSignatures[K]>
+            ...args: ToggleButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -31212,7 +31224,10 @@ export namespace Panel {
 
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
+        emit<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -32161,7 +32176,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Workbench.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workbench.SignalSignatures[K]>
+            ...args: Workbench.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -32262,7 +32277,7 @@ export namespace Panel {
         ): number;
         emit<K extends keyof Workspace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workspace.SignalSignatures[K]>
+            ...args: Workspace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

@@ -4795,7 +4795,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppLaunchContext.SignalSignatures[K]>
+            ...args: AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4890,7 +4890,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ButtonEvent.SignalSignatures[K]>
+            ...args: ButtonEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4939,7 +4939,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoContext.SignalSignatures[K]>
+            ...args: CairoContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5109,7 +5109,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CicpParams.SignalSignatures[K]>
+            ...args: CicpParams.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5245,7 +5245,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Clipboard.SignalSignatures[K]>
+            ...args: Clipboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5613,7 +5613,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDeserializer.SignalSignatures[K]>
+            ...args: ContentDeserializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6239,7 +6239,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentProvider.SignalSignatures[K]>
+            ...args: ContentProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6452,7 +6452,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentSerializer.SignalSignatures[K]>
+            ...args: ContentSerializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7031,7 +7031,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CrossingEvent.SignalSignatures[K]>
+            ...args: CrossingEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7165,7 +7165,10 @@ export namespace Gdk {
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7242,7 +7245,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DNDEvent.SignalSignatures[K]>
+            ...args: DNDEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7281,7 +7284,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeleteEvent.SignalSignatures[K]>
+            ...args: DeleteEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -7529,7 +7532,10 @@ export namespace Gdk {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7753,7 +7759,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceTool.SignalSignatures[K]>
+            ...args: DeviceTool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7908,7 +7914,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8319,7 +8325,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayManager.SignalSignatures[K]>
+            ...args: DisplayManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8404,7 +8410,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DmabufTexture.SignalSignatures[K]>
+            ...args: DmabufTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9371,7 +9377,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DmabufTextureBuilder.SignalSignatures[K]>
+            ...args: DmabufTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9674,7 +9680,10 @@ export namespace Gdk {
 
         connect<K extends keyof Drag.SignalSignatures>(signal: K, callback: Drag.SignalSignatures[K]): number;
         connect_after<K extends keyof Drag.SignalSignatures>(signal: K, callback: Drag.SignalSignatures[K]): number;
-        emit<K extends keyof Drag.SignalSignatures>(signal: K, ...args: Parameters<Drag.SignalSignatures[K]>): void;
+        emit<K extends keyof Drag.SignalSignatures>(
+            signal: K,
+            ...args: Drag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -9838,7 +9847,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DrawContext.SignalSignatures[K]>
+            ...args: DrawContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9987,7 +9996,10 @@ export namespace Gdk {
 
         connect<K extends keyof Drop.SignalSignatures>(signal: K, callback: Drop.SignalSignatures[K]): number;
         connect_after<K extends keyof Drop.SignalSignatures>(signal: K, callback: Drop.SignalSignatures[K]): number;
-        emit<K extends keyof Drop.SignalSignatures>(signal: K, ...args: Parameters<Drop.SignalSignatures[K]>): void;
+        emit<K extends keyof Drop.SignalSignatures>(
+            signal: K,
+            ...args: Drop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -10204,7 +10216,10 @@ export namespace Gdk {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -10399,7 +10414,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FocusEvent.SignalSignatures[K]>
+            ...args: FocusEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10514,7 +10529,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameClock.SignalSignatures[K]>
+            ...args: FrameClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10728,7 +10743,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLContext.SignalSignatures[K]>
+            ...args: GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10963,7 +10978,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLTexture.SignalSignatures[K]>
+            ...args: GLTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11889,7 +11904,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLTextureBuilder.SignalSignatures[K]>
+            ...args: GLTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12097,7 +12112,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GrabBrokenEvent.SignalSignatures[K]>
+            ...args: GrabBrokenEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12138,7 +12153,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+            ...args: KeyEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12242,7 +12257,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryTexture.SignalSignatures[K]>
+            ...args: MemoryTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -13141,7 +13156,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryTextureBuilder.SignalSignatures[K]>
+            ...args: MemoryTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13412,7 +13427,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Monitor.SignalSignatures[K]>
+            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13547,7 +13562,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MotionEvent.SignalSignatures[K]>
+            ...args: MotionEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13575,7 +13590,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PadEvent.SignalSignatures[K]>
+            ...args: PadEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13623,7 +13638,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProximityEvent.SignalSignatures[K]>
+            ...args: ProximityEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13654,7 +13669,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollEvent.SignalSignatures[K]>
+            ...args: ScrollEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13754,7 +13769,10 @@ export namespace Gdk {
 
         connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
         connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
-        emit<K extends keyof Seat.SignalSignatures>(signal: K, ...args: Parameters<Seat.SignalSignatures[K]>): void;
+        emit<K extends keyof Seat.SignalSignatures>(
+            signal: K,
+            ...args: Seat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -13823,7 +13841,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Snapshot.SignalSignatures[K]>
+            ...args: Snapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13958,7 +13976,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof Surface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Surface.SignalSignatures[K]>
+            ...args: Surface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14318,7 +14336,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture.SignalSignatures[K]>
+            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15238,7 +15256,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TouchEvent.SignalSignatures[K]>
+            ...args: TouchEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15282,7 +15300,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TouchpadEvent.SignalSignatures[K]>
+            ...args: TouchpadEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15361,7 +15379,7 @@ export namespace Gdk {
         ): number;
         emit<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanContext.SignalSignatures[K]>
+            ...args: VulkanContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

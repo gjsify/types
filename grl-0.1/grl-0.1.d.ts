@@ -426,7 +426,10 @@ export namespace Grl {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -530,7 +533,10 @@ export namespace Grl {
 
         connect<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
         connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
-        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: Parameters<Data.SignalSignatures[K]>): void;
+        emit<K extends keyof Data.SignalSignatures>(
+            signal: K,
+            ...args: Data.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -808,7 +814,10 @@ export namespace Grl {
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1054,7 +1063,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MediaAudio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaAudio.SignalSignatures[K]>
+            ...args: MediaAudio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1174,7 +1183,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MediaBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaBox.SignalSignatures[K]>
+            ...args: MediaBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1226,7 +1235,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MediaImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaImage.SignalSignatures[K]>
+            ...args: MediaImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1330,7 +1339,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MediaPlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaPlugin.SignalSignatures[K]>
+            ...args: MediaPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1459,7 +1468,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaSource.SignalSignatures[K]>
+            ...args: MediaSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1879,7 +1888,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MediaVideo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaVideo.SignalSignatures[K]>
+            ...args: MediaVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2035,7 +2044,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof MetadataSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetadataSource.SignalSignatures[K]>
+            ...args: MetadataSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2346,7 +2355,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof PluginRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginRegistry.SignalSignatures[K]>
+            ...args: PluginRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2551,7 +2560,7 @@ export namespace Grl {
         ): number;
         emit<K extends keyof RelatedKeys.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelatedKeys.SignalSignatures[K]>
+            ...args: RelatedKeys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

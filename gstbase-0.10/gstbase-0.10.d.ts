@@ -131,7 +131,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof GstAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstAdapter.SignalSignatures[K]>
+            ...args: GstAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -199,7 +199,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof GstCollectPads.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstCollectPads.SignalSignatures[K]>
+            ...args: GstCollectPads.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -305,7 +305,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof GstDataQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstDataQueue.SignalSignatures[K]>
+            ...args: GstDataQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -354,7 +354,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof GstPushSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstPushSrc.SignalSignatures[K]>
+            ...args: GstPushSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -456,7 +456,10 @@ export namespace GstBase {
 
         connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
         connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
-        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: Parameters<Sink.SignalSignatures[K]>): void;
+        emit<K extends keyof Sink.SignalSignatures>(
+            signal: K,
+            ...args: Sink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -548,7 +551,10 @@ export namespace GstBase {
 
         connect<K extends keyof Src.SignalSignatures>(signal: K, callback: Src.SignalSignatures[K]): number;
         connect_after<K extends keyof Src.SignalSignatures>(signal: K, callback: Src.SignalSignatures[K]): number;
-        emit<K extends keyof Src.SignalSignatures>(signal: K, ...args: Parameters<Src.SignalSignatures[K]>): void;
+        emit<K extends keyof Src.SignalSignatures>(
+            signal: K,
+            ...args: Src.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -616,7 +622,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof Transform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transform.SignalSignatures[K]>
+            ...args: Transform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

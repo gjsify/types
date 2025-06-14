@@ -1017,7 +1017,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1603,7 +1603,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BackForwardItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardItem.SignalSignatures[K]>
+            ...args: BackForwardItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1675,7 +1675,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardList.SignalSignatures[K]>
+            ...args: BackForwardList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1796,7 +1796,10 @@ export namespace Ide {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2046,7 +2049,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BufferChangeMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferChangeMonitor.SignalSignatures[K]>
+            ...args: BufferChangeMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2165,7 +2168,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BufferManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferManager.SignalSignatures[K]>
+            ...args: BufferManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3075,7 +3078,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildManager.SignalSignatures[K]>
+            ...args: BuildManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4259,7 +4262,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildPipeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildPipeline.SignalSignatures[K]>
+            ...args: BuildPipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5131,7 +5134,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildStage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStage.SignalSignatures[K]>
+            ...args: BuildStage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5268,7 +5271,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildStageLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStageLauncher.SignalSignatures[K]>
+            ...args: BuildStageLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5326,7 +5329,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildStageMkdirs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStageMkdirs.SignalSignatures[K]>
+            ...args: BuildStageMkdirs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5378,7 +5381,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildStageTransfer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStageTransfer.SignalSignatures[K]>
+            ...args: BuildStageTransfer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5422,7 +5425,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildconfigConfiguration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildconfigConfiguration.SignalSignatures[K]>
+            ...args: BuildconfigConfiguration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5463,7 +5466,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof BuildconfigConfigurationProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildconfigConfigurationProvider.SignalSignatures[K]>
+            ...args: BuildconfigConfigurationProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5973,7 +5976,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+            ...args: CompletionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6039,7 +6042,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof CompletionResults.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionResults.SignalSignatures[K]>
+            ...args: CompletionResults.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6088,7 +6091,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof CompletionWords.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionWords.SignalSignatures[K]>
+            ...args: CompletionWords.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6880,7 +6883,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Configuration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Configuration.SignalSignatures[K]>
+            ...args: Configuration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7058,7 +7061,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ConfigurationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigurationManager.SignalSignatures[K]>
+            ...args: ConfigurationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7923,7 +7926,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8819,7 +8822,10 @@ export namespace Ide {
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -8868,7 +8874,10 @@ export namespace Ide {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -8964,7 +8973,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+            ...args: DeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9564,7 +9573,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof DiagnosticsManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiagnosticsManager.SignalSignatures[K]>
+            ...args: DiagnosticsManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10156,7 +10165,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof DirectoryBuildSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryBuildSystem.SignalSignatures[K]>
+            ...args: DirectoryBuildSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -10909,7 +10918,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof DirectoryVcs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryVcs.SignalSignatures[K]>
+            ...args: DirectoryVcs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -11700,7 +11709,10 @@ export namespace Ide {
 
         connect<K extends keyof Doap.SignalSignatures>(signal: K, callback: Doap.SignalSignatures[K]): number;
         connect_after<K extends keyof Doap.SignalSignatures>(signal: K, callback: Doap.SignalSignatures[K]): number;
-        emit<K extends keyof Doap.SignalSignatures>(signal: K, ...args: Parameters<Doap.SignalSignatures[K]>): void;
+        emit<K extends keyof Doap.SignalSignatures>(
+            signal: K,
+            ...args: Doap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11759,7 +11771,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof DoapPerson.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoapPerson.SignalSignatures[K]>
+            ...args: DoapPerson.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11830,7 +11842,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof EditorPerspective.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorPerspective.SignalSignatures[K]>
+            ...args: EditorPerspective.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16827,7 +16839,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof EditorView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorView.SignalSignatures[K]>
+            ...args: EditorView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17319,7 +17331,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Environment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Environment.SignalSignatures[K]>
+            ...args: Environment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17918,7 +17930,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof EnvironmentVariable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnvironmentVariable.SignalSignatures[K]>
+            ...args: EnvironmentVariable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17985,7 +17997,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ExtensionAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionAdapter.SignalSignatures[K]>
+            ...args: ExtensionAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18074,7 +18086,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ExtensionSetAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionSetAdapter.SignalSignatures[K]>
+            ...args: ExtensionSetAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18141,7 +18153,10 @@ export namespace Ide {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -18356,7 +18371,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof FileSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSettings.SignalSignatures[K]>
+            ...args: FileSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18437,7 +18452,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof FormatterOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormatterOptions.SignalSignatures[K]>
+            ...args: FormatterOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18488,7 +18503,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof HighlightEngine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HighlightEngine.SignalSignatures[K]>
+            ...args: HighlightEngine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18585,7 +18600,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservClient.SignalSignatures[K]>
+            ...args: LangservClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18737,7 +18752,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservCompletionProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservCompletionProvider.SignalSignatures[K]>
+            ...args: LangservCompletionProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19467,7 +19482,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservDiagnosticProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservDiagnosticProvider.SignalSignatures[K]>
+            ...args: LangservDiagnosticProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19585,7 +19600,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservFormatter.SignalSignatures[K]>
+            ...args: LangservFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20132,7 +20147,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservHighlighter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservHighlighter.SignalSignatures[K]>
+            ...args: LangservHighlighter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20242,7 +20257,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservRenameProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservRenameProvider.SignalSignatures[K]>
+            ...args: LangservRenameProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20408,7 +20423,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservSymbolNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservSymbolNode.SignalSignatures[K]>
+            ...args: LangservSymbolNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20454,7 +20469,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservSymbolResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservSymbolResolver.SignalSignatures[K]>
+            ...args: LangservSymbolResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20684,7 +20699,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LangservSymbolTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservSymbolTree.SignalSignatures[K]>
+            ...args: LangservSymbolTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -21190,7 +21205,10 @@ export namespace Ide {
 
         connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
         connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
-        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
+        emit<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            ...args: Layout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -26019,7 +26037,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LayoutGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutGrid.SignalSignatures[K]>
+            ...args: LayoutGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26521,7 +26539,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LayoutPane.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutPane.SignalSignatures[K]>
+            ...args: LayoutPane.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -31000,7 +31018,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LayoutStack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutStack.SignalSignatures[K]>
+            ...args: LayoutStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -31503,7 +31521,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LayoutView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutView.SignalSignatures[K]>
+            ...args: LayoutView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -32062,7 +32080,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof LocalDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalDevice.SignalSignatures[K]>
+            ...args: LocalDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -32104,7 +32122,10 @@ export namespace Ide {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -32180,7 +32201,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof OmniBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniBar.SignalSignatures[K]>
+            ...args: OmniBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -32696,7 +32717,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof OmniSearchDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchDisplay.SignalSignatures[K]>
+            ...args: OmniSearchDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33224,7 +33245,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof OmniSearchEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchEntry.SignalSignatures[K]>
+            ...args: OmniSearchEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -37817,7 +37838,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof OmniSearchGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchGroup.SignalSignatures[K]>
+            ...args: OmniSearchGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38339,7 +38360,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof OmniSearchRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchRow.SignalSignatures[K]>
+            ...args: OmniSearchRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38827,7 +38848,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof PkconTransfer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PkconTransfer.SignalSignatures[K]>
+            ...args: PkconTransfer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -38869,7 +38890,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof PreferencesPerspective.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesPerspective.SignalSignatures[K]>
+            ...args: PreferencesPerspective.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -39665,7 +39686,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Progress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Progress.SignalSignatures[K]>
+            ...args: Progress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -39746,7 +39767,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Project.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Project.SignalSignatures[K]>
+            ...args: Project.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39869,7 +39890,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ProjectEdit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectEdit.SignalSignatures[K]>
+            ...args: ProjectEdit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39936,7 +39957,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ProjectFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectFile.SignalSignatures[K]>
+            ...args: ProjectFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39987,7 +40008,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ProjectFiles.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectFiles.SignalSignatures[K]>
+            ...args: ProjectFiles.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -40086,7 +40107,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ProjectInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectInfo.SignalSignatures[K]>
+            ...args: ProjectInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -40159,7 +40180,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof ProjectItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectItem.SignalSignatures[K]>
+            ...args: ProjectItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -40213,7 +40234,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof RecentProjects.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecentProjects.SignalSignatures[K]>
+            ...args: RecentProjects.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -40811,7 +40832,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof RunButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunButton.SignalSignatures[K]>
+            ...args: RunButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -41333,7 +41354,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof RunManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunManager.SignalSignatures[K]>
+            ...args: RunManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -42415,7 +42436,10 @@ export namespace Ide {
 
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
-        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
+        emit<K extends keyof Runner.SignalSignatures>(
+            signal: K,
+            ...args: Runner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -42526,7 +42550,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Runtime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Runtime.SignalSignatures[K]>
+            ...args: Runtime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -42627,7 +42651,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof RuntimeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RuntimeManager.SignalSignatures[K]>
+            ...args: RuntimeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -43365,7 +43389,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchContext.SignalSignatures[K]>
+            ...args: SearchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -43414,7 +43438,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SearchEngine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchEngine.SignalSignatures[K]>
+            ...args: SearchEngine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -43474,7 +43498,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SearchResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchResult.SignalSignatures[K]>
+            ...args: SearchResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -43555,7 +43579,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -43645,7 +43669,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMap.SignalSignatures[K]>
+            ...args: SourceMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -44155,7 +44179,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceSnippet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippet.SignalSignatures[K]>
+            ...args: SourceSnippet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44236,7 +44260,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceSnippetChunk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippetChunk.SignalSignatures[K]>
+            ...args: SourceSnippetChunk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44311,7 +44335,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceSnippetContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippetContext.SignalSignatures[K]>
+            ...args: SourceSnippetContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44360,7 +44384,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceSnippets.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippets.SignalSignatures[K]>
+            ...args: SourceSnippets.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44402,7 +44426,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceSnippetsManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippetsManager.SignalSignatures[K]>
+            ...args: SourceSnippetsManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44872,7 +44896,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceView.SignalSignatures[K]>
+            ...args: SourceView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -45948,7 +45972,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SourceViewMode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceViewMode.SignalSignatures[K]>
+            ...args: SourceViewMode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -46629,7 +46653,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SubprocessLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessLauncher.SignalSignatures[K]>
+            ...args: SubprocessLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -46745,7 +46769,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SubprocessSupervisor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessSupervisor.SignalSignatures[K]>
+            ...args: SubprocessSupervisor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -46817,7 +46841,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof SymbolNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SymbolNode.SignalSignatures[K]>
+            ...args: SymbolNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -46895,7 +46919,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof TemplateBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemplateBase.SignalSignatures[K]>
+            ...args: TemplateBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -46968,7 +46992,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Transfer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transfer.SignalSignatures[K]>
+            ...args: Transfer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -47051,7 +47075,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof TransferButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferButton.SignalSignatures[K]>
+            ...args: TransferButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -51400,7 +51424,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof TransferManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferManager.SignalSignatures[K]>
+            ...args: TransferManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -52039,7 +52063,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof TransferRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferRow.SignalSignatures[K]>
+            ...args: TransferRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -52529,7 +52553,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof TransfersButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransfersButton.SignalSignatures[K]>
+            ...args: TransfersButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -56854,7 +56878,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof TransfersProgressIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransfersProgressIcon.SignalSignatures[K]>
+            ...args: TransfersProgressIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -57334,7 +57358,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof UnsavedFiles.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnsavedFiles.SignalSignatures[K]>
+            ...args: UnsavedFiles.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -57499,7 +57523,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof Workbench.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workbench.SignalSignatures[K]>
+            ...args: Workbench.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -58633,7 +58657,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof WorkbenchHeaderBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkbenchHeaderBar.SignalSignatures[K]>
+            ...args: WorkbenchHeaderBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -59134,7 +59158,7 @@ export namespace Ide {
         ): number;
         emit<K extends keyof WorkbenchMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkbenchMessage.SignalSignatures[K]>
+            ...args: WorkbenchMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

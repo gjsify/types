@@ -323,7 +323,10 @@ export namespace CinnamonDesktop {
 
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
-        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
+        emit<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            ...args: BG.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -479,7 +482,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof BGCrossfade.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BGCrossfade.SignalSignatures[K]>
+            ...args: BGCrossfade.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -560,7 +563,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+            ...args: DesktopThumbnailFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -659,7 +662,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1226,7 +1229,10 @@ export namespace CinnamonDesktop {
 
         connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
         connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
-        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: Parameters<PnpIds.SignalSignatures[K]>): void;
+        emit<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            ...args: PnpIds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1275,7 +1281,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof RRConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RRConfig.SignalSignatures[K]>
+            ...args: RRConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1340,7 +1346,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof RRLabeler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RRLabeler.SignalSignatures[K]>
+            ...args: RRLabeler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1390,7 +1396,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof RROutputInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RROutputInfo.SignalSignatures[K]>
+            ...args: RROutputInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1477,7 +1483,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof RRScreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RRScreen.SignalSignatures[K]>
+            ...args: RRScreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2120,7 +2126,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WallClock.SignalSignatures[K]>
+            ...args: WallClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2208,7 +2214,7 @@ export namespace CinnamonDesktop {
         ): number;
         emit<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XkbInfo.SignalSignatures[K]>
+            ...args: XkbInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

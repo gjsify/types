@@ -1357,7 +1357,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccessPoint.SignalSignatures[K]>
+            ...args: AccessPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2306,7 +2306,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActiveConnection.SignalSignatures[K]>
+            ...args: ActiveConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3342,7 +3342,10 @@ export namespace NMClient {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4414,7 +4417,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DHCP4Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DHCP4Config.SignalSignatures[K]>
+            ...args: DHCP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5201,7 +5204,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DHCP6Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DHCP6Config.SignalSignatures[K]>
+            ...args: DHCP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6172,7 +6175,10 @@ export namespace NMClient {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -7219,7 +7225,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceAdsl.SignalSignatures[K]>
+            ...args: DeviceAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7932,7 +7938,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBond.SignalSignatures[K]>
+            ...args: DeviceBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8655,7 +8661,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBridge.SignalSignatures[K]>
+            ...args: DeviceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9380,7 +9386,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBt.SignalSignatures[K]>
+            ...args: DeviceBt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10115,7 +10121,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceEthernet.SignalSignatures[K]>
+            ...args: DeviceEthernet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10845,7 +10851,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGeneric.SignalSignatures[K]>
+            ...args: DeviceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11553,7 +11559,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfiniband.SignalSignatures[K]>
+            ...args: DeviceInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12277,7 +12283,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceModem.SignalSignatures[K]>
+            ...args: DeviceModem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13004,7 +13010,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceOlpcMesh.SignalSignatures[K]>
+            ...args: DeviceOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13727,7 +13733,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceTeam.SignalSignatures[K]>
+            ...args: DeviceTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14460,7 +14466,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceVlan.SignalSignatures[K]>
+            ...args: DeviceVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15233,7 +15239,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWifi.SignalSignatures[K]>
+            ...args: DeviceWifi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16063,7 +16069,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWimax.SignalSignatures[K]>
+            ...args: DeviceWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16848,7 +16854,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof IP4Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IP4Config.SignalSignatures[K]>
+            ...args: IP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17686,7 +17692,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof IP6Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IP6Config.SignalSignatures[K]>
+            ...args: IP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18495,7 +18501,10 @@ export namespace NMClient {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -19313,7 +19322,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteConnection.SignalSignatures[K]>
+            ...args: RemoteConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -20165,7 +20174,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof RemoteSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteSettings.SignalSignatures[K]>
+            ...args: RemoteSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21085,7 +21094,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof SecretAgent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecretAgent.SignalSignatures[K]>
+            ...args: SecretAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -21254,7 +21263,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof VPNConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VPNConnection.SignalSignatures[K]>
+            ...args: VPNConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -21979,7 +21988,7 @@ export namespace NMClient {
         ): number;
         emit<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WimaxNsp.SignalSignatures[K]>
+            ...args: WimaxNsp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -453,7 +453,10 @@ export namespace Dbusmenu {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -618,7 +621,7 @@ export namespace Dbusmenu {
         ): number;
         emit<K extends keyof Menuitem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Menuitem.SignalSignatures[K]>
+            ...args: Menuitem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1009,7 +1012,7 @@ export namespace Dbusmenu {
         ): number;
         emit<K extends keyof MenuitemProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuitemProxy.SignalSignatures[K]>
+            ...args: MenuitemProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1089,7 +1092,10 @@ export namespace Dbusmenu {
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

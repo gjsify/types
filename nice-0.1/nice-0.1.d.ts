@@ -1231,7 +1231,10 @@ export namespace Nice {
 
         connect<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
         connect_after<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
-        emit<K extends keyof Agent.SignalSignatures>(signal: K, ...args: Parameters<Agent.SignalSignatures[K]>): void;
+        emit<K extends keyof Agent.SignalSignatures>(
+            signal: K,
+            ...args: Agent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2031,7 +2034,7 @@ export namespace Nice {
         ): number;
         emit<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PseudoTcpSocket.SignalSignatures[K]>
+            ...args: PseudoTcpSocket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

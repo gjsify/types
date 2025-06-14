@@ -180,7 +180,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof AssistantView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AssistantView.SignalSignatures[K]>
+            ...args: AssistantView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -677,7 +677,10 @@ export namespace Devhelp {
 
         connect<K extends keyof Book.SignalSignatures>(signal: K, callback: Book.SignalSignatures[K]): number;
         connect_after<K extends keyof Book.SignalSignatures>(signal: K, callback: Book.SignalSignatures[K]): number;
-        emit<K extends keyof Book.SignalSignatures>(signal: K, ...args: Parameters<Book.SignalSignatures[K]>): void;
+        emit<K extends keyof Book.SignalSignatures>(
+            signal: K,
+            ...args: Book.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -758,7 +761,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof BookList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookList.SignalSignatures[K]>
+            ...args: BookList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -853,7 +856,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof BookListBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookListBuilder.SignalSignatures[K]>
+            ...args: BookListBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -963,7 +966,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof BookListDirectory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookListDirectory.SignalSignatures[K]>
+            ...args: BookListDirectory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1003,7 +1006,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof BookManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookManager.SignalSignatures[K]>
+            ...args: BookManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1065,7 +1068,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof BookTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookTree.SignalSignatures[K]>
+            ...args: BookTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1653,7 +1656,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof Completion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Completion.SignalSignatures[K]>
+            ...args: Completion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1728,7 +1731,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof KeywordModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeywordModel.SignalSignatures[K]>
+            ...args: KeywordModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2644,7 +2647,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notebook.SignalSignatures[K]>
+            ...args: Notebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3131,7 +3134,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3191,7 +3194,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof ProfileBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProfileBuilder.SignalSignatures[K]>
+            ...args: ProfileBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3260,7 +3263,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof SearchBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchBar.SignalSignatures[K]>
+            ...args: SearchBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3813,7 +3816,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3953,7 +3956,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof SettingsBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsBuilder.SignalSignatures[K]>
+            ...args: SettingsBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4031,7 +4034,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof Sidebar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sidebar.SignalSignatures[K]>
+            ...args: Sidebar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4569,7 +4572,10 @@ export namespace Devhelp {
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5080,7 +5086,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof TabLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TabLabel.SignalSignatures[K]>
+            ...args: TabLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5599,7 +5605,7 @@ export namespace Devhelp {
         ): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebView.SignalSignatures[K]>
+            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

@@ -74,7 +74,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof BinLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinLayout.SignalSignatures[K]>
+            ...args: BinLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -120,7 +120,10 @@ export namespace Gtd {
 
         connect<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
         connect_after<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
-        emit<K extends keyof Clock.SignalSignatures>(signal: K, ...args: Parameters<Clock.SignalSignatures[K]>): void;
+        emit<K extends keyof Clock.SignalSignatures>(
+            signal: K,
+            ...args: Clock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace ListModelFilter {
@@ -168,7 +171,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof ListModelFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListModelFilter.SignalSignatures[K]>
+            ...args: ListModelFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -771,7 +774,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof ListStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListStore.SignalSignatures[K]>
+            ...args: ListStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1487,7 +1490,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1684,7 +1687,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof MaxSizeLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MaxSizeLayout.SignalSignatures[K]>
+            ...args: MaxSizeLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1834,7 +1837,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof MenuButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuButton.SignalSignatures[K]>
+            ...args: MenuButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2764,7 +2767,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notification.SignalSignatures[K]>
+            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2856,7 +2859,10 @@ export namespace Gtd {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2935,7 +2941,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof OmniArea.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniArea.SignalSignatures[K]>
+            ...args: OmniArea.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3437,7 +3443,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof ProviderPopover.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProviderPopover.SignalSignatures[K]>
+            ...args: ProviderPopover.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6421,7 +6427,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof StarWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StarWidget.SignalSignatures[K]>
+            ...args: StarWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6929,7 +6935,10 @@ export namespace Gtd {
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -7208,7 +7217,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof TaskList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskList.SignalSignatures[K]>
+            ...args: TaskList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7907,7 +7916,7 @@ export namespace Gtd {
         ): number;
         emit<K extends keyof TaskListView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskListView.SignalSignatures[K]>
+            ...args: TaskListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8527,7 +8536,10 @@ export namespace Gtd {
 
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
+        emit<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -9419,7 +9431,10 @@ export namespace Gtd {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

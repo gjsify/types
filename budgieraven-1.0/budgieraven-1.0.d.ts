@@ -74,7 +74,7 @@ export namespace BudgieRaven {
         ): number;
         emit<K extends keyof RavenWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RavenWidget.SignalSignatures[K]>
+            ...args: RavenWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

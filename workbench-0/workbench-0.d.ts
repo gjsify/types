@@ -99,7 +99,7 @@ export namespace Workbench {
         ): number;
         emit<K extends keyof CompletionProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionProvider.SignalSignatures[K]>
+            ...args: CompletionProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -937,7 +937,7 @@ export namespace Workbench {
         ): number;
         emit<K extends keyof CompletionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionRequest.SignalSignatures[K]>
+            ...args: CompletionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1564,7 +1564,7 @@ export namespace Workbench {
         ): number;
         emit<K extends keyof PreviewWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewWindow.SignalSignatures[K]>
+            ...args: PreviewWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

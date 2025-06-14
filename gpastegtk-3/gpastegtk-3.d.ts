@@ -109,7 +109,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof SettingsUiPanel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsUiPanel.SignalSignatures[K]>
+            ...args: SettingsUiPanel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -661,7 +661,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof SettingsUiStack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsUiStack.SignalSignatures[K]>
+            ...args: SettingsUiStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1156,7 +1156,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof SettingsUiWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsUiWidget.SignalSignatures[K]>
+            ...args: SettingsUiWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

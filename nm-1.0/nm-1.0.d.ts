@@ -6870,7 +6870,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccessPoint.SignalSignatures[K]>
+            ...args: AccessPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7118,7 +7118,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActiveConnection.SignalSignatures[K]>
+            ...args: ActiveConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7280,7 +7280,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof Checkpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checkpoint.SignalSignatures[K]>
+            ...args: Checkpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7778,7 +7778,10 @@ export namespace NM {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -10220,7 +10223,10 @@ export namespace NM {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -10712,7 +10718,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof Device6Lowpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Device6Lowpan.SignalSignatures[K]>
+            ...args: Device6Lowpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10759,7 +10765,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceAdsl.SignalSignatures[K]>
+            ...args: DeviceAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10815,7 +10821,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBond.SignalSignatures[K]>
+            ...args: DeviceBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10876,7 +10882,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBridge.SignalSignatures[K]>
+            ...args: DeviceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10939,7 +10945,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBt.SignalSignatures[K]>
+            ...args: DeviceBt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10988,7 +10994,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceDummy.SignalSignatures[K]>
+            ...args: DeviceDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11058,7 +11064,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceEthernet.SignalSignatures[K]>
+            ...args: DeviceEthernet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11131,7 +11137,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGeneric.SignalSignatures[K]>
+            ...args: DeviceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11201,7 +11207,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceHsr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceHsr.SignalSignatures[K]>
+            ...args: DeviceHsr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11346,7 +11352,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceIPTunnel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceIPTunnel.SignalSignatures[K]>
+            ...args: DeviceIPTunnel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11405,7 +11411,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfiniband.SignalSignatures[K]>
+            ...args: DeviceInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11447,7 +11453,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceLoopback.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceLoopback.SignalSignatures[K]>
+            ...args: DeviceLoopback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11582,7 +11588,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceMacsec.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceMacsec.SignalSignatures[K]>
+            ...args: DeviceMacsec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11714,7 +11720,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceMacvlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceMacvlan.SignalSignatures[K]>
+            ...args: DeviceMacvlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11809,7 +11815,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceModem.SignalSignatures[K]>
+            ...args: DeviceModem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11896,7 +11902,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceOlpcMesh.SignalSignatures[K]>
+            ...args: DeviceOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11952,7 +11958,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceOvsBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceOvsBridge.SignalSignatures[K]>
+            ...args: DeviceOvsBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11994,7 +12000,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceOvsInterface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceOvsInterface.SignalSignatures[K]>
+            ...args: DeviceOvsInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12037,7 +12043,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceOvsPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceOvsPort.SignalSignatures[K]>
+            ...args: DeviceOvsPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12076,7 +12082,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DevicePpp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DevicePpp.SignalSignatures[K]>
+            ...args: DevicePpp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12129,7 +12135,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceTeam.SignalSignatures[K]>
+            ...args: DeviceTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12235,7 +12241,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceTun.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceTun.SignalSignatures[K]>
+            ...args: DeviceTun.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12311,7 +12317,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceVeth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceVeth.SignalSignatures[K]>
+            ...args: DeviceVeth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12373,7 +12379,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceVlan.SignalSignatures[K]>
+            ...args: DeviceVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12423,7 +12429,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceVrf.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceVrf.SignalSignatures[K]>
+            ...args: DeviceVrf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12576,7 +12582,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceVxlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceVxlan.SignalSignatures[K]>
+            ...args: DeviceVxlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12715,7 +12721,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWifi.SignalSignatures[K]>
+            ...args: DeviceWifi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12894,7 +12900,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceWifiP2P.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWifiP2P.SignalSignatures[K]>
+            ...args: DeviceWifiP2P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13108,7 +13114,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWimax.SignalSignatures[K]>
+            ...args: DeviceWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13233,7 +13239,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceWireGuard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWireGuard.SignalSignatures[K]>
+            ...args: DeviceWireGuard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13287,7 +13293,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DeviceWpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWpan.SignalSignatures[K]>
+            ...args: DeviceWpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13336,7 +13342,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof DhcpConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DhcpConfig.SignalSignatures[K]>
+            ...args: DhcpConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13438,7 +13444,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof IPConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IPConfig.SignalSignatures[K]>
+            ...args: IPConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13530,7 +13536,10 @@ export namespace NM {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -13624,7 +13633,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteConnection.SignalSignatures[K]>
+            ...args: RemoteConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14833,7 +14842,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SecretAgentOld.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecretAgentOld.SignalSignatures[K]>
+            ...args: SecretAgentOld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -15861,7 +15870,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof Setting.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Setting.SignalSignatures[K]>
+            ...args: Setting.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16061,7 +16070,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof Setting6Lowpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Setting6Lowpan.SignalSignatures[K]>
+            ...args: Setting6Lowpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17109,7 +17118,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Setting8021x.SignalSignatures[K]>
+            ...args: Setting8021x.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17780,7 +17789,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingAdsl.SignalSignatures[K]>
+            ...args: SettingAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17846,7 +17855,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBluetooth.SignalSignatures[K]>
+            ...args: SettingBluetooth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17912,7 +17921,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBond.SignalSignatures[K]>
+            ...args: SettingBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18039,7 +18048,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingBondPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBondPort.SignalSignatures[K]>
+            ...args: SettingBondPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18483,7 +18492,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBridge.SignalSignatures[K]>
+            ...args: SettingBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18632,7 +18641,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBridgePort.SignalSignatures[K]>
+            ...args: SettingBridgePort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18750,7 +18759,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingCdma.SignalSignatures[K]>
+            ...args: SettingCdma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19516,7 +19525,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingConnection.SignalSignatures[K]>
+            ...args: SettingConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19995,7 +20004,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingDcb.SignalSignatures[K]>
+            ...args: SettingDcb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20088,7 +20097,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingDummy.SignalSignatures[K]>
+            ...args: SettingDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -20127,7 +20136,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingEthtool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingEthtool.SignalSignatures[K]>
+            ...args: SettingEthtool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20235,7 +20244,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingGeneric.SignalSignatures[K]>
+            ...args: SettingGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20500,7 +20509,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingGsm.SignalSignatures[K]>
+            ...args: SettingGsm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20658,7 +20667,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingHostname.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingHostname.SignalSignatures[K]>
+            ...args: SettingHostname.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20758,7 +20767,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingHsr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingHsr.SignalSignatures[K]>
+            ...args: SettingHsr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20956,7 +20965,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingIP4Config.SignalSignatures[K]>
+            ...args: SettingIP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21328,7 +21337,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingIP6Config.SignalSignatures[K]>
+            ...args: SettingIP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22159,7 +22168,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingIPConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingIPConfig.SignalSignatures[K]>
+            ...args: SettingIPConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22609,7 +22618,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingIPTunnel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingIPTunnel.SignalSignatures[K]>
+            ...args: SettingIPTunnel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22803,7 +22812,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingInfiniband.SignalSignatures[K]>
+            ...args: SettingInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22938,7 +22947,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingLink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingLink.SignalSignatures[K]>
+            ...args: SettingLink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23015,7 +23024,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingLoopback.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingLoopback.SignalSignatures[K]>
+            ...args: SettingLoopback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23170,7 +23179,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingMacsec.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingMacsec.SignalSignatures[K]>
+            ...args: SettingMacsec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23254,7 +23263,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingMacvlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingMacvlan.SignalSignatures[K]>
+            ...args: SettingMacvlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23408,7 +23417,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingMatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingMatch.SignalSignatures[K]>
+            ...args: SettingMatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23614,7 +23623,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOlpcMesh.SignalSignatures[K]>
+            ...args: SettingOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23723,7 +23732,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsBridge.SignalSignatures[K]>
+            ...args: SettingOvsBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23836,7 +23845,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsDpdk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsDpdk.SignalSignatures[K]>
+            ...args: SettingOvsDpdk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23892,7 +23901,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsExternalIDs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsExternalIDs.SignalSignatures[K]>
+            ...args: SettingOvsExternalIDs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -23988,7 +23997,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsInterface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsInterface.SignalSignatures[K]>
+            ...args: SettingOvsInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24044,7 +24053,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsOtherConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsOtherConfig.SignalSignatures[K]>
+            ...args: SettingOvsOtherConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24104,7 +24113,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsPatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsPatch.SignalSignatures[K]>
+            ...args: SettingOvsPatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24223,7 +24232,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingOvsPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOvsPort.SignalSignatures[K]>
+            ...args: SettingOvsPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24506,7 +24515,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingPpp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingPpp.SignalSignatures[K]>
+            ...args: SettingPpp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24612,7 +24621,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingPppoe.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingPppoe.SignalSignatures[K]>
+            ...args: SettingPppoe.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24707,7 +24716,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingProxy.SignalSignatures[K]>
+            ...args: SettingProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24802,7 +24811,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingSerial.SignalSignatures[K]>
+            ...args: SettingSerial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25015,7 +25024,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingSriov.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingSriov.SignalSignatures[K]>
+            ...args: SettingSriov.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25127,7 +25136,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingTCConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingTCConfig.SignalSignatures[K]>
+            ...args: SettingTCConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25424,7 +25433,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingTeam.SignalSignatures[K]>
+            ...args: SettingTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25611,7 +25620,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingTeamPort.SignalSignatures[K]>
+            ...args: SettingTeamPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25748,7 +25757,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingTun.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingTun.SignalSignatures[K]>
+            ...args: SettingTun.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25808,7 +25817,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingUser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingUser.SignalSignatures[K]>
+            ...args: SettingUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -25886,7 +25895,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingVeth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVeth.SignalSignatures[K]>
+            ...args: SettingVeth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26006,7 +26015,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVlan.SignalSignatures[K]>
+            ...args: SettingVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26201,7 +26210,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingVpn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVpn.SignalSignatures[K]>
+            ...args: SettingVpn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26347,7 +26356,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingVrf.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVrf.SignalSignatures[K]>
+            ...args: SettingVrf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26531,7 +26540,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingVxlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVxlan.SignalSignatures[K]>
+            ...args: SettingVxlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26640,7 +26649,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWifiP2P.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWifiP2P.SignalSignatures[K]>
+            ...args: SettingWifiP2P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26719,7 +26728,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWimax.SignalSignatures[K]>
+            ...args: SettingWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26926,7 +26935,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWireGuard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWireGuard.SignalSignatures[K]>
+            ...args: SettingWireGuard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27373,7 +27382,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWired.SignalSignatures[K]>
+            ...args: SettingWired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27977,7 +27986,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWireless.SignalSignatures[K]>
+            ...args: SettingWireless.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28431,7 +28440,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWirelessSecurity.SignalSignatures[K]>
+            ...args: SettingWirelessSecurity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28648,7 +28657,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SettingWpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWpan.SignalSignatures[K]>
+            ...args: SettingWpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28690,7 +28699,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof SimpleConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleConnection.SignalSignatures[K]>
+            ...args: SimpleConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -29625,7 +29634,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof VpnConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VpnConnection.SignalSignatures[K]>
+            ...args: VpnConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -29702,7 +29711,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof VpnPluginInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VpnPluginInfo.SignalSignatures[K]>
+            ...args: VpnPluginInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -30387,7 +30396,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof VpnPluginOld.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VpnPluginOld.SignalSignatures[K]>
+            ...args: VpnPluginOld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -31072,7 +31081,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof VpnServicePlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VpnServicePlugin.SignalSignatures[K]>
+            ...args: VpnServicePlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -31769,7 +31778,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof WifiP2PPeer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WifiP2PPeer.SignalSignatures[K]>
+            ...args: WifiP2PPeer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -31905,7 +31914,7 @@ export namespace NM {
         ): number;
         emit<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WimaxNsp.SignalSignatures[K]>
+            ...args: WimaxNsp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

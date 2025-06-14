@@ -70,7 +70,7 @@ export namespace UnityExtras {
         ): number;
         emit<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewPlayer.SignalSignatures[K]>
+            ...args: PreviewPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

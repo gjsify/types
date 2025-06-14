@@ -127,7 +127,7 @@ export namespace SugarGestures {
         ): number;
         emit<K extends keyof EventController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EventController.SignalSignatures[K]>
+            ...args: EventController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -201,7 +201,7 @@ export namespace SugarGestures {
         ): number;
         emit<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LongPressController.SignalSignatures[K]>
+            ...args: LongPressController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -253,7 +253,7 @@ export namespace SugarGestures {
         ): number;
         emit<K extends keyof RotateController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RotateController.SignalSignatures[K]>
+            ...args: RotateController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -317,7 +317,7 @@ export namespace SugarGestures {
         ): number;
         emit<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwipeController.SignalSignatures[K]>
+            ...args: SwipeController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -371,7 +371,7 @@ export namespace SugarGestures {
         ): number;
         emit<K extends keyof TouchController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TouchController.SignalSignatures[K]>
+            ...args: TouchController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -445,7 +445,7 @@ export namespace SugarGestures {
         ): number;
         emit<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZoomController.SignalSignatures[K]>
+            ...args: ZoomController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

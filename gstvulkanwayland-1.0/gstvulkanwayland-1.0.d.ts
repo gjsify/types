@@ -73,7 +73,7 @@ export namespace GstVulkanWayland {
         ): number;
         emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDisplayWayland.SignalSignatures[K]>
+            ...args: VulkanDisplayWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

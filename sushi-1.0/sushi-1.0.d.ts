@@ -100,7 +100,7 @@ export namespace Sushi {
         ): number;
         emit<K extends keyof CoverArtFetcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoverArtFetcher.SignalSignatures[K]>
+            ...args: CoverArtFetcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -155,7 +155,7 @@ export namespace Sushi {
         ): number;
         emit<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLoader.SignalSignatures[K]>
+            ...args: FileLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -222,7 +222,7 @@ export namespace Sushi {
         ): number;
         emit<K extends keyof FontWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontWidget.SignalSignatures[K]>
+            ...args: FontWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -705,7 +705,7 @@ export namespace Sushi {
         ): number;
         emit<K extends keyof PdfLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PdfLoader.SignalSignatures[K]>
+            ...args: PdfLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -763,7 +763,7 @@ export namespace Sushi {
         ): number;
         emit<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoundPlayer.SignalSignatures[K]>
+            ...args: SoundPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -814,7 +814,7 @@ export namespace Sushi {
         ): number;
         emit<K extends keyof TextLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextLoader.SignalSignatures[K]>
+            ...args: TextLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

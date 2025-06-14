@@ -434,7 +434,10 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
-        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
+        emit<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -487,7 +490,7 @@ export namespace AppStreamCompose {
         ): number;
         emit<K extends keyof Compose.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Compose.SignalSignatures[K]>
+            ...args: Compose.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -743,7 +746,7 @@ export namespace AppStreamCompose {
         ): number;
         emit<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryUnit.SignalSignatures[K]>
+            ...args: DirectoryUnit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -785,7 +788,10 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof Hint.SignalSignatures>(signal: K, callback: Hint.SignalSignatures[K]): number;
         connect_after<K extends keyof Hint.SignalSignatures>(signal: K, callback: Hint.SignalSignatures[K]): number;
-        emit<K extends keyof Hint.SignalSignatures>(signal: K, ...args: Parameters<Hint.SignalSignatures[K]>): void;
+        emit<K extends keyof Hint.SignalSignatures>(
+            signal: K,
+            ...args: Hint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -875,7 +881,7 @@ export namespace AppStreamCompose {
         ): number;
         emit<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconPolicy.SignalSignatures[K]>
+            ...args: IconPolicy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -933,7 +939,10 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1039,7 +1048,10 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
         connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
-        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: Parameters<Result.SignalSignatures[K]>): void;
+        emit<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            ...args: Result.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1214,7 +1226,10 @@ export namespace AppStreamCompose {
 
         connect<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
         connect_after<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
-        emit<K extends keyof Unit.SignalSignatures>(signal: K, ...args: Parameters<Unit.SignalSignatures[K]>): void;
+        emit<K extends keyof Unit.SignalSignatures>(
+            signal: K,
+            ...args: Unit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

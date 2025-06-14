@@ -743,7 +743,10 @@ export namespace Gsf {
 
         connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
         connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
-        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
+        emit<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -795,7 +798,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof ClipData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipData.SignalSignatures[K]>
+            ...args: ClipData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -866,7 +869,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocMetaData.SignalSignatures[K]>
+            ...args: DocMetaData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -948,7 +951,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocPropVector.SignalSignatures[K]>
+            ...args: DocPropVector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -992,7 +995,10 @@ export namespace Gsf {
 
         connect<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
         connect_after<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
-        emit<K extends keyof Infile.SignalSignatures>(signal: K, ...args: Parameters<Infile.SignalSignatures[K]>): void;
+        emit<K extends keyof Infile.SignalSignatures>(
+            signal: K,
+            ...args: Infile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1066,7 +1072,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileMSOle.SignalSignatures[K]>
+            ...args: InfileMSOle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1112,7 +1118,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileMSVBA.SignalSignatures[K]>
+            ...args: InfileMSVBA.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1161,7 +1167,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileStdio.SignalSignatures[K]>
+            ...args: InfileStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1200,7 +1206,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileTar.SignalSignatures[K]>
+            ...args: InfileTar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1255,7 +1261,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileZip.SignalSignatures[K]>
+            ...args: InfileZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1329,7 +1335,10 @@ export namespace Gsf {
 
         connect<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
         connect_after<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
-        emit<K extends keyof Input.SignalSignatures>(signal: K, ...args: Parameters<Input.SignalSignatures[K]>): void;
+        emit<K extends keyof Input.SignalSignatures>(
+            signal: K,
+            ...args: Input.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1487,7 +1496,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputGZip.SignalSignatures[K]>
+            ...args: InputGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1524,7 +1533,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputGio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputGio.SignalSignatures[K]>
+            ...args: InputGio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1567,7 +1576,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputHTTP.SignalSignatures[K]>
+            ...args: InputHTTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1614,7 +1623,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMemory.SignalSignatures[K]>
+            ...args: InputMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1652,7 +1661,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputProxy.SignalSignatures[K]>
+            ...args: InputProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1690,7 +1699,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStdio.SignalSignatures[K]>
+            ...args: InputStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1726,7 +1735,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputTextline.SignalSignatures[K]>
+            ...args: InputTextline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1782,7 +1791,10 @@ export namespace Gsf {
 
         connect<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
         connect_after<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
-        emit<K extends keyof ODFOut.SignalSignatures>(signal: K, ...args: Parameters<ODFOut.SignalSignatures[K]>): void;
+        emit<K extends keyof ODFOut.SignalSignatures>(
+            signal: K,
+            ...args: ODFOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1820,7 +1832,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof Outfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Outfile.SignalSignatures[K]>
+            ...args: Outfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1886,7 +1898,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileMSOle.SignalSignatures[K]>
+            ...args: OutfileMSOle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1945,7 +1957,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileOpenPkg.SignalSignatures[K]>
+            ...args: OutfileOpenPkg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2004,7 +2016,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileStdio.SignalSignatures[K]>
+            ...args: OutfileStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2060,7 +2072,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileZip.SignalSignatures[K]>
+            ...args: OutfileZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2144,7 +2156,10 @@ export namespace Gsf {
 
         connect<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
         connect_after<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
-        emit<K extends keyof Output.SignalSignatures>(signal: K, ...args: Parameters<Output.SignalSignatures[K]>): void;
+        emit<K extends keyof Output.SignalSignatures>(
+            signal: K,
+            ...args: Output.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2271,7 +2286,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputBzip.SignalSignatures[K]>
+            ...args: OutputBzip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2345,7 +2360,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputCsv.SignalSignatures[K]>
+            ...args: OutputCsv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2400,7 +2415,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputGZip.SignalSignatures[K]>
+            ...args: OutputGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2437,7 +2452,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputGio.SignalSignatures[K]>
+            ...args: OutputGio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2473,7 +2488,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputIOChannel.SignalSignatures[K]>
+            ...args: OutputIOChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2531,7 +2546,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputIconv.SignalSignatures[K]>
+            ...args: OutputIconv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2567,7 +2582,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputMemory.SignalSignatures[K]>
+            ...args: OutputMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2608,7 +2623,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStdio.SignalSignatures[K]>
+            ...args: OutputStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2654,7 +2669,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SharedMemory.SignalSignatures[K]>
+            ...args: SharedMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2688,7 +2703,7 @@ export namespace Gsf {
         ): number;
         emit<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructuredBlob.SignalSignatures[K]>
+            ...args: StructuredBlob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2753,7 +2768,10 @@ export namespace Gsf {
 
         connect<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
         connect_after<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
-        emit<K extends keyof XMLOut.SignalSignatures>(signal: K, ...args: Parameters<XMLOut.SignalSignatures[K]>): void;
+        emit<K extends keyof XMLOut.SignalSignatures>(
+            signal: K,
+            ...args: XMLOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

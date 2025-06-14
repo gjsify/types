@@ -119,7 +119,10 @@ export namespace Midori {
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -212,7 +215,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Browser.SignalSignatures[K]>
+            ...args: Browser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -271,7 +274,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof ClearPrivateData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClearPrivateData.SignalSignatures[K]>
+            ...args: ClearPrivateData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -314,7 +317,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof SuggestionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SuggestionItem.SignalSignatures[K]>
+            ...args: SuggestionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -367,7 +370,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Completion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Completion.SignalSignatures[K]>
+            ...args: Completion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -956,7 +959,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof DatabaseStatement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DatabaseStatement.SignalSignatures[K]>
+            ...args: DatabaseStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1470,7 +1473,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof DatabaseItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DatabaseItem.SignalSignatures[K]>
+            ...args: DatabaseItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1559,7 +1562,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Database.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Database.SignalSignatures[K]>
+            ...args: Database.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2226,7 +2229,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof DownloadButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DownloadButton.SignalSignatures[K]>
+            ...args: DownloadButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2312,7 +2315,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof DownloadItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DownloadItem.SignalSignatures[K]>
+            ...args: DownloadItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2386,7 +2389,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof DownloadRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DownloadRow.SignalSignatures[K]>
+            ...args: DownloadRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2433,7 +2436,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Favicon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Favicon.SignalSignatures[K]>
+            ...args: Favicon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2473,7 +2476,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof HistoryDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HistoryDatabase.SignalSignatures[K]>
+            ...args: HistoryDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2524,7 +2527,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Navigationbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Navigationbar.SignalSignatures[K]>
+            ...args: Navigationbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2560,7 +2563,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof NetworkCheck.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkCheck.SignalSignatures[K]>
+            ...args: NetworkCheck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2601,7 +2604,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Plugins.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Plugins.SignalSignatures[K]>
+            ...args: Plugins.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3107,7 +3110,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof LabelWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LabelWidget.SignalSignatures[K]>
+            ...args: LabelWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3155,7 +3158,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Preferences.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Preferences.SignalSignatures[K]>
+            ...args: Preferences.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3292,7 +3295,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof CoreSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoreSettings.SignalSignatures[K]>
+            ...args: CoreSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3374,7 +3377,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3427,7 +3430,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Statusbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Statusbar.SignalSignatures[K]>
+            ...args: Statusbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3487,7 +3490,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof SuggestionRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SuggestionRow.SignalSignatures[K]>
+            ...args: SuggestionRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3544,7 +3547,7 @@ export namespace Midori {
         ): number;
         emit<K extends keyof Switcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Switcher.SignalSignatures[K]>
+            ...args: Switcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3642,7 +3645,10 @@ export namespace Midori {
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3726,7 +3732,10 @@ export namespace Midori {
 
         connect<K extends keyof Tally.SignalSignatures>(signal: K, callback: Tally.SignalSignatures[K]): number;
         connect_after<K extends keyof Tally.SignalSignatures>(signal: K, callback: Tally.SignalSignatures[K]): number;
-        emit<K extends keyof Tally.SignalSignatures>(signal: K, ...args: Parameters<Tally.SignalSignatures[K]>): void;
+        emit<K extends keyof Tally.SignalSignatures>(
+            signal: K,
+            ...args: Tally.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3785,7 +3794,10 @@ export namespace Midori {
 
         connect<K extends keyof Urlbar.SignalSignatures>(signal: K, callback: Urlbar.SignalSignatures[K]): number;
         connect_after<K extends keyof Urlbar.SignalSignatures>(signal: K, callback: Urlbar.SignalSignatures[K]): number;
-        emit<K extends keyof Urlbar.SignalSignatures>(signal: K, ...args: Parameters<Urlbar.SignalSignatures[K]>): void;
+        emit<K extends keyof Urlbar.SignalSignatures>(
+            signal: K,
+            ...args: Urlbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

@@ -5473,7 +5473,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof AttrList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AttrList.SignalSignatures[K]>
+            ...args: AttrList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5535,7 +5535,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attribute.SignalSignatures[K]>
+            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5648,7 +5648,10 @@ export namespace IBus {
 
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
-        emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
+        emit<K extends keyof Bus.SignalSignatures>(
+            signal: K,
+            ...args: Bus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6778,7 +6781,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6912,7 +6915,10 @@ export namespace IBus {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -7933,7 +7939,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigService.SignalSignatures[K]>
+            ...args: ConfigService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -8012,7 +8018,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof EmojiData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmojiData.SignalSignatures[K]>
+            ...args: EmojiData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8269,7 +8275,10 @@ export namespace IBus {
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -8617,7 +8626,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof EngineDesc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EngineDesc.SignalSignatures[K]>
+            ...args: EngineDesc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8752,7 +8761,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof EngineSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EngineSimple.SignalSignatures[K]>
+            ...args: EngineSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8864,7 +8873,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof ExtensionEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionEvent.SignalSignatures[K]>
+            ...args: ExtensionEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8921,7 +8930,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -8991,7 +9000,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof HotkeyProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HotkeyProfile.SignalSignatures[K]>
+            ...args: HotkeyProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9215,7 +9224,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof InputContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputContext.SignalSignatures[K]>
+            ...args: InputContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10234,7 +10243,10 @@ export namespace IBus {
 
         connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
         connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
-        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
+        emit<K extends keyof Keymap.SignalSignatures>(
+            signal: K,
+            ...args: Keymap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -10313,7 +10325,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof LookupTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LookupTable.SignalSignatures[K]>
+            ...args: LookupTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10491,7 +10503,10 @@ export namespace IBus {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -10566,7 +10581,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof ObservedPath.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObservedPath.SignalSignatures[K]>
+            ...args: ObservedPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10786,7 +10801,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof PanelService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PanelService.SignalSignatures[K]>
+            ...args: PanelService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10961,7 +10976,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof PropList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropList.SignalSignatures[K]>
+            ...args: PropList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11074,7 +11089,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Property.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Property.SignalSignatures[K]>
+            ...args: Property.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11225,7 +11240,10 @@ export namespace IBus {
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -12057,7 +12075,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12181,7 +12199,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Serializable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Serializable.SignalSignatures[K]>
+            ...args: Serializable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12291,7 +12309,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12429,7 +12447,10 @@ export namespace IBus {
 
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
+        emit<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -12511,7 +12532,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof UnicodeBlock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnicodeBlock.SignalSignatures[K]>
+            ...args: UnicodeBlock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12610,7 +12631,7 @@ export namespace IBus {
         ): number;
         emit<K extends keyof UnicodeData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnicodeData.SignalSignatures[K]>
+            ...args: UnicodeData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12836,7 +12857,10 @@ export namespace IBus {
 
         connect<K extends keyof XEvent.SignalSignatures>(signal: K, callback: XEvent.SignalSignatures[K]): number;
         connect_after<K extends keyof XEvent.SignalSignatures>(signal: K, callback: XEvent.SignalSignatures[K]): number;
-        emit<K extends keyof XEvent.SignalSignatures>(signal: K, ...args: Parameters<XEvent.SignalSignatures[K]>): void;
+        emit<K extends keyof XEvent.SignalSignatures>(
+            signal: K,
+            ...args: XEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

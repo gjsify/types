@@ -111,7 +111,7 @@ export namespace GUPnPIgd {
         ): number;
         emit<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleIgd.SignalSignatures[K]>
+            ...args: SimpleIgd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -207,7 +207,7 @@ export namespace GUPnPIgd {
         ): number;
         emit<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleIgdThread.SignalSignatures[K]>
+            ...args: SimpleIgdThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

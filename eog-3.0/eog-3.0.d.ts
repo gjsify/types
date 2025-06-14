@@ -388,7 +388,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -924,7 +924,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof ClipboardHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipboardHandler.SignalSignatures[K]>
+            ...args: ClipboardHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -975,7 +975,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof DetailsDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DetailsDialog.SignalSignatures[K]>
+            ...args: DetailsDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1463,7 +1463,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof FileChooser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileChooser.SignalSignatures[K]>
+            ...args: FileChooser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2631,7 +2631,10 @@ export namespace Eog {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2785,7 +2788,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof ImageSaveInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageSaveInfo.SignalSignatures[K]>
+            ...args: ImageSaveInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2837,7 +2840,10 @@ export namespace Eog {
 
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
-        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
+        emit<K extends keyof Job.SignalSignatures>(
+            signal: K,
+            ...args: Job.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2897,7 +2903,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobCopy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobCopy.SignalSignatures[K]>
+            ...args: JobCopy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2935,7 +2941,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLoad.SignalSignatures[K]>
+            ...args: JobLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2973,7 +2979,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobModel.SignalSignatures[K]>
+            ...args: JobModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3012,7 +3018,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobSave.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobSave.SignalSignatures[K]>
+            ...args: JobSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3053,7 +3059,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobSaveAs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobSaveAs.SignalSignatures[K]>
+            ...args: JobSaveAs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3094,7 +3100,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobThumbnail.SignalSignatures[K]>
+            ...args: JobThumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3135,7 +3141,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof JobTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobTransform.SignalSignatures[K]>
+            ...args: JobTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3187,7 +3193,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof ListStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListStore.SignalSignatures[K]>
+            ...args: ListStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4564,7 +4570,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof RemotePresenter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemotePresenter.SignalSignatures[K]>
+            ...args: RemotePresenter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5194,7 +5200,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof ScrollView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollView.SignalSignatures[K]>
+            ...args: ScrollView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5846,7 +5852,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof Sidebar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sidebar.SignalSignatures[K]>
+            ...args: Sidebar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6356,7 +6362,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof Statusbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Statusbar.SignalSignatures[K]>
+            ...args: Statusbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6861,7 +6867,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof ThumbNav.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThumbNav.SignalSignatures[K]>
+            ...args: ThumbNav.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7389,7 +7395,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof ThumbView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThumbView.SignalSignatures[K]>
+            ...args: ThumbView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8191,7 +8197,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof Transform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transform.SignalSignatures[K]>
+            ...args: Transform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8278,7 +8284,7 @@ export namespace Eog {
         ): number;
         emit<K extends keyof URIConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIConverter.SignalSignatures[K]>
+            ...args: URIConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8388,7 +8394,10 @@ export namespace Eog {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

@@ -7310,7 +7310,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof BatchProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BatchProcedure.SignalSignatures[K]>
+            ...args: BatchProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7371,7 +7371,10 @@ export namespace Gimp {
 
         connect<K extends keyof Brush.SignalSignatures>(signal: K, callback: Brush.SignalSignatures[K]): number;
         connect_after<K extends keyof Brush.SignalSignatures>(signal: K, callback: Brush.SignalSignatures[K]): number;
-        emit<K extends keyof Brush.SignalSignatures>(signal: K, ...args: Parameters<Brush.SignalSignatures[K]>): void;
+        emit<K extends keyof Brush.SignalSignatures>(
+            signal: K,
+            ...args: Brush.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -8061,7 +8064,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8180,7 +8183,10 @@ export namespace Gimp {
 
         connect<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
         connect_after<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
-        emit<K extends keyof Choice.SignalSignatures>(signal: K, ...args: Parameters<Choice.SignalSignatures[K]>): void;
+        emit<K extends keyof Choice.SignalSignatures>(
+            signal: K,
+            ...args: Choice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -8369,7 +8375,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ColorConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorConfig.SignalSignatures[K]>
+            ...args: ColorConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8883,7 +8889,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ColorProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorProfile.SignalSignatures[K]>
+            ...args: ColorProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9048,7 +9054,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ColorTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorTransform.SignalSignatures[K]>
+            ...args: ColorTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9130,7 +9136,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ConfigPath.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigPath.SignalSignatures[K]>
+            ...args: ConfigPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9216,7 +9222,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9332,7 +9338,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Drawable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Drawable.SignalSignatures[K]>
+            ...args: Drawable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10098,7 +10104,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ExportOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExportOptions.SignalSignatures[K]>
+            ...args: ExportOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10259,7 +10265,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ExportProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExportProcedure.SignalSignatures[K]>
+            ...args: ExportProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10465,7 +10471,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof FileProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileProcedure.SignalSignatures[K]>
+            ...args: FileProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10611,7 +10617,10 @@ export namespace Gimp {
 
         connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
         connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
-        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
+        emit<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            ...args: Font.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -11113,7 +11122,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Gradient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Gradient.SignalSignatures[K]>
+            ...args: Gradient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11923,7 +11932,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof GroupLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GroupLayer.SignalSignatures[K]>
+            ...args: GroupLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11985,7 +11994,10 @@ export namespace Gimp {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -13814,7 +13826,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ImageProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageProcedure.SignalSignatures[K]>
+            ...args: ImageProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13849,7 +13861,10 @@ export namespace Gimp {
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -14627,7 +14642,10 @@ export namespace Gimp {
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -14987,7 +15005,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof LayerMask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayerMask.SignalSignatures[K]>
+            ...args: LayerMask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15062,7 +15080,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof LoadProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LoadProcedure.SignalSignatures[K]>
+            ...args: LoadProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15125,7 +15143,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Memsize.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Memsize.SignalSignatures[K]>
+            ...args: Memsize.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15178,7 +15196,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Metadata.SignalSignatures[K]>
+            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15331,7 +15349,10 @@ export namespace Gimp {
 
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
+        emit<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -15888,7 +15909,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ModuleDB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleDB.SignalSignatures[K]>
+            ...args: ModuleDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16494,7 +16515,10 @@ export namespace Gimp {
 
         connect<K extends keyof PDB.SignalSignatures>(signal: K, callback: PDB.SignalSignatures[K]): number;
         connect_after<K extends keyof PDB.SignalSignatures>(signal: K, callback: PDB.SignalSignatures[K]): number;
-        emit<K extends keyof PDB.SignalSignatures>(signal: K, ...args: Parameters<PDB.SignalSignatures[K]>): void;
+        emit<K extends keyof PDB.SignalSignatures>(
+            signal: K,
+            ...args: PDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -16623,7 +16647,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Palette.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Palette.SignalSignatures[K]>
+            ...args: Palette.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17203,7 +17227,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamBrush.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamBrush.SignalSignatures[K]>
+            ...args: ParamBrush.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17231,7 +17255,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamChannel.SignalSignatures[K]>
+            ...args: ParamChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17259,7 +17283,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamColor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamColor.SignalSignatures[K]>
+            ...args: ParamColor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17287,7 +17311,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamDrawable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamDrawable.SignalSignatures[K]>
+            ...args: ParamDrawable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17315,7 +17339,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamFloatArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamFloatArray.SignalSignatures[K]>
+            ...args: ParamFloatArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17340,7 +17364,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamFont.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamFont.SignalSignatures[K]>
+            ...args: ParamFont.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17368,7 +17392,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamGradient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamGradient.SignalSignatures[K]>
+            ...args: ParamGradient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17396,7 +17420,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamGroupLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamGroupLayer.SignalSignatures[K]>
+            ...args: ParamGroupLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17424,7 +17448,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamInt32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamInt32Array.SignalSignatures[K]>
+            ...args: ParamInt32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17452,7 +17476,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamLayer.SignalSignatures[K]>
+            ...args: ParamLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17480,7 +17504,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamLayerMask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamLayerMask.SignalSignatures[K]>
+            ...args: ParamLayerMask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17508,7 +17532,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamPalette.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamPalette.SignalSignatures[K]>
+            ...args: ParamPalette.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17533,7 +17557,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamPath.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamPath.SignalSignatures[K]>
+            ...args: ParamPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17561,7 +17585,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamPattern.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamPattern.SignalSignatures[K]>
+            ...args: ParamPattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17589,7 +17613,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamResource.SignalSignatures[K]>
+            ...args: ParamResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17617,7 +17641,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamSelection.SignalSignatures[K]>
+            ...args: ParamSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17645,7 +17669,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamTextLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamTextLayer.SignalSignatures[K]>
+            ...args: ParamTextLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17670,7 +17694,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ParamUnit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamUnit.SignalSignatures[K]>
+            ...args: ParamUnit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17703,7 +17727,10 @@ export namespace Gimp {
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -17988,7 +18015,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Pattern.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pattern.SignalSignatures[K]>
+            ...args: Pattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18583,7 +18610,10 @@ export namespace Gimp {
 
         connect<K extends keyof PlugIn.SignalSignatures>(signal: K, callback: PlugIn.SignalSignatures[K]): number;
         connect_after<K extends keyof PlugIn.SignalSignatures>(signal: K, callback: PlugIn.SignalSignatures[K]): number;
-        emit<K extends keyof PlugIn.SignalSignatures>(signal: K, ...args: Parameters<PlugIn.SignalSignatures[K]>): void;
+        emit<K extends keyof PlugIn.SignalSignatures>(
+            signal: K,
+            ...args: PlugIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -18890,7 +18920,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Procedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Procedure.SignalSignatures[K]>
+            ...args: Procedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -20724,7 +20754,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ProcedureConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProcedureConfig.SignalSignatures[K]>
+            ...args: ProcedureConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20800,7 +20830,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21456,7 +21486,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof Selection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Selection.SignalSignatures[K]>
+            ...args: Selection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21656,7 +21686,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof TextLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextLayer.SignalSignatures[K]>
+            ...args: TextLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21966,7 +21996,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof ThumbnailProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThumbnailProcedure.SignalSignatures[K]>
+            ...args: ThumbnailProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22014,7 +22044,10 @@ export namespace Gimp {
 
         connect<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
         connect_after<K extends keyof Unit.SignalSignatures>(signal: K, callback: Unit.SignalSignatures[K]): number;
-        emit<K extends keyof Unit.SignalSignatures>(signal: K, ...args: Parameters<Unit.SignalSignatures[K]>): void;
+        emit<K extends keyof Unit.SignalSignatures>(
+            signal: K,
+            ...args: Unit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -22240,7 +22273,7 @@ export namespace Gimp {
         ): number;
         emit<K extends keyof VectorLoadProcedure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorLoadProcedure.SignalSignatures[K]>
+            ...args: VectorLoadProcedure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

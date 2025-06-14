@@ -348,7 +348,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -509,7 +509,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -577,7 +577,10 @@ export namespace WebKitWebProcessExtension {
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -734,7 +737,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -849,7 +852,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptWorld.SignalSignatures[K]>
+            ...args: ScriptWorld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -920,7 +923,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIRequest.SignalSignatures[K]>
+            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1043,7 +1046,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIResponse.SignalSignatures[K]>
+            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1165,7 +1168,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMessage.SignalSignatures[K]>
+            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1245,7 +1248,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebEditor.SignalSignatures[K]>
+            ...args: WebEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1308,7 +1311,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebFormManager.SignalSignatures[K]>
+            ...args: WebFormManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1369,7 +1372,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebHitTestResult.SignalSignatures[K]>
+            ...args: WebHitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1522,7 +1525,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof WebPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebPage.SignalSignatures[K]>
+            ...args: WebPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1720,7 +1723,7 @@ export namespace WebKitWebProcessExtension {
         ): number;
         emit<K extends keyof WebProcessExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebProcessExtension.SignalSignatures[K]>
+            ...args: WebProcessExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

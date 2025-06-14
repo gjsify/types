@@ -868,7 +868,7 @@ export namespace Libxfce4ui {
         ): number;
         emit<K extends keyof FilenameInput.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilenameInput.SignalSignatures[K]>
+            ...args: FilenameInput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1485,7 +1485,7 @@ export namespace Libxfce4ui {
         ): number;
         emit<K extends keyof SMClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SMClient.SignalSignatures[K]>
+            ...args: SMClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1724,7 +1724,7 @@ export namespace Libxfce4ui {
         ): number;
         emit<K extends keyof Screensaver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Screensaver.SignalSignatures[K]>
+            ...args: Screensaver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1796,7 +1796,7 @@ export namespace Libxfce4ui {
         ): number;
         emit<K extends keyof TitledDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitledDialog.SignalSignatures[K]>
+            ...args: TitledDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

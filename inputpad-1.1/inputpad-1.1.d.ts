@@ -172,7 +172,7 @@ export namespace InputPad {
         ): number;
         emit<K extends keyof GtkApplication.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkApplication.SignalSignatures[K]>
+            ...args: GtkApplication.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -667,7 +667,7 @@ export namespace InputPad {
         ): number;
         emit<K extends keyof GtkButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkButton.SignalSignatures[K]>
+            ...args: GtkButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5249,7 +5249,7 @@ export namespace InputPad {
         ): number;
         emit<K extends keyof GtkComboBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkComboBox.SignalSignatures[K]>
+            ...args: GtkComboBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9777,7 +9777,7 @@ export namespace InputPad {
         ): number;
         emit<K extends keyof GtkKbdui.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkKbdui.SignalSignatures[K]>
+            ...args: GtkKbdui.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9826,7 +9826,7 @@ export namespace InputPad {
         ): number;
         emit<K extends keyof GtkViewport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkViewport.SignalSignatures[K]>
+            ...args: GtkViewport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10454,7 +10454,7 @@ export namespace InputPad {
         ): number;
         emit<K extends keyof GtkWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkWindow.SignalSignatures[K]>
+            ...args: GtkWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

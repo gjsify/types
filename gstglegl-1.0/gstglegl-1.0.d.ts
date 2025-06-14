@@ -189,7 +189,7 @@ export namespace GstGLEGL {
         ): number;
         emit<K extends keyof GLDisplayEGL.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplayEGL.SignalSignatures[K]>
+            ...args: GLDisplayEGL.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -257,7 +257,7 @@ export namespace GstGLEGL {
         ): number;
         emit<K extends keyof GLDisplayEGLDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplayEGLDevice.SignalSignatures[K]>
+            ...args: GLDisplayEGLDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -294,7 +294,7 @@ export namespace GstGLEGL {
         ): number;
         emit<K extends keyof GLMemoryEGLAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMemoryEGLAllocator.SignalSignatures[K]>
+            ...args: GLMemoryEGLAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

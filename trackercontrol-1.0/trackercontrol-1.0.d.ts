@@ -118,7 +118,7 @@ export namespace TrackerControl {
         ): number;
         emit<K extends keyof MinerManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerManager.SignalSignatures[K]>
+            ...args: MinerManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

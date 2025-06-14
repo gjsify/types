@@ -410,7 +410,10 @@ export namespace MateDesktop {
 
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
-        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
+        emit<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            ...args: BG.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -586,7 +589,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof BGCrossfade.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BGCrossfade.SignalSignatures[K]>
+            ...args: BGCrossfade.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -722,7 +725,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof ColorSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorSelection.SignalSignatures[K]>
+            ...args: ColorSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1347,7 +1350,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof ColorSelectionDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorSelectionDialog.SignalSignatures[K]>
+            ...args: ColorSelectionDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1832,7 +1835,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+            ...args: DesktopThumbnailFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1939,7 +1942,10 @@ export namespace MateDesktop {
 
         connect<K extends keyof HSV.SignalSignatures>(signal: K, callback: HSV.SignalSignatures[K]): number;
         connect_after<K extends keyof HSV.SignalSignatures>(signal: K, callback: HSV.SignalSignatures[K]): number;
-        emit<K extends keyof HSV.SignalSignatures>(signal: K, ...args: Parameters<HSV.SignalSignatures[K]>): void;
+        emit<K extends keyof HSV.SignalSignatures>(
+            signal: K,
+            ...args: HSV.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2656,7 +2662,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof ImageMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageMenuItem.SignalSignatures[K]>
+            ...args: ImageMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7237,7 +7243,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof RRConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RRConfig.SignalSignatures[K]>
+            ...args: RRConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7297,7 +7303,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof RRLabeler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RRLabeler.SignalSignatures[K]>
+            ...args: RRLabeler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7343,7 +7349,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof RROutputInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RROutputInfo.SignalSignatures[K]>
+            ...args: RROutputInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7421,7 +7427,7 @@ export namespace MateDesktop {
         ): number;
         emit<K extends keyof RRScreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RRScreen.SignalSignatures[K]>
+            ...args: RRScreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

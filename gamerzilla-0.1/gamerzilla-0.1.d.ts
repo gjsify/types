@@ -63,7 +63,7 @@ export namespace Gamerzilla {
         ): number;
         emit<K extends keyof GamerzillaGobj.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GamerzillaGobj.SignalSignatures[K]>
+            ...args: GamerzillaGobj.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

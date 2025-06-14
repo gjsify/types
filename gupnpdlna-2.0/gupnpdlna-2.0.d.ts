@@ -73,7 +73,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof AudioInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioInformation.SignalSignatures[K]>
+            ...args: AudioInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -107,7 +107,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof ContainerInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContainerInformation.SignalSignatures[K]>
+            ...args: ContainerInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -141,7 +141,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof ImageInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageInformation.SignalSignatures[K]>
+            ...args: ImageInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -224,7 +224,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Information.SignalSignatures[K]>
+            ...args: Information.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -319,7 +319,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof MetadataExtractor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetadataExtractor.SignalSignatures[K]>
+            ...args: MetadataExtractor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -433,7 +433,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -531,7 +531,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof ProfileGuesser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProfileGuesser.SignalSignatures[K]>
+            ...args: ProfileGuesser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -612,7 +612,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof VideoInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoInformation.SignalSignatures[K]>
+            ...args: VideoInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

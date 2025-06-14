@@ -505,7 +505,10 @@ export namespace Mx {
 
         connect<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
         connect_after<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
-        emit<K extends keyof Action.SignalSignatures>(signal: K, ...args: Parameters<Action.SignalSignatures[K]>): void;
+        emit<K extends keyof Action.SignalSignatures>(
+            signal: K,
+            ...args: Action.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1313,7 +1316,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ActorManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActorManager.SignalSignatures[K]>
+            ...args: ActorManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1516,7 +1519,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Adjustment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Adjustment.SignalSignatures[K]>
+            ...args: Adjustment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1712,7 +1715,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1906,7 +1909,10 @@ export namespace Mx {
 
         connect<K extends keyof Bin.SignalSignatures>(signal: K, callback: Bin.SignalSignatures[K]): number;
         connect_after<K extends keyof Bin.SignalSignatures>(signal: K, callback: Bin.SignalSignatures[K]): number;
-        emit<K extends keyof Bin.SignalSignatures>(signal: K, ...args: Parameters<Bin.SignalSignatures[K]>): void;
+        emit<K extends keyof Bin.SignalSignatures>(
+            signal: K,
+            ...args: Bin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2636,7 +2642,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof BoxLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BoxLayout.SignalSignatures[K]>
+            ...args: BoxLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3439,7 +3445,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof BoxLayoutChild.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BoxLayoutChild.SignalSignatures[K]>
+            ...args: BoxLayoutChild.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3540,7 +3546,10 @@ export namespace Mx {
 
         connect<K extends keyof Button.SignalSignatures>(signal: K, callback: Button.SignalSignatures[K]): number;
         connect_after<K extends keyof Button.SignalSignatures>(signal: K, callback: Button.SignalSignatures[K]): number;
-        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: Parameters<Button.SignalSignatures[K]>): void;
+        emit<K extends keyof Button.SignalSignatures>(
+            signal: K,
+            ...args: Button.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -4168,7 +4177,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ButtonGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ButtonGroup.SignalSignatures[K]>
+            ...args: ButtonGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4247,7 +4256,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Clipboard.SignalSignatures[K]>
+            ...args: Clipboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4334,7 +4343,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ComboBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComboBox.SignalSignatures[K]>
+            ...args: ComboBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5064,7 +5073,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof DeformBowTie.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeformBowTie.SignalSignatures[K]>
+            ...args: DeformBowTie.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5576,7 +5585,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof DeformPageTurn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeformPageTurn.SignalSignatures[K]>
+            ...args: DeformPageTurn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6097,7 +6106,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof DeformTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeformTexture.SignalSignatures[K]>
+            ...args: DeformTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6775,7 +6784,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof DeformWaves.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeformWaves.SignalSignatures[K]>
+            ...args: DeformWaves.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7271,7 +7280,10 @@ export namespace Mx {
 
         connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
         connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
-        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: Parameters<Dialog.SignalSignatures[K]>): void;
+        emit<K extends keyof Dialog.SignalSignatures>(
+            signal: K,
+            ...args: Dialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7865,7 +7877,10 @@ export namespace Mx {
 
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
+        emit<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            ...args: Entry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -8604,7 +8619,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Expander.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expander.SignalSignatures[K]>
+            ...args: Expander.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9191,7 +9206,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof FadeEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FadeEffect.SignalSignatures[K]>
+            ...args: FadeEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9284,7 +9299,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof FloatingWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatingWidget.SignalSignatures[K]>
+            ...args: FloatingWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9909,7 +9924,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof FocusManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FocusManager.SignalSignatures[K]>
+            ...args: FocusManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9996,7 +10011,10 @@ export namespace Mx {
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -10567,7 +10585,10 @@ export namespace Mx {
 
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
+        emit<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            ...args: Grid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11267,7 +11288,10 @@ export namespace Mx {
 
         connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
         connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
-        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
+        emit<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            ...args: Icon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11899,7 +11923,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof IconTheme.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconTheme.SignalSignatures[K]>
+            ...args: IconTheme.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12052,7 +12076,10 @@ export namespace Mx {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -12874,7 +12901,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ItemView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemView.SignalSignatures[K]>
+            ...args: ItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13526,7 +13553,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof KineticScrollView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KineticScrollView.SignalSignatures[K]>
+            ...args: KineticScrollView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14239,7 +14266,10 @@ export namespace Mx {
 
         connect<K extends keyof Label.SignalSignatures>(signal: K, callback: Label.SignalSignatures[K]): number;
         connect_after<K extends keyof Label.SignalSignatures>(signal: K, callback: Label.SignalSignatures[K]): number;
-        emit<K extends keyof Label.SignalSignatures>(signal: K, ...args: Parameters<Label.SignalSignatures[K]>): void;
+        emit<K extends keyof Label.SignalSignatures>(
+            signal: K,
+            ...args: Label.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -14961,7 +14991,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ListView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListView.SignalSignatures[K]>
+            ...args: ListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15551,7 +15581,10 @@ export namespace Mx {
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -16111,7 +16144,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notebook.SignalSignatures[K]>
+            ...args: Notebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16811,7 +16844,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Offscreen.SignalSignatures[K]>
+            ...args: Offscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -17423,7 +17456,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof PathBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathBar.SignalSignatures[K]>
+            ...args: PathBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18130,7 +18163,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ProgressBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressBar.SignalSignatures[K]>
+            ...args: ProgressBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18794,7 +18827,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ScrollBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollBar.SignalSignatures[K]>
+            ...args: ScrollBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19350,7 +19383,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof ScrollView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollView.SignalSignatures[K]>
+            ...args: ScrollView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19897,7 +19930,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19959,7 +19992,10 @@ export namespace Mx {
 
         connect<K extends keyof Slider.SignalSignatures>(signal: K, callback: Slider.SignalSignatures[K]): number;
         connect_after<K extends keyof Slider.SignalSignatures>(signal: K, callback: Slider.SignalSignatures[K]): number;
-        emit<K extends keyof Slider.SignalSignatures>(signal: K, ...args: Parameters<Slider.SignalSignatures[K]>): void;
+        emit<K extends keyof Slider.SignalSignatures>(
+            signal: K,
+            ...args: Slider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -20645,7 +20681,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Spinner.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Spinner.SignalSignatures[K]>
+            ...args: Spinner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -21284,7 +21320,10 @@ export namespace Mx {
 
         connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
         connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
-        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: Parameters<Stack.SignalSignatures[K]>): void;
+        emit<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            ...args: Stack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -22033,7 +22072,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof StackChild.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StackChild.SignalSignatures[K]>
+            ...args: StackChild.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22073,7 +22112,10 @@ export namespace Mx {
 
         connect<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
         connect_after<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
-        emit<K extends keyof Style.SignalSignatures>(signal: K, ...args: Parameters<Style.SignalSignatures[K]>): void;
+        emit<K extends keyof Style.SignalSignatures>(
+            signal: K,
+            ...args: Style.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -22167,7 +22209,10 @@ export namespace Mx {
 
         connect<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
         connect_after<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
-        emit<K extends keyof Table.SignalSignatures>(signal: K, ...args: Parameters<Table.SignalSignatures[K]>): void;
+        emit<K extends keyof Table.SignalSignatures>(
+            signal: K,
+            ...args: Table.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -23037,7 +23082,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof TableChild.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableChild.SignalSignatures[K]>
+            ...args: TableChild.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23075,7 +23120,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof TextureCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureCache.SignalSignatures[K]>
+            ...args: TextureCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -23258,7 +23303,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof TextureFrame.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureFrame.SignalSignatures[K]>
+            ...args: TextureFrame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24218,7 +24263,10 @@ export namespace Mx {
 
         connect<K extends keyof Toggle.SignalSignatures>(signal: K, callback: Toggle.SignalSignatures[K]): number;
         connect_after<K extends keyof Toggle.SignalSignatures>(signal: K, callback: Toggle.SignalSignatures[K]): number;
-        emit<K extends keyof Toggle.SignalSignatures>(signal: K, ...args: Parameters<Toggle.SignalSignatures[K]>): void;
+        emit<K extends keyof Toggle.SignalSignatures>(
+            signal: K,
+            ...args: Toggle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -24866,7 +24914,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Toolbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Toolbar.SignalSignatures[K]>
+            ...args: Toolbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -25407,7 +25455,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Tooltip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Tooltip.SignalSignatures[K]>
+            ...args: Tooltip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -25981,7 +26029,7 @@ export namespace Mx {
         ): number;
         emit<K extends keyof Viewport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Viewport.SignalSignatures[K]>
+            ...args: Viewport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26556,7 +26604,10 @@ export namespace Mx {
 
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
+        emit<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -27785,7 +27836,10 @@ export namespace Mx {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

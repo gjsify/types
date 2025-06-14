@@ -238,7 +238,7 @@ export namespace SpiceClientGtk {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -806,7 +806,7 @@ export namespace SpiceClientGtk {
         ): number;
         emit<K extends keyof GtkSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkSession.SignalSignatures[K]>
+            ...args: GtkSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -909,7 +909,7 @@ export namespace SpiceClientGtk {
         ): number;
         emit<K extends keyof UsbDeviceWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UsbDeviceWidget.SignalSignatures[K]>
+            ...args: UsbDeviceWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

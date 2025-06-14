@@ -351,7 +351,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Proxy.SignalSignatures[K]>
+            ...args: OAuth2Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -439,7 +439,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ProxyCall.SignalSignatures[K]>
+            ...args: OAuth2ProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -528,7 +528,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof OAuthProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthProxy.SignalSignatures[K]>
+            ...args: OAuthProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -705,7 +705,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof OAuthProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthProxyCall.SignalSignatures[K]>
+            ...args: OAuthProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -800,7 +800,10 @@ export namespace Rest {
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -871,7 +874,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyAuth.SignalSignatures[K]>
+            ...args: ProxyAuth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -932,7 +935,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyCall.SignalSignatures[K]>
+            ...args: ProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1117,7 +1120,7 @@ export namespace Rest {
         ): number;
         emit<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlParser.SignalSignatures[K]>
+            ...args: XmlParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -1843,7 +1843,7 @@ export namespace ColorHug {
         ): number;
         emit<K extends keyof DeviceQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceQueue.SignalSignatures[K]>
+            ...args: DeviceQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

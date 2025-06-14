@@ -339,7 +339,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof Analyzer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Analyzer.SignalSignatures[K]>
+            ...args: Analyzer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -506,7 +506,10 @@ export namespace Dee {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace FileResourceManager {
@@ -555,7 +558,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof FileResourceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileResourceManager.SignalSignatures[K]>
+            ...args: FileResourceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1122,7 +1125,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof FilterModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterModel.SignalSignatures[K]>
+            ...args: FilterModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1661,7 +1664,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof GListResultSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GListResultSet.SignalSignatures[K]>
+            ...args: GListResultSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2221,7 +2224,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof HashIndex.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashIndex.SignalSignatures[K]>
+            ...args: HashIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2270,7 +2273,10 @@ export namespace Dee {
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2436,7 +2442,10 @@ export namespace Dee {
 
         connect<K extends keyof Peer.SignalSignatures>(signal: K, callback: Peer.SignalSignatures[K]): number;
         connect_after<K extends keyof Peer.SignalSignatures>(signal: K, callback: Peer.SignalSignatures[K]): number;
-        emit<K extends keyof Peer.SignalSignatures>(signal: K, ...args: Parameters<Peer.SignalSignatures[K]>): void;
+        emit<K extends keyof Peer.SignalSignatures>(
+            signal: K,
+            ...args: Peer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2577,7 +2586,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof ProxyModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyModel.SignalSignatures[K]>
+            ...args: ProxyModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3710,7 +3719,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof SequenceModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SequenceModel.SignalSignatures[K]>
+            ...args: SequenceModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4841,7 +4850,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof SerializableModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableModel.SignalSignatures[K]>
+            ...args: SerializableModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5986,7 +5995,10 @@ export namespace Dee {
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6130,7 +6142,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof SharedModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SharedModel.SignalSignatures[K]>
+            ...args: SharedModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6675,7 +6687,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof TermList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TermList.SignalSignatures[K]>
+            ...args: TermList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6805,7 +6817,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof TextAnalyzer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextAnalyzer.SignalSignatures[K]>
+            ...args: TextAnalyzer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6854,7 +6866,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transaction.SignalSignatures[K]>
+            ...args: Transaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8006,7 +8018,7 @@ export namespace Dee {
         ): number;
         emit<K extends keyof TreeIndex.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeIndex.SignalSignatures[K]>
+            ...args: TreeIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

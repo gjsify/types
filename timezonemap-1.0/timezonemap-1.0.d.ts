@@ -72,7 +72,7 @@ export namespace TimezoneMap {
         ): number;
         emit<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimezoneCompletion.SignalSignatures[K]>
+            ...args: TimezoneCompletion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -901,7 +901,7 @@ export namespace TimezoneMap {
         ): number;
         emit<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimezoneLocation.SignalSignatures[K]>
+            ...args: TimezoneLocation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -948,7 +948,7 @@ export namespace TimezoneMap {
         ): number;
         emit<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimezoneMap.SignalSignatures[K]>
+            ...args: TimezoneMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

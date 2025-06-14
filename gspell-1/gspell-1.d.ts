@@ -122,7 +122,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checker.SignalSignatures[K]>
+            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -240,7 +240,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof CheckerDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckerDialog.SignalSignatures[K]>
+            ...args: CheckerDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -740,7 +740,10 @@ export namespace Gspell {
 
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
+        emit<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            ...args: Entry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -851,7 +854,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof EntryBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryBuffer.SignalSignatures[K]>
+            ...args: EntryBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -920,7 +923,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof LanguageChooserButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageChooserButton.SignalSignatures[K]>
+            ...args: LanguageChooserButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5520,7 +5523,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof LanguageChooserDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageChooserDialog.SignalSignatures[K]>
+            ...args: LanguageChooserDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6040,7 +6043,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof NavigatorTextView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NavigatorTextView.SignalSignatures[K]>
+            ...args: NavigatorTextView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6158,7 +6161,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof TextBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextBuffer.SignalSignatures[K]>
+            ...args: TextBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6245,7 +6248,7 @@ export namespace Gspell {
         ): number;
         emit<K extends keyof TextView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextView.SignalSignatures[K]>
+            ...args: TextView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

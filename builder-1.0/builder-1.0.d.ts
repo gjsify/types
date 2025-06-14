@@ -101,7 +101,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -671,7 +671,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof EditorView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorView.SignalSignatures[K]>
+            ...args: EditorView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1156,7 +1156,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof MenuExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuExtension.SignalSignatures[K]>
+            ...args: MenuExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1221,7 +1221,10 @@ export namespace Builder {
 
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
+        emit<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1909,7 +1912,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeBuilder.SignalSignatures[K]>
+            ...args: TreeBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2045,7 +2048,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof TreeNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeNode.SignalSignatures[K]>
+            ...args: TreeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2180,7 +2183,10 @@ export namespace Builder {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2743,7 +2749,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof ViewGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewGrid.SignalSignatures[K]>
+            ...args: ViewGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3264,7 +3270,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof ViewStack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewStack.SignalSignatures[K]>
+            ...args: ViewStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3786,7 +3792,7 @@ export namespace Builder {
         ): number;
         emit<K extends keyof Workbench.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workbench.SignalSignatures[K]>
+            ...args: Workbench.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

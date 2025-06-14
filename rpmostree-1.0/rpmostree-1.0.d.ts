@@ -128,7 +128,7 @@ export namespace RpmOstree {
         ): number;
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Package.SignalSignatures[K]>
+            ...args: Package.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

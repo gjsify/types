@@ -77,7 +77,7 @@ export namespace GcrGtk3 {
         ): number;
         emit<K extends keyof CertificateWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+            ...args: CertificateWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -599,7 +599,7 @@ export namespace GcrGtk3 {
         ): number;
         emit<K extends keyof SecureEntryBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecureEntryBuffer.SignalSignatures[K]>
+            ...args: SecureEntryBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

@@ -133,7 +133,7 @@ export namespace TelepathyLogger {
         ): number;
         emit<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallEvent.SignalSignatures[K]>
+            ...args: CallEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -204,7 +204,10 @@ export namespace TelepathyLogger {
 
         connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
         connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
-        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: Parameters<Entity.SignalSignatures[K]>): void;
+        emit<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            ...args: Entity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -259,7 +262,10 @@ export namespace TelepathyLogger {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -321,7 +327,7 @@ export namespace TelepathyLogger {
         ): number;
         emit<K extends keyof LogManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogManager.SignalSignatures[K]>
+            ...args: LogManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -607,7 +613,7 @@ export namespace TelepathyLogger {
         ): number;
         emit<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogWalker.SignalSignatures[K]>
+            ...args: LogWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -718,7 +724,7 @@ export namespace TelepathyLogger {
         ): number;
         emit<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextEvent.SignalSignatures[K]>
+            ...args: TextEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

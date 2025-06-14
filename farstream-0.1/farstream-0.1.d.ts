@@ -389,7 +389,7 @@ export namespace Farstream {
         ): number;
         emit<K extends keyof Conference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Conference.SignalSignatures[K]>
+            ...args: Conference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -488,7 +488,7 @@ export namespace Farstream {
         ): number;
         emit<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementAddedNotifier.SignalSignatures[K]>
+            ...args: ElementAddedNotifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -567,7 +567,7 @@ export namespace Farstream {
         ): number;
         emit<K extends keyof Participant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Participant.SignalSignatures[K]>
+            ...args: Participant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -596,7 +596,10 @@ export namespace Farstream {
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1277,7 +1280,7 @@ export namespace Farstream {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1604,7 +1607,10 @@ export namespace Farstream {
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1879,7 +1885,7 @@ export namespace Farstream {
         ): number;
         emit<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamTransmitter.SignalSignatures[K]>
+            ...args: StreamTransmitter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2046,7 +2052,7 @@ export namespace Farstream {
         ): number;
         emit<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transmitter.SignalSignatures[K]>
+            ...args: Transmitter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

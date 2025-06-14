@@ -205,7 +205,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof Aspectratio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Aspectratio.SignalSignatures[K]>
+            ...args: Aspectratio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -751,7 +751,10 @@ export namespace ClutterGst {
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1566,7 +1569,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraDevice.SignalSignatures[K]>
+            ...args: CameraDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1651,7 +1654,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraManager.SignalSignatures[K]>
+            ...args: CameraManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1737,7 +1740,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Content.SignalSignatures[K]>
+            ...args: Content.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2327,7 +2330,10 @@ export namespace ClutterGst {
 
         connect<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
         connect_after<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
-        emit<K extends keyof Crop.SignalSignatures>(signal: K, ...args: Parameters<Crop.SignalSignatures[K]>): void;
+        emit<K extends keyof Crop.SignalSignatures>(
+            signal: K,
+            ...args: Crop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -3001,7 +3007,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof Playback.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Playback.SignalSignatures[K]>
+            ...args: Playback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3798,7 +3804,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSink.SignalSignatures[K]>
+            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

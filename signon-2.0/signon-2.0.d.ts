@@ -321,7 +321,7 @@ export namespace Signon {
         ): number;
         emit<K extends keyof AuthService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthService.SignalSignatures[K]>
+            ...args: AuthService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -446,7 +446,7 @@ export namespace Signon {
         ): number;
         emit<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthSession.SignalSignatures[K]>
+            ...args: AuthSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -568,7 +568,7 @@ export namespace Signon {
         ): number;
         emit<K extends keyof Identity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Identity.SignalSignatures[K]>
+            ...args: Identity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

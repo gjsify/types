@@ -283,7 +283,7 @@ export namespace GExiv2 {
         ): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Metadata.SignalSignatures[K]>
+            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1036,7 +1036,7 @@ export namespace GExiv2 {
         ): number;
         emit<K extends keyof PreviewImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewImage.SignalSignatures[K]>
+            ...args: PreviewImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1086,7 +1086,7 @@ export namespace GExiv2 {
         ): number;
         emit<K extends keyof PreviewProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewProperties.SignalSignatures[K]>
+            ...args: PreviewProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

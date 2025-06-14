@@ -232,7 +232,7 @@ export namespace GPlugin {
         ): number;
         emit<K extends keyof FileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSource.SignalSignatures[K]>
+            ...args: FileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -739,7 +739,10 @@ export namespace GPlugin {
 
         connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
         connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
-        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
+        emit<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -870,7 +873,7 @@ export namespace GPlugin {
         ): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1348,7 +1351,7 @@ export namespace GPlugin {
         ): number;
         emit<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginInfo.SignalSignatures[K]>
+            ...args: PluginInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

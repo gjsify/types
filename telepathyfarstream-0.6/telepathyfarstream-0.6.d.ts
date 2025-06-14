@@ -100,7 +100,7 @@ export namespace TelepathyFarstream {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -858,7 +858,7 @@ export namespace TelepathyFarstream {
         ): number;
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Content.SignalSignatures[K]>
+            ...args: Content.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

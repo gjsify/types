@@ -555,7 +555,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof AbstractFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractFactory.SignalSignatures[K]>
+            ...args: AbstractFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -667,7 +667,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -824,7 +824,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+            ...args: ApplicationWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1489,7 +1489,10 @@ export namespace Tepl {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1649,7 +1652,10 @@ export namespace Tepl {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1745,7 +1751,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLoader.SignalSignatures[K]>
+            ...args: FileLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1870,7 +1876,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof FileSaver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSaver.SignalSignatures[K]>
+            ...args: FileSaver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1980,7 +1986,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof FoldRegion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FoldRegion.SignalSignatures[K]>
+            ...args: FoldRegion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2041,7 +2047,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof GotoLineBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GotoLineBar.SignalSignatures[K]>
+            ...args: GotoLineBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2550,7 +2556,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof GutterRendererFolds.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GutterRendererFolds.SignalSignatures[K]>
+            ...args: GutterRendererFolds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2668,7 +2674,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof InfoBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfoBar.SignalSignatures[K]>
+            ...args: InfoBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3225,7 +3231,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof LanguageChooserDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageChooserDialog.SignalSignatures[K]>
+            ...args: LanguageChooserDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3721,7 +3727,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof LanguageChooserWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageChooserWidget.SignalSignatures[K]>
+            ...args: LanguageChooserWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4223,7 +4229,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Metadata.SignalSignatures[K]>
+            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4281,7 +4287,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof MetadataManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetadataManager.SignalSignatures[K]>
+            ...args: MetadataManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4385,7 +4391,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notebook.SignalSignatures[K]>
+            ...args: Notebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4946,7 +4952,10 @@ export namespace Tepl {
 
         connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
         connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
-        emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: Parameters<Panel.SignalSignatures[K]>): void;
+        emit<K extends keyof Panel.SignalSignatures>(
+            signal: K,
+            ...args: Panel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5501,7 +5510,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof ProgressInfoBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressInfoBar.SignalSignatures[K]>
+            ...args: ProgressInfoBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6006,7 +6015,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof SpaceDrawerPrefs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpaceDrawerPrefs.SignalSignatures[K]>
+            ...args: SpaceDrawerPrefs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6511,7 +6520,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof Statusbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Statusbar.SignalSignatures[K]>
+            ...args: Statusbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7050,7 +7059,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleSchemeChooserWidget.SignalSignatures[K]>
+            ...args: StyleSchemeChooserWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7592,7 +7601,10 @@ export namespace Tepl {
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -8297,7 +8309,7 @@ export namespace Tepl {
         ): number;
         emit<K extends keyof TabLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TabLabel.SignalSignatures[K]>
+            ...args: TabLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -8803,7 +8815,10 @@ export namespace Tepl {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

@@ -316,7 +316,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof DataSourceRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSourceRegistry.SignalSignatures[K]>
+            ...args: DataSourceRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -396,7 +396,10 @@ export namespace Zeitgeist {
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -489,7 +492,10 @@ export namespace Zeitgeist {
 
         connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
         connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
-        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: Parameters<Log.SignalSignatures[K]>): void;
+        emit<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            ...args: Log.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -703,7 +709,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Monitor.SignalSignatures[K]>
+            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1239,7 +1245,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QueuedProxyWrapper.SignalSignatures[K]>
+            ...args: QueuedProxyWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1293,7 +1299,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>
+            ...args: QueuedProxyWrapperQueuedMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1368,7 +1374,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof DataSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSource.SignalSignatures[K]>
+            ...args: DataSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1444,7 +1450,10 @@ export namespace Zeitgeist {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1564,7 +1573,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof Subject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subject.SignalSignatures[K]>
+            ...args: Subject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1638,7 +1647,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof TimeRange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimeRange.SignalSignatures[K]>
+            ...args: TimeRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1683,7 +1692,7 @@ export namespace Zeitgeist {
         ): number;
         emit<K extends keyof SimpleResultSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleResultSet.SignalSignatures[K]>
+            ...args: SimpleResultSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

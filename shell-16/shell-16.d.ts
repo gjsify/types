@@ -494,7 +494,10 @@ export namespace Shell {
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -708,7 +711,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof AppSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppSystem.SignalSignatures[K]>
+            ...args: AppSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -802,7 +805,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof AppUsage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppUsage.SignalSignatures[K]>
+            ...args: AppUsage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -882,7 +885,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurEffect.SignalSignatures[K]>
+            ...args: BlurEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -933,7 +936,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof CameraMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraMonitor.SignalSignatures[K]>
+            ...args: CameraMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -978,7 +981,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof GLSLEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLSLEffect.SignalSignatures[K]>
+            ...args: GLSLEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1122,7 +1125,10 @@ export namespace Shell {
 
         connect<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
         connect_after<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
-        emit<K extends keyof Global.SignalSignatures>(signal: K, ...args: Parameters<Global.SignalSignatures[K]>): void;
+        emit<K extends keyof Global.SignalSignatures>(
+            signal: K,
+            ...args: Global.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1319,7 +1325,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof InvertLightnessEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvertLightnessEffect.SignalSignatures[K]>
+            ...args: InvertLightnessEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1436,7 +1442,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof KeyringPrompt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyringPrompt.SignalSignatures[K]>
+            ...args: KeyringPrompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2502,7 +2508,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountOperation.SignalSignatures[K]>
+            ...args: MountOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2566,7 +2572,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof NetworkAgent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkAgent.SignalSignatures[K]>
+            ...args: NetworkAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3354,7 +3360,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof PerfLog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PerfLog.SignalSignatures[K]>
+            ...args: PerfLog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3527,7 +3533,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PolkitAuthenticationAgent.SignalSignatures[K]>
+            ...args: PolkitAuthenticationAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3585,7 +3591,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Screenshot.SignalSignatures[K]>
+            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3861,7 +3867,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof SecureTextBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecureTextBuffer.SignalSignatures[K]>
+            ...args: SecureTextBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3895,7 +3901,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof SquareBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SquareBin.SignalSignatures[K]>
+            ...args: SquareBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4375,7 +4381,10 @@ export namespace Shell {
 
         connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
         connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
-        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: Parameters<Stack.SignalSignatures[K]>): void;
+        emit<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            ...args: Stack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -4861,7 +4870,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof TrayIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrayIcon.SignalSignatures[K]>
+            ...args: TrayIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5374,7 +5383,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof TrayManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrayManager.SignalSignatures[K]>
+            ...args: TrayManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5491,7 +5500,10 @@ export namespace Shell {
 
         connect<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
         connect_after<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
-        emit<K extends keyof WM.SignalSignatures>(signal: K, ...args: Parameters<WM.SignalSignatures[K]>): void;
+        emit<K extends keyof WM.SignalSignatures>(
+            signal: K,
+            ...args: WM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5569,7 +5581,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof WindowPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowPreview.SignalSignatures[K]>
+            ...args: WindowPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6056,7 +6068,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof WindowPreviewLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowPreviewLayout.SignalSignatures[K]>
+            ...args: WindowPreviewLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6145,7 +6157,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof WindowTracker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowTracker.SignalSignatures[K]>
+            ...args: WindowTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6212,7 +6224,7 @@ export namespace Shell {
         ): number;
         emit<K extends keyof WorkspaceBackground.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceBackground.SignalSignatures[K]>
+            ...args: WorkspaceBackground.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -123,7 +123,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -174,7 +174,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof ContactStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactStore.SignalSignatures[K]>
+            ...args: ContactStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -258,7 +258,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileTileSource.SignalSignatures[K]>
+            ...args: FileTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -314,7 +314,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof OSMChangeset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMChangeset.SignalSignatures[K]>
+            ...args: OSMChangeset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -367,7 +367,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof OSMNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMNode.SignalSignatures[K]>
+            ...args: OSMNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -403,7 +403,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMOAuthProxyCall.SignalSignatures[K]>
+            ...args: OSMOAuthProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -456,7 +456,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof OSMObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMObject.SignalSignatures[K]>
+            ...args: OSMObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -499,7 +499,7 @@ export namespace GnomeMaps {
         ): number;
         emit<K extends keyof OSMRelation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMRelation.SignalSignatures[K]>
+            ...args: OSMRelation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -531,7 +531,10 @@ export namespace GnomeMaps {
 
         connect<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
         connect_after<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
-        emit<K extends keyof OSMWay.SignalSignatures>(signal: K, ...args: Parameters<OSMWay.SignalSignatures[K]>): void;
+        emit<K extends keyof OSMWay.SignalSignatures>(
+            signal: K,
+            ...args: OSMWay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

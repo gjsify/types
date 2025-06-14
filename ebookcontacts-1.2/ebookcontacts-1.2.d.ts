@@ -1190,7 +1190,7 @@ export namespace EBookContacts {
         ): number;
         emit<K extends keyof BookIndicesUpdater.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookIndicesUpdater.SignalSignatures[K]>
+            ...args: BookIndicesUpdater.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2027,7 +2027,7 @@ export namespace EBookContacts {
         ): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2180,7 +2180,7 @@ export namespace EBookContacts {
         ): number;
         emit<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBackendSummarySetup.SignalSignatures[K]>
+            ...args: SourceBackendSummarySetup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2257,7 +2257,10 @@ export namespace EBookContacts {
 
         connect<K extends keyof VCard.SignalSignatures>(signal: K, callback: VCard.SignalSignatures[K]): number;
         connect_after<K extends keyof VCard.SignalSignatures>(signal: K, callback: VCard.SignalSignatures[K]): number;
-        emit<K extends keyof VCard.SignalSignatures>(signal: K, ...args: Parameters<VCard.SignalSignatures[K]>): void;
+        emit<K extends keyof VCard.SignalSignatures>(
+            signal: K,
+            ...args: VCard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

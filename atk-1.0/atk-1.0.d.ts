@@ -1849,7 +1849,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof GObjectAccessible.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GObjectAccessible.SignalSignatures[K]>
+            ...args: GObjectAccessible.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1940,7 +1940,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof Hyperlink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Hyperlink.SignalSignatures[K]>
+            ...args: Hyperlink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2665,7 +2665,10 @@ export namespace Atk {
 
         connect<K extends keyof Misc.SignalSignatures>(signal: K, callback: Misc.SignalSignatures[K]): number;
         connect_after<K extends keyof Misc.SignalSignatures>(signal: K, callback: Misc.SignalSignatures[K]): number;
-        emit<K extends keyof Misc.SignalSignatures>(signal: K, ...args: Parameters<Misc.SignalSignatures[K]>): void;
+        emit<K extends keyof Misc.SignalSignatures>(
+            signal: K,
+            ...args: Misc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2787,7 +2790,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof NoOpObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NoOpObject.SignalSignatures[K]>
+            ...args: NoOpObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5421,7 +5424,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof NoOpObjectFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NoOpObjectFactory.SignalSignatures[K]>
+            ...args: NoOpObjectFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5663,7 +5666,10 @@ export namespace Atk {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -6006,7 +6012,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectFactory.SignalSignatures[K]>
+            ...args: ObjectFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6073,7 +6079,10 @@ export namespace Atk {
 
         connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
         connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
-        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: Parameters<Plug.SignalSignatures[K]>): void;
+        emit<K extends keyof Plug.SignalSignatures>(
+            signal: K,
+            ...args: Plug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -6822,7 +6831,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6907,7 +6916,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof Relation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Relation.SignalSignatures[K]>
+            ...args: Relation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6985,7 +6994,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof RelationSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelationSet.SignalSignatures[K]>
+            ...args: RelationSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7102,7 +7111,10 @@ export namespace Atk {
 
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
-        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
+        emit<K extends keyof Socket.SignalSignatures>(
+            signal: K,
+            ...args: Socket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -7855,7 +7867,7 @@ export namespace Atk {
         ): number;
         emit<K extends keyof StateSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StateSet.SignalSignatures[K]>
+            ...args: StateSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7968,7 +7980,10 @@ export namespace Atk {
 
         connect<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
         connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
-        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: Parameters<Util.SignalSignatures[K]>): void;
+        emit<K extends keyof Util.SignalSignatures>(
+            signal: K,
+            ...args: Util.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     type ActionIface = typeof Action;

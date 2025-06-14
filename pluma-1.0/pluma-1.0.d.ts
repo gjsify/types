@@ -357,7 +357,10 @@ export namespace Pluma {
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -528,7 +531,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -695,7 +698,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof EncodingsComboBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncodingsComboBox.SignalSignatures[K]>
+            ...args: EncodingsComboBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5225,7 +5228,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5327,7 +5330,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageBus.SignalSignatures[K]>
+            ...args: MessageBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5515,7 +5518,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notebook.SignalSignatures[K]>
+            ...args: Notebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6089,7 +6092,10 @@ export namespace Pluma {
 
         connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
         connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
-        emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: Parameters<Panel.SignalSignatures[K]>): void;
+        emit<K extends keyof Panel.SignalSignatures>(
+            signal: K,
+            ...args: Panel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -6645,7 +6651,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof ProgressMessageArea.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressMessageArea.SignalSignatures[K]>
+            ...args: ProgressMessageArea.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7151,7 +7157,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof StatusComboBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatusComboBox.SignalSignatures[K]>
+            ...args: StatusComboBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7644,7 +7650,7 @@ export namespace Pluma {
         ): number;
         emit<K extends keyof Statusbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Statusbar.SignalSignatures[K]>
+            ...args: Statusbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8147,7 +8153,10 @@ export namespace Pluma {
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -8719,7 +8728,10 @@ export namespace Pluma {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -9264,7 +9276,10 @@ export namespace Pluma {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

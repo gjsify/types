@@ -421,7 +421,10 @@ export namespace Gdl {
 
         connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
         connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
-        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: Parameters<Dock.SignalSignatures[K]>): void;
+        emit<K extends keyof Dock.SignalSignatures>(
+            signal: K,
+            ...args: Dock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -997,7 +1000,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockBar.SignalSignatures[K]>
+            ...args: DockBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1603,7 +1606,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockItem.SignalSignatures[K]>
+            ...args: DockItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2273,7 +2276,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockItemButtonImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockItemButtonImage.SignalSignatures[K]>
+            ...args: DockItemButtonImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2935,7 +2938,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockItemGrip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockItemGrip.SignalSignatures[K]>
+            ...args: DockItemGrip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3456,7 +3459,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockLayout.SignalSignatures[K]>
+            ...args: DockLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3606,7 +3609,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockMaster.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockMaster.SignalSignatures[K]>
+            ...args: DockMaster.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3706,7 +3709,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockNotebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockNotebook.SignalSignatures[K]>
+            ...args: DockNotebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4260,7 +4263,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockObject.SignalSignatures[K]>
+            ...args: DockObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5012,7 +5015,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockPaned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockPaned.SignalSignatures[K]>
+            ...args: DockPaned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5478,7 +5481,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockParam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockParam.SignalSignatures[K]>
+            ...args: DockParam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5548,7 +5551,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockPlaceholder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockPlaceholder.SignalSignatures[K]>
+            ...args: DockPlaceholder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6058,7 +6061,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof DockTablabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockTablabel.SignalSignatures[K]>
+            ...args: DockTablabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6559,7 +6562,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof PreviewWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewWindow.SignalSignatures[K]>
+            ...args: PreviewWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7068,7 +7071,7 @@ export namespace Gdl {
         ): number;
         emit<K extends keyof Switcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Switcher.SignalSignatures[K]>
+            ...args: Switcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

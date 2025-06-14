@@ -595,7 +595,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof BundleRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BundleRef.SignalSignatures[K]>
+            ...args: BundleRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -676,7 +676,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof Installation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Installation.SignalSignatures[K]>
+            ...args: Installation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1573,7 +1573,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof InstalledRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstalledRef.SignalSignatures[K]>
+            ...args: InstalledRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1699,7 +1699,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof Instance.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Instance.SignalSignatures[K]>
+            ...args: Instance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1824,7 +1824,10 @@ export namespace Flatpak {
 
         connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
         connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
-        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: Parameters<Ref.SignalSignatures[K]>): void;
+        emit<K extends keyof Ref.SignalSignatures>(
+            signal: K,
+            ...args: Ref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1929,7 +1932,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof RelatedRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelatedRef.SignalSignatures[K]>
+            ...args: RelatedRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1990,7 +1993,10 @@ export namespace Flatpak {
 
         connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
+        emit<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2294,7 +2300,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof RemoteRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteRef.SignalSignatures[K]>
+            ...args: RemoteRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2481,7 +2487,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transaction.SignalSignatures[K]>
+            ...args: Transaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3425,7 +3431,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof TransactionOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionOperation.SignalSignatures[K]>
+            ...args: TransactionOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3602,7 +3608,7 @@ export namespace Flatpak {
         ): number;
         emit<K extends keyof TransactionProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionProgress.SignalSignatures[K]>
+            ...args: TransactionProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

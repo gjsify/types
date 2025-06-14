@@ -578,7 +578,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -741,7 +741,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -838,7 +838,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMAttr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMAttr.SignalSignatures[K]>
+            ...args: DOMAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1337,7 +1337,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMBlob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMBlob.SignalSignatures[K]>
+            ...args: DOMBlob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1375,7 +1375,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCDATASection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCDATASection.SignalSignatures[K]>
+            ...args: DOMCDATASection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1874,7 +1874,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCSSRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSRule.SignalSignatures[K]>
+            ...args: DOMCSSRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1922,7 +1922,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCSSRuleList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSRuleList.SignalSignatures[K]>
+            ...args: DOMCSSRuleList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1977,7 +1977,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSStyleDeclaration.SignalSignatures[K]>
+            ...args: DOMCSSStyleDeclaration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2041,7 +2041,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCSSStyleSheet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSStyleSheet.SignalSignatures[K]>
+            ...args: DOMCSSStyleSheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2099,7 +2099,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCSSValue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSValue.SignalSignatures[K]>
+            ...args: DOMCSSValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2148,7 +2148,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMCharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCharacterData.SignalSignatures[K]>
+            ...args: DOMCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2641,7 +2641,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMClientRect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMClientRect.SignalSignatures[K]>
+            ...args: DOMClientRect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2714,7 +2714,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMClientRectList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMClientRectList.SignalSignatures[K]>
+            ...args: DOMClientRectList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2762,7 +2762,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMComment.SignalSignatures[K]>
+            ...args: DOMComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3241,7 +3241,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDOMImplementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMImplementation.SignalSignatures[K]>
+            ...args: DOMDOMImplementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3333,7 +3333,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDOMSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMSelection.SignalSignatures[K]>
+            ...args: DOMDOMSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3404,7 +3404,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDOMTokenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMTokenList.SignalSignatures[K]>
+            ...args: DOMDOMTokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3544,7 +3544,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDOMWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMWindow.SignalSignatures[K]>
+            ...args: DOMDOMWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4269,7 +4269,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDocument.SignalSignatures[K]>
+            ...args: DOMDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4913,7 +4913,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDocumentFragment.SignalSignatures[K]>
+            ...args: DOMDocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5430,7 +5430,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMDocumentType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDocumentType.SignalSignatures[K]>
+            ...args: DOMDocumentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6053,7 +6053,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMElement.SignalSignatures[K]>
+            ...args: DOMElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6654,7 +6654,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMEntityReference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMEntityReference.SignalSignatures[K]>
+            ...args: DOMEntityReference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7176,7 +7176,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMEvent.SignalSignatures[K]>
+            ...args: DOMEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7231,7 +7231,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMFile.SignalSignatures[K]>
+            ...args: DOMFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7275,7 +7275,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMFileList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMFileList.SignalSignatures[K]>
+            ...args: DOMFileList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7372,7 +7372,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLAnchorElement.SignalSignatures[K]>
+            ...args: DOMHTMLAnchorElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7926,7 +7926,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLAppletElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLAppletElement.SignalSignatures[K]>
+            ...args: DOMHTMLAppletElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8472,7 +8472,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLAreaElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLAreaElement.SignalSignatures[K]>
+            ...args: DOMHTMLAreaElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8983,7 +8983,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLBRElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBRElement.SignalSignatures[K]>
+            ...args: DOMHTMLBRElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9473,7 +9473,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLBaseElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBaseElement.SignalSignatures[K]>
+            ...args: DOMHTMLBaseElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9955,7 +9955,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBaseFontElement.SignalSignatures[K]>
+            ...args: DOMHTMLBaseFontElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10494,7 +10494,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLBodyElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBodyElement.SignalSignatures[K]>
+            ...args: DOMHTMLBodyElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11009,7 +11009,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLButtonElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLButtonElement.SignalSignatures[K]>
+            ...args: DOMHTMLButtonElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11509,7 +11509,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLCanvasElement.SignalSignatures[K]>
+            ...args: DOMHTMLCanvasElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11997,7 +11997,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLCollection.SignalSignatures[K]>
+            ...args: DOMHTMLCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12044,7 +12044,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLDListElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDListElement.SignalSignatures[K]>
+            ...args: DOMHTMLDListElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12531,7 +12531,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDirectoryElement.SignalSignatures[K]>
+            ...args: DOMHTMLDirectoryElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13018,7 +13018,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLDivElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDivElement.SignalSignatures[K]>
+            ...args: DOMHTMLDivElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13539,7 +13539,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDocument.SignalSignatures[K]>
+            ...args: DOMHTMLDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14103,7 +14103,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLElement.SignalSignatures[K]>
+            ...args: DOMHTMLElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14636,7 +14636,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLEmbedElement.SignalSignatures[K]>
+            ...args: DOMHTMLEmbedElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15132,7 +15132,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFieldSetElement.SignalSignatures[K]>
+            ...args: DOMHTMLFieldSetElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15624,7 +15624,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLFontElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFontElement.SignalSignatures[K]>
+            ...args: DOMHTMLFontElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16140,7 +16140,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLFormElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFormElement.SignalSignatures[K]>
+            ...args: DOMHTMLFormElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16691,7 +16691,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLFrameElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFrameElement.SignalSignatures[K]>
+            ...args: DOMHTMLFrameElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17199,7 +17199,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFrameSetElement.SignalSignatures[K]>
+            ...args: DOMHTMLFrameSetElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17700,7 +17700,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLHRElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHRElement.SignalSignatures[K]>
+            ...args: DOMHTMLHRElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18193,7 +18193,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLHeadElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHeadElement.SignalSignatures[K]>
+            ...args: DOMHTMLHeadElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18680,7 +18680,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHeadingElement.SignalSignatures[K]>
+            ...args: DOMHTMLHeadingElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19167,7 +19167,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHtmlElement.SignalSignatures[K]>
+            ...args: DOMHTMLHtmlElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19701,7 +19701,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLIFrameElement.SignalSignatures[K]>
+            ...args: DOMHTMLIFrameElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20267,7 +20267,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLImageElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLImageElement.SignalSignatures[K]>
+            ...args: DOMHTMLImageElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20866,7 +20866,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLInputElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLInputElement.SignalSignatures[K]>
+            ...args: DOMHTMLInputElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21406,7 +21406,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLLIElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLIElement.SignalSignatures[K]>
+            ...args: DOMHTMLLIElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21900,7 +21900,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLLabelElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLabelElement.SignalSignatures[K]>
+            ...args: DOMHTMLLabelElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22390,7 +22390,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLLegendElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLegendElement.SignalSignatures[K]>
+            ...args: DOMHTMLLegendElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22906,7 +22906,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLLinkElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLinkElement.SignalSignatures[K]>
+            ...args: DOMHTMLLinkElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23414,7 +23414,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLMapElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMapElement.SignalSignatures[K]>
+            ...args: DOMHTMLMapElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23895,7 +23895,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMarqueeElement.SignalSignatures[K]>
+            ...args: DOMHTMLMarqueeElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24382,7 +24382,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLMenuElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMenuElement.SignalSignatures[K]>
+            ...args: DOMHTMLMenuElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24881,7 +24881,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLMetaElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMetaElement.SignalSignatures[K]>
+            ...args: DOMHTMLMetaElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25380,7 +25380,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLModElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLModElement.SignalSignatures[K]>
+            ...args: DOMHTMLModElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25875,7 +25875,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLOListElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOListElement.SignalSignatures[K]>
+            ...args: DOMHTMLOListElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26426,7 +26426,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLObjectElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLObjectElement.SignalSignatures[K]>
+            ...args: DOMHTMLObjectElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26929,7 +26929,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOptGroupElement.SignalSignatures[K]>
+            ...args: DOMHTMLOptGroupElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27439,7 +27439,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLOptionElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOptionElement.SignalSignatures[K]>
+            ...args: DOMHTMLOptionElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27942,7 +27942,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOptionsCollection.SignalSignatures[K]>
+            ...args: DOMHTMLOptionsCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27990,7 +27990,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLParagraphElement.SignalSignatures[K]>
+            ...args: DOMHTMLParagraphElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28489,7 +28489,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLParamElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLParamElement.SignalSignatures[K]>
+            ...args: DOMHTMLParamElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28985,7 +28985,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLPreElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLPreElement.SignalSignatures[K]>
+            ...args: DOMHTMLPreElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -29474,7 +29474,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLQuoteElement.SignalSignatures[K]>
+            ...args: DOMHTMLQuoteElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -29982,7 +29982,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLScriptElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLScriptElement.SignalSignatures[K]>
+            ...args: DOMHTMLScriptElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -30515,7 +30515,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLSelectElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLSelectElement.SignalSignatures[K]>
+            ...args: DOMHTMLSelectElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -31034,7 +31034,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLStyleElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLStyleElement.SignalSignatures[K]>
+            ...args: DOMHTMLStyleElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -31526,7 +31526,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableCaptionElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableCaptionElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32074,7 +32074,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableCellElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableCellElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32609,7 +32609,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTableColElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableColElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableColElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33152,7 +33152,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTableElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33700,7 +33700,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableRowElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableRowElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34217,7 +34217,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableSectionElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableSectionElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34760,7 +34760,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTextAreaElement.SignalSignatures[K]>
+            ...args: DOMHTMLTextAreaElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -35271,7 +35271,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLTitleElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTitleElement.SignalSignatures[K]>
+            ...args: DOMHTMLTitleElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -35761,7 +35761,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMHTMLUListElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLUListElement.SignalSignatures[K]>
+            ...args: DOMHTMLUListElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36275,7 +36275,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMKeyboardEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMKeyboardEvent.SignalSignatures[K]>
+            ...args: DOMKeyboardEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36345,7 +36345,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMMediaList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMMediaList.SignalSignatures[K]>
+            ...args: DOMMediaList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36450,7 +36450,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMMouseEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMMouseEvent.SignalSignatures[K]>
+            ...args: DOMMouseEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36526,7 +36526,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMNamedNodeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNamedNodeMap.SignalSignatures[K]>
+            ...args: DOMNamedNodeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36628,7 +36628,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNode.SignalSignatures[K]>
+            ...args: DOMNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -37179,7 +37179,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMNodeIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNodeIterator.SignalSignatures[K]>
+            ...args: DOMNodeIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -37235,7 +37235,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMNodeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNodeList.SignalSignatures[K]>
+            ...args: DOMNodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -37283,7 +37283,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMObject.SignalSignatures[K]>
+            ...args: DOMObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -37325,7 +37325,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMProcessingInstruction.SignalSignatures[K]>
+            ...args: DOMProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -37834,7 +37834,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMRange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMRange.SignalSignatures[K]>
+            ...args: DOMRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -37925,7 +37925,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMStyleSheet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMStyleSheet.SignalSignatures[K]>
+            ...args: DOMStyleSheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -37976,7 +37976,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMStyleSheetList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMStyleSheetList.SignalSignatures[K]>
+            ...args: DOMStyleSheetList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38020,7 +38020,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMText.SignalSignatures[K]>
+            ...args: DOMText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38521,7 +38521,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMTreeWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMTreeWalker.SignalSignatures[K]>
+            ...args: DOMTreeWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38607,7 +38607,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMUIEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMUIEvent.SignalSignatures[K]>
+            ...args: DOMUIEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38669,7 +38669,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMWheelEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMWheelEvent.SignalSignatures[K]>
+            ...args: DOMWheelEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38722,7 +38722,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMXPathExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMXPathExpression.SignalSignatures[K]>
+            ...args: DOMXPathExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38792,7 +38792,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof DOMXPathResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMXPathResult.SignalSignatures[K]>
+            ...args: DOMXPathResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38836,7 +38836,10 @@ export namespace WebKit2WebExtension {
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -39008,7 +39011,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39123,7 +39126,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptWorld.SignalSignatures[K]>
+            ...args: ScriptWorld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -39194,7 +39197,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIRequest.SignalSignatures[K]>
+            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39317,7 +39320,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIResponse.SignalSignatures[K]>
+            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39439,7 +39442,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMessage.SignalSignatures[K]>
+            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -39519,7 +39522,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebEditor.SignalSignatures[K]>
+            ...args: WebEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39647,7 +39650,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof WebExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebExtension.SignalSignatures[K]>
+            ...args: WebExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39757,7 +39760,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebFormManager.SignalSignatures[K]>
+            ...args: WebFormManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -39827,7 +39830,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebHitTestResult.SignalSignatures[K]>
+            ...args: WebHitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39935,7 +39938,7 @@ export namespace WebKit2WebExtension {
         ): number;
         emit<K extends keyof WebPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebPage.SignalSignatures[K]>
+            ...args: WebPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -259,7 +259,7 @@ export namespace TrackerMiner {
         ): number;
         emit<K extends keyof Decorator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decorator.SignalSignatures[K]>
+            ...args: Decorator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -929,7 +929,7 @@ export namespace TrackerMiner {
         ): number;
         emit<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DecoratorFS.SignalSignatures[K]>
+            ...args: DecoratorFS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1459,7 +1459,7 @@ export namespace TrackerMiner {
         ): number;
         emit<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexingTree.SignalSignatures[K]>
+            ...args: IndexingTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1713,7 +1713,10 @@ export namespace TrackerMiner {
 
         connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
         connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
-        emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: Parameters<Miner.SignalSignatures[K]>): void;
+        emit<K extends keyof Miner.SignalSignatures>(
+            signal: K,
+            ...args: Miner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2464,7 +2467,7 @@ export namespace TrackerMiner {
         ): number;
         emit<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerFS.SignalSignatures[K]>
+            ...args: MinerFS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3308,7 +3311,7 @@ export namespace TrackerMiner {
         ): number;
         emit<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerOnline.SignalSignatures[K]>
+            ...args: MinerOnline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

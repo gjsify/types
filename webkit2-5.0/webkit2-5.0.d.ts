@@ -1854,7 +1854,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof AuthenticationRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthenticationRequest.SignalSignatures[K]>
+            ...args: AuthenticationRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2022,7 +2022,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof AutomationSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutomationSession.SignalSignatures[K]>
+            ...args: AutomationSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2108,7 +2108,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardList.SignalSignatures[K]>
+            ...args: BackForwardList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2199,7 +2199,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof BackForwardListItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardListItem.SignalSignatures[K]>
+            ...args: BackForwardListItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2292,7 +2292,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof ColorChooserRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorChooserRequest.SignalSignatures[K]>
+            ...args: ColorChooserRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2380,7 +2380,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2521,7 +2521,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2608,7 +2608,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof CookieManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieManager.SignalSignatures[K]>
+            ...args: CookieManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2919,7 +2919,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfoPermissionRequest.SignalSignatures[K]>
+            ...args: DeviceInfoPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3494,7 +3494,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof Download.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Download.SignalSignatures[K]>
+            ...args: Download.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3657,7 +3657,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof EditorState.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorState.SignalSignatures[K]>
+            ...args: EditorState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3750,7 +3750,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof FaviconDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FaviconDatabase.SignalSignatures[K]>
+            ...args: FaviconDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3948,7 +3948,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof FileChooserRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileChooserRequest.SignalSignatures[K]>
+            ...args: FileChooserRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4116,7 +4116,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof FindController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FindController.SignalSignatures[K]>
+            ...args: FindController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4264,7 +4264,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof FormSubmissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormSubmissionRequest.SignalSignatures[K]>
+            ...args: FormSubmissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4368,7 +4368,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof GeolocationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeolocationManager.SignalSignatures[K]>
+            ...args: GeolocationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4446,7 +4446,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeolocationPermissionRequest.SignalSignatures[K]>
+            ...args: GeolocationPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5029,7 +5029,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5200,7 +5200,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof InputMethodContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMethodContext.SignalSignatures[K]>
+            ...args: InputMethodContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5381,7 +5381,9 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K]>
+            ...args: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -5895,7 +5897,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaKeySystemPermissionRequest.SignalSignatures[K]>
+            ...args: MediaKeySystemPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6470,7 +6472,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof NavigationPolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NavigationPolicyDecision.SignalSignatures[K]>
+            ...args: NavigationPolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6577,7 +6579,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notification.SignalSignatures[K]>
+            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6655,7 +6657,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof NotificationPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NotificationPermissionRequest.SignalSignatures[K]>
+            ...args: NotificationPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7161,7 +7163,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof OptionMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionMenu.SignalSignatures[K]>
+            ...args: OptionMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7241,7 +7243,10 @@ export namespace WebKit2 {
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7310,7 +7315,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointerLockPermissionRequest.SignalSignatures[K]>
+            ...args: PointerLockPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7814,7 +7819,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof PolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PolicyDecision.SignalSignatures[K]>
+            ...args: PolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7917,7 +7922,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof PrintCustomWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintCustomWidget.SignalSignatures[K]>
+            ...args: PrintCustomWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -8044,7 +8049,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+            ...args: PrintOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8172,7 +8177,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof ResponsePolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResponsePolicyDecision.SignalSignatures[K]>
+            ...args: ResponsePolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8242,7 +8247,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof SecurityManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecurityManager.SignalSignatures[K]>
+            ...args: SecurityManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9383,7 +9388,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10079,7 +10084,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIRequest.SignalSignatures[K]>
+            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10202,7 +10207,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIResponse.SignalSignatures[K]>
+            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10292,7 +10297,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof URISchemeRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URISchemeRequest.SignalSignatures[K]>
+            ...args: URISchemeRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10411,7 +10416,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof URISchemeResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URISchemeResponse.SignalSignatures[K]>
+            ...args: URISchemeResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10497,7 +10502,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof UserContentFilterStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserContentFilterStore.SignalSignatures[K]>
+            ...args: UserContentFilterStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10847,7 +10852,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof UserContentManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserContentManager.SignalSignatures[K]>
+            ...args: UserContentManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11052,7 +11057,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMediaPermissionRequest.SignalSignatures[K]>
+            ...args: UserMediaPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -11587,7 +11592,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMessage.SignalSignatures[K]>
+            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11790,7 +11795,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebContext.SignalSignatures[K]>
+            ...args: WebContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12393,7 +12398,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebInspector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebInspector.SignalSignatures[K]>
+            ...args: WebInspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12547,7 +12552,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebResource.SignalSignatures[K]>
+            ...args: WebResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13219,7 +13224,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebView.SignalSignatures[K]>
+            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -14828,7 +14833,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebViewBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebViewBase.SignalSignatures[K]>
+            ...args: WebViewBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -15595,7 +15600,9 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsiteDataAccessPermissionRequest.SignalSignatures[K]>
+            ...args: WebsiteDataAccessPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -16268,7 +16275,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebsiteDataManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsiteDataManager.SignalSignatures[K]>
+            ...args: WebsiteDataManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16678,7 +16685,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WebsitePolicies.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsitePolicies.SignalSignatures[K]>
+            ...args: WebsitePolicies.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16845,7 +16852,7 @@ export namespace WebKit2 {
         ): number;
         emit<K extends keyof WindowProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowProperties.SignalSignatures[K]>
+            ...args: WindowProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -85,7 +85,10 @@ export namespace GtkChamplain {
 
         connect<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
         connect_after<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
-        emit<K extends keyof Embed.SignalSignatures>(signal: K, ...args: Parameters<Embed.SignalSignatures[K]>): void;
+        emit<K extends keyof Embed.SignalSignatures>(
+            signal: K,
+            ...args: Embed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

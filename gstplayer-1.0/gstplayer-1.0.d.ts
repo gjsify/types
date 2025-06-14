@@ -302,7 +302,10 @@ export namespace GstPlayer {
 
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
-        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
+        emit<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            ...args: Player.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -602,7 +605,7 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerAudioInfo.SignalSignatures[K]>
+            ...args: PlayerAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -652,7 +655,9 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerGMainContextSignalDispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerGMainContextSignalDispatcher.SignalSignatures[K]>
+            ...args: PlayerGMainContextSignalDispatcher.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Static methods
@@ -1140,7 +1145,7 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerMediaInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerMediaInfo.SignalSignatures[K]>
+            ...args: PlayerMediaInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1203,7 +1208,7 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerStreamInfo.SignalSignatures[K]>
+            ...args: PlayerStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1262,7 +1267,7 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerSubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerSubtitleInfo.SignalSignatures[K]>
+            ...args: PlayerSubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1303,7 +1308,7 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerVideoInfo.SignalSignatures[K]>
+            ...args: PlayerVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1365,7 +1370,7 @@ export namespace GstPlayer {
         ): number;
         emit<K extends keyof PlayerVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerVideoOverlayVideoRenderer.SignalSignatures[K]>
+            ...args: PlayerVideoOverlayVideoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

@@ -347,7 +347,7 @@ export namespace LightDM {
         ): number;
         emit<K extends keyof Greeter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Greeter.SignalSignatures[K]>
+            ...args: Greeter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -721,7 +721,7 @@ export namespace LightDM {
         ): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -787,7 +787,10 @@ export namespace LightDM {
 
         connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
         connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
-        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
+        emit<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            ...args: Layout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -849,7 +852,7 @@ export namespace LightDM {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -954,7 +957,10 @@ export namespace LightDM {
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1093,7 +1099,7 @@ export namespace LightDM {
         ): number;
         emit<K extends keyof UserList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserList.SignalSignatures[K]>
+            ...args: UserList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

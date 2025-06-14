@@ -375,7 +375,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayList.SignalSignatures[K]>
+            ...args: ArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -869,7 +869,10 @@ export namespace GXml {
 
         connect<K extends keyof Attr.SignalSignatures>(signal: K, callback: Attr.SignalSignatures[K]): number;
         connect_after<K extends keyof Attr.SignalSignatures>(signal: K, callback: Attr.SignalSignatures[K]): number;
-        emit<K extends keyof Attr.SignalSignatures>(signal: K, ...args: Parameters<Attr.SignalSignatures[K]>): void;
+        emit<K extends keyof Attr.SignalSignatures>(
+            signal: K,
+            ...args: Attr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1375,7 +1378,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof BaseCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseCollection.SignalSignatures[K]>
+            ...args: BaseCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1954,7 +1957,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CssSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssSelector.SignalSignatures[K]>
+            ...args: CssSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2019,7 +2022,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CssElementSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssElementSelector.SignalSignatures[K]>
+            ...args: CssElementSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2079,7 +2082,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CssAttributeSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssAttributeSelector.SignalSignatures[K]>
+            ...args: CssAttributeSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2128,7 +2131,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CssNotSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssNotSelector.SignalSignatures[K]>
+            ...args: CssNotSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2174,7 +2177,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CssSelectorParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssSelectorParser.SignalSignatures[K]>
+            ...args: CssSelectorParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2229,7 +2232,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2929,7 +2932,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Implementation.SignalSignatures[K]>
+            ...args: Implementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3437,7 +3440,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DocumentType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentType.SignalSignatures[K]>
+            ...args: DocumentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3936,7 +3939,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentFragment.SignalSignatures[K]>
+            ...args: DocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4438,7 +4441,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomNodeFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomNodeFilter.SignalSignatures[K]>
+            ...args: DomNodeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4474,7 +4477,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomElementList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomElementList.SignalSignatures[K]>
+            ...args: DomElementList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4977,7 +4980,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomEventInit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomEventInit.SignalSignatures[K]>
+            ...args: DomEventInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5027,7 +5030,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomCustomEventInit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomCustomEventInit.SignalSignatures[K]>
+            ...args: DomCustomEventInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5075,7 +5078,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomTimeStamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomTimeStamp.SignalSignatures[K]>
+            ...args: DomTimeStamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5157,7 +5160,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomMutationObserverInit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomMutationObserverInit.SignalSignatures[K]>
+            ...args: DomMutationObserverInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5210,7 +5213,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DomErrorName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomErrorName.SignalSignatures[K]>
+            ...args: DomErrorName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5273,7 +5276,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof Element.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Element.SignalSignatures[K]>
+            ...args: Element.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6049,7 +6052,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof ElementAttributes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementAttributes.SignalSignatures[K]>
+            ...args: ElementAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6549,7 +6552,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof Enumeration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Enumeration.SignalSignatures[K]>
+            ...args: Enumeration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6587,7 +6590,10 @@ export namespace GXml {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get etype(): string;
@@ -7112,7 +7118,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CustomEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CustomEvent.SignalSignatures[K]>
+            ...args: CustomEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7150,7 +7156,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMap.SignalSignatures[K]>
+            ...args: HashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7652,7 +7658,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof HashPairedMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashPairedMap.SignalSignatures[K]>
+            ...args: HashPairedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8176,7 +8182,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof HashThreeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashThreeMap.SignalSignatures[K]>
+            ...args: HashThreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8715,7 +8721,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof HTMLCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTMLCollection.SignalSignatures[K]>
+            ...args: HTMLCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9215,7 +9221,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof HtmlDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HtmlDocument.SignalSignatures[K]>
+            ...args: HtmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9256,7 +9262,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof HtmlElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HtmlElement.SignalSignatures[K]>
+            ...args: HtmlElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -9292,7 +9298,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof LXPathObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LXPathObject.SignalSignatures[K]>
+            ...args: LXPathObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9785,7 +9791,10 @@ export namespace GXml {
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get node_type(): DomNodeNodeType;
@@ -10354,7 +10363,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof NodeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NodeList.SignalSignatures[K]>
+            ...args: NodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -10840,7 +10849,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof NodeIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NodeIterator.SignalSignatures[K]>
+            ...args: NodeIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -11345,7 +11354,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof BaseProperty.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseProperty.SignalSignatures[K]>
+            ...args: BaseProperty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -11828,7 +11837,10 @@ export namespace GXml {
 
         connect<K extends keyof String.SignalSignatures>(signal: K, callback: String.SignalSignatures[K]): number;
         connect_after<K extends keyof String.SignalSignatures>(signal: K, callback: String.SignalSignatures[K]): number;
-        emit<K extends keyof String.SignalSignatures>(signal: K, ...args: Parameters<String.SignalSignatures[K]>): void;
+        emit<K extends keyof String.SignalSignatures>(
+            signal: K,
+            ...args: String.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace ArrayString {
@@ -11863,7 +11875,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof ArrayString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayString.SignalSignatures[K]>
+            ...args: ArrayString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11920,7 +11932,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdArrayString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdArrayString.SignalSignatures[K]>
+            ...args: XsdArrayString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11963,7 +11975,10 @@ export namespace GXml {
 
         connect<K extends keyof Double.SignalSignatures>(signal: K, callback: Double.SignalSignatures[K]): number;
         connect_after<K extends keyof Double.SignalSignatures>(signal: K, callback: Double.SignalSignatures[K]): number;
-        emit<K extends keyof Double.SignalSignatures>(signal: K, ...args: Parameters<Double.SignalSignatures[K]>): void;
+        emit<K extends keyof Double.SignalSignatures>(
+            signal: K,
+            ...args: Double.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11997,7 +12012,10 @@ export namespace GXml {
 
         connect<K extends keyof Float.SignalSignatures>(signal: K, callback: Float.SignalSignatures[K]): number;
         connect_after<K extends keyof Float.SignalSignatures>(signal: K, callback: Float.SignalSignatures[K]): number;
-        emit<K extends keyof Float.SignalSignatures>(signal: K, ...args: Parameters<Float.SignalSignatures[K]>): void;
+        emit<K extends keyof Float.SignalSignatures>(
+            signal: K,
+            ...args: Float.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -12029,7 +12047,10 @@ export namespace GXml {
 
         connect<K extends keyof Int.SignalSignatures>(signal: K, callback: Int.SignalSignatures[K]): number;
         connect_after<K extends keyof Int.SignalSignatures>(signal: K, callback: Int.SignalSignatures[K]): number;
-        emit<K extends keyof Int.SignalSignatures>(signal: K, ...args: Parameters<Int.SignalSignatures[K]>): void;
+        emit<K extends keyof Int.SignalSignatures>(
+            signal: K,
+            ...args: Int.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -12066,7 +12087,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof Boolean.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Boolean.SignalSignatures[K]>
+            ...args: Boolean.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12127,7 +12148,10 @@ export namespace GXml {
 
         connect<K extends keyof Enum.SignalSignatures>(signal: K, callback: Enum.SignalSignatures[K]): number;
         connect_after<K extends keyof Enum.SignalSignatures>(signal: K, callback: Enum.SignalSignatures[K]): number;
-        emit<K extends keyof Enum.SignalSignatures>(signal: K, ...args: Parameters<Enum.SignalSignatures[K]>): void;
+        emit<K extends keyof Enum.SignalSignatures>(
+            signal: K,
+            ...args: Enum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -12169,7 +12193,10 @@ export namespace GXml {
 
         connect<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
         connect_after<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
-        emit<K extends keyof Date.SignalSignatures>(signal: K, ...args: Parameters<Date.SignalSignatures[K]>): void;
+        emit<K extends keyof Date.SignalSignatures>(
+            signal: K,
+            ...args: Date.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -12213,7 +12240,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof DateTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DateTime.SignalSignatures[K]>
+            ...args: DateTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12248,7 +12275,10 @@ export namespace GXml {
 
         connect<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
         connect_after<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
-        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: Parameters<Range.SignalSignatures[K]>): void;
+        emit<K extends keyof Range.SignalSignatures>(
+            signal: K,
+            ...args: Range.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get start_container(): DomNode;
@@ -12794,7 +12824,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof SettableTokenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettableTokenList.SignalSignatures[K]>
+            ...args: SettableTokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -13278,7 +13308,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof StringRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringRef.SignalSignatures[K]>
+            ...args: StringRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -13769,7 +13799,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof CharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CharacterData.SignalSignatures[K]>
+            ...args: CharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14252,7 +14282,10 @@ export namespace GXml {
 
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
+        emit<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get data(): string;
@@ -14318,7 +14351,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof ProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProcessingInstruction.SignalSignatures[K]>
+            ...args: ProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14381,7 +14414,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof Comment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Comment.SignalSignatures[K]>
+            ...args: Comment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14441,7 +14474,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof TokenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TokenList.SignalSignatures[K]>
+            ...args: TokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14953,7 +14986,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof TreeWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeWalker.SignalSignatures[K]>
+            ...args: TreeWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -15457,7 +15490,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XAttribute.SignalSignatures[K]>
+            ...args: XAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -15965,7 +15998,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XCharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XCharacterData.SignalSignatures[K]>
+            ...args: XCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16448,7 +16481,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XChildNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XChildNode.SignalSignatures[K]>
+            ...args: XChildNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -16927,7 +16960,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XNonDocumentChildNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XNonDocumentChildNode.SignalSignatures[K]>
+            ...args: XNonDocumentChildNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -17414,7 +17447,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XComment.SignalSignatures[K]>
+            ...args: XComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -17523,7 +17556,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XDocument.SignalSignatures[K]>
+            ...args: XDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18256,7 +18289,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XElement.SignalSignatures[K]>
+            ...args: XElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18978,7 +19011,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XHashMapAttr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XHashMapAttr.SignalSignatures[K]>
+            ...args: XHashMapAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -19476,7 +19509,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XHashMapAttrEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XHashMapAttrEntry.SignalSignatures[K]>
+            ...args: XHashMapAttrEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -19512,7 +19545,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XHashMapAttrIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XHashMapAttrIterator.SignalSignatures[K]>
+            ...args: XHashMapAttrIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -20029,7 +20062,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XHtmlDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XHtmlDocument.SignalSignatures[K]>
+            ...args: XHtmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20519,7 +20552,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XListChildren.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XListChildren.SignalSignatures[K]>
+            ...args: XListChildren.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -21028,7 +21061,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XListChildrenIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XListChildrenIterator.SignalSignatures[K]>
+            ...args: XListChildrenIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -21587,7 +21620,10 @@ export namespace GXml {
 
         connect<K extends keyof XNode.SignalSignatures>(signal: K, callback: XNode.SignalSignatures[K]): number;
         connect_after<K extends keyof XNode.SignalSignatures>(signal: K, callback: XNode.SignalSignatures[K]): number;
-        emit<K extends keyof XNode.SignalSignatures>(signal: K, ...args: Parameters<XNode.SignalSignatures[K]>): void;
+        emit<K extends keyof XNode.SignalSignatures>(
+            signal: K,
+            ...args: XNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -22188,7 +22224,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XParser.SignalSignatures[K]>
+            ...args: XParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22810,7 +22846,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XProcessingInstruction.SignalSignatures[K]>
+            ...args: XProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22893,7 +22929,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdSchema.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdSchema.SignalSignatures[K]>
+            ...args: XsdSchema.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22960,7 +22996,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdSimpleType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdSimpleType.SignalSignatures[K]>
+            ...args: XsdSimpleType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23018,7 +23054,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeDefinition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeDefinition.SignalSignatures[K]>
+            ...args: XsdTypeDefinition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23059,7 +23095,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeList.SignalSignatures[K]>
+            ...args: XsdTypeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23095,7 +23131,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeUnion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeUnion.SignalSignatures[K]>
+            ...args: XsdTypeUnion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23153,7 +23189,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestriction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestriction.SignalSignatures[K]>
+            ...args: XsdTypeRestriction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23207,7 +23243,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionDef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionDef.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionDef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23248,7 +23284,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionMinExclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionMinExclusive.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionMinExclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23284,7 +23320,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionMinInclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionMinInclusive.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionMinInclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23320,7 +23356,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionMaxExclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionMaxExclusive.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionMaxExclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23356,7 +23392,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionMaxInclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionMaxInclusive.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionMaxInclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23392,7 +23428,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionTotalDigits.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionTotalDigits.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionTotalDigits.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23428,7 +23464,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionFractionDigits.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionFractionDigits.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionFractionDigits.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23464,7 +23500,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionLength.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionLength.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23500,7 +23536,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionMinLength.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionMinLength.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionMinLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23536,7 +23572,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionMaxLength.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionMaxLength.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionMaxLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23579,7 +23615,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionEnumeration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionEnumeration.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionEnumeration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23630,7 +23666,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionWhiteSpace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionWhiteSpace.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionWhiteSpace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23673,7 +23709,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23709,7 +23745,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionPattern.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionPattern.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionPattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23745,7 +23781,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionAssertion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionAssertion.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionAssertion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -23781,7 +23817,9 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdTypeRestrictionExplicitTimezone.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdTypeRestrictionExplicitTimezone.SignalSignatures[K]>
+            ...args: XsdTypeRestrictionExplicitTimezone.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
     }
 
@@ -23856,7 +23894,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdComplexType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdComplexType.SignalSignatures[K]>
+            ...args: XsdComplexType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23918,7 +23956,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdExtension.SignalSignatures[K]>
+            ...args: XsdExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24035,7 +24073,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdElement.SignalSignatures[K]>
+            ...args: XsdElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24108,7 +24146,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdAnnotation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdAnnotation.SignalSignatures[K]>
+            ...args: XsdAnnotation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24151,7 +24189,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdBaseType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdBaseType.SignalSignatures[K]>
+            ...args: XsdBaseType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24199,7 +24237,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdBaseContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdBaseContent.SignalSignatures[K]>
+            ...args: XsdBaseContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24240,7 +24278,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdSimpleContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdSimpleContent.SignalSignatures[K]>
+            ...args: XsdSimpleContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24276,7 +24314,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdComplexContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdComplexContent.SignalSignatures[K]>
+            ...args: XsdComplexContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24312,7 +24350,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdOpenContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdOpenContent.SignalSignatures[K]>
+            ...args: XsdOpenContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24355,7 +24393,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdBaseAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdBaseAttribute.SignalSignatures[K]>
+            ...args: XsdBaseAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24396,7 +24434,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdAttribute.SignalSignatures[K]>
+            ...args: XsdAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24432,7 +24470,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdAttributeGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdAttributeGroup.SignalSignatures[K]>
+            ...args: XsdAttributeGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24471,7 +24509,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdList.SignalSignatures[K]>
+            ...args: XsdList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24513,7 +24551,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdListElements.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdListElements.SignalSignatures[K]>
+            ...args: XsdListElements.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24549,7 +24587,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdListSimpleTypes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdListSimpleTypes.SignalSignatures[K]>
+            ...args: XsdListSimpleTypes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24585,7 +24623,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdListComplexTypes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdListComplexTypes.SignalSignatures[K]>
+            ...args: XsdListComplexTypes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24621,7 +24659,9 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdListTypeRestrictionEnumerations.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdListTypeRestrictionEnumerations.SignalSignatures[K]>
+            ...args: XsdListTypeRestrictionEnumerations.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
     }
 
@@ -24657,7 +24697,7 @@ export namespace GXml {
         ): number;
         emit<K extends keyof XsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K]>
+            ...args: XsdListTypeRestrictionWhiteSpaces.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24688,7 +24728,10 @@ export namespace GXml {
 
         connect<K extends keyof XText.SignalSignatures>(signal: K, callback: XText.SignalSignatures[K]): number;
         connect_after<K extends keyof XText.SignalSignatures>(signal: K, callback: XText.SignalSignatures[K]): number;
-        emit<K extends keyof XText.SignalSignatures>(signal: K, ...args: Parameters<XText.SignalSignatures[K]>): void;
+        emit<K extends keyof XText.SignalSignatures>(
+            signal: K,
+            ...args: XText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get data(): string;

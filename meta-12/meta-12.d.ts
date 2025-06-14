@@ -1945,7 +1945,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2550,7 +2550,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Background.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Background.SignalSignatures[K]>
+            ...args: Background.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2637,7 +2637,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof BackgroundActor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundActor.SignalSignatures[K]>
+            ...args: BackgroundActor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3467,7 +3467,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof BackgroundContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundContent.SignalSignatures[K]>
+            ...args: BackgroundContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4028,7 +4028,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof BackgroundGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundGroup.SignalSignatures[K]>
+            ...args: BackgroundGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4818,7 +4818,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof BackgroundImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundImage.SignalSignatures[K]>
+            ...args: BackgroundImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4869,7 +4869,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof BackgroundImageCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundImageCache.SignalSignatures[K]>
+            ...args: BackgroundImageCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4965,7 +4965,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Barrier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Barrier.SignalSignatures[K]>
+            ...args: Barrier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5546,7 +5546,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Compositor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Compositor.SignalSignatures[K]>
+            ...args: Compositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5607,7 +5607,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5702,7 +5702,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CursorTracker.SignalSignatures[K]>
+            ...args: CursorTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5926,7 +5926,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6170,7 +6170,10 @@ export namespace Meta {
 
         connect<K extends keyof Dnd.SignalSignatures>(signal: K, callback: Dnd.SignalSignatures[K]): number;
         connect_after<K extends keyof Dnd.SignalSignatures>(signal: K, callback: Dnd.SignalSignatures[K]): number;
-        emit<K extends keyof Dnd.SignalSignatures>(signal: K, ...args: Parameters<Dnd.SignalSignatures[K]>): void;
+        emit<K extends keyof Dnd.SignalSignatures>(
+            signal: K,
+            ...args: Dnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace IdleMonitor {
@@ -6212,7 +6215,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6251,7 +6254,10 @@ export namespace Meta {
 
         connect<K extends keyof Laters.SignalSignatures>(signal: K, callback: Laters.SignalSignatures[K]): number;
         connect_after<K extends keyof Laters.SignalSignatures>(signal: K, callback: Laters.SignalSignatures[K]): number;
-        emit<K extends keyof Laters.SignalSignatures>(signal: K, ...args: Parameters<Laters.SignalSignatures[K]>): void;
+        emit<K extends keyof Laters.SignalSignatures>(
+            signal: K,
+            ...args: Laters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6316,7 +6322,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof LaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LaunchContext.SignalSignatures[K]>
+            ...args: LaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6407,7 +6413,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof MonitorManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonitorManager.SignalSignatures[K]>
+            ...args: MonitorManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6446,7 +6452,10 @@ export namespace Meta {
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6586,7 +6595,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof RemoteAccessController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteAccessController.SignalSignatures[K]>
+            ...args: RemoteAccessController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6650,7 +6659,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof RemoteAccessHandle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteAccessHandle.SignalSignatures[K]>
+            ...args: RemoteAccessHandle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6706,7 +6715,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Selection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Selection.SignalSignatures[K]>
+            ...args: Selection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6834,7 +6843,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof SelectionSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SelectionSource.SignalSignatures[K]>
+            ...args: SelectionSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6919,7 +6928,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof SelectionSourceMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SelectionSourceMemory.SignalSignatures[K]>
+            ...args: SelectionSourceMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6968,7 +6977,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof ShadowFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShadowFactory.SignalSignatures[K]>
+            ...args: ShadowFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7051,7 +7060,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof ShapedTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShapedTexture.SignalSignatures[K]>
+            ...args: ShapedTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7592,7 +7601,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoundPlayer.SignalSignatures[K]>
+            ...args: SoundPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7651,7 +7660,10 @@ export namespace Meta {
 
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
+        emit<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -8299,7 +8311,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof StartupNotification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StartupNotification.SignalSignatures[K]>
+            ...args: StartupNotification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8383,7 +8395,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof StartupSequence.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StartupSequence.SignalSignatures[K]>
+            ...args: StartupSequence.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8451,7 +8463,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof WaylandClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandClient.SignalSignatures[K]>
+            ...args: WaylandClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8638,7 +8650,10 @@ export namespace Meta {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -9578,7 +9593,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof WindowActor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowActor.SignalSignatures[K]>
+            ...args: WindowActor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10405,7 +10420,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof WindowGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowGroup.SignalSignatures[K]>
+            ...args: WindowGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -11208,7 +11223,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof Workspace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workspace.SignalSignatures[K]>
+            ...args: Workspace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11349,7 +11364,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof WorkspaceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManager.SignalSignatures[K]>
+            ...args: WorkspaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11431,7 +11446,7 @@ export namespace Meta {
         ): number;
         emit<K extends keyof X11Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Display.SignalSignatures[K]>
+            ...args: X11Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

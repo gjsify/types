@@ -71,7 +71,7 @@ export namespace Translit {
         ): number;
         emit<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transliterator.SignalSignatures[K]>
+            ...args: Transliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

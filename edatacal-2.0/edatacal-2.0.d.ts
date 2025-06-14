@@ -144,7 +144,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof CalBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackend.SignalSignatures[K]>
+            ...args: CalBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1985,7 +1985,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof CalBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackendFactory.SignalSignatures[K]>
+            ...args: CalBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2021,7 +2021,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof CalBackendSExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackendSExp.SignalSignatures[K]>
+            ...args: CalBackendSExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2097,7 +2097,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof CalBackendSync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackendSync.SignalSignatures[K]>
+            ...args: CalBackendSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2834,7 +2834,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof CalCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalCache.SignalSignatures[K]>
+            ...args: CalCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3776,7 +3776,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof CalMetaBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalMetaBackend.SignalSignatures[K]>
+            ...args: CalMetaBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4924,7 +4924,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof DataCal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCal.SignalSignatures[K]>
+            ...args: DataCal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5641,7 +5641,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof DataCalFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCalFactory.SignalSignatures[K]>
+            ...args: DataCalFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6222,7 +6222,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof DataCalView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCalView.SignalSignatures[K]>
+            ...args: DataCalView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6914,7 +6914,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof IntervalTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntervalTree.SignalSignatures[K]>
+            ...args: IntervalTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6958,7 +6958,7 @@ export namespace EDataCal {
         ): number;
         emit<K extends keyof SubprocessCalFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessCalFactory.SignalSignatures[K]>
+            ...args: SubprocessCalFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

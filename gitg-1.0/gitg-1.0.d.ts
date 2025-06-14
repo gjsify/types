@@ -269,7 +269,10 @@ export namespace Gitg {
 
         connect<K extends keyof Async.SignalSignatures>(signal: K, callback: Async.SignalSignatures[K]): number;
         connect_after<K extends keyof Async.SignalSignatures>(signal: K, callback: Async.SignalSignatures[K]): number;
-        emit<K extends keyof Async.SignalSignatures>(signal: K, ...args: Parameters<Async.SignalSignatures[K]>): void;
+        emit<K extends keyof Async.SignalSignatures>(
+            signal: K,
+            ...args: Async.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -326,7 +329,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof AuthenticationDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthenticationDialog.SignalSignatures[K]>
+            ...args: AuthenticationDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -366,7 +369,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvatarCache.SignalSignatures[K]>
+            ...args: AvatarCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -426,7 +429,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof BranchBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BranchBase.SignalSignatures[K]>
+            ...args: BranchBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -694,7 +697,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof CellRendererLanes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererLanes.SignalSignatures[K]>
+            ...args: CellRendererLanes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -750,7 +753,10 @@ export namespace Gitg {
 
         connect<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
         connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
-        emit<K extends keyof Color.SignalSignatures>(signal: K, ...args: Parameters<Color.SignalSignatures[K]>): void;
+        emit<K extends keyof Color.SignalSignatures>(
+            signal: K,
+            ...args: Color.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -804,7 +810,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof CommitListView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommitListView.SignalSignatures[K]>
+            ...args: CommitListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1329,7 +1335,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof CommitModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommitModel.SignalSignatures[K]>
+            ...args: CommitModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2243,7 +2249,10 @@ export namespace Gitg {
 
         connect<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
         connect_after<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
-        emit<K extends keyof Commit.SignalSignatures>(signal: K, ...args: Parameters<Commit.SignalSignatures[K]>): void;
+        emit<K extends keyof Commit.SignalSignatures>(
+            signal: K,
+            ...args: Commit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2297,7 +2306,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof CredentialsManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredentialsManager.SignalSignatures[K]>
+            ...args: CredentialsManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2343,7 +2352,10 @@ export namespace Gitg {
 
         connect<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
         connect_after<K extends keyof Date.SignalSignatures>(signal: K, callback: Date.SignalSignatures[K]): number;
-        emit<K extends keyof Date.SignalSignatures>(signal: K, ...args: Parameters<Date.SignalSignatures[K]>): void;
+        emit<K extends keyof Date.SignalSignatures>(
+            signal: K,
+            ...args: Date.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2922,7 +2934,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof DiffStat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffStat.SignalSignatures[K]>
+            ...args: DiffStat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2981,7 +2993,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof DiffViewOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffViewOptions.SignalSignatures[K]>
+            ...args: DiffViewOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3119,7 +3131,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof DiffView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffView.SignalSignatures[K]>
+            ...args: DiffView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3207,7 +3219,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof FontManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontManager.SignalSignatures[K]>
+            ...args: FontManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3238,7 +3250,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof GPGUtils.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GPGUtils.SignalSignatures[K]>
+            ...args: GPGUtils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3288,7 +3300,10 @@ export namespace Gitg {
 
         connect<K extends keyof Hook.SignalSignatures>(signal: K, callback: Hook.SignalSignatures[K]): number;
         connect_after<K extends keyof Hook.SignalSignatures>(signal: K, callback: Hook.SignalSignatures[K]): number;
-        emit<K extends keyof Hook.SignalSignatures>(signal: K, ...args: Parameters<Hook.SignalSignatures[K]>): void;
+        emit<K extends keyof Hook.SignalSignatures>(
+            signal: K,
+            ...args: Hook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3338,7 +3353,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof LabelRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LabelRenderer.SignalSignatures[K]>
+            ...args: LabelRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3424,7 +3439,10 @@ export namespace Gitg {
 
         connect<K extends keyof Lanes.SignalSignatures>(signal: K, callback: Lanes.SignalSignatures[K]): number;
         connect_after<K extends keyof Lanes.SignalSignatures>(signal: K, callback: Lanes.SignalSignatures[K]): number;
-        emit<K extends keyof Lanes.SignalSignatures>(signal: K, ...args: Parameters<Lanes.SignalSignatures[K]>): void;
+        emit<K extends keyof Lanes.SignalSignatures>(
+            signal: K,
+            ...args: Lanes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3474,7 +3492,10 @@ export namespace Gitg {
 
         connect<K extends keyof Lane.SignalSignatures>(signal: K, callback: Lane.SignalSignatures[K]): number;
         connect_after<K extends keyof Lane.SignalSignatures>(signal: K, callback: Lane.SignalSignatures[K]): number;
-        emit<K extends keyof Lane.SignalSignatures>(signal: K, ...args: Parameters<Lane.SignalSignatures[K]>): void;
+        emit<K extends keyof Lane.SignalSignatures>(
+            signal: K,
+            ...args: Lane.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3521,7 +3542,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof ProgressBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressBin.SignalSignatures[K]>
+            ...args: ProgressBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3559,7 +3580,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof RefBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RefBase.SignalSignatures[K]>
+            ...args: RefBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3799,7 +3820,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof ParsedRefName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParsedRefName.SignalSignatures[K]>
+            ...args: ParsedRefName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3872,7 +3893,10 @@ export namespace Gitg {
         // Signals
 
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
+        emit<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4006,7 +4030,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof RepositoryListBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepositoryListBox.SignalSignatures[K]>
+            ...args: RepositoryListBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4116,7 +4140,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof RepositoryListBoxRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepositoryListBoxRow.SignalSignatures[K]>
+            ...args: RepositoryListBoxRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4182,7 +4206,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4248,7 +4272,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4294,7 +4318,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof SidebarStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SidebarStore.SignalSignatures[K]>
+            ...args: SidebarStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4345,7 +4369,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SidebarStoreSidebarText.SignalSignatures[K]>
+            ...args: SidebarStoreSidebarText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4842,7 +4866,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SidebarStoreSidebarHeader.SignalSignatures[K]>
+            ...args: SidebarStoreSidebarHeader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4899,7 +4923,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof Sidebar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sidebar.SignalSignatures[K]>
+            ...args: Sidebar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4963,7 +4987,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof StageStatusFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageStatusFile.SignalSignatures[K]>
+            ...args: StageStatusFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5477,7 +5501,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof StageStatusSubmodule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageStatusSubmodule.SignalSignatures[K]>
+            ...args: StageStatusSubmodule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5979,7 +6003,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof StageStatusEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageStatusEnumerator.SignalSignatures[K]>
+            ...args: StageStatusEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6020,7 +6044,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof PatchSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PatchSet.SignalSignatures[K]>
+            ...args: PatchSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6050,7 +6074,10 @@ export namespace Gitg {
 
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
+        emit<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6277,7 +6304,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof TextConv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextConv.SignalSignatures[K]>
+            ...args: TextConv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6315,7 +6342,10 @@ export namespace Gitg {
 
         connect<K extends keyof Theme.SignalSignatures>(signal: K, callback: Theme.SignalSignatures[K]): number;
         connect_after<K extends keyof Theme.SignalSignatures>(signal: K, callback: Theme.SignalSignatures[K]): number;
-        emit<K extends keyof Theme.SignalSignatures>(signal: K, ...args: Parameters<Theme.SignalSignatures[K]>): void;
+        emit<K extends keyof Theme.SignalSignatures>(
+            signal: K,
+            ...args: Theme.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6348,7 +6378,10 @@ export namespace Gitg {
 
         connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
         connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
-        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: Parameters<Utils.SignalSignatures[K]>): void;
+        emit<K extends keyof Utils.SignalSignatures>(
+            signal: K,
+            ...args: Utils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6390,7 +6423,7 @@ export namespace Gitg {
         ): number;
         emit<K extends keyof WhenMapped.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WhenMapped.SignalSignatures[K]>
+            ...args: WhenMapped.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

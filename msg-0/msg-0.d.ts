@@ -124,7 +124,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -189,7 +189,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof ContactService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactService.SignalSignatures[K]>
+            ...args: ContactService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -247,7 +247,10 @@ export namespace Msg {
 
         connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
         connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
-        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: Parameters<Drive.SignalSignatures[K]>): void;
+        emit<K extends keyof Drive.SignalSignatures>(
+            signal: K,
+            ...args: Drive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -322,7 +325,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof DriveItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveItem.SignalSignatures[K]>
+            ...args: DriveItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -428,7 +431,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof DriveItemFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveItemFile.SignalSignatures[K]>
+            ...args: DriveItemFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -479,7 +482,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof DriveItemFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveItemFolder.SignalSignatures[K]>
+            ...args: DriveItemFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -515,7 +518,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof DriveService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveService.SignalSignatures[K]>
+            ...args: DriveService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -668,7 +671,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1188,7 +1191,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1784,7 +1787,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof MailFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MailFolder.SignalSignatures[K]>
+            ...args: MailFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1830,7 +1833,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1874,7 +1877,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof MessageService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageService.SignalSignatures[K]>
+            ...args: MessageService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1964,7 +1967,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Authorizer.SignalSignatures[K]>
+            ...args: OAuth2Authorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2487,7 +2490,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2591,7 +2594,10 @@ export namespace Msg {
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2630,7 +2636,7 @@ export namespace Msg {
         ): number;
         emit<K extends keyof UserService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserService.SignalSignatures[K]>
+            ...args: UserService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

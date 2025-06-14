@@ -273,7 +273,7 @@ export namespace GstBadAudio {
         ): number;
         emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NonstreamAudioDecoder.SignalSignatures[K]>
+            ...args: NonstreamAudioDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -446,7 +446,7 @@ export namespace GstBadAudio {
         ): number;
         emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlanarAudioAdapter.SignalSignatures[K]>
+            ...args: PlanarAudioAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

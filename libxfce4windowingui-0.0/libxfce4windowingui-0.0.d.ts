@@ -118,7 +118,7 @@ export namespace Libxfce4windowingui {
         ): number;
         emit<K extends keyof WindowActionMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowActionMenu.SignalSignatures[K]>
+            ...args: WindowActionMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

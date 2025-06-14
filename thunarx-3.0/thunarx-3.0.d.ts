@@ -104,7 +104,10 @@ export namespace Thunarx {
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -174,7 +177,7 @@ export namespace Thunarx {
         ): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -257,7 +260,7 @@ export namespace Thunarx {
         ): number;
         emit<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyPage.SignalSignatures[K]>
+            ...args: PropertyPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -760,7 +763,7 @@ export namespace Thunarx {
         ): number;
         emit<K extends keyof ProviderFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProviderFactory.SignalSignatures[K]>
+            ...args: ProviderFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -825,7 +828,7 @@ export namespace Thunarx {
         ): number;
         emit<K extends keyof ProviderModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProviderModule.SignalSignatures[K]>
+            ...args: ProviderModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1551,7 +1554,7 @@ export namespace Thunarx {
         ): number;
         emit<K extends keyof Renamer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renamer.SignalSignatures[K]>
+            ...args: Renamer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

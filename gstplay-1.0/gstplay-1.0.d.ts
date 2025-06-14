@@ -352,7 +352,10 @@ export namespace GstPlay {
 
         connect<K extends keyof Play.SignalSignatures>(signal: K, callback: Play.SignalSignatures[K]): number;
         connect_after<K extends keyof Play.SignalSignatures>(signal: K, callback: Play.SignalSignatures[K]): number;
-        emit<K extends keyof Play.SignalSignatures>(signal: K, ...args: Parameters<Play.SignalSignatures[K]>): void;
+        emit<K extends keyof Play.SignalSignatures>(
+            signal: K,
+            ...args: Play.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -665,7 +668,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlayAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayAudioInfo.SignalSignatures[K]>
+            ...args: PlayAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -710,7 +713,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlayMediaInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayMediaInfo.SignalSignatures[K]>
+            ...args: PlayMediaInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -848,7 +851,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlaySignalAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySignalAdapter.SignalSignatures[K]>
+            ...args: PlaySignalAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -891,7 +894,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlayStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayStreamInfo.SignalSignatures[K]>
+            ...args: PlayStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -950,7 +953,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlaySubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySubtitleInfo.SignalSignatures[K]>
+            ...args: PlaySubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -991,7 +994,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlayVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayVideoInfo.SignalSignatures[K]>
+            ...args: PlayVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1053,7 +1056,7 @@ export namespace GstPlay {
         ): number;
         emit<K extends keyof PlayVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayVideoOverlayVideoRenderer.SignalSignatures[K]>
+            ...args: PlayVideoOverlayVideoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

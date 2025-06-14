@@ -70,7 +70,10 @@ export namespace SocialWebClient {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -135,7 +138,7 @@ export namespace SocialWebClient {
         ): number;
         emit<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientContactView.SignalSignatures[K]>
+            ...args: ClientContactView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -202,7 +205,7 @@ export namespace SocialWebClient {
         ): number;
         emit<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientItemView.SignalSignatures[K]>
+            ...args: ClientItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -245,7 +248,7 @@ export namespace SocialWebClient {
         ): number;
         emit<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientLastfm.SignalSignatures[K]>
+            ...args: ClientLastfm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -324,7 +327,7 @@ export namespace SocialWebClient {
         ): number;
         emit<K extends keyof ClientService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientService.SignalSignatures[K]>
+            ...args: ClientService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

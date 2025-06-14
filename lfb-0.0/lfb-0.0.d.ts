@@ -290,7 +290,10 @@ export namespace Lfb {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -529,7 +532,7 @@ export namespace Lfb {
         ): number;
         emit<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GdbusFeedbackProxy.SignalSignatures[K]>
+            ...args: GdbusFeedbackProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1580,7 +1583,7 @@ export namespace Lfb {
         ): number;
         emit<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GdbusFeedbackSkeleton.SignalSignatures[K]>
+            ...args: GdbusFeedbackSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

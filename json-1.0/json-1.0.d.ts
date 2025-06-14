@@ -522,7 +522,7 @@ export namespace Json {
         ): number;
         emit<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Builder.SignalSignatures[K]>
+            ...args: Builder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -739,7 +739,7 @@ export namespace Json {
         ): number;
         emit<K extends keyof Generator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Generator.SignalSignatures[K]>
+            ...args: Generator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -964,7 +964,10 @@ export namespace Json {
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1339,7 +1342,10 @@ export namespace Json {
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1488,7 +1494,10 @@ export namespace Json {
 
         connect<K extends keyof Reader.SignalSignatures>(signal: K, callback: Reader.SignalSignatures[K]): number;
         connect_after<K extends keyof Reader.SignalSignatures>(signal: K, callback: Reader.SignalSignatures[K]): number;
-        emit<K extends keyof Reader.SignalSignatures>(signal: K, ...args: Parameters<Reader.SignalSignatures[K]>): void;
+        emit<K extends keyof Reader.SignalSignatures>(
+            signal: K,
+            ...args: Reader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

@@ -187,7 +187,10 @@ export namespace SugarExt {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -332,7 +335,7 @@ export namespace SugarExt {
         ): number;
         emit<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientXSMP.SignalSignatures[K]>
+            ...args: ClientXSMP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -368,7 +371,7 @@ export namespace SugarExt {
         ): number;
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CursorTracker.SignalSignatures[K]>
+            ...args: CursorTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -404,7 +407,7 @@ export namespace SugarExt {
         ): number;
         emit<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GestureGrabber.SignalSignatures[K]>
+            ...args: GestureGrabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -442,7 +445,10 @@ export namespace SugarExt {
 
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
+        emit<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            ...args: Grid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -501,7 +507,7 @@ export namespace SugarExt {
         ): number;
         emit<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyGrabber.SignalSignatures[K]>
+            ...args: KeyGrabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -555,7 +561,7 @@ export namespace SugarExt {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -603,7 +609,10 @@ export namespace SugarExt {
 
         connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
         connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
-        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: Parameters<Volume.SignalSignatures[K]>): void;
+        emit<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            ...args: Volume.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -658,7 +667,7 @@ export namespace SugarExt {
         ): number;
         emit<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VolumeAlsa.SignalSignatures[K]>
+            ...args: VolumeAlsa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

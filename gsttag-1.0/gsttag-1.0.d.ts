@@ -913,7 +913,7 @@ export namespace GstTag {
         ): number;
         emit<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TagDemux.SignalSignatures[K]>
+            ...args: TagDemux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -965,7 +965,10 @@ export namespace GstTag {
 
         connect<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
         connect_after<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
-        emit<K extends keyof TagMux.SignalSignatures>(signal: K, ...args: Parameters<TagMux.SignalSignatures[K]>): void;
+        emit<K extends keyof TagMux.SignalSignatures>(
+            signal: K,
+            ...args: TagMux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

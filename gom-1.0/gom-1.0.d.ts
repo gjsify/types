@@ -111,7 +111,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof Adapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Adapter.SignalSignatures[K]>
+            ...args: Adapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -210,7 +210,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof Command.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Command.SignalSignatures[K]>
+            ...args: Command.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -292,7 +292,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof CommandBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandBuilder.SignalSignatures[K]>
+            ...args: CommandBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -366,7 +366,10 @@ export namespace Gom {
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -444,7 +447,10 @@ export namespace Gom {
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -495,7 +501,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -704,7 +710,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -826,7 +832,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceGroup.SignalSignatures[K]>
+            ...args: ResourceGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -897,7 +903,7 @@ export namespace Gom {
         ): number;
         emit<K extends keyof Sorting.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sorting.SignalSignatures[K]>
+            ...args: Sorting.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

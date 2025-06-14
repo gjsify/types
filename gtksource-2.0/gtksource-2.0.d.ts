@@ -381,7 +381,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -800,7 +803,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof Completion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Completion.SignalSignatures[K]>
+            ...args: Completion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -924,7 +927,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionContext.SignalSignatures[K]>
+            ...args: CompletionContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1017,7 +1020,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionInfo.SignalSignatures[K]>
+            ...args: CompletionInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1583,7 +1586,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+            ...args: CompletionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2180,7 +2183,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
         connect_after<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
-        emit<K extends keyof Gutter.SignalSignatures>(signal: K, ...args: Parameters<Gutter.SignalSignatures[K]>): void;
+        emit<K extends keyof Gutter.SignalSignatures>(
+            signal: K,
+            ...args: Gutter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2277,7 +2283,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2365,7 +2371,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof LanguageManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageManager.SignalSignatures[K]>
+            ...args: LanguageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2480,7 +2486,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
         connect_after<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
-        emit<K extends keyof Mark.SignalSignatures>(signal: K, ...args: Parameters<Mark.SignalSignatures[K]>): void;
+        emit<K extends keyof Mark.SignalSignatures>(
+            signal: K,
+            ...args: Mark.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2784,7 +2793,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof PrintCompositor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintCompositor.SignalSignatures[K]>
+            ...args: PrintCompositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3267,7 +3276,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
         connect_after<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
-        emit<K extends keyof Style.SignalSignatures>(signal: K, ...args: Parameters<Style.SignalSignatures[K]>): void;
+        emit<K extends keyof Style.SignalSignatures>(
+            signal: K,
+            ...args: Style.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace StyleScheme {
@@ -3326,7 +3338,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof StyleScheme.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleScheme.SignalSignatures[K]>
+            ...args: StyleScheme.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3384,7 +3396,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof StyleSchemeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleSchemeManager.SignalSignatures[K]>
+            ...args: StyleSchemeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3604,7 +3616,10 @@ export namespace GtkSource {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

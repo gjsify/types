@@ -299,7 +299,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof AsyncPair.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncPair.SignalSignatures[K]>
+            ...args: AsyncPair.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -390,7 +390,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof AsyncResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncResult.SignalSignatures[K]>
+            ...args: AsyncResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -919,7 +919,10 @@ export namespace Dex {
 
         connect<K extends keyof Block.SignalSignatures>(signal: K, callback: Block.SignalSignatures[K]): number;
         connect_after<K extends keyof Block.SignalSignatures>(signal: K, callback: Block.SignalSignatures[K]): number;
-        emit<K extends keyof Block.SignalSignatures>(signal: K, ...args: Parameters<Block.SignalSignatures[K]>): void;
+        emit<K extends keyof Block.SignalSignatures>(
+            signal: K,
+            ...args: Block.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -967,7 +970,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cancellable.SignalSignatures[K]>
+            ...args: Cancellable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -998,7 +1001,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1070,7 +1073,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof Delayed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Delayed.SignalSignatures[K]>
+            ...args: Delayed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1103,7 +1106,10 @@ export namespace Dex {
 
         connect<K extends keyof Fiber.SignalSignatures>(signal: K, callback: Fiber.SignalSignatures[K]): number;
         connect_after<K extends keyof Fiber.SignalSignatures>(signal: K, callback: Fiber.SignalSignatures[K]): number;
-        emit<K extends keyof Fiber.SignalSignatures>(signal: K, ...args: Parameters<Fiber.SignalSignatures[K]>): void;
+        emit<K extends keyof Fiber.SignalSignatures>(
+            signal: K,
+            ...args: Fiber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Future {
@@ -1174,7 +1180,10 @@ export namespace Dex {
 
         connect<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
         connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
-        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: Parameters<Future.SignalSignatures[K]>): void;
+        emit<K extends keyof Future.SignalSignatures>(
+            signal: K,
+            ...args: Future.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1317,7 +1326,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof FutureSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FutureSet.SignalSignatures[K]>
+            ...args: FutureSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1370,7 +1379,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof MainScheduler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainScheduler.SignalSignatures[K]>
+            ...args: MainScheduler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1399,7 +1408,10 @@ export namespace Dex {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1441,7 +1453,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Promise.SignalSignatures[K]>
+            ...args: Promise.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1501,7 +1513,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof Scheduler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scheduler.SignalSignatures[K]>
+            ...args: Scheduler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1581,7 +1593,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof StaticFuture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StaticFuture.SignalSignatures[K]>
+            ...args: StaticFuture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1611,7 +1623,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof ThreadPoolScheduler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadPoolScheduler.SignalSignatures[K]>
+            ...args: ThreadPoolScheduler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1655,7 +1667,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof Timeout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeout.SignalSignatures[K]>
+            ...args: Timeout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1689,7 +1701,7 @@ export namespace Dex {
         ): number;
         emit<K extends keyof UnixSignal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixSignal.SignalSignatures[K]>
+            ...args: UnixSignal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -154,7 +154,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof CertificateRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateRenderer.SignalSignatures[K]>
+            ...args: CertificateRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -929,7 +929,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof CertificateWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+            ...args: CertificateWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1463,7 +1463,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof CollectionModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectionModel.SignalSignatures[K]>
+            ...args: CollectionModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2543,7 +2543,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof ComboSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComboSelector.SignalSignatures[K]>
+            ...args: ComboSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7090,7 +7090,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof FailureRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FailureRenderer.SignalSignatures[K]>
+            ...args: FailureRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7640,7 +7640,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof ImportButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImportButton.SignalSignatures[K]>
+            ...args: ImportButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -12219,7 +12219,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof KeyRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyRenderer.SignalSignatures[K]>
+            ...args: KeyRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12765,7 +12765,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof KeyWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyWidget.SignalSignatures[K]>
+            ...args: KeyWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13277,7 +13277,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof ListSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListSelector.SignalSignatures[K]>
+            ...args: ListSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13922,7 +13922,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof PromptDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PromptDialog.SignalSignatures[K]>
+            ...args: PromptDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14957,7 +14957,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof SecureEntryBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecureEntryBuffer.SignalSignatures[K]>
+            ...args: SecureEntryBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15013,7 +15013,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof TreeSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeSelector.SignalSignatures[K]>
+            ...args: TreeSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15630,7 +15630,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof UnlockOptionsWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnlockOptionsWidget.SignalSignatures[K]>
+            ...args: UnlockOptionsWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16212,7 +16212,7 @@ export namespace GcrUi {
         ): number;
         emit<K extends keyof ViewerWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewerWidget.SignalSignatures[K]>
+            ...args: ViewerWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

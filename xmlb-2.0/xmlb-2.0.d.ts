@@ -498,7 +498,7 @@ export namespace Xmlb {
         ): number;
         emit<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Builder.SignalSignatures[K]>
+            ...args: Builder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -601,7 +601,7 @@ export namespace Xmlb {
         ): number;
         emit<K extends keyof BuilderFixup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderFixup.SignalSignatures[K]>
+            ...args: BuilderFixup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -654,7 +654,7 @@ export namespace Xmlb {
         ): number;
         emit<K extends keyof BuilderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderNode.SignalSignatures[K]>
+            ...args: BuilderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -868,7 +868,7 @@ export namespace Xmlb {
         ): number;
         emit<K extends keyof BuilderSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderSource.SignalSignatures[K]>
+            ...args: BuilderSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -944,7 +944,7 @@ export namespace Xmlb {
         ): number;
         emit<K extends keyof BuilderSourceCtx.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderSourceCtx.SignalSignatures[K]>
+            ...args: BuilderSourceCtx.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1000,7 +1000,7 @@ export namespace Xmlb {
         ): number;
         emit<K extends keyof Machine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Machine.SignalSignatures[K]>
+            ...args: Machine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1187,7 +1187,10 @@ export namespace Xmlb {
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1458,7 +1461,10 @@ export namespace Xmlb {
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1578,7 +1584,10 @@ export namespace Xmlb {
 
         connect<K extends keyof Silo.SignalSignatures>(signal: K, callback: Silo.SignalSignatures[K]): number;
         connect_after<K extends keyof Silo.SignalSignatures>(signal: K, callback: Silo.SignalSignatures[K]): number;
-        emit<K extends keyof Silo.SignalSignatures>(signal: K, ...args: Parameters<Silo.SignalSignatures[K]>): void;
+        emit<K extends keyof Silo.SignalSignatures>(
+            signal: K,
+            ...args: Silo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

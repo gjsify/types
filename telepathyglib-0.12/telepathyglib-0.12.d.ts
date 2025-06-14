@@ -5856,7 +5856,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Account.SignalSignatures[K]>
+            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6993,7 +6993,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof AccountChannelRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountChannelRequest.SignalSignatures[K]>
+            ...args: AccountChannelRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7808,7 +7808,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof AccountManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountManager.SignalSignatures[K]>
+            ...args: AccountManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8352,7 +8352,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof AccountRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountRequest.SignalSignatures[K]>
+            ...args: AccountRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8588,7 +8588,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof AddDispatchOperationContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDispatchOperationContext.SignalSignatures[K]>
+            ...args: AddDispatchOperationContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8649,7 +8649,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof AutomaticClientFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutomaticClientFactory.SignalSignatures[K]>
+            ...args: AutomaticClientFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8688,7 +8688,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof AutomaticProxyFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutomaticProxyFactory.SignalSignatures[K]>
+            ...args: AutomaticProxyFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9348,7 +9348,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof BaseClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseClient.SignalSignatures[K]>
+            ...args: BaseClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9847,7 +9847,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof BaseConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseConnection.SignalSignatures[K]>
+            ...args: BaseConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10062,7 +10062,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof BasicProxyFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BasicProxyFactory.SignalSignatures[K]>
+            ...args: BasicProxyFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10740,7 +10740,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof CallChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallChannel.SignalSignatures[K]>
+            ...args: CallChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11146,7 +11146,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof CallContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallContent.SignalSignatures[K]>
+            ...args: CallContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11338,7 +11338,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof CallStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallStream.SignalSignatures[K]>
+            ...args: CallStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11543,7 +11543,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Capabilities.SignalSignatures[K]>
+            ...args: Capabilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12145,7 +12145,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12865,7 +12865,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ChannelDispatchOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelDispatchOperation.SignalSignatures[K]>
+            ...args: ChannelDispatchOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13411,7 +13411,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ChannelDispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelDispatcher.SignalSignatures[K]>
+            ...args: ChannelDispatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13666,7 +13666,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ChannelRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelRequest.SignalSignatures[K]>
+            ...args: ChannelRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13763,7 +13763,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ClientMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientMessage.SignalSignatures[K]>
+            ...args: ClientMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14311,7 +14311,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15625,7 +15625,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionManager.SignalSignatures[K]>
+            ...args: ConnectionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16180,7 +16180,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16807,7 +16807,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ContactSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactSearch.SignalSignatures[K]>
+            ...args: ContactSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17586,7 +17586,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ContactSearchResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactSearchResult.SignalSignatures[K]>
+            ...args: ContactSearchResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17648,7 +17648,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof DBusDaemon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusDaemon.SignalSignatures[K]>
+            ...args: DBusDaemon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17812,7 +17812,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof DBusTubeChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusTubeChannel.SignalSignatures[K]>
+            ...args: DBusTubeChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17963,7 +17963,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof DebugClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugClient.SignalSignatures[K]>
+            ...args: DebugClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18102,7 +18102,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof DebugMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugMessage.SignalSignatures[K]>
+            ...args: DebugMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18343,7 +18343,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof FileTransferChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileTransferChannel.SignalSignatures[K]>
+            ...args: FileTransferChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18613,7 +18613,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof HandleChannelsContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandleChannelsContext.SignalSignatures[K]>
+            ...args: HandleChannelsContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18701,7 +18701,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19032,7 +19032,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof ObserveChannelsContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObserveChannelsContext.SignalSignatures[K]>
+            ...args: ObserveChannelsContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19323,7 +19323,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof Protocol.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Protocol.SignalSignatures[K]>
+            ...args: Protocol.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19714,7 +19714,10 @@ export namespace TelepathyGLib {
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -19993,7 +19996,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof RoomInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoomInfo.SignalSignatures[K]>
+            ...args: RoomInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20129,7 +20132,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof RoomList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoomList.SignalSignatures[K]>
+            ...args: RoomList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20851,7 +20854,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof SignalledMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalledMessage.SignalSignatures[K]>
+            ...args: SignalledMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20946,7 +20949,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof SimpleApprover.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleApprover.SignalSignatures[K]>
+            ...args: SimpleApprover.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -20999,7 +21002,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof SimpleClientFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleClientFactory.SignalSignatures[K]>
+            ...args: SimpleClientFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -21379,7 +21382,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof SimpleHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleHandler.SignalSignatures[K]>
+            ...args: SimpleHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -21475,7 +21478,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof SimpleObserver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleObserver.SignalSignatures[K]>
+            ...args: SimpleObserver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -21552,7 +21555,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof StreamTubeChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamTubeChannel.SignalSignatures[K]>
+            ...args: StreamTubeChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21727,7 +21730,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof StreamTubeConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamTubeConnection.SignalSignatures[K]>
+            ...args: StreamTubeConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21844,7 +21847,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof TLSCertificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TLSCertificate.SignalSignatures[K]>
+            ...args: TLSCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -22068,7 +22071,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof TLSCertificateRejection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TLSCertificateRejection.SignalSignatures[K]>
+            ...args: TLSCertificateRejection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22240,7 +22243,7 @@ export namespace TelepathyGLib {
         ): number;
         emit<K extends keyof TextChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextChannel.SignalSignatures[K]>
+            ...args: TextChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

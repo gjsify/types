@@ -177,7 +177,7 @@ export namespace Xkl {
         ): number;
         emit<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigItem.SignalSignatures[K]>
+            ...args: ConfigItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -241,7 +241,7 @@ export namespace Xkl {
         ): number;
         emit<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigRec.SignalSignatures[K]>
+            ...args: ConfigRec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -372,7 +372,7 @@ export namespace Xkl {
         ): number;
         emit<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigRegistry.SignalSignatures[K]>
+            ...args: ConfigRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -567,7 +567,10 @@ export namespace Xkl {
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

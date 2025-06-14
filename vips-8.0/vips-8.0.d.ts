@@ -3788,7 +3788,7 @@ export namespace Vips {
         ): number;
         emit<K extends keyof Foreign.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Foreign.SignalSignatures[K]>
+            ...args: Foreign.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3965,7 +3965,7 @@ export namespace Vips {
         ): number;
         emit<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForeignLoad.SignalSignatures[K]>
+            ...args: ForeignLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4037,7 +4037,7 @@ export namespace Vips {
         ): number;
         emit<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForeignSave.SignalSignatures[K]>
+            ...args: ForeignSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4193,7 +4193,10 @@ export namespace Vips {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4989,7 +4992,7 @@ export namespace Vips {
         ): number;
         emit<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interpolate.SignalSignatures[K]>
+            ...args: Interpolate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5104,7 +5107,10 @@ export namespace Vips {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -5259,7 +5265,7 @@ export namespace Vips {
         ): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5343,7 +5349,10 @@ export namespace Vips {
 
         connect<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
         connect_after<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
-        emit<K extends keyof Region.SignalSignatures>(signal: K, ...args: Parameters<Region.SignalSignatures[K]>): void;
+        emit<K extends keyof Region.SignalSignatures>(
+            signal: K,
+            ...args: Region.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

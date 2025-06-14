@@ -54,7 +54,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedAtomFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedAtomFormatter.SignalSignatures[K]>
+            ...args: FeedAtomFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -98,7 +98,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedChannel.SignalSignatures[K]>
+            ...args: FeedChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -426,7 +426,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedEnclosure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedEnclosure.SignalSignatures[K]>
+            ...args: FeedEnclosure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -516,7 +516,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedFormatter.SignalSignatures[K]>
+            ...args: FeedFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -599,7 +599,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedItem.SignalSignatures[K]>
+            ...args: FeedItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -802,7 +802,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedParser.SignalSignatures[K]>
+            ...args: FeedParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -858,7 +858,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedRssFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedRssFormatter.SignalSignatures[K]>
+            ...args: FeedRssFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -894,7 +894,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedsGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsGroup.SignalSignatures[K]>
+            ...args: FeedsGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -968,7 +968,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedsPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsPool.SignalSignatures[K]>
+            ...args: FeedsPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1060,7 +1060,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedsPublisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsPublisher.SignalSignatures[K]>
+            ...args: FeedsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1152,7 +1152,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedsStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsStore.SignalSignatures[K]>
+            ...args: FeedsStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1258,7 +1258,7 @@ export namespace Grss {
         ): number;
         emit<K extends keyof FeedsSubscriber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsSubscriber.SignalSignatures[K]>
+            ...args: FeedsSubscriber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

@@ -198,7 +198,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof AudioItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioItem.SignalSignatures[K]>
+            ...args: AudioItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -246,7 +246,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof ImageItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageItem.SignalSignatures[K]>
+            ...args: ImageItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -341,7 +341,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof LogicalExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogicalExpression.SignalSignatures[K]>
+            ...args: LogicalExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -375,7 +375,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaArtStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaArtStore.SignalSignatures[K]>
+            ...args: MediaArtStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -421,7 +421,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaObjects.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaObjects.SignalSignatures[K]>
+            ...args: MediaObjects.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -480,7 +480,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MusicItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicItem.SignalSignatures[K]>
+            ...args: MusicItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -523,7 +523,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof PhotoItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhotoItem.SignalSignatures[K]>
+            ...args: PhotoItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -553,7 +553,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof RelationalExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelationalExpression.SignalSignatures[K]>
+            ...args: RelationalExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -601,7 +601,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof SimpleContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleContainer.SignalSignatures[K]>
+            ...args: SimpleContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -790,7 +790,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof Subtitle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subtitle.SignalSignatures[K]>
+            ...args: Subtitle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -832,7 +832,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof Thumbnail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Thumbnail.SignalSignatures[K]>
+            ...args: Thumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -883,7 +883,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof VideoItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoItem.SignalSignatures[K]>
+            ...args: VideoItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1051,7 +1051,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaContainer.SignalSignatures[K]>
+            ...args: MediaContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1156,7 +1156,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaItem.SignalSignatures[K]>
+            ...args: MediaItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1224,7 +1224,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaFileItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaFileItem.SignalSignatures[K]>
+            ...args: MediaFileItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1345,7 +1345,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaObject.SignalSignatures[K]>
+            ...args: MediaObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1557,7 +1557,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaResource.SignalSignatures[K]>
+            ...args: MediaResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1682,7 +1682,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaServerPlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServerPlugin.SignalSignatures[K]>
+            ...args: MediaServerPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1730,7 +1730,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof SearchExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchExpression.SignalSignatures[K]>
+            ...args: SearchExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1788,7 +1788,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServer.SignalSignatures[K]>
+            ...args: MediaServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1830,7 +1830,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof MediaEngine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaEngine.SignalSignatures[K]>
+            ...args: MediaEngine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1900,7 +1900,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPSeekRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPSeekRequest.SignalSignatures[K]>
+            ...args: HTTPSeekRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1936,7 +1936,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof PlaylistItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaylistItem.SignalSignatures[K]>
+            ...args: PlaylistItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1980,7 +1980,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof ContentDirectory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDirectory.SignalSignatures[K]>
+            ...args: ContentDirectory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2044,7 +2044,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPByteSeekRequest.SignalSignatures[K]>
+            ...args: HTTPByteSeekRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2125,7 +2125,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPByteSeekResponse.SignalSignatures[K]>
+            ...args: HTTPByteSeekResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2176,7 +2176,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPGetHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPGetHandler.SignalSignatures[K]>
+            ...args: HTTPGetHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2241,7 +2241,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPGet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPGet.SignalSignatures[K]>
+            ...args: HTTPGet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2326,7 +2326,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPItemURI.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPItemURI.SignalSignatures[K]>
+            ...args: HTTPItemURI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2385,7 +2385,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPRequest.SignalSignatures[K]>
+            ...args: HTTPRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2911,7 +2911,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPResponse.SignalSignatures[K]>
+            ...args: HTTPResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3411,7 +3411,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPResponseElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPResponseElement.SignalSignatures[K]>
+            ...args: HTTPResponseElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3478,7 +3478,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPServer.SignalSignatures[K]>
+            ...args: HTTPServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3991,7 +3991,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPTimeSeekRequest.SignalSignatures[K]>
+            ...args: HTTPTimeSeekRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4109,7 +4109,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPTimeSeekResponse.SignalSignatures[K]>
+            ...args: HTTPTimeSeekResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4164,7 +4164,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof Serializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Serializer.SignalSignatures[K]>
+            ...args: Serializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4206,7 +4206,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof PlaySpeed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySpeed.SignalSignatures[K]>
+            ...args: PlaySpeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4260,7 +4260,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof PlaySpeedRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySpeedRequest.SignalSignatures[K]>
+            ...args: PlaySpeedRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4313,7 +4313,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof PlaySpeedResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySpeedResponse.SignalSignatures[K]>
+            ...args: PlaySpeedResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4381,7 +4381,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof DTCPCleartextRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DTCPCleartextRequest.SignalSignatures[K]>
+            ...args: DTCPCleartextRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4470,7 +4470,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof DTCPCleartextResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DTCPCleartextResponse.SignalSignatures[K]>
+            ...args: DTCPCleartextResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4513,7 +4513,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DLNAAvailableSeekRangeRequest.SignalSignatures[K]>
+            ...args: DLNAAvailableSeekRangeRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4599,7 +4599,7 @@ export namespace RygelServer {
         ): number;
         emit<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DLNAAvailableSeekRangeResponse.SignalSignatures[K]>
+            ...args: DLNAAvailableSeekRangeResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

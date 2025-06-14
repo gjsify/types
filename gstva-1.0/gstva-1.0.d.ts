@@ -237,7 +237,7 @@ export namespace GstVa {
         ): number;
         emit<K extends keyof VaAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaAllocator.SignalSignatures[K]>
+            ...args: VaAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -340,7 +340,7 @@ export namespace GstVa {
         ): number;
         emit<K extends keyof VaDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDisplay.SignalSignatures[K]>
+            ...args: VaDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -419,7 +419,7 @@ export namespace GstVa {
         ): number;
         emit<K extends keyof VaDisplayDrm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDisplayDrm.SignalSignatures[K]>
+            ...args: VaDisplayDrm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -459,7 +459,7 @@ export namespace GstVa {
         ): number;
         emit<K extends keyof VaDisplayWrapped.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDisplayWrapped.SignalSignatures[K]>
+            ...args: VaDisplayWrapped.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -500,7 +500,7 @@ export namespace GstVa {
         ): number;
         emit<K extends keyof VaDmabufAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDmabufAllocator.SignalSignatures[K]>
+            ...args: VaDmabufAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -580,7 +580,10 @@ export namespace GstVa {
 
         connect<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
         connect_after<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
-        emit<K extends keyof VaPool.SignalSignatures>(signal: K, ...args: Parameters<VaPool.SignalSignatures[K]>): void;
+        emit<K extends keyof VaPool.SignalSignatures>(
+            signal: K,
+            ...args: VaPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

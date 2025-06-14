@@ -373,7 +373,7 @@ export namespace MediaArt {
         ): number;
         emit<K extends keyof Process.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Process.SignalSignatures[K]>
+            ...args: Process.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

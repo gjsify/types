@@ -189,7 +189,10 @@ export namespace Cheese {
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -364,7 +367,7 @@ export namespace Cheese {
         ): number;
         emit<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraDevice.SignalSignatures[K]>
+            ...args: CameraDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -994,7 +997,7 @@ export namespace Cheese {
         ): number;
         emit<K extends keyof CameraDeviceMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraDeviceMonitor.SignalSignatures[K]>
+            ...args: CameraDeviceMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1813,7 +1816,10 @@ export namespace Cheese {
 
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
+        emit<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1886,7 +1892,7 @@ export namespace Cheese {
         ): number;
         emit<K extends keyof FileUtil.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileUtil.SignalSignatures[K]>
+            ...args: FileUtil.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

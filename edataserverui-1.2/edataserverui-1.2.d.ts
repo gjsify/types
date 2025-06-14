@@ -263,7 +263,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof CellRendererColor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererColor.SignalSignatures[K]>
+            ...args: CellRendererColor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -302,7 +302,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof CertificateWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateWidget.SignalSignatures[K]>
+            ...args: CertificateWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -845,7 +845,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof CredentialsPrompter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredentialsPrompter.SignalSignatures[K]>
+            ...args: CredentialsPrompter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1588,7 +1588,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof CredentialsPrompterImpl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredentialsPrompterImpl.SignalSignatures[K]>
+            ...args: CredentialsPrompterImpl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1694,7 +1694,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof CredentialsPrompterImplOAuth2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredentialsPrompterImplOAuth2.SignalSignatures[K]>
+            ...args: CredentialsPrompterImplOAuth2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1734,7 +1734,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof CredentialsPrompterImplPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredentialsPrompterImplPassword.SignalSignatures[K]>
+            ...args: CredentialsPrompterImplPassword.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1806,7 +1806,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof RemindersWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemindersWidget.SignalSignatures[K]>
+            ...args: RemindersWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2359,7 +2359,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof WebDAVDiscoverContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebDAVDiscoverContent.SignalSignatures[K]>
+            ...args: WebDAVDiscoverContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2981,7 +2981,7 @@ export namespace EDataServerUI {
         ): number;
         emit<K extends keyof WebDAVDiscoverDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebDAVDiscoverDialog.SignalSignatures[K]>
+            ...args: WebDAVDiscoverDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -1491,7 +1491,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof APPCategories.SignalSignatures>(
             signal: K,
-            ...args: Parameters<APPCategories.SignalSignatures[K]>
+            ...args: APPCategories.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1598,7 +1598,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof AccessRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccessRule.SignalSignatures[K]>
+            ...args: AccessRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1711,7 +1711,10 @@ export namespace GData {
 
         connect<K extends keyof Author.SignalSignatures>(signal: K, callback: Author.SignalSignatures[K]): number;
         connect_after<K extends keyof Author.SignalSignatures>(signal: K, callback: Author.SignalSignatures[K]): number;
-        emit<K extends keyof Author.SignalSignatures>(signal: K, ...args: Parameters<Author.SignalSignatures[K]>): void;
+        emit<K extends keyof Author.SignalSignatures>(
+            signal: K,
+            ...args: Author.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2260,7 +2263,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthorizationDomain.SignalSignatures[K]>
+            ...args: AuthorizationDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2347,7 +2350,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof BatchOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BatchOperation.SignalSignatures[K]>
+            ...args: BatchOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2531,7 +2534,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof CalendarAccessRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarAccessRule.SignalSignatures[K]>
+            ...args: CalendarAccessRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2627,7 +2630,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof CalendarCalendar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarCalendar.SignalSignatures[K]>
+            ...args: CalendarCalendar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3151,7 +3154,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof CalendarEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarEvent.SignalSignatures[K]>
+            ...args: CalendarEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3380,7 +3383,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof CalendarFeed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarFeed.SignalSignatures[K]>
+            ...args: CalendarFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3543,7 +3546,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof CalendarQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarQuery.SignalSignatures[K]>
+            ...args: CalendarQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3672,7 +3675,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof CalendarService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarService.SignalSignatures[K]>
+            ...args: CalendarService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4510,7 +4513,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5035,7 +5038,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof Comment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Comment.SignalSignatures[K]>
+            ...args: Comment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5078,7 +5081,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsAccessRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsAccessRule.SignalSignatures[K]>
+            ...args: DocumentsAccessRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5117,7 +5120,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsDocument.SignalSignatures[K]>
+            ...args: DocumentsDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5535,7 +5538,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsDrawing.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsDrawing.SignalSignatures[K]>
+            ...args: DocumentsDrawing.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5803,7 +5806,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsDrive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsDrive.SignalSignatures[K]>
+            ...args: DocumentsDrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5847,7 +5850,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsDriveQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsDriveQuery.SignalSignatures[K]>
+            ...args: DocumentsDriveQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6016,7 +6019,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsEntry.SignalSignatures[K]>
+            ...args: DocumentsEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6415,7 +6418,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsFeed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsFeed.SignalSignatures[K]>
+            ...args: DocumentsFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6454,7 +6457,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsFolder.SignalSignatures[K]>
+            ...args: DocumentsFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6803,7 +6806,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsMetadata.SignalSignatures[K]>
+            ...args: DocumentsMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6855,7 +6858,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsPdf.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsPdf.SignalSignatures[K]>
+            ...args: DocumentsPdf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7119,7 +7122,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsPresentation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsPresentation.SignalSignatures[K]>
+            ...args: DocumentsPresentation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7421,7 +7424,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsProperty.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsProperty.SignalSignatures[K]>
+            ...args: DocumentsProperty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8014,7 +8017,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsQuery.SignalSignatures[K]>
+            ...args: DocumentsQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8116,7 +8119,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsService.SignalSignatures[K]>
+            ...args: DocumentsService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9283,7 +9286,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsSpreadsheet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsSpreadsheet.SignalSignatures[K]>
+            ...args: DocumentsSpreadsheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9566,7 +9569,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsText.SignalSignatures[K]>
+            ...args: DocumentsText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9855,7 +9858,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DocumentsUploadQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsUploadQuery.SignalSignatures[K]>
+            ...args: DocumentsUploadQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10014,7 +10017,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof DownloadStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DownloadStream.SignalSignatures[K]>
+            ...args: DownloadStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10725,7 +10728,10 @@ export namespace GData {
 
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
+        emit<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            ...args: Entry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11041,7 +11047,10 @@ export namespace GData {
 
         connect<K extends keyof Feed.SignalSignatures>(signal: K, callback: Feed.SignalSignatures[K]): number;
         connect_after<K extends keyof Feed.SignalSignatures>(signal: K, callback: Feed.SignalSignatures[K]): number;
-        emit<K extends keyof Feed.SignalSignatures>(signal: K, ...args: Parameters<Feed.SignalSignatures[K]>): void;
+        emit<K extends keyof Feed.SignalSignatures>(
+            signal: K,
+            ...args: Feed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11249,7 +11258,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactCalendar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactCalendar.SignalSignatures[K]>
+            ...args: GContactCalendar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11830,7 +11839,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactEvent.SignalSignatures[K]>
+            ...args: GContactEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11950,7 +11959,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactExternalID.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactExternalID.SignalSignatures[K]>
+            ...args: GContactExternalID.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12514,7 +12523,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactJot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactJot.SignalSignatures[K]>
+            ...args: GContactJot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12599,7 +12608,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactLanguage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactLanguage.SignalSignatures[K]>
+            ...args: GContactLanguage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13163,7 +13172,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactRelation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactRelation.SignalSignatures[K]>
+            ...args: GContactRelation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13303,7 +13312,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GContactWebsite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContactWebsite.SignalSignatures[K]>
+            ...args: GContactWebsite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13922,7 +13931,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDEmailAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDEmailAddress.SignalSignatures[K]>
+            ...args: GDEmailAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14542,7 +14551,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDIMAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDIMAddress.SignalSignatures[K]>
+            ...args: GDIMAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15175,7 +15184,10 @@ export namespace GData {
 
         connect<K extends keyof GDName.SignalSignatures>(signal: K, callback: GDName.SignalSignatures[K]): number;
         connect_after<K extends keyof GDName.SignalSignatures>(signal: K, callback: GDName.SignalSignatures[K]): number;
-        emit<K extends keyof GDName.SignalSignatures>(signal: K, ...args: Parameters<GDName.SignalSignatures[K]>): void;
+        emit<K extends keyof GDName.SignalSignatures>(
+            signal: K,
+            ...args: GDName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -15849,7 +15861,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDOrganization.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDOrganization.SignalSignatures[K]>
+            ...args: GDOrganization.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16519,7 +16531,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDPhoneNumber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDPhoneNumber.SignalSignatures[K]>
+            ...args: GDPhoneNumber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17283,7 +17295,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDPostalAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDPostalAddress.SignalSignatures[K]>
+            ...args: GDPostalAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18034,7 +18046,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDReminder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDReminder.SignalSignatures[K]>
+            ...args: GDReminder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18636,7 +18648,10 @@ export namespace GData {
 
         connect<K extends keyof GDWhen.SignalSignatures>(signal: K, callback: GDWhen.SignalSignatures[K]): number;
         connect_after<K extends keyof GDWhen.SignalSignatures>(signal: K, callback: GDWhen.SignalSignatures[K]): number;
-        emit<K extends keyof GDWhen.SignalSignatures>(signal: K, ...args: Parameters<GDWhen.SignalSignatures[K]>): void;
+        emit<K extends keyof GDWhen.SignalSignatures>(
+            signal: K,
+            ...args: GDWhen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -19232,7 +19247,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GDWhere.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDWhere.SignalSignatures[K]>
+            ...args: GDWhere.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19820,7 +19835,10 @@ export namespace GData {
 
         connect<K extends keyof GDWho.SignalSignatures>(signal: K, callback: GDWho.SignalSignatures[K]): number;
         connect_after<K extends keyof GDWho.SignalSignatures>(signal: K, callback: GDWho.SignalSignatures[K]): number;
-        emit<K extends keyof GDWho.SignalSignatures>(signal: K, ...args: Parameters<GDWho.SignalSignatures[K]>): void;
+        emit<K extends keyof GDWho.SignalSignatures>(
+            signal: K,
+            ...args: GDWho.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -20377,7 +20395,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof Generator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Generator.SignalSignatures[K]>
+            ...args: Generator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20902,7 +20920,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21665,7 +21683,10 @@ export namespace GData {
 
         connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
         connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
-        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
+        emit<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            ...args: Link.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -22266,7 +22287,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof MediaCategory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaCategory.SignalSignatures[K]>
+            ...args: MediaCategory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22422,7 +22443,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof MediaContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaContent.SignalSignatures[K]>
+            ...args: MediaContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22542,7 +22563,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof MediaCredit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaCredit.SignalSignatures[K]>
+            ...args: MediaCredit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22629,7 +22650,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof MediaThumbnail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaThumbnail.SignalSignatures[K]>
+            ...args: MediaThumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22890,7 +22911,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Authorizer.SignalSignatures[K]>
+            ...args: OAuth2Authorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23746,7 +23767,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof Parsable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Parsable.SignalSignatures[K]>
+            ...args: Parsable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -23995,7 +24016,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebAlbum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebAlbum.SignalSignatures[K]>
+            ...args: PicasaWebAlbum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24159,7 +24180,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebComment.SignalSignatures[K]>
+            ...args: PicasaWebComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24196,7 +24217,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebFeed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebFeed.SignalSignatures[K]>
+            ...args: PicasaWebFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24522,7 +24543,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebFile.SignalSignatures[K]>
+            ...args: PicasaWebFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25276,7 +25297,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebQuery.SignalSignatures[K]>
+            ...args: PicasaWebQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25392,7 +25413,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebService.SignalSignatures[K]>
+            ...args: PicasaWebService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -25725,7 +25746,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof PicasaWebUser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PicasaWebUser.SignalSignatures[K]>
+            ...args: PicasaWebUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25960,7 +25981,10 @@ export namespace GData {
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -26208,7 +26232,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -26905,7 +26929,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof TasksQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TasksQuery.SignalSignatures[K]>
+            ...args: TasksQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27029,7 +27053,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof TasksService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TasksService.SignalSignatures[K]>
+            ...args: TasksService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -27400,7 +27424,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof TasksTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TasksTask.SignalSignatures[K]>
+            ...args: TasksTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27515,7 +27539,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof TasksTasklist.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TasksTasklist.SignalSignatures[K]>
+            ...args: TasksTasklist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -27660,7 +27684,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof UploadStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UploadStream.SignalSignatures[K]>
+            ...args: UploadStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27787,7 +27811,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeCategory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeCategory.SignalSignatures[K]>
+            ...args: YouTubeCategory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28313,7 +28337,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeComment.SignalSignatures[K]>
+            ...args: YouTubeComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28370,7 +28394,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeFeed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeFeed.SignalSignatures[K]>
+            ...args: YouTubeFeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -28539,7 +28563,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeQuery.SignalSignatures[K]>
+            ...args: YouTubeQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28674,7 +28698,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeService.SignalSignatures[K]>
+            ...args: YouTubeService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -29598,7 +29622,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeState.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeState.SignalSignatures[K]>
+            ...args: YouTubeState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -29884,7 +29908,7 @@ export namespace GData {
         ): number;
         emit<K extends keyof YouTubeVideo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YouTubeVideo.SignalSignatures[K]>
+            ...args: YouTubeVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

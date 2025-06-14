@@ -134,7 +134,7 @@ export namespace EBook {
         ): number;
         emit<K extends keyof BookClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookClient.SignalSignatures[K]>
+            ...args: BookClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2012,7 +2012,7 @@ export namespace EBook {
         ): number;
         emit<K extends keyof BookClientCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookClientCursor.SignalSignatures[K]>
+            ...args: BookClientCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2980,7 +2980,7 @@ export namespace EBook {
         ): number;
         emit<K extends keyof BookClientView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookClientView.SignalSignatures[K]>
+            ...args: BookClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3686,7 +3686,7 @@ export namespace EBook {
         ): number;
         emit<K extends keyof Destination.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Destination.SignalSignatures[K]>
+            ...args: Destination.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

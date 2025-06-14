@@ -103,7 +103,7 @@ export namespace GtkSpell {
         ): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checker.SignalSignatures[K]>
+            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

@@ -391,7 +391,7 @@ export namespace Libxfce4panel {
         ): number;
         emit<K extends keyof ArrowButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrowButton.SignalSignatures[K]>
+            ...args: ArrowButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4754,7 +4754,7 @@ export namespace Libxfce4panel {
         ): number;
         emit<K extends keyof PanelImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PanelImage.SignalSignatures[K]>
+            ...args: PanelImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5635,7 +5635,7 @@ export namespace Libxfce4panel {
         ): number;
         emit<K extends keyof PanelPlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PanelPlugin.SignalSignatures[K]>
+            ...args: PanelPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

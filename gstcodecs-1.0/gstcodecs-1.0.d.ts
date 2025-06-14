@@ -375,7 +375,7 @@ export namespace GstCodecs {
         ): number;
         emit<K extends keyof AV1Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AV1Decoder.SignalSignatures[K]>
+            ...args: AV1Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -477,7 +477,7 @@ export namespace GstCodecs {
         ): number;
         emit<K extends keyof H264Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<H264Decoder.SignalSignatures[K]>
+            ...args: H264Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -596,7 +596,7 @@ export namespace GstCodecs {
         ): number;
         emit<K extends keyof H265Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<H265Decoder.SignalSignatures[K]>
+            ...args: H265Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -696,7 +696,7 @@ export namespace GstCodecs {
         ): number;
         emit<K extends keyof Mpeg2Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mpeg2Decoder.SignalSignatures[K]>
+            ...args: Mpeg2Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -792,7 +792,7 @@ export namespace GstCodecs {
         ): number;
         emit<K extends keyof Vp8Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Vp8Decoder.SignalSignatures[K]>
+            ...args: Vp8Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -842,7 +842,7 @@ export namespace GstCodecs {
         ): number;
         emit<K extends keyof Vp9Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Vp9Decoder.SignalSignatures[K]>
+            ...args: Vp9Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

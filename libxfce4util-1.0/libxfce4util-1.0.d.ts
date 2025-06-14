@@ -545,7 +545,10 @@ export namespace Libxfce4util {
 
         connect<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: Kiosk.SignalSignatures[K]): number;
         connect_after<K extends keyof Kiosk.SignalSignatures>(signal: K, callback: Kiosk.SignalSignatures[K]): number;
-        emit<K extends keyof Kiosk.SignalSignatures>(signal: K, ...args: Parameters<Kiosk.SignalSignatures[K]>): void;
+        emit<K extends keyof Kiosk.SignalSignatures>(
+            signal: K,
+            ...args: Kiosk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

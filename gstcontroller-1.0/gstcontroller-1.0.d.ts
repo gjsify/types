@@ -168,7 +168,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ARGBControlBinding.SignalSignatures[K]>
+            ...args: ARGBControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -226,7 +226,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectControlBinding.SignalSignatures[K]>
+            ...args: DirectControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -279,7 +279,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InterpolationControlSource.SignalSignatures[K]>
+            ...args: InterpolationControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -365,7 +365,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LFOControlSource.SignalSignatures[K]>
+            ...args: LFOControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -409,7 +409,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyControlBinding.SignalSignatures[K]>
+            ...args: ProxyControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -474,7 +474,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimedValueControlSource.SignalSignatures[K]>
+            ...args: TimedValueControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -577,7 +577,7 @@ export namespace GstController {
         ): number;
         emit<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TriggerControlSource.SignalSignatures[K]>
+            ...args: TriggerControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

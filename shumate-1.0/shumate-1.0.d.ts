@@ -403,7 +403,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof Compass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Compass.SignalSignatures[K]>
+            ...args: Compass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1181,7 +1181,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof Coordinate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Coordinate.SignalSignatures[K]>
+            ...args: Coordinate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1747,7 +1747,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof DataSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSource.SignalSignatures[K]>
+            ...args: DataSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1989,7 +1989,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof DataSourceRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSourceRequest.SignalSignatures[K]>
+            ...args: DataSourceRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2142,7 +2142,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof FileCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileCache.SignalSignatures[K]>
+            ...args: FileCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2367,7 +2367,10 @@ export namespace Shumate {
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3172,7 +3175,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof License.SignalSignatures>(
             signal: K,
-            ...args: Parameters<License.SignalSignatures[K]>
+            ...args: License.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4040,7 +4043,10 @@ export namespace Shumate {
 
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
-        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
+        emit<K extends keyof Map.SignalSignatures>(
+            signal: K,
+            ...args: Map.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4950,7 +4956,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof MapLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapLayer.SignalSignatures[K]>
+            ...args: MapLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5506,7 +5512,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof MapSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapSource.SignalSignatures[K]>
+            ...args: MapSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5756,7 +5762,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof MapSourceRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapSourceRegistry.SignalSignatures[K]>
+            ...args: MapSourceRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6378,7 +6384,10 @@ export namespace Shumate {
 
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
+        emit<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7260,7 +7269,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof MarkerLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkerLayer.SignalSignatures[K]>
+            ...args: MarkerLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7897,7 +7906,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof PathLayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathLayer.SignalSignatures[K]>
+            ...args: PathLayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8499,7 +8508,10 @@ export namespace Shumate {
 
         connect<K extends keyof Point.SignalSignatures>(signal: K, callback: Point.SignalSignatures[K]): number;
         connect_after<K extends keyof Point.SignalSignatures>(signal: K, callback: Point.SignalSignatures[K]): number;
-        emit<K extends keyof Point.SignalSignatures>(signal: K, ...args: Parameters<Point.SignalSignatures[K]>): void;
+        emit<K extends keyof Point.SignalSignatures>(
+            signal: K,
+            ...args: Point.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         /**
@@ -9069,7 +9081,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof RasterRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RasterRenderer.SignalSignatures[K]>
+            ...args: RasterRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -9142,7 +9154,10 @@ export namespace Shumate {
 
         connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
         connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
-        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: Parameters<Scale.SignalSignatures[K]>): void;
+        emit<K extends keyof Scale.SignalSignatures>(
+            signal: K,
+            ...args: Scale.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -9993,7 +10008,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof SimpleMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleMap.SignalSignatures[K]>
+            ...args: SimpleMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10859,7 +10874,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof SymbolEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SymbolEvent.SignalSignatures[K]>
+            ...args: SymbolEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11498,7 +11513,10 @@ export namespace Shumate {
 
         connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
         connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
-        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: Parameters<Tile.SignalSignatures[K]>): void;
+        emit<K extends keyof Tile.SignalSignatures>(
+            signal: K,
+            ...args: Tile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -11650,7 +11668,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof TileDownloader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileDownloader.SignalSignatures[K]>
+            ...args: TileDownloader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11695,7 +11713,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof VectorReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorReader.SignalSignatures[K]>
+            ...args: VectorReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11767,7 +11785,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof VectorReaderIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorReaderIter.SignalSignatures[K]>
+            ...args: VectorReaderIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11962,7 +11980,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof VectorRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorRenderer.SignalSignatures[K]>
+            ...args: VectorRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12633,7 +12651,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof VectorSprite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorSprite.SignalSignatures[K]>
+            ...args: VectorSprite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13396,7 +13414,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof VectorSpriteSheet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorSpriteSheet.SignalSignatures[K]>
+            ...args: VectorSpriteSheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13544,7 +13562,7 @@ export namespace Shumate {
         ): number;
         emit<K extends keyof Viewport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Viewport.SignalSignatures[K]>
+            ...args: Viewport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -1404,7 +1404,10 @@ export namespace Ggit {
 
         connect<K extends keyof Blame.SignalSignatures>(signal: K, callback: Blame.SignalSignatures[K]): number;
         connect_after<K extends keyof Blame.SignalSignatures>(signal: K, callback: Blame.SignalSignatures[K]): number;
-        emit<K extends keyof Blame.SignalSignatures>(signal: K, ...args: Parameters<Blame.SignalSignatures[K]>): void;
+        emit<K extends keyof Blame.SignalSignatures>(
+            signal: K,
+            ...args: Blame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1464,7 +1467,10 @@ export namespace Ggit {
 
         connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
         connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
-        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
+        emit<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1524,7 +1530,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof BlobOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlobOutputStream.SignalSignatures[K]>
+            ...args: BlobOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1563,7 +1569,10 @@ export namespace Ggit {
 
         connect<K extends keyof Branch.SignalSignatures>(signal: K, callback: Branch.SignalSignatures[K]): number;
         connect_after<K extends keyof Branch.SignalSignatures>(signal: K, callback: Branch.SignalSignatures[K]): number;
-        emit<K extends keyof Branch.SignalSignatures>(signal: K, ...args: Parameters<Branch.SignalSignatures[K]>): void;
+        emit<K extends keyof Branch.SignalSignatures>(
+            signal: K,
+            ...args: Branch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1709,7 +1718,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CheckoutOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckoutOptions.SignalSignatures[K]>
+            ...args: CheckoutOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1907,7 +1916,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CherryPickOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CherryPickOptions.SignalSignatures[K]>
+            ...args: CherryPickOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1979,7 +1988,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CloneOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CloneOptions.SignalSignatures[K]>
+            ...args: CloneOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2061,7 +2070,10 @@ export namespace Ggit {
 
         connect<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
         connect_after<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
-        emit<K extends keyof Commit.SignalSignatures>(signal: K, ...args: Parameters<Commit.SignalSignatures[K]>): void;
+        emit<K extends keyof Commit.SignalSignatures>(
+            signal: K,
+            ...args: Commit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2193,7 +2205,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CommitParents.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommitParents.SignalSignatures[K]>
+            ...args: CommitParents.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2248,7 +2260,10 @@ export namespace Ggit {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2412,7 +2427,10 @@ export namespace Ggit {
 
         connect<K extends keyof Cred.SignalSignatures>(signal: K, callback: Cred.SignalSignatures[K]): number;
         connect_after<K extends keyof Cred.SignalSignatures>(signal: K, callback: Cred.SignalSignatures[K]): number;
-        emit<K extends keyof Cred.SignalSignatures>(signal: K, ...args: Parameters<Cred.SignalSignatures[K]>): void;
+        emit<K extends keyof Cred.SignalSignatures>(
+            signal: K,
+            ...args: Cred.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace CredPlaintext {
@@ -2458,7 +2476,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CredPlaintext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredPlaintext.SignalSignatures[K]>
+            ...args: CredPlaintext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3034,7 +3052,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CredSshInteractive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredSshInteractive.SignalSignatures[K]>
+            ...args: CredSshInteractive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3613,7 +3631,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredSshKeyFromAgent.SignalSignatures[K]>
+            ...args: CredSshKeyFromAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4216,7 +4234,10 @@ export namespace Ggit {
 
         connect<K extends keyof Diff.SignalSignatures>(signal: K, callback: Diff.SignalSignatures[K]): number;
         connect_after<K extends keyof Diff.SignalSignatures>(signal: K, callback: Diff.SignalSignatures[K]): number;
-        emit<K extends keyof Diff.SignalSignatures>(signal: K, ...args: Parameters<Diff.SignalSignatures[K]>): void;
+        emit<K extends keyof Diff.SignalSignatures>(
+            signal: K,
+            ...args: Diff.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4397,7 +4418,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof DiffFindOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffFindOptions.SignalSignatures[K]>
+            ...args: DiffFindOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4527,7 +4548,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffFormatEmailOptions.SignalSignatures[K]>
+            ...args: DiffFormatEmailOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4676,7 +4697,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof DiffOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffOptions.SignalSignatures[K]>
+            ...args: DiffOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4774,7 +4795,10 @@ export namespace Ggit {
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -5436,7 +5460,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof Mailmap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mailmap.SignalSignatures[K]>
+            ...args: Mailmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5505,7 +5529,10 @@ export namespace Ggit {
 
         connect<K extends keyof Native.SignalSignatures>(signal: K, callback: Native.SignalSignatures[K]): number;
         connect_after<K extends keyof Native.SignalSignatures>(signal: K, callback: Native.SignalSignatures[K]): number;
-        emit<K extends keyof Native.SignalSignatures>(signal: K, ...args: Parameters<Native.SignalSignatures[K]>): void;
+        emit<K extends keyof Native.SignalSignatures>(
+            signal: K,
+            ...args: Native.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Object {
@@ -5533,7 +5560,10 @@ export namespace Ggit {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5582,7 +5612,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectFactory.SignalSignatures[K]>
+            ...args: ObjectFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5655,7 +5685,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof ObjectFactoryBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectFactoryBase.SignalSignatures[K]>
+            ...args: ObjectFactoryBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5694,7 +5724,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof ProxyOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyOptions.SignalSignatures[K]>
+            ...args: ProxyOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5743,7 +5773,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof PushOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PushOptions.SignalSignatures[K]>
+            ...args: PushOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5799,7 +5829,10 @@ export namespace Ggit {
 
         connect<K extends keyof Rebase.SignalSignatures>(signal: K, callback: Rebase.SignalSignatures[K]): number;
         connect_after<K extends keyof Rebase.SignalSignatures>(signal: K, callback: Rebase.SignalSignatures[K]): number;
-        emit<K extends keyof Rebase.SignalSignatures>(signal: K, ...args: Parameters<Rebase.SignalSignatures[K]>): void;
+        emit<K extends keyof Rebase.SignalSignatures>(
+            signal: K,
+            ...args: Rebase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5879,7 +5912,10 @@ export namespace Ggit {
 
         connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
         connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
-        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: Parameters<Ref.SignalSignatures[K]>): void;
+        emit<K extends keyof Ref.SignalSignatures>(
+            signal: K,
+            ...args: Ref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6079,7 +6115,10 @@ export namespace Ggit {
 
         connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
+        emit<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6242,7 +6281,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof RemoteCallbacks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteCallbacks.SignalSignatures[K]>
+            ...args: RemoteCallbacks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6312,7 +6351,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7697,7 +7736,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof RevisionWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RevisionWalker.SignalSignatures[K]>
+            ...args: RevisionWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8374,7 +8413,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof Signature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Signature.SignalSignatures[K]>
+            ...args: Signature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8458,7 +8497,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubmoduleUpdateOptions.SignalSignatures[K]>
+            ...args: SubmoduleUpdateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8506,7 +8545,10 @@ export namespace Ggit {
 
         connect<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
         connect_after<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
-        emit<K extends keyof Tag.SignalSignatures>(signal: K, ...args: Parameters<Tag.SignalSignatures[K]>): void;
+        emit<K extends keyof Tag.SignalSignatures>(
+            signal: K,
+            ...args: Tag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -8576,7 +8618,10 @@ export namespace Ggit {
 
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
+        emit<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -8652,7 +8697,7 @@ export namespace Ggit {
         ): number;
         emit<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeBuilder.SignalSignatures[K]>
+            ...args: TreeBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

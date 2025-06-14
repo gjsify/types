@@ -154,7 +154,10 @@ export namespace Nautilus {
 
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
+        emit<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Menu {
@@ -181,7 +184,10 @@ export namespace Nautilus {
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -250,7 +256,7 @@ export namespace Nautilus {
         ): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -317,7 +323,7 @@ export namespace Nautilus {
         ): number;
         emit<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertiesItem.SignalSignatures[K]>
+            ...args: PropertiesItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -367,7 +373,7 @@ export namespace Nautilus {
         ): number;
         emit<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertiesModel.SignalSignatures[K]>
+            ...args: PropertiesModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

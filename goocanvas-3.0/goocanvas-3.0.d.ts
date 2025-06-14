@@ -806,7 +806,10 @@ export namespace GooCanvas {
 
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
-        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
+        emit<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1829,7 +1832,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasAccessibleFactory.SignalSignatures[K]>
+            ...args: CanvasAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1927,7 +1930,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasEllipse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasEllipse.SignalSignatures[K]>
+            ...args: CanvasEllipse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3135,7 +3138,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasEllipseModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasEllipseModel.SignalSignatures[K]>
+            ...args: CanvasEllipseModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4126,7 +4129,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGrid.SignalSignatures[K]>
+            ...args: CanvasGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5469,7 +5472,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasGridModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGridModel.SignalSignatures[K]>
+            ...args: CanvasGridModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6290,7 +6293,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGroup.SignalSignatures[K]>
+            ...args: CanvasGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7476,7 +7479,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasGroupModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGroupModel.SignalSignatures[K]>
+            ...args: CanvasGroupModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -8306,7 +8309,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasImage.SignalSignatures[K]>
+            ...args: CanvasImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9506,7 +9509,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasImageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasImageModel.SignalSignatures[K]>
+            ...args: CanvasImageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -10282,7 +10285,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasItemAccessibleFactory.SignalSignatures[K]>
+            ...args: CanvasItemAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10472,7 +10475,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasItemModelSimple.SignalSignatures[K]>
+            ...args: CanvasItemModelSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -11421,7 +11424,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasItemSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasItemSimple.SignalSignatures[K]>
+            ...args: CanvasItemSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -12696,7 +12699,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasPath.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPath.SignalSignatures[K]>
+            ...args: CanvasPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -13883,7 +13886,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasPathModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPathModel.SignalSignatures[K]>
+            ...args: CanvasPathModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14735,7 +14738,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasPolyline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPolyline.SignalSignatures[K]>
+            ...args: CanvasPolyline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -15956,7 +15959,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasPolylineModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPolylineModel.SignalSignatures[K]>
+            ...args: CanvasPolylineModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -16827,7 +16830,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasRect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasRect.SignalSignatures[K]>
+            ...args: CanvasRect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -18067,7 +18070,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasRectModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasRectModel.SignalSignatures[K]>
+            ...args: CanvasRectModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -18866,7 +18869,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasStyle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasStyle.SignalSignatures[K]>
+            ...args: CanvasStyle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19035,7 +19038,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasTable.SignalSignatures[K]>
+            ...args: CanvasTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -19593,7 +19596,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasTableModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasTableModel.SignalSignatures[K]>
+            ...args: CanvasTableModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -20129,7 +20132,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasText.SignalSignatures[K]>
+            ...args: CanvasText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21340,7 +21343,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasTextModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasTextModel.SignalSignatures[K]>
+            ...args: CanvasTextModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -22167,7 +22170,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasWidget.SignalSignatures[K]>
+            ...args: CanvasWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -23307,7 +23310,7 @@ export namespace GooCanvas {
         ): number;
         emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]>
+            ...args: CanvasWidgetAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

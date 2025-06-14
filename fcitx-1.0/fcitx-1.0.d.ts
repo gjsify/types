@@ -111,7 +111,10 @@ export namespace Fcitx {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -282,7 +285,7 @@ export namespace Fcitx {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -370,7 +373,7 @@ export namespace Fcitx {
         ): number;
         emit<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMethod.SignalSignatures[K]>
+            ...args: InputMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1251,7 +1254,10 @@ export namespace Fcitx {
 
         connect<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
         connect_after<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
-        emit<K extends keyof Kbd.SignalSignatures>(signal: K, ...args: Parameters<Kbd.SignalSignatures[K]>): void;
+        emit<K extends keyof Kbd.SignalSignatures>(
+            signal: K,
+            ...args: Kbd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

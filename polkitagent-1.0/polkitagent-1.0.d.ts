@@ -89,7 +89,7 @@ export namespace PolkitAgent {
         ): number;
         emit<K extends keyof Listener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Listener.SignalSignatures[K]>
+            ...args: Listener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -402,7 +402,7 @@ export namespace PolkitAgent {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -466,7 +466,7 @@ export namespace PolkitAgent {
         ): number;
         emit<K extends keyof TextListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextListener.SignalSignatures[K]>
+            ...args: TextListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

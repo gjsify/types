@@ -1378,7 +1378,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof Cartesian.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cartesian.SignalSignatures[K]>
+            ...args: Cartesian.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2734,7 +2734,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Dial.SignalSignatures>(signal: K, callback: Dial.SignalSignatures[K]): number;
         connect_after<K extends keyof Dial.SignalSignatures>(signal: K, callback: Dial.SignalSignatures[K]): number;
-        emit<K extends keyof Dial.SignalSignatures>(signal: K, ...args: Parameters<Dial.SignalSignatures[K]>): void;
+        emit<K extends keyof Dial.SignalSignatures>(
+            signal: K,
+            ...args: Dial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3617,7 +3620,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof Expander.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expander.SignalSignatures[K]>
+            ...args: Expander.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4146,7 +4149,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof ExpanderSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpanderSet.SignalSignatures[K]>
+            ...args: ExpanderSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4701,7 +4704,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof FileDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileDialog.SignalSignatures[K]>
+            ...args: FileDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7864,7 +7867,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof FileWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileWidget.SignalSignatures[K]>
+            ...args: FileWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -8615,7 +8618,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof IconLink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconLink.SignalSignatures[K]>
+            ...args: IconLink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9242,7 +9245,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof Indicator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Indicator.SignalSignatures[K]>
+            ...args: Indicator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10100,7 +10103,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof InputDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputDialog.SignalSignatures[K]>
+            ...args: InputDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13170,7 +13173,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Led.SignalSignatures>(signal: K, callback: Led.SignalSignatures[K]): number;
         connect_after<K extends keyof Led.SignalSignatures>(signal: K, callback: Led.SignalSignatures[K]): number;
-        emit<K extends keyof Led.SignalSignatures>(signal: K, ...args: Parameters<Led.SignalSignatures[K]>): void;
+        emit<K extends keyof Led.SignalSignatures>(
+            signal: K,
+            ...args: Led.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -14017,7 +14023,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof LedArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LedArray.SignalSignatures[K]>
+            ...args: LedArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14617,7 +14623,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Level.SignalSignatures>(signal: K, callback: Level.SignalSignatures[K]): number;
         connect_after<K extends keyof Level.SignalSignatures>(signal: K, callback: Level.SignalSignatures[K]): number;
-        emit<K extends keyof Level.SignalSignatures>(signal: K, ...args: Parameters<Level.SignalSignatures[K]>): void;
+        emit<K extends keyof Level.SignalSignatures>(
+            signal: K,
+            ...args: Level.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -15462,7 +15471,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof LevelBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LevelBox.SignalSignatures[K]>
+            ...args: LevelBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16041,7 +16050,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notebook.SignalSignatures[K]>
+            ...args: Notebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16656,7 +16665,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Piano.SignalSignatures>(signal: K, callback: Piano.SignalSignatures[K]): number;
         connect_after<K extends keyof Piano.SignalSignatures>(signal: K, callback: Piano.SignalSignatures[K]): number;
-        emit<K extends keyof Piano.SignalSignatures>(signal: K, ...args: Parameters<Piano.SignalSignatures[K]>): void;
+        emit<K extends keyof Piano.SignalSignatures>(
+            signal: K,
+            ...args: Piano.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -17625,7 +17637,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Ruler.SignalSignatures>(signal: K, callback: Ruler.SignalSignatures[K]): number;
         connect_after<K extends keyof Ruler.SignalSignatures>(signal: K, callback: Ruler.SignalSignatures[K]): number;
-        emit<K extends keyof Ruler.SignalSignatures>(signal: K, ...args: Parameters<Ruler.SignalSignatures[K]>): void;
+        emit<K extends keyof Ruler.SignalSignatures>(
+            signal: K,
+            ...args: Ruler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -18536,7 +18551,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
         connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
-        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: Parameters<Scale.SignalSignatures[K]>): void;
+        emit<K extends keyof Scale.SignalSignatures>(
+            signal: K,
+            ...args: Scale.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -19381,7 +19399,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof ScaleBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScaleBox.SignalSignatures[K]>
+            ...args: ScaleBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19934,7 +19952,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof ScrolledLevelBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrolledLevelBox.SignalSignatures[K]>
+            ...args: ScrolledLevelBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20455,7 +20473,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof ScrolledPiano.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrolledPiano.SignalSignatures[K]>
+            ...args: ScrolledPiano.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20976,7 +20994,7 @@ export namespace AgsGui {
         ): number;
         emit<K extends keyof ScrolledScaleBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrolledScaleBox.SignalSignatures[K]>
+            ...args: ScrolledScaleBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21536,7 +21554,10 @@ export namespace AgsGui {
 
         connect<K extends keyof Tempo.SignalSignatures>(signal: K, callback: Tempo.SignalSignatures[K]): number;
         connect_after<K extends keyof Tempo.SignalSignatures>(signal: K, callback: Tempo.SignalSignatures[K]): number;
-        emit<K extends keyof Tempo.SignalSignatures>(signal: K, ...args: Parameters<Tempo.SignalSignatures[K]>): void;
+        emit<K extends keyof Tempo.SignalSignatures>(
+            signal: K,
+            ...args: Tempo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

@@ -162,7 +162,10 @@ export namespace GstTag {
 
         connect<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
         connect_after<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
-        emit<K extends keyof Demux.SignalSignatures>(signal: K, ...args: Parameters<Demux.SignalSignatures[K]>): void;
+        emit<K extends keyof Demux.SignalSignatures>(
+            signal: K,
+            ...args: Demux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

@@ -266,7 +266,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof AbstractFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractFieldDetails.SignalSignatures[K]>
+            ...args: AbstractFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -337,7 +337,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvatarCache.SignalSignatures[K]>
+            ...args: AvatarCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -426,7 +426,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof BackendStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackendStore.SignalSignatures[K]>
+            ...args: BackendStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -516,7 +516,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -598,7 +598,10 @@ export namespace Folks {
 
         connect<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
         connect_after<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
-        emit<K extends keyof Debug.SignalSignatures>(signal: K, ...args: Parameters<Debug.SignalSignatures[K]>): void;
+        emit<K extends keyof Debug.SignalSignatures>(
+            signal: K,
+            ...args: Debug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -648,7 +651,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof EmailFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmailFieldDetails.SignalSignatures[K]>
+            ...args: EmailFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -684,7 +687,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof ExtendedFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtendedFieldDetails.SignalSignatures[K]>
+            ...args: ExtendedFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -720,7 +723,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof ImFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImFieldDetails.SignalSignatures[K]>
+            ...args: ImFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -804,7 +807,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof IndividualAggregator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndividualAggregator.SignalSignatures[K]>
+            ...args: IndividualAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1006,7 +1009,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof Individual.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Individual.SignalSignatures[K]>
+            ...args: Individual.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1891,7 +1894,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1968,7 +1971,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof StructuredName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructuredName.SignalSignatures[K]>
+            ...args: StructuredName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2028,7 +2031,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof NoteFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NoteFieldDetails.SignalSignatures[K]>
+            ...args: NoteFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2089,7 +2092,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof ObjectCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectCache.SignalSignatures[K]>
+            ...args: ObjectCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2250,7 +2253,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2392,7 +2395,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Persona.SignalSignatures[K]>
+            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2451,7 +2454,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof PhoneFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhoneFieldDetails.SignalSignatures[K]>
+            ...args: PhoneFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2541,7 +2544,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof PostalAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PostalAddress.SignalSignatures[K]>
+            ...args: PostalAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2601,7 +2604,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PostalAddressFieldDetails.SignalSignatures[K]>
+            ...args: PostalAddressFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2641,7 +2644,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof PotentialMatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PotentialMatch.SignalSignatures[K]>
+            ...args: PotentialMatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2679,7 +2682,10 @@ export namespace Folks {
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2735,7 +2741,10 @@ export namespace Folks {
 
         connect<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
         connect_after<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
-        emit<K extends keyof Role.SignalSignatures>(signal: K, ...args: Parameters<Role.SignalSignatures[K]>): void;
+        emit<K extends keyof Role.SignalSignatures>(
+            signal: K,
+            ...args: Role.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2788,7 +2797,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof RoleFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoleFieldDetails.SignalSignatures[K]>
+            ...args: RoleFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2851,7 +2860,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof SearchView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchView.SignalSignatures[K]>
+            ...args: SearchView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2924,7 +2933,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof SimpleQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleQuery.SignalSignatures[K]>
+            ...args: SimpleQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2967,7 +2976,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof UrlFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UrlFieldDetails.SignalSignatures[K]>
+            ...args: UrlFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2995,7 +3004,10 @@ export namespace Folks {
 
         connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
         connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
-        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: Parameters<Utils.SignalSignatures[K]>): void;
+        emit<K extends keyof Utils.SignalSignatures>(
+            signal: K,
+            ...args: Utils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3037,7 +3049,7 @@ export namespace Folks {
         ): number;
         emit<K extends keyof WebServiceFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebServiceFieldDetails.SignalSignatures[K]>
+            ...args: WebServiceFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

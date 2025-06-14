@@ -115,7 +115,7 @@ export namespace Matekbd {
         ): number;
         emit<K extends keyof Indicator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Indicator.SignalSignatures[K]>
+            ...args: Indicator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -623,7 +623,7 @@ export namespace Matekbd {
         ): number;
         emit<K extends keyof KeyboardDrawing.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyboardDrawing.SignalSignatures[K]>
+            ...args: KeyboardDrawing.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1132,7 +1132,10 @@ export namespace Matekbd {
 
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
+        emit<K extends keyof Status.SignalSignatures>(
+            signal: K,
+            ...args: Status.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

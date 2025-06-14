@@ -126,7 +126,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesBehaviourPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesBehaviourPage.SignalSignatures[K]>
+            ...args: PreferencesBehaviourPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -610,7 +610,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesGroup.SignalSignatures[K]>
+            ...args: PreferencesGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1148,7 +1148,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesHistorySettingsPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesHistorySettingsPage.SignalSignatures[K]>
+            ...args: PreferencesHistorySettingsPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1625,7 +1625,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesManager.SignalSignatures[K]>
+            ...args: PreferencesManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1681,7 +1681,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesPage.SignalSignatures[K]>
+            ...args: PreferencesPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2186,7 +2186,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesShortcutsPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesShortcutsPage.SignalSignatures[K]>
+            ...args: PreferencesShortcutsPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2667,7 +2667,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesWidget.SignalSignatures[K]>
+            ...args: PreferencesWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3154,7 +3154,7 @@ export namespace GPasteGtk {
         ): number;
         emit<K extends keyof PreferencesWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
+            ...args: PreferencesWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

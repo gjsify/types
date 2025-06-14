@@ -2512,7 +2512,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof AtlasTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AtlasTexture.SignalSignatures[K]>
+            ...args: AtlasTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2585,7 +2585,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attribute.SignalSignatures[K]>
+            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2649,7 +2649,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof AttributeBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AttributeBuffer.SignalSignatures[K]>
+            ...args: AttributeBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2701,7 +2701,10 @@ export namespace Cogl {
 
         connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
         connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
-        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: Parameters<Bitmap.SignalSignatures[K]>): void;
+        emit<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            ...args: Bitmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2773,7 +2776,10 @@ export namespace Cogl {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2923,7 +2929,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3017,7 +3023,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3094,7 +3100,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof FrameInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameInfo.SignalSignatures[K]>
+            ...args: FrameInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3194,7 +3200,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Framebuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Framebuffer.SignalSignatures[K]>
+            ...args: Framebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4002,7 +4008,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof IndexBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexBuffer.SignalSignatures[K]>
+            ...args: IndexBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4093,7 +4099,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Indices.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Indices.SignalSignatures[K]>
+            ...args: Indices.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4171,7 +4177,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof MatrixStack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MatrixStack.SignalSignatures[K]>
+            ...args: MatrixStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4357,7 +4363,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Offscreen.SignalSignatures[K]>
+            ...args: Offscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4392,7 +4398,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Onscreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Onscreen.SignalSignatures[K]>
+            ...args: Onscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4794,7 +4800,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof OnscreenTemplate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OnscreenTemplate.SignalSignatures[K]>
+            ...args: OnscreenTemplate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4870,7 +4876,10 @@ export namespace Cogl {
 
         connect<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
         connect_after<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
-        emit<K extends keyof Output.SignalSignatures>(signal: K, ...args: Parameters<Output.SignalSignatures[K]>): void;
+        emit<K extends keyof Output.SignalSignatures>(
+            signal: K,
+            ...args: Output.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4967,7 +4976,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pipeline.SignalSignatures[K]>
+            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5552,7 +5561,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof PixelBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixelBuffer.SignalSignatures[K]>
+            ...args: PixelBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5604,7 +5613,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Primitive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Primitive.SignalSignatures[K]>
+            ...args: Primitive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5733,7 +5742,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Program.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Program.SignalSignatures[K]>
+            ...args: Program.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5853,7 +5862,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5979,7 +5988,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Scanout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scanout.SignalSignatures[K]>
+            ...args: Scanout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6098,7 +6107,10 @@ export namespace Cogl {
 
         connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
         connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
-        emit<K extends keyof Shader.SignalSignatures>(signal: K, ...args: Parameters<Shader.SignalSignatures[K]>): void;
+        emit<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            ...args: Shader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6320,7 +6332,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Snippet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Snippet.SignalSignatures[K]>
+            ...args: Snippet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6426,7 +6438,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof SubTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubTexture.SignalSignatures[K]>
+            ...args: SubTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6469,7 +6481,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof SwapChain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwapChain.SignalSignatures[K]>
+            ...args: SwapChain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6526,7 +6538,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture.SignalSignatures[K]>
+            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6816,7 +6828,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Texture2D.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture2D.SignalSignatures[K]>
+            ...args: Texture2D.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6893,7 +6905,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Texture2DSliced.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture2DSliced.SignalSignatures[K]>
+            ...args: Texture2DSliced.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

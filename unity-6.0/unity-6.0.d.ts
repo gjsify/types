@@ -297,7 +297,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppInfoManager.SignalSignatures[K]>
+            ...args: AppInfoManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -417,7 +417,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotatedIcon.SignalSignatures[K]>
+            ...args: AnnotatedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -480,7 +480,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof Inspector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Inspector.SignalSignatures[K]>
+            ...args: Inspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -561,7 +561,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LauncherEntry.SignalSignatures[K]>
+            ...args: LauncherEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1077,7 +1077,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LauncherFavorites.SignalSignatures[K]>
+            ...args: LauncherFavorites.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1142,7 +1142,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActivationResponse.SignalSignatures[K]>
+            ...args: ActivationResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1189,7 +1189,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1249,7 +1249,10 @@ export namespace Unity {
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace FilterOption {
@@ -1301,7 +1304,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOption.SignalSignatures[K]>
+            ...args: FilterOption.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1351,7 +1354,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionsFilter.SignalSignatures[K]>
+            ...args: OptionsFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1401,7 +1404,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RadioOptionFilter.SignalSignatures[K]>
+            ...args: RadioOptionFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1444,7 +1447,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckOptionFilter.SignalSignatures[K]>
+            ...args: CheckOptionFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1488,7 +1491,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckOptionFilterCompact.SignalSignatures[K]>
+            ...args: CheckOptionFilterCompact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1531,7 +1534,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RatingsFilter.SignalSignatures[K]>
+            ...args: RatingsFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1570,7 +1573,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultiRangeFilter.SignalSignatures[K]>
+            ...args: MultiRangeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1622,7 +1625,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesManager.SignalSignatures[K]>
+            ...args: PreferencesManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1691,7 +1694,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof LensSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LensSearch.SignalSignatures[K]>
+            ...args: LensSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1789,7 +1792,10 @@ export namespace Unity {
 
         connect<K extends keyof Lens.SignalSignatures>(signal: K, callback: Lens.SignalSignatures[K]): number;
         connect_after<K extends keyof Lens.SignalSignatures>(signal: K, callback: Lens.SignalSignatures[K]): number;
-        emit<K extends keyof Lens.SignalSignatures>(signal: K, ...args: Parameters<Lens.SignalSignatures[K]>): void;
+        emit<K extends keyof Lens.SignalSignatures>(
+            signal: K,
+            ...args: Lens.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1857,7 +1863,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof Preview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Preview.SignalSignatures[K]>
+            ...args: Preview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2407,7 +2413,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewAction.SignalSignatures[K]>
+            ...args: PreviewAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2926,7 +2932,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfoHint.SignalSignatures[K]>
+            ...args: InfoHint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2962,7 +2968,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GenericPreview.SignalSignatures[K]>
+            ...args: GenericPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3026,7 +3032,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationPreview.SignalSignatures[K]>
+            ...args: ApplicationPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3101,7 +3107,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicPreview.SignalSignatures[K]>
+            ...args: MusicPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3148,7 +3154,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MoviePreview.SignalSignatures[K]>
+            ...args: MoviePreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3201,7 +3207,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocialPreview.SignalSignatures[K]>
+            ...args: SocialPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3253,7 +3259,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocialPreviewComment.SignalSignatures[K]>
+            ...args: SocialPreviewComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3306,7 +3312,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof AsyncPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncPreview.SignalSignatures[K]>
+            ...args: AsyncPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3410,7 +3416,10 @@ export namespace Unity {
 
         connect<K extends keyof Scope.SignalSignatures>(signal: K, callback: Scope.SignalSignatures[K]): number;
         connect_after<K extends keyof Scope.SignalSignatures>(signal: K, callback: Scope.SignalSignatures[K]): number;
-        emit<K extends keyof Scope.SignalSignatures>(signal: K, ...args: Parameters<Scope.SignalSignatures[K]>): void;
+        emit<K extends keyof Scope.SignalSignatures>(
+            signal: K,
+            ...args: Scope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3511,7 +3520,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackMetadata.SignalSignatures[K]>
+            ...args: TrackMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3574,7 +3583,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Playlist.SignalSignatures[K]>
+            ...args: Playlist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3713,7 +3722,7 @@ export namespace Unity {
         ): number;
         emit<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicPlayer.SignalSignatures[K]>
+            ...args: MusicPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

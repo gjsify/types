@@ -102,7 +102,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof ChannelMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelMap.SignalSignatures[K]>
+            ...args: ChannelMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -173,7 +173,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerCard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerCard.SignalSignatures[K]>
+            ...args: MixerCard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -314,7 +314,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerControl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerControl.SignalSignatures[K]>
+            ...args: MixerControl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -402,7 +402,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerEventRole.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerEventRole.SignalSignatures[K]>
+            ...args: MixerEventRole.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -433,7 +433,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSink.SignalSignatures[K]>
+            ...args: MixerSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -467,7 +467,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerSinkInput.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSinkInput.SignalSignatures[K]>
+            ...args: MixerSinkInput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -501,7 +501,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSource.SignalSignatures[K]>
+            ...args: MixerSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -535,7 +535,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerSourceOutput.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSourceOutput.SignalSignatures[K]>
+            ...args: MixerSourceOutput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -659,7 +659,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerStream.SignalSignatures[K]>
+            ...args: MixerStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -782,7 +782,7 @@ export namespace Gvc {
         ): number;
         emit<K extends keyof MixerUIDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerUIDevice.SignalSignatures[K]>
+            ...args: MixerUIDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

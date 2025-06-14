@@ -447,7 +447,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -791,7 +791,10 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
         connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
-        emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: Parameters<Domain.SignalSignatures[K]>): void;
+        emit<K extends keyof Domain.SignalSignatures>(
+            signal: K,
+            ...args: Domain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1206,7 +1209,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainDevice.SignalSignatures[K]>
+            ...args: DomainDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1245,7 +1248,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainDisk.SignalSignatures[K]>
+            ...args: DomainDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1296,7 +1299,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterface.SignalSignatures[K]>
+            ...args: DomainInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1346,7 +1349,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSnapshot.SignalSignatures[K]>
+            ...args: DomainSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1422,7 +1425,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interface.SignalSignatures[K]>
+            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1474,7 +1477,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1523,7 +1526,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof Network.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Network.SignalSignatures[K]>
+            ...args: Network.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1584,7 +1587,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof NetworkDHCPLease.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkDHCPLease.SignalSignatures[K]>
+            ...args: NetworkDHCPLease.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1636,7 +1639,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkFilter.SignalSignatures[K]>
+            ...args: NetworkFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1682,7 +1685,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NodeDevice.SignalSignatures[K]>
+            ...args: NodeDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1719,7 +1722,10 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
         connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
-        emit<K extends keyof Secret.SignalSignatures>(signal: K, ...args: Parameters<Secret.SignalSignatures[K]>): void;
+        emit<K extends keyof Secret.SignalSignatures>(
+            signal: K,
+            ...args: Secret.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1764,7 +1770,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoragePool.SignalSignatures[K]>
+            ...args: StoragePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1888,7 +1894,7 @@ export namespace LibvirtGObject {
         ): number;
         emit<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StorageVol.SignalSignatures[K]>
+            ...args: StorageVol.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1942,7 +1948,10 @@ export namespace LibvirtGObject {
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

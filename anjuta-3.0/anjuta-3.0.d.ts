@@ -654,7 +654,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof AsyncCommand.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncCommand.SignalSignatures[K]>
+            ...args: AsyncCommand.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -719,7 +719,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof AsyncNotify.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncNotify.SignalSignatures[K]>
+            ...args: AsyncNotify.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -777,7 +777,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Autogen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Autogen.SignalSignatures[K]>
+            ...args: Autogen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -886,7 +886,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CModule.SignalSignatures[K]>
+            ...args: CModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1407,7 +1407,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CPluginFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CPluginFactory.SignalSignatures[K]>
+            ...args: CPluginFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1465,7 +1465,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CellRendererCaptionedImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererCaptionedImage.SignalSignatures[K]>
+            ...args: CellRendererCaptionedImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1507,7 +1507,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CellRendererDiff.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererDiff.SignalSignatures[K]>
+            ...args: CellRendererDiff.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1555,7 +1555,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CloseButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CloseButton.SignalSignatures[K]>
+            ...args: CloseButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6115,7 +6115,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof ColumnTextView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColumnTextView.SignalSignatures[K]>
+            ...args: ColumnTextView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6631,7 +6631,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Command.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Command.SignalSignatures[K]>
+            ...args: Command.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6798,7 +6798,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CommandBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandBar.SignalSignatures[K]>
+            ...args: CommandBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7304,7 +7304,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof CommandQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandQueue.SignalSignatures[K]>
+            ...args: CommandQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7362,7 +7362,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Completion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Completion.SignalSignatures[K]>
+            ...args: Completion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7408,7 +7408,10 @@ export namespace Anjuta {
 
         connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
         connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
-        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: Parameters<Dock.SignalSignatures[K]>): void;
+        emit<K extends keyof Dock.SignalSignatures>(
+            signal: K,
+            ...args: Dock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7996,7 +7999,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof DockPane.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockPane.SignalSignatures[K]>
+            ...args: DockPane.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -8060,7 +8063,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof DropEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DropEntry.SignalSignatures[K]>
+            ...args: DropEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -12376,7 +12379,10 @@ export namespace Anjuta {
 
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
+        emit<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            ...args: Entry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -16960,7 +16966,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof EnvironmentEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnvironmentEditor.SignalSignatures[K]>
+            ...args: EnvironmentEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -17464,7 +17470,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof FileDropEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileDropEntry.SignalSignatures[K]>
+            ...args: FileDropEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21794,7 +21800,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof FileList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileList.SignalSignatures[K]>
+            ...args: FileList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22291,7 +22297,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof LanguageProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageProvider.SignalSignatures[K]>
+            ...args: LanguageProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22382,7 +22388,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Launcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Launcher.SignalSignatures[K]>
+            ...args: Launcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -22513,7 +22519,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof PkgConfigChooser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PkgConfigChooser.SignalSignatures[K]>
+            ...args: PkgConfigChooser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -23110,7 +23116,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof PkgScanner.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PkgScanner.SignalSignatures[K]>
+            ...args: PkgScanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23164,7 +23170,10 @@ export namespace Anjuta {
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -23310,7 +23319,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof PluginHandle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginHandle.SignalSignatures[K]>
+            ...args: PluginHandle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23398,7 +23407,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof PluginManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginManager.SignalSignatures[K]>
+            ...args: PluginManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -23492,7 +23501,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Preferences.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Preferences.SignalSignatures[K]>
+            ...args: Preferences.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23566,7 +23575,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof PreferencesDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesDialog.SignalSignatures[K]>
+            ...args: PreferencesDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24110,7 +24119,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -24231,7 +24240,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof ProfileManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProfileManager.SignalSignatures[K]>
+            ...args: ProfileManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -24349,7 +24358,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof ProjectNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectNode.SignalSignatures[K]>
+            ...args: ProjectNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24432,7 +24441,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof SavePrompt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SavePrompt.SignalSignatures[K]>
+            ...args: SavePrompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24921,7 +24930,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Serializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Serializer.SignalSignatures[K]>
+            ...args: Serializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24963,7 +24972,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25094,7 +25103,10 @@ export namespace Anjuta {
 
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
+        emit<K extends keyof Status.SignalSignatures>(
+            signal: K,
+            ...args: Status.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -25606,7 +25618,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof SyncCommand.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SyncCommand.SignalSignatures[K]>
+            ...args: SyncCommand.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -25643,7 +25655,10 @@ export namespace Anjuta {
 
         connect<K extends keyof Tabber.SignalSignatures>(signal: K, callback: Tabber.SignalSignatures[K]): number;
         connect_after<K extends keyof Tabber.SignalSignatures>(signal: K, callback: Tabber.SignalSignatures[K]): number;
-        emit<K extends keyof Tabber.SignalSignatures>(signal: K, ...args: Parameters<Tabber.SignalSignatures[K]>): void;
+        emit<K extends keyof Tabber.SignalSignatures>(
+            signal: K,
+            ...args: Tabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -26129,7 +26144,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof TokenFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TokenFile.SignalSignatures[K]>
+            ...args: TokenFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26223,7 +26238,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof TreeComboBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeComboBox.SignalSignatures[K]>
+            ...args: TreeComboBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -30691,7 +30706,10 @@ export namespace Anjuta {
 
         connect<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
         connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
-        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: Parameters<UI.SignalSignatures[K]>): void;
+        emit<K extends keyof UI.SignalSignatures>(
+            signal: K,
+            ...args: UI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -31505,7 +31523,7 @@ export namespace Anjuta {
         ): number;
         emit<K extends keyof VcsStatusTreeView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VcsStatusTreeView.SignalSignatures[K]>
+            ...args: VcsStatusTreeView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

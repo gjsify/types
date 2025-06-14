@@ -435,7 +435,10 @@ export namespace ECalendar {
 
         connect<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
         connect_after<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
-        emit<K extends keyof Cal.SignalSignatures>(signal: K, ...args: Parameters<Cal.SignalSignatures[K]>): void;
+        emit<K extends keyof Cal.SignalSignatures>(
+            signal: K,
+            ...args: Cal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -708,7 +711,7 @@ export namespace ECalendar {
         ): number;
         emit<K extends keyof CalClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalClient.SignalSignatures[K]>
+            ...args: CalClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1312,7 +1315,7 @@ export namespace ECalendar {
         ): number;
         emit<K extends keyof CalClientView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalClientView.SignalSignatures[K]>
+            ...args: CalClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1399,7 +1402,7 @@ export namespace ECalendar {
         ): number;
         emit<K extends keyof CalComponent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalComponent.SignalSignatures[K]>
+            ...args: CalComponent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2035,7 +2038,7 @@ export namespace ECalendar {
         ): number;
         emit<K extends keyof CalView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalView.SignalSignatures[K]>
+            ...args: CalView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

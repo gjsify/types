@@ -240,7 +240,10 @@ export namespace Playerctl {
 
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
-        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
+        emit<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            ...args: Player.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -412,7 +415,7 @@ export namespace Playerctl {
         ): number;
         emit<K extends keyof PlayerManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayerManager.SignalSignatures[K]>
+            ...args: PlayerManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

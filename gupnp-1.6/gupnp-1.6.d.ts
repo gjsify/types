@@ -401,7 +401,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1121,7 +1121,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextFilter.SignalSignatures[K]>
+            ...args: ContextFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1280,7 +1280,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextManager.SignalSignatures[K]>
+            ...args: ContextManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1471,7 +1471,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlPoint.SignalSignatures[K]>
+            ...args: ControlPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1566,7 +1566,10 @@ export namespace GUPnP {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace DeviceInfo {
@@ -1668,7 +1671,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfo.SignalSignatures[K]>
+            ...args: DeviceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1952,7 +1955,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceProxy.SignalSignatures[K]>
+            ...args: DeviceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2001,7 +2004,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceFactory.SignalSignatures[K]>
+            ...args: ResourceFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2132,7 +2135,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootDevice.SignalSignatures[K]>
+            ...args: RootDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2768,7 +2771,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2924,7 +2927,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceInfo.SignalSignatures[K]>
+            ...args: ServiceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3082,7 +3085,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceIntrospection.SignalSignatures[K]>
+            ...args: ServiceIntrospection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3703,7 +3706,7 @@ export namespace GUPnP {
         ): number;
         emit<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceProxy.SignalSignatures[K]>
+            ...args: ServiceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3879,7 +3882,10 @@ export namespace GUPnP {
 
         connect<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: XMLDoc.SignalSignatures[K]): number;
         connect_after<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: XMLDoc.SignalSignatures[K]): number;
-        emit<K extends keyof XMLDoc.SignalSignatures>(signal: K, ...args: Parameters<XMLDoc.SignalSignatures[K]>): void;
+        emit<K extends keyof XMLDoc.SignalSignatures>(
+            signal: K,
+            ...args: XMLDoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

@@ -3126,7 +3126,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3370,7 +3370,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof Coverage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Coverage.SignalSignatures[K]>
+            ...args: Coverage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3453,7 +3453,10 @@ export namespace Pango {
 
         connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
         connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
-        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
+        emit<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            ...args: Font.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3691,7 +3694,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof FontFace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontFace.SignalSignatures[K]>
+            ...args: FontFace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3870,7 +3873,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof FontFamily.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontFamily.SignalSignatures[K]>
+            ...args: FontFamily.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4557,7 +4560,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontMap.SignalSignatures[K]>
+            ...args: FontMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5285,7 +5288,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof Fontset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Fontset.SignalSignatures[K]>
+            ...args: Fontset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5376,7 +5379,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof FontsetSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontsetSimple.SignalSignatures[K]>
+            ...args: FontsetSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5459,7 +5462,10 @@ export namespace Pango {
 
         connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
         connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
-        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
+        emit<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            ...args: Layout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6226,7 +6232,7 @@ export namespace Pango {
         ): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

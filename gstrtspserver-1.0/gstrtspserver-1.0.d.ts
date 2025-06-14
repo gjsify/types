@@ -433,7 +433,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPAddressPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPAddressPool.SignalSignatures[K]>
+            ...args: RTSPAddressPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -546,7 +546,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPAuth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPAuth.SignalSignatures[K]>
+            ...args: RTSPAuth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -869,7 +869,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPClient.SignalSignatures[K]>
+            ...args: RTSPClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1233,7 +1233,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPMedia.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMedia.SignalSignatures[K]>
+            ...args: RTSPMedia.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1880,7 +1880,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPMediaFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMediaFactory.SignalSignatures[K]>
+            ...args: RTSPMediaFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2233,7 +2233,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMediaFactoryURI.SignalSignatures[K]>
+            ...args: RTSPMediaFactoryURI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2285,7 +2285,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPMountPoints.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMountPoints.SignalSignatures[K]>
+            ...args: RTSPMountPoints.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2364,7 +2364,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPOnvifClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifClient.SignalSignatures[K]>
+            ...args: RTSPOnvifClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2398,7 +2398,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPOnvifMedia.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifMedia.SignalSignatures[K]>
+            ...args: RTSPOnvifMedia.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2459,7 +2459,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifMediaFactory.SignalSignatures[K]>
+            ...args: RTSPOnvifMediaFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2563,7 +2563,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPOnvifServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifServer.SignalSignatures[K]>
+            ...args: RTSPOnvifServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2646,7 +2646,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPServer.SignalSignatures[K]>
+            ...args: RTSPServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2894,7 +2894,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPSession.SignalSignatures[K]>
+            ...args: RTSPSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3043,7 +3043,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPSessionMedia.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPSessionMedia.SignalSignatures[K]>
+            ...args: RTSPSessionMedia.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3167,7 +3167,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPSessionPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPSessionPool.SignalSignatures[K]>
+            ...args: RTSPSessionPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3311,7 +3311,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPStream.SignalSignatures[K]>
+            ...args: RTSPStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3867,7 +3867,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPStreamTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPStreamTransport.SignalSignatures[K]>
+            ...args: RTSPStreamTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4045,7 +4045,7 @@ export namespace GstRtspServer {
         ): number;
         emit<K extends keyof RTSPThreadPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPThreadPool.SignalSignatures[K]>
+            ...args: RTSPThreadPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

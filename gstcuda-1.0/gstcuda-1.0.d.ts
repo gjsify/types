@@ -224,7 +224,7 @@ export namespace GstCuda {
         ): number;
         emit<K extends keyof CudaAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaAllocator.SignalSignatures[K]>
+            ...args: CudaAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -337,7 +337,7 @@ export namespace GstCuda {
         ): number;
         emit<K extends keyof CudaBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaBufferPool.SignalSignatures[K]>
+            ...args: CudaBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -407,7 +407,7 @@ export namespace GstCuda {
         ): number;
         emit<K extends keyof CudaContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaContext.SignalSignatures[K]>
+            ...args: CudaContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -493,7 +493,7 @@ export namespace GstCuda {
         ): number;
         emit<K extends keyof CudaPoolAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaPoolAllocator.SignalSignatures[K]>
+            ...args: CudaPoolAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

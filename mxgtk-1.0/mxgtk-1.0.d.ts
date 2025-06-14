@@ -59,7 +59,10 @@ export namespace MxGtk {
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -557,7 +560,7 @@ export namespace MxGtk {
         ): number;
         emit<K extends keyof LightSwitch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LightSwitch.SignalSignatures[K]>
+            ...args: LightSwitch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

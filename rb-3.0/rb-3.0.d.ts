@@ -1791,7 +1791,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2337,7 +2337,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof AsyncCopy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncCopy.SignalSignatures[K]>
+            ...args: AsyncCopy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2407,7 +2407,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof AutoPlaylistSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutoPlaylistSource.SignalSignatures[K]>
+            ...args: AutoPlaylistSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2893,7 +2893,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof BrowserSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BrowserSource.SignalSignatures[K]>
+            ...args: BrowserSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3401,7 +3401,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof ButtonBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ButtonBar.SignalSignatures[K]>
+            ...args: ButtonBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3917,7 +3917,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof CellRendererPixbuf.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererPixbuf.SignalSignatures[K]>
+            ...args: CellRendererPixbuf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3976,7 +3976,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof CellRendererRating.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererRating.SignalSignatures[K]>
+            ...args: CellRendererRating.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4016,7 +4016,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof ChunkLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChunkLoader.SignalSignatures[K]>
+            ...args: ChunkLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4142,7 +4142,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof DisplayPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayPage.SignalSignatures[K]>
+            ...args: DisplayPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4774,7 +4774,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof DisplayPageGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayPageGroup.SignalSignatures[K]>
+            ...args: DisplayPageGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5282,7 +5282,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof DisplayPageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayPageModel.SignalSignatures[K]>
+            ...args: DisplayPageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6296,7 +6296,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof DisplayPageTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayPageTree.SignalSignatures[K]>
+            ...args: DisplayPageTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6831,7 +6831,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof EncoderFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncoderFactory.SignalSignatures[K]>
+            ...args: EncoderFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7009,7 +7009,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof EntryView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryView.SignalSignatures[K]>
+            ...args: EntryView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7722,7 +7722,10 @@ export namespace RB {
 
         connect<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: ExtDB.SignalSignatures[K]): number;
         connect_after<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: ExtDB.SignalSignatures[K]): number;
-        emit<K extends keyof ExtDB.SignalSignatures>(signal: K, ...args: Parameters<ExtDB.SignalSignatures[K]>): void;
+        emit<K extends keyof ExtDB.SignalSignatures>(
+            signal: K,
+            ...args: ExtDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -7847,7 +7850,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof FadingImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FadingImage.SignalSignatures[K]>
+            ...args: FadingImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8542,7 +8545,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof History.SignalSignatures>(
             signal: K,
-            ...args: Parameters<History.SignalSignatures[K]>
+            ...args: History.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8770,7 +8773,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof LibraryBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LibraryBrowser.SignalSignatures[K]>
+            ...args: LibraryBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9314,7 +9317,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof ListModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListModel.SignalSignatures[K]>
+            ...args: ListModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9415,7 +9418,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof MediaPlayerEntryType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaPlayerEntryType.SignalSignatures[K]>
+            ...args: MediaPlayerEntryType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -9483,7 +9486,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof MediaPlayerSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaPlayerSource.SignalSignatures[K]>
+            ...args: MediaPlayerSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9977,7 +9980,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof MetaData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetaData.SignalSignatures[K]>
+            ...args: MetaData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10126,7 +10129,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PlayOrder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayOrder.SignalSignatures[K]>
+            ...args: PlayOrder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10337,7 +10340,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PlaylistManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaylistManager.SignalSignatures[K]>
+            ...args: PlaylistManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10515,7 +10518,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PlaylistSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaylistSource.SignalSignatures[K]>
+            ...args: PlaylistSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -11095,7 +11098,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PodcastManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PodcastManager.SignalSignatures[K]>
+            ...args: PodcastManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11184,7 +11187,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PodcastSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PodcastSearch.SignalSignatures[K]>
+            ...args: PodcastSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -11230,7 +11233,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PodcastSearchITunes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PodcastSearchITunes.SignalSignatures[K]>
+            ...args: PodcastSearchITunes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11336,7 +11339,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof PropertyView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyView.SignalSignatures[K]>
+            ...args: PropertyView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -11902,7 +11905,10 @@ export namespace RB {
 
         connect<K extends keyof Rating.SignalSignatures>(signal: K, callback: Rating.SignalSignatures[K]): number;
         connect_after<K extends keyof Rating.SignalSignatures>(signal: K, callback: Rating.SignalSignatures[K]): number;
-        emit<K extends keyof Rating.SignalSignatures>(signal: K, ...args: Parameters<Rating.SignalSignatures[K]>): void;
+        emit<K extends keyof Rating.SignalSignatures>(
+            signal: K,
+            ...args: Rating.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -12600,7 +12606,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RemovableMediaManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemovableMediaManager.SignalSignatures[K]>
+            ...args: RemovableMediaManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -12768,7 +12774,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RhythmDB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RhythmDB.SignalSignatures[K]>
+            ...args: RhythmDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13306,7 +13312,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RhythmDBEntryType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RhythmDBEntryType.SignalSignatures[K]>
+            ...args: RhythmDBEntryType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13416,7 +13422,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RhythmDBImportJob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RhythmDBImportJob.SignalSignatures[K]>
+            ...args: RhythmDBImportJob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -14016,7 +14022,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RhythmDBPropertyModel.SignalSignatures[K]>
+            ...args: RhythmDBPropertyModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -15016,7 +15022,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RhythmDBQueryModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RhythmDBQueryModel.SignalSignatures[K]>
+            ...args: RhythmDBQueryModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16162,7 +16168,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RhythmDBQueryResultList.SignalSignatures[K]>
+            ...args: RhythmDBQueryResultList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16732,7 +16738,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof SearchEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchEntry.SignalSignatures[K]>
+            ...args: SearchEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -17313,7 +17319,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof SegmentedBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SegmentedBar.SignalSignatures[K]>
+            ...args: SegmentedBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18184,7 +18190,10 @@ export namespace RB {
 
         connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
         connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
-        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: Parameters<Shell.SignalSignatures[K]>): void;
+        emit<K extends keyof Shell.SignalSignatures>(
+            signal: K,
+            ...args: Shell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -18503,7 +18512,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof ShellPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShellPlayer.SignalSignatures[K]>
+            ...args: ShellPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18737,7 +18746,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof ShellPreferences.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShellPreferences.SignalSignatures[K]>
+            ...args: ShellPreferences.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19304,7 +19313,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof SongInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SongInfo.SignalSignatures[K]>
+            ...args: SongInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19942,7 +19951,10 @@ export namespace RB {
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -20793,7 +20805,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof SourceSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSearch.SignalSignatures[K]>
+            ...args: SourceSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20908,7 +20920,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof SourceSearchBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSearchBasic.SignalSignatures[K]>
+            ...args: SourceSearchBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21001,7 +21013,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof SourceToolbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceToolbar.SignalSignatures[K]>
+            ...args: SourceToolbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21531,7 +21543,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof StaticPlaylistSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StaticPlaylistSource.SignalSignatures[K]>
+            ...args: StaticPlaylistSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22056,7 +22068,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof StreamingSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamingSource.SignalSignatures[K]>
+            ...args: StreamingSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22559,7 +22571,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof StringValueMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringValueMap.SignalSignatures[K]>
+            ...args: StringValueMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22640,7 +22652,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof TaskList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskList.SignalSignatures[K]>
+            ...args: TaskList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22692,7 +22704,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof TaskProgressSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskProgressSimple.SignalSignatures[K]>
+            ...args: TaskProgressSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -23357,7 +23369,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof TrackTransferBatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackTransferBatch.SignalSignatures[K]>
+            ...args: TrackTransferBatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -23934,7 +23946,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof TrackTransferQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackTransferQueue.SignalSignatures[K]>
+            ...args: TrackTransferQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -24025,7 +24037,7 @@ export namespace RB {
         ): number;
         emit<K extends keyof URIDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIDialog.SignalSignatures[K]>
+            ...args: URIDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

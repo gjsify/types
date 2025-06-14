@@ -117,7 +117,7 @@ export namespace Gc {
         ): number;
         emit<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchContext.SignalSignatures[K]>
+            ...args: SearchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

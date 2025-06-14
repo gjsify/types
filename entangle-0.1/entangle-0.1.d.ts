@@ -175,7 +175,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -752,7 +752,10 @@ export namespace Entangle {
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1822,7 +1825,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraAutomata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraAutomata.SignalSignatures[K]>
+            ...args: CameraAutomata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1908,7 +1911,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraFile.SignalSignatures[K]>
+            ...args: CameraFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2027,7 +2030,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraList.SignalSignatures[K]>
+            ...args: CameraList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2130,7 +2133,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraManager.SignalSignatures[K]>
+            ...args: CameraManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3171,7 +3174,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraPicker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraPicker.SignalSignatures[K]>
+            ...args: CameraPicker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3659,7 +3662,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraPreferences.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraPreferences.SignalSignatures[K]>
+            ...args: CameraPreferences.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3723,7 +3726,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof CameraSupport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraSupport.SignalSignatures[K]>
+            ...args: CameraSupport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4223,7 +4226,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ColourProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColourProfile.SignalSignatures[K]>
+            ...args: ColourProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4294,7 +4297,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ColourProfileTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColourProfileTransform.SignalSignatures[K]>
+            ...args: ColourProfileTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4355,7 +4358,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof Control.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Control.SignalSignatures[K]>
+            ...args: Control.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4402,7 +4405,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlButton.SignalSignatures[K]>
+            ...args: ControlButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4445,7 +4448,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlChoice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlChoice.SignalSignatures[K]>
+            ...args: ControlChoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4495,7 +4498,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlDate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlDate.SignalSignatures[K]>
+            ...args: ControlDate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4531,7 +4534,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlGroup.SignalSignatures[K]>
+            ...args: ControlGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4608,7 +4611,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlPanel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlPanel.SignalSignatures[K]>
+            ...args: ControlPanel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5125,7 +5128,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlRange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlRange.SignalSignatures[K]>
+            ...args: ControlRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5174,7 +5177,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlText.SignalSignatures[K]>
+            ...args: ControlText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5217,7 +5220,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ControlToggle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlToggle.SignalSignatures[K]>
+            ...args: ControlToggle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5266,7 +5269,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+            ...args: DeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5306,7 +5309,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof HelpAbout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HelpAbout.SignalSignatures[K]>
+            ...args: HelpAbout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5784,7 +5787,10 @@ export namespace Entangle {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5890,7 +5896,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ImageDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageDisplay.SignalSignatures[K]>
+            ...args: ImageDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6432,7 +6438,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ImageHistogram.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageHistogram.SignalSignatures[K]>
+            ...args: ImageHistogram.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6932,7 +6938,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ImageLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageLoader.SignalSignatures[K]>
+            ...args: ImageLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6974,7 +6980,10 @@ export namespace Entangle {
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7058,7 +7067,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof MediaPopup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaPopup.SignalSignatures[K]>
+            ...args: MediaPopup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7566,7 +7575,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof MediaStatusbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaStatusbar.SignalSignatures[K]>
+            ...args: MediaStatusbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8110,7 +8119,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufLoader.SignalSignatures[K]>
+            ...args: PixbufLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8381,7 +8390,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof Preferences.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Preferences.SignalSignatures[K]>
+            ...args: Preferences.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8749,7 +8758,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof PreferencesDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesDisplay.SignalSignatures[K]>
+            ...args: PreferencesDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9223,7 +9232,10 @@ export namespace Entangle {
 
         connect<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
         connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
-        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: Parameters<Script.SignalSignatures[K]>): void;
+        emit<K extends keyof Script.SignalSignatures>(
+            signal: K,
+            ...args: Script.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -9300,7 +9312,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ScriptConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptConfig.SignalSignatures[K]>
+            ...args: ScriptConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9803,7 +9815,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ScriptSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptSimple.SignalSignatures[K]>
+            ...args: ScriptSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9884,7 +9896,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9983,7 +9995,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof SessionBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionBrowser.SignalSignatures[K]>
+            ...args: SessionBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10612,7 +10624,7 @@ export namespace Entangle {
         ): number;
         emit<K extends keyof ThumbnailLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThumbnailLoader.SignalSignatures[K]>
+            ...args: ThumbnailLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10649,7 +10661,10 @@ export namespace Entangle {
 
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
+        emit<K extends keyof Video.SignalSignatures>(
+            signal: K,
+            ...args: Video.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

@@ -85,7 +85,7 @@ export namespace Uhm {
         ): number;
         emit<K extends keyof Resolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resolver.SignalSignatures[K]>
+            ...args: Resolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -266,7 +266,10 @@ export namespace Uhm {
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

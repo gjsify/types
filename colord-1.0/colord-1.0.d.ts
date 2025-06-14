@@ -1109,7 +1109,10 @@ export namespace Colord {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2138,7 +2141,10 @@ export namespace Colord {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2838,7 +2844,10 @@ export namespace Colord {
 
         connect<K extends keyof Edid.SignalSignatures>(signal: K, callback: Edid.SignalSignatures[K]): number;
         connect_after<K extends keyof Edid.SignalSignatures>(signal: K, callback: Edid.SignalSignatures[K]): number;
-        emit<K extends keyof Edid.SignalSignatures>(signal: K, ...args: Parameters<Edid.SignalSignatures[K]>): void;
+        emit<K extends keyof Edid.SignalSignatures>(
+            signal: K,
+            ...args: Edid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2983,7 +2992,10 @@ export namespace Colord {
 
         connect<K extends keyof Icc.SignalSignatures>(signal: K, callback: Icc.SignalSignatures[K]): number;
         connect_after<K extends keyof Icc.SignalSignatures>(signal: K, callback: Icc.SignalSignatures[K]): number;
-        emit<K extends keyof Icc.SignalSignatures>(signal: K, ...args: Parameters<Icc.SignalSignatures[K]>): void;
+        emit<K extends keyof Icc.SignalSignatures>(
+            signal: K,
+            ...args: Icc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3432,7 +3444,10 @@ export namespace Colord {
 
         connect<K extends keyof It8.SignalSignatures>(signal: K, callback: It8.SignalSignatures[K]): number;
         connect_after<K extends keyof It8.SignalSignatures>(signal: K, callback: It8.SignalSignatures[K]): number;
-        emit<K extends keyof It8.SignalSignatures>(signal: K, ...args: Parameters<It8.SignalSignatures[K]>): void;
+        emit<K extends keyof It8.SignalSignatures>(
+            signal: K,
+            ...args: It8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3756,7 +3771,7 @@ export namespace Colord {
         ): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4151,7 +4166,10 @@ export namespace Colord {
 
         connect<K extends keyof Sensor.SignalSignatures>(signal: K, callback: Sensor.SignalSignatures[K]): number;
         connect_after<K extends keyof Sensor.SignalSignatures>(signal: K, callback: Sensor.SignalSignatures[K]): number;
-        emit<K extends keyof Sensor.SignalSignatures>(signal: K, ...args: Parameters<Sensor.SignalSignatures[K]>): void;
+        emit<K extends keyof Sensor.SignalSignatures>(
+            signal: K,
+            ...args: Sensor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

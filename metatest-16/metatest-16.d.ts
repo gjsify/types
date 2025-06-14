@@ -111,7 +111,7 @@ export namespace MetaTest {
         ): number;
         emit<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextTest.SignalSignatures[K]>
+            ...args: ContextTest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -153,7 +153,7 @@ export namespace MetaTest {
         ): number;
         emit<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestMonitor.SignalSignatures[K]>
+            ...args: TestMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -472,7 +472,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControllerIterator.SignalSignatures[K]>
+            ...args: ControllerIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -672,7 +672,10 @@ export namespace Retro {
 
         connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
         connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
-        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
+        emit<K extends keyof Core.SignalSignatures>(
+            signal: K,
+            ...args: Core.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -915,7 +918,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoreDescriptor.SignalSignatures[K]>
+            ...args: CoreDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1090,7 +1093,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof CoreView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoreView.SignalSignatures[K]>
+            ...args: CoreView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1664,7 +1667,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyJoypadMapping.SignalSignatures[K]>
+            ...args: KeyJoypadMapping.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1715,7 +1718,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleIterator.SignalSignatures[K]>
+            ...args: ModuleIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1765,7 +1768,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleQuery.SignalSignatures[K]>
+            ...args: ModuleQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1807,7 +1810,10 @@ export namespace Retro {
 
         connect<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
         connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
-        emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: Parameters<Option.SignalSignatures[K]>): void;
+        emit<K extends keyof Option.SignalSignatures>(
+            signal: K,
+            ...args: Option.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1869,7 +1875,7 @@ export namespace Retro {
         ): number;
         emit<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionIterator.SignalSignatures[K]>
+            ...args: OptionIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -121,7 +121,10 @@ export namespace GtkClutter {
 
         connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
         connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
-        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
+        emit<K extends keyof Actor.SignalSignatures>(
+            signal: K,
+            ...args: Actor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1081,7 +1084,10 @@ export namespace GtkClutter {
 
         connect<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
         connect_after<K extends keyof Embed.SignalSignatures>(signal: K, callback: Embed.SignalSignatures[K]): number;
-        emit<K extends keyof Embed.SignalSignatures>(signal: K, ...args: Parameters<Embed.SignalSignatures[K]>): void;
+        emit<K extends keyof Embed.SignalSignatures>(
+            signal: K,
+            ...args: Embed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1597,7 +1603,7 @@ export namespace GtkClutter {
         ): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture.SignalSignatures[K]>
+            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2106,7 +2112,10 @@ export namespace GtkClutter {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

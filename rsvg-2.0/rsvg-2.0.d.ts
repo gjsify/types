@@ -621,7 +621,10 @@ export namespace Rsvg {
 
         connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
         connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
-        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: Parameters<Handle.SignalSignatures[K]>): void;
+        emit<K extends keyof Handle.SignalSignatures>(
+            signal: K,
+            ...args: Handle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

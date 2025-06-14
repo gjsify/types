@@ -196,7 +196,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentModel.SignalSignatures[K]>
+            ...args: DocumentModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -280,7 +280,10 @@ export namespace XreaderView {
 
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
-        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
+        emit<K extends keyof Job.SignalSignatures>(
+            signal: K,
+            ...args: Job.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -335,7 +338,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobAnnots.SignalSignatures[K]>
+            ...args: JobAnnots.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -375,7 +378,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobAttachments.SignalSignatures[K]>
+            ...args: JobAttachments.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -413,7 +416,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobExport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobExport.SignalSignatures[K]>
+            ...args: JobExport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -475,7 +478,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobFind.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobFind.SignalSignatures[K]>
+            ...args: JobFind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -531,7 +534,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobFonts.SignalSignatures[K]>
+            ...args: JobFonts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -572,7 +575,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLayers.SignalSignatures[K]>
+            ...args: JobLayers.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -609,7 +612,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLinks.SignalSignatures[K]>
+            ...args: JobLinks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -647,7 +650,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLoad.SignalSignatures[K]>
+            ...args: JobLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -696,7 +699,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobPageData.SignalSignatures[K]>
+            ...args: JobPageData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -733,7 +736,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobPrint.SignalSignatures[K]>
+            ...args: JobPrint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -792,7 +795,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobRender.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobRender.SignalSignatures[K]>
+            ...args: JobRender.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -839,7 +842,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobSave.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobSave.SignalSignatures[K]>
+            ...args: JobSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -882,7 +885,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobThumbnail.SignalSignatures[K]>
+            ...args: JobThumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -942,7 +945,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+            ...args: PrintOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1046,7 +1049,10 @@ export namespace XreaderView {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1712,7 +1718,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewPresentation.SignalSignatures[K]>
+            ...args: ViewPresentation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2374,7 +2380,7 @@ export namespace XreaderView {
         ): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebView.SignalSignatures[K]>
+            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -384,7 +384,10 @@ export namespace BraseroBurn {
 
         connect<K extends keyof Burn.SignalSignatures>(signal: K, callback: Burn.SignalSignatures[K]): number;
         connect_after<K extends keyof Burn.SignalSignatures>(signal: K, callback: Burn.SignalSignatures[K]): number;
-        emit<K extends keyof Burn.SignalSignatures>(signal: K, ...args: Parameters<Burn.SignalSignatures[K]>): void;
+        emit<K extends keyof Burn.SignalSignatures>(
+            signal: K,
+            ...args: Burn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -489,7 +492,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof BurnDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BurnDialog.SignalSignatures[K]>
+            ...args: BurnDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1004,7 +1007,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof BurnOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BurnOptions.SignalSignatures[K]>
+            ...args: BurnOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1530,7 +1533,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof BurnSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BurnSession.SignalSignatures[K]>
+            ...args: BurnSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1837,7 +1840,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof SessionCfg.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionCfg.SignalSignatures[K]>
+            ...args: SessionCfg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1919,7 +1922,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof SessionSpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionSpan.SignalSignatures[K]>
+            ...args: SessionSpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1989,7 +1992,10 @@ export namespace BraseroBurn {
 
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
+        emit<K extends keyof Status.SignalSignatures>(
+            signal: K,
+            ...args: Status.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2077,7 +2083,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof SumDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SumDialog.SignalSignatures[K]>
+            ...args: SumDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2555,7 +2561,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof ToolDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ToolDialog.SignalSignatures[K]>
+            ...args: ToolDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3045,7 +3051,10 @@ export namespace BraseroBurn {
 
         connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
         connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
-        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
+        emit<K extends keyof Track.SignalSignatures>(
+            signal: K,
+            ...args: Track.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3198,7 +3207,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackData.SignalSignatures[K]>
+            ...args: TrackData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3431,7 +3440,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackDataCfg.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackDataCfg.SignalSignatures[K]>
+            ...args: TrackDataCfg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4627,7 +4636,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackDisc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackDisc.SignalSignatures[K]>
+            ...args: TrackDisc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4679,7 +4688,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackImage.SignalSignatures[K]>
+            ...args: TrackImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4776,7 +4785,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackImageCfg.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackImageCfg.SignalSignatures[K]>
+            ...args: TrackImageCfg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4836,7 +4845,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackStream.SignalSignatures[K]>
+            ...args: TrackStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4960,7 +4969,7 @@ export namespace BraseroBurn {
         ): number;
         emit<K extends keyof TrackStreamCfg.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackStreamCfg.SignalSignatures[K]>
+            ...args: TrackStreamCfg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

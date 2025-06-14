@@ -103,7 +103,7 @@ export namespace GtkVnc {
         ): number;
         emit<K extends keyof CairoFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoFramebuffer.SignalSignatures[K]>
+            ...args: CairoFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -938,7 +938,7 @@ export namespace GtkVnc {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

@@ -1033,7 +1033,7 @@ export namespace GstRtp {
         ): number;
         emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPBaseAudioPayload.SignalSignatures[K]>
+            ...args: RTPBaseAudioPayload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1224,7 +1224,7 @@ export namespace GstRtp {
         ): number;
         emit<K extends keyof RTPBaseDepayload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPBaseDepayload.SignalSignatures[K]>
+            ...args: RTPBaseDepayload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1510,7 +1510,7 @@ export namespace GstRtp {
         ): number;
         emit<K extends keyof RTPBasePayload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPBasePayload.SignalSignatures[K]>
+            ...args: RTPBasePayload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1634,7 +1634,7 @@ export namespace GstRtp {
         ): number;
         emit<K extends keyof RTPHeaderExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPHeaderExtension.SignalSignatures[K]>
+            ...args: RTPHeaderExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

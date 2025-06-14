@@ -150,7 +150,7 @@ export namespace Gxps {
         ): number;
         emit<K extends keyof CoreProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoreProperties.SignalSignatures[K]>
+            ...args: CoreProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -801,7 +801,7 @@ export namespace Gxps {
         ): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1412,7 +1412,7 @@ export namespace Gxps {
         ): number;
         emit<K extends keyof DocumentStructure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentStructure.SignalSignatures[K]>
+            ...args: DocumentStructure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1492,7 +1492,10 @@ export namespace Gxps {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2091,7 +2094,10 @@ export namespace Gxps {
 
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
+        emit<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

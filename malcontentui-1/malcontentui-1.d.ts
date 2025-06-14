@@ -129,7 +129,7 @@ export namespace MalcontentUi {
         ): number;
         emit<K extends keyof RestrictApplicationsDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RestrictApplicationsDialog.SignalSignatures[K]>
+            ...args: RestrictApplicationsDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3168,7 +3168,7 @@ export namespace MalcontentUi {
         ): number;
         emit<K extends keyof RestrictApplicationsSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RestrictApplicationsSelector.SignalSignatures[K]>
+            ...args: RestrictApplicationsSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3830,7 +3830,7 @@ export namespace MalcontentUi {
         ): number;
         emit<K extends keyof UserControls.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserControls.SignalSignatures[K]>
+            ...args: UserControls.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

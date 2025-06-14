@@ -3113,7 +3113,7 @@ export namespace GObject {
         ): number;
         emit<K extends keyof Binding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Binding.SignalSignatures[K]>
+            ...args: Binding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3246,7 +3246,7 @@ export namespace GObject {
         ): number;
         emit<K extends keyof BindingGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindingGroup.SignalSignatures[K]>
+            ...args: BindingGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3364,7 +3364,7 @@ export namespace GObject {
         ): number;
         emit<K extends keyof InitiallyUnowned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InitiallyUnowned.SignalSignatures[K]>
+            ...args: InitiallyUnowned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3422,7 +3422,10 @@ export namespace GObject {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3973,7 +3976,7 @@ export namespace GObject {
         ): number;
         emit<K extends keyof ParamSpec.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamSpec.SignalSignatures[K]>
+            ...args: ParamSpec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4493,7 +4496,7 @@ export namespace GObject {
         ): number;
         emit<K extends keyof SignalGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalGroup.SignalSignatures[K]>
+            ...args: SignalGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4637,7 +4640,7 @@ export namespace GObject {
         ): number;
         emit<K extends keyof TypeModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TypeModule.SignalSignatures[K]>
+            ...args: TypeModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

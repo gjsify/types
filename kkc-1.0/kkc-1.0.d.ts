@@ -2291,7 +2291,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof MetadataFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetadataFile.SignalSignatures[K]>
+            ...args: MetadataFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2867,7 +2867,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof TrellisNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrellisNode.SignalSignatures[K]>
+            ...args: TrellisNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2915,7 +2915,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof UnigramTrellisNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnigramTrellisNode.SignalSignatures[K]>
+            ...args: UnigramTrellisNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2953,7 +2953,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof BigramTrellisNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BigramTrellisNode.SignalSignatures[K]>
+            ...args: BigramTrellisNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3004,7 +3004,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof LanguageModelMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageModelMetadata.SignalSignatures[K]>
+            ...args: LanguageModelMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3059,7 +3059,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof LanguageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageModel.SignalSignatures[K]>
+            ...args: LanguageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3655,7 +3655,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof TextBigramLanguageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextBigramLanguageModel.SignalSignatures[K]>
+            ...args: TextBigramLanguageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3731,7 +3731,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof TextTrigramLanguageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextTrigramLanguageModel.SignalSignatures[K]>
+            ...args: TextTrigramLanguageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3800,7 +3800,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof SortedBigramLanguageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SortedBigramLanguageModel.SignalSignatures[K]>
+            ...args: SortedBigramLanguageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3876,7 +3876,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof SortedTrigramLanguageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SortedTrigramLanguageModel.SignalSignatures[K]>
+            ...args: SortedTrigramLanguageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3929,7 +3929,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decoder.SignalSignatures[K]>
+            ...args: Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3997,7 +3997,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof BigramDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BigramDecoder.SignalSignatures[K]>
+            ...args: BigramDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4051,7 +4051,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof TrigramDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrigramDecoder.SignalSignatures[K]>
+            ...args: TrigramDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4099,7 +4099,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof SegmentList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SegmentList.SignalSignatures[K]>
+            ...args: SegmentList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4164,7 +4164,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof Segment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Segment.SignalSignatures[K]>
+            ...args: Segment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4251,7 +4251,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CandidateList.SignalSignatures[K]>
+            ...args: CandidateList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4337,7 +4337,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof Candidate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Candidate.SignalSignatures[K]>
+            ...args: Candidate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4393,7 +4393,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
+            ...args: KeyEventFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4459,7 +4459,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+            ...args: KeyEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4508,7 +4508,10 @@ export namespace Kkc {
 
         connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
         connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
-        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
+        emit<K extends keyof Keymap.SignalSignatures>(
+            signal: K,
+            ...args: Keymap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4569,7 +4572,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NicolaKeyEventFilter.SignalSignatures[K]>
+            ...args: NicolaKeyEventFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4611,7 +4614,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof RomKanaCharacterList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RomKanaCharacterList.SignalSignatures[K]>
+            ...args: RomKanaCharacterList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4693,7 +4696,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RomKanaConverter.SignalSignatures[K]>
+            ...args: RomKanaConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4759,7 +4762,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof RuleMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RuleMetadata.SignalSignatures[K]>
+            ...args: RuleMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4814,7 +4817,10 @@ export namespace Kkc {
 
         connect<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
         connect_after<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
-        emit<K extends keyof Rule.SignalSignatures>(signal: K, ...args: Parameters<Rule.SignalSignatures[K]>): void;
+        emit<K extends keyof Rule.SignalSignatures>(
+            signal: K,
+            ...args: Rule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -5387,7 +5393,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof UserRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserRule.SignalSignatures[K]>
+            ...args: UserRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5481,7 +5487,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5547,7 +5553,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof EmptySegmentDictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmptySegmentDictionary.SignalSignatures[K]>
+            ...args: EmptySegmentDictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6039,7 +6045,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof SystemSegmentDictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemSegmentDictionary.SignalSignatures[K]>
+            ...args: SystemSegmentDictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6531,7 +6537,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof UserSegmentDictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserSegmentDictionary.SignalSignatures[K]>
+            ...args: UserSegmentDictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7023,7 +7029,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof UserSentenceDictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserSentenceDictionary.SignalSignatures[K]>
+            ...args: UserSentenceDictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7514,7 +7520,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof UserDictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserDictionary.SignalSignatures[K]>
+            ...args: UserDictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -8019,7 +8025,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof DictionaryList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DictionaryList.SignalSignatures[K]>
+            ...args: DictionaryList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8105,7 +8111,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof DBusCandidateList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusCandidateList.SignalSignatures[K]>
+            ...args: DBusCandidateList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8170,7 +8176,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof DBusSegmentList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusSegmentList.SignalSignatures[K]>
+            ...args: DBusSegmentList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8246,7 +8252,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof DBusContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusContext.SignalSignatures[K]>
+            ...args: DBusContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8305,7 +8311,7 @@ export namespace Kkc {
         ): number;
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusServer.SignalSignatures[K]>
+            ...args: DBusServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

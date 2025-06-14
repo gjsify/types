@@ -145,7 +145,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof Animation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Animation.SignalSignatures[K]>
+            ...args: Animation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -213,7 +213,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockBin.SignalSignatures[K]>
+            ...args: DockBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4923,7 +4923,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockBinEdge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockBinEdge.SignalSignatures[K]>
+            ...args: DockBinEdge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9264,7 +9264,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockManager.SignalSignatures[K]>
+            ...args: DockManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9323,7 +9323,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockOverlay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockOverlay.SignalSignatures[K]>
+            ...args: DockOverlay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -14025,7 +14025,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockOverlayEdge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockOverlayEdge.SignalSignatures[K]>
+            ...args: DockOverlayEdge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18353,7 +18353,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockPaned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockPaned.SignalSignatures[K]>
+            ...args: DockPaned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22738,7 +22738,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockRevealer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockRevealer.SignalSignatures[K]>
+            ...args: DockRevealer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23239,7 +23239,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockStack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockStack.SignalSignatures[K]>
+            ...args: DockStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27582,7 +27582,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockTabStrip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockTabStrip.SignalSignatures[K]>
+            ...args: DockTabStrip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -28066,7 +28066,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockTransientGrab.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockTransientGrab.SignalSignatures[K]>
+            ...args: DockTransientGrab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28128,7 +28128,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockWidget.SignalSignatures[K]>
+            ...args: DockWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32457,7 +32457,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof DockWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DockWindow.SignalSignatures[K]>
+            ...args: DockWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -37169,7 +37169,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof MultiPaned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultiPaned.SignalSignatures[K]>
+            ...args: MultiPaned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -37673,7 +37673,10 @@ export namespace Pnl {
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -42003,7 +42006,7 @@ export namespace Pnl {
         ): number;
         emit<K extends keyof TabStrip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TabStrip.SignalSignatures[K]>
+            ...args: TabStrip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -288,7 +288,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof DarkModeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DarkModeManager.SignalSignatures[K]>
+            ...args: DarkModeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -327,7 +327,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof Favorites.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Favorites.SignalSignatures[K]>
+            ...args: Favorites.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -437,7 +437,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof GpuOffloadHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GpuOffloadHelper.SignalSignatures[K]>
+            ...args: GpuOffloadHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -524,7 +524,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof GtkWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GtkWindow.SignalSignatures[K]>
+            ...args: GtkWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1092,7 +1092,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof IconChooserButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconChooserButton.SignalSignatures[K]>
+            ...args: IconChooserButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5737,7 +5737,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof IconChooserDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconChooserDialog.SignalSignatures[K]>
+            ...args: IconChooserDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6312,7 +6312,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof KbdLayoutController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KbdLayoutController.SignalSignatures[K]>
+            ...args: KbdLayoutController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6443,7 +6443,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof MonitorBlanker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonitorBlanker.SignalSignatures[K]>
+            ...args: MonitorBlanker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6535,7 +6535,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof ObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectManagerClient.SignalSignatures[K]>
+            ...args: ObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7434,7 +7434,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof ObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectProxy.SignalSignatures[K]>
+            ...args: ObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7979,7 +7979,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof ObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectSkeleton.SignalSignatures[K]>
+            ...args: ObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8537,7 +8537,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof PreferencesWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
+            ...args: PreferencesWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9049,7 +9049,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof StackSidebar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StackSidebar.SignalSignatures[K]>
+            ...args: StackSidebar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9698,7 +9698,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof StatusIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatusIcon.SignalSignatures[K]>
+            ...args: StatusIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9869,7 +9869,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof StatusIconInterfaceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatusIconInterfaceProxy.SignalSignatures[K]>
+            ...args: StatusIconInterfaceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11157,7 +11157,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof StatusIconInterfaceSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatusIconInterfaceSkeleton.SignalSignatures[K]>
+            ...args: StatusIconInterfaceSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -12112,7 +12112,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof StatusIconMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatusIconMonitor.SignalSignatures[K]>
+            ...args: StatusIconMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12166,7 +12166,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof StyleManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleManager.SignalSignatures[K]>
+            ...args: StyleManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12269,7 +12269,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof SwitcherooControlProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwitcherooControlProxy.SignalSignatures[K]>
+            ...args: SwitcherooControlProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13160,7 +13160,7 @@ export namespace XApp {
         ): number;
         emit<K extends keyof SwitcherooControlSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwitcherooControlSkeleton.SignalSignatures[K]>
+            ...args: SwitcherooControlSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

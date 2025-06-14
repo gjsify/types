@@ -926,7 +926,10 @@ export namespace Snapd {
 
         connect<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
         connect_after<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
-        emit<K extends keyof Alias.SignalSignatures>(signal: K, ...args: Parameters<Alias.SignalSignatures[K]>): void;
+        emit<K extends keyof Alias.SignalSignatures>(
+            signal: K,
+            ...args: Alias.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1022,7 +1025,10 @@ export namespace Snapd {
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1109,7 +1115,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Assertion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Assertion.SignalSignatures[K]>
+            ...args: Assertion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1181,7 +1187,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof AuthData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthData.SignalSignatures[K]>
+            ...args: AuthData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1237,7 +1243,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1294,7 +1300,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof CategoryDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CategoryDetails.SignalSignatures[K]>
+            ...args: CategoryDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1357,7 +1363,10 @@ export namespace Snapd {
 
         connect<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
         connect_after<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
-        emit<K extends keyof Change.SignalSignatures>(signal: K, ...args: Parameters<Change.SignalSignatures[K]>): void;
+        emit<K extends keyof Change.SignalSignatures>(
+            signal: K,
+            ...args: Change.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1459,7 +1468,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1559,7 +1568,10 @@ export namespace Snapd {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5146,7 +5158,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5257,7 +5269,10 @@ export namespace Snapd {
 
         connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
         connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
-        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
+        emit<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            ...args: Icon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5321,7 +5336,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interface.SignalSignatures[K]>
+            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5396,7 +5411,10 @@ export namespace Snapd {
 
         connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
         connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
-        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: Parameters<Log.SignalSignatures[K]>): void;
+        emit<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            ...args: Log.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5463,7 +5481,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Maintenance.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Maintenance.SignalSignatures[K]>
+            ...args: Maintenance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5526,7 +5544,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof MarkdownNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkdownNode.SignalSignatures[K]>
+            ...args: MarkdownNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5585,7 +5603,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof MarkdownParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkdownParser.SignalSignatures[K]>
+            ...args: MarkdownParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5648,7 +5666,10 @@ export namespace Snapd {
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5715,7 +5736,10 @@ export namespace Snapd {
 
         connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
         connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
-        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: Parameters<Plug.SignalSignatures[K]>): void;
+        emit<K extends keyof Plug.SignalSignatures>(
+            signal: K,
+            ...args: Plug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5806,7 +5830,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof PlugRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlugRef.SignalSignatures[K]>
+            ...args: PlugRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5856,7 +5880,10 @@ export namespace Snapd {
 
         connect<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
         connect_after<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
-        emit<K extends keyof Price.SignalSignatures>(signal: K, ...args: Parameters<Price.SignalSignatures[K]>): void;
+        emit<K extends keyof Price.SignalSignatures>(
+            signal: K,
+            ...args: Price.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5915,7 +5942,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Screenshot.SignalSignatures[K]>
+            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5978,7 +6005,10 @@ export namespace Snapd {
 
         connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
         connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
-        emit<K extends keyof Slot.SignalSignatures>(signal: K, ...args: Parameters<Slot.SignalSignatures[K]>): void;
+        emit<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            ...args: Slot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6069,7 +6099,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof SlotRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SlotRef.SignalSignatures[K]>
+            ...args: SlotRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6221,7 +6251,10 @@ export namespace Snapd {
 
         connect<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
         connect_after<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
-        emit<K extends keyof Snap.SignalSignatures>(signal: K, ...args: Parameters<Snap.SignalSignatures[K]>): void;
+        emit<K extends keyof Snap.SignalSignatures>(
+            signal: K,
+            ...args: Snap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6547,7 +6580,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof SystemInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemInformation.SignalSignatures[K]>
+            ...args: SystemInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6710,7 +6743,10 @@ export namespace Snapd {
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6818,7 +6854,7 @@ export namespace Snapd {
         ): number;
         emit<K extends keyof UserInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserInformation.SignalSignatures[K]>
+            ...args: UserInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

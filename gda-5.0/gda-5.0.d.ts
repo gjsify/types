@@ -2120,7 +2120,10 @@ export namespace Gda {
 
         connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
         connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
-        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: Parameters<Batch.SignalSignatures[K]>): void;
+        emit<K extends keyof Batch.SignalSignatures>(
+            signal: K,
+            ...args: Batch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2196,7 +2199,10 @@ export namespace Gda {
 
         connect<K extends keyof BlobOp.SignalSignatures>(signal: K, callback: BlobOp.SignalSignatures[K]): number;
         connect_after<K extends keyof BlobOp.SignalSignatures>(signal: K, callback: BlobOp.SignalSignatures[K]): number;
-        emit<K extends keyof BlobOp.SignalSignatures>(signal: K, ...args: Parameters<BlobOp.SignalSignatures[K]>): void;
+        emit<K extends keyof BlobOp.SignalSignatures>(
+            signal: K,
+            ...args: BlobOp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2310,7 +2316,10 @@ export namespace Gda {
 
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
+        emit<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2490,7 +2499,10 @@ export namespace Gda {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2790,7 +2802,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4026,7 +4038,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof ConnectionEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionEvent.SignalSignatures[K]>
+            ...args: ConnectionEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4139,7 +4151,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataAccessWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataAccessWrapper.SignalSignatures[K]>
+            ...args: DataAccessWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5343,7 +5355,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataComparator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataComparator.SignalSignatures[K]>
+            ...args: DataComparator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5434,7 +5446,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataModelArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataModelArray.SignalSignatures[K]>
+            ...args: DataModelArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6622,7 +6634,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataModelDir.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataModelDir.SignalSignatures[K]>
+            ...args: DataModelDir.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7841,7 +7853,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataModelImport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataModelImport.SignalSignatures[K]>
+            ...args: DataModelImport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9082,7 +9094,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataModelIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataModelIter.SignalSignatures[K]>
+            ...args: DataModelIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9261,7 +9273,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataModelLdap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataModelLdap.SignalSignatures[K]>
+            ...args: DataModelLdap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10458,7 +10470,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataPivot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataPivot.SignalSignatures[K]>
+            ...args: DataPivot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11751,7 +11763,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataProxy.SignalSignatures[K]>
+            ...args: DataProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13173,7 +13185,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof DataSelect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSelect.SignalSignatures[K]>
+            ...args: DataSelect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -14475,7 +14487,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof HandlerBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandlerBin.SignalSignatures[K]>
+            ...args: HandlerBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15092,7 +15104,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof HandlerBoolean.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandlerBoolean.SignalSignatures[K]>
+            ...args: HandlerBoolean.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15709,7 +15721,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof HandlerNumerical.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandlerNumerical.SignalSignatures[K]>
+            ...args: HandlerNumerical.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16326,7 +16338,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof HandlerString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandlerString.SignalSignatures[K]>
+            ...args: HandlerString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16950,7 +16962,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof HandlerTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandlerTime.SignalSignatures[K]>
+            ...args: HandlerTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17624,7 +17636,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof HandlerType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandlerType.SignalSignatures[K]>
+            ...args: HandlerType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18321,7 +18333,10 @@ export namespace Gda {
 
         connect<K extends keyof Holder.SignalSignatures>(signal: K, callback: Holder.SignalSignatures[K]): number;
         connect_after<K extends keyof Holder.SignalSignatures>(signal: K, callback: Holder.SignalSignatures[K]): number;
-        emit<K extends keyof Holder.SignalSignatures>(signal: K, ...args: Parameters<Holder.SignalSignatures[K]>): void;
+        emit<K extends keyof Holder.SignalSignatures>(
+            signal: K,
+            ...args: Holder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -19123,7 +19138,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof MetaStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetaStore.SignalSignatures[K]>
+            ...args: MetaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19450,7 +19465,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof MetaStruct.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetaStruct.SignalSignatures[K]>
+            ...args: MetaStruct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19606,7 +19621,10 @@ export namespace Gda {
 
         connect<K extends keyof PStmt.SignalSignatures>(signal: K, callback: PStmt.SignalSignatures[K]): number;
         connect_after<K extends keyof PStmt.SignalSignatures>(signal: K, callback: PStmt.SignalSignatures[K]): number;
-        emit<K extends keyof PStmt.SignalSignatures>(signal: K, ...args: Parameters<PStmt.SignalSignatures[K]>): void;
+        emit<K extends keyof PStmt.SignalSignatures>(
+            signal: K,
+            ...args: PStmt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -19668,7 +19686,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof RepetitiveStatement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepetitiveStatement.SignalSignatures[K]>
+            ...args: RepetitiveStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19735,7 +19753,10 @@ export namespace Gda {
 
         connect<K extends keyof Row.SignalSignatures>(signal: K, callback: Row.SignalSignatures[K]): number;
         connect_after<K extends keyof Row.SignalSignatures>(signal: K, callback: Row.SignalSignatures[K]): number;
-        emit<K extends keyof Row.SignalSignatures>(signal: K, ...args: Parameters<Row.SignalSignatures[K]>): void;
+        emit<K extends keyof Row.SignalSignatures>(
+            signal: K,
+            ...args: Row.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -19845,7 +19866,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof ServerOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerOperation.SignalSignatures[K]>
+            ...args: ServerOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20070,7 +20091,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof ServerProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerProvider.SignalSignatures[K]>
+            ...args: ServerProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20479,7 +20500,10 @@ export namespace Gda {
 
         connect<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
         connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
-        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: Parameters<Set.SignalSignatures[K]>): void;
+        emit<K extends keyof Set.SignalSignatures>(
+            signal: K,
+            ...args: Set.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -20607,7 +20631,10 @@ export namespace Gda {
 
         connect<K extends keyof Short.SignalSignatures>(signal: K, callback: Short.SignalSignatures[K]): number;
         connect_after<K extends keyof Short.SignalSignatures>(signal: K, callback: Short.SignalSignatures[K]): number;
-        emit<K extends keyof Short.SignalSignatures>(signal: K, ...args: Parameters<Short.SignalSignatures[K]>): void;
+        emit<K extends keyof Short.SignalSignatures>(
+            signal: K,
+            ...args: Short.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace SqlBuilder {
@@ -20646,7 +20673,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof SqlBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SqlBuilder.SignalSignatures[K]>
+            ...args: SqlBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20970,7 +20997,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof SqlParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SqlParser.SignalSignatures[K]>
+            ...args: SqlParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21547,7 +21574,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof Statement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Statement.SignalSignatures[K]>
+            ...args: Statement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21677,7 +21704,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof ThreadWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadWrapper.SignalSignatures[K]>
+            ...args: ThreadWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21884,7 +21911,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TransactionStatus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionStatus.SignalSignatures[K]>
+            ...args: TransactionStatus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21965,7 +21992,10 @@ export namespace Gda {
 
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
+        emit<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -22107,7 +22137,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeManager.SignalSignatures[K]>
+            ...args: TreeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -22229,7 +22259,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeMgrColumns.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMgrColumns.SignalSignatures[K]>
+            ...args: TreeMgrColumns.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22275,7 +22305,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeMgrLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMgrLabel.SignalSignatures[K]>
+            ...args: TreeMgrLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22324,7 +22354,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeMgrLdap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMgrLdap.SignalSignatures[K]>
+            ...args: TreeMgrLdap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22388,7 +22418,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeMgrSchemas.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMgrSchemas.SignalSignatures[K]>
+            ...args: TreeMgrSchemas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22438,7 +22468,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeMgrSelect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMgrSelect.SignalSignatures[K]>
+            ...args: TreeMgrSelect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22509,7 +22539,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeMgrTables.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMgrTables.SignalSignatures[K]>
+            ...args: TreeMgrTables.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -22576,7 +22606,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof TreeNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeNode.SignalSignatures[K]>
+            ...args: TreeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -22678,7 +22708,10 @@ export namespace Gda {
 
         connect<K extends keyof UShort.SignalSignatures>(signal: K, callback: UShort.SignalSignatures[K]): number;
         connect_after<K extends keyof UShort.SignalSignatures>(signal: K, callback: UShort.SignalSignatures[K]): number;
-        emit<K extends keyof UShort.SignalSignatures>(signal: K, ...args: Parameters<UShort.SignalSignatures[K]>): void;
+        emit<K extends keyof UShort.SignalSignatures>(
+            signal: K,
+            ...args: UShort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace XaTransaction {
@@ -22729,7 +22762,7 @@ export namespace Gda {
         ): number;
         emit<K extends keyof XaTransaction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XaTransaction.SignalSignatures[K]>
+            ...args: XaTransaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

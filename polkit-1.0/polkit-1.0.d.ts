@@ -194,7 +194,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof ActionDescription.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionDescription.SignalSignatures[K]>
+            ...args: ActionDescription.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -345,7 +345,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof Authority.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Authority.SignalSignatures[K]>
+            ...args: Authority.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1979,7 +1979,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof AuthorizationResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthorizationResult.SignalSignatures[K]>
+            ...args: AuthorizationResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2076,7 +2076,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof Details.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Details.SignalSignatures[K]>
+            ...args: Details.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2167,7 +2167,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof Permission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Permission.SignalSignatures[K]>
+            ...args: Permission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2976,7 +2976,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof SystemBusName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemBusName.SignalSignatures[K]>
+            ...args: SystemBusName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3608,7 +3608,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof TemporaryAuthorization.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemporaryAuthorization.SignalSignatures[K]>
+            ...args: TemporaryAuthorization.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3686,7 +3686,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof UnixGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixGroup.SignalSignatures[K]>
+            ...args: UnixGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4236,7 +4236,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof UnixNetgroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixNetgroup.SignalSignatures[K]>
+            ...args: UnixNetgroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4815,7 +4815,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof UnixProcess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixProcess.SignalSignatures[K]>
+            ...args: UnixProcess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5512,7 +5512,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof UnixSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixSession.SignalSignatures[K]>
+            ...args: UnixSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6458,7 +6458,7 @@ export namespace Polkit {
         ): number;
         emit<K extends keyof UnixUser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixUser.SignalSignatures[K]>
+            ...args: UnixUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

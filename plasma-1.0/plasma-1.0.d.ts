@@ -52,7 +52,10 @@ export namespace Plasma {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -105,7 +108,7 @@ export namespace Plasma {
         ): number;
         emit<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientCreateOptions.SignalSignatures[K]>
+            ...args: ClientCreateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -156,7 +159,7 @@ export namespace Plasma {
         ): number;
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientOptions.SignalSignatures[K]>
+            ...args: ClientOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -195,7 +198,7 @@ export namespace Plasma {
         ): number;
         emit<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CreatedObject.SignalSignatures[K]>
+            ...args: CreatedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -260,7 +263,10 @@ export namespace Plasma {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace ObjectID {
@@ -292,7 +298,7 @@ export namespace Plasma {
         ): number;
         emit<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectID.SignalSignatures[K]>
+            ...args: ObjectID.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -331,7 +337,7 @@ export namespace Plasma {
         ): number;
         emit<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReferredObject.SignalSignatures[K]>
+            ...args: ReferredObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -88,7 +88,7 @@ export namespace RestExtras {
         ): number;
         emit<K extends keyof FlickrProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlickrProxy.SignalSignatures[K]>
+            ...args: FlickrProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -191,7 +191,7 @@ export namespace RestExtras {
         ): number;
         emit<K extends keyof FlickrProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlickrProxyCall.SignalSignatures[K]>
+            ...args: FlickrProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -251,7 +251,7 @@ export namespace RestExtras {
         ): number;
         emit<K extends keyof LastfmProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LastfmProxy.SignalSignatures[K]>
+            ...args: LastfmProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -322,7 +322,7 @@ export namespace RestExtras {
         ): number;
         emit<K extends keyof LastfmProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LastfmProxyCall.SignalSignatures[K]>
+            ...args: LastfmProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -377,7 +377,7 @@ export namespace RestExtras {
         ): number;
         emit<K extends keyof YoutubeProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<YoutubeProxy.SignalSignatures[K]>
+            ...args: YoutubeProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

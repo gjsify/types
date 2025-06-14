@@ -1148,7 +1148,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof AccessDescription.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccessDescription.SignalSignatures[K]>
+            ...args: AccessDescription.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1243,7 +1243,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateChain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateChain.SignalSignatures[K]>
+            ...args: CertificateChain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1538,7 +1538,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtension.SignalSignatures[K]>
+            ...args: CertificateExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1624,7 +1624,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionAuthorityInfoAccess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionAuthorityInfoAccess.SignalSignatures[K]>
+            ...args: CertificateExtensionAuthorityInfoAccess.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -2213,7 +2215,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionAuthorityKeyIdentifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K]>
+            ...args: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -2270,7 +2274,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionBasicConstraints.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionBasicConstraints.SignalSignatures[K]>
+            ...args: CertificateExtensionBasicConstraints.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -2349,7 +2355,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionCertificatePolicies.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionCertificatePolicies.SignalSignatures[K]>
+            ...args: CertificateExtensionCertificatePolicies.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -2952,7 +2960,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionCrlDistributionPoints.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionCrlDistributionPoints.SignalSignatures[K]>
+            ...args: CertificateExtensionCrlDistributionPoints.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -3539,7 +3549,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionExtendedKeyUsage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionExtendedKeyUsage.SignalSignatures[K]>
+            ...args: CertificateExtensionExtendedKeyUsage.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -3593,7 +3605,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionKeyUsage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionKeyUsage.SignalSignatures[K]>
+            ...args: CertificateExtensionKeyUsage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3655,7 +3667,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionList.SignalSignatures[K]>
+            ...args: CertificateExtensionList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4254,7 +4266,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionSubjectAltName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionSubjectAltName.SignalSignatures[K]>
+            ...args: CertificateExtensionSubjectAltName.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -4835,7 +4849,9 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateExtensionSubjectKeyIdentifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K]>
+            ...args: CertificateExtensionSubjectKeyIdentifier.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Methods
@@ -4887,7 +4903,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateField.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateField.SignalSignatures[K]>
+            ...args: CertificateField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4961,7 +4977,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificatePolicy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificatePolicy.SignalSignatures[K]>
+            ...args: CertificatePolicy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5549,7 +5565,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificatePolicyQualifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificatePolicyQualifier.SignalSignatures[K]>
+            ...args: CertificatePolicyQualifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5619,7 +5635,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateRequest.SignalSignatures[K]>
+            ...args: CertificateRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5771,7 +5787,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof CertificateSection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateSection.SignalSignatures[K]>
+            ...args: CertificateSection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5832,7 +5848,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof DistributionPoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DistributionPoint.SignalSignatures[K]>
+            ...args: DistributionPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5889,7 +5905,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof GeneralName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeneralName.SignalSignatures[K]>
+            ...args: GeneralName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5943,7 +5959,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof GeneralNames.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeneralNames.SignalSignatures[K]>
+            ...args: GeneralNames.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6587,7 +6603,10 @@ export namespace Gcr {
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -6805,7 +6824,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof Pkcs11Certificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pkcs11Certificate.SignalSignatures[K]>
+            ...args: Pkcs11Certificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7632,7 +7651,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof SecretExchange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecretExchange.SignalSignatures[K]>
+            ...args: SecretExchange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7733,7 +7752,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof SimpleCertificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleCertificate.SignalSignatures[K]>
+            ...args: SimpleCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -8445,7 +8464,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof SshAskpass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SshAskpass.SignalSignatures[K]>
+            ...args: SshAskpass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8553,7 +8572,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof SystemPrompt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemPrompt.SignalSignatures[K]>
+            ...args: SystemPrompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10035,7 +10054,7 @@ export namespace Gcr {
         ): number;
         emit<K extends keyof SystemPrompter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemPrompter.SignalSignatures[K]>
+            ...args: SystemPrompter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -90,7 +90,7 @@ export namespace Spelling {
         ): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checker.SignalSignatures[K]>
+            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -192,7 +192,7 @@ export namespace Spelling {
         ): number;
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dictionary.SignalSignatures[K]>
+            ...args: Dictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -282,7 +282,7 @@ export namespace Spelling {
         ): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -348,7 +348,7 @@ export namespace Spelling {
         ): number;
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Provider.SignalSignatures[K]>
+            ...args: Provider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -454,7 +454,7 @@ export namespace Spelling {
         ): number;
         emit<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextBufferAdapter.SignalSignatures[K]>
+            ...args: TextBufferAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

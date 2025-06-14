@@ -161,7 +161,10 @@ export namespace MatePanelApplet {
 
         connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
-        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
+        emit<K extends keyof Applet.SignalSignatures>(
+            signal: K,
+            ...args: Applet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

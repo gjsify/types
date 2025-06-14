@@ -76,7 +76,7 @@ export namespace FolksLibsocialweb {
         ): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Persona.SignalSignatures[K]>
+            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -689,7 +689,7 @@ export namespace FolksLibsocialweb {
         ): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

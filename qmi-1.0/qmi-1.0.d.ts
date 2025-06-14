@@ -18960,7 +18960,10 @@ export namespace Qmi {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -19063,7 +19066,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientAtr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientAtr.SignalSignatures[K]>
+            ...args: ClientAtr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19164,7 +19167,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientDms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientDms.SignalSignatures[K]>
+            ...args: ClientDms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22612,7 +22615,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientDpm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientDpm.SignalSignatures[K]>
+            ...args: ClientDpm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22768,7 +22771,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientDsd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientDsd.SignalSignatures[K]>
+            ...args: ClientDsd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23026,7 +23029,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientFox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientFox.SignalSignatures[K]>
+            ...args: ClientFox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23119,7 +23122,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientGas.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGas.SignalSignatures[K]>
+            ...args: ClientGas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23377,7 +23380,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientGms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGms.SignalSignatures[K]>
+            ...args: ClientGms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23613,7 +23616,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientLoc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientLoc.SignalSignatures[K]>
+            ...args: ClientLoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24514,7 +24517,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientNas.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientNas.SignalSignatures[K]>
+            ...args: ClientNas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26231,7 +26234,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientOma.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientOma.SignalSignatures[K]>
+            ...args: ClientOma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26709,7 +26712,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientPbm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientPbm.SignalSignatures[K]>
+            ...args: ClientPbm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26955,7 +26958,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientPdc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientPdc.SignalSignatures[K]>
+            ...args: ClientPdc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27721,7 +27724,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientPds.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientPds.SignalSignatures[K]>
+            ...args: ClientPds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28322,7 +28325,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientQos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientQos.SignalSignatures[K]>
+            ...args: ClientQos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28580,7 +28583,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientSar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientSar.SignalSignatures[K]>
+            ...args: ClientSar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28746,7 +28749,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientUim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientUim.SignalSignatures[K]>
+            ...args: ClientUim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -30025,7 +30028,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientVoice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientVoice.SignalSignatures[K]>
+            ...args: ClientVoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -30998,7 +31001,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientWda.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientWda.SignalSignatures[K]>
+            ...args: ClientWda.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -31229,7 +31232,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientWds.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientWds.SignalSignatures[K]>
+            ...args: ClientWds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33226,7 +33229,7 @@ export namespace Qmi {
         ): number;
         emit<K extends keyof ClientWms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientWms.SignalSignatures[K]>
+            ...args: ClientWms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34077,7 +34080,10 @@ export namespace Qmi {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -35757,7 +35763,10 @@ export namespace Qmi {
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

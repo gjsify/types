@@ -221,7 +221,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractBidirList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractBidirList.SignalSignatures[K]>
+            ...args: AbstractBidirList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -331,7 +331,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractBidirSortedSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractBidirSortedSet.SignalSignatures[K]>
+            ...args: AbstractBidirSortedSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -451,7 +451,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractBidirSortedMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractBidirSortedMap.SignalSignatures[K]>
+            ...args: AbstractBidirSortedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -563,7 +563,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractCollection.SignalSignatures[K]>
+            ...args: AbstractCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1156,7 +1156,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractList.SignalSignatures[K]>
+            ...args: AbstractList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1335,7 +1335,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractMap.SignalSignatures[K]>
+            ...args: AbstractMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1935,7 +1935,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractMultiMap.SignalSignatures[K]>
+            ...args: AbstractMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2486,7 +2486,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractMultiSet.SignalSignatures[K]>
+            ...args: AbstractMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2621,7 +2621,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractQueue.SignalSignatures[K]>
+            ...args: AbstractQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2764,7 +2764,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractSet.SignalSignatures[K]>
+            ...args: AbstractSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2911,7 +2911,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractSortedMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractSortedMap.SignalSignatures[K]>
+            ...args: AbstractSortedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3053,7 +3053,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof AbstractSortedSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractSortedSet.SignalSignatures[K]>
+            ...args: AbstractSortedSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3161,7 +3161,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayList.SignalSignatures[K]>
+            ...args: ArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3226,7 +3226,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof ArrayQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayQueue.SignalSignatures[K]>
+            ...args: ArrayQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3330,7 +3330,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof ConcurrentList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConcurrentList.SignalSignatures[K]>
+            ...args: ConcurrentList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3391,7 +3391,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof ConcurrentSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConcurrentSet.SignalSignatures[K]>
+            ...args: ConcurrentSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3460,7 +3460,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMap.SignalSignatures[K]>
+            ...args: HashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3539,7 +3539,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMultiMap.SignalSignatures[K]>
+            ...args: HashMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3610,7 +3610,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMultiSet.SignalSignatures[K]>
+            ...args: HashMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3669,7 +3669,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof HashSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashSet.SignalSignatures[K]>
+            ...args: HashSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3702,7 +3702,10 @@ export namespace Gee {
 
         connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
         connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
-        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: Parameters<Lazy.SignalSignatures[K]>): void;
+        emit<K extends keyof Lazy.SignalSignatures>(
+            signal: K,
+            ...args: Lazy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3771,7 +3774,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinkedList.SignalSignatures[K]>
+            ...args: LinkedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3872,7 +3875,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PriorityQueue.SignalSignatures[K]>
+            ...args: PriorityQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3909,7 +3912,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Promise.SignalSignatures[K]>
+            ...args: Promise.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3983,7 +3986,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMap.SignalSignatures[K]>
+            ...args: TreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4059,7 +4062,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMultiMap.SignalSignatures[K]>
+            ...args: TreeMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4120,7 +4123,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMultiSet.SignalSignatures[K]>
+            ...args: TreeMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4177,7 +4180,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeSet.SignalSignatures[K]>
+            ...args: TreeSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4244,7 +4247,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof UnrolledLinkedList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnrolledLinkedList.SignalSignatures[K]>
+            ...args: UnrolledLinkedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4355,7 +4358,7 @@ export namespace Gee {
         ): number;
         emit<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapEntry.SignalSignatures[K]>
+            ...args: MapEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

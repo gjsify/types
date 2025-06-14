@@ -1031,7 +1031,7 @@ export namespace Secret {
         ): number;
         emit<K extends keyof Collection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Collection.SignalSignatures[K]>
+            ...args: Collection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2328,7 +2328,10 @@ export namespace Secret {
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3721,7 +3724,10 @@ export namespace Secret {
 
         connect<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
         connect_after<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
-        emit<K extends keyof Prompt.SignalSignatures>(signal: K, ...args: Parameters<Prompt.SignalSignatures[K]>): void;
+        emit<K extends keyof Prompt.SignalSignatures>(
+            signal: K,
+            ...args: Prompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4686,7 +4692,7 @@ export namespace Secret {
         ): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

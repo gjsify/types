@@ -702,7 +702,10 @@ export namespace SpiceClientGLib {
 
         connect<K extends keyof Audio.SignalSignatures>(signal: K, callback: Audio.SignalSignatures[K]): number;
         connect_after<K extends keyof Audio.SignalSignatures>(signal: K, callback: Audio.SignalSignatures[K]): number;
-        emit<K extends keyof Audio.SignalSignatures>(signal: K, ...args: Parameters<Audio.SignalSignatures[K]>): void;
+        emit<K extends keyof Audio.SignalSignatures>(
+            signal: K,
+            ...args: Audio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -818,7 +821,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1009,7 +1012,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof CursorChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CursorChannel.SignalSignatures[K]>
+            ...args: CursorChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1132,7 +1135,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof DisplayChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayChannel.SignalSignatures[K]>
+            ...args: DisplayChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1236,7 +1239,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileTransferTask.SignalSignatures[K]>
+            ...args: FileTransferTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1293,7 +1296,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof InputsChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputsChannel.SignalSignatures[K]>
+            ...args: InputsChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1529,7 +1532,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof MainChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainChannel.SignalSignatures[K]>
+            ...args: MainChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1799,7 +1802,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof PlaybackChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaybackChannel.SignalSignatures[K]>
+            ...args: PlaybackChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1871,7 +1874,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof PortChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PortChannel.SignalSignatures[K]>
+            ...args: PortChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1976,7 +1979,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof QmpPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QmpPort.SignalSignatures[K]>
+            ...args: QmpPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2106,7 +2109,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof RecordChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordChannel.SignalSignatures[K]>
+            ...args: RecordChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2525,7 +2528,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2626,7 +2629,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof SmartcardChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SmartcardChannel.SignalSignatures[K]>
+            ...args: SmartcardChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2686,7 +2689,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SmartcardManager.SignalSignatures[K]>
+            ...args: SmartcardManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2775,7 +2778,10 @@ export namespace SpiceClientGLib {
 
         connect<K extends keyof URI.SignalSignatures>(signal: K, callback: URI.SignalSignatures[K]): number;
         connect_after<K extends keyof URI.SignalSignatures>(signal: K, callback: URI.SignalSignatures[K]): number;
-        emit<K extends keyof URI.SignalSignatures>(signal: K, ...args: Parameters<URI.SignalSignatures[K]>): void;
+        emit<K extends keyof URI.SignalSignatures>(
+            signal: K,
+            ...args: URI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2953,7 +2959,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UsbDeviceManager.SignalSignatures[K]>
+            ...args: UsbDeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3648,7 +3654,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof UsbredirChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UsbredirChannel.SignalSignatures[K]>
+            ...args: UsbredirChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3681,7 +3687,7 @@ export namespace SpiceClientGLib {
         ): number;
         emit<K extends keyof WebdavChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebdavChannel.SignalSignatures[K]>
+            ...args: WebdavChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

@@ -62,7 +62,7 @@ export namespace GstGLX11 {
         ): number;
         emit<K extends keyof GLDisplayX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplayX11.SignalSignatures[K]>
+            ...args: GLDisplayX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

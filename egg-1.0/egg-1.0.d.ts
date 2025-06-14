@@ -151,7 +151,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof Animation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Animation.SignalSignatures[K]>
+            ...args: Animation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -238,7 +238,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof BindingGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindingGroup.SignalSignatures[K]>
+            ...args: BindingGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -363,7 +363,10 @@ export namespace Egg {
 
         connect<K extends keyof Box.SignalSignatures>(signal: K, callback: Box.SignalSignatures[K]): number;
         connect_after<K extends keyof Box.SignalSignatures>(signal: K, callback: Box.SignalSignatures[K]): number;
-        emit<K extends keyof Box.SignalSignatures>(signal: K, ...args: Parameters<Box.SignalSignatures[K]>): void;
+        emit<K extends keyof Box.SignalSignatures>(
+            signal: K,
+            ...args: Box.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -883,7 +886,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof CenteringBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CenteringBin.SignalSignatures[K]>
+            ...args: CenteringBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1391,7 +1394,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof ColumnLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColumnLayout.SignalSignatures[K]>
+            ...args: ColumnLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1882,7 +1885,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof ElasticBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElasticBin.SignalSignatures[K]>
+            ...args: ElasticBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2386,7 +2389,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof EmptyState.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmptyState.SignalSignatures[K]>
+            ...args: EmptyState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2884,7 +2887,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof EntryBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryBox.SignalSignatures[K]>
+            ...args: EntryBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3427,7 +3430,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof FileChooserEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileChooserEntry.SignalSignatures[K]>
+            ...args: FileChooserEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3932,7 +3935,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof ListBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListBox.SignalSignatures[K]>
+            ...args: ListBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4436,7 +4439,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof MenuManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuManager.SignalSignatures[K]>
+            ...args: MenuManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4489,7 +4492,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof PillBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PillBox.SignalSignatures[K]>
+            ...args: PillBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4978,7 +4981,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof PriorityBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PriorityBox.SignalSignatures[K]>
+            ...args: PriorityBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5493,7 +5496,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof ProgressButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressButton.SignalSignatures[K]>
+            ...args: ProgressButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10084,7 +10087,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof RadioBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RadioBox.SignalSignatures[K]>
+            ...args: RadioBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10568,7 +10571,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof ScrolledWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrolledWindow.SignalSignatures[K]>
+            ...args: ScrolledWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -11074,7 +11077,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SearchBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchBar.SignalSignatures[K]>
+            ...args: SearchBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11575,7 +11578,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SettingsFlagAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsFlagAction.SignalSignatures[K]>
+            ...args: SettingsFlagAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12309,7 +12312,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SettingsSandwich.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsSandwich.SignalSignatures[K]>
+            ...args: SettingsSandwich.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12436,7 +12439,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SignalGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalGroup.SignalSignatures[K]>
+            ...args: SignalGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12556,7 +12559,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SimpleLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleLabel.SignalSignatures[K]>
+            ...args: SimpleLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13261,7 +13264,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SimplePopover.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimplePopover.SignalSignatures[K]>
+            ...args: SimplePopover.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13759,7 +13762,10 @@ export namespace Egg {
 
         connect<K extends keyof Slider.SignalSignatures>(signal: K, callback: Slider.SignalSignatures[K]): number;
         connect_after<K extends keyof Slider.SignalSignatures>(signal: K, callback: Slider.SignalSignatures[K]): number;
-        emit<K extends keyof Slider.SignalSignatures>(signal: K, ...args: Parameters<Slider.SignalSignatures[K]>): void;
+        emit<K extends keyof Slider.SignalSignatures>(
+            signal: K,
+            ...args: Slider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -14248,7 +14254,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof StateMachine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StateMachine.SignalSignatures[K]>
+            ...args: StateMachine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14972,7 +14978,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof Suggestion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Suggestion.SignalSignatures[K]>
+            ...args: Suggestion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -15107,7 +15113,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SuggestionEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SuggestionEntry.SignalSignatures[K]>
+            ...args: SuggestionEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19700,7 +19706,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SuggestionEntryBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SuggestionEntryBuffer.SignalSignatures[K]>
+            ...args: SuggestionEntryBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19784,7 +19790,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SuggestionPopover.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SuggestionPopover.SignalSignatures[K]>
+            ...args: SuggestionPopover.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20292,7 +20298,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof SuggestionRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SuggestionRow.SignalSignatures[K]>
+            ...args: SuggestionRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20829,7 +20835,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof TaskCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskCache.SignalSignatures[K]>
+            ...args: TaskCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20917,7 +20923,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof ThreeGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreeGrid.SignalSignatures[K]>
+            ...args: ThreeGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -21398,7 +21404,7 @@ export namespace Egg {
         ): number;
         emit<K extends keyof WidgetActionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetActionGroup.SignalSignatures[K]>
+            ...args: WidgetActionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

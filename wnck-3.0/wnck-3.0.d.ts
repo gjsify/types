@@ -630,7 +630,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof ActionMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionMenu.SignalSignatures[K]>
+            ...args: ActionMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1122,7 +1122,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1252,7 +1252,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof ClassGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClassGroup.SignalSignatures[K]>
+            ...args: ClassGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1349,7 +1349,10 @@ export namespace Wnck {
 
         connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
         connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
-        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: Parameters<Handle.SignalSignatures[K]>): void;
+        emit<K extends keyof Handle.SignalSignatures>(
+            signal: K,
+            ...args: Handle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1451,7 +1454,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof ImageMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageMenuItem.SignalSignatures[K]>
+            ...args: ImageMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6025,7 +6028,10 @@ export namespace Wnck {
 
         connect<K extends keyof Pager.SignalSignatures>(signal: K, callback: Pager.SignalSignatures[K]): number;
         connect_after<K extends keyof Pager.SignalSignatures>(signal: K, callback: Pager.SignalSignatures[K]): number;
-        emit<K extends keyof Pager.SignalSignatures>(signal: K, ...args: Parameters<Pager.SignalSignatures[K]>): void;
+        emit<K extends keyof Pager.SignalSignatures>(
+            signal: K,
+            ...args: Pager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6823,7 +6829,10 @@ export namespace Wnck {
 
         connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
-        emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
+        emit<K extends keyof Screen.SignalSignatures>(
+            signal: K,
+            ...args: Screen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -7088,7 +7097,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof Selector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Selector.SignalSignatures[K]>
+            ...args: Selector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7596,7 +7605,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof Tasklist.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Tasklist.SignalSignatures[K]>
+            ...args: Tasklist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8202,7 +8211,10 @@ export namespace Wnck {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -8805,7 +8817,7 @@ export namespace Wnck {
         ): number;
         emit<K extends keyof Workspace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workspace.SignalSignatures[K]>
+            ...args: Workspace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

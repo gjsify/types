@@ -421,7 +421,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CDSLastChangeParser.SignalSignatures[K]>
+            ...args: CDSLastChangeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -523,7 +523,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteContainer.SignalSignatures[K]>
+            ...args: DIDLLiteContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -693,7 +693,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteContributor.SignalSignatures[K]>
+            ...args: DIDLLiteContributor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -799,7 +799,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteCreateClass.SignalSignatures[K]>
+            ...args: DIDLLiteCreateClass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -923,7 +923,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteDescriptor.SignalSignatures[K]>
+            ...args: DIDLLiteDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1027,7 +1027,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteItem.SignalSignatures[K]>
+            ...args: DIDLLiteItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1282,7 +1282,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteObject.SignalSignatures[K]>
+            ...args: DIDLLiteObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1680,7 +1680,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteParser.SignalSignatures[K]>
+            ...args: DIDLLiteParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1937,7 +1937,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteResource.SignalSignatures[K]>
+            ...args: DIDLLiteResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2228,7 +2228,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteWriter.SignalSignatures[K]>
+            ...args: DIDLLiteWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2325,7 +2325,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof Feature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Feature.SignalSignatures[K]>
+            ...args: Feature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2379,7 +2379,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatureListParser.SignalSignatures[K]>
+            ...args: FeatureListParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2425,7 +2425,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LastChangeParser.SignalSignatures[K]>
+            ...args: LastChangeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2491,7 +2491,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaCollection.SignalSignatures[K]>
+            ...args: MediaCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2638,7 +2638,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProtocolInfo.SignalSignatures[K]>
+            ...args: ProtocolInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2802,7 +2802,7 @@ export namespace GUPnPAV {
         ): number;
         emit<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchCriteriaParser.SignalSignatures[K]>
+            ...args: SearchCriteriaParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

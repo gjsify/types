@@ -53,7 +53,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallOptions.SignalSignatures[K]>
+            ...args: CallOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -87,7 +87,10 @@ export namespace ArrowFlight {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -127,7 +130,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientOptions.SignalSignatures[K]>
+            ...args: ClientOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -163,7 +166,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandDescriptor.SignalSignatures[K]>
+            ...args: CommandDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -210,7 +213,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof Criteria.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Criteria.SignalSignatures[K]>
+            ...args: Criteria.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -250,7 +253,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof DataStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataStream.SignalSignatures[K]>
+            ...args: DataStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -290,7 +293,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Descriptor.SignalSignatures[K]>
+            ...args: Descriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -337,7 +340,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Endpoint.SignalSignatures[K]>
+            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -382,7 +385,10 @@ export namespace ArrowFlight {
 
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
-        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
+        emit<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -423,7 +429,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -465,7 +471,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathDescriptor.SignalSignatures[K]>
+            ...args: PathDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -509,7 +515,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchReader.SignalSignatures[K]>
+            ...args: RecordBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -559,7 +565,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchStream.SignalSignatures[K]>
+            ...args: RecordBatchStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -585,7 +591,10 @@ export namespace ArrowFlight {
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -645,7 +654,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerCallContext.SignalSignatures[K]>
+            ...args: ServerCallContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -687,7 +696,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerOptions.SignalSignatures[K]>
+            ...args: ServerOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -727,7 +736,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamChunk.SignalSignatures[K]>
+            ...args: StreamChunk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -768,7 +777,7 @@ export namespace ArrowFlight {
         ): number;
         emit<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamReader.SignalSignatures[K]>
+            ...args: StreamReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -807,7 +816,10 @@ export namespace ArrowFlight {
 
         connect<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
         connect_after<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
-        emit<K extends keyof Ticket.SignalSignatures>(signal: K, ...args: Parameters<Ticket.SignalSignatures[K]>): void;
+        emit<K extends keyof Ticket.SignalSignatures>(
+            signal: K,
+            ...args: Ticket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

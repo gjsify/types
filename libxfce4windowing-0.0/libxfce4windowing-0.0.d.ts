@@ -579,7 +579,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -677,7 +677,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationWayland.SignalSignatures[K]>
+            ...args: ApplicationWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -711,7 +711,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationX11.SignalSignatures[K]>
+            ...args: ApplicationX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -745,7 +745,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScreenWayland.SignalSignatures[K]>
+            ...args: ScreenWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1289,7 +1289,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScreenX11.SignalSignatures[K]>
+            ...args: ScreenX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1932,7 +1932,10 @@ export namespace Libxfce4windowing {
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2085,7 +2088,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowWayland.SignalSignatures[K]>
+            ...args: WindowWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2116,7 +2119,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowX11.SignalSignatures[K]>
+            ...args: WindowX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2159,7 +2162,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WnckIcon.SignalSignatures[K]>
+            ...args: WnckIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2854,7 +2857,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceDummy.SignalSignatures[K]>
+            ...args: WorkspaceDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3492,7 +3495,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceGroupDummy.SignalSignatures[K]>
+            ...args: WorkspaceGroupDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4069,7 +4072,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceGroupWayland.SignalSignatures[K]>
+            ...args: WorkspaceGroupWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4638,7 +4641,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManagerDummy.SignalSignatures[K]>
+            ...args: WorkspaceManagerDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5142,7 +5145,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManagerWayland.SignalSignatures[K]>
+            ...args: WorkspaceManagerWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5634,7 +5637,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManagerX11.SignalSignatures[K]>
+            ...args: WorkspaceManagerX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6140,7 +6143,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceWayland.SignalSignatures[K]>
+            ...args: WorkspaceWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6756,7 +6759,7 @@ export namespace Libxfce4windowing {
         ): number;
         emit<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceX11.SignalSignatures[K]>
+            ...args: WorkspaceX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

@@ -428,7 +428,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -791,7 +791,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof BackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackendFactory.SignalSignatures[K]>
+            ...args: BackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -894,7 +894,10 @@ export namespace EBackend {
 
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
-        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: Parameters<Cache.SignalSignatures[K]>): void;
+        emit<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            ...args: Cache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1319,7 +1322,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof CacheKeys.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CacheKeys.SignalSignatures[K]>
+            ...args: CacheKeys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1450,7 +1453,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof CacheReaper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CacheReaper.SignalSignatures[K]>
+            ...args: CacheReaper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2001,7 +2004,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof CollectionBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectionBackend.SignalSignatures[K]>
+            ...args: CollectionBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2514,7 +2517,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof CollectionBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectionBackendFactory.SignalSignatures[K]>
+            ...args: CollectionBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2616,7 +2619,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusServer.SignalSignatures[K]>
+            ...args: DBusServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3191,7 +3194,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof DataFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataFactory.SignalSignatures[K]>
+            ...args: DataFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3885,7 +3888,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof FileCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileCache.SignalSignatures[K]>
+            ...args: FileCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4042,7 +4045,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof ServerSideSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerSideSource.SignalSignatures[K]>
+            ...args: ServerSideSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4899,7 +4902,9 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerSideSourceCredentialsProvider.SignalSignatures[K]>
+            ...args: ServerSideSourceCredentialsProvider.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
 
         // Inherited methods
@@ -5436,7 +5441,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof SourceRegistryServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRegistryServer.SignalSignatures[K]>
+            ...args: SourceRegistryServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6278,7 +6283,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof SubprocessFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessFactory.SignalSignatures[K]>
+            ...args: SubprocessFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6929,7 +6934,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof UserPrompter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserPrompter.SignalSignatures[K]>
+            ...args: UserPrompter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7221,7 +7226,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserPrompterServer.SignalSignatures[K]>
+            ...args: UserPrompterServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7751,7 +7756,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof UserPrompterServerExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserPrompterServerExtension.SignalSignatures[K]>
+            ...args: UserPrompterServerExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7845,7 +7850,7 @@ export namespace EBackend {
         ): number;
         emit<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebDAVCollectionBackend.SignalSignatures[K]>
+            ...args: WebDAVCollectionBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

@@ -302,7 +302,7 @@ export namespace GstMse {
         ): number;
         emit<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaSource.SignalSignatures[K]>
+            ...args: MediaSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -542,7 +542,10 @@ export namespace GstMse {
 
         connect<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
         connect_after<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
-        emit<K extends keyof MseSrc.SignalSignatures>(signal: K, ...args: Parameters<MseSrc.SignalSignatures[K]>): void;
+        emit<K extends keyof MseSrc.SignalSignatures>(
+            signal: K,
+            ...args: MseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1076,7 +1079,7 @@ export namespace GstMse {
         ): number;
         emit<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MseSrcPad.SignalSignatures[K]>
+            ...args: MseSrcPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1274,7 +1277,7 @@ export namespace GstMse {
         ): number;
         emit<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBuffer.SignalSignatures[K]>
+            ...args: SourceBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1465,7 +1468,7 @@ export namespace GstMse {
         ): number;
         emit<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBufferList.SignalSignatures[K]>
+            ...args: SourceBufferList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

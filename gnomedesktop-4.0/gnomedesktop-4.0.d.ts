@@ -280,7 +280,7 @@ export namespace GnomeDesktop {
         ): number;
         emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+            ...args: DesktopThumbnailFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -527,7 +527,7 @@ export namespace GnomeDesktop {
         ): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1094,7 +1094,10 @@ export namespace GnomeDesktop {
 
         connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
         connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
-        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: Parameters<PnpIds.SignalSignatures[K]>): void;
+        emit<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            ...args: PnpIds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1183,7 +1186,7 @@ export namespace GnomeDesktop {
         ): number;
         emit<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WallClock.SignalSignatures[K]>
+            ...args: WallClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1249,7 +1252,7 @@ export namespace GnomeDesktop {
         ): number;
         emit<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XkbInfo.SignalSignatures[K]>
+            ...args: XkbInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -68,7 +68,7 @@ export namespace GstDxva {
         ): number;
         emit<K extends keyof DxvaAV1Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaAV1Decoder.SignalSignatures[K]>
+            ...args: DxvaAV1Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -133,7 +133,7 @@ export namespace GstDxva {
         ): number;
         emit<K extends keyof DxvaH264Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaH264Decoder.SignalSignatures[K]>
+            ...args: DxvaH264Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -196,7 +196,7 @@ export namespace GstDxva {
         ): number;
         emit<K extends keyof DxvaH265Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaH265Decoder.SignalSignatures[K]>
+            ...args: DxvaH265Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -258,7 +258,7 @@ export namespace GstDxva {
         ): number;
         emit<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaMpeg2Decoder.SignalSignatures[K]>
+            ...args: DxvaMpeg2Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -325,7 +325,7 @@ export namespace GstDxva {
         ): number;
         emit<K extends keyof DxvaVp8Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaVp8Decoder.SignalSignatures[K]>
+            ...args: DxvaVp8Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -387,7 +387,7 @@ export namespace GstDxva {
         ): number;
         emit<K extends keyof DxvaVp9Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaVp9Decoder.SignalSignatures[K]>
+            ...args: DxvaVp9Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

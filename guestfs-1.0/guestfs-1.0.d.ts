@@ -196,7 +196,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDomain.SignalSignatures[K]>
+            ...args: AddDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -302,7 +302,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDrive.SignalSignatures[K]>
+            ...args: AddDrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -357,7 +357,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDriveScratch.SignalSignatures[K]>
+            ...args: AddDriveScratch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -442,7 +442,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddLibvirtDom.SignalSignatures[K]>
+            ...args: AddLibvirtDom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -491,7 +491,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AugTransform.SignalSignatures[K]>
+            ...args: AugTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -546,7 +546,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSFilesystemDefragment.SignalSignatures[K]>
+            ...args: BTRFSFilesystemDefragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -595,7 +595,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSFilesystemResize.SignalSignatures[K]>
+            ...args: BTRFSFilesystemResize.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -644,7 +644,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSImage.SignalSignatures[K]>
+            ...args: BTRFSImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -693,7 +693,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSSubvolumeCreate.SignalSignatures[K]>
+            ...args: BTRFSSubvolumeCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -748,7 +748,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]>
+            ...args: BTRFSSubvolumeSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -800,7 +800,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BtrfsFsck.SignalSignatures[K]>
+            ...args: BtrfsFsck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -849,7 +849,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressDeviceOut.SignalSignatures[K]>
+            ...args: CompressDeviceOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -898,7 +898,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressOut.SignalSignatures[K]>
+            ...args: CompressOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -965,7 +965,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyAttributes.SignalSignatures[K]>
+            ...args: CopyAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1038,7 +1038,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyDeviceToDevice.SignalSignatures[K]>
+            ...args: CopyDeviceToDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1111,7 +1111,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyDeviceToFile.SignalSignatures[K]>
+            ...args: CopyDeviceToFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1184,7 +1184,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyFileToDevice.SignalSignatures[K]>
+            ...args: CopyFileToDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1257,7 +1257,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyFileToFile.SignalSignatures[K]>
+            ...args: CopyFileToFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1303,7 +1303,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CpioOut.SignalSignatures[K]>
+            ...args: CpioOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1376,7 +1376,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiskCreate.SignalSignatures[K]>
+            ...args: DiskCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1425,7 +1425,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DownloadBlocks.SignalSignatures[K]>
+            ...args: DownloadBlocks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1472,7 +1472,10 @@ export namespace Guestfs {
 
         connect<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
         connect_after<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
-        emit<K extends keyof E2fsck.SignalSignatures>(signal: K, ...args: Parameters<E2fsck.SignalSignatures[K]>): void;
+        emit<K extends keyof E2fsck.SignalSignatures>(
+            signal: K,
+            ...args: E2fsck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Fstrim {
@@ -1524,7 +1527,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
         connect_after<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
-        emit<K extends keyof Fstrim.SignalSignatures>(signal: K, ...args: Parameters<Fstrim.SignalSignatures[K]>): void;
+        emit<K extends keyof Fstrim.SignalSignatures>(
+            signal: K,
+            ...args: Fstrim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace GlobExpand {
@@ -1572,7 +1578,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GlobExpand.SignalSignatures[K]>
+            ...args: GlobExpand.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1631,7 +1637,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
         connect_after<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
-        emit<K extends keyof Grep.SignalSignatures>(signal: K, ...args: Parameters<Grep.SignalSignatures[K]>): void;
+        emit<K extends keyof Grep.SignalSignatures>(
+            signal: K,
+            ...args: Grep.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace HivexOpen {
@@ -1694,7 +1703,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HivexOpen.SignalSignatures[K]>
+            ...args: HivexOpen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1749,7 +1758,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InspectGetIcon.SignalSignatures[K]>
+            ...args: InspectGetIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1816,7 +1825,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternalTest.SignalSignatures[K]>
+            ...args: InternalTest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2237,7 +2246,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternalTest63Optargs.SignalSignatures[K]>
+            ...args: InternalTest63Optargs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2286,7 +2295,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternalTestOnlyOptargs.SignalSignatures[K]>
+            ...args: InternalTestOnlyOptargs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2335,7 +2344,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IsBlockdev.SignalSignatures[K]>
+            ...args: IsBlockdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2381,7 +2390,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IsChardev.SignalSignatures[K]>
+            ...args: IsChardev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2422,7 +2431,10 @@ export namespace Guestfs {
 
         connect<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
         connect_after<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
-        emit<K extends keyof IsDir.SignalSignatures>(signal: K, ...args: Parameters<IsDir.SignalSignatures[K]>): void;
+        emit<K extends keyof IsDir.SignalSignatures>(
+            signal: K,
+            ...args: IsDir.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace IsFifo {
@@ -2462,7 +2474,10 @@ export namespace Guestfs {
 
         connect<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
         connect_after<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
-        emit<K extends keyof IsFifo.SignalSignatures>(signal: K, ...args: Parameters<IsFifo.SignalSignatures[K]>): void;
+        emit<K extends keyof IsFifo.SignalSignatures>(
+            signal: K,
+            ...args: IsFifo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace IsFile {
@@ -2502,7 +2517,10 @@ export namespace Guestfs {
 
         connect<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
         connect_after<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
-        emit<K extends keyof IsFile.SignalSignatures>(signal: K, ...args: Parameters<IsFile.SignalSignatures[K]>): void;
+        emit<K extends keyof IsFile.SignalSignatures>(
+            signal: K,
+            ...args: IsFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace IsSocket {
@@ -2547,7 +2565,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IsSocket.SignalSignatures[K]>
+            ...args: IsSocket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2617,7 +2635,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MDCreate.SignalSignatures[K]>
+            ...args: MDCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2880,7 +2898,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
         connect_after<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
-        emit<K extends keyof Mke2fs.SignalSignatures>(signal: K, ...args: Parameters<Mke2fs.SignalSignatures[K]>): void;
+        emit<K extends keyof Mke2fs.SignalSignatures>(
+            signal: K,
+            ...args: Mke2fs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Mkfs {
@@ -2944,7 +2965,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
         connect_after<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
-        emit<K extends keyof Mkfs.SignalSignatures>(signal: K, ...args: Parameters<Mkfs.SignalSignatures[K]>): void;
+        emit<K extends keyof Mkfs.SignalSignatures>(
+            signal: K,
+            ...args: Mkfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace MkfsBtrfs {
@@ -3031,7 +3055,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MkfsBtrfs.SignalSignatures[K]>
+            ...args: MkfsBtrfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3080,7 +3104,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mksquashfs.SignalSignatures[K]>
+            ...args: Mksquashfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3127,7 +3151,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
         connect_after<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
-        emit<K extends keyof Mkswap.SignalSignatures>(signal: K, ...args: Parameters<Mkswap.SignalSignatures[K]>): void;
+        emit<K extends keyof Mkswap.SignalSignatures>(
+            signal: K,
+            ...args: Mkswap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Mktemp {
@@ -3167,7 +3194,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
         connect_after<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
-        emit<K extends keyof Mktemp.SignalSignatures>(signal: K, ...args: Parameters<Mktemp.SignalSignatures[K]>): void;
+        emit<K extends keyof Mktemp.SignalSignatures>(
+            signal: K,
+            ...args: Mktemp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Mount9P {
@@ -3212,7 +3242,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mount9P.SignalSignatures[K]>
+            ...args: Mount9P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3279,7 +3309,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountLocal.SignalSignatures[K]>
+            ...args: MountLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3334,7 +3364,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NTFSResizeOpts.SignalSignatures[K]>
+            ...args: NTFSResizeOpts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3407,7 +3437,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NtfscloneOut.SignalSignatures[K]>
+            ...args: NtfscloneOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3453,7 +3483,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Ntfsfix.SignalSignatures[K]>
+            ...args: Ntfsfix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3499,7 +3529,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Remount.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Remount.SignalSignatures[K]>
+            ...args: Remount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3546,7 +3576,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
         connect_after<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
-        emit<K extends keyof Rsync.SignalSignatures>(signal: K, ...args: Parameters<Rsync.SignalSignatures[K]>): void;
+        emit<K extends keyof Rsync.SignalSignatures>(
+            signal: K,
+            ...args: Rsync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace RsyncIn {
@@ -3597,7 +3630,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RsyncIn.SignalSignatures[K]>
+            ...args: RsyncIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3649,7 +3682,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RsyncOut.SignalSignatures[K]>
+            ...args: RsyncOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3698,7 +3731,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SelinuxRelabel.SignalSignatures[K]>
+            ...args: SelinuxRelabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3787,7 +3820,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14332,7 +14365,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SetE2attrs.SignalSignatures[K]>
+            ...args: SetE2attrs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14378,7 +14411,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Syslinux.SignalSignatures[K]>
+            ...args: Syslinux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14437,7 +14470,10 @@ export namespace Guestfs {
 
         connect<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
         connect_after<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
-        emit<K extends keyof TarIn.SignalSignatures>(signal: K, ...args: Parameters<TarIn.SignalSignatures[K]>): void;
+        emit<K extends keyof TarIn.SignalSignatures>(
+            signal: K,
+            ...args: TarIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace TarOut {
@@ -14501,7 +14537,10 @@ export namespace Guestfs {
 
         connect<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
         connect_after<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
-        emit<K extends keyof TarOut.SignalSignatures>(signal: K, ...args: Parameters<TarOut.SignalSignatures[K]>): void;
+        emit<K extends keyof TarOut.SignalSignatures>(
+            signal: K,
+            ...args: TarOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Tune2FS {
@@ -14600,7 +14639,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Tune2FS.SignalSignatures[K]>
+            ...args: Tune2FS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14647,7 +14686,10 @@ export namespace Guestfs {
 
         connect<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
         connect_after<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
-        emit<K extends keyof Umount.SignalSignatures>(signal: K, ...args: Parameters<Umount.SignalSignatures[K]>): void;
+        emit<K extends keyof Umount.SignalSignatures>(
+            signal: K,
+            ...args: Umount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace UmountLocal {
@@ -14695,7 +14737,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UmountLocal.SignalSignatures[K]>
+            ...args: UmountLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14777,7 +14819,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XfsAdmin.SignalSignatures[K]>
+            ...args: XfsAdmin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14865,7 +14907,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XfsGrowfs.SignalSignatures[K]>
+            ...args: XfsGrowfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14965,7 +15007,7 @@ export namespace Guestfs {
         ): number;
         emit<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XfsRepair.SignalSignatures[K]>
+            ...args: XfsRepair.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

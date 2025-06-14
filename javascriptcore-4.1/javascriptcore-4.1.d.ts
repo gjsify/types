@@ -469,7 +469,10 @@ export namespace JavaScriptCore {
 
         connect<K extends keyof Class.SignalSignatures>(signal: K, callback: Class.SignalSignatures[K]): number;
         connect_after<K extends keyof Class.SignalSignatures>(signal: K, callback: Class.SignalSignatures[K]): number;
-        emit<K extends keyof Class.SignalSignatures>(signal: K, ...args: Parameters<Class.SignalSignatures[K]>): void;
+        emit<K extends keyof Class.SignalSignatures>(
+            signal: K,
+            ...args: Class.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -655,7 +658,7 @@ export namespace JavaScriptCore {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -849,7 +852,7 @@ export namespace JavaScriptCore {
         ): number;
         emit<K extends keyof Exception.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Exception.SignalSignatures[K]>
+            ...args: Exception.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -980,7 +983,10 @@ export namespace JavaScriptCore {
 
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
+        emit<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1344,7 +1350,7 @@ export namespace JavaScriptCore {
         ): number;
         emit<K extends keyof VirtualMachine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VirtualMachine.SignalSignatures[K]>
+            ...args: VirtualMachine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1399,7 +1405,7 @@ export namespace JavaScriptCore {
         ): number;
         emit<K extends keyof WeakValue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WeakValue.SignalSignatures[K]>
+            ...args: WeakValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

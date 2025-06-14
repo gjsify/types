@@ -565,7 +565,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof BinMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinMonitor.SignalSignatures[K]>
+            ...args: BinMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1053,7 +1053,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof ElementMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementMonitor.SignalSignatures[K]>
+            ...args: ElementMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1589,7 +1589,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof MediaDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDescriptor.SignalSignatures[K]>
+            ...args: MediaDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2125,7 +2125,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof MediaDescriptorParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDescriptorParser.SignalSignatures[K]>
+            ...args: MediaDescriptorParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2670,7 +2670,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof MediaDescriptorWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDescriptorWriter.SignalSignatures[K]>
+            ...args: MediaDescriptorWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3241,7 +3241,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Monitor.SignalSignatures[K]>
+            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3796,7 +3796,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof Override.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Override.SignalSignatures[K]>
+            ...args: Override.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4355,7 +4355,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof PadMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PadMonitor.SignalSignatures[K]>
+            ...args: PadMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4890,7 +4890,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof PipelineMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PipelineMonitor.SignalSignatures[K]>
+            ...args: PipelineMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5390,7 +5390,10 @@ export namespace GstValidate {
 
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
-        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
+        emit<K extends keyof Runner.SignalSignatures>(
+            signal: K,
+            ...args: Runner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5470,7 +5473,7 @@ export namespace GstValidate {
         ): number;
         emit<K extends keyof Scenario.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scenario.SignalSignatures[K]>
+            ...args: Scenario.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

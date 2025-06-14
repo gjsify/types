@@ -403,7 +403,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof ActionRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionRow.SignalSignatures[K]>
+            ...args: ActionRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4795,7 +4795,10 @@ export namespace Handy {
 
         connect<K extends keyof Arrows.SignalSignatures>(signal: K, callback: Arrows.SignalSignatures[K]): number;
         connect_after<K extends keyof Arrows.SignalSignatures>(signal: K, callback: Arrows.SignalSignatures[K]): number;
-        emit<K extends keyof Arrows.SignalSignatures>(signal: K, ...args: Parameters<Arrows.SignalSignatures[K]>): void;
+        emit<K extends keyof Arrows.SignalSignatures>(
+            signal: K,
+            ...args: Arrows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5323,7 +5326,10 @@ export namespace Handy {
 
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
+        emit<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5865,7 +5871,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof ComboRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComboRow.SignalSignatures[K]>
+            ...args: ComboRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10307,7 +10313,10 @@ export namespace Handy {
 
         connect<K extends keyof Dialer.SignalSignatures>(signal: K, callback: Dialer.SignalSignatures[K]): number;
         connect_after<K extends keyof Dialer.SignalSignatures>(signal: K, callback: Dialer.SignalSignatures[K]): number;
-        emit<K extends keyof Dialer.SignalSignatures>(signal: K, ...args: Parameters<Dialer.SignalSignatures[K]>): void;
+        emit<K extends keyof Dialer.SignalSignatures>(
+            signal: K,
+            ...args: Dialer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -10849,7 +10858,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof DialerButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DialerButton.SignalSignatures[K]>
+            ...args: DialerButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15452,7 +15461,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof DialerCycleButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DialerCycleButton.SignalSignatures[K]>
+            ...args: DialerCycleButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19801,7 +19810,10 @@ export namespace Handy {
 
         connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
         connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
-        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: Parameters<Dialog.SignalSignatures[K]>): void;
+        emit<K extends keyof Dialog.SignalSignatures>(
+            signal: K,
+            ...args: Dialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -20285,7 +20297,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof EnumValueObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnumValueObject.SignalSignatures[K]>
+            ...args: EnumValueObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20365,7 +20377,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof ExpanderRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpanderRow.SignalSignatures[K]>
+            ...args: ExpanderRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -24814,7 +24826,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof HeaderBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderBar.SignalSignatures[K]>
+            ...args: HeaderBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25460,7 +25472,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof HeaderGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderGroup.SignalSignatures[K]>
+            ...args: HeaderGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26173,7 +26185,10 @@ export namespace Handy {
 
         connect<K extends keyof Keypad.SignalSignatures>(signal: K, callback: Keypad.SignalSignatures[K]): number;
         connect_after<K extends keyof Keypad.SignalSignatures>(signal: K, callback: Keypad.SignalSignatures[K]): number;
-        emit<K extends keyof Keypad.SignalSignatures>(signal: K, ...args: Parameters<Keypad.SignalSignatures[K]>): void;
+        emit<K extends keyof Keypad.SignalSignatures>(
+            signal: K,
+            ...args: Keypad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -26848,7 +26863,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof Leaflet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Leaflet.SignalSignatures[K]>
+            ...args: Leaflet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -31453,7 +31468,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof Paginator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Paginator.SignalSignatures[K]>
+            ...args: Paginator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -35932,7 +35947,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof PreferencesGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesGroup.SignalSignatures[K]>
+            ...args: PreferencesGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36470,7 +36485,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof PreferencesPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesPage.SignalSignatures[K]>
+            ...args: PreferencesPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36998,7 +37013,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof PreferencesRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesRow.SignalSignatures[K]>
+            ...args: PreferencesRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -41462,7 +41477,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof PreferencesWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
+            ...args: PreferencesWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -41971,7 +41986,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof SearchBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchBar.SignalSignatures[K]>
+            ...args: SearchBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -42561,7 +42576,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof Squeezer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Squeezer.SignalSignatures[K]>
+            ...args: Squeezer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -43148,7 +43163,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof SwipeGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwipeGroup.SignalSignatures[K]>
+            ...args: SwipeGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -43830,7 +43845,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof TitleBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleBar.SignalSignatures[K]>
+            ...args: TitleBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44326,7 +44341,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof ValueObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueObject.SignalSignatures[K]>
+            ...args: ValueObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -44445,7 +44460,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof ViewSwitcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewSwitcher.SignalSignatures[K]>
+            ...args: ViewSwitcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -45028,7 +45043,7 @@ export namespace Handy {
         ): number;
         emit<K extends keyof ViewSwitcherBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewSwitcherBar.SignalSignatures[K]>
+            ...args: ViewSwitcherBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

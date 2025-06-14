@@ -296,7 +296,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof BasicForm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BasicForm.SignalSignatures[K]>
+            ...args: BasicForm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -945,7 +945,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Cloud.SignalSignatures>(signal: K, callback: Cloud.SignalSignatures[K]): number;
         connect_after<K extends keyof Cloud.SignalSignatures>(signal: K, callback: Cloud.SignalSignatures[K]): number;
-        emit<K extends keyof Cloud.SignalSignatures>(signal: K, ...args: Parameters<Cloud.SignalSignatures[K]>): void;
+        emit<K extends keyof Cloud.SignalSignatures>(
+            signal: K,
+            ...args: Cloud.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1601,7 +1604,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Combo.SignalSignatures>(signal: K, callback: Combo.SignalSignatures[K]): number;
         connect_after<K extends keyof Combo.SignalSignatures>(signal: K, callback: Combo.SignalSignatures[K]): number;
-        emit<K extends keyof Combo.SignalSignatures>(signal: K, ...args: Parameters<Combo.SignalSignatures[K]>): void;
+        emit<K extends keyof Combo.SignalSignatures>(
+            signal: K,
+            ...args: Combo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6273,7 +6279,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataCellRendererBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCellRendererBin.SignalSignatures[K]>
+            ...args: DataCellRendererBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6344,7 +6350,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataCellRendererBoolean.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCellRendererBoolean.SignalSignatures[K]>
+            ...args: DataCellRendererBoolean.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6427,7 +6433,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataCellRendererCombo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCellRendererCombo.SignalSignatures[K]>
+            ...args: DataCellRendererCombo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6488,7 +6494,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataCellRendererInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCellRendererInfo.SignalSignatures[K]>
+            ...args: DataCellRendererInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6557,7 +6563,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataCellRendererTextual.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCellRendererTextual.SignalSignatures[K]>
+            ...args: DataCellRendererTextual.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6618,7 +6624,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataFilter.SignalSignatures[K]>
+            ...args: DataFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7145,7 +7151,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataProxyInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataProxyInfo.SignalSignatures[K]>
+            ...args: DataProxyInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7652,7 +7658,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof DataStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataStore.SignalSignatures[K]>
+            ...args: DataStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8596,7 +8602,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
         connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
-        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
+        emit<K extends keyof Entry.SignalSignatures>(
+            signal: K,
+            ...args: Entry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -13246,7 +13255,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryBin.SignalSignatures[K]>
+            ...args: EntryBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -17738,7 +17747,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryBoolean.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryBoolean.SignalSignatures[K]>
+            ...args: EntryBoolean.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -22240,7 +22249,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryCombo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryCombo.SignalSignatures[K]>
+            ...args: EntryCombo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26793,7 +26802,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryCommonTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryCommonTime.SignalSignatures[K]>
+            ...args: EntryCommonTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -31330,7 +31339,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryDate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryDate.SignalSignatures[K]>
+            ...args: EntryDate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -35704,7 +35713,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryNone.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryNone.SignalSignatures[K]>
+            ...args: EntryNone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -40212,7 +40221,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryNumber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryNumber.SignalSignatures[K]>
+            ...args: EntryNumber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -44762,7 +44771,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryShell.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryShell.SignalSignatures[K]>
+            ...args: EntryShell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -45396,7 +45405,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryString.SignalSignatures[K]>
+            ...args: EntryString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -49933,7 +49942,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryTime.SignalSignatures[K]>
+            ...args: EntryTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -54314,7 +54323,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryTimestamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryTimestamp.SignalSignatures[K]>
+            ...args: EntryTimestamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -58696,7 +58705,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof EntryWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryWrapper.SignalSignatures[K]>
+            ...args: EntryWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -63201,7 +63210,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Form.SignalSignatures>(signal: K, callback: Form.SignalSignatures[K]): number;
         connect_after<K extends keyof Form.SignalSignatures>(signal: K, callback: Form.SignalSignatures[K]): number;
-        emit<K extends keyof Form.SignalSignatures>(signal: K, ...args: Parameters<Form.SignalSignatures[K]>): void;
+        emit<K extends keyof Form.SignalSignatures>(
+            signal: K,
+            ...args: Form.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         /**
@@ -63918,7 +63930,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof FormattedEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormattedEntry.SignalSignatures[K]>
+            ...args: FormattedEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -68261,7 +68273,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
+        emit<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            ...args: Grid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -68981,7 +68996,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Login.SignalSignatures>(signal: K, callback: Login.SignalSignatures[K]): number;
         connect_after<K extends keyof Login.SignalSignatures>(signal: K, callback: Login.SignalSignatures[K]): number;
-        emit<K extends keyof Login.SignalSignatures>(signal: K, ...args: Parameters<Login.SignalSignatures[K]>): void;
+        emit<K extends keyof Login.SignalSignatures>(
+            signal: K,
+            ...args: Login.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -69553,7 +69571,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof NumericEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumericEntry.SignalSignatures[K]>
+            ...args: NumericEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -73875,7 +73893,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof ProviderSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProviderSelector.SignalSignatures[K]>
+            ...args: ProviderSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -78342,7 +78360,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof RawForm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RawForm.SignalSignatures[K]>
+            ...args: RawForm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -79072,7 +79090,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof RawGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RawGrid.SignalSignatures[K]>
+            ...args: RawGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -79955,7 +79973,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof RtEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RtEditor.SignalSignatures[K]>
+            ...args: RtEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -80504,7 +80522,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof ServerOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerOperation.SignalSignatures[K]>
+            ...args: ServerOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -81014,7 +81032,10 @@ export namespace Gdaui {
 
         connect<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
         connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
-        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: Parameters<Set.SignalSignatures[K]>): void;
+        emit<K extends keyof Set.SignalSignatures>(
+            signal: K,
+            ...args: Set.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -81095,7 +81116,7 @@ export namespace Gdaui {
         ): number;
         emit<K extends keyof TreeStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeStore.SignalSignatures[K]>
+            ...args: TreeStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

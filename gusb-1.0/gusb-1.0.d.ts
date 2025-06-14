@@ -288,7 +288,7 @@ export namespace GUsb {
         ): number;
         emit<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BosDescriptor.SignalSignatures[K]>
+            ...args: BosDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -366,7 +366,7 @@ export namespace GUsb {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1058,7 +1058,10 @@ export namespace GUsb {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2160,7 +2163,7 @@ export namespace GUsb {
         ): number;
         emit<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceEvent.SignalSignatures[K]>
+            ...args: DeviceEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2243,7 +2246,7 @@ export namespace GUsb {
         ): number;
         emit<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceList.SignalSignatures[K]>
+            ...args: DeviceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2301,7 +2304,7 @@ export namespace GUsb {
         ): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Endpoint.SignalSignatures[K]>
+            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2380,7 +2383,7 @@ export namespace GUsb {
         ): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interface.SignalSignatures[K]>
+            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

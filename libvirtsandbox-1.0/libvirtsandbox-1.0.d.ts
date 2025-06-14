@@ -61,7 +61,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Builder.SignalSignatures[K]>
+            ...args: Builder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -162,7 +162,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof BuilderContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderContainer.SignalSignatures[K]>
+            ...args: BuilderContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -198,7 +198,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof BuilderInitrd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderInitrd.SignalSignatures[K]>
+            ...args: BuilderInitrd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -238,7 +238,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof BuilderMachine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderMachine.SignalSignatures[K]>
+            ...args: BuilderMachine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -314,7 +314,10 @@ export namespace LibvirtSandbox {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -702,7 +705,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigDisk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigDisk.SignalSignatures[K]>
+            ...args: ConfigDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -774,7 +777,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigInitrd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigInitrd.SignalSignatures[K]>
+            ...args: ConfigInitrd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -863,7 +866,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigInteractive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigInteractive.SignalSignatures[K]>
+            ...args: ConfigInteractive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -922,7 +925,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigMount.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigMount.SignalSignatures[K]>
+            ...args: ConfigMount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -983,7 +986,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigMountFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigMountFile.SignalSignatures[K]>
+            ...args: ConfigMountFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1034,7 +1037,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigMountGuestBind.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigMountGuestBind.SignalSignatures[K]>
+            ...args: ConfigMountGuestBind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1070,7 +1073,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigMountHostBind.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigMountHostBind.SignalSignatures[K]>
+            ...args: ConfigMountHostBind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1116,7 +1119,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigMountHostImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigMountHostImage.SignalSignatures[K]>
+            ...args: ConfigMountHostImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1166,7 +1169,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigMountRam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigMountRam.SignalSignatures[K]>
+            ...args: ConfigMountRam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1228,7 +1231,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigNetwork.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigNetwork.SignalSignatures[K]>
+            ...args: ConfigNetwork.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1315,7 +1318,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigNetworkAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigNetworkAddress.SignalSignatures[K]>
+            ...args: ConfigNetworkAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1391,7 +1394,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigNetworkFilterref.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigNetworkFilterref.SignalSignatures[K]>
+            ...args: ConfigNetworkFilterref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1456,7 +1459,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigNetworkFilterrefParameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigNetworkFilterrefParameter.SignalSignatures[K]>
+            ...args: ConfigNetworkFilterrefParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1509,7 +1512,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigNetworkRoute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigNetworkRoute.SignalSignatures[K]>
+            ...args: ConfigNetworkRoute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1576,7 +1579,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigService.SignalSignatures[K]>
+            ...args: ConfigService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1612,7 +1615,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigServiceGeneric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigServiceGeneric.SignalSignatures[K]>
+            ...args: ConfigServiceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1657,7 +1660,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConfigServiceSystemd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigServiceSystemd.SignalSignatures[K]>
+            ...args: ConfigServiceSystemd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1715,7 +1718,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof Console.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Console.SignalSignatures[K]>
+            ...args: Console.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1781,7 +1784,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConsoleRaw.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConsoleRaw.SignalSignatures[K]>
+            ...args: ConsoleRaw.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1833,7 +1836,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ConsoleRpc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConsoleRpc.SignalSignatures[K]>
+            ...args: ConsoleRpc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1880,7 +1883,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1948,7 +1951,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ContextInteractive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextInteractive.SignalSignatures[K]>
+            ...args: ContextInteractive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1988,7 +1991,7 @@ export namespace LibvirtSandbox {
         ): number;
         emit<K extends keyof ContextService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextService.SignalSignatures[K]>
+            ...args: ContextService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

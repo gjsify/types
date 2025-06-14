@@ -167,7 +167,7 @@ export namespace GCab {
         ): number;
         emit<K extends keyof Cabinet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cabinet.SignalSignatures[K]>
+            ...args: Cabinet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -309,7 +309,10 @@ export namespace GCab {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -428,7 +431,10 @@ export namespace GCab {
 
         connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
         connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
-        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: Parameters<Folder.SignalSignatures[K]>): void;
+        emit<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            ...args: Folder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

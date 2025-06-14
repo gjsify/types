@@ -447,7 +447,7 @@ export namespace GnomeBluetooth {
         ): number;
         emit<K extends keyof Chooser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Chooser.SignalSignatures[K]>
+            ...args: Chooser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1050,7 +1050,7 @@ export namespace GnomeBluetooth {
         ): number;
         emit<K extends keyof ChooserButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChooserButton.SignalSignatures[K]>
+            ...args: ChooserButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5649,7 +5649,7 @@ export namespace GnomeBluetooth {
         ): number;
         emit<K extends keyof ChooserCombo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChooserCombo.SignalSignatures[K]>
+            ...args: ChooserCombo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6209,7 +6209,10 @@ export namespace GnomeBluetooth {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6346,7 +6349,7 @@ export namespace GnomeBluetooth {
         ): number;
         emit<K extends keyof FilterWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterWidget.SignalSignatures[K]>
+            ...args: FilterWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6877,7 +6880,7 @@ export namespace GnomeBluetooth {
         ): number;
         emit<K extends keyof SettingsWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsWidget.SignalSignatures[K]>
+            ...args: SettingsWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

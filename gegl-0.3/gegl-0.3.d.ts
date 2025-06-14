@@ -641,7 +641,7 @@ export namespace Gegl {
         ): number;
         emit<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioFragment.SignalSignatures[K]>
+            ...args: AudioFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -755,7 +755,10 @@ export namespace Gegl {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -949,7 +952,10 @@ export namespace Gegl {
 
         connect<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
         connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
-        emit<K extends keyof Color.SignalSignatures>(signal: K, ...args: Parameters<Color.SignalSignatures[K]>): void;
+        emit<K extends keyof Color.SignalSignatures>(
+            signal: K,
+            ...args: Color.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1062,7 +1068,10 @@ export namespace Gegl {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Curve {
@@ -1091,7 +1100,10 @@ export namespace Gegl {
 
         connect<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
         connect_after<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
-        emit<K extends keyof Curve.SignalSignatures>(signal: K, ...args: Parameters<Curve.SignalSignatures[K]>): void;
+        emit<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            ...args: Curve.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1218,7 +1230,10 @@ export namespace Gegl {
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1456,7 +1471,7 @@ export namespace Gegl {
         ): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1508,7 +1523,10 @@ export namespace Gegl {
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1681,7 +1699,7 @@ export namespace Gegl {
         ): number;
         emit<K extends keyof Processor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Processor.SignalSignatures[K]>
+            ...args: Processor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1771,7 +1789,10 @@ export namespace Gegl {
 
         connect<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
         connect_after<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
-        emit<K extends keyof Stats.SignalSignatures>(signal: K, ...args: Parameters<Stats.SignalSignatures[K]>): void;
+        emit<K extends keyof Stats.SignalSignatures>(
+            signal: K,
+            ...args: Stats.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace TileBackend {
@@ -1832,7 +1853,7 @@ export namespace Gegl {
         ): number;
         emit<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileBackend.SignalSignatures[K]>
+            ...args: TileBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1911,7 +1932,7 @@ export namespace Gegl {
         ): number;
         emit<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileHandler.SignalSignatures[K]>
+            ...args: TileHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1955,7 +1976,7 @@ export namespace Gegl {
         ): number;
         emit<K extends keyof TileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileSource.SignalSignatures[K]>
+            ...args: TileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

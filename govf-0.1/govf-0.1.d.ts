@@ -54,7 +54,10 @@ export namespace Govf {
 
         connect<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
         connect_after<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
-        emit<K extends keyof Disk.SignalSignatures>(signal: K, ...args: Parameters<Disk.SignalSignatures[K]>): void;
+        emit<K extends keyof Disk.SignalSignatures>(
+            signal: K,
+            ...args: Disk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -129,7 +132,7 @@ export namespace Govf {
         ): number;
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Package.SignalSignatures[K]>
+            ...args: Package.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

@@ -421,7 +421,7 @@ export namespace DMAP {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -485,7 +485,7 @@ export namespace DMAP {
         ): number;
         emit<K extends keyof GstInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstInputStream.SignalSignatures[K]>
+            ...args: GstInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1082,7 +1082,7 @@ export namespace DMAP {
         ): number;
         emit<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsBrowser.SignalSignatures[K]>
+            ...args: MdnsBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1154,7 +1154,7 @@ export namespace DMAP {
         ): number;
         emit<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsPublisher.SignalSignatures[K]>
+            ...args: MdnsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1243,7 +1243,10 @@ export namespace DMAP {
 
         connect<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
         connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
-        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: Parameters<Share.SignalSignatures[K]>): void;
+        emit<K extends keyof Share.SignalSignatures>(
+            signal: K,
+            ...args: Share.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

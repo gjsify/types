@@ -194,7 +194,7 @@ export namespace Epc {
         ): number;
         emit<K extends keyof Consumer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Consumer.SignalSignatures[K]>
+            ...args: Consumer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -265,7 +265,7 @@ export namespace Epc {
         ): number;
         emit<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dispatcher.SignalSignatures[K]>
+            ...args: Dispatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -371,7 +371,7 @@ export namespace Epc {
         ): number;
         emit<K extends keyof Publisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Publisher.SignalSignatures[K]>
+            ...args: Publisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -481,7 +481,7 @@ export namespace Epc {
         ): number;
         emit<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceMonitor.SignalSignatures[K]>
+            ...args: ServiceMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

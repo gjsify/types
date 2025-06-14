@@ -202,7 +202,7 @@ export namespace NMGtk {
         ): number;
         emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MobileProvidersDatabase.SignalSignatures[K]>
+            ...args: MobileProvidersDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -986,7 +986,7 @@ export namespace NMGtk {
         ): number;
         emit<K extends keyof VpnPasswordDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VpnPasswordDialog.SignalSignatures[K]>
+            ...args: VpnPasswordDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1501,7 +1501,7 @@ export namespace NMGtk {
         ): number;
         emit<K extends keyof WifiDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WifiDialog.SignalSignatures[K]>
+            ...args: WifiDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -4631,7 +4631,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
+            ...args: ColorBalanceChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4708,7 +4708,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoAggregator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregator.SignalSignatures[K]>
+            ...args: VideoAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4797,7 +4797,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregatorConvertPad.SignalSignatures[K]>
+            ...args: VideoAggregatorConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4862,7 +4862,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoAggregatorPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregatorPad.SignalSignatures[K]>
+            ...args: VideoAggregatorPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4986,7 +4986,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregatorParallelConvertPad.SignalSignatures[K]>
+            ...args: VideoAggregatorParallelConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5026,7 +5026,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoBufferPool.SignalSignatures[K]>
+            ...args: VideoBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5273,7 +5273,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoDecoder.SignalSignatures[K]>
+            ...args: VideoDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5906,7 +5906,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoEncoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoEncoder.SignalSignatures[K]>
+            ...args: VideoEncoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6842,7 +6842,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoFilter.SignalSignatures[K]>
+            ...args: VideoFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6895,7 +6895,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoMultiviewFlagsSet.SignalSignatures[K]>
+            ...args: VideoMultiviewFlagsSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6957,7 +6957,7 @@ export namespace GstVideo {
         ): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSink.SignalSignatures[K]>
+            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

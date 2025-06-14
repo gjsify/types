@@ -223,7 +223,10 @@ export namespace BraseroMedia {
 
         connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
         connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
-        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: Parameters<Drive.SignalSignatures[K]>): void;
+        emit<K extends keyof Drive.SignalSignatures>(
+            signal: K,
+            ...args: Drive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -419,7 +422,7 @@ export namespace BraseroMedia {
         ): number;
         emit<K extends keyof DriveSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveSelection.SignalSignatures[K]>
+            ...args: DriveSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4961,7 +4964,10 @@ export namespace BraseroMedia {
 
         connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
         connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
-        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: Parameters<Medium.SignalSignatures[K]>): void;
+        emit<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            ...args: Medium.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5167,7 +5173,7 @@ export namespace BraseroMedia {
         ): number;
         emit<K extends keyof MediumMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediumMonitor.SignalSignatures[K]>
+            ...args: MediumMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5259,7 +5265,7 @@ export namespace BraseroMedia {
         ): number;
         emit<K extends keyof MediumSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediumSelection.SignalSignatures[K]>
+            ...args: MediumSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9785,7 +9791,10 @@ export namespace BraseroMedia {
 
         connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
         connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
-        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: Parameters<Volume.SignalSignatures[K]>): void;
+        emit<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            ...args: Volume.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

@@ -130,7 +130,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof HeaderBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderBar.SignalSignatures[K]>
+            ...args: HeaderBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -658,7 +658,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof HeaderMenuButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderMenuButton.SignalSignatures[K]>
+            ...args: HeaderMenuButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5214,7 +5214,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof HeaderRadioButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderRadioButton.SignalSignatures[K]>
+            ...args: HeaderRadioButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9766,7 +9766,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof HeaderSimpleButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderSimpleButton.SignalSignatures[K]>
+            ...args: HeaderSimpleButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14563,7 +14563,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof HeaderToggleButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderToggleButton.SignalSignatures[K]>
+            ...args: HeaderToggleButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -19115,7 +19115,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof MainIconView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainIconView.SignalSignatures[K]>
+            ...args: MainIconView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -23700,7 +23700,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof MainListView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainListView.SignalSignatures[K]>
+            ...args: MainListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -28147,7 +28147,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof MainToolbar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainToolbar.SignalSignatures[K]>
+            ...args: MainToolbar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32637,7 +32637,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof MainView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainView.SignalSignatures[K]>
+            ...args: MainView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33150,7 +33150,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof Revealer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Revealer.SignalSignatures[K]>
+            ...args: Revealer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -33663,7 +33663,10 @@ export namespace Gd {
 
         connect<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
         connect_after<K extends keyof Stack.SignalSignatures>(signal: K, callback: Stack.SignalSignatures[K]): number;
-        emit<K extends keyof Stack.SignalSignatures>(signal: K, ...args: Parameters<Stack.SignalSignatures[K]>): void;
+        emit<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            ...args: Stack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -34175,7 +34178,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof StackSwitcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StackSwitcher.SignalSignatures[K]>
+            ...args: StackSwitcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34683,7 +34686,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof StyledTextRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyledTextRenderer.SignalSignatures[K]>
+            ...args: StyledTextRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34753,7 +34756,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof TaggedEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaggedEntry.SignalSignatures[K]>
+            ...args: TaggedEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39086,7 +39089,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof TaggedEntryTag.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaggedEntryTag.SignalSignatures[K]>
+            ...args: TaggedEntryTag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39148,7 +39151,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof TogglePixbufRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TogglePixbufRenderer.SignalSignatures[K]>
+            ...args: TogglePixbufRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -39200,7 +39203,7 @@ export namespace Gd {
         ): number;
         emit<K extends keyof TwoLinesRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TwoLinesRenderer.SignalSignatures[K]>
+            ...args: TwoLinesRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

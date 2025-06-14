@@ -633,7 +633,10 @@ export namespace GdkPixbuf {
 
         connect<K extends keyof Pixbuf.SignalSignatures>(signal: K, callback: Pixbuf.SignalSignatures[K]): number;
         connect_after<K extends keyof Pixbuf.SignalSignatures>(signal: K, callback: Pixbuf.SignalSignatures[K]): number;
-        emit<K extends keyof Pixbuf.SignalSignatures>(signal: K, ...args: Parameters<Pixbuf.SignalSignatures[K]>): void;
+        emit<K extends keyof Pixbuf.SignalSignatures>(
+            signal: K,
+            ...args: Pixbuf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1924,7 +1927,7 @@ export namespace GdkPixbuf {
         ): number;
         emit<K extends keyof PixbufAnimation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufAnimation.SignalSignatures[K]>
+            ...args: PixbufAnimation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2130,7 +2133,7 @@ export namespace GdkPixbuf {
         ): number;
         emit<K extends keyof PixbufAnimationIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufAnimationIter.SignalSignatures[K]>
+            ...args: PixbufAnimationIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2378,7 +2381,7 @@ export namespace GdkPixbuf {
         ): number;
         emit<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufLoader.SignalSignatures[K]>
+            ...args: PixbufLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2505,7 +2508,7 @@ export namespace GdkPixbuf {
         ): number;
         emit<K extends keyof PixbufNonAnim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufNonAnim.SignalSignatures[K]>
+            ...args: PixbufNonAnim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2554,7 +2557,7 @@ export namespace GdkPixbuf {
         ): number;
         emit<K extends keyof PixbufSimpleAnim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufSimpleAnim.SignalSignatures[K]>
+            ...args: PixbufSimpleAnim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2608,7 +2611,7 @@ export namespace GdkPixbuf {
         ): number;
         emit<K extends keyof PixbufSimpleAnimIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufSimpleAnimIter.SignalSignatures[K]>
+            ...args: PixbufSimpleAnimIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

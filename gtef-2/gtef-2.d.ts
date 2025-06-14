@@ -344,7 +344,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionInfoCentralStore.SignalSignatures[K]>
+            ...args: ActionInfoCentralStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -398,7 +398,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionInfoStore.SignalSignatures[K]>
+            ...args: ActionInfoStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -493,7 +493,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -579,7 +579,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+            ...args: ApplicationWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -710,7 +710,10 @@ export namespace Gtef {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -840,7 +843,10 @@ export namespace Gtef {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1011,7 +1017,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLoader.SignalSignatures[K]>
+            ...args: FileLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1123,7 +1129,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof FileMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileMetadata.SignalSignatures[K]>
+            ...args: FileMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1369,7 +1375,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof FileSaver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSaver.SignalSignatures[K]>
+            ...args: FileSaver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1509,7 +1515,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof FoldRegion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FoldRegion.SignalSignatures[K]>
+            ...args: FoldRegion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1566,7 +1572,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof GutterRendererFolds.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GutterRendererFolds.SignalSignatures[K]>
+            ...args: GutterRendererFolds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1616,7 +1622,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof InfoBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfoBar.SignalSignatures[K]>
+            ...args: InfoBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2162,7 +2168,7 @@ export namespace Gtef {
         ): number;
         emit<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuShell.SignalSignatures[K]>
+            ...args: MenuShell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2215,7 +2221,10 @@ export namespace Gtef {
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2716,7 +2725,10 @@ export namespace Gtef {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

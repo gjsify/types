@@ -66,7 +66,10 @@ export namespace GnomeBG {
 
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
-        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
+        emit<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            ...args: BG.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -177,7 +180,7 @@ export namespace GnomeBG {
         ): number;
         emit<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BGSlideShow.SignalSignatures[K]>
+            ...args: BGSlideShow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

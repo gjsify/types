@@ -230,7 +230,7 @@ export namespace Hex {
         ): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -707,7 +707,10 @@ export namespace Hex {
 
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
+        emit<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1685,7 +1688,7 @@ export namespace Hex {
         ): number;
         emit<K extends keyof WidgetMark.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetMark.SignalSignatures[K]>
+            ...args: WidgetMark.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -952,7 +952,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof AdaptorChooser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AdaptorChooser.SignalSignatures[K]>
+            ...args: AdaptorChooser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1461,7 +1461,10 @@ export namespace Gladeui {
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1593,7 +1596,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof BaseEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseEditor.SignalSignatures[K]>
+            ...args: BaseEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2150,7 +2153,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof CellRendererIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CellRendererIcon.SignalSignatures[K]>
+            ...args: CellRendererIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2204,7 +2207,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Clipboard.SignalSignatures[K]>
+            ...args: Clipboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2250,7 +2253,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Command.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Command.SignalSignatures[K]>
+            ...args: Command.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2504,7 +2507,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof DesignView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesignView.SignalSignatures[K]>
+            ...args: DesignView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3006,7 +3009,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropBool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropBool.SignalSignatures[K]>
+            ...args: EPropBool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7360,7 +7363,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropCheck.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropCheck.SignalSignatures[K]>
+            ...args: EPropCheck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -11714,7 +11717,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropColor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropColor.SignalSignatures[K]>
+            ...args: EPropColor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -16065,7 +16068,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropEnum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropEnum.SignalSignatures[K]>
+            ...args: EPropEnum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -20419,7 +20422,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropFlags.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropFlags.SignalSignatures[K]>
+            ...args: EPropFlags.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -24776,7 +24779,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropNamedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropNamedIcon.SignalSignatures[K]>
+            ...args: EPropNamedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -29130,7 +29133,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropNumeric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropNumeric.SignalSignatures[K]>
+            ...args: EPropNumeric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -33484,7 +33487,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropObject.SignalSignatures[K]>
+            ...args: EPropObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -37838,7 +37841,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropObjects.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropObjects.SignalSignatures[K]>
+            ...args: EPropObjects.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -42189,7 +42192,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropText.SignalSignatures[K]>
+            ...args: EPropText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -46543,7 +46546,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EPropUnichar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EPropUnichar.SignalSignatures[K]>
+            ...args: EPropUnichar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -50921,7 +50924,10 @@ export namespace Gladeui {
 
         connect<K extends keyof Editor.SignalSignatures>(signal: K, callback: Editor.SignalSignatures[K]): number;
         connect_after<K extends keyof Editor.SignalSignatures>(signal: K, callback: Editor.SignalSignatures[K]): number;
-        emit<K extends keyof Editor.SignalSignatures>(signal: K, ...args: Parameters<Editor.SignalSignatures[K]>): void;
+        emit<K extends keyof Editor.SignalSignatures>(
+            signal: K,
+            ...args: Editor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -51477,7 +51483,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EditorProperty.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorProperty.SignalSignatures[K]>
+            ...args: EditorProperty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -55891,7 +55897,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EditorSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorSkeleton.SignalSignatures[K]>
+            ...args: EditorSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -60271,7 +60277,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof EditorTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorTable.SignalSignatures[K]>
+            ...args: EditorTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -64657,7 +64663,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Inspector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Inspector.SignalSignatures[K]>
+            ...args: Inspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -65189,7 +65195,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof NamedIconChooserDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NamedIconChooserDialog.SignalSignatures[K]>
+            ...args: NamedIconChooserDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -65716,7 +65722,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Palette.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Palette.SignalSignatures[K]>
+            ...args: Palette.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -66246,7 +66252,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Placeholder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Placeholder.SignalSignatures[K]>
+            ...args: Placeholder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -67132,7 +67138,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Project.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Project.SignalSignatures[K]>
+            ...args: Project.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -68406,7 +68412,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof Property.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Property.SignalSignatures[K]>
+            ...args: Property.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -68615,7 +68621,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof PropertyLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyLabel.SignalSignatures[K]>
+            ...args: PropertyLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -73011,7 +73017,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof PropertyShell.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyShell.SignalSignatures[K]>
+            ...args: PropertyShell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -77407,7 +77413,10 @@ export namespace Gladeui {
 
         connect<K extends keyof Signal.SignalSignatures>(signal: K, callback: Signal.SignalSignatures[K]): number;
         connect_after<K extends keyof Signal.SignalSignatures>(signal: K, callback: Signal.SignalSignatures[K]): number;
-        emit<K extends keyof Signal.SignalSignatures>(signal: K, ...args: Parameters<Signal.SignalSignatures[K]>): void;
+        emit<K extends keyof Signal.SignalSignatures>(
+            signal: K,
+            ...args: Signal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -77558,7 +77567,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof SignalEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalEditor.SignalSignatures[K]>
+            ...args: SignalEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -78079,7 +78088,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof SignalModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalModel.SignalSignatures[K]>
+            ...args: SignalModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -79106,7 +79115,10 @@ export namespace Gladeui {
 
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
+        emit<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -79725,7 +79737,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof WidgetAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetAction.SignalSignatures[K]>
+            ...args: WidgetAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -79804,7 +79816,7 @@ export namespace Gladeui {
         ): number;
         emit<K extends keyof WidgetAdaptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetAdaptor.SignalSignatures[K]>
+            ...args: WidgetAdaptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

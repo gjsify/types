@@ -68,7 +68,7 @@ export namespace Shew {
         ): number;
         emit<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExternalWindow.SignalSignatures[K]>
+            ...args: ExternalWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -119,7 +119,7 @@ export namespace Shew {
         ): number;
         emit<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowExporter.SignalSignatures[K]>
+            ...args: WindowExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -446,7 +446,10 @@ export namespace OsmGpsMap {
 
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
-        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
+        emit<K extends keyof Map.SignalSignatures>(
+            signal: K,
+            ...args: Map.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1069,7 +1072,7 @@ export namespace OsmGpsMap {
         ): number;
         emit<K extends keyof MapImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapImage.SignalSignatures[K]>
+            ...args: MapImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1229,7 +1232,10 @@ export namespace OsmGpsMap {
 
         connect<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: MapOsd.SignalSignatures[K]): number;
         connect_after<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: MapOsd.SignalSignatures[K]): number;
-        emit<K extends keyof MapOsd.SignalSignatures>(signal: K, ...args: Parameters<MapOsd.SignalSignatures[K]>): void;
+        emit<K extends keyof MapOsd.SignalSignatures>(
+            signal: K,
+            ...args: MapOsd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         busy(): boolean;
@@ -1729,7 +1735,7 @@ export namespace OsmGpsMap {
         ): number;
         emit<K extends keyof MapPolygon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapPolygon.SignalSignatures[K]>
+            ...args: MapPolygon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1809,7 +1815,7 @@ export namespace OsmGpsMap {
         ): number;
         emit<K extends keyof MapTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapTrack.SignalSignatures[K]>
+            ...args: MapTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

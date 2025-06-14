@@ -460,7 +460,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccessControlManager.SignalSignatures[K]>
+            ...args: AccessControlManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -633,7 +633,10 @@ export namespace GSignond {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -698,7 +701,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof Credentials.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Credentials.SignalSignatures[K]>
+            ...args: Credentials.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -791,7 +794,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dictionary.SignalSignatures[K]>
+            ...args: Dictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -966,7 +969,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof Extension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Extension.SignalSignatures[K]>
+            ...args: Extension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1067,7 +1070,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecretStorage.SignalSignatures[K]>
+            ...args: SecretStorage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1256,7 +1259,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof SessionData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionData.SignalSignatures[K]>
+            ...args: SessionData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1416,7 +1419,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignonuiData.SignalSignatures[K]>
+            ...args: SignonuiData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1680,7 +1683,7 @@ export namespace GSignond {
         ): number;
         emit<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StorageManager.SignalSignatures[K]>
+            ...args: StorageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

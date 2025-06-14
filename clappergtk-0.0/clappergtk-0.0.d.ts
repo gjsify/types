@@ -148,7 +148,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof Billboard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Billboard.SignalSignatures[K]>
+            ...args: Billboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -743,7 +743,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof Container.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Container.SignalSignatures[K]>
+            ...args: Container.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1619,7 +1619,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof ExtraMenuButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtraMenuButton.SignalSignatures[K]>
+            ...args: ExtraMenuButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2456,7 +2456,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof LeadContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LeadContainer.SignalSignatures[K]>
+            ...args: LeadContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2971,7 +2971,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof NextItemButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NextItemButton.SignalSignatures[K]>
+            ...args: NextItemButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6063,7 +6063,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof PreviousItemButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviousItemButton.SignalSignatures[K]>
+            ...args: PreviousItemButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9176,7 +9176,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof SeekBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SeekBar.SignalSignatures[K]>
+            ...args: SeekBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10005,7 +10005,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof SimpleControls.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleControls.SignalSignatures[K]>
+            ...args: SimpleControls.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10555,7 +10555,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof TitleHeader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleHeader.SignalSignatures[K]>
+            ...args: TitleHeader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11106,7 +11106,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof TitleLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleLabel.SignalSignatures[K]>
+            ...args: TitleLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11908,7 +11908,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof ToggleFullscreenButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ToggleFullscreenButton.SignalSignatures[K]>
+            ...args: ToggleFullscreenButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -15000,7 +15000,7 @@ export namespace ClapperGtk {
         ): number;
         emit<K extends keyof TogglePlayButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TogglePlayButton.SignalSignatures[K]>
+            ...args: TogglePlayButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -18214,7 +18214,10 @@ export namespace ClapperGtk {
 
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
+        emit<K extends keyof Video.SignalSignatures>(
+            signal: K,
+            ...args: Video.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

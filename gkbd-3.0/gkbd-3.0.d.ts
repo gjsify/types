@@ -127,7 +127,7 @@ export namespace Gkbd {
         ): number;
         emit<K extends keyof Configuration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Configuration.SignalSignatures[K]>
+            ...args: Configuration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -207,7 +207,7 @@ export namespace Gkbd {
         ): number;
         emit<K extends keyof Indicator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Indicator.SignalSignatures[K]>
+            ...args: Indicator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -714,7 +714,7 @@ export namespace Gkbd {
         ): number;
         emit<K extends keyof KeyboardDrawing.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyboardDrawing.SignalSignatures[K]>
+            ...args: KeyboardDrawing.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1229,7 +1229,10 @@ export namespace Gkbd {
 
         connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
         connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
-        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
+        emit<K extends keyof Status.SignalSignatures>(
+            signal: K,
+            ...args: Status.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

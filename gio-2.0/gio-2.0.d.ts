@@ -7066,7 +7066,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof AppInfoMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppInfoMonitor.SignalSignatures[K]>
+            ...args: AppInfoMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7144,7 +7144,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppLaunchContext.SignalSignatures[K]>
+            ...args: AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7541,7 +7541,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9538,7 +9538,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ApplicationCommandLine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationCommandLine.SignalSignatures[K]>
+            ...args: ApplicationCommandLine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9855,7 +9855,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof BufferedInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferedInputStream.SignalSignatures[K]>
+            ...args: BufferedInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10670,7 +10670,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof BufferedOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferedOutputStream.SignalSignatures[K]>
+            ...args: BufferedOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11285,7 +11285,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof BytesIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BytesIcon.SignalSignatures[K]>
+            ...args: BytesIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11916,7 +11916,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cancellable.SignalSignatures[K]>
+            ...args: Cancellable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12212,7 +12212,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof CharsetConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CharsetConverter.SignalSignatures[K]>
+            ...args: CharsetConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13011,7 +13011,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ConverterInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConverterInputStream.SignalSignatures[K]>
+            ...args: ConverterInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13941,7 +13941,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ConverterOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConverterOutputStream.SignalSignatures[K]>
+            ...args: ConverterOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15376,7 +15376,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Credentials.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Credentials.SignalSignatures[K]>
+            ...args: Credentials.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15482,7 +15482,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusActionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusActionGroup.SignalSignatures[K]>
+            ...args: DBusActionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16561,7 +16561,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusAuthObserver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusAuthObserver.SignalSignatures[K]>
+            ...args: DBusAuthObserver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16806,7 +16806,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusConnection.SignalSignatures[K]>
+            ...args: DBusConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18988,7 +18988,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusInterfaceSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusInterfaceSkeleton.SignalSignatures[K]>
+            ...args: DBusInterfaceSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19617,7 +19617,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusMenuModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusMenuModel.SignalSignatures[K]>
+            ...args: DBusMenuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19691,7 +19691,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusMessage.SignalSignatures[K]>
+            ...args: DBusMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20049,7 +20049,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusMethodInvocation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusMethodInvocation.SignalSignatures[K]>
+            ...args: DBusMethodInvocation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20480,7 +20480,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectManagerClient.SignalSignatures[K]>
+            ...args: DBusObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21468,7 +21468,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusObjectManagerServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectManagerServer.SignalSignatures[K]>
+            ...args: DBusObjectManagerServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22093,7 +22093,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectProxy.SignalSignatures[K]>
+            ...args: DBusObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22650,7 +22650,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectSkeleton.SignalSignatures[K]>
+            ...args: DBusObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -23474,7 +23474,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusProxy.SignalSignatures[K]>
+            ...args: DBusProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -24902,7 +24902,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusServer.SignalSignatures[K]>
+            ...args: DBusServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25537,7 +25537,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DataInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataInputStream.SignalSignatures[K]>
+            ...args: DataInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -26537,7 +26537,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DataOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataOutputStream.SignalSignatures[K]>
+            ...args: DataOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27318,7 +27318,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DebugControllerDBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugControllerDBus.SignalSignatures[K]>
+            ...args: DebugControllerDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -27955,7 +27955,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -29140,7 +29140,10 @@ export namespace Gio {
 
         connect<K extends keyof Emblem.SignalSignatures>(signal: K, callback: Emblem.SignalSignatures[K]): number;
         connect_after<K extends keyof Emblem.SignalSignatures>(signal: K, callback: Emblem.SignalSignatures[K]): number;
-        emit<K extends keyof Emblem.SignalSignatures>(signal: K, ...args: Parameters<Emblem.SignalSignatures[K]>): void;
+        emit<K extends keyof Emblem.SignalSignatures>(
+            signal: K,
+            ...args: Emblem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -29708,7 +29711,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof EmblemedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmblemedIcon.SignalSignatures[K]>
+            ...args: EmblemedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -30349,7 +30352,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileEnumerator.SignalSignatures[K]>
+            ...args: FileEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -30942,7 +30945,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileIOStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileIOStream.SignalSignatures[K]>
+            ...args: FileIOStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -31634,7 +31637,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileIcon.SignalSignatures[K]>
+            ...args: FileIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32285,7 +32288,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInfo.SignalSignatures[K]>
+            ...args: FileInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32879,7 +32882,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInputStream.SignalSignatures[K]>
+            ...args: FileInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -33596,7 +33599,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileMonitor.SignalSignatures[K]>
+            ...args: FileMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -33686,7 +33689,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileOutputStream.SignalSignatures[K]>
+            ...args: FileOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -34376,7 +34379,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FilenameCompleter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilenameCompleter.SignalSignatures[K]>
+            ...args: FilenameCompleter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -34467,7 +34470,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterInputStream.SignalSignatures[K]>
+            ...args: FilterInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34550,7 +34553,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOutputStream.SignalSignatures[K]>
+            ...args: FilterOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34607,7 +34610,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof IOModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IOModule.SignalSignatures[K]>
+            ...args: IOModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -35231,7 +35234,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof IOStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IOStream.SignalSignatures[K]>
+            ...args: IOStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -35622,7 +35625,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof InetAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InetAddress.SignalSignatures[K]>
+            ...args: InetAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -35774,7 +35777,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof InetAddressMask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InetAddressMask.SignalSignatures[K]>
+            ...args: InetAddressMask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36409,7 +36412,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof InetSocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InetSocketAddress.SignalSignatures[K]>
+            ...args: InetSocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36975,7 +36978,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -37804,7 +37807,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ListStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListStore.SignalSignatures[K]>
+            ...args: ListStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -38503,7 +38506,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MemoryInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryInputStream.SignalSignatures[K]>
+            ...args: MemoryInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -39995,7 +39998,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MemoryOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryOutputStream.SignalSignatures[K]>
+            ...args: MemoryOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -41964,7 +41967,10 @@ export namespace Gio {
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -42144,7 +42150,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MenuAttributeIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuAttributeIter.SignalSignatures[K]>
+            ...args: MenuAttributeIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -42258,7 +42264,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -42457,7 +42463,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MenuLinkIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuLinkIter.SignalSignatures[K]>
+            ...args: MenuLinkIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -42684,7 +42690,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MenuModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuModel.SignalSignatures[K]>
+            ...args: MenuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -43032,7 +43038,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountOperation.SignalSignatures[K]>
+            ...args: MountOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -43204,7 +43210,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof NativeSocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NativeSocketAddress.SignalSignatures[K]>
+            ...args: NativeSocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -43730,7 +43736,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof NativeVolumeMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NativeVolumeMonitor.SignalSignatures[K]>
+            ...args: NativeVolumeMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -43799,7 +43805,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof NetworkAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkAddress.SignalSignatures[K]>
+            ...args: NetworkAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -44422,7 +44428,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof NetworkService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkService.SignalSignatures[K]>
+            ...args: NetworkService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -45028,7 +45034,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notification.SignalSignatures[K]>
+            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -45173,7 +45179,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -46441,7 +46447,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Permission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Permission.SignalSignatures[K]>
+            ...args: Permission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -46843,7 +46849,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof PropertyAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyAction.SignalSignatures[K]>
+            ...args: PropertyAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -47587,7 +47593,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ProxyAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyAddress.SignalSignatures[K]>
+            ...args: ProxyAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -48155,7 +48161,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ProxyAddressEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyAddressEnumerator.SignalSignatures[K]>
+            ...args: ProxyAddressEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -48234,7 +48240,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Resolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resolver.SignalSignatures[K]>
+            ...args: Resolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -49394,7 +49400,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -50049,7 +50055,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SettingsBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsBackend.SignalSignatures[K]>
+            ...args: SettingsBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -50338,7 +50344,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SimpleAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleAction.SignalSignatures[K]>
+            ...args: SimpleAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -51055,7 +51061,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SimpleActionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleActionGroup.SignalSignatures[K]>
+            ...args: SimpleActionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -52264,7 +52270,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SimpleAsyncResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleAsyncResult.SignalSignatures[K]>
+            ...args: SimpleAsyncResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -52930,7 +52936,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SimpleIOStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleIOStream.SignalSignatures[K]>
+            ...args: SimpleIOStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -52974,7 +52980,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SimplePermission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimplePermission.SignalSignatures[K]>
+            ...args: SimplePermission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -53124,7 +53130,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SimpleProxyResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleProxyResolver.SignalSignatures[K]>
+            ...args: SimpleProxyResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -53935,7 +53941,10 @@ export namespace Gio {
 
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
-        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
+        emit<K extends keyof Socket.SignalSignatures>(
+            signal: K,
+            ...args: Socket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -55680,7 +55689,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketAddress.SignalSignatures[K]>
+            ...args: SocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -56274,7 +56283,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketAddressEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketAddressEnumerator.SignalSignatures[K]>
+            ...args: SocketAddressEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -56550,7 +56559,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketClient.SignalSignatures[K]>
+            ...args: SocketClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -57154,7 +57163,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketConnection.SignalSignatures[K]>
+            ...args: SocketConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -57341,7 +57350,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketControlMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketControlMessage.SignalSignatures[K]>
+            ...args: SocketControlMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -57492,7 +57501,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketListener.SignalSignatures[K]>
+            ...args: SocketListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -57797,7 +57806,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SocketService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketService.SignalSignatures[K]>
+            ...args: SocketService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -57960,7 +57969,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subprocess.SignalSignatures[K]>
+            ...args: Subprocess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -58891,7 +58900,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof SubprocessLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessLauncher.SignalSignatures[K]>
+            ...args: SubprocessLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -59701,7 +59710,10 @@ export namespace Gio {
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -60613,7 +60625,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TcpConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TcpConnection.SignalSignatures[K]>
+            ...args: TcpConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -60689,7 +60701,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TcpWrapperConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TcpWrapperConnection.SignalSignatures[K]>
+            ...args: TcpWrapperConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -60820,7 +60832,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TestDBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestDBus.SignalSignatures[K]>
+            ...args: TestDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -60988,7 +61000,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ThemedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThemedIcon.SignalSignatures[K]>
+            ...args: ThemedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -61553,7 +61565,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ThreadedResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadedResolver.SignalSignatures[K]>
+            ...args: ThreadedResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -61636,7 +61648,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ThreadedSocketService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadedSocketService.SignalSignatures[K]>
+            ...args: ThreadedSocketService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -61945,7 +61957,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TlsCertificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsCertificate.SignalSignatures[K]>
+            ...args: TlsCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -62342,7 +62354,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TlsConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsConnection.SignalSignatures[K]>
+            ...args: TlsConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -62764,7 +62776,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TlsDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsDatabase.SignalSignatures[K]>
+            ...args: TlsDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -63511,7 +63523,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TlsInteraction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsInteraction.SignalSignatures[K]>
+            ...args: TlsInteraction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -63954,7 +63966,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof TlsPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsPassword.SignalSignatures[K]>
+            ...args: TlsPassword.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -64099,7 +64111,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixConnection.SignalSignatures[K]>
+            ...args: UnixConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -64332,7 +64344,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixCredentialsMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixCredentialsMessage.SignalSignatures[K]>
+            ...args: UnixCredentialsMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -64401,7 +64413,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixFDList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixFDList.SignalSignatures[K]>
+            ...args: UnixFDList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -64550,7 +64562,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixFDMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixFDMessage.SignalSignatures[K]>
+            ...args: UnixFDMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -64665,7 +64677,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixInputStream.SignalSignatures[K]>
+            ...args: UnixInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -66057,7 +66069,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixMountMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixMountMonitor.SignalSignatures[K]>
+            ...args: UnixMountMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -66157,7 +66169,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixOutputStream.SignalSignatures[K]>
+            ...args: UnixOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -68069,7 +68081,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof UnixSocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixSocketAddress.SignalSignatures[K]>
+            ...args: UnixSocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -68627,7 +68639,10 @@ export namespace Gio {
 
         connect<K extends keyof Vfs.SignalSignatures>(signal: K, callback: Vfs.SignalSignatures[K]): number;
         connect_after<K extends keyof Vfs.SignalSignatures>(signal: K, callback: Vfs.SignalSignatures[K]): number;
-        emit<K extends keyof Vfs.SignalSignatures>(signal: K, ...args: Parameters<Vfs.SignalSignatures[K]>): void;
+        emit<K extends keyof Vfs.SignalSignatures>(
+            signal: K,
+            ...args: Vfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -68875,7 +68890,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof VolumeMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VolumeMonitor.SignalSignatures[K]>
+            ...args: VolumeMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -69070,7 +69085,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ZlibCompressor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZlibCompressor.SignalSignatures[K]>
+            ...args: ZlibCompressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -69799,7 +69814,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof ZlibDecompressor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZlibDecompressor.SignalSignatures[K]>
+            ...args: ZlibDecompressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -85929,7 +85944,7 @@ export namespace Gio {
         ): number;
         emit<K extends keyof DBusExportedObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusExportedObject.SignalSignatures[K]>
+            ...args: DBusExportedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

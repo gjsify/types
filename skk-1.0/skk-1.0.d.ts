@@ -2244,7 +2244,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RomKanaConverter.SignalSignatures[K]>
+            ...args: RomKanaConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2294,7 +2294,10 @@ export namespace Skk {
 
         connect<K extends keyof Dict.SignalSignatures>(signal: K, callback: Dict.SignalSignatures[K]): number;
         connect_after<K extends keyof Dict.SignalSignatures>(signal: K, callback: Dict.SignalSignatures[K]): number;
-        emit<K extends keyof Dict.SignalSignatures>(signal: K, ...args: Parameters<Dict.SignalSignatures[K]>): void;
+        emit<K extends keyof Dict.SignalSignatures>(
+            signal: K,
+            ...args: Dict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2348,7 +2351,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof EmptyDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmptyDict.SignalSignatures[K]>
+            ...args: EmptyDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2381,7 +2384,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof FileDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileDict.SignalSignatures[K]>
+            ...args: FileDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2414,7 +2417,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof CdbDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CdbDict.SignalSignatures[K]>
+            ...args: CdbDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2447,7 +2450,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof UserDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserDict.SignalSignatures[K]>
+            ...args: UserDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2480,7 +2483,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof SkkServ.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkkServ.SignalSignatures[K]>
+            ...args: SkkServ.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2530,7 +2533,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+            ...args: KeyEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2582,7 +2585,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
+            ...args: KeyEventFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2633,7 +2636,10 @@ export namespace Skk {
 
         connect<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
         connect_after<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
-        emit<K extends keyof Rule.SignalSignatures>(signal: K, ...args: Parameters<Rule.SignalSignatures[K]>): void;
+        emit<K extends keyof Rule.SignalSignatures>(
+            signal: K,
+            ...args: Rule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2730,7 +2736,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2817,7 +2823,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof Candidate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Candidate.SignalSignatures[K]>
+            ...args: Candidate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2902,7 +2908,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CandidateList.SignalSignatures[K]>
+            ...args: CandidateList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2994,7 +3000,7 @@ export namespace Skk {
         ): number;
         emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NicolaKeyEventFilter.SignalSignatures[K]>
+            ...args: NicolaKeyEventFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

@@ -127,7 +127,7 @@ export namespace AyatanaIdo3 {
         ): number;
         emit<K extends keyof CalendarMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarMenuItem.SignalSignatures[K]>
+            ...args: CalendarMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4741,7 +4741,7 @@ export namespace AyatanaIdo3 {
         ): number;
         emit<K extends keyof EntryMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryMenuItem.SignalSignatures[K]>
+            ...args: EntryMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9308,7 +9308,10 @@ export namespace AyatanaIdo3 {
 
         connect<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
         connect_after<K extends keyof Range.SignalSignatures>(signal: K, callback: Range.SignalSignatures[K]): number;
-        emit<K extends keyof Range.SignalSignatures>(signal: K, ...args: Parameters<Range.SignalSignatures[K]>): void;
+        emit<K extends keyof Range.SignalSignatures>(
+            signal: K,
+            ...args: Range.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -9847,7 +9850,7 @@ export namespace AyatanaIdo3 {
         ): number;
         emit<K extends keyof ScaleMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScaleMenuItem.SignalSignatures[K]>
+            ...args: ScaleMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -14503,7 +14506,7 @@ export namespace AyatanaIdo3 {
         ): number;
         emit<K extends keyof SwitchMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwitchMenuItem.SignalSignatures[K]>
+            ...args: SwitchMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18876,7 +18879,7 @@ export namespace AyatanaIdo3 {
         ): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

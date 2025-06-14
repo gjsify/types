@@ -1599,7 +1599,10 @@ export namespace ECal {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4074,7 +4077,7 @@ export namespace ECal {
         ): number;
         emit<K extends keyof ClientView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientView.SignalSignatures[K]>
+            ...args: ClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4697,7 +4700,7 @@ export namespace ECal {
         ): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5453,7 +5456,7 @@ export namespace ECal {
         ): number;
         emit<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReminderWatcher.SignalSignatures[K]>
+            ...args: ReminderWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

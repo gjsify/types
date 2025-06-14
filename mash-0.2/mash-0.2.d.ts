@@ -130,7 +130,10 @@ export namespace Mash {
 
         connect<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
         connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
-        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: Parameters<Data.SignalSignatures[K]>): void;
+        emit<K extends keyof Data.SignalSignatures>(
+            signal: K,
+            ...args: Data.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -203,7 +206,7 @@ export namespace Mash {
         ): number;
         emit<K extends keyof DataLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataLoader.SignalSignatures[K]>
+            ...args: DataLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -274,7 +277,7 @@ export namespace Mash {
         ): number;
         emit<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectionalLight.SignalSignatures[K]>
+            ...args: DirectionalLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -765,7 +768,10 @@ export namespace Mash {
 
         connect<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
         connect_after<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
-        emit<K extends keyof Light.SignalSignatures>(signal: K, ...args: Parameters<Light.SignalSignatures[K]>): void;
+        emit<K extends keyof Light.SignalSignatures>(
+            signal: K,
+            ...args: Light.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1996,7 +2002,7 @@ export namespace Mash {
         ): number;
         emit<K extends keyof LightSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LightSet.SignalSignatures[K]>
+            ...args: LightSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2071,7 +2077,10 @@ export namespace Mash {
 
         connect<K extends keyof Model.SignalSignatures>(signal: K, callback: Model.SignalSignatures[K]): number;
         connect_after<K extends keyof Model.SignalSignatures>(signal: K, callback: Model.SignalSignatures[K]): number;
-        emit<K extends keyof Model.SignalSignatures>(signal: K, ...args: Parameters<Model.SignalSignatures[K]>): void;
+        emit<K extends keyof Model.SignalSignatures>(
+            signal: K,
+            ...args: Model.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3035,7 +3044,7 @@ export namespace Mash {
         ): number;
         emit<K extends keyof PlyLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlyLoader.SignalSignatures[K]>
+            ...args: PlyLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3104,7 +3113,7 @@ export namespace Mash {
         ): number;
         emit<K extends keyof PointLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointLight.SignalSignatures[K]>
+            ...args: PointLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3634,7 +3643,7 @@ export namespace Mash {
         ): number;
         emit<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpotLight.SignalSignatures[K]>
+            ...args: SpotLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

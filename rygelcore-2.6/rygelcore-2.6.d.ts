@@ -149,7 +149,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionManager.SignalSignatures[K]>
+            ...args: ConnectionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -207,7 +207,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof BasicManagement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BasicManagement.SignalSignatures[K]>
+            ...args: BasicManagement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -250,7 +250,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof DescriptionFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DescriptionFile.SignalSignatures[K]>
+            ...args: DescriptionFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -307,7 +307,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof DLNAProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DLNAProfile.SignalSignatures[K]>
+            ...args: DLNAProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -347,7 +347,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof EnergyManagement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnergyManagement.SignalSignatures[K]>
+            ...args: EnergyManagement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -399,7 +399,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootDevice.SignalSignatures[K]>
+            ...args: RootDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -971,7 +971,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof RootDeviceFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootDeviceFactory.SignalSignatures[K]>
+            ...args: RootDeviceFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1536,7 +1536,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof LogHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogHandler.SignalSignatures[K]>
+            ...args: LogHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1576,7 +1576,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof MetaConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetaConfig.SignalSignatures[K]>
+            ...args: MetaConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2107,7 +2107,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof PluginLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginLoader.SignalSignatures[K]>
+            ...args: PluginLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2158,7 +2158,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof RecursiveModuleLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecursiveModuleLoader.SignalSignatures[K]>
+            ...args: RecursiveModuleLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2248,7 +2248,10 @@ export namespace RygelCore {
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2307,7 +2310,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof ResourceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceInfo.SignalSignatures[K]>
+            ...args: ResourceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2352,7 +2355,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof MediaDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDevice.SignalSignatures[K]>
+            ...args: MediaDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2398,7 +2401,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof BaseConfiguration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseConfiguration.SignalSignatures[K]>
+            ...args: BaseConfiguration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2921,7 +2924,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof CmdlineConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CmdlineConfig.SignalSignatures[K]>
+            ...args: CmdlineConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3447,7 +3450,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof EnvironmentConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnvironmentConfig.SignalSignatures[K]>
+            ...args: EnvironmentConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3975,7 +3978,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof UserConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserConfig.SignalSignatures[K]>
+            ...args: UserConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4511,7 +4514,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof V1Hacks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<V1Hacks.SignalSignatures[K]>
+            ...args: V1Hacks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4556,7 +4559,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof IconInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconInfo.SignalSignatures[K]>
+            ...args: IconInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4587,7 +4590,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof XMLUtils.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XMLUtils.SignalSignatures[K]>
+            ...args: XMLUtils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4621,7 +4624,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof XMLUtilsIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XMLUtilsIterator.SignalSignatures[K]>
+            ...args: XMLUtilsIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4657,7 +4660,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XMLUtilsChildIterator.SignalSignatures[K]>
+            ...args: XMLUtilsChildIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4709,7 +4712,7 @@ export namespace RygelCore {
         ): number;
         emit<K extends keyof PluginInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginInformation.SignalSignatures[K]>
+            ...args: PluginInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

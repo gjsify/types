@@ -94,7 +94,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof AndNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AndNode.SignalSignatures[K]>
+            ...args: AndNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -132,7 +132,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryLiteralNode.SignalSignatures[K]>
+            ...args: BinaryLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -172,7 +172,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanLiteralNode.SignalSignatures[K]>
+            ...args: BooleanLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -210,7 +210,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanNode.SignalSignatures[K]>
+            ...args: BooleanNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -250,7 +250,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleLiteralNode.SignalSignatures[K]>
+            ...args: DoubleLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -304,7 +304,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -347,7 +347,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FieldNode.SignalSignatures[K]>
+            ...args: FieldNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -383,7 +383,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatLiteralNode.SignalSignatures[K]>
+            ...args: FloatLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -429,7 +429,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionNode.SignalSignatures[K]>
+            ...args: FunctionNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -469,7 +469,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionRegistry.SignalSignatures[K]>
+            ...args: FunctionRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -522,7 +522,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionSignature.SignalSignatures[K]>
+            ...args: FunctionSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -574,7 +574,10 @@ export namespace Gandiva {
 
         connect<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
         connect_after<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
-        emit<K extends keyof IfNode.SignalSignatures>(signal: K, ...args: Parameters<IfNode.SignalSignatures[K]>): void;
+        emit<K extends keyof IfNode.SignalSignatures>(
+            signal: K,
+            ...args: IfNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Int16LiteralNode {
@@ -609,7 +612,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16LiteralNode.SignalSignatures[K]>
+            ...args: Int16LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -649,7 +652,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32LiteralNode.SignalSignatures[K]>
+            ...args: Int32LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -689,7 +692,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64LiteralNode.SignalSignatures[K]>
+            ...args: Int64LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -729,7 +732,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8LiteralNode.SignalSignatures[K]>
+            ...args: Int8LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -767,7 +770,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LiteralNode.SignalSignatures[K]>
+            ...args: LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -809,7 +812,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NativeFunction.SignalSignatures[K]>
+            ...args: NativeFunction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -855,7 +858,10 @@ export namespace Gandiva {
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -894,7 +900,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullLiteralNode.SignalSignatures[K]>
+            ...args: NullLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -922,7 +928,10 @@ export namespace Gandiva {
 
         connect<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
         connect_after<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
-        emit<K extends keyof OrNode.SignalSignatures>(signal: K, ...args: Parameters<OrNode.SignalSignatures[K]>): void;
+        emit<K extends keyof OrNode.SignalSignatures>(
+            signal: K,
+            ...args: OrNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Projector {
@@ -960,7 +969,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof Projector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Projector.SignalSignatures[K]>
+            ...args: Projector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1000,7 +1009,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringLiteralNode.SignalSignatures[K]>
+            ...args: StringLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1040,7 +1049,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16LiteralNode.SignalSignatures[K]>
+            ...args: UInt16LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1080,7 +1089,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32LiteralNode.SignalSignatures[K]>
+            ...args: UInt32LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1120,7 +1129,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64LiteralNode.SignalSignatures[K]>
+            ...args: UInt64LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1160,7 +1169,7 @@ export namespace Gandiva {
         ): number;
         emit<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8LiteralNode.SignalSignatures[K]>
+            ...args: UInt8LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

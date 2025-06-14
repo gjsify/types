@@ -105,7 +105,7 @@ export namespace GstInsertBin {
         ): number;
         emit<K extends keyof InsertBin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InsertBin.SignalSignatures[K]>
+            ...args: InsertBin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

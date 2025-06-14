@@ -460,7 +460,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof BuildConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildConfig.SignalSignatures[K]>
+            ...args: BuildConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -583,7 +583,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Buildopts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Buildopts.SignalSignatures[K]>
+            ...args: Buildopts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -665,7 +665,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -755,7 +755,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ComponentModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComponentModule.SignalSignatures[K]>
+            ...args: ComponentModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -820,7 +820,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ComponentRpm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComponentRpm.SignalSignatures[K]>
+            ...args: ComponentRpm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -909,7 +909,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Defaults.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Defaults.SignalSignatures[K]>
+            ...args: Defaults.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -966,7 +966,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof DefaultsV1.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DefaultsV1.SignalSignatures[K]>
+            ...args: DefaultsV1.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1037,7 +1037,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Dependencies.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dependencies.SignalSignatures[K]>
+            ...args: Dependencies.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1125,7 +1125,10 @@ export namespace Modulemd {
 
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
+        emit<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1223,7 +1226,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ModuleIndex.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleIndex.SignalSignatures[K]>
+            ...args: ModuleIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1362,7 +1365,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ModuleIndexMerger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleIndexMerger.SignalSignatures[K]>
+            ...args: ModuleIndexMerger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1462,7 +1465,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ModuleStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleStream.SignalSignatures[K]>
+            ...args: ModuleStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1644,7 +1647,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ModuleStreamV1.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleStreamV1.SignalSignatures[K]>
+            ...args: ModuleStreamV1.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1896,7 +1899,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ModuleStreamV2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleStreamV2.SignalSignatures[K]>
+            ...args: ModuleStreamV2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2181,7 +2184,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Obsoletes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Obsoletes.SignalSignatures[K]>
+            ...args: Obsoletes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2256,7 +2259,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof PackagerV3.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PackagerV3.SignalSignatures[K]>
+            ...args: PackagerV3.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2453,7 +2456,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2542,7 +2545,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof RpmMapEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RpmMapEntry.SignalSignatures[K]>
+            ...args: RpmMapEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2601,7 +2604,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof ServiceLevel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceLevel.SignalSignatures[K]>
+            ...args: ServiceLevel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2662,7 +2665,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof SubdocumentInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubdocumentInfo.SignalSignatures[K]>
+            ...args: SubdocumentInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2720,7 +2723,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof Translation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Translation.SignalSignatures[K]>
+            ...args: Translation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2787,7 +2790,7 @@ export namespace Modulemd {
         ): number;
         emit<K extends keyof TranslationEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TranslationEntry.SignalSignatures[K]>
+            ...args: TranslationEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

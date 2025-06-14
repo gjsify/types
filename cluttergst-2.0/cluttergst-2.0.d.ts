@@ -203,7 +203,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSink.SignalSignatures[K]>
+            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -762,7 +762,7 @@ export namespace ClutterGst {
         ): number;
         emit<K extends keyof VideoTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTexture.SignalSignatures[K]>
+            ...args: VideoTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

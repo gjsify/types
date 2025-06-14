@@ -80,7 +80,7 @@ export namespace Parquet {
         ): number;
         emit<K extends keyof ArrowFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrowFileReader.SignalSignatures[K]>
+            ...args: ArrowFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -143,7 +143,7 @@ export namespace Parquet {
         ): number;
         emit<K extends keyof ArrowFileWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrowFileWriter.SignalSignatures[K]>
+            ...args: ArrowFileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -184,7 +184,7 @@ export namespace Parquet {
         ): number;
         emit<K extends keyof WriterProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WriterProperties.SignalSignatures[K]>
+            ...args: WriterProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

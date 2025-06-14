@@ -170,7 +170,10 @@ export namespace Peas {
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -928,7 +931,7 @@ export namespace Peas {
         ): number;
         emit<K extends keyof ExtensionBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionBase.SignalSignatures[K]>
+            ...args: ExtensionBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1065,7 +1068,7 @@ export namespace Peas {
         ): number;
         emit<K extends keyof ExtensionSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionSet.SignalSignatures[K]>
+            ...args: ExtensionSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1682,7 +1685,7 @@ export namespace Peas {
         ): number;
         emit<K extends keyof ObjectModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectModule.SignalSignatures[K]>
+            ...args: ObjectModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2276,7 +2279,7 @@ export namespace Peas {
         ): number;
         emit<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginInfo.SignalSignatures[K]>
+            ...args: PluginInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

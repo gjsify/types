@@ -692,7 +692,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -1205,7 +1208,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof Completion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Completion.SignalSignatures[K]>
+            ...args: Completion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1977,7 +1980,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionContext.SignalSignatures[K]>
+            ...args: CompletionContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2046,7 +2049,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionInfo.SignalSignatures[K]>
+            ...args: CompletionInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2587,7 +2590,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+            ...args: CompletionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3246,7 +3249,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof CompletionWords.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionWords.SignalSignatures[K]>
+            ...args: CompletionWords.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4007,7 +4010,10 @@ export namespace GtkSource {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4141,7 +4147,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLoader.SignalSignatures[K]>
+            ...args: FileLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4322,7 +4328,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof FileSaver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSaver.SignalSignatures[K]>
+            ...args: FileSaver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4455,7 +4461,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
         connect_after<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
-        emit<K extends keyof Gutter.SignalSignatures>(signal: K, ...args: Parameters<Gutter.SignalSignatures[K]>): void;
+        emit<K extends keyof Gutter.SignalSignatures>(
+            signal: K,
+            ...args: Gutter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4648,7 +4657,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof GutterRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GutterRenderer.SignalSignatures[K]>
+            ...args: GutterRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4998,7 +5007,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof GutterRendererPixbuf.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GutterRendererPixbuf.SignalSignatures[K]>
+            ...args: GutterRendererPixbuf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5061,7 +5070,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof GutterRendererText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GutterRendererText.SignalSignatures[K]>
+            ...args: GutterRendererText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5121,7 +5130,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5236,7 +5245,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof LanguageManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageManager.SignalSignatures[K]>
+            ...args: LanguageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5362,7 +5371,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
-        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
+        emit<K extends keyof Map.SignalSignatures>(
+            signal: K,
+            ...args: Map.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5856,7 +5868,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
         connect_after<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
-        emit<K extends keyof Mark.SignalSignatures>(signal: K, ...args: Parameters<Mark.SignalSignatures[K]>): void;
+        emit<K extends keyof Mark.SignalSignatures>(
+            signal: K,
+            ...args: Mark.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -5964,7 +5979,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof MarkAttributes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkAttributes.SignalSignatures[K]>
+            ...args: MarkAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6333,7 +6348,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof PrintCompositor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintCompositor.SignalSignatures[K]>
+            ...args: PrintCompositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6767,7 +6782,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
         connect_after<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
-        emit<K extends keyof Region.SignalSignatures>(signal: K, ...args: Parameters<Region.SignalSignatures[K]>): void;
+        emit<K extends keyof Region.SignalSignatures>(
+            signal: K,
+            ...args: Region.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6933,7 +6951,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchContext.SignalSignatures[K]>
+            ...args: SearchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7286,7 +7304,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof SearchSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchSettings.SignalSignatures[K]>
+            ...args: SearchSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7413,7 +7431,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof SpaceDrawer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpaceDrawer.SignalSignatures[K]>
+            ...args: SpaceDrawer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7567,7 +7585,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
         connect_after<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
-        emit<K extends keyof Style.SignalSignatures>(signal: K, ...args: Parameters<Style.SignalSignatures[K]>): void;
+        emit<K extends keyof Style.SignalSignatures>(
+            signal: K,
+            ...args: Style.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -7649,7 +7670,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof StyleScheme.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleScheme.SignalSignatures[K]>
+            ...args: StyleScheme.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7703,7 +7724,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof StyleSchemeChooserButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleSchemeChooserButton.SignalSignatures[K]>
+            ...args: StyleSchemeChooserButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -12296,7 +12317,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof StyleSchemeChooserWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleSchemeChooserWidget.SignalSignatures[K]>
+            ...args: StyleSchemeChooserWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -12822,7 +12843,7 @@ export namespace GtkSource {
         ): number;
         emit<K extends keyof StyleSchemeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleSchemeManager.SignalSignatures[K]>
+            ...args: StyleSchemeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12944,7 +12965,10 @@ export namespace GtkSource {
 
         connect<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
         connect_after<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
-        emit<K extends keyof Tag.SignalSignatures>(signal: K, ...args: Parameters<Tag.SignalSignatures[K]>): void;
+        emit<K extends keyof Tag.SignalSignatures>(
+            signal: K,
+            ...args: Tag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace View {
@@ -13186,7 +13210,10 @@ export namespace GtkSource {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

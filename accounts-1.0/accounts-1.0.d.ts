@@ -213,7 +213,7 @@ export namespace Accounts {
         ): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Account.SignalSignatures[K]>
+            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1020,7 +1020,7 @@ export namespace Accounts {
         ): number;
         emit<K extends keyof AccountService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountService.SignalSignatures[K]>
+            ...args: AccountService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1233,7 +1233,7 @@ export namespace Accounts {
         ): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

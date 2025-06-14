@@ -5523,7 +5523,10 @@ export namespace Clutter {
 
         connect<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
         connect_after<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
-        emit<K extends keyof Action.SignalSignatures>(signal: K, ...args: Parameters<Action.SignalSignatures[K]>): void;
+        emit<K extends keyof Action.SignalSignatures>(
+            signal: K,
+            ...args: Action.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -7347,7 +7350,10 @@ export namespace Clutter {
 
         connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
         connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
-        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
+        emit<K extends keyof Actor.SignalSignatures>(
+            signal: K,
+            ...args: Actor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -10521,7 +10527,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ActorMeta.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActorMeta.SignalSignatures[K]>
+            ...args: ActorMeta.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10592,7 +10598,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ActorNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActorNode.SignalSignatures[K]>
+            ...args: ActorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10705,7 +10711,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof AlignConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AlignConstraint.SignalSignatures[K]>
+            ...args: AlignConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10824,7 +10830,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10970,7 +10976,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BinLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinLayout.SignalSignatures[K]>
+            ...args: BinLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11087,7 +11093,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BindConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindConstraint.SignalSignatures[K]>
+            ...args: BindConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11234,7 +11240,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BindingPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindingPool.SignalSignatures[K]>
+            ...args: BindingPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11424,7 +11430,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BlitNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlitNode.SignalSignatures[K]>
+            ...args: BlitNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11487,7 +11493,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurEffect.SignalSignatures[K]>
+            ...args: BlurEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11517,7 +11523,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurNode.SignalSignatures[K]>
+            ...args: BlurNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11598,7 +11604,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BoxLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BoxLayout.SignalSignatures[K]>
+            ...args: BoxLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11704,7 +11710,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof BrightnessContrastEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BrightnessContrastEffect.SignalSignatures[K]>
+            ...args: BrightnessContrastEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11823,7 +11829,10 @@ export namespace Clutter {
 
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
-        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
+        emit<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -12446,7 +12455,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ChildMeta.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChildMeta.SignalSignatures[K]>
+            ...args: ChildMeta.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12624,7 +12633,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ClickAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClickAction.SignalSignatures[K]>
+            ...args: ClickAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -12684,7 +12693,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipNode.SignalSignatures[K]>
+            ...args: ClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12745,7 +12754,10 @@ export namespace Clutter {
 
         connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
         connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
-        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: Parameters<Clone.SignalSignatures[K]>): void;
+        emit<K extends keyof Clone.SignalSignatures>(
+            signal: K,
+            ...args: Clone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -13523,7 +13535,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorNode.SignalSignatures[K]>
+            ...args: ColorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13587,7 +13599,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ColorState.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorState.SignalSignatures[K]>
+            ...args: ColorState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13643,7 +13655,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ColorizeEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorizeEffect.SignalSignatures[K]>
+            ...args: ColorizeEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13789,7 +13801,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof Constraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Constraint.SignalSignatures[K]>
+            ...args: Constraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13912,7 +13924,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof DeformEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeformEffect.SignalSignatures[K]>
+            ...args: DeformEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -14008,7 +14020,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof DesaturateEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesaturateEffect.SignalSignatures[K]>
+            ...args: DesaturateEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14182,7 +14194,10 @@ export namespace Clutter {
 
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
+        emit<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -14273,7 +14288,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof FixedLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedLayout.SignalSignatures[K]>
+            ...args: FixedLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14453,7 +14468,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof FlowLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlowLayout.SignalSignatures[K]>
+            ...args: FlowLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14573,7 +14588,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameClock.SignalSignatures[K]>
+            ...args: FrameClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14766,7 +14781,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof GestureAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GestureAction.SignalSignatures[K]>
+            ...args: GestureAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -14991,7 +15006,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof GridLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GridLayout.SignalSignatures[K]>
+            ...args: GridLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15158,7 +15173,10 @@ export namespace Clutter {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -15882,7 +15900,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof InputDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputDevice.SignalSignatures[K]>
+            ...args: InputDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -15989,7 +16007,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof InputDeviceTool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputDeviceTool.SignalSignatures[K]>
+            ...args: InputDeviceTool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16044,7 +16062,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof InputFocus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputFocus.SignalSignatures[K]>
+            ...args: InputFocus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16149,7 +16167,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMethod.SignalSignatures[K]>
+            ...args: InputMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16259,7 +16277,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof Interval.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interval.SignalSignatures[K]>
+            ...args: Interval.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -16938,7 +16956,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof KeyframeTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyframeTransition.SignalSignatures[K]>
+            ...args: KeyframeTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17483,7 +17501,10 @@ export namespace Clutter {
 
         connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
         connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
-        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
+        emit<K extends keyof Keymap.SignalSignatures>(
+            signal: K,
+            ...args: Keymap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -17527,7 +17548,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof LayerNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayerNode.SignalSignatures[K]>
+            ...args: LayerNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17671,7 +17692,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof LayoutManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutManager.SignalSignatures[K]>
+            ...args: LayoutManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -17860,7 +17881,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof LayoutMeta.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutMeta.SignalSignatures[K]>
+            ...args: LayoutMeta.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17961,7 +17982,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof OffscreenEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OffscreenEffect.SignalSignatures[K]>
+            ...args: OffscreenEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18088,7 +18109,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof PageTurnEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PageTurnEffect.SignalSignatures[K]>
+            ...args: PageTurnEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18163,7 +18184,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof PaintNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PaintNode.SignalSignatures[K]>
+            ...args: PaintNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18366,7 +18387,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof PanAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PanAction.SignalSignatures[K]>
+            ...args: PanAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18535,7 +18556,10 @@ export namespace Clutter {
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -18783,7 +18807,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof PathConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathConstraint.SignalSignatures[K]>
+            ...args: PathConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18839,7 +18863,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof PipelineNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PipelineNode.SignalSignatures[K]>
+            ...args: PipelineNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18905,7 +18929,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof PropertyTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyTransition.SignalSignatures[K]>
+            ...args: PropertyTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19387,7 +19411,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof RootNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootNode.SignalSignatures[K]>
+            ...args: RootNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -19437,7 +19461,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof RotateAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RotateAction.SignalSignatures[K]>
+            ...args: RotateAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -19599,7 +19623,10 @@ export namespace Clutter {
 
         connect<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
         connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
-        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: Parameters<Script.SignalSignatures[K]>): void;
+        emit<K extends keyof Script.SignalSignatures>(
+            signal: K,
+            ...args: Script.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -19798,7 +19825,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ScrollActor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollActor.SignalSignatures[K]>
+            ...args: ScrollActor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -20648,7 +20675,10 @@ export namespace Clutter {
 
         connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
         connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
-        emit<K extends keyof Seat.SignalSignatures>(signal: K, ...args: Parameters<Seat.SignalSignatures[K]>): void;
+        emit<K extends keyof Seat.SignalSignatures>(
+            signal: K,
+            ...args: Seat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -21006,7 +21036,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -21152,7 +21182,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ShaderEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderEffect.SignalSignatures[K]>
+            ...args: ShaderEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -21224,7 +21254,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ShaderFloat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderFloat.SignalSignatures[K]>
+            ...args: ShaderFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -21249,7 +21279,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ShaderInt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderInt.SignalSignatures[K]>
+            ...args: ShaderInt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -21277,7 +21307,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ShaderMatrix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderMatrix.SignalSignatures[K]>
+            ...args: ShaderMatrix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -21362,7 +21392,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof SnapConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SnapConstraint.SignalSignatures[K]>
+            ...args: SnapConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -21531,7 +21561,10 @@ export namespace Clutter {
 
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
+        emit<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -22505,7 +22538,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof StageManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageManager.SignalSignatures[K]>
+            ...args: StageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -22599,7 +22632,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof StageView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageView.SignalSignatures[K]>
+            ...args: StageView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -22686,7 +22719,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof SwipeAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwipeAction.SignalSignatures[K]>
+            ...args: SwipeAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -22748,7 +22781,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TapAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TapAction.SignalSignatures[K]>
+            ...args: TapAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -23213,7 +23246,10 @@ export namespace Clutter {
 
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
+        emit<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -24573,7 +24609,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TextBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextBuffer.SignalSignatures[K]>
+            ...args: TextBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -24732,7 +24768,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TextNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextNode.SignalSignatures[K]>
+            ...args: TextNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -24766,7 +24802,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TextureContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureContent.SignalSignatures[K]>
+            ...args: TextureContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -25323,7 +25359,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureNode.SignalSignatures[K]>
+            ...args: TextureNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -25550,7 +25586,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -26403,7 +26439,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransformNode.SignalSignatures[K]>
+            ...args: TransformNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -26486,7 +26522,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transition.SignalSignatures[K]>
+            ...args: Transition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -27125,7 +27161,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof TransitionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransitionGroup.SignalSignatures[K]>
+            ...args: TransitionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27636,7 +27672,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof VirtualInputDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VirtualInputDevice.SignalSignatures[K]>
+            ...args: VirtualInputDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -27743,7 +27779,7 @@ export namespace Clutter {
         ): number;
         emit<K extends keyof ZoomAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZoomAction.SignalSignatures[K]>
+            ...args: ZoomAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

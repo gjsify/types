@@ -417,7 +417,7 @@ export namespace GnomeAutoar {
         ): number;
         emit<K extends keyof Compressor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Compressor.SignalSignatures[K]>
+            ...args: Compressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -652,7 +652,7 @@ export namespace GnomeAutoar {
         ): number;
         emit<K extends keyof Extractor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Extractor.SignalSignatures[K]>
+            ...args: Extractor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

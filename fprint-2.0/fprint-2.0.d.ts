@@ -372,7 +372,7 @@ export namespace FPrint {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -483,7 +483,10 @@ export namespace FPrint {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1781,7 +1784,10 @@ export namespace FPrint {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1889,7 +1895,7 @@ export namespace FPrint {
         ): number;
         emit<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageDevice.SignalSignatures[K]>
+            ...args: ImageDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2600,7 +2606,10 @@ export namespace FPrint {
 
         connect<K extends keyof Print.SignalSignatures>(signal: K, callback: Print.SignalSignatures[K]): number;
         connect_after<K extends keyof Print.SignalSignatures>(signal: K, callback: Print.SignalSignatures[K]): number;
-        emit<K extends keyof Print.SignalSignatures>(signal: K, ...args: Parameters<Print.SignalSignatures[K]>): void;
+        emit<K extends keyof Print.SignalSignatures>(
+            signal: K,
+            ...args: Print.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

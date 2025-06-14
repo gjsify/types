@@ -666,7 +666,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCDTLSTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCDTLSTransport.SignalSignatures[K]>
+            ...args: WebRTCDTLSTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -786,7 +786,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCDataChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCDataChannel.SignalSignatures[K]>
+            ...args: WebRTCDataChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -891,7 +891,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCICE.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCICE.SignalSignatures[K]>
+            ...args: WebRTCICE.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -992,7 +992,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCICEStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCICEStream.SignalSignatures[K]>
+            ...args: WebRTCICEStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1067,7 +1067,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCICETransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCICETransport.SignalSignatures[K]>
+            ...args: WebRTCICETransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1126,7 +1126,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCRTPReceiver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCRTPReceiver.SignalSignatures[K]>
+            ...args: WebRTCRTPReceiver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1180,7 +1180,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCRTPSender.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCRTPSender.SignalSignatures[K]>
+            ...args: WebRTCRTPSender.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1286,7 +1286,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCRTPTransceiver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCRTPTransceiver.SignalSignatures[K]>
+            ...args: WebRTCRTPTransceiver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1336,7 +1336,7 @@ export namespace GstWebRTC {
         ): number;
         emit<K extends keyof WebRTCSCTPTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCSCTPTransport.SignalSignatures[K]>
+            ...args: WebRTCSCTPTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

@@ -1612,7 +1612,10 @@ export namespace Poppler {
 
         connect<K extends keyof Annot.SignalSignatures>(signal: K, callback: Annot.SignalSignatures[K]): number;
         connect_after<K extends keyof Annot.SignalSignatures>(signal: K, callback: Annot.SignalSignatures[K]): number;
-        emit<K extends keyof Annot.SignalSignatures>(signal: K, ...args: Parameters<Annot.SignalSignatures[K]>): void;
+        emit<K extends keyof Annot.SignalSignatures>(
+            signal: K,
+            ...args: Annot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1716,7 +1719,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotCircle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotCircle.SignalSignatures[K]>
+            ...args: AnnotCircle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1763,7 +1766,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotFileAttachment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotFileAttachment.SignalSignatures[K]>
+            ...args: AnnotFileAttachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1811,7 +1814,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotFreeText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotFreeText.SignalSignatures[K]>
+            ...args: AnnotFreeText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1858,7 +1861,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotLine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotLine.SignalSignatures[K]>
+            ...args: AnnotLine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1901,7 +1904,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotMarkup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotMarkup.SignalSignatures[K]>
+            ...args: AnnotMarkup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2014,7 +2017,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotMovie.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotMovie.SignalSignatures[K]>
+            ...args: AnnotMovie.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2061,7 +2064,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotScreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotScreen.SignalSignatures[K]>
+            ...args: AnnotScreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2105,7 +2108,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotSquare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotSquare.SignalSignatures[K]>
+            ...args: AnnotSquare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2154,7 +2157,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotStamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotStamp.SignalSignatures[K]>
+            ...args: AnnotStamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2202,7 +2205,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotText.SignalSignatures[K]>
+            ...args: AnnotText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2302,7 +2305,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof AnnotTextMarkup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotTextMarkup.SignalSignatures[K]>
+            ...args: AnnotTextMarkup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2360,7 +2363,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attachment.SignalSignatures[K]>
+            ...args: Attachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2650,7 +2653,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3064,7 +3067,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof FontInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontInfo.SignalSignatures[K]>
+            ...args: FontInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3125,7 +3128,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormField.SignalSignatures[K]>
+            ...args: FormField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3377,7 +3380,10 @@ export namespace Poppler {
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3436,7 +3442,10 @@ export namespace Poppler {
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3528,7 +3537,10 @@ export namespace Poppler {
 
         connect<K extends keyof Movie.SignalSignatures>(signal: K, callback: Movie.SignalSignatures[K]): number;
         connect_after<K extends keyof Movie.SignalSignatures>(signal: K, callback: Movie.SignalSignatures[K]): number;
-        emit<K extends keyof Movie.SignalSignatures>(signal: K, ...args: Parameters<Movie.SignalSignatures[K]>): void;
+        emit<K extends keyof Movie.SignalSignatures>(
+            signal: K,
+            ...args: Movie.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3621,7 +3633,10 @@ export namespace Poppler {
 
         connect<K extends keyof PSFile.SignalSignatures>(signal: K, callback: PSFile.SignalSignatures[K]): number;
         connect_after<K extends keyof PSFile.SignalSignatures>(signal: K, callback: PSFile.SignalSignatures[K]): number;
-        emit<K extends keyof PSFile.SignalSignatures>(signal: K, ...args: Parameters<PSFile.SignalSignatures[K]>): void;
+        emit<K extends keyof PSFile.SignalSignatures>(
+            signal: K,
+            ...args: PSFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3675,7 +3690,10 @@ export namespace Poppler {
 
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
+        emit<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4039,7 +4057,7 @@ export namespace Poppler {
         ): number;
         emit<K extends keyof StructureElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructureElement.SignalSignatures[K]>
+            ...args: StructureElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

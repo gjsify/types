@@ -234,7 +234,10 @@ export namespace UPowerGlib {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -351,7 +354,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGlueProxy.SignalSignatures[K]>
+            ...args: ClientGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1449,7 +1452,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGlueSkeleton.SignalSignatures[K]>
+            ...args: ClientGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -2465,7 +2468,10 @@ export namespace UPowerGlib {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2629,7 +2635,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGlueProxy.SignalSignatures[K]>
+            ...args: DeviceGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3995,7 +4001,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGlueSkeleton.SignalSignatures[K]>
+            ...args: DeviceGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5031,7 +5037,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HistoryItem.SignalSignatures[K]>
+            ...args: HistoryItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5117,7 +5123,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatsItem.SignalSignatures[K]>
+            ...args: StatsItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5199,7 +5205,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WakeupItem.SignalSignatures[K]>
+            ...args: WakeupItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5308,7 +5314,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Wakeups.SignalSignatures[K]>
+            ...args: Wakeups.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5413,7 +5419,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WakeupsGlueProxy.SignalSignatures[K]>
+            ...args: WakeupsGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6404,7 +6410,7 @@ export namespace UPowerGlib {
         ): number;
         emit<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WakeupsGlueSkeleton.SignalSignatures[K]>
+            ...args: WakeupsGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

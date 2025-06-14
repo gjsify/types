@@ -115,7 +115,10 @@ export namespace GoVirt {
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -194,7 +197,10 @@ export namespace GoVirt {
 
         connect<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
         connect_after<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
-        emit<K extends keyof Vm.SignalSignatures>(signal: K, ...args: Parameters<Vm.SignalSignatures[K]>): void;
+        emit<K extends keyof Vm.SignalSignatures>(
+            signal: K,
+            ...args: Vm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -287,7 +293,7 @@ export namespace GoVirt {
         ): number;
         emit<K extends keyof VmDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VmDisplay.SignalSignatures[K]>
+            ...args: VmDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

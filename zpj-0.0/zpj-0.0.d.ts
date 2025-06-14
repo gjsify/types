@@ -186,7 +186,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthorizationDomain.SignalSignatures[K]>
+            ...args: AuthorizationDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -229,7 +229,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -838,7 +838,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Skydrive.SignalSignatures[K]>
+            ...args: Skydrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1295,7 +1295,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveEntry.SignalSignatures[K]>
+            ...args: SkydriveEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1413,7 +1413,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveFile.SignalSignatures[K]>
+            ...args: SkydriveFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1463,7 +1463,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveFolder.SignalSignatures[K]>
+            ...args: SkydriveFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1503,7 +1503,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydrivePhoto.SignalSignatures[K]>
+            ...args: SkydrivePhoto.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1555,7 +1555,7 @@ export namespace Zpj {
         ): number;
         emit<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveVideo.SignalSignatures[K]>
+            ...args: SkydriveVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

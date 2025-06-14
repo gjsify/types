@@ -103,7 +103,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof DisplayAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayAdapter.SignalSignatures[K]>
+            ...args: DisplayAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -171,7 +171,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof NullAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullAdapter.SignalSignatures[K]>
+            ...args: NullAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -204,7 +204,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof XAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XAdapter.SignalSignatures[K]>
+            ...args: XAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -271,7 +271,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof KeyboardModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyboardModel.SignalSignatures[K]>
+            ...args: KeyboardModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -758,7 +758,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof KeyboardService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyboardService.SignalSignatures[K]>
+            ...args: KeyboardService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -826,7 +826,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof GroupModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GroupModel.SignalSignatures[K]>
+            ...args: GroupModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1332,7 +1332,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof LevelModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LevelModel.SignalSignatures[K]>
+            ...args: LevelModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1818,7 +1818,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof RowModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RowModel.SignalSignatures[K]>
+            ...args: RowModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2378,7 +2378,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof KeyModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyModel.SignalSignatures[K]>
+            ...args: KeyModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2903,7 +2903,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof ColumnModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColumnModel.SignalSignatures[K]>
+            ...args: ColumnModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3463,7 +3463,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scanner.SignalSignatures[K]>
+            ...args: Scanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3521,7 +3521,7 @@ export namespace Caribou {
         ): number;
         emit<K extends keyof ScannableGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScannableGroup.SignalSignatures[K]>
+            ...args: ScannableGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

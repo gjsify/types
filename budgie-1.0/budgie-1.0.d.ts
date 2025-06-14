@@ -259,7 +259,10 @@ export namespace Budgie {
 
         connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
         connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
-        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
+        emit<K extends keyof Applet.SignalSignatures>(
+            signal: K,
+            ...args: Applet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -975,7 +978,7 @@ export namespace Budgie {
         ): number;
         emit<K extends keyof AppletInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppletInfo.SignalSignatures[K]>
+            ...args: AppletInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1044,7 +1047,7 @@ export namespace Budgie {
         ): number;
         emit<K extends keyof Popover.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Popover.SignalSignatures[K]>
+            ...args: Popover.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1541,7 +1544,7 @@ export namespace Budgie {
         ): number;
         emit<K extends keyof PopoverManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PopoverManager.SignalSignatures[K]>
+            ...args: PopoverManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

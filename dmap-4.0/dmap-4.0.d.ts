@@ -484,7 +484,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof AvConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvConnection.SignalSignatures[K]>
+            ...args: AvConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -527,7 +527,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof AvShare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvShare.SignalSignatures[K]>
+            ...args: AvShare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -642,7 +642,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -727,7 +727,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof ControlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlConnection.SignalSignatures[K]>
+            ...args: ControlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -807,7 +807,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof ControlShare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlShare.SignalSignatures[K]>
+            ...args: ControlShare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -879,7 +879,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof ImageConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageConnection.SignalSignatures[K]>
+            ...args: ImageConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -925,7 +925,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof ImageShare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageShare.SignalSignatures[K]>
+            ...args: ImageShare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -978,7 +978,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsBrowser.SignalSignatures[K]>
+            ...args: MdnsBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1051,7 +1051,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsPublisher.SignalSignatures[K]>
+            ...args: MdnsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1140,7 +1140,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof MdnsService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsService.SignalSignatures[K]>
+            ...args: MdnsService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1214,7 +1214,10 @@ export namespace Dmap {
 
         connect<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
         connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
-        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: Parameters<Share.SignalSignatures[K]>): void;
+        emit<K extends keyof Share.SignalSignatures>(
+            signal: K,
+            ...args: Share.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1314,7 +1317,7 @@ export namespace Dmap {
         ): number;
         emit<K extends keyof TranscodeStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TranscodeStream.SignalSignatures[K]>
+            ...args: TranscodeStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

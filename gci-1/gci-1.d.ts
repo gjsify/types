@@ -71,7 +71,7 @@ export namespace GCi {
         ): number;
         emit<K extends keyof EntryController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryController.SignalSignatures[K]>
+            ...args: EntryController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

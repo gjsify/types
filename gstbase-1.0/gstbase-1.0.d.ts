@@ -553,7 +553,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof Adapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Adapter.SignalSignatures[K]>
+            ...args: Adapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1055,7 +1055,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof Aggregator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Aggregator.SignalSignatures[K]>
+            ...args: Aggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1427,7 +1427,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof AggregatorPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AggregatorPad.SignalSignatures[K]>
+            ...args: AggregatorPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1674,7 +1674,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof BaseParse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseParse.SignalSignatures[K]>
+            ...args: BaseParse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2266,7 +2266,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof BaseSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseSink.SignalSignatures[K]>
+            ...args: BaseSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2835,7 +2835,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof BaseSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseSrc.SignalSignatures[K]>
+            ...args: BaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3326,7 +3326,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof BaseTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseTransform.SignalSignatures[K]>
+            ...args: BaseTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3687,7 +3687,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof CollectPads.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectPads.SignalSignatures[K]>
+            ...args: CollectPads.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4026,7 +4026,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof DataQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataQueue.SignalSignatures[K]>
+            ...args: DataQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4083,7 +4083,7 @@ export namespace GstBase {
         ): number;
         emit<K extends keyof PushSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PushSrc.SignalSignatures[K]>
+            ...args: PushSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

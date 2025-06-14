@@ -63,7 +63,7 @@ export namespace GstVulkanXCB {
         ): number;
         emit<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDisplayXCB.SignalSignatures[K]>
+            ...args: VulkanDisplayXCB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

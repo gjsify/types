@@ -171,7 +171,7 @@ export namespace GstAllocators {
         ): number;
         emit<K extends keyof DRMDumbAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DRMDumbAllocator.SignalSignatures[K]>
+            ...args: DRMDumbAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -231,7 +231,7 @@ export namespace GstAllocators {
         ): number;
         emit<K extends keyof DmaBufAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DmaBufAllocator.SignalSignatures[K]>
+            ...args: DmaBufAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -293,7 +293,7 @@ export namespace GstAllocators {
         ): number;
         emit<K extends keyof FdAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FdAllocator.SignalSignatures[K]>
+            ...args: FdAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

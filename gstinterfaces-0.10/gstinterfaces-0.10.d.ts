@@ -524,7 +524,7 @@ export namespace GstInterfaces {
         ): number;
         emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
+            ...args: ColorBalanceChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -562,7 +562,7 @@ export namespace GstInterfaces {
         ): number;
         emit<K extends keyof MixerOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerOptions.SignalSignatures[K]>
+            ...args: MixerOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -622,7 +622,7 @@ export namespace GstInterfaces {
         ): number;
         emit<K extends keyof MixerTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerTrack.SignalSignatures[K]>
+            ...args: MixerTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -679,7 +679,7 @@ export namespace GstInterfaces {
         ): number;
         emit<K extends keyof TunerChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TunerChannel.SignalSignatures[K]>
+            ...args: TunerChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -714,7 +714,7 @@ export namespace GstInterfaces {
         ): number;
         emit<K extends keyof TunerNorm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TunerNorm.SignalSignatures[K]>
+            ...args: TunerNorm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

@@ -1087,7 +1087,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBaseFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseFilter.SignalSignatures[K]>
+            ...args: GLBaseFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1135,7 +1135,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseMemoryAllocator.SignalSignatures[K]>
+            ...args: GLBaseMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1193,7 +1193,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBaseMixer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseMixer.SignalSignatures[K]>
+            ...args: GLBaseMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1242,7 +1242,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBaseMixerPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseMixerPad.SignalSignatures[K]>
+            ...args: GLBaseMixerPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1295,7 +1295,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBaseSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseSrc.SignalSignatures[K]>
+            ...args: GLBaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1338,7 +1338,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBufferAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBufferAllocator.SignalSignatures[K]>
+            ...args: GLBufferAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1392,7 +1392,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBufferPool.SignalSignatures[K]>
+            ...args: GLBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1450,7 +1450,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLColorConvert.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLColorConvert.SignalSignatures[K]>
+            ...args: GLColorConvert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1557,7 +1557,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLContext.SignalSignatures[K]>
+            ...args: GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1922,7 +1922,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplay.SignalSignatures[K]>
+            ...args: GLDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2028,7 +2028,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLFilter.SignalSignatures[K]>
+            ...args: GLFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2129,7 +2129,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLFramebuffer.SignalSignatures[K]>
+            ...args: GLFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2206,7 +2206,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMemoryAllocator.SignalSignatures[K]>
+            ...args: GLMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2247,7 +2247,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMemoryPBOAllocator.SignalSignatures[K]>
+            ...args: GLMemoryPBOAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2281,7 +2281,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLMixer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMixer.SignalSignatures[K]>
+            ...args: GLMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2351,7 +2351,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLMixerPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMixerPad.SignalSignatures[K]>
+            ...args: GLMixerPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2397,7 +2397,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLOverlayCompositor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLOverlayCompositor.SignalSignatures[K]>
+            ...args: GLOverlayCompositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2444,7 +2444,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLRenderbufferAllocator.SignalSignatures[K]>
+            ...args: GLRenderbufferAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2500,7 +2500,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLSLStage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLSLStage.SignalSignatures[K]>
+            ...args: GLSLStage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2560,7 +2560,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLShader.SignalSignatures[K]>
+            ...args: GLShader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2895,7 +2895,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLUpload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLUpload.SignalSignatures[K]>
+            ...args: GLUpload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3015,7 +3015,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLViewConvert.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLViewConvert.SignalSignatures[K]>
+            ...args: GLViewConvert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3129,7 +3129,7 @@ export namespace GstGL {
         ): number;
         emit<K extends keyof GLWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLWindow.SignalSignatures[K]>
+            ...args: GLWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

@@ -1423,7 +1423,10 @@ export namespace GES {
 
         connect<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
         connect_after<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
-        emit<K extends keyof Asset.SignalSignatures>(signal: K, ...args: Parameters<Asset.SignalSignatures[K]>): void;
+        emit<K extends keyof Asset.SignalSignatures>(
+            signal: K,
+            ...args: Asset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2787,7 +2790,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof AudioSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioSource.SignalSignatures[K]>
+            ...args: AudioSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3270,7 +3273,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof AudioTestSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioTestSource.SignalSignatures[K]>
+            ...args: AudioTestSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3793,7 +3796,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof AudioTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioTrack.SignalSignatures[K]>
+            ...args: AudioTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4648,7 +4651,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof AudioTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioTransition.SignalSignatures[K]>
+            ...args: AudioTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5140,7 +5143,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof AudioUriSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioUriSource.SignalSignatures[K]>
+            ...args: AudioUriSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5669,7 +5672,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof BaseEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseEffect.SignalSignatures[K]>
+            ...args: BaseEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6215,7 +6218,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof BaseEffectClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseEffectClip.SignalSignatures[K]>
+            ...args: BaseEffectClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6693,7 +6696,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof BaseTransitionClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseTransitionClip.SignalSignatures[K]>
+            ...args: BaseTransitionClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7168,7 +7171,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof BaseXmlFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseXmlFormatter.SignalSignatures[K]>
+            ...args: BaseXmlFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7503,7 +7506,10 @@ export namespace GES {
 
         connect<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
         connect_after<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
-        emit<K extends keyof Clip.SignalSignatures>(signal: K, ...args: Parameters<Clip.SignalSignatures[K]>): void;
+        emit<K extends keyof Clip.SignalSignatures>(
+            signal: K,
+            ...args: Clip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -8346,7 +8352,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof ClipAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipAsset.SignalSignatures[K]>
+            ...args: ClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9510,7 +9516,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof CommandLineFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandLineFormatter.SignalSignatures[K]>
+            ...args: CommandLineFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9656,7 +9662,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Container.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Container.SignalSignatures[K]>
+            ...args: Container.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10730,7 +10736,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof DiscovererManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererManager.SignalSignatures[K]>
+            ...args: DiscovererManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10823,7 +10829,10 @@ export namespace GES {
 
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
+        emit<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -11309,7 +11318,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof EffectAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EffectAsset.SignalSignatures[K]>
+            ...args: EffectAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -12034,7 +12043,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof EffectClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EffectClip.SignalSignatures[K]>
+            ...args: EffectClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -12509,7 +12518,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Formatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Formatter.SignalSignatures[K]>
+            ...args: Formatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12761,7 +12770,10 @@ export namespace GES {
 
         connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
         connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
-        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
+        emit<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -13252,7 +13264,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof ImageSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageSource.SignalSignatures[K]>
+            ...args: ImageSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -13808,7 +13820,10 @@ export namespace GES {
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -14859,7 +14874,10 @@ export namespace GES {
 
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
+        emit<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -15737,7 +15755,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof MarkerList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkerList.SignalSignatures[K]>
+            ...args: MarkerList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15822,7 +15840,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof MultiFileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultiFileSource.SignalSignatures[K]>
+            ...args: MultiFileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -16300,7 +16318,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -16781,7 +16799,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof OperationClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OperationClip.SignalSignatures[K]>
+            ...args: OperationClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -17267,7 +17285,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof OverlayClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OverlayClip.SignalSignatures[K]>
+            ...args: OverlayClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -17840,7 +17858,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pipeline.SignalSignatures[K]>
+            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18508,7 +18526,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof PitiviFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PitiviFormatter.SignalSignatures[K]>
+            ...args: PitiviFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -18695,7 +18713,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Project.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Project.SignalSignatures[K]>
+            ...args: Project.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -19922,7 +19940,10 @@ export namespace GES {
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -20425,7 +20446,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof SourceClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceClip.SignalSignatures[K]>
+            ...args: SourceClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -20907,7 +20928,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof SourceClipAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceClipAsset.SignalSignatures[K]>
+            ...args: SourceClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -21627,7 +21648,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TestClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestClip.SignalSignatures[K]>
+            ...args: TestClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22150,7 +22171,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TextOverlay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextOverlay.SignalSignatures[K]>
+            ...args: TextOverlay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -22759,7 +22780,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TextOverlayClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextOverlayClip.SignalSignatures[K]>
+            ...args: TextOverlayClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -23531,7 +23552,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -25020,7 +25041,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TimelineElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimelineElement.SignalSignatures[K]>
+            ...args: TimelineElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -26584,7 +26605,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TitleClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleClip.SignalSignatures[K]>
+            ...args: TitleClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27149,7 +27170,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TitleSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleSource.SignalSignatures[K]>
+            ...args: TitleSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -27847,7 +27868,10 @@ export namespace GES {
 
         connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
         connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
-        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
+        emit<K extends keyof Track.SignalSignatures>(
+            signal: K,
+            ...args: Track.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -29076,7 +29100,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TrackElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackElement.SignalSignatures[K]>
+            ...args: TrackElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -30203,7 +30227,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TrackElementAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackElementAsset.SignalSignatures[K]>
+            ...args: TrackElementAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -31365,7 +31389,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transition.SignalSignatures[K]>
+            ...args: Transition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -31871,7 +31895,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof TransitionClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransitionClip.SignalSignatures[K]>
+            ...args: TransitionClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -32387,7 +32411,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof UriClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UriClip.SignalSignatures[K]>
+            ...args: UriClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -32909,7 +32933,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof UriClipAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UriClipAsset.SignalSignatures[K]>
+            ...args: UriClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -33682,7 +33706,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof UriSourceAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UriSourceAsset.SignalSignatures[K]>
+            ...args: UriSourceAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34381,7 +34405,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof VideoSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSource.SignalSignatures[K]>
+            ...args: VideoSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -34878,7 +34902,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof VideoTestSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTestSource.SignalSignatures[K]>
+            ...args: VideoTestSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -35390,7 +35414,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof VideoTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTrack.SignalSignatures[K]>
+            ...args: VideoTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -36267,7 +36291,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof VideoTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTransition.SignalSignatures[K]>
+            ...args: VideoTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -36801,7 +36825,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof VideoUriSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoUriSource.SignalSignatures[K]>
+            ...args: VideoUriSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -37276,7 +37300,7 @@ export namespace GES {
         ): number;
         emit<K extends keyof XmlFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlFormatter.SignalSignatures[K]>
+            ...args: XmlFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

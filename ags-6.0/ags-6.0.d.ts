@@ -2353,7 +2353,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof ApplicationContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationContext.SignalSignatures[K]>
+            ...args: ApplicationContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3010,7 +3010,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof AuthSecurityContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthSecurityContext.SignalSignatures[K]>
+            ...args: AuthSecurityContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3059,7 +3059,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof AuthenticationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthenticationManager.SignalSignatures[K]>
+            ...args: AuthenticationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3180,7 +3180,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof BusinessGroupManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BusinessGroupManager.SignalSignatures[K]>
+            ...args: BusinessGroupManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3246,7 +3246,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof CertificateManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateManager.SignalSignatures[K]>
+            ...args: CertificateManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3339,7 +3339,10 @@ export namespace Ags {
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3473,7 +3476,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof Controller.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Controller.SignalSignatures[K]>
+            ...args: Controller.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3573,7 +3576,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof Conversion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Conversion.SignalSignatures[K]>
+            ...args: Conversion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3632,7 +3635,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof DestroyWorker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DestroyWorker.SignalSignatures[K]>
+            ...args: DestroyWorker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4239,7 +4242,10 @@ export namespace Ags {
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4542,7 +4548,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof FileIdRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileIdRef.SignalSignatures[K]>
+            ...args: FileIdRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4626,7 +4632,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof FileLaunch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLaunch.SignalSignatures[K]>
+            ...args: FileLaunch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4697,7 +4703,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof FileLink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLink.SignalSignatures[K]>
+            ...args: FileLink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5301,7 +5307,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof FileLookup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLookup.SignalSignatures[K]>
+            ...args: FileLookup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5386,7 +5392,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof FrontController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrontController.SignalSignatures[K]>
+            ...args: FrontController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -5515,7 +5521,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof Function.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Function.SignalSignatures[K]>
+            ...args: Function.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5574,7 +5580,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof GenericMainLoop.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GenericMainLoop.SignalSignatures[K]>
+            ...args: GenericMainLoop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6233,7 +6239,10 @@ export namespace Ags {
 
         connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
         connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
-        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: Parameters<Log.SignalSignatures[K]>): void;
+        emit<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            ...args: Log.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6293,7 +6302,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof MessageDelivery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageDelivery.SignalSignatures[K]>
+            ...args: MessageDelivery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6451,7 +6460,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof MessageEnvelope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageEnvelope.SignalSignatures[K]>
+            ...args: MessageEnvelope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6545,7 +6554,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof MessageQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageQueue.SignalSignatures[K]>
+            ...args: MessageQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6648,7 +6657,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof PasswordStoreManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordStoreManager.SignalSignatures[K]>
+            ...args: PasswordStoreManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6738,7 +6747,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof Priority.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Priority.SignalSignatures[K]>
+            ...args: Priority.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6841,7 +6850,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6915,7 +6924,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof ReturnableThread.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReturnableThread.SignalSignatures[K]>
+            ...args: ReturnableThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7560,7 +7569,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof SecurityContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecurityContext.SignalSignatures[K]>
+            ...args: SecurityContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7716,7 +7725,10 @@ export namespace Ags {
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -7824,7 +7836,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof ServerApplicationContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerApplicationContext.SignalSignatures[K]>
+            ...args: ServerApplicationContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -8521,7 +8533,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof ServerStatus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerStatus.SignalSignatures[K]>
+            ...args: ServerStatus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9165,7 +9177,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof SolverMatrix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SolverMatrix.SignalSignatures[K]>
+            ...args: SolverMatrix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9306,7 +9318,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof SolverPolynomial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SolverPolynomial.SignalSignatures[K]>
+            ...args: SolverPolynomial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9469,7 +9481,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof SolverVector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SolverVector.SignalSignatures[K]>
+            ...args: SolverVector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9561,7 +9573,10 @@ export namespace Ags {
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -9658,7 +9673,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof TaskCompletion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskCompletion.SignalSignatures[K]>
+            ...args: TaskCompletion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10290,7 +10305,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof TaskLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskLauncher.SignalSignatures[K]>
+            ...args: TaskLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10978,7 +10993,10 @@ export namespace Ags {
         // Signals
 
         connect_after<K extends keyof Thread.SignalSignatures>(signal: K, callback: Thread.SignalSignatures[K]): number;
-        emit<K extends keyof Thread.SignalSignatures>(signal: K, ...args: Parameters<Thread.SignalSignatures[K]>): void;
+        emit<K extends keyof Thread.SignalSignatures>(
+            signal: K,
+            ...args: Thread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -11827,7 +11845,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof ThreadApplicationContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadApplicationContext.SignalSignatures[K]>
+            ...args: ThreadApplicationContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12536,7 +12554,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof ThreadPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadPool.SignalSignatures[K]>
+            ...args: ThreadPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -12596,7 +12614,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof Timestamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timestamp.SignalSignatures[K]>
+            ...args: Timestamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12690,7 +12708,10 @@ export namespace Ags {
 
         connect<K extends keyof Turtle.SignalSignatures>(signal: K, callback: Turtle.SignalSignatures[K]): number;
         connect_after<K extends keyof Turtle.SignalSignatures>(signal: K, callback: Turtle.SignalSignatures[K]): number;
-        emit<K extends keyof Turtle.SignalSignatures>(signal: K, ...args: Parameters<Turtle.SignalSignatures[K]>): void;
+        emit<K extends keyof Turtle.SignalSignatures>(
+            signal: K,
+            ...args: Turtle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -13086,7 +13107,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof TurtleManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TurtleManager.SignalSignatures[K]>
+            ...args: TurtleManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13152,7 +13173,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerThread.SignalSignatures[K]>
+            ...args: WorkerThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13784,7 +13805,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof XmlAuthentication.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlAuthentication.SignalSignatures[K]>
+            ...args: XmlAuthentication.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14358,7 +14379,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof XmlBusinessGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlBusinessGroup.SignalSignatures[K]>
+            ...args: XmlBusinessGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14979,7 +15000,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof XmlCertificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlCertificate.SignalSignatures[K]>
+            ...args: XmlCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15714,7 +15735,7 @@ export namespace Ags {
         ): number;
         emit<K extends keyof XmlPasswordStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlPasswordStore.SignalSignatures[K]>
+            ...args: XmlPasswordStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -150,7 +150,7 @@ export namespace Geoclue {
         ): number;
         emit<K extends keyof ClientProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientProxy.SignalSignatures[K]>
+            ...args: ClientProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1280,7 +1280,7 @@ export namespace Geoclue {
         ): number;
         emit<K extends keyof ClientSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientSkeleton.SignalSignatures[K]>
+            ...args: ClientSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -2016,7 +2016,7 @@ export namespace Geoclue {
         ): number;
         emit<K extends keyof LocationProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocationProxy.SignalSignatures[K]>
+            ...args: LocationProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2928,7 +2928,7 @@ export namespace Geoclue {
         ): number;
         emit<K extends keyof LocationSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocationSkeleton.SignalSignatures[K]>
+            ...args: LocationSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3535,7 +3535,7 @@ export namespace Geoclue {
         ): number;
         emit<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+            ...args: ManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4655,7 +4655,7 @@ export namespace Geoclue {
         ): number;
         emit<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+            ...args: ManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5514,7 +5514,10 @@ export namespace Geoclue {
 
         connect<K extends keyof Simple.SignalSignatures>(signal: K, callback: Simple.SignalSignatures[K]): number;
         connect_after<K extends keyof Simple.SignalSignatures>(signal: K, callback: Simple.SignalSignatures[K]): number;
-        emit<K extends keyof Simple.SignalSignatures>(signal: K, ...args: Parameters<Simple.SignalSignatures[K]>): void;
+        emit<K extends keyof Simple.SignalSignatures>(
+            signal: K,
+            ...args: Simple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

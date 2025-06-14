@@ -95,7 +95,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof ChooserProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChooserProxy.SignalSignatures[K]>
+            ...args: ChooserProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -941,7 +941,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof ChooserSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChooserSkeleton.SignalSignatures[K]>
+            ...args: ChooserSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -1469,7 +1469,10 @@ export namespace Gdm {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1728,7 +1731,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof GreeterProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GreeterProxy.SignalSignatures[K]>
+            ...args: GreeterProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2663,7 +2666,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof GreeterSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GreeterSkeleton.SignalSignatures[K]>
+            ...args: GreeterSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3294,7 +3297,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+            ...args: ManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4185,7 +4188,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+            ...args: ManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4772,7 +4775,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof RemoteGreeterProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteGreeterProxy.SignalSignatures[K]>
+            ...args: RemoteGreeterProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5603,7 +5606,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof RemoteGreeterSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteGreeterSkeleton.SignalSignatures[K]>
+            ...args: RemoteGreeterSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6134,7 +6137,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof UserVerifierChoiceListProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserVerifierChoiceListProxy.SignalSignatures[K]>
+            ...args: UserVerifierChoiceListProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6989,7 +6992,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof UserVerifierChoiceListSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserVerifierChoiceListSkeleton.SignalSignatures[K]>
+            ...args: UserVerifierChoiceListSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7537,7 +7540,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof UserVerifierProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserVerifierProxy.SignalSignatures[K]>
+            ...args: UserVerifierProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8478,7 +8481,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof UserVerifierSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserVerifierSkeleton.SignalSignatures[K]>
+            ...args: UserVerifierSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9115,7 +9118,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof WorkerManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerManagerProxy.SignalSignatures[K]>
+            ...args: WorkerManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10083,7 +10086,7 @@ export namespace Gdm {
         ): number;
         emit<K extends keyof WorkerManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerManagerSkeleton.SignalSignatures[K]>
+            ...args: WorkerManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

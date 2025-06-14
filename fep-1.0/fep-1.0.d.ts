@@ -153,7 +153,7 @@ export namespace Fep {
         ): number;
         emit<K extends keyof GClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GClient.SignalSignatures[K]>
+            ...args: GClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

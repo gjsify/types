@@ -65,7 +65,7 @@ export namespace CambalachePrivate {
         ): number;
         emit<K extends keyof BuilderScope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderScope.SignalSignatures[K]>
+            ...args: BuilderScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

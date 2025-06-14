@@ -2490,7 +2490,10 @@ export namespace Cogl {
 
         connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
         connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
-        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: Parameters<Bitmap.SignalSignatures[K]>): void;
+        emit<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            ...args: Bitmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2521,7 +2524,10 @@ export namespace Cogl {
 
         connect<K extends keyof Fixed.SignalSignatures>(signal: K, callback: Fixed.SignalSignatures[K]): number;
         connect_after<K extends keyof Fixed.SignalSignatures>(signal: K, callback: Fixed.SignalSignatures[K]): number;
-        emit<K extends keyof Fixed.SignalSignatures>(signal: K, ...args: Parameters<Fixed.SignalSignatures[K]>): void;
+        emit<K extends keyof Fixed.SignalSignatures>(
+            signal: K,
+            ...args: Fixed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2569,7 +2575,7 @@ export namespace Cogl {
         ): number;
         emit<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Offscreen.SignalSignatures[K]>
+            ...args: Offscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

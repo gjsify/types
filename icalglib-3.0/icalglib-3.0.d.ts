@@ -1193,7 +1193,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
         connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
-        emit<K extends keyof Array.SignalSignatures>(signal: K, ...args: Parameters<Array.SignalSignatures[K]>): void;
+        emit<K extends keyof Array.SignalSignatures>(
+            signal: K,
+            ...args: Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1245,7 +1248,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
         connect_after<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
-        emit<K extends keyof Attach.SignalSignatures>(signal: K, ...args: Parameters<Attach.SignalSignatures[K]>): void;
+        emit<K extends keyof Attach.SignalSignatures>(
+            signal: K,
+            ...args: Attach.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1298,7 +1304,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof CompIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompIter.SignalSignatures[K]>
+            ...args: CompIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1388,7 +1394,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1771,7 +1777,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Datetimeperiod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Datetimeperiod.SignalSignatures[K]>
+            ...args: Datetimeperiod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1836,7 +1842,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Duration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Duration.SignalSignatures[K]>
+            ...args: Duration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1950,7 +1956,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
         connect_after<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
-        emit<K extends keyof Geo.SignalSignatures>(signal: K, ...args: Parameters<Geo.SignalSignatures[K]>): void;
+        emit<K extends keyof Geo.SignalSignatures>(
+            signal: K,
+            ...args: Geo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2060,7 +2069,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2269,7 +2281,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Parameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Parameter.SignalSignatures[K]>
+            ...args: Parameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2502,7 +2514,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2581,7 +2596,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
         connect_after<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
-        emit<K extends keyof Period.SignalSignatures>(signal: K, ...args: Parameters<Period.SignalSignatures[K]>): void;
+        emit<K extends keyof Period.SignalSignatures>(
+            signal: K,
+            ...args: Period.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2894,7 +2912,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Property.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Property.SignalSignatures[K]>
+            ...args: Property.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4282,7 +4300,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof RecurIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecurIterator.SignalSignatures[K]>
+            ...args: RecurIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4339,7 +4357,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Recurrence.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Recurrence.SignalSignatures[K]>
+            ...args: Recurrence.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4701,7 +4719,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Reqstat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Reqstat.SignalSignatures[K]>
+            ...args: Reqstat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4774,7 +4792,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
         connect_after<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
-        emit<K extends keyof Time.SignalSignatures>(signal: K, ...args: Parameters<Time.SignalSignatures[K]>): void;
+        emit<K extends keyof Time.SignalSignatures>(
+            signal: K,
+            ...args: Time.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -5083,7 +5104,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof TimeSpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimeSpan.SignalSignatures[K]>
+            ...args: TimeSpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5171,7 +5192,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Timezone.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timezone.SignalSignatures[K]>
+            ...args: Timezone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5374,7 +5395,7 @@ export namespace ICalGLib {
         ): number;
         emit<K extends keyof Trigger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Trigger.SignalSignatures[K]>
+            ...args: Trigger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5510,7 +5531,10 @@ export namespace ICalGLib {
 
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
+        emit<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

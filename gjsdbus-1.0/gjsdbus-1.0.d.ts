@@ -78,7 +78,7 @@ export namespace GjsDBus {
         ): number;
         emit<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Implementation.SignalSignatures[K]>
+            ...args: Implementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

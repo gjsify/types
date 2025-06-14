@@ -219,7 +219,10 @@ export namespace Mks {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -281,7 +284,7 @@ export namespace Mks {
         ): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1083,7 +1086,7 @@ export namespace Mks {
         ): number;
         emit<K extends keyof Keyboard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Keyboard.SignalSignatures[K]>
+            ...args: Keyboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1224,7 +1227,10 @@ export namespace Mks {
 
         connect<K extends keyof Mouse.SignalSignatures>(signal: K, callback: Mouse.SignalSignatures[K]): number;
         connect_after<K extends keyof Mouse.SignalSignatures>(signal: K, callback: Mouse.SignalSignatures[K]): number;
-        emit<K extends keyof Mouse.SignalSignatures>(signal: K, ...args: Parameters<Mouse.SignalSignatures[K]>): void;
+        emit<K extends keyof Mouse.SignalSignatures>(
+            signal: K,
+            ...args: Mouse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1452,7 +1458,10 @@ export namespace Mks {
 
         connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
         connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
-        emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
+        emit<K extends keyof Screen.SignalSignatures>(
+            signal: K,
+            ...args: Screen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1661,7 +1670,7 @@ export namespace Mks {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2487,7 +2496,7 @@ export namespace Mks {
         ): number;
         emit<K extends keyof Touchable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Touchable.SignalSignatures[K]>
+            ...args: Touchable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

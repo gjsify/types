@@ -92,7 +92,10 @@ export namespace GFBGraph {
 
         connect<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
         connect_after<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
-        emit<K extends keyof Album.SignalSignatures>(signal: K, ...args: Parameters<Album.SignalSignatures[K]>): void;
+        emit<K extends keyof Album.SignalSignatures>(
+            signal: K,
+            ...args: Album.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -310,7 +313,7 @@ export namespace GFBGraph {
         ): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -856,7 +859,10 @@ export namespace GFBGraph {
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1024,7 +1030,10 @@ export namespace GFBGraph {
 
         connect<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
         connect_after<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
-        emit<K extends keyof Photo.SignalSignatures>(signal: K, ...args: Parameters<Photo.SignalSignatures[K]>): void;
+        emit<K extends keyof Photo.SignalSignatures>(
+            signal: K,
+            ...args: Photo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1846,7 +1855,7 @@ export namespace GFBGraph {
         ): number;
         emit<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleAuthorizer.SignalSignatures[K]>
+            ...args: SimpleAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2380,7 +2389,10 @@ export namespace GFBGraph {
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

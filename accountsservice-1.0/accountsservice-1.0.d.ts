@@ -235,7 +235,10 @@ export namespace AccountsService {
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -642,7 +645,7 @@ export namespace AccountsService {
         ): number;
         emit<K extends keyof UserManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserManager.SignalSignatures[K]>
+            ...args: UserManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

@@ -528,7 +528,7 @@ export namespace GstCheck {
         ): number;
         emit<K extends keyof TestClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestClock.SignalSignatures[K]>
+            ...args: TestClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

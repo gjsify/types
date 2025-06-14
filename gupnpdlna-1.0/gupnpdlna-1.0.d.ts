@@ -83,7 +83,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Discoverer.SignalSignatures[K]>
+            ...args: Discoverer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -165,7 +165,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Information.SignalSignatures[K]>
+            ...args: Information.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -220,7 +220,7 @@ export namespace GUPnPDLNA {
         ): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

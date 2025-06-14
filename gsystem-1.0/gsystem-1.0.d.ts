@@ -513,7 +513,7 @@ export namespace GSystem {
         ): number;
         emit<K extends keyof Console.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Console.SignalSignatures[K]>
+            ...args: Console.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -623,7 +623,7 @@ export namespace GSystem {
         ): number;
         emit<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subprocess.SignalSignatures[K]>
+            ...args: Subprocess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1316,7 +1316,7 @@ export namespace GSystem {
         ): number;
         emit<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessContext.SignalSignatures[K]>
+            ...args: SubprocessContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

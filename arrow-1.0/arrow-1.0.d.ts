@@ -827,7 +827,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof AggregateNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AggregateNodeOptions.SignalSignatures[K]>
+            ...args: AggregateNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -887,7 +887,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Aggregation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Aggregation.SignalSignatures[K]>
+            ...args: Aggregation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -933,7 +933,10 @@ export namespace Arrow {
 
         connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
         connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
-        emit<K extends keyof Array.SignalSignatures>(signal: K, ...args: Parameters<Array.SignalSignatures[K]>): void;
+        emit<K extends keyof Array.SignalSignatures>(
+            signal: K,
+            ...args: Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -1018,7 +1021,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayBuilder.SignalSignatures[K]>
+            ...args: ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1090,7 +1093,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ArrayDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayDatum.SignalSignatures[K]>
+            ...args: ArrayDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1136,7 +1139,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ArraySortOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArraySortOptions.SignalSignatures[K]>
+            ...args: ArraySortOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1185,7 +1188,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BaseBinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseBinaryScalar.SignalSignatures[K]>
+            ...args: BaseBinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1232,7 +1235,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BaseListScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseListScalar.SignalSignatures[K]>
+            ...args: BaseListScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1278,7 +1281,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BinaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryArray.SignalSignatures[K]>
+            ...args: BinaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1321,7 +1324,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BinaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryArrayBuilder.SignalSignatures[K]>
+            ...args: BinaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1371,7 +1374,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BinaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryDataType.SignalSignatures[K]>
+            ...args: BinaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1407,7 +1410,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryDictionaryArrayBuilder.SignalSignatures[K]>
+            ...args: BinaryDictionaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1463,7 +1466,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryScalar.SignalSignatures[K]>
+            ...args: BinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1499,7 +1502,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BooleanArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanArray.SignalSignatures[K]>
+            ...args: BooleanArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1544,7 +1547,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BooleanArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanArrayBuilder.SignalSignatures[K]>
+            ...args: BooleanArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1593,7 +1596,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BooleanDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanDataType.SignalSignatures[K]>
+            ...args: BooleanDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1629,7 +1632,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BooleanScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanScalar.SignalSignatures[K]>
+            ...args: BooleanScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1673,7 +1676,10 @@ export namespace Arrow {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1732,7 +1738,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferInputStream.SignalSignatures[K]>
+            ...args: BufferInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2216,7 +2222,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferOutputStream.SignalSignatures[K]>
+            ...args: BufferOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2877,7 +2883,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CSVReadOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CSVReadOptions.SignalSignatures[K]>
+            ...args: CSVReadOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2950,7 +2956,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CSVReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CSVReader.SignalSignatures[K]>
+            ...args: CSVReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2990,7 +2996,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CallExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallExpression.SignalSignatures[K]>
+            ...args: CallExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3114,7 +3120,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CastOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CastOptions.SignalSignatures[K]>
+            ...args: CastOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3164,7 +3170,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ChunkedArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChunkedArray.SignalSignatures[K]>
+            ...args: ChunkedArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3226,7 +3232,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ChunkedArrayDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChunkedArrayDatum.SignalSignatures[K]>
+            ...args: ChunkedArrayDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3260,7 +3266,10 @@ export namespace Arrow {
 
         connect<K extends keyof Codec.SignalSignatures>(signal: K, callback: Codec.SignalSignatures[K]): number;
         connect_after<K extends keyof Codec.SignalSignatures>(signal: K, callback: Codec.SignalSignatures[K]): number;
-        emit<K extends keyof Codec.SignalSignatures>(signal: K, ...args: Parameters<Codec.SignalSignatures[K]>): void;
+        emit<K extends keyof Codec.SignalSignatures>(
+            signal: K,
+            ...args: Codec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3312,7 +3321,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CompressedInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressedInputStream.SignalSignatures[K]>
+            ...args: CompressedInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3810,7 +3819,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CompressedOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressedOutputStream.SignalSignatures[K]>
+            ...args: CompressedOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4304,7 +4313,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof CountOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CountOptions.SignalSignatures[K]>
+            ...args: CountOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4343,7 +4352,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataType.SignalSignatures[K]>
+            ...args: DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4391,7 +4400,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32Array.SignalSignatures[K]>
+            ...args: Date32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4432,7 +4441,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32ArrayBuilder.SignalSignatures[K]>
+            ...args: Date32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4481,7 +4490,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32DataType.SignalSignatures[K]>
+            ...args: Date32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4517,7 +4526,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32Scalar.SignalSignatures[K]>
+            ...args: Date32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4557,7 +4566,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64Array.SignalSignatures[K]>
+            ...args: Date64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4598,7 +4607,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64ArrayBuilder.SignalSignatures[K]>
+            ...args: Date64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4647,7 +4656,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64DataType.SignalSignatures[K]>
+            ...args: Date64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4683,7 +4692,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Date64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64Scalar.SignalSignatures[K]>
+            ...args: Date64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4719,7 +4728,10 @@ export namespace Arrow {
 
         connect<K extends keyof Datum.SignalSignatures>(signal: K, callback: Datum.SignalSignatures[K]): number;
         connect_after<K extends keyof Datum.SignalSignatures>(signal: K, callback: Datum.SignalSignatures[K]): number;
-        emit<K extends keyof Datum.SignalSignatures>(signal: K, ...args: Parameters<Datum.SignalSignatures[K]>): void;
+        emit<K extends keyof Datum.SignalSignatures>(
+            signal: K,
+            ...args: Datum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4779,7 +4791,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DayMillisecond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayMillisecond.SignalSignatures[K]>
+            ...args: DayMillisecond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4820,7 +4832,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DayTimeIntervalArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalArray.SignalSignatures[K]>
+            ...args: DayTimeIntervalArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4861,7 +4873,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalArrayBuilder.SignalSignatures[K]>
+            ...args: DayTimeIntervalArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4909,7 +4921,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalDataType.SignalSignatures[K]>
+            ...args: DayTimeIntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4945,7 +4957,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalScalar.SignalSignatures[K]>
+            ...args: DayTimeIntervalScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4993,7 +5005,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal128.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128.SignalSignatures[K]>
+            ...args: Decimal128.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5054,7 +5066,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal128Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128Array.SignalSignatures[K]>
+            ...args: Decimal128Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5097,7 +5109,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128ArrayBuilder.SignalSignatures[K]>
+            ...args: Decimal128ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5153,7 +5165,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal128DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128DataType.SignalSignatures[K]>
+            ...args: Decimal128DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5202,7 +5214,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal128Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128Scalar.SignalSignatures[K]>
+            ...args: Decimal128Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5250,7 +5262,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal256.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256.SignalSignatures[K]>
+            ...args: Decimal256.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5309,7 +5321,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal256Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256Array.SignalSignatures[K]>
+            ...args: Decimal256Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5352,7 +5364,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256ArrayBuilder.SignalSignatures[K]>
+            ...args: Decimal256ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5407,7 +5419,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal256DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256DataType.SignalSignatures[K]>
+            ...args: Decimal256DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5456,7 +5468,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Decimal256Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256Scalar.SignalSignatures[K]>
+            ...args: Decimal256Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5499,7 +5511,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DecimalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DecimalDataType.SignalSignatures[K]>
+            ...args: DecimalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5555,7 +5567,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DenseUnionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionArray.SignalSignatures[K]>
+            ...args: DenseUnionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5595,7 +5607,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionArrayBuilder.SignalSignatures[K]>
+            ...args: DenseUnionArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5631,7 +5643,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DenseUnionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionDataType.SignalSignatures[K]>
+            ...args: DenseUnionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5667,7 +5679,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DenseUnionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionScalar.SignalSignatures[K]>
+            ...args: DenseUnionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5711,7 +5723,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DictionaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DictionaryArray.SignalSignatures[K]>
+            ...args: DictionaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5753,7 +5765,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DictionaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DictionaryDataType.SignalSignatures[K]>
+            ...args: DictionaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5795,7 +5807,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DoubleArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleArray.SignalSignatures[K]>
+            ...args: DoubleArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5837,7 +5849,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DoubleArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleArrayBuilder.SignalSignatures[K]>
+            ...args: DoubleArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5886,7 +5898,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DoubleDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleDataType.SignalSignatures[K]>
+            ...args: DoubleDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5922,7 +5934,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof DoubleScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleScalar.SignalSignatures[K]>
+            ...args: DoubleScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5998,7 +6010,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof EqualOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EqualOptions.SignalSignatures[K]>
+            ...args: EqualOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6038,7 +6050,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExecuteContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecuteContext.SignalSignatures[K]>
+            ...args: ExecuteContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6080,7 +6092,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExecuteNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecuteNode.SignalSignatures[K]>
+            ...args: ExecuteNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6125,7 +6137,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExecuteNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecuteNodeOptions.SignalSignatures[K]>
+            ...args: ExecuteNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6167,7 +6179,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExecutePlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecutePlan.SignalSignatures[K]>
+            ...args: ExecutePlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6268,7 +6280,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6313,7 +6325,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExtensionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionArray.SignalSignatures[K]>
+            ...args: ExtensionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6359,7 +6371,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExtensionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionDataType.SignalSignatures[K]>
+            ...args: ExtensionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6428,7 +6440,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionDataTypeRegistry.SignalSignatures[K]>
+            ...args: ExtensionDataTypeRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6483,7 +6495,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ExtensionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionScalar.SignalSignatures[K]>
+            ...args: ExtensionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6527,7 +6539,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FeatherFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatherFileReader.SignalSignatures[K]>
+            ...args: FeatherFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6587,7 +6599,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FeatherWriteProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatherWriteProperties.SignalSignatures[K]>
+            ...args: FeatherWriteProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6627,7 +6639,10 @@ export namespace Arrow {
 
         connect<K extends keyof Field.SignalSignatures>(signal: K, callback: Field.SignalSignatures[K]): number;
         connect_after<K extends keyof Field.SignalSignatures>(signal: K, callback: Field.SignalSignatures[K]): number;
-        emit<K extends keyof Field.SignalSignatures>(signal: K, ...args: Parameters<Field.SignalSignatures[K]>): void;
+        emit<K extends keyof Field.SignalSignatures>(
+            signal: K,
+            ...args: Field.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6681,7 +6696,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FieldExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FieldExpression.SignalSignatures[K]>
+            ...args: FieldExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -6768,7 +6783,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInfo.SignalSignatures[K]>
+            ...args: FileInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6816,7 +6831,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInputStream.SignalSignatures[K]>
+            ...args: FileInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -7300,7 +7315,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileOutputStream.SignalSignatures[K]>
+            ...args: FileOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7837,7 +7852,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FileSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSelector.SignalSignatures[K]>
+            ...args: FileSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -7879,7 +7894,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystem.SignalSignatures[K]>
+            ...args: FileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8038,7 +8053,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FilterNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterNodeOptions.SignalSignatures[K]>
+            ...args: FilterNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8090,7 +8105,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FilterOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOptions.SignalSignatures[K]>
+            ...args: FilterOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8132,7 +8147,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryArray.SignalSignatures[K]>
+            ...args: FixedSizeBinaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8174,7 +8189,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryArrayBuilder.SignalSignatures[K]>
+            ...args: FixedSizeBinaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8234,7 +8249,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryDataType.SignalSignatures[K]>
+            ...args: FixedSizeBinaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8274,7 +8289,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryScalar.SignalSignatures[K]>
+            ...args: FixedSizeBinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8308,7 +8323,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FixedWidthDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedWidthDataType.SignalSignatures[K]>
+            ...args: FixedWidthDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8348,7 +8363,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FloatArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatArray.SignalSignatures[K]>
+            ...args: FloatArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8390,7 +8405,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FloatArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatArrayBuilder.SignalSignatures[K]>
+            ...args: FloatArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8439,7 +8454,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FloatDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatDataType.SignalSignatures[K]>
+            ...args: FloatDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8475,7 +8490,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FloatScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatScalar.SignalSignatures[K]>
+            ...args: FloatScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8513,7 +8528,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FloatingPointDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatingPointDataType.SignalSignatures[K]>
+            ...args: FloatingPointDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8550,7 +8565,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Function.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Function.SignalSignatures[K]>
+            ...args: Function.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8605,7 +8620,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FunctionDoc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionDoc.SignalSignatures[K]>
+            ...args: FunctionDoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8646,7 +8661,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof FunctionOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionOptions.SignalSignatures[K]>
+            ...args: FunctionOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8685,7 +8700,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof GCSFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GCSFileSystem.SignalSignatures[K]>
+            ...args: GCSFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -8730,7 +8745,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof GIOInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GIOInputStream.SignalSignatures[K]>
+            ...args: GIOInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9220,7 +9235,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof GIOOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GIOOutputStream.SignalSignatures[K]>
+            ...args: GIOOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9709,7 +9724,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof HDFSFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HDFSFileSystem.SignalSignatures[K]>
+            ...args: HDFSFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -9745,7 +9760,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof HalfFloatArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatArray.SignalSignatures[K]>
+            ...args: HalfFloatArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9786,7 +9801,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatArrayBuilder.SignalSignatures[K]>
+            ...args: HalfFloatArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9834,7 +9849,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof HalfFloatDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatDataType.SignalSignatures[K]>
+            ...args: HalfFloatDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -9870,7 +9885,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof HalfFloatScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatScalar.SignalSignatures[K]>
+            ...args: HalfFloatScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9910,7 +9925,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof HashJoinNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashJoinNodeOptions.SignalSignatures[K]>
+            ...args: HashJoinNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -9951,7 +9966,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ISO8601TimestampParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ISO8601TimestampParser.SignalSignatures[K]>
+            ...args: ISO8601TimestampParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -9997,7 +10012,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof IndexOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexOptions.SignalSignatures[K]>
+            ...args: IndexOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10042,7 +10057,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10536,7 +10551,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int16Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16Array.SignalSignatures[K]>
+            ...args: Int16Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10578,7 +10593,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int16ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16ArrayBuilder.SignalSignatures[K]>
+            ...args: Int16ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10627,7 +10642,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int16DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16DataType.SignalSignatures[K]>
+            ...args: Int16DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10663,7 +10678,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int16Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16Scalar.SignalSignatures[K]>
+            ...args: Int16Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10703,7 +10718,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32Array.SignalSignatures[K]>
+            ...args: Int32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10745,7 +10760,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32ArrayBuilder.SignalSignatures[K]>
+            ...args: Int32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10794,7 +10809,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32DataType.SignalSignatures[K]>
+            ...args: Int32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10830,7 +10845,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32Scalar.SignalSignatures[K]>
+            ...args: Int32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10870,7 +10885,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64Array.SignalSignatures[K]>
+            ...args: Int64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10912,7 +10927,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64ArrayBuilder.SignalSignatures[K]>
+            ...args: Int64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -10961,7 +10976,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64DataType.SignalSignatures[K]>
+            ...args: Int64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -10997,7 +11012,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64Scalar.SignalSignatures[K]>
+            ...args: Int64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11034,7 +11049,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int8Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8Array.SignalSignatures[K]>
+            ...args: Int8Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11076,7 +11091,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int8ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8ArrayBuilder.SignalSignatures[K]>
+            ...args: Int8ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11125,7 +11140,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int8DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8DataType.SignalSignatures[K]>
+            ...args: Int8DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11161,7 +11176,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Int8Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8Scalar.SignalSignatures[K]>
+            ...args: Int8Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11201,7 +11216,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof IntArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntArrayBuilder.SignalSignatures[K]>
+            ...args: IntArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11248,7 +11263,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof IntegerDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntegerDataType.SignalSignatures[K]>
+            ...args: IntegerDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11286,7 +11301,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof IntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntervalDataType.SignalSignatures[K]>
+            ...args: IntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11388,7 +11403,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof JSONReadOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JSONReadOptions.SignalSignatures[K]>
+            ...args: JSONReadOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11434,7 +11449,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof JSONReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JSONReader.SignalSignatures[K]>
+            ...args: JSONReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11480,7 +11495,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeBinaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryArray.SignalSignatures[K]>
+            ...args: LargeBinaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11523,7 +11538,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryArrayBuilder.SignalSignatures[K]>
+            ...args: LargeBinaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11572,7 +11587,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeBinaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryDataType.SignalSignatures[K]>
+            ...args: LargeBinaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11608,7 +11623,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeBinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryScalar.SignalSignatures[K]>
+            ...args: LargeBinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11659,7 +11674,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeListArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListArray.SignalSignatures[K]>
+            ...args: LargeListArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11706,7 +11721,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeListArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListArrayBuilder.SignalSignatures[K]>
+            ...args: LargeListArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11747,7 +11762,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeListDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListDataType.SignalSignatures[K]>
+            ...args: LargeListDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11787,7 +11802,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeListScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListScalar.SignalSignatures[K]>
+            ...args: LargeListScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11829,7 +11844,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeStringArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringArray.SignalSignatures[K]>
+            ...args: LargeStringArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11869,7 +11884,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringArrayBuilder.SignalSignatures[K]>
+            ...args: LargeStringArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11918,7 +11933,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeStringDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringDataType.SignalSignatures[K]>
+            ...args: LargeStringDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11954,7 +11969,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LargeStringScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringScalar.SignalSignatures[K]>
+            ...args: LargeStringScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12002,7 +12017,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ListArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListArray.SignalSignatures[K]>
+            ...args: ListArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12049,7 +12064,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ListArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListArrayBuilder.SignalSignatures[K]>
+            ...args: ListArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12091,7 +12106,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ListDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListDataType.SignalSignatures[K]>
+            ...args: ListDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12132,7 +12147,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ListScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListScalar.SignalSignatures[K]>
+            ...args: ListScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12168,7 +12183,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LiteralExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LiteralExpression.SignalSignatures[K]>
+            ...args: LiteralExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12204,7 +12219,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LocalFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalFileSystem.SignalSignatures[K]>
+            ...args: LocalFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12258,7 +12273,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof LocalFileSystemOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalFileSystemOptions.SignalSignatures[K]>
+            ...args: LocalFileSystemOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12304,7 +12319,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MapArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapArray.SignalSignatures[K]>
+            ...args: MapArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12345,7 +12360,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MapArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapArrayBuilder.SignalSignatures[K]>
+            ...args: MapArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12399,7 +12414,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MapDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapDataType.SignalSignatures[K]>
+            ...args: MapDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12437,7 +12452,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MapScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapScalar.SignalSignatures[K]>
+            ...args: MapScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12496,7 +12511,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MatchSubstringOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MatchSubstringOptions.SignalSignatures[K]>
+            ...args: MatchSubstringOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -12535,7 +12550,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MemoryMappedInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryMappedInputStream.SignalSignatures[K]>
+            ...args: MemoryMappedInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -13018,7 +13033,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MemoryPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryPool.SignalSignatures[K]>
+            ...args: MemoryPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13066,7 +13081,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MockFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MockFileSystem.SignalSignatures[K]>
+            ...args: MockFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13124,7 +13139,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthDayNano.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNano.SignalSignatures[K]>
+            ...args: MonthDayNano.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13169,7 +13184,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalArray.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13210,7 +13225,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalArrayBuilder.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13258,7 +13273,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalDataType.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13294,7 +13309,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalScalar.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13334,7 +13349,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthIntervalArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalArray.SignalSignatures[K]>
+            ...args: MonthIntervalArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13375,7 +13390,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalArrayBuilder.SignalSignatures[K]>
+            ...args: MonthIntervalArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13423,7 +13438,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthIntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalDataType.SignalSignatures[K]>
+            ...args: MonthIntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13459,7 +13474,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MonthIntervalScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalScalar.SignalSignatures[K]>
+            ...args: MonthIntervalScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13501,7 +13516,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof MutableBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MutableBuffer.SignalSignatures[K]>
+            ...args: MutableBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13541,7 +13556,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof NullArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullArray.SignalSignatures[K]>
+            ...args: NullArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13577,7 +13592,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof NullArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullArrayBuilder.SignalSignatures[K]>
+            ...args: NullArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13613,7 +13628,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof NullDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullDataType.SignalSignatures[K]>
+            ...args: NullDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13649,7 +13664,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof NullScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullScalar.SignalSignatures[K]>
+            ...args: NullScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13683,7 +13698,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof NumericArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumericArray.SignalSignatures[K]>
+            ...args: NumericArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13721,7 +13736,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof NumericDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumericDataType.SignalSignatures[K]>
+            ...args: NumericDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -13767,7 +13782,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ORCFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ORCFileReader.SignalSignatures[K]>
+            ...args: ORCFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13824,7 +13839,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14315,7 +14330,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof PrimitiveArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrimitiveArray.SignalSignatures[K]>
+            ...args: PrimitiveArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14356,7 +14371,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ProjectNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectNodeOptions.SignalSignatures[K]>
+            ...args: ProjectNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14429,7 +14444,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof QuantileOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QuantileOptions.SignalSignatures[K]>
+            ...args: QuantileOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14493,7 +14508,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RankOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RankOptions.SignalSignatures[K]>
+            ...args: RankOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14574,7 +14589,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ReadOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReadOptions.SignalSignatures[K]>
+            ...args: ReadOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14623,7 +14638,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatch.SignalSignatures[K]>
+            ...args: RecordBatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -14690,7 +14705,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchBuilder.SignalSignatures[K]>
+            ...args: RecordBatchBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14743,7 +14758,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchDatum.SignalSignatures[K]>
+            ...args: RecordBatchDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14787,7 +14802,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchFileReader.SignalSignatures[K]>
+            ...args: RecordBatchFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14831,7 +14846,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchFileWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchFileWriter.SignalSignatures[K]>
+            ...args: RecordBatchFileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14873,7 +14888,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchIterator.SignalSignatures[K]>
+            ...args: RecordBatchIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14925,7 +14940,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchReader.SignalSignatures[K]>
+            ...args: RecordBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -14978,7 +14993,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchStreamReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchStreamReader.SignalSignatures[K]>
+            ...args: RecordBatchStreamReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15014,7 +15029,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchStreamWriter.SignalSignatures[K]>
+            ...args: RecordBatchStreamWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15056,7 +15071,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RecordBatchWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchWriter.SignalSignatures[K]>
+            ...args: RecordBatchWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15101,7 +15116,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ResizableBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResizableBuffer.SignalSignatures[K]>
+            ...args: ResizableBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15164,7 +15179,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RoundOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoundOptions.SignalSignatures[K]>
+            ...args: RoundOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15221,7 +15236,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RoundToMultipleOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoundToMultipleOptions.SignalSignatures[K]>
+            ...args: RoundToMultipleOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15273,7 +15288,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RunEndEncodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunEndEncodeOptions.SignalSignatures[K]>
+            ...args: RunEndEncodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15325,7 +15340,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RunEndEncodedArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunEndEncodedArray.SignalSignatures[K]>
+            ...args: RunEndEncodedArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15371,7 +15386,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof RunEndEncodedDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunEndEncodedDataType.SignalSignatures[K]>
+            ...args: RunEndEncodedDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15410,7 +15425,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof S3FileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<S3FileSystem.SignalSignatures[K]>
+            ...args: S3FileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15462,7 +15477,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof S3GlobalOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<S3GlobalOptions.SignalSignatures[K]>
+            ...args: S3GlobalOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15504,7 +15519,10 @@ export namespace Arrow {
 
         connect<K extends keyof Scalar.SignalSignatures>(signal: K, callback: Scalar.SignalSignatures[K]): number;
         connect_after<K extends keyof Scalar.SignalSignatures>(signal: K, callback: Scalar.SignalSignatures[K]): number;
-        emit<K extends keyof Scalar.SignalSignatures>(signal: K, ...args: Parameters<Scalar.SignalSignatures[K]>): void;
+        emit<K extends keyof Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -15580,7 +15598,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ScalarAggregateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScalarAggregateOptions.SignalSignatures[K]>
+            ...args: ScalarAggregateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15622,7 +15640,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof ScalarDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScalarDatum.SignalSignatures[K]>
+            ...args: ScalarDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -15656,7 +15674,10 @@ export namespace Arrow {
 
         connect<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
         connect_after<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
-        emit<K extends keyof Schema.SignalSignatures>(signal: K, ...args: Parameters<Schema.SignalSignatures[K]>): void;
+        emit<K extends keyof Schema.SignalSignatures>(
+            signal: K,
+            ...args: Schema.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -15714,7 +15735,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SeekableInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SeekableInputStream.SignalSignatures[K]>
+            ...args: SeekableInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16237,7 +16258,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SetLookupOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SetLookupOptions.SignalSignatures[K]>
+            ...args: SetLookupOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16273,7 +16294,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SinkNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SinkNodeOptions.SignalSignatures[K]>
+            ...args: SinkNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16327,7 +16348,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SlowFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SlowFileSystem.SignalSignatures[K]>
+            ...args: SlowFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16378,7 +16399,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SortKey.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SortKey.SignalSignatures[K]>
+            ...args: SortKey.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16418,7 +16439,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SortOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SortOptions.SignalSignatures[K]>
+            ...args: SortOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16485,7 +16506,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SourceNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceNodeOptions.SignalSignatures[K]>
+            ...args: SourceNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16523,7 +16544,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SparseUnionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionArray.SignalSignatures[K]>
+            ...args: SparseUnionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16559,7 +16580,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionArrayBuilder.SignalSignatures[K]>
+            ...args: SparseUnionArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16595,7 +16616,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SparseUnionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionDataType.SignalSignatures[K]>
+            ...args: SparseUnionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16631,7 +16652,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SparseUnionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionScalar.SignalSignatures[K]>
+            ...args: SparseUnionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16690,7 +16711,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SplitPatternOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SplitPatternOptions.SignalSignatures[K]>
+            ...args: SplitPatternOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16742,7 +16763,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StrftimeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrftimeOptions.SignalSignatures[K]>
+            ...args: StrftimeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16784,7 +16805,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StringArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringArray.SignalSignatures[K]>
+            ...args: StringArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16824,7 +16845,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StringArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringArrayBuilder.SignalSignatures[K]>
+            ...args: StringArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16876,7 +16897,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StringDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringDataType.SignalSignatures[K]>
+            ...args: StringDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -16912,7 +16933,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringDictionaryArrayBuilder.SignalSignatures[K]>
+            ...args: StringDictionaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -16967,7 +16988,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StringScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringScalar.SignalSignatures[K]>
+            ...args: StringScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17031,7 +17052,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StrptimeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrptimeOptions.SignalSignatures[K]>
+            ...args: StrptimeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17067,7 +17088,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StrptimeTimestampParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrptimeTimestampParser.SignalSignatures[K]>
+            ...args: StrptimeTimestampParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17113,7 +17134,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StructArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructArray.SignalSignatures[K]>
+            ...args: StructArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17155,7 +17176,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StructArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructArrayBuilder.SignalSignatures[K]>
+            ...args: StructArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17198,7 +17219,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StructDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructDataType.SignalSignatures[K]>
+            ...args: StructDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17250,7 +17271,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StructFieldOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructFieldOptions.SignalSignatures[K]>
+            ...args: StructFieldOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17290,7 +17311,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof StructScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructScalar.SignalSignatures[K]>
+            ...args: StructScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17338,7 +17359,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof SubTreeFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubTreeFileSystem.SignalSignatures[K]>
+            ...args: SubTreeFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17376,7 +17397,10 @@ export namespace Arrow {
 
         connect<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
         connect_after<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
-        emit<K extends keyof Table.SignalSignatures>(signal: K, ...args: Parameters<Table.SignalSignatures[K]>): void;
+        emit<K extends keyof Table.SignalSignatures>(
+            signal: K,
+            ...args: Table.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -17442,7 +17466,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TableBatchReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableBatchReader.SignalSignatures[K]>
+            ...args: TableBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17539,7 +17563,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TableConcatenateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableConcatenateOptions.SignalSignatures[K]>
+            ...args: TableConcatenateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17581,7 +17605,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TableDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableDatum.SignalSignatures[K]>
+            ...args: TableDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17617,7 +17641,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TakeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TakeOptions.SignalSignatures[K]>
+            ...args: TakeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17651,7 +17675,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TemporalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemporalDataType.SignalSignatures[K]>
+            ...args: TemporalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17693,7 +17717,10 @@ export namespace Arrow {
 
         connect<K extends keyof Tensor.SignalSignatures>(signal: K, callback: Tensor.SignalSignatures[K]): number;
         connect_after<K extends keyof Tensor.SignalSignatures>(signal: K, callback: Tensor.SignalSignatures[K]): number;
-        emit<K extends keyof Tensor.SignalSignatures>(signal: K, ...args: Parameters<Tensor.SignalSignatures[K]>): void;
+        emit<K extends keyof Tensor.SignalSignatures>(
+            signal: K,
+            ...args: Tensor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -17750,7 +17777,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32Array.SignalSignatures[K]>
+            ...args: Time32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17791,7 +17818,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32ArrayBuilder.SignalSignatures[K]>
+            ...args: Time32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17840,7 +17867,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32DataType.SignalSignatures[K]>
+            ...args: Time32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17876,7 +17903,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32Scalar.SignalSignatures[K]>
+            ...args: Time32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17922,7 +17949,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64Array.SignalSignatures[K]>
+            ...args: Time64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17963,7 +17990,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64ArrayBuilder.SignalSignatures[K]>
+            ...args: Time64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18012,7 +18039,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64DataType.SignalSignatures[K]>
+            ...args: Time64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18048,7 +18075,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof Time64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64Scalar.SignalSignatures[K]>
+            ...args: Time64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18086,7 +18113,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TimeDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimeDataType.SignalSignatures[K]>
+            ...args: TimeDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18132,7 +18159,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TimestampArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampArray.SignalSignatures[K]>
+            ...args: TimestampArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18173,7 +18200,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TimestampArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampArrayBuilder.SignalSignatures[K]>
+            ...args: TimestampArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18236,7 +18263,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TimestampDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampDataType.SignalSignatures[K]>
+            ...args: TimestampDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18280,7 +18307,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TimestampParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampParser.SignalSignatures[K]>
+            ...args: TimestampParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18320,7 +18347,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof TimestampScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampScalar.SignalSignatures[K]>
+            ...args: TimestampScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18360,7 +18387,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt16Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16Array.SignalSignatures[K]>
+            ...args: UInt16Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18402,7 +18429,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt16ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18451,7 +18478,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt16DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16DataType.SignalSignatures[K]>
+            ...args: UInt16DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18487,7 +18514,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt16Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16Scalar.SignalSignatures[K]>
+            ...args: UInt16Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18527,7 +18554,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32Array.SignalSignatures[K]>
+            ...args: UInt32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18569,7 +18596,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18618,7 +18645,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32DataType.SignalSignatures[K]>
+            ...args: UInt32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18654,7 +18681,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32Scalar.SignalSignatures[K]>
+            ...args: UInt32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18694,7 +18721,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64Array.SignalSignatures[K]>
+            ...args: UInt64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18736,7 +18763,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18785,7 +18812,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64DataType.SignalSignatures[K]>
+            ...args: UInt64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18821,7 +18848,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64Scalar.SignalSignatures[K]>
+            ...args: UInt64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18861,7 +18888,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt8Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8Array.SignalSignatures[K]>
+            ...args: UInt8Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18903,7 +18930,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt8ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18952,7 +18979,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt8DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8DataType.SignalSignatures[K]>
+            ...args: UInt8DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18988,7 +19015,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UInt8Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8Scalar.SignalSignatures[K]>
+            ...args: UInt8Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19028,7 +19055,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UIntArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UIntArrayBuilder.SignalSignatures[K]>
+            ...args: UIntArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19087,7 +19114,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UTF8NormalizeOptions.SignalSignatures[K]>
+            ...args: UTF8NormalizeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -19129,7 +19156,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UnionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionArray.SignalSignatures[K]>
+            ...args: UnionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19169,7 +19196,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UnionArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionArrayBuilder.SignalSignatures[K]>
+            ...args: UnionArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19222,7 +19249,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UnionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionDataType.SignalSignatures[K]>
+            ...args: UnionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19272,7 +19299,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof UnionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionScalar.SignalSignatures[K]>
+            ...args: UnionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -19347,7 +19374,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof VarianceOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VarianceOptions.SignalSignatures[K]>
+            ...args: VarianceOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -19456,7 +19483,7 @@ export namespace Arrow {
         ): number;
         emit<K extends keyof WriteOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WriteOptions.SignalSignatures[K]>
+            ...args: WriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

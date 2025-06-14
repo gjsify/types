@@ -367,7 +367,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof ArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArraySpliterator.SignalSignatures[K]>
+            ...args: ArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -906,7 +906,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof ForkJoinTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForkJoinTask.SignalSignatures[K]>
+            ...args: ForkJoinTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1409,7 +1409,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForkJoinTaskSharedResult.SignalSignatures[K]>
+            ...args: ForkJoinTaskSharedResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1467,7 +1467,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof FuncTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FuncTask.SignalSignatures[K]>
+            ...args: FuncTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1963,7 +1963,10 @@ export namespace Gpseq {
 
         connect<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
         connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
-        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: Parameters<Future.SignalSignatures[K]>): void;
+        emit<K extends keyof Future.SignalSignatures>(
+            signal: K,
+            ...args: Future.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2521,7 +2524,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof GenericArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GenericArraySpliterator.SignalSignatures[K]>
+            ...args: GenericArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3045,7 +3048,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof IteratorSpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IteratorSpliterator.SignalSignatures[K]>
+            ...args: IteratorSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3563,7 +3566,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof ListSpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListSpliterator.SignalSignatures[K]>
+            ...args: ListSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4086,7 +4089,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof Optional.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Optional.SignalSignatures[K]>
+            ...args: Optional.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4131,7 +4134,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Promise.SignalSignatures[K]>
+            ...args: Promise.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4202,7 +4205,10 @@ export namespace Gpseq {
 
         connect<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
         connect_after<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
-        emit<K extends keyof Seq.SignalSignatures>(signal: K, ...args: Parameters<Seq.SignalSignatures[K]>): void;
+        emit<K extends keyof Seq.SignalSignatures>(
+            signal: K,
+            ...args: Seq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4409,7 +4415,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof SpliteratorTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpliteratorTask.SignalSignatures[K]>
+            ...args: SpliteratorTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4491,7 +4497,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof SubArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubArray.SignalSignatures[K]>
+            ...args: SubArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5028,7 +5034,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof SubArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubArraySpliterator.SignalSignatures[K]>
+            ...args: SubArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5544,7 +5550,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof SupplierSpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SupplierSpliterator.SignalSignatures[K]>
+            ...args: SupplierSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -6041,7 +6047,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof TaskEnv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskEnv.SignalSignatures[K]>
+            ...args: TaskEnv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6095,7 +6101,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof WaitGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaitGroup.SignalSignatures[K]>
+            ...args: WaitGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6170,7 +6176,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof WorkerPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerPool.SignalSignatures[K]>
+            ...args: WorkerPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6694,7 +6700,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerThread.SignalSignatures[K]>
+            ...args: WorkerThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -6766,7 +6772,7 @@ export namespace Gpseq {
         ): number;
         emit<K extends keyof Wrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Wrapper.SignalSignatures[K]>
+            ...args: Wrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

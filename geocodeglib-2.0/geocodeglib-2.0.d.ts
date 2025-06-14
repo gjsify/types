@@ -369,7 +369,7 @@ export namespace GeocodeGlib {
         ): number;
         emit<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BoundingBox.SignalSignatures[K]>
+            ...args: BoundingBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -480,7 +480,7 @@ export namespace GeocodeGlib {
         ): number;
         emit<K extends keyof Forward.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Forward.SignalSignatures[K]>
+            ...args: Forward.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -663,7 +663,7 @@ export namespace GeocodeGlib {
         ): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -795,7 +795,7 @@ export namespace GeocodeGlib {
         ): number;
         emit<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MockBackend.SignalSignatures[K]>
+            ...args: MockBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1684,7 +1684,7 @@ export namespace GeocodeGlib {
         ): number;
         emit<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Nominatim.SignalSignatures[K]>
+            ...args: Nominatim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2622,7 +2622,10 @@ export namespace GeocodeGlib {
 
         connect<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
         connect_after<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
-        emit<K extends keyof Place.SignalSignatures>(signal: K, ...args: Parameters<Place.SignalSignatures[K]>): void;
+        emit<K extends keyof Place.SignalSignatures>(
+            signal: K,
+            ...args: Place.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2842,7 +2845,7 @@ export namespace GeocodeGlib {
         ): number;
         emit<K extends keyof Reverse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Reverse.SignalSignatures[K]>
+            ...args: Reverse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -915,7 +915,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlendNode.SignalSignatures[K]>
+            ...args: BlendNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -963,7 +963,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurNode.SignalSignatures[K]>
+            ...args: BlurNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1009,7 +1009,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BorderNode.SignalSignatures[K]>
+            ...args: BorderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1068,7 +1068,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BroadwayRenderer.SignalSignatures[K]>
+            ...args: BroadwayRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1098,7 +1098,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoNode.SignalSignatures[K]>
+            ...args: CairoNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1157,7 +1157,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoRenderer.SignalSignatures[K]>
+            ...args: CairoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1187,7 +1187,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipNode.SignalSignatures[K]>
+            ...args: ClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1233,7 +1233,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorMatrixNode.SignalSignatures[K]>
+            ...args: ColorMatrixNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1281,7 +1281,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorNode.SignalSignatures[K]>
+            ...args: ColorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1330,7 +1330,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConicGradientNode.SignalSignatures[K]>
+            ...args: ConicGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1396,7 +1396,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContainerNode.SignalSignatures[K]>
+            ...args: ContainerNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1443,7 +1443,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CrossFadeNode.SignalSignatures[K]>
+            ...args: CrossFadeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1492,7 +1492,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugNode.SignalSignatures[K]>
+            ...args: DebugNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1536,7 +1536,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof FillNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FillNode.SignalSignatures[K]>
+            ...args: FillNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1596,7 +1596,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLRenderer.SignalSignatures[K]>
+            ...args: GLRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1762,7 +1762,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLShader.SignalSignatures[K]>
+            ...args: GLShader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1938,7 +1938,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLShaderNode.SignalSignatures[K]>
+            ...args: GLShaderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2002,7 +2002,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InsetShadowNode.SignalSignatures[K]>
+            ...args: InsetShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2076,7 +2076,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinearGradientNode.SignalSignatures[K]>
+            ...args: LinearGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2129,7 +2129,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MaskNode.SignalSignatures[K]>
+            ...args: MaskNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2188,7 +2188,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NglRenderer.SignalSignatures[K]>
+            ...args: NglRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2221,7 +2221,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OpacityNode.SignalSignatures[K]>
+            ...args: OpacityNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2274,7 +2274,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutsetShadowNode.SignalSignatures[K]>
+            ...args: OutsetShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2351,7 +2351,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RadialGradientNode.SignalSignatures[K]>
+            ...args: RadialGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2431,7 +2431,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderNode.SignalSignatures[K]>
+            ...args: RenderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2576,7 +2576,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2682,7 +2682,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepeatNode.SignalSignatures[K]>
+            ...args: RepeatNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2733,7 +2733,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepeatingLinearGradientNode.SignalSignatures[K]>
+            ...args: RepeatingLinearGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2774,7 +2774,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepeatingRadialGradientNode.SignalSignatures[K]>
+            ...args: RepeatingRadialGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2807,7 +2807,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoundedClipNode.SignalSignatures[K]>
+            ...args: RoundedClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2853,7 +2853,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShadowNode.SignalSignatures[K]>
+            ...args: ShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2906,7 +2906,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrokeNode.SignalSignatures[K]>
+            ...args: StrokeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2956,7 +2956,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubsurfaceNode.SignalSignatures[K]>
+            ...args: SubsurfaceNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2994,7 +2994,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof TextNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextNode.SignalSignatures[K]>
+            ...args: TextNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3063,7 +3063,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureNode.SignalSignatures[K]>
+            ...args: TextureNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3104,7 +3104,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureScaleNode.SignalSignatures[K]>
+            ...args: TextureScaleNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3150,7 +3150,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransformNode.SignalSignatures[K]>
+            ...args: TransformNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3204,7 +3204,7 @@ export namespace Gsk {
         ): number;
         emit<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanRenderer.SignalSignatures[K]>
+            ...args: VulkanRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

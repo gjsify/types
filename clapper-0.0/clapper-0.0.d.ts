@@ -355,7 +355,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof AudioStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioStream.SignalSignatures[K]>
+            ...args: AudioStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -467,7 +467,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Discoverer.SignalSignatures[K]>
+            ...args: Discoverer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -523,7 +523,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof Feature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Feature.SignalSignatures[K]>
+            ...args: Feature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -648,7 +648,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof Harvest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Harvest.SignalSignatures[K]>
+            ...args: Harvest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -804,7 +804,10 @@ export namespace Clapper {
 
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
+        emit<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -924,7 +927,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaItem.SignalSignatures[K]>
+            ...args: MediaItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1072,7 +1075,10 @@ export namespace Clapper {
 
         connect<K extends keyof Mpris.SignalSignatures>(signal: K, callback: Mpris.SignalSignatures[K]): number;
         connect_after<K extends keyof Mpris.SignalSignatures>(signal: K, callback: Mpris.SignalSignatures[K]): number;
-        emit<K extends keyof Mpris.SignalSignatures>(signal: K, ...args: Parameters<Mpris.SignalSignatures[K]>): void;
+        emit<K extends keyof Mpris.SignalSignatures>(
+            signal: K,
+            ...args: Mpris.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1552,7 +1558,10 @@ export namespace Clapper {
 
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
-        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
+        emit<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            ...args: Player.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1962,7 +1971,10 @@ export namespace Clapper {
 
         connect<K extends keyof Queue.SignalSignatures>(signal: K, callback: Queue.SignalSignatures[K]): number;
         connect_after<K extends keyof Queue.SignalSignatures>(signal: K, callback: Queue.SignalSignatures[K]): number;
-        emit<K extends keyof Queue.SignalSignatures>(signal: K, ...args: Parameters<Queue.SignalSignatures[K]>): void;
+        emit<K extends keyof Queue.SignalSignatures>(
+            signal: K,
+            ...args: Queue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2708,7 +2720,10 @@ export namespace Clapper {
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2808,7 +2823,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof StreamList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamList.SignalSignatures[K]>
+            ...args: StreamList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3448,7 +3463,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof SubtitleStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubtitleStream.SignalSignatures[K]>
+            ...args: SubtitleStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3501,7 +3516,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof ThreadedObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadedObject.SignalSignatures[K]>
+            ...args: ThreadedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3577,7 +3592,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4224,7 +4239,7 @@ export namespace Clapper {
         ): number;
         emit<K extends keyof VideoStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoStream.SignalSignatures[K]>
+            ...args: VideoStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

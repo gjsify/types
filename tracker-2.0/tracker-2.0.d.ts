@@ -202,7 +202,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NamespaceManager.SignalSignatures[K]>
+            ...args: NamespaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -302,7 +302,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof Notifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notifier.SignalSignatures[K]>
+            ...args: Notifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -876,7 +876,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1158,7 +1158,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlBuilder.SignalSignatures[K]>
+            ...args: SparqlBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1225,7 +1225,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1439,7 +1439,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1522,7 +1522,7 @@ export namespace Tracker {
         ): number;
         emit<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlStatement.SignalSignatures[K]>
+            ...args: SparqlStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

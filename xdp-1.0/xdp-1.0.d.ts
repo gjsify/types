@@ -752,7 +752,10 @@ export namespace Xdp {
 
         connect<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
         connect_after<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
-        emit<K extends keyof Portal.SignalSignatures>(signal: K, ...args: Parameters<Portal.SignalSignatures[K]>): void;
+        emit<K extends keyof Portal.SignalSignatures>(
+            signal: K,
+            ...args: Portal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3442,7 +3445,7 @@ export namespace Xdp {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

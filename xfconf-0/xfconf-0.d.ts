@@ -320,7 +320,7 @@ export namespace Xfconf {
         ): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -604,7 +604,10 @@ export namespace Xfconf {
 
         connect<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
         connect_after<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
-        emit<K extends keyof Int16.SignalSignatures>(signal: K, ...args: Parameters<Int16.SignalSignatures[K]>): void;
+        emit<K extends keyof Int16.SignalSignatures>(
+            signal: K,
+            ...args: Int16.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Uint16 {
@@ -623,7 +626,10 @@ export namespace Xfconf {
 
         connect<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
         connect_after<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
-        emit<K extends keyof Uint16.SignalSignatures>(signal: K, ...args: Parameters<Uint16.SignalSignatures[K]>): void;
+        emit<K extends keyof Uint16.SignalSignatures>(
+            signal: K,
+            ...args: Uint16.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     /**

@@ -115,7 +115,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Account.SignalSignatures[K]>
+            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -227,7 +227,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof AccountExporter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountExporter.SignalSignatures[K]>
+            ...args: AccountExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -294,7 +294,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof Collector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Collector.SignalSignatures[K]>
+            ...args: Collector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -380,7 +380,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusAccountProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusAccountProxy.SignalSignatures[K]>
+            ...args: DbusAccountProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1278,7 +1278,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusAccountSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusAccountSkeleton.SignalSignatures[K]>
+            ...args: DbusAccountSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -1870,7 +1870,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusObjectManagerClient.SignalSignatures[K]>
+            ...args: DbusObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2769,7 +2769,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusObjectProxy.SignalSignatures[K]>
+            ...args: DbusObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -3319,7 +3319,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusObjectSkeleton.SignalSignatures[K]>
+            ...args: DbusObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3914,7 +3914,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusProviderProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusProviderProxy.SignalSignatures[K]>
+            ...args: DbusProviderProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4777,7 +4777,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof DbusProviderSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusProviderSkeleton.SignalSignatures[K]>
+            ...args: DbusProviderSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5318,7 +5318,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Provider.SignalSignatures[K]>
+            ...args: Provider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5381,7 +5381,7 @@ export namespace CloudProviders {
         ): number;
         emit<K extends keyof ProviderExporter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProviderExporter.SignalSignatures[K]>
+            ...args: ProviderExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

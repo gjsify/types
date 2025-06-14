@@ -193,7 +193,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof BarCode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BarCode.SignalSignatures[K]>
+            ...args: BarCode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -253,7 +253,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof BarCodeWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BarCodeWidget.SignalSignatures[K]>
+            ...args: BarCodeWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -791,7 +791,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof CertChooser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertChooser.SignalSignatures[K]>
+            ...args: CertChooser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1465,7 +1465,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof MobileProvidersDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MobileProvidersDatabase.SignalSignatures[K]>
+            ...args: MobileProvidersDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -2241,7 +2241,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof MobileWizard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MobileWizard.SignalSignatures[K]>
+            ...args: MobileWizard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2295,7 +2295,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof VpnPasswordDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VpnPasswordDialog.SignalSignatures[K]>
+            ...args: VpnPasswordDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5302,7 +5302,7 @@ export namespace NMA4 {
         ): number;
         emit<K extends keyof WifiDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WifiDialog.SignalSignatures[K]>
+            ...args: WifiDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

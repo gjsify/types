@@ -447,7 +447,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof AccountProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountProxy.SignalSignatures[K]>
+            ...args: AccountProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1717,7 +1717,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof AccountSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountSkeleton.SignalSignatures[K]>
+            ...args: AccountSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -2682,7 +2682,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof CalendarProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarProxy.SignalSignatures[K]>
+            ...args: CalendarProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3559,7 +3559,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof CalendarSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarSkeleton.SignalSignatures[K]>
+            ...args: CalendarSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4128,7 +4128,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ChatProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChatProxy.SignalSignatures[K]>
+            ...args: ChatProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4982,7 +4982,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ChatSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChatSkeleton.SignalSignatures[K]>
+            ...args: ChatSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5529,7 +5529,10 @@ export namespace Goa {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -6370,7 +6373,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ContactsProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactsProxy.SignalSignatures[K]>
+            ...args: ContactsProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -7247,7 +7250,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ContactsSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactsSkeleton.SignalSignatures[K]>
+            ...args: ContactsSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -7819,7 +7822,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof DocumentsProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsProxy.SignalSignatures[K]>
+            ...args: DocumentsProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8673,7 +8676,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof DocumentsSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsSkeleton.SignalSignatures[K]>
+            ...args: DocumentsSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9222,7 +9225,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ExchangeProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExchangeProxy.SignalSignatures[K]>
+            ...args: ExchangeProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -10099,7 +10102,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ExchangeSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExchangeSkeleton.SignalSignatures[K]>
+            ...args: ExchangeSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -10671,7 +10674,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof FilesProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilesProxy.SignalSignatures[K]>
+            ...args: FilesProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -11548,7 +11551,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof FilesSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilesSkeleton.SignalSignatures[K]>
+            ...args: FilesSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -12117,7 +12120,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MailProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MailProxy.SignalSignatures[K]>
+            ...args: MailProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -13218,7 +13221,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MailSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MailSkeleton.SignalSignatures[K]>
+            ...args: MailSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -14014,7 +14017,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+            ...args: ManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -15058,7 +15061,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+            ...args: ManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -15794,7 +15797,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MapsProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapsProxy.SignalSignatures[K]>
+            ...args: MapsProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -16648,7 +16651,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MapsSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapsSkeleton.SignalSignatures[K]>
+            ...args: MapsSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -17197,7 +17200,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MediaServerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServerProxy.SignalSignatures[K]>
+            ...args: MediaServerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -18074,7 +18077,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MediaServerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServerSkeleton.SignalSignatures[K]>
+            ...args: MediaServerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -18646,7 +18649,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MusicProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicProxy.SignalSignatures[K]>
+            ...args: MusicProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19500,7 +19503,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof MusicSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicSkeleton.SignalSignatures[K]>
+            ...args: MusicSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -20049,7 +20052,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof OAuth2BasedProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2BasedProxy.SignalSignatures[K]>
+            ...args: OAuth2BasedProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -20993,7 +20996,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2BasedSkeleton.SignalSignatures[K]>
+            ...args: OAuth2BasedSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -21632,7 +21635,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof OAuthBasedProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthBasedProxy.SignalSignatures[K]>
+            ...args: OAuthBasedProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -22582,7 +22585,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof OAuthBasedSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthBasedSkeleton.SignalSignatures[K]>
+            ...args: OAuthBasedSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -23226,7 +23229,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectManagerClient.SignalSignatures[K]>
+            ...args: ObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -24125,7 +24128,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectProxy.SignalSignatures[K]>
+            ...args: ObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -24926,7 +24929,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectSkeleton.SignalSignatures[K]>
+            ...args: ObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -25862,7 +25865,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof PasswordBasedProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordBasedProxy.SignalSignatures[K]>
+            ...args: PasswordBasedProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -26785,7 +26788,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof PasswordBasedSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordBasedSkeleton.SignalSignatures[K]>
+            ...args: PasswordBasedSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -27403,7 +27406,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof PhotosProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhotosProxy.SignalSignatures[K]>
+            ...args: PhotosProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -28257,7 +28260,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof PhotosSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhotosSkeleton.SignalSignatures[K]>
+            ...args: PhotosSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -28806,7 +28809,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof PrintersProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintersProxy.SignalSignatures[K]>
+            ...args: PrintersProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -29660,7 +29663,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof PrintersSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintersSkeleton.SignalSignatures[K]>
+            ...args: PrintersSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -30209,7 +30212,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ReadLaterProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReadLaterProxy.SignalSignatures[K]>
+            ...args: ReadLaterProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -31063,7 +31066,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof ReadLaterSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReadLaterSkeleton.SignalSignatures[K]>
+            ...args: ReadLaterSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -31612,7 +31615,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof TicketingProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TicketingProxy.SignalSignatures[K]>
+            ...args: TicketingProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -32533,7 +32536,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof TicketingSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TicketingSkeleton.SignalSignatures[K]>
+            ...args: TicketingSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -33146,7 +33149,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof TodoProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TodoProxy.SignalSignatures[K]>
+            ...args: TodoProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -34000,7 +34003,7 @@ export namespace Goa {
         ): number;
         emit<K extends keyof TodoSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TodoSkeleton.SignalSignatures[K]>
+            ...args: TodoSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

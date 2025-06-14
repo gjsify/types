@@ -140,7 +140,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof BlockChaptersModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlockChaptersModel.SignalSignatures[K]>
+            ...args: BlockChaptersModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -631,7 +631,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof BlockCodepointList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlockCodepointList.SignalSignatures[K]>
+            ...args: BlockCodepointList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -674,7 +674,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof ChaptersModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChaptersModel.SignalSignatures[K]>
+            ...args: ChaptersModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1959,7 +1959,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof ChaptersView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChaptersView.SignalSignatures[K]>
+            ...args: ChaptersView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2609,7 +2609,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof Charmap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Charmap.SignalSignatures[K]>
+            ...args: Charmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3203,7 +3203,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof Chartable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Chartable.SignalSignatures[K]>
+            ...args: Chartable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3801,7 +3801,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof CodepointList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CodepointList.SignalSignatures[K]>
+            ...args: CodepointList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3858,7 +3858,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof ScriptChaptersModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptChaptersModel.SignalSignatures[K]>
+            ...args: ScriptChaptersModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -4337,7 +4337,7 @@ export namespace Gucharmap {
         ): number;
         emit<K extends keyof ScriptCodepointList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptCodepointList.SignalSignatures[K]>
+            ...args: ScriptCodepointList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

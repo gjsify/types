@@ -55,7 +55,7 @@ export namespace Vgda {
         ): number;
         emit<K extends keyof GProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GProvider.SignalSignatures[K]>
+            ...args: GProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

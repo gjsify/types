@@ -2734,7 +2734,10 @@ export namespace EDataServer {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3491,7 +3494,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof Extension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Extension.SignalSignatures[K]>
+            ...args: Extension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3542,7 +3545,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof GDataSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDataSession.SignalSignatures[K]>
+            ...args: GDataSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3755,7 +3758,10 @@ export namespace EDataServer {
 
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
+        emit<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4328,7 +4334,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
+            ...args: NetworkMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5189,7 +5195,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof OAuth2ServiceBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceBase.SignalSignatures[K]>
+            ...args: OAuth2ServiceBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5223,7 +5229,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceGoogle.SignalSignatures[K]>
+            ...args: OAuth2ServiceGoogle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6136,7 +6142,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceOutlook.SignalSignatures[K]>
+            ...args: OAuth2ServiceOutlook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7049,7 +7055,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceYahoo.SignalSignatures[K]>
+            ...args: OAuth2ServiceYahoo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7968,7 +7974,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof OAuth2Services.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Services.SignalSignatures[K]>
+            ...args: OAuth2Services.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -8530,7 +8536,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SoupAuthBearer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoupAuthBearer.SignalSignatures[K]>
+            ...args: SoupAuthBearer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -8623,7 +8629,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SoupSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoupSession.SignalSignatures[K]>
+            ...args: SoupSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -9023,7 +9029,10 @@ export namespace EDataServer {
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -11290,7 +11299,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceAddressBook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAddressBook.SignalSignatures[K]>
+            ...args: SourceAddressBook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11353,7 +11362,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceAlarms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAlarms.SignalSignatures[K]>
+            ...args: SourceAlarms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11484,7 +11493,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceAuthentication.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAuthentication.SignalSignatures[K]>
+            ...args: SourceAuthentication.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11707,7 +11716,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceAutocomplete.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAutocomplete.SignalSignatures[K]>
+            ...args: SourceAutocomplete.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11769,7 +11778,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceAutoconfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAutoconfig.SignalSignatures[K]>
+            ...args: SourceAutoconfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11855,7 +11864,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBackend.SignalSignatures[K]>
+            ...args: SourceBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11918,7 +11927,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCalendar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCalendar.SignalSignatures[K]>
+            ...args: SourceCalendar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -11962,7 +11971,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCamel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCamel.SignalSignatures[K]>
+            ...args: SourceCamel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -12102,7 +12111,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCollection.SignalSignatures[K]>
+            ...args: SourceCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12297,7 +12306,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceContacts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceContacts.SignalSignatures[K]>
+            ...args: SourceContacts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -12351,7 +12360,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProvider.SignalSignatures[K]>
+            ...args: SourceCredentialsProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13116,7 +13125,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProviderImpl.SignalSignatures[K]>
+            ...args: SourceCredentialsProviderImpl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13276,7 +13285,9 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProviderImplOAuth2.SignalSignatures[K]>
+            ...args: SourceCredentialsProviderImplOAuth2.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
     }
 
@@ -13313,7 +13324,9 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProviderImplPassword.SignalSignatures[K]>
+            ...args: SourceCredentialsProviderImplPassword.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
     }
 
@@ -13357,7 +13370,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceExtension.SignalSignatures[K]>
+            ...args: SourceExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13449,7 +13462,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceGoa.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceGoa.SignalSignatures[K]>
+            ...args: SourceGoa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13641,7 +13654,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceLDAP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceLDAP.SignalSignatures[K]>
+            ...args: SourceLDAP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13713,7 +13726,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceLocal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceLocal.SignalSignatures[K]>
+            ...args: SourceLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13814,7 +13827,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMDN.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMDN.SignalSignatures[K]>
+            ...args: SourceMDN.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -13904,7 +13917,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMailAccount.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailAccount.SignalSignatures[K]>
+            ...args: SourceMailAccount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14076,7 +14089,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMailComposition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailComposition.SignalSignatures[K]>
+            ...args: SourceMailComposition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14320,7 +14333,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMailIdentity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailIdentity.SignalSignatures[K]>
+            ...args: SourceMailIdentity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14529,7 +14542,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMailSignature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailSignature.SignalSignatures[K]>
+            ...args: SourceMailSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14637,7 +14650,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMailSubmission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailSubmission.SignalSignatures[K]>
+            ...args: SourceMailSubmission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14740,7 +14753,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMailTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailTransport.SignalSignatures[K]>
+            ...args: SourceMailTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14778,7 +14791,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceMemoList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMemoList.SignalSignatures[K]>
+            ...args: SourceMemoList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -14826,7 +14839,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceOffline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceOffline.SignalSignatures[K]>
+            ...args: SourceOffline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14945,7 +14958,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceOpenPGP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceOpenPGP.SignalSignatures[K]>
+            ...args: SourceOpenPGP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15210,7 +15223,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceProxy.SignalSignatures[K]>
+            ...args: SourceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15525,7 +15538,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceRefresh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRefresh.SignalSignatures[K]>
+            ...args: SourceRefresh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15742,7 +15755,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRegistry.SignalSignatures[K]>
+            ...args: SourceRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -17141,7 +17154,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceRegistryWatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRegistryWatcher.SignalSignatures[K]>
+            ...args: SourceRegistryWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -17207,7 +17220,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceResource.SignalSignatures[K]>
+            ...args: SourceResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17279,7 +17292,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceRevisionGuards.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRevisionGuards.SignalSignatures[K]>
+            ...args: SourceRevisionGuards.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17372,7 +17385,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceSMIME.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSMIME.SignalSignatures[K]>
+            ...args: SourceSMIME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17521,7 +17534,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceSecurity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSecurity.SignalSignatures[K]>
+            ...args: SourceSecurity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17619,7 +17632,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceSelectable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSelectable.SignalSignatures[K]>
+            ...args: SourceSelectable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17711,7 +17724,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceTaskList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceTaskList.SignalSignatures[K]>
+            ...args: SourceTaskList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17756,7 +17769,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceUoa.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceUoa.SignalSignatures[K]>
+            ...args: SourceUoa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17815,7 +17828,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceWeather.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceWeather.SignalSignatures[K]>
+            ...args: SourceWeather.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17871,7 +17884,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceWebDAVNotes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceWebDAVNotes.SignalSignatures[K]>
+            ...args: SourceWebDAVNotes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -17989,7 +18002,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof SourceWebdav.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceWebdav.SignalSignatures[K]>
+            ...args: SourceWebdav.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -18283,7 +18296,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof WebDAVSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebDAVSession.SignalSignatures[K]>
+            ...args: WebDAVSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -19127,7 +19140,7 @@ export namespace EDataServer {
         ): number;
         emit<K extends keyof XmlDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlDocument.SignalSignatures[K]>
+            ...args: XmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

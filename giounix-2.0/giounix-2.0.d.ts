@@ -636,7 +636,7 @@ export namespace GioUnix {
         ): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1837,7 +1837,7 @@ export namespace GioUnix {
         ): number;
         emit<K extends keyof FDMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FDMessage.SignalSignatures[K]>
+            ...args: FDMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1952,7 +1952,7 @@ export namespace GioUnix {
         ): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3341,7 +3341,7 @@ export namespace GioUnix {
         ): number;
         emit<K extends keyof MountMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountMonitor.SignalSignatures[K]>
+            ...args: MountMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3439,7 +3439,7 @@ export namespace GioUnix {
         ): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

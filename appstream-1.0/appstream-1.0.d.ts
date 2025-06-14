@@ -2802,7 +2802,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Agreement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Agreement.SignalSignatures[K]>
+            ...args: Agreement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2872,7 +2872,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof AgreementSection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AgreementSection.SignalSignatures[K]>
+            ...args: AgreementSection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2952,7 +2952,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Artifact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Artifact.SignalSignatures[K]>
+            ...args: Artifact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3067,7 +3067,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Branding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Branding.SignalSignatures[K]>
+            ...args: Branding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3121,7 +3121,10 @@ export namespace AppStream {
 
         connect<K extends keyof Bundle.SignalSignatures>(signal: K, callback: Bundle.SignalSignatures[K]): number;
         connect_after<K extends keyof Bundle.SignalSignatures>(signal: K, callback: Bundle.SignalSignatures[K]): number;
-        emit<K extends keyof Bundle.SignalSignatures>(signal: K, ...args: Parameters<Bundle.SignalSignatures[K]>): void;
+        emit<K extends keyof Bundle.SignalSignatures>(
+            signal: K,
+            ...args: Bundle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -3193,7 +3196,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3306,7 +3309,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Checksum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checksum.SignalSignatures[K]>
+            ...args: Checksum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3452,7 +3455,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4263,7 +4266,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof ComponentBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComponentBox.SignalSignatures[K]>
+            ...args: ComponentBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4355,7 +4358,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof ContentRating.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentRating.SignalSignatures[K]>
+            ...args: ContentRating.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4478,7 +4481,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4562,7 +4565,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Developer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Developer.SignalSignatures[K]>
+            ...args: Developer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4614,7 +4617,10 @@ export namespace AppStream {
 
         connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
         connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
-        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
+        emit<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            ...args: Icon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4695,7 +4701,10 @@ export namespace AppStream {
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4785,7 +4794,10 @@ export namespace AppStream {
 
         connect<K extends keyof Issue.SignalSignatures>(signal: K, callback: Issue.SignalSignatures[K]): number;
         connect_after<K extends keyof Issue.SignalSignatures>(signal: K, callback: Issue.SignalSignatures[K]): number;
-        emit<K extends keyof Issue.SignalSignatures>(signal: K, ...args: Parameters<Issue.SignalSignatures[K]>): void;
+        emit<K extends keyof Issue.SignalSignatures>(
+            signal: K,
+            ...args: Issue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -4854,7 +4866,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Launchable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Launchable.SignalSignatures[K]>
+            ...args: Launchable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4912,7 +4924,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Metadata.SignalSignatures[K]>
+            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5165,7 +5177,10 @@ export namespace AppStream {
 
         connect<K extends keyof Pool.SignalSignatures>(signal: K, callback: Pool.SignalSignatures[K]): number;
         connect_after<K extends keyof Pool.SignalSignatures>(signal: K, callback: Pool.SignalSignatures[K]): number;
-        emit<K extends keyof Pool.SignalSignatures>(signal: K, ...args: Parameters<Pool.SignalSignatures[K]>): void;
+        emit<K extends keyof Pool.SignalSignatures>(
+            signal: K,
+            ...args: Pool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -5393,7 +5408,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Provided.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Provided.SignalSignatures[K]>
+            ...args: Provided.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5456,7 +5471,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Reference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Reference.SignalSignatures[K]>
+            ...args: Reference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5527,7 +5542,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Relation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Relation.SignalSignatures[K]>
+            ...args: Relation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -5704,7 +5719,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof RelationCheckResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelationCheckResult.SignalSignatures[K]>
+            ...args: RelationCheckResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5778,7 +5793,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Release.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Release.SignalSignatures[K]>
+            ...args: Release.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5973,7 +5988,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof ReleaseList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReleaseList.SignalSignatures[K]>
+            ...args: ReleaseList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6132,7 +6147,10 @@ export namespace AppStream {
 
         connect<K extends keyof Review.SignalSignatures>(signal: K, callback: Review.SignalSignatures[K]): number;
         connect_after<K extends keyof Review.SignalSignatures>(signal: K, callback: Review.SignalSignatures[K]): number;
-        emit<K extends keyof Review.SignalSignatures>(signal: K, ...args: Parameters<Review.SignalSignatures[K]>): void;
+        emit<K extends keyof Review.SignalSignatures>(
+            signal: K,
+            ...args: Review.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -6311,7 +6329,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Screenshot.SignalSignatures[K]>
+            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6451,7 +6469,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Suggested.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Suggested.SignalSignatures[K]>
+            ...args: Suggested.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6518,7 +6536,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof SystemInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemInfo.SignalSignatures[K]>
+            ...args: SystemInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6665,7 +6683,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Translation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Translation.SignalSignatures[K]>
+            ...args: Translation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6733,7 +6751,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof Validator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Validator.SignalSignatures[K]>
+            ...args: Validator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6886,7 +6904,7 @@ export namespace AppStream {
         ): number;
         emit<K extends keyof ValidatorIssue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValidatorIssue.SignalSignatures[K]>
+            ...args: ValidatorIssue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6994,7 +7012,10 @@ export namespace AppStream {
 
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
+        emit<K extends keyof Video.SignalSignatures>(
+            signal: K,
+            ...args: Video.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

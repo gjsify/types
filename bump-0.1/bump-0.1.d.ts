@@ -93,7 +93,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof AsyncPriorityQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncPriorityQueue.SignalSignatures[K]>
+            ...args: AsyncPriorityQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -153,7 +153,10 @@ export namespace Bump {
 
         connect<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
         connect_after<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
-        emit<K extends keyof Claim.SignalSignatures>(signal: K, ...args: Parameters<Claim.SignalSignatures[K]>): void;
+        emit<K extends keyof Claim.SignalSignatures>(
+            signal: K,
+            ...args: Claim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -702,7 +705,10 @@ export namespace Bump {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -816,7 +822,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -944,7 +950,10 @@ export namespace Bump {
 
         connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
         connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
-        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: Parameters<Lazy.SignalSignatures[K]>): void;
+        emit<K extends keyof Lazy.SignalSignatures>(
+            signal: K,
+            ...args: Lazy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1008,7 +1017,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof ResourceClaim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceClaim.SignalSignatures[K]>
+            ...args: ResourceClaim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1101,7 +1110,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof ResourcePool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourcePool.SignalSignatures[K]>
+            ...args: ResourcePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1233,7 +1242,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof Semaphore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Semaphore.SignalSignatures[K]>
+            ...args: Semaphore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1308,7 +1317,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof SemaphoreClaim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SemaphoreClaim.SignalSignatures[K]>
+            ...args: SemaphoreClaim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1348,7 +1357,7 @@ export namespace Bump {
         ): number;
         emit<K extends keyof TaskQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskQueue.SignalSignatures[K]>
+            ...args: TaskQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

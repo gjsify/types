@@ -83,7 +83,7 @@ export namespace RygelRendererGst {
         ): number;
         emit<K extends keyof PlaybinPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaybinPlayer.SignalSignatures[K]>
+            ...args: PlaybinPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -666,7 +666,7 @@ export namespace RygelRendererGst {
         ): number;
         emit<K extends keyof PlaybinRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaybinRenderer.SignalSignatures[K]>
+            ...args: PlaybinRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

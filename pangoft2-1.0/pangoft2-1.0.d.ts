@@ -176,7 +176,7 @@ export namespace PangoFT2 {
         ): number;
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontMap.SignalSignatures[K]>
+            ...args: FontMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -122,7 +122,10 @@ export namespace GrlNet {
 
         connect<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
         connect_after<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
-        emit<K extends keyof Wc.SignalSignatures>(signal: K, ...args: Parameters<Wc.SignalSignatures[K]>): void;
+        emit<K extends keyof Wc.SignalSignatures>(
+            signal: K,
+            ...args: Wc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

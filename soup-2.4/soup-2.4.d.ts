@@ -2847,7 +2847,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof Address.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Address.SignalSignatures[K]>
+            ...args: Address.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3545,7 +3545,10 @@ export namespace Soup {
 
         connect<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
         connect_after<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
-        emit<K extends keyof Auth.SignalSignatures>(signal: K, ...args: Parameters<Auth.SignalSignatures[K]>): void;
+        emit<K extends keyof Auth.SignalSignatures>(
+            signal: K,
+            ...args: Auth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3706,7 +3709,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthBasic.SignalSignatures[K]>
+            ...args: AuthBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3740,7 +3743,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDigest.SignalSignatures[K]>
+            ...args: AuthDigest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3820,7 +3823,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDomain.SignalSignatures[K]>
+            ...args: AuthDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3996,7 +3999,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDomainBasic.SignalSignatures[K]>
+            ...args: AuthDomainBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4074,7 +4077,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDomainDigest.SignalSignatures[K]>
+            ...args: AuthDomainDigest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4154,7 +4157,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthManager.SignalSignatures[K]>
+            ...args: AuthManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4725,7 +4728,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthNTLM.SignalSignatures[K]>
+            ...args: AuthNTLM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4759,7 +4762,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthNegotiate.SignalSignatures[K]>
+            ...args: AuthNegotiate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4809,7 +4812,10 @@ export namespace Soup {
 
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
-        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: Parameters<Cache.SignalSignatures[K]>): void;
+        emit<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            ...args: Cache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -5400,7 +5406,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDecoder.SignalSignatures[K]>
+            ...args: ContentDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -5951,7 +5957,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentSniffer.SignalSignatures[K]>
+            ...args: ContentSniffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -6561,7 +6567,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJar.SignalSignatures[K]>
+            ...args: CookieJar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -7290,7 +7296,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJarDB.SignalSignatures[K]>
+            ...args: CookieJarDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7850,7 +7856,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJarText.SignalSignatures[K]>
+            ...args: CookieJarText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -8414,7 +8420,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HSTSEnforcer.SignalSignatures[K]>
+            ...args: HSTSEnforcer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -9041,7 +9047,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HSTSEnforcerDB.SignalSignatures[K]>
+            ...args: HSTSEnforcerDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -9610,7 +9616,10 @@ export namespace Soup {
 
         connect<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
         connect_after<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
-        emit<K extends keyof Logger.SignalSignatures>(signal: K, ...args: Parameters<Logger.SignalSignatures[K]>): void;
+        emit<K extends keyof Logger.SignalSignatures>(
+            signal: K,
+            ...args: Logger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -10444,7 +10453,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -10738,7 +10747,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultipartInputStream.SignalSignatures[K]>
+            ...args: MultipartInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -11725,7 +11734,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof ProxyResolverDefault.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyResolverDefault.SignalSignatures[K]>
+            ...args: ProxyResolverDefault.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -12333,7 +12342,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof Request.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Request.SignalSignatures[K]>
+            ...args: Request.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -13014,7 +13023,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof RequestData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequestData.SignalSignatures[K]>
+            ...args: RequestData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -13574,7 +13583,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof RequestFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequestFile.SignalSignatures[K]>
+            ...args: RequestFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14142,7 +14151,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof RequestHTTP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequestHTTP.SignalSignatures[K]>
+            ...args: RequestHTTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -14709,7 +14718,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof Requester.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Requester.SignalSignatures[K]>
+            ...args: Requester.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -15495,7 +15504,10 @@ export namespace Soup {
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -16505,7 +16517,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -17152,7 +17164,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof SessionAsync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionAsync.SignalSignatures[K]>
+            ...args: SessionAsync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17188,7 +17200,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof SessionSync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionSync.SignalSignatures[K]>
+            ...args: SessionSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -17381,7 +17393,10 @@ export namespace Soup {
 
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
-        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
+        emit<K extends keyof Socket.SignalSignatures>(
+            signal: K,
+            ...args: Socket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -18224,7 +18239,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketConnection.SignalSignatures[K]>
+            ...args: WebsocketConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18410,7 +18425,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketExtension.SignalSignatures[K]>
+            ...args: WebsocketExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -18527,7 +18542,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketExtensionDeflate.SignalSignatures[K]>
+            ...args: WebsocketExtensionDeflate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -18561,7 +18576,7 @@ export namespace Soup {
         ): number;
         emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketExtensionManager.SignalSignatures[K]>
+            ...args: WebsocketExtensionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

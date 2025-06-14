@@ -279,7 +279,10 @@ export namespace GSSDP {
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1006,7 +1009,7 @@ export namespace GSSDP {
         ): number;
         emit<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceBrowser.SignalSignatures[K]>
+            ...args: ResourceBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1139,7 +1142,7 @@ export namespace GSSDP {
         ): number;
         emit<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceGroup.SignalSignatures[K]>
+            ...args: ResourceGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

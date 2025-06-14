@@ -53,7 +53,7 @@ export namespace GVncPulse {
         ): number;
         emit<K extends keyof AudioPulse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioPulse.SignalSignatures[K]>
+            ...args: AudioPulse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods

@@ -88,7 +88,10 @@ export namespace Gepub {
 
         connect<K extends keyof Doc.SignalSignatures>(signal: K, callback: Doc.SignalSignatures[K]): number;
         connect_after<K extends keyof Doc.SignalSignatures>(signal: K, callback: Doc.SignalSignatures[K]): number;
-        emit<K extends keyof Doc.SignalSignatures>(signal: K, ...args: Parameters<Doc.SignalSignatures[K]>): void;
+        emit<K extends keyof Doc.SignalSignatures>(
+            signal: K,
+            ...args: Doc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -675,7 +678,10 @@ export namespace Gepub {
 
         connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
         connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
-        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
+        emit<K extends keyof Widget.SignalSignatures>(
+            signal: K,
+            ...args: Widget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

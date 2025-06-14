@@ -297,7 +297,7 @@ export namespace Amtk {
         ): number;
         emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionInfoCentralStore.SignalSignatures[K]>
+            ...args: ActionInfoCentralStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -341,7 +341,7 @@ export namespace Amtk {
         ): number;
         emit<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionInfoStore.SignalSignatures[K]>
+            ...args: ActionInfoStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -454,7 +454,7 @@ export namespace Amtk {
         ): number;
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+            ...args: ApplicationWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -582,7 +582,7 @@ export namespace Amtk {
         ): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -802,7 +802,7 @@ export namespace Amtk {
         ): number;
         emit<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuShell.SignalSignatures[K]>
+            ...args: MenuShell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

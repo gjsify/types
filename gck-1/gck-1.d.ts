@@ -437,7 +437,7 @@ export namespace Gck {
         ): number;
         emit<K extends keyof Enumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Enumerator.SignalSignatures[K]>
+            ...args: Enumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -612,7 +612,10 @@ export namespace Gck {
 
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
+        emit<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -739,7 +742,10 @@ export namespace Gck {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1257,7 +1263,7 @@ export namespace Gck {
         ): number;
         emit<K extends keyof Password.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Password.SignalSignatures[K]>
+            ...args: Password.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1377,7 +1383,7 @@ export namespace Gck {
         ): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3383,7 +3389,10 @@ export namespace Gck {
 
         connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
         connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
-        emit<K extends keyof Slot.SignalSignatures>(signal: K, ...args: Parameters<Slot.SignalSignatures[K]>): void;
+        emit<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            ...args: Slot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

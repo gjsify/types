@@ -539,7 +539,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Capabilities.SignalSignatures[K]>
+            ...args: Capabilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -586,7 +586,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesCpu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesCpu.SignalSignatures[K]>
+            ...args: CapabilitiesCpu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -656,7 +656,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesCpuFeature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesCpuFeature.SignalSignatures[K]>
+            ...args: CapabilitiesCpuFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -702,7 +702,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesCpuModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesCpuModel.SignalSignatures[K]>
+            ...args: CapabilitiesCpuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -748,7 +748,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesCpuTopology.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesCpuTopology.SignalSignatures[K]>
+            ...args: CapabilitiesCpuTopology.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -791,7 +791,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesGuest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesGuest.SignalSignatures[K]>
+            ...args: CapabilitiesGuest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -839,7 +839,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesGuestArch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesGuestArch.SignalSignatures[K]>
+            ...args: CapabilitiesGuestArch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -883,7 +883,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesGuestDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesGuestDomain.SignalSignatures[K]>
+            ...args: CapabilitiesGuestDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -922,7 +922,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesGuestFeature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesGuestFeature.SignalSignatures[K]>
+            ...args: CapabilitiesGuestFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -960,7 +960,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesHost.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesHost.SignalSignatures[K]>
+            ...args: CapabilitiesHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1008,7 +1008,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof CapabilitiesHostSecModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CapabilitiesHostSecModel.SignalSignatures[K]>
+            ...args: CapabilitiesHostSecModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1077,7 +1077,10 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
         connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
-        emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: Parameters<Domain.SignalSignatures[K]>): void;
+        emit<K extends keyof Domain.SignalSignatures>(
+            signal: K,
+            ...args: Domain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -1183,7 +1186,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainAddress.SignalSignatures[K]>
+            ...args: DomainAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1224,7 +1227,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainAddressPci.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainAddressPci.SignalSignatures[K]>
+            ...args: DomainAddressPci.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1278,7 +1281,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainAddressUsb.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainAddressUsb.SignalSignatures[K]>
+            ...args: DomainAddressUsb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1324,7 +1327,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainCapabilities.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainCapabilities.SignalSignatures[K]>
+            ...args: DomainCapabilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1366,7 +1369,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainCapabilitiesOs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainCapabilitiesOs.SignalSignatures[K]>
+            ...args: DomainCapabilitiesOs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1424,7 +1427,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChannel.SignalSignatures[K]>
+            ...args: DomainChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1465,7 +1468,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChardev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChardev.SignalSignatures[K]>
+            ...args: DomainChardev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1508,7 +1511,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChardevSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChardevSource.SignalSignatures[K]>
+            ...args: DomainChardevSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1549,7 +1552,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChardevSourcePty.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChardevSourcePty.SignalSignatures[K]>
+            ...args: DomainChardevSourcePty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1595,7 +1598,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChardevSourceSpicePort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChardevSourceSpicePort.SignalSignatures[K]>
+            ...args: DomainChardevSourceSpicePort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1641,7 +1644,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChardevSourceSpiceVmc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChardevSourceSpiceVmc.SignalSignatures[K]>
+            ...args: DomainChardevSourceSpiceVmc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1682,7 +1685,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainChardevSourceUnix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainChardevSourceUnix.SignalSignatures[K]>
+            ...args: DomainChardevSourceUnix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1723,7 +1726,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainClock.SignalSignatures[K]>
+            ...args: DomainClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1774,7 +1777,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainConsole.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainConsole.SignalSignatures[K]>
+            ...args: DomainConsole.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1812,7 +1815,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainController.SignalSignatures[K]>
+            ...args: DomainController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1866,7 +1869,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainControllerUsb.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainControllerUsb.SignalSignatures[K]>
+            ...args: DomainControllerUsb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1920,7 +1923,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainCpu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainCpu.SignalSignatures[K]>
+            ...args: DomainCpu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1969,7 +1972,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainCpuFeature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainCpuFeature.SignalSignatures[K]>
+            ...args: DomainCpuFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2015,7 +2018,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainCpuModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainCpuModel.SignalSignatures[K]>
+            ...args: DomainCpuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2049,7 +2052,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainDevice.SignalSignatures[K]>
+            ...args: DomainDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2094,7 +2097,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainDisk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainDisk.SignalSignatures[K]>
+            ...args: DomainDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2171,7 +2174,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainDiskDriver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainDiskDriver.SignalSignatures[K]>
+            ...args: DomainDiskDriver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2229,7 +2232,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainFilesys.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainFilesys.SignalSignatures[K]>
+            ...args: DomainFilesys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2274,7 +2277,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainGraphics.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainGraphics.SignalSignatures[K]>
+            ...args: DomainGraphics.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -2315,7 +2318,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainGraphicsDesktop.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainGraphicsDesktop.SignalSignatures[K]>
+            ...args: DomainGraphicsDesktop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2363,7 +2366,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainGraphicsRdp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainGraphicsRdp.SignalSignatures[K]>
+            ...args: DomainGraphicsRdp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2414,7 +2417,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainGraphicsSdl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainGraphicsSdl.SignalSignatures[K]>
+            ...args: DomainGraphicsSdl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2461,7 +2464,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainGraphicsSpice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainGraphicsSpice.SignalSignatures[K]>
+            ...args: DomainGraphicsSpice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2513,7 +2516,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainGraphicsVnc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainGraphicsVnc.SignalSignatures[K]>
+            ...args: DomainGraphicsVnc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2556,7 +2559,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainHostdev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainHostdev.SignalSignatures[K]>
+            ...args: DomainHostdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2619,7 +2622,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainHostdevPci.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainHostdevPci.SignalSignatures[K]>
+            ...args: DomainHostdevPci.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2675,7 +2678,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInput.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInput.SignalSignatures[K]>
+            ...args: DomainInput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2716,7 +2719,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInterface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterface.SignalSignatures[K]>
+            ...args: DomainInterface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2774,7 +2777,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInterfaceBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterfaceBridge.SignalSignatures[K]>
+            ...args: DomainInterfaceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2819,7 +2822,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInterfaceFilterref.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterfaceFilterref.SignalSignatures[K]>
+            ...args: DomainInterfaceFilterref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2873,7 +2876,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInterfaceFilterrefParameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterfaceFilterrefParameter.SignalSignatures[K]>
+            ...args: DomainInterfaceFilterrefParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2921,7 +2924,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInterfaceNetwork.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterfaceNetwork.SignalSignatures[K]>
+            ...args: DomainInterfaceNetwork.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2966,7 +2969,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainInterfaceUser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainInterfaceUser.SignalSignatures[K]>
+            ...args: DomainInterfaceUser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3007,7 +3010,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainMemballoon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainMemballoon.SignalSignatures[K]>
+            ...args: DomainMemballoon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3049,7 +3052,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainOs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainOs.SignalSignatures[K]>
+            ...args: DomainOs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3116,7 +3119,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainParallel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainParallel.SignalSignatures[K]>
+            ...args: DomainParallel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3157,7 +3160,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainPowerManagement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainPowerManagement.SignalSignatures[K]>
+            ...args: DomainPowerManagement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3203,7 +3206,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainRedirdev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainRedirdev.SignalSignatures[K]>
+            ...args: DomainRedirdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3249,7 +3252,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSeclabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSeclabel.SignalSignatures[K]>
+            ...args: DomainSeclabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3297,7 +3300,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSerial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSerial.SignalSignatures[K]>
+            ...args: DomainSerial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3331,7 +3334,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSmartcard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSmartcard.SignalSignatures[K]>
+            ...args: DomainSmartcard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3376,7 +3379,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSmartcardHost.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSmartcardHost.SignalSignatures[K]>
+            ...args: DomainSmartcardHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3417,7 +3420,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSmartcardHostCertificates.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSmartcardHostCertificates.SignalSignatures[K]>
+            ...args: DomainSmartcardHostCertificates.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3463,7 +3466,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSmartcardPassthrough.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSmartcardPassthrough.SignalSignatures[K]>
+            ...args: DomainSmartcardPassthrough.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3508,7 +3511,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSnapshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSnapshot.SignalSignatures[K]>
+            ...args: DomainSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3577,7 +3580,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSnapshotDisk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSnapshotDisk.SignalSignatures[K]>
+            ...args: DomainSnapshotDisk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3629,7 +3632,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainSound.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainSound.SignalSignatures[K]>
+            ...args: DomainSound.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3667,7 +3670,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainTimer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainTimer.SignalSignatures[K]>
+            ...args: DomainTimer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3715,7 +3718,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainTimerHpet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainTimerHpet.SignalSignatures[K]>
+            ...args: DomainTimerHpet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3756,7 +3759,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainTimerPit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainTimerPit.SignalSignatures[K]>
+            ...args: DomainTimerPit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3797,7 +3800,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainTimerRtc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainTimerRtc.SignalSignatures[K]>
+            ...args: DomainTimerRtc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3838,7 +3841,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof DomainVideo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomainVideo.SignalSignatures[K]>
+            ...args: DomainVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3886,7 +3889,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interface.SignalSignatures[K]>
+            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3924,7 +3927,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof Network.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Network.SignalSignatures[K]>
+            ...args: Network.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3965,7 +3968,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof NetworkFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkFilter.SignalSignatures[K]>
+            ...args: NetworkFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4006,7 +4009,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof NodeDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NodeDevice.SignalSignatures[K]>
+            ...args: NodeDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4044,7 +4047,10 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4086,7 +4092,10 @@ export namespace LibvirtGConfig {
 
         connect<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
         connect_after<K extends keyof Secret.SignalSignatures>(signal: K, callback: Secret.SignalSignatures[K]): number;
-        emit<K extends keyof Secret.SignalSignatures>(signal: K, ...args: Parameters<Secret.SignalSignatures[K]>): void;
+        emit<K extends keyof Secret.SignalSignatures>(
+            signal: K,
+            ...args: Secret.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace StoragePermissions {
@@ -4126,7 +4135,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StoragePermissions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoragePermissions.SignalSignatures[K]>
+            ...args: StoragePermissions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4194,7 +4203,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StoragePool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoragePool.SignalSignatures[K]>
+            ...args: StoragePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4286,7 +4295,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StoragePoolSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoragePoolSource.SignalSignatures[K]>
+            ...args: StoragePoolSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4383,7 +4392,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StoragePoolTarget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoragePoolTarget.SignalSignatures[K]>
+            ...args: StoragePoolTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4440,7 +4449,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StorageVol.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StorageVol.SignalSignatures[K]>
+            ...args: StorageVol.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4489,7 +4498,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StorageVolBackingStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StorageVolBackingStore.SignalSignatures[K]>
+            ...args: StorageVolBackingStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4535,7 +4544,7 @@ export namespace LibvirtGConfig {
         ): number;
         emit<K extends keyof StorageVolTarget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StorageVolTarget.SignalSignatures[K]>
+            ...args: StorageVolTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

@@ -1016,7 +1016,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof AudioVisualizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioVisualizer.SignalSignatures[K]>
+            ...args: AudioVisualizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1124,7 +1124,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Discoverer.SignalSignatures[K]>
+            ...args: Discoverer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1207,7 +1207,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof DiscovererAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererAudioInfo.SignalSignatures[K]>
+            ...args: DiscovererAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1254,7 +1254,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof DiscovererContainerInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererContainerInfo.SignalSignatures[K]>
+            ...args: DiscovererContainerInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1296,7 +1296,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof DiscovererInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererInfo.SignalSignatures[K]>
+            ...args: DiscovererInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1412,7 +1412,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof DiscovererStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererStreamInfo.SignalSignatures[K]>
+            ...args: DiscovererStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1471,7 +1471,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof DiscovererSubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererSubtitleInfo.SignalSignatures[K]>
+            ...args: DiscovererSubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1512,7 +1512,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof DiscovererVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererVideoInfo.SignalSignatures[K]>
+            ...args: DiscovererVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1570,7 +1570,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof EncodingAudioProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncodingAudioProfile.SignalSignatures[K]>
+            ...args: EncodingAudioProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1614,7 +1614,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof EncodingContainerProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncodingContainerProfile.SignalSignatures[K]>
+            ...args: EncodingContainerProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1708,7 +1708,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof EncodingProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncodingProfile.SignalSignatures[K]>
+            ...args: EncodingProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1890,7 +1890,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof EncodingTarget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncodingTarget.SignalSignatures[K]>
+            ...args: EncodingTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1983,7 +1983,7 @@ export namespace GstPbutils {
         ): number;
         emit<K extends keyof EncodingVideoProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EncodingVideoProfile.SignalSignatures[K]>
+            ...args: EncodingVideoProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

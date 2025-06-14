@@ -2145,7 +2145,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof Adapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Adapter.SignalSignatures[K]>
+            ...args: Adapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2267,7 +2267,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof BaseSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseSink.SignalSignatures[K]>
+            ...args: BaseSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2383,7 +2383,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof BaseSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseSrc.SignalSignatures[K]>
+            ...args: BaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2476,7 +2476,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof BaseTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseTransform.SignalSignatures[K]>
+            ...args: BaseTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2580,7 +2580,10 @@ export namespace Gst {
 
         connect<K extends keyof Bin.SignalSignatures>(signal: K, callback: Bin.SignalSignatures[K]): number;
         connect_after<K extends keyof Bin.SignalSignatures>(signal: K, callback: Bin.SignalSignatures[K]): number;
-        emit<K extends keyof Bin.SignalSignatures>(signal: K, ...args: Parameters<Bin.SignalSignatures[K]>): void;
+        emit<K extends keyof Bin.SignalSignatures>(
+            signal: K,
+            ...args: Bin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -2668,7 +2671,10 @@ export namespace Gst {
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2715,7 +2721,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof BufferList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferList.SignalSignatures[K]>
+            ...args: BufferList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2775,7 +2781,10 @@ export namespace Gst {
 
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
-        emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
+        emit<K extends keyof Bus.SignalSignatures>(
+            signal: K,
+            ...args: Bus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -2865,7 +2874,10 @@ export namespace Gst {
 
         connect<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
         connect_after<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
-        emit<K extends keyof Clock.SignalSignatures>(signal: K, ...args: Parameters<Clock.SignalSignatures[K]>): void;
+        emit<K extends keyof Clock.SignalSignatures>(
+            signal: K,
+            ...args: Clock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -2954,7 +2966,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof CollectPads.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectPads.SignalSignatures[K]>
+            ...args: CollectPads.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3057,7 +3069,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof DataQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataQueue.SignalSignatures[K]>
+            ...args: DataQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3141,7 +3153,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof Element.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Element.SignalSignatures[K]>
+            ...args: Element.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3293,7 +3305,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof ElementFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementFactory.SignalSignatures[K]>
+            ...args: ElementFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3394,7 +3406,10 @@ export namespace Gst {
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -3454,7 +3469,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof GParamSpecMiniObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GParamSpecMiniObject.SignalSignatures[K]>
+            ...args: GParamSpecMiniObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -3506,7 +3521,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof GhostPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GhostPad.SignalSignatures[K]>
+            ...args: GhostPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3571,7 +3586,10 @@ export namespace Gst {
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -3664,7 +3682,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof IndexFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexFactory.SignalSignatures[K]>
+            ...args: IndexFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3787,7 +3805,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -3864,7 +3882,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof MiniObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MiniObject.SignalSignatures[K]>
+            ...args: MiniObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3939,7 +3957,10 @@ export namespace Gst {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4075,7 +4096,10 @@ export namespace Gst {
 
         connect<K extends keyof Pad.SignalSignatures>(signal: K, callback: Pad.SignalSignatures[K]): number;
         connect_after<K extends keyof Pad.SignalSignatures>(signal: K, callback: Pad.SignalSignatures[K]): number;
-        emit<K extends keyof Pad.SignalSignatures>(signal: K, ...args: Parameters<Pad.SignalSignatures[K]>): void;
+        emit<K extends keyof Pad.SignalSignatures>(
+            signal: K,
+            ...args: Pad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4238,7 +4262,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof PadTemplate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PadTemplate.SignalSignatures[K]>
+            ...args: PadTemplate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4277,7 +4301,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof ParamFraction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamFraction.SignalSignatures[K]>
+            ...args: ParamFraction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4332,7 +4356,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pipeline.SignalSignatures[K]>
+            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4411,7 +4435,10 @@ export namespace Gst {
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4511,7 +4538,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof PluginFeature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginFeature.SignalSignatures[K]>
+            ...args: PluginFeature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4558,7 +4585,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof ProxyPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyPad.SignalSignatures[K]>
+            ...args: ProxyPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4592,7 +4619,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof PushSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PushSrc.SignalSignatures[K]>
+            ...args: PushSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4646,7 +4673,10 @@ export namespace Gst {
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4737,7 +4767,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4811,7 +4841,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof SystemClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemClock.SignalSignatures[K]>
+            ...args: SystemClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4853,7 +4883,10 @@ export namespace Gst {
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 
@@ -4911,7 +4944,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof TaskPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskPool.SignalSignatures[K]>
+            ...args: TaskPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4970,7 +5003,7 @@ export namespace Gst {
         ): number;
         emit<K extends keyof TypeFindFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TypeFindFactory.SignalSignatures[K]>
+            ...args: TypeFindFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5020,7 +5053,10 @@ export namespace Gst {
 
         connect<K extends keyof XML.SignalSignatures>(signal: K, callback: XML.SignalSignatures[K]): number;
         connect_after<K extends keyof XML.SignalSignatures>(signal: K, callback: XML.SignalSignatures[K]): number;
-        emit<K extends keyof XML.SignalSignatures>(signal: K, ...args: Parameters<XML.SignalSignatures[K]>): void;
+        emit<K extends keyof XML.SignalSignatures>(
+            signal: K,
+            ...args: XML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Static methods
 

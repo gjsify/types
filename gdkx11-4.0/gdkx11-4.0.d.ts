@@ -132,7 +132,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11AppLaunchContext.SignalSignatures[K]>
+            ...args: X11AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -178,7 +178,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11DeviceManagerXI2.SignalSignatures[K]>
+            ...args: X11DeviceManagerXI2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -220,7 +220,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11DeviceXI2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11DeviceXI2.SignalSignatures[K]>
+            ...args: X11DeviceXI2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -262,7 +262,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Display.SignalSignatures[K]>
+            ...args: X11Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -512,7 +512,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11Drag.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Drag.SignalSignatures[K]>
+            ...args: X11Drag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -546,7 +546,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11GLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11GLContext.SignalSignatures[K]>
+            ...args: X11GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -580,7 +580,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Monitor.SignalSignatures[K]>
+            ...args: X11Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -635,7 +635,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11Screen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Screen.SignalSignatures[K]>
+            ...args: X11Screen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -728,7 +728,7 @@ export namespace GdkX11 {
         ): number;
         emit<K extends keyof X11Surface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Surface.SignalSignatures[K]>
+            ...args: X11Surface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

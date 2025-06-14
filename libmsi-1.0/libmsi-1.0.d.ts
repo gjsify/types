@@ -202,7 +202,7 @@ export namespace Libmsi {
         ): number;
         emit<K extends keyof Database.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Database.SignalSignatures[K]>
+            ...args: Database.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -274,7 +274,10 @@ export namespace Libmsi {
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -337,7 +340,10 @@ export namespace Libmsi {
 
         connect<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
         connect_after<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
-        emit<K extends keyof Record.SignalSignatures>(signal: K, ...args: Parameters<Record.SignalSignatures[K]>): void;
+        emit<K extends keyof Record.SignalSignatures>(
+            signal: K,
+            ...args: Record.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 
@@ -442,7 +448,7 @@ export namespace Libmsi {
         ): number;
         emit<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SummaryInfo.SignalSignatures[K]>
+            ...args: SummaryInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

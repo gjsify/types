@@ -219,7 +219,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof ExpressionContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionContainer.SignalSignatures[K]>
+            ...args: ExpressionContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -816,7 +816,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof ExpressionHashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionHashMap.SignalSignatures[K]>
+            ...args: ExpressionHashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -862,7 +862,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionAcos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionAcos.SignalSignatures[K]>
+            ...args: GFunctionAcos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -898,7 +898,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionAcosh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionAcosh.SignalSignatures[K]>
+            ...args: GFunctionAcosh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -934,7 +934,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionAsin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionAsin.SignalSignatures[K]>
+            ...args: GFunctionAsin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -970,7 +970,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionAsinh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionAsinh.SignalSignatures[K]>
+            ...args: GFunctionAsinh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1006,7 +1006,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionAtan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionAtan.SignalSignatures[K]>
+            ...args: GFunctionAtan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1042,7 +1042,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionAtanh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionAtanh.SignalSignatures[K]>
+            ...args: GFunctionAtanh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1078,7 +1078,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionCos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionCos.SignalSignatures[K]>
+            ...args: GFunctionCos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1114,7 +1114,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionCosh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionCosh.SignalSignatures[K]>
+            ...args: GFunctionCosh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1150,7 +1150,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionExp.SignalSignatures[K]>
+            ...args: GFunctionExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1186,7 +1186,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionLog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionLog.SignalSignatures[K]>
+            ...args: GFunctionLog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1222,7 +1222,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionSin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionSin.SignalSignatures[K]>
+            ...args: GFunctionSin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1258,7 +1258,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionSinh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionSinh.SignalSignatures[K]>
+            ...args: GFunctionSinh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1294,7 +1294,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionSqrt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionSqrt.SignalSignatures[K]>
+            ...args: GFunctionSqrt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1330,7 +1330,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionTan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionTan.SignalSignatures[K]>
+            ...args: GFunctionTan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1366,7 +1366,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunctionTanh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunctionTanh.SignalSignatures[K]>
+            ...args: GFunctionTanh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1402,7 +1402,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GExpression.SignalSignatures[K]>
+            ...args: GExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1900,7 +1900,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GErrorExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GErrorExpression.SignalSignatures[K]>
+            ...args: GErrorExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2378,7 +2378,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GAssign.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GAssign.SignalSignatures[K]>
+            ...args: GAssign.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2861,7 +2861,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GConstant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GConstant.SignalSignatures[K]>
+            ...args: GConstant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3359,7 +3359,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GDivision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDivision.SignalSignatures[K]>
+            ...args: GDivision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -3839,7 +3839,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GErrorResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GErrorResult.SignalSignatures[K]>
+            ...args: GErrorResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -4328,7 +4328,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GFunction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GFunction.SignalSignatures[K]>
+            ...args: GFunction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4843,7 +4843,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GMathEquation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GMathEquation.SignalSignatures[K]>
+            ...args: GMathEquation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5325,7 +5325,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GMathEquationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GMathEquationManager.SignalSignatures[K]>
+            ...args: GMathEquationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -5808,7 +5808,10 @@ export namespace GCalc {
 
         connect<K extends keyof GMinus.SignalSignatures>(signal: K, callback: GMinus.SignalSignatures[K]): number;
         connect_after<K extends keyof GMinus.SignalSignatures>(signal: K, callback: GMinus.SignalSignatures[K]): number;
-        emit<K extends keyof GMinus.SignalSignatures>(signal: K, ...args: Parameters<GMinus.SignalSignatures[K]>): void;
+        emit<K extends keyof GMinus.SignalSignatures>(
+            signal: K,
+            ...args: GMinus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -6285,7 +6288,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GMultiply.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GMultiply.SignalSignatures[K]>
+            ...args: GMultiply.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -6759,7 +6762,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GParser.SignalSignatures[K]>
+            ...args: GParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -6797,7 +6800,10 @@ export namespace GCalc {
 
         connect<K extends keyof GPlus.SignalSignatures>(signal: K, callback: GPlus.SignalSignatures[K]): number;
         connect_after<K extends keyof GPlus.SignalSignatures>(signal: K, callback: GPlus.SignalSignatures[K]): number;
-        emit<K extends keyof GPlus.SignalSignatures>(signal: K, ...args: Parameters<GPlus.SignalSignatures[K]>): void;
+        emit<K extends keyof GPlus.SignalSignatures>(
+            signal: K,
+            ...args: GPlus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -7273,7 +7279,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GPolynomial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GPolynomial.SignalSignatures[K]>
+            ...args: GPolynomial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -7747,7 +7753,10 @@ export namespace GCalc {
 
         connect<K extends keyof GPow.SignalSignatures>(signal: K, callback: GPow.SignalSignatures[K]): number;
         connect_after<K extends keyof GPow.SignalSignatures>(signal: K, callback: GPow.SignalSignatures[K]): number;
-        emit<K extends keyof GPow.SignalSignatures>(signal: K, ...args: Parameters<GPow.SignalSignatures[K]>): void;
+        emit<K extends keyof GPow.SignalSignatures>(
+            signal: K,
+            ...args: GPow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         /**
@@ -8220,7 +8229,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GResult.SignalSignatures[K]>
+            ...args: GResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -8696,7 +8705,10 @@ export namespace GCalc {
 
         connect<K extends keyof GGroup.SignalSignatures>(signal: K, callback: GGroup.SignalSignatures[K]): number;
         connect_after<K extends keyof GGroup.SignalSignatures>(signal: K, callback: GGroup.SignalSignatures[K]): number;
-        emit<K extends keyof GGroup.SignalSignatures>(signal: K, ...args: Parameters<GGroup.SignalSignatures[K]>): void;
+        emit<K extends keyof GGroup.SignalSignatures>(
+            signal: K,
+            ...args: GGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited properties
         get level(): GroupLevel;
@@ -9185,7 +9197,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GSolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GSolver.SignalSignatures[K]>
+            ...args: GSolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties
@@ -9666,7 +9678,10 @@ export namespace GCalc {
 
         connect<K extends keyof GTerm.SignalSignatures>(signal: K, callback: GTerm.SignalSignatures[K]): number;
         connect_after<K extends keyof GTerm.SignalSignatures>(signal: K, callback: GTerm.SignalSignatures[K]): number;
-        emit<K extends keyof GTerm.SignalSignatures>(signal: K, ...args: Parameters<GTerm.SignalSignatures[K]>): void;
+        emit<K extends keyof GTerm.SignalSignatures>(
+            signal: K,
+            ...args: GTerm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Inherited methods
         add(t: Term): Expression;
@@ -10149,7 +10164,7 @@ export namespace GCalc {
         ): number;
         emit<K extends keyof GVariable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GVariable.SignalSignatures[K]>
+            ...args: GVariable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited properties

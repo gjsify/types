@@ -74,7 +74,10 @@ export namespace GthreeGtk3 {
 
         connect<K extends keyof Area.SignalSignatures>(signal: K, callback: Area.SignalSignatures[K]): number;
         connect_after<K extends keyof Area.SignalSignatures>(signal: K, callback: Area.SignalSignatures[K]): number;
-        emit<K extends keyof Area.SignalSignatures>(signal: K, ...args: Parameters<Area.SignalSignatures[K]>): void;
+        emit<K extends keyof Area.SignalSignatures>(
+            signal: K,
+            ...args: Area.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

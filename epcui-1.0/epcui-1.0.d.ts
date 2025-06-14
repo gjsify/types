@@ -88,7 +88,7 @@ export namespace EpcUi {
         ): number;
         emit<K extends keyof PasswordDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordDialog.SignalSignatures[K]>
+            ...args: PasswordDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -601,7 +601,7 @@ export namespace EpcUi {
         ): number;
         emit<K extends keyof ProgressWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressWindow.SignalSignatures[K]>
+            ...args: ProgressWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods

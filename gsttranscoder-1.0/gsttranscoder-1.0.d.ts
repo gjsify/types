@@ -231,7 +231,7 @@ export namespace GstTranscoder {
         ): number;
         emit<K extends keyof Transcoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transcoder.SignalSignatures[K]>
+            ...args: Transcoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -395,7 +395,7 @@ export namespace GstTranscoder {
         ): number;
         emit<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TranscoderSignalAdapter.SignalSignatures[K]>
+            ...args: TranscoderSignalAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

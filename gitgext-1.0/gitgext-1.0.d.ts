@@ -91,7 +91,7 @@ export namespace GitgExt {
         ): number;
         emit<K extends keyof CommandLines.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandLines.SignalSignatures[K]>
+            ...args: CommandLines.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -151,7 +151,7 @@ export namespace GitgExt {
         ): number;
         emit<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageBus.SignalSignatures[K]>
+            ...args: MessageBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -221,7 +221,7 @@ export namespace GitgExt {
         ): number;
         emit<K extends keyof MessageId.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageId.SignalSignatures[K]>
+            ...args: MessageId.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -274,7 +274,7 @@ export namespace GitgExt {
         ): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -311,7 +311,10 @@ export namespace GitgExt {
 
         connect<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
         connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
-        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: Parameters<UI.SignalSignatures[K]>): void;
+        emit<K extends keyof UI.SignalSignatures>(
+            signal: K,
+            ...args: UI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace UserQueryResponse {
@@ -351,7 +354,7 @@ export namespace GitgExt {
         ): number;
         emit<K extends keyof UserQueryResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserQueryResponse.SignalSignatures[K]>
+            ...args: UserQueryResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -431,7 +434,7 @@ export namespace GitgExt {
         ): number;
         emit<K extends keyof UserQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserQuery.SignalSignatures[K]>
+            ...args: UserQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

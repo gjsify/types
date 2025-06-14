@@ -77,7 +77,7 @@ export namespace RygelRenderer {
         ): number;
         emit<K extends keyof MediaRendererPlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaRendererPlugin.SignalSignatures[K]>
+            ...args: MediaRendererPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -132,7 +132,7 @@ export namespace RygelRenderer {
         ): number;
         emit<K extends keyof MediaRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaRenderer.SignalSignatures[K]>
+            ...args: MediaRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

@@ -247,7 +247,7 @@ export namespace GstNet {
         ): number;
         emit<K extends keyof NetClientClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetClientClock.SignalSignatures[K]>
+            ...args: NetClientClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -313,7 +313,7 @@ export namespace GstNet {
         ): number;
         emit<K extends keyof NetTimeProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetTimeProvider.SignalSignatures[K]>
+            ...args: NetTimeProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -883,7 +883,7 @@ export namespace GstNet {
         ): number;
         emit<K extends keyof NtpClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NtpClock.SignalSignatures[K]>
+            ...args: NtpClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -961,7 +961,7 @@ export namespace GstNet {
         ): number;
         emit<K extends keyof PtpClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PtpClock.SignalSignatures[K]>
+            ...args: PtpClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 

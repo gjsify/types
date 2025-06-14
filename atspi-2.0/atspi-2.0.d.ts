@@ -2431,7 +2431,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof Accessible.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Accessible.SignalSignatures[K]>
+            ...args: Accessible.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4226,7 +4226,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4274,7 +4274,10 @@ export namespace Atspi {
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 
@@ -4508,7 +4511,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof DeviceA11yManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceA11yManager.SignalSignatures[K]>
+            ...args: DeviceA11yManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4546,7 +4549,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof DeviceLegacy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceLegacy.SignalSignatures[K]>
+            ...args: DeviceLegacy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4587,7 +4590,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof DeviceListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceListener.SignalSignatures[K]>
+            ...args: DeviceListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -4640,7 +4643,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof DeviceX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceX11.SignalSignatures[K]>
+            ...args: DeviceX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4691,7 +4694,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof EventListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EventListener.SignalSignatures[K]>
+            ...args: EventListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4875,7 +4878,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof Hyperlink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Hyperlink.SignalSignatures[K]>
+            ...args: Hyperlink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4980,7 +4983,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof MatchRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MatchRule.SignalSignatures[K]>
+            ...args: MatchRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -5011,7 +5014,10 @@ export namespace Atspi {
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace Relation {
@@ -5054,7 +5060,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof Relation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Relation.SignalSignatures[K]>
+            ...args: Relation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -5117,7 +5123,7 @@ export namespace Atspi {
         ): number;
         emit<K extends keyof StateSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StateSet.SignalSignatures[K]>
+            ...args: StateSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

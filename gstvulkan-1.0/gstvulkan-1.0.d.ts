@@ -429,7 +429,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanBufferMemoryAllocator.SignalSignatures[K]>
+            ...args: VulkanBufferMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -476,7 +476,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanBufferPool.SignalSignatures[K]>
+            ...args: VulkanBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -514,7 +514,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanCommandPool.SignalSignatures[K]>
+            ...args: VulkanCommandPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -573,7 +573,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDescriptorCache.SignalSignatures[K]>
+            ...args: VulkanDescriptorCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -619,7 +619,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDescriptorPool.SignalSignatures[K]>
+            ...args: VulkanDescriptorPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -673,7 +673,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDevice.SignalSignatures[K]>
+            ...args: VulkanDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -756,7 +756,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDisplay.SignalSignatures[K]>
+            ...args: VulkanDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -839,7 +839,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanFenceCache.SignalSignatures[K]>
+            ...args: VulkanFenceCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -882,7 +882,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanFullScreenQuad.SignalSignatures[K]>
+            ...args: VulkanFullScreenQuad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -937,7 +937,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanHandlePool.SignalSignatures[K]>
+            ...args: VulkanHandlePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -997,7 +997,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanImageBufferPool.SignalSignatures[K]>
+            ...args: VulkanImageBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1034,7 +1034,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanImageMemoryAllocator.SignalSignatures[K]>
+            ...args: VulkanImageMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1082,7 +1082,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanInstance.SignalSignatures[K]>
+            ...args: VulkanInstance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1150,7 +1150,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanMemoryAllocator.SignalSignatures[K]>
+            ...args: VulkanMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1204,7 +1204,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanPhysicalDevice.SignalSignatures[K]>
+            ...args: VulkanPhysicalDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1252,7 +1252,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanQueue.SignalSignatures[K]>
+            ...args: VulkanQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1348,7 +1348,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanSwapper.SignalSignatures[K]>
+            ...args: VulkanSwapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1396,7 +1396,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanTrashFenceList.SignalSignatures[K]>
+            ...args: VulkanTrashFenceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1430,7 +1430,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanTrashList.SignalSignatures[K]>
+            ...args: VulkanTrashList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1485,7 +1485,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanVideoFilter.SignalSignatures[K]>
+            ...args: VulkanVideoFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -1559,7 +1559,7 @@ export namespace GstVulkan {
         ): number;
         emit<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanWindow.SignalSignatures[K]>
+            ...args: VulkanWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

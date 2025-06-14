@@ -235,7 +235,7 @@ export namespace GstApp {
         ): number;
         emit<K extends keyof AppSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppSink.SignalSignatures[K]>
+            ...args: AppSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1327,7 +1327,10 @@ export namespace GstApp {
 
         connect<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
         connect_after<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
-        emit<K extends keyof AppSrc.SignalSignatures>(signal: K, ...args: Parameters<AppSrc.SignalSignatures[K]>): void;
+        emit<K extends keyof AppSrc.SignalSignatures>(
+            signal: K,
+            ...args: AppSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Virtual methods
 

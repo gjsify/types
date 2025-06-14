@@ -312,7 +312,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof DrawingBufferSurface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DrawingBufferSurface.SignalSignatures[K]>
+            ...args: DrawingBufferSurface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -378,7 +378,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof DrawingColor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DrawingColor.SignalSignatures[K]>
+            ...args: DrawingColor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -887,7 +887,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof DrawingUtilities.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DrawingUtilities.SignalSignatures[K]>
+            ...args: DrawingUtilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -941,7 +941,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesContractorProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesContractorProxy.SignalSignatures[K]>
+            ...args: ServicesContractorProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -986,7 +986,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesIconFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesIconFactory.SignalSignatures[K]>
+            ...args: ServicesIconFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1031,7 +1031,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesLogger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesLogger.SignalSignatures[K]>
+            ...args: ServicesLogger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1074,7 +1074,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesPaths.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesPaths.SignalSignatures[K]>
+            ...args: ServicesPaths.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1145,7 +1145,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesSettings.SignalSignatures[K]>
+            ...args: ServicesSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1219,7 +1219,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesSimpleCommand.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesSimpleCommand.SignalSignatures[K]>
+            ...args: ServicesSimpleCommand.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1259,7 +1259,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ServicesSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServicesSystem.SignalSignatures[K]>
+            ...args: ServicesSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -1332,7 +1332,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsAlertView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsAlertView.SignalSignatures[K]>
+            ...args: WidgetsAlertView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1392,7 +1392,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsAvatar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsAvatar.SignalSignatures[K]>
+            ...args: WidgetsAvatar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1441,7 +1441,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsCellRendererBadge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsCellRendererBadge.SignalSignatures[K]>
+            ...args: WidgetsCellRendererBadge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1492,7 +1492,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsCellRendererExpander.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsCellRendererExpander.SignalSignatures[K]>
+            ...args: WidgetsCellRendererExpander.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -1548,7 +1548,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsCollapsiblePaned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsCollapsiblePaned.SignalSignatures[K]>
+            ...args: WidgetsCollapsiblePaned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -1589,7 +1589,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsCompositedWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsCompositedWindow.SignalSignatures[K]>
+            ...args: WidgetsCompositedWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Inherited methods
@@ -2090,7 +2090,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsDatePicker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsDatePicker.SignalSignatures[K]>
+            ...args: WidgetsDatePicker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -2651,7 +2651,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsTab.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsTab.SignalSignatures[K]>
+            ...args: WidgetsTab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2865,7 +2865,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsDynamicNotebook.SignalSignatures[K]>
+            ...args: WidgetsDynamicNotebook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -2976,7 +2976,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsModeButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsModeButton.SignalSignatures[K]>
+            ...args: WidgetsModeButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3046,7 +3046,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsOverlayBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsOverlayBar.SignalSignatures[K]>
+            ...args: WidgetsOverlayBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3125,7 +3125,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsSourceList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsSourceList.SignalSignatures[K]>
+            ...args: WidgetsSourceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3254,7 +3254,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsSourceListItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsSourceListItem.SignalSignatures[K]>
+            ...args: WidgetsSourceListItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3356,7 +3356,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsSourceListExpandableItem.SignalSignatures[K]>
+            ...args: WidgetsSourceListExpandableItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3437,7 +3437,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsStorageBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsStorageBar.SignalSignatures[K]>
+            ...args: WidgetsStorageBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3508,7 +3508,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsTimePicker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsTimePicker.SignalSignatures[K]>
+            ...args: WidgetsTimePicker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3579,7 +3579,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsToast.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsToast.SignalSignatures[K]>
+            ...args: WidgetsToast.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3638,7 +3638,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsWelcomeButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsWelcomeButton.SignalSignatures[K]>
+            ...args: WidgetsWelcomeButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3709,7 +3709,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof WidgetsWelcome.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WidgetsWelcome.SignalSignatures[K]>
+            ...args: WidgetsWelcome.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3786,7 +3786,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods
@@ -3859,7 +3859,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof SettingsPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsPage.SignalSignatures[K]>
+            ...args: SettingsPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3936,7 +3936,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof SimpleSettingsPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleSettingsPage.SignalSignatures[K]>
+            ...args: SimpleSettingsPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4013,7 +4013,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof AccelLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccelLabel.SignalSignatures[K]>
+            ...args: AccelLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4099,7 +4099,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof AsyncImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncImage.SignalSignatures[K]>
+            ...args: AsyncImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4188,7 +4188,10 @@ export namespace Granite {
 
         connect<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
         connect_after<K extends keyof Dialog.SignalSignatures>(signal: K, callback: Dialog.SignalSignatures[K]): number;
-        emit<K extends keyof Dialog.SignalSignatures>(signal: K, ...args: Parameters<Dialog.SignalSignatures[K]>): void;
+        emit<K extends keyof Dialog.SignalSignatures>(
+            signal: K,
+            ...args: Dialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
     }
 
     namespace HeaderLabel {
@@ -4226,7 +4229,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof HeaderLabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderLabel.SignalSignatures[K]>
+            ...args: HeaderLabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4262,7 +4265,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof HyperTextView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HyperTextView.SignalSignatures[K]>
+            ...args: HyperTextView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
     }
 
@@ -4355,7 +4358,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof MessageDialog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageDialog.SignalSignatures[K]>
+            ...args: MessageDialog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4454,7 +4457,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ModeSwitch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModeSwitch.SignalSignatures[K]>
+            ...args: ModeSwitch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4550,7 +4553,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof SeekBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SeekBar.SignalSignatures[K]>
+            ...args: SeekBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4616,7 +4619,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof SettingsSidebar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsSidebar.SignalSignatures[K]>
+            ...args: SettingsSidebar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4663,7 +4666,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Static methods
@@ -4720,7 +4723,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof SwitchModelButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwitchModelButton.SignalSignatures[K]>
+            ...args: SwitchModelButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4784,7 +4787,7 @@ export namespace Granite {
         ): number;
         emit<K extends keyof ValidatedEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValidatedEntry.SignalSignatures[K]>
+            ...args: ValidatedEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods

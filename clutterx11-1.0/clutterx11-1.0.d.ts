@@ -340,7 +340,7 @@ export namespace ClutterX11 {
         ): number;
         emit<K extends keyof TexturePixmap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TexturePixmap.SignalSignatures[K]>
+            ...args: TexturePixmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

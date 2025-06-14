@@ -62,7 +62,7 @@ export namespace UMockdev {
         ): number;
         emit<K extends keyof Testbed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Testbed.SignalSignatures[K]>
+            ...args: Testbed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -139,7 +139,7 @@ export namespace UMockdev {
         ): number;
         emit<K extends keyof IoctlData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IoctlData.SignalSignatures[K]>
+            ...args: IoctlData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -195,7 +195,7 @@ export namespace UMockdev {
         ): number;
         emit<K extends keyof IoctlClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IoctlClient.SignalSignatures[K]>
+            ...args: IoctlClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -251,7 +251,7 @@ export namespace UMockdev {
         ): number;
         emit<K extends keyof IoctlBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IoctlBase.SignalSignatures[K]>
+            ...args: IoctlBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Virtual methods

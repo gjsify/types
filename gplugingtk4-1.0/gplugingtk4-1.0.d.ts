@@ -157,7 +157,7 @@ export namespace GPluginGtk4 {
         ): number;
         emit<K extends keyof PluginPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginPage.SignalSignatures[K]>
+            ...args: PluginPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -712,7 +712,7 @@ export namespace GPluginGtk4 {
         ): number;
         emit<K extends keyof PluginRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginRow.SignalSignatures[K]>
+            ...args: PluginRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -3840,7 +3840,7 @@ export namespace GPluginGtk4 {
         ): number;
         emit<K extends keyof PluginSettingsList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginSettingsList.SignalSignatures[K]>
+            ...args: PluginSettingsList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
@@ -4384,7 +4384,10 @@ export namespace GPluginGtk4 {
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
 
         // Methods
 

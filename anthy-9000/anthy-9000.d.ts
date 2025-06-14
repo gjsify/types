@@ -83,7 +83,7 @@ export namespace Anthy {
         ): number;
         emit<K extends keyof GContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContext.SignalSignatures[K]>
+            ...args: GContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
 
         // Methods
